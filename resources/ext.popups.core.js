@@ -103,7 +103,9 @@
 					minHeight: bar.tall ? bar.thumbnail.height : 'initial'
 				})
 				.append( bar.box )
-				.show();
+				.show()
+				.removeClass( 'mwe-popups-fade-out mwe-popups-fade-in' )
+				.addClass( 'mwe-popups-fade-in' );
 			$el
 				.off( 'mouseleave', leaveInactive )
 				.on( 'mouseleave', leaveActive );
@@ -111,12 +113,12 @@
 
 		/**
 		 * @method leaveActive
-		 * Closes the box after a delay of 800ms
+		 * Closes the box after a delay of 100ms
 		 * Delay to give enough time for the use to move the pointer from
 		 * the link to the popup box. Also avoids closing the popup by accident.
 		 */
 		function leaveActive () {
-			closeTimer = setTimeout( closeBox, 800 );
+			closeTimer = setTimeout( closeBox, 100 );
 		}
 
 		/**
@@ -140,7 +142,19 @@
 		 */
 		function closeBox () {
 			$( currentLink ).removeClass( 'mwe-popups-anchor-hover' ).off( 'mouseleave', leaveActive );
-			$box.hide();
+
+			$box
+				.removeClass( 'mwe-popups-fade-out mwe-popups-fade-in' )
+				.addClass( 'mwe-popups-fade-out' )
+				.on( 'webkitAnimationEnd oanimationend msAnimationEnd animationend', function () {
+					if ( $( this ).hasClass( 'mwe-popups-fade-out' ) ) {
+						$( this )
+						.off( 'webkitAnimationEnd oanimationend msAnimationEnd animationend' )
+						.removeClass( 'mwe-popups-fade-out' )
+						.hide();
+					}
+				} );
+
 			if ( closeTimer ){
 				clearTimeout( closeTimer );
 			}

@@ -42,7 +42,10 @@ $wgExtensionCredits['other'][] = array(
 $wgResourceModules = array_merge( $wgResourceModules, array(
 	"ext.popups" => array(
 		'scripts' => 'resources/ext.popups.core.js',
-		'styles' => 'resources/ext.popups.core.less',
+		'styles' => array(
+			'resources/ext.popups.core.less',
+			'resources/ext.popups.animation.less',
+		),
 		'remoteExtPath' => $remoteExtPath,
 		'localBasePath' => $localBasePath,
 	),
