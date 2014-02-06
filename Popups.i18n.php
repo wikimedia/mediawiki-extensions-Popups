@@ -25,7 +25,7 @@ $messages = array();
  * English
  */
 $messages['en'] = array(
-	'popups-desc' => 'Displays popups when you hover over article links',
+	'popups-desc' => 'Displays popups when you hover over page links',
 );
 
 /** Message documentation (Message documentation)
