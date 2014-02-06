@@ -30,4 +30,21 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Popups',
 );
 
+$wgResourceModules = array_merge( $wgResourceModules, array(
+	"ext.popups" => array(
+		'scripts' => 'resources/ext.popups.core.js',
+		'styles' => 'resources/ext.popups.core.less',
+		'remoteExtPath' => $remoteExtPath,
+		'localBasePath' => $localBasePath,
+	),
+) );
+
+$wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
 $wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
+$wgHooks['BeforePageDisplay'][] = 'PopupsHooks::onBeforePageDisplay';
+
+/**
+ * Adds navigation popups to link on an article
+ * @var bool
+ */
+$wgEnablePopups = false;

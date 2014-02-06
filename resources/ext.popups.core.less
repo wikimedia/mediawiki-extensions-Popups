@@ -1,0 +1,64 @@
+/* Code adapted from Yair Rand's NavPopupsRestyled.js
+ * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
+ */
+
+.mwe-popups {
+	position: absolute;
+	z-index: 5;
+	background: #fff;
+	border: 1px solid #aaa;
+	box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 3px;
+	padding: 0;
+	font-size: 12px;
+	display: none;
+	cursor: pointer;
+	min-width: 300px;
+
+	&:hover {
+		box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 3px;
+	}
+
+	> a {
+		display: block;
+		margin-top: -9px;
+		padding-top: 9px;
+		color: #000;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		> div {
+			padding: 1.6em;
+
+			+ div {
+				padding: 0.8em;
+				margin: 0.8em;
+			}
+		}
+
+		> img.mwe-popups-is-tall{
+			float: right;
+		}
+
+		> img.mwe-popups-is-not-tall{
+			float: initial;
+		}
+
+		> div.mwe-popups-timestamp-older{
+			color: #bbb;
+		}
+
+		> div.mwe-popups-timestamp-recent{
+			color: #00af89;
+		}
+	}
+
+	&.mwe-popups-is-tall{
+		width: 450px;
+	}
+
+	&.mwe-popups-is-not-tall{
+		width: 300px;
+	}
+}
