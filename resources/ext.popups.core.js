@@ -161,10 +161,31 @@
 			currentLink = closeTimer = undefined;
 		}
 
+		// Remove title attribute to remove the default yellow tooltip
+		// Put the title back after the hover
+		$( '#mw-content-text a' )
+			.not( '.extiw' )
+			.not( '.image' )
+			.not( '.new' )
+			.not( '[title=""]' )
+			.hover(
+				function () {
+					$( this )
+						.attr( 'data-original-title', $( this ).attr( 'title' ) )
+						.attr( 'title', '');
+				},
+				function () {
+					$( this )
+						.attr( 'title', $( this ).attr( 'data-original-title' ) )
+						.attr( 'data-original-title', '');
+				}
+			);
+
+
 		$( '#mw-content-text a' ).on( 'mouseenter', function () {
 			var $this = $( this ),
 				href = $this.attr( 'href' ),
-				title = $this.attr( 'title' );
+				title = $this.attr( 'data-original-title' );
 
 			// If a popup for the following link can't be shown
 			if ( !title ||
