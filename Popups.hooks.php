@@ -20,9 +20,23 @@
  */
 
 class PopupsHooks {
+	static function getPreferences( User $user, array &$prefs ){
+		global $wgExtensionAssetsPath;
+
+		$prefs['popups'] = array(
+			'label-message' => 'popups-message',
+			'desc-message' => 'popups-desc',
+			'screenshot' => $wgExtensionAssetsPath . '/Popups/popups.svg',
+			'info-link' => 'https://www.mediawiki.org/wiki/Navigation_Popups_%28Restyling_and_Enhancements%29',
+			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
+		);
+	}
+
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin) {
-		// Depends on PageImages & TextExtracts extensions
-		if ( class_exists( 'ApiQueryExtracts' )
+		// Enable only if the user has turned it on in Beta Preferences. Also depends on PageImages & TextExtracts extensions.
+		if ( ( ( class_exists( 'BetaFeatures' ) && BetaFeatures::isFeatureEnabled( $skin->getUser(), 'popups' ) )
+				|| !class_exists( 'BetaFeatures' ) )
+			&& class_exists( 'ApiQueryExtracts' )
 			&& class_exists( 'ApiQueryPageImages' )
 		) {
 			$out->addModules( array( 'ext.popups' ) );

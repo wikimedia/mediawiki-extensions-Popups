@@ -25,11 +25,13 @@ $messages = array();
  * English
  */
 $messages['en'] = array(
-	'popups-desc' => 'Displays popups when you hover over page links',
+	'popups-message' => 'Popups',
+	'popups-desc' => 'Displays popups with summaries of article contents when the user hovers over an article link.',
 );
 
 /** Message documentation (Message documentation)
  */
 $messages['qqq'] = array(
+	'popups-message' => 'Name shown in user preference for this extension',
 	'popups-desc' => '{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}',
 );
