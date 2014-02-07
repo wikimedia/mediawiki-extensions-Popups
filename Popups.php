@@ -15,9 +15,18 @@
  * You should have received a copy of the GNU General Public License
  * along with Popups.  If not, see <http://www.gnu.org/licenses/>.
  *
+ * This extension requires that the PageImages and TextExtracts
+ * extensions have also been installed.
+ *
  * @file
  * @ingroup extensions
  */
+
+/**
+ * Adds navigation popups to link on an article
+ * @var bool
+ */
+$wgEnablePopups = true;
 
 $localBasePath = dirname( __DIR__ ) . '/Popups';
 $remoteExtPath = 'Popups';
@@ -42,9 +51,3 @@ $wgResourceModules = array_merge( $wgResourceModules, array(
 $wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
 $wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
 $wgHooks['BeforePageDisplay'][] = 'PopupsHooks::onBeforePageDisplay';
-
-/**
- * Adds navigation popups to link on an article
- * @var bool
- */
-$wgEnablePopups = false;
