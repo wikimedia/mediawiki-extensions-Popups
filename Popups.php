@@ -35,13 +35,22 @@ $remoteExtPath = 'Popups';
 
 $wgResourceModules = array_merge( $wgResourceModules, array(
 	"ext.popups" => array(
-		'scripts' => 'resources/ext.popups.core.js',
+		'scripts' => array(
+			'resources/ext.popups.core.js',
+		),
 		'styles' => array(
 			'resources/ext.popups.core.less',
 			'resources/ext.popups.animation.less',
 		),
 		'dependencies' => array(
 			'mediawiki.api',
+		),
+		'messages' => array(
+			'popups-edited-seconds',
+			'popups-edited-minutes',
+			'popups-edited-hours',
+			'popups-edited-days',
+			'popups-edited-years',
 		),
 		'remoteExtPath' => $remoteExtPath,
 		'localBasePath' => $localBasePath,

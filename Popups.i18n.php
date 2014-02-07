@@ -26,7 +26,12 @@ $messages = array();
  */
 $messages['en'] = array(
 	'popups-message' => 'Popups',
-	'popups-desc' => 'Displays popups with summaries of page contents when the user hovers over an page link',
+	'popups-desc' => 'Displays popups with summaries of article contents when the user hovers over an article link.',
+	'popups-edited-seconds' => 'Last edited {{PLURAL:$1|1 second|$1 seconds}} ago.',
+	'popups-edited-minutes' => 'Last edited {{PLURAL:$1|1 minute|$1 minutes}} ago.',
+	'popups-edited-hours' => 'Last edited {{PLURAL:$1|1 hour|$1 hours}} ago.',
+	'popups-edited-days' => 'Last edited {{PLURAL:$1|yesterday|$1 days ago}}.',
+	'popups-edited-years' => 'Last edited {{PLURAL:$1|1 year|$1 years}} ago.',
 );
 
 /** Message documentation (Message documentation)
@@ -34,6 +39,11 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'popups-message' => 'Name shown in user preference for this extension',
 	'popups-desc' => '{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}',
+	'popups-edited-seconds' => 'Message to show time span if page was edited less than a minute ago',
+	'popups-edited-minutes' => 'Message to show time span if page was edited less than an hour ago',
+	'popups-edited-hours' => 'Message to show time span if page was edited less than a day ago',
+	'popups-edited-days' => 'Message to show time span if page was edited less than a year ago',
+	'popups-edited-years' => 'Message to show time span if page was edited more than a year ago',
 );
 
 /** Arabic (العربية)

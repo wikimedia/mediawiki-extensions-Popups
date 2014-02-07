@@ -57,7 +57,7 @@
 					$timestamp = $( '<div>' )
 						.addClass( timestampclass )
 						.append(
-							$( '<span>' ).text( timestamp.toString() )
+							$( '<span>' ).text( timeAgo( timediff ).text() )
 						);
 
 				if ( thumbnail ){
@@ -237,5 +237,53 @@
 				}
 			} )
 			.appendTo( document.body );
+
+
 	} );
+
+	// Util functions that should be separated out into their own files at some point
+
+	/**
+	 * @method timeAgo
+	 * Formats a given time duration (in ms) into a relative string.
+	 *
+	 * @param {number} ms The time duration to convert to a relative string, in ms
+	 * @return {Object} A mw.message object with the appropriate relative string.
+	 */
+	function timeAgo( ms ) {
+		var i, ts, timeSegments = [
+			{
+				factor: 1000,
+				min: 60,
+				message: 'popups-edited-seconds'
+			},
+			{
+				factor: 60,
+				min: 60,
+				message: 'popups-edited-minutes'
+			},
+			{
+				factor: 60,
+				min: 24,
+				message: 'popups-edited-hours'
+			},
+			{
+				factor: 24,
+				min: 365,
+				message: 'popups-edited-days'
+			},
+			{
+				factor: 365,
+				message: 'popups-edited-years'
+			}
+		], curDuration = ms;
+
+		for ( i = 0; i <= timeSegments.length; i++ ) {
+			ts = timeSegments[ i ];
+			curDuration = Math.floor( curDuration / ts.factor );
+			if ( typeof ts.min === 'undefined' || curDuration < ts.min ) {
+				return mw.message( ts.message, curDuration );
+			}
+		}
+	}
 } ) ( jQuery );
