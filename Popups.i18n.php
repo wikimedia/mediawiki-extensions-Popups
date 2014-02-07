@@ -32,6 +32,7 @@ $messages['en'] = array(
 	'popups-edited-hours' => 'Last edited {{PLURAL:$1|1 hour|$1 hours}} ago.',
 	'popups-edited-days' => 'Last edited {{PLURAL:$1|yesterday|$1 days ago}}.',
 	'popups-edited-years' => 'Last edited {{PLURAL:$1|1 year|$1 years}} ago.',
+	'popups-redirects' => 'redirects to <h3>$1</h3>',
 );
 
 /** Message documentation (Message documentation)
@@ -55,6 +56,7 @@ $messages['qqq'] = array(
 	'popups-edited-years' => 'Message to show time span if page was edited more than a year ago. Parameters:
 * $1 - number of years
 {{Related|Popups-edited}}',
+	'popups-redirects' => 'Message shown when the popup is showing a redirected page',
 );
 
 /** Arabic (العربية)

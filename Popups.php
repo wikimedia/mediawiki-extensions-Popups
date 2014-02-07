@@ -51,6 +51,7 @@ $wgResourceModules = array_merge( $wgResourceModules, array(
 			'popups-edited-hours',
 			'popups-edited-days',
 			'popups-edited-years',
+			'popups-redirects',
 		),
 		'remoteExtPath' => $remoteExtPath,
 		'localBasePath' => $localBasePath,
