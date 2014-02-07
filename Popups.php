@@ -46,6 +46,9 @@ $wgResourceModules = array_merge( $wgResourceModules, array(
 			'resources/ext.popups.core.less',
 			'resources/ext.popups.animation.less',
 		),
+		'dependencies' => array(
+			'mediawiki.api',
+		),
 		'remoteExtPath' => $remoteExtPath,
 		'localBasePath' => $localBasePath,
 	),
