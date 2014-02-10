@@ -22,15 +22,6 @@
  * @ingroup extensions
  */
 
-/**
- * Adds navigation popups to link on an article
- * @var bool
- */
-$wgEnablePopups = true;
-
-$localBasePath = dirname( __DIR__ ) . '/Popups';
-$remoteExtPath = 'Popups';
-
 $wgExtensionCredits['other'][] = array(
 	'author' => array( 'Prateek Saxena', 'Yair Rand' ),
 	'descriptionmsg' => 'popups-desc',
@@ -38,6 +29,9 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Popups',
 );
+
+$localBasePath = dirname( __DIR__ ) . '/Popups';
+$remoteExtPath = 'Popups';
 
 $wgResourceModules = array_merge( $wgResourceModules, array(
 	"ext.popups" => array(

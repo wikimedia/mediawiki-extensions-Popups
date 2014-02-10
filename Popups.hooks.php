@@ -21,11 +21,8 @@
 
 class PopupsHooks {
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin) {
-		global $wgEnablePopups;
-
-		// Enable only if explicitly enabled. Also depends on PageImages & TextExtracts extensions
-		if ( $wgEnablePopups
-			&& class_exists( 'ApiQueryExtracts' )
+		// Depends on PageImages & TextExtracts extensions
+		if ( class_exists( 'ApiQueryExtracts' )
 			&& class_exists( 'ApiQueryPageImages' )
 		) {
 			$out->addModules( array( 'ext.popups' ) );
