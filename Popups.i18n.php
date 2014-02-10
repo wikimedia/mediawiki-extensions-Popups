@@ -35,3 +35,19 @@ $messages['qqq'] = array(
 	'popups-message' => 'Name shown in user preference for this extension',
 	'popups-desc' => '{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}',
 );
+
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'popups-message' => 'Popups',
+	'popups-desc' => 'Ermöglicht beim Überfahren mit der Maus über einen Seitenlink die Anzeige von Popups mit Seiteninhaltszusammenfassungen',
+);
+
+/** Italian (italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'popups-message' => 'Popup',
+	'popups-desc' => "Mostra un popup con un estratto del contenuto quando l'utente passa sopra al collegamento ad una pagina",
+);
