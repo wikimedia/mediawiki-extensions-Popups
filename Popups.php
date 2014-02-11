@@ -34,7 +34,7 @@ $localBasePath = dirname( __DIR__ ) . '/Popups';
 $remoteExtPath = 'Popups';
 
 $wgResourceModules = array_merge( $wgResourceModules, array(
-	"ext.popups" => array(
+	'ext.popups' => array(
 		'scripts' => array(
 			'resources/ext.popups.core.js',
 		),
@@ -55,6 +55,12 @@ $wgResourceModules = array_merge( $wgResourceModules, array(
 		),
 		'remoteExtPath' => $remoteExtPath,
 		'localBasePath' => $localBasePath,
+	),
+
+	'schema.Popups' => array(
+		'class'  => 'ResourceLoaderSchemaModule',
+		'schema' => 'Popups',
+		'revision' => 7536956,
 	),
 ) );
 

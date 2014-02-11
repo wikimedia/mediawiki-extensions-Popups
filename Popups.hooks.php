@@ -40,6 +40,7 @@ class PopupsHooks {
 			&& class_exists( 'ApiQueryPageImages' )
 		) {
 			$out->addModules( array( 'ext.popups' ) );
+			$out->addModules( array( 'schema.Popups' ) );
 		}
 	}
 }

@@ -9,6 +9,10 @@
 
 		var closeTimer, // The timer use to delay `closeBox`
 			openTimer, // The timer used to delay sending the API request/opening the popup form cache
+			elTime, // EL: UNIX timestamp of when the popup was rendered
+			elDuration, // EL: How long was the popup open in milliseconds
+			elAction, // EL: Was the popup clicked or middle clicked or dismissed
+			elSessionId, // EL: Get defined after the getSessionId method is created
 			currentLink, // DOM element of the current anchor tag
 			cache = {},
 			curRequest, // Current API request
@@ -70,7 +74,11 @@
 					);
 				}
 
-				$a = $( '<a>' ).append( $thumbnail, $contentbox, $timestamp).attr( 'href', href );
+				$a = $( '<a>' )
+					.append( $thumbnail, $contentbox, $timestamp)
+					.attr( 'href', href )
+					.on( 'click', logClick );
+
 				cache[ href ] = { box: $a, thumbnail: thumbnail, tall: tall	};
 				createBox( href, $el );
 			});
@@ -121,6 +129,10 @@
 			var bar = cache[ href ],
 				offsetTop = $el.offset().top + $el.height() + 5,
 				offsetLeft = $el.offset().left;
+
+			elTime = mw.now();
+			elAction = 'dismissed';
+
 			$box
 				.children()
 				.detach()
@@ -170,6 +182,8 @@
 		 * `currentLink` to undefined.
 		 */
 		function closeBox () {
+			elDuration = mw.now() - elTime;
+
 			$( currentLink ).removeClass( 'mwe-popups-anchor-hover' ).off( 'mouseleave', leaveActive );
 
 			$box
@@ -187,8 +201,80 @@
 			if ( closeTimer ){
 				clearTimeout( closeTimer );
 			}
+
+			logEvent();
 			currentLink = closeTimer = undefined;
 		}
+
+		/**
+		 * @method logClick
+		 * Logs different actions such as meta and shift click on the popup.
+		 * Is bound to the `click` event.
+		 * @param {Object} e
+		 */
+		function logClick ( e ) {
+			if ( e.which === 2) { // middle click
+				elAction = 'opened in new tab';
+			} else if ( e.which === 1) {
+				if ( e.ctrlKey || e.metaKey ) {
+					elAction = 'opened in new tab';
+				} else if ( e.shiftKey ){
+					elAction = 'opened in new window';
+				} else {
+					elAction = 'opened in same tab';
+					elDuration = mw.now() - elTime;
+					logEvent( this.href );
+					e.preventDefault();
+				}
+			}
+		}
+
+		/**
+		 * @method logEvent
+		 * Logs the Popup event as defined in the following schema -
+		 * https://meta.wikimedia.org/wiki/Schema:Popups
+		 * If `href` is passed it redirects to that location after the event is logged.
+		 * @param {string} href
+		 */
+		function logEvent ( href ) {
+			var dfd = $.Deferred(),
+				event = {
+					'duration': Math.round( elDuration ),
+					'action': elAction
+				};
+
+			if ( elSessionId !== null ) {
+				event.sessionId = elSessionId;
+			}
+
+			if ( href ) {
+				dfd.always( function () {
+					location.href = href;
+				} );
+			}
+
+			mw.eventLog.logEvent( 'Popups', event ).then( dfd.resolve, dfd.reject );
+			setTimeout( dfd.reject, 1000 );
+			elTime = elDuration = elAction = undefined;
+		}
+
+		/**
+		 * @method getSessionId
+		 * Generates a unique sessionId or pulls an existing one from localStorage
+		 * @return {string} sessionId
+		 */
+		function getSessionId () {
+			var sessionId = null;
+			try {
+				sessionId = localStorage.getItem( 'popupsSessionId' );
+				if ( sessionId === null ) {
+					sessionId = mw.user.generateRandomSessionId();
+					localStorage.setItem( 'popupsSessionId', sessionId );
+				}
+			} catch ( e ) {}
+			return sessionId;
+		}
+		elSessionId = getSessionId();
 
 		// Remove title attribute to remove the default yellow tooltip
 		// Put the title back after the hover
