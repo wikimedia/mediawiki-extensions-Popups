@@ -6,8 +6,8 @@
 	position: absolute;
 	z-index: 5;
 	background: #fff;
-	border: 1px solid #aaa;
-	box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 3px;
+	border: 1px solid #f0f0f0;
+	box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 0;
 	padding: 0;
 	font-size: 12px;
 	display: none;
@@ -15,7 +15,7 @@
 	min-width: 300px;
 
 	&:hover {
-		box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 3px;
+		box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 0px;
 	}
 
 	> a {
@@ -30,6 +30,8 @@
 
 		> div {
 			padding: 1.6em;
+			font-size: 13px;
+			line-height: 19.2px;
 
 			+ div {
 				padding: 0.8em;
@@ -39,6 +41,7 @@
 
 		> img.mwe-popups-is-tall{
 			float: right;
+			padding-left: 1.6em;
 		}
 
 		> img.mwe-popups-is-not-tall{

@@ -217,11 +217,11 @@
 			if ( cache[ href ] ){
 				openTimer = setTimeout( function () {
 					createBox( href, $this );
-				}, 300 );
+				}, 150 );
 			} else {
 				openTimer = setTimeout( function () {
 					sendRequest( href, title, $this );
-				}, 150 ); // sendRequest sooner so that it *hopefully* shows up in 300ms
+				}, 50 ); // sendRequest sooner so that it *hopefully* shows up in 150ms
 			}
 			// Delay to avoid triggering the popup and AJAX requests on accidental
 			// hovers (likes ones during srcolling or moving the pointer elsewhere).
