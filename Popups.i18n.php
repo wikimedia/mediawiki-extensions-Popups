@@ -36,6 +36,14 @@ $messages['qqq'] = array(
 	'popups-desc' => '{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}',
 );
 
+/** Arabic (العربية)
+ * @author Asaifm
+ */
+$messages['ar'] = array(
+	'popups-message' => 'المنبثقات',
+	'popups-desc' => 'يقوم بعرض منبثقات بملخصات عن محتوى الصفحة عندما يقوم المستخدم بحوم المؤشر على رابط الصفحة',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -89,6 +97,14 @@ $messages['mk'] = array(
 $messages['ps'] = array(
 	'popups-message' => 'بربوکيزې',
 	'popups-desc' => 'بربوکيزې د يو مخ د مېنځپانگې لنډيزونه هغه وخت ښکاره کوي کله چې کارن د موږک غشی د يوه مخ پر تړنې راولي',
+);
+
+/** Portuguese (português)
+ * @author Imperadeiro98
+ */
+$messages['pt'] = array(
+	'popups-message' => 'Pop-ups',
+	'popups-desc' => 'Exibe pop-ups com resumos do conteúdo de páginas quando o usuário passa o rato por cima do link de uma página',
 );
 
 /** Russian (русский)
