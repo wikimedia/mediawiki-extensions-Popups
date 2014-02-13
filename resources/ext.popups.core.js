@@ -64,9 +64,7 @@
 					$thumbnail = $( '<img>' )
 						.attr( 'src', thumbnail.source )
 						.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
-						.addClass( tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall' )
-						.attr( 'width', thumbnail.width )
-						.attr( 'height', thumbnail.height );
+						.addClass( tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall' );
 				} else {
 					$thumbnail = $( '<span>' );
 				}
@@ -99,8 +97,7 @@
 				.addClass( bar.tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall' )
 				.css({
 					top: offsetTop,
-					left: offsetLeft,
-					minHeight: bar.tall ? bar.thumbnail.height : 'initial'
+					left: offsetLeft
 				})
 				.append( bar.box )
 				.show()
