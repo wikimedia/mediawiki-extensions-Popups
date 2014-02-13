@@ -44,6 +44,14 @@ $messages['ar'] = array(
 	'popups-desc' => 'يقوم بعرض منبثقات بملخصات عن محتوى الصفحة عندما يقوم المستخدم بحوم المؤشر على رابط الصفحة',
 );
 
+/** Asturian (asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'popups-message' => 'Ventanos emerxentes',
+	'popups-desc' => "Amuesa ventanos emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de páxina",
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -81,6 +89,14 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'popups-message' => 'ポップアップ',
+);
+
+/** Korean (한국어)
+ * @author Priviet
+ */
+$messages['ko'] = array(
+	'popups-message' => '팝업',
+	'popups-desc' => '사용자가 문서 링크에 마우스를 갖다대면 문서 내용 요약을 팝업으로 표시',
 );
 
 /** Macedonian (македонски)
