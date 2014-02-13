@@ -22,7 +22,7 @@
  * @ingroup extensions
  */
 
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['betafeatures'][] = array(
 	'author' => array( 'Prateek Saxena', 'Yair Rand' ),
 	'descriptionmsg' => 'popups-desc',
 	'name' => 'Popups',
