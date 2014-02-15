@@ -138,6 +138,18 @@ $messages['ko'] = array(
 	'popups-edited-years' => '{{PLURAL:$1|$1년}} 전에 마지막으로 편집함',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'popups-message' => 'Popups',
+	'popups-edited-seconds' => 'Lescht Ännerung {{PLURAL:$1|virun enger Sekonn|viru(n) $1 Sekonnen}}.',
+	'popups-edited-minutes' => 'Lescht Ännerung {{PLURAL:$1|virun enger Minutt|viru(n) $1 Minutten}}.',
+	'popups-edited-hours' => 'Lescht Ännerung {{PLURAL:$1|virun enger Stonn|viru(n) $1 Stonnen}}.',
+	'popups-edited-days' => 'Lescht Ännerung {{PLURAL:$1|gëschter|viru(n) $1 Deeg}}',
+	'popups-edited-years' => 'Lescht Ännerung {{PLURAL:$1|virun engem Joer|viru(n) $1 Joer}}.',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
@@ -149,6 +161,39 @@ $messages['mk'] = array(
 	'popups-edited-hours' => 'Последните измени се направени пред {{PLURAL:$1|еден час|$1 часа}}.',
 	'popups-edited-days' => 'Последните измени се направени {{PLURAL:$1|вчера|пред $1 дена}}.',
 	'popups-edited-years' => 'Последните измени се направени пред {{PLURAL:$1|една година|$1 години}}.',
+);
+
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'popups-message' => 'उचकण्या',
+	'popups-desc' => 'जेंव्हा सदस्य एखाद्या लेखदुव्यावर घुटमळतो तेंव्हा, लेखाच्या आशय सारांशासह उचकण्या दर्शविते',
+	'popups-edited-seconds' => 'शेवटचे संपादन {{PLURAL:$1|$1 सेकंदा|$1 सेकंदां}}पूर्वी',
+	'popups-edited-minutes' => 'शेवटचे संपादन {{PLURAL:$1|$1 मिनिटा|$1 मिनिटां}}पूर्वी',
+	'popups-edited-hours' => 'शेवटचे संपादन {{PLURAL:$1|$1 तासा|$1 तासां}}पूर्वी',
+	'popups-edited-days' => 'शेवटचे संपादन {{PLURAL:$1|काल|$1 दिवसांपूर्वी}}.',
+	'popups-edited-years' => 'शेवटचे संपादन {{PLURAL:$1|१ वर्षा|$1 वर्षां}}पूर्वी',
+);
+
+/** Dutch (Nederlands)
+ * @author Sjoerddebruin
+ */
+$messages['nl'] = array(
+	'popups-message' => 'Pop-ups',
+);
+
+/** Polish (polski)
+ * @author Chrumps
+ */
+$messages['pl'] = array(
+	'popups-message' => 'Okna pop-up',
+	'popups-desc' => 'Wyświetla okna pop-up z opisami treści artykułów po umieszczeniu wskaźnika myszy na odnośniku.',
+	'popups-edited-seconds' => 'Ostatnio zmodyfikowano {{PLURAL:$1|1 sekundę|$1 sekundy|$1 sekund}} temu.',
+	'popups-edited-minutes' => 'Ostatnio zmodyfikowano {{PLURAL:$1|1 minutę|$1 minuty|$1 minut}} temu.',
+	'popups-edited-hours' => 'Ostatnio zmodyfikowano {{PLURAL:$1|1 godzinę|$1 godziny|$1 godzin}} temu.',
+	'popups-edited-days' => 'Ostatnio zmodyfikowano {{PLURAL:$1|wczoraj|$1 dni temu}}.',
+	'popups-edited-years' => 'Ostatnio zmodyfikowano {{PLURAL:$1|rok|$1 lata|$1 lat}} temu.',
 );
 
 /** Pashto (پښتو)
@@ -178,6 +223,17 @@ $messages['ru'] = array(
 	'popups-edited-hours' => 'Отредактировано {{PLURAL:$1|$1 час|$1 часов|$1 часа}} назад.',
 	'popups-edited-days' => 'Отредактировано {{PLURAL:$1|вчера|$1 дней|$1 дня}} назад.',
 	'popups-edited-years' => 'Отредактировано {{PLURAL:$1|$1 год|$1 лет|$1 года}} назад.',
+);
+
+/** Swedish (svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'popups-edited-seconds' => 'Senast redigerad {{PLURAL:$1|1 sekund|$1 sekunder}} sedan.',
+	'popups-edited-minutes' => 'Senast redigerad {{PLURAL:$1|1 minut|$1 minuter}} sedan.',
+	'popups-edited-hours' => 'Senast redigerad {{PLURAL:$1|1 timme|$1 timmar}} sedan.',
+	'popups-edited-days' => 'Senast redigerad {{PLURAL:$1|igår|$1 dagar}} sedan.',
+	'popups-edited-years' => 'Senast redigerad {{PLURAL:$1|1 år|$1 år}} sedan.',
 );
 
 /** Ukrainian (українська)
