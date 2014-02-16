@@ -35,15 +35,26 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Shirayuki
  */
 $messages['qqq'] = array(
 	'popups-message' => 'Name shown in user preference for this extension',
 	'popups-desc' => '{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}',
-	'popups-edited-seconds' => 'Message to show time span if page was edited less than a minute ago',
-	'popups-edited-minutes' => 'Message to show time span if page was edited less than an hour ago',
-	'popups-edited-hours' => 'Message to show time span if page was edited less than a day ago',
-	'popups-edited-days' => 'Message to show time span if page was edited less than a year ago',
-	'popups-edited-years' => 'Message to show time span if page was edited more than a year ago',
+	'popups-edited-seconds' => 'Message to show time span if page was edited less than a minute ago. Parameters:
+* $1 - number of seconds
+{{Related|Popups-edited}}',
+	'popups-edited-minutes' => 'Message to show time span if page was edited less than an hour ago. Parameters:
+* $1 - number of minutes
+{{Related|Popups-edited}}',
+	'popups-edited-hours' => 'Message to show time span if page was edited less than a day ago. Parameters:
+* $1 - number of hours
+{{Related|Popups-edited}}',
+	'popups-edited-days' => 'Message to show time span if page was edited less than a year ago. Parameters:
+* $1 - number of days
+{{Related|Popups-edited}}',
+	'popups-edited-years' => 'Message to show time span if page was edited more than a year ago. Parameters:
+* $1 - number of years
+{{Related|Popups-edited}}',
 );
 
 /** Arabic (العربية)
@@ -60,6 +71,23 @@ $messages['ar'] = array(
 $messages['ast'] = array(
 	'popups-message' => 'Ventanos emerxentes',
 	'popups-desc' => "Amuesa ventanos emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de páxina",
+	'popups-edited-seconds' => 'Última edición hai {{PLURAL:$1|$1 segundu|$1 segundos}}',
+	'popups-edited-minutes' => 'Última edición hai {{PLURAL:$1|$1 minutu|$1 minutos}}',
+	'popups-edited-hours' => 'Última edición hai {{PLURAL:$1|$1 hora|$1 hores}}',
+	'popups-edited-days' => 'Última edición {{PLURAL:$1|ayeri|hai $1 díes}}.',
+	'popups-edited-years' => 'Última edición hai {{PLURAL:$1|$1 añu|$1 años}}',
+);
+
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'popups-message' => 'Гучу долу кор',
+	'popups-edited-seconds' => 'Язйина {{PLURAL:$1|$1 секунд}} хьалха.',
+	'popups-edited-minutes' => 'Язйина {{PLURAL:$1|$1 минут}} хьалха.',
+	'popups-edited-hours' => 'Язйина {{PLURAL:$1|$1 сахьт}} хьалха.',
+	'popups-edited-days' => 'Язйина {{PLURAL:$1|$1 де}} хьалха.',
+	'popups-edited-years' => 'Язйина {{PLURAL:$1|$1 шо}} хьалха.',
 );
 
 /** German (Deutsch)
@@ -120,9 +148,16 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Shirayuki
+ * @author Whym
  */
 $messages['ja'] = array(
 	'popups-message' => 'ポップアップ',
+	'popups-desc' => '記事へのリンクにホバーしたとき、記事内容の要約のポップアップが表示されます。',
+	'popups-edited-seconds' => '{{PLURAL:$1|$1秒}}前に最終更新。',
+	'popups-edited-minutes' => '{{PLURAL:$1|$1分}}前に最終更新。',
+	'popups-edited-hours' => '{{PLURAL:$1|$1時間}}前に最終更新。',
+	'popups-edited-days' => '{{PLURAL:$1|$1日}}前に最終更新。',
+	'popups-edited-years' => '{{PLURAL:$1|$1年}}前に最終更新。',
 );
 
 /** Korean (한국어)
@@ -236,6 +271,19 @@ $messages['sv'] = array(
 	'popups-edited-years' => 'Senast redigerad {{PLURAL:$1|1 år|$1 år}} sedan.',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'popups-message' => 'Açılır pencereler',
+	'popups-desc' => 'Kullanıcı bir makale bağlantısı üzerine geldiğinde makale içeriği özetini içeren açılır pencereler görüntüler.',
+	'popups-edited-seconds' => 'En son {{PLURAL:$1|1 saniye|$1 saniye}} önce değiştirildi.',
+	'popups-edited-minutes' => 'En son {{PLURAL:$1|1 dakika|$1 dakika}} önce değiştirildi.',
+	'popups-edited-hours' => 'En son {{PLURAL:$1|1 saat|$1 saat}} önce değiştirildi.',
+	'popups-edited-days' => 'En son {{PLURAL:$1|dün|$1 gün önce}} değiştirildi.',
+	'popups-edited-years' => 'En son {{PLURAL:$1|1 yıl|$1 yıl}} önce değiştirildi.',
+);
+
 /** Ukrainian (українська)
  * @author Andriykopanytsia
  */
@@ -255,6 +303,11 @@ $messages['uk'] = array(
 $messages['zh-hans'] = array(
 	'popups-message' => '弹窗',
 	'popups-desc' => '当用户悬停页面链接时显示对应页面内容摘要的弹窗',
+	'popups-edited-seconds' => '上次编辑于$1秒前。',
+	'popups-edited-minutes' => '上次编辑于$1分钟前。',
+	'popups-edited-hours' => '上次编辑于$1小时前。',
+	'popups-edited-days' => '上次编辑于$1天前。',
+	'popups-edited-years' => '上次编辑于$1年前。',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
