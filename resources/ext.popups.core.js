@@ -43,11 +43,12 @@
 			curRequest.done( function ( re ) {
 				curRequest = undefined;
 
-				var $thumbnail, $a,
+				var $a,
 					page = re.query.pages[re.query.pageids[0]],
 					$contentbox = $( '<div>' ).html( page.extract ),
 					thumbnail = page.thumbnail,
 					tall = thumbnail && thumbnail.height > thumbnail.width,
+					$thumbnail = createThumbnail( thumbnail, tall ),
 					timestamp = new Date( page.revisions[ 0 ].timestamp ),
 					timediff = new Date() - timestamp,
 					oneDay = 1000 * 60 * 60 * 24,
@@ -60,21 +61,33 @@
 							$( '<span>' ).text( timeAgo( timediff ).text() )
 						);
 
-				if ( thumbnail ){
-					$thumbnail = $( '<img>' )
-						.attr( 'src', thumbnail.source )
-						.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
-						.addClass( tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall' );
-				} else {
-					$thumbnail = $( '<span>' );
-				}
-
 				$a = $( '<a>' ).append( $thumbnail, $contentbox, $timestamp).attr( 'href', href );
 				cache[ href ] = { box: $a, thumbnail: thumbnail, tall: tall	};
 				createBox( href, $el );
 			});
 
 			return true;
+		}
+
+		/**
+		 * @method createThumbnail
+		 * Returns a thumbnail object based on the ratio of the image
+		 * @param {Object} thumbnail
+		 * @param {boolean} tall
+		 * @return {Object} jQuery DOM element of the thumbnail
+		 */
+		function createThumbnail ( thumbnail, tall ) {
+			if ( !thumbnail ) {
+				return $( '<span>' );
+			}
+
+			var $thumbnail = $( '<img>' )
+				.attr( 'src', thumbnail.source )
+				.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
+				.addClass( tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall' );
+
+
+			return $thumbnail;
 		}
 
 		/**
