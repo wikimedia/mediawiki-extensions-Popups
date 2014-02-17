@@ -81,10 +81,20 @@
 				return $( '<span>' );
 			}
 
-			var $thumbnail = $( '<img>' )
-				.attr( 'src', thumbnail.source )
-				.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
-				.addClass( tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall' );
+			var $thumbnail;
+
+			if ( tall ) {
+				// This is to mask and center the image within a given size
+				$thumbnail = $( '<div>' )
+					.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
+					.addClass( 'mwe-popups-is-tall' )
+					.css( 'background-image', 'url(' + thumbnail.source + ')');
+			} else {
+				$thumbnail = $( '<img>' )
+					.attr( 'src', thumbnail.source )
+					.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
+					.addClass( 'mwe-popups-is-not-tall' );
+			}
 
 
 			return $thumbnail;
