@@ -26,7 +26,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'popups-message' => 'Popups',
-	'popups-desc' => 'Displays popups with summaries of article contents when the user hovers over an article link.',
+	'popups-desc' => 'Displays popups with summaries of page contents when the user hovers over a page link.',
 	'popups-edited-seconds' => 'Last edited {{PLURAL:$1|1 second|$1 seconds}} ago.',
 	'popups-edited-minutes' => 'Last edited {{PLURAL:$1|1 minute|$1 minutes}} ago.',
 	'popups-edited-hours' => 'Last edited {{PLURAL:$1|1 hour|$1 hours}} ago.',
