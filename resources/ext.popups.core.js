@@ -17,7 +17,7 @@
 			cache = {},
 			curRequest, // Current API request
 			api = new mw.Api(),
-			$box; // DOM element of the popup (defined at the end of the file)
+			$svg, $box; // defined at the end of the file
 
 		/**
 		 * @method sendRequest
@@ -87,6 +87,15 @@
 		}
 
 		/**
+		 * @method supportsSVG
+		 * Checks for SVG support in browser
+		 * @return {boolean}
+		 */
+		function supportsSVG() {
+			return document.implementation.hasFeature( 'http://www.w3.org/TR/SVG11/feature#Image', '1.1' );
+		}
+
+		/**
 		 * @method createThumbnail
 		 * Returns a thumbnail object based on the ratio of the image
 		 * @param {Object} thumbnail
@@ -103,16 +112,35 @@
 			if ( tall ) {
 				// This is to mask and center the image within a given size
 				$thumbnail = $( '<div>' )
-					.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
 					.addClass( 'mwe-popups-is-tall' )
 					.css( 'background-image', 'url(' + thumbnail.source + ')');
 			} else {
-				$thumbnail = $( '<img>' )
-					.attr( 'src', thumbnail.source )
-					.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
-					.addClass( 'mwe-popups-is-not-tall' );
-			}
+				if ( supportsSVG() ) {
+					$thumbnail = $( '<image>' )
+						.addClass( 'mwe-popups-is-not-tall' )
+						.attr( {
+							'xlink:href': thumbnail.source,
+							'clip-path': 'url(#mwe-popups-mask)',
+							x: 0,
+							y: 0,
+							width: thumbnail.width,
+							height: thumbnail.height
+						} );
 
+					$thumbnail = $( '<svg>' )
+						.attr( {
+							xmlns: 'http://www.w3.org/2000/svg',
+							viewBox: '0 0 ' + thumbnail.width + ' ' + thumbnail.height,
+							width: thumbnail.width,
+							height: thumbnail.height
+						} )
+						.append( $thumbnail );
+				} else {
+					$thumbnail = $( '<img>' )
+						.attr( 'src', thumbnail.source )
+						.addClass( 'mwe-popups-is-not-tall' );
+				}
+			}
 
 			return $thumbnail;
 		}
@@ -127,17 +155,30 @@
 		 */
 		function createBox ( href, $el ) {
 			var bar = cache[ href ],
-				offsetTop = $el.offset().top + $el.height() + 7,
+				offsetTop = $el.offset().top + $el.height() + 9,
 				offsetLeft = $el.offset().left;
 
 			elTime = mw.now();
 			elAction = 'dismissed';
 
+			if ( bar.thumbnail === undefined ) {
+				bar.thumbnail = false;
+			}
+
+			if ( bar.tall === undefined ) {
+				bar.tall = false;
+			}
+
 			$box
 				.children()
 				.detach()
-				.end() // avoid .empty() to keep event handlers
-				.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall' )
+				// avoid .empty() to keep event handlers
+				.end()
+				.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall mwe-popups-no-image-tri mwe-popups-image-tri' )
+				// Add border triangle if there is no image or its landscape
+				.toggleClass( 'mwe-popups-no-image-tri', ( !bar.thumbnail || bar.tall ) )
+				// If theres an image and the popup is portrait do the SVG stuff
+				.toggleClass( 'mwe-popups-image-tri', ( bar.thumbnail && !bar.tall ) )
 				.addClass( bar.tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall' )
 				.css({
 					top: offsetTop,
@@ -146,7 +187,11 @@
 				.append( bar.box )
 				.show()
 				.removeClass( 'mwe-popups-fade-out mwe-popups-fade-in' )
-				.addClass( 'mwe-popups-fade-in' );
+				.addClass( 'mwe-popups-fade-in' )
+				// Hack to 'refresh' the SVG and thus display it
+				// Elements get added to the DOM and not to the screen because of different namespaces of HTML and SVG
+				// More information and workarounds here - http://stackoverflow.com/a/13654655/366138
+				.html( $box.html() );
 			$el
 				.off( 'mouseleave', leaveInactive )
 				.on( 'mouseleave', leaveActive );
@@ -356,6 +401,14 @@
 			} )
 			.appendTo( document.body );
 
+
+		// SVG for masking and creating the triangle/pokey
+		if ( supportsSVG() ) {
+			$svg = $( '<div>' )
+				.attr( 'id', 'mwe-popups-svg' )
+				.appendTo( document.body )
+				.html( '<svg width="0" height="0"><defs><clippath id="mwe-popups-mask"><polygon points="0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000"/></clippath></defs></svg>' );
+		}
 
 	} );
 

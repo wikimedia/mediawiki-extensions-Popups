@@ -103,4 +103,35 @@
 			padding-bottom: 1.28em;
 		}
 	}
+
+	/* Triangles/Pokeys */
+	&.mwe-popups-no-image-tri {
+		&:after {
+			content: '';
+			position: absolute;
+			border: 7px solid transparent;
+			border-top: 0;
+			border-bottom: 7px solid #FFF;
+			top: -7px;
+			left: 11px;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			border: 8px solid transparent;
+			border-top: 0;
+			border-bottom: 8px solid #bbb;
+			top: -8px;
+			left: 10px;
+		}
+	}
+
+	&.mwe-popups-image-tri {
+		border-top: none;
+
+		> a > svg {
+			margin-top: -8px;
+		}
+	}
 }
