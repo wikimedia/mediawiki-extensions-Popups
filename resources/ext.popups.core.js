@@ -45,7 +45,7 @@
 
 				var $a,
 					page = re.query.pages[re.query.pageids[0]],
-					$contentbox = $( '<div>' ).html( page.extract ),
+					$contentbox = $( '<div>' ).addClass( 'mwe-popups-extract' ).html( page.extract ),
 					thumbnail = page.thumbnail,
 					tall = thumbnail && thumbnail.height > thumbnail.width,
 					$thumbnail = createThumbnail( thumbnail, tall ),
