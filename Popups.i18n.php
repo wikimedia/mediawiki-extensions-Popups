@@ -80,6 +80,18 @@ $messages['ast'] = array(
 	'popups-edited-years' => 'Última edición hai {{PLURAL:$1|$1 añu|$1 años}}',
 );
 
+/** Bengali (বাংলা)
+ * @author Aftab1995
+ */
+$messages['bn'] = array(
+	'popups-message' => 'পপআপ',
+	'popups-edited-seconds' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ সেকেন্ড|$1 সেকেন্ড}} আগে।',
+	'popups-edited-minutes' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ মিনিট|$1 মিনিট}} আগে।',
+	'popups-edited-hours' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ ঘণ্টা|$1 ঘণ্টা}} আগে।',
+	'popups-edited-days' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|গতকাল|$1 দিন আগে}}।',
+	'popups-edited-years' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ বছর|$1 বছর}} আগে।',
+);
+
 /** Chechen (нохчийн)
  * @author Умар
  */
@@ -90,6 +102,7 @@ $messages['ce'] = array(
 	'popups-edited-hours' => 'Язйина {{PLURAL:$1|$1 сахьт}} хьалха.',
 	'popups-edited-days' => 'Язйина {{PLURAL:$1|$1 де}} хьалха.',
 	'popups-edited-years' => 'Язйина {{PLURAL:$1|$1 шо}} хьалха.',
+	'popups-redirects' => 'дӀасахӀажайо <h3>$1</h3> тӀе',
 );
 
 /** German (Deutsch)
@@ -103,6 +116,7 @@ $messages['de'] = array(
 	'popups-edited-hours' => 'Zuletzt bearbeitet vor {{PLURAL:$1|einer Stunde|$1 Stunden}}.',
 	'popups-edited-days' => 'Zuletzt bearbeitet {{PLURAL:$1|gestern|vor $1 Tagen}}.',
 	'popups-edited-years' => 'Zuletzt bearbeitet vor {{PLURAL:$1|einem Jahr|$1 Jahren}}.',
+	'popups-redirects' => 'leitet weiter auf <h3>$1</h3>',
 );
 
 /** Spanish (español)
@@ -130,6 +144,7 @@ $messages['fr'] = array(
 	'popups-edited-hours' => 'Dernière modification il y a {{PLURAL:$1|1 heure|$1 heures}}.',
 	'popups-edited-days' => 'Dernière modification il y a {{PLURAL:$1|hier|$1 jours}}.',
 	'popups-edited-years' => 'Dernière modification il y a {{PLURAL:$1|1 an|$1 ans}}.',
+	'popups-redirects' => 'redirigé vers <h3>$1</h3>',
 );
 
 /** Hebrew (עברית)
@@ -154,7 +169,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'popups-message' => 'ポップアップ',
-	'popups-desc' => '記事へのリンクにホバーしたとき、記事内容の要約のポップアップが表示されます。',
+	'popups-desc' => 'ページへのリンクにホバーしたとき、ページ内容の要約のポップアップが表示されます。',
 	'popups-edited-seconds' => '{{PLURAL:$1|$1秒}}前に最終更新。',
 	'popups-edited-minutes' => '{{PLURAL:$1|$1分}}前に最終更新。',
 	'popups-edited-hours' => '{{PLURAL:$1|$1時間}}前に最終更新。',
@@ -198,6 +213,7 @@ $messages['mk'] = array(
 	'popups-edited-hours' => 'Последните измени се направени пред {{PLURAL:$1|еден час|$1 часа}}.',
 	'popups-edited-days' => 'Последните измени се направени {{PLURAL:$1|вчера|пред $1 дена}}.',
 	'popups-edited-years' => 'Последните измени се направени пред {{PLURAL:$1|една година|$1 години}}.',
+	'popups-redirects' => 'пренасочува кон <h3>$1</h3>',
 );
 
 /** Marathi (मराठी)
@@ -211,6 +227,7 @@ $messages['mr'] = array(
 	'popups-edited-hours' => 'शेवटचे संपादन {{PLURAL:$1|$1 तासा|$1 तासां}}पूर्वी',
 	'popups-edited-days' => 'शेवटचे संपादन {{PLURAL:$1|काल|$1 दिवसांपूर्वी}}.',
 	'popups-edited-years' => 'शेवटचे संपादन {{PLURAL:$1|१ वर्षा|$1 वर्षां}}पूर्वी',
+	'popups-redirects' => '<h3>$1</h3>ला पुनर्निर्देशित करते',
 );
 
 /** Dutch (Nederlands)
@@ -260,6 +277,7 @@ $messages['ru'] = array(
 	'popups-edited-hours' => 'Отредактировано {{PLURAL:$1|$1 час|$1 часов|$1 часа}} назад.',
 	'popups-edited-days' => 'Отредактировано {{PLURAL:$1|вчера|$1 дней|$1 дня}} назад.',
 	'popups-edited-years' => 'Отредактировано {{PLURAL:$1|$1 год|$1 лет|$1 года}} назад.',
+	'popups-redirects' => 'перенаправляет на <h3>$1</h3>',
 );
 
 /** Swedish (svenska)
