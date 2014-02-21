@@ -44,6 +44,7 @@ $wgResourceModules = array_merge( $wgResourceModules, array(
 		),
 		'dependencies' => array(
 			'mediawiki.api',
+			'mediawiki.jqueryMsg',
 		),
 		'messages' => array(
 			'popups-edited-seconds',
