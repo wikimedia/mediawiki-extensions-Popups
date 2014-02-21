@@ -153,6 +153,12 @@ $messages['fr'] = array(
 $messages['he'] = array(
 	'popups-message' => 'חלונות קופצים',
 	'popups-desc' => 'הצגת חלונות קופצים עם סיכומים של תוכן הדף כאשר משתמש עובר מעל קישור לדף',
+	'popups-edited-seconds' => 'נערך לאחרונה לפני {{PLURAL:$1|שנייה אחת|$1 שניות}}.',
+	'popups-edited-minutes' => 'נערך לאחרונה לפני {{PLURAL:$1|דקה אחת|$1 דקות}}.',
+	'popups-edited-hours' => 'נערך לאחרונה לפני {{PLURAL:$1|שעה אחת|שעתיים|$1 שעות}}.',
+	'popups-edited-days' => 'נערך לאחרונה {{PLURAL:$1|אתמול|לפני יומיים|לפני $1 ימים}}.',
+	'popups-edited-years' => 'נערך לאחרונה {{PLURAL:$1|לפני שנה|לפני שנתיים|לפני $1 שנים}}.',
+	'popups-redirects' => 'מפנה לדף <h3>$1</h3>',
 );
 
 /** Italian (italiano)
@@ -188,6 +194,7 @@ $messages['ko'] = array(
 	'popups-edited-hours' => '{{PLURAL:$1|$1시간}} 전에 마지막으로 편집함',
 	'popups-edited-days' => '{{PLURAL:$1|어제|$1일 전}}에 마지막으로 편집함.',
 	'popups-edited-years' => '{{PLURAL:$1|$1년}} 전에 마지막으로 편집함',
+	'popups-redirects' => '<h3>$1</h3> 문서로 넘겨주기',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -200,6 +207,7 @@ $messages['lb'] = array(
 	'popups-edited-hours' => 'Lescht Ännerung {{PLURAL:$1|virun enger Stonn|viru(n) $1 Stonnen}}.',
 	'popups-edited-days' => 'Lescht Ännerung {{PLURAL:$1|gëschter|viru(n) $1 Deeg}}',
 	'popups-edited-years' => 'Lescht Ännerung {{PLURAL:$1|virun engem Joer|viru(n) $1 Joer}}.',
+	'popups-redirects' => 'Viruleedung op <h3>$1</h3',
 );
 
 /** Macedonian (македонски)
@@ -280,6 +288,20 @@ $messages['ru'] = array(
 	'popups-redirects' => 'перенаправляет на <h3>$1</h3>',
 );
 
+/** Scots (Scots)
+ * @author John Reid
+ */
+$messages['sco'] = array(
+	'popups-message' => 'Popups',
+	'popups-desc' => "Displays popups wi summaries o page contents whan the uiser hovers o'er ae page link.",
+	'popups-edited-seconds' => 'Last edited {{PLURAL:$1|1 second|$1 seconds}} syne.',
+	'popups-edited-minutes' => 'Last edited {{PLURAL:$1|1 minute|$1 minutes}} syne.',
+	'popups-edited-hours' => 'Last edited {{PLURAL:$1|1 hour|$1 hours}} syne.',
+	'popups-edited-days' => 'Last edited {{PLURAL:$1|yesterday|$1 days ago}}.',
+	'popups-edited-years' => 'Last edited {{PLURAL:$1|1 year|$1 years}} syne.',
+	'popups-redirects' => 'redirects til <h3>$1</h3>',
+);
+
 /** Swedish (svenska)
  * @author WikiPhoenix
  */
@@ -289,6 +311,16 @@ $messages['sv'] = array(
 	'popups-edited-hours' => 'Senast redigerad {{PLURAL:$1|1 timme|$1 timmar}} sedan.',
 	'popups-edited-days' => 'Senast redigerad {{PLURAL:$1|igår|$1 dagar}} sedan.',
 	'popups-edited-years' => 'Senast redigerad {{PLURAL:$1|1 år|$1 år}} sedan.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'popups-message' => 'బుడగలు',
+	'popups-edited-seconds' => '{{PLURAL:$1|1 క్షణం|$1 క్షణాల}} క్రితం మార్చబడినది.',
+	'popups-edited-minutes' => '{{PLURAL:$1|1 నిమిషం|$1 నిమిషాల}} క్రితం మార్చబడినది.',
+	'popups-edited-days' => '{{PLURAL:$1|నిన్న|$1 రోజుల}} క్రితం మార్చబడినది.',
 );
 
 /** Turkish (Türkçe)
@@ -315,6 +347,7 @@ $messages['uk'] = array(
 	'popups-edited-hours' => 'Остання зміна $1 {{PLURAL:$1|годину|годин|години}} тому',
 	'popups-edited-days' => 'Відредаговано {{PLURAL:$1|вчора|$1 днів тому|$1 дні тому}}.',
 	'popups-edited-years' => 'Відредаговано {{PLURAL:$1|$1 рік|$1 років|$1 роки}} тому.',
+	'popups-redirects' => 'перенаправляє на <h3>$1</h3>',
 );
 
 /** Simplified Chinese (中文（简体）‎)
