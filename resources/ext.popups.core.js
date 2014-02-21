@@ -127,7 +127,7 @@
 		 */
 		function createBox ( href, $el ) {
 			var bar = cache[ href ],
-				offsetTop = $el.offset().top + $el.height() + 5,
+				offsetTop = $el.offset().top + $el.height() + 7,
 				offsetLeft = $el.offset().left;
 
 			elTime = mw.now();
