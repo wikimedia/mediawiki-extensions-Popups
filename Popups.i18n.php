@@ -132,6 +132,20 @@ $messages['es'] = array(
 	'popups-edited-years' => 'Última modificación: hace {{PLURAL:$1|1 año|$1 años}}.',
 );
 
+/** Persian (فارسی)
+ * @author Armin1392
+ */
+$messages['fa'] = array(
+	'popups-message' => 'پوپاپ‌ها',
+	'popups-desc' => 'نمایش پوپاپ‌ها با خلاصه‌های محتواهای صفحه هنگامی که کاربر منتظر یک لینک صفحه است.',
+	'popups-edited-seconds' => 'آخرین ویرایش شده {{PLURAL:$1|$1 ثانیه|$1 ثانیه‌ها}} پیش.',
+	'popups-edited-minutes' => 'آخرین ویرایش شده {{PLURAL:$1|۱ دقیقه|$1 دقیقه}} پیش.',
+	'popups-edited-hours' => 'آخرین ویرایش شده {{PLURAL:$1|۱ ساعت|$1 ساعت}} پیش.',
+	'popups-edited-days' => 'آخرین ویرایش شده {{PLURAL:$1|دیروز|$1 روز پیش}}.',
+	'popups-edited-years' => 'آخرین ویرایش شده {{PLURAL:$1|۱ سال|$1 سال}} پیش.',
+	'popups-redirects' => 'تغییر مسیرها به <h3>$1</h3>',
+);
+
 /** French (français)
  * @author Gomoko
  * @author VIGNERON
@@ -256,6 +270,7 @@ $messages['pl'] = array(
 	'popups-edited-hours' => 'Ostatnio zmodyfikowano {{PLURAL:$1|1 godzinę|$1 godziny|$1 godzin}} temu.',
 	'popups-edited-days' => 'Ostatnio zmodyfikowano {{PLURAL:$1|wczoraj|$1 dni temu}}.',
 	'popups-edited-years' => 'Ostatnio zmodyfikowano {{PLURAL:$1|rok|$1 lata|$1 lat}} temu.',
+	'popups-redirects' => 'przekierowuje do<h3>$1</h3>',
 );
 
 /** Pashto (پښتو)
@@ -264,6 +279,12 @@ $messages['pl'] = array(
 $messages['ps'] = array(
 	'popups-message' => 'بربوکيزې',
 	'popups-desc' => 'بربوکيزې د يو مخ د مېنځپانگې لنډيزونه هغه وخت ښکاره کوي کله چې کارن د موږک غشی د يوه مخ پر تړنې راولي',
+	'popups-edited-seconds' => 'تېر سمون {{PLURAL:$1|1 ثانيه|$1 ثانيې}} دمخه شوی.',
+	'popups-edited-minutes' => 'تېر سمون {{PLURAL:$1|1 دقيقه|$1 دقيقې}} دمخه شوی.',
+	'popups-edited-hours' => 'تېر سمون {{PLURAL:$1|1 ساعت|$1 ساعتونه}} دمخه شوی.',
+	'popups-edited-days' => 'تېر سمون {{PLURAL:$1|پرون|$1 ورځې دمخه}} شوی.',
+	'popups-edited-years' => 'تېر سمون {{PLURAL:$1|1 کال|$1 کالونه}} دمخه شوی.',
+	'popups-redirects' => '<h3>$1</h3> ته مخ ورگرځونې',
 );
 
 /** Portuguese (português)
@@ -350,8 +371,16 @@ $messages['uk'] = array(
 	'popups-redirects' => 'перенаправляє на <h3>$1</h3>',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Skye Darcy
+ */
+$messages['vi'] = array(
+	'popups-redirects' => 'chuyển hướng đến<h3>$1</h3>',
+);
+
 /** Simplified Chinese (中文（简体）‎)
  * @author Liuxinyu970226
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'popups-message' => '弹窗',
@@ -361,6 +390,7 @@ $messages['zh-hans'] = array(
 	'popups-edited-hours' => '上次编辑于$1小时前。',
 	'popups-edited-days' => '上次编辑于$1天前。',
 	'popups-edited-years' => '上次编辑于$1年前。',
+	'popups-redirects' => '重定向到<h3>$1</h3>',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
