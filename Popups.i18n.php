@@ -253,10 +253,12 @@ $messages['mr'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Sjoerddebruin
  */
 $messages['nl'] = array(
 	'popups-message' => 'Pop-ups',
+	'popups-redirects' => 'verwijst door naar <h3>$1</h3>',
 );
 
 /** Polish (polski)
@@ -332,6 +334,7 @@ $messages['sv'] = array(
 	'popups-edited-hours' => 'Senast redigerad {{PLURAL:$1|1 timme|$1 timmar}} sedan.',
 	'popups-edited-days' => 'Senast redigerad {{PLURAL:$1|igår|$1 dagar}} sedan.',
 	'popups-edited-years' => 'Senast redigerad {{PLURAL:$1|1 år|$1 år}} sedan.',
+	'popups-redirects' => 'omdirigeringar till <h3>$1</h3>',
 );
 
 /** Telugu (తెలుగు)
