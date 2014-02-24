@@ -84,6 +84,10 @@
 	&.mwe-popups-is-tall {
 		width: 450px;
 
+		> a > svg {
+			margin-bottom: -6px;
+		}
+
 		.mwe-popups-extract {
 			float: left;
 			width: 215px;
@@ -126,11 +130,31 @@
 		}
 	}
 
+	&.flipped.mwe-popups-no-image-tri {
+		&:after {
+			left: initial;
+			right: 11px;
+		}
+
+		&:before {
+			left: initial;
+			right: 10px;
+		}
+	}
+
 	&.mwe-popups-image-tri {
 		border-top: none;
 
 		> a > svg {
 			margin-top: -8px;
+		}
+	}
+
+	&.flipped.mwe-popups-is-tall {
+		> a > svg {
+			margin: 0;
+			margin-top: -9px;
+			margin-bottom: -6px;
 		}
 	}
 }

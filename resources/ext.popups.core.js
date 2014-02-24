@@ -18,6 +18,10 @@
 			curRequest, // Current API request
 			api = new mw.Api(),
 			SIZES = {
+				portraitImage: {
+					h: 250, // Exact height
+					w: 200 // Max width
+				},
 				landscapeImage: {
 					h: 200, // Max height
 					w: 300 // Exact Width
@@ -118,10 +122,30 @@
 			var $thumbnail;
 
 			if ( tall ) {
-				// This is to mask and center the image within a given size
-				$thumbnail = $( '<div>' )
-					.addClass( 'mwe-popups-is-tall' )
-					.css( 'background-image', 'url(' + thumbnail.source + ')');
+				if ( supportsSVG() ) {
+					$thumbnail = $( '<image>' )
+						.addClass( 'mwe-popups-is-not-tall' )
+						.attr( {
+							'xlink:href': thumbnail.source,
+							x: ( thumbnail.width > SIZES.portraitImage.w) ? ( ( thumbnail.width - SIZES.portraitImage.w ) / -2 ) : SIZES.portraitImage.w - thumbnail.width,
+							y: ( thumbnail.height > SIZES.portraitImage.h) ? ( ( thumbnail.height - SIZES.portraitImage.h ) / -2 ) : thumbnail.height,
+							width: thumbnail.width,
+							height: thumbnail.height
+						} );
+
+					$thumbnail = $( '<svg>' )
+						.attr( {
+							xmlns: 'http://www.w3.org/2000/svg',
+							viewBox: '0 0 ' + ( SIZES.portraitImage.w + 3 ) + ' ' + SIZES.portraitImage.h,
+							width: SIZES.portraitImage.w + 3,
+							height: SIZES.portraitImage.h
+						} )
+						.append( $thumbnail );
+				} else {
+					$thumbnail = $( '<div>' )
+						.addClass( 'mwe-popups-is-tall' )
+						.css( 'background-image', 'url(' + thumbnail.source + ')');
+				}
 			} else {
 				if ( supportsSVG() ) {
 					$thumbnail = $( '<image>' )
@@ -139,7 +163,7 @@
 						.attr( {
 							xmlns: 'http://www.w3.org/2000/svg',
 							viewBox: '0 0 ' + SIZES.landscapeImage.w + ' ' + ( thumbnail.height > SIZES.landscapeImage.h ) ? SIZES.landscapeImage.h : thumbnail.height,
-							width: SIZES.landscapeImage.w,
+							width: SIZES.landscapeImage.w + 3,
 							height: ( thumbnail.height > SIZES.landscapeImage.h ) ? SIZES.landscapeImage.h : thumbnail.height
 						} )
 						.append( $thumbnail );
@@ -164,7 +188,8 @@
 		function createBox ( href, $el ) {
 			var bar = cache[ href ],
 				offsetTop = $el.offset().top + $el.height() + 9,
-				offsetLeft = $el.offset().left;
+				offsetLeft = $el.offset().left,
+				flipped = false;
 
 			elTime = mw.now();
 			elAction = 'dismissed';
@@ -180,6 +205,7 @@
 			if ( offsetLeft > ( $( window ).width() / 2 ) ) {
 				offsetLeft = offsetLeft + $el.width();
 				offsetLeft -= ( !bar.tall ) ? SIZES.portraitPopupWidth : SIZES.landscapePopupWidth;
+				flipped = true;
 			}
 
 			$box
@@ -187,7 +213,8 @@
 				.detach()
 				// avoid .empty() to keep event handlers
 				.end()
-				.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall mwe-popups-no-image-tri mwe-popups-image-tri' )
+				.removeClass( 'mwe-popups-is-tall mwe-popups-is-not-tall mwe-popups-no-image-tri mwe-popups-image-tri flipped' )
+				.toggleClass( 'flipped', flipped )
 				// Add border triangle if there is no image or its landscape
 				.toggleClass( 'mwe-popups-no-image-tri', ( !bar.thumbnail || bar.tall ) )
 				// If theres an image and the popup is portrait do the SVG stuff
@@ -205,6 +232,17 @@
 				// Elements get added to the DOM and not to the screen because of different namespaces of HTML and SVG
 				// More information and workarounds here - http://stackoverflow.com/a/13654655/366138
 				.html( $box.html() );
+
+			if ( flipped  && bar.thumbnail ) {
+				if ( !bar.tall ) {
+					$box.find( 'image' )[0].setAttribute( 'clip-path', 'url(#mwe-popups-mask-flip)' );
+				} else {
+					$box
+						.removeClass( 'mwe-popups-no-image-tri' )
+						.find( 'image' )[0].setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask)' );
+				}
+			}
+
 			$el
 				.off( 'mouseleave', leaveInactive )
 				.on( 'mouseleave', leaveActive );
@@ -414,13 +452,22 @@
 			} )
 			.appendTo( document.body );
 
-
 		// SVG for masking and creating the triangle/pokey
 		if ( supportsSVG() ) {
 			$svg = $( '<div>' )
 				.attr( 'id', 'mwe-popups-svg' )
 				.appendTo( document.body )
-				.html( '<svg width="0" height="0"><defs><clippath id="mwe-popups-mask"><polygon points="0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000"/></clippath></defs></svg>' );
+				.html( '<svg width=\"0\" height=\"0\">' +
+						'<defs><clippath id=\"mwe-popups-mask\">' +
+							'<polygon points=\"0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000\"/></clippath>' +
+						'</defs>' +
+						'<defs><clippath id=\"mwe-popups-mask-flip\">' +
+							'<polygon points=\"0 8, 274 8, 282 0, 290 8, 1000 8, 1000 1000, 0 1000\"/></clippath>' +
+						'</defs>' +
+						'<defs><clippath id=\"mwe-popups-landscape-mask\">' +
+							'<polygon points=\"0 8, 174 8, 182 0, 190 8, 1000 8, 1000 1000, 0 1000\"/></clippath>' +
+						'</defs>' +
+					'</svg>' );
 		}
 
 	} );
