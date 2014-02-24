@@ -17,6 +17,12 @@
 			cache = {},
 			curRequest, // Current API request
 			api = new mw.Api(),
+			SIZES = {
+				landscapeImage: {
+					h: 200, // Max height
+					w: 300 // Exact Width
+				}
+			},
 			$svg, $box; // defined at the end of the file
 
 		/**
@@ -122,7 +128,7 @@
 							'xlink:href': thumbnail.source,
 							'clip-path': 'url(#mwe-popups-mask)',
 							x: 0,
-							y: 0,
+							y: ( thumbnail.height > SIZES.landscapeImage.h) ? ( ( thumbnail.height - SIZES.landscapeImage.h ) / -2 ) : thumbnail.height,
 							width: thumbnail.width,
 							height: thumbnail.height
 						} );
@@ -130,15 +136,15 @@
 					$thumbnail = $( '<svg>' )
 						.attr( {
 							xmlns: 'http://www.w3.org/2000/svg',
-							viewBox: '0 0 ' + thumbnail.width + ' ' + thumbnail.height,
-							width: thumbnail.width,
-							height: thumbnail.height
+							viewBox: '0 0 ' + SIZES.landscapeImage.w + ' ' + ( thumbnail.height > SIZES.landscapeImage.h ) ? SIZES.landscapeImage.h : thumbnail.height,
+							width: SIZES.landscapeImage.w,
+							height: ( thumbnail.height > SIZES.landscapeImage.h ) ? SIZES.landscapeImage.h : thumbnail.height
 						} )
 						.append( $thumbnail );
 				} else {
-					$thumbnail = $( '<img>' )
-						.attr( 'src', thumbnail.source )
-						.addClass( 'mwe-popups-is-not-tall' );
+					$thumbnail = $( '<div>' )
+						.addClass( 'mwe-popups-is-not-tall' )
+						.css( 'background-image', 'url(' + thumbnail.source + ')' );
 				}
 			}
 
