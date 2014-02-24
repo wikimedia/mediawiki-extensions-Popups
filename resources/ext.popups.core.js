@@ -21,7 +21,9 @@
 				landscapeImage: {
 					h: 200, // Max height
 					w: 300 // Exact Width
-				}
+				},
+				landscapePopupWidth: 450, // Exact width of a landscape popup
+				portraitPopupWidth: 300 // Exact width of a portrait popup
 			},
 			$svg, $box; // defined at the end of the file
 
@@ -173,6 +175,11 @@
 
 			if ( bar.tall === undefined ) {
 				bar.tall = false;
+			}
+
+			if ( offsetLeft > ( $( window ).width() / 2 ) ) {
+				offsetLeft = offsetLeft + $el.width();
+				offsetLeft -= ( !bar.tall ) ? SIZES.portraitPopupWidth : SIZES.landscapePopupWidth;
 			}
 
 			$box
