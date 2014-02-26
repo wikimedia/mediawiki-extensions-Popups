@@ -78,6 +78,7 @@ $messages['ast'] = array(
 	'popups-edited-hours' => 'Última edición hai {{PLURAL:$1|$1 hora|$1 hores}}',
 	'popups-edited-days' => 'Última edición {{PLURAL:$1|ayeri|hai $1 díes}}.',
 	'popups-edited-years' => 'Última edición hai {{PLURAL:$1|$1 añu|$1 años}}',
+	'popups-redirects' => 'redireiciona a <h3>$1</h3>',
 );
 
 /** Bengali (বাংলা)
@@ -323,6 +324,13 @@ $messages['sco'] = array(
 	'popups-edited-days' => 'Last edited {{PLURAL:$1|yesterday|$1 days ago}}.',
 	'popups-edited-years' => 'Last edited {{PLURAL:$1|1 year|$1 years}} syne.',
 	'popups-redirects' => 'redirects til <h3>$1</h3>',
+);
+
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'popups-redirects' => 'преусмерења на <h3>$1</h3>',
 );
 
 /** Swedish (svenska)
