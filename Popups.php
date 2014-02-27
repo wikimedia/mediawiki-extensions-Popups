@@ -45,13 +45,10 @@ $wgResourceModules = array_merge( $wgResourceModules, array(
 		'dependencies' => array(
 			'mediawiki.api',
 			'mediawiki.jqueryMsg',
+			'moment',
 		),
 		'messages' => array(
-			'popups-edited-seconds',
-			'popups-edited-minutes',
-			'popups-edited-hours',
-			'popups-edited-days',
-			'popups-edited-years',
+			'popups-last-edited',
 			'popups-redirects',
 		),
 		'remoteExtPath' => $remoteExtPath,
