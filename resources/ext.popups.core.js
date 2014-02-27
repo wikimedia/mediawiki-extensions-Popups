@@ -355,6 +355,7 @@
 			setTimeout( dfd.reject, 1000 );
 			elTime = elDuration = elAction = undefined;
 		}
+		var logEvent = mw.eventLog ? mw.eventLog.logEvent : function () {};
 
 		/**
 		 * @method getSessionId

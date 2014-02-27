@@ -33,8 +33,33 @@ $wgExtensionCredits['betafeatures'][] = array(
 $localBasePath = dirname( __DIR__ ) . '/Popups';
 $remoteExtPath = 'Popups';
 
-$wgResourceModules = array_merge( $wgResourceModules, array(
-	'ext.popups' => array(
+$wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
+$wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
+
+$wgHooks['GetBetaFeaturePreferences'][] = 'PopupsHooks::getPreferences';
+$wgHooks['BeforePageDisplay'][] = 'PopupsHooks::onBeforePageDisplay';
+
+$wgHooks[ 'ResourceLoaderRegisterModules' ][] = function ( ResourceLoader &$resourceLoader ) {
+
+	$moduleDependencies = array(
+		'mediawiki.api',
+		'mediawiki.jqueryMsg',
+		'moment',
+	);
+
+	// If EventLogging is present, declare the schema module
+	// and add it to the array of dependencies.
+	if ( class_exists( 'ResourceLoaderSchemaModule' ) ) {
+		$resourceLoader->register( "schema.Popups", array(
+			'class'    => 'ResourceLoaderSchemaModule',
+			'schema'   => 'Popups',
+			'revision' => 7536956,
+		) );
+
+		$moduleDependencies[] = "schema.Popups";
+	}
+
+	$resourceLoader->register( "ext.popups", array(
 		'scripts' => array(
 			'resources/ext.popups.core.js',
 		),
@@ -42,28 +67,13 @@ $wgResourceModules = array_merge( $wgResourceModules, array(
 			'resources/ext.popups.core.less',
 			'resources/ext.popups.animation.less',
 		),
-		'dependencies' => array(
-			'mediawiki.api',
-			'mediawiki.jqueryMsg',
-			'moment',
-		),
+		'dependencies'  => $moduleDependencies,
 		'messages' => array(
 			'popups-last-edited',
 			'popups-redirects',
 		),
-		'remoteExtPath' => $remoteExtPath,
-		'localBasePath' => $localBasePath,
-	),
-
-	'schema.Popups' => array(
-		'class'  => 'ResourceLoaderSchemaModule',
-		'schema' => 'Popups',
-		'revision' => 7536956,
-	),
-) );
-
-$wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
-$wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
-
-$wgHooks['GetBetaFeaturePreferences'][] = 'PopupsHooks::getPreferences';
-$wgHooks['BeforePageDisplay'][] = 'PopupsHooks::onBeforePageDisplay';
+		'remoteExtPath' => 'Popups',
+		'localBasePath' => dirname( __DIR__ ) . '/Popups',
+	) );
+	return true;
+};
