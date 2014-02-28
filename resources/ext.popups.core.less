@@ -141,18 +141,44 @@
 	}
 
 	&.mwe-popups-image-tri {
-		border-top: none;
+		&:before {
+			.mwe-popups-border-triangle( 9px, 9px, #bbb);
+			z-index: 90;
+		}
+
+		&.flipped {
+			&:before {
+				.mwe-popups-border-triangle( 9px, 273px, #bbb);
+				z-index: 90;
+			}
+		}
+
+		.mwe-popups-extract {
+			margin-top: 190px;
+		}
 
 		> a > svg {
 			margin-top: -8px;
+			position: absolute;
+			z-index: 100;
 		}
 	}
 
 	&.flipped.mwe-popups-is-tall {
+		min-height: 242px;
+
+		&:before {
+			.mwe-popups-border-triangle( 9px, 420px, #bbb);
+			z-index: 90;
+		}
+
 		> a > svg {
 			margin: 0;
-			margin-top: -9px;
-			margin-bottom: -6px;
+			margin-top: -8px;
+			margin-bottom: -5px;
+			position: absolute;
+			right: 0;
+			z-index: 100;
 		}
 	}
 }

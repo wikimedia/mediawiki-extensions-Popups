@@ -20,7 +20,7 @@
 			SIZES = {
 				portraitImage: {
 					h: 250, // Exact height
-					w: 200 // Max width
+					w: 203 // Max width
 				},
 				landscapeImage: {
 					h: 200, // Max height
@@ -127,7 +127,9 @@
 						.addClass( 'mwe-popups-is-not-tall' )
 						.attr( {
 							'xlink:href': thumbnail.source,
-							x: ( thumbnail.width > SIZES.portraitImage.w) ? ( ( thumbnail.width - SIZES.portraitImage.w ) / -2 ) : SIZES.portraitImage.w - thumbnail.width,
+							x: ( thumbnail.width > SIZES.portraitImage.w ) ?
+								( ( thumbnail.width - SIZES.portraitImage.w ) / -2 ) :
+								( SIZES.portraitImage.w - thumbnail.width ),
 							y: ( thumbnail.height > SIZES.portraitImage.h) ? ( ( thumbnail.height - SIZES.portraitImage.h ) / -2 ) : thumbnail.height,
 							width: thumbnail.width,
 							height: thumbnail.height
@@ -136,8 +138,8 @@
 					$thumbnail = $( '<svg>' )
 						.attr( {
 							xmlns: 'http://www.w3.org/2000/svg',
-							viewBox: '0 0 ' + ( SIZES.portraitImage.w + 3 ) + ' ' + SIZES.portraitImage.h,
-							width: SIZES.portraitImage.w + 3,
+							viewBox: '0 0 ' + SIZES.portraitImage.w + ' ' + SIZES.portraitImage.h,
+							width: SIZES.portraitImage.w,
 							height: SIZES.portraitImage.h
 						} )
 						.append( $thumbnail );
