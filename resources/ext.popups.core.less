@@ -2,6 +2,16 @@
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
 
+.mwe-popups-border-triangle ( @size, @left, @color ) {
+	content: '';
+	position: absolute;
+	border: @size solid transparent;
+	border-top: 0;
+	border-bottom: @size solid @color;
+	top: -@size;
+	left: @left;
+}
+
 .mwe-popups {
 	position: absolute;
 	z-index: 5;
@@ -110,23 +120,11 @@
 	/* Triangles/Pokeys */
 	&.mwe-popups-no-image-tri {
 		&:after {
-			content: '';
-			position: absolute;
-			border: 7px solid transparent;
-			border-top: 0;
-			border-bottom: 7px solid #FFF;
-			top: -7px;
-			left: 11px;
+			.mwe-popups-border-triangle( 7px, 11px, #fff);
 		}
 
 		&:before {
-			content: '';
-			position: absolute;
-			border: 8px solid transparent;
-			border-top: 0;
-			border-bottom: 8px solid #bbb;
-			top: -8px;
-			left: 10px;
+			.mwe-popups-border-triangle( 8px, 10px, #bbb);
 		}
 	}
 
