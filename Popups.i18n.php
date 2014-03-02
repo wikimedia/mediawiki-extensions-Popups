@@ -120,6 +120,13 @@ $messages['de'] = array(
 	'popups-redirects' => 'leitet weiter auf <h3>$1</h3>',
 );
 
+/** Esperanto (Esperanto)
+ * @author KuboF
+ */
+$messages['eo'] = array(
+	'popups-redirects' => 'alidirektiloj al <h3>$1</h3>',
+);
+
 /** Spanish (español)
  * @author Fitoschido
  */
@@ -225,6 +232,14 @@ $messages['lb'] = array(
 	'popups-redirects' => 'Viruleedung op <h3>$1</h3',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'popups-desc' => "Mampiseho popup misy ny ambangovangom-botoatim-pejy rehefa mandalo eo ambonin'ilay rohim-pejy ny mpampiasa",
+	'popups-edited-minutes' => 'Niova farany $1{{PLURAL:$1}} minitra ago.',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
@@ -317,7 +332,7 @@ $messages['ru'] = array(
  */
 $messages['sco'] = array(
 	'popups-message' => 'Popups',
-	'popups-desc' => "Displays popups wi summaries o page contents whan the uiser hovers o'er ae page link.",
+	'popups-desc' => 'Displays popups wi owerviews o page contents whan the uiser hovers ower ae page link.',
 	'popups-edited-seconds' => 'Last edited {{PLURAL:$1|1 second|$1 seconds}} syne.',
 	'popups-edited-minutes' => 'Last edited {{PLURAL:$1|1 minute|$1 minutes}} syne.',
 	'popups-edited-hours' => 'Last edited {{PLURAL:$1|1 hour|$1 hours}} syne.',
@@ -346,13 +361,16 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Ravichandra
  */
 $messages['te'] = array(
 	'popups-message' => 'బుడగలు',
 	'popups-edited-seconds' => '{{PLURAL:$1|1 క్షణం|$1 క్షణాల}} క్రితం మార్చబడినది.',
 	'popups-edited-minutes' => '{{PLURAL:$1|1 నిమిషం|$1 నిమిషాల}} క్రితం మార్చబడినది.',
+	'popups-edited-hours' => 'చివరిసారిగా {{PLURAL:$1|1 గంట|$1 గంటల}} కిందట మార్చబడింది.',
 	'popups-edited-days' => '{{PLURAL:$1|నిన్న|$1 రోజుల}} క్రితం మార్చబడినది.',
+	'popups-edited-years' => 'చివరిసారిగా {{PLURAL:$1|ఏడాది|$1 సంవత్సరాల}} కిందట మార్చబడింది.',
 );
 
 /** Turkish (Türkçe)
@@ -389,6 +407,17 @@ $messages['vi'] = array(
 	'popups-redirects' => 'chuyển hướng đến<h3>$1</h3>',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'popups-edited-seconds' => 'לעצט רעדאקטירט פֿאַר {{PLURAL:$1|1 סעקונדע|$1 סעקונדעס}}',
+	'popups-edited-minutes' => 'לעצט רעדאקטירט פֿאַר {{PLURAL:$1|1 מינוט|$1 מינוט}}',
+	'popups-edited-hours' => "לעצט דערהײַנטיקט פֿאַר {{PLURAL:$1|$1 שעה|$1 שעה'ן}}",
+	'popups-edited-days' => 'לעצט רעדאקטירט {{PLURAL:$1|נעכטן|פאר $1 טעג}}.',
+	'popups-redirects' => 'פירט ווײַטערפירונג צו <h3>$1</h3>',
+);
+
 /** Simplified Chinese (中文（简体）‎)
  * @author Liuxinyu970226
  * @author Yfdyh000
@@ -410,4 +439,10 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'popups-message' => '快顯視窗',
 	'popups-desc' => '黨用戶懸停頁面鏈接時顯示頁面內容摘要的快顯視窗',
+	'popups-edited-seconds' => '最近編輯於$1秒前。',
+	'popups-edited-minutes' => '最近編輯於$1分鐘前。',
+	'popups-edited-hours' => '最近編輯於$1小時前。',
+	'popups-edited-days' => '最近編輯於$1天前。',
+	'popups-edited-years' => '最近編輯於$1年前。',
+	'popups-redirects' => '重定向至<h3>$1</h3>',
 );
