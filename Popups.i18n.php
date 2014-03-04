@@ -333,11 +333,11 @@ $messages['ru'] = array(
 $messages['sco'] = array(
 	'popups-message' => 'Popups',
 	'popups-desc' => 'Displays popups wi owerviews o page contents whan the uiser hovers ower ae page link.',
-	'popups-edited-seconds' => 'Last edited {{PLURAL:$1|1 second|$1 seconds}} syne.',
-	'popups-edited-minutes' => 'Last edited {{PLURAL:$1|1 minute|$1 minutes}} syne.',
-	'popups-edited-hours' => 'Last edited {{PLURAL:$1|1 hour|$1 hours}} syne.',
+	'popups-edited-seconds' => 'Last eidited {{PLURAL:$1|1 second|$1 seconds}} syne.',
+	'popups-edited-minutes' => 'Last eidited {{PLURAL:$1|1 minute|$1 minutes}} syne.',
+	'popups-edited-hours' => 'Laist eidited {{PLURAL:$1|1 hour|$1 hours}} syne.',
 	'popups-edited-days' => 'Last edited {{PLURAL:$1|yesterday|$1 days ago}}.',
-	'popups-edited-years' => 'Last edited {{PLURAL:$1|1 year|$1 years}} syne.',
+	'popups-edited-years' => 'Laist eidited {{PLURAL:$1|1 year|$1 years}} syne.',
 	'popups-redirects' => 'redirects til <h3>$1</h3>',
 );
 
@@ -366,10 +366,10 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'popups-message' => 'బుడగలు',
-	'popups-edited-seconds' => '{{PLURAL:$1|1 క్షణం|$1 క్షణాల}} క్రితం మార్చబడినది.',
-	'popups-edited-minutes' => '{{PLURAL:$1|1 నిమిషం|$1 నిమిషాల}} క్రితం మార్చబడినది.',
+	'popups-edited-seconds' => 'చివరిసారిగా {{PLURAL:$1|1 సెకండు|$1 సెకండ్ల}} కిందట మార్చబడింది.',
+	'popups-edited-minutes' => 'చివరిసారిగా {{PLURAL:$1|1 నిమిషం|$1 నిమిషాల}} కిందట మార్చబడింది.',
 	'popups-edited-hours' => 'చివరిసారిగా {{PLURAL:$1|1 గంట|$1 గంటల}} కిందట మార్చబడింది.',
-	'popups-edited-days' => '{{PLURAL:$1|నిన్న|$1 రోజుల}} క్రితం మార్చబడినది.',
+	'popups-edited-days' => 'చివరిసారిగా {{PLURAL:$1|నిన్న|$1 రోజుల కిందట}} మార్చబడింది.',
 	'popups-edited-years' => 'చివరిసారిగా {{PLURAL:$1|ఏడాది|$1 సంవత్సరాల}} కిందట మార్చబడింది.',
 );
 
