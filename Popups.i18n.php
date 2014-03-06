@@ -401,10 +401,11 @@ $messages['uk'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Skye Darcy
  */
 $messages['vi'] = array(
-	'popups-redirects' => 'chuyển hướng đến<h3>$1</h3>',
+	'popups-redirects' => 'đổi hướng đến <h3>$1</h3>',
 );
 
 /** Yiddish (ייִדיש)
