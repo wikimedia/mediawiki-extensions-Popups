@@ -307,10 +307,12 @@ $messages['ps'] = array(
 
 /** Portuguese (português)
  * @author Imperadeiro98
+ * @author SandroHc
  */
 $messages['pt'] = array(
 	'popups-message' => 'Pop-ups',
 	'popups-desc' => 'Exibe pop-ups com resumos do conteúdo de páginas quando o usuário passa o rato por cima do link de uma página',
+	'popups-redirects' => 'redireciona para <h3>$1</h3>',
 );
 
 /** Russian (русский)
