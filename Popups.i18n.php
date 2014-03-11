@@ -351,9 +351,12 @@ $messages['sr-ec'] = array(
 );
 
 /** Swedish (svenska)
+ * @author Lokal Profil
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
+	'popups-message' => 'Popup-fönster',
+	'popups-desc' => 'Visar popup-fönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk.',
 	'popups-edited-seconds' => 'Senast redigerad {{PLURAL:$1|1 sekund|$1 sekunder}} sedan.',
 	'popups-edited-minutes' => 'Senast redigerad {{PLURAL:$1|1 minut|$1 minuter}} sedan.',
 	'popups-edited-hours' => 'Senast redigerad {{PLURAL:$1|1 timme|$1 timmar}} sedan.',
