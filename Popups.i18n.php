@@ -277,6 +277,14 @@ $messages['nl'] = array(
 	'popups-redirects' => 'verwijst door naar <h3>$1</h3>',
 );
 
+/** Occitan (occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'popups-message' => 'Fenèstras popup',
+	'popups-redirects' => 'redirigit cap a <h3>$1</h3>',
+);
+
 /** Polish (polski)
  * @author Chrumps
  */
