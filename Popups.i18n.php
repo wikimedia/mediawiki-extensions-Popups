@@ -27,11 +27,7 @@ $messages = array();
 $messages['en'] = array(
 	'popups-message' => 'Popups',
 	'popups-desc' => 'Displays popups with summaries of page contents when the user hovers over a page link.',
-	'popups-edited-seconds' => 'Last edited {{PLURAL:$1|1 second|$1 seconds}} ago.',
-	'popups-edited-minutes' => 'Last edited {{PLURAL:$1|1 minute|$1 minutes}} ago.',
-	'popups-edited-hours' => 'Last edited {{PLURAL:$1|1 hour|$1 hours}} ago.',
-	'popups-edited-days' => 'Last edited {{PLURAL:$1|yesterday|$1 days ago}}.',
-	'popups-edited-years' => 'Last edited {{PLURAL:$1|1 year|$1 years}} ago.',
+	'popups-last-edited' => 'Last edited $1',
 	'popups-redirects' => 'redirects to <h3>$1</h3>',
 );
 
@@ -41,21 +37,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'popups-message' => 'Name shown in user preference for this extension',
 	'popups-desc' => '{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}',
-	'popups-edited-seconds' => 'Message to show time span if page was edited less than a minute ago. Parameters:
-* $1 - number of seconds
-{{Related|Popups-edited}}',
-	'popups-edited-minutes' => 'Message to show time span if page was edited less than an hour ago. Parameters:
-* $1 - number of minutes
-{{Related|Popups-edited}}',
-	'popups-edited-hours' => 'Message to show time span if page was edited less than a day ago. Parameters:
-* $1 - number of hours
-{{Related|Popups-edited}}',
-	'popups-edited-days' => 'Message to show time span if page was edited less than a year ago. Parameters:
-* $1 - number of days
-{{Related|Popups-edited}}',
-	'popups-edited-years' => 'Message to show time span if page was edited more than a year ago. Parameters:
-* $1 - number of years
-{{Related|Popups-edited}}',
+	'popups-last-edited' => 'Message to show time span since the page was last edited. $1 is the timespan in words.',
 	'popups-redirects' => 'Message shown when the popup is showing a redirected page',
 );
 
