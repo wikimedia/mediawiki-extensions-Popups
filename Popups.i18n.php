@@ -37,7 +37,8 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'popups-message' => 'Name shown in user preference for this extension',
 	'popups-desc' => '{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}',
-	'popups-last-edited' => 'Message to show time span since the page was last edited. $1 is the timespan in words.',
+	'popups-last-edited' => 'Message to show time span since the page was last edited. Parameters:
+* $1 - the timespan in words (localized). e.g. "3 months ago"',
 	'popups-redirects' => 'Message shown when the popup is showing a redirected page',
 );
 
@@ -75,16 +76,19 @@ $messages['bn'] = array(
 	'popups-edited-years' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ বছর|$1 বছর}} আগে।',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Phurbutsering
+ */
+$messages['bo'] = array(
+	'popups-last-edited' => 'མཐའ་མའི་རྩོམ་སྒྲིག། $1',
+);
+
 /** Chechen (нохчийн)
  * @author Умар
  */
 $messages['ce'] = array(
 	'popups-message' => 'Гучу долу кор',
-	'popups-edited-seconds' => 'Язйина {{PLURAL:$1|$1 секунд}} хьалха.',
-	'popups-edited-minutes' => 'Язйина {{PLURAL:$1|$1 минут}} хьалха.',
-	'popups-edited-hours' => 'Язйина {{PLURAL:$1|$1 сахьт}} хьалха.',
-	'popups-edited-days' => 'Язйина {{PLURAL:$1|$1 де}} хьалха.',
-	'popups-edited-years' => 'Язйина {{PLURAL:$1|$1 шо}} хьалха.',
+	'popups-last-edited' => 'ТӀеххьара тайина $1',
 	'popups-redirects' => 'дӀасахӀажайо <h3>$1</h3> тӀе',
 );
 
@@ -94,11 +98,7 @@ $messages['ce'] = array(
 $messages['de'] = array(
 	'popups-message' => 'Popups',
 	'popups-desc' => 'Ermöglicht beim Überfahren mit der Maus über einen Seitenlink die Anzeige von Popups mit Seiteninhaltszusammenfassungen',
-	'popups-edited-seconds' => 'Zuletzt bearbeitet vor {{PLURAL:$1|einer Sekunde|$1 Sekunden}}.',
-	'popups-edited-minutes' => 'Zuletzt bearbeitet vor {{PLURAL:$1|einer Minute|$1 Minuten}}.',
-	'popups-edited-hours' => 'Zuletzt bearbeitet vor {{PLURAL:$1|einer Stunde|$1 Stunden}}.',
-	'popups-edited-days' => 'Zuletzt bearbeitet {{PLURAL:$1|gestern|vor $1 Tagen}}.',
-	'popups-edited-years' => 'Zuletzt bearbeitet vor {{PLURAL:$1|einem Jahr|$1 Jahren}}.',
+	'popups-last-edited' => 'Zuletzt bearbeitet $1',
 	'popups-redirects' => 'leitet weiter auf <h3>$1</h3>',
 );
 
@@ -128,11 +128,7 @@ $messages['es'] = array(
 $messages['fa'] = array(
 	'popups-message' => 'پوپاپ‌ها',
 	'popups-desc' => 'نمایش پوپاپ‌ها با خلاصه‌های محتواهای صفحه هنگامی که کاربر منتظر یک لینک صفحه است.',
-	'popups-edited-seconds' => 'آخرین ویرایش شده {{PLURAL:$1|$1 ثانیه|$1 ثانیه‌ها}} پیش.',
-	'popups-edited-minutes' => 'آخرین ویرایش شده {{PLURAL:$1|۱ دقیقه|$1 دقیقه}} پیش.',
-	'popups-edited-hours' => 'آخرین ویرایش شده {{PLURAL:$1|۱ ساعت|$1 ساعت}} پیش.',
-	'popups-edited-days' => 'آخرین ویرایش شده {{PLURAL:$1|دیروز|$1 روز پیش}}.',
-	'popups-edited-years' => 'آخرین ویرایش شده {{PLURAL:$1|۱ سال|$1 سال}} پیش.',
+	'popups-last-edited' => 'آخرین ویرایش شده $1',
 	'popups-redirects' => 'تغییر مسیرها به <h3>$1</h3>',
 );
 
@@ -143,11 +139,7 @@ $messages['fa'] = array(
 $messages['fr'] = array(
 	'popups-message' => 'Fenêtres popup',
 	'popups-desc' => 'Afficher des fenêtres popup avec les résumés des contenus des pages quand l’utilisateur survole le lien d’une page',
-	'popups-edited-seconds' => 'Dernière modification il y a {{PLURAL:$1|1 seconde|$1 secondes}}.',
-	'popups-edited-minutes' => 'Dernière modification il y a {{PLURAL:$1|1 minute|$1 minutes}}.',
-	'popups-edited-hours' => 'Dernière modification il y a {{PLURAL:$1|1 heure|$1 heures}}.',
-	'popups-edited-days' => 'Dernière modification il y a {{PLURAL:$1|hier|$1 jours}}.',
-	'popups-edited-years' => 'Dernière modification il y a {{PLURAL:$1|1 an|$1 ans}}.',
+	'popups-last-edited' => 'Dernière modification le $1',
 	'popups-redirects' => 'redirigé vers <h3>$1</h3>',
 );
 
@@ -157,11 +149,7 @@ $messages['fr'] = array(
 $messages['he'] = array(
 	'popups-message' => 'חלונות קופצים',
 	'popups-desc' => 'הצגת חלונות קופצים עם סיכומים של תוכן הדף כאשר משתמש עובר מעל קישור לדף',
-	'popups-edited-seconds' => 'נערך לאחרונה לפני {{PLURAL:$1|שנייה אחת|$1 שניות}}.',
-	'popups-edited-minutes' => 'נערך לאחרונה לפני {{PLURAL:$1|דקה אחת|$1 דקות}}.',
-	'popups-edited-hours' => 'נערך לאחרונה לפני {{PLURAL:$1|שעה אחת|שעתיים|$1 שעות}}.',
-	'popups-edited-days' => 'נערך לאחרונה {{PLURAL:$1|אתמול|לפני יומיים|לפני $1 ימים}}.',
-	'popups-edited-years' => 'נערך לאחרונה {{PLURAL:$1|לפני שנה|לפני שנתיים|לפני $1 שנים}}.',
+	'popups-last-edited' => 'נערך לאחרונה $1',
 	'popups-redirects' => 'מפנה לדף <h3>$1</h3>',
 );
 
@@ -187,6 +175,14 @@ $messages['ja'] = array(
 	'popups-edited-years' => '{{PLURAL:$1|$1年}}前に最終更新。',
 );
 
+/** Kazakh (Cyrillic script) (қазақша (кирил)‎)
+ * @author Arystanbek
+ */
+$messages['kk-cyrl'] = array(
+	'popups-last-edited' => '$1 соңғы рет өңделді',
+	'popups-redirects' => 'бағытталған беті <h3>$1</h3>',
+);
+
 /** Korean (한국어)
  * @author Priviet
  */
@@ -201,6 +197,15 @@ $messages['ko'] = array(
 	'popups-redirects' => '<h3>$1</h3> 문서로 넘겨주기',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'popups-message' => '<i lang="en" xml:lang="en">Popups</i>',
+	'popups-desc' => 'Zeisch <i lang="en" xml:lang="en">popups</i> met Zersammefaßonge wann mer met de Muuß övver ene Lengk ob en Sig jeihd.',
+	'popups-redirects' => 'leid_öm ob <h3>$1</h3>',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -212,6 +217,13 @@ $messages['lb'] = array(
 	'popups-edited-days' => 'Lescht Ännerung {{PLURAL:$1|gëschter|viru(n) $1 Deeg}}',
 	'popups-edited-years' => 'Lescht Ännerung {{PLURAL:$1|virun engem Joer|viru(n) $1 Joer}}.',
 	'popups-redirects' => 'Viruleedung op <h3>$1</h3',
+);
+
+/** Latvian (latviešu)
+ * @author Srolanh
+ */
+$messages['lv'] = array(
+	'popups-last-edited' => 'Pēdējo reizi tika labots $1',
 );
 
 /** Malagasy (Malagasy)
@@ -228,11 +240,7 @@ $messages['mg'] = array(
 $messages['mk'] = array(
 	'popups-message' => 'Скокачки прозорчиња',
 	'popups-desc' => 'Прикажува скокачки прозорчиња со резиме на содржината на страницата кога ќе отидете со стрелката врз дадената врска',
-	'popups-edited-seconds' => 'Последните измени се направени пред {{PLURAL:$1|една секунда|$1 секунди}}.',
-	'popups-edited-minutes' => 'Последните измени се направени пред {{PLURAL:$1|една минута|$1 минути}}.',
-	'popups-edited-hours' => 'Последните измени се направени пред {{PLURAL:$1|еден час|$1 часа}}.',
-	'popups-edited-days' => 'Последните измени се направени {{PLURAL:$1|вчера|пред $1 дена}}.',
-	'popups-edited-years' => 'Последните измени се направени пред {{PLURAL:$1|една година|$1 години}}.',
+	'popups-last-edited' => 'Последно уредување: $1',
 	'popups-redirects' => 'пренасочува кон <h3>$1</h3>',
 );
 
@@ -302,6 +310,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'popups-message' => 'Pop-ups',
 	'popups-desc' => 'Exibe pop-ups com resumos do conteúdo de páginas quando o usuário passa o rato por cima do link de uma página',
+	'popups-last-edited' => 'Última edição há $1',
 	'popups-redirects' => 'redireciona para <h3>$1</h3>',
 );
 
@@ -311,11 +320,7 @@ $messages['pt'] = array(
 $messages['ru'] = array(
 	'popups-message' => 'Всплывающие окна',
 	'popups-desc' => 'Отображает всплывающие окна с описанием содержания страницы, когда пользователь наводит курсор на ссылку, ведущую на страницу',
-	'popups-edited-seconds' => 'Отредактировано {{PLURAL:$1|$1 секунду|$1 секунд|$1 секунды}} назад.',
-	'popups-edited-minutes' => 'Отредактировано {{PLURAL:$1|$1 минуту|$1 минут|$1 минуты}} назад.',
-	'popups-edited-hours' => 'Отредактировано {{PLURAL:$1|$1 час|$1 часов|$1 часа}} назад.',
-	'popups-edited-days' => 'Отредактировано {{PLURAL:$1|вчера|$1 дней|$1 дня}} назад.',
-	'popups-edited-years' => 'Отредактировано {{PLURAL:$1|$1 год|$1 лет|$1 года}} назад.',
+	'popups-last-edited' => 'Последний раз редактировалось $1',
 	'popups-redirects' => 'перенаправляет на <h3>$1</h3>',
 );
 
@@ -341,17 +346,14 @@ $messages['sr-ec'] = array(
 );
 
 /** Swedish (svenska)
+ * @author Jopparn
  * @author Lokal Profil
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'popups-message' => 'Popup-fönster',
 	'popups-desc' => 'Visar popup-fönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk.',
-	'popups-edited-seconds' => 'Senast redigerad {{PLURAL:$1|1 sekund|$1 sekunder}} sedan.',
-	'popups-edited-minutes' => 'Senast redigerad {{PLURAL:$1|1 minut|$1 minuter}} sedan.',
-	'popups-edited-hours' => 'Senast redigerad {{PLURAL:$1|1 timme|$1 timmar}} sedan.',
-	'popups-edited-days' => 'Senast redigerad {{PLURAL:$1|igår|$1 dagar}} sedan.',
-	'popups-edited-years' => 'Senast redigerad {{PLURAL:$1|1 år|$1 år}} sedan.',
+	'popups-last-edited' => 'Senast redigerad $1',
 	'popups-redirects' => 'omdirigeringar till <h3>$1</h3>',
 );
 
