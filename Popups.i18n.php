@@ -56,11 +56,7 @@ $messages['ar'] = array(
 $messages['ast'] = array(
 	'popups-message' => 'Ventanos emerxentes',
 	'popups-desc' => "Amuesa ventanos emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de páxina",
-	'popups-edited-seconds' => 'Última edición hai {{PLURAL:$1|$1 segundu|$1 segundos}}',
-	'popups-edited-minutes' => 'Última edición hai {{PLURAL:$1|$1 minutu|$1 minutos}}',
-	'popups-edited-hours' => 'Última edición hai {{PLURAL:$1|$1 hora|$1 hores}}',
-	'popups-edited-days' => 'Última edición {{PLURAL:$1|ayeri|hai $1 díes}}.',
-	'popups-edited-years' => 'Última edición hai {{PLURAL:$1|$1 añu|$1 años}}',
+	'popups-last-edited' => 'Última edición $1',
 	'popups-redirects' => 'redireiciona a <h3>$1</h3>',
 );
 
@@ -130,6 +126,16 @@ $messages['fa'] = array(
 	'popups-desc' => 'نمایش پوپاپ‌ها با خلاصه‌های محتواهای صفحه هنگامی که کاربر منتظر یک لینک صفحه است.',
 	'popups-last-edited' => 'آخرین ویرایش شده $1',
 	'popups-redirects' => 'تغییر مسیرها به <h3>$1</h3>',
+);
+
+/** Finnish (suomi)
+ * @author Stryn
+ */
+$messages['fi'] = array(
+	'popups-message' => 'Ponnahdusikkunat',
+	'popups-desc' => 'Näyttää ponnahdusikkunassa yhteenvedon sivun sisällöstä, kun käyttäjä laittaa hiiren sivulle osoittavan linkin päälle.',
+	'popups-last-edited' => 'Viimeksi muokattu $1',
+	'popups-redirects' => 'ohjaa sivulle <h3>$1</h3>',
 );
 
 /** French (français)
@@ -330,11 +336,7 @@ $messages['ru'] = array(
 $messages['sco'] = array(
 	'popups-message' => 'Popups',
 	'popups-desc' => 'Displays popups wi owerviews o page contents whan the uiser hovers ower ae page link.',
-	'popups-edited-seconds' => 'Last eidited {{PLURAL:$1|1 second|$1 seconds}} syne.',
-	'popups-edited-minutes' => 'Last eidited {{PLURAL:$1|1 minute|$1 minutes}} syne.',
-	'popups-edited-hours' => 'Laist eidited {{PLURAL:$1|1 hour|$1 hours}} syne.',
-	'popups-edited-days' => 'Last edited {{PLURAL:$1|yesterday|$1 days ago}}.',
-	'popups-edited-years' => 'Laist eidited {{PLURAL:$1|1 year|$1 years}} syne.',
+	'popups-last-edited' => 'Laist eeeditit $1',
 	'popups-redirects' => 'redirects til <h3>$1</h3>',
 );
 
@@ -354,7 +356,7 @@ $messages['sv'] = array(
 	'popups-message' => 'Popup-fönster',
 	'popups-desc' => 'Visar popup-fönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk.',
 	'popups-last-edited' => 'Senast redigerad $1',
-	'popups-redirects' => 'omdirigeringar till <h3>$1</h3>',
+	'popups-redirects' => 'omdirigering till <h3>$1</h3>',
 );
 
 /** Telugu (తెలుగు)
