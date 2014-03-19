@@ -25,8 +25,8 @@ $messages = array();
  * English
  */
 $messages['en'] = array(
-	'popups-message' => 'Popups',
-	'popups-desc' => 'Displays popups with summaries of page contents when the user hovers over a page link.',
+	'popups-message' => 'Hovercards',
+	'popups-desc' => 'Displays hovercards with summaries of page contents when the user hovers over a page link.',
 	'popups-last-edited' => 'Last edited $1',
 	'popups-redirects' => 'redirects to <h3>$1</h3>',
 );
@@ -39,7 +39,7 @@ $messages['qqq'] = array(
 	'popups-desc' => '{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}',
 	'popups-last-edited' => 'Message to show time span since the page was last edited. Parameters:
 * $1 - the timespan in words (localized). e.g. "3 months ago"',
-	'popups-redirects' => 'Message shown when the popup is showing a redirected page',
+	'popups-redirects' => 'Message shown when the hovercard is showing a redirected page',
 );
 
 /** Arabic (العربية)
