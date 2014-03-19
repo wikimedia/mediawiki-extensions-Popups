@@ -54,8 +54,8 @@ $messages['ar'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
-	'popups-message' => 'Ventanos emerxentes',
-	'popups-desc' => "Amuesa ventanos emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de páxina",
+	'popups-message' => 'Ventanos emerxentes', # Fuzzy
+	'popups-desc' => "Amuesa ventanos emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de páxina", # Fuzzy
 	'popups-last-edited' => 'Última edición $1',
 	'popups-redirects' => 'redireiciona a <h3>$1</h3>',
 );
@@ -83,7 +83,7 @@ $messages['bo'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
-	'popups-message' => 'Гучу долу кор',
+	'popups-message' => 'Гучу долу кор', # Fuzzy
 	'popups-last-edited' => 'ТӀеххьара тайина $1',
 	'popups-redirects' => 'дӀасахӀажайо <h3>$1</h3> тӀе',
 );
@@ -92,8 +92,8 @@ $messages['ce'] = array(
  * @author Metalhead64
  */
 $messages['de'] = array(
-	'popups-message' => 'Popups',
-	'popups-desc' => 'Ermöglicht beim Überfahren mit der Maus über einen Seitenlink die Anzeige von Popups mit Seiteninhaltszusammenfassungen',
+	'popups-message' => 'Hovercards',
+	'popups-desc' => 'Ermöglicht beim Überfahren mit der Maus über einen Seitenlink die Anzeige von Hovercards mit Seiteninhaltszusammenfassungen.',
 	'popups-last-edited' => 'Zuletzt bearbeitet $1',
 	'popups-redirects' => 'leitet weiter auf <h3>$1</h3>',
 );
@@ -120,10 +120,11 @@ $messages['es'] = array(
 
 /** Persian (فارسی)
  * @author Armin1392
+ * @author Ebraminio
  */
 $messages['fa'] = array(
-	'popups-message' => 'پوپاپ‌ها',
-	'popups-desc' => 'نمایش پوپاپ‌ها با خلاصه‌های محتواهای صفحه هنگامی که کاربر منتظر یک لینک صفحه است.',
+	'popups-message' => 'پوپاپ‌ها', # Fuzzy
+	'popups-desc' => 'نمایش پوپاپ‌ها با خلاصه‌های محتواهای صفحه هنگامی که کاربر منتظر یک پیوند صفحه است.', # Fuzzy
 	'popups-last-edited' => 'آخرین ویرایش شده $1',
 	'popups-redirects' => 'تغییر مسیرها به <h3>$1</h3>',
 );
@@ -132,8 +133,8 @@ $messages['fa'] = array(
  * @author Stryn
  */
 $messages['fi'] = array(
-	'popups-message' => 'Ponnahdusikkunat',
-	'popups-desc' => 'Näyttää ponnahdusikkunassa yhteenvedon sivun sisällöstä, kun käyttäjä laittaa hiiren sivulle osoittavan linkin päälle.',
+	'popups-message' => 'Ponnahdusikkunat', # Fuzzy
+	'popups-desc' => 'Näyttää ponnahdusikkunassa yhteenvedon sivun sisällöstä, kun käyttäjä laittaa hiiren sivulle osoittavan linkin päälle.', # Fuzzy
 	'popups-last-edited' => 'Viimeksi muokattu $1',
 	'popups-redirects' => 'ohjaa sivulle <h3>$1</h3>',
 );
@@ -143,8 +144,8 @@ $messages['fi'] = array(
  * @author VIGNERON
  */
 $messages['fr'] = array(
-	'popups-message' => 'Fenêtres popup',
-	'popups-desc' => 'Afficher des fenêtres popup avec les résumés des contenus des pages quand l’utilisateur survole le lien d’une page',
+	'popups-message' => 'Hovercards',
+	'popups-desc' => 'Afficher des fenêtres au survol avec les résumés des contenus des pages quand l’utilisateur survole un lien de page.',
 	'popups-last-edited' => 'Dernière modification le $1',
 	'popups-redirects' => 'redirigé vers <h3>$1</h3>',
 );
@@ -153,8 +154,8 @@ $messages['fr'] = array(
  * @author Amire80
  */
 $messages['he'] = array(
-	'popups-message' => 'חלונות קופצים',
-	'popups-desc' => 'הצגת חלונות קופצים עם סיכומים של תוכן הדף כאשר משתמש עובר מעל קישור לדף',
+	'popups-message' => 'חלונות קופצים', # Fuzzy
+	'popups-desc' => 'הצגת חלונות קופצים עם סיכומים של תוכן הדף כאשר משתמש עובר מעל קישור לדף', # Fuzzy
 	'popups-last-edited' => 'נערך לאחרונה $1',
 	'popups-redirects' => 'מפנה לדף <h3>$1</h3>',
 );
@@ -207,8 +208,8 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'popups-message' => '<i lang="en" xml:lang="en">Popups</i>',
-	'popups-desc' => 'Zeisch <i lang="en" xml:lang="en">popups</i> met Zersammefaßonge wann mer met de Muuß övver ene Lengk ob en Sig jeihd.',
+	'popups-message' => '<i lang="en" xml:lang="en">Popups</i>', # Fuzzy
+	'popups-desc' => 'Zeisch <i lang="en" xml:lang="en">popups</i> met Zersammefaßonge wann mer met de Muuß övver ene Lengk ob en Sig jeihd.', # Fuzzy
 	'popups-redirects' => 'leid_öm ob <h3>$1</h3>',
 );
 
@@ -244,8 +245,8 @@ $messages['mg'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'popups-message' => 'Скокачки прозорчиња',
-	'popups-desc' => 'Прикажува скокачки прозорчиња со резиме на содржината на страницата кога ќе отидете со стрелката врз дадената врска',
+	'popups-message' => 'Скокачки прозорчиња', # Fuzzy
+	'popups-desc' => 'Прикажува скокачки прозорчиња со резиме на содржината на страницата кога ќе отидете со стрелката врз дадената врска', # Fuzzy
 	'popups-last-edited' => 'Последно уредување: $1',
 	'popups-redirects' => 'пренасочува кон <h3>$1</h3>',
 );
@@ -269,7 +270,7 @@ $messages['mr'] = array(
  * @author Sjoerddebruin
  */
 $messages['nl'] = array(
-	'popups-message' => 'Pop-ups',
+	'popups-message' => 'Pop-ups', # Fuzzy
 	'popups-redirects' => 'verwijst door naar <h3>$1</h3>',
 );
 
@@ -277,7 +278,7 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'popups-message' => 'Fenèstras popup',
+	'popups-message' => 'Fenèstras popup', # Fuzzy
 	'popups-redirects' => 'redirigit cap a <h3>$1</h3>',
 );
 
@@ -314,8 +315,8 @@ $messages['ps'] = array(
  * @author SandroHc
  */
 $messages['pt'] = array(
-	'popups-message' => 'Pop-ups',
-	'popups-desc' => 'Exibe pop-ups com resumos do conteúdo de páginas quando o usuário passa o rato por cima do link de uma página',
+	'popups-message' => 'Pop-ups', # Fuzzy
+	'popups-desc' => 'Exibe pop-ups com resumos do conteúdo de páginas quando o usuário passa o rato por cima do link de uma página', # Fuzzy
 	'popups-last-edited' => 'Última edição há $1',
 	'popups-redirects' => 'redireciona para <h3>$1</h3>',
 );
@@ -324,8 +325,8 @@ $messages['pt'] = array(
  * @author Okras
  */
 $messages['ru'] = array(
-	'popups-message' => 'Всплывающие окна',
-	'popups-desc' => 'Отображает всплывающие окна с описанием содержания страницы, когда пользователь наводит курсор на ссылку, ведущую на страницу',
+	'popups-message' => 'Всплывающие окна', # Fuzzy
+	'popups-desc' => 'Отображает всплывающие окна с описанием содержания страницы, когда пользователь наводит курсор на ссылку, ведущую на страницу', # Fuzzy
 	'popups-last-edited' => 'Последний раз редактировалось $1',
 	'popups-redirects' => 'перенаправляет на <h3>$1</h3>',
 );
@@ -334,8 +335,8 @@ $messages['ru'] = array(
  * @author John Reid
  */
 $messages['sco'] = array(
-	'popups-message' => 'Popups',
-	'popups-desc' => 'Displays popups wi owerviews o page contents whan the uiser hovers ower ae page link.',
+	'popups-message' => 'Popups', # Fuzzy
+	'popups-desc' => 'Displays popups wi owerviews o page contents whan the uiser hovers ower ae page link.', # Fuzzy
 	'popups-last-edited' => 'Laist eeeditit $1',
 	'popups-redirects' => 'redirects til <h3>$1</h3>',
 );
@@ -353,8 +354,8 @@ $messages['sr-ec'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'popups-message' => 'Popup-fönster',
-	'popups-desc' => 'Visar popup-fönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk.',
+	'popups-message' => 'Popup-fönster', # Fuzzy
+	'popups-desc' => 'Visar popup-fönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk.', # Fuzzy
 	'popups-last-edited' => 'Senast redigerad $1',
 	'popups-redirects' => 'omdirigering till <h3>$1</h3>',
 );
@@ -389,13 +390,9 @@ $messages['tr'] = array(
  * @author Andriykopanytsia
  */
 $messages['uk'] = array(
-	'popups-message' => 'Спливні вікна',
-	'popups-desc' => 'Відображає спливні вікна з описом змісту статей при наведенні покажчика миші на посилання.',
-	'popups-edited-seconds' => 'Останнє редагування $1 {{PLURAL:$1|секунду|секунди|секунд}} назад',
-	'popups-edited-minutes' => 'Відредаговано {{PLURAL:$1|$1 хвилину|$1 хвилин|$1 хвилини}} назад.',
-	'popups-edited-hours' => 'Остання зміна $1 {{PLURAL:$1|годину|годин|години}} тому',
-	'popups-edited-days' => 'Відредаговано {{PLURAL:$1|вчора|$1 днів тому|$1 дні тому}}.',
-	'popups-edited-years' => 'Відредаговано {{PLURAL:$1|$1 рік|$1 років|$1 роки}} тому.',
+	'popups-message' => 'Спливні вікна', # Fuzzy
+	'popups-desc' => 'Відображає спливні вікна з описом змісту статей при наведенні покажчика миші на посилання.', # Fuzzy
+	'popups-last-edited' => 'Остання редакція $1',
 	'popups-redirects' => 'перенаправляє на <h3>$1</h3>',
 );
 
