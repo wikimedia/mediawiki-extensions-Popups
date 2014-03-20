@@ -141,12 +141,13 @@ $messages['fi'] = array(
 
 /** French (français)
  * @author Gomoko
+ * @author Ltrlg
  * @author VIGNERON
  */
 $messages['fr'] = array(
 	'popups-message' => 'Hovercards',
 	'popups-desc' => 'Afficher des fenêtres au survol avec les résumés des contenus des pages quand l’utilisateur survole un lien de page.',
-	'popups-last-edited' => 'Dernière modification le $1',
+	'popups-last-edited' => 'Dernière modification $1',
 	'popups-redirects' => 'redirigé vers <h3>$1</h3>',
 );
 
@@ -154,8 +155,8 @@ $messages['fr'] = array(
  * @author Amire80
  */
 $messages['he'] = array(
-	'popups-message' => 'חלונות קופצים', # Fuzzy
-	'popups-desc' => 'הצגת חלונות קופצים עם סיכומים של תוכן הדף כאשר משתמש עובר מעל קישור לדף', # Fuzzy
+	'popups-message' => 'כרטיסים מרחפים',
+	'popups-desc' => 'הצגת כרטיסים מרחפים עם סיכומים של תוכן הדף כאשר משתמש עובר מעל קישור לדף.',
 	'popups-last-edited' => 'נערך לאחרונה $1',
 	'popups-redirects' => 'מפנה לדף <h3>$1</h3>',
 );
@@ -164,8 +165,10 @@ $messages['he'] = array(
  * @author Beta16
  */
 $messages['it'] = array(
-	'popups-message' => 'Popup',
-	'popups-desc' => "Mostra un popup con un estratto del contenuto quando l'utente passa sopra al collegamento ad una pagina",
+	'popups-message' => 'Popup', # Fuzzy
+	'popups-desc' => "Mostra un popup con un estratto del contenuto quando l'utente passa sopra al collegamento ad una pagina", # Fuzzy
+	'popups-last-edited' => 'Ultima modifica $1',
+	'popups-redirects' => 'reindirizza a <h3>$1</h3>',
 );
 
 /** Japanese (日本語)
@@ -173,13 +176,8 @@ $messages['it'] = array(
  * @author Whym
  */
 $messages['ja'] = array(
-	'popups-message' => 'ポップアップ',
-	'popups-desc' => 'ページへのリンクにホバーしたとき、ページ内容の要約のポップアップが表示されます。',
-	'popups-edited-seconds' => '{{PLURAL:$1|$1秒}}前に最終更新。',
-	'popups-edited-minutes' => '{{PLURAL:$1|$1分}}前に最終更新。',
-	'popups-edited-hours' => '{{PLURAL:$1|$1時間}}前に最終更新。',
-	'popups-edited-days' => '{{PLURAL:$1|$1日}}前に最終更新。',
-	'popups-edited-years' => '{{PLURAL:$1|$1年}}前に最終更新。',
+	'popups-message' => 'ホバーカード',
+	'popups-desc' => 'ページへのリンクにホバーした際に、ページ内容の要約のホバーカードを表示する。',
 );
 
 /** Kazakh (Cyrillic script) (қазақша (кирил)‎)
@@ -217,12 +215,8 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'popups-message' => 'Popups',
-	'popups-edited-seconds' => 'Lescht Ännerung {{PLURAL:$1|virun enger Sekonn|viru(n) $1 Sekonnen}}.',
-	'popups-edited-minutes' => 'Lescht Ännerung {{PLURAL:$1|virun enger Minutt|viru(n) $1 Minutten}}.',
-	'popups-edited-hours' => 'Lescht Ännerung {{PLURAL:$1|virun enger Stonn|viru(n) $1 Stonnen}}.',
-	'popups-edited-days' => 'Lescht Ännerung {{PLURAL:$1|gëschter|viru(n) $1 Deeg}}',
-	'popups-edited-years' => 'Lescht Ännerung {{PLURAL:$1|virun engem Joer|viru(n) $1 Joer}}.',
+	'popups-message' => 'Popups', # Fuzzy
+	'popups-last-edited' => 'Lescht Ännerung $1',
 	'popups-redirects' => 'Viruleedung op <h3>$1</h3',
 );
 
@@ -245,10 +239,20 @@ $messages['mg'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'popups-message' => 'Скокачки прозорчиња', # Fuzzy
-	'popups-desc' => 'Прикажува скокачки прозорчиња со резиме на содржината на страницата кога ќе отидете со стрелката врз дадената врска', # Fuzzy
+	'popups-message' => 'Инфопрозорчиња',
+	'popups-desc' => 'Прикажува инфопрозорчиња со резиме на содржината на страницата кога ќе отидете со стрелката врз дадената врска',
 	'popups-last-edited' => 'Последно уредување: $1',
 	'popups-redirects' => 'пренасочува кон <h3>$1</h3>',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'popups-message' => 'ഹോവർകാർഡ്സ്',
+	'popups-desc' => 'ഒരു താളിന്റെ കണ്ണിയുടെ മുകളിലൂടെ മൗസ് നീക്കുമ്പോൾ കണ്ണിയിലുള്ള താളിന്റെ ഉള്ളടക്കത്തിന്റെ സംഗ്രഹം കാണിക്കുക',
+	'popups-last-edited' => 'അവസാനം തിരുത്തിയത് $1',
+	'popups-redirects' => '<h3>$1</h3> എന്നതിലേക്ക് തിരിച്ചുവിട്ടിരിക്കുന്നു',
 );
 
 /** Marathi (मराठी)
@@ -335,8 +339,8 @@ $messages['ru'] = array(
  * @author John Reid
  */
 $messages['sco'] = array(
-	'popups-message' => 'Popups', # Fuzzy
-	'popups-desc' => 'Displays popups wi owerviews o page contents whan the uiser hovers ower ae page link.', # Fuzzy
+	'popups-message' => 'Hovercairds',
+	'popups-desc' => 'Displeys hovercairds wi ootlines o page contents whan the uiser hovers ower ae page link.',
 	'popups-last-edited' => 'Laist eeeditit $1',
 	'popups-redirects' => 'redirects til <h3>$1</h3>',
 );
@@ -417,17 +421,14 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (中文（简体）‎)
  * @author Liuxinyu970226
+ * @author Xiaomingyan
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'popups-message' => '弹窗',
-	'popups-desc' => '当用户悬停页面链接时显示对应页面内容摘要的弹窗',
-	'popups-edited-seconds' => '上次编辑于$1秒前。',
-	'popups-edited-minutes' => '上次编辑于$1分钟前。',
-	'popups-edited-hours' => '上次编辑于$1小时前。',
-	'popups-edited-days' => '上次编辑于$1天前。',
-	'popups-edited-years' => '上次编辑于$1年前。',
-	'popups-redirects' => '重定向到<h3>$1</h3>',
+	'popups-message' => '悬停卡片',
+	'popups-desc' => '当用户在页面链接上悬停鼠标指针时，显示带有页面内容摘要的悬停卡片。',
+	'popups-last-edited' => '最后编辑于$1',
+	'popups-redirects' => '重定向至<h3>$1</h3>',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
