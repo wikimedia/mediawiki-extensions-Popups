@@ -88,6 +88,16 @@ $messages['ce'] = array(
 	'popups-redirects' => 'дӀасахӀажайо <h3>$1</h3> тӀе',
 );
 
+/** Czech (čeština)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'popups-message' => 'Vyskakovací kartičky',
+	'popups-desc' => 'Zobrazuje vyskakovací kartičky se shrnutím obsahu cílové stránky, když uživatel umístí kurzor myši nad odkaz.',
+	'popups-last-edited' => 'Naposledy editováno $1',
+	'popups-redirects' => 'přesměrování na <h3>$1</h3>',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -165,8 +175,8 @@ $messages['he'] = array(
  * @author Beta16
  */
 $messages['it'] = array(
-	'popups-message' => 'Popup', # Fuzzy
-	'popups-desc' => "Mostra un popup con un estratto del contenuto quando l'utente passa sopra al collegamento ad una pagina", # Fuzzy
+	'popups-message' => 'Popup',
+	'popups-desc' => "Mostra un popup con un estratto del contenuto quando l'utente passa sopra al collegamento ad una pagina.",
 	'popups-last-edited' => 'Ultima modifica $1',
 	'popups-redirects' => 'reindirizza a <h3>$1</h3>',
 );
@@ -329,8 +339,8 @@ $messages['pt'] = array(
  * @author Okras
  */
 $messages['ru'] = array(
-	'popups-message' => 'Всплывающие окна', # Fuzzy
-	'popups-desc' => 'Отображает всплывающие окна с описанием содержания страницы, когда пользователь наводит курсор на ссылку, ведущую на страницу', # Fuzzy
+	'popups-message' => 'Всплывающие окошки',
+	'popups-desc' => 'Отображает всплывающие окошки с описанием содержания страницы, когда пользователь наводит курсор на ссылку, ведущую на страницу',
 	'popups-last-edited' => 'Последний раз редактировалось $1',
 	'popups-redirects' => 'перенаправляет на <h3>$1</h3>',
 );
