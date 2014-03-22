@@ -171,6 +171,14 @@ $messages['he'] = array(
 	'popups-redirects' => 'מפנה לדף <h3>$1</h3>',
 );
 
+/** Hindi (हिन्दी)
+ * @author Wikiuser13
+ */
+$messages['hi'] = array(
+	'popups-message' => 'हूवरकार्ड',
+	'popups-desc' => 'जब एक उपयोगकर्ता पृष्ठ लिंक पर हूवर करता है तब हूवरकार्ड पृष्ठ सारांश की सामग्री प्रदर्शित करता है।',
+);
+
 /** Italian (italiano)
  * @author Beta16
  */
@@ -281,10 +289,11 @@ $messages['mr'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  * @author Sjoerddebruin
  */
 $messages['nl'] = array(
-	'popups-message' => 'Pop-ups', # Fuzzy
+	'popups-message' => "Pop-uppagina's",
 	'popups-redirects' => 'verwijst door naar <h3>$1</h3>',
 );
 
