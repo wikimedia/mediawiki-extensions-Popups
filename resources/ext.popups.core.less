@@ -151,10 +151,20 @@
 			.mwe-popups-border-triangle( 9px, 9px, #bbb);
 		}
 
+		&:after {
+			.mwe-popups-border-triangle( 8px, 10px, #fff);
+			z-index: 91;
+		}
+
 		&.flipped {
 			&:before {
 				z-index: 90;
 				.mwe-popups-border-triangle( 9px, 273px, #bbb);
+			}
+
+			&:after {
+				.mwe-popups-border-triangle( 8px, 273px, #fff);
+				z-index: 91;
 			}
 		}
 
