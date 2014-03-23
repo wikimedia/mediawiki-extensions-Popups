@@ -219,6 +219,7 @@
 					left: offsetLeft
 				})
 				.append( bar.box )
+				.attr( 'aria-hidden', 'false' )
 				.show()
 				.removeClass( 'mwe-popups-fade-out mwe-popups-fade-in' )
 				.addClass( 'mwe-popups-fade-in' )
@@ -284,6 +285,7 @@
 						$( this )
 						.off( 'webkitAnimationEnd oanimationend msAnimationEnd animationend' )
 						.removeClass( 'mwe-popups-fade-out' )
+						.attr( 'aria-hidden', 'true' )
 						.hide();
 					}
 				} );
