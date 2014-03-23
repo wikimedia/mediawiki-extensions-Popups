@@ -241,6 +241,18 @@
 			$el
 				.off( 'mouseleave blur', leaveInactive )
 				.on( 'mouseleave blur', leaveActive );
+
+			$( document ).on( 'keydown', closeOnEsc );
+		}
+
+		/**
+		 * @method closeOnEsc
+		 * Use escape to close popup
+		 */
+		function closeOnEsc( e ) {
+			if ( e.keyCode === 27 ) {
+				closeBox();
+			}
 		}
 
 		/**
@@ -293,6 +305,8 @@
 			if ( closeTimer ){
 				clearTimeout( closeTimer );
 			}
+
+			$( document ).off( 'keydown', closeOnEsc );
 
 			logEvent();
 			currentLink = closeTimer = undefined;
