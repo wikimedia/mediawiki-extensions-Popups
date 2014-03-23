@@ -247,8 +247,8 @@
 			}
 
 			$el
-				.off( 'mouseleave', leaveInactive )
-				.on( 'mouseleave', leaveActive );
+				.off( 'mouseleave blur', leaveInactive )
+				.on( 'mouseleave blur', leaveActive );
 		}
 
 		/**
@@ -386,21 +386,19 @@
 			.not( '.image' )
 			.not( '.new' )
 			.not( '[title=""]' )
-			.hover(
-				function () {
-					$( this )
-						.attr( 'data-original-title', $( this ).attr( 'title' ) )
-						.attr( 'title', '');
-				},
-				function () {
-					$( this )
-						.attr( 'title', $( this ).attr( 'data-original-title' ) )
-						.attr( 'data-original-title', '');
-				}
-			);
+			.on( 'mouseenter focus', function () {
+				$( this )
+					.attr( 'data-original-title', $( this ).attr( 'title' ) )
+					.attr( 'title', '');
+			} )
+			.on( 'mouseleave blur', function () {
+				$( this )
+					.attr( 'title', $( this ).attr( 'data-original-title' ) )
+					.attr( 'data-original-title', '');
+			} );
 
 
-		$( '#mw-content-text a' ).on( 'mouseenter', function () {
+		$( '#mw-content-text a' ).on( 'mouseenter focus', function () {
 			var $this = $( this ),
 				href = $this.attr( 'href' ),
 				title = $this.attr( 'data-original-title' );
@@ -430,7 +428,7 @@
 			}
 
 			currentLink = this;
-			$this.on( 'mouseleave', leaveInactive );
+			$this.on( 'mouseleave blur', leaveInactive );
 
 			if ( cache[ href ] ){
 				openTimer = setTimeout( function () {
