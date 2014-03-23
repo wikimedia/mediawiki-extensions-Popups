@@ -437,6 +437,7 @@
 
 		// Container for the popup
 		$box = $( '<div>' )
+			.attr( 'role', 'tooltip' )
 			.addClass( 'mwe-popups' )
 			.on( {
 				mouseleave: leaveActive,
