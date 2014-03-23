@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   width="264"
+   height="162"
+   viewBox="0 0 264 162"
+   id="svg2">
+  <title
+     id="title4">NavigationPopups_BetaFeaturesIcon</title>
+  <metadata
+     id="metadata89">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>NavigationPopups_BetaFeaturesIcon</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <path
+       d="m 254,43 h -38 v 113.18 l 7.551,5.82 13.811,-10 13.891,10 2.747,-2.05 V 43 z"
+       id="a" />
+    <filter
+       filterUnits="objectBoundingBox"
+       x="-0.2"
+       y="-0.2"
+       width="1.4"
+       height="1.4"
+       color-interpolation-filters="sRGB"
+       id="b">
+      <feOffset
+         id="feOffset10"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1"
+         dx="1" />
+      <feGaussianBlur
+         id="feGaussianBlur12"
+         result="shadowBlurOuter1"
+         in="shadowOffsetOuter1" />
+      <feColorMatrix
+         id="feColorMatrix14"
+         result="shadowMatrixOuter1"
+         in="shadowBlurOuter1"
+         values="0 0 0 0 0.831438303 0 0 0 0 0.831319273 0 0 0 0 0.831478775 0 0 0 0.7 0" />
+      <feMerge
+         id="feMerge16">
+        <feMergeNode
+           id="feMergeNode18"
+           in="shadowMatrixOuter1" />
+        <feMergeNode
+           id="feMergeNode20"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g
+     transform="matrix(-1,0,0,1,264,0)"
+     id="g22"
+     style="fill:none">
+    <g
+       id="Group">
+      <path
+         d="M 24.833,151.362 13.366,161.357 0.5,151.749 V 0.5 h 263 v 151.749 l -9,6.705 V 42.5 h -39 v 112.6 l -4.393,-3.731 -7.607,5.33 V 42.5 h -155 v 110.849 l -9.751,8.031 -13.916,-10.018 z"
+         id="Shape"
+         style="fill:#ffffff" />
+      <path
+         d="m 263,1 v 150.998 l -8,5.96 V 42 h -40 v 112.019 l -3.274,-2.779 -0.589,-0.499 -0.633,0.44 -6.504,4.557 V 42 H 48 v 111.099 l -9.257,7.661 -13.295,-9.569 -0.644,-0.465 -0.598,0.521 -10.864,9.47 L 1,151.499 V 1 h 262 z m 1,-1 H 0 V 152 L 13.391,162 24.864,152 38.755,162 49,153.6 V 43 H 203 V 157.66 L 211.078,152 216,156.18 V 43 h 38 v 116.95 l 10,-7.45 V 0 z"
+         id="path26"
+         style="fill:#e5e5e5" />
+    </g>
+    <path
+       d="M 203,43 H 49 v 110.6 l 2.145,-1.6 12.555,10 13.809,-10 14.229,10 12.972,-10 12.973,10 13.811,-10 12.136,10 13.391,-10 14.229,10 12.972,-10 12.974,10 5.804,-4.34 V 43 z"
+       id="path28"
+       style="fill:#e5e5e5" />
+    <path
+       d="m 11,36 c 0,-7.732 6.268,-14 14,-14 7.732,0 14,6.268 14,14 0,7.732 -6.268,14 -14,14 -7.732,0 -14,-6.268 -14,-14 z"
+       id="path30"
+       style="fill:#e5e5e5" />
+    <g
+       id="g32"
+       style="opacity:0.5">
+      <use
+         id="use34"
+         style="fill:#e5e5e5"
+         x="0"
+         y="0"
+         width="264"
+         height="162"
+         xlink:href="#a" />
+      <use
+         id="use36"
+         x="0"
+         y="0"
+         width="264"
+         height="162"
+         xlink:href="#a" />
+    </g>
+    <path
+       d="M 38,107 V 72 H 13 v 35 H 38 z M 232.51,5 h 26 v 6 h -26 V 5 z"
+       id="path38"
+       style="fill:#e5e5e5" />
+    <path
+       d="m 208.51,5 h 22 v 6 h -22 z"
+       id="Rectangle"
+       style="fill:#e5e5e5" />
+    <path
+       d="m 142,6 v 4 H 50 V 6 h 92 z m 1,-1 H 49 v 6 h 94 V 5 z"
+       id="path41"
+       style="fill:#e5e5e5" />
+    <path
+       d="m 184.51,5 h 22 v 6 h -22 z m -23,0 h 13 v 6 h -13 z m 15,0 h 6 v 6 h -6 z m -23,0 h 6 v 6 h -6 z M 9,5 h 32 v 6 H 9 z"
+       id="path43"
+       style="fill:#e5e5e5" />
+    <path
+       d="M 2,14.5 H 262"
+       id="path45"
+       style="fill:#e5e5e5;stroke:#e5e5e5" />
+    <path
+       d="m 52,7 h 2 v 2 h -2 z"
+       id="path47"
+       style="fill:#e5e5e5" />
+    <path
+       d="M 38,59 V 54 H 13 v 5 h 25 z"
+       id="path49"
+       style="fill:#e5e5e5" />
+    <g
+       id="g51">
+      <path
+         d="M 123.756,68 H 85.615 v 7.782 h 38.141 V 68 z"
+         id="path53"
+         style="fill:#9b9b9b" />
+      <path
+         d="m 180.488,103.02 v -8.755 h -50.814 v 8.755 h 50.814 z M 90.763,80.646 H 69.929 v 8.633 h 20.834 v -8.633 z"
+         id="path55"
+         style="fill:#9b9b9b" />
+      <path
+         d="m 189.298,88.428 v -7.782 h -37.695 v 7.782 h 37.695 z"
+         id="path57"
+         style="fill:#9b9b9b" />
+      <path
+         d="M 100.653,94.144 H 74.955 v 7.782 h 25.698 v -7.782 z"
+         id="path59"
+         style="fill:#9b9b9b" />
+      <path
+         d="m 175.233,68 h -46.207 v 7.782 h 46.207 V 68 z"
+         id="path61"
+         style="fill:#9b9b9b" />
+      <path
+         d="m 94.735,80.646 v 9.201 h 51.558 V 80.646 H 94.735 z"
+         id="path63"
+         style="fill:#0e73fc" />
+    </g>
+    <path
+       d="m 94,94 h 75 v 44 H 94 z"
+       id="path65"
+       style="fill:#ffffff;filter:url(#b)" />
+    <path
+       d=""
+       id="path67"
+       style="stroke:#979797" />
+    <path
+       d="m 169,94 h -31 v 44 h 31 V 94 z m -18.167,24.129 5.904,9.653 3.206,-2.958 4.829,6.051 -21.136,0.028 6.244,-12.774 h 0.953 z"
+       id="path69"
+       style="fill:#0e73fc" />
+    <rect
+       width="20"
+       height="1"
+       rx="1"
+       x="101"
+       y="100"
+       id="rect71"
+       style="fill:#d0d0d0" />
+    <rect
+       width="20"
+       height="1"
+       rx="1"
+       x="101"
+       y="104"
+       id="rect73"
+       style="fill:#d0d0d0" />
+    <rect
+       width="20"
+       height="1"
+       rx="1"
+       x="101"
+       y="108"
+       id="rect75"
+       style="fill:#d0d0d0" />
+    <rect
+       width="28"
+       height="1"
+       rx="1"
+       x="101"
+       y="112"
+       id="rect77"
+       style="fill:#d0d0d0" />
+    <rect
+       width="28"
+       height="1"
+       rx="1"
+       x="101"
+       y="116"
+       id="rect79"
+       style="fill:#d0d0d0" />
+    <rect
+       width="28"
+       height="1"
+       rx="1"
+       x="101"
+       y="120"
+       id="rect81"
+       style="fill:#d0d0d0" />
+    <rect
+       width="28"
+       height="1"
+       rx="1"
+       x="101"
+       y="124"
+       id="rect83"
+       style="fill:#d0d0d0" />
+    <rect
+       width="28"
+       height="1"
+       rx="1"
+       x="101"
+       y="128"
+       id="rect85"
+       style="fill:#d0d0d0" />
+  </g>
+</svg>

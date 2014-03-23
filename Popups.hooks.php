@@ -26,7 +26,10 @@ class PopupsHooks {
 		$prefs['popups'] = array(
 			'label-message' => 'popups-message',
 			'desc-message' => 'popups-desc',
-			'screenshot' => $wgExtensionAssetsPath . '/Popups/popups.svg',
+			'screenshot' => array(
+				'ltr' => "$wgExtensionAssetsPath/Popups/popups-ltr.svg",
+				'rtl' => "$wgExtensionAssetsPath/Popups/popups-rtl.svg",
+			),
 			'info-link' => 'https://www.mediawiki.org/wiki/Navigation_Popups_%28Restyling_and_Enhancements%29',
 			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
 		);
