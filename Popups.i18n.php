@@ -26,7 +26,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'popups-message' => 'Hovercards',
-	'popups-desc' => 'Displays hovercards with summaries of page contents when the user hovers over a page link.',
+	'popups-desc' => 'Displays hovercards with summaries of page contents when the user hovers over a page link',
 	'popups-last-edited' => 'Last edited $1',
 	'popups-redirects' => 'redirects to <h3>$1</h3>',
 );
