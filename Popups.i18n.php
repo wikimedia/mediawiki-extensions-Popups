@@ -233,7 +233,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'popups-message' => 'Popups', # Fuzzy
+	'popups-message' => 'Hovercards',
 	'popups-last-edited' => 'Lescht Ännerung $1',
 	'popups-redirects' => 'Viruleedung op <h3>$1</h3',
 );
@@ -294,6 +294,8 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'popups-message' => "Pop-uppagina's",
+	'popups-desc' => "Geeft pop-uppagina's weer met samenvattingen van de inhoud van pagina's bij zweven boven koppelingen",
+	'popups-last-edited' => '$1 voor het laatst bewerkt',
 	'popups-redirects' => 'verwijst door naar <h3>$1</h3>',
 );
 
@@ -301,7 +303,7 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'popups-message' => 'Fenèstras popup', # Fuzzy
+	'popups-message' => 'Hovercards',
 	'popups-redirects' => 'redirigit cap a <h3>$1</h3>',
 );
 
