@@ -415,8 +415,8 @@ $messages['tr'] = array(
  * @author Andriykopanytsia
  */
 $messages['uk'] = array(
-	'popups-message' => 'Спливні вікна', # Fuzzy
-	'popups-desc' => 'Відображає спливні вікна з описом змісту статей при наведенні покажчика миші на посилання.', # Fuzzy
+	'popups-message' => 'Спливні вікна',
+	'popups-desc' => 'Відображає спливні вікна з описом змісту сторінок при наведенні покажчика миші на посилання сторінки.',
 	'popups-last-edited' => 'Остання редакція $1',
 	'popups-redirects' => 'перенаправляє на <h3>$1</h3>',
 );
@@ -426,6 +426,9 @@ $messages['uk'] = array(
  * @author Skye Darcy
  */
 $messages['vi'] = array(
+	'popups-message' => 'Phiếu tóm tắt',
+	'popups-desc' => 'Nổi lên phiếu tóm tắt nội dung của một trang khi đặt trỏ chuột lên một liên kết đến trang đó.',
+	'popups-last-edited' => 'Sửa đổi lần cuối $1',
 	'popups-redirects' => 'đổi hướng đến <h3>$1</h3>',
 );
 
