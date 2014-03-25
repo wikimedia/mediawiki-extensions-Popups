@@ -2,7 +2,9 @@
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
 
-/*global mw:false */
+/* global mw: false */
+/* global moment: false */
+/* jslint browser: true */
 
 (function ( $ ) {
 	$( document ).ready( function() {
@@ -335,6 +337,10 @@
 		 * @param {string} href
 		 */
 		function logEvent ( href ) {
+			if ( typeof mw.eventLog !== 'function' ) {
+				return false;
+			}
+
 			var dfd = $.Deferred(),
 				event = {
 					'duration': Math.round( elDuration ),
@@ -355,7 +361,6 @@
 			setTimeout( dfd.reject, 1000 );
 			elTime = elDuration = elAction = undefined;
 		}
-		var logEvent = mw.eventLog ? mw.eventLog.logEvent : function () {};
 
 		/**
 		 * @method getSessionId
