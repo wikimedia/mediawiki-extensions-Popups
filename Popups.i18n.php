@@ -195,7 +195,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'popups-message' => 'ホバーカード',
-	'popups-desc' => 'ページへのリンクにホバーした際に、ページ内容の要約のホバーカードを表示する。',
+	'popups-desc' => 'ページへのリンクにホバーした際に、ページ内容の要約のホバーカードを表示する',
 );
 
 /** Kazakh (Cyrillic script) (қазақша (кирил)‎)
