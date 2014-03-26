@@ -46,8 +46,10 @@ $messages['qqq'] = array(
  * @author Asaifm
  */
 $messages['ar'] = array(
-	'popups-message' => 'المنبثقات',
-	'popups-desc' => 'يقوم بعرض منبثقات بملخصات عن محتوى الصفحة عندما يقوم المستخدم بحوم المؤشر على رابط الصفحة',
+	'popups-message' => 'كروت الحوم',
+	'popups-desc' => 'يقوم بعرض كروت حوم بملخصات عن محتوى الصفحة عندما يقوم المستخدم بحوم المؤشر على رابط الصفحة',
+	'popups-last-edited' => 'آخر تعديل تم في $1',
+	'popups-redirects' => 'إعادة توجيه إلى <h3>$1</h3>',
 );
 
 /** Asturian (asturianu)
@@ -361,7 +363,7 @@ $messages['ru'] = array(
  */
 $messages['sco'] = array(
 	'popups-message' => 'Hovercairds',
-	'popups-desc' => 'Displeys hovercairds wi ootlines o page contents whan the uiser hovers ower ae page link.',
+	'popups-desc' => 'Displeys hovercairds wi ootlines o page contents whan the uiser hovers ower ae page airtin.',
 	'popups-last-edited' => 'Laist eeeditit $1',
 	'popups-redirects' => 'redirects til <h3>$1</h3>',
 );
