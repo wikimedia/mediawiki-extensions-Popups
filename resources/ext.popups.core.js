@@ -61,7 +61,6 @@
 				curRequest = undefined;
 
 				var $a,
-					redirects = re.query.redirects,
 					page = re.query.pages[re.query.pageids[0]],
 					$contentbox = $( '<div>' ).addClass( 'mwe-popups-extract' ).text( page.extract ),
 					thumbnail = page.thumbnail,
@@ -78,14 +77,6 @@
 						.append(
 							$( '<span>' ).text( mw.message( 'popups-last-edited', moment( timestamp ).fromNow() ).text() )
 						);
-
-				if ( redirects ) {
-					$contentbox.prepend(
-						$( '<div>' )
-							.addClass( 'mwe-popups-redirect ')
-							.html( mw.message( 'popups-redirects', redirects[ 0 ].to ).text() )
-					);
-				}
 
 				$a = $( '<a>' )
 					.append( $thumbnail, $contentbox, $timestamp)
