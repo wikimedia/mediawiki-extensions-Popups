@@ -81,6 +81,16 @@ $messages['bo'] = array(
 	'popups-last-edited' => 'མཐའ་མའི་རྩོམ་སྒྲིག། $1',
 );
 
+/** Catalan (català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'popups-message' => 'Quadres emergents',
+	'popups-desc' => "Mostra un quadre emergent amb un resum del contingut quan l'usuari apunta a un enllaç de pàgina",
+	'popups-last-edited' => 'Darrera modificació: $1',
+	'popups-redirects' => 'redirigeix a <h3>$1</h3>',
+);
+
 /** Chechen (нохчийн)
  * @author Умар
  */
@@ -181,6 +191,14 @@ $messages['hi'] = array(
 	'popups-desc' => 'जब एक उपयोगकर्ता पृष्ठ लिंक पर हूवर करता है तब हूवरकार्ड पृष्ठ सारांश की सामग्री प्रदर्शित करता है।',
 );
 
+/** Croatian (hrvatski)
+ * @author MaGa
+ */
+$messages['hr'] = array(
+	'popups-message' => 'Sažetak u lebdećem prozorčiću',
+	'popups-desc' => 'Prikazuje sažet sadržaj stranice prelaskom miša preko poveznice.',
+);
+
 /** Italian (italiano)
  * @author Beta16
  */
@@ -204,6 +222,8 @@ $messages['ja'] = array(
  * @author Arystanbek
  */
 $messages['kk-cyrl'] = array(
+	'popups-message' => 'Қалқып шығушы терезелер',
+	'popups-desc' => 'Пайдаланушы жүгіргіні бет сілтемесіне жақындатқанда бет мазмұны түйіндемесін қалқып шығушы терезелерімен көрсету',
 	'popups-last-edited' => '$1 соңғы рет өңделді',
 	'popups-redirects' => 'бағытталған беті <h3>$1</h3>',
 );
@@ -340,12 +360,13 @@ $messages['ps'] = array(
 /** Portuguese (português)
  * @author Imperadeiro98
  * @author SandroHc
+ * @author Vitorvicentevalente
  */
 $messages['pt'] = array(
-	'popups-message' => 'Pop-ups', # Fuzzy
-	'popups-desc' => 'Exibe pop-ups com resumos do conteúdo de páginas quando o usuário passa o rato por cima do link de uma página', # Fuzzy
+	'popups-message' => 'Pop-ups',
+	'popups-desc' => 'Exibe um painel com resumos do conteúdo de páginas quando o utilizador passa o rato por cima da ligação de uma página.',
 	'popups-last-edited' => 'Última edição há $1',
-	'popups-redirects' => 'redireciona para <h3>$1</h3>',
+	'popups-redirects' => 'redirecciona para <h3>$1</h3>',
 );
 
 /** Russian (русский)
@@ -452,7 +473,7 @@ $messages['yi'] = array(
  */
 $messages['zh-hans'] = array(
 	'popups-message' => '悬停卡片',
-	'popups-desc' => '当用户在页面链接上悬停鼠标指针时，显示带有页面内容摘要的悬停卡片。',
+	'popups-desc' => '当用户在页面链接上悬停鼠标指针时，显示带有页面内容摘要的悬停卡片',
 	'popups-last-edited' => '最后编辑于$1',
 	'popups-redirects' => '重定向至<h3>$1</h3>',
 );
@@ -461,12 +482,8 @@ $messages['zh-hans'] = array(
  * @author Liuxinyu970226
  */
 $messages['zh-hant'] = array(
-	'popups-message' => '快顯視窗',
-	'popups-desc' => '黨用戶懸停頁面鏈接時顯示頁面內容摘要的快顯視窗',
-	'popups-edited-seconds' => '最近編輯於$1秒前。',
-	'popups-edited-minutes' => '最近編輯於$1分鐘前。',
-	'popups-edited-hours' => '最近編輯於$1小時前。',
-	'popups-edited-days' => '最近編輯於$1天前。',
-	'popups-edited-years' => '最近編輯於$1年前。',
+	'popups-message' => '懸停卡片',
+	'popups-desc' => '黨用戶懸停頁面鏈接時顯示頁面內容摘要的懸停卡片',
+	'popups-last-edited' => '最近編輯於$1',
 	'popups-redirects' => '重定向至<h3>$1</h3>',
 );
