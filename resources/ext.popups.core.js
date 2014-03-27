@@ -2,9 +2,8 @@
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
 
-/* global mw: false */
-/* global moment: false */
-/* jslint browser: true */
+/*global mw: false, moment: false */
+/*jshint browser: true */
 
 (function ( $ ) {
 	$( document ).ready( function() {
