@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": [
+            "Amire80"
+        ]
+    },
+    "popups-message": "כרטיסים מרחפים",
+    "popups-desc": "הצגת כרטיסים מרחפים עם סיכומים של תוכן הדף כאשר משתמש עובר מעל קישור לדף.",
+    "popups-last-edited": "נערך לאחרונה $1",
+    "popups-redirects": "מפנה לדף <h3>$1</h3>"
+}

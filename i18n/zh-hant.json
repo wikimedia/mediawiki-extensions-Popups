@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": [
+            "Liuxinyu970226"
+        ]
+    },
+    "popups-message": "懸停卡片",
+    "popups-desc": "黨用戶懸停頁面鏈接時顯示頁面內容摘要的懸停卡片",
+    "popups-last-edited": "最近編輯於$1",
+    "popups-redirects": "重定向至<h3>$1</h3>"
+}

@@ -1,0 +1,12 @@
+{
+    "@metadata": {
+        "authors": [
+            "Chrumps",
+            "Peter Bowman"
+        ]
+    },
+    "popups-message": "Okna pop-up",
+    "popups-desc": "Wyświetla okna pop-up z opisami treści artykułów po umieszczeniu wskaźnika myszy na odnośniku.",
+    "popups-last-edited": "Ostatnia edycja: $1",
+    "popups-redirects": "przekierowuje do<h3>$1</h3>"
+}

@@ -1,0 +1,8 @@
+{
+    "@metadata": {
+        "authors": [
+            "Rancher"
+        ]
+    },
+    "popups-redirects": "преусмерења на <h3>$1</h3>"
+}

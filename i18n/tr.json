@@ -1,0 +1,9 @@
+{
+    "@metadata": {
+        "authors": [
+            "Joseph"
+        ]
+    },
+    "popups-message": "Açılır pencereler",
+    "popups-desc": "Kullanıcı bir makale bağlantısı üzerine geldiğinde makale içeriği özetini içeren açılır pencereler görüntüler."
+}

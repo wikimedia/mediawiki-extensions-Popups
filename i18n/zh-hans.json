@@ -1,0 +1,13 @@
+{
+    "@metadata": {
+        "authors": [
+            "Liuxinyu970226",
+            "Xiaomingyan",
+            "Yfdyh000"
+        ]
+    },
+    "popups-message": "悬停卡片",
+    "popups-desc": "当用户在页面链接上悬停鼠标指针时，显示带有页面内容摘要的悬停卡片",
+    "popups-last-edited": "最后编辑于$1",
+    "popups-redirects": "重定向至<h3>$1</h3>"
+}

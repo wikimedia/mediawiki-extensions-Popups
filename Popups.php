@@ -34,6 +34,7 @@ $localBasePath = dirname( __DIR__ ) . '/Popups';
 $remoteExtPath = 'Popups';
 
 $wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
+$wgMessagesDirs['Popups'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
 
 $wgHooks['GetBetaFeaturePreferences'][] = 'PopupsHooks::getPreferences';

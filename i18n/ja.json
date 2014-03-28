@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": [
+            "Shirayuki",
+            "Whym"
+        ]
+    },
+    "popups-message": "ホバーカード",
+    "popups-desc": "ページへのリンクにホバーした際に、ページ内容の要約のホバーカードを表示する",
+    "popups-last-edited": "最終更新: $1"
+}

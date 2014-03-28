@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": [
+            "Xuacu"
+        ]
+    },
+    "popups-message": "Ventanos emerxentes",
+    "popups-desc": "Amuesa ventanos emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de páxina",
+    "popups-last-edited": "Última edición $1",
+    "popups-redirects": "redireiciona a <h3>$1</h3>"
+}

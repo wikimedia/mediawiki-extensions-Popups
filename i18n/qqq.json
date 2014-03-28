@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": [
+            "Shirayuki"
+        ]
+    },
+    "popups-message": "Name shown in user preference for this extension",
+    "popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
+    "popups-last-edited": "Message to show time span since the page was last edited. Parameters:\n* $1 - the timespan in words (localized). e.g. \"3 months ago\"",
+    "popups-redirects": "Message shown when the hovercard is showing a redirected page"
+}

@@ -1,0 +1,12 @@
+{
+    "@metadata": {
+        "authors": [
+            "Armin1392",
+            "Ebraminio"
+        ]
+    },
+    "popups-message": "پوپاپ‌ها",
+    "popups-desc": "نمایش پوپاپ‌ها با خلاصه‌های محتواهای صفحه هنگامی که کاربر منتظر یک پیوند صفحه است.",
+    "popups-last-edited": "آخرین ویرایش شده $1",
+    "popups-redirects": "تغییر مسیرها به <h3>$1</h3>"
+}

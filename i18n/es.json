@@ -1,0 +1,9 @@
+{
+    "@metadata": {
+        "authors": [
+            "Fitoschido"
+        ]
+    },
+    "popups-message": "Cuadros de información de artículos",
+    "popups-desc": "Muestra recuadros emergentes con el resumen del contenido de un artículo cuando el usuario posa el ratón sobre un enlace."
+}
