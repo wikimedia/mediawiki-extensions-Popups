@@ -66,12 +66,7 @@ $messages['ast'] = array(
  * @author Aftab1995
  */
 $messages['bn'] = array(
-	'popups-message' => 'পপআপ',
-	'popups-edited-seconds' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ সেকেন্ড|$1 সেকেন্ড}} আগে।',
-	'popups-edited-minutes' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ মিনিট|$1 মিনিট}} আগে।',
-	'popups-edited-hours' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ ঘণ্টা|$1 ঘণ্টা}} আগে।',
-	'popups-edited-days' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|গতকাল|$1 দিন আগে}}।',
-	'popups-edited-years' => 'সর্বশেষ সম্পাদনা {{PLURAL:$1|১ বছর|$1 বছর}} আগে।',
+	'popups-message' => 'পপআপ', # Fuzzy
 );
 
 /** Tibetan (བོད་ཡིག)
@@ -131,13 +126,8 @@ $messages['eo'] = array(
  * @author Fitoschido
  */
 $messages['es'] = array(
-	'popups-message' => 'Cuadros de información de artículos',
-	'popups-desc' => 'Muestra recuadros emergentes con el resumen del contenido de un artículo cuando el usuario posa el ratón sobre un enlace.',
-	'popups-edited-seconds' => 'Última modificación: hace {{PLURAL:$1|1 segundo|$1 segundos}}.',
-	'popups-edited-minutes' => 'Última modificación: hace {{PLURAL:$1|1 minuto|$1 minutos}}.',
-	'popups-edited-hours' => 'Última modificación: hace {{PLURAL:$1|1 hora|$1 horas}}.',
-	'popups-edited-days' => 'Última modificación: {{PLURAL:$1|ayer|hace $1 días}}.',
-	'popups-edited-years' => 'Última modificación: hace {{PLURAL:$1|1 año|$1 años}}.',
+	'popups-message' => 'Cuadros de información de artículos', # Fuzzy
+	'popups-desc' => 'Muestra recuadros emergentes con el resumen del contenido de un artículo cuando el usuario posa el ratón sobre un enlace.', # Fuzzy
 );
 
 /** Persian (فارسی)
@@ -216,6 +206,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'popups-message' => 'ホバーカード',
 	'popups-desc' => 'ページへのリンクにホバーした際に、ページ内容の要約のホバーカードを表示する',
+	'popups-last-edited' => '最終更新: $1',
 );
 
 /** Kazakh (Cyrillic script) (қазақша (кирил)‎)
@@ -232,13 +223,8 @@ $messages['kk-cyrl'] = array(
  * @author Priviet
  */
 $messages['ko'] = array(
-	'popups-message' => '팝업',
-	'popups-desc' => '사용자가 문서 링크에 마우스를 갖다대면 문서 내용 요약을 팝업으로 표시',
-	'popups-edited-seconds' => '{{PLURAL:$1|$1초}} 전에 마지막으로 편집함.',
-	'popups-edited-minutes' => '{{PLURAL:$1|$1분}} 전에 마지막으로 편집함',
-	'popups-edited-hours' => '{{PLURAL:$1|$1시간}} 전에 마지막으로 편집함',
-	'popups-edited-days' => '{{PLURAL:$1|어제|$1일 전}}에 마지막으로 편집함.',
-	'popups-edited-years' => '{{PLURAL:$1|$1년}} 전에 마지막으로 편집함',
+	'popups-message' => '팝업', # Fuzzy
+	'popups-desc' => '사용자가 문서 링크에 마우스를 갖다대면 문서 내용 요약을 팝업으로 표시', # Fuzzy
 	'popups-redirects' => '<h3>$1</h3> 문서로 넘겨주기',
 );
 
@@ -271,8 +257,7 @@ $messages['lv'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
-	'popups-desc' => "Mampiseho popup misy ny ambangovangom-botoatim-pejy rehefa mandalo eo ambonin'ilay rohim-pejy ny mpampiasa",
-	'popups-edited-minutes' => 'Niova farany $1{{PLURAL:$1}} minitra ago.',
+	'popups-desc' => "Mampiseho popup misy ny ambangovangom-botoatim-pejy rehefa mandalo eo ambonin'ilay rohim-pejy ny mpampiasa", # Fuzzy
 );
 
 /** Macedonian (македонски)
@@ -299,13 +284,8 @@ $messages['ml'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
-	'popups-message' => 'उचकण्या',
-	'popups-desc' => 'जेंव्हा सदस्य एखाद्या लेखदुव्यावर घुटमळतो तेंव्हा, लेखाच्या आशय सारांशासह उचकण्या दर्शविते',
-	'popups-edited-seconds' => 'शेवटचे संपादन {{PLURAL:$1|$1 सेकंदा|$1 सेकंदां}}पूर्वी',
-	'popups-edited-minutes' => 'शेवटचे संपादन {{PLURAL:$1|$1 मिनिटा|$1 मिनिटां}}पूर्वी',
-	'popups-edited-hours' => 'शेवटचे संपादन {{PLURAL:$1|$1 तासा|$1 तासां}}पूर्वी',
-	'popups-edited-days' => 'शेवटचे संपादन {{PLURAL:$1|काल|$1 दिवसांपूर्वी}}.',
-	'popups-edited-years' => 'शेवटचे संपादन {{PLURAL:$1|१ वर्षा|$1 वर्षां}}पूर्वी',
+	'popups-message' => 'उचकण्या', # Fuzzy
+	'popups-desc' => 'जेंव्हा सदस्य एखाद्या लेखदुव्यावर घुटमळतो तेंव्हा, लेखाच्या आशय सारांशासह उचकण्या दर्शविते', # Fuzzy
 	'popups-redirects' => '<h3>$1</h3>ला पुनर्निर्देशित करते',
 );
 
@@ -331,15 +311,12 @@ $messages['oc'] = array(
 
 /** Polish (polski)
  * @author Chrumps
+ * @author Peter Bowman
  */
 $messages['pl'] = array(
-	'popups-message' => 'Okna pop-up',
-	'popups-desc' => 'Wyświetla okna pop-up z opisami treści artykułów po umieszczeniu wskaźnika myszy na odnośniku.',
-	'popups-edited-seconds' => 'Ostatnio zmodyfikowano {{PLURAL:$1|1 sekundę|$1 sekundy|$1 sekund}} temu.',
-	'popups-edited-minutes' => 'Ostatnio zmodyfikowano {{PLURAL:$1|1 minutę|$1 minuty|$1 minut}} temu.',
-	'popups-edited-hours' => 'Ostatnio zmodyfikowano {{PLURAL:$1|1 godzinę|$1 godziny|$1 godzin}} temu.',
-	'popups-edited-days' => 'Ostatnio zmodyfikowano {{PLURAL:$1|wczoraj|$1 dni temu}}.',
-	'popups-edited-years' => 'Ostatnio zmodyfikowano {{PLURAL:$1|rok|$1 lata|$1 lat}} temu.',
+	'popups-message' => 'Okna pop-up', # Fuzzy
+	'popups-desc' => 'Wyświetla okna pop-up z opisami treści artykułów po umieszczeniu wskaźnika myszy na odnośniku.', # Fuzzy
+	'popups-last-edited' => 'Ostatnia edycja: $1',
 	'popups-redirects' => 'przekierowuje do<h3>$1</h3>',
 );
 
@@ -347,13 +324,8 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'popups-message' => 'بربوکيزې',
-	'popups-desc' => 'بربوکيزې د يو مخ د مېنځپانگې لنډيزونه هغه وخت ښکاره کوي کله چې کارن د موږک غشی د يوه مخ پر تړنې راولي',
-	'popups-edited-seconds' => 'تېر سمون {{PLURAL:$1|1 ثانيه|$1 ثانيې}} دمخه شوی.',
-	'popups-edited-minutes' => 'تېر سمون {{PLURAL:$1|1 دقيقه|$1 دقيقې}} دمخه شوی.',
-	'popups-edited-hours' => 'تېر سمون {{PLURAL:$1|1 ساعت|$1 ساعتونه}} دمخه شوی.',
-	'popups-edited-days' => 'تېر سمون {{PLURAL:$1|پرون|$1 ورځې دمخه}} شوی.',
-	'popups-edited-years' => 'تېر سمون {{PLURAL:$1|1 کال|$1 کالونه}} دمخه شوی.',
+	'popups-message' => 'بربوکيزې', # Fuzzy
+	'popups-desc' => 'بربوکيزې د يو مخ د مېنځپانگې لنډيزونه هغه وخت ښکاره کوي کله چې کارن د موږک غشی د يوه مخ پر تړنې راولي', # Fuzzy
 	'popups-redirects' => '<h3>$1</h3> ته مخ ورگرځونې',
 );
 
@@ -389,6 +361,16 @@ $messages['sco'] = array(
 	'popups-redirects' => 'redirects til <h3>$1</h3>',
 );
 
+/** Slovak (slovenčina)
+ * @author Sudo77(new)
+ */
+$messages['sk'] = array(
+	'popups-message' => 'Vyskakovacie kartičky',
+	'popups-desc' => 'Keď používateľ podrží kurzor nad odkazom, zobrazí sa vyskakovacia kartička so zhrnutím obsahu stránky.',
+	'popups-last-edited' => 'Posledná úprava $1',
+	'popups-redirects' => 'presmerovanie na <h3>$1</h3>',
+);
+
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  */
@@ -413,25 +395,15 @@ $messages['sv'] = array(
  * @author Ravichandra
  */
 $messages['te'] = array(
-	'popups-message' => 'బుడగలు',
-	'popups-edited-seconds' => 'చివరిసారిగా {{PLURAL:$1|1 సెకండు|$1 సెకండ్ల}} కిందట మార్చబడింది.',
-	'popups-edited-minutes' => 'చివరిసారిగా {{PLURAL:$1|1 నిమిషం|$1 నిమిషాల}} కిందట మార్చబడింది.',
-	'popups-edited-hours' => 'చివరిసారిగా {{PLURAL:$1|1 గంట|$1 గంటల}} కిందట మార్చబడింది.',
-	'popups-edited-days' => 'చివరిసారిగా {{PLURAL:$1|నిన్న|$1 రోజుల కిందట}} మార్చబడింది.',
-	'popups-edited-years' => 'చివరిసారిగా {{PLURAL:$1|ఏడాది|$1 సంవత్సరాల}} కిందట మార్చబడింది.',
+	'popups-message' => 'బుడగలు', # Fuzzy
 );
 
 /** Turkish (Türkçe)
  * @author Joseph
  */
 $messages['tr'] = array(
-	'popups-message' => 'Açılır pencereler',
-	'popups-desc' => 'Kullanıcı bir makale bağlantısı üzerine geldiğinde makale içeriği özetini içeren açılır pencereler görüntüler.',
-	'popups-edited-seconds' => 'En son {{PLURAL:$1|1 saniye|$1 saniye}} önce değiştirildi.',
-	'popups-edited-minutes' => 'En son {{PLURAL:$1|1 dakika|$1 dakika}} önce değiştirildi.',
-	'popups-edited-hours' => 'En son {{PLURAL:$1|1 saat|$1 saat}} önce değiştirildi.',
-	'popups-edited-days' => 'En son {{PLURAL:$1|dün|$1 gün önce}} değiştirildi.',
-	'popups-edited-years' => 'En son {{PLURAL:$1|1 yıl|$1 yıl}} önce değiştirildi.',
+	'popups-message' => 'Açılır pencereler', # Fuzzy
+	'popups-desc' => 'Kullanıcı bir makale bağlantısı üzerine geldiğinde makale içeriği özetini içeren açılır pencereler görüntüler.', # Fuzzy
 );
 
 /** Ukrainian (українська)
@@ -459,10 +431,6 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
-	'popups-edited-seconds' => 'לעצט רעדאקטירט פֿאַר {{PLURAL:$1|1 סעקונדע|$1 סעקונדעס}}',
-	'popups-edited-minutes' => 'לעצט רעדאקטירט פֿאַר {{PLURAL:$1|1 מינוט|$1 מינוט}}',
-	'popups-edited-hours' => "לעצט דערהײַנטיקט פֿאַר {{PLURAL:$1|$1 שעה|$1 שעה'ן}}",
-	'popups-edited-days' => 'לעצט רעדאקטירט {{PLURAL:$1|נעכטן|פאר $1 טעג}}.',
 	'popups-redirects' => 'פירט ווײַטערפירונג צו <h3>$1</h3>',
 );
 
