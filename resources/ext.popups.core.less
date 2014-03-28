@@ -9,6 +9,7 @@
 	border-top: 0;
 	border-bottom: @size solid @color;
 	top: -@size;
+	/* @noflip */
 	left: @left;
 }
 
@@ -55,17 +56,17 @@
 		}
 
 		> div.mwe-popups-is-tall {
-			float: right;
 			height: 250px;
 			width: 200px;
 			padding: 0;
 			background-size: cover;
 			background-repeat: no-repeat;
 			overflow: hidden;
+			/* @noflip */
+			float: right;
 		}
 
 		> div.mwe-popups-is-not-tall {
-			float: right;
 			height: 200px;
 			width: 300px;
 			padding: 0;
@@ -73,6 +74,8 @@
 			background-position: center;
 			background-repeat: no-repeat;
 			overflow: hidden;
+			/* @noflip */
+			float: right;
 		}
 
 		> div.mwe-popups-timestamp-older, div.mwe-popups-timestamp-recent {
@@ -81,6 +84,8 @@
 			font-size: 0.85em;
 			position: absolute;
 			bottom: 0;
+			/* @noflip */
+			left: 0;
 		}
 
 		> div.mwe-popups-timestamp-older {
@@ -100,10 +105,15 @@
 		}
 
 		.mwe-popups-extract {
-			float: left;
 			width: 215px;
 			height: 125px;
 			overflow: hidden;
+			/* @noflip */
+			float: left;
+		}
+
+		div.mwe-popups-timestamp-older, div.mwe-popups-timestamp-recent {
+			width: 215px;
 		}
 	}
 
@@ -115,6 +125,10 @@
 			overflow: hidden;
 			margin-bottom: 3.84em;
 			padding-bottom: 1.28em;
+		}
+
+		div.mwe-popups-timestamp-older, div.mwe-popups-timestamp-recent {
+			width: 270px;
 		}
 	}
 
@@ -131,26 +145,30 @@
 
 	&.flipped.mwe-popups-no-image-tri {
 		&:after {
+			/* @noflip */
 			left: initial;
+			/* @noflip */
 			right: 11px;
 		}
 
 		&:before {
+			/* @noflip */
 			left: initial;
+			/* @noflip */
 			right: 10px;
 		}
 	}
 
 	&.mwe-popups-image-tri {
 		&:before {
-			.mwe-popups-border-triangle( 9px, 9px, #bbb);
 			z-index: 90;
+			.mwe-popups-border-triangle( 9px, 9px, #bbb);
 		}
 
 		&.flipped {
 			&:before {
-				.mwe-popups-border-triangle( 9px, 273px, #bbb);
 				z-index: 90;
+				.mwe-popups-border-triangle( 9px, 273px, #bbb);
 			}
 		}
 
@@ -162,6 +180,8 @@
 			margin-top: -8px;
 			position: absolute;
 			z-index: 100;
+			/* @noflip */
+			left: 0;
 		}
 	}
 
@@ -169,8 +189,8 @@
 		min-height: 242px;
 
 		&:before {
-			.mwe-popups-border-triangle( 9px, 420px, #bbb);
 			z-index: 90;
+			.mwe-popups-border-triangle( 9px, 420px, #bbb);
 		}
 
 		> a > svg {
@@ -178,8 +198,9 @@
 			margin-top: -8px;
 			margin-bottom: -5px;
 			position: absolute;
-			right: 0;
 			z-index: 100;
+			/* @noflip */
+			right: 0;
 		}
 	}
 }
