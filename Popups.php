@@ -18,6 +18,8 @@
  * This extension requires that the PageImages and TextExtracts
  * extensions have also been installed.
  *
+ * Install BetaFeatures if you don't want Popups to load for all users.
+ *
  * @file
  * @ingroup extensions
  */

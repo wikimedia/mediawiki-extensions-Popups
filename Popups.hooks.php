@@ -36,7 +36,8 @@ class PopupsHooks {
 	}
 
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin) {
-		// Enable only if the user has turned it on in Beta Preferences. Also depends on PageImages & TextExtracts extensions.
+		// Enable only if the user has turned it on in Beta Preferences, or BetaFeatures is not installed.
+		// Will only be loaded if PageImages & TextExtracts extensions are installed.
 		if ( ( ( class_exists( 'BetaFeatures' ) && BetaFeatures::isFeatureEnabled( $skin->getUser(), 'popups' ) )
 				|| !class_exists( 'BetaFeatures' ) )
 			&& class_exists( 'ApiQueryExtracts' )
