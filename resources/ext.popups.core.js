@@ -104,6 +104,18 @@
 		}
 
 		/**
+		 * @method createSVGTag
+		 * Use createElementNS to create the svg:image tag as jQuery
+		 * uses createElement instead. Some browsers map the `image` tag
+		 * to `img` tag, thus an `svg:image` is required.
+		 * @param {String} tag
+		 * @return {Object}
+		 */
+		function createSVGTag( tag ) {
+			return document.createElementNS( 'http://www.w3.org/2000/svg', tag );
+		}
+
+		/**
 		 * @method createThumbnail
 		 * Returns a thumbnail object based on the ratio of the image
 		 * @param {Object} thumbnail
@@ -119,7 +131,8 @@
 
 			if ( tall ) {
 				if ( supportsSVG() ) {
-					$thumbnail = $( '<image>' )
+					$thumbnail = $( createSVGTag( 'image' ) );
+					$thumbnail
 						.addClass( 'mwe-popups-is-not-tall' )
 						.attr( {
 							'xlink:href': thumbnail.source,
@@ -146,7 +159,8 @@
 				}
 			} else {
 				if ( supportsSVG() ) {
-					$thumbnail = $( '<image>' )
+					$thumbnail = $( createSVGTag( 'image' ) );
+					$thumbnail
 						.addClass( 'mwe-popups-is-not-tall' )
 						.attr( {
 							'xlink:href': thumbnail.source,
