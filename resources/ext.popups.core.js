@@ -2,11 +2,8 @@
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
 
-/*global mw: false, moment: false */
-/*jshint browser: true */
-
-(function ( $ ) {
-	$( document ).ready( function() {
+( function ( $, mw ) {
+	$( document ).ready( function () {
 
 		var closeTimer, // The timer use to delay `closeBox`
 			openTimer, // The timer used to delay sending the API request/opening the popup form cache
@@ -40,7 +37,7 @@
 		 * @param {String} title
 		 * @param {Object} $el
 		 */
-		function sendRequest ( href, title, $el ) {
+		function sendRequest( href, title, $el ) {
 
 			curRequest = api.get( {
 				action: 'query',
@@ -61,8 +58,10 @@
 				curRequest = undefined;
 
 				var $a,
-					page = re.query.pages[re.query.pageids[0]],
-					$contentbox = $( '<div>' ).addClass( 'mwe-popups-extract' ).text( page.extract ),
+					page = re.query.pages[ re.query.pageids[ 0 ] ],
+					$contentbox = $( '<div>' )
+						.addClass( 'mwe-popups-extract' )
+						.text( page.extract ),
 					thumbnail = page.thumbnail,
 					tall = thumbnail && thumbnail.height > thumbnail.width,
 					$thumbnail = createThumbnail( thumbnail, tall ),
@@ -75,17 +74,22 @@
 					$timestamp = $( '<div>' )
 						.addClass( timestampclass )
 						.append(
-							$( '<span>' ).text( mw.message( 'popups-last-edited', moment( timestamp ).fromNow() ).text() )
-						);
+							$( '<span>' ).text( mw.message( 'popups-last-edited',
+								moment( timestamp ).fromNow() ).text() )
+					);
 
 				$a = $( '<a>' )
-					.append( $thumbnail, $contentbox, $timestamp)
+					.append( $thumbnail, $contentbox, $timestamp )
 					.attr( 'href', href )
 					.on( 'click', logClick );
 
-				cache[ href ] = { box: $a, thumbnail: thumbnail, tall: tall	};
+				cache[ href ] = {
+					box: $a,
+					thumbnail: thumbnail,
+					tall: tall
+				};
 				createBox( href, $el );
-			});
+			} );
 
 			return true;
 		}
@@ -106,7 +110,7 @@
 		 * @param {boolean} tall
 		 * @return {Object} jQuery DOM element of the thumbnail
 		 */
-		function createThumbnail ( thumbnail, tall ) {
+		function createThumbnail( thumbnail, tall ) {
 			if ( !thumbnail ) {
 				return $( '<span>' );
 			}
@@ -138,7 +142,7 @@
 				} else {
 					$thumbnail = $( '<div>' )
 						.addClass( 'mwe-popups-is-tall' )
-						.css( 'background-image', 'url(' + thumbnail.source + ')');
+						.css( 'background-image', 'url(' + thumbnail.source + ')' );
 				}
 			} else {
 				if ( supportsSVG() ) {
@@ -179,7 +183,7 @@
 		 * @param {String} href
 		 * @param {Object} $el
 		 */
-		function createBox ( href, $el ) {
+		function createBox( href, $el ) {
 			var bar = cache[ href ],
 				offsetTop = $el.offset().top + $el.height() + 9,
 				offsetLeft = $el.offset().left,
@@ -214,10 +218,10 @@
 				// If theres an image and the popup is portrait do the SVG stuff
 				.toggleClass( 'mwe-popups-image-tri', ( bar.thumbnail && !bar.tall ) )
 				.addClass( bar.tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall' )
-				.css({
+				.css( {
 					top: offsetTop,
 					left: offsetLeft
-				})
+				} )
 				.append( bar.box )
 				.attr( 'aria-hidden', 'false' )
 				.show()
@@ -228,13 +232,13 @@
 				// More information and workarounds here - http://stackoverflow.com/a/13654655/366138
 				.html( $box.html() );
 
-			if ( flipped  && bar.thumbnail ) {
+			if ( flipped && bar.thumbnail ) {
 				if ( !bar.tall ) {
-					$box.find( 'image' )[0].setAttribute( 'clip-path', 'url(#mwe-popups-mask-flip)' );
+					$box.find( 'image' )[ 0 ].setAttribute( 'clip-path', 'url(#mwe-popups-mask-flip)' );
 				} else {
 					$box
 						.removeClass( 'mwe-popups-no-image-tri' )
-						.find( 'image' )[0].setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask)' );
+						.find( 'image' )[ 0 ].setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask)' );
 				}
 			}
 
@@ -261,7 +265,7 @@
 		 * Delay to give enough time for the use to move the pointer from
 		 * the link to the popup box. Also avoids closing the popup by accident.
 		 */
-		function leaveActive () {
+		function leaveActive() {
 			closeTimer = setTimeout( closeBox, 100 );
 		}
 
@@ -269,7 +273,7 @@
 		 * @method leaveInactive
 		 * Unbinds events on the anchor tag and aborts AJAX request.
 		 */
-		function leaveInactive () {
+		function leaveInactive() {
 			$( currentLink ).off( 'mouseleave', leaveInactive );
 			clearTimeout( openTimer );
 			if ( curRequest ) {
@@ -284,7 +288,7 @@
 		 * Hides the popup, clears timers and sets it and the
 		 * `currentLink` to undefined.
 		 */
-		function closeBox () {
+		function closeBox() {
 			elDuration = mw.now() - elTime;
 
 			$( currentLink ).removeClass( 'mwe-popups-anchor-hover' ).off( 'mouseleave', leaveActive );
@@ -295,14 +299,14 @@
 				.on( 'webkitAnimationEnd oanimationend msAnimationEnd animationend', function () {
 					if ( $( this ).hasClass( 'mwe-popups-fade-out' ) ) {
 						$( this )
-						.off( 'webkitAnimationEnd oanimationend msAnimationEnd animationend' )
-						.removeClass( 'mwe-popups-fade-out' )
-						.attr( 'aria-hidden', 'true' )
-						.hide();
+							.off( 'webkitAnimationEnd oanimationend msAnimationEnd animationend' )
+							.removeClass( 'mwe-popups-fade-out' )
+							.attr( 'aria-hidden', 'true' )
+							.hide();
 					}
 				} );
 
-			if ( closeTimer ){
+			if ( closeTimer ) {
 				clearTimeout( closeTimer );
 			}
 
@@ -318,13 +322,13 @@
 		 * Is bound to the `click` event.
 		 * @param {Object} e
 		 */
-		function logClick ( e ) {
-			if ( e.which === 2) { // middle click
+		function logClick( e ) {
+			if ( e.which === 2 ) { // middle click
 				elAction = 'opened in new tab';
-			} else if ( e.which === 1) {
+			} else if ( e.which === 1 ) {
 				if ( e.ctrlKey || e.metaKey ) {
 					elAction = 'opened in new tab';
-				} else if ( e.shiftKey ){
+				} else if ( e.shiftKey ) {
 					elAction = 'opened in new window';
 				} else {
 					elAction = 'opened in same tab';
@@ -342,15 +346,15 @@
 		 * If `href` is passed it redirects to that location after the event is logged.
 		 * @param {string} href
 		 */
-		function logEvent ( href ) {
+		function logEvent( href ) {
 			if ( typeof mw.eventLog !== 'function' ) {
 				return false;
 			}
 
 			var dfd = $.Deferred(),
 				event = {
-					'duration': Math.round( elDuration ),
-					'action': elAction
+					duration: Math.round( elDuration ),
+					action: elAction
 				};
 
 			if ( elSessionId !== null ) {
@@ -373,7 +377,7 @@
 		 * Generates a unique sessionId or pulls an existing one from localStorage
 		 * @return {string} sessionId
 		 */
-		function getSessionId () {
+		function getSessionId() {
 			var sessionId = null;
 			try {
 				sessionId = localStorage.getItem( 'popupsSessionId' );
@@ -396,14 +400,13 @@
 			.on( 'mouseenter focus', function () {
 				$( this )
 					.attr( 'data-original-title', $( this ).attr( 'title' ) )
-					.attr( 'title', '');
+					.attr( 'title', '' );
 			} )
 			.on( 'mouseleave blur', function () {
 				$( this )
 					.attr( 'title', $( this ).attr( 'data-original-title' ) )
-					.attr( 'data-original-title', '');
+					.attr( 'data-original-title', '' );
 			} );
-
 
 		$( '#mw-content-text a' ).on( 'mouseenter focus', function () {
 			var $this = $( this ),
@@ -437,7 +440,7 @@
 			currentLink = this;
 			$this.on( 'mouseleave blur', leaveInactive );
 
-			if ( cache[ href ] ){
+			if ( cache[ href ] ) {
 				openTimer = setTimeout( function () {
 					createBox( href, $this );
 				}, 150 );
@@ -485,4 +488,4 @@
 
 	} );
 
-} ) ( jQuery );
+}( jQuery, mediaWiki ) );

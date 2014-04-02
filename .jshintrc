@@ -17,10 +17,11 @@
 	"unused": true,
 	// Legacy
 	"onevar": true,
-
+	"browser": true,
 	/* Local */
 	"predef": [
 		"mediaWiki",
-		"jQuery"
+		"jQuery",
+		"moment"
 	]
 }
