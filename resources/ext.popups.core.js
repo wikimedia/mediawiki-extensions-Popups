@@ -10,6 +10,7 @@
 
 		var closeTimer, // The timer use to delay `closeBox`
 			openTimer, // The timer used to delay sending the API request/opening the popup form cache
+			scrolled = false, // true if user scrolled the page but haven't moved mouse cursor
 			elTime, // EL: UNIX timestamp of when the popup was rendered
 			elDuration, // EL: How long was the popup open in milliseconds
 			elAction, // EL: Was the popup clicked or middle clicked or dismissed
@@ -372,6 +373,15 @@
 		}
 		elSessionId = getSessionId();
 
+		// Prevent popups from showing up when the mouse cursor accidentally
+		// ends up hovering a link after scrolling
+		$( window ).on( 'scroll', function () {
+			scrolled = true;
+		} );
+		$( window ).on( 'mousemove', function () {
+			scrolled = false;
+		} );
+
 		// Remove title attribute to remove the default yellow tooltip
 		// Put the title back after the hover
 		$( '#mw-content-text a' )
@@ -397,7 +407,9 @@
 				title = $this.attr( 'data-original-title' );
 
 			// If a popup for the following link can't be shown
-			if ( !title ||
+			if (
+				scrolled ||
+				!title ||
 				$this.hasClass( 'extiw' ) ||
 				$this.hasClass( 'image' ) ||
 				$this.hasClass( 'new' ) ||
