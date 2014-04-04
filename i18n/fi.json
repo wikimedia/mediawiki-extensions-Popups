@@ -4,8 +4,8 @@
             "Stryn"
         ]
     },
-    "popups-message": "Ponnahdusikkunat",
-    "popups-desc": "Näyttää ponnahdusikkunassa yhteenvedon sivun sisällöstä, kun käyttäjä laittaa hiiren sivulle osoittavan linkin päälle.",
+    "popups-message": "Ponnahduskortit",
+    "popups-desc": "Näyttää ponnahduskortissa yhteenvedon sivun sisällöstä, kun käyttäjä laittaa hiiren sivulle osoittavan linkin päälle.",
     "popups-last-edited": "Viimeksi muokattu $1",
     "popups-redirects": "ohjaa sivulle <h3>$1</h3>"
 }
