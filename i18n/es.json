@@ -4,6 +4,8 @@
             "Fitoschido"
         ]
     },
-    "popups-message": "Cuadros de información de artículos",
-    "popups-desc": "Muestra recuadros emergentes con el resumen del contenido de un artículo cuando el usuario posa el ratón sobre un enlace."
+    "popups-message": "Cuadros emergentes",
+    "popups-desc": "Muestra un cuadro emergente con el resumen del contenido de una página cuando el usuario posa el ratón sobre un enlace",
+    "popups-last-edited": "Última modificación: $1",
+    "popups-redirects": "redirige a <h3>$1</h3>"
 }

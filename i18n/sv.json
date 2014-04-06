@@ -6,8 +6,8 @@
             "WikiPhoenix"
         ]
     },
-    "popups-message": "Popup-fönster",
-    "popups-desc": "Visar popup-fönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk.",
+    "popups-message": "Hovercards",
+    "popups-desc": "Visar skyltfönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk",
     "popups-last-edited": "Senast redigerad $1",
     "popups-redirects": "omdirigering till <h3>$1</h3>"
 }
