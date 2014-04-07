@@ -148,7 +148,6 @@
 					$thumbnail = $( '<svg>' )
 						.attr( {
 							xmlns: 'http://www.w3.org/2000/svg',
-							viewBox: '0 0 ' + SIZES.portraitImage.w + ' ' + SIZES.portraitImage.h,
 							width: SIZES.portraitImage.w,
 							height: SIZES.portraitImage.h
 						} )
@@ -177,9 +176,6 @@
 					$thumbnail = $( '<svg>' )
 						.attr( {
 							xmlns: 'http://www.w3.org/2000/svg',
-							viewBox: '0 0 ' + SIZES.landscapeImage.w + ' ' + ( thumbnail.height > SIZES.landscapeImage.h ) ?
-								SIZES.landscapeImage.h :
-								thumbnail.height,
 							width: SIZES.landscapeImage.w + 3,
 							height: ( thumbnail.height > SIZES.landscapeImage.h ) ?
 								SIZES.landscapeImage.h :
