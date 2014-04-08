@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": [
+            "Pikne"
+        ]
+    },
+    "popups-message": "Hõljukkaardid",
+    "popups-desc": "Kuvab hõljukkaardi lehekülje kokkuvõttega, kui liigutada kursor üle leheküljelingi.",
+    "popups-last-edited": "Viimati muudetud $1",
+    "popups-redirects": "suunab ümber leheküljele <h3>$1</h3>"
+}
