@@ -122,12 +122,12 @@
 				return $( '<span>' );
 			}
 
-			var $thumbnail;
+			var $thumbnailSVGImage, $thumbnail;
 
 			if ( tall ) {
 				if ( supportsSVG ) {
-					$thumbnail = $( createSVGTag( 'image' ) );
-					$thumbnail
+					$thumbnailSVGImage = $( createSVGTag( 'image' ) );
+					$thumbnailSVGImage
 						.addClass( 'mwe-popups-is-not-tall' )
 						.attr( {
 							'xlink:href': thumbnail.source,
@@ -148,7 +148,7 @@
 							width: SIZES.portraitImage.w,
 							height: SIZES.portraitImage.h
 						} )
-						.append( $thumbnail );
+						.append( $thumbnailSVGImage );
 				} else {
 					$thumbnail = $( '<div>' )
 						.addClass( 'mwe-popups-is-tall' )
@@ -156,8 +156,8 @@
 				}
 			} else {
 				if ( supportsSVG ) {
-					$thumbnail = $( createSVGTag( 'image' ) );
-					$thumbnail
+					$thumbnailSVGImage = $( createSVGTag( 'image' ) );
+					$thumbnailSVGImage
 						.addClass( 'mwe-popups-is-not-tall' )
 						.attr( {
 							'xlink:href': thumbnail.source,
@@ -181,7 +181,7 @@
 								SIZES.landscapeImage.h :
 								thumbnail.height
 						} )
-						.append( $thumbnail );
+						.append( $thumbnailSVGImage );
 				} else {
 					$thumbnail = $( '<div>' )
 						.addClass( 'mwe-popups-is-not-tall' )
