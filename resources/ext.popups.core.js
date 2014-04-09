@@ -134,7 +134,9 @@
 							x: ( thumbnail.width > SIZES.portraitImage.w ) ?
 								( ( thumbnail.width - SIZES.portraitImage.w ) / -2 ) :
 								( SIZES.portraitImage.w - thumbnail.width ),
-							y: ( thumbnail.height > SIZES.portraitImage.h) ? ( ( thumbnail.height - SIZES.portraitImage.h ) / -2 ) : 0,
+							y: ( thumbnail.height > SIZES.portraitImage.h) ?
+								( ( thumbnail.height - SIZES.portraitImage.h ) / -2 ) :
+								0,
 							width: thumbnail.width,
 							height: thumbnail.height
 						} );
@@ -161,7 +163,9 @@
 							'xlink:href': thumbnail.source,
 							'clip-path': 'url(#mwe-popups-mask)',
 							x: 0,
-							y: ( thumbnail.height > SIZES.landscapeImage.h) ? ( ( thumbnail.height - SIZES.landscapeImage.h ) / -2 ) : 0,
+							y: ( thumbnail.height > SIZES.landscapeImage.h) ?
+								( ( thumbnail.height - SIZES.landscapeImage.h ) / -2 ) :
+								0,
 							width: thumbnail.width,
 							height: thumbnail.height
 						} );
@@ -169,9 +173,13 @@
 					$thumbnail = $( '<svg>' )
 						.attr( {
 							xmlns: 'http://www.w3.org/2000/svg',
-							viewBox: '0 0 ' + SIZES.landscapeImage.w + ' ' + ( thumbnail.height > SIZES.landscapeImage.h ) ? SIZES.landscapeImage.h : thumbnail.height,
+							viewBox: '0 0 ' + SIZES.landscapeImage.w + ' ' + ( thumbnail.height > SIZES.landscapeImage.h ) ?
+								SIZES.landscapeImage.h :
+								thumbnail.height,
 							width: SIZES.landscapeImage.w + 3,
-							height: ( thumbnail.height > SIZES.landscapeImage.h ) ? SIZES.landscapeImage.h : thumbnail.height
+							height: ( thumbnail.height > SIZES.landscapeImage.h ) ?
+								SIZES.landscapeImage.h :
+								thumbnail.height
 						} )
 						.append( $thumbnail );
 				} else {
