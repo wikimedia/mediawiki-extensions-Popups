@@ -15,6 +15,7 @@
 			currentLink, // DOM element of the current anchor tag
 			cache = {},
 			curRequest, // Current API request
+			supportsSVG =  document.implementation.hasFeature( 'http://www.w3.org/TR/SVG11/feature#Image', '1.1' ),
 			api = new mw.Api(),
 			SIZES = {
 				portraitImage: {
@@ -98,15 +99,6 @@
 		}
 
 		/**
-		 * @method supportsSVG
-		 * Checks for SVG support in browser
-		 * @return {boolean}
-		 */
-		function supportsSVG() {
-			return document.implementation.hasFeature( 'http://www.w3.org/TR/SVG11/feature#Image', '1.1' );
-		}
-
-		/**
 		 * @method createSVGTag
 		 * Use createElementNS to create the svg:image tag as jQuery
 		 * uses createElement instead. Some browsers map the `image` tag
@@ -133,7 +125,7 @@
 			var $thumbnail;
 
 			if ( tall ) {
-				if ( supportsSVG() ) {
+				if ( supportsSVG ) {
 					$thumbnail = $( createSVGTag( 'image' ) );
 					$thumbnail
 						.addClass( 'mwe-popups-is-not-tall' )
@@ -161,7 +153,7 @@
 						.css( 'background-image', 'url(' + thumbnail.source + ')' );
 				}
 			} else {
-				if ( supportsSVG() ) {
+				if ( supportsSVG ) {
 					$thumbnail = $( createSVGTag( 'image' ) );
 					$thumbnail
 						.addClass( 'mwe-popups-is-not-tall' )
@@ -497,7 +489,7 @@
 			.appendTo( document.body );
 
 		// SVG for masking and creating the triangle/pokey
-		if ( supportsSVG() ) {
+		if (supportsSVG ) {
 			$svg = $( '<div>' )
 				.attr( 'id', 'mwe-popups-svg' )
 				.appendTo( document.body )
