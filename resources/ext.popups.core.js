@@ -113,6 +113,9 @@
 		/**
 		 * @method createThumbnail
 		 * Returns a thumbnail object based on the ratio of the image
+		 * Uses an SVG image where available to add the triangle/pokey
+		 * mask on the image. Crops and resizes the SVG image so that
+		 * is fits inside a rectangle of a particular size.
 		 * @param {Object} thumbnail
 		 * @param {boolean} tall
 		 * @return {Object} jQuery DOM element of the thumbnail
