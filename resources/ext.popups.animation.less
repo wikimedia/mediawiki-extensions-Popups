@@ -11,6 +11,13 @@
 	-moz-animation: @arguments;
 	-o-animation: @arguments;
 	animation: @arguments;
+
+	/* Leave the element in its final animation state */
+	-webkit-animation-fill-mode: forwards; /* Chrome 16+, Safari 4+ */
+	-moz-animation-fill-mode: forwards; /* FF 5+ */
+	-o-animation-fill-mode: forwards; /* not implemented yet */
+	-ms-animation-fill-mode: forwards; /* IE 10+ */
+	animation-fill-mode: forwards; /* when the spec is finished */
 }
 
 @-webkit-keyframes mwe-popups-fade-in {

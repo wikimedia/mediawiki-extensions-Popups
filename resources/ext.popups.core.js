@@ -350,16 +350,16 @@
 
 		$box
 			.removeClass( 'mwe-popups-fade-out mwe-popups-fade-in' )
-			.addClass( 'mwe-popups-fade-out' )
-			.on( 'webkitAnimationEnd oanimationend msAnimationEnd animationend', function () {
-				if ( $( this ).hasClass( 'mwe-popups-fade-out' ) ) {
-					$( this )
-						.off( 'webkitAnimationEnd oanimationend msAnimationEnd animationend' )
-						.removeClass( 'mwe-popups-fade-out' )
-						.attr( 'aria-hidden', 'true' )
-						.hide();
-				}
-			} );
+			.addClass( 'mwe-popups-fade-out' ); // Removed and added to trigger animation
+
+		setTimeout( function () {
+			if ( $box.hasClass( 'mwe-popups-fade-out' ) ) {
+				$box
+					.attr( 'aria-hidden', 'true' )
+					.hide()
+					.removeClass( 'mwe-popups-fade-out' );
+			}
+		}, 150 ); // Matches 0.15s in the .mwe-popups-fade-out class
 
 		if ( closeTimer ) {
 			clearTimeout( closeTimer );
