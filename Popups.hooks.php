@@ -30,7 +30,7 @@ class PopupsHooks {
 				'ltr' => "$wgExtensionAssetsPath/Popups/popups-ltr.svg",
 				'rtl' => "$wgExtensionAssetsPath/Popups/popups-rtl.svg",
 			),
-			'info-link' => 'https://www.mediawiki.org/wiki/Navigation_Popups_%28Restyling_and_Enhancements%29',
+			'info-link' => 'https://www.mediawiki.org/wiki/Beta_Features/Hovercards',
 			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
 		);
 	}
