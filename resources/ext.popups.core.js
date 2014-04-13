@@ -45,6 +45,8 @@
 				redirects: 'true',
 				exintro: 'true',
 				exsentences: 2,
+				// there is an added geometric limit on .mwe-popups-extract
+				// so that text does not overflow from the card
 				explaintext: 'true',
 				piprop: 'thumbnail',
 				pithumbsize: 300,
