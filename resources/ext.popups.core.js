@@ -38,8 +38,9 @@
 		 * @param {String} href
 		 * @param {String} title
 		 * @param {Object} $el
+		 * @param {Object} event
 		 */
-		function sendRequest( href, title, $el ) {
+		function sendRequest( href, title, $el, event ) {
 
 			curRequest = api.get( {
 				action: 'query',
@@ -92,7 +93,7 @@
 					thumbnail: thumbnail,
 					tall: tall
 				};
-				createBox( href, $el );
+				createBox( href, $el, event );
 			} );
 
 			return true;
@@ -202,11 +203,17 @@
 		 * for the anchor element to `leaveActive`.
 		 * @param {String} href
 		 * @param {Object} $el
+		 * @param {Object} event
 		 */
-		function createBox( href, $el ) {
-			var bar = cache[ href ],
-				offsetTop = $el.offset().top + $el.height() + 9,
-				offsetLeft = $el.offset().left,
+		function createBox( href, $el, event ) {
+			var
+				bar = cache[ href ],
+				offsetTop = ( event.pageY ) ?
+					event.pageY + 20 :
+					$el.offset().top + $el.height() + 9,
+				offsetLeft = ( event.pageX ) ?
+					event.pageX :
+					$el.offset().left,
 				flipped = false;
 
 			elTime = mw.now();
@@ -221,9 +228,13 @@
 			}
 
 			if ( offsetLeft > ( $( window ).width() / 2 ) ) {
-				offsetLeft = offsetLeft + $el.width();
+				offsetLeft += ( !event.pageX ) ? $el.width() : 0;
 				offsetLeft -= ( !bar.tall ) ? SIZES.portraitPopupWidth : SIZES.landscapePopupWidth;
 				flipped = true;
+			}
+
+			if ( event.pageX ) {
+				offsetLeft += ( flipped ) ? 20 : -20; // compensating the position of the triangle
 			}
 
 			$box
@@ -438,7 +449,7 @@
 					.attr( 'data-original-title', '' );
 			} );
 
-		$( '#mw-content-text a' ).on( 'mouseenter focus', function () {
+		$( '#mw-content-text a' ).on( 'mouseenter focus', function ( event ) {
 			var $this = $( this ),
 				href = $this.attr( 'href' ),
 				title = $this.attr( 'data-original-title' );
@@ -475,11 +486,11 @@
 
 			if ( cache[ href ] ) {
 				openTimer = setTimeout( function () {
-					createBox( href, $this );
+					createBox( href, $this, event );
 				}, 150 );
 			} else {
 				openTimer = setTimeout( function () {
-					sendRequest( href, title, $this );
+					sendRequest( href, title, $this, event );
 				}, 50 ); // sendRequest sooner so that it *hopefully* shows up in 150ms
 			}
 			// Delay to avoid triggering the popup and AJAX requests on accidental
