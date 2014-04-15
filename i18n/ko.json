@@ -2,11 +2,12 @@
     "@metadata": {
         "authors": [
             "Priviet",
-            "Keysuck"
+            "Keysuck",
+            "아라"
         ]
     },
     "popups-message": "팝업",
     "popups-desc": "사용자가 문서 링크에 마우스를 갖다대면 문서 내용 요약을 팝업으로 표시",
-    "popups-last-edited": "최근 편집일 $1",
+    "popups-last-edited": "$1에 마지막으로 편집됨",
     "popups-redirects": "<h3>$1</h3> 문서로 넘겨주기"
 }
