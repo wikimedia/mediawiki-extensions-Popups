@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Metalhead64"
-        ]
-    },
-    "popups-message": "Hovercards",
-    "popups-desc": "Ermöglicht beim Überfahren mit der Maus über einen Seitenlink die Anzeige von Hovercards mit Seiteninhaltszusammenfassungen.",
-    "popups-last-edited": "Zuletzt bearbeitet $1",
-    "popups-redirects": "leitet weiter auf <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Metalhead64"
+		]
+	},
+	"popups-message": "Hovercards",
+	"popups-desc": "Ermöglicht beim Überfahren mit der Maus über einen Seitenlink die Anzeige von Hovercards mit Seiteninhaltszusammenfassungen.",
+	"popups-last-edited": "Zuletzt bearbeitet $1",
+	"popups-redirects": "leitet weiter auf <h3>$1</h3>"
 }

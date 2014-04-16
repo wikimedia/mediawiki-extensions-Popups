@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Minisarm"
-        ]
-    },
-    "popups-message": "Hovercards",
-    "popups-desc": "Afișează ferestre contextuale cu un rezumat al conținutului dintr-o pagină atunci când utilizatorul deplasează mausul deasupra unei legături interne",
-    "popups-last-edited": "Ultima modificare: $1",
-    "popups-redirects": "redirecționează către <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Minisarm"
+		]
+	},
+	"popups-message": "Hovercards",
+	"popups-desc": "Afișează ferestre contextuale cu un rezumat al conținutului dintr-o pagină atunci când utilizatorul deplasează mausul deasupra unei legături interne",
+	"popups-last-edited": "Ultima modificare: $1",
+	"popups-redirects": "redirecționează către <h3>$1</h3>"
 }

@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Sudo77(new)"
-        ]
-    },
-    "popups-message": "Vyskakovacie kartičky",
-    "popups-desc": "Keď používateľ podrží kurzor nad odkazom, zobrazí sa vyskakovacia kartička so zhrnutím obsahu stránky.",
-    "popups-last-edited": "Posledná úprava $1",
-    "popups-redirects": "presmerovanie na <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Sudo77(new)"
+		]
+	},
+	"popups-message": "Vyskakovacie kartičky",
+	"popups-desc": "Keď používateľ podrží kurzor nad odkazom, zobrazí sa vyskakovacia kartička so zhrnutím obsahu stránky.",
+	"popups-last-edited": "Posledná úprava $1",
+	"popups-redirects": "presmerovanie na <h3>$1</h3>"
 }

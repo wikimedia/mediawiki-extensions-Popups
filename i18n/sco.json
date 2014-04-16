@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "John Reid"
-        ]
-    },
-    "popups-message": "Hovercairds",
-    "popups-desc": "Displeys hovercairds wi ootlines o page contents whan the uiser hovers ower ae page airtin.",
-    "popups-last-edited": "Laist eeditit $1",
-    "popups-redirects": "redirects til <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"John Reid"
+		]
+	},
+	"popups-message": "Hovercairds",
+	"popups-desc": "Displeys hovercairds wi ootlines o page contents whan the uiser hovers ower ae page airtin.",
+	"popups-last-edited": "Laist eeditit $1",
+	"popups-redirects": "redirects til <h3>$1</h3>"
 }

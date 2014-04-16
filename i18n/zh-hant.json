@@ -1,12 +1,12 @@
 {
-    "@metadata": {
-        "authors": [
-            "Liuxinyu970226",
-            "Liangent"
-        ]
-    },
-    "popups-message": "浮動窗格",
-    "popups-desc": "在游標停駐於頁面連結上方時，顯示包含連結內容摘要的浮動窗格。",
-    "popups-last-edited": "最近編輯於$1",
-    "popups-redirects": "重定向至<h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226",
+			"Liangent"
+		]
+	},
+	"popups-message": "浮動窗格",
+	"popups-desc": "在游標停駐於頁面連結上方時，顯示包含連結內容摘要的浮動窗格。",
+	"popups-last-edited": "最近編輯於$1",
+	"popups-redirects": "重定向至<h3>$1</h3>"
 }

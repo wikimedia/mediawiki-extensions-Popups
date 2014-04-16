@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Mormegil"
-        ]
-    },
-    "popups-message": "Vyskakovací kartičky",
-    "popups-desc": "Zobrazuje vyskakovací kartičky se shrnutím obsahu cílové stránky, když uživatel umístí kurzor myši nad odkaz.",
-    "popups-last-edited": "Naposledy editováno $1",
-    "popups-redirects": "přesměrování na <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Mormegil"
+		]
+	},
+	"popups-message": "Vyskakovací kartičky",
+	"popups-desc": "Zobrazuje vyskakovací kartičky se shrnutím obsahu cílové stránky, když uživatel umístí kurzor myši nad odkaz.",
+	"popups-last-edited": "Naposledy editováno $1",
+	"popups-redirects": "přesměrování na <h3>$1</h3>"
 }

@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Vriullop"
-        ]
-    },
-    "popups-message": "Quadres emergents",
-    "popups-desc": "Mostra un quadre emergent amb un resum del contingut quan l'usuari apunta a un enllaç de pàgina",
-    "popups-last-edited": "Darrera modificació: $1",
-    "popups-redirects": "redirigeix a <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Vriullop"
+		]
+	},
+	"popups-message": "Quadres emergents",
+	"popups-desc": "Mostra un quadre emergent amb un resum del contingut quan l'usuari apunta a un enllaç de pàgina",
+	"popups-last-edited": "Darrera modificació: $1",
+	"popups-redirects": "redirigeix a <h3>$1</h3>"
 }

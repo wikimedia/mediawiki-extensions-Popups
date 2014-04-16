@@ -1,13 +1,13 @@
 {
-    "@metadata": {
-        "authors": [
-            "Imperadeiro98",
-            "SandroHc",
-            "Vitorvicentevalente"
-        ]
-    },
-    "popups-message": "Pop-ups",
-    "popups-desc": "Exibe um painel com resumos do conteúdo de páginas quando o utilizador passa o rato por cima da ligação de uma página.",
-    "popups-last-edited": "Última edição há $1",
-    "popups-redirects": "redirecciona para <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Imperadeiro98",
+			"SandroHc",
+			"Vitorvicentevalente"
+		]
+	},
+	"popups-message": "Pop-ups",
+	"popups-desc": "Exibe um painel com resumos do conteúdo de páginas quando o utilizador passa o rato por cima da ligação de uma página.",
+	"popups-last-edited": "Última edição há $1",
+	"popups-redirects": "redirecciona para <h3>$1</h3>"
 }

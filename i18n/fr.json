@@ -1,13 +1,13 @@
 {
-    "@metadata": {
-        "authors": [
-            "Gomoko",
-            "Ltrlg",
-            "VIGNERON"
-        ]
-    },
-    "popups-message": "Hovercards",
-    "popups-desc": "Afficher des fenêtres au survol avec les résumés des contenus des pages quand l’utilisateur survole un lien de page.",
-    "popups-last-edited": "Dernière modification $1",
-    "popups-redirects": "redirigé vers <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Ltrlg",
+			"VIGNERON"
+		]
+	},
+	"popups-message": "Hovercards",
+	"popups-desc": "Afficher des fenêtres au survol avec les résumés des contenus des pages quand l’utilisateur survole un lien de page.",
+	"popups-last-edited": "Dernière modification $1",
+	"popups-redirects": "redirigé vers <h3>$1</h3>"
 }

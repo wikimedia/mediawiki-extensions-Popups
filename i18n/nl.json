@@ -1,13 +1,13 @@
 {
-    "@metadata": {
-        "authors": [
-            "SPQRobin",
-            "Siebrand",
-            "Sjoerddebruin"
-        ]
-    },
-    "popups-message": "Pop-uppagina's",
-    "popups-desc": "Geeft pop-uppagina's weer met samenvattingen van de inhoud van pagina's bij zweven boven koppelingen",
-    "popups-last-edited": "$1 voor het laatst bewerkt",
-    "popups-redirects": "verwijst door naar <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Siebrand",
+			"Sjoerddebruin"
+		]
+	},
+	"popups-message": "Pop-uppagina's",
+	"popups-desc": "Geeft pop-uppagina's weer met samenvattingen van de inhoud van pagina's bij zweven boven koppelingen",
+	"popups-last-edited": "$1 voor het laatst bewerkt",
+	"popups-redirects": "verwijst door naar <h3>$1</h3>"
 }

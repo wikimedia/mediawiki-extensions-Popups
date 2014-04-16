@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "Robby"
-        ]
-    },
-    "popups-message": "Hovercards",
-    "popups-last-edited": "Lescht Ännerung $1",
-    "popups-redirects": "Viruleedung op <h3>$1</h3"
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"popups-message": "Hovercards",
+	"popups-last-edited": "Lescht Ännerung $1",
+	"popups-redirects": "Viruleedung op <h3>$1</h3"
 }

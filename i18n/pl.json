@@ -1,14 +1,14 @@
 {
-    "@metadata": {
-        "authors": [
-            "Chrumps",
-            "Peter Bowman",
-            "Rezonansowy",
-            "WTM"
-        ]
-    },
-    "popups-message": "Wyskakujące okienka",
-    "popups-desc": "Wyświetla wyskakujące okienka z podsumowaniem treści strony docelowej po umieszczeniu wskaźnika myszy na odnośniku.",
-    "popups-last-edited": "Ostatnio edytowane $1",
-    "popups-redirects": "przekierowuje do<h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Peter Bowman",
+			"Rezonansowy",
+			"WTM"
+		]
+	},
+	"popups-message": "Wyskakujące okienka",
+	"popups-desc": "Wyświetla wyskakujące okienka z podsumowaniem treści strony docelowej po umieszczeniu wskaźnika myszy na odnośniku.",
+	"popups-last-edited": "Ostatnio edytowane $1",
+	"popups-redirects": "przekierowuje do<h3>$1</h3>"
 }

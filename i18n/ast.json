@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Xuacu"
-        ]
-    },
-    "popups-message": "Tarxetes emerxentes",
-    "popups-desc": "Amuesa tarxetes emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de la páxina",
-    "popups-last-edited": "Última edición $1",
-    "popups-redirects": "redireiciona a <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"popups-message": "Tarxetes emerxentes",
+	"popups-desc": "Amuesa tarxetes emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de la páxina",
+	"popups-last-edited": "Última edición $1",
+	"popups-redirects": "redireiciona a <h3>$1</h3>"
 }

@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Fitoschido"
-        ]
-    },
-    "popups-message": "Cuadros emergentes",
-    "popups-desc": "Muestra un cuadro emergente con el resumen del contenido de una página cuando el usuario posa el ratón sobre un enlace",
-    "popups-last-edited": "Última modificación: $1",
-    "popups-redirects": "redirige a <h3>$1</h3>"
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"popups-message": "Cuadros emergentes",
+	"popups-desc": "Muestra un cuadro emergente con el resumen del contenido de una página cuando el usuario posa el ratón sobre un enlace",
+	"popups-last-edited": "Última modificación: $1",
+	"popups-redirects": "redirige a <h3>$1</h3>"
 }
