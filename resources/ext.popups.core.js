@@ -425,6 +425,7 @@
 			.not( '.extiw' )
 			.not( '.image' )
 			.not( '.new' )
+			.not( '.internal' )
 			.not( '[title=""]' )
 			.on( 'mouseenter focus', function () {
 				$( this )
@@ -449,6 +450,7 @@
 				$this.hasClass( 'extiw' ) ||
 				$this.hasClass( 'image' ) ||
 				$this.hasClass( 'new' ) ||
+				$this.hasClass( 'internal' ) ||
 				href.indexOf( '?' ) !== -1 ||
 				href.indexOf( location.origin + location.pathname + '#' ) === 0
 			) {
