@@ -15,7 +15,7 @@
 			currentLink, // DOM element of the current anchor tag
 			cache = {},
 			curRequest, // Current API request
-			supportsSVG =  document.implementation.hasFeature( 'http://www.w3.org/TR/SVG11/feature#Image', '1.1' ),
+			supportsSVG = document.implementation.hasFeature( 'http://www.w3.org/TR/SVG11/feature#Image', '1.1' ),
 			api = new mw.Api(),
 			SIZES = {
 				portraitImage: {
@@ -138,7 +138,7 @@
 							x: ( thumbnail.width > SIZES.portraitImage.w ) ?
 								( ( thumbnail.width - SIZES.portraitImage.w ) / -2 ) :
 								( SIZES.portraitImage.w - thumbnail.width ),
-							y: ( thumbnail.height > SIZES.portraitImage.h) ?
+							y: ( thumbnail.height > SIZES.portraitImage.h ) ?
 								( ( thumbnail.height - SIZES.portraitImage.h ) / -2 ) :
 								0,
 							width: thumbnail.width,
@@ -166,7 +166,7 @@
 							'xlink:href': thumbnail.source,
 							'clip-path': 'url(#mwe-popups-mask)',
 							x: 0,
-							y: ( thumbnail.height > SIZES.landscapeImage.h) ?
+							y: ( thumbnail.height > SIZES.landscapeImage.h ) ?
 								( ( thumbnail.height - SIZES.landscapeImage.h ) / -2 ) :
 								0,
 							width: thumbnail.width,
@@ -509,7 +509,7 @@
 			.appendTo( document.body );
 
 		// SVG for masking and creating the triangle/pokey
-		if (supportsSVG ) {
+		if ( supportsSVG ) {
 			$svg = $( '<div>' )
 				.attr( 'id', 'mwe-popups-svg' )
 				.appendTo( document.body )
