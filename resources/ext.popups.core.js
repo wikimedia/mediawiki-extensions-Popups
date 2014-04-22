@@ -29,6 +29,9 @@
 				landscapePopupWidth: 450, // Exact width of a landscape popup
 				portraitPopupWidth: 300 // Exact width of a portrait popup
 			},
+			POPUP_DELAY = 150, // Time to wait in ms before showing a popup on hover
+			POPUP_CLOSE_DELAY = 100, // Time to wait in ms before closing a popup on de-hover
+			API_DELAY = 50, // Time to wait in ms before starting the API queries on hover, must be <= POPUP_DELAY
 			$svg, $box; // defined at the end of the file
 
 		/**
@@ -313,12 +316,12 @@
 
 		/**
 		 * @method leaveActive
-		 * Closes the box after a delay of 100ms
-		 * Delay to give enough time for the use to move the pointer from
+		 * Closes the box after a delay
+		 * Delay to give enough time for the user to move the pointer from
 		 * the link to the popup box. Also avoids closing the popup by accident.
 		 */
 		function leaveActive() {
-			closeTimer = setTimeout( closeBox, 100 );
+			closeTimer = setTimeout( closeBox, POPUP_CLOSE_DELAY );
 		}
 
 		/**
@@ -505,15 +508,15 @@
 			// Delay to avoid triggering the popup and AJAX requests on accidental
 			// hovers (likes ones during srcolling or moving the pointer elsewhere).
 			if ( cache[ href ] ) {
-				// If we have this popup cached, just wait 150ms
-				openTimer = timeoutPromise( 150 ).done( function () {
+				// If we have this popup cached, just wait normally
+				openTimer = timeoutPromise( POPUP_DELAY ).done( function () {
 					createBox( href, $this, event );
 				} );
 			} else {
-				// Otherwise wait 50ms to start loading the data (to avoid unnecessary requests),
-				// then further 100ms before actually displaying the output
-				openTimer = timeoutPromise( 50 ).done( function () {
-					openTimer = timeoutPromise( 100 );
+				// Otherwise wait a little before we start loading the data (to avoid unnecessary requests),
+				// then wait normally before actually displaying the output
+				openTimer = timeoutPromise( API_DELAY ).done( function () {
+					openTimer = timeoutPromise( POPUP_DELAY - API_DELAY );
 					$.when(
 						sendRequest( href, title ),
 						openTimer
