@@ -428,12 +428,7 @@
 
 		// Remove title attribute to remove the default yellow tooltip
 		// Put the title back after the hover
-		$( '#mw-content-text a' )
-			.not( '.extiw' )
-			.not( '.image' )
-			.not( '.new' )
-			.not( '.internal' )
-			.not( '[title=""]' )
+		$( '#mw-content-text a:not(.extiw):not(.image):not(.new):not(.internal):not([title=""])' )
 			.on( 'mouseenter focus', function () {
 				$( this )
 					.attr( 'data-original-title', $( this ).attr( 'title' ) )
