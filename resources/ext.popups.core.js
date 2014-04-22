@@ -80,7 +80,7 @@
 				rvprop: 'timestamp',
 				inprop: 'watched',
 				indexpageids: true,
-				titles: decodeURI( title )
+				titles: title
 			} );
 
 			curRequest.done( function ( re ) {
