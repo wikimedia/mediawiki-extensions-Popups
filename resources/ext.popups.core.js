@@ -32,15 +32,39 @@
 			$svg, $box; // defined at the end of the file
 
 		/**
+		 * Return a promise corresponding to a `setTimeout()` call. Call `.abort()` on the return value
+		 * to perform the equivalent of `clearTimeout()`.
+		 *
+		 * @param {number} ms Milliseconds to wait
+		 * @return {jQuery.Promise}
+		 */
+		function timeoutPromise( ms ) {
+			var deferred, promise, timeout;
+
+			deferred = $.Deferred();
+
+			timeout = setTimeout( function () {
+				deferred.resolve();
+			}, ms );
+
+			promise = deferred.promise( { abort: function () {
+				clearTimeout( timeout );
+				deferred.reject();
+			} } );
+
+			return promise;
+		}
+
+		/**
 		 * @method sendRequest
 		 * Send an API request, create DOM elements and
-		 * put them in the cache. Call `createBox`.
+		 * put them in the cache. Returns a promise.
 		 * @param {String} href
 		 * @param {String} title
-		 * @param {Object} $el
-		 * @param {Object} event
+		 * @return {jQuery.Promise}
 		 */
-		function sendRequest( href, title, $el, event ) {
+		function sendRequest( href, title ) {
+			var deferred = $.Deferred();
 
 			curRequest = api.get( {
 				action: 'query',
@@ -93,10 +117,11 @@
 					thumbnail: thumbnail,
 					tall: tall
 				};
-				createBox( href, $el, event );
+
+				deferred.resolve();
 			} );
 
-			return true;
+			return deferred.promise();
 		}
 
 		/**
@@ -302,7 +327,9 @@
 		 */
 		function leaveInactive() {
 			$( currentLink ).off( 'mouseleave', leaveInactive );
-			clearTimeout( openTimer );
+			if ( openTimer ) {
+				openTimer.abort();
+			}
 			if ( curRequest ) {
 				curRequest.abort();
 			}
@@ -475,18 +502,27 @@
 			currentLink = this;
 			$this.on( 'mouseleave blur', leaveInactive );
 
-			if ( cache[ href ] ) {
-				openTimer = setTimeout( function () {
-					createBox( href, $this, event );
-				}, 150 );
-			} else {
-				openTimer = setTimeout( function () {
-					sendRequest( href, title, $this, event );
-				}, 50 ); // sendRequest sooner so that it *hopefully* shows up in 150ms
-			}
 			// Delay to avoid triggering the popup and AJAX requests on accidental
 			// hovers (likes ones during srcolling or moving the pointer elsewhere).
-
+			if ( cache[ href ] ) {
+				// If we have this popup cached, just wait 150ms
+				openTimer = timeoutPromise( 150 ).done( function () {
+					createBox( href, $this, event );
+				} );
+			} else {
+				// Otherwise wait 50ms to start loading the data (to avoid unnecessary requests),
+				// then further 100ms before actually displaying the output
+				openTimer = timeoutPromise( 50 ).done( function () {
+					openTimer = timeoutPromise( 100 );
+					$.when(
+						sendRequest( href, title ),
+						openTimer
+					).done( function () {
+						// Data is cached now
+						createBox( href, $this, event );
+					} );
+				} );
+			}
 		} );
 
 		// Container for the popup
