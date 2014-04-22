@@ -513,17 +513,21 @@
 			$svg = $( '<div>' )
 				.attr( 'id', 'mwe-popups-svg' )
 				.appendTo( document.body )
-				.html( '<svg width=\"0\" height=\"0\">' +
-						'<defs><clippath id=\"mwe-popups-mask\">' +
-							'<polygon points=\"0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000\"/></clippath>' +
+				.html(
+					'<svg width="0" height="0">' +
+						'<defs>' +
+							'<clippath id="mwe-popups-mask">' +
+								'<polygon points="0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000"/>' +
+							'</clippath>' +
+							'<clippath id="mwe-popups-mask-flip">' +
+								'<polygon points="0 8, 274 8, 282 0, 290 8, 1000 8, 1000 1000, 0 1000"/>' +
+							'</clippath>' +
+							'<clippath id="mwe-popups-landscape-mask">' +
+								'<polygon points="0 8, 174 8, 182 0, 190 8, 1000 8, 1000 1000, 0 1000"/>' +
+							'</clippath>' +
 						'</defs>' +
-						'<defs><clippath id=\"mwe-popups-mask-flip\">' +
-							'<polygon points=\"0 8, 274 8, 282 0, 290 8, 1000 8, 1000 1000, 0 1000\"/></clippath>' +
-						'</defs>' +
-						'<defs><clippath id=\"mwe-popups-landscape-mask\">' +
-							'<polygon points=\"0 8, 174 8, 182 0, 190 8, 1000 8, 1000 1000, 0 1000\"/></clippath>' +
-						'</defs>' +
-					'</svg>' );
+					'</svg>'
+				);
 		}
 
 	} );
