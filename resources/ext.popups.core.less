@@ -2,7 +2,7 @@
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
 
-.mwe-popups-border-triangle ( @size, @left, @color ) {
+.mwe-popups-border-triangle(@size, @left, @color) {
 	content: '';
 	position: absolute;
 	border: @size solid transparent;
@@ -148,22 +148,22 @@
 	&.mwe-popups-image-tri {
 		&:before {
 			z-index: 90;
-			.mwe-popups-border-triangle( 9px, 9px, #bbb);
+			.mwe-popups-border-triangle(9px, 9px, #bbb);
 		}
 
 		&:after {
-			.mwe-popups-border-triangle( 8px, 10px, #fff);
+			.mwe-popups-border-triangle(8px, 10px, #fff);
 			z-index: 91;
 		}
 
 		&.flipped {
 			&:before {
 				z-index: 90;
-				.mwe-popups-border-triangle( 9px, 273px, #bbb);
+				.mwe-popups-border-triangle(9px, 273px, #bbb);
 			}
 
 			&:after {
-				.mwe-popups-border-triangle( 8px, 273px, #fff);
+				.mwe-popups-border-triangle(8px, 273px, #fff);
 				z-index: 91;
 			}
 		}
@@ -186,7 +186,7 @@
 
 		&:before {
 			z-index: 90;
-			.mwe-popups-border-triangle( 9px, 420px, #bbb);
+			.mwe-popups-border-triangle(9px, 420px, #bbb);
 		}
 
 		> a > svg {

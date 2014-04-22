@@ -1,4 +1,4 @@
-.mwe-popups-translate ( @x, @y ) {
+.mwe-popups-translate(@x, @y) {
 	-webkit-transform: translate(@x, @y);
 	-moz-transform: translate(@x, @y);
 	-ms-transform: translate(@x, @y);
@@ -6,7 +6,7 @@
 	transform: translate(@x, @y);
 }
 
-.mwe-popups-animation ( ... ) {
+.mwe-popups-animation(...) {
 	-webkit-animation: @arguments;
 	-moz-animation: @arguments;
 	-o-animation: @arguments;
@@ -45,7 +45,7 @@
 	.mwe-popups-fade-out-frames;
 }
 
-.mwe-popups-fade-in-frames () {
+.mwe-popups-fade-in-frames() {
 	0% {
 		opacity: 0;
 		.mwe-popups-translate(0, 20px);
@@ -57,7 +57,7 @@
 	}
 }
 
-.mwe-popups-fade-out-frames () {
+.mwe-popups-fade-out-frames() {
 	0% {
 		opacity: 1;
 		.mwe-popups-translate(0, 0);
