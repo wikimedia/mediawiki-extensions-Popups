@@ -32,9 +32,6 @@ $wgExtensionCredits['betafeatures'][] = array(
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Popups',
 );
 
-$localBasePath = dirname( __DIR__ ) . '/Popups';
-$remoteExtPath = 'Popups';
-
 $wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
 $wgMessagesDirs['Popups'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
@@ -70,7 +67,7 @@ $wgHooks[ 'ResourceLoaderRegisterModules' ][] = function ( ResourceLoader &$reso
 			'resources/ext.popups.core.less',
 			'resources/ext.popups.animation.less',
 		),
-		'dependencies'  => $moduleDependencies,
+		'dependencies' => $moduleDependencies,
 		'messages' => array(
 			'popups-last-edited',
 			'popups-redirects',
