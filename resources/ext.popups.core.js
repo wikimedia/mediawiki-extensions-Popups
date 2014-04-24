@@ -87,6 +87,10 @@
 		curRequest.done( function ( re ) {
 			curRequest = undefined;
 
+			if ( re.query.pages[ re.query.pageids[ 0 ] ].extract === '' ){
+				return false;
+			}
+
 			var $a,
 				page = re.query.pages[ re.query.pageids[ 0 ] ],
 				$contentbox = $( '<div>' )
