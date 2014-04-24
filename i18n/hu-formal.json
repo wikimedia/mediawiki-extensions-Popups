@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Teemeah"
+		]
+	},
+	"popups-message": "Hovercards",
+	"popups-desc": "Amikor a felhasználó egy belső hivatkozás fölé viszi az egérmutatót, egy kis felugró ablakban megjelenik az oldal összefoglalója.",
+	"popups-last-edited": "Utolsó szerkesztés: $1",
+	"popups-redirects": "Átirányítás a(z) <h3>$1</h3> oldalra"
+}
