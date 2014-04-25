@@ -62,6 +62,9 @@ $wgHooks[ 'ResourceLoaderRegisterModules' ][] = function ( ResourceLoader &$reso
 	$resourceLoader->register( "ext.popups", array(
 		'scripts' => array(
 			'resources/ext.popups.core.js',
+			'resources/ext.popups.eventlogging.js',
+			'resources/ext.popups.renderer.js',
+			'resources/ext.popups.renderer.article.js',
 		),
 		'styles' => array(
 			'resources/ext.popups.core.less',
