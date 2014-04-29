@@ -144,74 +144,111 @@
 	 * @return {Object} jQuery DOM element of the thumbnail
 	 */
 	article.createThumbnail = function ( thumbnail, tall ) {
+		var svg = mw.popups.supportsSVG;
+
 		if ( !thumbnail ) {
 			return $( '<span>' );
 		}
 
-		var $thumbnailSVGImage, $thumbnail;
-
-		if ( tall ) {
-			if ( mw.popups.supportsSVG ) {
-				$thumbnailSVGImage = $( article.createSVGTag( 'image' ) );
-				$thumbnailSVGImage
-					.addClass( 'mwe-popups-is-not-tall' )
-					.attr( {
-						'xlink:href': thumbnail.source,
-						x: ( thumbnail.width > article.SIZES.portraitImage.w ) ?
-							( ( thumbnail.width - article.SIZES.portraitImage.w ) / -2 ) :
-							( article.SIZES.portraitImage.w - thumbnail.width ),
-						y: ( thumbnail.height > article.SIZES.portraitImage.h ) ?
-							( ( thumbnail.height - article.SIZES.portraitImage.h ) / -2 ) :
-							0,
-						width: thumbnail.width,
-						height: thumbnail.height
-					} );
-
-				$thumbnail = $( '<svg>' )
-					.attr( {
-						xmlns: 'http://www.w3.org/2000/svg',
-						width: article.SIZES.portraitImage.w,
-						height: article.SIZES.portraitImage.h
-					} )
-					.append( $thumbnailSVGImage );
-			} else {
-				$thumbnail = $( '<div>' )
-					.addClass( 'mwe-popups-is-tall' )
-					.css( 'background-image', 'url(' + thumbnail.source + ')' );
-			}
-		} else {
-			if ( mw.popups.supportsSVG ) {
-				$thumbnailSVGImage = $( article.createSVGTag( 'image' ) );
-				$thumbnailSVGImage
-					.addClass( 'mwe-popups-is-not-tall' )
-					.attr( {
-						'xlink:href': thumbnail.source,
-						'clip-path': 'url(#mwe-popups-mask)',
-						x: 0,
-						y: ( thumbnail.height > article.SIZES.landscapeImage.h ) ?
-							( ( thumbnail.height - article.SIZES.landscapeImage.h ) / -2 ) :
-							0,
-						width: thumbnail.width,
-						height: thumbnail.height
-					} );
-
-				$thumbnail = $( '<svg>' )
-					.attr( {
-						xmlns: 'http://www.w3.org/2000/svg',
-						width: article.SIZES.landscapeImage.w + 3,
-						height: ( thumbnail.height > article.SIZES.landscapeImage.h ) ?
-							article.SIZES.landscapeImage.h :
-							thumbnail.height
-					} )
-					.append( $thumbnailSVGImage );
-			} else {
-				$thumbnail = $( '<div>' )
-					.addClass( 'mwe-popups-is-not-tall' )
-					.css( 'background-image', 'url(' + thumbnail.source + ')' );
-			}
+		if ( tall && svg ) {
+			return article.createSvgImageThumbnail(
+				'mwe-popups-is-not-tall',
+				thumbnail.source,
+				( thumbnail.width > article.SIZES.portraitImage.w ) ?
+						( ( thumbnail.width - article.SIZES.portraitImage.w ) / -2 ) :
+						( article.SIZES.portraitImage.w - thumbnail.width ),
+				( thumbnail.height > article.SIZES.portraitImage.h ) ?
+						( ( thumbnail.height - article.SIZES.portraitImage.h ) / -2 ) :
+						0,
+				thumbnail.width,
+				thumbnail.height,
+				article.SIZES.portraitImage.w,
+				article.SIZES.portraitImage.h
+			);
 		}
 
+		if ( tall && !svg ) {
+			return article.createImgThumbnail( 'mwe-popups-is-tall', thumbnail.source );
+		}
+
+		if ( !tall && svg ) {
+			return article.createSvgImageThumbnail(
+				'mwe-popups-is-not-tall',
+				thumbnail.source,
+				0,
+				( thumbnail.height > article.SIZES.landscapeImage.h ) ?
+						( ( thumbnail.height - article.SIZES.landscapeImage.h ) / -2 ) :
+						0,
+				thumbnail.width,
+				thumbnail.height,
+				article.SIZES.landscapeImage.w + 3,
+				( thumbnail.height > article.SIZES.landscapeImage.h ) ?
+						article.SIZES.landscapeImage.h :
+						thumbnail.height,
+				'mwe-popups-mask'
+			);
+		}
+
+		if ( !tall && !svg ) {
+			return article.createImgThumbnail( 'mwe-popups-is-not-tall', thumbnail.source );
+		}
+	};
+
+	/**
+	 * Returns the `svg:image` object for thumbnail
+	 *
+	 * @method createSvgImageThumbnail
+	 * @param {String} className
+	 * @param {String} url
+	 * @param {Number} x
+	 * @param {Number} y
+	 * @param {Number} thumbnailWidth
+	 * @param {Number} thumbnailHeight
+	 * @param {Number} width
+	 * @param {Number} height
+	 * @param {String} clipPath
+	 * @return {jQuery}
+	 */
+	article.createSvgImageThumbnail = function (
+		className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath
+	) {
+		var $thumbnailSVGImage, $thumbnail;
+
+		$thumbnailSVGImage = $( article.createSVGTag( 'image' ) );
+		$thumbnailSVGImage
+			.addClass( className )
+			.attr( {
+				'xlink:href': url,
+				x: x,
+				y: y,
+				width: thumbnailWidth,
+				height: thumbnailHeight,
+				'clip-path': 'url(#' + clipPath + ')'
+			} );
+
+		$thumbnail = $( '<svg>' )
+			.attr( {
+				xmlns: 'http://www.w3.org/2000/svg',
+				width: width,
+				height: height
+			} )
+			.append( $thumbnailSVGImage );
+
 		return $thumbnail;
+	};
+
+	/**
+	 * Returns the `img` object for thumbnail
+	 *
+	 * @method createImgThumbnail
+	 * @param {String} className
+	 * @param {String} url
+	 * @return {jQuery}
+	 */
+	article.createImgThumbnail = function ( className, url ) {
+		return $( '<div>' )
+			.addClass( className )
+			.css( 'background-image', 'url(' + url + ')' );
 	};
 
 	/**
