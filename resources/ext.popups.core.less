@@ -2,13 +2,24 @@
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
 
-.mwe-popups-border-triangle(@size, @left, @color) {
+.mwe-popups-border-triangle-top(@size, @left, @color) {
 	content: '';
 	position: absolute;
 	border: @size solid transparent;
 	border-top: 0;
 	border-bottom: @size solid @color;
 	top: -@size;
+	/* @noflip */
+	left: @left;
+}
+
+.mwe-popups-border-triangle-bottom(@size, @left, @color) {
+	content: '';
+	position: absolute;
+	border: @size solid transparent;
+	border-bottom: 0;
+	border-top: @size solid @color;
+	bottom: -@size;
 	/* @noflip */
 	left: @left;
 }
@@ -121,15 +132,15 @@
 	/* Triangles/Pokeys */
 	&.mwe-popups-no-image-tri {
 		&:after {
-			.mwe-popups-border-triangle( 7px, 11px, #fff);
+			.mwe-popups-border-triangle-top( 7px, 11px, #fff);
 		}
 
 		&:before {
-			.mwe-popups-border-triangle( 8px, 10px, #bbb);
+			.mwe-popups-border-triangle-top( 8px, 10px, #bbb);
 		}
 	}
 
-	&.flipped.mwe-popups-no-image-tri {
+	&.flipped_x.mwe-popups-no-image-tri {
 		&:after {
 			/* @noflip */
 			left: initial;
@@ -148,22 +159,22 @@
 	&.mwe-popups-image-tri {
 		&:before {
 			z-index: 90;
-			.mwe-popups-border-triangle(9px, 9px, #bbb);
+			.mwe-popups-border-triangle-top(9px, 9px, #bbb);
 		}
 
 		&:after {
-			.mwe-popups-border-triangle(8px, 10px, #fff);
+			.mwe-popups-border-triangle-top(8px, 10px, #fff);
 			z-index: 91;
 		}
 
-		&.flipped {
+		&.flipped_x {
 			&:before {
 				z-index: 90;
-				.mwe-popups-border-triangle(9px, 273px, #bbb);
+				.mwe-popups-border-triangle-top(9px, 273px, #bbb);
 			}
 
 			&:after {
-				.mwe-popups-border-triangle(8px, 273px, #fff);
+				.mwe-popups-border-triangle-top(8px, 273px, #fff);
 				z-index: 91;
 			}
 		}
@@ -181,12 +192,12 @@
 		}
 	}
 
-	&.flipped.mwe-popups-is-tall {
+	&.flipped_x.mwe-popups-is-tall {
 		min-height: 242px;
 
 		&:before {
 			z-index: 90;
-			.mwe-popups-border-triangle(9px, 420px, #bbb);
+			.mwe-popups-border-triangle-top(9px, 420px, #bbb);
 		}
 
 		> a > svg {
@@ -197,6 +208,50 @@
 			z-index: 100;
 			/* @noflip */
 			right: 0;
+		}
+	}
+
+	&.flipped_x_y {
+		&:before {
+			z-index: 90;
+			.mwe-popups-border-triangle-bottom(9px, 272px, #bbb);
+		}
+
+		&:after {
+			.mwe-popups-border-triangle-bottom(8px, 273px, #fff);
+			z-index: 91;
+		}
+
+		&.mwe-popups-is-tall {
+			min-height: 242px;
+
+			&:after {
+				border: none;
+			}
+
+			&:before {
+				z-index: 90;
+				.mwe-popups-border-triangle-bottom(9px, 420px, #bbb);
+			}
+
+			> a > svg {
+				position: absolute;
+				z-index: 100;
+				margin: 0;
+				margin-bottom: -9px;
+				/* @noflip */
+				right: 0;
+			}
+		}
+	}
+
+	&.flipped_y {
+		&:after {
+			.mwe-popups-border-triangle-bottom( 7px, 11px, #fff);
+		}
+
+		&:before {
+			.mwe-popups-border-triangle-bottom( 8px, 10px, #bbb);
 		}
 	}
 }

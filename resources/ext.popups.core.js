@@ -61,6 +61,10 @@
 						'<clippath id="mwe-popups-landscape-mask">' +
 							'<polygon points="0 8, 174 8, 182 0, 190 8, 1000 8, 1000 1000, 0 1000"/>' +
 						'</clippath>' +
+						'<clippath id="mwe-popups-landscape-mask-flip">' +
+							'<polygon points="0 0, 1000 0, 1000 243, 190 243, 182 250, 174 243, 0 243"/>' +
+						'</clippath>' +
+
 					'</defs>' +
 				'</svg>'
 			);

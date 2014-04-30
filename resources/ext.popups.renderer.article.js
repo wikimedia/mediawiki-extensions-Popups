@@ -262,28 +262,40 @@
 	article.getOffset = function ( link, event ) {
 		var
 			href = link.attr( 'href' ),
-			flipped = false,
+			flippedX = false,
+			flippedY = false,
 			settings = mw.popups.render.cache[ href ].settings,
 			offsetTop = ( event.pageY ) ?
 				event.pageY + 20 :
 				link.offset().top + link.height() + 9,
+			clientTop = ( event.clientY ) ?
+				event.clientY :
+				offsetTop,
 			offsetLeft = ( event.pageX ) ?
 				event.pageX :
 				link.offset().left;
 
+		// X Flip
 		if ( offsetLeft > ( $( window ).width() / 2 ) ) {
 			offsetLeft += ( !event.pageX ) ? link.width() : 0;
 			offsetLeft -= ( !settings.tall ) ?
 				article.SIZES.portraitPopupWidth :
 				article.SIZES.landscapePopupWidth;
-			flipped = true;
+			flippedX = true;
 		}
 
 		if ( event.pageX ) {
-			offsetLeft += ( flipped ) ? 20 : -20;
+			offsetLeft += ( flippedX ) ? 20 : -20;
 		}
 
-		mw.popups.render.cache[ href ].settings.flipped = flipped;
+		mw.popups.render.cache[ href ].settings.flippedX = flippedX;
+
+		// Y Flip
+		if ( clientTop > ( $( window ).width() / 2 ) ) {
+			flippedY = true;
+		}
+
+		mw.popups.render.cache[ href ].settings.flippedY = flippedY;
 
 		return {
 			top: offsetTop + 'px',
@@ -304,17 +316,26 @@
 			cache = mw.popups.render.cache [ link.attr( 'href' ) ],
 			tall = cache.settings.tall,
 			thumbnail = cache.settings.thumbnail,
-			flipped = cache.settings.flipped;
+			flippedY = cache.settings.flippedY,
+			flippedX = cache.settings.flippedX;
 
-		if ( flipped ) {
-			classes.push( 'flipped' );
+		if ( flippedY && flippedX ) {
+			classes.push( 'flipped_x_y' );
 		}
 
-		if ( !thumbnail || tall ) {
+		if ( flippedY && !flippedX ) {
+			classes.push( 'flipped_y' );
+		}
+
+		if ( flippedX && !flippedY ) {
+			classes.push( 'flipped_x' );
+		}
+
+		if ( ( !thumbnail || tall ) && !flippedY ) {
 			classes.push( 'mwe-popups-no-image-tri' );
 		}
 
-		if ( thumbnail && !tall ) {
+		if ( ( thumbnail && !tall ) && !flippedY ) {
 			classes.push( 'mwe-popups-image-tri' );
 		}
 
@@ -337,21 +358,41 @@
 	article.processPopup = function ( link ) {
 		var
 			cache = mw.popups.render.cache [ link.attr( 'href' ) ],
+			popup = mw.popups.$popup,
 			tall = cache.settings.tall,
 			thumbnail = cache.settings.thumbnail,
-			flipped = cache.settings.flipped;
+			flippedY = cache.settings.flippedY,
+			flippedX = cache.settings.flippedX;
 
-		if ( flipped && thumbnail ) {
-			if ( !tall ) {
-				mw.popups.$popup
-					.find( 'image' )[ 0 ]
-					.setAttribute( 'clip-path', 'url(#mwe-popups-mask-flip)' );
-			} else {
-				mw.popups.$popup
-					.removeClass( 'mwe-popups-no-image-tri' )
-					.find( 'image' )[ 0 ]
-					.setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask)' );
-			}
+		if ( flippedY ) {
+			popup.css( {
+				top: popup.offset().top - ( popup.outerHeight() + 50 )
+			} );
+		}
+
+		if ( flippedY && thumbnail ) {
+			mw.popups.$popup
+				.find( 'image' )[ 0 ]
+				.setAttribute( 'clip-path', '' );
+		}
+
+		if ( flippedY && flippedX && thumbnail && tall ) {
+			mw.popups.$popup
+				.find( 'image' )[ 0 ]
+				.setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask-flip)' );
+		}
+
+		if ( flippedX && !flippedY && thumbnail && !tall ) {
+			mw.popups.$popup
+				.find( 'image' )[ 0 ]
+				.setAttribute( 'clip-path', 'url(#mwe-popups-mask-flip)' );
+		}
+
+		if ( flippedX && !flippedY && thumbnail && tall ) {
+			mw.popups.$popup
+				.removeClass( 'mwe-popups-no-image-tri' )
+				.find( 'image' )[ 0 ]
+				.setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask)' );
 		}
 	};
 
