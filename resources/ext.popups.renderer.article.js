@@ -89,8 +89,9 @@
 			page = re.query.pages[ re.query.pageids[ 0 ] ],
 			$contentbox = $( '<div>' )
 				.addClass( 'mwe-popups-extract' )
-				.text( page.extract.replace( /\([^)]*\)\s+/, '' ) ),
-				// Remove text in brackets along with the brackets
+				.html(
+					article.getProcessedHtml( page.extract, page.title )
+				),
 			thumbnail = page.thumbnail,
 			tall = thumbnail && thumbnail.height > thumbnail.width,
 			$thumbnail = article.createThumbnail( thumbnail, tall ),
@@ -118,6 +119,24 @@
 		};
 
 		return $a;
+	};
+
+	/**
+	 * Returns an HTML after removing the brackets from the extract
+	 * and making the title in the extract bold
+	 *
+	 * @method getProcessedHtml
+	 * @param {String} extract
+	 * @param {String} title
+	 * @return {String}
+	 */
+	article.getProcessedHtml = function ( extract, title ) {
+		var regExp = new RegExp( '(^|\\s)(' + title + ')(\\s|$)', 'ig' );
+		// Make title bold in the extract text
+		extract = extract.replace( regExp, '$1<b>$2</b>$3' );
+		// Remove text in brackets along with the brackets
+		extract = extract.replace( /\([^)]*\)\s+/, '' );
+		return extract;
 	};
 
 	/**
