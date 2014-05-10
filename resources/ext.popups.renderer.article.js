@@ -89,7 +89,7 @@
 			page = re.query.pages[ re.query.pageids[ 0 ] ],
 			$contentbox = $( '<div>' )
 				.addClass( 'mwe-popups-extract' )
-				.text( page.extract.replace( /\(.*?\)\s+/, '' ) ),
+				.text( page.extract.replace( /\([^)]*\)\s+/, '' ) ),
 				// Remove text in brackets along with the brackets
 			thumbnail = page.thumbnail,
 			tall = thumbnail && thumbnail.height > thumbnail.width,
