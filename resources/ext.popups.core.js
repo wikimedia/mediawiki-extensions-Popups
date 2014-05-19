@@ -1,4 +1,5 @@
 ( function ( $, mw ) {
+	'use strict';
 
 	/**
 	 * @class mw.popups
@@ -64,7 +65,6 @@
 						'<clippath id="mwe-popups-landscape-mask-flip">' +
 							'<polygon points="0 0, 1000 0, 1000 243, 190 243, 182 250, 174 243, 0 243"/>' +
 						'</clippath>' +
-
 					'</defs>' +
 				'</svg>'
 			);
@@ -78,9 +78,11 @@
 	 */
 	mw.popups.createPopupElement = function () {
 		mw.popups.$popup = $( '<div>' )
-			.attr( 'role', 'tooltip' )
-			.attr( 'aria-hidden', 'true' )
-			.addClass( 'mwe-popups' )
+			.attr( {
+				'class': 'mwe-popups',
+				'role': 'tooltip',
+				'aria-hidden': 'true'
+			} )
 			.appendTo( document.body );
 	};
 

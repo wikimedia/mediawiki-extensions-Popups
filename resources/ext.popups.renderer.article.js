@@ -1,4 +1,5 @@
 ( function ( $, mw ) {
+	'use strict';
 
 	/**
 	 * @class mw.popups.render.article
@@ -448,7 +449,6 @@
 
 		if ( !svg && flippedY && !tall ) {
 			$( '.mwe-popups-extract' ).css( 'margin-top', '206px' );
-
 		}
 
 		if ( flippedY ) {
