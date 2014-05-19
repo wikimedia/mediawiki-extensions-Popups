@@ -29,7 +29,7 @@
 	 * @property {Array} IGNORE_CLASSES
 	 */
 	mw.popups.IGNORE_CLASSES = [
-		'.exitw',
+		'.extiw',
 		'.image',
 		'.new',
 		'.internal'

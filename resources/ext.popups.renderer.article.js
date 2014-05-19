@@ -56,6 +56,7 @@
 			mw.popups.render.currentRequest = undefined;
 
 			if (
+				!re.query.pages ||
 				!re.query.pages[ re.query.pageids[ 0 ] ].extract ||
 				re.query.pages[ re.query.pageids[ 0 ] ].extract === ''
 			) {
