@@ -89,9 +89,8 @@
 	 *
 	 * @method removeTooltips
 	 */
-	mw.popups.removeTooltips = function () {
-		var notSelector = ':not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')';
-		mw.popups.$content.find( 'a' + notSelector + ':not([title=""])' )
+	mw.popups.removeTooltips = function ( $elements ) {
+		$elements
 			.on( 'mouseenter focus', function () {
 				$( this )
 					.data( 'title', $( this ).attr( 'title' ) )
@@ -123,10 +122,8 @@
 	 *
 	 * @method setupTriggers
 	 */
-	mw.popups.setupTriggers = function () {
-		var notSelector = ':not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')';
-
-		mw.popups.$content.find( 'a' + notSelector + ':not([title=""])' ).on( 'mouseenter focus', function ( event ) {
+	mw.popups.setupTriggers = function ( $elements ) {
+		$elements.on( 'mouseenter focus', function ( event ) {
 			var
 				$this = $( this ),
 				href = $this.attr( 'href' );
@@ -143,10 +140,23 @@
 		} );
 	};
 
+	/**
+	 * Returns links that can have Popups
+	 *
+	 * @method selectPopupElements
+	 */
+	mw.popups.selectPopupElements = function () {
+		var notSelector = ':not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')';
+
+		return mw.popups.$content.find( 'a' + notSelector + ':not([title=""])' );
+	};
+
 	mw.hook( 'wikipage.content').add( function ( $content ) {
 		mw.popups.$content = $content;
-		mw.popups.removeTooltips();
-		mw.popups.setupTriggers();
+
+		var $elements = mw.popups.selectPopupElements();
+		mw.popups.removeTooltips( $elements );
+		mw.popups.setupTriggers( $elements );
 	} );
 
 	$( function () {
