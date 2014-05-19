@@ -91,6 +91,7 @@
 	 */
 	mw.popups.removeTooltips = function ( $elements ) {
 		$elements
+			.filter( '[title]:not([title=""])' )
 			.on( 'mouseenter focus', function () {
 				$( this )
 					.data( 'title', $( this ).attr( 'title' ) )
@@ -146,9 +147,7 @@
 	 * @method selectPopupElements
 	 */
 	mw.popups.selectPopupElements = function () {
-		var notSelector = ':not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')';
-
-		return mw.popups.$content.find( 'a' + notSelector + ':not([title=""])' );
+		return mw.popups.$content.find( 'a:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' );
 	};
 
 	mw.hook( 'wikipage.content').add( function ( $content ) {

@@ -35,6 +35,10 @@
 			title = link.data( 'title' ),
 			deferred = $.Deferred();
 
+		if ( !title ) {
+			return deferred.reject().promise();
+		}
+
 		mw.popups.render.currentRequest = mw.popups.api.get( {
 			action: 'query',
 			prop: 'extracts|pageimages|revisions|info',
