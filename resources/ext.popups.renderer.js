@@ -76,6 +76,12 @@
 			mw.popups.render.closePopup();
 		}
 
+		// Ignore if its meant to call a function
+		// TODO: Remove this when adding reference popups
+		if ( link.attr( 'href' ) === '#' ) {
+			return;
+		}
+
 		mw.popups.render.currentLink = link;
 		link.on( 'mouseleave blur', mw.popups.render.leaveInactive );
 
