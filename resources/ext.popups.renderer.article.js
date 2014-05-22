@@ -52,6 +52,7 @@
 			titles: title
 		} );
 
+		mw.popups.render.currentRequest.fail( deferred.reject );
 		mw.popups.render.currentRequest.done( function ( re ) {
 			mw.popups.render.currentRequest = undefined;
 
@@ -60,7 +61,8 @@
 				!re.query.pages[ re.query.pageids[ 0 ] ].extract ||
 				re.query.pages[ re.query.pageids[ 0 ] ].extract === ''
 			) {
-				return false;
+				deferred.reject();
+				return;
 			}
 
 			mw.popups.render.cache[ href ] = {};
