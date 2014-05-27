@@ -276,6 +276,8 @@
 
 	/**
 	 * Positions the popup based on the mouse position and popup size
+	 * Default popup positioning is below and to the right of the mouse or link,
+	 * unless flippedX or flippedY is true. flippedX and flippedY are cached.
 	 *
 	 * @method getOffset
 	 * @param {jQuery} link
@@ -288,8 +290,10 @@
 			flippedX = false,
 			flippedY = false,
 			settings = mw.popups.render.cache[ href ].settings,
-			offsetTop = ( event.pageY ) ?
+			offsetTop = ( event.pageY ) ? // If it was a mouse event
+				// Position according to mouse
 				event.pageY + 20 :
+				// Position according to link position or size
 				link.offset().top + link.height() + 9,
 			clientTop = ( event.clientY ) ?
 				event.clientY :
@@ -318,6 +322,10 @@
 			flippedY = true;
 		}
 
+		if ( event.pageY && flippedY ) {
+			offsetTop += 30;
+		}
+
 		mw.popups.render.cache[ href ].settings.flippedY = flippedY;
 
 		return {
@@ -341,6 +349,12 @@
 			thumbnail = cache.settings.thumbnail,
 			flippedY = cache.settings.flippedY,
 			flippedX = cache.settings.flippedX;
+
+		if ( flippedY ) {
+			classes.push( 'mwe-popups-fade-in-down' );
+		} else {
+			classes.push( 'mwe-popups-fade-in-up' );
+		}
 
 		if ( flippedY && flippedX ) {
 			classes.push( 'flipped_x_y' );

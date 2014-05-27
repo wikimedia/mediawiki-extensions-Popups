@@ -130,7 +130,6 @@
 			.append( popup )
 			.show()
 			.attr( 'aria-hidden', 'false' )
-			.addClass( 'mwe-popups-fade-in-up' )
 			.on( 'mouseleave', mw.popups.render.leaveActive )
 			.on( 'mouseenter', function () {
 				if ( mw.popups.render.closeTimer ) {
@@ -167,12 +166,22 @@
 
 		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
 
+		var fadeInClass, fadeOutClass;
+
+		fadeInClass = ( mw.popups.$popup.hasClass( 'mwe-popups-fade-in-up' ) ) ?
+			'mwe-popups-fade-in-up' :
+			'mwe-popups-fade-in-down';
+
+		fadeOutClass = ( fadeInClass === 'mwe-popups-fade-in-up' ) ?
+			'mwe-popups-fade-out-down' :
+			'mwe-popups-fade-out-up';
+
 		mw.popups.$popup
-			.removeClass( 'mwe-popups-fade-in-up' )
-			.addClass( 'mwe-popups-fade-out-down' );
+			.removeClass( fadeInClass )
+			.addClass( fadeOutClass );
 
 		mw.popups.render.wait( 150 ).done( function () {
-			if ( mw.popups.$popup.hasClass( 'mwe-popups-fade-out-down' ) ) {
+			if ( mw.popups.$popup.hasClass( fadeOutClass ) ) {
 				mw.popups.$popup
 					.attr( 'aria-hidden', 'true' )
 					.hide()
