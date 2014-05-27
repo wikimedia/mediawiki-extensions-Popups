@@ -20,6 +20,8 @@
 	animation-fill-mode: forwards; /* when the spec is finished */
 }
 
+/* FIXME: Use Phuedx's approach to make this cleaner
+   https://gist.github.com/phuedx/0639a279b6efb1a71474 */
 @-webkit-keyframes mwe-popups-fade-in-up {
 	.mwe-popups-fade-in-up-frames;
 }
@@ -34,6 +36,22 @@
 
 @keyframes mwe-popups-fade-in-up {
 	.mwe-popups-fade-in-up-frames;
+}
+
+@-webkit-keyframes mwe-popups-fade-in-down{
+	.mwe-popups-fade-in-down-frames;
+}
+
+@-moz-keyframes mwe-popups-fade-in-down {
+	.mwe-popups-fade-in-down-frames;
+}
+
+@-o-keyframes mwe-popups-fade-in-down {
+	.mwe-popups-fade-in-down-frames;
+}
+
+@keyframes mwe-popups-fade-in-down {
+	.mwe-popups-fade-in-down-frames;
 }
 
 @-webkit-keyframes mwe-popups-fade-out-down {
@@ -52,10 +70,38 @@
 	.mwe-popups-fade-out-down-frames;
 }
 
+@-webkit-keyframes mwe-popups-fade-out-up {
+	.mwe-popups-fade-out-up-frames;
+}
+
+@-moz-keyframes mwe-popups-fade-out-up {
+	.mwe-popups-fade-out-up-frames;
+}
+
+@-o-keyframes mwe-popups-fade-out-up {
+	.mwe-popups-fade-out-up-frames;
+}
+
+@keyframes mwe-popups-fade-out-up {
+	.mwe-popups-fade-out-up-frames;
+}
+
 .mwe-popups-fade-in-up-frames() {
 	0% {
 		opacity: 0;
 		.mwe-popups-translate(0, 20px);
+	}
+
+	100% {
+		opacity: 1;
+		.mwe-popups-translate(0, 0);
+	}
+}
+
+.mwe-popups-fade-in-down-frames() {
+	0% {
+		opacity: 0;
+		.mwe-popups-translate(0, -20px);
 	}
 
 	100% {
@@ -76,10 +122,30 @@
 	}
 }
 
+.mwe-popups-fade-out-up-frames() {
+	0% {
+		opacity: 1;
+		.mwe-popups-translate(0, 0);
+	}
+
+	100% {
+		opacity: 0;
+		.mwe-popups-translate(0, -20px);
+	}
+}
+
 .mwe-popups-fade-in-up {
 	.mwe-popups-animation(mwe-popups-fade-in-up, 0.3s);
 }
 
+.mwe-popups-fade-in-down {
+	.mwe-popups-animation(mwe-popups-fade-in-down, 0.3s);
+}
+
 .mwe-popups-fade-out-down {
 	.mwe-popups-animation(mwe-popups-fade-out-down, 0.15s);
+}
+
+.mwe-popups-fade-out-up {
+	.mwe-popups-animation(mwe-popups-fade-out-up, 0.15s);
 }
