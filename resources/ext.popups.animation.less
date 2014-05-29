@@ -20,39 +20,39 @@
 	animation-fill-mode: forwards; /* when the spec is finished */
 }
 
-@-webkit-keyframes mwe-popups-fade-in {
-	.mwe-popups-fade-in-frames;
+@-webkit-keyframes mwe-popups-fade-in-up {
+	.mwe-popups-fade-in-up-frames;
 }
 
-@-moz-keyframes mwe-popups-fade-in {
-	.mwe-popups-fade-in-frames;
+@-moz-keyframes mwe-popups-fade-in-up {
+	.mwe-popups-fade-in-up-frames;
 }
 
-@-o-keyframes mwe-popups-fade-in {
-	.mwe-popups-fade-in-frames;
+@-o-keyframes mwe-popups-fade-in-up {
+	.mwe-popups-fade-in-up-frames;
 }
 
-@keyframes mwe-popups-fade-in {
-	.mwe-popups-fade-in-frames;
+@keyframes mwe-popups-fade-in-up {
+	.mwe-popups-fade-in-up-frames;
 }
 
-@-webkit-keyframes mwe-popups-fade-out {
-	.mwe-popups-fade-out-frames;
+@-webkit-keyframes mwe-popups-fade-out-down {
+	.mwe-popups-fade-out-down-frames;
 }
 
-@-moz-keyframes mwe-popups-fade-out {
-	.mwe-popups-fade-out-frames;
+@-moz-keyframes mwe-popups-fade-out-down {
+	.mwe-popups-fade-out-down-frames;
 }
 
-@-o-keyframes mwe-popups-fade-out {
-	.mwe-popups-fade-out-frames;
+@-o-keyframes mwe-popups-fade-out-down {
+	.mwe-popups-fade-out-down-frames;
 }
 
-@keyframes mwe-popups-fade-out {
-	.mwe-popups-fade-out-frames;
+@keyframes mwe-popups-fade-out-down {
+	.mwe-popups-fade-out-down-frames;
 }
 
-.mwe-popups-fade-in-frames() {
+.mwe-popups-fade-in-up-frames() {
 	0% {
 		opacity: 0;
 		.mwe-popups-translate(0, 20px);
@@ -64,7 +64,7 @@
 	}
 }
 
-.mwe-popups-fade-out-frames() {
+.mwe-popups-fade-out-down-frames() {
 	0% {
 		opacity: 1;
 		.mwe-popups-translate(0, 0);
@@ -76,10 +76,10 @@
 	}
 }
 
-.mwe-popups-fade-in {
-	.mwe-popups-animation(mwe-popups-fade-in, 0.3s);
+.mwe-popups-fade-in-up {
+	.mwe-popups-animation(mwe-popups-fade-in-up, 0.3s);
 }
 
-.mwe-popups-fade-out {
-	.mwe-popups-animation(mwe-popups-fade-out, 0.15s);
+.mwe-popups-fade-out-down {
+	.mwe-popups-animation(mwe-popups-fade-out-down, 0.15s);
 }

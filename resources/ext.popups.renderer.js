@@ -130,7 +130,7 @@
 			.append( popup )
 			.show()
 			.attr( 'aria-hidden', 'false' )
-			.addClass( 'mwe-popups-fade-in' )
+			.addClass( 'mwe-popups-fade-in-up' )
 			.on( 'mouseleave', mw.popups.render.leaveActive )
 			.on( 'mouseenter', function () {
 				if ( mw.popups.render.closeTimer ) {
@@ -168,15 +168,15 @@
 		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
 
 		mw.popups.$popup
-			.removeClass( 'mwe-popups-fade-in' )
-			.addClass( 'mwe-popups-fade-out' );
+			.removeClass( 'mwe-popups-fade-in-up' )
+			.addClass( 'mwe-popups-fade-out-down' );
 
 		mw.popups.render.wait( 150 ).done( function () {
-			if ( mw.popups.$popup.hasClass( 'mwe-popups-fade-out' ) ) {
+			if ( mw.popups.$popup.hasClass( 'mwe-popups-fade-out-down' ) ) {
 				mw.popups.$popup
 					.attr( 'aria-hidden', 'true' )
 					.hide()
-					.removeClass( 'mwe-popups-fade-out' );
+					.removeClass( 'mwe-popups-fade-out-down' );
 			}
 		} );
 
