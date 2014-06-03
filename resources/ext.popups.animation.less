@@ -1,23 +1,11 @@
+@import "mediawiki.mixins.animation";
+
 .mwe-popups-translate(@x, @y) {
 	-webkit-transform: translate(@x, @y);
 	-moz-transform: translate(@x, @y);
 	-ms-transform: translate(@x, @y);
 	-o-transform: translate(@x, @y);
 	transform: translate(@x, @y);
-}
-
-.mwe-popups-animation(...) {
-	-webkit-animation: @arguments;
-	-moz-animation: @arguments;
-	-o-animation: @arguments;
-	animation: @arguments;
-
-	/* Leave the element in its final animation state */
-	-webkit-animation-fill-mode: forwards; /* Chrome 16+, Safari 4+ */
-	-moz-animation-fill-mode: forwards; /* FF 5+ */
-	-o-animation-fill-mode: forwards; /* not implemented yet */
-	-ms-animation-fill-mode: forwards; /* IE 10+ */
-	animation-fill-mode: forwards; /* when the spec is finished */
 }
 
 /* FIXME: Use Phuedx's approach to make this cleaner
@@ -135,17 +123,17 @@
 }
 
 .mwe-popups-fade-in-up {
-	.mwe-popups-animation(mwe-popups-fade-in-up, 0.3s);
+	.animation(mwe-popups-fade-in-up, 0.3s, ease, forwards);
 }
 
 .mwe-popups-fade-in-down {
-	.mwe-popups-animation(mwe-popups-fade-in-down, 0.3s);
+	.animation(mwe-popups-fade-in-down, 0.3s, ease, forwards);
 }
 
 .mwe-popups-fade-out-down {
-	.mwe-popups-animation(mwe-popups-fade-out-down, 0.15s);
+	.animation(mwe-popups-fade-out-down, 0.15s, ease, forwards);
 }
 
 .mwe-popups-fade-out-up {
-	.mwe-popups-animation(mwe-popups-fade-out-up, 0.15s);
+	.animation(mwe-popups-fade-out-up, 0.15s, ease, forwards);
 }
