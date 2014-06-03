@@ -33,7 +33,8 @@
 		'.extiw',
 		'.image',
 		'.new',
-		'.internal'
+		'.internal',
+		'.external'
 	];
 
 	/**
