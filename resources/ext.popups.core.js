@@ -36,7 +36,8 @@
 		'.image',
 		'.new',
 		'.internal',
-		'.external'
+		'.external',
+		'oo-ui-buttonedElement-button'
 	];
 
 	/**
