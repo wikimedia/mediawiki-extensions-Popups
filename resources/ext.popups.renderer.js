@@ -1,3 +1,5 @@
+/*global popupDelay: true, popupHideDelay: true*/
+
 ( function ( $, mw ) {
 
 	/**
@@ -7,16 +9,26 @@
 	mw.popups.render = {};
 
 	/**
-	 * Time to wait in ms before showing a popup on hover
+	 * Time to wait in ms before showing a popup on hover.
+	 * Use the navigation popup delay if it has been set by the user.
+	 * This isn't the official way of setting the delay
+	 * TODO: Add setting to change delay
 	 * @property POPUP_DELAY
 	 */
-	mw.popups.render.POPUP_DELAY = 500;
+	mw.popups.render.POPUP_DELAY = ( typeof popupDelay === 'undefined' ) ?
+		500 :
+		popupDelay * 1000;
 
 	/**
-	 * Time to wait in ms before closing a popup on de-hover
+	 * Time to wait in ms before closing a popup on de-hover.
+	 * Use the navigation popup delay if it has been set by the user
+	 * This isn't the official way of setting the delay
+	 * TODO: Add setting to change delay
 	 * @property POPUP_CLOSE_DELAY
 	 */
-	mw.popups.render.POPUP_CLOSE_DELAY = 300;
+	mw.popups.render.POPUP_CLOSE_DELAY = ( typeof popupHideDelay === 'undefined' ) ?
+		300 :
+		popupHideDelay * 1000;
 
 	/**
 	 * Time to wait in ms before starting the API queries on hover, must be <= POPUP_DELAY
