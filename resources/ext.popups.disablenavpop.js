@@ -5,7 +5,7 @@
 // This is a temporary fix
 ( function ( $ ) {
 	$( function () {
-		if ( typeof disablePopups !== undefined ) {
+		if ( typeof disablePopups !== 'undefined' ) {
 			disablePopups();
 		}
 	} );
