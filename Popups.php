@@ -38,7 +38,7 @@ $wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
 
 $wgHooks['GetBetaFeaturePreferences'][] = 'PopupsHooks::getPreferences';
 $wgHooks['BeforePageDisplay'][] = 'PopupsHooks::onBeforePageDisplay';
-
+$wgHooks['ResourceLoaderTestModules'][] = 'PopupsHooks::onResourceLoaderTestModules';
 $wgHooks[ 'ResourceLoaderRegisterModules' ][] = function ( ResourceLoader &$resourceLoader ) {
 
 	$moduleDependencies = array(

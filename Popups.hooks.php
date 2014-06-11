@@ -47,4 +47,19 @@ class PopupsHooks {
 			$out->addModules( array( 'schema.Popups' ) );
 		}
 	}
+
+	/**
+	 * @param array &$testModules
+	 * @param ResourceLoader $resourceLoader
+	 * @return bool
+	 */
+	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
+		$testModules['qunit']['ext.popups.tests'] = array(
+			'scripts' => array( 'tests/qunit/ext.popups.renderer.article.test.js' ),
+			'dependencies' => array( 'ext.popups' ),
+			'localBasePath' => __DIR__,
+			'remoteExtPath' => 'Popups',
+		);
+		return true;
+	}
 }
