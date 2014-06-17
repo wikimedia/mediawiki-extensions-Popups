@@ -1,0 +1,113 @@
+#mwe-popups-settings {
+	position: fixed;
+	z-index: 1000;
+	background: #fff;
+	border: 1px solid rgba( 0, 0, 0, 0.1);
+	-moz-box-shadow: 3px 3px 0px 0px rgba( 0, 0, 0, 0.30 );
+	box-shadow: 3px 3px 0px 0px rgba( 0, 0, 0, 0.30 );
+	width: 600px;
+	padding: 5px;
+
+	header {
+		height: 50px;
+		border-bottom: 1px solid #c8c8c8;
+
+		a {
+			font: 40px sans-serif;
+			font-weight: bold;
+			line-height: 50px;
+			text-align: center;
+			color: #999;
+			display: block;
+			width: 50px;
+			height: 50px;
+			border-right: 1px solid #c8c8c8;
+			float: left;
+			cursor: pointer;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		h1 {
+			margin: 0;
+			padding: 0;
+			padding-left: 10px;
+			font: 20px sans-serif;
+			font-weight: bold;
+			line-height: 50px;
+			border: none;
+		}
+	}
+
+	main {
+		margin-top: 15px;
+		margin-left: 50px;
+
+		p {
+			color: #999;
+			display: block;
+			font-size: 17px;
+			margin: 30px 0;
+		}
+
+		form {
+
+			img {
+				margin-right: 60px;
+			}
+
+			input {
+				display: block;
+				margin: 0 20px;
+				float: left;
+			}
+
+			label {
+				font-size: 12px;
+				display: block;
+				float: left;
+				margin-right: 110px;
+				line-height: 18px;
+				width: 185px;
+
+				> span {
+					color: #000;
+					font-size: 18px;
+					font-weight: bold;
+					display: block;
+				}
+
+				> small {
+					display: block;
+					padding: 2px 4px;
+					text-align: center;
+					color: #fff;
+					text-transform: uppercase;
+					border: 1px solid #BFEBE1;
+					background: #00af89;
+					font-weight: 100;
+				}
+			}
+
+			.mwe-popups-settings-actions {
+				clear: both;
+				text-align: right;
+				margin: 10px;
+			}
+		}
+	}
+}
+
+.mwe-popups-overlay {
+	background: rgba( 0, 0, 0, 0.3 );
+	z-index: 999;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}

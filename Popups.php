@@ -45,6 +45,7 @@ $wgHooks[ 'ResourceLoaderRegisterModules' ][] = function ( ResourceLoader &$reso
 		'mediawiki.api',
 		'mediawiki.jqueryMsg',
 		'moment',
+		'jquery.jStorage',
 	);
 
 	// If EventLogging is present, declare the schema module
@@ -66,15 +67,27 @@ $wgHooks[ 'ResourceLoaderRegisterModules' ][] = function ( ResourceLoader &$reso
 			'resources/ext.popups.renderer.js',
 			'resources/ext.popups.renderer.article.js',
 			'resources/ext.popups.disablenavpop.js',
+			'resources/ext.popups.settings.js',
 		),
 		'styles' => array(
 			'resources/ext.popups.core.less',
 			'resources/ext.popups.animation.less',
+			'resources/ext.popups.settings.less',
 		),
 		'dependencies' => $moduleDependencies,
 		'messages' => array(
 			'popups-last-edited',
-			'popups-redirects',
+			"popups-settings-title",
+			"popups-settings-description",
+			"popups-settings-option-read-quickly",
+			"popups-settings-option-read-quickly-description",
+			"popups-settings-option-monitor-or-edit",
+			"popups-settings-option-monitor-or-edit-description",
+			"popups-settings-option-off",
+			"popups-settings-option-off-description",
+			"popups-settings-save",
+			"popups-settings-cancel",
+			"popups-settings-enable",
 		),
 		'remoteExtPath' => 'Popups',
 		'localBasePath' => dirname( __DIR__ ) . '/Popups',

@@ -33,10 +33,9 @@
 	display: none;
 	font-size: 15px;
 	line-height: 24px;
-	cursor: pointer;
 	min-width: 300px;
 
-	> a {
+	> div {
 		display: block;
 		margin-top: -9px;
 		padding-top: 9px;
@@ -91,12 +90,31 @@
 		> div.mwe-popups-timestamp-recent {
 			color: #00af89;
 		}
+
+		.mwe-popups-settings-icon {
+			cursor: pointer;
+			margin-left: 5px;
+			padding: 5px;
+			width: 13px;
+		}
+	}
+
+	.mwe-popups-extract {
+		margin: 0;
+		padding: 16px;
+		display: block;
+		color: #000;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+		}
 	}
 
 	&.mwe-popups-is-tall {
 		width: 450px;
 
-		> a > svg {
+		> div > a > svg {
 			margin-bottom: -5px;
 		}
 
@@ -179,10 +197,11 @@
 		}
 
 		.mwe-popups-extract {
-			margin-top: 206px;
+			padding-top: 32px;
+			margin-top: 190px;
 		}
 
-		> a > svg {
+		> div > a > svg {
 			margin-top: -8px;
 			position: absolute;
 			z-index: 100;
@@ -199,7 +218,7 @@
 			.mwe-popups-border-triangle-top(9px, 420px, #bbb);
 		}
 
-		> a > svg {
+		> div > a > svg {
 			margin: 0;
 			margin-top: -8px;
 			margin-bottom: -5px;

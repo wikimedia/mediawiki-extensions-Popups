@@ -7,6 +7,8 @@
 	 */
 	mw.popups = {};
 
+	mw.popups.enabled = $.jStorage.get( 'mwe-popups-enabled' ) !== 'false';
+
 	/**
 	 * Checks SVG support on the browser
 	 * @property {Boolean} supportsSVG
@@ -154,17 +156,21 @@
 	};
 
 	mw.hook( 'wikipage.content').add( function ( $content ) {
-		mw.popups.$content = $content;
+		if ( mw.popups.enabled ) {
+			mw.popups.$content = $content;
 
-		var $elements = mw.popups.selectPopupElements();
-		mw.popups.removeTooltips( $elements );
-		mw.popups.setupTriggers( $elements );
+			var $elements = mw.popups.selectPopupElements();
+			mw.popups.removeTooltips( $elements );
+			mw.popups.setupTriggers( $elements );
+		}
 	} );
 
 	$( function () {
-		mw.popups.checkScroll();
-		mw.popups.createSVGMask();
-		mw.popups.createPopupElement();
+		if ( mw.popups.enabled ) {
+			mw.popups.checkScroll();
+			mw.popups.createSVGMask();
+			mw.popups.createPopupElement();
+		}
 	} );
 
 } ) ( jQuery, mediaWiki );

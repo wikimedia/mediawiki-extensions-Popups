@@ -94,9 +94,10 @@
 	 * @return {jQuery}
 	 */
 	article.createPopup = function ( re, href ) {
-		var $a,
+		var $div,
 			page = re.query.pages[ re.query.pageids[ 0 ] ],
-			$contentbox = $( '<div>' )
+			$contentbox = $( '<a>' )
+				.attr( 'href', href )
 				.addClass( 'mwe-popups-extract' )
 				.html(
 					article.getProcessedHtml( page.extract, page.title )
@@ -110,24 +111,32 @@
 			timestampclass = ( timediff < oneDay ) ?
 				'mwe-popups-timestamp-recent' :
 				'mwe-popups-timestamp-older',
+			$settingsImage = $( '<img>' )
+				.addClass( 'mwe-popups-settings-icon' )
+				.attr( 'src', '/w/extensions/Popups/resources/gear_gray.svg' ),
 			$timestamp = $( '<div>' )
 				.addClass( timestampclass )
 				.append(
 					$( '<span>' ).text( mw.message( 'popups-last-edited',
-						moment( timestamp ).fromNow() ).text() )
+						moment( timestamp ).fromNow() ).text() ),
+					$settingsImage
 			);
 
-		$a = $( '<a>' )
-			.append( $thumbnail, $contentbox, $timestamp )
+		if ( $thumbnail.prop( 'tagName' ) !== 'SPAN' ) {
+			$thumbnail = $( '<a>' )
+				.addClass( 'mwe-popups-discreet' )
 				.attr( 'href', href )
-				.on( 'click', mw.popups.eventLogging.logClick );
+				.append( $thumbnail );
+		}
+
+		$div = $( '<div>' ).append( $thumbnail, $contentbox, $timestamp );
 
 		mw.popups.render.cache[ href ].settings = {
 			'tall': ( tall === undefined ) ? false : tall,
 			'thumbnail': ( thumbnail === undefined ) ? false : thumbnail
 		};
 
-		return $a;
+		return $div;
 	};
 
 	/**
@@ -446,6 +455,10 @@
 			thumbnail = cache.settings.thumbnail,
 			flippedY = cache.settings.flippedY,
 			flippedX = cache.settings.flippedX;
+
+		popup.find( '.mwe-popups-settings-icon' ).click( function () {
+			mw.popups.settings.open();
+		} );
 
 		if ( !svg && flippedY && !tall ) {
 			$( '.mwe-popups-extract' ).css( 'margin-top', '206px' );

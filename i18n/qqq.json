@@ -7,5 +7,16 @@
 	"popups-message": "Name shown in user preference for this extension",
 	"popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
 	"popups-last-edited": "Message to show time span since the page was last edited. Parameters:\n* $1 - the timespan in words (localized). e.g. \"3 months ago\"",
-	"popups-redirects": "Unused at this time.\n\nMessage shown when the hovercard is showing a redirected page.\n\nParameters:\n* $1 - ..."
+	"popups-redirects": "Unused at this time.\n\nMessage shown when the hovercard is showing a redirected page.\n\nParameters:\n* $1 - ...",
+	"popups-settings-title": "Title used for the setting's dialog",
+	"popups-settings-description": "Description for the setting's dialog",
+	"popups-settings-option-read-quickly": "Title for the read quickly or hovercard option",
+	"popups-settings-option-read-quickly-description": "Description for the read quickly or hovercard option",
+	"popups-settings-option-monitor-or-edit": "Title for the monitor or edit or navigation popups option",
+	"popups-settings-option-monitor-or-edit-description": "Description for the monitor or edit or navigation popups option",
+	"popups-settings-option-off": "Title for turn off hovercards option",
+	"popups-settings-option-off-description": "Description for turn off hovercards option",
+	"popups-settings-save": "Save buttton for the setting's dialoag",
+	"popups-settings-cancel": "Cancel button for the setting's dialog",
+	"popups-settings-enable": "Link on the footer to enable hovercards if its disabled"
 }

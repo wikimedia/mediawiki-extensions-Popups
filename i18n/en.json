@@ -5,5 +5,16 @@
     "popups-message": "Hovercards",
     "popups-desc": "Displays hovercards with summaries of page contents when the user hovers over a page link",
     "popups-last-edited": "Last edited $1",
-    "popups-redirects": "redirects to <h3>$1</h3>"
+    "popups-redirects": "redirects to <h3>$1</h3>",
+    "popups-settings-title": "Article Preview",
+    "popups-settings-description": "This tool lets you preview blue links and references",
+    "popups-settings-option-read-quickly": "Read Quickly",
+    "popups-settings-option-read-quickly-description": "See the lead sentence of an article and see a preview image.<br>This is recommended for readers.",
+    "popups-settings-option-monitor-or-edit": "Monitor or Edit",
+    "popups-settings-option-monitor-or-edit-description": "Use advanced actions to monitor and edit the content of blue links",
+    "popups-settings-option-off": "Turn Previews off",
+    "popups-settings-option-off-description": "You can change this setting using the link in the footer of the page",
+    "popups-settings-save": "Save",
+    "popups-settings-cancel": "Cancel",
+    "popups-settings-enable": "Enable Hovercards"
 }
