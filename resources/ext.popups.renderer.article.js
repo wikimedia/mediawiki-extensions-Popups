@@ -33,7 +33,7 @@
 		var
 			href = link.attr( 'href' ),
 			title = link.data( 'title' ),
-			deferred  = $.Deferred();
+			deferred = $.Deferred();
 
 		mw.popups.render.currentRequest = mw.popups.api.get( {
 			action: 'query',
@@ -57,6 +57,7 @@
 			mw.popups.render.currentRequest = undefined;
 
 			if (
+				!re.query ||
 				!re.query.pages ||
 				!re.query.pages[ re.query.pageids[ 0 ] ].extract ||
 				re.query.pages[ re.query.pageids[ 0 ] ].extract === ''
