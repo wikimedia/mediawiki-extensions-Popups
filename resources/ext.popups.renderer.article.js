@@ -126,8 +126,8 @@
 	};
 
 	/**
-	 * Returns an HTML after removing the brackets from the extract
-	 * and making the title in the extract bold
+	 * Returns HTML extract after removing parentheses and making the title in
+	 * the extract bold.
 	 *
 	 * @method getProcessedHtml
 	 * @param {String} extract
@@ -139,47 +139,47 @@
 		var regExp = new RegExp( '(^|\\s)(' + title + ')(\\s|$)', 'ig' );
 		// Make title bold in the extract text
 		extract = extract.replace( regExp, '$1<b>$2</b>$3' );
-		// Remove text in brackets along with the brackets
-		extract = article.removeBracketsFromText( extract );
+		// Remove text in parentheses along with the parentheses
+		extract = article.removeParensFromText( extract );
 		extract = extract.replace(/\s+/g, ' '); // Remove extra white spaces
 		return extract;
 	};
 
 	/**
-	 * Removes all bracketed content from a string.
-	 * Returns the original string as is if the number or
-	 * order of brackets is incorrect. Does not remove extra spaces.
+	 * Removes content in parentheses from a string.  Returns the original
+	 * string as is if the parentheses are unbalanced or out or order. Does not
+	 * remove extra spaces.
 	 *
-	 * @method removeBracketsFromText
+	 * @method removeParensFromText
 	 * @param {String} string
 	 * @return {String}
 	 */
-	article.removeBracketsFromText = function ( string ) {
+	article.removeParensFromText = function ( string ) {
 		var
 			ch,
 			newString = '',
-			count = 0,
+			level = 0,
 			i = 0;
 
 		for( i; i < string.length; i++ ) {
 			ch = string.charAt( i );
 
-			if ( ch === ')' && count === 0  ) {
+			if ( ch === ')' && level === 0  ) {
 				return string;
 			}
 			if ( ch === '(' ) {
-				count++;
+				level++;
 				continue;
 			} else if ( ch === ')' ) {
-				count--;
+				level--;
 				continue;
 			}
-			if ( count === 0 ) {
+			if ( level === 0 ) {
 				newString += ch;
 			}
 		}
 
-		return ( count === 0 ) ? newString : string;
+		return ( level === 0 ) ? newString : string;
 	};
 
 	/**
