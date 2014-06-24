@@ -140,8 +140,46 @@
 		// Make title bold in the extract text
 		extract = extract.replace( regExp, '$1<b>$2</b>$3' );
 		// Remove text in brackets along with the brackets
-		extract = extract.replace( /\([^)]*\)\s+/, '' );
+		extract = article.removeBracketsFromText( extract );
+		extract = extract.replace(/\s+/g, ' '); // Remove extra white spaces
 		return extract;
+	};
+
+	/**
+	 * Removes all bracketed content from a string.
+	 * Returns the original string as is if the number or
+	 * order of brackets is incorrect. Does not remove extra spaces.
+	 *
+	 * @method removeBracketsFromText
+	 * @param {String} string
+	 * @return {String}
+	 */
+	article.removeBracketsFromText = function ( string ) {
+		var
+			ch,
+			newString = '',
+			count = 0,
+			i = 0;
+
+		for( i; i < string.length; i++ ) {
+			ch = string.charAt( i );
+
+			if ( ch === ')' && count === 0  ) {
+				return string;
+			}
+			if ( ch === '(' ) {
+				count++;
+				continue;
+			} else if ( ch === ')' ) {
+				count--;
+				continue;
+			}
+			if ( count === 0 ) {
+				newString += ch;
+			}
+		}
+
+		return ( count === 0 ) ? newString : string;
 	};
 
 	/**
