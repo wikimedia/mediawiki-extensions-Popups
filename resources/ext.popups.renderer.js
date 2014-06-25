@@ -10,13 +10,13 @@
 	 * Time to wait in ms before showing a popup on hover
 	 * @property POPUP_DELAY
 	 */
-	mw.popups.render.POPUP_DELAY = 150;
+	mw.popups.render.POPUP_DELAY = 500;
 
 	/**
 	 * Time to wait in ms before closing a popup on de-hover
 	 * @property POPUP_CLOSE_DELAY
 	 */
-	mw.popups.render.POPUP_CLOSE_DELAY = 100;
+	mw.popups.render.POPUP_CLOSE_DELAY = 300;
 
 	/**
 	 * Time to wait in ms before starting the API queries on hover, must be <= POPUP_DELAY
