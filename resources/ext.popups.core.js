@@ -137,16 +137,7 @@
 	 */
 	mw.popups.setupTriggers = function ( $elements ) {
 		$elements.on( 'mouseenter focus', function ( event ) {
-			var href = this.href;
-
-			// No popup if scrolling or on certain kinds of links.
-			if (
-				mw.popups.scrolled || // Prevents hovering on popups while scrolling
-				href.indexOf( '?' ) !== -1 ||
-				href.indexOf( 'javascript:' ) === 0 || // jshint ignore:line
-				href.indexOf( location.origin + location.pathname + '#' ) === 0
-			) {
-				// TODO No popup for this, but removeTooltips() has already blanked the title.
+			if ( mw.popups.scrolled ) {
 				return;
 			}
 
@@ -161,7 +152,10 @@
 	 */
 	mw.popups.selectPopupElements = function () {
 		return mw.popups.$content
-			.find( 'a[href]:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' );
+			.find( 'a[href][title]:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' )
+			.filter( function () {
+				return ( this.href === mw.config.get( 'wgServer' ) + mw.util.getUrl( this.title ) );
+			} );
 	};
 
 	mw.hook( 'wikipage.content').add( function ( $content ) {
