@@ -122,7 +122,7 @@
 	};
 
 	/**
-	 * Register the hover event on links
+	 * Register a hover event that may render a popup on an appropriate link.
 	 *
 	 * @method setupTriggers
 	 */
@@ -132,11 +132,14 @@
 				$this = $( this ),
 				href = $this.attr( 'href' );
 
+			// No popup if scrolling or on certain kinds of links.
 			if (
 				mw.popups.scrolled || // Prevents hovering on popups while scrolling
 				href.indexOf( '?' ) !== -1 ||
+				href.indexOf( 'javascript:' ) === 0 || // jshint ignore:line
 				href.indexOf( location.origin + location.pathname + '#' ) === 0
 			) {
+				// TODO No popup for this, but removeTooltips() has already blanked the title.
 				return;
 			}
 
