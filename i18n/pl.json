@@ -10,5 +10,7 @@
 	"popups-message": "Wyskakujące okienka",
 	"popups-desc": "Wyświetla wyskakujące okienka z podsumowaniem treści strony docelowej po umieszczeniu wskaźnika myszy na odnośniku.",
 	"popups-last-edited": "Ostatnio edytowane $1",
-	"popups-redirects": "przekierowuje do<h3>$1</h3>"
+	"popups-redirects": "przekierowuje do<h3>$1</h3>",
+	"popups-settings-save": "Zapisz",
+	"popups-settings-cancel": "Anuluj"
 }

@@ -9,5 +9,16 @@
 	"popups-message": "Hovercards",
 	"popups-desc": "Afficher des fenêtres au survol avec les résumés des contenus des pages quand l’utilisateur survole un lien de page.",
 	"popups-last-edited": "Dernière modification $1",
-	"popups-redirects": "redirigé vers <h3>$1</h3>"
+	"popups-redirects": "redirigé vers <h3>$1</h3>",
+	"popups-settings-title": "Aperçu de l’article",
+	"popups-settings-description": "Cet outil vous donne un aperçu des liens bleus et des références",
+	"popups-settings-option-read-quickly": "Lire rapidement",
+	"popups-settings-option-read-quickly-description": "Voir la phrase clé d’un article et une image de l’aperçu.\n<br />Cela est recommandé pour les lecteurs.",
+	"popups-settings-option-monitor-or-edit": "Surveiller ou Modifier",
+	"popups-settings-option-monitor-or-edit-description": "Utiliser les actions avancées pour surveiller et modifier le contenu des liens bleus",
+	"popups-settings-option-off": "Désactiver les aperçus",
+	"popups-settings-option-off-description": "Vous pouvez modifier ce paramètre en utilisant le lien en bas de page",
+	"popups-settings-save": "Enregistrer",
+	"popups-settings-cancel": "Annuler",
+	"popups-settings-enable": "Activer les survols"
 }

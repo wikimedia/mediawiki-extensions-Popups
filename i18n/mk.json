@@ -7,5 +7,16 @@
 	"popups-message": "Инфопрозорчиња",
 	"popups-desc": "Прикажува инфопрозорчиња со резиме на содржината на страницата кога ќе отидете со стрелката врз дадената врска",
 	"popups-last-edited": "Последно уредување: $1",
-	"popups-redirects": "пренасочува кон <h3>$1</h3>"
+	"popups-redirects": "пренасочува кон <h3>$1</h3>",
+	"popups-settings-title": "Преглед на статија",
+	"popups-settings-description": "Алаткава овозможува преглед на сини врски и наводи",
+	"popups-settings-option-read-quickly": "Прочитај брзо",
+	"popups-settings-option-read-quickly-description": "Погледајте ја првата реченица во статијата и видете ја сликата со преглед.<br />Ова се препорачува за читателите.",
+	"popups-settings-option-monitor-or-edit": "Надгледувај или уреди",
+	"popups-settings-option-monitor-or-edit-description": "Користи напредни дејства за надгледувањље или уредување на содржината на сини врски",
+	"popups-settings-option-off": "Исклучи преглед",
+	"popups-settings-option-off-description": "Можете да ја смените оваа поставка, користејќи ја врската во подножјето на страницата.",
+	"popups-settings-save": "Зачувај",
+	"popups-settings-cancel": "Откажи",
+	"popups-settings-enable": "Овозможи инфопрозорчиња"
 }
