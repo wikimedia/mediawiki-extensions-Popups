@@ -7,5 +7,7 @@
 	"popups-message": "Гучу долу кораш",
 	"popups-desc": "Лелочо агӀона хьажорган тӀе курсор хӀоттайича агӀона чулацамах лаьцна хаам болу кораш гучу долу",
 	"popups-last-edited": "ТӀеххьара тайина $1",
-	"popups-redirects": "дӀасахӀажайо <h3>$1</h3> тӀе"
+	"popups-redirects": "дӀасахӀажайо <h3>$1</h3> тӀе",
+	"popups-settings-save": "Ӏалашян",
+	"popups-settings-cancel": "Цаоьшу"
 }

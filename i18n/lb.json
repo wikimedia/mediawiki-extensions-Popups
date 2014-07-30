@@ -6,5 +6,8 @@
 	},
 	"popups-message": "Hovercards",
 	"popups-last-edited": "Lescht Ännerung $1",
-	"popups-redirects": "Viruleedung op <h3>$1</h3"
+	"popups-redirects": "Viruleedung op <h3>$1</h3",
+	"popups-settings-option-read-quickly": "Séier liesen",
+	"popups-settings-save": "Späicheren",
+	"popups-settings-cancel": "Ofbriechen"
 }

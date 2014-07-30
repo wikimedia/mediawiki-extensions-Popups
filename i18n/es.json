@@ -1,11 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
 	"popups-message": "Cuadros emergentes",
 	"popups-desc": "Muestra un cuadro emergente con el resumen del contenido de una página cuando el usuario posa el ratón sobre un enlace",
 	"popups-last-edited": "Última modificación: $1",
-	"popups-redirects": "redirige a <h3>$1</h3>"
+	"popups-redirects": "redirige a <h3>$1</h3>",
+	"popups-settings-title": "Previsualización de artículo",
+	"popups-settings-option-off": "Desactivar previsualizaciones",
+	"popups-settings-option-off-description": "Puedes cambiar esta configuración usando el enlace en el pie de la página",
+	"popups-settings-save": "Guardar",
+	"popups-settings-cancel": "Cancelar"
 }

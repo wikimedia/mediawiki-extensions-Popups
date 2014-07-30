@@ -7,5 +7,8 @@
 	"popups-message": "Popup",
 	"popups-desc": "Mostra un popup con un estratto del contenuto quando l'utente passa sopra al collegamento ad una pagina.",
 	"popups-last-edited": "Ultima modifica $1",
-	"popups-redirects": "reindirizza a <h3>$1</h3>"
+	"popups-redirects": "reindirizza a <h3>$1</h3>",
+	"popups-settings-title": "Anteprima voce",
+	"popups-settings-save": "Salva",
+	"popups-settings-cancel": "Annulla"
 }

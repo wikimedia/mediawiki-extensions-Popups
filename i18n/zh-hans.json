@@ -9,5 +9,12 @@
 	"popups-message": "悬停卡片",
 	"popups-desc": "当用户在页面链接上悬停鼠标指针时，显示带有页面内容摘要的悬停卡片",
 	"popups-last-edited": "最后编辑于$1",
-	"popups-redirects": "重定向至<h3>$1</h3>"
+	"popups-redirects": "重定向至<h3>$1</h3>",
+	"popups-settings-title": "条目预览",
+	"popups-settings-option-read-quickly": "快速阅读",
+	"popups-settings-option-monitor-or-edit": "监视或编辑",
+	"popups-settings-option-off": "关闭预览",
+	"popups-settings-save": "保存",
+	"popups-settings-cancel": "取消",
+	"popups-settings-enable": "启用Hovercards"
 }
