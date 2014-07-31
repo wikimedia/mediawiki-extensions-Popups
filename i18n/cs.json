@@ -7,5 +7,16 @@
 	"popups-message": "Vyskakovací kartičky",
 	"popups-desc": "Zobrazuje vyskakovací kartičky se shrnutím obsahu cílové stránky, když uživatel umístí kurzor myši nad odkaz.",
 	"popups-last-edited": "Naposledy editováno $1",
-	"popups-redirects": "přesměrování na <h3>$1</h3>"
+	"popups-redirects": "přesměrování na <h3>$1</h3>",
+	"popups-settings-title": "Náhled článku",
+	"popups-settings-description": "Tento nástroj vám umožňuje nahlížet za modré odkazy a reference",
+	"popups-settings-option-read-quickly": "Rychlé čtení",
+	"popups-settings-option-read-quickly-description": "Zobrazí úvodní větu článku a náhledový obrázek.<br />Doporučené nastavení pro čtenáře.",
+	"popups-settings-option-monitor-or-edit": "Kontrola a editace",
+	"popups-settings-option-monitor-or-edit-description": "Pokročilé akce pro kontrolu a editaci cíle modrých odkazů",
+	"popups-settings-option-off": "Vypnout náhledy",
+	"popups-settings-option-off-description": "Toto nastavení můžete změnit pomocí odkazu v patičce stránky",
+	"popups-settings-save": "Uložit",
+	"popups-settings-cancel": "Storno",
+	"popups-settings-enable": "Zapnout vyskakovací kartičky"
 }

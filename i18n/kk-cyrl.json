@@ -7,5 +7,14 @@
 	"popups-message": "Қалқып шығушы терезелер",
 	"popups-desc": "Пайдаланушы жүгіргіні бет сілтемесіне жақындатқанда бет мазмұны түйіндемесін қалқып шығушы терезелерімен көрсету",
 	"popups-last-edited": "$1 соңғы рет өңделді",
-	"popups-redirects": "бағытталған беті <h3>$1</h3>"
+	"popups-redirects": "бағытталған беті <h3>$1</h3>",
+	"popups-settings-title": "Мақаланы қарап өту",
+	"popups-settings-description": "Бұл құрал бапттаулар мен көк сілтемелерді қарап шығуыңызға мүмкіндік береді",
+	"popups-settings-option-read-quickly": "Жылдам оқу",
+	"popups-settings-option-monitor-or-edit": "Монитор немесе өңдеу",
+	"popups-settings-option-off": "Қарап шығуларды сөндіру",
+	"popups-settings-option-off-description": "Беттің төменгі жағындағы сілтемелерді қолданып бұл баптауларды өзгерте аласыз",
+	"popups-settings-save": "Сақтау",
+	"popups-settings-cancel": "Болдырмау",
+	"popups-settings-enable": "Қалқып шығушы терезелерді іске қосу"
 }

@@ -8,5 +8,16 @@
 	"popups-message": "Phiếu tóm tắt",
 	"popups-desc": "Nổi lên phiếu tóm tắt nội dung của một trang khi đặt trỏ chuột lên một liên kết đến trang đó.",
 	"popups-last-edited": "Sửa đổi lần cuối $1",
-	"popups-redirects": "đổi hướng đến <h3>$1</h3>"
+	"popups-redirects": "đổi hướng đến <h3>$1</h3>",
+	"popups-settings-title": "Xem trước bài viết",
+	"popups-settings-description": "Công cụ này cho phép xem trước các liên kết xanh và cước chú",
+	"popups-settings-option-read-quickly": "Đọc nhanh",
+	"popups-settings-option-read-quickly-description": "Xem câu đầu tiên và hình tiêu biểu của bài viết.<br />Các độc giả được khuyến khích sử dụng công cụ này.",
+	"popups-settings-option-monitor-or-edit": "Giám sát hoặc sửa đổi",
+	"popups-settings-option-monitor-or-edit-description": "Các chức năng nâng cao để giám sát và sửa đổi nội dung của các liên kết xanh",
+	"popups-settings-option-off": "Tắt phiếu xem trước",
+	"popups-settings-option-off-description": "Bạn có thể thay đổi tùy chọn này dùng liên kết ở cuối trang",
+	"popups-settings-save": "Lưu",
+	"popups-settings-cancel": "Hủy bỏ",
+	"popups-settings-enable": "Bật phiếu tóm tắt"
 }
