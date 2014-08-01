@@ -9,6 +9,8 @@
 	"popups-last-edited": "Последний раз редактировалось $1",
 	"popups-redirects": "перенаправляет на <h3>$1</h3>",
 	"popups-settings-title": "Предпросмотр статьи",
+	"popups-settings-description": "Этот инструмент позволяет просматривать синие ссылки и ссылки-примечания",
+	"popups-settings-option-off": "Выключить предпросмотр",
 	"popups-settings-save": "Сохранить",
 	"popups-settings-cancel": "Отмена"
 }
