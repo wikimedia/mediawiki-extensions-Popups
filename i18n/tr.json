@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joseph"
+			"Joseph",
+			"Sayginer"
 		]
 	},
 	"popups-message": "Açılır pencereler",
-	"popups-desc": "Kullanıcı bir makale bağlantısı üzerine geldiğinde makale içeriği özetini içeren açılır pencereler görüntüler."
+	"popups-desc": "Kullanıcı bir makale bağlantısı üzerine geldiğinde makale içeriği özetini içeren açılır pencereler görüntüler.",
+	"popups-settings-title": "Madde Ön izleme",
+	"popups-settings-description": "Bu araç mavi bağlantılar ve kayanaklarda ön izleme yapabilmenizi sağlar",
+	"popups-settings-save": "Kaydet",
+	"popups-settings-cancel": "İptal"
 }

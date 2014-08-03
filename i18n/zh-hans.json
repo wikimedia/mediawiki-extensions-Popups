@@ -11,6 +11,7 @@
 	"popups-last-edited": "最后编辑于$1",
 	"popups-redirects": "重定向至<h3>$1</h3>",
 	"popups-settings-title": "条目预览",
+	"popups-settings-description": "此工具允许您预览蓝链与参考文献",
 	"popups-settings-option-read-quickly": "快速阅读",
 	"popups-settings-option-monitor-or-edit": "监视或编辑",
 	"popups-settings-option-off": "关闭预览",

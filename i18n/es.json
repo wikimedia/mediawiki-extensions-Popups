@@ -10,6 +10,7 @@
 	"popups-last-edited": "Última modificación: $1",
 	"popups-redirects": "redirige a <h3>$1</h3>",
 	"popups-settings-title": "Previsualización de artículo",
+	"popups-settings-description": "Esta herramienta permite previsualizar los enlaces azules y las referencias",
 	"popups-settings-option-off": "Desactivar previsualizaciones",
 	"popups-settings-option-off-description": "Puedes cambiar esta configuración usando el enlace en el pie de la página",
 	"popups-settings-save": "Guardar",
