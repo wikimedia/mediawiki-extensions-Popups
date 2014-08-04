@@ -9,5 +9,16 @@
 	"popups-message": "Hovercards",
 	"popups-desc": "Visar skyltfönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk",
 	"popups-last-edited": "Senast redigerad $1",
-	"popups-redirects": "omdirigering till <h3>$1</h3>"
+	"popups-redirects": "omdirigering till <h3>$1</h3>",
+	"popups-settings-title": "Artikelförhandsgranskning",
+	"popups-settings-description": "Detta verktyg låter dig förhandsgranska blå länkar och referenser",
+	"popups-settings-option-read-quickly": "Läs snabbt",
+	"popups-settings-option-read-quickly-description": "Se den inledande meningen i artikel och visar en förhandsgranskningsbild.<br />Denna rekommenderas för läsare.",
+	"popups-settings-option-monitor-or-edit": "Övervaka eller redigera",
+	"popups-settings-option-monitor-or-edit-description": "Använda avancerade åtgärder för att övervaka och redigera innehållet i blå länkar",
+	"popups-settings-option-off": "Inaktivera förhandsgranskningar",
+	"popups-settings-option-off-description": "Du kan ändra denna inställning via länken i sidfoten av sidan",
+	"popups-settings-save": "Spara",
+	"popups-settings-cancel": "Avbryt",
+	"popups-settings-enable": "Aktivera Hovercards"
 }
