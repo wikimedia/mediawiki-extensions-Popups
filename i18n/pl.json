@@ -4,13 +4,15 @@
 			"Chrumps",
 			"Peter Bowman",
 			"Rezonansowy",
-			"WTM"
+			"WTM",
+			"Ty221"
 		]
 	},
 	"popups-message": "Wyskakujące okienka",
 	"popups-desc": "Wyświetla wyskakujące okienka z podsumowaniem treści strony docelowej po umieszczeniu wskaźnika myszy na odnośniku.",
 	"popups-last-edited": "Ostatnio edytowane $1",
 	"popups-redirects": "przekierowuje do<h3>$1</h3>",
+	"popups-settings-option-read-quickly-description": "Zobacz zdanie początkowe artykułu i obraz podglądu.<br />Zalecane dla czytelników.",
 	"popups-settings-save": "Zapisz",
 	"popups-settings-cancel": "Anuluj"
 }

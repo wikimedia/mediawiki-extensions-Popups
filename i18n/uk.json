@@ -1,11 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Ата"
 		]
 	},
 	"popups-message": "Спливні вікна",
 	"popups-desc": "Відображає спливні вікна з описом змісту сторінок при наведенні покажчика миші на посилання сторінки.",
 	"popups-last-edited": "Остання редакція $1",
-	"popups-redirects": "перенаправляє на <h3>$1</h3>"
+	"popups-redirects": "перенаправляє на <h3>$1</h3>",
+	"popups-settings-title": "Попередній перегляд статті",
+	"popups-settings-description": "Цей інструмент дає Вам змогу попередньо переглядати сині посилання і примітки",
+	"popups-settings-option-read-quickly": "Читати швидко",
+	"popups-settings-option-read-quickly-description": "Подивитися перше речення статті і зображення. <br />Рекомендовано для читачів.",
+	"popups-settings-option-monitor-or-edit": "Моніторити або редагувати",
+	"popups-settings-option-monitor-or-edit-description": "Скористатися додатковими діями для моніторингу і редагування вмісту синіх посилань",
+	"popups-settings-option-off": "Вимкнути попередні перегляди",
+	"popups-settings-option-off-description": "Ви можете змінити це налаштування, скориставшись посиланням унизу сторінки",
+	"popups-settings-save": "Зберегти",
+	"popups-settings-cancel": "Скасувати",
+	"popups-settings-enable": "Увімкнути Hovercards"
 }
