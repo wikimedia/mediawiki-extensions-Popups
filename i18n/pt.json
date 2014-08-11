@@ -8,7 +8,7 @@
 	},
 	"popups-message": "Pop-ups",
 	"popups-desc": "Exibe um painel com resumos do conteúdo de páginas quando o utilizador passa o rato por cima da ligação de uma página.",
-	"popups-last-edited": "Última edição há $1",
+	"popups-last-edited": "Última edição $1",
 	"popups-redirects": "redirecciona para <h3>$1</h3>",
 	"popups-settings-title": "Antevisão de página",
 	"popups-settings-description": "Esta ferramenta permite-lhe pré-visualizar ligações azuis e referências",

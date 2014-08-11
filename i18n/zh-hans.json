@@ -13,8 +13,11 @@
 	"popups-settings-title": "条目预览",
 	"popups-settings-description": "此工具允许您预览蓝链与参考文献",
 	"popups-settings-option-read-quickly": "快速阅读",
+	"popups-settings-option-read-quickly-description": "查看条目开头并查看图片预览。<br />这是推荐给读者的。",
 	"popups-settings-option-monitor-or-edit": "监视或编辑",
+	"popups-settings-option-monitor-or-edit-description": "使用高级操作监视并编辑蓝链内容",
 	"popups-settings-option-off": "关闭预览",
+	"popups-settings-option-off-description": "您可通过页面页脚的连接更改此设置",
 	"popups-settings-save": "保存",
 	"popups-settings-cancel": "取消",
 	"popups-settings-enable": "启用Hovercards"
