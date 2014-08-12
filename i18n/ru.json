@@ -14,5 +14,6 @@
 	"popups-settings-option-off": "Выключить предпросмотр",
 	"popups-settings-option-off-description": "Вы можете изменить эту настройку, используя ссылку в нижней части страницы",
 	"popups-settings-save": "Сохранить",
-	"popups-settings-cancel": "Отмена"
+	"popups-settings-cancel": "Отмена",
+	"popups-settings-enable": "Включить всплывающие окошки"
 }
