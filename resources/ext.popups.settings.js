@@ -46,7 +46,7 @@
 		$saveButton.click( settings.save );
 
 		$radioGroup.append( settings.renderOption( 0, options[ 0 ], true ) );
-		if ( true || settings.navPopEnabled ) { // FIXME
+		if ( settings.navPopEnabled ) {
 			$radioGroup.append( settings.renderOption( 1, options[ 1 ] ) );
 		}
 		$radioGroup.append( settings.renderOption( 2, options[ 2 ] ) );
