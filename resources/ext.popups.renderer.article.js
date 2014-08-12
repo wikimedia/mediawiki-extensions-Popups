@@ -113,7 +113,7 @@
 				'mwe-popups-timestamp-older',
 			$settingsImage = $( '<img>' )
 				.addClass( 'mwe-popups-settings-icon' )
-				.attr( 'src', '/w/extensions/Popups/resources/gear_gray.svg' ),
+				.attr( 'src', mw.config.get( 'wgExtensionAssetsPath' ) + '/Popups/resources/gear_gray.svg' ),
 			$timestamp = $( '<div>' )
 				.addClass( timestampclass )
 				.append(
