@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Liuxinyu970226"
 		]
 	},
 	"popups-message": "Name shown in user preference for this extension",
@@ -16,7 +17,7 @@
 	"popups-settings-option-monitor-or-edit-description": "Description for the monitor or edit or navigation popups option",
 	"popups-settings-option-off": "Title for turn off hovercards option",
 	"popups-settings-option-off-description": "Description for turn off hovercards option",
-	"popups-settings-save": "Save buttton for the setting's dialoag",
-	"popups-settings-cancel": "Cancel button for the setting's dialog",
+	"popups-settings-save": "Save buttton for the setting's dialoag\n{{Identical|Save}}",
+	"popups-settings-cancel": "Cancel button for the setting's dialog\n{{Identical|Cancel}}",
 	"popups-settings-enable": "Link on the footer to enable hovercards if its disabled"
 }

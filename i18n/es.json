@@ -12,8 +12,11 @@
 	"popups-settings-title": "Previsualización de artículo",
 	"popups-settings-description": "Esta herramienta permite previsualizar los enlaces azules y las referencias",
 	"popups-settings-option-read-quickly": "Leer con rapidez",
+	"popups-settings-option-monitor-or-edit": "Monitorear o editar",
+	"popups-settings-option-monitor-or-edit-description": "Usar acciones avanzadas para controlar y editar el contenido de los enlaces azules",
 	"popups-settings-option-off": "Desactivar previsualizaciones",
 	"popups-settings-option-off-description": "Puedes cambiar esta configuración usando el enlace en el pie de la página",
 	"popups-settings-save": "Guardar",
-	"popups-settings-cancel": "Cancelar"
+	"popups-settings-cancel": "Cancelar",
+	"popups-settings-enable": "Activar recuadros emergentes"
 }
