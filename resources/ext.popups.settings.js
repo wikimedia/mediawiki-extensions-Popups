@@ -119,7 +119,7 @@
 	 *
 	 * @method open
 	 */
-	settings.open = function ( e ) {
+	settings.open = function () {
 		var
 			h = $( window ).height(),
 			w = $( window ).width();
@@ -131,7 +131,6 @@
 			.css( 'left', ( w - 600 ) / 2 )
 			.css( 'top', ( h - settings.$element.outerHeight( true ) ) / 2 );
 
-		e.preventDefault();
 		return false;
 	};
 
@@ -160,7 +159,10 @@
 				$( '<a>' )
 					.attr( 'href', '#)' )
 					.text( mw.message( 'popups-settings-enable' ).text() )
-					.click( settings.open )
+					.click( function ( e ) {
+						settings.open();
+						e.preventDefault();
+					} )
 			),
 			$footer = $( '#footer-places, #f-list' );
 
