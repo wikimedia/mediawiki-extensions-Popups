@@ -37,8 +37,8 @@
 			$form = $( '<form>' ).append( $radioGroup, $actions ),
 			$main = $( '<main>' ).append( $description, $form ),
 			options = [
-				[ mw.message( 'popups-settings-option-read-quickly' ).text(), mw.message( 'popups-settings-option-read-quickly-description' ).text(), 'hovercard.svg' ],
-				[ mw.message( 'popups-settings-option-monitor-or-edit' ).text(), mw.message( 'popups-settings-option-monitor-or-edit-description' ).text(), 'navpop.svg' ],
+				[ mw.message( 'popups-settings-option-simple' ).text(), mw.message( 'popups-settings-option-simple-description' ).text(), 'hovercard.svg' ],
+				[ mw.message( 'popups-settings-option-advanced' ).text(), mw.message( 'popups-settings-option-advanced-description' ).text(), 'navpop.svg' ],
 				[ mw.message( 'popups-settings-option-off' ).text(), mw.message( 'popups-settings-option-off-description' ).text() ]
 			];
 
