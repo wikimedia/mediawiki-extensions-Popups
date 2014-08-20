@@ -1,3 +1,5 @@
+@import "mediawiki.mixins.less";
+
 /* Code adapted from Yair Rand's NavPopupsRestyled.js
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
@@ -92,10 +94,12 @@
 		}
 
 		.mwe-popups-settings-icon {
+			display: inline-block;
 			cursor: pointer;
 			margin-left: 5px;
-			padding: 5px;
-			width: 13px;
+			height: 16px;
+			width: 16px;
+			.background-image-svg( "gear_gray.svg", "gear_gray.png" );
 		}
 	}
 

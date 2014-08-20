@@ -111,9 +111,7 @@
 			timestampclass = ( timediff < oneDay ) ?
 				'mwe-popups-timestamp-recent' :
 				'mwe-popups-timestamp-older',
-			$settingsImage = $( '<img>' )
-				.addClass( 'mwe-popups-settings-icon' )
-				.attr( 'src', mw.config.get( 'wgExtensionAssetsPath' ) + '/Popups/resources/gear_gray.svg' ),
+			$settingsImage = $( '<a>' ).addClass( 'mwe-popups-settings-icon' ),
 			$timestamp = $( '<div>' )
 				.addClass( timestampclass )
 				.append(
