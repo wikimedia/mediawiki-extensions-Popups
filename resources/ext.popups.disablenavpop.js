@@ -5,9 +5,10 @@
 // exists, its called, otherwise, we do nothing.
 
 // This should be happening in NavPopups itself or by disabling the gadget
-// This is a temporary fix
+// HACK: This is a temporary fix
 ( function ( $, mw ) {
-	$( function () {
+	// NavPopups sets everything up on window load and not on DOM ready.
+	$( window ).load( function () {
 		if ( typeof disablePopups !== 'undefined' && mw.popups.enabled ) {
 			disablePopups();
 		}
