@@ -32,6 +32,9 @@ class PopupsHooks {
 			),
 			'info-link' => 'https://www.mediawiki.org/wiki/Beta_Features/Hovercards',
 			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
+			'requirements' => array(
+				'javascript' => true,
+			),
 		);
 	}
 
