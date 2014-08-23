@@ -7,5 +7,16 @@
 	"popups-message": "Hovercards",
 	"popups-desc": "Afișează ferestre contextuale cu un rezumat al conținutului dintr-o pagină atunci când utilizatorul deplasează mausul deasupra unei legături interne",
 	"popups-last-edited": "Ultima modificare: $1",
-	"popups-redirects": "redirecționează către <h3>$1</h3>"
+	"popups-redirects": "redirecționează către <h3>$1</h3>",
+	"popups-settings-title": "Previzualizare articol",
+	"popups-settings-description": "Acest instrument vă permite să previzualizați legăturile albastre și referinţele",
+	"popups-settings-option-read-quickly": "Lecturare rapidă",
+	"popups-settings-option-read-quickly-description": "Vizualizați prima frază dintr-un articol, precum și o imagine reprezentativă.<br />Această metodă este recomandată cititorilor.",
+	"popups-settings-option-monitor-or-edit": "Monitorizare sau modificare",
+	"popups-settings-option-monitor-or-edit-description": "Folosiți acțiuni avansate pentru a monitoriza și modifica conținutul legăturilor albastre",
+	"popups-settings-option-off": "Dezactivează previzualizările",
+	"popups-settings-option-off-description": "Puteți modifica această setare folosind legătura din subsolul paginii",
+	"popups-settings-save": "Salvare",
+	"popups-settings-cancel": "Revocare",
+	"popups-settings-enable": "Activează Hovercards"
 }
