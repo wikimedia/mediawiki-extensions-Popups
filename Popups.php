@@ -46,6 +46,7 @@ $wgHooks[ 'ResourceLoaderRegisterModules' ][] = function ( ResourceLoader &$reso
 		'mediawiki.jqueryMsg',
 		'moment',
 		'jquery.jStorage',
+		'jquery.client',
 	);
 
 	// If EventLogging is present, declare the schema module

@@ -11,9 +11,15 @@
 
 	/**
 	 * Checks SVG support on the browser
+	 *
+	 * Set to false on Internet Explorer because adding SVGs
+	 * through JavaScript in IE is failing. Thus, falling back to PNGs
+	 *
 	 * @property {Boolean} supportsSVG
 	 */
-	mw.popups.supportsSVG = document.implementation.hasFeature( 'http://www.w3.org/TR/SVG11/feature#Image', '1.1' );
+	mw.popups.supportsSVG = ( $.client.profile().name === 'msie' ) ?
+		false :
+		document.implementation.hasFeature( 'http://www.w3.org/TR/SVG11/feature#Image', '1.1' );
 
 	/**
 	 * The API object used for all this extension's requests
