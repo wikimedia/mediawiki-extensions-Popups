@@ -12,13 +12,10 @@
 	"popups-redirects": "redirecciona para <h3>$1</h3>",
 	"popups-settings-title": "Antevisão de página",
 	"popups-settings-description": "Esta ferramenta permite-lhe pré-visualizar ligações azuis e referências",
-	"popups-settings-option-read-quickly": "Ler rapidamente",
-	"popups-settings-option-read-quickly-description": "Leia a frase inicial de um artigo e veja uma imagem de antevisão.<br />Recomendado para leitores.",
-	"popups-settings-option-monitor-or-edit": "Monitorizar ou Editar",
-	"popups-settings-option-monitor-or-edit-description": "Utilize ações avançadas para acompanhar e editar o conteúdo das ligações azuis.",
+	"popups-settings-option-simple": "Simples",
 	"popups-settings-option-off": "Desativar antevisão",
 	"popups-settings-option-off-description": "Pode alterar esta configuração através da ligação no rodapé da página",
 	"popups-settings-save": "Gravar",
 	"popups-settings-cancel": "Cancelar",
-	"popups-settings-enable": "Ativar Pop-ups"
+	"popups-settings-enable": "Ativar antevisão"
 }

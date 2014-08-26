@@ -10,6 +10,13 @@
 	"popups-desc": "Geeft pop-uppagina's weer met samenvattingen van de inhoud van pagina's bij zweven boven koppelingen",
 	"popups-last-edited": "$1 voor het laatst bewerkt",
 	"popups-redirects": "verwijst door naar <h3>$1</h3>",
+	"popups-settings-title": "Paginavoorvertoning",
+	"popups-settings-description": "Dit hulpmiddel laat je blauwe links en referenties voorvertonen",
+	"popups-settings-option-simple": "Simpel",
+	"popups-settings-option-simple-description": "Bekijk de inleidende paragraaf van een pagina met een afbeelding. Dit is aanbevolen voor lezers",
+	"popups-settings-option-advanced": "Geavanceerd",
+	"popups-settings-option-off": "Voorvertoningen uitschakelen",
 	"popups-settings-save": "Opslaan",
-	"popups-settings-cancel": "Annuleren"
+	"popups-settings-cancel": "Annuleren",
+	"popups-settings-enable": "Voorvertoningen inschakelen"
 }

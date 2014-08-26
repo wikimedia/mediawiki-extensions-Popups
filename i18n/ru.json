@@ -8,15 +8,11 @@
 	"popups-desc": "Отображает всплывающие окошки с описанием содержания страницы, когда пользователь наводит курсор на ссылку, ведущую на страницу",
 	"popups-last-edited": "Последний раз редактировалось $1",
 	"popups-redirects": "перенаправляет на <h3>$1</h3>",
-	"popups-settings-title": "Предпросмотр статьи",
+	"popups-settings-title": "Предпросмотр страницы",
 	"popups-settings-description": "Этот инструмент позволяет просматривать синие ссылки и ссылки-примечания",
-	"popups-settings-option-read-quickly": "Быстро прочитать",
-	"popups-settings-option-read-quickly-description": "Показывает первое предложение статьи и иллюстрацию.<br />Рекомендуется для читателей.",
-	"popups-settings-option-monitor-or-edit": "Отслеживание или Редактирование",
-	"popups-settings-option-monitor-or-edit-description": "Использовать дополнительные действия для отслеживания и редактирования содержимого по синим ссылкам.",
 	"popups-settings-option-off": "Выключить предпросмотр",
 	"popups-settings-option-off-description": "Вы можете изменить эту настройку, используя ссылку в нижней части страницы",
 	"popups-settings-save": "Сохранить",
 	"popups-settings-cancel": "Отмена",
-	"popups-settings-enable": "Включить всплывающие окошки"
+	"popups-settings-enable": "Включить предпросмотр"
 }
