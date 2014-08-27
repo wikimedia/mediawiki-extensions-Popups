@@ -10,6 +10,8 @@
 	"popups-redirects": "перенаправляет на <h3>$1</h3>",
 	"popups-settings-title": "Предпросмотр страницы",
 	"popups-settings-description": "Этот инструмент позволяет просматривать синие ссылки и ссылки-примечания",
+	"popups-settings-option-simple": "Простой",
+	"popups-settings-option-advanced": "Расширенный",
 	"popups-settings-option-off": "Выключить предпросмотр",
 	"popups-settings-option-off-description": "Вы можете изменить эту настройку, используя ссылку в нижней части страницы",
 	"popups-settings-save": "Сохранить",

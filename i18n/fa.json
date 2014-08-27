@@ -2,11 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Armin1392",
-			"Ebraminio"
+			"Ebraminio",
+			"Alirezaaa"
 		]
 	},
 	"popups-message": "کارت‌های معلق",
 	"popups-desc": "نمایش کارت‌های معلق با خلاصهٔ محتویات صفحه هنگامی که کاربر موشواره را بر پیوند یک صفحه نگه می‌دارد.",
 	"popups-last-edited": "آخرین ویرایش در $1",
-	"popups-redirects": "تغییر مسیر به <h3>$1</h3>"
+	"popups-redirects": "تغییر مسیر به <h3>$1</h3>",
+	"popups-settings-title": "صفحه پیش‌نمایش",
+	"popups-settings-option-simple": "ساده",
+	"popups-settings-enable": "فعال‌کردن پیش‌نمایش‌ها"
 }

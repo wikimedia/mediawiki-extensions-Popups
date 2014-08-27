@@ -8,15 +8,15 @@
 	"popups-desc": "Mostra un popup con un estratto del contenuto quando l'utente passa sopra al collegamento ad una pagina.",
 	"popups-last-edited": "Ultima modifica $1",
 	"popups-redirects": "reindirizza a <h3>$1</h3>",
-	"popups-settings-title": "Anteprima voce",
+	"popups-settings-title": "Anteprima pagina",
 	"popups-settings-description": "Questo strumento ti consente vedere un'anteprima dei collegamenti blu e dei riferimenti",
-	"popups-settings-option-read-quickly": "Leggi velocemente",
-	"popups-settings-option-read-quickly-description": "Vedi la frase di introduzione di una voce e un'immagine di anteprima.<br />Questo è consigliato per i lettori.",
-	"popups-settings-option-monitor-or-edit": "Monitorare o modificare",
-	"popups-settings-option-monitor-or-edit-description": "Utilizza le azioni avanzate per monitorare e modificare il contenuto dei collegamenti blu",
-	"popups-settings-option-off": "Disattiva le anteprime",
+	"popups-settings-option-simple": "Semplice",
+	"popups-settings-option-simple-description": "Vedi la frase di introduzione di una voce e un'immagine di anteprima. Questo è consigliato per i lettori.",
+	"popups-settings-option-advanced": "Avanzata",
+	"popups-settings-option-advanced-description": "Vedi un'anteprima dei collegamenti e ha accesso al menu delle funzioni di modifica. Questo è usato da molti editori.",
+	"popups-settings-option-off": "Disattiva anteprime",
 	"popups-settings-option-off-description": "Puoi modificare questa impostazione usando il collegamento in fondo alla pagina",
 	"popups-settings-save": "Salva",
 	"popups-settings-cancel": "Annulla",
-	"popups-settings-enable": "Abilita Popup"
+	"popups-settings-enable": "Attiva anteprime"
 }

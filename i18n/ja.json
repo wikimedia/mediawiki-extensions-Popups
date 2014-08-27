@@ -7,5 +7,8 @@
 	},
 	"popups-message": "ホバーカード",
 	"popups-desc": "ページへのリンクにホバーした際に、ページ内容の要約のホバーカードを表示する",
-	"popups-last-edited": "最終更新: $1"
+	"popups-last-edited": "最終更新: $1",
+	"popups-settings-title": "ページのプレビュー",
+	"popups-settings-option-off": "プレビューを無効にする",
+	"popups-settings-enable": "プレビューを有効にする"
 }

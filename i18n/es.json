@@ -9,14 +9,13 @@
 	"popups-desc": "Muestra un cuadro emergente con el resumen del contenido de una página cuando el usuario posa el ratón sobre un enlace",
 	"popups-last-edited": "Última modificación: $1",
 	"popups-redirects": "redirige a <h3>$1</h3>",
-	"popups-settings-title": "Previsualización de artículo",
+	"popups-settings-title": "Previsualización de página",
 	"popups-settings-description": "Esta herramienta permite previsualizar los enlaces azules y las referencias",
-	"popups-settings-option-read-quickly": "Leer con rapidez",
-	"popups-settings-option-monitor-or-edit": "Monitorear o editar",
-	"popups-settings-option-monitor-or-edit-description": "Usar acciones avanzadas para controlar y editar el contenido de los enlaces azules",
+	"popups-settings-option-simple": "Simple",
+	"popups-settings-option-advanced": "Avanzado",
 	"popups-settings-option-off": "Desactivar previsualizaciones",
 	"popups-settings-option-off-description": "Puedes cambiar esta configuración usando el enlace en el pie de la página",
 	"popups-settings-save": "Guardar",
 	"popups-settings-cancel": "Cancelar",
-	"popups-settings-enable": "Activar recuadros emergentes"
+	"popups-settings-enable": "Activar previsualizaciones"
 }

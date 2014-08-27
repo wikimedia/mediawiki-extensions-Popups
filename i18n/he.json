@@ -8,13 +8,15 @@
 	"popups-desc": "הצגת כרטיסים מרחפים עם סיכומים של תוכן הדף כאשר משתמש עובר מעל קישור לדף.",
 	"popups-last-edited": "נערך לאחרונה $1",
 	"popups-redirects": "מפנה לדף <h3>$1</h3>",
-	"popups-settings-title": "תצוגה מקדימה של ערך",
+	"popups-settings-title": "תצוגה מקדימה של דף",
 	"popups-settings-description": "הכלי הזה מאפשר לך לראות תצוגה מקדימה של קישורים כחולים והערות שוליים",
-	"popups-settings-option-read-quickly": "קריאה מהירה",
-	"popups-settings-option-read-quickly-description": "ר' את משפט המפתח של ערך ותמונה מקדימה.<br />\nזה מומלץ לקוראים.",
+	"popups-settings-option-simple": "פשוט",
+	"popups-settings-option-simple-description": "הצגת המשפט הראשון של הדף ותמונת תצוגה מקדימה. זה מומלץ לקוראים",
+	"popups-settings-option-advanced": "מתקדם",
+	"popups-settings-option-advanced-description": "הצגת תצוגה מקדימה של קישורים וגישה לתפריטים. זה משמש הרבה עורכים.",
 	"popups-settings-option-off": "כיבוי התצוגה המקדימה",
 	"popups-settings-option-off-description": "באפשרותך לשנות את ההגדרה הזאת באמצעות קישור בתחתית הדף",
 	"popups-settings-save": "שמירה",
 	"popups-settings-cancel": "ביטול",
-	"popups-settings-enable": "הפעלת כרטיסים מרחפים"
+	"popups-settings-enable": "הפעלת תצוגה מקדימה"
 }
