@@ -12,5 +12,8 @@
 	"popups-redirects": "تغییر مسیر به <h3>$1</h3>",
 	"popups-settings-title": "صفحه پیش‌نمایش",
 	"popups-settings-option-simple": "ساده",
+	"popups-settings-option-advanced": "پیشرفته",
+	"popups-settings-option-advanced-description": "دیدن پیش‌نمایش پیوندها و دسترسی برای ویرایش منوهای تابعی. این توسط بسیاری از ویراستاران استفاده می‌شود.",
+	"popups-settings-option-off": "غیرفعال‌کردن پیش‌نمایش‌ها",
 	"popups-settings-enable": "فعال‌کردن پیش‌نمایش‌ها"
 }
