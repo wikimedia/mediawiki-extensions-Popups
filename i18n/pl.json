@@ -14,6 +14,8 @@
 	"popups-redirects": "przekierowuje do<h3>$1</h3>",
 	"popups-settings-title": "Podgląd strony",
 	"popups-settings-description": "To narzędzie umożliwia szybki podgląd niebieskich linków i odsyłaczy do przypisów",
+	"popups-settings-option-simple": "Prosty",
+	"popups-settings-option-advanced": "Zaawansowany",
 	"popups-settings-option-off": "Wyłącz podgląd",
 	"popups-settings-option-off-description": "Można zmienić to ustawienie za pomocą linku w stopce strony",
 	"popups-settings-save": "Zapisz",

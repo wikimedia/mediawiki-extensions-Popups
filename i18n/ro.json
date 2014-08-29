@@ -8,11 +8,15 @@
 	"popups-desc": "Afișează ferestre contextuale cu un rezumat al conținutului dintr-o pagină atunci când utilizatorul deplasează mausul deasupra unei legături interne",
 	"popups-last-edited": "Ultima modificare: $1",
 	"popups-redirects": "redirecționează către <h3>$1</h3>",
-	"popups-settings-title": "Previzualizare articol",
+	"popups-settings-title": "Previzualizare pagină",
 	"popups-settings-description": "Acest instrument vă permite să previzualizați legăturile albastre și referințele",
+	"popups-settings-option-simple": "Simplu",
+	"popups-settings-option-simple-description": "Vizualizați prima frază dintr-o pagină, precum și o imagine reprezentativă. Această metodă este recomandată cititorilor.",
+	"popups-settings-option-advanced": "Avansat",
+	"popups-settings-option-advanced-description": "Vedeți previzualizări ale legăturilor și accesați meniuri cu funcții de editare. Această metodă este folosită de mulți dintre editori.",
 	"popups-settings-option-off": "Dezactivează previzualizările",
 	"popups-settings-option-off-description": "Puteți modifica această setare folosind legătura din subsolul paginii",
 	"popups-settings-save": "Salvare",
 	"popups-settings-cancel": "Revocare",
-	"popups-settings-enable": "Activează Hovercards"
+	"popups-settings-enable": "Activează previzualizările"
 }
