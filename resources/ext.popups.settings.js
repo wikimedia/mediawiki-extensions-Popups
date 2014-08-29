@@ -14,10 +14,11 @@
 	settings.navPopEnabled = ( typeof disablePopups !== 'undefined' );
 
 	/**
-	 * The settings' dialog's section element
+	 * The settings' dialog's section element.
+	 * Defined in settings.open
 	 * @property $element
 	 */
-	settings.$element = $( '<section> ' ).attr( 'id', 'mwe-popups-settings' );
+	settings.$element = null;
 
 	/**
 	 * Renders the relevant form and labels in the settings dialog
@@ -31,29 +32,65 @@
 			$title = $( '<header>' ).append( $closeIcon, $titleText ),
 			$description = $( '<p>' ).text( mw.message( 'popups-settings-description' ).text() ),
 			$radioGroup = $( '<radiogroup>' ),
-			$cancelButton = $( '<button>' ).addClass( 'mw-ui-button mw-ui-quiet' ).text( mw.message( 'popups-settings-cancel' ).text() ).attr( 'type', 'button' ),
-			$saveButton = $( '<button>' ).addClass( 'mw-ui-button mw-ui-constructive' ).text( mw.message( 'popups-settings-save' ).text() ).attr( 'type', 'button' ),
-			$actions = $( '<div>' ).addClass( 'mwe-popups-settings-actions' ).append( $cancelButton, $saveButton ),
+			$cancelButton = $( '<button>' )
+				.addClass( 'mw-ui-button mw-ui-quiet' )
+				.text( mw.message( 'popups-settings-cancel' ).text() )
+				.attr( 'type', 'button' ),
+			$saveButton = $( '<button>' )
+				.addClass( 'mw-ui-button mw-ui-constructive' )
+				.text( mw.message( 'popups-settings-save' ).text() )
+				.attr( 'type', 'button' ),
+			$actions = $( '<div>' )
+				.addClass( 'mwe-popups-settings-actions' )
+				.append( $cancelButton, $saveButton ),
+			$okayButton = $( '<button>' )
+				.addClass( 'mw-ui-button mw-ui-constructive' )
+				.text( mw.message( 'popups-settings-help-ok' ).text() )
+				.attr( 'type', 'button' ),
+			$help = $( '<div>' )
+				.attr( 'id', 'mwe-popups-settings-help' )
+				.append(
+					$( '<p>' ).text( mw.message( 'popups-settings-help' ).text() ),
+					$( '<div>' ).addClass( 'mwe-popups-settings-help-image' ),
+					$( '<div>' ).addClass( 'mwe-popups-settings-actions' ).append( $okayButton )
+				)
+				.hide(),
 			$form = $( '<form>' ).append( $radioGroup, $actions ),
-			$main = $( '<main>' ).append( $description, $form ),
-			options = [
-				[ mw.message( 'popups-settings-option-simple' ).text(), mw.message( 'popups-settings-option-simple-description' ).text(), 'hovercard.svg' ],
-				[ mw.message( 'popups-settings-option-advanced' ).text(), mw.message( 'popups-settings-option-advanced-description' ).text(), 'navpop.svg' ],
-				[ mw.message( 'popups-settings-option-off' ).text(), mw.message( 'popups-settings-option-off-description' ).text() ]
-			];
+			$main = $( '<main>' ).attr( 'id', 'mwe-popups-settings-form' ).append( $description, $form ),
+			options = {
+				'simple': [
+					mw.message( 'popups-settings-option-simple' ).text(),
+					mw.message( 'popups-settings-option-simple-description' ).text(),
+					'hovercard.svg'
+				],
+				'advanced': [
+					mw.message( 'popups-settings-option-advanced' ).text(),
+					mw.message( 'popups-settings-option-advanced-description' ).text(),
+					'navpop.svg'
+				],
+				'off': [
+					mw.message( 'popups-settings-option-off' ).text(),
+					mw.message( 'popups-settings-option-off-description' ).text()
+				]
+			};
 
 		$( $closeIcon ).add( $cancelButton ).click( settings.close );
 		$saveButton.click( settings.save );
+		$okayButton.click( function () {
+			settings.close();
+			location.reload();
+		} );
 
-		$radioGroup.append( settings.renderOption( 0, options[ 0 ], true ) );
+		$radioGroup.append( settings.renderOption( 'simple', options.simple, true ) );
 		if ( settings.navPopEnabled ) {
-			$radioGroup.append( settings.renderOption( 1, options[ 1 ] ) );
+			$radioGroup.append( settings.renderOption( 'advanced', options.advanced ) );
 		}
-		$radioGroup.append( settings.renderOption( 2, options[ 2 ] ) );
+		$radioGroup.append( settings.renderOption( 'off', options.off ) );
 
+		settings.$element = $( '<section> ' ).attr( 'id', 'mwe-popups-settings' );
 		settings.$element
 			.hide()
-			.append( $title, $main );
+			.append( $title, $main, $help );
 
 		$( 'body' ).append( settings.$element );
 	};
@@ -103,15 +140,15 @@
 	 */
 	settings.save = function () {
 		var v =  $('input[name=mwe-popups-setting]:checked','#mwe-popups-settings').val();
-		if ( v === '0' ) {
+		if ( v === 'simple' ) {
 			$.jStorage.set( 'mwe-popups-enabled', 'true' );
 			location.reload();
+			settings.close();
 		} else {
 			$.jStorage.set( 'mwe-popups-enabled', 'false' );
-			location.reload();
+			$( '#mwe-popups-settings-form' ).hide();
+			$( '#mwe-popups-settings-help' ).show();
 		}
-
-		settings.close();
 	};
 
 	/**
@@ -126,6 +163,10 @@
 
 		$( 'body' ).append( $( '<div>' ).addClass( 'mwe-popups-overlay' ) );
 
+		if ( !settings.$element ) {
+			settings.render();
+		}
+
 		settings.$element
 			.show()
 			.css( 'left', ( w - 600 ) / 2 )
@@ -135,13 +176,19 @@
 	};
 
 	/**
-	 * Close the setting dialoag and remove the overlay
+	 * Close the setting dialoag and remove the overlay.
+	 * If the close button is clicked on the help dialog
+	 * save the setting and reload the page.
 	 *
 	 * @method close
 	 */
 	settings.close = function () {
-		$( '.mwe-popups-overlay' ).remove();
-		settings.$element.hide();
+		if ( $( '#mwe-popups-settings-help' ).is( ':visible' ) ) {
+			location.reload();
+		} else {
+			$( '.mwe-popups-overlay' ).remove();
+			settings.$element.hide();
+		}
 	};
 
 	/**
@@ -172,9 +219,6 @@
 		}
 		$footer.append( $setting );
 	};
-
-
-	settings.render();
 
 	$( function () {
 		if( !mw.popups.enabled ) {

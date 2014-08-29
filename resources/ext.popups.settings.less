@@ -1,3 +1,5 @@
+@import "mediawiki.mixins.less";
+
 #mwe-popups-settings {
 	position: fixed;
 	z-index: 1000;
@@ -92,15 +94,43 @@
 					font-weight: 100;
 				}
 			}
-
-			.mwe-popups-settings-actions {
-				clear: both;
-				text-align: right;
-				margin: 10px;
-				margin-bottom: 20px;
-			}
 		}
 	}
+}
+
+#mwe-popups-settings-help {
+	font-size: 18px;
+	font-weight: 800;
+	margin: 50px;
+	margin-bottom: 20px;
+	margin-right: 0;
+
+	p {
+		margin-right: 150px;
+	}
+
+	div.mwe-popups-settings-help-image {
+		margin-left: -55px;
+		margin-top: 20px;
+		margin-bottom: 50px;
+		background: #eee;
+		height: 65px;
+		width: 450px;
+		.background-image-svg( "footer-ltr.svg", "footer-ltr.png" );
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+}
+
+.rtl #mwe-popups-settings-help div.mwe-popups-settings-help-image {
+	.background-image-svg( "footer-rtl.svg", "footer-rtl.png" );
+}
+
+.mwe-popups-settings-actions {
+	clear: both;
+	text-align: right;
+	margin: 10px;
+	margin-bottom: 20px;
 }
 
 .mwe-popups-overlay {
