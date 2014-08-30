@@ -3,7 +3,8 @@
 		"authors": [
 			"Armin1392",
 			"Ebraminio",
-			"Alirezaaa"
+			"Alirezaaa",
+			"Reza1615"
 		]
 	},
 	"popups-message": "کارت‌های معلق",
@@ -15,5 +16,7 @@
 	"popups-settings-option-advanced": "پیشرفته",
 	"popups-settings-option-advanced-description": "دیدن پیش‌نمایش پیوندها و دسترسی برای ویرایش منوهای تابعی. این توسط بسیاری از ویراستاران استفاده می‌شود.",
 	"popups-settings-option-off": "غیرفعال‌کردن پیش‌نمایش‌ها",
+	"popups-settings-save": "ذخیره",
+	"popups-settings-cancel": "انصراف",
 	"popups-settings-enable": "فعال‌کردن پیش‌نمایش‌ها"
 }
