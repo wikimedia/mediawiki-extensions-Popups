@@ -7,5 +7,16 @@
 	"popups-message": "Tarxetes emerxentes",
 	"popups-desc": "Amuesa tarxetes emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de la páxina",
 	"popups-last-edited": "Última edición $1",
-	"popups-redirects": "redireiciona a <h3>$1</h3>"
+	"popups-redirects": "redireiciona a <h3>$1</h3>",
+	"popups-settings-title": "Vista previa de páxina",
+	"popups-settings-description": "Esta ferramienta permite entever los enllaces azules y les referencies",
+	"popups-settings-option-simple": "Simple",
+	"popups-settings-option-simple-description": "Ver la primera frase d'una páxina y una imaxe de vista previa. Esto recomiéndase pa llectores",
+	"popups-settings-option-advanced": "Avanzao",
+	"popups-settings-option-advanced-description": "Ver vistes previes de los enllaces y accesu a menús de funciones d'edición. Esto úsenlo munchos editores.",
+	"popups-settings-option-off": "Desactivar vistes previes",
+	"popups-settings-option-off-description": "Pues cambiar esta configuración usando l'enllaz del pie de la páxina",
+	"popups-settings-save": "Guardar",
+	"popups-settings-cancel": "Encaboxar",
+	"popups-settings-enable": "Activar vistes previes"
 }

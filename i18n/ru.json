@@ -11,6 +11,7 @@
 	"popups-settings-title": "Предпросмотр страницы",
 	"popups-settings-description": "Этот инструмент позволяет просматривать синие ссылки и ссылки-примечания",
 	"popups-settings-option-simple": "Простой",
+	"popups-settings-option-simple-description": "Показывает первое предложение на странице и иллюстрацию. Рекомендуется для читателей.",
 	"popups-settings-option-advanced": "Расширенный",
 	"popups-settings-option-off": "Выключить предпросмотр",
 	"popups-settings-option-off-description": "Вы можете изменить эту настройку, используя ссылку в нижней части страницы",
