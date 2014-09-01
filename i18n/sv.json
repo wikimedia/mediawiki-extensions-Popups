@@ -10,15 +10,15 @@
 	"popups-desc": "Visar skyltfönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk",
 	"popups-last-edited": "Senast redigerad $1",
 	"popups-redirects": "omdirigering till <h3>$1</h3>",
-	"popups-settings-title": "Artikelförhandsgranskning",
+	"popups-settings-title": "Sidförhandsgranskning",
 	"popups-settings-description": "Detta verktyg låter dig förhandsgranska blå länkar och referenser",
-	"popups-settings-option-read-quickly": "Läs snabbt",
-	"popups-settings-option-read-quickly-description": "Se den inledande meningen i artikel och visar en förhandsgranskningsbild.<br />Denna rekommenderas för läsare.",
-	"popups-settings-option-monitor-or-edit": "Övervaka eller redigera",
-	"popups-settings-option-monitor-or-edit-description": "Använda avancerade åtgärder för att övervaka och redigera innehållet i blå länkar",
+	"popups-settings-option-simple": "Enkel",
+	"popups-settings-option-simple-description": "Se den inledande meningen av en sida och visa en förhandsgranskningsbild. Denna rekommenderas för läsare.",
+	"popups-settings-option-advanced": "Avancerad",
+	"popups-settings-option-advanced-description": "Se förhandsgranskningar av länkar och ge tillgång till menyer för redigeringsfunktionalitet. Detta används av många redigerare.",
 	"popups-settings-option-off": "Inaktivera förhandsgranskningar",
 	"popups-settings-option-off-description": "Du kan ändra denna inställning via länken i sidfoten av sidan",
 	"popups-settings-save": "Spara",
 	"popups-settings-cancel": "Avbryt",
-	"popups-settings-enable": "Aktivera Hovercards"
+	"popups-settings-enable": "Aktivera förhandsgranskning"
 }
