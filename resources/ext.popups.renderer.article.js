@@ -137,11 +137,12 @@
 				'mwe-popups-timestamp-older',
 			$settingsImage = $( '<a>' ).addClass( 'mwe-popups-icon mwe-popups-settings-icon' ),
 			$surveyImage,
-			$timestamp = $( '<div>' )
-				.addClass( timestampclass )
+			$footer = $( '<footer>' )
 				.append(
-					$( '<span>' ).text( mw.message( 'popups-last-edited',
-						moment( timestamp ).fromNow() ).text() ),
+					$( '<span>' )
+						.text( mw.message( 'popups-last-edited',
+							moment( timestamp ).fromNow() ).text() )
+						.addClass( timestampclass ),
 					$settingsImage
 				);
 
@@ -151,9 +152,10 @@
 				.attr( 'target', '_blank' )
 				.attr( 'title', mw.message( 'popups-send-feedback' ) )
 				.addClass( 'mwe-popups-icon mwe-popups-survey-icon' );
-			$timestamp.append( $surveyImage );
+			$footer.append( $surveyImage );
 		}
 
+		// createThumbnail returns an empty <span> if there is no thumbnail
 		if ( $thumbnail.prop( 'tagName' ) !== 'SPAN' ) {
 			$thumbnail = $( '<a>' )
 				.addClass( 'mwe-popups-discreet' )
@@ -163,7 +165,7 @@
 			tall = thumbnail = undefined;
 		}
 
-		$div = $( '<div>' ).append( $thumbnail, $contentbox, $timestamp );
+		$div = $( '<div>' ).append( $thumbnail, $contentbox, $footer );
 
 		mw.popups.render.cache[ href ].settings = {
 			title: page.title,
