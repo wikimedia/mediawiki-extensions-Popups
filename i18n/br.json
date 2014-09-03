@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Y-M D"
+			"Y-M D",
+			"Fohanno"
 		]
 	},
+	"popups-last-edited": "Kemm diwezhañ $1",
 	"popups-settings-save": "Enrollañ",
 	"popups-settings-cancel": "Nullañ"
 }
