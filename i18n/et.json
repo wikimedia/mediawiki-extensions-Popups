@@ -7,5 +7,16 @@
 	"popups-message": "Hõljukkaardid",
 	"popups-desc": "Kuvab lehekülje kokkuvõtte hõljukkaardil, kui liigutada kursor üle leheküljelingi.",
 	"popups-last-edited": "Viimati muudetud $1",
-	"popups-redirects": "suunab ümber leheküljele <h3>$1</h3>"
+	"popups-redirects": "suunab ümber leheküljele <h3>$1</h3>",
+	"popups-settings-title": "Lehekülje eelvaatlus",
+	"popups-settings-description": "See tööriist võimaldab siniste linkide ja viidete eelvaatlust.",
+	"popups-settings-option-simple": "Lihtne",
+	"popups-settings-option-simple-description": "Kuvatakse pilt ja lehekülje esimene lause. Soovitatav lugejatele.",
+	"popups-settings-option-advanced": "Laiendatud",
+	"popups-settings-option-advanced-description": "Kuvatakse lingi eelvaatlus ja võimaldatakse juurdepääs redigeerimismenüüdele. Seda kasutab osa toimetajaid.",
+	"popups-settings-option-off": "Keela eelvaatlus",
+	"popups-settings-option-off-description": "Saad seda sätet muuta, kasutades linki lehekülje jaluses.",
+	"popups-settings-save": "Salvesta",
+	"popups-settings-cancel": "Loobu",
+	"popups-settings-enable": "Luba eelvaatlus"
 }
