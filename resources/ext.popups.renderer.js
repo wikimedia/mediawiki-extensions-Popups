@@ -147,6 +147,7 @@
 		// Event logging
 		mw.popups.eventLogging.time = mw.now();
 		mw.popups.eventLogging.action = 'dismissed';
+		mw.popups.$popup.find( 'a.mwe-popups-extract' ).click( mw.popups.eventLogging.logClick );
 
 		link
 			.off( 'mouseleave blur', mw.popups.render.leaveInactive )
@@ -163,6 +164,7 @@
 	 */
 	mw.popups.render.closePopup = function () {
 		mw.popups.eventLogging.duration = mw.now() - mw.popups.eventLogging.time;
+		mw.popups.eventLogging.logEvent();
 
 		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
 
