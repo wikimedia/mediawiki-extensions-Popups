@@ -93,7 +93,7 @@
 		try {
 			sessionId = localStorage.getItem( 'popupsSessionId' );
 			if ( sessionId === null ) {
-				sessionId = mw.user.getRandomSessionId();
+				sessionId = mw.user.generateRandomSessionId();
 				localStorage.setItem( 'popupsSessionId', sessionId );
 			}
 		} catch ( e ) {}
