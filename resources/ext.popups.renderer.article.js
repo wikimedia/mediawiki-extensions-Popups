@@ -458,6 +458,13 @@
 			mw.popups.settings.open();
 		} );
 
+		if ( !flippedY && !tall && cache.settings.thumbnail.height < article.SIZES.landscapeImage.h ) {
+			$( '.mwe-popups-extract').css(
+				'margin-top',
+				cache.settings.thumbnail.height + 6
+			);
+		}
+
 		if ( !svg && flippedY && !tall ) {
 			$( '.mwe-popups-extract' ).css( 'margin-top', '206px' );
 		}
