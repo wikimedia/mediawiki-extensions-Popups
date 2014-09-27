@@ -2,13 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Joseph",
-			"Sayginer"
+			"Sayginer",
+			"Incelemeelemani"
 		]
 	},
-	"popups-message": "Açılır pencereler",
-	"popups-desc": "Kullanıcı bir makale bağlantısı üzerine geldiğinde makale içeriği özetini içeren açılır pencereler görüntüler.",
-	"popups-settings-title": "Madde Ön izleme",
+	"popups-message": "Vurgulanmış kartlar",
+	"popups-desc": "Kullanıcı bir makale bağlantısı üzerine geldiğinde, makale içeriği özetini içeren açılır pencereler görüntüler.",
+	"popups-last-edited": "Son düzenleme $1",
+	"popups-redirects": "<h3>$1</h3> yönlendiriliyor",
+	"popups-settings-title": "Sayfa önizleme",
 	"popups-settings-description": "Bu araç mavi bağlantılar ve kayanaklarda ön izleme yapabilmenizi sağlar",
+	"popups-settings-option-simple": "Basit",
+	"popups-settings-option-simple-description": "Bir sayfanın başındaki cümle ile görüntünün önizlemesine bakın. Bu okuyucular için tavsiye edilen bir özelliktir.",
+	"popups-settings-option-advanced": "Gelişmiş",
+	"popups-settings-option-off": "Önizlemeyi kapat",
 	"popups-settings-save": "Kaydet",
-	"popups-settings-cancel": "İptal"
+	"popups-settings-cancel": "İptal",
+	"popups-settings-enable": "Önizlemeyi etkinleştir"
 }
