@@ -38,6 +38,67 @@ class PopupsHooks {
 		);
 	}
 
+	/**
+	 * @param array $schemas
+	 */
+	public static function onEventLoggingRegisterSchemas( array &$schemas ) {
+		$schemas['Popups'] = 7536956;
+	}
+
+	/**
+	 * @param ResourceLoader $rl
+	 * @return bool
+	 */
+	public static function onResourceLoaderRegisterModules( ResourceLoader $rl ) {
+		$moduleDependencies = array(
+			'mediawiki.api',
+			'mediawiki.jqueryMsg',
+			'moment',
+			'jquery.jStorage',
+			'jquery.client',
+		);
+
+		// If EventLogging is present, add the schema as a dependency.
+		if ( class_exists( 'ResourceLoaderSchemaModule' ) ) {
+			$moduleDependencies[] = "schema.Popups";
+		}
+
+		$rl->register( "ext.popups", array(
+			'scripts' => array(
+				'resources/ext.popups.core.js',
+				'resources/ext.popups.eventlogging.js',
+				'resources/ext.popups.renderer.js',
+				'resources/ext.popups.renderer.article.js',
+				'resources/ext.popups.disablenavpop.js',
+				'resources/ext.popups.settings.js',
+			),
+			'styles' => array(
+				'resources/ext.popups.core.less',
+				'resources/ext.popups.animation.less',
+				'resources/ext.popups.settings.less',
+			),
+			'dependencies' => $moduleDependencies,
+			'messages' => array(
+				'popups-last-edited',
+				"popups-settings-title",
+				"popups-settings-description",
+				"popups-settings-option-simple",
+				"popups-settings-option-simple-description",
+				"popups-settings-option-advanced",
+				"popups-settings-option-advanced-description",
+				"popups-settings-option-off",
+				"popups-settings-option-off-description",
+				"popups-settings-save",
+				"popups-settings-cancel",
+				"popups-settings-enable",
+			),
+			'remoteExtPath' => 'Popups',
+			'localBasePath' => __DIR__,
+		) );
+
+		return true;
+	}
+
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin) {
 		// Enable only if the user has turned it on in Beta Preferences, or BetaFeatures is not installed.
 		// Will only be loaded if PageImages & TextExtracts extensions are installed.
