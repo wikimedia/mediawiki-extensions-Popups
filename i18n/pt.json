@@ -13,6 +13,7 @@
 	"popups-settings-title": "Antevisão de página",
 	"popups-settings-description": "Esta ferramenta permite-lhe pré-visualizar ligações azuis e referências",
 	"popups-settings-option-simple": "Simples",
+	"popups-settings-option-simple-description": "Veja a introdução da página com uma imagem de antevisão. Esta opção é recomendada para leitores",
 	"popups-settings-option-off": "Desativar antevisão",
 	"popups-settings-option-off-description": "Pode alterar esta configuração através da ligação no rodapé da página",
 	"popups-settings-save": "Gravar",
