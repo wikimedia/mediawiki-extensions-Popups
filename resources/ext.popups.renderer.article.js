@@ -125,6 +125,8 @@
 				.addClass( 'mwe-popups-discreet' )
 				.attr( 'href', href )
 				.append( $thumbnail );
+		} else {
+			thumbnail = undefined;
 		}
 
 		$div = $( '<div>' ).append( $thumbnail, $contentbox, $timestamp );
@@ -221,7 +223,13 @@
 	article.createThumbnail = function ( thumbnail, tall ) {
 		var svg = mw.popups.supportsSVG;
 
-		if ( !thumbnail ) {
+		if (
+			!thumbnail || // No thumbnail
+			// Image too small for landscape display
+			( !tall && thumbnail.width < article.SIZES.landscapeImage.w ) ||
+			// Image too small for protrait display
+			( tall && thumbnail.height < article.SIZES.portraitImage.h )
+		) {
 			return $( '<span>' );
 		}
 
