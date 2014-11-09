@@ -120,7 +120,7 @@
 		width: 450px;
 
 		> div > a > svg {
-			margin-bottom: -5px;
+			margin-bottom: -7px;
 		}
 
 		.mwe-popups-extract {
@@ -226,7 +226,7 @@
 		> div > a > svg {
 			margin: 0;
 			margin-top: -8px;
-			margin-bottom: -5px;
+			margin-bottom: -7px;
 			position: absolute;
 			z-index: 100;
 			/* @noflip */
@@ -249,7 +249,8 @@
 			min-height: 242px;
 
 			&:after {
-				border: none;
+				z-index: 91;
+				.mwe-popups-border-triangle-bottom(8px, 421px, #fff);
 			}
 
 			&:before {
@@ -257,7 +258,7 @@
 				.mwe-popups-border-triangle-bottom(9px, 420px, #bbb);
 			}
 
-			> a > svg {
+			> div > a > svg {
 				position: absolute;
 				z-index: 100;
 				margin: 0;
