@@ -28,7 +28,7 @@
 
 .mwe-popups {
 	position: absolute;
-	z-index: 5;
+	z-index: 110;
 	background: #fff;
 	border: 1px solid #bbb;
 	padding: 0;
@@ -180,24 +180,24 @@
 
 	&.mwe-popups-image-tri {
 		&:before {
-			z-index: 90;
+			z-index: 111;
 			.mwe-popups-border-triangle-top(9px, 9px, #bbb);
 		}
 
 		&:after {
 			.mwe-popups-border-triangle-top(8px, 10px, #fff);
-			z-index: 91;
+			z-index: 112;
 		}
 
 		&.flipped_x {
 			&:before {
-				z-index: 90;
+				z-index: 111;
 				.mwe-popups-border-triangle-top(9px, 273px, #bbb);
 			}
 
 			&:after {
 				.mwe-popups-border-triangle-top(8px, 273px, #fff);
-				z-index: 91;
+				z-index: 112;
 			}
 		}
 
@@ -209,7 +209,7 @@
 		> div > a > svg {
 			margin-top: -8px;
 			position: absolute;
-			z-index: 100;
+			z-index: 113;
 			/* @noflip */
 			left: 0;
 		}
@@ -219,7 +219,7 @@
 		min-height: 242px;
 
 		&:before {
-			z-index: 90;
+			z-index: 111;
 			.mwe-popups-border-triangle-top(9px, 420px, #bbb);
 		}
 
@@ -228,7 +228,7 @@
 			margin-top: -8px;
 			margin-bottom: -7px;
 			position: absolute;
-			z-index: 100;
+			z-index: 113;
 			/* @noflip */
 			right: 0;
 		}
@@ -236,31 +236,31 @@
 
 	&.flipped_x_y {
 		&:before {
-			z-index: 90;
+			z-index: 111;
 			.mwe-popups-border-triangle-bottom(9px, 272px, #bbb);
 		}
 
 		&:after {
 			.mwe-popups-border-triangle-bottom(8px, 273px, #fff);
-			z-index: 91;
+			z-index: 112;
 		}
 
 		&.mwe-popups-is-tall {
 			min-height: 242px;
 
 			&:after {
-				z-index: 91;
+				z-index: 112;
 				.mwe-popups-border-triangle-bottom(8px, 421px, #fff);
 			}
 
 			&:before {
-				z-index: 90;
+				z-index: 111;
 				.mwe-popups-border-triangle-bottom(9px, 420px, #bbb);
 			}
 
 			> div > a > svg {
 				position: absolute;
-				z-index: 100;
+				z-index: 113;
 				margin: 0;
 				margin-bottom: -9px;
 				/* @noflip */
