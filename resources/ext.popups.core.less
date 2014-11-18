@@ -4,23 +4,23 @@
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
 
-.mwe-popups-border-triangle-top(@size, @left, @color) {
+.mwe-popups-border-triangle-top(@size, @left, @color, @extra) {
 	content: '';
 	position: absolute;
-	border: @size solid transparent;
+	border: ( @size + @extra ) solid transparent;
 	border-top: 0;
-	border-bottom: @size solid @color;
+	border-bottom: ( @size + @extra ) solid @color;
 	top: -@size;
 	/* @noflip */
 	left: @left;
 }
 
-.mwe-popups-border-triangle-bottom(@size, @left, @color) {
+.mwe-popups-border-triangle-bottom(@size, @left, @color, @extra) {
 	content: '';
 	position: absolute;
-	border: @size solid transparent;
+	border: ( @size + @extra ) solid transparent;
 	border-bottom: 0;
-	border-top: @size solid @color;
+	border-top: ( @size + @extra ) solid @color;
 	bottom: -@size;
 	/* @noflip */
 	left: @left;
@@ -154,11 +154,11 @@
 	/* Triangles/Pokeys */
 	&.mwe-popups-no-image-tri {
 		&:after {
-			.mwe-popups-border-triangle-top( 7px, 11px, #fff);
+			.mwe-popups-border-triangle-top( 7px, 7px, #fff, 4px);
 		}
 
 		&:before {
-			.mwe-popups-border-triangle-top( 8px, 10px, #bbb);
+			.mwe-popups-border-triangle-top( 8px, 10px, #bbb, 0px);
 		}
 	}
 
@@ -167,7 +167,7 @@
 			/* @noflip */
 			left: auto;
 			/* @noflip */
-			right: 11px;
+			right: 7px;
 		}
 
 		&:before {
@@ -181,22 +181,22 @@
 	&.mwe-popups-image-tri {
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-top(9px, 9px, #bbb);
+			.mwe-popups-border-triangle-top(9px, 9px, #bbb, 0px);
 		}
 
 		&:after {
-			.mwe-popups-border-triangle-top(8px, 10px, #fff);
+			.mwe-popups-border-triangle-top(8px, 6px, #fff, 4px);
 			z-index: 112;
 		}
 
 		&.flipped_x {
 			&:before {
 				z-index: 111;
-				.mwe-popups-border-triangle-top(9px, 273px, #bbb);
+				.mwe-popups-border-triangle-top(9px, 273px, #bbb, 0px);
 			}
 
 			&:after {
-				.mwe-popups-border-triangle-top(8px, 273px, #fff);
+				.mwe-popups-border-triangle-top(8px, 269px, #fff, 4px);
 				z-index: 112;
 			}
 		}
@@ -220,7 +220,7 @@
 
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-top(9px, 420px, #bbb);
+			.mwe-popups-border-triangle-top(9px, 420px, #bbb, 0px);
 		}
 
 		> div > a > svg {
@@ -237,11 +237,11 @@
 	&.flipped_x_y {
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-bottom(9px, 272px, #bbb);
+			.mwe-popups-border-triangle-bottom(9px, 272px, #bbb, 0px);
 		}
 
 		&:after {
-			.mwe-popups-border-triangle-bottom(8px, 273px, #fff);
+			.mwe-popups-border-triangle-bottom(8px, 269px, #fff, 4px);
 			z-index: 112;
 		}
 
@@ -250,12 +250,12 @@
 
 			&:after {
 				z-index: 112;
-				.mwe-popups-border-triangle-bottom(8px, 421px, #fff);
+				.mwe-popups-border-triangle-bottom(8px, 417px, #fff, 4px);
 			}
 
 			&:before {
 				z-index: 111;
-				.mwe-popups-border-triangle-bottom(9px, 420px, #bbb);
+				.mwe-popups-border-triangle-bottom(9px, 420px, #bbb, 0px);
 			}
 
 			> div > a > svg {
@@ -271,11 +271,11 @@
 
 	&.flipped_y {
 		&:after {
-			.mwe-popups-border-triangle-bottom( 7px, 11px, #fff);
+			.mwe-popups-border-triangle-bottom( 7px, 7px, #fff, 4px );
 		}
 
 		&:before {
-			.mwe-popups-border-triangle-bottom( 8px, 10px, #bbb);
+			.mwe-popups-border-triangle-bottom( 8px, 10px, #bbb, 0px );
 		}
 	}
 }
