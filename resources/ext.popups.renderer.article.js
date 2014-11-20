@@ -21,7 +21,8 @@
 			w: 300 // Exact Width
 		},
 		landscapePopupWidth: 450, // Exact width of a landscape popup
-		portraitPopupWidth: 300 // Exact width of a portrait popup
+		portraitPopupWidth: 300, // Exact width of a portrait popup
+		pokeySize: 8 // Height of the triangle used to point at the link
 	};
 
 	/**
@@ -461,7 +462,7 @@
 		if ( !flippedY && !tall && cache.settings.thumbnail.height < article.SIZES.landscapeImage.h ) {
 			$( '.mwe-popups-extract').css(
 				'margin-top',
-				cache.settings.thumbnail.height + 6
+				cache.settings.thumbnail.height - article.SIZES.pokeySize
 			);
 		}
 
