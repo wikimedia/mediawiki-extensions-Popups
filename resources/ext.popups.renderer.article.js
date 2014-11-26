@@ -147,6 +147,8 @@
 	 * @return {String}
 	 */
 	article.getProcessedHtml = function ( extract, title ) {
+		extract = mw.html.escape( extract );
+		title = mw.html.escape( title );
 		title = title.replace( /([.?*+^$[\]\\(){}|-])/g, '\\$1' ); // Escape RegExp elements
 		var regExp = new RegExp( '(^|\\s)(' + title + ')(\\s|$)', 'ig' );
 		// Make title bold in the extract text

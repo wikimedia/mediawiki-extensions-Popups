@@ -2,7 +2,7 @@
 
 	QUnit.module( 'ext.popups' );
 	QUnit.test( 'render.article.getProcessedHtml', function ( assert ) {
-		QUnit.expect( 6 );
+		QUnit.expect( 7 );
 
 		function test ( extract, title, expected ) {
 			assert.equal(
@@ -39,6 +39,11 @@
 		test(
 			'Brackets ) are funny ( when not used properly', 'Brackets',
 			'<b>Brackets</b> ) are funny ( when not used properly'
+		);
+
+		test(
+			'Epic XSS <script>alert("XSS")</script> is epic', 'Epic XSS',
+			'<b>Epic XSS</b> &lt;script&gt;alert&lt;/script&gt; is epic'
 		);
 
 	} );
