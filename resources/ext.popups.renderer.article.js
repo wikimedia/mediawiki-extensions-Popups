@@ -100,8 +100,8 @@
 			$contentbox = $( '<a>' )
 				.attr( 'href', href )
 				.addClass( 'mwe-popups-extract' )
-				.html(
-					article.getProcessedHtml( page.extract, page.title )
+				.append(
+					article.getProcessedElements( page.extract, page.title )
 				),
 			thumbnail = page.thumbnail,
 			tall = thumbnail && thumbnail.height > thumbnail.width,
@@ -141,25 +141,43 @@
 	};
 
 	/**
-	 * Returns HTML extract after removing parentheses and making the title in
-	 * the extract bold.
+	 * Returns an array of elements to be appended after removing parentheses
+	 * and making the title in the extract bold.
 	 *
-	 * @method getProcessedHtml
+	 * @method getProcessedElements
 	 * @param {String} extract
 	 * @param {String} title
-	 * @return {String}
+	 * @return {Array} of elements to appended
 	 */
-	article.getProcessedHtml = function ( extract, title ) {
+	article.getProcessedElements = function ( extract, title ) {
 		extract = mw.html.escape( extract );
 		title = mw.html.escape( title );
 		title = title.replace( /([.?*+^$[\]\\(){}|-])/g, '\\$1' ); // Escape RegExp elements
-		var regExp = new RegExp( '(^|\\s)(' + title + ')(\\s|$)', 'ig' );
-		// Make title bold in the extract text
-		extract = extract.replace( regExp, '$1<b>$2</b>$3' );
+
+		var elements = [],
+			regExp = new RegExp( '(^|\\s)(' + title + ')(\\s|$)', 'ig' ),
+			boldIdentifier = '<bi-' + Math.random() + '>',
+			snip = '<snip-' + Math.random() + '>';
+
 		// Remove text in parentheses along with the parentheses
 		extract = article.removeParensFromText( extract );
 		extract = extract.replace(/\s+/g, ' '); // Remove extra white spaces
-		return extract;
+
+		// Make title bold in the extract text
+		// As the extract is html escaped there can be no such string in it
+		// Also, the title is escaped of RegExp elements thus can't have "*"
+		extract = extract.replace( regExp, '$1' + snip + boldIdentifier + '$2' + snip + '$3' );
+		extract = extract.split( snip );
+
+		$.each( extract, function ( index, part ) {
+			if ( part.indexOf( boldIdentifier ) === 0 ) {
+				elements.push( $( '<b>' ).text( part.substring( boldIdentifier.length ) ) );
+			} else {
+				elements.push( part );
+			}
+		} );
+
+		return elements;
 	};
 
 	/**
