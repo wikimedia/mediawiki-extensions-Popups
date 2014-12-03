@@ -3,13 +3,14 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Liangent",
-			"Cwlin0416"
+			"Cwlin0416",
+			"LNDDYL"
 		]
 	},
 	"popups-message": "浮動窗格",
 	"popups-desc": "在游標停駐於頁面連結上方時，顯示包含連結內容摘要的浮動窗格。",
 	"popups-last-edited": "最近編輯於$1",
-	"popups-redirects": "重定向至<h3>$1</h3>",
+	"popups-redirects": "重新導向至 <h3>$1</h3>",
 	"popups-settings-title": "頁面預覽",
 	"popups-settings-option-simple": "簡易",
 	"popups-settings-option-advanced": "進階",
