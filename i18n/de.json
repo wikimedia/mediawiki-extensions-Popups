@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"CennoxX"
 		]
 	},
 	"popups-message": "Hovercards",
@@ -10,13 +11,13 @@
 	"popups-redirects": "leitet weiter auf <h3>$1</h3>",
 	"popups-settings-title": "Seitenvorschau",
 	"popups-settings-description": "Dieses Werkzeug ermöglicht dir das Vorschauen von blauen Links und Einzelnachweisen",
-	"popups-settings-option-simple": "Einfach",
+	"popups-settings-option-simple": "Aktivieren",
 	"popups-settings-option-simple-description": "Den Einleitungssatz und ein Vorschaubild einer Seite anzeigen. Für Leser empfohlen.",
 	"popups-settings-option-advanced": "Erweitert",
-	"popups-settings-option-advanced-description": "Link-Vorschaubilder anzeigen und Zugriff auf Bearbeitungsfunktionen erhalten. Benutzt von vielen Bearbeitern.",
-	"popups-settings-option-off": "Vorschaubilder deaktivieren",
+	"popups-settings-option-advanced-description": "Link-Vorschau anzeigen und Zugriff auf Bearbeitungsfunktionen erhalten. Benutzt von vielen Bearbeitern.",
+	"popups-settings-option-off": "Vorschau deaktivieren",
 	"popups-settings-option-off-description": "Du kannst diese Einstellung ändern, indem du den Link am Seitenende benutzt",
 	"popups-settings-save": "Speichern",
 	"popups-settings-cancel": "Abbrechen",
-	"popups-settings-enable": "Vorschaubilder aktivieren"
+	"popups-settings-enable": "Vorschau aktivieren"
 }
