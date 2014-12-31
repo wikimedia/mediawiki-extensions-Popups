@@ -103,7 +103,7 @@ class PopupsHooks {
 		// Enable only if the user has turned it on in Beta Preferences, or BetaFeatures is not installed.
 		// Will only be loaded if PageImages & TextExtracts extensions are installed.
 		if ( ( !class_exists( 'BetaFeatures' ) || BetaFeatures::isFeatureEnabled( $skin->getUser(), 'popups' ) )
-			&& class_exists( 'ApiQueryExtracts' )
+			&& defined( 'TEXT_EXTRACTS_INSTALLED' )
 			&& class_exists( 'ApiQueryPageImages' )
 		) {
 			$out->addModules( array( 'ext.popups' ) );
