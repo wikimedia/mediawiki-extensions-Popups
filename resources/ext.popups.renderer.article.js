@@ -210,6 +210,10 @@
 				continue;
 			}
 			if ( level === 0 ) {
+				// Remove leading spaces before brackets
+				if ( ch === ' ' && string.charAt( i + 1 ) === '(' ) {
+					continue;
+				}
 				newString += ch;
 			}
 		}

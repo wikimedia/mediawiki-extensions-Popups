@@ -2,7 +2,7 @@
 
 	QUnit.module( 'ext.popups' );
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
-		QUnit.expect( 11 );
+		QUnit.expect( 12 );
 
 		function test ( extract, title, expected, msg ) {
 			var $div = $( '<div>' ).append(
@@ -57,6 +57,12 @@
 			'Brackets ) are funny ( when not used properly', 'Brackets',
 			'<b>Brackets</b> ) are funny ( when not used properly',
 			'Extract with unbalanced parentheses'
+		);
+
+		test(
+			'Vappu (born August 7), also known as Lexy', 'Vappu',
+			'<b>Vappu</b>, also known as Lexy',
+			'Spaces around bracketed text should be removed'
 		);
 
 		test(
