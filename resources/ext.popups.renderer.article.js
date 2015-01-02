@@ -155,7 +155,7 @@
 		title = title.replace( /([.?*+^$[\]\\(){}|-])/g, '\\$1' ); // Escape RegExp elements
 
 		var elements = [],
-			regExp = new RegExp( '(^|\\s)(' + title + ')(\\s|$)', 'ig' ),
+			regExp = new RegExp( '(^|\\s)(' + title + ')(|$)', 'ig' ),
 			boldIdentifier = '<bi-' + Math.random() + '>',
 			snip = '<snip-' + Math.random() + '>';
 

@@ -2,7 +2,7 @@
 
 	QUnit.module( 'ext.popups' );
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
-		QUnit.expect( 9 );
+		QUnit.expect( 11 );
 
 		function test ( extract, title, expected, msg ) {
 			var $div = $( '<div>' ).append(
@@ -30,6 +30,12 @@
 		);
 
 		test(
+			'Person, (was born in Location) is good', 'Person',
+			'<b>Person</b>, is good',
+			'Comma after title'
+		);
+
+		test(
 			'Person (was born in Location (at Time)) is good', 'Person',
 			'<b>Person</b> is good',
 			'Extract with nested parentheses'
@@ -39,6 +45,12 @@
 			'Person (was born in Location (at Time) ) is good', 'Person',
 			'<b>Person</b> is good',
 			'Extract with nested parentheses and random spaces'
+		);
+
+		test(
+			'I like trains', 'Train',
+			'I like <b>train</b>s',
+			'Make the simple plural bold'
 		);
 
 		test(
