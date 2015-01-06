@@ -87,6 +87,8 @@
 			return;
 		}
 
+		// Disable Navigration Popups
+		mw.popups.disableNavPopup();
 
 		mw.popups.render.currentLink = link;
 		link.on( 'mouseleave blur', mw.popups.render.leaveInactive );
