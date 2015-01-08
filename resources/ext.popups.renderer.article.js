@@ -186,11 +186,15 @@
 	 * @return {Array} of elements to appended
 	 */
 	article.getProcessedElements = function ( extract, title ) {
-		var elements = [],
-			escapedTitle = mw.RegExp.escape( title ), // Escape RegExp elements
-			regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'i' ),
+		var regExp, escapedTitle,
+			elements = [],
 			boldIdentifier = '<bi-' + Math.random() + '>',
 			snip = '<snip-' + Math.random() + '>';
+
+		title = article.removeParensFromText( title );
+		title = title.replace( /\s+/g, ' ' ).trim(); // Remove extra white spaces
+		escapedTitle = mw.RegExp.escape( title ); // Escape RegExp elements
+		regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'i' );
 
 		// Remove text in parentheses along with the parentheses
 		extract = article.removeParensFromText( extract );

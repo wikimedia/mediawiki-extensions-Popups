@@ -3,7 +3,7 @@
 	QUnit.module( 'ext.popups.renderer.renderers.article', QUnit.newMwEnvironment() );
 
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
-		QUnit.expect( 14 );
+		QUnit.expect( 15 );
 
 		function test( extract, title, expected, msg ) {
 			var $div = $( '<div>' ).append(
@@ -94,6 +94,12 @@
 			'Testing if repeated words are not matched when repeated', 'Repeated',
 			'Testing if <b>repeated</b> words are not matched when repeated',
 			'Repeated title'
+		);
+
+		test(
+			'Evil Empire is the second studio album', 'Evil Empire (album)',
+			'<b>Evil Empire</b> is the second studio album',
+			'Extra information in title in paranthesis'
 		);
 
 	} );
