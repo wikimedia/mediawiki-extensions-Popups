@@ -55,8 +55,13 @@
 	 *
 	 * @method logEvent
 	 * @param {String} href
+	 * @return {Boolean} logged Whether or not the event was logged
 	 */
 	eventLogging.logEvent = function ( href ) {
+		if ( mw.eventLog === undefined ) {
+			return false;
+		}
+
 		var
 			deferred = $.Deferred(),
 			event = {
@@ -80,6 +85,8 @@
 		eventLogging.time = undefined;
 		eventLogging.duration = undefined;
 		eventLogging.action = undefined;
+
+		return true;
 	};
 
 	/**
