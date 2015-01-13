@@ -65,8 +65,13 @@
 	mw.popups.render.render = function ( link, event ) {
 		// This will happen when the mouse goes from the popup box back to the
 		// anchor tag. In such a case, the timer to close the box is cleared.
-		if ( mw.popups.render.currentLink === link ) {
-			mw.popups.render.closeTimer.abort();
+		if (
+			mw.popups.render.currentLink &&
+			mw.popups.render.currentLink[0] === link[0]
+		) {
+			if ( mw.popups.render.closeTimer ) {
+				mw.popups.render.closeTimer.abort();
+			}
 			return;
 		}
 
@@ -81,6 +86,7 @@
 		if ( link.attr( 'href' ) === '#' ) {
 			return;
 		}
+
 
 		mw.popups.render.currentLink = link;
 		link.on( 'mouseleave blur', mw.popups.render.leaveInactive );
@@ -147,7 +153,7 @@
 		// Event logging
 		mw.popups.eventLogging.time = mw.now();
 		mw.popups.eventLogging.action = 'dismissed';
-		mw.popups.$popup.find( 'a.mwe-popups-extract' ).click( mw.popups.eventLogging.logClick );
+		mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.eventLogging.logClick );
 
 		link
 			.off( 'mouseleave blur', mw.popups.render.leaveInactive )
@@ -163,6 +169,10 @@
 	 * @method closePopup
 	 */
 	mw.popups.render.closePopup = function () {
+		if ( mw.popups.render.currentLink === undefined ) {
+			return false;
+		}
+
 		mw.popups.eventLogging.duration = mw.now() - mw.popups.eventLogging.time;
 		mw.popups.eventLogging.logEvent();
 
