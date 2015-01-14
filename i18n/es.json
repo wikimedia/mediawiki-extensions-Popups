@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"Jduranboger"
 		]
 	},
 	"popups-message": "Cuadros emergentes",
@@ -12,7 +13,9 @@
 	"popups-settings-title": "Previsualización de página",
 	"popups-settings-description": "Esta herramienta permite previsualizar los enlaces azules y las referencias",
 	"popups-settings-option-simple": "Simple",
+	"popups-settings-option-simple-description": "Ver la frase principal de una página y una imagen de vista previa. Esto es recomendable para los lectores",
 	"popups-settings-option-advanced": "Avanzado",
+	"popups-settings-option-advanced-description": "Ver vistas previas de enlace y acceso a los menús de la función de edición. Esta opción es recomendada para editores.",
 	"popups-settings-option-off": "Desactivar previsualizaciones",
 	"popups-settings-option-off-description": "Puedes cambiar esta configuración usando el enlace en el pie de la página",
 	"popups-settings-save": "Guardar",
