@@ -46,7 +46,6 @@
 				event.preventDefault();
 			}
 		}
-		return false;
 	};
 
 	/**
