@@ -91,6 +91,8 @@ class PopupsHooks {
 				"popups-settings-save",
 				"popups-settings-cancel",
 				"popups-settings-enable",
+				"popups-settings-help",
+				"popups-settings-help-ok",
 			),
 			'remoteExtPath' => 'Popups',
 			'localBasePath' => __DIR__,
