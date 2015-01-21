@@ -18,6 +18,8 @@
 	"popups-settings-option-off": "Vorschau deaktivieren",
 	"popups-settings-option-off-description": "Du kannst diese Einstellung ändern, indem du den Link am Seitenende benutzt",
 	"popups-settings-save": "Speichern",
+	"popups-settings-help-ok": "Okay",
 	"popups-settings-cancel": "Abbrechen",
+	"popups-settings-help": "Du kannst Vorschaubilder erneut aktivieren, indem du einen Link im Fußbereich der Seite verwendest.",
 	"popups-settings-enable": "Vorschau aktivieren"
 }

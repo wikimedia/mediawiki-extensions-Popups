@@ -18,7 +18,6 @@
 	"popups-settings-option-off": "Title to turn off hovercards option.\n\nSee also:\n* {{msg-mw|Popups-settings-enable}}",
 	"popups-settings-option-off-description": "Description for turn off hovercards option",
 	"popups-settings-save": "Save buttton for the setting's dialoag\n{{Identical|Save}}",
-	"popups-settings-help-okay": "Button to close help dialog",
 	"popups-settings-cancel": "Cancel button for the setting's dialog\n{{Identical|Cancel}}",
 	"popups-settings-help": "Help text explaining how to re-enable previews",
 	"popups-settings-enable": "Link on the footer to enable hovercards if its disabled.\n\nSee also:\n* {{msg-mw|Popups-settings-option-off}}"
