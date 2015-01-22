@@ -19,6 +19,8 @@
 	"popups-settings-option-off": "禁用预览",
 	"popups-settings-option-off-description": "您可通过页面页脚的连接更改此设置",
 	"popups-settings-save": "保存",
+	"popups-settings-help-ok": "确定",
 	"popups-settings-cancel": "取消",
+	"popups-settings-help": "您可以使用页面页脚中的链接让预览回来。",
 	"popups-settings-enable": "启用预览"
 }

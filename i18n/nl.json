@@ -3,7 +3,8 @@
 		"authors": [
 			"SPQRobin",
 			"Siebrand",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Robin0van0der0vliet"
 		]
 	},
 	"popups-message": "Pop-uppagina's",
@@ -18,6 +19,7 @@
 	"popups-settings-option-off": "Voorvertoningen uitschakelen",
 	"popups-settings-option-off-description": "U kunt deze instelling wijzigen via de koppeling onderaan de pagina",
 	"popups-settings-save": "Opslaan",
+	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Annuleren",
 	"popups-settings-enable": "Voorvertoningen inschakelen"
 }

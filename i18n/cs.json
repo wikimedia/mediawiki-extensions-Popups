@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mormegil"
+			"Mormegil",
+			"Littledogboy"
 		]
 	},
 	"popups-message": "Vyskakovací kartičky",
@@ -17,6 +18,7 @@
 	"popups-settings-option-off": "Vypnout náhledy",
 	"popups-settings-option-off-description": "Toto nastavení můžete změnit pomocí odkazu v patičce stránky",
 	"popups-settings-save": "Uložit",
+	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Storno",
 	"popups-settings-enable": "Zapnout náhledy"
 }
