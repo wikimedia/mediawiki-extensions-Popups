@@ -17,6 +17,8 @@
 	"popups-settings-option-off": "Исклучи прегледи",
 	"popups-settings-option-off-description": "Можете да ја смените оваа поставка, користејќи ја врската во подножјето на страницата.",
 	"popups-settings-save": "Зачувај",
+	"popups-settings-help-ok": "ОК",
 	"popups-settings-cancel": "Откажи",
+	"popups-settings-help": "Можете повторно да ги вклучите прегледите преку врска во подножјето на страницата.",
 	"popups-settings-enable": "Овозможи прегледи"
 }

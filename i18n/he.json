@@ -17,6 +17,8 @@
 	"popups-settings-option-off": "כיבוי התצוגה המקדימה",
 	"popups-settings-option-off-description": "באפשרותך לשנות את ההגדרה הזאת באמצעות קישור בתחתית הדף",
 	"popups-settings-save": "שמירה",
+	"popups-settings-help-ok": "אישור",
 	"popups-settings-cancel": "ביטול",
+	"popups-settings-help": "אפשר להפעיל תצוגה מקדימה שוב באמצעות קישור בתחתית הדף.",
 	"popups-settings-enable": "הפעלת תצוגה מקדימה"
 }

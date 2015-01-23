@@ -17,6 +17,8 @@
 	"popups-settings-option-off": "Desativar antevisão",
 	"popups-settings-option-off-description": "Pode alterar esta configuração através da ligação no rodapé da página",
 	"popups-settings-save": "Gravar",
+	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Cancelar",
+	"popups-settings-help": "Pode reativar as antevisões ao utilizar a ligação existente no rodapé da página.",
 	"popups-settings-enable": "Ativar antevisão"
 }
