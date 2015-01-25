@@ -3,7 +3,9 @@
 		"authors": [
 			"Gomoko",
 			"Ltrlg",
-			"VIGNERON"
+			"VIGNERON",
+			"Benjozork",
+			"Orikrin1998"
 		]
 	},
 	"popups-message": "Hovercards",
@@ -19,6 +21,8 @@
 	"popups-settings-option-off": "Désactiver les aperçus",
 	"popups-settings-option-off-description": "Vous pouvez modifier ce paramètre en utilisant le lien en bas de page",
 	"popups-settings-save": "Enregistrer",
+	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Annuler",
+	"popups-settings-help": "Vous pouvez activer des aperçus sur l'utilisation d'un lien dans le pied de page.",
 	"popups-settings-enable": "Activer les aperçus"
 }

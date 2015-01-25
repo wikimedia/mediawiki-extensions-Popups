@@ -5,5 +5,6 @@
 		]
 	},
 	"popups-message": "Hovercards",
-	"popups-redirects": "redirigit cap a <h3>$1</h3>"
+	"popups-redirects": "redirigit cap a <h3>$1</h3>",
+	"popups-settings-help-ok": "D'acòrdi"
 }
