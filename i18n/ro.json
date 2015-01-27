@@ -17,6 +17,8 @@
 	"popups-settings-option-off": "Dezactivează previzualizările",
 	"popups-settings-option-off-description": "Puteți modifica această setare folosind legătura din subsolul paginii",
 	"popups-settings-save": "Salvare",
+	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Revocare",
+	"popups-settings-help": "Puteți reactiva previzualizările accesând legătura din subsolul paginii.",
 	"popups-settings-enable": "Activează previzualizările"
 }
