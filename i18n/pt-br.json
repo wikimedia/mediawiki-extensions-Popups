@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dianakc"
+		]
+	},
+	"popups-message": "Cartões flutuantes",
+	"popups-desc": "Mostra um cartão flutuante com o resumo do conteúdo da página quando mover o cursor do mouse sobre um link de página",
+	"popups-last-edited": "Última edição $1",
+	"popups-redirects": "redireciona para <h3>$1</h3>",
+	"popups-settings-title": "Pré-visualização",
+	"popups-settings-description": "Esta ferramenta ajuda a pré-visualizar link azuis e referências.",
+	"popups-settings-option-simple": "Simples",
+	"popups-settings-option-simple-description": "Veja a sentença de uma página e uma imagem de pré-visualização. Isso é recomendado para leitores.",
+	"popups-settings-option-advanced": "Avançado",
+	"popups-settings-option-advanced-description": "Veja a pré-visualização do link e acesse menus com funções de edição. Isso é usado por muitos editores.",
+	"popups-settings-option-off": "Desativar pré-visualização",
+	"popups-settings-option-off-description": "Você pode modificar esta opções usando o link no rodapé da página.",
+	"popups-settings-save": "Salvar",
+	"popups-settings-help-ok": "OK",
+	"popups-settings-cancel": "Cancelar",
+	"popups-settings-help": "Você pode ativar novamente a pré-visualização usando o link no rodapé da página.",
+	"popups-settings-enable": "Ativar pré-visualização"
+}
