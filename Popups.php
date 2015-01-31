@@ -30,6 +30,7 @@ $wgExtensionCredits['betafeatures'][] = array(
 	'name' => 'Popups',
 	'path' => __FILE__,
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Popups',
+	'license-name' => 'GPL-2.0+',
 );
 
 $wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
