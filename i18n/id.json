@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kenrick95"
+			"Kenrick95",
+			"Iwan Novirion"
 		]
 	},
+	"popups-desc": "Menampilkan jendela pop-up dengan ringkasan isi halaman bila pengguna melakukan hover dengan mouse di atas sebuah pranala wiki",
 	"popups-settings-title": "Pratayang halaman"
 }
