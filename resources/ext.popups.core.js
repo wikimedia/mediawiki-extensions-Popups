@@ -43,7 +43,7 @@
 		'.new',
 		'.internal',
 		'.external',
-		'oo-ui-buttonedElement-button'
+		'.oo-ui-buttonedElement-button'
 	];
 
 	/**
