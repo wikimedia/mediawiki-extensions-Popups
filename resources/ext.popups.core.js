@@ -137,14 +137,11 @@
 	 */
 	mw.popups.setupTriggers = function ( $elements ) {
 		$elements.on( 'mouseenter focus', function ( event ) {
-			var
-				$this = $( this ),
-				href = $this.attr( 'href' );
+			var href = this.href;
 
 			// No popup if scrolling or on certain kinds of links.
 			if (
 				mw.popups.scrolled || // Prevents hovering on popups while scrolling
-				!href ||
 				href.indexOf( '?' ) !== -1 ||
 				href.indexOf( 'javascript:' ) === 0 || // jshint ignore:line
 				href.indexOf( location.origin + location.pathname + '#' ) === 0
@@ -153,7 +150,7 @@
 				return;
 			}
 
-			mw.popups.render.render( $this, event );
+			mw.popups.render.render( $( this ), event );
 		} );
 	};
 
@@ -163,7 +160,8 @@
 	 * @method selectPopupElements
 	 */
 	mw.popups.selectPopupElements = function () {
-		return mw.popups.$content.find( 'a:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' );
+		return mw.popups.$content
+			.find( 'a[href]:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' );
 	};
 
 	mw.hook( 'wikipage.content').add( function ( $content ) {
