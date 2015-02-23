@@ -154,7 +154,7 @@
 		return mw.popups.$content
 			.find( 'a[href][title]:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' )
 			.filter( function () {
-				return ( this.href === mw.config.get( 'wgServer' ) + mw.util.getUrl( this.title ) );
+				return ( this.href.replace(/^https?:\/\//,'//') === ( mw.config.get( 'wgServer' ) + mw.util.getUrl( this.title ) ).replace(/^https?:\/\//,'//') );
 			} );
 	};
 
