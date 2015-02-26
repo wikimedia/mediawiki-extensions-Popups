@@ -21,5 +21,6 @@
 	"popups-settings-save": "Guardar",
 	"popups-settings-help-ok": "Aceptar",
 	"popups-settings-cancel": "Cancelar",
+	"popups-settings-help": "Puedes retroceder las vistas previas utilizando el enlace al pie de la página.",
 	"popups-settings-enable": "Activar previsualizaciones"
 }
