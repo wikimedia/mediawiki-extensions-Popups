@@ -7,5 +7,17 @@
 	"popups-message": "Ачылыучу терезеле",
 	"popups-desc": "Бир бетге элтген джибериуге курсорну келтиргенде, бетни ичиндегисин суратлагъан ачылыучу терезени кёргюзтеди",
 	"popups-last-edited": "Ахыр кере тюрленнгенди $1",
-	"popups-redirects": "Бу бетге редиректди: <h3>$1</h3>"
+	"popups-redirects": "Бу бетге редиректди: <h3>$1</h3>",
+	"popups-settings-title": "Бетге ал къарау",
+	"popups-settings-description": "Бу адыр, кёк джибериуле бла белги-джибериулеге алдан къараргъа амал береди.",
+	"popups-settings-option-simple": "Тюз",
+	"popups-settings-option-simple-description": "Бетде биринчи айтым бла суратны кёргюзтеди.\nБу, окъуучулагъа рекомендация этиледи.",
+	"popups-settings-option-advanced": "Кенгерген",
+	"popups-settings-option-off": "Ал къарауну джукълат",
+	"popups-settings-option-off-description": "Бетни тюб джанындагъы «Сакъла» тиекден басыб, бу джарашдырыуну тюрлендирирге боллукъсуз.",
+	"popups-settings-save": "Сакъла",
+	"popups-settings-help-ok": "ОК",
+	"popups-settings-cancel": "Ызына ал",
+	"popups-settings-help": "Бетни тюбюндеги тиек бла алдан къарау (превью) амалны джандырыргъа боллукъсуз.",
+	"popups-settings-enable": "Ал къарауну джандыр"
 }
