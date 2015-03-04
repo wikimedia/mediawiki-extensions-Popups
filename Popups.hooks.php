@@ -53,6 +53,7 @@ class PopupsHooks {
 		$moduleDependencies = array(
 			'mediawiki.api',
 			'mediawiki.jqueryMsg',
+			'mediawiki.Uri',
 			'moment',
 			'jquery.jStorage',
 			'jquery.client',

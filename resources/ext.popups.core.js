@@ -154,7 +154,12 @@
 		return mw.popups.$content
 			.find( 'a[href][title]:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' )
 			.filter( function () {
-				return ( this.href.replace(/^https?:\/\//,'//') === ( mw.config.get( 'wgServer' ) + mw.util.getUrl( this.title ) ).replace(/^https?:\/\//,'//') );
+				var linkHref = new mw.Uri( this.href ),
+					expectedHref = new mw.Uri( mw.util.getUrl( this.title ) );
+
+				// don't compare fragment to display popups on anchored page links
+				linkHref.fragment = undefined;
+				return linkHref.toString() === expectedHref.toString();
 			} );
 	};
 
