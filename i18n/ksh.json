@@ -6,5 +6,7 @@
 	},
 	"popups-message": "<i lang=\"en\" xml:lang=\"en\">Popups</i>",
 	"popups-desc": "Zeisch <i lang=\"en\" xml:lang=\"en\">popups</i> met Zersammefaßonge wann mer met de Muuß övver ene Lengk ob en Sigg jeihd.",
-	"popups-redirects": "leid_öm ob <h3>$1</h3>"
+	"popups-redirects": "leid_öm ob <h3>$1</h3>",
+	"popups-settings-option-simple": "Eijfach",
+	"popups-settings-option-advanced": "Fottjeschredde"
 }
