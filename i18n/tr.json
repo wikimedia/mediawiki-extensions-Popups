@@ -3,7 +3,8 @@
 		"authors": [
 			"Joseph",
 			"Sayginer",
-			"Incelemeelemani"
+			"Incelemeelemani",
+			"Meelo"
 		]
 	},
 	"popups-message": "Vurgulanmış kartlar",
@@ -11,7 +12,7 @@
 	"popups-last-edited": "Son düzenleme $1",
 	"popups-redirects": "<h3>$1</h3> yönlendiriliyor",
 	"popups-settings-title": "Sayfa önizleme",
-	"popups-settings-description": "Bu araç mavi bağlantılar ve kayanaklarda ön izleme yapabilmenizi sağlar",
+	"popups-settings-description": "Bu araç mavi bağlantılar ve kaynaklarda ön izleme yapabilmenizi sağlar.",
 	"popups-settings-option-simple": "Basit",
 	"popups-settings-option-simple-description": "Bir sayfanın başındaki cümle ile görüntünün önizlemesine bakın. Bu okuyucular için tavsiye edilen bir özelliktir.",
 	"popups-settings-option-advanced": "Gelişmiş",
