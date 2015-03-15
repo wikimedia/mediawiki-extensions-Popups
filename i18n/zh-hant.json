@@ -13,7 +13,7 @@
 	"popups-last-edited": "最近編輯於 $1",
 	"popups-redirects": "重新導向至 <h3>$1</h3>",
 	"popups-settings-title": "頁面預覽",
-	"popups-settings-description": "此工具讓您可以預覽超連結和參考資料。",
+	"popups-settings-description": "此工具讓您可以預覽藍色連結和參考資料。",
 	"popups-settings-option-simple": "簡易",
 	"popups-settings-option-advanced": "進階",
 	"popups-settings-option-off": "關閉預覽",

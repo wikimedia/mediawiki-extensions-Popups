@@ -11,7 +11,7 @@
 	"popups-last-edited": "最后编辑于$1",
 	"popups-redirects": "重定向至<h3>$1</h3>",
 	"popups-settings-title": "页面预览",
-	"popups-settings-description": "此工具允许您预览蓝链与参考文献",
+	"popups-settings-description": "此工具允许您预览蓝链与参考文献。",
 	"popups-settings-option-simple": "简单",
 	"popups-settings-option-simple-description": "参见页面和预览图片的开头内容。这被推荐给读者",
 	"popups-settings-option-advanced": "高级",
