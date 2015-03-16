@@ -18,10 +18,15 @@
  * @file
  * @ingroup extensions
  */
+use MediaWiki\Logger\LoggerFactory;
 
 class PopupsHooks {
 	static function getPreferences( User $user, array &$prefs ){
 		global $wgExtensionAssetsPath;
+
+		if ( self::getConfig()->get( 'PopupsBetaFeature' ) !== true ) {
+			return;
+		}
 
 		$prefs['popups'] = array(
 			'label-message' => 'popups-message',
@@ -36,6 +41,17 @@ class PopupsHooks {
 				'javascript' => true,
 			),
 		);
+	}
+
+	/**
+	 * @return Config
+	 */
+	public static function getConfig() {
+		static $config;
+		if ( !$config ) {
+			$config = ConfigFactory::getDefaultInstance()->makeConfig( 'popups' );
+		}
+		return $config;
 	}
 
 	/**
@@ -108,13 +124,28 @@ class PopupsHooks {
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin) {
 		// Enable only if the user has turned it on in Beta Preferences, or BetaFeatures is not installed.
 		// Will only be loaded if PageImages & TextExtracts extensions are installed.
-		if ( ( !class_exists( 'BetaFeatures' ) || BetaFeatures::isFeatureEnabled( $skin->getUser(), 'popups' ) )
-			&& defined( 'TEXT_EXTRACTS_INSTALLED' )
-			&& class_exists( 'ApiQueryPageImages' )
-		) {
-			$out->addModules( array( 'ext.popups' ) );
-			$out->addModules( array( 'schema.Popups' ) );
+
+		if ( !defined( 'TEXT_EXTRACTS_INSTALLED' ) || !class_exists( 'ApiQueryPageImages' ) ) {
+			$logger = LoggerFactory::getInstance( 'popups' );
+			$logger->error( 'Popups requires the PageImages and TextExtracts extensions.' );
+			return true;
 		}
+
+		if ( self::getConfig()->get( 'PopupsBetaFeature' ) === true ) {
+			if ( !class_exists( 'BetaFeatures' ) ) {
+				$logger = LoggerFactory::getInstance( 'popups' );
+				$logger->error( 'PopupsMode cannot be used as a beta feature unless ' .
+								'the BetaFeatures extension is present.' );
+				return true;
+			}
+			if ( !BetaFeatures::isFeatureEnabled( $skin->getUser(), 'popups' ) ) {
+				return true;
+			}
+		}
+
+		$out->addModules( array( 'ext.popups', 'schema.Popups' ) );
+
+		return true;
 	}
 
 	/**

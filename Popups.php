@@ -33,6 +33,12 @@ $wgExtensionCredits['betafeatures'][] = array(
 	'license-name' => 'GPL-2.0+',
 );
 
+/**
+ * @var bool: Whether the extension should be enabled as an opt-in beta feature.
+ * If true, the BetaFeatures extension must be installed. False by default.
+ */
+$wgPopupsBetaFeature = false;
+
 $wgPopupsSurveyLink = false;
 $wgConfigRegistry['popups'] = 'GlobalVarConfig::newInstance';
 
