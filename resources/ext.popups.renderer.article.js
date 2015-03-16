@@ -127,7 +127,7 @@
 				.attr( 'href', href )
 				.append( $thumbnail );
 		} else {
-			thumbnail = undefined;
+			tall = thumbnail = undefined;
 		}
 
 		$div = $( '<div>' ).append( $thumbnail, $contentbox, $timestamp );
