@@ -61,12 +61,12 @@
 				'simple': [
 					mw.message( 'popups-settings-option-simple' ).text(),
 					mw.message( 'popups-settings-option-simple-description' ).text(),
-					'hovercard.svg'
+					'images/hovercard.svg'
 				],
 				'advanced': [
 					mw.message( 'popups-settings-option-advanced' ).text(),
 					mw.message( 'popups-settings-option-advanced-description' ).text(),
-					'navpop.svg'
+					'images/navpop.svg'
 				],
 				'off': [
 					mw.message( 'popups-settings-option-off' ).text(),

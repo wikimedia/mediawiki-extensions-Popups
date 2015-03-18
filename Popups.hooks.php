@@ -32,8 +32,8 @@ class PopupsHooks {
 			'label-message' => 'popups-message',
 			'desc-message' => 'popups-desc',
 			'screenshot' => array(
-				'ltr' => "$wgExtensionAssetsPath/Popups/popups-ltr.svg",
-				'rtl' => "$wgExtensionAssetsPath/Popups/popups-rtl.svg",
+				'ltr' => "$wgExtensionAssetsPath/Popups/resources/images/popups-ltr.svg",
+				'rtl' => "$wgExtensionAssetsPath/Popups/resources/images/popups-rtl.svg",
 			),
 			'info-link' => 'https://www.mediawiki.org/wiki/Beta_Features/Hovercards',
 			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
