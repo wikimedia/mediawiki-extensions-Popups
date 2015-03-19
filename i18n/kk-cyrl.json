@@ -8,11 +8,17 @@
 	"popups-desc": "Пайдаланушы жүгіргіні бет сілтемесіне жақындатқанда бет мазмұны түйіндемесін қалқып шығушы терезелерімен көрсету",
 	"popups-last-edited": "$1 соңғы рет өңделді",
 	"popups-redirects": "бағытталған беті <h3>$1</h3>",
-	"popups-settings-title": "Мақаланы қарап өту",
+	"popups-settings-title": "Бетті қарап өту",
 	"popups-settings-description": "Бұл құрал бапттаулар мен көк сілтемелерді қарап шығуыңызға мүмкіндік береді",
+	"popups-settings-option-simple": "Қарапайым",
+	"popups-settings-option-simple-description": "Беттің алғашқы сөйлемін көру және суретті қарап шығу. Бұл оқырмандар үшін ұсынылады.",
+	"popups-settings-option-advanced": "Кеңейтілген",
+	"popups-settings-option-advanced-description": "Сілтемені қарап шығу және өңдеу функция мәзірлеріне қатынау. Бұны көптеген қатысушылар қолданады",
 	"popups-settings-option-off": "Қарап шығуларды сөндіру",
 	"popups-settings-option-off-description": "Беттің төменгі жағындағы сілтемелерді қолданып бұл баптауларды өзгерте аласыз",
 	"popups-settings-save": "Сақтау",
+	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Болдырмау",
-	"popups-settings-enable": "Қалқып шығушы терезелерді іске қосу"
+	"popups-settings-help": "Сіз беттің төменгі жағындағы сілтемені пайдаланып қарап шығуды қайта қоса аласыз.",
+	"popups-settings-enable": "Қалқып шығуды іске қосу"
 }
