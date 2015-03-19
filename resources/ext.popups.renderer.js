@@ -153,15 +153,38 @@
 		cache.process( link );
 
 		// Event logging
-		mw.popups.logger.time = mw.now();
-		mw.popups.logger.action = 'dismissed';
-		mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.logger.logClick );
+		if ( mw.popups.logger ) {
+			mw.popups.render.logEvent = {
+				pageTitleHover: cache.settings.title,
+				pageTitleSource: mw.config.get( 'wgTitle' ),
+				popupEnabled: mw.popups.enabled,
+				time: mw.now(),
+				action: 'dismissed'
+			};
+			mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.render.clickHandler );
+		}
 
 		link
 			.off( 'mouseleave blur', mw.popups.render.leaveInactive )
 			.on( 'mouseleave blur', mw.popups.render.leaveActive );
 
 		$( document ).on( 'keydown', mw.popups.render.closeOnEsc );
+	};
+
+	/**
+	 * Click handler for the hovercard
+	 *
+	 * @method clickHandler
+	 * @param {Object} event
+	 */
+	mw.popups.render.clickHandler = function ( event ) {
+		mw.popups.render.logEvent.action = mw.popups.logger.getAction( event );
+		if ( mw.popups.render.logEvent.action === 'opened in same tab' ) {
+			event.preventDefault();
+			mw.popups.logger.log( mw.popups.render.logEvent ).then( function () {
+				window.location.href = mw.popups.render.currentLink.attr( 'href' );
+			} );
+		}
 	};
 
 	/**
@@ -175,8 +198,10 @@
 			return false;
 		}
 
-		mw.popups.logger.duration = mw.now() - mw.popups.logger.time;
-		mw.popups.logger.log();
+		// Event logging
+		if ( mw.popups.logger ) {
+			mw.popups.logger.log( mw.popups.render.logEvent );
+		}
 
 		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
 
