@@ -153,9 +153,9 @@
 		cache.process( link );
 
 		// Event logging
-		mw.popups.eventLogging.time = mw.now();
-		mw.popups.eventLogging.action = 'dismissed';
-		mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.eventLogging.logClick );
+		mw.popups.logger.time = mw.now();
+		mw.popups.logger.action = 'dismissed';
+		mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.logger.logClick );
 
 		link
 			.off( 'mouseleave blur', mw.popups.render.leaveInactive )
@@ -175,8 +175,8 @@
 			return false;
 		}
 
-		mw.popups.eventLogging.duration = mw.now() - mw.popups.eventLogging.time;
-		mw.popups.eventLogging.logEvent();
+		mw.popups.logger.duration = mw.now() - mw.popups.logger.time;
+		mw.popups.logger.log();
 
 		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
 
