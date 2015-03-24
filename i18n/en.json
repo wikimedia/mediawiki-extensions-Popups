@@ -7,7 +7,7 @@
     "popups-last-edited": "Last edited $1",
     "popups-redirects": "redirects to <h3>$1</h3>",
     "popups-settings-title": "Page preview",
-    "popups-settings-description": "This tool lets you preview blue links and references.",
+    "popups-settings-description": "This tool lets you preview links to wiki pages and to references.",
     "popups-settings-option-simple": "Simple",
     "popups-settings-option-simple-description": "See the lead sentence of a page and a preview image. This is recommended for readers.",
     "popups-settings-option-advanced": "Advanced",
