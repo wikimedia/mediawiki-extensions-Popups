@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Toliño",
-			"Banjo"
+			"Banjo",
+			"Elisardojm"
 		]
 	},
 	"popups-message": "Ventás emerxentes",
@@ -10,7 +11,7 @@
 	"popups-last-edited": "Última edición $1",
 	"popups-redirects": "redirixe cara a \"<h3>$1</h3>\"",
 	"popups-settings-title": "Vista previa da páxina",
-	"popups-settings-description": "Esta ferramenta permite ver unha vista previa de ligazóns azuis e referencias",
+	"popups-settings-description": "Esta ferramenta permite ver unha vista previa de ligazóns a páxinas wiki e a referencias",
 	"popups-settings-option-simple": "Simple",
 	"popups-settings-option-simple-description": "Ver a introdución da páxina cunha imaxe de vista previa. Recomendado para lectores.",
 	"popups-settings-option-advanced": "Avanzado",

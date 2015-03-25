@@ -4,7 +4,8 @@
 			"SPQRobin",
 			"Siebrand",
 			"Sjoerddebruin",
-			"Robin0van0der0vliet"
+			"Robin0van0der0vliet",
+			"MedShot"
 		]
 	},
 	"popups-message": "Pop-uppagina's",
@@ -12,7 +13,7 @@
 	"popups-last-edited": "$1 voor het laatst bewerkt",
 	"popups-redirects": "verwijst door naar <h3>$1</h3>",
 	"popups-settings-title": "Paginavoorvertoning",
-	"popups-settings-description": "Met dit hulpmiddel krijgt u een voorvertoning van blauwe koppelingen en referenties",
+	"popups-settings-description": "Met dit hulpmiddel krijgt u een voorvertoning van wiki pagina's en referenties",
 	"popups-settings-option-simple": "Simpel",
 	"popups-settings-option-simple-description": "Bekijk de inleidende paragraaf van een pagina met een afbeelding. Dit is aanbevolen voor lezers",
 	"popups-settings-option-advanced": "Geavanceerd",

@@ -4,7 +4,8 @@
 			"Priviet",
 			"Keysuck",
 			"아라",
-			"Bluemersen"
+			"Bluemersen",
+			"SeoJeongHo"
 		]
 	},
 	"popups-message": "팝업",
@@ -12,7 +13,7 @@
 	"popups-last-edited": "$1에 마지막으로 편집",
 	"popups-redirects": "<h3>$1</h3> 문서로 넘겨주기",
 	"popups-settings-title": "페이지 미리보기",
-	"popups-settings-description": "이 도구는 파란색 링크와 각주를 미리 볼 수 있게 합니다",
+	"popups-settings-description": "이 도구는 위키 페이지와 참조에 대한 링크를 미리 볼 수 있게 합니다.",
 	"popups-settings-option-simple": "기본 보기",
 	"popups-settings-option-simple-description": "문서의 첫 문장과 미리보기 이미지를 봅니다. 편집자 권한이 없는 사용자에게 권장되는 설정입니다",
 	"popups-settings-option-off": "미리보기 끄기",

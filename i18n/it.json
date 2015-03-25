@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"TecnoMaster"
 		]
 	},
 	"popups-message": "Popup",
@@ -9,7 +10,7 @@
 	"popups-last-edited": "Ultima modifica $1",
 	"popups-redirects": "reindirizza a <h3>$1</h3>",
 	"popups-settings-title": "Anteprima pagina",
-	"popups-settings-description": "Questo strumento ti consente vedere un'anteprima dei collegamenti blu e dei riferimenti",
+	"popups-settings-description": "Questo strumento ti consente di visualizzare un'anteprima dei collegamenti a pagine wiki e a riferimenti.",
 	"popups-settings-option-simple": "Semplice",
 	"popups-settings-option-simple-description": "Vedi la frase di introduzione di una voce e un'immagine di anteprima. Questo è consigliato per i lettori.",
 	"popups-settings-option-advanced": "Avanzata",

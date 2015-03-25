@@ -11,7 +11,7 @@
 	"popups-last-edited": "Última modificación: $1",
 	"popups-redirects": "redirige a <h3>$1</h3>",
 	"popups-settings-title": "Previsualización de página",
-	"popups-settings-description": "Esta herramienta permite previsualizar los enlaces azules y las referencias",
+	"popups-settings-description": "Esta herramienta permite previsualizar enlaces a páginas wikis y a referencias.",
 	"popups-settings-option-simple": "Simple",
 	"popups-settings-option-simple-description": "Ver la frase principal de una página y una imagen de vista previa. Esto es recomendable para los lectores",
 	"popups-settings-option-advanced": "Avanzado",

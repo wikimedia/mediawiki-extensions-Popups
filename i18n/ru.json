@@ -10,7 +10,7 @@
 	"popups-last-edited": "Последняя правка $1",
 	"popups-redirects": "перенаправляет на <h3>$1</h3>",
 	"popups-settings-title": "Предпросмотр страницы",
-	"popups-settings-description": "Этот инструмент позволяет просматривать синие ссылки и ссылки-примечания",
+	"popups-settings-description": "Этот инструмент позволяет просматривать ссылки на вики-страницы и примечания.",
 	"popups-settings-option-simple": "Простой",
 	"popups-settings-option-simple-description": "Показывает первое предложение на странице и иллюстрацию. Рекомендуется для читателей.",
 	"popups-settings-option-advanced": "Расширенный",
