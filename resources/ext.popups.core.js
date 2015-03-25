@@ -146,20 +146,62 @@
 	};
 
 	/**
+	 * Given an href string for the local wiki, return the title, or undefined if
+	 * the link is external, has extra query parameters, or contains no title.
+	 *
+	 * Note that the returned title is not sanitized (may contain underscores).
+	 *
+	 * @param {string} href
+	 * @return {string|undefined}
+	 */
+	mw.popups.getTitle = function ( href ) {
+		var title, titleRegex, matches,
+			linkHref = new mw.Uri( href );
+
+		// External links
+		if ( linkHref.host !== location.hostname ) {
+			return undefined;
+		}
+
+		if ( linkHref.query.hasOwnProperty( 'title' ) ) {
+			// linkHref is not a pretty URL, e.g. /w/index.php?title=Foo
+
+			title = linkHref.query.title;
+			// Return undefined if there are query parameters other than title
+			delete linkHref.query.title;
+			return $.isEmptyObject( linkHref.query ) ? title : undefined;
+		} else {
+			// linkHref is a pretty URL, e.g. /wiki/Foo
+
+			// Return undefined if there are any query parameters
+			if ( !$.isEmptyObject( linkHref.query ) ) {
+				return undefined;
+			}
+			titleRegex = new RegExp( $.escapeRE( mw.config.get( 'wgArticlePath' ) )
+				.replace( '\\$1', '(.+)' ) );
+			matches = titleRegex.exec( linkHref.path );
+			return matches ? decodeURIComponent( matches[1] ) : undefined;
+		}
+	};
+
+	/**
 	 * Returns links that can have Popups
 	 *
 	 * @method selectPopupElements
 	 */
 	mw.popups.selectPopupElements = function () {
+		var contentNamespaces = mw.config.get( 'wgContentNamespaces' );
 		return mw.popups.$content
 			.find( 'a[href][title]:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' )
 			.filter( function () {
-				var linkHref = new mw.Uri( this.href ),
-					expectedHref = new mw.Uri( mw.util.getUrl( this.title ) );
-
-				// don't compare fragment to display popups on anchored page links
-				linkHref.fragment = undefined;
-				return linkHref.toString() === expectedHref.toString();
+				var title,
+					titleText = mw.popups.getTitle( this.href );
+				if ( !titleText ) {
+					return false;
+				}
+				// Is titleText in a content namespace?
+				title = mw.Title.newFromText( titleText );
+				return title && ( $.inArray( title.namespace, contentNamespaces ) >= 0 );
 			} );
 	};
 

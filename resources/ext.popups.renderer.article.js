@@ -32,9 +32,8 @@
 	 * @return {jQuery.Promise}
 	 */
 	article.init = function ( link ) {
-		var
-			href = link.attr( 'href' ),
-			title = link.data( 'title' ),
+		var href = link.attr( 'href' ),
+			title = mw.popups.getTitle( href ),
 			deferred = $.Deferred();
 
 		if ( !title ) {

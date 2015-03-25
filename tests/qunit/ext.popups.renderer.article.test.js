@@ -1,6 +1,7 @@
 ( function ( $, mw ) {
 
-	QUnit.module( 'ext.popups' );
+	QUnit.module( 'ext.popups.renderer.article', QUnit.newMwEnvironment() );
+
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
 		QUnit.expect( 13 );
 
