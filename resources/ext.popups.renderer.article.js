@@ -249,11 +249,18 @@
 		var svg = mw.popups.supportsSVG;
 
 		if (
-			!thumbnail || // No thumbnail
+			// No thumbnail
+			!thumbnail ||
 			// Image too small for landscape display
 			( !tall && thumbnail.width < article.SIZES.landscapeImage.w ) ||
 			// Image too small for protrait display
-			( tall && thumbnail.height < article.SIZES.portraitImage.h )
+			( tall && thumbnail.height < article.SIZES.portraitImage.h ) ||
+			// These characters in URL that could inject CSS and thus JS
+			(
+				thumbnail.source.indexOf( '\\' ) > -1 ||
+				thumbnail.source.indexOf( '\'' ) > -1 ||
+				thumbnail.source.indexOf( '\"' ) > -1
+			)
 		) {
 			return $( '<span>' );
 		}
