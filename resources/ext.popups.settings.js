@@ -116,7 +116,7 @@
 				} ),
 			$label = $( '<label>' )
 				.attr( 'for', domId )
-				.html( content[ 1 ] )
+				.text( content[ 1 ] )
 				.prepend( $( '<span>' ).text( content[ 0 ] ) ),
 			$p = $( '<p>' ).append( $input, $label );
 
