@@ -99,12 +99,13 @@
 					mw.popups.render.openPopup( link, event );
 				} );
 		} else {
-			// TODO: check for link type and call correct renderer
-			// There is only one popup type so it isn't necessary right now
-			var cachePopup = mw.popups.render.article.init( link );
-
+			// Wait for timer before making API queries and showing hovercard
 			mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.API_DELAY )
 				.done( function () {
+					// TODO: check for link type and call correct renderer
+					// There is only one popup type right now so it isn't necessary
+					var cachePopup = mw.popups.render.article.init( link );
+
 					mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY - mw.popups.render.API_DELAY );
 
 					$.when( mw.popups.render.openTimer, cachePopup ).done( function () {
