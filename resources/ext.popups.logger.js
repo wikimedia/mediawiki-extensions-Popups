@@ -1,28 +1,28 @@
 ( function ( $, mw ) {
 
 	/**
-	 * @class mw.popups.eventLogging
+	 * @class mw.popups.logger
 	 * @singleton
 	 */
-	var eventLogging = {};
+	var logger = {};
 
 	/**
 	 * Unix timestamp of when the popup was rendered
 	 * @property time
 	 */
-	eventLogging.time = undefined;
+	logger.time = undefined;
 
 	/**
 	 * How long was the popup open in milliseconds
 	 * @property {Number} duration
 	 */
-	eventLogging.duration = undefined;
+	logger.duration = undefined;
 
 	/**
 	 * Was the popup clicked, middle clicked or dismissed
 	 * @property {String} action
 	 */
-	eventLogging.action = undefined;
+	logger.action = undefined;
 
 	/**
 	 * Logs different actions such as meta and shift click on the popup
@@ -31,18 +31,18 @@
 	 * @method logClick
 	 * @param {Object} event
 	 */
-	eventLogging.logClick = function ( event ) {
+	logger.logClick = function ( event ) {
 		if ( event.which === 2 ) { // middle click
-			eventLogging.action = 'opened in new tab';
+			logger.action = 'opened in new tab';
 		} else if ( event.which === 1 ) {
 			if ( event.ctrlKey || event.metaKey ) {
-				eventLogging.action = 'opened in new tab';
+				logger.action = 'opened in new tab';
 			} else if ( event.shiftKey ) {
-				eventLogging.action = 'opened in new window';
+				logger.action = 'opened in new window';
 			} else {
-				eventLogging.action = 'opened in same tab';
-				eventLogging.duration = mw.now() - eventLogging.time;
-				eventLogging.logEvent( mw.popups.render.currentLink.attr( 'href' ) );
+				logger.action = 'opened in same tab';
+				logger.duration = mw.now() - logger.time;
+				logger.log( mw.popups.render.currentLink.attr( 'href' ) );
 				event.preventDefault();
 			}
 		}
@@ -53,11 +53,11 @@
 	 * https://meta.wikimedia.org/wiki/Schema:Popups
 	 * If `href` is passed it redirects to that location after the event is logged.
 	 *
-	 * @method logEvent
+	 * @method log
 	 * @param {String} href
 	 * @return {Boolean} logged Whether or not the event was logged
 	 */
-	eventLogging.logEvent = function ( href ) {
+	logger.log = function ( href ) {
 		if ( mw.eventLog === undefined ) {
 			return false;
 		}
@@ -65,12 +65,12 @@
 		var
 			deferred = $.Deferred(),
 			event = {
-				'duration': Math.round( eventLogging.duration ),
-				'action': eventLogging.action
+				'duration': Math.round( logger.duration ),
+				'action': logger.action
 			};
 
-		if ( eventLogging.sessionId !== null ) {
-			event.sessionId = eventLogging.sessionId;
+		if ( logger.sessionId !== null ) {
+			event.sessionId = logger.sessionId;
 		}
 
 		if ( href ) {
@@ -82,9 +82,9 @@
 		mw.eventLog.logEvent( 'Popups', event ).then( deferred.resolve, deferred.reject );
 
 		// reset
-		eventLogging.time = undefined;
-		eventLogging.duration = undefined;
-		eventLogging.action = undefined;
+		logger.time = undefined;
+		logger.duration = undefined;
+		logger.action = undefined;
 
 		return true;
 	};
@@ -95,7 +95,7 @@
 	 * @method getSessionsId
 	 * @return {String} sessionId
 	 */
-	eventLogging.getSessionId = function () {
+	logger.getSessionId = function () {
 		var sessionId = null;
 		try {
 			sessionId = localStorage.getItem( 'popupsSessionId' );
@@ -110,8 +110,8 @@
 	/**
 	 * @property sessionId
 	 */
-	eventLogging.sessionId = eventLogging.getSessionId();
+	logger.sessionId = logger.getSessionId();
 
-	mw.popups.eventLogging = eventLogging;
+	mw.popups.logger = logger;
 
 } ) ( jQuery, mediaWiki );

@@ -67,7 +67,7 @@ class PopupsHooks {
 		$rl->register( "ext.popups", array(
 			'scripts' => array(
 				'resources/ext.popups.core.js',
-				'resources/ext.popups.eventlogging.js',
+				'resources/ext.popups.logger.js',
 				'resources/ext.popups.renderer.js',
 				'resources/ext.popups.renderer.article.js',
 				'resources/ext.popups.disablenavpop.js',
