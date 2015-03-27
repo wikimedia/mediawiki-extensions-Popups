@@ -145,13 +145,11 @@
 	 * and making the title in the extract bold.
 	 *
 	 * @method getProcessedElements
-	 * @param {String} extract
-	 * @param {String} title
+	 * @param {String} extract Should be unescaped
+	 * @param {String} title Should be unescaped
 	 * @return {Array} of elements to appended
 	 */
 	article.getProcessedElements = function ( extract, title ) {
-		extract = mw.html.escape( extract );
-		title = mw.html.escape( title );
 		title = title.replace( /([.?*+^$[\]\\(){}|-])/g, '\\$1' ); // Escape RegExp elements
 
 		var elements = [],
@@ -173,7 +171,7 @@
 			if ( part.indexOf( boldIdentifier ) === 0 ) {
 				elements.push( $( '<b>' ).text( part.substring( boldIdentifier.length ) ) );
 			} else {
-				elements.push( part );
+				elements.push( document.createTextNode( part ) );
 			}
 		} );
 

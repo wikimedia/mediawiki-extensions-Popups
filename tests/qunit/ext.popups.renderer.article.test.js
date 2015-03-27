@@ -2,7 +2,7 @@
 
 	QUnit.module( 'ext.popups' );
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
-		QUnit.expect( 12 );
+		QUnit.expect( 13 );
 
 		function test ( extract, title, expected, msg ) {
 			var $div = $( '<div>' ).append(
@@ -73,8 +73,14 @@
 
 		test(
 			'Foo\'s pub is a pub in Bar', 'Foo\'s pub',
-			'<b>Foo&amp;#039;s pub</b> is a pub in Bar',
+			'<b>Foo\'s pub</b> is a pub in Bar',
 			'Correct escaping'
+		);
+
+		test(
+			'\"Heroes\" is a David Bowie album', '\"Heroes\"',
+			'<b>\"Heroes\"</b> is a David Bowie album',
+			'Quotes in title'
 		);
 
 		test(
