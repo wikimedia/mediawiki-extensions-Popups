@@ -9,7 +9,7 @@
 	"popups-last-edited": "Ultima modificare: $1",
 	"popups-redirects": "redirecționează către <h3>$1</h3>",
 	"popups-settings-title": "Previzualizare pagină",
-	"popups-settings-description": "Acest instrument vă permite să previzualizați legăturile albastre și referințele",
+	"popups-settings-description": "Acest instrument vă permite să previzualizați legăturile care trimit către pagini wiki și referințe.",
 	"popups-settings-option-simple": "Simplu",
 	"popups-settings-option-simple-description": "Vizualizați prima frază dintr-o pagină, precum și o imagine reprezentativă. Această metodă este recomandată cititorilor.",
 	"popups-settings-option-advanced": "Avansat",

@@ -10,7 +10,7 @@
 	"popups-last-edited": "Naposledy editováno $1",
 	"popups-redirects": "přesměrování na <h3>$1</h3>",
 	"popups-settings-title": "Náhled stránky",
-	"popups-settings-description": "Tento nástroj vám umožňuje nahlížet za modré odkazy a reference",
+	"popups-settings-description": "Tento nástroj vám umožňuje zobrazovat náhledy odkazů na články a na reference.",
 	"popups-settings-option-simple": "Jednoduchý",
 	"popups-settings-option-simple-description": "Zobrazí úvodní větu stránky a náhledový obrázek. Doporučené nastavení pro čtenáře.",
 	"popups-settings-option-advanced": "Pokročilý",
