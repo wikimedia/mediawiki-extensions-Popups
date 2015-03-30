@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rancher"
+			"Rancher",
+			"Milicevic01"
 		]
 	},
-	"popups-redirects": "преусмерења на <h3>$1</h3>"
+	"popups-last-edited": "Задња измена $1",
+	"popups-redirects": "преусмерења на <h3>$1</h3>",
+	"popups-settings-save": "Сачувај",
+	"popups-settings-help-ok": "У реду",
+	"popups-settings-cancel": "Откажи"
 }
