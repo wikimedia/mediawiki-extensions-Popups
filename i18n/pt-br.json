@@ -9,7 +9,7 @@
 	"popups-last-edited": "Última edição $1",
 	"popups-redirects": "redireciona para <h3>$1</h3>",
 	"popups-settings-title": "Pré-visualização",
-	"popups-settings-description": "Esta ferramenta ajuda a pré-visualizar link azuis e referências.",
+	"popups-settings-description": "Esta ferramenta ajuda a pré-visualizar links de páginas wikis e referências.",
 	"popups-settings-option-simple": "Simples",
 	"popups-settings-option-simple-description": "Veja a sentença de uma página e uma imagem de pré-visualização. Isso é recomendado para leitores.",
 	"popups-settings-option-advanced": "Avançado",

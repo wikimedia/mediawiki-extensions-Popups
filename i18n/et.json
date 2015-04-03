@@ -9,7 +9,7 @@
 	"popups-last-edited": "Viimati muudetud $1",
 	"popups-redirects": "suunab ümber leheküljele <h3>$1</h3>",
 	"popups-settings-title": "Lehekülje eelvaatlus",
-	"popups-settings-description": "See tööriist võimaldab siniste linkide ja viidete eelvaatlust.",
+	"popups-settings-description": "See tööriist võimaldab eelvaadelda linke, mis viitavad viki lehekülgedele ja viidetele.",
 	"popups-settings-option-simple": "Lihtne",
 	"popups-settings-option-simple-description": "Kuvatakse pilt ja lehekülje esimene lause. Soovitatav lugejatele.",
 	"popups-settings-option-advanced": "Laiendatud",
