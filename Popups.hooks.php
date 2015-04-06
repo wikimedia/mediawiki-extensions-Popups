@@ -94,6 +94,7 @@ class PopupsHooks {
 				"popups-settings-enable",
 				"popups-settings-help",
 				"popups-settings-help-ok",
+				"popups-send-feedback",
 			),
 			'remoteExtPath' => 'Popups',
 			'localBasePath' => __DIR__,
@@ -127,5 +128,13 @@ class PopupsHooks {
 			'remoteExtPath' => 'Popups',
 		);
 		return true;
+	}
+
+	/**
+	 * @param array $vars
+	 */
+	public static function onResourceLoaderGetConfigVars( array &$vars ) {
+		$conf = ConfigFactory::getDefaultInstance()->makeConfig( 'popups' );
+		$vars['wgPopupsSurveyLink'] = $conf->get( 'PopupsSurveyLink' );
 	}
 }

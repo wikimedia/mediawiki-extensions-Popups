@@ -33,6 +33,9 @@ $wgExtensionCredits['betafeatures'][] = array(
 	'license-name' => 'GPL-2.0+',
 );
 
+$wgPopupsSurveyLink = false;
+$wgConfigRegistry['popups'] = 'GlobalVarConfig::newInstance';
+
 $wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
 $wgMessagesDirs['Popups'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
@@ -41,4 +44,5 @@ $wgHooks['GetBetaFeaturePreferences'][] = 'PopupsHooks::getPreferences';
 $wgHooks['BeforePageDisplay'][] = 'PopupsHooks::onBeforePageDisplay';
 $wgHooks['ResourceLoaderTestModules'][] = 'PopupsHooks::onResourceLoaderTestModules';
 $wgHooks['EventLoggingRegisterSchemas'][] = 'PopupsHooks::onEventLoggingRegisterSchemas';
-$wgHooks[ 'ResourceLoaderRegisterModules' ][] = 'PopupsHooks::onResourceLoaderRegisterModules';
+$wgHooks['ResourceLoaderRegisterModules'][] = 'PopupsHooks::onResourceLoaderRegisterModules';
+$wgHooks['ResourceLoaderGetConfigVars'][] = 'PopupsHooks::onResourceLoaderGetConfigVars';

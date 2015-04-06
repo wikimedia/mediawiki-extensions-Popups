@@ -98,14 +98,34 @@
 			color: #00af89;
 		}
 
-		.mwe-popups-settings-icon {
+		.mwe-popups-icon {
 			display: inline-block;
-			vertical-align: text-top;
+			vertical-align: middle;
 			cursor: pointer;
-			margin-left: 5px;
-			height: 16px;
-			width: 16px;
-			.background-image-svg( "gear_gray.svg", "gear_gray.png" );
+			margin: 0;
+			margin-top: -5px;
+			height: 24px;
+			width: 30px;
+			border-radius: 2px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 24px 24px;
+
+			&:hover {
+				background-color: #eee;
+			}
+
+			&:active {
+				background-color: #ccc;
+			}
+		}
+
+		.mwe-popups-settings-icon {
+			.background-image-svg( "cog.svg", "cog.png" );
+		}
+
+		.mwe-popups-survey-icon {
+			.background-image-svg( "horn-ltr.svg", "horn-ltr.png" );
 		}
 	}
 

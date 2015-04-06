@@ -25,6 +25,13 @@
 		pokeySize: 8 // Height of the triangle used to point at the link
 	};
 
+
+	/**
+	 * Survey link, if any, for this renderer
+	 * @property surveyLink
+	 */
+	article.surveyLink = mw.config.get( 'wgPopupsSurveyLink' );
+
 	/**
 	 * Send an API request and cache the jQuery element
 	 *
@@ -112,14 +119,25 @@
 			timestampclass = ( timediff < oneDay ) ?
 				'mwe-popups-timestamp-recent' :
 				'mwe-popups-timestamp-older',
-			$settingsImage = $( '<a>' ).addClass( 'mwe-popups-settings-icon' ),
+			$settingsImage = $( '<a>' ).addClass( 'mwe-popups-icon mwe-popups-settings-icon' ),
+			$surveyImage,
 			$timestamp = $( '<div>' )
 				.addClass( timestampclass )
 				.append(
 					$( '<span>' ).text( mw.message( 'popups-last-edited',
 						moment( timestamp ).fromNow() ).text() ),
 					$settingsImage
-			);
+				);
+
+		if ( article.surveyLink ) {
+			$surveyImage = $( '<a>' )
+				.attr( 'href', article.surveyLink )
+				.attr( 'target', '_blank' )
+				.attr( 'title', mw.message( 'popups-send-feedback' ) )
+				.addClass( 'mwe-popups-icon mwe-popups-survey-icon' );
+			$timestamp.append( $surveyImage );
+		}
+
 
 		if ( $thumbnail.prop( 'tagName' ) !== 'SPAN' ) {
 			$thumbnail = $( '<a>' )
