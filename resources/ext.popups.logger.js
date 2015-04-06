@@ -40,8 +40,10 @@
 		}
 
 		// Get duration from  time
-		event.duration = Math.floor( mw.now() - event.time );
-		delete event.time;
+		if ( $.isNumeric( event.time ) ) {
+			event.duration = Math.floor( mw.now() - event.time );
+			delete event.time;
+		}
 
 		return  mw.eventLog.logEvent( 'Popups', event );
 	};

@@ -164,12 +164,39 @@
 	};
 
 	mw.hook( 'wikipage.content').add( function ( $content ) {
-		if ( mw.popups.enabled ) {
-			mw.popups.$content = $content;
+		mw.popups.$content = $content;
+		var $elements = mw.popups.selectPopupElements();
 
-			var $elements = mw.popups.selectPopupElements();
+		if ( mw.popups.enabled ) {
 			mw.popups.removeTooltips( $elements );
 			mw.popups.setupTriggers( $elements );
+		} else {
+			// Events are logged even when Hovercards are disabled
+			// See T88166 for details
+			$elements.on( 'click', function ( event ) {
+				if ( mw.popups.logger === undefined ) {
+					return true;
+				}
+
+				var
+					$this = $( this ),
+					href = $this.attr( 'href' ),
+					action = mw.popups.logger.getAction( event ),
+					logEvent = {
+						pageTitleHover: $this.attr( 'title' ),
+						pageTitleSource: mw.config.get( 'wgTitle' ),
+						popupEnabled: mw.popups.enabled,
+						action: action
+					},
+					logPromise = mw.popups.logger.log( logEvent );
+
+				if ( action  === 'opened in same tab' ) {
+					event.preventDefault();
+					logPromise.then( function () {
+						window.location.href = href;
+					} );
+				}
+			} );
 		}
 	} );
 
