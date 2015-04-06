@@ -53,7 +53,7 @@
 			formatversion: 2,
 			redirects: true,
 			exintro: true,
-			exsentences: 2,
+			exsentences: 5,
 			// there is an added geometric limit on .mwe-popups-extract
 			// so that text does not overflow from the card
 			explaintext: true,
