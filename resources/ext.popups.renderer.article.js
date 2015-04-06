@@ -151,6 +151,7 @@
 		$div = $( '<div>' ).append( $thumbnail, $contentbox, $timestamp );
 
 		mw.popups.render.cache[ href ].settings = {
+			'title': page.title,
 			'tall': ( tall === undefined ) ? false : tall,
 			'thumbnail': ( thumbnail === undefined ) ? false : thumbnail
 		};
