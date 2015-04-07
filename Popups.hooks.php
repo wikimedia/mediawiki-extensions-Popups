@@ -52,11 +52,13 @@ class PopupsHooks {
 	public static function onResourceLoaderRegisterModules( ResourceLoader $rl ) {
 		$moduleDependencies = array(
 			'mediawiki.api',
+			'mediawiki.Title',
 			'mediawiki.jqueryMsg',
 			'mediawiki.Uri',
 			'moment',
 			'jquery.jStorage',
 			'jquery.client',
+			'jquery.mwExtension',
 		);
 
 		// If EventLogging is present, add the schema as a dependency.
@@ -122,7 +124,10 @@ class PopupsHooks {
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
 		$testModules['qunit']['ext.popups.tests'] = array(
-			'scripts' => array( 'tests/qunit/ext.popups.renderer.article.test.js' ),
+			'scripts' => array(
+				'tests/qunit/ext.popups.renderer.article.test.js',
+				'tests/qunit/ext.popups.core.test.js',
+			),
 			'dependencies' => array( 'ext.popups' ),
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'Popups',
