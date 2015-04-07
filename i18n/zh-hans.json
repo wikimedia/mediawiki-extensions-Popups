@@ -22,5 +22,6 @@
 	"popups-settings-help-ok": "确定",
 	"popups-settings-cancel": "取消",
 	"popups-settings-help": "您可以使用页面页脚中的链接让预览回来。",
-	"popups-settings-enable": "启用预览"
+	"popups-settings-enable": "启用预览",
+	"popups-send-feedback": "发送反馈"
 }

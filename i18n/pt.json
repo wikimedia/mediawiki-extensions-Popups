@@ -23,5 +23,6 @@
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Cancelar",
 	"popups-settings-help": "Pode reativar as antevisões ao utilizar a ligação existente no rodapé da página.",
-	"popups-settings-enable": "Ativar antevisão"
+	"popups-settings-enable": "Ativar antevisão",
+	"popups-send-feedback": "Enviar comentários"
 }
