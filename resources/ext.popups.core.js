@@ -155,8 +155,14 @@
 	 * @return {string|undefined}
 	 */
 	mw.popups.getTitle = function ( href ) {
-		var title, titleRegex, matches,
+		var title, titleRegex, matches, linkHref;
+
+		// Skip every URI that mw.Uri cannot parse
+		try {
 			linkHref = new mw.Uri( href );
+		} catch ( e ) {
+			return undefined;
+		}
 
 		// External links
 		if ( linkHref.host !== location.hostname ) {
