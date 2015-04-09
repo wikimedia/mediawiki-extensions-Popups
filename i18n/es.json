@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Macofe",
-			"Jduranboger"
+			"Jduranboger",
+			"Tusca"
 		]
 	},
 	"popups-message": "Cuadros emergentes",
@@ -22,5 +23,6 @@
 	"popups-settings-help-ok": "Aceptar",
 	"popups-settings-cancel": "Cancelar",
 	"popups-settings-help": "Puedes volver a habilitar las vistas previas usando un enlace al pie de la página.",
-	"popups-settings-enable": "Activar previsualizaciones"
+	"popups-settings-enable": "Activar previsualizaciones",
+	"popups-send-feedback": "Enviar comentario"
 }
