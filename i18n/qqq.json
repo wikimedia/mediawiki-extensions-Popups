@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Robby"
 		]
 	},
 	"popups-message": "Name shown in user preference for this extension",
@@ -21,5 +22,5 @@
 	"popups-settings-cancel": "Cancel button for the setting's dialog\n{{Identical|Cancel}}",
 	"popups-settings-help": "Help text explaining how to re-enable previews",
 	"popups-settings-enable": "Link on the footer to enable hovercards if its disabled.\n\nSee also:\n* {{msg-mw|Popups-settings-option-off}}",
-	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard"
+	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard\n{{Identical|Send feedback}}"
 }
