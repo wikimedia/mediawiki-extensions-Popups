@@ -9,6 +9,18 @@
 	"popups-desc": "Mostra un quadre emergent amb un resum del contingut quan l'usuari apunta a un enllaç de pàgina",
 	"popups-last-edited": "Darrera modificació: $1",
 	"popups-redirects": "redirigeix a <h3>$1</h3>",
+	"popups-settings-title": "Previsualització de pàgina",
+	"popups-settings-description": "Aquesta eina permet la visualització prèvia d'enllaços a pàgines wiki i a les referències.",
+	"popups-settings-option-simple": "Simple",
+	"popups-settings-option-simple-description": "Mostra la frase d'introducció d'una pàgina i una imatge en vista prèvia. Això és la recomanació per a lectors.",
+	"popups-settings-option-advanced": "Avançat",
+	"popups-settings-option-advanced-description": "Mostra vistes prèvies d'enllaç i dóna accés a menús de funcions d'edició. Això és la recomanació per a editors.",
+	"popups-settings-option-off": "Desactiva les vistes prèvies",
+	"popups-settings-option-off-description": "Podeu canviar aquesta configuració utilitzant l'enllaç a peu de pàgina.",
 	"popups-settings-save": "Desa",
-	"popups-settings-cancel": "Cancel·la"
+	"popups-settings-help-ok": "D'acord",
+	"popups-settings-cancel": "Cancel·la",
+	"popups-settings-help": "Podeu tornar a activar les vistes prèvies utilitzant un enllaç a peu de pàgina.",
+	"popups-settings-enable": "Habilita vistes prèvies",
+	"popups-send-feedback": "Envia comentaris"
 }
