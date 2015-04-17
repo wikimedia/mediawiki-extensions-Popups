@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Vriullop",
-			"Fitoschido"
+			"Fitoschido",
+			"Pginer"
 		]
 	},
 	"popups-message": "Quadres emergents",
 	"popups-desc": "Mostra un quadre emergent amb un resum del contingut quan l'usuari apunta a un enllaç de pàgina",
-	"popups-last-edited": "Darrera modificació: $1",
+	"popups-last-edited": "Modificat: $1",
 	"popups-redirects": "redirigeix a <h3>$1</h3>",
 	"popups-settings-title": "Previsualització de pàgina",
 	"popups-settings-description": "Aquesta eina permet la visualització prèvia d'enllaços a pàgines wiki i a les referències.",
