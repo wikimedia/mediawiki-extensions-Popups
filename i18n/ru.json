@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Putnik"
+			"Putnik",
+			"Mariya"
 		]
 	},
 	"popups-message": "Всплывающие окошки",
@@ -18,5 +19,6 @@
 	"popups-settings-option-off-description": "Вы можете изменить эту настройку, используя ссылку в нижней части страницы",
 	"popups-settings-save": "Сохранить",
 	"popups-settings-cancel": "Отмена",
-	"popups-settings-enable": "Включить предпросмотр"
+	"popups-settings-enable": "Включить предпросмотр",
+	"popups-send-feedback": "Отправить отзыв (внешняя ссылка)"
 }

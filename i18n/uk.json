@@ -3,7 +3,8 @@
 		"authors": [
 			"Andriykopanytsia",
 			"Ата",
-			"Olion"
+			"Olion",
+			"Максим Підліснюк"
 		]
 	},
 	"popups-message": "Спливні вікна",
@@ -20,5 +21,6 @@
 	"popups-settings-option-off-description": "Ви можете змінити це налаштування, скориставшись посиланням унизу сторінки",
 	"popups-settings-save": "Зберегти",
 	"popups-settings-cancel": "Скасувати",
-	"popups-settings-enable": "Увімкнути Спливні вікна"
+	"popups-settings-enable": "Увімкнути Спливні вікна",
+	"popups-send-feedback": "Надіслати відгук (зовнішнє посилання)"
 }
