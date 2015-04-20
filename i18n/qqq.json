@@ -22,5 +22,5 @@
 	"popups-settings-cancel": "Cancel button for the setting's dialog\n{{Identical|Cancel}}",
 	"popups-settings-help": "Help text explaining how to re-enable previews",
 	"popups-settings-enable": "Link on the footer to enable hovercards if its disabled.\n\nSee also:\n* {{msg-mw|Popups-settings-option-off}}",
-	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard\n{{Identical|Send feedback}}"
+	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard. Should mention that its an external link.\n{{Identical|Send feedback}}"
 }
