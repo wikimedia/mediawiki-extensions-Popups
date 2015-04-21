@@ -108,7 +108,8 @@
 	};
 
 	/**
-	 * Temporarily remove tooltips from links on hover
+	 * Temporarily remove the title attribute of the links so that
+	 * the yellow tooltips don't show up alongside the Hovercard.
 	 *
 	 * @method removeTooltips
 	 */
@@ -116,9 +117,15 @@
 		$elements
 			.filter( '[title]:not([title=""])' )
 			.on( 'mouseenter focus', function () {
-				$( this )
-					.data( 'title', $( this ).attr( 'title' ) )
-					.attr( 'title', '' );
+				// We shouldn't empty the title attribute of links that
+				// can't have Hovercards, ie. TextExtracts didn't return
+				// anything. Its set in the article.init after attempting
+				// to make an API request.
+				if ( $( this ).data( 'dont-empty-title' ) !== true ) {
+					$( this )
+						.data( 'title', $( this ).attr( 'title' ) )
+						.attr( 'title', '' );
+				}
 			} )
 			.on( 'mouseleave blur', function () {
 				$( this )

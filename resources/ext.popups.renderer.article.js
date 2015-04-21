@@ -77,6 +77,13 @@
 				!re.query.pages[ 0 ].extract ||
 				re.query.pages[ 0 ].extract === ''
 			) {
+				// Restore the title attribute and set flag
+				if ( link.data( 'dont-empty-title' ) !== true ) {
+					link
+						.attr( 'title', link.data( 'title' ) )
+						.removeData( 'title' )
+						.data( 'dont-empty-title', true );
+				}
 				deferred.reject();
 				return;
 			}
