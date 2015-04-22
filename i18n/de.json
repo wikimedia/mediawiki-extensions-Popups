@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Metalhead64",
-			"CennoxX"
+			"CennoxX",
+			"Peter Bowman"
 		]
 	},
 	"popups-message": "Hovercards",
 	"popups-desc": "Ermöglicht beim Überfahren mit der Maus über einen Seitenlink die Anzeige von Hovercards mit Seiteninhaltszusammenfassungen.",
-	"popups-last-edited": "Zuletzt bearbeitet $1",
+	"popups-last-edited": "Bearbeitet $1",
 	"popups-redirects": "leitet weiter auf <h3>$1</h3>",
 	"popups-settings-title": "Seitenvorschau",
 	"popups-settings-description": "Dieses Werkzeug ermöglicht dir das Vorschauen von Links auf Wikiseiten und auf Einzelnachweise.",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"Whym"
+			"Whym",
+			"赤城。"
 		]
 	},
 	"popups-message": "ホバーカード",
@@ -10,5 +11,6 @@
 	"popups-last-edited": "最終更新: $1",
 	"popups-settings-title": "ページのプレビュー",
 	"popups-settings-option-off": "プレビューを無効にする",
-	"popups-settings-enable": "プレビューを有効にする"
+	"popups-settings-enable": "プレビューを有効にする",
+	"popups-send-feedback": "フィードバックを送信(外部リンク)"
 }
