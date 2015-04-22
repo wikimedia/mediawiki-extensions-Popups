@@ -8,7 +8,7 @@
 	},
 	"popups-message": "Name shown in user preference for this extension",
 	"popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
-	"popups-last-edited": "Message to show time span since the page was last edited. Parameters:\n* $1 - the timespan in words (localized). e.g. \"3 months ago\"",
+	"popups-last-edited": "Message to show time span since the page was last edited. Need not include the word \"last\". Parameters:\n* $1 - the timespan in words (localized). e.g. \"3 months ago\"",
 	"popups-redirects": "Unused at this time.\n\nMessage shown when the hovercard is showing a redirected page.\n\nParameters:\n* $1 - Redirect target page",
 	"popups-settings-title": "Title used for the setting's dialog",
 	"popups-settings-description": "Description for the setting's dialog",
