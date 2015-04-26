@@ -6,7 +6,7 @@
 	},
 	"popups-message": "Hõljukkaardid",
 	"popups-desc": "Kuvab lehekülje kokkuvõtte hõljukkaardil, kui liigutada kursor üle leheküljelingi.",
-	"popups-last-edited": "Viimati muudetud $1",
+	"popups-last-edited": "Muudetud $1",
 	"popups-redirects": "suunab ümber leheküljele <h3>$1</h3>",
 	"popups-settings-title": "Lehekülje eelvaatlus",
 	"popups-settings-description": "See tööriist võimaldab eelvaadelda linke, mis viitavad viki lehekülgedele ja viidetele.",
@@ -21,5 +21,5 @@
 	"popups-settings-cancel": "Loobu",
 	"popups-settings-help": "Saad eelvaatluse tagasi sisse lülitada, kasutades linki lehekülje jaluses.",
 	"popups-settings-enable": "Luba eelvaatlus",
-	"popups-send-feedback": "Saada tagasisidet"
+	"popups-send-feedback": "Saada tagasisidet (välislink)"
 }
