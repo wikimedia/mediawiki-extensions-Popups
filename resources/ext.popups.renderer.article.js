@@ -583,10 +583,6 @@
 			);
 		}
 
-		if ( !svg && flippedY && !tall ) {
-			$( '.mwe-popups-extract' ).css( 'margin-top', '206px' );
-		}
-
 		if ( flippedY ) {
 			popup.css( {
 				top: popup.offset().top - popup.outerHeight()
