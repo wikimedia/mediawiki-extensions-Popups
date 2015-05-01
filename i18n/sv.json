@@ -8,7 +8,7 @@
 	},
 	"popups-message": "Hovercards",
 	"popups-desc": "Visar skyltfönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk",
-	"popups-last-edited": "Senast redigerad $1",
+	"popups-last-edited": "Redigerades $1",
 	"popups-redirects": "omdirigering till <h3>$1</h3>",
 	"popups-settings-title": "Sidförhandsgranskning",
 	"popups-settings-description": "Detta verktyg låter dig förhandsgranska blå länkar och referenser",
