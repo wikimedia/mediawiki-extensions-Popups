@@ -40,7 +40,8 @@
 	article.init = function ( link ) {
 		var href = link.attr( 'href' ),
 			title = mw.popups.getTitle( href ),
-			deferred = $.Deferred();
+			deferred = $.Deferred(),
+			scaledThumbSize = 300 * $.bracketedDevicePixelRatio();
 
 		if ( !title ) {
 			return deferred.reject().promise();
@@ -57,7 +58,7 @@
 			// so that text does not overflow from the card
 			explaintext: true,
 			piprop: 'thumbnail',
-			pithumbsize: 300,
+			pithumbsize: scaledThumbSize,
 			rvprop: 'timestamp',
 			titles: title,
 			smaxage: 300,
@@ -260,15 +261,23 @@
 	 * @return {Object} jQuery DOM element of the thumbnail
 	 */
 	article.createThumbnail = function ( thumbnail, tall ) {
-		var svg = mw.popups.supportsSVG;
+		var thumbWidth, thumbHeight,
+			svg = mw.popups.supportsSVG,
+			devicePixelRatio = $.bracketedDevicePixelRatio();
+
+		// No thumbnail
+		if ( !thumbnail ) {
+			return $( '<span>' );
+		}
+
+		thumbWidth = thumbnail.width / devicePixelRatio;
+		thumbHeight = thumbnail.height / devicePixelRatio;
 
 		if (
-			// No thumbnail
-			!thumbnail ||
 			// Image too small for landscape display
-			( !tall && thumbnail.width < article.SIZES.landscapeImage.w ) ||
-			// Image too small for protrait display
-			( tall && thumbnail.height < article.SIZES.portraitImage.h ) ||
+			( !tall && thumbWidth < article.SIZES.landscapeImage.w ) ||
+			// Image too small for portrait display
+			( tall && thumbHeight < article.SIZES.portraitImage.h ) ||
 			// These characters in URL that could inject CSS and thus JS
 			(
 				thumbnail.source.indexOf( '\\' ) > -1 ||
@@ -283,14 +292,14 @@
 			return article.createSvgImageThumbnail(
 				'mwe-popups-is-not-tall',
 				thumbnail.source,
-				( thumbnail.width > article.SIZES.portraitImage.w ) ?
-						( ( thumbnail.width - article.SIZES.portraitImage.w ) / -2 ) :
-						( article.SIZES.portraitImage.w - thumbnail.width ),
-				( thumbnail.height > article.SIZES.portraitImage.h ) ?
-						( ( thumbnail.height - article.SIZES.portraitImage.h ) / -2 ) :
+				( thumbWidth > article.SIZES.portraitImage.w ) ?
+						( ( thumbWidth - article.SIZES.portraitImage.w ) / -2 ) :
+						( article.SIZES.portraitImage.w - thumbWidth ),
+				( thumbHeight > article.SIZES.portraitImage.h ) ?
+						( ( thumbHeight - article.SIZES.portraitImage.h ) / -2 ) :
 						0,
-				thumbnail.width,
-				thumbnail.height,
+				thumbWidth,
+				thumbHeight,
 				article.SIZES.portraitImage.w,
 				article.SIZES.portraitImage.h
 			);
@@ -305,15 +314,15 @@
 				'mwe-popups-is-not-tall',
 				thumbnail.source,
 				0,
-				( thumbnail.height > article.SIZES.landscapeImage.h ) ?
-						( ( thumbnail.height - article.SIZES.landscapeImage.h ) / -2 ) :
+				( thumbHeight > article.SIZES.landscapeImage.h ) ?
+						( ( thumbHeight - article.SIZES.landscapeImage.h ) / -2 ) :
 						0,
-				thumbnail.width,
-				thumbnail.height,
+				thumbWidth,
+				thumbHeight,
 				article.SIZES.landscapeImage.w + 3,
-				( thumbnail.height > article.SIZES.landscapeImage.h ) ?
+				( thumbHeight > article.SIZES.landscapeImage.h ) ?
 						article.SIZES.landscapeImage.h :
-						thumbnail.height,
+						thumbHeight,
 				'mwe-popups-mask'
 			);
 		}
