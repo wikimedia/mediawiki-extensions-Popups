@@ -5,7 +5,8 @@
 			"Ltrlg",
 			"VIGNERON",
 			"Benjozork",
-			"Orikrin1998"
+			"Orikrin1998",
+			"Djiboun"
 		]
 	},
 	"popups-message": "Hovercards",
@@ -13,7 +14,7 @@
 	"popups-last-edited": "Dernière modification $1",
 	"popups-redirects": "redirigé vers <h3>$1</h3>",
 	"popups-settings-title": "Aperçu de la page",
-	"popups-settings-description": "Cet outil vous donne un aperçu des liens bleus et des références",
+	"popups-settings-description": "Cet outil vous donne un aperçu des liens vers les pages wiki et les références.",
 	"popups-settings-option-simple": "Simple",
 	"popups-settings-option-simple-description": "Voir la phrase clé d’une page et une image de l’aperçu. C’est ce qui est recommandé pour les lecteurs.",
 	"popups-settings-option-advanced": "Avancé",
@@ -24,5 +25,6 @@
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Annuler",
 	"popups-settings-help": "Vous pouvez activer des aperçus sur l'utilisation d'un lien dans le pied de page.",
-	"popups-settings-enable": "Activer les aperçus"
+	"popups-settings-enable": "Activer les aperçus",
+	"popups-send-feedback": "Envoyer des Commentaires (lien externe)"
 }
