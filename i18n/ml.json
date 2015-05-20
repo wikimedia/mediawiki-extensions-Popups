@@ -6,10 +6,10 @@
 	},
 	"popups-message": "ഹോവർകാർഡ്സ്",
 	"popups-desc": "ഒരു താളിന്റെ കണ്ണിയുടെ മുകളിലൂടെ മൗസ് നീക്കുമ്പോൾ കണ്ണിയിലുള്ള താളിന്റെ ഉള്ളടക്കത്തിന്റെ സംഗ്രഹം കാണിക്കുക",
-	"popups-last-edited": "അവസാനം തിരുത്തിയത് $1",
+	"popups-last-edited": "തിരുത്തിയത് $1",
 	"popups-redirects": "<h3>$1</h3> എന്നതിലേക്ക് തിരിച്ചുവിട്ടിരിക്കുന്നു",
 	"popups-settings-title": "താൾ എങ്ങനെയെന്ന് കാണൽ",
-	"popups-settings-description": "നീല കണ്ണികളും അവലംബങ്ങളും എങ്ങനെയാണെന്ന് കാണാൻ ഈ ഉപകരണം സഹായിക്കുന്നു",
+	"popups-settings-description": "വിക്കി താളുകളിലേക്കും അവലംബങ്ങളിലേക്കുമുള്ള കണ്ണികൾ എങ്ങനെയാണെന്ന് കാണാൻ ഈ ഉപകരണം സഹായിക്കുന്നു",
 	"popups-settings-option-simple": "ലളിതം",
 	"popups-settings-option-simple-description": "താളിന്റെ ആദ്യവാക്യവും ചിത്രവും കാണുക. വായനക്കാർക്ക് അനുയോജ്യം.",
 	"popups-settings-option-advanced": "വിപുലം",
@@ -17,6 +17,9 @@
 	"popups-settings-option-off": "എങ്ങനെയാണെന്ന് കാണൽ ഒഴിവാക്കുക",
 	"popups-settings-option-off-description": "താളിന്റെ അവസാനമുള്ള കണ്ണി ഉപയോഗിച്ച് താങ്കൾക്ക് ഈ സജ്ജീകരണം മാറ്റാവുന്നതാണ്",
 	"popups-settings-save": "സേവ് ചെയ്യുക",
+	"popups-settings-help-ok": "ശരി",
 	"popups-settings-cancel": "റദ്ദാക്കുക",
-	"popups-settings-enable": "എങ്ങനെയാണെന്ന് കാണൽ സജ്ജമാക്കുക"
+	"popups-settings-help": "താളിനടിയിൽ ഉള്ള കണ്ണി ഉപയോഗിച്ച് താങ്കൾക്ക് എങ്ങനെയുണ്ടെന്ന് കാണൽ വീണ്ടും സജ്ജമാക്കാവുന്നതാണ്.",
+	"popups-settings-enable": "എങ്ങനെയാണെന്ന് കാണൽ സജ്ജമാക്കുക",
+	"popups-send-feedback": "അഭിപ്രായം അറിയിക്കുക (ബാഹ്യകണ്ണി)"
 }
