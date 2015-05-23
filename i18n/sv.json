@@ -21,5 +21,6 @@
 	"popups-settings-save": "Spara",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Avbryt",
-	"popups-settings-enable": "Aktivera förhandsgranskning"
+	"popups-settings-enable": "Aktivera förhandsgranskning",
+	"popups-send-feedback": "Skicka återkoppling (extern länk)"
 }

@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abshirdheere"
+		]
+	},
+	"popups-message": "Popup",
+	"popups-desc": "Waxuu soo tuurayaa Popup dheqdheqaaqa ku jira bogga marka uu isticmaalaha sameeyo Popup ee ku xiran linkiga bogga",
+	"popups-last-edited": "Waxaa waxa laga bedelay $1",
+	"popups-redirects": "loo wareejiyay <h3>$1</h3>",
+	"popups-settings-title": "Horfiirin",
+	"popups-settings-description": "Waxay kuu suurta galinaysaa xulkaan in aad eegi karto horfiirin linkiyada bogagga wikiga iyo xigashada.",
+	"popups-settings-option-simple": "Fudud",
+	"popups-settings-option-simple-description": "Itus weeraha ugu horaysa ee bogga iyo muujin sawir. Tani waxaa lagula talinayaa aqristayaasha.",
+	"popups-settings-option-advanced": "La talin",
+	"popups-settings-option-advanced-description": "Eeg horfiirin xiriirka ee fur liista shaqo bedelka, Qaabkaan waxaa adeegsaday in badan ee wax bedela.",
+	"popups-settings-option-off": "Howlgab ka dhib horfiirinta",
+	"popups-settings-option-off-description": "Waad iska bedeli kartaa dooqaan adigoo adeegsanaya linkiga hoose ee bogga.",
+	"popups-settings-save": "Kaydi",
+	"popups-settings-help-ok": "OK",
+	"popups-settings-cancel": "Ka noqo",
+	"popups-settings-help": "Dib waad u howl galin kartaa horfiirinta adigoo adeegsanaya linkiga hoose ee bogga.",
+	"popups-settings-enable": "Howlgali horfiirin",
+	"popups-send-feedback": "Dir ka dhiidhinta (linkiga dibadda)"
+}
