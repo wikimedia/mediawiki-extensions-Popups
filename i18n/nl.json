@@ -11,7 +11,7 @@
 	},
 	"popups-message": "Pop-uppagina's",
 	"popups-desc": "Geeft pop-uppagina's weer met samenvattingen van de inhoud van pagina's bij zweven boven koppelingen",
-	"popups-last-edited": "Bewerkt $1",
+	"popups-last-edited": "$1 bewerkt",
 	"popups-redirects": "verwijst door naar <h3>$1</h3>",
 	"popups-settings-title": "Paginavoorvertoning",
 	"popups-settings-description": "Met dit hulpmiddel krijgt u een voorvertoning van wiki pagina's en referenties",
