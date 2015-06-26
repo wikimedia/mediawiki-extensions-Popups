@@ -183,7 +183,7 @@
 			if ( !$.isEmptyObject( linkHref.query ) ) {
 				return undefined;
 			}
-			titleRegex = new RegExp( $.escapeRE( mw.config.get( 'wgArticlePath' ) )
+			titleRegex = new RegExp( mw.RegExp.escape( mw.config.get( 'wgArticlePath' ) )
 				.replace( '\\$1', '(.+)' ) );
 			matches = titleRegex.exec( linkHref.path );
 			return matches ? decodeURIComponent( matches[1] ) : undefined;

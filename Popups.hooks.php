@@ -68,13 +68,13 @@ class PopupsHooks {
 	public static function onResourceLoaderRegisterModules( ResourceLoader $rl ) {
 		$moduleDependencies = array(
 			'mediawiki.api',
+			'mediawiki.RegExp',
 			'mediawiki.Title',
 			'mediawiki.jqueryMsg',
 			'mediawiki.Uri',
 			'moment',
 			'jquery.jStorage',
 			'jquery.client',
-			'jquery.mwExtension',
 		);
 
 		// If EventLogging is present, add the schema as a dependency.
