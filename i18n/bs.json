@@ -5,5 +5,19 @@
 		]
 	},
 	"popups-message": "Info kartice",
-	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko linka stranice"
+	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko linka stranice",
+	"popups-last-edited": "Zadnja izmjena $1",
+	"popups-settings-title": "Pregled stranice",
+	"popups-settings-description": "Ovaj alat vam omogućava pregled linkova wiki stranica i referenci.",
+	"popups-settings-option-simple": "Jednostavno",
+	"popups-settings-option-simple-description": "Prikazuje uvodnu rečenicu i sliku sa stranice. Preporučeno za čitaoce.",
+	"popups-settings-option-advanced": "Napredno",
+	"popups-settings-option-off": "Isključi info kartice",
+	"popups-settings-option-off-description": "Možete promijeniti ovu postavku klikom na link na dnu stranice.",
+	"popups-settings-save": "Sačuvaj",
+	"popups-settings-help-ok": "U redu",
+	"popups-settings-cancel": "Odustani",
+	"popups-settings-help": "Info kartice možete ponovo uključiti koristeći se linkom na dnu stranice.",
+	"popups-settings-enable": "Uključi info kartice",
+	"popups-send-feedback": "Pošalji povratne informacije (vanjski link)"
 }
