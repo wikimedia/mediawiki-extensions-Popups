@@ -4,11 +4,12 @@
 			"Metalhead64",
 			"CennoxX",
 			"Peter Bowman",
-			"Andreasburmeister"
+			"Andreasburmeister",
+			"Kghbln"
 		]
 	},
 	"popups-message": "Hovercards",
-	"popups-desc": "Ermöglicht beim Überfahren mit der Maus über einen Seitenlink die Anzeige von Hovercards mit Seiteninhaltszusammenfassungen.",
+	"popups-desc": "Ermöglicht beim Führen des Mauszeigers über einen Seitenlink das Einblenden entsprechender Inhaltszusammenfassungen",
 	"popups-last-edited": "$1 bearbeitet",
 	"popups-redirects": "leitet weiter auf <h3>$1</h3>",
 	"popups-settings-title": "Seitenvorschau",
