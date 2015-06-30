@@ -50,12 +50,12 @@
 		mw.popups.render.currentRequest = mw.popups.api.get( {
 			action: 'query',
 			prop: 'extracts|pageimages|revisions|info',
-			redirects: 'true',
-			exintro: 'true',
+			redirects: true,
+			exintro: true,
 			exsentences: 2,
 			// there is an added geometric limit on .mwe-popups-extract
 			// so that text does not overflow from the card
-			explaintext: 'true',
+			explaintext: true,
 			piprop: 'thumbnail',
 			pithumbsize: 300,
 			rvprop: 'timestamp',
