@@ -49,7 +49,8 @@
 
 		mw.popups.render.currentRequest = mw.popups.api.get( {
 			action: 'query',
-			prop: 'extracts|pageimages|revisions|info',
+			prop: 'extracts|pageimages|revisions',
+			formatversion: 2,
 			redirects: true,
 			exintro: true,
 			exsentences: 2,
@@ -59,8 +60,6 @@
 			piprop: 'thumbnail',
 			pithumbsize: 300,
 			rvprop: 'timestamp',
-			inprop: 'watched',
-			indexpageids: true,
 			titles: title
 		} );
 
@@ -71,15 +70,15 @@
 			if (
 				!re.query ||
 				!re.query.pages ||
-				!re.query.pages[ re.query.pageids[ 0 ] ].extract ||
-				re.query.pages[ re.query.pageids[ 0 ] ].extract === ''
+				!re.query.pages[0].extract ||
+				re.query.pages[0].extract === ''
 			) {
 				deferred.reject();
 				return;
 			}
 
 			mw.popups.render.cache[ href ] = {};
-			mw.popups.render.cache[ href ].popup = article.createPopup( re, href );
+			mw.popups.render.cache[ href ].popup = article.createPopup( re.query.pages[0], href );
 			mw.popups.render.cache[ href ].getOffset = article.getOffset;
 			mw.popups.render.cache[ href ].getClasses = article.getClasses;
 			mw.popups.render.cache[ href ].process = article.processPopup;
@@ -96,13 +95,12 @@
 	 * is fits inside a rectangle of a particular size.
 	 *
 	 * @method createPopup
-	 * @param {Object} re
+	 * @param {Object} page Information about the linked page
 	 * @param {String} href
 	 * @return {jQuery}
 	 */
-	article.createPopup = function ( re, href ) {
+	article.createPopup = function ( page, href ) {
 		var $div,
-			page = re.query.pages[ re.query.pageids[ 0 ] ],
 			$contentbox = $( '<a>' )
 				.attr( 'href', href )
 				.addClass( 'mwe-popups-extract' )
@@ -112,7 +110,7 @@
 			thumbnail = page.thumbnail,
 			tall = thumbnail && thumbnail.height > thumbnail.width,
 			$thumbnail = article.createThumbnail( thumbnail, tall ),
-			timestamp = new Date( page.revisions[ 0 ].timestamp ),
+			timestamp = new Date( page.revisions[0].timestamp ),
 			timediff = new Date() - timestamp,
 			oneDay = 1000 * 60 * 60 * 24,
 			timestampclass = ( timediff < oneDay ) ?
