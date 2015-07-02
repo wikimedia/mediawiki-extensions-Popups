@@ -1,0 +1,48 @@
+{
+	"name": "Popups",
+	"author": [
+		"Prateek Saxena",
+		"Yair Rand"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Popups",
+	"descriptionmsg": "popups-desc",
+	"license-name": "GPL-2.0+",
+	"type": "betafeatures",
+	"AutoloadClasses": {
+		"PopupsHooks": "Popups.hooks.php"
+	},
+	"ConfigRegistry": {
+		"popups": "GlobalVarConfig::newInstance"
+	},
+	"Hooks": {
+		"GetBetaFeaturePreferences": [
+			"PopupsHooks::getPreferences"
+		],
+		"BeforePageDisplay": [
+			"PopupsHooks::onBeforePageDisplay"
+		],
+		"ResourceLoaderTestModules": [
+			"PopupsHooks::onResourceLoaderTestModules"
+		],
+		"EventLoggingRegisterSchemas": [
+			"PopupsHooks::onEventLoggingRegisterSchemas"
+		],
+		"ResourceLoaderRegisterModules": [
+			"PopupsHooks::onResourceLoaderRegisterModules"
+		],
+		"ResourceLoaderGetConfigVars": [
+			"PopupsHooks::onResourceLoaderGetConfigVars"
+		]
+	},
+	"MessagesDirs": {
+		"Popups": [
+			"i18n"
+		]
+	},
+	"config": {
+		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
+		"PopupsBetaFeature": false,
+		"PopupsSurveyLink": false
+	},
+	"manifest_version": 1
+}

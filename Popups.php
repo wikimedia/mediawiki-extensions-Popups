@@ -24,31 +24,15 @@
  * @ingroup extensions
  */
 
-$wgExtensionCredits['betafeatures'][] = array(
-	'author' => array( 'Prateek Saxena', 'Yair Rand' ),
-	'descriptionmsg' => 'popups-desc',
-	'name' => 'Popups',
-	'path' => __FILE__,
-	'url' => 'https://www.mediawiki.org/wiki/Extension:Popups',
-	'license-name' => 'GPL-2.0+',
-);
-
-/**
- * @var bool: Whether the extension should be enabled as an opt-in beta feature.
- * If true, the BetaFeatures extension must be installed. False by default.
- */
-$wgPopupsBetaFeature = false;
-
-$wgPopupsSurveyLink = false;
-$wgConfigRegistry['popups'] = 'GlobalVarConfig::newInstance';
-
-$wgAutoloadClasses['PopupsHooks'] = __DIR__ . '/Popups.hooks.php';
-$wgMessagesDirs['Popups'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['Popups'] = __DIR__ . '/Popups.i18n.php';
-
-$wgHooks['GetBetaFeaturePreferences'][] = 'PopupsHooks::getPreferences';
-$wgHooks['BeforePageDisplay'][] = 'PopupsHooks::onBeforePageDisplay';
-$wgHooks['ResourceLoaderTestModules'][] = 'PopupsHooks::onResourceLoaderTestModules';
-$wgHooks['EventLoggingRegisterSchemas'][] = 'PopupsHooks::onEventLoggingRegisterSchemas';
-$wgHooks['ResourceLoaderRegisterModules'][] = 'PopupsHooks::onResourceLoaderRegisterModules';
-$wgHooks['ResourceLoaderGetConfigVars'][] = 'PopupsHooks::onResourceLoaderGetConfigVars';
+if ( function_exists( 'wfLoadExtension' ) ) {
+	wfLoadExtension( 'Popups' );
+	// Keep i18n globals so mergeMessageFileList.php doesn't break
+	$wgMessagesDirs['Popups'] = __DIR__ . '/i18n';
+	/* wfWarn(
+		'Deprecated PHP entry point used for Popups extension. Please use wfLoadExtension instead, ' .
+		'see https://www.mediawiki.org/wiki/Extension_registration for more details.'
+	); */
+	return;
+} else {
+	die( 'This version of the Popups extension requires MediaWiki 1.25+' );
+}
