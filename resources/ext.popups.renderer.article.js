@@ -60,7 +60,10 @@
 			piprop: 'thumbnail',
 			pithumbsize: 300,
 			rvprop: 'timestamp',
-			titles: title
+			titles: title,
+			smaxage: 300,
+			maxage: 300,
+			uselang: 'content'
 		} );
 
 		mw.popups.render.currentRequest.fail( deferred.reject );
