@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Snævar"
+		]
+	},
+	"popups-last-edited": "Breytti fyrir $1",
+	"popups-redirects": "tilvísun á <h3>$1</h3>",
+	"popups-settings-title": "Forskoðun síðu",
+	"popups-settings-option-simple": "Einfalt",
+	"popups-settings-option-simple-description": "Sjá inngang síðunnar og forskoðunar mynd. Mælt er með þessu fyrir lesendur.",
+	"popups-settings-option-advanced": "Flókið",
+	"popups-settings-option-advanced-description": "Sjá forskoðanir tengla og fá aðgang að breytingar valmyndum. Þetta er notað af mörgum notendum.",
+	"popups-settings-option-off": "Slökkva á forskoðunum",
+	"popups-settings-option-off-description": "Þú getur breytt þessari stillingu með því að nota tengilinn neðst á síðunni.",
+	"popups-settings-save": "Vista",
+	"popups-settings-help-ok": "Í lagi",
+	"popups-settings-cancel": "Hætta við",
+	"popups-settings-help": "Þú getur kveikt aftur á forskoðun með því að nota tengil neðst á síðunni.",
+	"popups-settings-enable": "Virkja forskoðun",
+	"popups-send-feedback": "Senda svörun (ytri tengill)"
+}
