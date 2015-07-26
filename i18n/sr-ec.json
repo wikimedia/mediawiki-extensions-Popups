@@ -2,12 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"Rancher",
-			"Milicevic01"
+			"Milicevic01",
+			"Srdjan m"
 		]
 	},
+	"popups-message": "Инфо картице",
+	"popups-desc": "Приказује инфо картице с кратким садржајем преласком миша преко везе према страници",
 	"popups-last-edited": "Задња измена $1",
 	"popups-redirects": "преусмерења на <h3>$1</h3>",
+	"popups-settings-title": "Преглед странице",
+	"popups-settings-description": "Овај алат омогућава преглед вики веза и референци.",
+	"popups-settings-option-simple": "Једноставно",
+	"popups-settings-option-simple-description": "Приказује уводну реченицу и слику са странице. Препоручено за читаоце.",
+	"popups-settings-option-off": "Искључи инфо картице",
+	"popups-settings-option-off-description": "Можете променити ово подешавање кликом на везу на дну странице.",
 	"popups-settings-save": "Сачувај",
 	"popups-settings-help-ok": "У реду",
-	"popups-settings-cancel": "Откажи"
+	"popups-settings-cancel": "Откажи",
+	"popups-settings-help": "Инфо картице можете поново укључити користећи везу на дну странице.",
+	"popups-settings-enable": "Укључи инфо картице"
 }

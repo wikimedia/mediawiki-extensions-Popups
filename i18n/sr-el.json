@@ -1,11 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Milicevic01"
+			"Milicevic01",
+			"Srdjan m"
 		]
 	},
+	"popups-message": "Info kartice",
+	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko veze prema stranici",
 	"popups-last-edited": "Zadnja izmena $1",
+	"popups-settings-title": "Pregled stranice",
+	"popups-settings-description": "Ovaj alat omogućava pregled viki veza i referenci.",
+	"popups-settings-option-simple": "Jednostavno",
+	"popups-settings-option-simple-description": "Prikazuje uvodnu rečenicu i sliku sa stranice. Preporučeno za čitaoce.",
+	"popups-settings-option-off": "Isključi info kartice",
+	"popups-settings-option-off-description": "Možete promeniti ovo podešavanje klikom na vezu na dnu stranice.",
 	"popups-settings-save": "Sačuvaj",
 	"popups-settings-help-ok": "U redu",
-	"popups-settings-cancel": "Otkaži"
+	"popups-settings-cancel": "Otkaži",
+	"popups-settings-help": "Info kartice možete ponovo uključiti koristeći vezu na dnu stranice.",
+	"popups-settings-enable": "Uključi info kartice"
 }
