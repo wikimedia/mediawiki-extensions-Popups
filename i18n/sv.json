@@ -11,7 +11,7 @@
 	"popups-last-edited": "Redigerades $1",
 	"popups-redirects": "omdirigering till <h3>$1</h3>",
 	"popups-settings-title": "Sidförhandsgranskning",
-	"popups-settings-description": "Detta verktyg låter dig förhandsgranska blå länkar och referenser",
+	"popups-settings-description": "Detta verktyg låter dig förhandsgranska länkar till wikisidor och till referenser",
 	"popups-settings-option-simple": "Enkel",
 	"popups-settings-option-simple-description": "Se den inledande meningen av en sida och visa en förhandsgranskningsbild. Denna rekommenderas för läsare.",
 	"popups-settings-option-advanced": "Avancerad",
