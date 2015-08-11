@@ -558,6 +558,6 @@
 		}
 	};
 
-	mw.popups.render.article = article;
+	mw.popups.render.renderers.article = article;
 
 } ) ( jQuery, mediaWiki );
