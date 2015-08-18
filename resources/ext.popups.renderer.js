@@ -108,9 +108,22 @@
 			// Wait for timer before making API queries and showing hovercard
 			mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.API_DELAY )
 				.done( function () {
-					// TODO: check for link type and call correct renderer
-					// There is only one popup type right now so it isn't necessary
-					var cachePopup = mw.popups.render.renderers.article.init( link );
+					var cachePopup, key,
+						renderers = mw.popups.render.renderers;
+
+					// Check run the matcher method of all renderers to find the right one
+					for ( key in renderers ) {
+						if ( renderers.hasOwnProperty( key ) && key !== 'article' ) {
+							if ( !!renderers[ key ].matcher( link.attr( 'href' ) ) ) {
+								cachePopup = renderers[ key ].init( link );
+							}
+						}
+					}
+
+					// Use the article renderer if nothing else matches
+					if ( cachePopup === undefined ) {
+						cachePopup = mw.popups.render.renderers.article.init( link );
+					}
 
 					mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY - mw.popups.render.API_DELAY );
 
