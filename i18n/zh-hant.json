@@ -6,13 +6,14 @@
 			"Cwlin0416",
 			"LNDDYL",
 			"Citizen01",
-			"Wctaiwan"
+			"Wctaiwan",
+			"Zhxy 519"
 		]
 	},
 	"popups-message": "懸停卡片",
 	"popups-desc": "在游標停駐於頁面連結上方時，顯示包含連結內容摘要的懸停卡片。",
 	"popups-last-edited": "最近編輯於 $1",
-	"popups-redirects": "重新導向至 <h3>$1</h3>",
+	"popups-redirects": "重定向至<h3>$1</h3>",
 	"popups-settings-title": "頁面預覽",
 	"popups-settings-description": "此工具讓您可以預覽內部連結和參考資料。",
 	"popups-settings-option-simple": "簡易",
