@@ -1,7 +1,7 @@
-/*global disablePopups: false*/
+/*global pg: false*/
 
 // Disable NavigationPopups
-// The `disablePopups` function exists if NavPopups is activated. If it
+// The `pg.fn.disablePopups` function exists if NavPopups is activated. If it
 // exists, its called, otherwise, we do nothing.
 
 // Since NavPopups is initialized several times, its best to disable it
@@ -12,8 +12,11 @@
 // HACK: This is a temporary fix
 ( function ( $, mw ) {
 	mw.popups.disableNavPopup = function () {
-		if ( typeof disablePopups !== 'undefined' && mw.popups.enabled ) {
-			disablePopups();
+		if ( typeof pg !== 'undefined' &&
+			pg.fn.disablePopups !== undefined &&
+			mw.popups.enabled
+		) {
+			pg.fn.disablePopups();
 		}
 	};
 } ( jQuery, mediaWiki ) );
