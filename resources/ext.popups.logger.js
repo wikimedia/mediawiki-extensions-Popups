@@ -54,9 +54,9 @@
 			delete event.time;
 		}
 
-		return  mw.eventLog.logEvent( 'Popups', event );
+		return mw.eventLog.logEvent( 'Popups', event );
 	};
 
 	mw.popups.logger = logger;
 
-} ) ( jQuery, mediaWiki );
+} )( jQuery, mediaWiki );

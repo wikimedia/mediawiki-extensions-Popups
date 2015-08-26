@@ -5,7 +5,7 @@
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
 		QUnit.expect( 13 );
 
-		function test ( extract, title, expected, msg ) {
+		function test( extract, title, expected, msg ) {
 			var $div = $( '<div>' ).append(
 				mw.popups.render.article.getProcessedElements( extract, title )
 			);
@@ -92,4 +92,4 @@
 
 	} );
 
-} ) ( jQuery, mediaWiki );
+} )( jQuery, mediaWiki );

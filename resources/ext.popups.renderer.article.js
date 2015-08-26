@@ -25,7 +25,6 @@
 		pokeySize: 8 // Height of the triangle used to point at the link
 	};
 
-
 	/**
 	 * Survey link, if any, for this renderer
 	 * @property surveyLink
@@ -73,15 +72,15 @@
 			if (
 				!re.query ||
 				!re.query.pages ||
-				!re.query.pages[0].extract ||
-				re.query.pages[0].extract === ''
+				!re.query.pages[ 0 ].extract ||
+				re.query.pages[ 0 ].extract === ''
 			) {
 				deferred.reject();
 				return;
 			}
 
 			mw.popups.render.cache[ href ] = {};
-			mw.popups.render.cache[ href ].popup = article.createPopup( re.query.pages[0], href );
+			mw.popups.render.cache[ href ].popup = article.createPopup( re.query.pages[ 0 ], href );
 			mw.popups.render.cache[ href ].getOffset = article.getOffset;
 			mw.popups.render.cache[ href ].getClasses = article.getClasses;
 			mw.popups.render.cache[ href ].process = article.processPopup;
@@ -99,7 +98,7 @@
 	 *
 	 * @method createPopup
 	 * @param {Object} page Information about the linked page
-	 * @param {String} href
+	 * @param {string} href
 	 * @return {jQuery}
 	 */
 	article.createPopup = function ( page, href ) {
@@ -113,7 +112,7 @@
 			thumbnail = page.thumbnail,
 			tall = thumbnail && thumbnail.height > thumbnail.width,
 			$thumbnail = article.createThumbnail( thumbnail, tall ),
-			timestamp = new Date( page.revisions[0].timestamp ),
+			timestamp = new Date( page.revisions[ 0 ].timestamp ),
 			timediff = new Date() - timestamp,
 			oneDay = 1000 * 60 * 60 * 24,
 			timestampclass = ( timediff < oneDay ) ?
@@ -138,7 +137,6 @@
 			$timestamp.append( $surveyImage );
 		}
 
-
 		if ( $thumbnail.prop( 'tagName' ) !== 'SPAN' ) {
 			$thumbnail = $( '<a>' )
 				.addClass( 'mwe-popups-discreet' )
@@ -151,9 +149,9 @@
 		$div = $( '<div>' ).append( $thumbnail, $contentbox, $timestamp );
 
 		mw.popups.render.cache[ href ].settings = {
-			'title': page.title,
-			'tall': ( tall === undefined ) ? false : tall,
-			'thumbnail': ( thumbnail === undefined ) ? false : thumbnail
+			title: page.title,
+			tall: ( tall === undefined ) ? false : tall,
+			thumbnail: ( thumbnail === undefined ) ? false : thumbnail
 		};
 
 		return $div;
@@ -164,21 +162,20 @@
 	 * and making the title in the extract bold.
 	 *
 	 * @method getProcessedElements
-	 * @param {String} extract Should be unescaped
-	 * @param {String} title Should be unescaped
+	 * @param {string} extract Should be unescaped
+	 * @param {string} title Should be unescaped
 	 * @return {Array} of elements to appended
 	 */
 	article.getProcessedElements = function ( extract, title ) {
-		title = title.replace( /([.?*+^$[\]\\(){}|-])/g, '\\$1' ); // Escape RegExp elements
-
 		var elements = [],
-			regExp = new RegExp( '(^|\\s)(' + title + ')(|$)', 'ig' ),
+			escapedTitle = title.replace( /([.?*+^$[\]\\(){}|-])/g, '\\$1' ), // Escape RegExp elements
+			regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'ig' ),
 			boldIdentifier = '<bi-' + Math.random() + '>',
 			snip = '<snip-' + Math.random() + '>';
 
 		// Remove text in parentheses along with the parentheses
 		extract = article.removeParensFromText( extract );
-		extract = extract.replace(/\s+/g, ' '); // Remove extra white spaces
+		extract = extract.replace( /\s+/g, ' ' ); // Remove extra white spaces
 
 		// Make title bold in the extract text
 		// As the extract is html escaped there can be no such string in it
@@ -203,8 +200,8 @@
 	 * remove extra spaces.
 	 *
 	 * @method removeParensFromText
-	 * @param {String} string
-	 * @return {String}
+	 * @param {string} string
+	 * @return {string}
 	 */
 	article.removeParensFromText = function ( string ) {
 		var
@@ -213,7 +210,7 @@
 			level = 0,
 			i = 0;
 
-		for( i; i < string.length; i++ ) {
+		for ( i; i < string.length; i++ ) {
 			ch = string.charAt( i );
 
 			if ( ch === ')' && level === 0  ) {
@@ -244,7 +241,7 @@
 	 * to `img` tag, thus an `svg:image` is required.
 	 *
 	 * @method createSVGTag
-	 * @param {String} tag
+	 * @param {string} tag
 	 * @return {Object}
 	 */
 	article.createSVGTag = function ( tag ) {
@@ -330,15 +327,15 @@
 	 * Returns the `svg:image` object for thumbnail
 	 *
 	 * @method createSvgImageThumbnail
-	 * @param {String} className
-	 * @param {String} url
-	 * @param {Number} x
-	 * @param {Number} y
-	 * @param {Number} thumbnailWidth
-	 * @param {Number} thumbnailHeight
-	 * @param {Number} width
-	 * @param {Number} height
-	 * @param {String} clipPath
+	 * @param {string} className
+	 * @param {string} url
+	 * @param {number} x
+	 * @param {number} y
+	 * @param {number} thumbnailWidth
+	 * @param {number} thumbnailHeight
+	 * @param {number} width
+	 * @param {number} height
+	 * @param {string} clipPath
 	 * @return {jQuery}
 	 */
 	article.createSvgImageThumbnail = function (
@@ -373,8 +370,8 @@
 	 * Returns the `img` object for thumbnail
 	 *
 	 * @method createImgThumbnail
-	 * @param {String} className
-	 * @param {String} url
+	 * @param {string} className
+	 * @param {string} url
 	 * @return {jQuery}
 	 */
 	article.createImgThumbnail = function ( className, url ) {
@@ -516,7 +513,7 @@
 		} );
 
 		if ( !flippedY && !tall && cache.settings.thumbnail.height < article.SIZES.landscapeImage.h ) {
-			$( '.mwe-popups-extract').css(
+			$( '.mwe-popups-extract' ).css(
 				'margin-top',
 				cache.settings.thumbnail.height - article.SIZES.pokeySize
 			);
@@ -560,4 +557,4 @@
 
 	mw.popups.render.article = article;
 
-} ) ( jQuery, mediaWiki );
+} )( jQuery, mediaWiki );

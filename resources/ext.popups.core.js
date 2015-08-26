@@ -15,7 +15,7 @@
 	 * Set to false on Internet Explorer because adding SVGs
 	 * through JavaScript in IE is failing. Thus, falling back to PNGs
 	 *
-	 * @property {Boolean} supportsSVG
+	 * @property {boolean} supportsSVG
 	 */
 	mw.popups.supportsSVG = ( $.client.profile().name === 'msie' ) ?
 		false :
@@ -29,7 +29,7 @@
 
 	/**
 	 * Whether the page is being scrolled.
-	 * @property {Boolean} scrolled
+	 * @property {boolean} scrolled
 	 */
 	mw.popups.scrolled = false;
 
@@ -90,7 +90,7 @@
 		mw.popups.$popup = $( '<div>' )
 			.attr( {
 				'class': 'mwe-popups',
-				'role': 'tooltip',
+				role: 'tooltip',
 				'aria-hidden': 'true'
 			} )
 			.appendTo( document.body );
@@ -186,7 +186,7 @@
 			titleRegex = new RegExp( mw.RegExp.escape( mw.config.get( 'wgArticlePath' ) )
 				.replace( '\\$1', '(.+)' ) );
 			matches = titleRegex.exec( linkHref.path );
-			return matches ? decodeURIComponent( matches[1] ) : undefined;
+			return matches ? decodeURIComponent( matches[ 1 ] ) : undefined;
 		}
 	};
 
@@ -198,7 +198,7 @@
 	mw.popups.selectPopupElements = function () {
 		var contentNamespaces = mw.config.get( 'wgContentNamespaces' );
 		return mw.popups.$content
-			.find( 'a[href][title]:not(' + mw.popups.IGNORE_CLASSES.join(', ') + ')' )
+			.find( 'a[href][title]:not(' + mw.popups.IGNORE_CLASSES.join( ', ' ) + ')' )
 			.filter( function () {
 				var title,
 					titleText = mw.popups.getTitle( this.href );
@@ -211,9 +211,10 @@
 			} );
 	};
 
-	mw.hook( 'wikipage.content').add( function ( $content ) {
+	mw.hook( 'wikipage.content' ).add( function ( $content ) {
+		var $elements;
 		mw.popups.$content = $content;
-		var $elements = mw.popups.selectPopupElements();
+		$elements = mw.popups.selectPopupElements();
 
 		if ( mw.popups.enabled ) {
 			mw.popups.removeTooltips( $elements );
@@ -222,21 +223,22 @@
 			// Events are logged even when Hovercards are disabled
 			// See T88166 for details
 			$elements.on( 'click', function ( event ) {
+				var $this, href, action, logEvent, logPromise;
+
 				if ( mw.popups.logger === undefined ) {
 					return true;
 				}
 
-				var
-					$this = $( this ),
-					href = $this.attr( 'href' ),
-					action = mw.popups.logger.getAction( event ),
-					logEvent = {
-						pageTitleHover: $this.attr( 'title' ),
-						pageTitleSource: mw.config.get( 'wgTitle' ),
-						popupEnabled: mw.popups.enabled,
-						action: action
-					},
-					logPromise = mw.popups.logger.log( logEvent );
+				$this = $( this );
+				href = $this.attr( 'href' );
+				action = mw.popups.logger.getAction( event );
+				logEvent = {
+					pageTitleHover: $this.attr( 'title' ),
+					pageTitleSource: mw.config.get( 'wgTitle' ),
+					popupEnabled: mw.popups.enabled,
+					action: action
+				};
+				logPromise = mw.popups.logger.log( logEvent );
 
 				if ( action  === 'opened in same tab' ) {
 					event.preventDefault();
@@ -256,4 +258,4 @@
 		}
 	} );
 
-} ) ( jQuery, mediaWiki );
+} )( jQuery, mediaWiki );

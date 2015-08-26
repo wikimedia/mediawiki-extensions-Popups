@@ -67,7 +67,7 @@
 		// anchor tag. In such a case, the timer to close the box is cleared.
 		if (
 			mw.popups.render.currentLink &&
-			mw.popups.render.currentLink[0] === link[0]
+			mw.popups.render.currentLink[ 0 ] === link[ 0 ]
 		) {
 			if ( mw.popups.render.closeTimer ) {
 				mw.popups.render.closeTimer.abort();
@@ -195,6 +195,8 @@
 	 * @method closePopup
 	 */
 	mw.popups.render.closePopup = function () {
+		var fadeInClass, fadeOutClass;
+
 		if ( mw.popups.render.currentLink === undefined ) {
 			return false;
 		}
@@ -205,8 +207,6 @@
 		}
 
 		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
-
-		var fadeInClass, fadeOutClass;
 
 		fadeInClass = ( mw.popups.$popup.hasClass( 'mwe-popups-fade-in-up' ) ) ?
 			'mwe-popups-fade-in-up' :
@@ -242,7 +242,7 @@
 	 * to perform the equivalent of `clearTimeout()`
 	 *
 	 * @method wait
-	 * @param {Number} ms Milliseconds to wait
+	 * @param {number} ms Milliseconds to wait
 	 * @return {jQuery.Promise}
 	 */
 	mw.popups.render.wait = function ( ms ) {
@@ -315,4 +315,4 @@
 		mw.popups.render.closeTimer = undefined;
 	};
 
-} ) ( jQuery, mediaWiki );
+} )( jQuery, mediaWiki );

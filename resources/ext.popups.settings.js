@@ -60,17 +60,17 @@
 			$form = $( '<form>' ).append( $radioGroup, $actions ),
 			$main = $( '<main>' ).attr( 'id', 'mwe-popups-settings-form' ).append( $description, $form ),
 			options = {
-				'simple': [
+				simple: [
 					mw.message( 'popups-settings-option-simple' ).text(),
 					mw.message( 'popups-settings-option-simple-description' ).text(),
 					'images/hovercard.svg'
 				],
-				'advanced': [
+				advanced: [
 					mw.message( 'popups-settings-option-advanced' ).text(),
 					mw.message( 'popups-settings-option-advanced-description' ).text(),
 					'images/navpop.svg'
 				],
-				'off': [
+				off: [
 					mw.message( 'popups-settings-option-off' ).text(),
 					mw.message( 'popups-settings-option-off-description' ).text()
 				]
@@ -101,8 +101,9 @@
 	 * Renders an option with its input[type='radio'], label and image
 	 *
 	 * @method renderOption
+	 * @param {string} id
 	 * @param {Array} content
-	 * @param {Boolean} checked
+	 * @param {boolean} checked
 	 * @return {jQuery} The paragraph that holds the above mentioned elements
 	 */
 	settings.renderOption = function ( id, content, checked ) {
@@ -126,7 +127,7 @@
 			$input.prop( 'checked', true );
 		}
 
-		if ( content.length === 3) {
+		if ( content.length === 3 ) {
 			$p.append(
 				$( '<img>' ).attr( 'src', mw.config.get( 'wgExtensionAssetsPath' ) + '/Popups/resources/' + content[ 2 ] )
 			);
@@ -141,7 +142,7 @@
 	 * @method save
 	 */
 	settings.save = function () {
-		var v =  $('input[name=mwe-popups-setting]:checked','#mwe-popups-settings').val();
+		var v =  $( 'input[name=mwe-popups-setting]:checked', '#mwe-popups-settings' ).val();
 		if ( v === 'simple' ) {
 			$.jStorage.set( 'mwe-popups-enabled', 'true' );
 			location.reload();
@@ -199,21 +200,22 @@
 	 * @method addFooterLink
 	 */
 	settings.addFooterLink = function () {
+		var $setting, $footer;
+
 		if ( mw.popups.enabled ) {
 			return false;
 		}
 
-		var
-			$setting = $( '<li>' ).append(
-				$( '<a>' )
-					.attr( 'href', '#' )
-					.text( mw.message( 'popups-settings-enable' ).text() )
-					.click( function ( e ) {
-						settings.open();
-						e.preventDefault();
-					} )
-			),
-			$footer = $( '#footer-places, #f-list' );
+		$setting = $( '<li>' ).append(
+			$( '<a>' )
+				.attr( 'href', '#' )
+				.text( mw.message( 'popups-settings-enable' ).text() )
+				.click( function ( e ) {
+					settings.open();
+					e.preventDefault();
+				} )
+		);
+		$footer = $( '#footer-places, #f-list' );
 
 		// From https://en.wikipedia.org/wiki/MediaWiki:Gadget-ReferenceTooltips.js
 		if ( $footer.length === 0 ) {
@@ -223,11 +225,11 @@
 	};
 
 	$( function () {
-		if( !mw.popups.enabled ) {
+		if ( !mw.popups.enabled ) {
 			settings.addFooterLink();
 		}
 	} );
 
 	mw.popups.settings = settings;
 
-} ) ( jQuery, mediaWiki );
+} )( jQuery, mediaWiki );

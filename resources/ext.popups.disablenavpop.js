@@ -19,4 +19,4 @@
 			pg.fn.disablePopups();
 		}
 	};
-} ( jQuery, mediaWiki ) );
+}( jQuery, mediaWiki ) );

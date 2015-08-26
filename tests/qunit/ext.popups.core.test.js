@@ -27,10 +27,10 @@
 		];
 
 		for ( i = 0; i < cases.length; i++ ) {
-			expected = cases[i][1];
-			actual = mw.popups.getTitle( cases[i][0] );
+			expected = cases[ i ][ 1 ];
+			actual = mw.popups.getTitle( cases[ i ][ 0 ] );
 			assert.equal( actual, expected );
 		}
 	} );
 
-} ) ( jQuery, mediaWiki );
+} )( jQuery, mediaWiki );
