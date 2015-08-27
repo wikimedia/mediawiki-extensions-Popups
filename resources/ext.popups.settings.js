@@ -204,7 +204,7 @@
 		var
 			$setting = $( '<li>' ).append(
 				$( '<a>' )
-					.attr( 'href', '#)' )
+					.attr( 'href', '#' )
 					.text( mw.message( 'popups-settings-enable' ).text() )
 					.click( function ( e ) {
 						settings.open();
