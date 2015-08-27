@@ -8,10 +8,12 @@
 
 	/**
 	 * Check if the navigation popups gadget is enabled by looking for
-	 * the `disablePopups` method
+	 * the `pg.fn.disablePopups` method
 	 * @property navPopEnabled
 	 */
-	settings.navPopEnabled = ( typeof disablePopups !== 'undefined' );
+	/*global pg: false*/
+	settings.navPopEnabled = ( typeof pg !== 'undefined' &&
+		pg.fn.disablePopups !== undefined );
 
 	/**
 	 * The settings' dialog's section element.
