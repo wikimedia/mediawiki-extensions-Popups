@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Dianakc",
-			"Rodrigo codignoli"
+			"Rodrigo codignoli",
+			"He7d3r"
 		]
 	},
 	"popups-message": "Cartões flutuantes",
 	"popups-desc": "Mostra um cartão flutuante com o resumo do conteúdo da página quando mover o cursor do mouse sobre um link de página",
-	"popups-last-edited": "Editado por $1",
+	"popups-last-edited": "Editado $1",
 	"popups-redirects": "redireciona para <h3>$1</h3>",
 	"popups-settings-title": "Pré-visualização",
 	"popups-settings-description": "Esta ferramenta ajuda a pré-visualizar links de páginas wikis e referências.",
