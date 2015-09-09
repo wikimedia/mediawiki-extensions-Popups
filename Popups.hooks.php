@@ -75,6 +75,7 @@ class PopupsHooks {
 			'moment',
 			'jquery.jStorage',
 			'jquery.client',
+			'jquery.hidpi',
 		);
 
 		// If EventLogging is present, add the schema as a dependency.
