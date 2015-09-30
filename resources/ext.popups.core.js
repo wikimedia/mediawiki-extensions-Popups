@@ -19,7 +19,17 @@
 	 */
 	mw.popups.supportsSVG = ( $.client.profile().name === 'msie' ) ?
 		false :
-		document.implementation.hasFeature( 'http://www.w3.org/TR/SVG11/feature#Image', '1.1' );
+		!!(
+			// Check if we can create an <svg> element.
+			// If yes, check if drawing a rectangle inside the element is supported.
+			// We could have also checked for the existence of any similar method,
+			// i.e. createSVGPoint, or createSVGAngle, etc.
+			// If yes, then we can be pretty sure that the browser supports SVGs.
+			// https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
+			// https://developer.mozilla.org/en-US/docs/Web/API/SVGRect
+			'createElementNS' in document &&
+			document.createElementNS( 'http://www.w3.org/2000/svg', 'svg' ).createSVGRect
+		);
 
 	/**
 	 * The API object used for all this extension's requests
