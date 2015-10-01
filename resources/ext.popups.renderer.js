@@ -55,6 +55,12 @@
 	mw.popups.render.currentRequest = undefined;
 
 	/**
+	 * Object to store all renderers
+	 * @property {Object} renderers
+	 */
+	mw.popups.render.renderers = {};
+
+	/**
 	 * Close all other popups and render the new one from the cache
 	 * or by finding and calling the correct renderer
 	 *
@@ -104,7 +110,7 @@
 				.done( function () {
 					// TODO: check for link type and call correct renderer
 					// There is only one popup type right now so it isn't necessary
-					var cachePopup = mw.popups.render.article.init( link );
+					var cachePopup = mw.popups.render.renderers.article.init( link );
 
 					mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY - mw.popups.render.API_DELAY );
 

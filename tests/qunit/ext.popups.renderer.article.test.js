@@ -1,13 +1,13 @@
 ( function ( $, mw ) {
 
-	QUnit.module( 'ext.popups.renderer.article', QUnit.newMwEnvironment() );
+	QUnit.module( 'ext.popups.renderer.renderers.article', QUnit.newMwEnvironment() );
 
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
 		QUnit.expect( 13 );
 
 		function test( extract, title, expected, msg ) {
 			var $div = $( '<div>' ).append(
-				mw.popups.render.article.getProcessedElements( extract, title )
+				mw.popups.render.renderers.article.getProcessedElements( extract, title )
 			);
 			assert.equal( $div.html(), expected, msg );
 		}
