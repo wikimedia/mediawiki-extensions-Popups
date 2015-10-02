@@ -169,7 +169,7 @@
 	 */
 	article.getProcessedElements = function ( extract, title ) {
 		var elements = [],
-			escapedTitle = title.replace( /([.?*+^$[\]\\(){}|-])/g, '\\$1' ), // Escape RegExp elements
+			escapedTitle = mw.RegExp.escape( title ), // Escape RegExp elements
 			regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'ig' ),
 			boldIdentifier = '<bi-' + Math.random() + '>',
 			snip = '<snip-' + Math.random() + '>';
