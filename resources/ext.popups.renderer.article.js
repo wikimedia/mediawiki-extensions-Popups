@@ -5,7 +5,8 @@
 	 * @class mw.popups.render.article
 	 * @singleton
 	 */
-	var article = {};
+	var article = {},
+		$window = $( window );
 
 	/**
 	 * Size constants for popup images
@@ -407,9 +408,15 @@
 			settings = mw.popups.render.cache[ href ].settings,
 			offsetTop = ( event.pageY ) ? // If it was a mouse event
 				// Position according to mouse
-				event.pageY + 20 :
+				// Since client rectangles are relative to the viewport,
+				// take scroll position into account.
+				getClosestYPosition(
+					event.pageY - $window.scrollTop(),
+					link.get( 0 ).getClientRects(),
+					false
+				) + $window.scrollTop() + article.SIZES.pokeySize :
 				// Position according to link position or size
-				link.offset().top + link.height() + 9,
+				link.offset().top + link.height() + article.SIZES.pokeySize,
 			clientTop = ( event.clientY ) ?
 				event.clientY :
 				offsetTop,
@@ -435,10 +442,17 @@
 		// Y Flip
 		if ( clientTop > ( $( window ).height() / 2 ) ) {
 			flippedY = true;
-		}
 
-		if ( event.pageY && flippedY ) {
-			offsetTop += 30;
+			// Change the Y position to the top of the link
+			if ( event.pageY ) {
+				// Since client rectangles are relative to the viewport,
+				// take scroll position into account.
+				offsetTop = getClosestYPosition(
+					event.pageY - $window.scrollTop(),
+					link.get( 0 ).getClientRects(),
+					true
+				) + $window.scrollTop() + 2 * article.SIZES.pokeySize;
+			}
 		}
 
 		mw.popups.render.cache[ href ].settings.flippedY = flippedY;
@@ -534,7 +548,7 @@
 
 		if ( flippedY ) {
 			popup.css( {
-				top: popup.offset().top - ( popup.outerHeight() + 50 )
+				top: popup.offset().top - popup.outerHeight()
 			} );
 		}
 
@@ -565,5 +579,48 @@
 	};
 
 	mw.popups.render.renderers.article = article;
+
+	/**
+	 * Given the rectangular box(es) find the 'y' boundary of the closest
+	 * rectangle to the point 'y'. The point 'y' is the location of the mouse
+	 * on the 'y' axis and the rectangular box(es) are the borders of the
+	 * element over which the mouse is located. There will be more than one
+	 * rectangle in case the element spans multiple lines.
+	 * In the majority of cases the mouse pointer will be inside a rectangle.
+	 * However, some browsers (i.e. Chrome) trigger a hover action even when
+	 * the mouse pointer is just outside a bounding rectangle. That's why
+	 * we need to look at all rectangles and not just the rectangle that
+	 * encloses the point.
+	 *
+	 * @param {number} y the point for which the closest location is being
+	 *  looked for
+	 * @param {ClientRectList} rects list of rectangles defined by four edges
+	 * @param {boolean} [isTop] should the resulting rectangle's top 'y'
+	 *  boundary be returned. By default the bottom 'y' value is returned.
+	 * @return {number}
+	 */
+	function getClosestYPosition( y, rects, isTop ) {
+		var result,
+			deltaY,
+			minY = null;
+
+		$.each( rects, function ( i, rect ) {
+			deltaY = Math.abs( y - rect.top + y - rect.bottom );
+
+			if ( minY === null || minY > deltaY ) {
+				minY = deltaY;
+				// Make sure the resulting point is at or outside the rectangle
+				// boundaries.
+				result = ( isTop ) ? Math.floor( rect.top ) : Math.ceil( rect.bottom );
+			}
+		} );
+
+		return result;
+	}
+
+	/**
+	 * Expose for tests
+	 */
+	mw.popups.render.getClosestYPosition = getClosestYPosition;
 
 } )( jQuery, mediaWiki );
