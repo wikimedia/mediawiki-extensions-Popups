@@ -7,15 +7,6 @@
 	var settings = {};
 
 	/**
-	 * Check if the navigation popups gadget is enabled by looking for
-	 * the `pg.fn.disablePopups` method
-	 * @property navPopEnabled
-	 */
-	/*global pg: false*/
-	settings.navPopEnabled = ( typeof pg !== 'undefined' &&
-		pg.fn.disablePopups !== undefined );
-
-	/**
 	 * The settings' dialog's section element.
 	 * Defined in settings.open
 	 * @property $element
@@ -84,7 +75,10 @@
 		} );
 
 		$radioGroup.append( settings.renderOption( 'simple', options.simple, true ) );
-		if ( settings.navPopEnabled ) {
+
+		// Check if NavigationPopups is enabled
+		/*global pg: false*/
+		if ( typeof pg !== 'undefined' && pg.fn.disablePopups !== undefined ) {
 			$radioGroup.append( settings.renderOption( 'advanced', options.advanced ) );
 		}
 		$radioGroup.append( settings.renderOption( 'off', options.off ) );
