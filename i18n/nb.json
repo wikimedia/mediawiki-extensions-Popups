@@ -6,7 +6,7 @@
 	},
 	"popups-message": "Hovercards",
 	"popups-desc": "Viser et lite forhåndsvisningsvindu når brukeren fører muspekeren over en lenke.",
-	"popups-last-edited": "Sist redigert $1",
+	"popups-last-edited": "Redigert $1",
 	"popups-redirects": "omdirigerer til <h3>$1</h3>",
 	"popups-settings-title": "Forhåndsvisning",
 	"popups-settings-description": "Verktøyet lar deg forhåndsvise lenker til wikisider og referanser.",
@@ -21,5 +21,5 @@
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-help": "Du kan skru på igjen forhåndsvisning ved å bruke lenken i sidens bunntekst.",
 	"popups-settings-enable": "Skru på forhåndsvisning",
-	"popups-send-feedback": "Gi tilbakemelding"
+	"popups-send-feedback": "Gi tilbakemelding (ekstern lenke)"
 }
