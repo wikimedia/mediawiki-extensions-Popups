@@ -1,23 +1,23 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "popups-message": "Hovercards",
-    "popups-desc": "Displays hovercards with summaries of page contents when the user hovers over a page link",
-    "popups-last-edited": "Edited $1",
-    "popups-redirects": "redirects to <h3>$1</h3>",
-    "popups-settings-title": "Page preview",
-    "popups-settings-description": "This tool lets you preview links to wiki pages and to references.",
-    "popups-settings-option-simple": "Simple",
-    "popups-settings-option-simple-description": "See the lead sentence of a page and a preview image. This is recommended for readers.",
-    "popups-settings-option-advanced": "Advanced",
-    "popups-settings-option-advanced-description": "See link previews and access editing function menus. This is used by many editors.",
-    "popups-settings-option-off": "Disable previews",
-    "popups-settings-option-off-description": "You can change this setting using the link in the footer of the page.",
-    "popups-settings-save": "Save",
-    "popups-settings-help-ok": "OK",
-    "popups-settings-cancel": "Cancel",
-    "popups-settings-help": "You can turn previews back on using a link in the footer of the page.",
-    "popups-settings-enable": "Enable previews",
-    "popups-send-feedback": "Send Feedback (external link)"
+	"@metadata": {
+		"authors": []
+	},
+	"popups-message": "Hovercards",
+	"popups-desc": "Displays hovercards with summaries of page contents when the user hovers over a page link",
+	"popups-last-edited": "Edited $1",
+	"popups-redirects": "redirects to <h3>$1</h3>",
+	"popups-settings-title": "Page preview",
+	"popups-settings-description": "This tool lets you preview links to wiki pages and to references.",
+	"popups-settings-option-simple": "Simple",
+	"popups-settings-option-simple-description": "See the lead sentence of a page and a preview image. This is recommended for readers.",
+	"popups-settings-option-advanced": "Advanced",
+	"popups-settings-option-advanced-description": "See link previews and access editing function menus. This is used by many editors.",
+	"popups-settings-option-off": "Disable previews",
+	"popups-settings-option-off-description": "You can change this setting using the link in the footer of the page.",
+	"popups-settings-save": "Save",
+	"popups-settings-help-ok": "OK",
+	"popups-settings-cancel": "Cancel",
+	"popups-settings-help": "You can turn previews back on using a link in the footer of the page.",
+	"popups-settings-enable": "Enable previews",
+	"popups-send-feedback": "Send Feedback (external link)"
 }
