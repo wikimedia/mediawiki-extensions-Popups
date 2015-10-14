@@ -107,7 +107,7 @@
 	};
 
 	/**
-	 * Temorarily remove tooltips from links on hover
+	 * Temporarily remove tooltips from links on hover
 	 *
 	 * @method removeTooltips
 	 */
