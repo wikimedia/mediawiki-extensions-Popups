@@ -6,7 +6,7 @@
 	},
 	"popups-message": "Tarxetes emerxentes",
 	"popups-desc": "Amuesa tarxetes emerxentes con resumes del conteníu de la páxina cuando l'usuariu pasa'l mur per un enllaz de la páxina",
-	"popups-last-edited": "Última edición $1",
+	"popups-last-edited": "Editao $1",
 	"popups-redirects": "redireiciona a <h3>$1</h3>",
 	"popups-settings-title": "Vista previa de páxina",
 	"popups-settings-description": "Esta ferramienta te permite entever los enllaces a páxines wiki y a referencies.",
@@ -21,5 +21,5 @@
 	"popups-settings-cancel": "Encaboxar",
 	"popups-settings-help": "Puedes volver a activar les vistes previes usando un enllaz del pie de la páxina.",
 	"popups-settings-enable": "Activar vistes previes",
-	"popups-send-feedback": "Unviar opiniones"
+	"popups-send-feedback": "Unviar comentariu (enllaz esternu)"
 }
