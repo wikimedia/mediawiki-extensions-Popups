@@ -9,14 +9,18 @@ module.exports = function ( grunt ) {
 		banana: {
 			all: 'i18n/'
 		},
-		jscs: {
-			src: 'resources/*.js'
-		},
 		jshint: {
 			options: {
 				jshintrc: true
 			},
-			all: [ 'resources/*.js'	]
+			all: [
+				'*.js',
+				'**/*.js',
+				'!node_modules/**'
+			]
+		},
+		jscs: {
+			src: '<%= jshint.all %>'
 		},
 		jsonlint: {
 			all: [
