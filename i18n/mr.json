@@ -13,5 +13,6 @@
 	"popups-settings-option-simple-description": "पानाचे अग्र-वाक्य (लिड सेंटेन्स) व झलक-चित्र बघा.वाचकांसाठी याची शिफारस करण्यात येते.",
 	"popups-settings-option-off": "झलक अक्षम करा",
 	"popups-settings-option-off-description": "या पानाच्या तळाशी असलेला दुवा वापरुन आपण याची मांडणी बदलु शकता.",
-	"popups-settings-help": "आपण पानाच्या तळाशी असलेला दुवा वापरुन,झलक दिसणे परत सुरु करु शकता."
+	"popups-settings-help": "आपण पानाच्या तळाशी असलेला दुवा वापरुन,झलक दिसणे परत सुरु करु शकता.",
+	"popups-settings-enable": "झकल सक्षम करा"
 }
