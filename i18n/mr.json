@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"V.narsikar",
-			"संतोष दहिवळ"
+			"संतोष दहिवळ",
+			"अभय नातू"
 		]
 	},
 	"popups-message": "उचकण्या (पॉप-अप्स)",
@@ -14,5 +15,5 @@
 	"popups-settings-option-off": "झलक अक्षम करा",
 	"popups-settings-option-off-description": "या पानाच्या तळाशी असलेला दुवा वापरुन आपण याची मांडणी बदलु शकता.",
 	"popups-settings-help": "आपण पानाच्या तळाशी असलेला दुवा वापरुन,झलक दिसणे परत सुरु करु शकता.",
-	"popups-settings-enable": "झकल सक्षम करा"
+	"popups-settings-enable": "झलक पाहण्याची सोय करा"
 }
