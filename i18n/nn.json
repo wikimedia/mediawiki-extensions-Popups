@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Njardarlogar"
+		]
+	},
+	"popups-message": "Svevesamandrag",
+	"popups-last-edited": "Endra $1",
+	"popups-redirects": "omdirigerer til <h3>$1</h3>",
+	"popups-settings-title": "Sideførehandsvising",
+	"popups-settings-description": "Verktøyet lèt deg førehandsvisa lenkjer til wikisider og til referansar.",
+	"popups-settings-option-simple": "Enkelt",
+	"popups-settings-option-simple-description": "Sjå byrjinga på sida og eit førehandsivisingsbilete. Dette er tilrådd for lesarar.",
+	"popups-settings-option-advanced": "Avansert",
+	"popups-settings-option-off": "Slå av førehandsvising",
+	"popups-settings-save": "Lagra",
+	"popups-settings-help-ok": "Greitt",
+	"popups-settings-cancel": "Avbryt",
+	"popups-settings-enable": "Slå på førehandsvising"
+}
