@@ -4,13 +4,14 @@
 			"Armin1392",
 			"Ebraminio",
 			"Alirezaaa",
-			"Reza1615"
+			"Reza1615",
+			"Huji"
 		]
 	},
 	"popups-message": "کارت‌های معلق",
 	"popups-desc": "نمایش کارت‌های معلق با خلاصهٔ محتویات صفحه هنگامی که کاربر موشواره را بر پیوند یک صفحه نگه می‌دارد.",
 	"popups-last-edited": "آخرین ویرایش در $1",
-	"popups-redirects": "تغییر مسیر به <h3>$1</h3>",
+	"popups-redirects": "تغییرمسیر به <h3>$1</h3>",
 	"popups-settings-title": "صفحه پیش‌نمایش",
 	"popups-settings-option-simple": "ساده",
 	"popups-settings-option-simple-description": "جمله رهبر یک صفحه و پیش‌نمایش تصویر را ببینید. این پیشنهاد برای خوانندگان است",
