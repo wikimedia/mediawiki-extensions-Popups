@@ -50,7 +50,7 @@
 
 		mw.popups.render.currentRequest = mw.popups.api.get( {
 			action: 'query',
-			prop: 'extracts|pageimages|revisions',
+			prop: 'info|extracts|pageimages|revisions',
 			formatversion: 2,
 			redirects: true,
 			exintro: true,
@@ -106,7 +106,11 @@
 	article.createPopup = function ( page, href ) {
 		var $div,
 			$contentbox = $( '<a>' )
-				.attr( 'href', href )
+				.attr( {
+					href: href,
+					lang: page.pagelanguagehtmlcode,
+					dir: page.pagelanguagedir
+				} )
 				.addClass( 'mwe-popups-extract' )
 				.append(
 					article.getProcessedElements( page.extract, page.title )
