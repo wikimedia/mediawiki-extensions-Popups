@@ -24,9 +24,6 @@
 		"ResourceLoaderTestModules": [
 			"PopupsHooks::onResourceLoaderTestModules"
 		],
-		"EventLoggingRegisterSchemas": [
-			"PopupsHooks::onEventLoggingRegisterSchemas"
-		],
 		"ResourceLoaderRegisterModules": [
 			"PopupsHooks::onResourceLoaderRegisterModules"
 		],
@@ -38,6 +35,9 @@
 		"Popups": [
 			"i18n"
 		]
+	},
+	"EventLoggingSchemas": {
+		"Popups": 11625443
 	},
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",

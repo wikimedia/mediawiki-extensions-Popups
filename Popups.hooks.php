@@ -55,13 +55,6 @@ class PopupsHooks {
 	}
 
 	/**
-	 * @param array $schemas
-	 */
-	public static function onEventLoggingRegisterSchemas( array &$schemas ) {
-		$schemas['Popups'] = 11625443;
-	}
-
-	/**
 	 * @param ResourceLoader $rl
 	 * @return bool
 	 */
