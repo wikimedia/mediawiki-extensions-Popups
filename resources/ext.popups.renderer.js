@@ -236,6 +236,7 @@
 			'mwe-popups-fade-out-up';
 
 		mw.popups.$popup
+			.off( 'mouseleave', mw.popups.render.leaveActive )
 			.removeClass( fadeInClass )
 			.addClass( fadeOutClass );
 
