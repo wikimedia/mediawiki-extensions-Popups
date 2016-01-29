@@ -19,5 +19,8 @@
 	"popups-settings-cancel": "Cancel",
 	"popups-settings-help": "You can turn previews back on using a link in the footer of the page.",
 	"popups-settings-enable": "Enable previews",
-	"popups-send-feedback": "Send Feedback (external link)"
+	"popups-send-feedback": "Send Feedback (external link)",
+	"popups-mobile-continue-to-page": "Continue to page",
+	"popups-mobile-dismiss": "Dismiss",
+	"popups-mobile-message": "Hovercards (mobile)"
 }

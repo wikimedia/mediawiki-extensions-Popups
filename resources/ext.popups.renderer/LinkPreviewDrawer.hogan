@@ -1,0 +1,6 @@
+<div class="linkpreview">
+	<div class="linkpreview-title"></div>
+	<div class="linkpreview-content"></div>
+	<div class="linkpreview-actions">{{#dismissButton}}{{>Button}}{{/dismissButton}}{{#continueButton}}{{>Button}}{{/continueButton}}</div>
+</div>
+{{{spinner}}}
