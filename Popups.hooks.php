@@ -60,15 +60,10 @@ class PopupsHooks {
 	 */
 	public static function onResourceLoaderRegisterModules( ResourceLoader $rl ) {
 		$moduleDependencies = array(
-			'mediawiki.api',
-			'mediawiki.RegExp',
-			'mediawiki.Title',
 			'mediawiki.jqueryMsg',
-			'mediawiki.Uri',
 			'moment',
-			'jquery.jStorage',
-			'jquery.client',
 			'jquery.hidpi',
+			'ext.popups.targets.desktopTarget',
 		);
 
 		// If EventLogging is present, add the schema as a dependency.
@@ -76,11 +71,9 @@ class PopupsHooks {
 			$moduleDependencies[] = "schema.Popups";
 		}
 
-		$rl->register( "ext.popups", array(
+		$rl->register( "ext.popups.desktop", array(
 			'scripts' => array(
-				'resources/ext.popups.core.js',
 				'resources/ext.popups.logger.js',
-				'resources/ext.popups.renderer.js',
 				'resources/ext.popups.renderer.article.js',
 				'resources/ext.popups.disablenavpop.js',
 				'resources/ext.popups.settings.js',
@@ -138,7 +131,7 @@ class PopupsHooks {
 			}
 		}
 
-		$out->addModules( array( 'ext.popups', 'schema.Popups' ) );
+		$out->addModules( array( 'ext.popups.desktop' ) );
 
 		return true;
 	}
@@ -154,7 +147,7 @@ class PopupsHooks {
 				'tests/qunit/ext.popups.renderer.article.test.js',
 				'tests/qunit/ext.popups.core.test.js',
 			),
-			'dependencies' => array( 'ext.popups' ),
+			'dependencies' => array( 'ext.popups.desktop' ),
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'Popups',
 		);

@@ -44,5 +44,46 @@
 		"PopupsBetaFeature": false,
 		"PopupsSurveyLink": false
 	},
+	"ResourceModules": {
+		"ext.popups.core": {
+			"scripts": [
+				"resources/ext.popups.core.js"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.Title",
+				"mediawiki.Uri",
+				"mediawiki.RegExp"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.popups.targets.desktopTarget": {
+			"scripts": [
+				"resources/ext.popups.targets/desktopTarget.js"
+			],
+			"dependencies": [
+				"jquery.jStorage",
+				"jquery.client",
+				"ext.popups.core",
+				"ext.popups.renderer.desktopRenderer"
+			],
+			"targets": [ "desktop" ]
+		},
+		"ext.popups.renderer.desktopRenderer": {
+			"scripts": [
+				"resources/ext.popups.renderer/desktopRenderer.js"
+			],
+			"dependencies": [
+				"ext.popups.core"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Popups"
+	},
 	"manifest_version": 1
 }
