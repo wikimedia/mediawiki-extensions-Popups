@@ -13,6 +13,7 @@
 	"popups-settings-option-simple-description": "Sjå byrjinga på sida og eit førehandsivisingsbilete. Dette er tilrådd for lesarar.",
 	"popups-settings-option-advanced": "Avansert",
 	"popups-settings-option-off": "Slå av førehandsvising",
+	"popups-settings-option-off-description": "Du kan endra denne innstillinga ved å nytta lenkja i botnen av sida.",
 	"popups-settings-save": "Lagra",
 	"popups-settings-help-ok": "Greitt",
 	"popups-settings-cancel": "Avbryt",
