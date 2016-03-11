@@ -1,0 +1,52 @@
+@import "minerva.variables";
+
+.drawer.linkpreview {
+	position: fixed;
+	background-color: white;
+	text-align: left;
+	padding: 0 15px 20px;
+
+	&.loading {
+		padding: 10px;
+	}
+}
+
+.linkpreview-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: @z-indexOverlay;
+	background-color: rgba(0,0,0,0.1);
+	background-attachment: fixed;
+}
+
+.linkpreview-title {
+	font-family: Georgia;
+	font-size: 22px;
+	margin-top: 20px;
+	line-height: 1;
+}
+
+.linkpreview-content {
+	font-size: 15px;
+	margin-top: 20px;
+}
+
+.linkpreview-actions {
+	margin-top: 20px;
+	text-align: right;
+
+	a {
+		margin-bottom: 0 !important;
+		margin-top: 0;
+	}
+}
+
+@media all and (min-width: @deviceWidthTablet) {
+	.drawer.linkpreview {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}

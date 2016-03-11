@@ -24,5 +24,8 @@
 	"popups-settings-cancel": "Cancel button for the setting's dialog\n{{Identical|Cancel}}",
 	"popups-settings-help": "Help text explaining how to re-enable previews",
 	"popups-settings-enable": "Link on the footer to enable hovercards if its disabled.\n\nSee also:\n* {{msg-mw|Popups-settings-option-off}}",
-	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard. Should mention that its an external link.\n{{Identical|Send feedback}}"
+	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard. Should mention that its an external link.\n{{Identical|Send feedback}}",
+	"popups-mobile-continue-to-page": "Button label visible in the link preview drawer. When clicked, the brwoser redirects to the target page.",
+	"popups-mobile-dismiss": "Label of button that dismisses the link preview overlay.",
+	"popups-mobile-message": "Name shown in user preference for the mobile hovercards feature of this extension"
 }

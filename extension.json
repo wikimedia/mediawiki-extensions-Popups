@@ -29,6 +29,9 @@
 		],
 		"ResourceLoaderGetConfigVars": [
 			"PopupsHooks::onResourceLoaderGetConfigVars"
+		],
+		"BeforePageDisplayMobile": [
+			"PopupsHooks::onBeforePageDisplayMobile"
 		]
 	},
 	"MessagesDirs": {
@@ -42,7 +45,11 @@
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
 		"PopupsBetaFeature": false,
-		"PopupsSurveyLink": false
+		"PopupsSurveyLink": false,
+		"EnablePopupsMobile": false
+	},
+	"DefaultUserOptions": {
+		"popupsmobile": "1"
 	},
 	"ResourceModules": {
 		"ext.popups.core": {
@@ -58,6 +65,9 @@
 			"targets": [
 				"desktop",
 				"mobile"
+			],
+			"styles": [
+				"resources/ext.popups.core.less"
 			]
 		},
 		"ext.popups.targets.desktopTarget": {

@@ -23,6 +23,7 @@
 		"mediaWiki",
 		"jQuery",
 		"moment",
-		"QUnit"
+		"QUnit",
+		"OO"
 	]
 }
