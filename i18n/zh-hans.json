@@ -23,5 +23,8 @@
 	"popups-settings-cancel": "取消",
 	"popups-settings-help": "您可以使用页面页脚中的链接让预览回来。",
 	"popups-settings-enable": "启用预览",
-	"popups-send-feedback": "发送反馈"
+	"popups-send-feedback": "发送反馈",
+	"popups-mobile-continue-to-page": "继续前往页面",
+	"popups-mobile-dismiss": "关闭",
+	"popups-mobile-message": "悬停卡片（移动）"
 }

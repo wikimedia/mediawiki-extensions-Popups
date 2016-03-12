@@ -21,5 +21,8 @@
 	"popups-settings-cancel": "ביטול",
 	"popups-settings-help": "אפשר להפעיל תצוגה מקדימה שוב באמצעות קישור בתחתית הדף.",
 	"popups-settings-enable": "הפעלת תצוגה מקדימה",
-	"popups-send-feedback": "שליחת משוב (קישור חיצוני)"
+	"popups-send-feedback": "שליחת משוב (קישור חיצוני)",
+	"popups-mobile-continue-to-page": "להמשיך לדף",
+	"popups-mobile-dismiss": "לסגור",
+	"popups-mobile-message": "כרטיסים מרחפים (נייד)"
 }

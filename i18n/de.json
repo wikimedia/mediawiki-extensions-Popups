@@ -25,5 +25,8 @@
 	"popups-settings-cancel": "Abbrechen",
 	"popups-settings-help": "Du kannst Vorschaubilder erneut aktivieren, indem du einen Link im Fußbereich der Seite verwendest.",
 	"popups-settings-enable": "Vorschau aktivieren",
-	"popups-send-feedback": "Rückmeldung senden (externer Link)"
+	"popups-send-feedback": "Rückmeldung senden (externer Link)",
+	"popups-mobile-continue-to-page": "Auf Seite fortfahren",
+	"popups-mobile-dismiss": "Ausblenden",
+	"popups-mobile-message": "Hovercards (mobil)"
 }
