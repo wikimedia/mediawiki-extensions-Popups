@@ -4,7 +4,8 @@
 			"Imperadeiro98",
 			"SandroHc",
 			"Vitorvicentevalente",
-			"Dianakc"
+			"Dianakc",
+			"Diniscoelho"
 		]
 	},
 	"popups-message": "Cartões flutuantes",
@@ -24,5 +25,8 @@
 	"popups-settings-cancel": "Cancelar",
 	"popups-settings-help": "Pode reativar as antevisões ao utilizar a ligação existente no rodapé da página.",
 	"popups-settings-enable": "Ativar antevisão",
-	"popups-send-feedback": "Enviar comentário (ligação externa)"
+	"popups-send-feedback": "Enviar comentário (ligação externa)",
+	"popups-mobile-continue-to-page": "Continuar para a página",
+	"popups-mobile-dismiss": "Ignorar",
+	"popups-mobile-message": "Cartões flutuantes (dispositivos móveis)"
 }

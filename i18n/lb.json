@@ -16,5 +16,8 @@
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Ofbriechen",
 	"popups-settings-enable": "Kucken ouni ze späicheren aktivéieren",
-	"popups-send-feedback": "Feedback schécken (externe Link)"
+	"popups-send-feedback": "Feedback schécken (externe Link)",
+	"popups-mobile-continue-to-page": "Virun op d'Säit",
+	"popups-mobile-dismiss": "Verwerfen",
+	"popups-mobile-message": "Hovercards (mobil)"
 }

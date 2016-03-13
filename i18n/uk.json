@@ -25,5 +25,8 @@
 	"popups-settings-cancel": "Скасувати",
 	"popups-settings-help": "Ви можете повернути назад передперегляди з допомогою посилання унизу сторінки.",
 	"popups-settings-enable": "Увімкнути Спливні вікна",
-	"popups-send-feedback": "Надіслати відгук (зовнішнє посилання)"
+	"popups-send-feedback": "Надіслати відгук (зовнішнє посилання)",
+	"popups-mobile-continue-to-page": "Перейти до сторінки",
+	"popups-mobile-dismiss": "Відхилити",
+	"popups-mobile-message": "Спливні вікна (мобільна версія)"
 }

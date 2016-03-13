@@ -6,7 +6,9 @@
 			"VIGNERON",
 			"Benjozork",
 			"Orikrin1998",
-			"Djiboun"
+			"Djiboun",
+			"Cl3m3n7",
+			"Wladek92"
 		]
 	},
 	"popups-message": "Hovercards",
@@ -26,5 +28,8 @@
 	"popups-settings-cancel": "Annuler",
 	"popups-settings-help": "Vous pouvez activer des aperçus sur l'utilisation d'un lien dans le pied de page.",
 	"popups-settings-enable": "Activer les aperçus",
-	"popups-send-feedback": "Envoyer des Commentaires (lien externe)"
+	"popups-send-feedback": "Envoyer des Commentaires (lien externe)",
+	"popups-mobile-continue-to-page": "Continuer à la page",
+	"popups-mobile-dismiss": "Rejeter",
+	"popups-mobile-message": "Aperçu"
 }

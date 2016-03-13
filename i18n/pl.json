@@ -24,5 +24,7 @@
 	"popups-settings-cancel": "Anuluj",
 	"popups-settings-help": "Możesz ponownie włączyć podgląd za pomocą linku znajdującego się w stopce strony.",
 	"popups-settings-enable": "Aktywuj podgląd",
-	"popups-send-feedback": "Wyślij opinię (link zewnętrzny)"
+	"popups-send-feedback": "Wyślij opinię (link zewnętrzny)",
+	"popups-mobile-continue-to-page": "Przejdź do strony",
+	"popups-mobile-dismiss": "Odrzuć"
 }
