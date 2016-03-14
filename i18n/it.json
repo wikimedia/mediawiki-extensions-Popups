@@ -22,5 +22,9 @@
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Annulla",
 	"popups-settings-help": "Puoi riattivare le anteprime utilizzando il collegamento nel fondo della pagina.",
-	"popups-settings-enable": "Attiva anteprime"
+	"popups-settings-enable": "Attiva anteprime",
+	"popups-send-feedback": "Invia parere (collegamento esterno)",
+	"popups-mobile-continue-to-page": "Continua alla pagina",
+	"popups-mobile-dismiss": "Nascondi",
+	"popups-mobile-message": "Popup (mobile)"
 }
