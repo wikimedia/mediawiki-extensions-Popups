@@ -23,5 +23,8 @@
 	"popups-settings-cancel": "Storno",
 	"popups-settings-help": "Náhledy můžete opět zapnout pomocí odkazu v patičce stránky.",
 	"popups-settings-enable": "Zapnout náhledy",
-	"popups-send-feedback": "Poslat názor (externí odkaz)"
+	"popups-send-feedback": "Poslat názor (externí odkaz)",
+	"popups-mobile-continue-to-page": "Pokračovat na stránku",
+	"popups-mobile-dismiss": "Zavřít",
+	"popups-mobile-message": "Vyskakovací kartičky (mobilní)"
 }

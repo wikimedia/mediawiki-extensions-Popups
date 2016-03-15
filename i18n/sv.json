@@ -22,5 +22,6 @@
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-enable": "Aktivera förhandsgranskning",
-	"popups-send-feedback": "Skicka återkoppling (extern länk)"
+	"popups-send-feedback": "Skicka återkoppling (extern länk)",
+	"popups-mobile-continue-to-page": "Fortsätt till sidan"
 }
