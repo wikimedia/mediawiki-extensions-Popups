@@ -4,7 +4,8 @@
 			"Shirayuki",
 			"Whym",
 			"赤城。",
-			"Sujiniku"
+			"Sujiniku",
+			"Otokoume"
 		]
 	},
 	"popups-message": "ホバーカード",
@@ -13,5 +14,6 @@
 	"popups-settings-title": "ページのプレビュー",
 	"popups-settings-option-off": "プレビューを無効にする",
 	"popups-settings-enable": "プレビューを有効にする",
-	"popups-send-feedback": "フィードバックを送信(外部リンク)"
+	"popups-send-feedback": "フィードバックを送信(外部リンク)",
+	"popups-mobile-dismiss": "非表示"
 }
