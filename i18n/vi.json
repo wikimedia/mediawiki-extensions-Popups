@@ -23,5 +23,8 @@
 	"popups-settings-cancel": "Hủy bỏ",
 	"popups-settings-help": "Bạn có thể trở lại phần xem-trước về cách sử dụng một liên kết trong chân trang của trang.",
 	"popups-settings-enable": "Bật phiếu tóm tắt",
-	"popups-send-feedback": "Để lại phần hồi (liên kết ngoài)"
+	"popups-send-feedback": "Để lại phần hồi (liên kết ngoài)",
+	"popups-mobile-continue-to-page": "Đi tiếp đến trang",
+	"popups-mobile-dismiss": "Bỏ qua",
+	"popups-mobile-message": "Phiếu tóm tắt (di động)"
 }
