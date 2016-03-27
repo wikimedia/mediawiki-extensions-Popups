@@ -21,5 +21,7 @@
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-help": "Du kan skru på igjen forhåndsvisning ved å bruke lenken i sidens bunntekst.",
 	"popups-settings-enable": "Skru på forhåndsvisning",
-	"popups-send-feedback": "Gi tilbakemelding (ekstern lenke)"
+	"popups-send-feedback": "Gi tilbakemelding (ekstern lenke)",
+	"popups-mobile-continue-to-page": "Fortsett til side",
+	"popups-mobile-dismiss": "Lukk"
 }
