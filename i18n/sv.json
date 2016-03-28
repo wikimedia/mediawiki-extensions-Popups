@@ -23,5 +23,6 @@
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-enable": "Aktivera förhandsgranskning",
 	"popups-send-feedback": "Skicka återkoppling (extern länk)",
-	"popups-mobile-continue-to-page": "Fortsätt till sidan"
+	"popups-mobile-continue-to-page": "Fortsätt till sidan",
+	"popups-mobile-dismiss": "Stäng"
 }
