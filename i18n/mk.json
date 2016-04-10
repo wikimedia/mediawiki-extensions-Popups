@@ -21,5 +21,8 @@
 	"popups-settings-cancel": "Откажи",
 	"popups-settings-help": "Можете повторно да ги вклучите прегледите преку врска во подножјето на страницата.",
 	"popups-settings-enable": "Овозможи прегледи",
-	"popups-send-feedback": "Испрати мислење (надворешна врска)"
+	"popups-send-feedback": "Испрати мислење (надворешна врска)",
+	"popups-mobile-continue-to-page": "Продолжи кон страницата",
+	"popups-mobile-dismiss": "Тргни",
+	"popups-mobile-message": "Инфопрозорчиња (мобилно)"
 }

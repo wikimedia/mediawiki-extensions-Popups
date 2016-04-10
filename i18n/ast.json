@@ -21,5 +21,8 @@
 	"popups-settings-cancel": "Encaboxar",
 	"popups-settings-help": "Puedes volver a activar les vistes previes usando un enllaz del pie de la páxina.",
 	"popups-settings-enable": "Activar vistes previes",
-	"popups-send-feedback": "Unviar comentariu (enllaz esternu)"
+	"popups-send-feedback": "Unviar comentariu (enllaz esternu)",
+	"popups-mobile-continue-to-page": "Siguir a la páxina",
+	"popups-mobile-dismiss": "Descartar",
+	"popups-mobile-message": "Tarxetes emerxentes (móvil)"
 }
