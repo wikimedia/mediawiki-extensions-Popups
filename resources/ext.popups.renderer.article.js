@@ -65,6 +65,10 @@
 			smaxage: 300,
 			maxage: 300,
 			uselang: 'content'
+		}, {
+			headers: {
+				'X-Analytics': 'preview=1'
+			}
 		} );
 
 		mw.popups.render.currentRequest.fail( deferred.reject );

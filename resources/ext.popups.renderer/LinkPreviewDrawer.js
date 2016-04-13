@@ -149,6 +149,10 @@
 					exintro: true,
 					exchars: 140,
 					formatversion: 2
+				}, {
+					headers: {
+						'X-Analytics': 'preview=1'
+					}
 				} ).done( function ( result ) {
 					var data;
 
