@@ -3,7 +3,7 @@
 	QUnit.module( 'ext.popups.renderer.renderers.article', QUnit.newMwEnvironment() );
 
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
-		QUnit.expect( 13 );
+		QUnit.expect( 14 );
 
 		function test( extract, title, expected, msg ) {
 			var $div = $( '<div>' ).append(
@@ -88,6 +88,12 @@
 			'*Testing if Things are correctly identified', 'Things',
 			'*Testing if <b>Things</b> are correctly identified',
 			'Article that begins with asterisk'
+		);
+
+		test(
+			'Testing if repeated words are not matched when repeated', 'Repeated',
+			'Testing if <b>repeated</b> words are not matched when repeated',
+			'Repeated title'
 		);
 
 	} );
