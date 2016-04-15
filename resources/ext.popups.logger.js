@@ -17,6 +17,7 @@
 	 *
 	 * @method getAction
 	 * @param {Object} event
+	 * @return {string}
 	 */
 	logger.getAction = function ( event ) {
 		if ( event.which === 2 ) { // middle click
@@ -51,6 +52,7 @@
 		// Get duration from  time
 		if ( $.isNumeric( event.time ) ) {
 			event.duration = Math.floor( mw.now() - event.time );
+			// FIXME: the time property should not be sent to the back-end regardless of its value.
 			delete event.time;
 		}
 
