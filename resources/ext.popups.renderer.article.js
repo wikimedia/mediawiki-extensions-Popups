@@ -186,13 +186,13 @@
 	article.getProcessedElements = function ( extract, title ) {
 		var elements = [],
 			escapedTitle = mw.RegExp.escape( title ), // Escape RegExp elements
-			regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'ig' ),
+			regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'i' ),
 			boldIdentifier = '<bi-' + Math.random() + '>',
 			snip = '<snip-' + Math.random() + '>';
 
 		// Remove text in parentheses along with the parentheses
 		extract = article.removeParensFromText( extract );
-		extract = extract.replace( /\s+/g, ' ' ); // Remove extra white spaces
+		extract = extract.replace( /\s+/, ' ' ); // Remove extra white spaces
 
 		// Make title bold in the extract text
 		// As the extract is html escaped there can be no such string in it
