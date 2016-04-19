@@ -1,0 +1,7 @@
+=Popups test page=
+
+==Valid links==
+* [[Main Page]]
+
+==Invalid links==
+# blah
