@@ -5,6 +5,7 @@ Feature: Popups core
       And I am logged in
       And HoverCards is enabled as a beta feature
       And I am on the "Popups test page" page
+      And the Hovercards JavaScript module has loaded
 
   Scenario: Hover card is visible on mouse over
     And I hover over the first valid link
