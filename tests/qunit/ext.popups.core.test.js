@@ -129,4 +129,36 @@
 		mw.popups.$content = $originalContent;
 	} );
 
+	QUnit.test( 'setupTriggers', function ( assert ) {
+		var $link = $( '<a>', {
+				text: 'Popups',
+				title: 'Popups',
+				href: '#'
+			} ).appendTo( 'body' ),
+			originalScrolled = mw.popups.scrolled,
+			renderSpy = this.sandbox.stub( mw.popups.render, 'render', $.noop ),
+			$renderedElement;
+
+		assert.expect( 1 );
+
+		mw.popups.setupTriggers( $link );
+
+		mw.popups.scrolled = false;
+		$link.trigger( 'mouseenter' );
+
+		$renderedElement = renderSpy.firstCall.args[ 0 ];
+
+		assert.strictEqual(
+			// Compare the underlying element rather than (likely) differing instances of the jQuery
+			// class.
+			$renderedElement.get( 0 ),
+			$link.get( 0 ),
+			'When the "mouseenter" event fires then the underlying element is passed to the renderer.'
+		);
+
+		// Restore original state.
+		mw.popups.scrolled = originalScrolled;
+		$link.remove();
+	} );
+
 } )( jQuery, mediaWiki );
