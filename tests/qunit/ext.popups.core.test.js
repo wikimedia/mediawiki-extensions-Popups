@@ -106,6 +106,13 @@
 			title: 'link title'
 		} ).appendTo( mw.popups.$content );
 
+		// Add a link that's not in a content namespace.
+		$( '<a>', {
+			text: 'link with tooltip',
+			title: 'foo.jpg',
+			href: '/wiki/File:foo.jpg'
+		} ).appendTo( mw.popups.$content );
+
 		// add a link that will have a hover card
 		$( '<a>', {
 			text: 'link with tooltip',
