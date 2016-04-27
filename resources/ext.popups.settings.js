@@ -71,7 +71,7 @@
 		$saveButton.click( settings.save );
 		$okayButton.click( function () {
 			settings.close();
-			location.reload();
+			settings.reloadPage();
 		} );
 
 		$radioGroup.append( settings.renderOption( 'simple', options.simple, true ) );
@@ -139,7 +139,7 @@
 		var v =  $( 'input[name=mwe-popups-setting]:checked', '#mwe-popups-settings' ).val();
 		if ( v === 'simple' ) {
 			$.jStorage.set( 'mwe-popups-enabled', 'true' );
-			location.reload();
+			settings.reloadPage();
 			settings.close();
 		} else {
 			$.jStorage.set( 'mwe-popups-enabled', 'false' );
@@ -173,7 +173,7 @@
 	};
 
 	/**
-	 * Close the setting dialoag and remove the overlay.
+	 * Close the setting dialog and remove the overlay.
 	 * If the close button is clicked on the help dialog
 	 * save the setting and reload the page.
 	 *
@@ -181,7 +181,7 @@
 	 */
 	settings.close = function () {
 		if ( $( '#mwe-popups-settings-help' ).is( ':visible' ) ) {
-			location.reload();
+			settings.reloadPage();
 		} else {
 			$( '.mwe-popups-overlay' ).remove();
 			settings.$element.hide();
@@ -216,6 +216,16 @@
 			$footer = $( '#footer li' ).parent();
 		}
 		$footer.append( $setting );
+	};
+
+	/**
+	 * Wrapper around window.location.reload. Exposed for testing purposes only.
+	 *
+	 * @private
+	 * @ignore
+	 */
+	settings.reloadPage = function () {
+		location.reload();
 	};
 
 	$( function () {
