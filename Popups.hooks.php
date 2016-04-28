@@ -92,6 +92,7 @@ class PopupsHooks {
 			),
 			'templates' => array(
 				'popup.mustache' => 'resources/popup.mustache',
+				'settings.mustache' => 'resources/settings.mustache',
 			),
 			'styles' => array(
 				'resources/ext.popups.animation.less',

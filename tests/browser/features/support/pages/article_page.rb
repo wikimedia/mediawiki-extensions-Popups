@@ -10,7 +10,7 @@ class ArticlePage
   div(:hovercard, css: '.mwe-popups')
   a(:settings_icon, css: '.mwe-popups-settings-icon')
   radio(:enable_previews_radio, id: 'mwe-popups-settings-simple')
-  radio(:disable_previews_radio, id: 'mwe-popups-settings-disable_previews')
+  radio(:disable_previews_radio, id: 'mwe-popups-settings-off')
   button(:cancel_settings_button, css: '#mwe-popups-settings-form button', index: 0)
   button(:save_settings_button, css: '#mwe-popups-settings-form button', index: 1)
   button(:settings_help_ok_button, css: '#mwe-popups-settings-help button', index: 0)
