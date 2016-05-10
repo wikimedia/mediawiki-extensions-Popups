@@ -2,6 +2,11 @@
 
 	QUnit.module( 'ext.popups.renderer.renderers.article', QUnit.newMwEnvironment() );
 
+	QUnit.test( 'render.article.createImgThumbnail', 1, function ( assert ) {
+		var $container = mw.popups.render.renderers.article.createImgThumbnail( 'foo', '/w/test "123"(bar).gif' );
+		assert.equal( $container.css( 'background-image' ), 'url("/w/test \\"123\\"(bar).gif")' );
+	} );
+
 	QUnit.test( 'render.article.getProcessedElements', function ( assert ) {
 		QUnit.expect( 14 );
 
