@@ -45,6 +45,7 @@
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
 		"PopupsBetaFeature": false,
+		"@PopupsSurveyLink": "@var bool|string: When defined a link will be rendered at the bottom of the popup for the user to provide feedback. Be warned there is no validation of this string so care must be taken to protect against tab-napping and urls prefixed with `javascript:`",
 		"PopupsSurveyLink": false,
 		"EnablePopupsMobile": false
 	},
