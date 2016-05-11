@@ -408,7 +408,7 @@
 	article.createImgThumbnail = function ( className, url ) {
 		return $( '<div>' )
 			.addClass( className )
-			.css( 'background-image', 'url(' + url + ')' );
+			.css( 'background-image', 'url("' + url.replace( /"/g, '\\"' ) + '")' );
 	};
 
 	/**
