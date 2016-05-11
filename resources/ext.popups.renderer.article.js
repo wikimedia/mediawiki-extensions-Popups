@@ -136,7 +136,6 @@
 				'mwe-popups-timestamp-recent' :
 				'mwe-popups-timestamp-older',
 			$settingsImage = $( '<a>' ).addClass( 'mwe-popups-icon mwe-popups-settings-icon' ),
-			$surveyImage,
 			$footer = $( '<footer>' )
 				.append(
 					$( '<span>' )
@@ -147,19 +146,7 @@
 				);
 
 		if ( article.surveyLink ) {
-			$surveyImage = $( '<a>' )
-				.attr( 'href', article.surveyLink )
-				.attr( 'target', '_blank' )
-				.attr( 'title', mw.message( 'popups-send-feedback' ) )
-
-				// Don't leak referrer information to the site hosting the survey. N.B. that
-				// `rel=noreferrer` implies `rel=noopener`. See
-				// https://html.spec.whatwg.org/multipage/semantics.html#link-type-noreferrer for more
-				// information.
-				.attr( 'rel', 'noreferrer' )
-
-				.addClass( 'mwe-popups-icon mwe-popups-survey-icon' );
-			$footer.append( $surveyImage );
+			$footer.append( article.createSurveyLink( article.surveyLink ) );
 		}
 
 		// createThumbnail returns an empty <span> if there is no thumbnail
@@ -181,6 +168,32 @@
 		};
 
 		return $div;
+	};
+
+	/**
+	 * Creates a link to a survey, possibly hosted on an external site.
+	 *
+	 * @param {string} url
+	 * @return {jQuery}
+	 */
+	article.createSurveyLink = function ( url ) {
+		if ( !/https?:\/\//.test( url ) ) {
+			throw new Error(
+				'The survey link URL, i.e. PopupsSurveyLink, must start with https or http.'
+			);
+		}
+
+		return $( '<a>' )
+			.attr( 'href', url )
+			.attr( 'target', '_blank' )
+			.attr( 'title', mw.message( 'popups-send-feedback' ) )
+
+			// Don't leak referrer information or `window.opener` to the survey hosting site. See
+			// https://html.spec.whatwg.org/multipage/semantics.html#link-type-noreferrer for more
+			// information.
+			.attr( 'rel', 'noreferrer' )
+
+			.addClass( 'mwe-popups-icon mwe-popups-survey-icon' );
 	};
 
 	/**
