@@ -151,6 +151,13 @@
 				.attr( 'href', article.surveyLink )
 				.attr( 'target', '_blank' )
 				.attr( 'title', mw.message( 'popups-send-feedback' ) )
+
+				// Don't leak referrer information to the site hosting the survey. N.B. that
+				// `rel=noreferrer` implies `rel=noopener`. See
+				// https://html.spec.whatwg.org/multipage/semantics.html#link-type-noreferrer for more
+				// information.
+				.attr( 'rel', 'noreferrer' )
+
 				.addClass( 'mwe-popups-icon mwe-popups-survey-icon' );
 			$footer.append( $surveyImage );
 		}
