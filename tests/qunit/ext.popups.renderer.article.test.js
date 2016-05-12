@@ -1,6 +1,22 @@
 ( function ( $, mw ) {
 
-	QUnit.module( 'ext.popups.renderer.renderers.article', QUnit.newMwEnvironment() );
+	QUnit.module( 'ext.popups.renderer.renderers.article', {
+		setup: function () {
+			mw.popups.render.cache[ '/wiki/Kittens' ] = {};
+			this.pageInfo = {
+				thumbnail: {
+					source: 'http://commons.wikimedia.org/kittypic.svg',
+					width: 100,
+					height: 300
+				},
+				revisions: [ { timestamp: '20160403020100' } ],
+				extract: 'Cute.',
+				title: 'Kittens',
+				pagelanguagehtmlcode: 'en',
+				pagelanguagedir: 'ltr'
+			};
+		}
+	} );
 
 	QUnit.test( 'render.article.createImgThumbnail', 1, function ( assert ) {
 		var $container = mw.popups.render.renderers.article.createImgThumbnail( 'foo', '/w/test "123"(bar).gif' );
@@ -161,6 +177,25 @@
 			},
 			new Error( 'The survey link URL, i.e. PopupsSurveyLink, must start with https or http.' )
 		);
+	} );
+
+	QUnit.test( 'render.article.createPopup', function ( assert ) {
+		var $popup, $thumbLink, $extractLink, cache;
+
+		QUnit.expect( 6 );
+		$popup = mw.popups.render.renderers.article.createPopup( this.pageInfo, '/wiki/Kittens' );
+		$thumbLink = $popup.find( 'a' ).eq( 0 );
+		$extractLink = $popup.find( 'a' ).eq( 1 );
+
+		assert.ok( $thumbLink.hasClass( 'mwe-popups-discreet' ) );
+		assert.strictEqual( $thumbLink.attr( 'href' ), '/wiki/Kittens' );
+		assert.strictEqual( $extractLink.text(), 'Cute.', 'Text extract present.' );
+		cache = mw.popups.render.cache[ '/wiki/Kittens' ];
+		assert.strictEqual( cache.settings.title, 'Kittens' );
+		assert.strictEqual( cache.settings.tall, true,
+			'height is greater than width so marked as tall.' );
+		assert.strictEqual( cache.settings.thumbnail, this.pageInfo.thumbnail,
+			'thumbnail information got cached' );
 	} );
 
 } )( jQuery, mediaWiki );
