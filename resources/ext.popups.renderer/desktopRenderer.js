@@ -185,16 +185,13 @@
 		cache.process( link );
 
 		// Event logging
-		if ( mw.popups.logger ) {
-			mw.popups.render.logEvent = {
-				pageTitleHover: cache.settings.title,
-				pageTitleSource: mw.config.get( 'wgTitle' ),
-				popupEnabled: mw.popups.enabled,
-				time: mw.now(),
-				action: 'dismissed'
-			};
-			mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.render.clickHandler );
-		}
+		mw.popups.logData = {
+			pageTitleHover: cache.settings.title,
+			pageTitleSource: mw.config.get( 'wgTitle' ),
+			popupEnabled: mw.popups.enabled,
+			time: mw.now()
+		};
+		mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.render.clickHandler );
 
 		link
 			.off( 'mouseleave blur', mw.popups.render.leaveInactive )
@@ -210,12 +207,16 @@
 	 * @param {Object} event
 	 */
 	mw.popups.render.clickHandler = function ( event ) {
-		mw.popups.render.logEvent.action = mw.popups.logger.getAction( event );
-		if ( mw.popups.render.logEvent.action === 'opened in same tab' ) {
-			event.preventDefault();
-			mw.popups.logger.log( mw.popups.render.logEvent ).then( function () {
-				window.location.href = mw.popups.render.currentLink.attr( 'href' );
+		var action = mw.popups.getAction( event ),
+			logData;
+
+		if ( action === 'opened in same tab' ) {
+			logData = $.extend( {}, mw.popups.logData, {
+				action: action
 			} );
+			computeDurationFromTime( logData );
+			mw.track( 'ext.popups.schemaPopups', logData );
+			window.location.href = mw.popups.render.currentLink.attr( 'href' );
 		}
 	};
 
@@ -226,16 +227,18 @@
 	 * @method closePopup
 	 */
 	mw.popups.render.closePopup = function () {
-		var fadeInClass, fadeOutClass;
+		var fadeInClass, fadeOutClass,
+			logData = $.extend( {}, mw.popups.logData, {
+				action: 'dismissed'
+			} );
 
 		if ( mw.popups.render.currentLink === undefined ) {
 			return false;
 		}
 
 		// Event logging
-		if ( mw.popups.logger ) {
-			mw.popups.logger.log( mw.popups.render.logEvent );
-		}
+		computeDurationFromTime( logData );
+		mw.track( 'ext.popups.schemaPopups', logData );
 
 		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
 
@@ -346,5 +349,17 @@
 		mw.popups.render.openTimer = undefined;
 		mw.popups.render.closeTimer = undefined;
 	};
+
+	/**
+	 * Utility function that computes duration from time.
+	 * Modifies the data so that it can be logged with EL.
+	 *
+	 * @ignore
+	 * @param {Object} data
+	 */
+	function computeDurationFromTime( data ) {
+		data.duration = Math.floor( mw.now() - data.time );
+		delete data.time;
+	}
 
 } )( jQuery, mediaWiki );

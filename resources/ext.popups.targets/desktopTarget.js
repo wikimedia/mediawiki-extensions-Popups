@@ -108,28 +108,20 @@
 			// Events are logged even when Hovercards are disabled
 			// See T88166 for details
 			$elements.on( 'click', function ( event ) {
-				var $this, href, action, logEvent, logPromise;
+				var $this = $( this ),
+					action = mw.popups.getAction( event ),
+					href = $this.attr( 'href' );
 
-				if ( mw.popups.logger === undefined ) {
-					return true;
-				}
-
-				$this = $( this );
-				href = $this.attr( 'href' );
-				action = mw.popups.logger.getAction( event );
-				logEvent = {
+				mw.track( 'ext.popups.schemaPopups', {
 					pageTitleHover: $this.attr( 'title' ),
 					pageTitleSource: mw.config.get( 'wgTitle' ),
 					popupEnabled: mw.popups.enabled,
 					action: action
-				};
-				logPromise = mw.popups.logger.log( logEvent );
+				} );
 
 				if ( action  === 'opened in same tab' ) {
 					event.preventDefault();
-					logPromise.then( function () {
-						window.location.href = href;
-					} );
+					window.location.href = href;
 				}
 			} );
 		}

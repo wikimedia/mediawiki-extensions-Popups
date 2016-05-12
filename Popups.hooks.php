@@ -64,14 +64,28 @@ class PopupsHooks {
 			'ext.popups.targets.desktopTarget',
 		);
 
-		// If EventLogging is present, add the schema as a dependency.
-		if ( class_exists( 'ResourceLoaderSchemaModule' ) ) {
-			$moduleDependencies[] = "schema.Popups";
+		// Create a schema module and add it as a dependency of `ext.popups.desktop`.
+		$schemaPopups = [
+			'remoteExtPath' => 'Popups',
+			'localBasePath' => __DIR__,
+			'targets' => [ 'desktop' ],
+		];
+
+		if ( class_exists( 'EventLogging' ) ) {
+			$schemaPopups += [
+				'dependencies' => [
+					'schema.Popups',
+				],
+				'scripts' => [
+					'resources/ext.popups.schemaPopups.js',
+				]
+			];
 		}
+		$rl->register('ext.popups.schemaPopups', $schemaPopups );
+		$moduleDependencies[] = 'ext.popups.schemaPopups';
 
 		$rl->register( "ext.popups.desktop", array(
 			'scripts' => array(
-				'resources/ext.popups.logger.js',
 				'resources/ext.popups.renderer.article.js',
 				'resources/ext.popups.disablenavpop.js',
 				'resources/ext.popups.settings.js',
@@ -206,7 +220,6 @@ class PopupsHooks {
 			'scripts' => array(
 				'tests/qunit/ext.popups.renderer.article.test.js',
 				'tests/qunit/ext.popups.core.test.js',
-				'tests/qunit/ext.popups.logger.test.js',
 				'tests/qunit/ext.popups.settings.test.js',
 			),
 			'dependencies' => array( 'ext.popups.desktop' ),
@@ -222,5 +235,6 @@ class PopupsHooks {
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
 		$conf = ConfigFactory::getDefaultInstance()->makeConfig( 'popups' );
 		$vars['wgPopupsSurveyLink'] = $conf->get( 'PopupsSurveyLink' );
+		$vars['wgPopupsSchemaPopupsSamplingRate'] = $conf->get( 'SchemaPopupsSamplingRate' );
 	}
 }

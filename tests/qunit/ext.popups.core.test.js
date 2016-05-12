@@ -161,4 +161,28 @@
 		$link.remove();
 	} );
 
+	QUnit.test( 'getAction', function ( assert ) {
+		var i, expected, actual,
+			// 0 - main button, 1 - middle button
+			cases = [
+				[ { button: 0 }, 'opened in same tab' ],
+				[ { button: 0, ctrlKey: true }, 'opened in new tab' ],
+				[ { button: 0, metaKey: true }, 'opened in new tab' ],
+				[ { button: 0, ctrlKey: true, shiftKey: true }, 'opened in new tab' ],
+				[ { button: 0, metaKey: true, shiftKey: true }, 'opened in new tab' ],
+				[ { button: 0, ctrlKey: true, metaKey: true, shiftKey: true }, 'opened in new tab' ],
+				[ { button: 0, shiftKey: true }, 'opened in new window' ],
+				[ { button: 1 }, 'opened in new tab' ],
+				[ { button: 1, shiftKey: true }, 'opened in new tab' ]
+			];
+
+		QUnit.expect( cases.length );
+
+		for ( i = 0; i < cases.length; i++ ) {
+			expected = cases[ i ][ 1 ];
+			actual = mw.popups.getAction( new MouseEvent( 'CustomEvent', cases[ i ][ 0 ] ) );
+			assert.equal( actual, expected );
+		}
+	} );
+
 } )( jQuery, mediaWiki );

@@ -140,4 +140,25 @@
 			} );
 	};
 
+	/**
+	 * Get action based on click event
+	 *
+	 * @method getAction
+	 * @param {Object} event
+	 * @return {string}
+	 */
+	mw.popups.getAction = function ( event ) {
+		if ( event.which === 2 ) { // middle click
+			return 'opened in new tab';
+		} else if ( event.which === 1 ) {
+			if ( event.ctrlKey || event.metaKey ) {
+				return 'opened in new tab';
+			} else if ( event.shiftKey ) {
+				return 'opened in new window';
+			} else {
+				return 'opened in same tab';
+			}
+		}
+	};
+
 } )( jQuery, mediaWiki );
