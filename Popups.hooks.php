@@ -76,6 +76,9 @@ class PopupsHooks {
 				'resources/ext.popups.disablenavpop.js',
 				'resources/ext.popups.settings.js',
 			),
+			'templates' => array(
+				'popup.mustache' => 'resources/popup.mustache',
+			),
 			'styles' => array(
 				'resources/ext.popups.animation.less',
 				'resources/ext.popups.settings.less',

@@ -115,51 +115,37 @@
 	 * @return {jQuery}
 	 */
 	article.createPopup = function ( page, href ) {
-		var $div,
-			$contentbox = $( '<a>' )
-				.attr( {
-					href: href,
-					lang: page.pagelanguagehtmlcode,
-					dir: page.pagelanguagedir
-				} )
-				.addClass( 'mwe-popups-extract' )
-				.append(
-					article.getProcessedElements( page.extract, page.title )
-				),
+		var $div, hasThumbnail,
 			thumbnail = page.thumbnail,
 			tall = thumbnail && thumbnail.height > thumbnail.width,
 			$thumbnail = article.createThumbnail( thumbnail, tall ),
 			timestamp = new Date( page.revisions[ 0 ].timestamp ),
 			timediff = new Date() - timestamp,
-			oneDay = 1000 * 60 * 60 * 24,
-			timestampclass = ( timediff < oneDay ) ?
-				'mwe-popups-timestamp-recent' :
-				'mwe-popups-timestamp-older',
-			$settingsImage = $( '<a>' ).addClass( 'mwe-popups-icon mwe-popups-settings-icon' ),
-			$footer = $( '<footer>' )
-				.append(
-					$( '<span>' )
-						.text( mw.message( 'popups-last-edited',
-							moment( timestamp ).fromNow() ).text() )
-						.addClass( timestampclass ),
-					$settingsImage
-				);
-
-		if ( article.surveyLink ) {
-			$footer.append( article.createSurveyLink( article.surveyLink ) );
-		}
+			oneDay = 1000 * 60 * 60 * 24;
 
 		// createThumbnail returns an empty <span> if there is no thumbnail
-		if ( $thumbnail.prop( 'tagName' ) !== 'SPAN' ) {
-			$thumbnail = $( '<a>' )
-				.addClass( 'mwe-popups-discreet' )
-				.attr( 'href', href )
-				.append( $thumbnail );
-		} else {
-			tall = thumbnail = undefined;
-		}
+		hasThumbnail = $thumbnail.prop( 'tagName' ) !== 'SPAN';
 
-		$div = $( '<div>' ).append( $thumbnail, $contentbox, $footer );
+		$div = mw.template.get( 'ext.popups.desktop', 'popup.mustache' ).render( {
+			langcode: page.pagelanguagehtmlcode,
+			langdir: page.pagelanguagedir,
+			href: href,
+			isRecent: timediff < oneDay,
+			lastModified: mw.message( 'popups-last-edited', moment( timestamp ).fromNow() ).text(),
+			hasThumbnail: hasThumbnail
+		} );
+
+		// FIXME: Ideally these things should be added in template. These will be refactored in future patches.
+		if ( !hasThumbnail ) {
+			tall = thumbnail = undefined;
+		} else {
+			$div.find( '.mwe-popups-discreet' ).append( $thumbnail );
+		}
+		$div.find( '.mwe-popups-extract' )
+			.append( article.getProcessedElements( page.extract, page.title ) );
+		if ( article.surveyLink ) {
+			$div.find( 'footer' ).append( article.createSurveyLink( article.surveyLink ) );
+		}
 
 		mw.popups.render.cache[ href ].settings = {
 			title: page.title,
