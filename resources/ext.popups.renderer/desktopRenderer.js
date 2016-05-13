@@ -1,7 +1,8 @@
 /*global popupDelay: true, popupHideDelay: true*/
 
 ( function ( $, mw ) {
-	var logData = {};
+	var closeTimer, openTimer,
+		logData = {};
 
 	/**
 	 * Logs the click on link or popup
@@ -56,28 +57,10 @@
 	mw.popups.render.cache = {};
 
 	/**
-	 * The timer used to delay `closePopups`
-	 * @property {jQuery.Deferred} closeTimer
-	 */
-	mw.popups.render.closeTimer = undefined;
-
-	/**
-	 * The timer used to delay sending the API request/opening the popup form cache
-	 * @property {jQuery.Deferred} openTimer
-	 */
-	mw.popups.render.openTimer = undefined;
-
-	/**
 	 * The link the currently has a popup
 	 * @property {jQuery} currentLink
 	 */
 	mw.popups.render.currentLink = undefined;
-
-	/**
-	 * Current API request
-	 * @property {jQuery.Deferred} currentRequest
-	 */
-	mw.popups.render.currentRequest = undefined;
 
 	/**
 	 * Object to store all renderers
@@ -104,8 +87,8 @@
 			mw.popups.render.currentLink &&
 			mw.popups.render.currentLink[ 0 ] === link[ 0 ]
 		) {
-			if ( mw.popups.render.closeTimer ) {
-				mw.popups.render.closeTimer.abort();
+			if ( closeTimer ) {
+				closeTimer.abort();
 			}
 			return;
 		}
@@ -134,13 +117,13 @@
 		link.off( 'click', logClickAction ).on( 'click', logClickAction );
 
 		if ( mw.popups.render.cache[ link.attr( 'href' ) ] ) {
-			mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY )
+			openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY )
 				.done( function () {
 					mw.popups.render.openPopup( link, event );
 				} );
 		} else {
 			// Wait for timer before making API queries and showing hovercard
-			mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.API_DELAY )
+			openTimer = mw.popups.render.wait( mw.popups.render.API_DELAY )
 				.done( function () {
 					var cachePopup, key,
 						renderers = mw.popups.render.renderers;
@@ -159,9 +142,9 @@
 						cachePopup = mw.popups.render.renderers.article.init( link, $.extend( {}, logData ) );
 					}
 
-					mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY - mw.popups.render.API_DELAY );
+					openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY - mw.popups.render.API_DELAY );
 
-					$.when( mw.popups.render.openTimer, cachePopup ).done( function () {
+					$.when( openTimer, cachePopup ).done( function () {
 						mw.popups.render.openPopup( link, event );
 					} );
 				} );
@@ -195,8 +178,8 @@
 			.attr( 'aria-hidden', 'false' )
 			.on( 'mouseleave', mw.popups.render.leaveActive )
 			.on( 'mouseenter', function () {
-				if ( mw.popups.render.closeTimer ) {
-					mw.popups.render.closeTimer.abort();
+				if ( closeTimer ) {
+					closeTimer.abort();
 				}
 			} );
 
@@ -278,8 +261,8 @@
 			}
 		} );
 
-		if ( mw.popups.render.closeTimer ) {
-			mw.popups.render.closeTimer.abort();
+		if ( closeTimer ) {
+			closeTimer.abort();
 		}
 
 		$( document ).off( 'keydown', mw.popups.render.closeOnEsc );
@@ -330,12 +313,11 @@
 	 * @method leaveActive
 	 */
 	mw.popups.render.leaveActive = function () {
-		mw.popups.render.closeTimer = mw.popups.render.wait( mw.popups.render.POPUP_CLOSE_DELAY ).done( function () {
+		closeTimer = mw.popups.render.wait( mw.popups.render.POPUP_CLOSE_DELAY ).done( function () {
 			mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
 				action: 'dismissed',
 				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
 			} ) );
-
 			mw.popups.render.closePopup();
 		} );
 	};
@@ -357,12 +339,10 @@
 		}
 		// TODO: should `blur` also be here?
 		$( mw.popups.render.currentLink ).off( 'mouseleave', mw.popups.render.leaveInactive );
-		if ( mw.popups.render.openTimer ) {
-			mw.popups.render.openTimer.abort();
+		if ( openTimer ) {
+			openTimer.abort();
 		}
-		if ( mw.popups.render.currentRequest ) {
-			mw.popups.render.currentRequest.abort();
-		}
+		mw.popups.render.abortCurrentRequest();
 
 		mw.popups.render.reset();
 	};
@@ -375,9 +355,9 @@
 	mw.popups.render.reset = function () {
 		logData = {};
 		mw.popups.render.currentLink = undefined;
-		mw.popups.render.currentRequest = undefined;
-		mw.popups.render.openTimer = undefined;
-		mw.popups.render.closeTimer = undefined;
+		mw.popups.render.abortCurrentRequest();
+		openTimer = undefined;
+		closeTimer = undefined;
 	};
 
 } )( jQuery, mediaWiki );

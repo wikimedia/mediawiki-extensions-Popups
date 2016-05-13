@@ -5,38 +5,24 @@
 	 * @class mw.popups.render.article
 	 * @singleton
 	 */
-	var article = {},
-		$window = $( window );
-
-	/**
-	 * Number of chars to request for the article extract
-	 * @property CHARS
-	 */
-	article.CHARS = 525;
-
-	/**
-	 * Size constants for popup images
-	 * @property SIZES
-	 */
-	article.SIZES = {
-		portraitImage: {
-			h: 250, // Exact height
-			w: 203 // Max width
-		},
-		landscapeImage: {
-			h: 200, // Max height
-			w: 300 // Exact Width
-		},
-		landscapePopupWidth: 450, // Exact width of a landscape popup
-		portraitPopupWidth: 300, // Exact width of a portrait popup
-		pokeySize: 8 // Height of the triangle used to point at the link
-	};
-
-	/**
-	 * Survey link, if any, for this renderer
-	 * @property surveyLink
-	 */
-	article.surveyLink = mw.config.get( 'wgPopupsSurveyLink' );
+	var currentRequest,
+		article = {},
+		surveyLink = mw.config.get( 'wgPopupsSurveyLink' ),
+		$window = $( window ),
+		CHARS = 525,
+		SIZES = {
+			portraitImage: {
+				h: 250, // Exact height
+				w: 203 // Max width
+			},
+			landscapeImage: {
+				h: 200, // Max height
+				w: 300 // Exact Width
+			},
+			landscapePopupWidth: 450, // Exact width of a landscape popup
+			portraitPopupWidth: 300, // Exact width of a portrait popup
+			pokeySize: 8 // Height of the triangle used to point at the link
+		};
 
 	/**
 	 * Send an API request and cache the jQuery element
@@ -55,13 +41,13 @@
 			return deferred.reject().promise();
 		}
 
-		mw.popups.render.currentRequest = mw.popups.api.get( {
+		currentRequest = mw.popups.api.get( {
 			action: 'query',
 			prop: 'info|extracts|pageimages|revisions',
 			formatversion: 2,
 			redirects: true,
 			exintro: true,
-			exchars: article.CHARS,
+			exchars: CHARS,
 			// there is an added geometric limit on .mwe-popups-extract
 			// so that text does not overflow from the card
 			explaintext: true,
@@ -78,16 +64,16 @@
 			}
 		} );
 
-		mw.popups.render.currentRequest.fail( function ( textStatus ) {
+		currentRequest.fail( function ( textStatus ) {
 			mw.track( 'ext.popups.schemaPopups', $.extend( logData, {
 				action: 'error',
 				errorState: textStatus,
 				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
 			} ) );
 			deferred.reject();
-		} );
-		mw.popups.render.currentRequest.done( function ( re ) {
-			mw.popups.render.currentRequest = undefined;
+		} )
+		.done( function ( re ) {
+			currentRequest = undefined;
 
 			if (
 				!re.query ||
@@ -159,8 +145,8 @@
 		}
 		$div.find( '.mwe-popups-extract' )
 			.append( article.getProcessedElements( page.extract, page.title ) );
-		if ( article.surveyLink ) {
-			$div.find( 'footer' ).append( article.createSurveyLink( article.surveyLink ) );
+		if ( surveyLink ) {
+			$div.find( 'footer' ).append( article.createSurveyLink( surveyLink ) );
 		}
 
 		mw.popups.render.cache[ href ].settings = {
@@ -320,9 +306,9 @@
 
 		if (
 			// Image too small for landscape display
-			( !tall && thumbWidth < article.SIZES.landscapeImage.w ) ||
+			( !tall && thumbWidth < SIZES.landscapeImage.w ) ||
 			// Image too small for portrait display
-			( tall && thumbHeight < article.SIZES.portraitImage.h ) ||
+			( tall && thumbHeight < SIZES.portraitImage.h ) ||
 			// These characters in URL that could inject CSS and thus JS
 			(
 				thumbnail.source.indexOf( '\\' ) > -1 ||
@@ -337,16 +323,16 @@
 			return article.createSvgImageThumbnail(
 				'mwe-popups-is-not-tall',
 				thumbnail.source,
-				( thumbWidth > article.SIZES.portraitImage.w ) ?
-						( ( thumbWidth - article.SIZES.portraitImage.w ) / -2 ) :
-						( article.SIZES.portraitImage.w - thumbWidth ),
-				( thumbHeight > article.SIZES.portraitImage.h ) ?
-						( ( thumbHeight - article.SIZES.portraitImage.h ) / -2 ) :
+				( thumbWidth > SIZES.portraitImage.w ) ?
+						( ( thumbWidth - SIZES.portraitImage.w ) / -2 ) :
+						( SIZES.portraitImage.w - thumbWidth ),
+				( thumbHeight > SIZES.portraitImage.h ) ?
+						( ( thumbHeight - SIZES.portraitImage.h ) / -2 ) :
 						0,
 				thumbWidth,
 				thumbHeight,
-				article.SIZES.portraitImage.w,
-				article.SIZES.portraitImage.h
+				SIZES.portraitImage.w,
+				SIZES.portraitImage.h
 			);
 		}
 
@@ -359,14 +345,14 @@
 				'mwe-popups-is-not-tall',
 				thumbnail.source,
 				0,
-				( thumbHeight > article.SIZES.landscapeImage.h ) ?
-						( ( thumbHeight - article.SIZES.landscapeImage.h ) / -2 ) :
+				( thumbHeight > SIZES.landscapeImage.h ) ?
+						( ( thumbHeight - SIZES.landscapeImage.h ) / -2 ) :
 						0,
 				thumbWidth,
 				thumbHeight,
-				article.SIZES.landscapeImage.w + 3,
-				( thumbHeight > article.SIZES.landscapeImage.h ) ?
-						article.SIZES.landscapeImage.h :
+				SIZES.landscapeImage.w + 3,
+				( thumbHeight > SIZES.landscapeImage.h ) ?
+						SIZES.landscapeImage.h :
 						thumbHeight,
 				'mwe-popups-mask'
 			);
@@ -461,9 +447,9 @@
 					event.pageY - $window.scrollTop(),
 					link.get( 0 ).getClientRects(),
 					false
-				) + $window.scrollTop() + article.SIZES.pokeySize :
+				) + $window.scrollTop() + SIZES.pokeySize :
 				// Position according to link position or size
-				link.offset().top + link.height() + article.SIZES.pokeySize,
+				link.offset().top + link.height() + SIZES.pokeySize,
 			clientTop = ( event.clientY ) ?
 				event.clientY :
 				offsetTop,
@@ -475,8 +461,8 @@
 		if ( offsetLeft > ( $( window ).width() / 2 ) ) {
 			offsetLeft += ( !event.pageX ) ? link.width() : 0;
 			offsetLeft -= ( !settings.tall ) ?
-				article.SIZES.portraitPopupWidth :
-				article.SIZES.landscapePopupWidth;
+				SIZES.portraitPopupWidth :
+				SIZES.landscapePopupWidth;
 			flippedX = true;
 		}
 
@@ -498,7 +484,7 @@
 					event.pageY - $window.scrollTop(),
 					link.get( 0 ).getClientRects(),
 					true
-				) + $window.scrollTop() + 2 * article.SIZES.pokeySize;
+				) + $window.scrollTop() + 2 * SIZES.pokeySize;
 			}
 		}
 
@@ -591,10 +577,10 @@
 			} ) );
 		} );
 
-		if ( !flippedY && !tall && cache.settings.thumbnail.height < article.SIZES.landscapeImage.h ) {
+		if ( !flippedY && !tall && cache.settings.thumbnail.height < SIZES.landscapeImage.h ) {
 			$( '.mwe-popups-extract' ).css(
 				'margin-top',
-				cache.settings.thumbnail.height - article.SIZES.pokeySize
+				cache.settings.thumbnail.height - SIZES.pokeySize
 			);
 		}
 
@@ -669,6 +655,16 @@
 
 		return result;
 	}
+
+	/**
+	 * Aborts any pending ajax requests
+	 */
+	mw.popups.render.abortCurrentRequest = function () {
+		if ( currentRequest ) {
+			currentRequest.abort();
+			currentRequest = undefined;
+		}
+	};
 
 	/**
 	 * Expose for tests
