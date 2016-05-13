@@ -65,9 +65,11 @@
 	 * Register a hover event that may render a popup on an appropriate link.
 	 *
 	 * @method setupTriggers
+	 * @param {jQuery.Object} $elements to bind events to
+	 * @param {string} events to bind to
 	 */
-	mw.popups.setupTriggers = function ( $elements ) {
-		$elements.on( mw.popups.triggers, function ( event ) {
+	mw.popups.setupTriggers = function ( $elements, events ) {
+		$elements.on( events, function ( event ) {
 			if ( mw.popups.scrolled ) {
 				return;
 			}

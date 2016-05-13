@@ -18,14 +18,6 @@
 	mw.popups.enabled = mw.popups.getEnabledState();
 
 	/**
-	 * Returns valid jQuery selectors for which a popup should be triggered.
-	 * This can be overwritten by targets.
-	 *
-	 * @return string
-	 */
-	mw.popups.triggers = 'mouseenter focus';
-
-	/**
 	 * Creates the SVG mask used to create the
 	 * the triangle pointer on popups with images
 	 *
@@ -95,12 +87,12 @@
 		// Only enable Popups when the Navigation popups gadget is not enabled
 		if ( !isNavigationPopupsGadgetEnabled() && mw.popups.enabled ) {
 			mw.popups.removeTooltips( $elements );
-			mw.popups.setupTriggers( $elements );
+			mw.popups.setupTriggers( $elements, 'mouseenter focus' );
 		} else {
 			// Events are logged even when Hovercards are disabled
 			// See T88166 for details
 			$elements
-				.on( mw.popups.triggers, function () {
+				.on( 'mouseenter focus', function () {
 					// cache the hover start time and link interaction token for a later use
 					dwellStartTime = mw.now();
 					linkInteractionToken = mw.popups.getRandomToken();

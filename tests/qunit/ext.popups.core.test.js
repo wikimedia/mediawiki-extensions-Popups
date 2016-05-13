@@ -141,7 +141,7 @@
 
 		assert.expect( 1 );
 
-		mw.popups.setupTriggers( $link );
+		mw.popups.setupTriggers( $link, 'mouseenter focus' );
 
 		mw.popups.scrolled = false;
 		$link.trigger( 'mouseenter' );
