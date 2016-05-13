@@ -214,16 +214,16 @@
 	};
 
 	/**
-	 * Save the popups enabled state via $.jStorage
+	 * Save the popups enabled state via device storage
 	 *
 	 * @param {boolean} isEnabled
 	 */
 	mw.popups.saveEnabledState = function ( isEnabled ) {
-		$.jStorage.set( popupsEnabledStorageKey, isEnabled.toString() );
+		mw.storage.set( popupsEnabledStorageKey, isEnabled ? '1' : '0' );
 	};
 
 	/**
-	 * Retrieve the popups enabled state via $.jStorage or 'wgPopupsExperiment'
+	 * Retrieve the popups enabled state via device storage or 'wgPopupsExperiment'
 	 * config variable.
 	 * If the experiment isn't running, then continue to enable Popups
 	 * by default during initialisation. In this case the return value
@@ -233,7 +233,7 @@
 	 */
 	mw.popups.getEnabledState = function () {
 		if ( !mw.config.get( 'wgPopupsExperiment', false ) ) {
-			return $.jStorage.get( popupsEnabledStorageKey ) !== 'false';
+			return mw.storage.get( popupsEnabledStorageKey ) !== '0';
 		} else {
 			return mw.popups.experiment.isUserInCondition();
 		}

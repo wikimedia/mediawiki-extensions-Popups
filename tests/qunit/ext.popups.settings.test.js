@@ -29,16 +29,16 @@
 		radioButtonValue = 'simple';
 		mw.popups.settings.save();
 		assert.equal(
-			$.jStorage.get( 'mwe-popups-enabled' ),
-			'true',
+			mw.storage.get( 'mwe-popups-enabled' ),
+			'1',
 			'Popups are enabled when the `simple` radio button is checked.'
 		);
 
 		radioButtonValue = 'off';
 		mw.popups.settings.save();
 		assert.equal(
-			$.jStorage.get( 'mwe-popups-enabled' ),
-			'false',
+			mw.storage.get( 'mwe-popups-enabled' ),
+			'0',
 			'Popups are disabled when the `off` radio button is checked.'
 		);
 

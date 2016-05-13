@@ -72,7 +72,7 @@
 	};
 
 	/**
-	 * Save the setting to localStorage (jStorage) and close the dialog
+	 * Save the setting to the device and close the dialog
 	 *
 	 * @method save
 	 */

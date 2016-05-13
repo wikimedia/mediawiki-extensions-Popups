@@ -1,4 +1,4 @@
-( function ( mw, $ ) {
+( function ( mw ) {
 
 	/**
 	 * @ignore
@@ -24,9 +24,9 @@
 	 * @ignore
 	 */
 	function hasUserEnabledFeature() {
-		var value = $.jStorage.get( 'mwe-popups-enabled' );
+		var value = mw.storage.get( 'mwe-popups-enabled' );
 
-		return Boolean( value ) && value !== 'false';
+		return Boolean( value ) && value !== '0';
 	}
 
 	/**
@@ -37,7 +37,7 @@
 	 * @ignore
 	 */
 	function hasUserDisabledFeature() {
-		return $.jStorage.get( 'mwe-popups-enabled' ) === 'false';
+		return mw.storage.get( 'mwe-popups-enabled' ) === '0';
 	}
 
 	/**
@@ -87,4 +87,4 @@
 		return mw.experiments.getBucket( config, getToken() ) !== 'control';
 	};
 
-}( mediaWiki, jQuery ) );
+}( mediaWiki ) );

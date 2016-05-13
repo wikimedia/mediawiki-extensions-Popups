@@ -82,7 +82,7 @@
 				"resources/ext.popups.targets/desktopTarget.js"
 			],
 			"dependencies": [
-				"jquery.jStorage",
+				"mediawiki.storage",
 				"jquery.client",
 				"ext.popups.core",
 				"ext.popups.renderer.desktopRenderer",
@@ -104,7 +104,6 @@
 			],
 			"dependencies": [
 				"ext.popups.core",
-				"jquery.jStorage",
 				"mediawiki.user",
 				"mediawiki.storage",
 				"mediawiki.experiments"

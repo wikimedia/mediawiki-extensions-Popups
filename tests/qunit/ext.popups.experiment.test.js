@@ -1,4 +1,4 @@
-( function ( mw, $ ) {
+( function ( mw ) {
 
 	QUnit.module( 'ext.popups.experiment', QUnit.newMwEnvironment( {
 		config: {
@@ -13,7 +13,7 @@
 			wgPopupsExperimentIsBetaFeatureEnabled: null
 		},
 		setup: function () {
-			$.jStorage.deleteKey( 'mwe-popups-enabled' );
+			mw.storage.remove( 'mwe-popups-enabled' );
 		},
 		teardown: function () {
 			mw.storage.remove( 'PopupsExperimentID' );
@@ -80,7 +80,7 @@
 	} );
 
 	QUnit.test( '#isUserInCondition: user has enabled the feature', 1, function ( assert ) {
-		$.jStorage.set( 'mwe-popups-enabled', 'true' );
+		mw.storage.set( 'mwe-popups-enabled', '1' );
 
 		assert.strictEqual(
 			mw.popups.experiment.isUserInCondition(),
@@ -93,7 +93,7 @@
 		// This should be read as follows: the user has enabled the beta feature but has since
 		// disabled the feature via its settings.
 		mw.config.set( 'wgPopupsExperimentIsBetaFeatureEnabled', true );
-		$.jStorage.set( 'mwe-popups-enabled', 'false' );
+		mw.storage.set( 'mwe-popups-enabled', '0' );
 
 		assert.strictEqual(
 			mw.popups.experiment.isUserInCondition(),
@@ -102,4 +102,4 @@
 		);
 	} );
 
-}( mediaWiki, jQuery ) );
+}( mediaWiki ) );

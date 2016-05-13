@@ -286,22 +286,22 @@
 
 	QUnit.test( 'saveEnabledState', function ( assert ) {
 		var storageKey = 'mwe-popups-enabled',
-			jStorageStub = this.sandbox.stub( $.jStorage, 'set' )
+			deviceStorageStub = this.sandbox.stub( mw.storage, 'set' )
 				.withArgs( storageKey );
 
 		QUnit.expect( 2 );
 
 		mw.popups.saveEnabledState( true );
 		assert.equal(
-			jStorageStub.firstCall.args[ 1 ],
-			'true',
+			deviceStorageStub.firstCall.args[ 1 ],
+			'1',
 			'Popups enabled state has been saved as "true".'
 		);
 
 		mw.popups.saveEnabledState( false );
 		assert.equal(
-			jStorageStub.secondCall.args[ 1 ],
-			'false',
+			deviceStorageStub.secondCall.args[ 1 ],
+			'0',
 			'Popups enabled state has been saved as "false".'
 		);
 	} );
@@ -310,7 +310,7 @@
 		var storageKey = 'mwe-popups-enabled',
 			mwConfigStub = this.sandbox.stub( mw.config, 'get' )
 				.withArgs( 'wgPopupsExperiment' ),
-			jStorageStub = this.sandbox.stub( $.jStorage, 'get' )
+			deviceStorageStub = this.sandbox.stub( mw.storage, 'get' )
 				.withArgs( storageKey ),
 			experimentStub = this.sandbox.stub( mw.popups.experiment,
 				'isUserInCondition' );
@@ -318,7 +318,7 @@
 		QUnit.expect( 7 );
 
 		mwConfigStub.returns( null );
-		jStorageStub.returns( null );
+		deviceStorageStub.returns( null );
 		assert.equal(
 			mw.popups.getEnabledState(),
 			true,
@@ -327,7 +327,7 @@
 		);
 
 		mwConfigStub.returns( null );
-		jStorageStub.returns( 'true' );
+		deviceStorageStub.returns( '1' );
 		assert.equal(
 			mw.popups.getEnabledState(),
 			true,
@@ -336,7 +336,7 @@
 		);
 
 		mwConfigStub.returns( null );
-		jStorageStub.returns( 'false' );
+		deviceStorageStub.returns( '0' );
 		assert.equal(
 			mw.popups.getEnabledState(),
 			false,
@@ -345,7 +345,7 @@
 		);
 
 		mwConfigStub.returns( false );
-		jStorageStub.returns( 'true' );
+		deviceStorageStub.returns( '1' );
 		assert.equal(
 			mw.popups.getEnabledState(),
 			true,
@@ -354,7 +354,7 @@
 		);
 
 		mwConfigStub.returns( false );
-		jStorageStub.returns( 'false' );
+		deviceStorageStub.returns( '0' );
 		assert.equal(
 			mw.popups.getEnabledState(),
 			false,
