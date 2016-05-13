@@ -12,14 +12,9 @@
 	/**
 	 * Checks SVG support on the browser
 	 *
-	 * Set to false on Internet Explorer because adding SVGs
-	 * through JavaScript in IE is failing. Thus, falling back to PNGs
-	 *
 	 * @property {boolean} supportsSVG
 	 */
-	mw.popups.supportsSVG = ( $.client.profile().name === 'msie' ) ?
-		false :
-		!!(
+	mw.popups.supportsSVG = !!(
 			// Check if we can create an <svg> element.
 			// If yes, check if drawing a rectangle inside the element is supported.
 			// We could have also checked for the existence of any similar method,

@@ -378,13 +378,16 @@
 	article.createSvgImageThumbnail = function (
 		className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath
 	) {
-		var $thumbnailSVGImage, $thumbnail;
+		var $thumbnailSVGImage, $thumbnail,
+			ns = 'http://www.w3.org/2000/svg',
+			svgElement = article.createSVGTag( 'image' );
 
-		$thumbnailSVGImage = $( article.createSVGTag( 'image' ) );
+		// certain browsers e.g. ie9 will not correctly set attributes from foreign namespaces (T134979)
+		svgElement.setAttributeNS( ns, 'xlink:href', url );
+		$thumbnailSVGImage = $( svgElement );
 		$thumbnailSVGImage
 			.addClass( className )
 			.attr( {
-				'xlink:href': url,
 				x: x,
 				y: y,
 				width: thumbnailWidth,
@@ -394,7 +397,7 @@
 
 		$thumbnail = $( '<svg>' )
 			.attr( {
-				xmlns: 'http://www.w3.org/2000/svg',
+				xmlns: ns,
 				width: width,
 				height: height
 			} )
