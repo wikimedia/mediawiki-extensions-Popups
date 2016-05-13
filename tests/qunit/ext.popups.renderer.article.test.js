@@ -3,6 +3,7 @@
 	QUnit.module( 'ext.popups.renderer.renderers.article', {
 		setup: function () {
 			mw.popups.render.cache[ '/wiki/Kittens' ] = {};
+			this.sandbox.stub( mw.popups, 'getTitle' ).returns( 'Kittens' );
 			this.pageInfo = {
 				thumbnail: {
 					source: 'http://commons.wikimedia.org/kittypic.svg',
@@ -15,6 +16,16 @@
 				pagelanguagehtmlcode: 'en',
 				pagelanguagedir: 'ltr'
 			};
+			this.kittenResponse = {
+				query: {
+					pages: [
+						this.pageInfo
+					]
+				}
+			};
+			this.apiStub = this.sandbox.stub( mw.popups.api, 'get' ).returns(
+				$.Deferred().resolve( this.kittenResponse )
+			);
 		}
 	} );
 
@@ -196,6 +207,21 @@
 			'height is greater than width so marked as tall.' );
 		assert.strictEqual( cache.settings.thumbnail, this.pageInfo.thumbnail,
 			'thumbnail information got cached' );
+	} );
+
+	QUnit.asyncTest( 'render.article.init', function ( assert ) {
+		var $kittyLink = $( '<a href="/wiki/Kittens">' ),
+			apiStub = this.apiStub;
+
+		QUnit.expect( 2 );
+		mw.popups.render.renderers.article.init( $kittyLink );
+		mw.popups.render.renderers.article.init( $kittyLink ).done( function () {
+			var cache =  mw.popups.render.cache[ '/wiki/Kittens' ];
+			QUnit.start();
+			assert.ok( cache.popup.length, 'The popup is stored in cache.' );
+			assert.ok( apiStub.calledTwice,
+					'This method in current form is dumb and if called more than once will not load from cache.' );
+		} );
 	} );
 
 } )( jQuery, mediaWiki );
