@@ -177,7 +177,15 @@ class PopupsHooks {
 			return true;
 		}
 
-		if ( self::getConfig()->get( 'PopupsBetaFeature' ) === true ) {
+		$config = self::getConfig();
+		$isExperimentEnabled = $config->get( 'PopupsExperiment' );
+
+		if (
+			// If Popups are enabled as an experiment, then bypass checking whether the user has enabled
+			// it as a beta feature.
+			!$isExperimentEnabled &&
+			$config->get( 'PopupsBetaFeature' ) === true
+		) {
 			if ( !class_exists( 'BetaFeatures' ) ) {
 				$logger = LoggerFactory::getInstance( 'popups' );
 				$logger->error( 'PopupsMode cannot be used as a beta feature unless ' .
@@ -241,5 +249,28 @@ class PopupsHooks {
 		$conf = ConfigFactory::getDefaultInstance()->makeConfig( 'popups' );
 		$vars['wgPopupsSurveyLink'] = $conf->get( 'PopupsSurveyLink' );
 		$vars['wgPopupsSchemaPopupsSamplingRate'] = $conf->get( 'SchemaPopupsSamplingRate' );
+
+		if ( $conf->get( 'PopupsExperiment' ) ) {
+			$vars['wgPopupsExperiment'] = true;
+			$vars['wgPopupsExperimentConfig'] = $conf->get( 'PopupsExperimentConfig' );
+		}
+	}
+
+	/**
+	 * MakeGlobalVariablesScript hook handler.
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/MakeGlobalVariablesScript
+	 *
+	 * @param array $vars
+	 * @param OutputPage $out
+	 */
+	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $out ) {
+		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'popups' );
+		$user = $out->getUser();
+
+		if ( $config->get( 'PopupsExperiment' ) ) {
+			$vars['wgPopupsExperimentIsBetaFeatureEnabled'] =
+				class_exists( 'BetaFeatures' ) && BetaFeatures::isFeatureEnabled( $user, 'popups' );
+		}
 	}
 }

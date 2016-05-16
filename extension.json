@@ -32,6 +32,9 @@
 		],
 		"BeforePageDisplayMobile": [
 			"PopupsHooks::onBeforePageDisplayMobile"
+		],
+		"MakeGlobalVariablesScript": [
+			"PopupsHooks::onMakeGlobalVariablesScript"
 		]
 	},
 	"MessagesDirs": {
@@ -49,7 +52,8 @@
 		"PopupsSurveyLink": false,
 		"EnablePopupsMobile": false,
 		"@SchemaPopupsSamplingRate": "@var number: Sample rate for logging events to Schema:Popups.",
-		"SchemaPopupsSamplingRate": 0.1
+		"SchemaPopupsSamplingRate": 0.1,
+		"PopupsExperiment": false
 	},
 	"DefaultUserOptions": {
 		"popupsmobile": "1"
@@ -81,7 +85,8 @@
 				"jquery.jStorage",
 				"jquery.client",
 				"ext.popups.core",
-				"ext.popups.renderer.desktopRenderer"
+				"ext.popups.renderer.desktopRenderer",
+				"ext.popups.experiment"
 			],
 			"targets": [ "desktop" ]
 		},

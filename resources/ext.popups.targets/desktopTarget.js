@@ -1,5 +1,12 @@
 ( function ( $, mw ) {
-	mw.popups.enabled = $.jStorage.get( 'mwe-popups-enabled' ) !== 'false';
+
+	// If the experiment isn't running, then continue to enable Popups by default during
+	// initialisation.
+	if ( !mw.config.get( 'wgPopupsExperiment', false ) ) {
+		mw.popups.enabled = $.jStorage.get( 'mwe-popups-enabled' ) !== 'false';
+	} else {
+		mw.popups.enabled = mw.popups.experiment.isUserInCondition();
+	}
 
 	/**
 	 * Returns valid jQuery selectors for which a popup should be triggered.
