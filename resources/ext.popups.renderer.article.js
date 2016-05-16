@@ -149,6 +149,7 @@
 
 		mw.popups.render.cache[ href ].settings = {
 			title: page.title,
+			namespace: page.ns,
 			tall: ( tall === undefined ) ? false : tall,
 			thumbnail: ( thumbnail === undefined ) ? false : thumbnail
 		};

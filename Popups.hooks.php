@@ -75,6 +75,7 @@ class PopupsHooks {
 			$schemaPopups += [
 				'dependencies' => [
 					'schema.Popups',
+					'mediawiki.user'
 				],
 				'scripts' => [
 					'resources/ext.popups.schemaPopups.js',
