@@ -43,7 +43,7 @@
 		]
 	},
 	"EventLoggingSchemas": {
-		"Popups": 11625443
+		"Popups": 15597282
 	},
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
@@ -108,6 +108,21 @@
 				"mediawiki.user",
 				"mediawiki.storage",
 				"mediawiki.experiments"
+			],
+			"targets": [
+				"desktop"
+			]
+		},
+		"ext.popups.schemaPopups.utils": {
+			"scripts": [
+				"resources/ext.popups.schemaPopups.utils.js"
+			],
+			"dependencies": [
+				"mediawiki.experiments",
+				"mediawiki.Title",
+				"mediawiki.user",
+				"ext.popups.core",
+				"ext.popups.renderer.desktopRenderer"
 			],
 			"targets": [
 				"desktop"

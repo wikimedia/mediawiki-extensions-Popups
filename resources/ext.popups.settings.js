@@ -1,10 +1,11 @@
 ( function ( $, mw ) {
 
-	/**
-	 * @class mw.popups.settings
-	 * @singleton
-	 */
-	var settings = {};
+	var currentLinkLogData,
+		/**
+		 * @class mw.popups.settings
+		 * @singleton
+		 */
+		settings = {};
 
 	/**
 	 * The settings' dialog's section element.
@@ -138,13 +139,16 @@
 	settings.save = function () {
 		var v =  $( 'input[name=mwe-popups-setting]:checked', '#mwe-popups-settings' ).val();
 		if ( v === 'simple' ) {
-			$.jStorage.set( 'mwe-popups-enabled', 'true' );
+			mw.popups.saveEnabledState( true );
 			settings.reloadPage();
 			settings.close();
 		} else {
-			$.jStorage.set( 'mwe-popups-enabled', 'false' );
+			mw.popups.saveEnabledState( false );
 			$( '#mwe-popups-settings-form' ).hide();
 			$( '#mwe-popups-settings-help' ).show();
+			mw.track( 'ext.popups.schemaPopups', $.extend( {}, currentLinkLogData, {
+				action: 'disabled'
+			} ) );
 		}
 	};
 
@@ -152,11 +156,14 @@
 	 * Show the settings element and position it correctly
 	 *
 	 * @method open
+	 * @param {Object} logData data to log
 	 */
-	settings.open = function () {
+	settings.open = function ( logData ) {
 		var
 			h = $( window ).height(),
 			w = $( window ).width();
+
+		currentLinkLogData = logData;
 
 		$( 'body' ).append( $( '<div>' ).addClass( 'mwe-popups-overlay' ) );
 

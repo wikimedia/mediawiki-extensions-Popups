@@ -36,9 +36,10 @@
 	 * Send an API request and cache the jQuery element
 	 *
 	 * @param {jQuery} link
+	 * @param {Object} logData data to be logged
 	 * @return {jQuery.Promise}
 	 */
-	article.init = function ( link ) {
+	article.init = function ( link, logData ) {
 		var href = link.attr( 'href' ),
 			title = mw.popups.getTitle( href ),
 			deferred = $.Deferred(),
@@ -71,7 +72,14 @@
 			}
 		} );
 
-		mw.popups.render.currentRequest.fail( deferred.reject );
+		mw.popups.render.currentRequest.fail( function ( textStatus ) {
+			mw.track( 'ext.popups.schemaPopups', $.extend( logData, {
+				action: 'error',
+				errorState: textStatus,
+				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+			} ) );
+			deferred.reject();
+		} );
 		mw.popups.render.currentRequest.done( function ( re ) {
 			mw.popups.render.currentRequest = undefined;
 
@@ -149,6 +157,7 @@
 
 		mw.popups.render.cache[ href ].settings = {
 			title: page.title,
+			namespace: page.ns,
 			tall: ( tall === undefined ) ? false : tall,
 			thumbnail: ( thumbnail === undefined ) ? false : thumbnail
 		};
@@ -550,8 +559,9 @@
 	 *
 	 * @method processPopups
 	 * @param {jQuery} link
+	 * @param {Object} logData data to be logged
 	 */
-	article.processPopup = function ( link ) {
+	article.processPopup = function ( link, logData ) {
 		var
 			svg = mw.popups.supportsSVG,
 			cache = mw.popups.render.cache [ link.attr( 'href' ) ],
@@ -562,7 +572,15 @@
 			flippedX = cache.settings.flippedX;
 
 		popup.find( '.mwe-popups-settings-icon' ).click( function () {
-			mw.popups.settings.open();
+			delete logData.pageTitleHover;
+			delete logData.namespaceIdHover;
+
+			mw.popups.settings.open( $.extend( {}, logData ) );
+
+			mw.track( 'ext.popups.schemaPopups', $.extend( logData, {
+				action: 'tapped settings cog',
+				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+			} ) );
 		} );
 
 		if ( !flippedY && !tall && cache.settings.thumbnail.height < article.SIZES.landscapeImage.h ) {

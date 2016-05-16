@@ -75,6 +75,7 @@ class PopupsHooks {
 			$schemaPopups += [
 				'dependencies' => [
 					'schema.Popups',
+					'ext.popups.schemaPopups.utils',
 				],
 				'scripts' => [
 					'resources/ext.popups.schemaPopups.js',
@@ -229,12 +230,14 @@ class PopupsHooks {
 				'tests/qunit/ext.popups.renderer/desktopRenderer.test.js',
 				'tests/qunit/ext.popups.renderer.article.test.js',
 				'tests/qunit/ext.popups.core.test.js',
+				'tests/qunit/ext.popups.schemaPopups.utils.test.js',
 				'tests/qunit/ext.popups.settings.test.js',
 				'tests/qunit/ext.popups.experiment.test.js',
 			),
 			'dependencies' => array(
 				'ext.popups.desktop',
-				'ext.popups.experiment'
+				'ext.popups.experiment',
+				'ext.popups.schemaPopups.utils'
 			),
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'Popups',

@@ -185,4 +185,199 @@
 		}
 	} );
 
+	QUnit.test( 'getRandomToken', function ( assert ) {
+		var token;
+
+		QUnit.expect( 3 );
+
+		token = mw.popups.getRandomToken();
+		assert.ok(
+			token.length > mw.user.generateRandomSessionId().length,
+			'Random token is long enough.'
+		);
+
+		assert.ok(
+			typeof token === 'string',
+			'Random token is a string.'
+		);
+
+		assert.notEqual(
+			mw.popups.getRandomToken(),
+			token,
+			'Newly generated random token is not equal to the one generated earlier.'
+		);
+	} );
+
+	QUnit.test( 'getPreviewCountBucket', function ( assert ) {
+		var i, previewCount, bucket,
+			cases = [
+				[ '0', '0 previews' ],
+				[ '1', '1-4 previews' ],
+				[ '2', '1-4 previews' ],
+				[ '4', '1-4 previews' ],
+				[ '5', '5-20 previews' ],
+				[ '10', '5-20 previews' ],
+				[ '20', '5-20 previews' ],
+				[ '21', '21+ previews' ],
+				[ '100', '21+ previews' ],
+				[ '1000', '21+ previews' ]
+			],
+			storageKey = 'ext.popups.core.previewCount',
+			mwStorageStub = this.sandbox.stub( mw.storage, 'get' )
+				.withArgs( storageKey );
+
+		QUnit.expect( cases.length + 1 );
+
+		mwStorageStub.returns( false );
+		assert.equal(
+			mw.popups.getPreviewCountBucket(),
+			'unknown',
+			'Preview count bucket is `unkown` when localStorage is unsupported.'
+		);
+
+		for ( i = 0; i < cases.length; i++ ) {
+			previewCount = cases[ i ][ 0 ];
+			mwStorageStub.returns( previewCount );
+			bucket = mw.popups.getPreviewCountBucket();
+			assert.equal(
+				bucket,
+				cases[ i ][ 1 ],
+				'Preview count bucket is "' + bucket + '" when preview count is ' +
+				previewCount + '.'
+			);
+		}
+	} );
+
+	QUnit.test( 'incrementPreviewCount', function ( assert ) {
+		var storageKey = 'ext.popups.core.previewCount',
+			mwStorageGetStub = this.sandbox.stub( mw.storage, 'get' )
+				.withArgs( storageKey ),
+			mwStorageSetStub = this.sandbox.stub( mw.storage, 'set' );
+
+		QUnit.expect( 3 );
+
+		mwStorageGetStub.returns( null );
+		mw.popups.incrementPreviewCount();
+		assert.equal(
+			mwStorageSetStub.firstCall.args[ 1 ],
+			1,
+			'Incrementing the preview count to 1 when no value has' +
+			' been saved in localStorage yet.'
+		);
+
+		mwStorageGetStub.returns( '1' );
+		mw.popups.incrementPreviewCount();
+		assert.equal(
+			mwStorageSetStub.secondCall.args[ 1 ],
+			2,
+			'Incrementing the preview count to 2 when the value in localStorage' +
+			' is already "1".'
+		);
+
+		mwStorageGetStub.returns( '5' );
+		mw.popups.incrementPreviewCount();
+		assert.equal(
+			mwStorageSetStub.thirdCall.args[ 1 ],
+			6,
+			'Incrementing the preview count to 6 when the value in localStorage' +
+			' is already "5".'
+		);
+	} );
+
+	QUnit.test( 'saveEnabledState', function ( assert ) {
+		var storageKey = 'mwe-popups-enabled',
+			jStorageStub = this.sandbox.stub( $.jStorage, 'set' )
+				.withArgs( storageKey );
+
+		QUnit.expect( 2 );
+
+		mw.popups.saveEnabledState( true );
+		assert.equal(
+			jStorageStub.firstCall.args[ 1 ],
+			'true',
+			'Popups enabled state has been saved as "true".'
+		);
+
+		mw.popups.saveEnabledState( false );
+		assert.equal(
+			jStorageStub.secondCall.args[ 1 ],
+			'false',
+			'Popups enabled state has been saved as "false".'
+		);
+	} );
+
+	QUnit.test( 'getEnabledState', function ( assert ) {
+		var storageKey = 'mwe-popups-enabled',
+			mwConfigStub = this.sandbox.stub( mw.config, 'get' )
+				.withArgs( 'wgPopupsExperiment' ),
+			jStorageStub = this.sandbox.stub( $.jStorage, 'get' )
+				.withArgs( storageKey ),
+			experimentStub = this.sandbox.stub( mw.popups.experiment,
+				'isUserInCondition' );
+
+		QUnit.expect( 7 );
+
+		mwConfigStub.returns( null );
+		jStorageStub.returns( null );
+		assert.equal(
+			mw.popups.getEnabledState(),
+			true,
+			'Popups are enabled when the experiment is not running, nor has' +
+			' Popups been disabled via the settings.'
+		);
+
+		mwConfigStub.returns( null );
+		jStorageStub.returns( 'true' );
+		assert.equal(
+			mw.popups.getEnabledState(),
+			true,
+			'Popups are enabled when the experiment is not running and when' +
+			' Popups has been enabled via the settings.'
+		);
+
+		mwConfigStub.returns( null );
+		jStorageStub.returns( 'false' );
+		assert.equal(
+			mw.popups.getEnabledState(),
+			false,
+			'Popups are disabled when the experiment is not running and when' +
+			' Popups has been disabled via the settings.'
+		);
+
+		mwConfigStub.returns( false );
+		jStorageStub.returns( 'true' );
+		assert.equal(
+			mw.popups.getEnabledState(),
+			true,
+			'Popups are enabled when the experiment is disabled and when' +
+			' Popups has been enabled via the settings.'
+		);
+
+		mwConfigStub.returns( false );
+		jStorageStub.returns( 'false' );
+		assert.equal(
+			mw.popups.getEnabledState(),
+			false,
+			'Popups are disabled when the experiment is disabled and when' +
+			' Popups has been disabled via the settings.'
+		);
+
+		mwConfigStub.returns( true );
+		experimentStub.returns( true );
+		assert.equal(
+			mw.popups.getEnabledState(),
+			true,
+			'Popups are disabled when the experiment is running and ' +
+			' the user is bucketed.'
+		);
+
+		mwConfigStub.returns( true );
+		experimentStub.returns( false );
+		assert.equal(
+			mw.popups.getEnabledState(),
+			false,
+			'Popups are disabled when the experiment is running and ' +
+			' the user is not bucketed.'
+		);
+	} );
 } )( jQuery, mediaWiki );

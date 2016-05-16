@@ -1,12 +1,5 @@
 ( function ( $, mw ) {
-
-	// If the experiment isn't running, then continue to enable Popups by default during
-	// initialisation.
-	if ( !mw.config.get( 'wgPopupsExperiment', false ) ) {
-		mw.popups.enabled = $.jStorage.get( 'mwe-popups-enabled' ) !== 'false';
-	} else {
-		mw.popups.enabled = mw.popups.experiment.isUserInCondition();
-	}
+	mw.popups.enabled = mw.popups.getEnabledState();
 
 	/**
 	 * Returns valid jQuery selectors for which a popup should be triggered.
@@ -99,7 +92,8 @@
 	};
 
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
-		var $elements;
+		var $elements, dwellStartTime, linkInteractionToken;
+
 		mw.popups.$content = $content;
 		$elements = mw.popups.selectPopupElements();
 
@@ -107,6 +101,13 @@
 			mw.popups.removeTooltips( $elements );
 			mw.popups.setupTriggers( $elements );
 		} else {
+
+			$elements.on( mw.popups.triggers, function () {
+				// cache the hover start time and link interaction token for a later use
+				dwellStartTime = mw.now();
+				linkInteractionToken = mw.popups.getRandomToken();
+			} );
+
 			// Events are logged even when Hovercards are disabled
 			// See T88166 for details
 			$elements.on( 'click', function ( event ) {
@@ -116,9 +117,9 @@
 
 				mw.track( 'ext.popups.schemaPopups', {
 					pageTitleHover: $this.attr( 'title' ),
-					pageTitleSource: mw.config.get( 'wgTitle' ),
-					popupEnabled: mw.popups.enabled,
-					action: action
+					action: action,
+					totalInteractionTime: Math.round( mw.now() - dwellStartTime ),
+					linkInteractionToken: linkInteractionToken
 				} );
 
 				if ( action  === 'opened in same tab' ) {
@@ -135,5 +136,9 @@
 			mw.popups.createSVGMask();
 			mw.popups.createPopupElement();
 		}
+
+		mw.track( 'ext.popups.schemaPopups', {
+			action: 'pageLoaded'
+		} );
 	} );
 } )( jQuery, mediaWiki );

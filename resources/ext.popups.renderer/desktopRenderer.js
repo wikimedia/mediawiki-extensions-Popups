@@ -1,6 +1,19 @@
 /*global popupDelay: true, popupHideDelay: true*/
 
 ( function ( $, mw ) {
+	var logData = {};
+
+	/**
+	 * Logs the click on link or popup
+	 *
+	 * @param {Object} event
+	 */
+	function logClickAction( event ) {
+		mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+			action: mw.popups.getAction( event ),
+			totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+		} ) );
+	}
 
 	/**
 	 * @class mw.popups.render
@@ -79,8 +92,12 @@
 	 * @method render
 	 * @param {Object} link
 	 * @param {Object} event
+	 * @param {number} dwellStartTime the instant when the link is dwelled on
+	 * @param {string} linkInteractionToken random token representing the current interaction with the link
 	 */
-	mw.popups.render.render = function ( link, event ) {
+	mw.popups.render.render = function ( link, event, dwellStartTime, linkInteractionToken ) {
+		var linkHref = link.attr( 'href' );
+
 		// This will happen when the mouse goes from the popup box back to the
 		// anchor tag. In such a case, the timer to close the box is cleared.
 		if (
@@ -101,7 +118,7 @@
 
 		// Ignore if its meant to call a function
 		// TODO: Remove this when adding reference popups
-		if ( link.attr( 'href' ) === '#' ) {
+		if ( linkHref === '#' ) {
 			return;
 		}
 
@@ -109,7 +126,15 @@
 		mw.popups.disableNavPopup();
 
 		mw.popups.render.currentLink = link;
+
+		logData = {
+			pageTitleHover: mw.popups.getTitle( linkHref ),
+			dwellStartTime: dwellStartTime,
+			linkInteractionToken: linkInteractionToken
+		};
+
 		link.on( 'mouseleave blur', mw.popups.render.leaveInactive );
+		link.off( 'click', logClickAction ).on( 'click', logClickAction );
 
 		if ( mw.popups.render.cache[ link.attr( 'href' ) ] ) {
 			mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY )
@@ -127,14 +152,14 @@
 					for ( key in renderers ) {
 						if ( renderers.hasOwnProperty( key ) && key !== 'article' ) {
 							if ( !!renderers[ key ].matcher( link.attr( 'href' ) ) ) {
-								cachePopup = renderers[ key ].init( link );
+								cachePopup = renderers[ key ].init( link, $.extend( {}, logData ) );
 							}
 						}
 					}
 
 					// Use the article renderer if nothing else matches
 					if ( cachePopup === undefined ) {
-						cachePopup = mw.popups.render.renderers.article.init( link );
+						cachePopup = mw.popups.render.renderers.article.init( link, $.extend( {}, logData ) );
 					}
 
 					mw.popups.render.openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY - mw.popups.render.API_DELAY );
@@ -183,15 +208,15 @@
 		// More information and workarounds here - http://stackoverflow.com/a/13654655/366138
 		mw.popups.$popup.html( mw.popups.$popup.html() );
 
-		cache.process( link );
-
 		// Event logging
-		mw.popups.logData = {
+		$.extend( logData, {
 			pageTitleHover: cache.settings.title,
-			pageTitleSource: mw.config.get( 'wgTitle' ),
-			popupEnabled: mw.popups.enabled,
-			time: mw.now()
-		};
+			namespaceIdHover: cache.settings.namespace,
+			perceivedWait: Math.round( mw.now() - logData.dwellStartTime )
+		} );
+
+		cache.process( link, $.extend( {}, logData ) );
+
 		mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.render.clickHandler );
 
 		link
@@ -199,6 +224,8 @@
 			.on( 'mouseleave blur', mw.popups.render.leaveActive );
 
 		$( document ).on( 'keydown', mw.popups.render.closeOnEsc );
+
+		mw.popups.incrementPreviewCount();
 	};
 
 	/**
@@ -208,15 +235,11 @@
 	 * @param {Object} event
 	 */
 	mw.popups.render.clickHandler = function ( event ) {
-		var action = mw.popups.getAction( event ),
-			logData;
+		var action = mw.popups.getAction( event );
+
+		logClickAction( event );
 
 		if ( action === 'opened in same tab' ) {
-			logData = $.extend( {}, mw.popups.logData, {
-				action: action
-			} );
-			computeDurationFromTime( logData );
-			mw.track( 'ext.popups.schemaPopups', logData );
 			window.location.href = mw.popups.render.currentLink.attr( 'href' );
 		}
 	};
@@ -228,18 +251,11 @@
 	 * @method closePopup
 	 */
 	mw.popups.render.closePopup = function () {
-		var fadeInClass, fadeOutClass,
-			logData = $.extend( {}, mw.popups.logData, {
-				action: 'dismissed'
-			} );
+		var fadeInClass, fadeOutClass;
 
 		if ( mw.popups.render.currentLink === undefined ) {
 			return false;
 		}
-
-		// Event logging
-		computeDurationFromTime( logData );
-		mw.track( 'ext.popups.schemaPopups', logData );
 
 		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
 
@@ -318,6 +334,11 @@
 	 */
 	mw.popups.render.leaveActive = function () {
 		mw.popups.render.closeTimer = mw.popups.render.wait( mw.popups.render.POPUP_CLOSE_DELAY ).done( function () {
+			mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+				action: 'dismissed',
+				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+			} ) );
+
 			mw.popups.render.closePopup();
 		} );
 	};
@@ -328,6 +349,16 @@
 	 * @method leaveInactive
 	 */
 	mw.popups.render.leaveInactive = function () {
+		if ( logData.dwellStartTime &&
+			logData.linkInteractionToken &&
+			mw.now() - logData.dwellStartTime >= 250
+		) {
+			mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+				action: 'dwelledButAbandoned',
+				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+			} ) );
+		}
+		// TODO: should `blur` also be here?
 		$( mw.popups.render.currentLink ).off( 'mouseleave', mw.popups.render.leaveInactive );
 		if ( mw.popups.render.openTimer ) {
 			mw.popups.render.openTimer.abort();
@@ -345,22 +376,11 @@
 	 * @method reset
 	 */
 	mw.popups.render.reset = function () {
+		logData = {};
 		mw.popups.render.currentLink = undefined;
 		mw.popups.render.currentRequest = undefined;
 		mw.popups.render.openTimer = undefined;
 		mw.popups.render.closeTimer = undefined;
 	};
-
-	/**
-	 * Utility function that computes duration from time.
-	 * Modifies the data so that it can be logged with EL.
-	 *
-	 * @ignore
-	 * @param {Object} data
-	 */
-	function computeDurationFromTime( data ) {
-		data.duration = Math.floor( mw.now() - data.time );
-		delete data.time;
-	}
 
 } )( jQuery, mediaWiki );

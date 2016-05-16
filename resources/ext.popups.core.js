@@ -1,5 +1,7 @@
 ( function ( $, mw ) {
 	'use strict';
+	var previewCountStorageKey = 'ext.popups.core.previewCount',
+		popupsEnabledStorageKey = 'mwe-popups-enabled';
 
 	/**
 	 * @class mw.popups
@@ -70,7 +72,7 @@
 				return;
 			}
 
-			mw.popups.render.render( $( this ), event );
+			mw.popups.render.render( $( this ), event, mw.now(), mw.popups.getRandomToken() );
 		} );
 	};
 
@@ -158,6 +160,82 @@
 			} else {
 				return 'opened in same tab';
 			}
+		}
+	};
+
+	/**
+	 * Get a random token.
+	 * Append the current timestamp to make the return value more unique.
+	 *
+	 * @return {string}
+	 */
+	mw.popups.getRandomToken = function () {
+		return mw.user.generateRandomSessionId() + Math.round( mw.now() ).toString();
+	};
+
+	/**
+	 * Return edit count bucket based on the number of edits.
+	 * The returned value is "unknown" is `window.localStorage` is not supported.
+	 *
+	 * @return {string}
+	 */
+	mw.popups.getPreviewCountBucket = function () {
+		var bucket,
+			previewCount = mw.storage.get( previewCountStorageKey );
+
+		// no support for localStorage
+		if ( previewCount === false ) {
+			return 'unknown';
+		}
+
+		// Fall back to 0 if this is the first time.
+		previewCount = parseInt( previewCount || 0, 10 );
+
+		if ( previewCount === 0 ) {
+			bucket = '0';
+		} else if ( previewCount >= 1 && previewCount <= 4 ) {
+			bucket = '1-4';
+		} else if ( previewCount >= 5 && previewCount <= 20 ) {
+			bucket = '5-20';
+		} else if ( previewCount >= 21 ) {
+			bucket = '21+';
+		}
+
+		return bucket + ' previews';
+	};
+
+	/**
+	 * Increment the preview count and save it to localStorage.
+	 */
+	mw.popups.incrementPreviewCount = function () {
+		var previewCount = parseInt( mw.storage.get( previewCountStorageKey ) || 0, 10 );
+
+		mw.storage.set( previewCountStorageKey, ( previewCount + 1 ).toString() );
+	};
+
+	/**
+	 * Save the popups enabled state via $.jStorage
+	 *
+	 * @param {boolean} isEnabled
+	 */
+	mw.popups.saveEnabledState = function ( isEnabled ) {
+		$.jStorage.set( popupsEnabledStorageKey, isEnabled.toString() );
+	};
+
+	/**
+	 * Retrieve the popups enabled state via $.jStorage or 'wgPopupsExperiment'
+	 * config variable.
+	 * If the experiment isn't running, then continue to enable Popups
+	 * by default during initialisation. In this case the return value
+	 * defaults to `true` if the setting hasn't been saved before.
+	 *
+	 * @return {boolean}
+	 */
+	mw.popups.getEnabledState = function () {
+		if ( !mw.config.get( 'wgPopupsExperiment', false ) ) {
+			return $.jStorage.get( popupsEnabledStorageKey ) !== 'false';
+		} else {
+			return mw.popups.experiment.isUserInCondition();
 		}
 	};
 
