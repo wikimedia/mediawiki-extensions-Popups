@@ -22,33 +22,12 @@
 	mw.popups.triggers = 'mouseenter focus';
 
 	/**
-	 * Checks SVG support on the browser
-	 *
-	 * @property {boolean} supportsSVG
-	 */
-	mw.popups.supportsSVG = !!(
-			// Check if we can create an <svg> element.
-			// If yes, check if drawing a rectangle inside the element is supported.
-			// We could have also checked for the existence of any similar method,
-			// i.e. createSVGPoint, or createSVGAngle, etc.
-			// If yes, then we can be pretty sure that the browser supports SVGs.
-			// https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
-			// https://developer.mozilla.org/en-US/docs/Web/API/SVGRect
-			'createElementNS' in document &&
-			document.createElementNS( 'http://www.w3.org/2000/svg', 'svg' ).createSVGRect
-		);
-
-	/**
-	 * If SVG is supported, creates the SVG mask used to create the
+	 * Creates the SVG mask used to create the
 	 * the triangle pointer on popups with images
 	 *
 	 * @method createSVGMask
 	 */
 	mw.popups.createSVGMask = function () {
-		if ( !mw.popups.supportsSVG ) {
-			return false;
-		}
-
 		$( '<div>' )
 			.attr( 'id', 'mwe-popups-svg' )
 			.appendTo( document.body )

@@ -293,7 +293,7 @@
 	 */
 	article.createThumbnail = function ( thumbnail, tall ) {
 		var thumbWidth, thumbHeight,
-			svg = mw.popups.supportsSVG,
+			x, y, width, height, clipPath,
 			devicePixelRatio = $.bracketedDevicePixelRatio();
 
 		// No thumbnail
@@ -319,48 +319,35 @@
 			return $( '<span>' );
 		}
 
-		if ( tall && svg ) {
-			return article.createSvgImageThumbnail(
-				'mwe-popups-is-not-tall',
-				thumbnail.source,
-				( thumbWidth > SIZES.portraitImage.w ) ?
-						( ( thumbWidth - SIZES.portraitImage.w ) / -2 ) :
-						( SIZES.portraitImage.w - thumbWidth ),
-				( thumbHeight > SIZES.portraitImage.h ) ?
-						( ( thumbHeight - SIZES.portraitImage.h ) / -2 ) :
-						0,
-				thumbWidth,
-				thumbHeight,
-				SIZES.portraitImage.w,
-				SIZES.portraitImage.h
-			);
+		if ( tall ) {
+			x = ( thumbWidth > SIZES.portraitImage.w ) ?
+				( ( thumbWidth - SIZES.portraitImage.w ) / -2 ) :
+				( SIZES.portraitImage.w - thumbWidth );
+			y = ( thumbHeight > SIZES.portraitImage.h ) ?
+				( ( thumbHeight - SIZES.portraitImage.h ) / -2 ) : 0;
+			width = SIZES.portraitImage.w;
+			height = SIZES.portraitImage.h;
+		} else {
+			x = 0;
+			y = ( thumbHeight > SIZES.landscapeImage.h ) ?
+				( ( thumbHeight - SIZES.landscapeImage.h ) / -2 ) : 0;
+			width = SIZES.landscapeImage.w + 3;
+			height = ( thumbHeight > SIZES.landscapeImage.h ) ?
+				SIZES.landscapeImage.h : thumbHeight;
+			clipPath = 'mwe-popups-mask';
 		}
-
-		if ( tall && !svg ) {
-			return article.createImgThumbnail( 'mwe-popups-is-tall', thumbnail.source );
-		}
-
-		if ( !tall && svg ) {
-			return article.createSvgImageThumbnail(
-				'mwe-popups-is-not-tall',
-				thumbnail.source,
-				0,
-				( thumbHeight > SIZES.landscapeImage.h ) ?
-						( ( thumbHeight - SIZES.landscapeImage.h ) / -2 ) :
-						0,
-				thumbWidth,
-				thumbHeight,
-				SIZES.landscapeImage.w + 3,
-				( thumbHeight > SIZES.landscapeImage.h ) ?
-						SIZES.landscapeImage.h :
-						thumbHeight,
-				'mwe-popups-mask'
-			);
-		}
-
-		if ( !tall && !svg ) {
-			return article.createImgThumbnail( 'mwe-popups-is-not-tall', thumbnail.source );
-		}
+		return article.createSvgImageThumbnail(
+			// FIXME: Not clear why this class is always added even if the popup is not tall
+			'mwe-popups-is-not-tall',
+			thumbnail.source,
+			x,
+			y,
+			thumbWidth,
+			thumbHeight,
+			width,
+			height,
+			clipPath
+		);
 	};
 
 	/**
@@ -407,20 +394,6 @@
 			.append( $thumbnailSVGImage );
 
 		return $thumbnail;
-	};
-
-	/**
-	 * Returns the `img` object for thumbnail
-	 *
-	 * @method createImgThumbnail
-	 * @param {string} className
-	 * @param {string} url
-	 * @return {jQuery}
-	 */
-	article.createImgThumbnail = function ( className, url ) {
-		return $( '<div>' )
-			.addClass( className )
-			.css( 'background-image', 'url("' + url.replace( /"/g, '\\"' ) + '")' );
 	};
 
 	/**
@@ -557,7 +530,6 @@
 	 */
 	article.processPopup = function ( link, logData ) {
 		var
-			svg = mw.popups.supportsSVG,
 			cache = mw.popups.render.cache [ link.attr( 'href' ) ],
 			popup = mw.popups.$popup,
 			tall = cache.settings.tall,
@@ -590,25 +562,25 @@
 			} );
 		}
 
-		if ( flippedY && thumbnail && svg ) {
+		if ( flippedY && thumbnail ) {
 			mw.popups.$popup
 				.find( 'image' )[ 0 ]
 				.setAttribute( 'clip-path', '' );
 		}
 
-		if ( flippedY && flippedX && thumbnail && tall && svg ) {
+		if ( flippedY && flippedX && thumbnail && tall ) {
 			mw.popups.$popup
 				.find( 'image' )[ 0 ]
 				.setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask-flip)' );
 		}
 
-		if ( flippedX && !flippedY && thumbnail && !tall && svg ) {
+		if ( flippedX && !flippedY && thumbnail && !tall ) {
 			mw.popups.$popup
 				.find( 'image' )[ 0 ]
 				.setAttribute( 'clip-path', 'url(#mwe-popups-mask-flip)' );
 		}
 
-		if ( flippedX && !flippedY && thumbnail && tall && svg ) {
+		if ( flippedX && !flippedY && thumbnail && tall ) {
 			mw.popups.$popup
 				.removeClass( 'mwe-popups-no-image-tri' )
 				.find( 'image' )[ 0 ]
