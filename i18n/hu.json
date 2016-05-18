@@ -4,7 +4,8 @@
 			"Teemeah",
 			"Csega",
 			"Dorgan",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Tgr"
 		]
 	},
 	"popups-message": "Lapleíró kártya",
@@ -26,5 +27,6 @@
 	"popups-settings-enable": "Előnézetek engedélyezése",
 	"popups-send-feedback": "Visszajelzés küldése (külső link)",
 	"popups-mobile-continue-to-page": "Tovább a laphoz",
-	"popups-mobile-dismiss": "Elrejt"
+	"popups-mobile-dismiss": "Elrejt",
+	"popups-mobile-message": "Lapleíró kártya (mobil)"
 }
