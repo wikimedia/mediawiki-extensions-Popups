@@ -188,7 +188,7 @@
 		// Event logging
 		mw.popups.logData = {
 			pageTitleHover: cache.settings.title,
-			namespaceIdHover: cache.settings.namespace,
+			pageTitleSource: mw.config.get( 'wgTitle' ),
 			popupEnabled: mw.popups.enabled,
 			time: mw.now()
 		};
