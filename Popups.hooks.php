@@ -222,8 +222,12 @@ class PopupsHooks {
 				'tests/qunit/ext.popups.renderer.article.test.js',
 				'tests/qunit/ext.popups.core.test.js',
 				'tests/qunit/ext.popups.settings.test.js',
+				'tests/qunit/ext.popups.experiment.test.js',
 			),
-			'dependencies' => array( 'ext.popups.desktop' ),
+			'dependencies' => array(
+				'ext.popups.desktop',
+				'ext.popups.experiment'
+			),
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'Popups',
 		);

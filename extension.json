@@ -92,6 +92,21 @@
 			"dependencies": [
 				"ext.popups.core"
 			]
+		},
+		"ext.popups.experiment": {
+			"scripts": [
+				"resources/ext.popups.experiment.js"
+			],
+			"dependencies": [
+				"ext.popups.core",
+				"jquery.jStorage",
+				"mediawiki.user",
+				"mediawiki.storage",
+				"mediawiki.experiments"
+			],
+			"targets": [
+				"desktop"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
