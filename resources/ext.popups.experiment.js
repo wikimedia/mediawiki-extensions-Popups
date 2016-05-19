@@ -58,38 +58,33 @@
 	 * N.B. that the user isn't entered into the experiment, i.e. they aren't assigned or a bucket,
 	 * if the experiment isn't configured.
 	 *
-	 * @return {jQuery.Promise}
+	 * @return {boolean}
 	 */
 	mw.popups.experiment.isUserInCondition = function isUserInCondition() {
-		var deferred = $.Deferred(),
-				config = mw.config.get( 'wgPopupsExperimentConfig' ),
-				result;
+		var config = mw.config.get( 'wgPopupsExperimentConfig' );
 
 		// The first two tests deal with whether the user has /explicitly/ enable or disabled via its
 		// settings.
 		if ( hasUserEnabledFeature() ) {
-			deferred.resolve( true );
-		} else if ( hasUserDisabledFeature() ) {
-			deferred.resolve( false );
-		} else if (
-
-			// Users with the beta feature enabled are already in the experimental condition.
-			mw.config.get( 'wgPopupsExperimentIsBetaFeatureEnabled', false )
-		) {
-			deferred.resolve( true );
-		} else if ( !config ) {
-			deferred.resolve( false );
-		} else {
-			mw.requestIdleCallback( function () {
-				// FIXME: mw.experiments should expose the CONTROL_BUCKET constant, e.g.
-				// `mw.experiments.CONTROL_BUCKET`.
-				result = mw.experiments.getBucket( config, getToken() ) !== 'control';
-
-				deferred.resolve( result );
-			} );
+			return true;
 		}
 
-		return deferred.promise();
+		if ( hasUserDisabledFeature() ) {
+			return false;
+		}
+
+		// Users with the beta feature enabled are already in the experimental condition.
+		if ( mw.config.get( 'wgPopupsExperimentIsBetaFeatureEnabled', false ) ) {
+			return true;
+		}
+
+		if ( !config ) {
+			return false;
+		}
+
+		// FIXME: mw.experiments should expose the CONTROL_BUCKET constant, e.g.
+		// `mw.experiments.CONTROL_BUCKET`.
+		return mw.experiments.getBucket( config, getToken() ) !== 'control';
 	};
 
 }( mediaWiki, jQuery ) );

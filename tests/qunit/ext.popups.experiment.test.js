@@ -9,7 +9,8 @@
 					control: 0.5,
 					A: 0.5
 				}
-			}
+			},
+			wgPopupsExperimentIsBetaFeatureEnabled: null
 		},
 		setup: function () {
 			$.jStorage.deleteKey( 'mwe-popups-enabled' );
@@ -19,114 +20,86 @@
 		}
 	} ) );
 
-	QUnit.test( '#isUserInCondition: user has beta feature enabled', function ( assert ) {
-		var done = assert.async();
-
+	QUnit.test( '#isUserInCondition: user has beta feature enabled', 1, function ( assert ) {
 		mw.config.set( 'wgPopupsExperimentConfig', null );
 		mw.config.set( 'wgPopupsExperimentIsBetaFeatureEnabled', true );
 
-		mw.popups.experiment.isUserInCondition().then( function ( result ) {
-			assert.strictEqual(
-				result,
-				true,
-				'If the user has the beta feature enabled, then they aren\'t in the condition.'
-			);
-
-			done();
-		} );
+		assert.strictEqual(
+			mw.popups.experiment.isUserInCondition(),
+			true,
+			'If the user has the beta feature enabled, then they aren\'t in the condition.'
+		);
 	} );
 
-	QUnit.test( '#isUserInCondition', function ( assert ) {
+	QUnit.test( '#isUserInCondition', 2, function ( assert ) {
 		var getBucketSpy = this.sandbox.stub( mw.experiments, 'getBucket' ).returns( 'A' ),
 			config = mw.config.get( 'wgPopupsExperimentConfig' ),
-			done = assert.async();
+			result,
+			firstCallArgs;
 
-		mw.popups.experiment.isUserInCondition().then( function ( result ) {
-			var fistCallArgs = getBucketSpy.firstCall.args;
+		result = mw.popups.experiment.isUserInCondition();
 
-			assert.deepEqual(
-				fistCallArgs[ 0 ],
-				config,
-				'The Popups experiment config is used when bucketing the user.'
-			);
+		firstCallArgs = getBucketSpy.firstCall.args;
 
-			assert.strictEqual(
-				result,
-				true,
-				'If the user isn\'t in the control bucket, then they are in the condition.'
-			);
+		assert.deepEqual(
+			firstCallArgs[ 0 ],
+			config,
+			'The Popups experiment config is used when bucketing the user.'
+		);
 
-			done();
-		} );
+		assert.strictEqual(
+			result,
+			true,
+			'If the user isn\'t in the control bucket, then they are in the condition.'
+		);
 	} );
 
-	QUnit.test( '#isUserInCondition: token is persisted', function ( assert ) {
+	QUnit.test( '#isUserInCondition: token is persisted', 1, function ( assert ) {
 		var token = '1234567890',
-			setSpy = this.sandbox.spy( mw.storage, 'set' ),
-			done = assert.async();
+			setSpy = this.sandbox.spy( mw.storage, 'set' );
 
 		this.sandbox.stub( mw.user, 'generateRandomSessionId' ).returns( token );
 
-		mw.popups.experiment.isUserInCondition().then( function () {
-			assert.deepEqual(
-				setSpy.firstCall.args[ 1 ],
-				token,
-				'The token is persisted transparently.'
-			);
+		mw.popups.experiment.isUserInCondition();
 
-			done();
-		} );
+		assert.deepEqual(
+			setSpy.firstCall.args[ 1 ],
+			token,
+			'The token is persisted transparently.'
+		);
 	} );
 
-	QUnit.test( '#isUserInCondition: experiment isn\'t configured', function ( assert ) {
-		var done = assert.async();
-
+	QUnit.test( '#isUserInCondition: experiment isn\'t configured', 1, function ( assert ) {
 		mw.config.set( 'wgPopupsExperimentConfig', null );
 
-		mw.popups.experiment.isUserInCondition().then( function ( result ) {
-			assert.strictEqual(
-				result,
-				false,
-				'If the experiment isn\'t configured, then the user isn\'t in the condition.'
-			);
-
-			done();
-		} );
+		assert.strictEqual(
+			mw.popups.experiment.isUserInCondition(),
+			false,
+			'If the experiment isn\'t configured, then the user isn\'t in the condition.'
+		);
 	} );
 
-	QUnit.test( '#isUserInCondition: user has enabled the feature', function ( assert ) {
-		var done = assert.async();
-
+	QUnit.test( '#isUserInCondition: user has enabled the feature', 1, function ( assert ) {
 		$.jStorage.set( 'mwe-popups-enabled', 'true' );
 
-		mw.popups.experiment.isUserInCondition().then( function ( result ) {
-			assert.strictEqual(
-				result,
-				true,
-				'If the experiment has enabled the feature, then the user is in the condition.'
-			);
-
-			done();
-		} );
+		assert.strictEqual(
+			mw.popups.experiment.isUserInCondition(),
+			true,
+			'If the experiment has enabled the feature, then the user is in the condition.'
+		);
 	} );
 
-	QUnit.test( '#isUserInCondition: user has disabled the feature', function ( assert ) {
-		var done = assert.async();
-
+	QUnit.test( '#isUserInCondition: user has disabled the feature', 1, function ( assert ) {
 		// This should be read as follows: the user has enabled the beta feature but has since
 		// disabled the feature via its settings.
 		mw.config.set( 'wgPopupsExperimentIsBetaFeatureEnabled', true );
 		$.jStorage.set( 'mwe-popups-enabled', 'false' );
 
-		mw.popups.experiment.isUserInCondition().then( function ( result ) {
-			assert.strictEqual(
-				result,
-				false,
-				'If the experiment has enabled the feature, then the user is in the condition.'
-			);
-
-			done();
-		} );
+		assert.strictEqual(
+			mw.popups.experiment.isUserInCondition(),
+			false,
+			'If the experiment has enabled the feature, then the user is in the condition.'
+		);
 	} );
 
 }( mediaWiki, jQuery ) );
