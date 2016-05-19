@@ -30,6 +30,17 @@
 	}
 
 	/**
+	 * Has the user previously disabled Popups by clicking "Disable previews" in the settings
+	 * overlay?
+	 *
+	 * @return {boolean}
+	 * @ignore
+	 */
+	function hasUserDisabledFeature() {
+		return $.jStorage.get( 'mwe-popups-enabled' ) === 'false';
+	}
+
+	/**
 	 * @class mw.popups.experiment
 	 * @singleton
 	 */
@@ -54,8 +65,13 @@
 				config = mw.config.get( 'wgPopupsExperimentConfig' ),
 				result;
 
-		if (
-			hasUserEnabledFeature() ||
+		// The first two tests deal with whether the user has /explicitly/ enable or disabled via its
+		// settings.
+		if ( hasUserEnabledFeature() ) {
+			deferred.resolve( true );
+		} else if ( hasUserDisabledFeature() ) {
+			deferred.resolve( false );
+		} else if (
 
 			// Users with the beta feature enabled are already in the experimental condition.
 			mw.config.get( 'wgPopupsExperimentIsBetaFeatureEnabled', false )

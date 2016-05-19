@@ -11,6 +11,9 @@
 				}
 			}
 		},
+		setup: function () {
+			$.jStorage.deleteKey( 'mwe-popups-enabled' );
+		},
 		teardown: function () {
 			mw.storage.remove( 'PopupsExperimentID' );
 		}
@@ -103,7 +106,24 @@
 				'If the experiment has enabled the feature, then the user is in the condition.'
 			);
 
-			$.jStorage.deleteKey( 'mwe-popups-enabled' );
+			done();
+		} );
+	} );
+
+	QUnit.test( '#isUserInCondition: user has disabled the feature', function ( assert ) {
+		var done = assert.async();
+
+		// This should be read as follows: the user has enabled the beta feature but has since
+		// disabled the feature via its settings.
+		mw.config.set( 'wgPopupsExperimentIsBetaFeatureEnabled', true );
+		$.jStorage.set( 'mwe-popups-enabled', 'false' );
+
+		mw.popups.experiment.isUserInCondition().then( function ( result ) {
+			assert.strictEqual(
+				result,
+				false,
+				'If the experiment has enabled the feature, then the user is in the condition.'
+			);
 
 			done();
 		} );
