@@ -1,4 +1,16 @@
 ( function ( $, mw ) {
+	/**
+	 * Check whether the Navigation Popups gadget module is enabled
+	 *
+	 * @return {boolean}
+	 */
+	function isNavigationPopupsGadgetEnabled() {
+		var moduleState = mw.loader.getState( 'ext.gadget.Navigation_popups' );
+
+		// Does the module exist and is it being used?
+		return moduleState !== null && moduleState !== 'registered';
+	}
+
 	mw.popups.enabled = mw.popups.getEnabledState();
 
 	/**
@@ -97,7 +109,8 @@
 		mw.popups.$content = $content;
 		$elements = mw.popups.selectPopupElements();
 
-		if ( mw.popups.enabled ) {
+		// Only enable Popups when the Navigation popups gadget is not enabled
+		if ( !isNavigationPopupsGadgetEnabled() && mw.popups.enabled ) {
 			mw.popups.removeTooltips( $elements );
 			mw.popups.setupTriggers( $elements );
 		} else {

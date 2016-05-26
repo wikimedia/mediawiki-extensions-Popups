@@ -122,9 +122,6 @@
 			return;
 		}
 
-		// Disable Navigration Popups
-		mw.popups.disableNavPopup();
-
 		mw.popups.render.currentLink = link;
 
 		logData = {

@@ -88,7 +88,6 @@ class PopupsHooks {
 		$rl->register( "ext.popups.desktop", array(
 			'scripts' => array(
 				'resources/ext.popups.renderer.article.js',
-				'resources/ext.popups.disablenavpop.js',
 				'resources/ext.popups.settings.js',
 			),
 			'templates' => array(
