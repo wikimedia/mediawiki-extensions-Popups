@@ -9,6 +9,12 @@
 		$window = $( window );
 
 	/**
+	 * Number of chars to request for the article extract
+	 * @property CHARS
+	 */
+	article.CHARS = 525;
+
+	/**
 	 * Size constants for popup images
 	 * @property SIZES
 	 */
@@ -55,7 +61,7 @@
 			formatversion: 2,
 			redirects: true,
 			exintro: true,
-			exsentences: 5,
+			exchars: article.CHARS,
 			// there is an added geometric limit on .mwe-popups-extract
 			// so that text does not overflow from the card
 			explaintext: true,
@@ -99,6 +105,8 @@
 				deferred.reject();
 				return;
 			}
+
+			re.query.pages[ 0 ].extract = removeEllipsis( re.query.pages[ 0 ].extract );
 
 			mw.popups.render.cache[ href ] = {};
 			mw.popups.render.cache[ href ].popup = article.createPopup( re.query.pages[ 0 ], href );
@@ -666,5 +674,12 @@
 	 * Expose for tests
 	 */
 	mw.popups.render.getClosestYPosition = getClosestYPosition;
+
+	/**
+	 * Remove ellipsis if exists at the end
+	 */
+	function removeEllipsis( text ) {
+		return text.replace( /\.\.\.$/, '' );
+	}
 
 } )( jQuery, mediaWiki );
