@@ -101,32 +101,43 @@
 			mw.popups.removeTooltips( $elements );
 			mw.popups.setupTriggers( $elements );
 		} else {
-
-			$elements.on( mw.popups.triggers, function () {
-				// cache the hover start time and link interaction token for a later use
-				dwellStartTime = mw.now();
-				linkInteractionToken = mw.popups.getRandomToken();
-			} );
-
 			// Events are logged even when Hovercards are disabled
 			// See T88166 for details
-			$elements.on( 'click', function ( event ) {
-				var $this = $( this ),
-					action = mw.popups.getAction( event ),
-					href = $this.attr( 'href' );
+			$elements
+				.on( mw.popups.triggers, function () {
+					// cache the hover start time and link interaction token for a later use
+					dwellStartTime = mw.now();
+					linkInteractionToken = mw.popups.getRandomToken();
+				} )
+				.on( 'mouseleave blur', function () {
+					var $this = $( this );
 
-				mw.track( 'ext.popups.schemaPopups', {
-					pageTitleHover: $this.attr( 'title' ),
-					action: action,
-					totalInteractionTime: Math.round( mw.now() - dwellStartTime ),
-					linkInteractionToken: linkInteractionToken
+					if ( dwellStartTime && linkInteractionToken && mw.now() - dwellStartTime >= 250 ) {
+						mw.track( 'ext.popups.schemaPopups', {
+							pageTitleHover: $this.attr( 'title' ),
+							action: 'dwelledButAbandoned',
+							totalInteractionTime: Math.round( mw.now() - dwellStartTime ),
+							linkInteractionToken: linkInteractionToken
+						} );
+					}
+				} )
+				.on( 'click', function ( event ) {
+					var $this = $( this ),
+						action = mw.popups.getAction( event ),
+						href = $this.attr( 'href' );
+
+					mw.track( 'ext.popups.schemaPopups', {
+						pageTitleHover: $this.attr( 'title' ),
+						action: action,
+						totalInteractionTime: Math.round( mw.now() - dwellStartTime ),
+						linkInteractionToken: linkInteractionToken
+					} );
+
+					if ( action  === 'opened in same tab' ) {
+						event.preventDefault();
+						window.location.href = href;
+					}
 				} );
-
-				if ( action  === 'opened in same tab' ) {
-					event.preventDefault();
-					window.location.href = href;
-				}
-			} );
 		}
 	} );
 

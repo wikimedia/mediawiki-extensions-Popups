@@ -13,8 +13,9 @@
 			popupEnabled: mw.popups.getEnabledState(),
 			popupDelay: mw.popups.render.POPUP_DELAY,
 			pageToken: mw.user.generateRandomSessionId() +
-			Math.floor( mw.now() ).toString() +
-			mw.user.generateRandomSessionId(),
+				Math.floor( mw.now() ).toString() +
+				mw.user.generateRandomSessionId(),
+			sessionToken: mw.user.sessionId(),
 			// arbitrary name that represents the current UI of the popups
 			version: 'legacy',
 			// current API version
@@ -26,8 +27,6 @@
 			defaults.editCountBucket = mw.popups.schemaPopups.getEditCountBucket(
 				mw.config.get( 'wgUserEditCount' ) );
 		}
-		// Also add the session token
-		defaults.sessionToken = mw.user.sessionId();
 
 		return defaults;
 	}
