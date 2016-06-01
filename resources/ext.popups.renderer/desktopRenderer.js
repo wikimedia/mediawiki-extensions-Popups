@@ -106,7 +106,8 @@
 		}
 
 		mw.popups.render.currentLink = link;
-
+		// Set the log data only after the current link is set, otherwise, functions like
+		// closePopup will use the new log data when closing an old popup.
 		logData = {
 			pageTitleHover: mw.popups.getTitle( linkHref ),
 			dwellStartTime: dwellStartTime,
@@ -261,6 +262,11 @@
 			}
 		} );
 
+		mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+			action: 'dismissed',
+			totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+		} ) );
+
 		if ( closeTimer ) {
 			closeTimer.abort();
 		}
@@ -314,10 +320,6 @@
 	 */
 	mw.popups.render.leaveActive = function () {
 		closeTimer = mw.popups.render.wait( mw.popups.render.POPUP_CLOSE_DELAY ).done( function () {
-			mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
-				action: 'dismissed',
-				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
-			} ) );
 			mw.popups.render.closePopup();
 		} );
 	};
