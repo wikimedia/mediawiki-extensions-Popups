@@ -5,10 +5,14 @@
 	 * @return {boolean}
 	 */
 	function isNavigationPopupsGadgetEnabled() {
-		var moduleState = mw.loader.getState( 'ext.gadget.Navigation_popups' );
+		// Temporary fix to get this code working on huwiki
+		var moduleName = mw.config.get( 'wgPageContentLanguage' ) === 'hu' ?
+				'ext.gadget.latszer' : 'ext.gadget.Navigation_popups',
+			moduleState = mw.loader.getState( moduleName );
 
 		// Does the module exist and is it being used?
-		return moduleState !== null && moduleState !== 'registered';
+		return ( moduleState !== null && moduleState !== 'registered' ) ||
+			window.pg !== undefined;
 	}
 
 	mw.popups.enabled = mw.popups.getEnabledState();
