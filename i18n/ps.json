@@ -9,6 +9,7 @@
 	"popups-redirects": "<h3>$1</h3> ته مخ ورگرځونې",
 	"popups-settings-title": "مخ مخليدنه",
 	"popups-settings-description": "دا اوزار تاسې ته د ويکي تړنو او سرچينو مخليدنه درښکاره کوي.",
+	"popups-settings-option-simple-description": "د يو مخ مخکښه غونډله او ښکارېدونکی انځور. د لوستونکو لپاره د همدې سپارښتنه کېږي.",
 	"popups-settings-option-advanced": "پرمختللی",
 	"popups-settings-cancel": "ناگارل"
 }
