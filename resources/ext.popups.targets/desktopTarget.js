@@ -1,18 +1,62 @@
 ( function ( $, mw ) {
 	/**
-	 * Check whether the Navigation Popups gadget module is enabled
+	 * Check whether the Navigation Popups gadget is enabled
 	 *
 	 * @return {boolean}
 	 */
 	function isNavigationPopupsGadgetEnabled() {
-		// Temporary fix to get this code working on huwiki
-		var moduleName = mw.config.get( 'wgPageContentLanguage' ) === 'hu' ?
-				'ext.gadget.latszer' : 'ext.gadget.Navigation_popups',
-			moduleState = mw.loader.getState( moduleName );
+		return window.pg !== undefined;
+	}
 
-		// Does the module exist and is it being used?
-		return ( moduleState !== null && moduleState !== 'registered' ) ||
-			window.pg !== undefined;
+	/**
+	 * `mouseleave` and `blur` events handler for links that are eligible for
+	 * popups, but when Popups are disabled.
+	 *
+	 * @param {Object} event
+	 */
+	function onLinkAbandon( event ) {
+		var $this = $( this ),
+			data = event.data || {};
+
+		$this.off( 'mouseleave blur', onLinkAbandon );
+
+		if ( data.dwellStartTime && data.linkInteractionToken &&
+			mw.now() - data.dwellStartTime >= 250
+		) {
+			mw.track( 'ext.popups.schemaPopups', {
+				pageTitleHover: $this.attr( 'title' ),
+				action: 'dwelledButAbandoned',
+				totalInteractionTime: Math.round( mw.now() - data.dwellStartTime ),
+				linkInteractionToken: data.linkInteractionToken
+			} );
+		}
+	}
+
+	/**
+	 * `click` event handler for links that are eligible for popups, but when
+	 * Popups are disabled.
+	 *
+	 * @param {Object} event
+	 */
+	function onLinkClick( event ) {
+		var $this = $( this ),
+			action = mw.popups.getAction( event ),
+			href = $this.attr( 'href' ),
+			data = event.data || {};
+
+		$this.off( 'click', onLinkClick );
+
+		mw.track( 'ext.popups.schemaPopups', {
+			pageTitleHover: $this.attr( 'title' ),
+			action: action,
+			totalInteractionTime: Math.round( mw.now() - data.dwellStartTime ),
+			linkInteractionToken: data.linkInteractionToken
+		} );
+
+		if ( action  === 'opened in same tab' ) {
+			event.preventDefault();
+			window.location.href = href;
+		}
 	}
 
 	mw.popups.enabled = mw.popups.getEnabledState();
@@ -84,49 +128,36 @@
 		mw.popups.$content = $content;
 		$elements = mw.popups.selectPopupElements();
 
-		// Only enable Popups when the Navigation popups gadget is not enabled
-		if ( !isNavigationPopupsGadgetEnabled() && mw.popups.enabled ) {
-			mw.popups.removeTooltips( $elements );
-			mw.popups.setupTriggers( $elements, 'mouseenter focus' );
-		} else {
-			// Events are logged even when Hovercards are disabled
-			// See T88166 for details
-			$elements
-				.on( 'mouseenter focus', function () {
-					// cache the hover start time and link interaction token for a later use
-					dwellStartTime = mw.now();
-					linkInteractionToken = mw.popups.getRandomToken();
-				} )
-				.on( 'mouseleave blur', function () {
-					var $this = $( this );
+		$elements.on( 'mouseenter focus', function ( event ) {
+			var $link = $( this );
 
-					if ( dwellStartTime && linkInteractionToken && mw.now() - dwellStartTime >= 250 ) {
-						mw.track( 'ext.popups.schemaPopups', {
-							pageTitleHover: $this.attr( 'title' ),
-							action: 'dwelledButAbandoned',
-							totalInteractionTime: Math.round( mw.now() - dwellStartTime ),
-							linkInteractionToken: linkInteractionToken
-						} );
-					}
-				} )
-				.on( 'click', function ( event ) {
-					var $this = $( this ),
-						action = mw.popups.getAction( event ),
-						href = $this.attr( 'href' );
+			// Only enable Popups when the Navigation popups gadget is not enabled
+			if ( !isNavigationPopupsGadgetEnabled() && mw.popups.enabled ) {
+				if ( mw.popups.scrolled ) {
+					return;
+				}
 
-					mw.track( 'ext.popups.schemaPopups', {
-						pageTitleHover: $this.attr( 'title' ),
-						action: action,
-						totalInteractionTime: Math.round( mw.now() - dwellStartTime ),
+				mw.popups.removeTooltips( $link );
+				mw.popups.render.render( $link, event, mw.now(), mw.popups.getRandomToken() );
+			} else {
+				// Cache the hover start time and link interaction token for a later use
+				dwellStartTime = mw.now();
+				linkInteractionToken = mw.popups.getRandomToken();
+
+				$link
+					// We are passing the same data, rather than a shared object, into two different functions.
+					// The reason is that we don't want one function to change the data and
+					// have a side-effect on the other function's data.
+					.on( 'mouseleave blur', {
+						dwellStartTime: dwellStartTime,
 						linkInteractionToken: linkInteractionToken
-					} );
-
-					if ( action  === 'opened in same tab' ) {
-						event.preventDefault();
-						window.location.href = href;
-					}
-				} );
-		}
+					}, onLinkAbandon )
+					.on( 'click', {
+						dwellStartTime: dwellStartTime,
+						linkInteractionToken: linkInteractionToken
+					}, onLinkClick );
+			}
+		} );
 	} );
 
 	function initPopups() {
