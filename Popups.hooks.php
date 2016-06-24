@@ -59,9 +59,12 @@ class PopupsHooks {
 	public static function onResourceLoaderRegisterModules( ResourceLoader $rl ) {
 		$moduleDependencies = array(
 			'mediawiki.jqueryMsg',
+			'mediawiki.ui.button',
+			'mediawiki.ui.icon',
 			'moment',
 			'jquery.hidpi',
 			'ext.popups.targets.desktopTarget',
+			'ext.popups.images',
 		);
 
 		// Create a schema module and add it as a dependency of `ext.popups.desktop`.

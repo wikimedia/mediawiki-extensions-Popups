@@ -83,8 +83,8 @@
 			settings.close();
 		} else {
 			mw.popups.saveEnabledState( false );
-			$( '#mwe-popups-settings-form' ).hide();
-			$( '#mwe-popups-settings-help' ).show();
+			$( '#mwe-popups-settings-form, #mwe-popups-settings .save' ).hide();
+			$( '#mwe-popups-settings-help, #mwe-popups-settings .okay' ).show();
 			mw.track( 'ext.popups.schemaPopups', $.extend( {}, currentLinkLogData, {
 				action: 'disabled'
 			} ) );
@@ -110,9 +110,10 @@
 			settings.render();
 		}
 
+		// FIXME: Should recalc on browser resize
 		settings.$element
 			.show()
-			.css( 'left', ( w - 600 ) / 2 )
+			.css( 'left', ( w - settings.$element.outerWidth( true ) ) / 2 )
 			.css( 'top', ( h - settings.$element.outerHeight( true ) ) / 2 );
 
 		return false;

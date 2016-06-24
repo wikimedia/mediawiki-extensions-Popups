@@ -17,11 +17,11 @@
 					return radioButtonValue;
 				}
 			} );
-		jQueryInit.withArgs( '#mwe-popups-settings-form' )
+		jQueryInit.withArgs( '#mwe-popups-settings-form, #mwe-popups-settings .save' )
 			.returns( {
 				hide: $.noop
 			} );
-		jQueryInit.withArgs( '#mwe-popups-settings-help' )
+		jQueryInit.withArgs( '#mwe-popups-settings-help, #mwe-popups-settings .okay' )
 			.returns( {
 				show: $.noop
 			} );
@@ -52,8 +52,7 @@
 
 		mw.popups.settings.open();
 		assert.equal(
-			// 600 is defined in styles
-			( $( window ).width() - 600 ) / 2 + 'px',
+			( $( window ).width() - mw.popups.settings.$element.outerWidth( true ) ) / 2 + 'px',
 			mw.popups.settings.$element.css( 'left' ),
 			'Settings dialog is horizontally aligned in the middle.'
 		);

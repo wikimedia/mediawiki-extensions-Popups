@@ -1,33 +1,29 @@
 <section id="mwe-popups-settings" style="display:none;">
 	<header>
-		<a class="close">&times;</a>
+		<div>
+			<div class="mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-close close">Close</div>
+		</div>
 		<h1>{{heading}}</h1>
+		<div>
+			<button class="save mw-ui-button mw-ui-constructive">{{saveLabel}}</button>
+			<button class="okay mw-ui-button mw-ui-constructive" style="display:none;">{{okLabel}}</button>
+		</div>
 	</header>
 	<main id="mwe-popups-settings-form">
-		<p>{{descriptionText}}</p>
 		<form>
-			<radiogroup>
-				{{#choices}}
-				<p>
-					<input name="mwe-popups-setting"
-						{{#isChecked}}checked{{/isChecked}}
-						value="{{id}}" type="radio" id="mwe-popups-settings-{{id}}">
-					<label for="mwe-popups-settings-{{id}}"><span>{{name}}</span>
-						{{description}}</label>
-					{{#image}}<img src="{{image}}">{{/image}}
-				</p>
-				{{/choices}}
-			</radiogroup>
-			<div class="mwe-popups-settings-actions">
-				<button type="button" class="mw-ui-button mw-ui-quiet close">{{closeLabel}}</button>
-				<button type="button" class="save mw-ui-button mw-ui-constructive">{{saveLabel}}</button>
-			</div>
+			{{#choices}}
+			<p>
+				<input name="mwe-popups-setting"
+					{{#isChecked}}checked{{/isChecked}}
+					value="{{id}}" type="radio" id="mwe-popups-settings-{{id}}">
+				<label for="mwe-popups-settings-{{id}}"><span>{{name}}</span>
+					{{description}}</label>
+			</p>
+			{{/choices}}
 		</form>
 	</main>
-	<div id="mwe-popups-settings-help"  style="display:none;">
+	<div id="mwe-popups-settings-help" style="display:none;">
 		<p>{{helpText}}</p>
 		<div class="mwe-popups-settings-help-image"></div>
-		<div class="mwe-popups-settings-actions">
-			<button type="button" class="okay mw-ui-button mw-ui-constructive">{{okLabel}}</button>
-		</div>
+	</div>
 </section>

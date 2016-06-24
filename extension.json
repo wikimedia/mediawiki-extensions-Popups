@@ -90,6 +90,14 @@
 			],
 			"targets": [ "desktop" ]
 		},
+		"ext.popups.images": {
+			"selector": ".mw-ui-icon-{name}:before",
+			"class": "ResourceLoaderImageModule",
+			"prefix": "mw-ui",
+			"images": {
+				"popups-close": "resources/ext.popups.images/close.svg"
+			}
+		},
 		"ext.popups.renderer.desktopRenderer": {
 			"scripts": [
 				"resources/ext.popups.renderer/desktopRenderer.js"

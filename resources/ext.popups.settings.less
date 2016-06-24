@@ -1,63 +1,55 @@
 @import "mediawiki.mixins.less";
 
+@dialog-margin: 50px;
+
 #mwe-popups-settings {
 	position: fixed;
 	z-index: 1000;
 	background: #fff;
-	border: 1px solid rgba( 0, 0, 0, 0.1);
-	-moz-box-shadow: 3px 3px 0px 0px rgba( 0, 0, 0, 0.30 );
-	box-shadow: 3px 3px 0px 0px rgba( 0, 0, 0, 0.30 );
-	width: 600px;
-	padding: 5px;
+	width: 450px;
+	border: 1px solid #ccc;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+	border-radius: 2px;
 
 	header {
-		height: 50px;
-		border-bottom: 1px solid #c8c8c8;
+		box-sizing: border-box;
+		border-bottom: 1px solid #c8ccd1;
+		position: relative;
+		display: table;
+		width: 100%;
+		padding: 5px 7px 5px 0;
 
-		a {
-			font: 40px sans-serif;
-			font-weight: bold;
-			line-height: 50px;
-			text-align: center;
-			color: #999;
-			display: block;
-			width: 50px;
-			height: 50px;
-			border-right: 1px solid #c8c8c8;
-			float: left;
+		> div {
+			display: table-cell;
+			width: 3.35em;
+			vertical-align: middle;
 			cursor: pointer;
-
-			&:hover {
-				text-decoration: none;
-			}
 		}
 
 		h1 {
-			margin: 0;
-			padding: 0;
-			padding-left: 10px;
-			font: 20px sans-serif;
-			font-weight: bold;
-			line-height: 58px;
-			border: none;
+			border: 0;
+			width: 100%;
+			font-family: sans-serif;
+			font-size: 18px;
+			text-align: center;
 		}
 	}
 
 	main {
-		margin-top: 15px;
-		margin-left: 50px;
+		width: 350px;
+		padding: 50px 0 40px;
+		margin: 0 auto;
 
 		p {
 			color: #999;
 			font-size: 17px;
-			margin: 0;
-			padding: 17px 0 17px 10px;
+			margin: 0 0 20px 0;
 		}
 
 		form {
-			margin-left: -48px;
-
-			img, input, label {
+			img,
+			input,
+			label {
 				vertical-align: top;
 			}
 
@@ -67,32 +59,23 @@
 
 			input {
 				display: inline-block;
-				margin: 0 20px;
+				margin: 0 10px 0 0;
+				padding: 0;
 			}
 
 			label {
-				font-size: 12px;
+				font-size: 13px;
 				display: inline-block;
-				margin-right: 110px;
-				line-height: 18px;
-				width: 185px;
+				line-height: 16px;
+				width: 300px;
 
 				> span {
 					color: #000;
 					font-size: 18px;
 					font-weight: bold;
 					display: block;
-				}
-
-				> small {
-					display: block;
-					padding: 2px 4px;
-					text-align: center;
-					color: #fff;
-					text-transform: uppercase;
-					border: 1px solid #BFEBE1;
-					background: #00af89;
-					font-weight: 100;
+					margin-bottom: 5px;
+					line-height: 18px;
 				}
 			}
 		}
@@ -102,7 +85,7 @@
 #mwe-popups-settings-help {
 	font-size: 18px;
 	font-weight: 800;
-	margin: 50px;
+	margin: @dialog-margin;
 	margin-bottom: 20px;
 	margin-right: 0;
 
@@ -111,7 +94,7 @@
 	}
 
 	div.mwe-popups-settings-help-image {
-		margin-left: -55px;
+		margin-left: -@dialog-margin;
 		margin-top: 20px;
 		margin-bottom: 50px;
 		background: #eee;
@@ -127,15 +110,8 @@
 	.background-image-svg( "images/footer-rtl.svg", "images/footer-rtl.png" );
 }
 
-.mwe-popups-settings-actions {
-	clear: both;
-	text-align: right;
-	margin: 10px;
-	margin-bottom: 20px;
-}
-
 .mwe-popups-overlay {
-	background: rgba( 0, 0, 0, 0.3 );
+	background-color: rgba( 255, 255, 255, 0.9 );
 	z-index: 999;
 	position: fixed;
 	height: 100%;
