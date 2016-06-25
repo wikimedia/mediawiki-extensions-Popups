@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirzali"
+			"Mirzali",
+			"Kumkumuk"
 		]
 	},
 	"popups-settings-save": "Qeyd ke",
-	"popups-settings-cancel": "Bıtexelne"
+	"popups-settings-cancel": "Peyd ke"
 }
