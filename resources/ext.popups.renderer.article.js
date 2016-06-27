@@ -6,6 +6,7 @@
 	 * @singleton
 	 */
 	var currentRequest,
+		isSafari = navigator.userAgent.match( /Safari/ ) !== null,
 		article = {},
 		surveyLink = mw.config.get( 'wgPopupsSurveyLink' ),
 		$window = $( window ),
@@ -385,8 +386,6 @@
 			ns = 'http://www.w3.org/2000/svg',
 			svgElement = article.createSVGTag( 'image' );
 
-		// certain browsers e.g. ie9 will not correctly set attributes from foreign namespaces (T134979)
-		svgElement.setAttributeNS( ns, 'xlink:href', url );
 		$thumbnailSVGImage = $( svgElement );
 		$thumbnailSVGImage
 			.addClass( className )
@@ -398,6 +397,13 @@
 				'clip-path': 'url(#' + clipPath + ')'
 			} );
 
+		// Make image render in Safari (T138430)
+		if ( isSafari ) {
+			svgElement.setAttribute( 'xlink:href', url );
+		} else {
+			// certain browsers e.g. ie9 will not correctly set attributes from foreign namespaces (T134979)
+			svgElement.setAttributeNS( ns, 'xlink:href', url );
+		}
 		$thumbnail = $( '<svg>' )
 			.attr( {
 				xmlns: ns,
