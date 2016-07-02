@@ -4,5 +4,11 @@
 			"George Animal"
 		]
 	},
-	"popups-settings-title": "Pêşdîtina rûpelê"
+	"popups-settings-title": "Pêşdîtina rûpelê",
+	"popups-settings-option-simple": "Hêsan",
+	"popups-settings-option-advanced": "Pêşketî",
+	"popups-settings-save": "Tomar bike",
+	"popups-settings-help-ok": "Baş e",
+	"popups-settings-cancel": "Betal bike",
+	"popups-settings-enable": "Pêşdîtinan çalak bike"
 }
