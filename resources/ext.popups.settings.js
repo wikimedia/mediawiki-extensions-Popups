@@ -37,8 +37,7 @@
 				},
 				{
 					id: 'off',
-					name: mw.message( 'popups-settings-option-off' ).text(),
-					description: mw.message( 'popups-settings-option-off-description' ).text()
+					name: mw.message( 'popups-settings-option-off' ).text()
 				}
 			];
 
