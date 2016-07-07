@@ -65,12 +65,15 @@
 			}
 		} );
 
-		currentRequest.fail( function ( textStatus ) {
-			mw.track( 'ext.popups.schemaPopups', $.extend( logData, {
-				action: 'error',
-				errorState: textStatus,
-				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
-			} ) );
+		currentRequest.fail( function ( textStatus, data ) {
+			// only log genuine errors, not client aborts
+			if ( data.textStatus !== 'abort' ) {
+				mw.track( 'ext.popups.schemaPopups', $.extend( logData, {
+					action: 'error',
+					errorState: textStatus,
+					totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+				} ) );
+			}
 			deferred.reject();
 		} )
 		.done( function ( re ) {
