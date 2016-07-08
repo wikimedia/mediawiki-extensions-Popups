@@ -3,7 +3,8 @@
 		"authors": [
 			"Mormegil",
 			"Littledogboy",
-			"Cvanca"
+			"Cvanca",
+			"Dvorapa"
 		]
 	},
 	"popups-message": "Vyskakovací kartičky",
@@ -12,12 +13,11 @@
 	"popups-redirects": "přesměrování na <h3>$1</h3>",
 	"popups-settings-title": "Náhled stránky",
 	"popups-settings-description": "Tento nástroj vám umožňuje zobrazovat náhledy odkazů na články a na reference.",
-	"popups-settings-option-simple": "Jednoduchý",
-	"popups-settings-option-simple-description": "Zobrazí úvodní větu stránky a náhledový obrázek. Doporučené nastavení pro čtenáře.",
+	"popups-settings-option-simple": "Zapnout",
+	"popups-settings-option-simple-description": "Získat rychlé náhledy tématu během čtení článku.",
 	"popups-settings-option-advanced": "Pokročilý",
 	"popups-settings-option-advanced-description": "Zobrazí náhledy odkazů a zpřístupní menu editačních funkcí. Nastavení užívané mnoha editory.",
-	"popups-settings-option-off": "Vypnout náhledy",
-	"popups-settings-option-off-description": "Toto nastavení můžete změnit pomocí odkazu v patičce stránky",
+	"popups-settings-option-off": "Vypnout",
 	"popups-settings-save": "Uložit",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Storno",
