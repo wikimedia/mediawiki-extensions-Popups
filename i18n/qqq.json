@@ -19,7 +19,6 @@
 	"popups-settings-option-advanced": "Title for the editor or navigation popups option\n{{Identical|Advanced}}",
 	"popups-settings-option-advanced-description": "Description for the editor or navigation popups option",
 	"popups-settings-option-off": "Title to turn off hovercards option.\n\nSee also:\n* {{msg-mw|Popups-settings-enable}}",
-	"popups-settings-option-off-description": "Description for turn off hovercards option",
 	"popups-settings-save": "Save buttton for the setting's dialoag\n{{Identical|Save}}",
 	"popups-settings-help-ok": "Label of a button",
 	"popups-settings-cancel": "Cancel button for the setting's dialog\n{{Identical|Cancel}}",

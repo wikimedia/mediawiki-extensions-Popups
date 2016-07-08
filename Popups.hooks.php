@@ -108,7 +108,6 @@ class PopupsHooks {
 				"popups-settings-option-advanced",
 				"popups-settings-option-advanced-description",
 				"popups-settings-option-off",
-				"popups-settings-option-off-description",
 				"popups-settings-save",
 				"popups-settings-cancel",
 				"popups-settings-enable",
