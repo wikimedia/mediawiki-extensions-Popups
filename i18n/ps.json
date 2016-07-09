@@ -9,11 +9,10 @@
 	"popups-redirects": "<h3>$1</h3> ته مخ ورگرځونې",
 	"popups-settings-title": "مخ مخليدنه",
 	"popups-settings-description": "دا اوزار تاسې ته د ويکي تړنو او سرچينو مخليدنه درښکاره کوي.",
-	"popups-settings-option-simple": "ساده",
+	"popups-settings-option-simple": "چارنول",
 	"popups-settings-option-simple-description": "د يو مخ مخکښه غونډله او ښکارېدونکی انځور. د لوستونکو لپاره د همدې سپارښتنه کېږي.",
 	"popups-settings-option-advanced": "پرمختللی",
-	"popups-settings-option-off": "مخليدنه ناچارنول",
-	"popups-settings-option-off-description": "تاسې د دې مخ په پايڅوړ کې د ورکړل شوې تړنې په کارولو سره همدا امستنه بدلولی شئ.",
+	"popups-settings-option-off": "ناچارنول",
 	"popups-settings-cancel": "ناگارل",
 	"popups-settings-help": "تاسې د مخ په پايڅوړ کې د يوې تړنې په کارولو سره مخليدنه بېرته چارنولی شئ.",
 	"popups-settings-enable": "مخليدنې چارنول"

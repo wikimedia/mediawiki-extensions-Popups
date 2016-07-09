@@ -14,12 +14,11 @@
 	"popups-redirects": "redirige a <h3>$1</h3>",
 	"popups-settings-title": "Previsualización de página",
 	"popups-settings-description": "Esta herramienta permite previsualizar enlaces a páginas wikis y a referencias.",
-	"popups-settings-option-simple": "Simple",
-	"popups-settings-option-simple-description": "Ver la frase principal de una página y una imagen de vista previa. Esto es recomendable para los lectores",
+	"popups-settings-option-simple": "Activar",
+	"popups-settings-option-simple-description": "Obtener resúmenes rápidos de un tema durante la lectura de un artículo.",
 	"popups-settings-option-advanced": "Avanzado",
 	"popups-settings-option-advanced-description": "Ver vistas previas de enlace y acceso a los menús de la función de edición. Esta opción es recomendada para editores.",
-	"popups-settings-option-off": "Desactivar previsualizaciones",
-	"popups-settings-option-off-description": "Puedes cambiar esta configuración usando el enlace en el pie de la página",
+	"popups-settings-option-off": "Desactivar",
 	"popups-settings-save": "Guardar",
 	"popups-settings-help-ok": "Aceptar",
 	"popups-settings-cancel": "Cancelar",
@@ -27,5 +26,6 @@
 	"popups-settings-enable": "Activar previsualizaciones",
 	"popups-send-feedback": "Enviar comentario (enlace externo)",
 	"popups-mobile-continue-to-page": "Continuar a la página",
-	"popups-mobile-dismiss": "Descartar"
+	"popups-mobile-dismiss": "Descartar",
+	"popups-mobile-message": "Cuadros emergentes (móvil)"
 }
