@@ -2,13 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Stryn",
-			"Mikahama"
+			"Mikahama",
+			"Nike"
 		]
 	},
 	"popups-message": "Ponnahduskortit",
 	"popups-desc": "Näyttää ponnahduskortissa yhteenvedon sivun sisällöstä, kun käyttäjä laittaa hiiren sivulle osoittavan linkin päälle.",
 	"popups-last-edited": "Viimeksi muokattu $1",
 	"popups-redirects": "ohjaa sivulle <h3>$1</h3>",
+	"popups-settings-option-simple-description": "Näytä aiheiden pikaesitselut lukutilassa.",
 	"popups-mobile-continue-to-page": "Jatka sivulle",
 	"popups-mobile-dismiss": "Ohita"
 }
