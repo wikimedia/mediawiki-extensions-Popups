@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Geraki",
-			"Glavkos"
+			"Glavkos",
+			"Ανώνυμος Βικιπαιδιστής"
 		]
 	},
 	"popups-message": "Αιωρούμενες κάρτες",
@@ -11,12 +12,11 @@
 	"popups-redirects": "ανακατευθύνει σε <h3>$1</h3>",
 	"popups-settings-title": "Προεπισκόπηση σελίδων",
 	"popups-settings-description": "Αυτό το εργαλείο σας επιτρέπει να κάνετε προεπισκόπηση συνδέσμων προς σελίδες wiki και υποσημειώσεις.",
-	"popups-settings-option-simple": "Απλή",
-	"popups-settings-option-simple-description": "Δείτε την εισαγωγική πρόταση μιας σελίδας και εικόνα προεπισκόπησης. Αυτό συστήνεται για αναγνώστες.",
+	"popups-settings-option-simple": "Ενεργοποιημένο",
+	"popups-settings-option-simple-description": "Αποκτήστε γρήγορη προεπισκόπηση ενός θέματος, ενώ διαβάζετε ένα άρθρο.",
 	"popups-settings-option-advanced": "Προχωρημένη",
 	"popups-settings-option-advanced-description": "Δείτε προεπισκοπήσεις συνδέσμων και πρόσβαση σε μενού με λειτουργίες επεξεργασίας. Αυτή χρησιμοποιείται από πολλούς συντάκτες.",
-	"popups-settings-option-off": "Απενεργοποίηση προεπισκοπήσεων",
-	"popups-settings-option-off-description": "Μπορείτε να αλλάξετε αυτήν τη ρύθμιση χρησιμοποιώντας το σύνδεσμο στο υποσέλιδο της σελίδας.",
+	"popups-settings-option-off": "Απενεργοποιημένο",
 	"popups-settings-save": "Αποθήκευση",
 	"popups-settings-help-ok": "Εντάξει",
 	"popups-settings-cancel": "Ακύρωση",
