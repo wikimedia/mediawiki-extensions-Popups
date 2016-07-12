@@ -4,7 +4,10 @@
 			"Cedric31"
 		]
 	},
-	"popups-message": "Hovercards",
+	"popups-message": "Quadres emergents",
+	"popups-desc": "Afichar de fenèstras al susvòl amb los resumits dels contenguts de las paginas quand l’utilizaire susvòla un ligam de pagina.",
 	"popups-redirects": "redirigit cap a <h3>$1</h3>",
+	"popups-settings-option-simple": "Activar",
+	"popups-settings-option-off": "Desactivar",
 	"popups-settings-help-ok": "D'acòrdi"
 }
