@@ -3,7 +3,8 @@
 		"authors": [
 			"Dianakc",
 			"Rodrigo codignoli",
-			"He7d3r"
+			"He7d3r",
+			"Peter Fernando"
 		]
 	},
 	"popups-message": "Cartões flutuantes",
@@ -12,12 +13,11 @@
 	"popups-redirects": "redireciona para <h3>$1</h3>",
 	"popups-settings-title": "Pré-visualização",
 	"popups-settings-description": "Esta ferramenta ajuda a pré-visualizar links de páginas wikis e referências.",
-	"popups-settings-option-simple": "Simples",
+	"popups-settings-option-simple": "Habilitar",
 	"popups-settings-option-simple-description": "Veja a sentença de uma página e uma imagem de pré-visualização. Isso é recomendado para leitores.",
 	"popups-settings-option-advanced": "Avançado",
 	"popups-settings-option-advanced-description": "Veja a pré-visualização do link e acesse menus com funções de edição. Isso é usado por muitos editores.",
-	"popups-settings-option-off": "Desativar pré-visualização",
-	"popups-settings-option-off-description": "Você pode modificar esta opções usando o link no rodapé da página.",
+	"popups-settings-option-off": "Desativar",
 	"popups-settings-save": "Salvar",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Cancelar",

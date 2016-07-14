@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zygimantus"
+			"Zygimantus",
+			"Eitvys200"
 		]
 	},
+	"popups-settings-option-simple": "Įgalinti",
+	"popups-settings-option-off": "Išjungti",
 	"popups-mobile-continue-to-page": "Toliau į puslapį",
 	"popups-mobile-dismiss": "Atmesti"
 }
