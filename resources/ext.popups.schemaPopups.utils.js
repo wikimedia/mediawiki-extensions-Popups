@@ -10,6 +10,7 @@
 			namespaceIdSource: mw.config.get( 'wgNamespaceNumber' ),
 			pageIdSource: mw.config.get( 'wgArticleId' ),
 			isAnon: mw.user.isAnon(),
+			hovercardsSuppressedByGadget: false,
 			popupEnabled: mw.popups.getEnabledState(),
 			popupDelay: mw.popups.render.POPUP_DELAY,
 			pageToken: mw.user.generateRandomSessionId() +
