@@ -3,7 +3,8 @@
 		"authors": [
 			"Jopparn",
 			"Lokal Profil",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Josve05a"
 		]
 	},
 	"popups-message": "Hovercards",
@@ -12,12 +13,11 @@
 	"popups-redirects": "omdirigering till <h3>$1</h3>",
 	"popups-settings-title": "Sidförhandsgranskning",
 	"popups-settings-description": "Detta verktyg låter dig förhandsgranska länkar till wikisidor och till referenser",
-	"popups-settings-option-simple": "Enkel",
+	"popups-settings-option-simple": "Aktivera",
 	"popups-settings-option-simple-description": "Se den inledande meningen av en sida och visa en förhandsgranskningsbild. Denna rekommenderas för läsare.",
 	"popups-settings-option-advanced": "Avancerad",
 	"popups-settings-option-advanced-description": "Se förhandsgranskningar av länkar och ge tillgång till menyer för redigeringsfunktionalitet. Detta används av många redigerare.",
-	"popups-settings-option-off": "Inaktivera förhandsgranskningar",
-	"popups-settings-option-off-description": "Du kan ändra denna inställning via länken i sidfoten av sidan",
+	"popups-settings-option-off": "Inaktivera",
 	"popups-settings-save": "Spara",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Avbryt",
