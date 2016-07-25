@@ -27,7 +27,8 @@
 				pageTitleHover: $this.attr( 'title' ),
 				action: 'dwelledButAbandoned',
 				totalInteractionTime: Math.round( mw.now() - data.dwellStartTime ),
-				linkInteractionToken: data.linkInteractionToken
+				linkInteractionToken: data.linkInteractionToken,
+				hovercardsSuppressedByGadget: data.hovercardsSuppressedByGadget
 			} );
 		}
 	}
@@ -50,7 +51,8 @@
 			pageTitleHover: $this.attr( 'title' ),
 			action: action,
 			totalInteractionTime: Math.round( mw.now() - data.dwellStartTime ),
-			linkInteractionToken: data.linkInteractionToken
+			linkInteractionToken: data.linkInteractionToken,
+			hovercardsSuppressedByGadget: data.hovercardsSuppressedByGadget
 		} );
 
 		if ( action  === 'opened in same tab' ) {
@@ -150,11 +152,13 @@
 					// have a side-effect on the other function's data.
 					.on( 'mouseleave blur', {
 						dwellStartTime: dwellStartTime,
-						linkInteractionToken: linkInteractionToken
+						linkInteractionToken: linkInteractionToken,
+						hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
 					}, onLinkAbandon )
 					.on( 'click', {
 						dwellStartTime: dwellStartTime,
-						linkInteractionToken: linkInteractionToken
+						linkInteractionToken: linkInteractionToken,
+						hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
 					}, onLinkClick );
 			}
 		} );
@@ -191,7 +195,8 @@
 		}
 
 		mw.track( 'ext.popups.schemaPopups', {
-			action: 'pageLoaded'
+			action: 'pageLoaded',
+			hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
 		} );
 	} );
 } )( jQuery, mediaWiki );
