@@ -171,26 +171,7 @@
 	}
 
 	$( function () {
-		var jStorage = mw.storage.get( 'jStorage' );
-
-		// FIXME: Can be removed a month from jStorage removal. Not perfect but should work in most cases.
-		if ( jStorage && jStorage.indexOf( 'popups-enabled' ) > 0 ) {
-			// slower loading popups when in transition mode
-			mw.loader.using( 'jquery.jStorage' ).done( function () {
-				var val = $.jStorage.get( 'mwe-popups-enabled' );
-				// delete jStorage key
-				$.jStorage.deleteKey( 'mwe-popups-enabled' );
-				if ( val === 'false' ) {
-					// copy over
-					mw.storage.set( 'mwe-popups-enabled', '0' );
-				} else {
-					if ( val ) {
-						mw.storage.set( 'mwe-popups-enabled', '1' );
-					}
-					initPopups();
-				}
-			} );
-		} else if ( mw.popups.enabled ) {
+		if ( mw.popups.enabled ) {
 			initPopups();
 		}
 
