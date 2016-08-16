@@ -4,7 +4,8 @@
 			"Mormegil",
 			"Littledogboy",
 			"Cvanca",
-			"Dvorapa"
+			"Dvorapa",
+			"Marek Pavlica"
 		]
 	},
 	"popups-message": "Vyskakovací kartičky",
@@ -19,7 +20,7 @@
 	"popups-settings-option-advanced-description": "Zobrazí náhledy odkazů a zpřístupní menu editačních funkcí. Nastavení užívané mnoha editory.",
 	"popups-settings-option-off": "Vypnout",
 	"popups-settings-save": "Uložit",
-	"popups-settings-help-ok": "OK",
+	"popups-settings-help-ok": "Hotovo",
 	"popups-settings-cancel": "Storno",
 	"popups-settings-help": "Náhledy můžete opět zapnout pomocí odkazu v patičce stránky.",
 	"popups-settings-enable": "Zapnout náhledy",
