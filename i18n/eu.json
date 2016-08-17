@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
 	"popups-settings-save": "Gorde",
-	"popups-settings-help-ok": "Ados",
+	"popups-settings-help-ok": "Egina",
 	"popups-settings-cancel": "Utzi"
 }

@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Դավիթ Սարոյան"
+		]
+	},
+	"popups-message": "Նախադիտման քարտեր",
+	"popups-desc": "Երբ մասնակիցը կուրսորը պահում է հղման վրա, ցուցադրվում են նախադիտման քարտեր՝ հոդվածի համառոտ բովանդակությամբ:",
+	"popups-last-edited": "Խմբագրել է $1",
+	"popups-redirects": "վերահղում է <h3>$1</h3>",
+	"popups-settings-title": "Էջի նախադիտում",
+	"popups-settings-option-simple": "Միացնել",
+	"popups-settings-option-advanced": "Ընդլայնված",
+	"popups-settings-option-off": "Անջատել",
+	"popups-settings-save": "Պահպանել",
+	"popups-settings-help-ok": "Արված է",
+	"popups-settings-cancel": "Չեղարկել",
+	"popups-settings-enable": "Միացնել նախադիտումը",
+	"popups-mobile-dismiss": "Փակել",
+	"popups-mobile-message": "Նախադիտման քարտեր (հեռախոս)"
+}
