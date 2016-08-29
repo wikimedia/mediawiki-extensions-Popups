@@ -147,15 +147,16 @@
 				linkInteractionToken = mw.popups.getRandomToken();
 
 				$link
+					.off( 'mouseleave.popups blur.popups click.popups' )
 					// We are passing the same data, rather than a shared object, into two different functions.
 					// The reason is that we don't want one function to change the data and
 					// have a side-effect on the other function's data.
-					.on( 'mouseleave blur', {
+					.on( 'mouseleave.popups blur.popups', {
 						dwellStartTime: dwellStartTime,
 						linkInteractionToken: linkInteractionToken,
 						hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
 					}, onLinkAbandon )
-					.on( 'click', {
+					.on( 'click.popups', {
 						dwellStartTime: dwellStartTime,
 						linkInteractionToken: linkInteractionToken,
 						hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
