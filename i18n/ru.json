@@ -4,7 +4,8 @@
 			"Okras",
 			"Putnik",
 			"Mariya",
-			"Ole Yves"
+			"Ole Yves",
+			"Amire80"
 		]
 	},
 	"popups-message": "Всплывающие окна",
@@ -16,10 +17,15 @@
 	"popups-settings-option-simple": "Включить",
 	"popups-settings-option-simple-description": "Получить быстрый предпросмотр темы при чтении статьи.",
 	"popups-settings-option-advanced": "Расширенный",
+	"popups-settings-option-advanced-description": "Показывать предпросмотр ссылок и получать меню для функций правки. Это используют многие редакторы.",
 	"popups-settings-option-off": "Отключить",
 	"popups-settings-save": "Сохранить",
 	"popups-settings-help-ok": "Готово",
 	"popups-settings-cancel": "Отмена",
+	"popups-settings-help": "Можно вновь включить предпросмотр используя ссылку в конце страницы.",
 	"popups-settings-enable": "Включить предпросмотр",
-	"popups-send-feedback": "Отправить отзыв (внешняя ссылка)"
+	"popups-send-feedback": "Отправить отзыв (внешняя ссылка)",
+	"popups-mobile-continue-to-page": "Продолжить на страницу",
+	"popups-mobile-dismiss": "Закрыть",
+	"popups-mobile-message": "Всплывающие окна (мобильные)"
 }
