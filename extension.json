@@ -67,7 +67,8 @@
 				"mediawiki.api",
 				"mediawiki.Title",
 				"mediawiki.Uri",
-				"mediawiki.RegExp"
+				"mediawiki.RegExp",
+				"mediawiki.storage"
 			],
 			"targets": [
 				"desktop",
