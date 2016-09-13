@@ -51,6 +51,14 @@
 	mw.popups.render.API_DELAY = 50;
 
 	/**
+	 * Minimum time to log dwelledButAbandoned events. Initially considered as
+	 * 250ms to avoid accidental hovers being logged. Now logging all events to
+	 * verify data. See T145379
+	 * @property DWELL_EVENTS_MIN_INTERACTION_TIME
+	 */
+	mw.popups.render.DWELL_EVENTS_MIN_INTERACTION_TIME = 0;
+
+	/**
 	 * Cache of all the popups that were opened in this session
 	 * @property {Object} cache
 	 */
@@ -332,7 +340,7 @@
 	mw.popups.render.leaveInactive = function () {
 		if ( logData.dwellStartTime &&
 			logData.linkInteractionToken &&
-			mw.now() - logData.dwellStartTime >= 250
+			mw.now() - logData.dwellStartTime >= mw.popups.render.DWELL_EVENTS_MIN_INTERACTION_TIME
 		) {
 			mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
 				action: 'dwelledButAbandoned',

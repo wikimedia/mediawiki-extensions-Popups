@@ -21,7 +21,7 @@
 		$this.off( 'mouseleave blur', onLinkAbandon );
 
 		if ( data.dwellStartTime && data.linkInteractionToken &&
-			mw.now() - data.dwellStartTime >= 250
+			mw.now() - data.dwellStartTime >= mw.popups.render.DWELL_EVENTS_MIN_INTERACTION_TIME
 		) {
 			mw.track( 'ext.popups.schemaPopups', {
 				pageTitleHover: $this.attr( 'title' ),
