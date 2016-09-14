@@ -25,6 +25,7 @@ When(/^I disable previews in the popups settings$/) do
     page.disable_previews_radio_element.when_present.click
     page.save_settings_button_element.when_present.click
     page.settings_help_ok_button_element.when_present.click
+    sleep 1
   end
 end
 
@@ -34,6 +35,7 @@ When(/^I enable previews in the popups settings$/) do
     page.last_link_in_the_footer_element.when_present.click
     page.enable_previews_radio_element.when_present.click
     page.save_settings_button_element.when_present.click
+    sleep 1
   end
 end
 
