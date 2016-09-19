@@ -124,7 +124,15 @@
 		} );
 	};
 
-	mw.hook( 'wikipage.content' ).add( function ( $content ) {
+	/**
+	 * Adds the events necessary to all links within a container
+	 * so that a popup shows on hover.
+	 *
+	 * @param {jQuery.Object} $content to setup mouse events for
+	 * @ignore
+	 * @method setupMouseEvents
+	 */
+	function setupMouseEvents( $content ) {
 		var $elements, dwellStartTime, linkInteractionToken;
 
 		mw.popups.$content = $content;
@@ -163,7 +171,9 @@
 					}, onLinkClick );
 			}
 		} );
-	} );
+	}
+
+	mw.hook( 'wikipage.content' ).add( setupMouseEvents );
 
 	function initPopups() {
 		mw.popups.checkScroll();
