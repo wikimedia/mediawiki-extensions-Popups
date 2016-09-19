@@ -258,6 +258,9 @@
 		if ( action === 'opened in same tab' ) {
 			window.location.href = $activeLink.attr( 'href' );
 		}
+
+		// close the popup
+		mw.popups.render.closePopup();
 	};
 
 	/**

@@ -138,6 +138,11 @@
 		mw.popups.$content = $content;
 		$elements = mw.popups.selectPopupElements();
 
+		// On clicking a link the open popup (if any) should be hidden. (T143051)
+		$elements.on( 'click', function () {
+			mw.popups.render.closePopup();
+		} );
+
 		$elements.on( 'mouseenter focus', function ( event ) {
 			var $link = $( this );
 
