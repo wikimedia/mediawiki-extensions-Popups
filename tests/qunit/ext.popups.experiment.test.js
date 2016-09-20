@@ -13,6 +13,8 @@
 			wgPopupsExperimentIsBetaFeatureEnabled: null
 		},
 		setup: function () {
+			// As anon user by default
+			this.sandbox.stub( mw.user, 'isAnon', function () { return true; } );
 			mw.storage.remove( 'mwe-popups-enabled' );
 		},
 		teardown: function () {
@@ -21,6 +23,10 @@
 	} ) );
 
 	QUnit.test( '#isUserInCondition: user has beta feature enabled', 1, function ( assert ) {
+		// Be logged in for the beta feature test
+		mw.user.isAnon.restore();
+		this.sandbox.stub( mw.user, 'isAnon', function () { return false; } );
+
 		mw.config.set( 'wgPopupsExperimentConfig', null );
 		mw.config.set( 'wgPopupsExperimentIsBetaFeatureEnabled', true );
 

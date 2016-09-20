@@ -73,18 +73,19 @@
 			return false;
 		}
 
-		// Users with the beta feature enabled are already in the experimental condition.
-		if ( mw.config.get( 'wgPopupsExperimentIsBetaFeatureEnabled', false ) ) {
-			return true;
-		}
+		if ( mw.user.isAnon() ) {
+			if ( !config ) {
+				return false;
+			}
 
-		if ( !config ) {
-			return false;
+			// FIXME: mw.experiments should expose the CONTROL_BUCKET constant, e.g.
+			// `mw.experiments.CONTROL_BUCKET`.
+			return mw.experiments.getBucket( config, getToken() ) !== 'control';
+		} else {
+			// Logged in users are in condition depending on the beta feature flag
+			// instead of bucketing
+			return mw.config.get( 'wgPopupsExperimentIsBetaFeatureEnabled', false );
 		}
-
-		// FIXME: mw.experiments should expose the CONTROL_BUCKET constant, e.g.
-		// `mw.experiments.CONTROL_BUCKET`.
-		return mw.experiments.getBucket( config, getToken() ) !== 'control';
 	};
 
 }( mediaWiki ) );
