@@ -38,6 +38,15 @@
 	}
 
 	/**
+	 * Logs when a popup is dismissed
+	 */
+	function logDismissAction() {
+		mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+			action: 'dismissed',
+			totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+		} ) );
+	}
+	/**
 	 * @class mw.popups.render
 	 * @singleton
 	 */
@@ -121,6 +130,7 @@
 		// link in the previous condition), then close the popup.
 		if ( $activeLink ) {
 			mw.popups.render.closePopup();
+			logDismissAction();
 		}
 
 		// Ignore if its meant to call a function
@@ -284,11 +294,6 @@
 			}
 		} );
 
-		mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
-			action: 'dismissed',
-			totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
-		} ) );
-
 		if ( closeTimer ) {
 			closeTimer.abort();
 		}
@@ -331,6 +336,7 @@
 		var $activeLink = getActiveLink();
 		if ( event.keyCode === 27 && $activeLink ) {
 			mw.popups.render.closePopup();
+			logDismissAction();
 		}
 	};
 
@@ -346,6 +352,7 @@
 			var $activeLink = getActiveLink();
 			if ( $activeLink ) {
 				mw.popups.render.closePopup();
+				logDismissAction();
 			}
 		} );
 	};
