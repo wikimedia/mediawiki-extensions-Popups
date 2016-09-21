@@ -238,7 +238,6 @@ class PopupsHooks {
 			),
 			'dependencies' => array(
 				'ext.popups.desktop',
-				'ext.popups.experiment',
 				'ext.popups.schemaPopups.utils'
 			),
 			'localBasePath' => __DIR__,
