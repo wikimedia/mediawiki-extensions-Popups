@@ -1,6 +1,6 @@
 ( function ( mw ) {
 
-	QUnit.module( 'ext.popups.experiment', QUnit.newMwEnvironment( {
+	QUnit.module( 'ext.popups.core:experiment', QUnit.newMwEnvironment( {
 		config: {
 			wgPopupsExperimentConfig: {
 				name: 'Popups A/B Test - May, 2016',
@@ -31,7 +31,7 @@
 		mw.config.set( 'wgPopupsExperimentIsBetaFeatureEnabled', true );
 
 		assert.strictEqual(
-			mw.popups.experiment.isUserInCondition(),
+			mw.popups.isUserInCondition(),
 			true,
 			'If the user has the beta feature enabled, then they aren\'t in the condition.'
 		);
@@ -43,7 +43,7 @@
 			result,
 			firstCallArgs;
 
-		result = mw.popups.experiment.isUserInCondition();
+		result = mw.popups.isUserInCondition();
 
 		firstCallArgs = getBucketSpy.firstCall.args;
 
@@ -66,7 +66,7 @@
 
 		this.sandbox.stub( mw.user, 'generateRandomSessionId' ).returns( token );
 
-		mw.popups.experiment.isUserInCondition();
+		mw.popups.isUserInCondition();
 
 		assert.deepEqual(
 			setSpy.firstCall.args[ 1 ],
@@ -79,7 +79,7 @@
 		mw.config.set( 'wgPopupsExperimentConfig', null );
 
 		assert.strictEqual(
-			mw.popups.experiment.isUserInCondition(),
+			mw.popups.isUserInCondition(),
 			false,
 			'If the experiment isn\'t configured, then the user isn\'t in the condition.'
 		);
@@ -89,7 +89,7 @@
 		mw.storage.set( 'mwe-popups-enabled', '1' );
 
 		assert.strictEqual(
-			mw.popups.experiment.isUserInCondition(),
+			mw.popups.isUserInCondition(),
 			true,
 			'If the experiment has enabled the feature, then the user is in the condition.'
 		);
@@ -102,7 +102,7 @@
 		mw.storage.set( 'mwe-popups-enabled', '0' );
 
 		assert.strictEqual(
-			mw.popups.experiment.isUserInCondition(),
+			mw.popups.isUserInCondition(),
 			false,
 			'If the experiment has enabled the feature, then the user is in the condition.'
 		);

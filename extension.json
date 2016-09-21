@@ -68,7 +68,9 @@
 				"mediawiki.Title",
 				"mediawiki.Uri",
 				"mediawiki.RegExp",
-				"mediawiki.storage"
+				"mediawiki.storage",
+				"mediawiki.user",
+				"mediawiki.experiments"
 			],
 			"targets": [
 				"desktop",
@@ -86,8 +88,7 @@
 				"mediawiki.storage",
 				"jquery.client",
 				"ext.popups.core",
-				"ext.popups.renderer.desktopRenderer",
-				"ext.popups.experiment"
+				"ext.popups.renderer.desktopRenderer"
 			],
 			"targets": [ "desktop" ]
 		},
@@ -105,20 +106,6 @@
 			],
 			"dependencies": [
 				"ext.popups.core"
-			]
-		},
-		"ext.popups.experiment": {
-			"scripts": [
-				"resources/ext.popups.experiment.js"
-			],
-			"dependencies": [
-				"ext.popups.core",
-				"mediawiki.user",
-				"mediawiki.storage",
-				"mediawiki.experiments"
-			],
-			"targets": [
-				"desktop"
 			]
 		},
 		"ext.popups.schemaPopups.utils": {

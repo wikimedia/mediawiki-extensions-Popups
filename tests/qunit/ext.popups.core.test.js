@@ -312,7 +312,7 @@
 				.withArgs( 'wgPopupsExperiment' ),
 			deviceStorageStub = this.sandbox.stub( mw.storage, 'get' )
 				.withArgs( storageKey ),
-			experimentStub = this.sandbox.stub( mw.popups.experiment,
+			experimentStub = this.sandbox.stub( mw.popups,
 				'isUserInCondition' );
 
 		QUnit.expect( 7 );
