@@ -81,19 +81,19 @@
 	 * or by finding and calling the correct renderer
 	 *
 	 * @method render
-	 * @param {Object} link
-	 * @param {Object} event
+	 * @param {jQuery.Object} $link that a hovercard should be shown for
+	 * @param {jQuery.Event} event that triggered the render
 	 * @param {number} dwellStartTime the instant when the link is dwelled on
 	 * @param {string} linkInteractionToken random token representing the current interaction with the link
 	 */
-	mw.popups.render.render = function ( link, event, dwellStartTime, linkInteractionToken ) {
-		var linkHref = link.attr( 'href' );
+	mw.popups.render.render = function ( $link, event, dwellStartTime, linkInteractionToken ) {
+		var linkHref = $link.attr( 'href' );
 
 		// This will happen when the mouse goes from the popup box back to the
 		// anchor tag. In such a case, the timer to close the box is cleared.
 		if (
 			mw.popups.render.currentLink &&
-			mw.popups.render.currentLink[ 0 ] === link[ 0 ]
+			mw.popups.render.currentLink[ 0 ] === $link[ 0 ]
 		) {
 			if ( closeTimer ) {
 				closeTimer.abort();
@@ -113,7 +113,7 @@
 			return;
 		}
 
-		mw.popups.render.currentLink = link;
+		mw.popups.render.currentLink = $link;
 		// Set the log data only after the current link is set, otherwise, functions like
 		// closePopup will use the new log data when closing an old popup.
 		logData = {
@@ -122,13 +122,13 @@
 			linkInteractionToken: linkInteractionToken
 		};
 
-		link.on( 'mouseleave blur', mw.popups.render.leaveInactive );
-		link.off( 'click', logClickAction ).on( 'click', logClickAction );
+		$link.on( 'mouseleave blur', mw.popups.render.leaveInactive )
+			.off( 'click', logClickAction ).on( 'click', logClickAction );
 
-		if ( mw.popups.render.cache[ link.attr( 'href' ) ] ) {
+		if ( mw.popups.render.cache[ $link.attr( 'href' ) ] ) {
 			openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY )
 				.done( function () {
-					mw.popups.render.openPopup( link, event );
+					mw.popups.render.openPopup( $link, event );
 				} );
 		} else {
 			// Wait for timer before making API queries and showing hovercard
@@ -140,21 +140,21 @@
 					// Check run the matcher method of all renderers to find the right one
 					for ( key in renderers ) {
 						if ( renderers.hasOwnProperty( key ) && key !== 'article' ) {
-							if ( !!renderers[ key ].matcher( link.attr( 'href' ) ) ) {
-								cachePopup = renderers[ key ].init( link, $.extend( {}, logData ) );
+							if ( !!renderers[ key ].matcher( $link.attr( 'href' ) ) ) {
+								cachePopup = renderers[ key ].init( $link, $.extend( {}, logData ) );
 							}
 						}
 					}
 
 					// Use the article renderer if nothing else matches
 					if ( cachePopup === undefined ) {
-						cachePopup = mw.popups.render.renderers.article.init( link, $.extend( {}, logData ) );
+						cachePopup = mw.popups.render.renderers.article.init( $link, $.extend( {}, logData ) );
 					}
 
 					openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY - mw.popups.render.API_DELAY );
 
 					$.when( openTimer, cachePopup ).done( function () {
-						mw.popups.render.openPopup( link, event );
+						mw.popups.render.openPopup( $link, event );
 					} );
 				} );
 		}

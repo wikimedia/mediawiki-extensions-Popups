@@ -9,15 +9,15 @@
 	 * Render a new LinkPreviewDrawer
 	 *
 	 * @method render
-	 * @param {Object} link
-	 * @param {Object} event
+	 * @param {jQuery.Object} $link that a hovercard should be shown for
+	 * @param {jQuery.Event} event that triggered the render
 	 */
-	mw.popups.render.render = function ( link, event ) {
+	mw.popups.render.render = function ( $link, event ) {
 		var LinkPreviewDrawer = M.require( 'ext.popups.mobilelinkpreview/LinkPreviewDrawer' );
 
 		// Ignore if its meant to call a function
 		// TODO: Remove this when adding reference popups
-		if ( link.attr( 'href' ) === '#' ) {
+		if ( $link.attr( 'href' ) === '#' ) {
 			return;
 		}
 
