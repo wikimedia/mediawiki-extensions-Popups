@@ -260,10 +260,6 @@
 		var fadeInClass, fadeOutClass,
 			$activeLink = getActiveLink();
 
-		if ( !$activeLink ) {
-			return false;
-		}
-
 		$activeLink.off( 'mouseleave blur', mw.popups.render.leaveActive );
 
 		fadeInClass = ( mw.popups.$popup.hasClass( 'mwe-popups-fade-in-up' ) ) ?
@@ -332,7 +328,8 @@
 	 * @method closeOnEsc
 	 */
 	mw.popups.render.closeOnEsc = function ( event ) {
-		if ( event.keyCode === 27 ) {
+		var $activeLink = getActiveLink();
+		if ( event.keyCode === 27 && $activeLink ) {
 			mw.popups.render.closePopup();
 		}
 	};
@@ -346,7 +343,10 @@
 	 */
 	mw.popups.render.leaveActive = function () {
 		closeTimer = mw.popups.render.wait( mw.popups.render.POPUP_CLOSE_DELAY ).done( function () {
-			mw.popups.render.closePopup();
+			var $activeLink = getActiveLink();
+			if ( $activeLink ) {
+				mw.popups.render.closePopup();
+			}
 		} );
 	};
 
