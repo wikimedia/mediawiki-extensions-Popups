@@ -2,7 +2,28 @@
 
 ( function ( $, mw ) {
 	var closeTimer, openTimer,
+		$activeLink = null,
 		logData = {};
+
+	/**
+	 * Sets the link that the currently shown popup relates to
+	 *
+	 * @ignore
+	 * @param {jQuery|null} [$link] if undefined there is no active link
+	 */
+	function setActiveLink( $link ) {
+		$activeLink = $link;
+	}
+
+	/**
+	 * Gets the link that the currently shown popup relates to
+	 *
+	 * @ignore
+	 * @return {jQuery|null} if undefined there is no active link
+	 */
+	function getActiveLink() {
+		return $activeLink;
+	}
 
 	/**
 	 * Logs the click on link or popup
@@ -65,12 +86,6 @@
 	mw.popups.render.cache = {};
 
 	/**
-	 * The link the currently has a popup
-	 * @property {jQuery} currentLink
-	 */
-	mw.popups.render.currentLink = undefined;
-
-	/**
 	 * Object to store all renderers
 	 * @property {Object} renderers
 	 */
@@ -87,13 +102,14 @@
 	 * @param {string} linkInteractionToken random token representing the current interaction with the link
 	 */
 	mw.popups.render.render = function ( $link, event, dwellStartTime, linkInteractionToken ) {
-		var linkHref = $link.attr( 'href' );
+		var linkHref = $link.attr( 'href' ),
+			$activeLink = getActiveLink();
 
 		// This will happen when the mouse goes from the popup box back to the
 		// anchor tag. In such a case, the timer to close the box is cleared.
 		if (
-			mw.popups.render.currentLink &&
-			mw.popups.render.currentLink[ 0 ] === $link[ 0 ]
+			$activeLink &&
+			$activeLink[ 0 ] === $link[ 0 ]
 		) {
 			if ( closeTimer ) {
 				closeTimer.abort();
@@ -103,7 +119,7 @@
 
 		// If the mouse moves to another link (we already check if its the same
 		// link in the previous condition), then close the popup.
-		if ( mw.popups.render.currentLink ) {
+		if ( $activeLink ) {
 			mw.popups.render.closePopup();
 		}
 
@@ -113,7 +129,7 @@
 			return;
 		}
 
-		mw.popups.render.currentLink = $link;
+		setActiveLink( $link );
 		// Set the log data only after the current link is set, otherwise, functions like
 		// closePopup will use the new log data when closing an old popup.
 		logData = {
@@ -224,12 +240,13 @@
 	 * @param {Object} event
 	 */
 	mw.popups.render.clickHandler = function ( event ) {
-		var action = mw.popups.getAction( event );
+		var action = mw.popups.getAction( event ),
+			$activeLink = getActiveLink();
 
 		logClickAction( event );
 
 		if ( action === 'opened in same tab' ) {
-			window.location.href = mw.popups.render.currentLink.attr( 'href' );
+			window.location.href = $activeLink.attr( 'href' );
 		}
 	};
 
@@ -240,13 +257,14 @@
 	 * @method closePopup
 	 */
 	mw.popups.render.closePopup = function () {
-		var fadeInClass, fadeOutClass;
+		var fadeInClass, fadeOutClass,
+			$activeLink = getActiveLink();
 
-		if ( mw.popups.render.currentLink === undefined ) {
+		if ( !$activeLink ) {
 			return false;
 		}
 
-		$( mw.popups.render.currentLink ).off( 'mouseleave blur', mw.popups.render.leaveActive );
+		$activeLink.off( 'mouseleave blur', mw.popups.render.leaveActive );
 
 		fadeInClass = ( mw.popups.$popup.hasClass( 'mwe-popups-fade-in-up' ) ) ?
 			'mwe-popups-fade-in-up' :
@@ -338,6 +356,8 @@
 	 * @method leaveInactive
 	 */
 	mw.popups.render.leaveInactive = function () {
+		var $activeLink = getActiveLink();
+
 		if ( logData.dwellStartTime &&
 			logData.linkInteractionToken &&
 			mw.now() - logData.dwellStartTime >= mw.popups.render.DWELL_EVENTS_MIN_INTERACTION_TIME
@@ -348,7 +368,7 @@
 			} ) );
 		}
 		// TODO: should `blur` also be here?
-		$( mw.popups.render.currentLink ).off( 'mouseleave', mw.popups.render.leaveInactive );
+		$activeLink.off( 'mouseleave', mw.popups.render.leaveInactive );
 		if ( openTimer ) {
 			openTimer.abort();
 		}
@@ -364,7 +384,7 @@
 	 */
 	mw.popups.render.reset = function () {
 		logData = {};
-		mw.popups.render.currentLink = undefined;
+		setActiveLink( null );
 		mw.popups.render.abortCurrentRequest();
 		openTimer = undefined;
 		closeTimer = undefined;
