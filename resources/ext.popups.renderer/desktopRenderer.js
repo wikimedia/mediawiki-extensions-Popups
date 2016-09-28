@@ -147,8 +147,10 @@
 			linkInteractionToken: linkInteractionToken
 		};
 
-		$link.on( 'mouseleave blur', mw.popups.render.leaveInactive )
-			.off( 'click', logClickAction ).on( 'click', logClickAction );
+		$link
+			.on( 'mouseleave blur', mw.popups.render.leaveInactive )
+			.off( 'click', mw.popups.render.clickHandler )
+			.on( 'click', mw.popups.render.clickHandler );
 
 		if ( mw.popups.render.cache[ $link.attr( 'href' ) ] ) {
 			openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY )
