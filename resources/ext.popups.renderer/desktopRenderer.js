@@ -129,8 +129,7 @@
 		// If the mouse moves to another link (we already check if its the same
 		// link in the previous condition), then close the popup.
 		if ( $activeLink ) {
-			mw.popups.render.closePopup();
-			logDismissAction();
+			mw.popups.render.closePopup( logDismissAction );
 		}
 
 		// Ignore if its meant to call a function
@@ -267,9 +266,10 @@
 	 * Removes the hover class from the link and unbinds events
 	 * Hides the popup, clears timers and sets it and the resets the renderer
 	 *
+	 * @param {Function} [logCallback] callback used to log before logData is reset
 	 * @method closePopup
 	 */
-	mw.popups.render.closePopup = function () {
+	mw.popups.render.closePopup = function ( logCallback ) {
 		var fadeInClass, fadeOutClass,
 			$activeLink = getActiveLink();
 
@@ -302,6 +302,11 @@
 		}
 
 		$( document ).off( 'keydown', mw.popups.render.closeOnEsc );
+
+		if ( $.isFunction( logCallback ) ) {
+			logCallback();
+		}
+
 		mw.popups.render.reset();
 	};
 
@@ -338,8 +343,7 @@
 	mw.popups.render.closeOnEsc = function ( event ) {
 		var $activeLink = getActiveLink();
 		if ( event.keyCode === 27 && $activeLink ) {
-			mw.popups.render.closePopup();
-			logDismissAction();
+			mw.popups.render.closePopup( logDismissAction );
 		}
 	};
 
@@ -354,8 +358,7 @@
 		closeTimer = mw.popups.render.wait( mw.popups.render.POPUP_CLOSE_DELAY ).done( function () {
 			var $activeLink = getActiveLink();
 			if ( $activeLink ) {
-				mw.popups.render.closePopup();
-				logDismissAction();
+				mw.popups.render.closePopup( logDismissAction );
 			}
 		} );
 	};
