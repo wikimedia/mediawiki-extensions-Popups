@@ -6,7 +6,8 @@
 			"Vitorvicentevalente",
 			"Dianakc",
 			"Diniscoelho",
-			"Macofe"
+			"Macofe",
+			"Hamilton Abreu"
 		]
 	},
 	"popups-message": "Cartões flutuantes",
@@ -14,7 +15,7 @@
 	"popups-last-edited": "Editado $1",
 	"popups-redirects": "redirecciona para <h3>$1</h3>",
 	"popups-settings-title": "Antevisão de página",
-	"popups-settings-description": "Esta ferramenta permite-lhe pré-visualizar ligações para páginas wiki e referências.",
+	"popups-settings-description": "Esta ferramenta permite-lhe ver ligações para páginas wiki e referências.",
 	"popups-settings-option-simple": "Ativar",
 	"popups-settings-option-simple-description": "Veja a introdução da página com uma imagem de antevisão. Esta opção é recomendada para leitores.",
 	"popups-settings-option-advanced": "Avançado",
