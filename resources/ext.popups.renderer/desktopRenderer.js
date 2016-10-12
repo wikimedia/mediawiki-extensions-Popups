@@ -148,9 +148,9 @@
 		};
 
 		$link
-			.on( 'mouseleave blur', mw.popups.render.leaveInactive )
-			.off( 'click', mw.popups.render.clickHandler )
-			.on( 'click', mw.popups.render.clickHandler );
+			.on( 'mouseleave blur', leaveInactive )
+			.off( 'click', clickHandler )
+			.on( 'click', clickHandler );
 
 		if ( mw.popups.render.cache[ $link.attr( 'href' ) ] ) {
 			openTimer = mw.popups.render.wait( mw.popups.render.POPUP_DELAY )
@@ -212,7 +212,7 @@
 			.append( popup.clone() )
 			.show()
 			.attr( 'aria-hidden', 'false' )
-			.on( 'mouseleave', mw.popups.render.leaveActive )
+			.on( 'mouseleave', leaveActive )
 			.on( 'mouseenter', function () {
 				if ( closeTimer ) {
 					closeTimer.abort();
@@ -233,13 +233,13 @@
 
 		cache.process( link, $.extend( {}, logData ) );
 
-		mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( mw.popups.render.clickHandler );
+		mw.popups.$popup.find( 'a.mwe-popups-extract, a.mwe-popups-discreet' ).click( clickHandler );
 
 		link
-			.off( 'mouseleave blur', mw.popups.render.leaveInactive )
-			.on( 'mouseleave blur', mw.popups.render.leaveActive );
+			.off( 'mouseleave blur', leaveInactive )
+			.on( 'mouseleave blur', leaveActive );
 
-		$( document ).on( 'keydown', mw.popups.render.closeOnEsc );
+		$( document ).on( 'keydown', closeOnEsc );
 
 		mw.popups.incrementPreviewCount();
 	};
@@ -248,9 +248,10 @@
 	 * Click handler for the hovercard
 	 *
 	 * @method clickHandler
+	 * @ignore
 	 * @param {Object} event
 	 */
-	mw.popups.render.clickHandler = function ( event ) {
+	function clickHandler( event ) {
 		var action = mw.popups.getAction( event ),
 			$activeLink = getActiveLink();
 
@@ -262,7 +263,7 @@
 
 		// close the popup
 		mw.popups.render.closePopup();
-	};
+	}
 
 	/**
 	 * Removes the hover class from the link and unbinds events
@@ -275,7 +276,7 @@
 		var fadeInClass, fadeOutClass,
 			$activeLink = getActiveLink();
 
-		$activeLink.off( 'mouseleave blur', mw.popups.render.leaveActive );
+		$activeLink.off( 'mouseleave blur', leaveActive );
 
 		fadeInClass = ( mw.popups.$popup.hasClass( 'mwe-popups-fade-in-up' ) ) ?
 			'mwe-popups-fade-in-up' :
@@ -286,7 +287,7 @@
 			'mwe-popups-fade-out-up';
 
 		mw.popups.$popup
-			.off( 'mouseleave', mw.popups.render.leaveActive )
+			.off( 'mouseleave', leaveActive )
 			.removeClass( fadeInClass )
 			.addClass( fadeOutClass );
 
@@ -303,7 +304,7 @@
 			closeTimer.abort();
 		}
 
-		$( document ).off( 'keydown', mw.popups.render.closeOnEsc );
+		$( document ).off( 'keydown', closeOnEsc );
 
 		if ( $.isFunction( logCallback ) ) {
 			logCallback();
@@ -341,13 +342,15 @@
 	 * Use escape to close popup
 	 *
 	 * @method closeOnEsc
+	 * @ignore
+	 * @param {jQuery.Event} event
 	 */
-	mw.popups.render.closeOnEsc = function ( event ) {
+	function closeOnEsc( event ) {
 		var $activeLink = getActiveLink();
 		if ( event.keyCode === 27 && $activeLink ) {
 			mw.popups.render.closePopup( logDismissAction );
 		}
-	};
+	}
 
 	/**
 	 * Closes the box after a delay
@@ -355,22 +358,24 @@
 	 * the link to the popup box. Also avoids closing the popup by accident
 	 *
 	 * @method leaveActive
+	 * @ignore
 	 */
-	mw.popups.render.leaveActive = function () {
+	function leaveActive() {
 		closeTimer = mw.popups.render.wait( mw.popups.render.POPUP_CLOSE_DELAY ).done( function () {
 			var $activeLink = getActiveLink();
 			if ( $activeLink ) {
 				mw.popups.render.closePopup( logDismissAction );
 			}
 		} );
-	};
+	}
 
 	/**
 	 * Unbinds events on the anchor tag and aborts AJAX request.
 	 *
 	 * @method leaveInactive
+	 * @ignore
 	 */
-	mw.popups.render.leaveInactive = function () {
+	function leaveInactive() {
 		var $activeLink = getActiveLink();
 
 		if ( logData.dwellStartTime &&
@@ -383,14 +388,14 @@
 			} ) );
 		}
 		// TODO: should `blur` also be here?
-		$activeLink.off( 'mouseleave', mw.popups.render.leaveInactive );
+		$activeLink.off( 'mouseleave', leaveInactive );
 		if ( openTimer ) {
 			openTimer.abort();
 		}
 		mw.popups.render.abortCurrentRequest();
 
 		mw.popups.render.reset();
-	};
+	}
 
 	/**
 	 * Resets the renderer
