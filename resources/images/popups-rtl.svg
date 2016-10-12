@@ -1,1 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="264" height="162"><g><g fill="#e5e5e5"><path d="M239.167 151.362l11.467 9.995 12.866-9.608v-151.249h-263v151.749l9 6.705v-116.454h39v112.6l4.393-3.731 7.607 5.33v-114.199h155v110.849l9.751 8.031 13.916-10.018z" fill="#fff"/><path d="M1 1v150.998l8 5.96v-115.958h40v112.019l3.274-2.779.589-.499.633.44 6.504 4.557v-113.738h156v111.099l9.257 7.661 13.295-9.569.644-.465.598.521 10.864 9.47 12.342-9.218v-150.499h-262zm-1-1h264v152l-13.391 10-11.473-10-13.891 10-10.245-8.4v-110.6h-154v114.66l-8.078-5.66-4.922 4.18v-113.18h-38v116.95l-10-7.45v-152.5zm61 43h154v110.6l-2.145-1.6-12.555 10-13.809-10-14.229 10-12.972-10-12.973 10-13.811-10-12.136 10-13.391-10-14.229 10-12.972-10-12.974 10-5.804-4.34v-114.66z"/><path d="M10 43h38v113.18l-7.551 5.82-13.811-10-13.891 10-2.747-2.05v-116.95z" opacity=".5"/><path d="M262 14.5h-260" stroke="#e5e5e5"/><path d="M31.49 5h-26v6h26v-6zm24 0h-22v6h22zm66.51 1v4h92v-4h-92zm-1-1h94v6h-94v-6zm-41.51 0h-22v6h22zm23 0h-13v6h13zm-15 0h-6v6h6zm23 0h-6v6h6zm144.51 0h-32v6h32zm-43 2h-2v2h2zm41 29c0-7.732-6.268-14-14-14s-14 6.268-14 14 6.268 14 14 14 14-6.268 14-14zm-27 71v-35h25v35h-25zm0-48v-5h25v5h-25z"/></g><g fill="#9b9b9b"><path d="M140.244 68h38.141v7.782h-38.141v-7.782zm-56.732 35.02v-8.755h50.814v8.755h-50.814zm89.725-22.374h20.834v8.633h-20.834v-8.633zm-98.535 7.782v-7.782h37.695v7.782h-37.695zm88.645 5.716h25.698v7.782h-25.698v-7.782zm-74.58-26.144h46.207v7.782h-46.207v-7.782z"/><path d="M169.265 80.646v9.201h-51.558v-9.201h51.558z" fill="#0e73fc"/></g><g><path d="M170 94h-75v44h75z" fill="#fff"/><path d="M95 94h31v44h-31v-44zm18.167 24.129l-5.904 9.653-3.206-2.958-4.829 6.051 21.136.028-6.244-12.774h-.953z" fill="#0e73fc"/><g transform="scale(-1 1)" fill="#d0d0d0"><rect width="20" height="1" rx="1" x="-163" y="100"/><rect width="20" height="1" rx="1" x="-163" y="104"/><rect width="20" height="1" rx="1" x="-163" y="108"/><rect width="28" height="1" rx="1" x="-163" y="112"/><rect width="28" height="1" rx="1" x="-163" y="116"/><rect width="28" height="1" rx="1" x="-163" y="120"/><rect width="28" height="1" rx="1" x="-163" y="124"/><rect width="28" height="1" rx="1" x="-163" y="128"/></g></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="264" height="162" viewBox="0 0 264 162" id="svg2">
+    <defs id="defs78">
+        <clipPath id="jagged-edge">
+            <path id="path4183" d="M0 0v152l12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10V0z"/>
+        </clipPath>
+    </defs>
+    <g transform="matrix(-1 0 0 1 264 0)" id="screenshot" clip-path="url(#jagged-edge)">
+        <path d="M263.5 162.25l-263-.5V.5h263z" id="background" fill="#fff"/>
+        <path d="M252 162.496V29H48v133.496z" id="article" fill="#e5e5e5"/>
+        <path d="M11 22c0-7.732 6.268-14 14-14s14 6.268 14 14-6.268 14-14 14-14-6.268-14-14z" id="logo" fill="#e5e5e5"/>
+        <path d="M38 163.807V58H13v105.807h25z" id="sidebar" fill="#e5e5e5"/>
+        <g id="personal-tools" fill="#e5e5e5">
+            <path id="path4191" d="M233 5h26v6h-26V5zm-24 0h22v6h-22zm-24 0h22v6h-22zm-23 0h13v6h-13zm15 0h6v6h-6zm-23 0h6v6h-6z"/>
+        </g>
+        <g id="search" fill="#e5e5e5">
+            <path d="M258 16v4h-92v-4h92m1-1h-94v6h94v-6z" id="path5717"/>
+            <path d="M168 17h2v2h-2z" id="icon"/>
+        </g>
+        <path d="M38 45v-5H13v5h25z" id="sitename" fill="#e5e5e5"/>
+        <path id="border" d="M0 0v162h264V0zm1 1h262v150.533l-11 9.166-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-11-9.168z" fill="#e5e5e5"/>
+        <g id="g18" fill="#9b9b9b">
+            <path id="path20" d="M140.244 68h38.14v7.782h-38.14V68zm-56.732 35.02v-8.755h50.814v8.755H83.512zm89.725-22.374h20.834v8.633h-20.833v-8.634zm-98.535 7.782v-7.782h37.695v7.782H74.702zm88.645 5.716h25.698v7.782h-25.698v-7.782zM88.767 68h46.207v7.782H88.767V68z" transform="matrix(-1 0 0 1 284 -12)"/>
+            <path id="path22" d="M169.265 80.646v9.2h-51.558v-9.2h51.558z" fill="#36c" transform="matrix(-1 0 0 1 284 -12)"/>
+        </g>
+        <g id="g24">
+            <path id="path26" d="M170 94H95v44h75z" fill="#fff" transform="matrix(-1 0 0 1 284 -12)"/>
+            <path id="path28" d="M95 94h31v44H95V94zm18.167 24.13l-5.904 9.652-3.206-2.958-4.83 6.05 21.137.03-6.244-12.775h-.953z" fill="#36c" transform="matrix(-1 0 0 1 284 -12)"/>
+            <g id="g30" transform="translate(284 -12)" fill="#d0d0d0">
+                <rect id="rect32" y="100" x="-163" rx="1" height="1" width="20"/>
+                <rect id="rect34" y="104" x="-163" rx="1" height="1" width="20"/>
+                <rect id="rect36" y="108" x="-163" rx="1" height="1" width="20"/>
+                <rect id="rect38" y="112" x="-163" rx="1" height="1" width="28"/>
+                <rect id="rect40" y="116" x="-163" rx="1" height="1" width="28"/>
+                <rect id="rect42" y="120" x="-163" rx="1" height="1" width="28"/>
+                <rect id="rect44" y="124" x="-163" rx="1" height="1" width="28"/>
+                <rect id="rect46" y="128" x="-163" rx="1" height="1" width="28"/>
+            </g>
+        </g>
+    </g>
+</svg>
