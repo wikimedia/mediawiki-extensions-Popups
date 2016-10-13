@@ -34,6 +34,41 @@
 	}
 
 	/**
+	 * `mouseenter` and `focus` events handler for links that are eligible for
+	 * popups. Handles the disply of a popup.
+	 *
+	 * @param {Object} event
+	 */
+	function onLinkHover( event ) {
+		var $link = $( this ),
+			// Cache the hover start time and link interaction token for a later use
+			eventData = {
+				dwellStartTime: mw.now(),
+				linkInteractionToken: mw.popups.getRandomToken(),
+				hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
+			};
+
+		// Only enable Popups when the Navigation popups gadget is not enabled
+		if ( !eventData.hovercardsSuppressedByGadget && mw.popups.enabled ) {
+			if ( mw.popups.scrolled ) {
+				return;
+			}
+
+			mw.popups.removeTooltips( $link );
+			mw.popups.render.render( $link, event,
+				eventData.dwellStartTime, eventData.linkInteractionToken );
+		} else {
+			$link
+				.off( 'mouseleave.popups blur.popups click.popups' )
+				// We are passing the same data, rather than a shared object, into two different functions.
+				// The reason is that we don't want one function to change the data and
+				// have a side-effect on the other function's data.
+				.on( 'mouseleave.popups blur.popups', eventData, onLinkAbandon )
+				.on( 'click.popups', eventData, onLinkClick );
+		}
+	}
+
+	/**
 	 * `click` event handler for links that are eligible for popups, but when
 	 * Popups are disabled.
 	 *
@@ -133,44 +168,9 @@
 	 * @method setupMouseEvents
 	 */
 	function setupMouseEvents( $content ) {
-		var $elements, dwellStartTime, linkInteractionToken;
-
 		mw.popups.$content = $content;
-		$elements = mw.popups.selectPopupElements();
-
-		$elements.on( 'mouseenter focus', function ( event ) {
-			var $link = $( this );
-
-			// Only enable Popups when the Navigation popups gadget is not enabled
-			if ( !isNavigationPopupsGadgetEnabled() && mw.popups.enabled ) {
-				if ( mw.popups.scrolled ) {
-					return;
-				}
-
-				mw.popups.removeTooltips( $link );
-				mw.popups.render.render( $link, event, mw.now(), mw.popups.getRandomToken() );
-			} else {
-				// Cache the hover start time and link interaction token for a later use
-				dwellStartTime = mw.now();
-				linkInteractionToken = mw.popups.getRandomToken();
-
-				$link
-					.off( 'mouseleave.popups blur.popups click.popups' )
-					// We are passing the same data, rather than a shared object, into two different functions.
-					// The reason is that we don't want one function to change the data and
-					// have a side-effect on the other function's data.
-					.on( 'mouseleave.popups blur.popups', {
-						dwellStartTime: dwellStartTime,
-						linkInteractionToken: linkInteractionToken,
-						hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
-					}, onLinkAbandon )
-					.on( 'click.popups', {
-						dwellStartTime: dwellStartTime,
-						linkInteractionToken: linkInteractionToken,
-						hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
-					}, onLinkClick );
-			}
-		} );
+		mw.popups.selectPopupElements()
+			.on( 'mouseenter focus', onLinkHover );
 	}
 
 	mw.hook( 'wikipage.content' ).add( setupMouseEvents );
