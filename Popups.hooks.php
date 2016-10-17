@@ -30,8 +30,8 @@ class PopupsHooks {
 			'label-message' => 'popups-message',
 			'desc-message' => 'popups-desc',
 			'screenshot' => array(
-				'ltr' => "$wgExtensionAssetsPath/Popups/resources/images/popups-ltr.svg",
-				'rtl' => "$wgExtensionAssetsPath/Popups/resources/images/popups-rtl.svg",
+				'ltr' => "$wgExtensionAssetsPath/Popups/images/popups-ltr.svg",
+				'rtl' => "$wgExtensionAssetsPath/Popups/images/popups-rtl.svg",
 			),
 			'info-link' => 'https://www.mediawiki.org/wiki/Beta_Features/Hovercards',
 			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
@@ -81,7 +81,7 @@ class PopupsHooks {
 					'ext.popups.schemaPopups.utils',
 				],
 				'scripts' => [
-					'resources/ext.popups.schemaPopups.js',
+					'resources/ext.popups.schemaPopups/ext.popups.schemaPopups.js',
 				]
 			];
 		}
@@ -90,16 +90,16 @@ class PopupsHooks {
 
 		$rl->register( "ext.popups.desktop", array(
 			'scripts' => array(
-				'resources/ext.popups.renderer.article.js',
-				'resources/ext.popups.settings.js',
+				'resources/ext.popups.desktop/ext.popups.renderer.article.js',
+				'resources/ext.popups.desktop/ext.popups.settings.js',
 			),
 			'templates' => array(
-				'popup.mustache' => 'resources/popup.mustache',
-				'settings.mustache' => 'resources/settings.mustache',
+				'popup.mustache' => 'resources/ext.popups.desktop/popup.mustache',
+				'settings.mustache' => 'resources/ext.popups.desktop/settings.mustache',
 			),
 			'styles' => array(
-				'resources/ext.popups.animation.less',
-				'resources/ext.popups.settings.less',
+				'resources/ext.popups.desktop/ext.popups.animation.less',
+				'resources/ext.popups.desktop/ext.popups.settings.less',
 			),
 			'dependencies' => $moduleDependencies,
 			'messages' => array(
@@ -138,7 +138,7 @@ class PopupsHooks {
 						'ext.popups.renderer.mobileRenderer',
 					),
 					'scripts' => array(
-						'resources/ext.popups.targets/mobileTarget.js',
+						'resources/ext.popups.targets.mobileTarget/mobileTarget.js',
 					),
 				) + $mobileBoilerplate
 			);
@@ -149,14 +149,14 @@ class PopupsHooks {
 						'mobile.drawers',
 					),
 					'scripts' => array(
-						'resources/ext.popups.renderer/mobileRenderer.js',
-						'resources/ext.popups.renderer/LinkPreviewDrawer.js',
+						'resources/ext.popups.renderer.mobileRenderer/mobileRenderer.js',
+						'resources/ext.popups.renderer.mobileRenderer/LinkPreviewDrawer.js',
 					),
 					'templates' => array(
-						'LinkPreviewDrawer.hogan' => 'resources/ext.popups.renderer/LinkPreviewDrawer.hogan',
+						'LinkPreviewDrawer.hogan' => 'resources/ext.popups.renderer.mobileRenderer/LinkPreviewDrawer.hogan',
 					),
 					'styles' => array(
-						'resources/ext.popups.renderer/LinkPreview.less',
+						'resources/ext.popups.renderer.mobileRenderer/LinkPreview.less',
 					),
 					'messages' => array(
 						'popups-mobile-continue-to-page',
@@ -229,7 +229,7 @@ class PopupsHooks {
 	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
 		$testModules['qunit']['ext.popups.tests'] = array(
 			'scripts' => array(
-				'tests/qunit/ext.popups.renderer/desktopRenderer.test.js',
+				'tests/qunit/ext.popups.desktopRenderer.test.js',
 				'tests/qunit/ext.popups.renderer.article.test.js',
 				'tests/qunit/ext.popups.core.test.js',
 				'tests/qunit/ext.popups.schemaPopups.utils.test.js',

@@ -61,7 +61,7 @@
 	"ResourceModules": {
 		"ext.popups.core": {
 			"scripts": [
-				"resources/ext.popups.core.js"
+				"resources/ext.popups.core/ext.popups.core.js"
 			],
 			"dependencies": [
 				"mediawiki.api",
@@ -77,12 +77,12 @@
 				"mobile"
 			],
 			"styles": [
-				"resources/ext.popups.core.less"
+				"resources/ext.popups.core/ext.popups.core.less"
 			]
 		},
 		"ext.popups.targets.desktopTarget": {
 			"scripts": [
-				"resources/ext.popups.targets/desktopTarget.js"
+				"resources/ext.popups.targets.desktopTarget/desktopTarget.js"
 			],
 			"dependencies": [
 				"mediawiki.storage",
@@ -102,7 +102,7 @@
 		},
 		"ext.popups.renderer.desktopRenderer": {
 			"scripts": [
-				"resources/ext.popups.renderer/desktopRenderer.js"
+				"resources/ext.popups.renderer.desktopRenderer/desktopRenderer.js"
 			],
 			"dependencies": [
 				"ext.popups.core"
@@ -110,7 +110,7 @@
 		},
 		"ext.popups.schemaPopups.utils": {
 			"scripts": [
-				"resources/ext.popups.schemaPopups.utils.js"
+				"resources/ext.popups.schemaPopups.utils/ext.popups.schemaPopups.utils.js"
 			],
 			"dependencies": [
 				"mediawiki.experiments",

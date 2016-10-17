@@ -20,7 +20,7 @@
 	 * @method render
 	 */
 	settings.render = function () {
-		var path = mw.config.get( 'wgExtensionAssetsPath' ) + '/Popups/resources/',
+		var path = mw.config.get( 'wgExtensionAssetsPath' ) + '/Popups/resources/ext.popups.desktop/',
 			choices = [
 				{
 					id: 'simple',
