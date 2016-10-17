@@ -74,7 +74,7 @@
 				return;
 			}
 
-			mw.popups.render.render( $( this ), event, mw.now(), mw.popups.getRandomToken() );
+			mw.popups.render.render( $( this ), event, mw.popups.getRandomToken() );
 		} );
 	};
 

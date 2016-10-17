@@ -70,8 +70,7 @@
 			if ( data.textStatus !== 'abort' ) {
 				mw.track( 'ext.popups.event', $.extend( logData, {
 					action: 'error',
-					errorState: textStatus,
-					totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+					errorState: textStatus
 				} ) );
 			}
 			deferred.reject();
@@ -553,8 +552,7 @@
 			mw.popups.settings.open( $.extend( {}, logData ) );
 
 			mw.track( 'ext.popups.event', $.extend( logData, {
-				action: 'tapped settings cog',
-				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+				action: 'tapped settings cog'
 			} ) );
 		} );
 

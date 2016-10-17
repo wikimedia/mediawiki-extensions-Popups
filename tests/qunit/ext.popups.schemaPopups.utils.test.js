@@ -1,11 +1,37 @@
 ( function ( $, mw ) {
 	var schemaPopups = mw.popups.schemaPopups;
 
+	/**
+	 * Simulates a test run of several events.
+	 *
+	 * @param {Array} actions list of event actions
+	 * @param {Object} [additionalData] to log
+	 * @return {Array|false} the result of the last event to be run.
+	 */
+	function runEventSequence( actions, additionalData ) {
+		var previousEvent;
+
+		$.each( actions, function ( i, action ) {
+			previousEvent = schemaPopups.getMassagedData( $.extend( {
+					action: action
+				}, additionalData || {} ), previousEvent );
+		} );
+		return previousEvent;
+	}
+
 	QUnit.module( 'ext.popups.schemaPopups.utils', {
 		setup: function () {
+			var ts = 1477422540409;
 			this.sandbox.stub( mw.popups, 'getPreviewCountBucket' ).returns(
 				'5-20 previews'
 			);
+			this.sandbox.stub( mw, 'now' )
+				.onFirstCall().returns( ts ) // hover
+				.onSecondCall().returns( ts + 5000 )
+				.onThirdCall().returns( ts + 15000 ) // sometimes second hover if dwelled but abandoned is end of first sequence
+				.onCall( 3 ).returns( ts + 15000 + 200 ) // second hover
+				.onCall( 4 ).returns( ts + 15000 + 200 + 500 )
+				.onCall( 5 ).returns( ts + 15000 + 200 + 700 );
 		}
 	} );
 
@@ -110,7 +136,7 @@
 
 	QUnit.test( 'getMassagedData - dwell start time gets deleted', 2, function ( assert ) {
 		var newData,
-			initialData = { dwellStartTime: 1 };
+			initialData = {};
 
 		newData = schemaPopups.getMassagedData( initialData );
 		assert.equal( newData.previewCountBucket, '5-20 previews' );
@@ -149,17 +175,120 @@
 	} );
 
 	QUnit.test( 'getMassagedData - returns false for hover and display events', 2, function ( assert ) {
-		var
-			hoverEvent = {
-				action: 'hover'
-			},
-			displayEvent = {
-				action: 'display',
-				linkInteractionToken: 't'
-			};
-
-		assert.ok( schemaPopups.getMassagedData( hoverEvent ) === false );
-		assert.ok( schemaPopups.getMassagedData( displayEvent ) === false );
+		assert.ok( runEventSequence( [ 'hover' ] ) === false );
+		assert.ok( runEventSequence( [ 'display' ] ) === false );
 	} );
 
+	QUnit.test( 'getMassagedData - check calculations of opened in new window', 1, function ( assert ) {
+		var logData = runEventSequence( [ 'hover', 'display', 'opened in new window' ] );
+
+		assert.ok( logData.totalInteractionTime === 15000 );
+	} );
+
+	QUnit.test( 'getMassagedData - check calculations of dwelledButAbandoned event', 2, function ( assert ) {
+		var logData = runEventSequence( [ 'hover', 'dwelledButAbandoned' ] );
+		assert.ok( logData.perceivedWait === undefined );
+		assert.ok( logData.totalInteractionTime === 5000 );
+	} );
+
+	QUnit.test( 'getMassagedData - dwelledButAbandoned without hover', 1, function ( assert ) {
+		var logData = runEventSequence( [ 'hover', 'dwelledButAbandoned', 'dwelledButAbandoned' ],
+			{ linkInteractionToken: 'a' } );
+
+		assert.ok( logData === false, 'if no interaction time reject it' );
+	} );
+
+	QUnit.test( 'getMassagedData - interaction time is reset on hover', 2, function ( assert ) {
+		var logData = runEventSequence( [
+			'hover', 'dwelledButAbandoned',
+			'hover', 'display', 'opened in new window'
+		] );
+
+		assert.ok( logData.perceivedWait !== undefined );
+		assert.ok( logData.totalInteractionTime === 700 );
+	} );
+
+	QUnit.test( 'getMassagedData - multiple dwelledButAbandoned ignored', 1, function ( assert ) {
+		var logData = runEventSequence( [
+			'hover', 'dwelledButAbandoned', 'dwelledButAbandoned'
+		], {
+			linkInteractionToken: 'a'
+		} );
+
+		assert.ok( logData === false, 'duplicate dwelledButAbandoned ignored' );
+	} );
+
+	QUnit.test( 'getMassagedData - no display event (opened in same tab)', 2, function ( assert ) {
+		var logData = runEventSequence( [
+			'hover', 'opened in same tab'
+		] );
+
+		assert.ok( logData.perceivedWait === undefined,
+			'if no display event no perceived wait can be calculated' );
+		assert.ok( logData.totalInteractionTime === 5000,
+			'but totalInteractionTime can be calculated' );
+	} );
+
+	QUnit.test( 'getMassagedData - dwelledButAbandoned triggered if no link interaction token', 1, function ( assert ) {
+		var logData = runEventSequence( [
+			'hover', 'dwelledButAbandoned', 'dwelledButAbandoned'
+		] );
+
+		assert.ok( logData.totalInteractionTime === undefined,
+			// is this correct behaviour? We may want to revisit this.
+			'if no link interaction time the duplicate event is generated but has no total interaction time' );
+	} );
+
+	QUnit.test( 'getMassagedData - opened in same tab without a hover', 2, function ( assert ) {
+		var logDataSequence = runEventSequence( [
+			'opened in same tab'
+		], {
+			linkInteractionToken: 'a'
+		} ),
+		logDataSequenceTwo = runEventSequence( [
+			'opened in same tab'
+		] );
+
+		assert.ok( logDataSequence.totalInteractionTime === undefined,
+			'If a end lifecycle event occurs without a hover event occuring beforehand it generates an invalid event' );
+		assert.ok( logDataSequenceTwo.totalInteractionTime === undefined,
+			'If a end lifecycle event occurs without a hover event occuring beforehand it generates an invalid event' );
+	} );
+
+	QUnit.test( 'getMassagedData - dwell start time gets reset on dismissed events', 4, function ( assert ) {
+		var logDataSequence = runEventSequence( [
+			'hover', 'display', 'dismissed'
+		], {
+			linkInteractionToken: 'a'
+		} ),
+		logDataSequenceTwo = runEventSequence( [
+			'hover', 'display', 'dismissed'
+		], {
+			linkInteractionToken: 'b'
+		} );
+
+		assert.ok( logDataSequence.totalInteractionTime === 15000  );
+		assert.ok( logDataSequence.perceivedWait !== undefined  );
+		assert.ok( logDataSequenceTwo.totalInteractionTime === 700,
+			'The first interaction leads to the rest of the timer.' );
+		assert.ok( logDataSequenceTwo.perceivedWait !== undefined  );
+	} );
+
+	QUnit.test( 'getMassagedData - perceivedWait should be set for "opened in" events', 2, function ( assert ) {
+		var data = runEventSequence( [
+			'hover',
+			'display',
+			'opened in same tab'
+		] );
+
+		assert.ok( data.perceivedWait !== undefined );
+
+		data = runEventSequence( [
+			'hover',
+			'display',
+			'opened in new tab'
+		] );
+
+		assert.ok( data.perceivedWait !== undefined );
+	} );
 } )( jQuery, mediaWiki );

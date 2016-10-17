@@ -20,15 +20,12 @@
 
 		$this.off( 'mouseleave blur', onLinkAbandon );
 
-		if ( data.dwellStartTime && data.linkInteractionToken ) {
-			mw.track( 'ext.popups.event', {
-				pageTitleHover: $this.attr( 'title' ),
-				action: 'dwelledButAbandoned',
-				totalInteractionTime: Math.round( mw.now() - data.dwellStartTime ),
-				linkInteractionToken: data.linkInteractionToken,
-				hovercardsSuppressedByGadget: data.hovercardsSuppressedByGadget
-			} );
-		}
+		mw.track( 'ext.popups.event', {
+			pageTitleHover: $this.attr( 'title' ),
+			action: 'dwelledButAbandoned',
+			linkInteractionToken: data.linkInteractionToken,
+			hovercardsSuppressedByGadget: data.hovercardsSuppressedByGadget
+		} );
 	}
 
 	/**
@@ -41,12 +38,11 @@
 		var $link = $( this ),
 			// Cache the hover start time and link interaction token for a later use
 			eventData = {
-				dwellStartTime: mw.now(),
 				linkInteractionToken: mw.popups.getRandomToken(),
 				hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
 			};
 
-		mw.track( 'ext.popups.schemaPopups', $.extend( {}, eventData, {
+		mw.track( 'ext.popups.event', $.extend( {}, eventData, {
 				action: 'hover'
 			} )
 		);
@@ -57,8 +53,7 @@
 			}
 
 			mw.popups.removeTooltips( $link );
-			mw.popups.render.render( $link, event,
-				eventData.dwellStartTime, eventData.linkInteractionToken );
+			mw.popups.render.render( $link, event, eventData.linkInteractionToken );
 		} else {
 			$link
 				.off( 'mouseleave.popups blur.popups click.popups' )
@@ -87,7 +82,6 @@
 		mw.track( 'ext.popups.event', {
 			pageTitleHover: $this.attr( 'title' ),
 			action: action,
-			totalInteractionTime: Math.round( mw.now() - data.dwellStartTime ),
 			linkInteractionToken: data.linkInteractionToken,
 			hovercardsSuppressedByGadget: data.hovercardsSuppressedByGadget
 		} );

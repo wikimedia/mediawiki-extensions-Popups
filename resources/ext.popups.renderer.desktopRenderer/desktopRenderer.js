@@ -32,8 +32,7 @@
 	 */
 	function logClickAction( event ) {
 		mw.track( 'ext.popups.event', $.extend( {}, logData, {
-			action: mw.popups.getAction( event ),
-			totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+			action: mw.popups.getAction( event )
 		} ) );
 	}
 
@@ -42,8 +41,7 @@
 	 */
 	function logDismissAction() {
 		mw.track( 'ext.popups.event', $.extend( {}, logData, {
-			action: 'dismissed',
-			totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
+			action: 'dismissed'
 		} ) );
 	}
 	/**
@@ -99,10 +97,9 @@
 	 * @method render
 	 * @param {jQuery.Object} $link that a hovercard should be shown for
 	 * @param {jQuery.Event} event that triggered the render
-	 * @param {number} dwellStartTime the instant when the link is dwelled on
 	 * @param {string} linkInteractionToken random token representing the current interaction with the link
 	 */
-	mw.popups.render.render = function ( $link, event, dwellStartTime, linkInteractionToken ) {
+	mw.popups.render.render = function ( $link, event, linkInteractionToken ) {
 		var linkHref = $link.attr( 'href' ),
 			$activeLink = getActiveLink();
 
@@ -135,7 +132,6 @@
 		// closePopup will use the new log data when closing an old popup.
 		logData = {
 			pageTitleHover: mw.popups.getTitle( linkHref ),
-			dwellStartTime: dwellStartTime,
 			linkInteractionToken: linkInteractionToken
 		};
 
@@ -219,10 +215,9 @@
 		// Event logging
 		$.extend( logData, {
 			pageTitleHover: cache.settings.title,
-			namespaceIdHover: cache.settings.namespace,
-			perceivedWait: Math.round( mw.now() - logData.dwellStartTime )
+			namespaceIdHover: cache.settings.namespace
 		} );
-		mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+		mw.track( 'ext.popups.event', $.extend( {}, logData, {
 				action: 'display'
 			} )
 		);
@@ -374,12 +369,10 @@
 	function leaveInactive() {
 		var $activeLink = getActiveLink();
 
-		if ( logData.dwellStartTime && logData.linkInteractionToken ) {
-			mw.track( 'ext.popups.event', $.extend( {}, logData, {
-				action: 'dwelledButAbandoned',
-				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
-			} ) );
-		}
+		mw.track( 'ext.popups.event', $.extend( {}, logData, {
+			action: 'dwelledButAbandoned'
+		} ) );
+
 		// TODO: should `blur` also be here?
 		$activeLink.off( 'mouseleave', leaveInactive );
 		if ( openTimer ) {

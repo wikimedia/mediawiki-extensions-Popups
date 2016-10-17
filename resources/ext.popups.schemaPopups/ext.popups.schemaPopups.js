@@ -1,4 +1,4 @@
-( function ( $, mw ) {
+( function ( mw ) {
 	var previousLogData,
 		// Log the popup event as defined in the schema
 		// https://meta.wikimedia.org/wiki/Schema:Popups
@@ -16,4 +16,4 @@
 		}
 		previousLogData = data;
 	} );
-} )( jQuery, mediaWiki );
+} )( mediaWiki );
