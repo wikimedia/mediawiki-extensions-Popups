@@ -46,6 +46,10 @@
 				hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
 			};
 
+		mw.track( 'ext.popups.schemaPopups', $.extend( {}, eventData, {
+				action: 'hover'
+			} )
+		);
 		// Only enable Popups when the Navigation popups gadget is not enabled
 		if ( !eventData.hovercardsSuppressedByGadget && mw.popups.enabled ) {
 			if ( mw.popups.scrolled ) {

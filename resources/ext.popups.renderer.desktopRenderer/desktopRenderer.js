@@ -222,6 +222,10 @@
 			namespaceIdHover: cache.settings.namespace,
 			perceivedWait: Math.round( mw.now() - logData.dwellStartTime )
 		} );
+		mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+				action: 'display'
+			} )
+		);
 
 		cache.process( link, $.extend( {}, logData ) );
 

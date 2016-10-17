@@ -147,4 +147,19 @@
 		assert.ok( schemaPopups.getMassagedData( settingsEvent, thisEvent ) !== false, '... unless disabled event' );
 		assert.ok( thisEvent.dwellStartTime === 1, 'and no side effects' );
 	} );
+
+	QUnit.test( 'getMassagedData - returns false for hover and display events', 2, function ( assert ) {
+		var
+			hoverEvent = {
+				action: 'hover'
+			},
+			displayEvent = {
+				action: 'display',
+				linkInteractionToken: 't'
+			};
+
+		assert.ok( schemaPopups.getMassagedData( hoverEvent ) === false );
+		assert.ok( schemaPopups.getMassagedData( displayEvent ) === false );
+	} );
+
 } )( jQuery, mediaWiki );

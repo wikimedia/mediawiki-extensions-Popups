@@ -94,12 +94,17 @@
 	 * @return {Object|boolean}
 	 */
 	function getMassagedData( data, previousLogData ) {
+		// We don't log hover and display events as they are not compatible with the schema
+		// but they are useful for debugging
+		var action = data.action;
 
+		if ( action && [ 'hover', 'display' ].indexOf( action ) > -1 ) {
+			return false;
 		// Only one action is recorded per link interaction token...
-		if ( data.linkInteractionToken &&
+		} else if ( data.linkInteractionToken &&
 			data.linkInteractionToken === previousLogData.linkInteractionToken ) {
 			// however, the 'disabled' action takes two clicks by nature, so allow it
-			if ( data.action !== 'disabled' ) {
+			if ( action !== 'disabled' ) {
 				return false;
 			}
 		}
