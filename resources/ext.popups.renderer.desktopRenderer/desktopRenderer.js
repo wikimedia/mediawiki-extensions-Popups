@@ -31,7 +31,7 @@
 	 * @param {Object} event
 	 */
 	function logClickAction( event ) {
-		mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+		mw.track( 'ext.popups.event', $.extend( {}, logData, {
 			action: mw.popups.getAction( event ),
 			totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
 		} ) );
@@ -41,7 +41,7 @@
 	 * Logs when a popup is dismissed
 	 */
 	function logDismissAction() {
-		mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+		mw.track( 'ext.popups.event', $.extend( {}, logData, {
 			action: 'dismissed',
 			totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
 		} ) );
@@ -371,7 +371,7 @@
 		var $activeLink = getActiveLink();
 
 		if ( logData.dwellStartTime && logData.linkInteractionToken ) {
-			mw.track( 'ext.popups.schemaPopups', $.extend( {}, logData, {
+			mw.track( 'ext.popups.event', $.extend( {}, logData, {
 				action: 'dwelledButAbandoned',
 				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
 			} ) );

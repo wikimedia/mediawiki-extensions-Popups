@@ -21,7 +21,7 @@
 		$this.off( 'mouseleave blur', onLinkAbandon );
 
 		if ( data.dwellStartTime && data.linkInteractionToken ) {
-			mw.track( 'ext.popups.schemaPopups', {
+			mw.track( 'ext.popups.event', {
 				pageTitleHover: $this.attr( 'title' ),
 				action: 'dwelledButAbandoned',
 				totalInteractionTime: Math.round( mw.now() - data.dwellStartTime ),
@@ -80,7 +80,7 @@
 
 		$this.off( 'click', onLinkClick );
 
-		mw.track( 'ext.popups.schemaPopups', {
+		mw.track( 'ext.popups.event', {
 			pageTitleHover: $this.attr( 'title' ),
 			action: action,
 			totalInteractionTime: Math.round( mw.now() - data.dwellStartTime ),
@@ -184,7 +184,7 @@
 			initPopups();
 		}
 
-		mw.track( 'ext.popups.schemaPopups', {
+		mw.track( 'ext.popups.event', {
 			action: 'pageLoaded',
 			hovercardsSuppressedByGadget: isNavigationPopupsGadgetEnabled()
 		} );

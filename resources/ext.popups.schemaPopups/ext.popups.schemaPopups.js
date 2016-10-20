@@ -8,7 +8,7 @@
 			mw.popups.schemaPopups.getDefaultValues()
 		);
 
-	mw.trackSubscribe( 'ext.popups.schemaPopups', function ( topic, data ) {
+	mw.trackSubscribe( 'ext.popups.event', function ( topic, data ) {
 		var shouldLog = true;
 
 		data = mw.popups.schemaPopups.getMassagedData( data );

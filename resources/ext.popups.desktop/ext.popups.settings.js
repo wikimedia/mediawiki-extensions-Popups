@@ -85,7 +85,7 @@
 			mw.popups.saveEnabledState( false );
 			$( '#mwe-popups-settings-form, #mwe-popups-settings .save' ).hide();
 			$( '#mwe-popups-settings-help, #mwe-popups-settings .okay' ).show();
-			mw.track( 'ext.popups.schemaPopups', $.extend( {}, currentLinkLogData, {
+			mw.track( 'ext.popups.event', $.extend( {}, currentLinkLogData, {
 				action: 'disabled'
 			} ) );
 		}

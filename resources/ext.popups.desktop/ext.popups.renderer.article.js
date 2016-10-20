@@ -68,7 +68,7 @@
 		currentRequest.fail( function ( textStatus, data ) {
 			// only log genuine errors, not client aborts
 			if ( data.textStatus !== 'abort' ) {
-				mw.track( 'ext.popups.schemaPopups', $.extend( logData, {
+				mw.track( 'ext.popups.event', $.extend( logData, {
 					action: 'error',
 					errorState: textStatus,
 					totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
@@ -552,7 +552,7 @@
 
 			mw.popups.settings.open( $.extend( {}, logData ) );
 
-			mw.track( 'ext.popups.schemaPopups', $.extend( logData, {
+			mw.track( 'ext.popups.event', $.extend( logData, {
 				action: 'tapped settings cog',
 				totalInteractionTime: Math.round( mw.now() - logData.dwellStartTime )
 			} ) );
