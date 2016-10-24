@@ -3,7 +3,7 @@ class SpecialPreferencesPage
   page_url 'Special:Preferences'
 
   a(:beta_features_tab, css: '#preftab-betafeatures')
-  text_field(:hovercards_checkbox, css: '#mw-input-wppopups')
+  text_field(:hovercards_checkbox, css: '[name=wppopups]')
   button(:submit_button, css: '#prefcontrol')
   div(:notification, css: ".mw-notification")
 
