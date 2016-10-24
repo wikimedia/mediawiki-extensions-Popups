@@ -126,4 +126,25 @@
 		newData = schemaPopups.getMassagedData( initialData );
 		assert.ok( newData.namespaceIdHover === 1, 'namespace is added based on title' );
 	} );
+
+	QUnit.test( 'getMassagedData - returns false if the data should not be logged due to being a duplicate', 3, function ( assert ) {
+		var
+			thisEvent = {
+				action: 'myevent',
+				dwellStartTime: 1,
+				linkInteractionToken: 't'
+			},
+			previousEvent = {
+				action: 'myevent',
+				linkInteractionToken: 't'
+			},
+			settingsEvent = {
+				action: 'disabled',
+				linkInteractionToken: 't'
+			};
+
+		assert.ok( schemaPopups.getMassagedData( thisEvent, previousEvent ) === false, 'duplicate events are ignored...' );
+		assert.ok( schemaPopups.getMassagedData( settingsEvent, thisEvent ) !== false, '... unless disabled event' );
+		assert.ok( thisEvent.dwellStartTime === 1, 'and no side effects' );
+	} );
 } )( jQuery, mediaWiki );

@@ -87,11 +87,22 @@
 
 	/**
 	 * Return data after making some adjustments so that it's ready to be logged
+	 * Returns false if the event should not be logged based on its contents or previous logged data
 	 *
-	 * @param {Object}data
-	 * @return {Object}
+	 * @param {Object} data
+	 * @param {Object} previousLogData
+	 * @return {Object|boolean}
 	 */
-	function getMassagedData( data ) {
+	function getMassagedData( data, previousLogData ) {
+
+		// Only one action is recorded per link interaction token...
+		if ( data.linkInteractionToken &&
+			data.linkInteractionToken === previousLogData.linkInteractionToken ) {
+			// however, the 'disabled' action takes two clicks by nature, so allow it
+			if ( data.action !== 'disabled' ) {
+				return false;
+			}
+		}
 		data.previewCountBucket = mw.popups.getPreviewCountBucket();
 		delete data.dwellStartTime;
 		// Figure out `namespaceIdHover` from `pageTitleHover`.

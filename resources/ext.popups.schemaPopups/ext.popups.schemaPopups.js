@@ -9,20 +9,9 @@
 		);
 
 	mw.trackSubscribe( 'ext.popups.event', function ( topic, data ) {
-		var shouldLog = true;
+		data = mw.popups.schemaPopups.getMassagedData( data, previousLogData );
 
-		data = mw.popups.schemaPopups.getMassagedData( data );
-
-		// Only one action is recorded per link interaction token...
-		if ( data.linkInteractionToken &&
-			data.linkInteractionToken === previousLogData.linkInteractionToken ) {
-			// however, the 'disabled' action takes two clicks by nature, so allow it
-			if ( data.action !== 'disabled' ) {
-				shouldLog = false;
-			}
-		}
-
-		if ( shouldLog ) {
+		if ( data ) {
 			schemaPopups.log( data );
 		}
 		previousLogData = data;
