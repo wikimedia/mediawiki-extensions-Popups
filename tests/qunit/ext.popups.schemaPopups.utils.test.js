@@ -1,7 +1,13 @@
 ( function ( $, mw ) {
 	var schemaPopups = mw.popups.schemaPopups;
 
-	QUnit.module( 'ext.popups.schemaPopups.utils' );
+	QUnit.module( 'ext.popups.schemaPopups.utils', {
+		setup: function () {
+			this.sandbox.stub( mw.popups, 'getPreviewCountBucket' ).returns(
+				'5-20 previews'
+			);
+		}
+	} );
 
 	QUnit.test( 'getSamplingRate', function ( assert ) {
 		var configStub = this.sandbox.stub( mw.config, 'get' )
@@ -100,5 +106,24 @@
 					editCount + '.'
 			);
 		}
+	} );
+
+	QUnit.test( 'getMassagedData - dwell start time gets deleted', 2, function ( assert ) {
+		var newData,
+			initialData = { dwellStartTime: 1 };
+
+		newData = schemaPopups.getMassagedData( initialData );
+		assert.equal( newData.previewCountBucket, '5-20 previews' );
+		assert.ok( newData.dwellStartTime === undefined );
+	} );
+
+	QUnit.test( 'getMassagedData - namespaceIdHover is added', 1, function ( assert ) {
+		var newData,
+			initialData = {
+				pageTitleHover: 'Talk:Foo'
+			};
+
+		newData = schemaPopups.getMassagedData( initialData );
+		assert.ok( newData.namespaceIdHover === 1, 'namespace is added based on title' );
 	} );
 } )( jQuery, mediaWiki );
