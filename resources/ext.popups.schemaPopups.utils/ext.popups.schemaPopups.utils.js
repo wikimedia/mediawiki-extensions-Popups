@@ -106,7 +106,7 @@
 	 * @param {Object} previousLogData
 	 * @return {Object|boolean}
 	 */
-	function getMassagedData( data, previousLogData ) {
+	function processHovercardEvent( data, previousLogData ) {
 		// We don't log hover and display events as they are not compatible with the schema
 		// but they are useful for debugging
 		var action = data.action;
@@ -159,7 +159,7 @@
 		getDefaultValues: getDefaultValues,
 		getSamplingRate: getSamplingRate,
 		getEditCountBucket: getEditCountBucket,
-		getMassagedData: getMassagedData
+		processHovercardEvent: processHovercardEvent
 	};
 
 } )( jQuery, mediaWiki );

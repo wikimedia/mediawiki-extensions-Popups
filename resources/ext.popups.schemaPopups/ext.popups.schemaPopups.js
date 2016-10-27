@@ -9,7 +9,7 @@
 		);
 
 	mw.trackSubscribe( 'ext.popups.event', function ( topic, data ) {
-		data = mw.popups.schemaPopups.getMassagedData( data, previousLogData );
+		data = mw.popups.schemaPopups.processHovercardEvent( data, previousLogData );
 
 		if ( data ) {
 			schemaPopups.log( data );

@@ -12,7 +12,7 @@
 		var previousEvent;
 
 		$.each( actions, function ( i, action ) {
-			previousEvent = schemaPopups.getMassagedData( $.extend( {
+			previousEvent = schemaPopups.processHovercardEvent( $.extend( {
 					action: action
 				}, additionalData || {} ), previousEvent );
 		} );
@@ -134,26 +134,26 @@
 		}
 	} );
 
-	QUnit.test( 'getMassagedData - dwell start time gets deleted', 2, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - dwell start time gets deleted', 2, function ( assert ) {
 		var newData,
 			initialData = {};
 
-		newData = schemaPopups.getMassagedData( initialData );
+		newData = schemaPopups.processHovercardEvent( initialData );
 		assert.equal( newData.previewCountBucket, '5-20 previews' );
 		assert.ok( newData.dwellStartTime === undefined );
 	} );
 
-	QUnit.test( 'getMassagedData - namespaceIdHover is added', 1, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - namespaceIdHover is added', 1, function ( assert ) {
 		var newData,
 			initialData = {
 				pageTitleHover: 'Talk:Foo'
 			};
 
-		newData = schemaPopups.getMassagedData( initialData );
+		newData = schemaPopups.processHovercardEvent( initialData );
 		assert.ok( newData.namespaceIdHover === 1, 'namespace is added based on title' );
 	} );
 
-	QUnit.test( 'getMassagedData - returns false if the data should not be logged due to being a duplicate', 3, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - returns false if the data should not be logged due to being a duplicate', 3, function ( assert ) {
 		var
 			thisEvent = {
 				action: 'myevent',
@@ -169,36 +169,36 @@
 				linkInteractionToken: 't'
 			};
 
-		assert.ok( schemaPopups.getMassagedData( thisEvent, previousEvent ) === false, 'duplicate events are ignored...' );
-		assert.ok( schemaPopups.getMassagedData( settingsEvent, thisEvent ) !== false, '... unless disabled event' );
+		assert.ok( schemaPopups.processHovercardEvent( thisEvent, previousEvent ) === false, 'duplicate events are ignored...' );
+		assert.ok( schemaPopups.processHovercardEvent( settingsEvent, thisEvent ) !== false, '... unless disabled event' );
 		assert.ok( thisEvent.dwellStartTime === 1, 'and no side effects' );
 	} );
 
-	QUnit.test( 'getMassagedData - returns false for hover and display events', 2, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - returns false for hover and display events', 2, function ( assert ) {
 		assert.ok( runEventSequence( [ 'hover' ] ) === false );
 		assert.ok( runEventSequence( [ 'display' ] ) === false );
 	} );
 
-	QUnit.test( 'getMassagedData - check calculations of opened in new window', 1, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - check calculations of opened in new window', 1, function ( assert ) {
 		var logData = runEventSequence( [ 'hover', 'display', 'opened in new window' ] );
 
 		assert.ok( logData.totalInteractionTime === 15000 );
 	} );
 
-	QUnit.test( 'getMassagedData - check calculations of dwelledButAbandoned event', 2, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - check calculations of dwelledButAbandoned event', 2, function ( assert ) {
 		var logData = runEventSequence( [ 'hover', 'dwelledButAbandoned' ] );
 		assert.ok( logData.perceivedWait === undefined );
 		assert.ok( logData.totalInteractionTime === 5000 );
 	} );
 
-	QUnit.test( 'getMassagedData - dwelledButAbandoned without hover', 1, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - dwelledButAbandoned without hover', 1, function ( assert ) {
 		var logData = runEventSequence( [ 'hover', 'dwelledButAbandoned', 'dwelledButAbandoned' ],
 			{ linkInteractionToken: 'a' } );
 
 		assert.ok( logData === false, 'if no interaction time reject it' );
 	} );
 
-	QUnit.test( 'getMassagedData - interaction time is reset on hover', 2, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - interaction time is reset on hover', 2, function ( assert ) {
 		var logData = runEventSequence( [
 			'hover', 'dwelledButAbandoned',
 			'hover', 'display', 'opened in new window'
@@ -208,7 +208,7 @@
 		assert.ok( logData.totalInteractionTime === 700 );
 	} );
 
-	QUnit.test( 'getMassagedData - multiple dwelledButAbandoned ignored', 1, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - multiple dwelledButAbandoned ignored', 1, function ( assert ) {
 		var logData = runEventSequence( [
 			'hover', 'dwelledButAbandoned', 'dwelledButAbandoned'
 		], {
@@ -218,7 +218,7 @@
 		assert.ok( logData === false, 'duplicate dwelledButAbandoned ignored' );
 	} );
 
-	QUnit.test( 'getMassagedData - no display event (opened in same tab)', 2, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - no display event (opened in same tab)', 2, function ( assert ) {
 		var logData = runEventSequence( [
 			'hover', 'opened in same tab'
 		] );
@@ -229,7 +229,7 @@
 			'but totalInteractionTime can be calculated' );
 	} );
 
-	QUnit.test( 'getMassagedData - dwelledButAbandoned triggered if no link interaction token', 1, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - dwelledButAbandoned triggered if no link interaction token', 1, function ( assert ) {
 		var logData = runEventSequence( [
 			'hover', 'dwelledButAbandoned', 'dwelledButAbandoned'
 		] );
@@ -239,7 +239,7 @@
 			'if no link interaction time the duplicate event is generated but has no total interaction time' );
 	} );
 
-	QUnit.test( 'getMassagedData - opened in same tab without a hover', 2, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - opened in same tab without a hover', 2, function ( assert ) {
 		var logDataSequence = runEventSequence( [
 			'opened in same tab'
 		], {
@@ -255,7 +255,7 @@
 			'If a end lifecycle event occurs without a hover event occuring beforehand it generates an invalid event' );
 	} );
 
-	QUnit.test( 'getMassagedData - dwell start time gets reset on dismissed events', 4, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - dwell start time gets reset on dismissed events', 4, function ( assert ) {
 		var logDataSequence = runEventSequence( [
 			'hover', 'display', 'dismissed'
 		], {
@@ -274,7 +274,7 @@
 		assert.ok( logDataSequenceTwo.perceivedWait !== undefined  );
 	} );
 
-	QUnit.test( 'getMassagedData - perceivedWait should be set for "opened in" events', 2, function ( assert ) {
+	QUnit.test( 'processHovercardEvent - perceivedWait should be set for "opened in" events', 2, function ( assert ) {
 		var data = runEventSequence( [
 			'hover',
 			'display',
