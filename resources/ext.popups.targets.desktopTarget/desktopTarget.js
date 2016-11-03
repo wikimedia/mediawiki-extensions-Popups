@@ -18,7 +18,7 @@
 		var $this = $( this ),
 			data = event.data || {};
 
-		$this.off( 'mouseleave.popups blur.popups', onLinkAbandon );
+		$this.off( 'mouseleave blur', onLinkAbandon );
 
 		mw.track( 'ext.popups.event', {
 			pageTitleHover: $this.attr( 'title' ),
@@ -55,23 +55,14 @@
 			mw.popups.removeTooltips( $link );
 			mw.popups.render.render( $link, event, eventData.linkInteractionToken );
 		} else {
-			// Remove existing handlers and replace with logging only
 			$link
-				.off( 'mouseleave.popups blur.popups mouseenter.popups focus.popups click.popups' )
-				// We are passing the same data, rather than a shared object, into two different
-				// functions so that one function doesn't change the data and
+				.off( 'mouseleave.popups blur.popups click.popups' )
+				// We are passing the same data, rather than a shared object, into two different functions.
+				// The reason is that we don't want one function to change the data and
 				// have a side-effect on the other function's data.
 				.on( 'mouseleave.popups blur.popups', eventData, onLinkAbandon )
 				.on( 'click.popups', eventData, onLinkClick );
 		}
-	}
-
-	/**
-	 * `mouseleave` and `blur` events handler for links that are eligible for
-	 * popups. Handles the restoration of title attributes
-	 */
-	function onLinkBlur() {
-		mw.popups.restoreTooltip( $( this ) );
 	}
 
 	/**
@@ -86,7 +77,7 @@
 			href = $this.attr( 'href' ),
 			data = event.data || {};
 
-		$this.off( 'click.popups', onLinkClick );
+		$this.off( 'click', onLinkClick );
 
 		mw.track( 'ext.popups.event', {
 			pageTitleHover: $this.attr( 'title' ),
@@ -155,11 +146,11 @@
 	 * @method checkScroll
 	 */
 	mw.popups.checkScroll = function () {
-		$( window ).on( 'scroll.popups', function () {
+		$( window ).on( 'scroll', function () {
 			mw.popups.scrolled = true;
 		} );
 
-		$( window ).on( 'mousemove.popups', function () {
+		$( window ).on( 'mousemove', function () {
 			mw.popups.scrolled = false;
 		} );
 	};
@@ -175,8 +166,7 @@
 	function setupMouseEvents( $content ) {
 		mw.popups.$content = $content;
 		mw.popups.selectPopupElements()
-			.on( 'mouseenter.popups focus.popups', onLinkHover )
-			.on( 'mouseleave.popups blur.popups', onLinkBlur );
+			.on( 'mouseenter focus', onLinkHover );
 	}
 
 	mw.hook( 'wikipage.content' ).add( setupMouseEvents );

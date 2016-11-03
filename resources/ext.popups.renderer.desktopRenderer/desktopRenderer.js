@@ -373,7 +373,8 @@
 			action: 'dwelledButAbandoned'
 		} ) );
 
-		$activeLink.off( 'mouseleave blur', leaveInactive );
+		// TODO: should `blur` also be here?
+		$activeLink.off( 'mouseleave', leaveInactive );
 		if ( openTimer ) {
 			openTimer.abort();
 		}

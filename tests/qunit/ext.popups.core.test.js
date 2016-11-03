@@ -33,9 +33,7 @@
 		}
 	} );
 
-	// FIXME: This test should be split to cover each function separately and a browser test should
-	// be created to test user interactions with focus and mouseenter - planned for the Hovercards rewrite
-	QUnit.test( 'removeTooltip and restoreTooltip', function ( assert ) {
+	QUnit.test( 'removeTooltips', function ( assert ) {
 		var $link = $( '<a>', {
 			text: 'link with tooltip',
 			title: 'link title',
@@ -44,20 +42,22 @@
 
 		QUnit.expect( 5 );
 
-		mw.popups.removeTooltip( $link );
-		assert.equal( $link.attr( 'title' ), '', 'The title should be removed by `removeTooltip`.' );
+		mw.popups.removeTooltips( $link );
 
-		mw.popups.restoreTooltip( $link );
-		assert.equal( $link.attr( 'title' ), 'link title', 'The title should be restored by `restoreTooltip`.' );
+		$link.trigger( 'mouseenter' );
+		assert.equal( $link.attr( 'title' ), '', 'The link does not have a title on mouseenter.' );
 
-		mw.popups.removeTooltip( $link );
-		assert.equal( $link.attr( 'title' ), '', 'Multiple calls should still remove title attribute' );
+		$link.trigger( 'mouseleave' );
+		assert.equal( $link.attr( 'title' ), 'link title', 'The link has a title on mouseleave.' );
 
-		mw.popups.restoreTooltip( $link );
-		assert.equal( $link.attr( 'title' ), 'link title', 'Multiple calls should still restore title attribute.' );
+		$link.trigger( 'focus' );
+		assert.equal( $link.attr( 'title' ), '', 'The link does not have a title on focus.' );
+
+		$link.trigger( 'blur' );
+		assert.equal( $link.attr( 'title' ), 'link title', 'The link has a title on blur.' );
 
 		$link.data( 'dont-empty-title', true );
-		mw.popups.removeTooltip( $link );
+		$link.trigger( 'mouseenter' );
 		assert.equal( $link.attr( 'title' ), 'link title',
 			'The link title is not removed when `dont-empty-title` data attribute is `true`.' );
 

@@ -36,35 +36,29 @@
 	];
 
 	/**
-	 * Temporarily remove the title attribute of a link so that
-	 * the tooltip doesn't show up alongside the Hovercard.
+	 * Temporarily remove the title attribute of the links so that
+	 * the yellow tooltips don't show up alongside the Hovercard.
 	 *
-	 * @method removeTooltip
-	 * @param {jQuery.Object} $link link from which to strip title
+	 * @method removeTooltips
 	 */
-	mw.popups.removeTooltip = function ( $link ) {
-		// We shouldn't empty the title attribute of links that
-		// can't have Hovercards, ie. TextExtracts didn't return
-		// anything. It's set in the article.init after attempting
-		// to make an API request.
-		if (
-			$link.data( 'dont-empty-title' ) !== true &&
-			$link.filter( '[title]:not([title=""])' ).length
-		) {
-			$link
-				.data( 'title', $link.attr( 'title' ) )
-				.attr( 'title', '' );
-		}
-	};
-
-	/**
-	 * Restore previously-removed title attribute.
-	 *
-	 * @method restoreTooltip
-	 * @param {jQuery.Object} $link link to which to restore title
-	 */
-	mw.popups.restoreTooltip = function ( $link ) {
-		$link.attr( 'title', $link.data( 'title' ) );
+	mw.popups.removeTooltips = function ( $elements ) {
+		$elements
+			.filter( '[title]:not([title=""])' )
+			.on( 'mouseenter focus', function () {
+				// We shouldn't empty the title attribute of links that
+				// can't have Hovercards, ie. TextExtracts didn't return
+				// anything. Its set in the article.init after attempting
+				// to make an API request.
+				if ( $( this ).data( 'dont-empty-title' ) !== true ) {
+					$( this )
+						.data( 'title', $( this ).attr( 'title' ) )
+						.attr( 'title', '' );
+				}
+			} )
+			.on( 'mouseleave blur', function () {
+				$( this )
+					.attr( 'title', $( this ).data( 'title' ) );
+			} );
 	};
 
 	/**
