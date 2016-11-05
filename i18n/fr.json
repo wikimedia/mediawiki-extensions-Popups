@@ -9,7 +9,8 @@
 			"Djiboun",
 			"Cl3m3n7",
 			"Wladek92",
-			"C13m3n7"
+			"C13m3n7",
+			"The RedBurn"
 		]
 	},
 	"popups-message": "Hovercards",
@@ -24,7 +25,7 @@
 	"popups-settings-option-advanced-description": "Voir les aperçus de lien et accéder aux menus des fonctions d’édition. C’est ce qui est utilisé par beaucoup d’éditeurs.",
 	"popups-settings-option-off": "Désactiver",
 	"popups-settings-save": "Enregistrer",
-	"popups-settings-help-ok": "Fait",
+	"popups-settings-help-ok": "Fermer",
 	"popups-settings-cancel": "Annuler",
 	"popups-settings-help": "Vous pouvez activer des aperçus sur l'utilisation d'un lien dans le pied de page.",
 	"popups-settings-enable": "Activer les aperçus",
