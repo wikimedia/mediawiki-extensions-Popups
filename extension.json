@@ -58,6 +58,9 @@
 			}
 		},
 		"ext.popups": {
+			"scripts": [
+				"resources/ext.popups/boot.js"
+			],
 			"templates": {
 				"popup.mustache": "resources/ext.popups.desktop/popup.mustache",
 				"settings.mustache": "resources/ext.popups.desktop/settings.mustache"
@@ -87,7 +90,14 @@
 				"mediawiki.ui.button",
 				"mediawiki.ui.icon",
 				"moment",
-				"jquery.hidpi"
+				"jquery.hidpi",
+				"ext.popups.lib"
+			]
+		},
+		"ext.popups.lib": {
+			"scripts": [
+				"resources/ext.popups.lib/redux/redux.js",
+				"resources/ext.popups.lib/redux-thunk/redux-thunk.js"
 			]
 		}
 	},

@@ -17,20 +17,18 @@ module.exports = function ( grunt ) {
 		},
 		jscs: {
 			options: {
-				config: '.jscsrc',
-				fix: true
+				config: '.jscsrc'
 			},
-			main: [
-				'**/*.js',
-				'!resources/ext.popups.*/**', // Don't run on legacy code (for now)
-				'!tests/qunit/**'
-			],
+			main: '<%= jshint.all %>',
 			test: {
 				options: {
 					config: 'tests/.jscsrc.js'
 				},
 				files: {
-					src: 'tests/qunit/**/*.js'
+					src: [
+						'tests/qunit/**/*.js',
+						'!tests/qunit/ext.popups.core.test.js'
+					]
 				}
 			}
 		},
@@ -39,7 +37,20 @@ module.exports = function ( grunt ) {
 				jshintrc: true
 			},
 			all: [
-				'.'
+				'*.js',
+				'**/*.js',
+				'!node_modules/**',
+				'!resources/ext.popups.lib/**',
+				// FIXME: Remove ignores for legacy code upon removal/refactor
+				'!resources/ext.popups.core/**',
+				'!resources/ext.popups.desktop/**',
+				'!resources/ext.popups.images/**',
+				'!resources/ext.popups.renderer.desktopRenderer/**',
+				'!resources/ext.popups.schemaPopups/**',
+				'!resources/ext.popups.schemaPopups.utils/**',
+				'!resources/ext.popups.targets.desktopTarget/**',
+				// End legacy code
+				'!tests/qunit/**'
 			],
 			test: {
 				files: {
