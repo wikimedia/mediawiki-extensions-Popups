@@ -8,6 +8,9 @@
     "vendor/**",
     "node_modules/**"
   ],
+  "disallowDanglingUnderscores": {
+    "allExcept": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]
+  },
   "jsDoc": {
     "checkParamExistence": true,
     "checkParamNames": true,

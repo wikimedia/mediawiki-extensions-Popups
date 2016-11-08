@@ -1,11 +1,11 @@
-( function ( mw, rx ) {
+( function ( mw, Redux, ReduxThunk ) {
 
 	/**
-	 * Example reducer
+	 * A [null](https://en.wikipedia.org/wiki/Null_Object_pattern) reducer.
 	 *
-	 * @param {Object} state global state before action
-	 * @param {Object} action action that was performed
-	 * @return {Object} global state after action
+	 * @param {Object} state The current state
+	 * @param {Object} action The action that was dispatched against the store
+	 * @return {Object} The new state
 	 */
 	function rootReducer( state, action ) {
 		/* jshint unused: false */
@@ -13,10 +13,19 @@
 	}
 
 	mw.requestIdleCallback( function () {
-		rx.createStore(
+		var compose = Redux.compose;
+
+		// If debug mode is enabled, then enable Redux DevTools.
+		if ( mw.config.get( 'debug' ) === true ) {
+			compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+		}
+
+		Redux.createStore(
 			rootReducer,
-			rx.applyMiddleware( rx.thunk )
+			compose( Redux.applyMiddleware(
+				ReduxThunk.default
+			) )
 		);
 	} );
 
-}( mediaWiki, Redux ) );
+}( mediaWiki, Redux, ReduxThunk ) );

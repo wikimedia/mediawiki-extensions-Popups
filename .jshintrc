@@ -8,7 +8,8 @@
 		"require": false,
 		"OO": true,
 		"QUnit": true,
-		"Redux": true
+		"Redux": true,
+		"ReduxThunk": true
 	},
 
 	"browser": true,
