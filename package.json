@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "test": "grunt test",
+    "test": "grunt lint",
     "doc": "jsduck"
   },
   "devDependencies": {
@@ -9,7 +9,10 @@
     "grunt-banana-checker": "0.4.0",
     "grunt-cli": "0.1.13",
     "grunt-contrib-jshint": "0.11.3",
+    "grunt-contrib-qunit": "^1.2.0",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-jscs": "2.1.0",
-    "grunt-jsonlint": "1.0.7"
+    "grunt-jsonlint": "1.0.7",
+    "grunt-stylelint": "^0.6.0"
   }
 }

@@ -1,1 +1,3 @@
+// Ignore legacy code (for now)
+resources/ext.popups.*
 node_modules

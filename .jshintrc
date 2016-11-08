@@ -1,29 +1,23 @@
 {
-	/* Common */
+	"globals": {
+		"console": true,
+		"jQuery": true,
+		"mediaWiki": true,
+		"module": false,
+		"moment": true, // FIXME: Remove this once moment is removed from codebase
+		"require": false,
+		"OO": true,
+		"QUnit": true,
+		"Redux": true
+	},
 
-	// Enforcing
-	"camelcase": true,
+	"browser": true,
 	"curly": true,
 	"eqeqeq": true,
-	"immed": true,
-	"latedef": true,
-	"newcap": true,
-	"noarg": true,
-	"noempty": true,
-	"nonew": true,
-	"quotmark": "single",
-	"trailing": true,
-	"undef": true,
-	"unused": true,
-	// Legacy
+	"forin": false,
 	"onevar": true,
-	"browser": true,
-	/* Local */
-	"predef": [
-		"mediaWiki",
-		"jQuery",
-		"moment",
-		"QUnit",
-		"OO"
-	]
+	"supernew": true,
+	"trailing": true,
+	"undef" : true,
+	"unused": true
 }
