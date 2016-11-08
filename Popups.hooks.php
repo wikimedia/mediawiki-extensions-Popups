@@ -52,79 +52,6 @@ class PopupsHooks {
 		return $config;
 	}
 
-	/**
-	 * @param ResourceLoader $rl
-	 * @return bool
-	 */
-	public static function onResourceLoaderRegisterModules( ResourceLoader $rl ) {
-		$moduleDependencies = array(
-			'mediawiki.jqueryMsg',
-			'mediawiki.ui.button',
-			'mediawiki.ui.icon',
-			'moment',
-			'jquery.hidpi',
-			'ext.popups.targets.desktopTarget',
-			'ext.popups.images',
-		);
-
-		// Create a schema module and add it as a dependency of `ext.popups.desktop`.
-		$schemaPopups = [
-			'remoteExtPath' => 'Popups',
-			'localBasePath' => __DIR__,
-			'targets' => [ 'desktop' ],
-		];
-
-		if ( class_exists( 'EventLogging' ) ) {
-			$schemaPopups += [
-				'dependencies' => [
-					'schema.Popups',
-					'ext.popups.schemaPopups.utils',
-				],
-				'scripts' => [
-					'resources/ext.popups.schemaPopups/ext.popups.schemaPopups.js',
-				]
-			];
-		}
-		$rl->register('ext.popups.schemaPopups', $schemaPopups );
-		$moduleDependencies[] = 'ext.popups.schemaPopups';
-
-		$rl->register( "ext.popups.desktop", array(
-			'scripts' => array(
-				'resources/ext.popups.desktop/ext.popups.renderer.article.js',
-				'resources/ext.popups.desktop/ext.popups.settings.js',
-			),
-			'templates' => array(
-				'popup.mustache' => 'resources/ext.popups.desktop/popup.mustache',
-				'settings.mustache' => 'resources/ext.popups.desktop/settings.mustache',
-			),
-			'styles' => array(
-				'resources/ext.popups.desktop/ext.popups.animation.less',
-				'resources/ext.popups.desktop/ext.popups.settings.less',
-			),
-			'dependencies' => $moduleDependencies,
-			'messages' => array(
-				'popups-last-edited',
-				"popups-settings-title",
-				"popups-settings-description",
-				"popups-settings-option-simple",
-				"popups-settings-option-simple-description",
-				"popups-settings-option-advanced",
-				"popups-settings-option-advanced-description",
-				"popups-settings-option-off",
-				"popups-settings-save",
-				"popups-settings-cancel",
-				"popups-settings-enable",
-				"popups-settings-help",
-				"popups-settings-help-ok",
-				"popups-send-feedback",
-			),
-			'remoteExtPath' => 'Popups',
-			'localBasePath' => __DIR__,
-		) );
-
-		return true;
-	}
-
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin) {
 		// Enable only if the user has turned it on in Beta Preferences, or BetaFeatures is not installed.
 		// Will only be loaded if PageImages & TextExtracts extensions are installed.
@@ -156,7 +83,7 @@ class PopupsHooks {
 			}
 		}
 
-		$out->addModules( array( 'ext.popups.desktop' ) );
+		$out->addModules( array( 'ext.popups' ) );
 
 		return true;
 	}

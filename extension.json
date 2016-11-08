@@ -24,9 +24,6 @@
 		"ResourceLoaderTestModules": [
 			"PopupsHooks::onResourceLoaderTestModules"
 		],
-		"ResourceLoaderRegisterModules": [
-			"PopupsHooks::onResourceLoaderRegisterModules"
-		],
 		"ResourceLoaderGetConfigVars": [
 			"PopupsHooks::onResourceLoaderGetConfigVars"
 		],
@@ -52,38 +49,6 @@
 		"PopupsExperiment": false
 	},
 	"ResourceModules": {
-		"ext.popups.core": {
-			"scripts": [
-				"resources/ext.popups.core/ext.popups.core.js"
-			],
-			"dependencies": [
-				"mediawiki.api",
-				"mediawiki.Title",
-				"mediawiki.Uri",
-				"mediawiki.RegExp",
-				"mediawiki.storage",
-				"mediawiki.user",
-				"mediawiki.experiments"
-			],
-			"targets": [
-				"desktop"
-			],
-			"styles": [
-				"resources/ext.popups.core/ext.popups.core.less"
-			]
-		},
-		"ext.popups.targets.desktopTarget": {
-			"scripts": [
-				"resources/ext.popups.targets.desktopTarget/desktopTarget.js"
-			],
-			"dependencies": [
-				"mediawiki.storage",
-				"jquery.client",
-				"ext.popups.core",
-				"ext.popups.renderer.desktopRenderer"
-			],
-			"targets": [ "desktop" ]
-		},
 		"ext.popups.images": {
 			"selector": ".mw-ui-icon-{name}:before",
 			"class": "ResourceLoaderImageModule",
@@ -92,27 +57,37 @@
 				"popups-close": "resources/ext.popups.images/close.svg"
 			}
 		},
-		"ext.popups.renderer.desktopRenderer": {
-			"scripts": [
-				"resources/ext.popups.renderer.desktopRenderer/desktopRenderer.js"
+		"ext.popups": {
+			"templates": {
+				"popup.mustache": "resources/ext.popups.desktop/popup.mustache",
+				"settings.mustache": "resources/ext.popups.desktop/settings.mustache"
+			},
+			"styles": [
+				"resources/ext.popups.desktop/ext.popups.animation.less",
+				"resources/ext.popups.desktop/ext.popups.settings.less"
+			],
+			"messages": [
+				"popups-last-edited",
+				"popups-settings-title",
+				"popups-settings-description",
+				"popups-settings-option-simple",
+				"popups-settings-option-simple-description",
+				"popups-settings-option-advanced",
+				"popups-settings-option-advanced-description",
+				"popups-settings-option-off",
+				"popups-settings-save",
+				"popups-settings-cancel",
+				"popups-settings-enable",
+				"popups-settings-help",
+				"popups-settings-help-ok",
+				"popups-send-feedback"
 			],
 			"dependencies": [
-				"ext.popups.core"
-			]
-		},
-		"ext.popups.schemaPopups.utils": {
-			"scripts": [
-				"resources/ext.popups.schemaPopups.utils/ext.popups.schemaPopups.utils.js"
-			],
-			"dependencies": [
-				"mediawiki.experiments",
-				"mediawiki.Title",
-				"mediawiki.user",
-				"ext.popups.core",
-				"ext.popups.renderer.desktopRenderer"
-			],
-			"targets": [
-				"desktop"
+				"mediawiki.jqueryMsg",
+				"mediawiki.ui.button",
+				"mediawiki.ui.icon",
+				"moment",
+				"jquery.hidpi"
 			]
 		}
 	},
