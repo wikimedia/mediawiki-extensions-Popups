@@ -1,7 +1,7 @@
 // jscs:disable jsDoc
 /*jshint node:true */
 module.exports = function ( grunt ) {
-	var QUNIT_URL_BASE = 'http://localhost:8080/wiki/Special:JavaScriptTest/qunit/plain?module=';
+	var QUNIT_URL_BASE = 'http://localhost:8080/wiki/Special:JavaScriptTest/qunit/plain';
 
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
@@ -70,9 +70,10 @@ module.exports = function ( grunt ) {
 				options: {
 					summaryOnly: true,
 					urls: [
-						// Add QUnit modules below using the format:
-						// QUNIT_URL_BASE + 'ext.popups.testModule'
-						QUNIT_URL_BASE + 'ext.popups'
+
+						// Execute any QUnit test in those module whose names begin with
+						// "ext.popups".
+						QUNIT_URL_BASE + '?filter=ext.popups'
 					]
 				}
 			}

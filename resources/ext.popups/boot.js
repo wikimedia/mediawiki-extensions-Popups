@@ -13,19 +13,34 @@
 	}
 
 	mw.requestIdleCallback( function () {
-		var compose = Redux.compose;
+		var compose = Redux.compose,
+			store,
+			userSettings,
+			isUserInCondition;
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
 			compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 		}
 
-		Redux.createStore(
+		store = Redux.createStore(
 			rootReducer,
 			compose( Redux.applyMiddleware(
 				ReduxThunk.default
 			) )
 		);
+
+		userSettings = mw.popups.createUserSettings(
+			mw.storage,
+			mw.user
+		);
+		isUserInCondition = mw.popups.createExperiment(
+			mw.config,
+			mw.user,
+			userSettings
+		);
+
+		store.dispatch( mw.popups.actions.boot( isUserInCondition ) );
 	} );
 
 }( mediaWiki, Redux, ReduxThunk ) );
