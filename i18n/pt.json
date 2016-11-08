@@ -11,7 +11,7 @@
 		]
 	},
 	"popups-message": "Cartões flutuantes",
-	"popups-desc": "Exibe um painel com o resumo do conteúdo de páginas quando o utilizador passa o rato por cima da ligação de uma página.",
+	"popups-desc": "Apresenta painéis com resumos do conteúdo das páginas quando o utilizador passa o ponteiro do rato por cima da ligação para uma página.",
 	"popups-last-edited": "Editado $1",
 	"popups-redirects": "redirecciona para <h3>$1</h3>",
 	"popups-settings-title": "Antevisão de página",
