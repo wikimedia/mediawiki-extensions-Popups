@@ -227,23 +227,12 @@ class PopupsHooks {
 	 * @return bool
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
-		$testModules['qunit']['ext.popups.tests'] = array(
-			'scripts' => array(
-				'tests/qunit/ext.popups.desktopRenderer.test.js',
-				'tests/qunit/ext.popups.renderer.article.test.js',
-				'tests/qunit/ext.popups.core.test.js',
-				'tests/qunit/ext.popups.schemaPopups.utils.test.js',
-				'tests/qunit/ext.popups.settings.test.js',
-				'tests/qunit/ext.popups.experiment.test.js',
-			),
-			'dependencies' => array(
-				'ext.popups.desktop',
-				'ext.popups.schemaPopups.utils'
-			),
-			'localBasePath' => __DIR__,
-			'remoteExtPath' => 'Popups',
-		);
-		return true;
+		//$testModules['qunit']['ext.popups.tests'] = [
+		//	'scripts' => [],
+		//	'dependencies' => [],
+		//	'localBasePath' => __DIR__,
+		//	'remoteExtPath' => 'Popups',
+		//];
 	}
 
 	/**
