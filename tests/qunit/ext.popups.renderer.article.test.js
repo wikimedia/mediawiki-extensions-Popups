@@ -166,25 +166,6 @@
 		], true ), 120, 'Correct upper Y 2.' );
 	} );
 
-	QUnit.test( 'render.article.createSurveyLink', function ( assert ) {
-		var $surveyLink;
-
-		QUnit.expect( 2 );
-
-		$surveyLink = mw.popups.render.renderers.article.createSurveyLink( 'http://path/to/resource' );
-
-		assert.ok( /noreferrer/.test( $surveyLink.attr( 'rel' ) ), 'Survey link doesn\'t leak referrer information or `window.opener`' );
-
-		// ---
-
-		assert.throws(
-			function () {
-				mw.popups.render.renderers.article.createSurveyLink( 'htt://path/to/resource' );
-			},
-			new Error( 'The survey link URL, i.e. PopupsSurveyLink, must start with https or http.' )
-		);
-	} );
-
 	QUnit.test( 'render.article.createPopup', function ( assert ) {
 		var $popup, $thumbLink, $extractLink, cache;
 

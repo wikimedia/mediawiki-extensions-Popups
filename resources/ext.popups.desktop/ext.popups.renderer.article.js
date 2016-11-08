@@ -8,7 +8,6 @@
 	var currentRequest,
 		isSafari = navigator.userAgent.match( /Safari/ ) !== null,
 		article = {},
-		surveyLink = mw.config.get( 'wgPopupsSurveyLink' ),
 		$window = $( window ),
 		CHARS = 525,
 		SIZES = {
@@ -148,9 +147,6 @@
 		}
 		$div.find( '.mwe-popups-extract' )
 			.append( article.getProcessedElements( page.extract, page.title ) );
-		if ( surveyLink ) {
-			$div.find( 'footer' ).append( article.createSurveyLink( surveyLink ) );
-		}
 
 		mw.popups.render.cache[ href ].settings = {
 			title: page.title,
@@ -160,32 +156,6 @@
 		};
 
 		return $div;
-	};
-
-	/**
-	 * Creates a link to a survey, possibly hosted on an external site.
-	 *
-	 * @param {string} url
-	 * @return {jQuery}
-	 */
-	article.createSurveyLink = function ( url ) {
-		if ( !/https?:\/\//.test( url ) ) {
-			throw new Error(
-				'The survey link URL, i.e. PopupsSurveyLink, must start with https or http.'
-			);
-		}
-
-		return $( '<a>' )
-			.attr( 'href', url )
-			.attr( 'target', '_blank' )
-			.attr( 'title', mw.message( 'popups-send-feedback' ) )
-
-			// Don't leak referrer information or `window.opener` to the survey hosting site. See
-			// https://html.spec.whatwg.org/multipage/semantics.html#link-type-noreferrer for more
-			// information.
-			.attr( 'rel', 'noreferrer' )
-
-			.addClass( 'mwe-popups-icon mwe-popups-survey-icon' );
 	};
 
 	/**

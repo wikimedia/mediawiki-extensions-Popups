@@ -42,8 +42,6 @@
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
 		"PopupsBetaFeature": false,
-		"@PopupsSurveyLink": "@var bool|string: When defined a link will be rendered at the bottom of the popup for the user to provide feedback. The URL must start with https or http. If not, then an error is thrown client-side. The link is annotated with `rel=\"noreferrer\"` so no referrer information or `window.opener` is leaked to the survey hosting site (see https://html.spec.whatwg.org/multipage/semantics.html#link-type-noreferrer for more information).",
-		"PopupsSurveyLink": false,
 		"@SchemaPopupsSamplingRate": "@var number: Sample rate for logging events to Schema:Popups.",
 		"SchemaPopupsSamplingRate": 0,
 		"PopupsExperiment": false
