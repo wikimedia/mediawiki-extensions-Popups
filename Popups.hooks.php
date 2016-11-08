@@ -122,50 +122,6 @@ class PopupsHooks {
 			'localBasePath' => __DIR__,
 		) );
 
-		// if MobileFrontend is installed, register mobile popups modules
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' )
-			&& self::getConfig()->get( 'EnablePopupsMobile' )
-		) {
-			$mobileBoilerplate = array(
-				'targets' => array( 'mobile' ),
-				'remoteExtPath' => 'Popups',
-				'localBasePath' => __DIR__,
-			);
-
-			$rl->register( 'ext.popups.targets.mobileTarget', array(
-					'dependencies' => array(
-						'ext.popups.core',
-						'ext.popups.renderer.mobileRenderer',
-					),
-					'scripts' => array(
-						'resources/ext.popups.targets.mobileTarget/mobileTarget.js',
-					),
-				) + $mobileBoilerplate
-			);
-
-			$rl->register( 'ext.popups.renderer.mobileRenderer', array(
-					'dependencies' => array(
-						'ext.popups.core',
-						'mobile.drawers',
-					),
-					'scripts' => array(
-						'resources/ext.popups.renderer.mobileRenderer/mobileRenderer.js',
-						'resources/ext.popups.renderer.mobileRenderer/LinkPreviewDrawer.js',
-					),
-					'templates' => array(
-						'LinkPreviewDrawer.hogan' => 'resources/ext.popups.renderer.mobileRenderer/LinkPreviewDrawer.hogan',
-					),
-					'styles' => array(
-						'resources/ext.popups.renderer.mobileRenderer/LinkPreview.less',
-					),
-					'messages' => array(
-						'popups-mobile-continue-to-page',
-						'popups-mobile-dismiss',
-					),
-				) + $mobileBoilerplate
-			);
-		}
-
 		return true;
 	}
 
@@ -203,22 +159,6 @@ class PopupsHooks {
 		$out->addModules( array( 'ext.popups.desktop' ) );
 
 		return true;
-	}
-
-	/**
-	 * Handler for MobileFrontend's BeforePageDisplay hook, which is only called in mobile mode.
-	 *
-	 * @param OutputPage &$out,
-	 * @param Skin &$skin
-	 */
-	public static function onBeforePageDisplayMobile( OutputPage &$out, Skin &$skin ) {
-		// enable mobile link preview in mobile beta and if the beta feature is enabled
-		if (
-			self::getConfig()->get( 'EnablePopupsMobile' ) &&
-			MobileContext::singleton()->isBetaGroupMember()
-		) {
-			$out->addModules( 'ext.popups.targets.mobileTarget' );
-		}
 	}
 
 	/**
