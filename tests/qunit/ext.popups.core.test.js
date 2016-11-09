@@ -6,33 +6,6 @@
 		}
 	} ) );
 
-	QUnit.test( 'getTitle', function ( assert ) {
-		var cases, i, expected, actual;
-
-		QUnit.expect( 11 );
-		cases = [
-			[ '/wiki/Foo', 'Foo' ],
-			[ '/wiki/Foo#Bar', 'Foo' ],
-			[ '/wiki/Foo?oldid=1', undefined ],
-			[ '/wiki/%E6%B8%AC%E8%A9%A6', '測試' ],
-			[ '/w/index.php?title=Foo', 'Foo' ],
-			[ '/w/index.php?title=Foo#Bar', 'Foo' ],
-			[ '/w/Foo?title=Foo&action=edit', undefined ],
-			[ '/w/index.php?title=%E6%B8%AC%E8%A9%A6', '測試' ],
-			[ '/w/index.php?oldid=1', undefined ],
-			[ '/Foo', undefined ],
-			/*jshint  -W107 */
-			[ 'javascript:void(0);', undefined ]
-			/*jshint +W107 */
-		];
-
-		for ( i = 0; i < cases.length; i++ ) {
-			expected = cases[ i ][ 1 ];
-			actual = mw.popups.getTitle( cases[ i ][ 0 ] );
-			assert.equal( actual, expected );
-		}
-	} );
-
 	// FIXME: This test should be split to cover each function separately and a browser test should
 	// be created to test user interactions with focus and mouseenter - planned for the Hovercards rewrite
 	QUnit.test( 'removeTooltip and restoreTooltip', function ( assert ) {
@@ -62,71 +35,6 @@
 			'The link title is not removed when `dont-empty-title` data attribute is `true`.' );
 
 		$link.remove();
-	} );
-
-	QUnit.test( 'selectPopupElements', function ( assert ) {
-		var $originalContent = mw.popups.$content,
-			IGNORE_CLASSES = [
-				'.extiw',
-				'.image',
-				'.new',
-				'.internal',
-				'.external',
-				'.oo-ui-buttonedElement-button'
-			],
-			$cancelLink = $( '<span>', {
-				class: 'cancelLink'
-			} );
-
-		QUnit.expect( 1 );
-
-		mw.popups.$content = $( '<div>' );
-
-		// add links that we know will be ignored
-		$.each( IGNORE_CLASSES, function ( i, className ) {
-			$( '<a>', {
-				text: 'link with tooltip',
-				title: 'link title',
-				class: className.substring( 1 ),
-				href: '/wiki/Popups'
-			} ).appendTo( mw.popups.$content );
-		} );
-
-		// add a link that's part of a .cancelLink
-		$( '<a>', {
-			text: 'link with tooltip',
-			title: 'link title',
-			href: '/wiki/Popups'
-		} ).appendTo( $cancelLink );
-		$cancelLink.appendTo( mw.popups.$content );
-
-		// add a link without `href`, which means the link doesn't point to a valid page
-		$( '<a>', {
-			text: 'link with tooltip',
-			title: 'link title'
-		} ).appendTo( mw.popups.$content );
-
-		// Add a link that's not in a content namespace.
-		$( '<a>', {
-			text: 'link with tooltip',
-			title: 'foo.jpg',
-			href: '/wiki/File:foo.jpg'
-		} ).appendTo( mw.popups.$content );
-
-		// add a link that will have a hover card
-		$( '<a>', {
-			text: 'link with tooltip',
-			title: 'link title',
-			href: '/wiki/Popups'
-		} ).appendTo( mw.popups.$content );
-
-		// only the last link above should be selected for having a hover card
-		assert.equal(
-			mw.popups.selectPopupElements().length,
-			1,
-			'Explicitly ignored links and links that do not have a `href` attribute are not considered for having a popup.' );
-
-		mw.popups.$content = $originalContent;
 	} );
 
 	QUnit.test( 'setupTriggers', function ( assert ) {

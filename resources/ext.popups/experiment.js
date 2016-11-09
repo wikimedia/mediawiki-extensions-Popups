@@ -1,13 +1,14 @@
 ( function ( mw ) {
 
 	/**
-	 * Given the global state of the application, creates a function which gets
+	 * Given the global state of the application, creates a function which that
 	 * whether or not the user should have Link Previews enabled, i.e. whether
 	 * they are in the experiment condition.
 	 *
 	 * The user is in the experiment condition if:
-	 * * They've enabled Popups by click "Enable previews" in the footer menu.
-	 * * They've enabled Popups as a beta feature.
+	 * * They've enabled by Link Previews by clicking "Enable previews" in the
+	 *   footer menu.
+	 * * They've enabled Link Previews as a beta feature.
 	 * * They aren't in the control bucket of the experiment.
 	 *
 	 * @param {mw.Map} config

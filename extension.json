@@ -61,6 +61,7 @@
 				"resources/ext.popups/userSettings.js",
 				"resources/ext.popups/experiment.js",
 				"resources/ext.popups/actions.js",
+				"resources/ext.popups/processLinks.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {
@@ -90,6 +91,7 @@
 			"dependencies": [
 				"mediawiki.experiments",
 				"mediawiki.storage",
+				"mediawiki.Title",
 				"mediawiki.jqueryMsg",
 				"mediawiki.ui.button",
 				"mediawiki.ui.icon",

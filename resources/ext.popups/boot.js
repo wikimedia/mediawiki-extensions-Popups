@@ -1,4 +1,13 @@
 ( function ( mw, Redux, ReduxThunk ) {
+	var BLACKLISTED_LINKS = [
+		'.extiw',
+		'.image',
+		'.new',
+		'.internal',
+		'.external',
+		'.oo-ui-buttonedElement-button',
+		'.cancelLink a'
+	];
 
 	/**
 	 * A [null](https://en.wikipedia.org/wiki/Null_Object_pattern) reducer.
@@ -12,11 +21,25 @@
 		return state;
 	}
 
+	/**
+	 * Return whether the user is in the experiment group
+	 *
+	 * @return {Boolean}
+	 */
+	function isUserInCondition() {
+		var userSettings = mw.popups.createUserSettings( mw.storage, mw.user );
+
+		return mw.popups.createExperiment(
+			mw.config,
+			mw.user,
+			userSettings
+		);
+	}
+
 	mw.requestIdleCallback( function () {
 		var compose = Redux.compose,
 			store,
-			userSettings,
-			isUserInCondition;
+			actions;
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
@@ -29,18 +52,25 @@
 				ReduxThunk.default
 			) )
 		);
+		actions = mw.popups.createActions( store );
 
-		userSettings = mw.popups.createUserSettings(
-			mw.storage,
-			mw.user
-		);
-		isUserInCondition = mw.popups.createExperiment(
-			mw.config,
-			mw.user,
-			userSettings
-		);
+		actions.boot( isUserInCondition() );
 
-		store.dispatch( mw.popups.actions.boot( isUserInCondition ) );
+		mw.hook( 'wikipage.content' ).add( function ( $container ) {
+			var previewLinks =
+				mw.popups.processLinks(
+					$container,
+					BLACKLISTED_LINKS
+				);
+
+			previewLinks
+				.on( 'mouseover focus', function () {
+					actions.linkDwell( this );
+				} )
+				.on( 'mouseout blur', function () {
+					actions.linkAbandon( this );
+				} );
+		} );
 	} );
 
 }( mediaWiki, Redux, ReduxThunk ) );

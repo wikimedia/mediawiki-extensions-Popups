@@ -68,9 +68,9 @@ module.exports = function ( grunt ) {
 		qunit: {
 			all: {
 				options: {
+					timeout: 10000, // Using the filter query param takes longer
 					summaryOnly: true,
 					urls: [
-
 						// Execute any QUnit test in those module whose names begin with
 						// "ext.popups".
 						QUNIT_URL_BASE + '?filter=ext.popups'
@@ -87,6 +87,10 @@ module.exports = function ( grunt ) {
 			]
 		},
 		watch: {
+			options: {
+				interrupt: true,
+				debounceDelay: 1000
+			},
 			lint: {
 				files: [ 'resources/**/*.js', 'tests/qunit/**/*.js' ],
 				tasks: [ 'lint' ]

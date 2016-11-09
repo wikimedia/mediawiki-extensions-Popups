@@ -98,6 +98,7 @@ class PopupsHooks {
 			'scripts' => [
 				'tests/qunit/ext.popups/userSettings.test.js',
 				'tests/qunit/ext.popups/experiment.test.js',
+				'tests/qunit/ext.popups/processLinks.test.js',
 			],
 			'dependencies' => [
 				'ext.popups',
