@@ -1,13 +1,28 @@
 ( function ( mw, Redux ) {
 
-	var actions = {};
+	var actions = {},
+		types = {
+			BOOT: 'BOOT',
+			LINK_DWELL: 'LINK_DWELL',
+			LINK_ABANDON: 'LINK_ABANDON',
+			LINK_CLICK: 'LINK_CLICK',
+			FETCH_START: 'FETCH_START',
+			FETCH_END: 'FETCH_END',
+			FETCH_FAILED: 'FETCH_FAILED',
+			PREVIEW_ANIMATING: 'PREVIEW_ANIMATING',
+			PREVIEW_INTERACTIVE: 'PREVIEW_INTERACTIVE',
+			PREVIEW_CLICK: 'PREVIEW_CLICK',
+			COG_CLICK: 'COG_CLICK',
+			SETTINGS_DIALOG_RENDERED: 'SETTINGS_DIALOG_RENDERED',
+			SETTINGS_DIALOG_CLOSED: 'SETTINGS_DIALOG_CLOSED'
+		};
 
 	/**
 	 * @param {Function} isUserInCondition See `mw.popups.createExperiment`
 	 */
 	actions.boot = function ( isUserInCondition ) {
 		return {
-			type: 'BOOT',
+			type: types.BOOT,
 			isUserInCondition: isUserInCondition()
 		};
 	};
@@ -21,7 +36,7 @@
 	 */
 	actions.linkDwell = function ( $el ) {
 		return {
-			type: 'LINK_DWELL',
+			type: types.LINK_DWELL,
 			el: $el
 		};
 	};
@@ -36,10 +51,12 @@
 	 */
 	actions.linkAbandon = function ( $el ) {
 		return {
-			type: 'LINK_ABANDON',
+			type: types.LINK_ABANDON,
 			el: $el
 		};
 	};
+
+	mw.popups.actionTypes = types;
 
 	/**
 	 * Represents the user clicking on a link with their mouse, keyboard, or an

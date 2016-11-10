@@ -10,18 +10,6 @@
 	];
 
 	/**
-	 * A [null](https://en.wikipedia.org/wiki/Null_Object_pattern) reducer.
-	 *
-	 * @param {Object} state The current state
-	 * @param {Object} action The action that was dispatched against the store
-	 * @return {Object} The new state
-	 */
-	function rootReducer( state, action ) {
-		/* jshint unused: false */
-		return state;
-	}
-
-	/**
 	 * Return whether the user is in the experiment group
 	 *
 	 * @return {Boolean}
@@ -47,7 +35,7 @@
 		}
 
 		store = Redux.createStore(
-			rootReducer,
+			mw.popups.reducers.rootReducer,
 			compose( Redux.applyMiddleware(
 				ReduxThunk.default
 			) )
