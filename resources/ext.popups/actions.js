@@ -42,6 +42,20 @@
 	};
 
 	/**
+	 * Represents the user clicking on a link with their mouse, keyboard, or an
+	 * assistive device.
+	 *
+	 * @param {jQuery} $el
+	 * @return {Object}
+	 */
+	actions.linkClick = function ( $el ) {
+		return {
+			type: 'LINK_CLICK',
+			el: $el
+		};
+	};
+
+	/**
 	 * Creates an object whose methods encapsulate all actions that can be
 	 * dispatched to the given
 	 * [store](http://redux.js.org/docs/api/Store.html#store).

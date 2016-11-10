@@ -69,7 +69,11 @@
 				} )
 				.on( 'mouseout blur', function () {
 					actions.linkAbandon( this );
+				} )
+				.on( 'click', function () {
+					actions.linkClick( this );
 				} );
+
 		} );
 	} );
 
