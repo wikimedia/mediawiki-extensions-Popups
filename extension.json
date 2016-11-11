@@ -62,6 +62,7 @@
 				"resources/ext.popups/experiment.js",
 				"resources/ext.popups/actions.js",
 				"resources/ext.popups/processLinks.js",
+				"resources/ext.popups/gateway.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {

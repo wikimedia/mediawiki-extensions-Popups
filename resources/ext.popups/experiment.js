@@ -1,7 +1,7 @@
 ( function ( mw ) {
 
 	/**
-	 * Given the global state of the application, creates a function which that
+	 * Given the global state of the application, creates a function that gets
 	 * whether or not the user should have Link Previews enabled, i.e. whether
 	 * they are in the experiment condition.
 	 *

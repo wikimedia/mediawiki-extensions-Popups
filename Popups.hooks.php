@@ -94,12 +94,16 @@ class PopupsHooks {
 	 * @return bool
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
+		$localBasePath = __DIR__;
+		$scripts = glob( "{$localBasePath}/tests/qunit/ext.popups/*.test.js" );
+		$start = strlen( $localBasePath ) + 1;
+
+		$scripts = array_map( function ( $script ) use ( $start ) {
+			return substr( $script, $start );
+		}, $scripts );
+
 		$testModules['qunit']['ext.popups.tests'] = [
-			'scripts' => [
-				'tests/qunit/ext.popups/userSettings.test.js',
-				'tests/qunit/ext.popups/experiment.test.js',
-				'tests/qunit/ext.popups/processLinks.test.js',
-			],
+			'scripts' => $scripts,
 			'dependencies' => [
 				'ext.popups',
 			],
