@@ -1,4 +1,4 @@
-( function ( mw, Redux ) {
+( function ( mw ) {
 
 	var actions = {},
 		types = {
@@ -18,12 +18,28 @@
 		};
 
 	/**
+	 * Represents Link Previews booting.
+	 *
+	 * When a Redux store is created, the `@@INIT` action is immediately
+	 * dispatched to it. To avoid overriding the term, we refer to booting rather
+	 * than initializing.
+	 *
+	 * Link Previews persists critical pieces of information to local storage.
+	 * Since reading from and writing to local storage are synchronous, Link
+	 * Previews is booted when the browser is idle (using
+	 * [`mw.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
+	 * so as not to impact latency-critical events.
+	 *
 	 * @param {Function} isUserInCondition See `mw.popups.createExperiment`
+	 * @param {String} sessionToken
+	 * @param {Function} generateToken
 	 */
-	actions.boot = function ( isUserInCondition ) {
+	actions.boot = function ( isUserInCondition, sessionToken, generateToken ) {
 		return {
 			type: types.BOOT,
-			isUserInCondition: isUserInCondition()
+			isUserInCondition: isUserInCondition(),
+			sessionToken: sessionToken,
+			pageToken: generateToken()
 		};
 	};
 
@@ -56,8 +72,6 @@
 		};
 	};
 
-	mw.popups.actionTypes = types;
-
 	/**
 	 * Represents the user clicking on a link with their mouse, keyboard, or an
 	 * assistive device.
@@ -72,16 +86,7 @@
 		};
 	};
 
-	/**
-	 * Creates an object whose methods encapsulate all actions that can be
-	 * dispatched to the given
-	 * [store](http://redux.js.org/docs/api/Store.html#store).
-	 *
-	 * @param {Store} store
-	 * @return {Object}
-	 */
-	mw.popups.createActions = function ( store ) {
-		return Redux.bindActionCreators( actions, store.dispatch );
-	};
+	mw.popups.actions = actions;
+	mw.popups.actionTypes = types;
 
-}( mediaWiki, Redux ) );
+}( mediaWiki ) );

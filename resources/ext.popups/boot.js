@@ -24,10 +24,22 @@
 		);
 	}
 
+	/**
+	 * Binds the actions (or "action creators") to the
+	 * [store](http://redux.js.org/docs/api/Store.html#store).
+	 *
+	 * @param {Store} store
+	 * @return {Object}
+	 */
+	function createBoundActions( store ) {
+		return Redux.bindActionCreators( mw.popups.actions, store.dispatch );
+	}
+
 	mw.requestIdleCallback( function () {
 		var compose = Redux.compose,
 			store,
-			actions;
+			actions,
+			generateToken = mw.user.generateRandomSessionId;
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
@@ -40,9 +52,13 @@
 				ReduxThunk.default
 			) )
 		);
-		actions = mw.popups.createActions( store );
+		actions = createBoundActions( store );
 
-		actions.boot( isUserInCondition() );
+		actions.boot(
+			isUserInCondition(),
+			mw.user.sessionId(),
+			generateToken
+		);
 
 		mw.hook( 'wikipage.content' ).add( function ( $container ) {
 			var previewLinks =

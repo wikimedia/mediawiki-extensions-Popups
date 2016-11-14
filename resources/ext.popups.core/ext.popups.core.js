@@ -92,16 +92,6 @@
 	};
 
 	/**
-	 * Get a random token.
-	 * Append the current timestamp to make the return value more unique.
-	 *
-	 * @return {string}
-	 */
-	mw.popups.getRandomToken = function () {
-		return mw.user.generateRandomSessionId() + Math.round( mw.now() ).toString();
-	};
-
-	/**
 	 * Return edit count bucket based on the number of edits.
 	 * The returned value is "unknown" is `window.localStorage` is not supported.
 	 *

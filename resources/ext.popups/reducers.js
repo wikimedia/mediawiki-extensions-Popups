@@ -12,20 +12,31 @@
 	mw.popups.reducers.preview = function ( state, action ) {
 		if ( state === undefined ) {
 			state = {
-				enabled: false,
+				enabled: undefined,
+				sessionToken: undefined,
+				pageToken: undefined,
+				linkInteractionToken: undefined,
 				activeLink: undefined,
 				previousActiveLink: undefined,
 				interactionStarted: undefined,
 				isDelayingFetch: false,
-				isFetching: false,
-				linkInteractionToken: undefined
+				isFetching: false
 			};
 		}
 
 		switch ( action.type ) {
 			case mw.popups.actionTypes.BOOT:
-				return $.extend( {}, state, {
-					enabled: action.isUserInCondition
+
+				// FIXME: $.extend doesn't copy properties whose values are null or
+				// undefined. If we were to do the following:
+				//
+				//   return $.extend( {}, state, { /* ... */ } );
+				//
+				// Then the shape of the state tree would vary. Is this necessarily bad?
+				return $.extend( OO.copy( state ), {
+					enabled: action.isUserInCondition,
+					sessionToken: action.sessionToken,
+					pageToken: action.pageToken
 				} );
 			default:
 				return state;

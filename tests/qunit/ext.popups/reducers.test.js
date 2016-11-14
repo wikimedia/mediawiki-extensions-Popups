@@ -11,13 +11,15 @@
 			state,
 			{
 				preview: {
-					enabled: false,
+					enabled: undefined,
+					sessionToken: undefined,
+					pageToken: undefined,
+					linkInteractionToken: undefined,
 					activeLink: undefined,
 					previousActiveLink: undefined,
 					interactionStarted: undefined,
 					isDelayingFetch: false,
-					isFetching: false,
-					linkInteractionToken: undefined
+					isFetching: false
 				},
 				renderer: {
 					isAanimating: false,
@@ -29,20 +31,28 @@
 		);
 	} );
 
-	QUnit.test( '#model', function ( assert ) {
-		var state = mw.popups.reducers.preview(
-			{},
-			{
+	QUnit.test( '#model', 1, function ( assert ) {
+		var state = mw.popups.reducers.preview( undefined, { type: '@@INIT' } ),
+			action = {
 				type: 'BOOT',
-				isUserInCondition: true
+				isUserInCondition: true,
+				sessionToken: '0123456789',
+				pageToken: '9876543210'
+			};
+
+		assert.deepEqual(
+			mw.popups.reducers.preview( state, action ),
+			{
+				enabled: true,
+				sessionToken: '0123456789',
+				pageToken: '9876543210',
+				linkInteractionToken: undefined,
+				activeLink: undefined,
+				previousActiveLink: undefined,
+				interactionStarted: undefined,
+				isDelayingFetch: false,
+				isFetching: false
 			}
-		);
-
-		assert.expect( 1 );
-
-		assert.ok(
-			state.enabled,
-			'It should set enabled to true when the user is in the enabled condition.'
 		);
 	} );
 
