@@ -64,6 +64,8 @@
 				"resources/ext.popups/processLinks.js",
 				"resources/ext.popups/gateway.js",
 				"resources/ext.popups/reducers.js",
+				"resources/ext.popups/changeListener.js",
+				"resources/ext.popups/footerLinkChangeListener.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {

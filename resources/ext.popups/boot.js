@@ -1,4 +1,4 @@
-( function ( mw, Redux, ReduxThunk ) {
+( function ( mw, Redux, ReduxThunk, $ ) {
 	var BLACKLISTED_LINKS = [
 		'.extiw',
 		'.image',
@@ -22,6 +22,23 @@
 			mw.user,
 			userSettings
 		);
+	}
+
+	/**
+	 * Subscribes the registered change listeners to the
+	 * [store](http://redux.js.org/docs/api/Store.html#store).
+	 *
+	 * Change listeners are registered by setting a property on
+	 * `mw.popups.changeListeners`.
+	 *
+	 * @param {Store} store
+	 */
+	function registerChangeListeners( store, actions ) {
+		$.each( mw.popups.changeListeners, function ( _, changeListenerFactory ) {
+			var changeListener = changeListenerFactory( actions );
+
+			mw.popups.registerChangeListener( store, changeListener );
+		} );
 	}
 
 	/**
@@ -53,6 +70,7 @@
 			) )
 		);
 		actions = createBoundActions( store );
+		registerChangeListeners( store, actions );
 
 		actions.boot(
 			isUserInCondition(),
@@ -81,4 +99,4 @@
 		} );
 	} );
 
-}( mediaWiki, Redux, ReduxThunk ) );
+}( mediaWiki, Redux, ReduxThunk, jQuery ) );

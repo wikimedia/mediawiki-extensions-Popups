@@ -86,6 +86,18 @@
 		};
 	};
 
+	/**
+	 * Represents the user clicking either the "Enable previews" footer menu link,
+	 * or the "cog" icon that's present on each preview.
+	 *
+	 * @return {Object}
+	 */
+	actions.showSettings = function () {
+		return {
+			type: 'COG_CLICK'
+		};
+	};
+
 	mw.popups.actions = actions;
 	mw.popups.actionTypes = types;
 
