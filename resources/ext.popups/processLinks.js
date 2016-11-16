@@ -83,7 +83,7 @@
 				// Is titleText in a content namespace?
 				title = mw.Title.newFromText( titleText );
 				if ( title && ( $.inArray( title.namespace, contentNamespaces ) >= 0 ) ) {
-					$( this ).data( 'previews-page-title', titleText );
+					$( this ).data( 'page-previews-title', titleText );
 
 					return true;
 				}

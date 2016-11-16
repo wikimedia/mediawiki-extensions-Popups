@@ -1,4 +1,4 @@
-( function ( mw ) {
+( function ( mw, $ ) {
 
 	var actions = {},
 		types = {
@@ -15,7 +15,8 @@
 			COG_CLICK: 'COG_CLICK',
 			SETTINGS_DIALOG_RENDERED: 'SETTINGS_DIALOG_RENDERED',
 			SETTINGS_DIALOG_CLOSED: 'SETTINGS_DIALOG_CLOSED'
-		};
+		},
+		FETCH_START_DELAY = 500; // ms.
 
 	/**
 	 * Represents Link Previews booting.
@@ -44,16 +45,54 @@
 	};
 
 	/**
+	 * Represents Page Previews fetching data via the [gateway](./gateway.js).
+	 *
+	 * @param {ext.popups.Gateway} gateway
+	 * @param {String} title
+	 * @return {Redux.Thunk}
+	 */
+	function fetch( gateway, title ) {
+		return function ( dispatch ) {
+			dispatch( {
+				type: types.FETCH_START,
+				title: title
+			} );
+
+			gateway( title )
+				.fail( function () {
+					dispatch( {
+						type: types.FETCH_FAILED
+					} );
+				} )
+				.done( function ( result ) {
+					dispatch( {
+						type: types.FETCH_END,
+						result: result
+					} );
+				} );
+		};
+	}
+
+	/**
 	 * Represents the user dwelling on a link, either by hovering over it with
 	 * their mouse or by focussing it using their keyboard or an assistive device.
 	 *
-	 * @param {jQuery} $el
-	 * @return {Object}
+	 * @param {Element} el
+	 * @param {Function} gateway
+	 * @return {Redux.Thunk}
 	 */
-	actions.linkDwell = function ( $el ) {
-		return {
-			type: types.LINK_DWELL,
-			el: $el
+	actions.linkDwell = function ( el, gateway ) {
+		return function ( dispatch, getState ) {
+			dispatch( {
+				type: types.LINK_DWELL,
+				el: el
+			} );
+
+			setTimeout( function () {
+				if ( getState().preview.activeLink === el ) {
+					dispatch( fetch( gateway, $( el ).data( 'page-previews-title' ) ) );
+				}
+			}, FETCH_START_DELAY );
 		};
 	};
 
@@ -62,13 +101,13 @@
 	 * from it or by shifting focus to another UI element using their keyboard or
 	 * an assistive device.
 	 *
-	 * @param {jQuery} $el
+	 * @param {Element} el
 	 * @return {Object}
 	 */
-	actions.linkAbandon = function ( $el ) {
+	actions.linkAbandon = function ( el ) {
 		return {
 			type: types.LINK_ABANDON,
-			el: $el
+			el: el
 		};
 	};
 
@@ -76,13 +115,13 @@
 	 * Represents the user clicking on a link with their mouse, keyboard, or an
 	 * assistive device.
 	 *
-	 * @param {jQuery} $el
+	 * @param {Element} el
 	 * @return {Object}
 	 */
-	actions.linkClick = function ( $el ) {
+	actions.linkClick = function ( el ) {
 		return {
 			type: 'LINK_CLICK',
-			el: $el
+			el: el
 		};
 	};
 
@@ -101,4 +140,4 @@
 	mw.popups.actions = actions;
 	mw.popups.actionTypes = types;
 
-}( mediaWiki ) );
+}( mediaWiki, jQuery ) );

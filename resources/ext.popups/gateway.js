@@ -7,6 +7,11 @@
 		CACHE_LIFETIME = 300; // Public and private cache lifetime (5 minutes)
 
 	/**
+	 * @typedef {Function} ext.popups.Gateway
+	 * @param {String} title
+	 */
+
+	/**
 	 * Creates a function that fetches all of the data required to give the user a
 	 * preview of the page from the MediaWiki API given the title of the page (see
 	 * `mw.popups.processLinks` for the definition of "title").
@@ -15,7 +20,7 @@
 	 * will reject; otherwise, it'll resolve.
 	 *
 	 * @param {mw.Api} api
-	 * @return {Function}
+	 * @return {ext.popups.Gateway}
 	 */
 	mw.popups.createGateway = function ( api ) {
 		return function ( title ) {
@@ -46,7 +51,6 @@
 				}
 			} )
 				.then( function ( data ) {
-
 					// If the response is empty, i.e. data.query.pages is empty or isn't
 					// set, then reject rather than resolve.
 					if (

@@ -10,9 +10,11 @@
 	];
 
 	/**
-	 * Return whether the user is in the experiment group
+	 * Creates an experiment with sensible values for the depenencies.
 	 *
-	 * @return {Boolean}
+	 * See `mw.popups.createExperiment`.
+	 *
+	 * @return {Function}
 	 */
 	function isUserInCondition() {
 		var userSettings = mw.popups.createUserSettings( mw.storage, mw.user );
@@ -25,13 +27,24 @@
 	}
 
 	/**
+	 * Creates a gateway with sensible values for the dependencies.
+	 *
+	 * See `mw.popups.createGateway`.
+	 *
+	 * @return {ext.popups.Gateway}
+	 */
+	function createGateway() {
+		return mw.popups.createGateway( new mw.Api() );
+	}
+
+	/**
 	 * Subscribes the registered change listeners to the
 	 * [store](http://redux.js.org/docs/api/Store.html#store).
 	 *
 	 * Change listeners are registered by setting a property on
 	 * `mw.popups.changeListeners`.
 	 *
-	 * @param {Store} store
+	 * @param {Redux.Store} store
 	 */
 	function registerChangeListeners( store, actions ) {
 		$.each( mw.popups.changeListeners, function ( _, changeListenerFactory ) {
@@ -45,7 +58,7 @@
 	 * Binds the actions (or "action creators") to the
 	 * [store](http://redux.js.org/docs/api/Store.html#store).
 	 *
-	 * @param {Store} store
+	 * @param {Redux.Store} store
 	 * @return {Object}
 	 */
 	function createBoundActions( store ) {
@@ -67,7 +80,8 @@
 		var compose = Redux.compose,
 			store,
 			actions,
-			generateToken = mw.user.generateRandomSessionId;
+			generateToken = mw.user.generateRandomSessionId,
+			gateway = createGateway();
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
@@ -98,7 +112,7 @@
 
 			previewLinks
 				.on( 'mouseover focus', function () {
-					actions.linkDwell( this );
+					actions.linkDwell( this, gateway );
 				} )
 				.on( 'mouseout blur', function () {
 					actions.linkAbandon( this );

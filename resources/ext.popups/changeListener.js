@@ -18,7 +18,7 @@
 	 * See [Store#subscribe](http://redux.js.org/docs/api/Store.html#subscribe)
 	 * for more information about what change listeners may and may not do.
 	 *
-	 * @param {Store} store
+	 * @param {Redux.Store} store
 	 * @param {ext.popups.ChangeListener} callback
 	 */
 	mw.popups.registerChangeListener = function ( store, callback ) {

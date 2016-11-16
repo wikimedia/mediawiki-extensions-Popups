@@ -39,14 +39,12 @@
 				} );
 			case mw.popups.actionTypes.LINK_DWELL:
 				return $.extend( OO.copy( state ), {
-					activeLink: action.activeLink,
+					activeLink: action.el,
 					interactionStarted: action.interactionStarted,
 					isDelayingFetch: true,
 					linkInteractionToken: action.linkInteractionToken
 				} );
 			case mw.popups.actionTypes.LINK_ABANDON:
-				// Should the action handle dispatching a FETCH_FAILED
-				// if a new fetch has begun? Or should the reducer?
 				return $.extend( OO.copy( state ), {
 					previousActiveLink: state.activeLink,
 					activeLink: undefined,

@@ -124,7 +124,7 @@
 
 		$.each( cases, function ( i, testCase ) {
 			assert.strictEqual(
-				$processedLinks.eq( i ).data( 'previews-page-title' ),
+				$processedLinks.eq( i ).data( 'page-previews-title' ),
 				testCase[1]
 			);
 		} );
