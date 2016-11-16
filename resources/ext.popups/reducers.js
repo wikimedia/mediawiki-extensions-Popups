@@ -1,4 +1,4 @@
-( function ( mw, $, Redux ) {
+( function ( mw, $ ) {
 	mw.popups.reducers = {};
 
 	/**
@@ -137,14 +137,4 @@
 				return state;
 		}
 	};
-
-	/**
-	 * Root reducer for all actions
-	 *
-	 * @param {Object} global state before action
-	 * @param {Object} action Redux action that modified state.
-	 *  Must have `type` property.
-	 * @return {Object} global state after action
-	 */
-	mw.popups.reducers.rootReducer = Redux.combineReducers( mw.popups.reducers );
-}( mediaWiki, jQuery, Redux ) );
+}( mediaWiki, jQuery ) );

@@ -35,6 +35,17 @@
 		return Redux.bindActionCreators( mw.popups.actions, store.dispatch );
 	}
 
+	/**
+	 * Root reducer for all actions
+	 *
+	 * @param {Object} global state before action
+	 * @param {Object} action Redux action that modified state.
+	 *  Must have `type` property.
+	 * @return {Object} global state after action
+	 */
+	mw.popups.reducers.rootReducer = Redux.combineReducers( mw.popups.reducers );
+
+	// FIXME: Needs doc (or at least one comment line)
 	mw.requestIdleCallback( function () {
 		var compose = Redux.compose,
 			store,
