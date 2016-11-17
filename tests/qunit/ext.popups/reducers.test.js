@@ -48,10 +48,6 @@
 				enabled: true,
 				sessionToken: '0123456789',
 				pageToken: '9876543210',
-				linkInteractionToken: undefined,
-				activeLink: undefined,
-				previousActiveLink: undefined,
-				interactionStarted: undefined,
 				isDelayingFetch: false,
 				isFetching: false
 			},

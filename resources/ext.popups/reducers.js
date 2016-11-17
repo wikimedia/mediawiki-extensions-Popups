@@ -2,6 +2,32 @@
 	mw.popups.reducers = {};
 
 	/**
+	 * Creates the next state tree from the current state tree and some updates.
+	 *
+	 * In [change listeners](/doc/change_listeners.md), for example, we talk about
+	 * the previous state and the current state (the `prevState` and `state`
+	 * parameters, respectively). Since
+	 * [reducers](http://redux.js.org/docs/basics/Reducers.html) take the current
+	 * state and an action and make updates, "next state" seems appropriate.
+	 *
+	 * @param {Object} state
+	 * @param {Object} updates
+	 * @return {Object}
+	 */
+	function nextState( state, updates ) {
+		var result = $.extend( {}, state ),
+			key;
+
+		for ( key in updates ) {
+			if ( updates.hasOwnProperty( key ) ) {
+				result[key] = updates[key];
+			}
+		}
+
+		return result;
+	}
+
+	/**
 	 * Reducer for actions that modify the state of the preview model
 	 *
 	 * @param {Object} state before action
@@ -26,49 +52,42 @@
 
 		switch ( action.type ) {
 			case mw.popups.actionTypes.BOOT:
-				// FIXME: $.extend doesn't copy properties whose values are null or
-				// undefined. If we were to do the following:
-				//
-				//   return $.extend( {}, state, { /* ... */ } );
-				//
-				// Then the shape of the state tree would vary. Is this necessarily bad?
-				return $.extend( OO.copy( state ), {
+				return nextState( state, {
 					enabled: action.isUserInCondition,
 					sessionToken: action.sessionToken,
 					pageToken: action.pageToken
 				} );
 			case mw.popups.actionTypes.LINK_DWELL:
-				return $.extend( OO.copy( state ), {
+				return nextState( state, {
 					activeLink: action.el,
 					interactionStarted: action.interactionStarted,
 					isDelayingFetch: true,
 					linkInteractionToken: action.linkInteractionToken
 				} );
 			case mw.popups.actionTypes.LINK_ABANDON:
-				return $.extend( OO.copy( state ), {
-					previousActiveLink: state.activeLink,
+				return nextState( state, {
 					activeLink: undefined,
 					interactionStarted: undefined,
-					isDelayingFetc: false,
+					isDelayingFetch: false,
 					linkInteractionToken: undefined
 				} );
 			case mw.popups.actionTypes.LINK_CLICK:
-				return $.extend( OO.copy( state ), {
+				return nextState( state, {
 					isDelayingFetch: false
 				} );
 			case mw.popups.actionTypes.FETCH_START:
-				return $.extend( OO.copy( state ), {
+				return nextState( state, {
 					isDelayingFetch: false,
 					isFetching: true,
 					fetchResponse: undefined
 				} );
 			case mw.popups.actionTypes.FETCH_END:
-				return $.extend( OO.copy( state ), {
+				return nextState( state, {
 					isFetching: false,
 					fetchResponse: action.response
 				} );
 			case mw.popups.actionTypes.FETCH_FAILED:
-				return $.extend( OO.copy( state ), {
+				return nextState( state, {
 					isFetching: false,
 					fetchResponse: action.response // To catch error data if it exists
 				} );
