@@ -87,7 +87,7 @@
 		assert.notOk( this.isUserInCondition() );
 	} );
 
-	QUnit.test( 'it shouldn\'t bucket the user if they have enabled or disabled Link Previews', 2, function ( assert ) {
+	QUnit.test( 'it shouldn\'t bucket the user if they have enabled or disabled Page Previews', 2, function ( assert ) {
 		var userSettings = createStubUserSettings( /* hasIsEnabled = */ true ),
 			getIsEnabledSpy = this.sandbox.spy( userSettings, 'getIsEnabled' ),
 			isUserInCondition = mw.popups.createExperiment( this.config, this.user, userSettings );

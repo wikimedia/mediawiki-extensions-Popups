@@ -2,13 +2,13 @@
 
 	/**
 	 * Given the global state of the application, creates a function that gets
-	 * whether or not the user should have Link Previews enabled, i.e. whether
+	 * whether or not the user should have Page Previews enabled, i.e. whether
 	 * they are in the experiment condition.
 	 *
 	 * The user is in the experiment condition if:
-	 * * They've enabled by Link Previews by clicking "Enable previews" in the
+	 * * They've enabled by Page Previews by clicking "Enable previews" in the
 	 *   footer menu.
-	 * * They've enabled Link Previews as a beta feature.
+	 * * They've enabled Page Previews as a beta feature.
 	 * * They aren't in the control bucket of the experiment.
 	 *
 	 * @param {mw.Map} config

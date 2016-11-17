@@ -43,7 +43,7 @@
 	 *
 	 * * The "Enable previews" link (the "link") is appended to the footer menu
 	 *   (see `createFooterLink` above).
-	 * * When Link Previews are disabled, then the link is shown; otherwise, the
+	 * * When Page Previews are disabled, then the link is shown; otherwise, the
 	 *   link is hidden.
 	 * * When the user clicks the link, then the `showSettings` bound action
 	 *   creator is called.

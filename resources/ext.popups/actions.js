@@ -19,14 +19,14 @@
 		FETCH_START_DELAY = 500; // ms.
 
 	/**
-	 * Represents Link Previews booting.
+	 * Represents Page Previews booting.
 	 *
 	 * When a Redux store is created, the `@@INIT` action is immediately
 	 * dispatched to it. To avoid overriding the term, we refer to booting rather
 	 * than initializing.
 	 *
-	 * Link Previews persists critical pieces of information to local storage.
-	 * Since reading from and writing to local storage are synchronous, Link
+	 * Page Previews persists critical pieces of information to local storage.
+	 * Since reading from and writing to local storage are synchronous, Page
 	 * Previews is booted when the browser is idle (using
 	 * [`mw.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
 	 * so as not to impact latency-critical events.

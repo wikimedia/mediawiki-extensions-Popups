@@ -64,7 +64,7 @@
 			href: '/wiki/File:foo.jpg'
 		} ).appendTo( $container );
 
-		// Add a link that should have a Link Preview.
+		// Add a link that should have a Page Preview.
 		$( '<a>', {
 			text: 'link with tooltip',
 			title: 'link title',

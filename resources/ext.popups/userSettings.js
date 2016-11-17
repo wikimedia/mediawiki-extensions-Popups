@@ -19,9 +19,9 @@
 		return {
 
 			/**
-			 * Gets whether or not the user has previously enabled Link Previews.
+			 * Gets whether or not the user has previously enabled Page Previews.
 			 *
-			 * N.B. that if the user hasn't previously enabled or disabled Link
+			 * N.B. that if the user hasn't previously enabled or disabled Page
 			 * Previews, i.e. mw.popups.userSettings., then they are treated as if they have.
 			 *
 			 * @return {Boolean}
@@ -31,7 +31,7 @@
 			},
 
 			/**
-			 * Sets whether or not the user has enabled Link Previews.
+			 * Sets whether or not the user has enabled Page Previews.
 			 *
 			 * @param {Boolean} isEnabled
 			 */
@@ -41,7 +41,7 @@
 
 			/**
 			 * Gets whether or not the user has previously enabled **or disabled**
-			 * Link Previews.
+			 * Page Previews.
 			 *
 			 * @return {Boolean}
 			 */
@@ -50,7 +50,7 @@
 			},
 
 			/**
-			 * Gets the user's Link Previews token.
+			 * Gets the user's Page Previews token.
 			 *
 			 * If the storage doesn't contain a token, then one is generated and
 			 * persisted to the storage before being returned.
