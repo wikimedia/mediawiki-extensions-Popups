@@ -43,7 +43,6 @@
 				pageToken: undefined,
 				linkInteractionToken: undefined,
 				activeLink: undefined,
-				previousActiveLink: undefined,
 				interactionStarted: undefined,
 				isDelayingFetch: false,
 				isFetching: false

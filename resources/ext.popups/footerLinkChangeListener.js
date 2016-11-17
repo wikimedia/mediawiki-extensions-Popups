@@ -49,7 +49,7 @@
 	 *   creator is called.
 	 *
 	 * @param {Object} boundActions
-	 * @return {et.popups.ChangeListener}
+	 * @return {ext.popups.ChangeListener}
 	 */
 	mw.popups.changeListeners.footerLink = function ( boundActions ) {
 		var $footerLink;
