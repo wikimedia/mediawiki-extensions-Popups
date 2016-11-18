@@ -4,7 +4,8 @@
 	// configuration file.
 	var EXTRACT_LENGTH = 525,
 		THUMBNAIL_SIZE = 300 * $.bracketedDevicePixelRatio(),
-		CACHE_LIFETIME = 300; // Public and private cache lifetime (5 minutes)
+		CACHE_LIFETIME = 300, // Public and private cache lifetime (5 minutes)
+		ONE_DAY = 24 * 60 * 60 * 1000; // ms.
 
 	/**
 	 * @typedef {Function} ext.popups.Gateway
@@ -75,13 +76,15 @@
 	 * @result {Object}
 	 */
 	function processPage( page ) {
-		var result = {
+		var lastModified = new Date( page.revisions[0].timestamp ),
+			result = {
 				title: page.title,
 				languageCode: page.pagelanguagehtmlcode,
 				languageDirection: page.pagelanguagedir,
 				url: page.canonicalurl,
-				lastModified: new Date( page.revisions[0].timestamp ),
-				extract: processExtract( page.extract )
+				lastModified: lastModified,
+				extract: processExtract( page.extract ),
+				isRecent: new Date() - lastModified < ONE_DAY
 			};
 
 		if ( page.thumbnail ) {

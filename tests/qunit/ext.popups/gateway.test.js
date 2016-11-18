@@ -17,10 +17,20 @@
 		return mw.popups.createGateway( api );
 	}
 
-	QUnit.module( 'ext.popups/gateway', {
-		setup: function () {
-		}
-	} );
+	/**
+	 * @private
+	 *
+	 * @param {Object} page
+	 */
+	function createGatewayWithPage( page ) {
+		return createGateway( {
+			query: {
+				pages: [ page ]
+			}
+		} );
+	}
+
+	QUnit.module( 'ext.popups/gateway' );
 
 	QUnit.test( 'it should handle the API request failing', function ( assert ) {
 		var getDeferred = this.getDeferred = $.Deferred(),
@@ -116,7 +126,8 @@
 					width: 200
 				},
 				lastModified: new Date( '2016-11-10T00:14:14Z' ),
-				extract: 'Richard Paul "Rick" Astley (/\u02c8r\u026ak \u02c8\u00e6stli/; born 6 February 1966) is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the'
+				extract: 'Richard Paul "Rick" Astley (/\u02c8r\u026ak \u02c8\u00e6stli/; born 6 February 1966) is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the',
+				isRecent: false
 			} );
 
 			done();
@@ -133,22 +144,35 @@
 			done = assert.async( cases.length );
 
 		$.each( cases, function ( _, testCase ) {
-			var fetchPreview = createGateway( {
-				query: {
-					pages: [ {
-						revisions: [ {
-							timestamp: '2016-11-11T18:28:43Z' // As data.revisions[0] is accessed.
-						} ],
-						extract: testCase[0]
-					} ]
-				}
-			} );
+			var fetchPreview = createGatewayWithPage( {
+					revisions: [ {
+						timestamp: '2016-11-11T18:28:43Z' // As data.revisions[0] is accessed.
+					} ],
+					extract: testCase[0]
+				} );
 
 			fetchPreview( 'Extract' ).done( function ( result ) {
 				assert.strictEqual( result.extract, testCase[1] );
 
 				done();
 			} );
+		} );
+	} );
+
+	QUnit.test( 'it handles new-ish pages', function ( assert ) {
+		var done = assert.async( 1 ),
+			fetchPreview;
+
+		fetchPreview = createGatewayWithPage( {
+			revisions: [ {
+				timestamp: new Date().toString()
+			} ]
+		} );
+
+		fetchPreview( 'Is Recent?' ).done( function ( result ) {
+			assert.strictEqual( result.isRecent, true );
+
+			done();
 		} );
 	} );
 
