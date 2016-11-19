@@ -126,7 +126,7 @@
 					width: 200
 				},
 				lastModified: new Date( '2016-11-10T00:14:14Z' ),
-				extract: 'Richard Paul "Rick" Astley (/\u02c8r\u026ak \u02c8\u00e6stli/; born 6 February 1966) is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the',
+				extract: 'Richard Paul "Rick" Astley is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the',
 				isRecent: false
 			} );
 
@@ -134,12 +134,21 @@
 		} );
 	} );
 
-	QUnit.test( 'it handle empty-ish extracts', function ( assert ) {
+	QUnit.test( 'it handles extracts', function ( assert ) {
 		var cases = [
+				// removeEllipsis
 				[ '', undefined ],
 				[ 'Extract...', 'Extract' ],
 				[ 'Extract.', 'Extract.' ],
-				[ '...', undefined ]
+				[ '...', undefined ],
+
+				// removeParentheticals
+				[ 'Foo', 'Foo' ],
+				[ 'Foo (', 'Foo (' ],
+				[ 'Foo (Bar)', 'Foo' ],
+				[ 'Foo (Bar))', 'Foo (Bar))' ],
+				[ 'Foo )(Bar)', 'Foo )(Bar)' ],
+				[ '(Bar)', undefined ]
 			],
 			done = assert.async( cases.length );
 
