@@ -91,6 +91,7 @@
 				interactionStarted: mw.now()
 			} );
 
+			// TODO: Use mw.popups.wait.
 			setTimeout( function () {
 				if ( getState().preview.activeLink === el ) {
 					dispatch( fetch( gateway, $( el ).data( 'page-previews-title' ) ) );

@@ -71,7 +71,8 @@
 					activeEvent: undefined,
 					interactionStarted: undefined,
 					isDelayingFetch: false,
-					linkInteractionToken: undefined
+					linkInteractionToken: undefined,
+					fetchResponse: undefined
 				} );
 			case mw.popups.actionTypes.LINK_CLICK:
 				return nextState( state, {
@@ -86,7 +87,7 @@
 			case mw.popups.actionTypes.FETCH_END:
 				return nextState( state, {
 					isFetching: false,
-					fetchResponse: action.response
+					fetchResponse: action.result
 				} );
 			case mw.popups.actionTypes.FETCH_FAILED:
 				return nextState( state, {

@@ -58,6 +58,7 @@
 		"ext.popups": {
 			"scripts": [
 				"resources/ext.popups/index.js",
+				"resources/ext.popups/wait.js",
 				"resources/ext.popups/userSettings.js",
 				"resources/ext.popups/experiment.js",
 				"resources/ext.popups/actions.js",
@@ -67,6 +68,8 @@
 				"resources/ext.popups/changeListener.js",
 				"resources/ext.popups/footerLinkChangeListener.js",
 				"resources/ext.popups/linkTitleChangeListener.js",
+				"resources/ext.popups/renderer.js",
+				"resources/ext.popups/renderChangeListener.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {
@@ -74,6 +77,7 @@
 				"settings.mustache": "resources/ext.popups.desktop/settings.mustache"
 			},
 			"styles": [
+				"resources/ext.popups.core/ext.popups.core.less",
 				"resources/ext.popups.desktop/ext.popups.animation.less",
 				"resources/ext.popups.desktop/ext.popups.settings.less"
 			],

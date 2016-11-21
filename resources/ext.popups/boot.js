@@ -110,6 +110,8 @@
 					BLACKLISTED_LINKS
 				);
 
+			mw.popups.renderer.init();
+
 			previewLinks
 				.on( 'mouseover focus', function ( event ) {
 					actions.linkDwell( this, event, gateway );
