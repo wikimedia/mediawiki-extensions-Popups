@@ -28,7 +28,7 @@
 		setup: function () {
 			var that = this;
 
-			this.el = $( '<a>' )
+			that.el = $( '<a>' )
 				.data( 'page-previews-title', 'Foo' )
 				.eq( 0 );
 
@@ -41,19 +41,24 @@
 
 	QUnit.test( '#linkDwell', function ( assert ) {
 		var done,
+			event = {},
 			dispatch = this.sandbox.spy(),
 			gatewayDeferred = $.Deferred(),
 			gateway = function () {
 				return gatewayDeferred;
 			};
 
+		this.sandbox.stub( mw, 'now' ).returns( new Date() );
+
 		done = assert.async();
 
-		mw.popups.actions.linkDwell( this.el, gateway )( dispatch, this.getState );
+		mw.popups.actions.linkDwell( this.el, event, gateway )( dispatch, this.getState );
 
 		assert.ok( dispatch.calledWith( {
 			type: 'LINK_DWELL',
-			el: this.el
+			el: this.el,
+			event: event,
+			interactionStarted: mw.now()
 		} ) );
 
 		// Stub the state tree being updated.

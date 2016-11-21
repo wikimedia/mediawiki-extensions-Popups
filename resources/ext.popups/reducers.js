@@ -43,6 +43,7 @@
 				pageToken: undefined,
 				linkInteractionToken: undefined,
 				activeLink: undefined,
+				activeEvent: undefined,
 				interactionStarted: undefined,
 				isDelayingFetch: false,
 				isFetching: false
@@ -59,6 +60,7 @@
 			case mw.popups.actionTypes.LINK_DWELL:
 				return nextState( state, {
 					activeLink: action.el,
+					activeEvent: action.event,
 					interactionStarted: action.interactionStarted,
 					isDelayingFetch: true,
 					linkInteractionToken: action.linkInteractionToken
@@ -66,6 +68,7 @@
 			case mw.popups.actionTypes.LINK_ABANDON:
 				return nextState( state, {
 					activeLink: undefined,
+					activeEvent: undefined,
 					interactionStarted: undefined,
 					isDelayingFetch: false,
 					linkInteractionToken: undefined

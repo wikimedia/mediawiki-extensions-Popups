@@ -111,8 +111,8 @@
 				);
 
 			previewLinks
-				.on( 'mouseover focus', function () {
-					actions.linkDwell( this, gateway );
+				.on( 'mouseover focus', function ( event ) {
+					actions.linkDwell( this, event, gateway );
 				} )
 				.on( 'mouseout blur', function () {
 					actions.linkAbandon( this );

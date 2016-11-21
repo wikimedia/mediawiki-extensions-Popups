@@ -1,4 +1,4 @@
-( function ( mw ) {
+( function ( mw, $ ) {
 
 	QUnit.module( 'ext.popups/reducers' );
 
@@ -16,6 +16,7 @@
 					pageToken: undefined,
 					linkInteractionToken: undefined,
 					activeLink: undefined,
+					activeEvent: undefined,
 					interactionStarted: undefined,
 					isDelayingFetch: false,
 					isFetching: false
@@ -32,14 +33,16 @@
 
 	QUnit.test( '#preview', function ( assert ) {
 		var state = mw.popups.reducers.preview( undefined, { type: '@@INIT' } ),
-			action = {
-				type: 'BOOT',
-				isUserInCondition: true,
-				sessionToken: '0123456789',
-				pageToken: '9876543210'
-			};
+			action;
 
-		assert.expect( 1 );
+		assert.expect( 2 );
+
+		action = {
+			type: 'BOOT',
+			isUserInCondition: true,
+			sessionToken: '0123456789',
+			pageToken: '9876543210'
+		};
 
 		assert.deepEqual(
 			mw.popups.reducers.preview( state, action ),
@@ -51,6 +54,28 @@
 				isFetching: false
 			},
 			'It should set enabled and the session tokens on the BOOT action'
+		);
+
+		// ---
+		action = {
+			type: 'LINK_DWELL',
+			el: $( '<a>' ),
+			event: {},
+			interactionStarted: mw.now(),
+			linkInteractionToken: '0123456789'
+		};
+
+		assert.deepEqual(
+			mw.popups.reducers.preview( state, action ),
+			{
+				activeLink: action.el,
+				activeEvent: action.event,
+				isDelayingFetch: true,
+				isFetching: false,
+				interactionStarted: action.interactionStarted,
+				linkInteractionToken: action.linkInteractionToken
+			},
+			'It should set active link and event as well as interaction info on the LINK_DWELL action'
 		);
 	} );
 
@@ -67,5 +92,5 @@
 			'It should set isAnimating to true on the PREVIEW_ANIMATING action'
 		);
 	} );
-}( mediaWiki ) );
+}( mediaWiki, jQuery ) );
 

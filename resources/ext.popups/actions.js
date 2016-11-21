@@ -78,14 +78,17 @@
 	 * their mouse or by focussing it using their keyboard or an assistive device.
 	 *
 	 * @param {Element} el
-	 * @param {Function} gateway
+	 * @param {Event} event
+	 * @param {ext.popups.Gateway} gateway
 	 * @return {Redux.Thunk}
 	 */
-	actions.linkDwell = function ( el, gateway ) {
+	actions.linkDwell = function ( el, event, gateway ) {
 		return function ( dispatch, getState ) {
 			dispatch( {
 				type: types.LINK_DWELL,
-				el: el
+				el: el,
+				event: event,
+				interactionStarted: mw.now()
 			} );
 
 			setTimeout( function () {
