@@ -71,6 +71,7 @@
 
 		// Stub the state tree being updated.
 		this.state.preview = {
+			enabled: true,
 			activeLink: el
 		};
 
@@ -109,26 +110,38 @@
 		this.waitDeferred.resolve();
 	} );
 
-	QUnit.test( '#linkDwell doesn\'t dispatch the fetch action if the active link has changed', function ( assert ) {
-		var done,
-			dispatch = this.sandbox.spy();
+	QUnit.test( '#linkDwell doesn\'t dispatch under certain conditions', function ( assert ) {
+		var cases,
+			done,
+			that = this;
 
-		done = assert.async();
+		cases = [
+			{
+				enabled: false
+			},
+			{
+				enabled: true,
+				activeLink: undefined // Any value other than this.el.
+			}
+		];
 
-		mw.popups.actions.linkDwell( this.el /*, gateway */ )( dispatch, this.getState );
+		done = assert.async( cases.length );
 
-		this.state.preview = {
-			activeLink: undefined // Any value other than this.el.
-		};
+		$.each( cases, function ( testCase ) {
+			var dispatch = that.sandbox.spy();
 
-		this.waitPromise.then( function () {
-			assert.strictEqual( dispatch.callCount, 1 );
+			mw.popups.actions.linkDwell( this.el /*, gateway */ )( dispatch, that.getState );
 
-			done();
+			that.state.preview = testCase;
+
+			that.waitPromise.then( function () {
+				assert.strictEqual( dispatch.callCount, 1 );
+
+				done();
+			} );
+
+			// After 500 ms...
+			that.waitDeferred.resolve();
 		} );
-
-		// After 500 ms...
-		this.waitDeferred.resolve();
 	} );
-
 }( mediaWiki, jQuery ) );

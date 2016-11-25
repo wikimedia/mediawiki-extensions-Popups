@@ -98,7 +98,9 @@
 
 			mw.popups.wait( FETCH_START_DELAY )
 				.then( function () {
-					if ( getState().preview.activeLink === el ) {
+					var previewState = getState().preview;
+
+					if ( previewState.enabled && previewState.activeLink === el ) {
 						dispatch( fetch( gateway, el ) );
 					}
 				} );
