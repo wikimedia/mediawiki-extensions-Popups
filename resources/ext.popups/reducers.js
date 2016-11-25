@@ -44,7 +44,8 @@
 				linkInteractionToken: undefined,
 				activeLink: undefined,
 				activeEvent: undefined,
-				interactionStarted: undefined
+				interactionStarted: undefined,
+				shouldShow: false
 			};
 		}
 
@@ -68,16 +69,22 @@
 					activeEvent: undefined,
 					interactionStarted: undefined,
 					linkInteractionToken: undefined,
-					fetchResponse: undefined
+					fetchResponse: undefined,
+					shouldShow: false
 				} );
 			case mw.popups.actionTypes.FETCH_START:
 				return nextState( state, {
 					fetchResponse: undefined
 				} );
 			case mw.popups.actionTypes.FETCH_END:
-				return nextState( state, {
-					fetchResponse: action.result
-				} );
+				if ( action.el === state.activeLink ) {
+					return nextState( state, {
+						fetchResponse: action.result,
+						shouldShow: true
+					} );
+				}
+
+				/* falls through */
 			default:
 				return state;
 		}

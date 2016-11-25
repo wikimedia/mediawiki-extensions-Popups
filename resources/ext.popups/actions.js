@@ -48,25 +48,30 @@
 	 * Represents Page Previews fetching data via the [gateway](./gateway.js).
 	 *
 	 * @param {ext.popups.Gateway} gateway
-	 * @param {String} title
+	 * @param {Element} el
 	 * @return {Redux.Thunk}
 	 */
-	function fetch( gateway, title ) {
+	function fetch( gateway, el ) {
+		var title = $( el ).data( 'page-previews-title' );
+
 		return function ( dispatch ) {
 			dispatch( {
 				type: types.FETCH_START,
+				el: el,
 				title: title
 			} );
 
 			gateway( title )
 				.fail( function () {
 					dispatch( {
-						type: types.FETCH_FAILED
+						type: types.FETCH_FAILED,
+						el: el
 					} );
 				} )
 				.done( function ( result ) {
 					dispatch( {
 						type: types.FETCH_END,
+						el: el,
 						result: result
 					} );
 				} );
@@ -94,7 +99,7 @@
 			mw.popups.wait( FETCH_START_DELAY )
 				.then( function () {
 					if ( getState().preview.activeLink === el ) {
-						dispatch( fetch( gateway, $( el ).data( 'page-previews-title' ) ) );
+						dispatch( fetch( gateway, el ) );
 					}
 				} );
 		};

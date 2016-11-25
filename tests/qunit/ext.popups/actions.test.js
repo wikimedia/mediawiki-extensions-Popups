@@ -54,23 +54,24 @@
 			gateway = function () {
 				return gatewayDeferred;
 			},
+			el = this.el,
 			fetchThunk,
 			result = {};
 
 		this.sandbox.stub( mw, 'now' ).returns( new Date() );
 
-		mw.popups.actions.linkDwell( this.el, event, gateway )( dispatch, this.getState );
+		mw.popups.actions.linkDwell( el, event, gateway )( dispatch, this.getState );
 
 		assert.ok( dispatch.calledWith( {
 			type: 'LINK_DWELL',
-			el: this.el,
+			el: el,
 			event: event,
 			interactionStarted: mw.now()
 		} ) );
 
 		// Stub the state tree being updated.
 		this.state.preview = {
-			activeLink: this.el
+			activeLink: el
 		};
 
 		// ---
@@ -87,13 +88,17 @@
 
 			assert.ok( dispatch.calledWith( {
 				type: 'FETCH_START',
+				el: el,
 				title: 'Foo'
 			} ) );
+
+			// ---
 
 			gatewayDeferred.resolve( result );
 
 			assert.ok( dispatch.calledWith( {
 				type: 'FETCH_END',
+				el: el,
 				result: result
 			} ) );
 

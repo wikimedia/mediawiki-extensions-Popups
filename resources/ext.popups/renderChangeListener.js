@@ -9,10 +9,10 @@
 		var preview;
 
 		return function ( prevState, state ) {
-			if ( state.preview.fetchResponse && !preview ) {
+			if ( state.preview.shouldShow && !preview ) {
 				preview = mw.popups.renderer.render( state.preview.fetchResponse );
 				preview.show( state.preview.activeEvent );
-			} else if ( prevState && prevState.preview.fetchResponse ) {
+			} else if ( !state.preview.shouldShow && preview ) {
 				preview.hide()
 					.done( function () {
 						preview = undefined;
