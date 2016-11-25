@@ -36,21 +36,28 @@
 			that.getState = function () {
 				return that.state;
 			};
+
+			that.waitDeferred = $.Deferred();
+			that.waitPromise = that.waitDeferred.promise();
+
+			that.sandbox.stub( mw.popups, 'wait', function () {
+				return that.waitPromise;
+			} );
 		}
 	} );
 
 	QUnit.test( '#linkDwell', function ( assert ) {
-		var done,
+		var done = assert.async(),
 			event = {},
 			dispatch = this.sandbox.spy(),
 			gatewayDeferred = $.Deferred(),
 			gateway = function () {
 				return gatewayDeferred;
-			};
+			},
+			fetchThunk,
+			result = {};
 
 		this.sandbox.stub( mw, 'now' ).returns( new Date() );
-
-		done = assert.async();
 
 		mw.popups.actions.linkDwell( this.el, event, gateway )( dispatch, this.getState );
 
@@ -68,10 +75,7 @@
 
 		// ---
 
-		setTimeout( function () {
-			var fetchThunk,
-				result = {};
-
+		this.waitPromise.then( function () {
 			assert.strictEqual(
 				dispatch.callCount,
 				2,
@@ -94,7 +98,10 @@
 			} ) );
 
 			done();
-		}, 500 );
+		} );
+
+		// After 500 ms...
+		this.waitDeferred.resolve();
 	} );
 
 	QUnit.test( '#linkDwell doesn\'t dispatch the fetch action if the active link has changed', function ( assert ) {
@@ -109,11 +116,14 @@
 			activeLink: undefined // Any value other than this.el.
 		};
 
-		setTimeout( function () {
+		this.waitPromise.then( function () {
 			assert.strictEqual( dispatch.callCount, 1 );
 
 			done();
-		}, 500 );
+		} );
+
+		// After 500 ms...
+		this.waitDeferred.resolve();
 	} );
 
 }( mediaWiki, jQuery ) );

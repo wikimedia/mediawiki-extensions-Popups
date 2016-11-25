@@ -91,12 +91,12 @@
 				interactionStarted: mw.now()
 			} );
 
-			// TODO: Use mw.popups.wait.
-			setTimeout( function () {
-				if ( getState().preview.activeLink === el ) {
-					dispatch( fetch( gateway, $( el ).data( 'page-previews-title' ) ) );
-				}
-			}, FETCH_START_DELAY );
+			mw.popups.wait( FETCH_START_DELAY )
+				.then( function () {
+					if ( getState().preview.activeLink === el ) {
+						dispatch( fetch( gateway, $( el ).data( 'page-previews-title' ) ) );
+					}
+				} );
 		};
 	};
 
