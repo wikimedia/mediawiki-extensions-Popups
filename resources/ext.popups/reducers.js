@@ -44,9 +44,7 @@
 				linkInteractionToken: undefined,
 				activeLink: undefined,
 				activeEvent: undefined,
-				interactionStarted: undefined,
-				isDelayingFetch: false,
-				isFetching: false
+				interactionStarted: undefined
 			};
 		}
 
@@ -62,7 +60,6 @@
 					activeLink: action.el,
 					activeEvent: action.event,
 					interactionStarted: action.interactionStarted,
-					isDelayingFetch: true,
 					linkInteractionToken: action.linkInteractionToken
 				} );
 			case mw.popups.actionTypes.LINK_ABANDON:
@@ -70,29 +67,16 @@
 					activeLink: undefined,
 					activeEvent: undefined,
 					interactionStarted: undefined,
-					isDelayingFetch: false,
 					linkInteractionToken: undefined,
 					fetchResponse: undefined
 				} );
-			case mw.popups.actionTypes.LINK_CLICK:
-				return nextState( state, {
-					isDelayingFetch: false
-				} );
 			case mw.popups.actionTypes.FETCH_START:
 				return nextState( state, {
-					isDelayingFetch: false,
-					isFetching: true,
 					fetchResponse: undefined
 				} );
 			case mw.popups.actionTypes.FETCH_END:
 				return nextState( state, {
-					isFetching: false,
 					fetchResponse: action.result
-				} );
-			case mw.popups.actionTypes.FETCH_FAILED:
-				return nextState( state, {
-					isFetching: false,
-					fetchResponse: action.response // To catch error data if it exists
 				} );
 			default:
 				return state;

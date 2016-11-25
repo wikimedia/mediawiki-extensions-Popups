@@ -17,9 +17,7 @@
 					linkInteractionToken: undefined,
 					activeLink: undefined,
 					activeEvent: undefined,
-					interactionStarted: undefined,
-					isDelayingFetch: false,
-					isFetching: false
+					interactionStarted: undefined
 				},
 				renderer: {
 					isAnimating: false,
@@ -49,9 +47,7 @@
 			{
 				enabled: true,
 				sessionToken: '0123456789',
-				pageToken: '9876543210',
-				isDelayingFetch: false,
-				isFetching: false
+				pageToken: '9876543210'
 			},
 			'It should set enabled and the session tokens on the BOOT action'
 		);
@@ -70,8 +66,6 @@
 			{
 				activeLink: action.el,
 				activeEvent: action.event,
-				isDelayingFetch: true,
-				isFetching: false,
 				interactionStarted: action.interactionStarted,
 				linkInteractionToken: action.linkInteractionToken
 			},
