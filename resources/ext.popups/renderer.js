@@ -209,7 +209,7 @@
 
 		preview.el.show();
 
-		return mw.popups.wait( 300 );
+		return mw.popups.wait( 200 );
 	}
 
 	/**

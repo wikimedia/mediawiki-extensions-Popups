@@ -66,8 +66,11 @@
 	position: absolute;
 	z-index: 110;
 	background: #fff;
-	border: 1px solid #bbb;
-	.box-shadow(0 0 10px rgba( 0, 0, 0, 0.2 ));
+
+	// FIXME: The .box-shadow mixin provided by mediawiki.mixins doesn't support
+	// multiple values.
+	-webkit-box-shadow: 0 45px 70px -20px rgba(0,0,0,0.3), 0px 0px 1px rgba(0,0,0,0.5);
+	        box-shadow: 0 45px 70px -20px rgba(0,0,0,0.3), 0px 0px 1px rgba(0,0,0,0.5);
 	padding: 0;
 	display: none;
 	font-size: 14px;
@@ -130,9 +133,24 @@
 		display: block;
 		color: #000;
 		text-decoration: none;
+		position: relative;
 
 		&:hover {
 			text-decoration: none;
+		}
+
+		&:after {
+			content: " ";
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 25%;
+			height: 24px;
+			background-color: transparent;
+			background-image: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+			   background-image: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+			     background-image: -o-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+			        background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
 		}
 	}
 
