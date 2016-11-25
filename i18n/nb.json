@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Danmichaelo"
+			"Danmichaelo",
+			"Jon Harald Søby"
 		]
 	},
 	"popups-message": "Hovercards",
@@ -10,18 +11,18 @@
 	"popups-redirects": "omdirigerer til <h3>$1</h3>",
 	"popups-settings-title": "Forhåndsvisning",
 	"popups-settings-description": "Verktøyet lar deg forhåndsvise lenker til wikisider og referanser.",
-	"popups-settings-option-simple": "Enkel",
-	"popups-settings-option-simple-description": "Vis sidens innledningssetning og et bilde hvis det finnes. Anbefalt valg for lesere.",
+	"popups-settings-option-simple": "Slå på",
+	"popups-settings-option-simple-description": "Få raske forhåndsvisninger av et emne mens man leser en artikkel.",
 	"popups-settings-option-advanced": "Avansert",
 	"popups-settings-option-advanced-description": "Forhåndsvis lenker og få tilgang til redigeringsmenyer. Dette brukes av mange skribenter.",
-	"popups-settings-option-off": "Skru av forhåndsvisning",
-	"popups-settings-option-off-description": "Du kan skru på igjen forhåndsvisning ved å bruke lenken i sidens bunntekst.",
+	"popups-settings-option-off": "Slå av",
 	"popups-settings-save": "Lagre",
-	"popups-settings-help-ok": "Ok",
+	"popups-settings-help-ok": "Ferdig",
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-help": "Du kan skru på igjen forhåndsvisning ved å bruke lenken i sidens bunntekst.",
 	"popups-settings-enable": "Skru på forhåndsvisning",
 	"popups-send-feedback": "Gi tilbakemelding (ekstern lenke)",
 	"popups-mobile-continue-to-page": "Fortsett til side",
-	"popups-mobile-dismiss": "Lukk"
+	"popups-mobile-dismiss": "Lukk",
+	"popups-mobile-message": "Hovercards (mobil)"
 }
