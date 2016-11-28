@@ -118,10 +118,13 @@
 			 * See `show` for more detail.
 			 *
 			 * @param {Event} event
+			 * @param {Object} boundActions The
+			 *  [bound action creators](http://redux.js.org/docs/api/bindActionCreators.html)
+			 *  that were (likely) created in [boot.js](./boot.js).
 			 * @return {jQuery.Promise}
 			 */
-			show: function ( event ) {
-				return show( preview, event );
+			show: function ( event, boundActions ) {
+				return show( preview, event, boundActions );
 			},
 
 			/**
@@ -188,10 +191,11 @@
 	 *
 	 * @param {ext.popups.Preview} preview
 	 * @param {Event} event
+	 * @param {Object} boundActions
 	 * @return {jQuery.Promise} A promise that resolves when the promise has faded
 	 *  in
 	 */
-	function show( preview, event ) {
+	function show( preview, event, boundActions ) {
 		var layout = createLayout( preview, event );
 
 		// Hack to "refresh" the SVG so that it's displayed.
@@ -206,6 +210,8 @@
 		preview.el.html( preview.el.html() );
 
 		layoutPreview( preview, layout );
+
+		preview.el.hover( boundActions.previewDwell, boundActions.previewAbandon );
 
 		preview.el.show();
 

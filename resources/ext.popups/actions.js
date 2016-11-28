@@ -4,11 +4,15 @@
 		types = {
 			BOOT: 'BOOT',
 			LINK_DWELL: 'LINK_DWELL',
-			LINK_ABANDON: 'LINK_ABANDON',
+			LINK_ABANDON_START: 'LINK_ABANDON_START',
+			LINK_ABANDON_END: 'LINK_ABANDON_END',
 			LINK_CLICK: 'LINK_CLICK',
 			FETCH_START: 'FETCH_START',
 			FETCH_END: 'FETCH_END',
 			FETCH_FAILED: 'FETCH_FAILED',
+			PREVIEW_DWELL: 'PREVIEW_DWELL',
+			PREVIEW_ABANDON_START: 'PREVIEW_ABANDON_START',
+			PREVIEW_ABANDON_END: 'PREVIEW_ABANDON_END',
 			PREVIEW_ANIMATING: 'PREVIEW_ANIMATING',
 			PREVIEW_INTERACTIVE: 'PREVIEW_INTERACTIVE',
 			PREVIEW_CLICK: 'PREVIEW_CLICK',
@@ -16,7 +20,8 @@
 			SETTINGS_DIALOG_RENDERED: 'SETTINGS_DIALOG_RENDERED',
 			SETTINGS_DIALOG_CLOSED: 'SETTINGS_DIALOG_CLOSED'
 		},
-		FETCH_START_DELAY = 500; // ms.
+		FETCH_START_DELAY = 500, // ms.
+		ABANDON_END_DELAY = 300; // ms.
 
 	/**
 	 * Represents Page Previews booting.
@@ -116,9 +121,19 @@
 	 * @return {Object}
 	 */
 	actions.linkAbandon = function ( el ) {
-		return {
-			type: types.LINK_ABANDON,
-			el: el
+		return function ( dispatch ) {
+			dispatch( {
+				type: types.LINK_ABANDON_START,
+				el: el
+			} );
+
+			mw.popups.wait( ABANDON_END_DELAY )
+				.then( function () {
+					dispatch( {
+						type: types.LINK_ABANDON_END,
+						el: el
+					} );
+				} );
 		};
 	};
 
@@ -133,6 +148,38 @@
 		return {
 			type: 'LINK_CLICK',
 			el: el
+		};
+	};
+
+	/**
+	 * Represents the user dwelling on a preivew with their mouse.
+	 *
+	 * @return {Object}
+	 */
+	actions.previewDwell = function () {
+		return {
+			type: types.PREVIEW_DWELL
+		};
+	};
+
+	/**
+	 * Represents the user abandoning a preview by moving their mouse away from
+	 * it.
+	 *
+	 * @return {Object}
+	 */
+	actions.previewAbandon = function () {
+		return function ( dispatch ) {
+			dispatch( {
+				type: types.PREVIEW_ABANDON_START
+			} );
+
+			mw.popups.wait( ABANDON_END_DELAY )
+				.then( function () {
+					dispatch( {
+						type: types.PREVIEW_ABANDON_END
+					} );
+				} );
 		};
 	};
 

@@ -24,6 +24,21 @@
 		);
 	} );
 
+	/**
+	 * Stubs `mw.popups.wait` and adds the deferred and its promise as properties
+	 * of the module.
+	 *
+	 * @param {Object} module
+	 */
+	function setupWait( module ) {
+		module.waitDeferred = $.Deferred();
+		module.waitPromise = module.waitDeferred.promise();
+
+		module.sandbox.stub( mw.popups, 'wait', function () {
+			return module.waitPromise;
+		} );
+	}
+
 	QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 		setup: function () {
 			var that = this;
@@ -37,12 +52,7 @@
 				return that.state;
 			};
 
-			that.waitDeferred = $.Deferred();
-			that.waitPromise = that.waitDeferred.promise();
-
-			that.sandbox.stub( mw.popups, 'wait', function () {
-				return that.waitPromise;
-			} );
+			setupWait( this );
 		}
 	} );
 
@@ -144,4 +154,73 @@
 			that.waitDeferred.resolve();
 		} );
 	} );
+
+	QUnit.module( 'ext.popups/actions#linkAbandon', {
+		setup: function () {
+			setupWait( this );
+		}
+	} );
+
+	QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
+		var that = this,
+			dispatch = that.sandbox.spy(),
+			done = assert.async();
+
+		mw.popups.actions.linkAbandon( that.el )( dispatch );
+
+		assert.ok( dispatch.calledWith( {
+			type: 'LINK_ABANDON_START',
+			el: that.el
+		} ) );
+
+		// ---
+
+		assert.ok(
+			mw.popups.wait.calledWith( 300 ),
+			'Have you spoken with #Design about changing this value?'
+		);
+
+		that.waitPromise.then( function () {
+			assert.ok( dispatch.calledWith( {
+				type: 'LINK_ABANDON_END',
+				el: that.el
+			} ) );
+
+			done();
+		} );
+
+		// After 300 ms...
+		that.waitDeferred.resolve();
+	} );
+
+	QUnit.module( 'ext.popups/actions#previewAbandon', function ( assert ) {
+		var that = this,
+			dispatch = that.sandbox.spy(),
+			done = assert.async();
+
+		mw.popups.actions.previewAbandon()( dispatch );
+
+		assert.ok( dispatch.calledWith( {
+			type: 'PREVIEW_ABANDON_START'
+		} ) );
+
+		// ---
+
+		assert.ok(
+			mw.popups.wait.calledWith( 300 ),
+			'Have you spoken with #Design about changing this value?'
+		);
+
+		that.waitPromise.then( function () {
+			assert.ok( dispatch.calledWith( {
+				type: 'PREVIEW_ABANDON_END'
+			} ) );
+
+			done();
+		} );
+
+		// After 300 ms...
+		that.waitDeferred.resolve();
+	} );
+
 }( mediaWiki, jQuery ) );

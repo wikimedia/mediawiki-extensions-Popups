@@ -45,7 +45,8 @@
 				activeLink: undefined,
 				activeEvent: undefined,
 				interactionStarted: undefined,
-				shouldShow: false
+				shouldShow: false,
+				isUserDwelling: false
 			};
 		}
 
@@ -61,16 +62,41 @@
 					activeLink: action.el,
 					activeEvent: action.event,
 					interactionStarted: action.interactionStarted,
-					linkInteractionToken: action.linkInteractionToken
-				} );
-			case mw.popups.actionTypes.LINK_ABANDON:
-				return nextState( state, {
-					activeLink: undefined,
-					activeEvent: undefined,
-					interactionStarted: undefined,
-					linkInteractionToken: undefined,
-					fetchResponse: undefined,
+					linkInteractionToken: action.linkInteractionToken,
+
+					// When the user dwells on a link with their keyboard, a preview is
+					// renderered, and then dwells on another link, the LINK_ABANDON_END
+					// action will be ignored.
+					//
+					// Ensure that all the preview is hidden.
 					shouldShow: false
+				} );
+			case mw.popups.actionTypes.LINK_ABANDON_END:
+				if ( action.el !== state.activeLink ) {
+					return state;
+				}
+
+				/* falls through */
+			case mw.popups.actionTypes.PREVIEW_ABANDON_END:
+				if ( !state.isUserDwelling ) {
+					return nextState( state, {
+						activeLink: undefined,
+						activeEvent: undefined,
+						interactionStarted: undefined,
+						linkInteractionToken: undefined,
+						fetchResponse: undefined,
+						shouldShow: false
+					} );
+				}
+
+				/* falls through */
+			case mw.popups.actionTypes.PREVIEW_DWELL:
+				return nextState( state, {
+					isUserDwelling: true
+				} );
+			case mw.popups.actionTypes.PREVIEW_ABANDON_START:
+				return nextState( state, {
+					isUserDwelling: false
 				} );
 			case mw.popups.actionTypes.FETCH_START:
 				return nextState( state, {

@@ -22,7 +22,8 @@
 					activeLink: undefined,
 					activeEvent: undefined,
 					interactionStarted: undefined,
-					shouldShow: false
+					shouldShow: false,
+					isUserDwelling: false
 				},
 				renderer: {
 					isAnimating: false,
@@ -70,20 +71,24 @@
 				activeLink: action.el,
 				activeEvent: action.event,
 				interactionStarted: action.interactionStarted,
-				linkInteractionToken: action.linkInteractionToken
+				linkInteractionToken: action.linkInteractionToken,
+				shouldShow: false
 			},
-			'It should set active link and event as well as interaction info.'
+			'It should set active link and event as well as interaction info and hide the preview.'
 		);
 	} );
 
-	QUnit.test( '#preview: LINK_ABANDON', function ( assert ) {
+	QUnit.test( '#preview: LINK_ABANDON_END', function ( assert ) {
 		var action = {
-			type: 'LINK_ABANDON',
-			el: this.el
-		};
+				type: 'LINK_ABANDON_END',
+				el: this.el
+			},
+			state = {
+				activeLink: this.el
+			};
 
 		assert.deepEqual(
-			mw.popups.reducers.preview( {}, action ),
+			mw.popups.reducers.preview( state, action ),
 			{
 				activeLink: undefined,
 				activeEvent: undefined,
@@ -93,6 +98,19 @@
 				shouldShow: false
 			},
 			'It should hide the preview and reset the interaction info.'
+		);
+
+		// ---
+
+		state = {
+			activeLink: this.el,
+			isUserDwelling: true
+		};
+
+		assert.deepEqual(
+			mw.popups.reducers.preview( state, action ),
+			state,
+			'It should NOOP if the user is dwelling on the preview.'
 		);
 	} );
 
@@ -137,6 +155,36 @@
 		);
 	} );
 
+	QUnit.test( '#preview: PREVIEW_DWELL', function ( assert ) {
+		var action = {
+			type: 'PREVIEW_DWELL'
+		};
+
+		assert.expect( 1 );
+
+		assert.deepEqual(
+			mw.popups.reducers.preview( {}, action ),
+			{
+				isUserDwelling: true
+			},
+			'It should mark the preview as being dwelled on.'
+		);
+	} );
+
+	QUnit.test( '#preview: PREVIEW_ABANDON_START', function ( assert ) {
+		var action = {
+			type: 'PREVIEW_ABANDON_START'
+		};
+
+		assert.deepEqual(
+			mw.popups.reducers.preview( {}, action ),
+			{
+				isUserDwelling: false
+			},
+			'It should mark the preview having been abandoned.'
+		);
+	} );
+
 	QUnit.test( '#renderer', function ( assert ) {
 		assert.expect( 1 );
 
@@ -150,5 +198,6 @@
 			'It should set isAnimating to true on the PREVIEW_ANIMATING action'
 		);
 	} );
+
 }( mediaWiki, jQuery ) );
 
