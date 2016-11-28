@@ -2,12 +2,12 @@
 <div class="mwe-popups" role="tooltip" aria-hidden>
   <div>
     {{#hasThumbnail}}
-    <a href="{{href}}" class="mwe-popups-discreet"><!-- thumbnail injected post render --></a>
+    <a href="{{href}}" class="mwe-popups-discreet"></a>
     {{/hasThumbnail}}
-    <a dir="{{langdir}}" lang="{{langcode}}" class="mwe-popups-extract" href="{{href}}"><!-- extract will be appended here --></a>
+    <a dir="{{langdir}}" lang="{{langcode}}" class="mwe-popups-extract" href="{{href}}"></a>
     <footer>
         <span
-          class="{{#isRecent}}mwe-popups-timestamp-recent{{/isRecent}}{{^isRecent}}mwe-popups-timestamp-older{{/isRecent}}">{{lastModified}}</span>
+          class="{{#isRecent}}mwe-popups-timestamp-recent{{/isRecent}}{{^isRecent}}mwe-popups-timestamp-older{{/isRecent}}">{{lastModifiedMsg}}</span>
         <a class="mwe-popups-icon mwe-popups-settings-icon"></a>
     </footer>
   </div>
