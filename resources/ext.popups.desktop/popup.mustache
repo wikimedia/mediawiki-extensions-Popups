@@ -2,9 +2,9 @@
 <div class="mwe-popups" role="tooltip" aria-hidden>
   <div>
     {{#hasThumbnail}}
-    <a href="{{href}}" class="mwe-popups-discreet"></a>
+    <a href="{{url}}" class="mwe-popups-discreet"></a>
     {{/hasThumbnail}}
-    <a dir="{{langdir}}" lang="{{langcode}}" class="mwe-popups-extract" href="{{href}}"></a>
+    <a dir="{{langdir}}" lang="{{langcode}}" class="mwe-popups-extract" href="{{url}}"></a>
     <footer>
         <span
           class="{{#isRecent}}mwe-popups-timestamp-recent{{/isRecent}}{{^isRecent}}mwe-popups-timestamp-older{{/isRecent}}">{{lastModifiedMsg}}</span>
