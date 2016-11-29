@@ -53,7 +53,17 @@
 	};
 
 	/**
+	 * The model of how a view is rendered, which is constructed from a response
+	 * from the gateway.
+	 *
+	 * TODO: Rename `isTall` to `isPortrait`.
+	 *
 	 * @typedef {Object} mw.popups.Preview
+	 * @property {jQuery} el
+	 * @property {Boolean} hasThumbnail
+	 * @property {Object} thumbnail
+	 * @property {Boolean} isTall Sugar around
+	 *  `preview.hasThumbnail && thumbnail.isTall`
 	 */
 
 	/**
@@ -77,36 +87,9 @@
 	 * @return {mw.popups.Preview}
 	 */
 	mw.popups.renderer.render = function ( data ) {
-		var templateData,
-			thumbnail = createThumbnail( data.thumbnail ),
-			hasThumbnail = thumbnail !== null,
-			extract = renderExtract( data.extract, data.title ),
-			$el,
-			preview = {};
+		var preview = data.extract === undefined ? createEmptyPreview( data ) : createPreview( data );
 
-		templateData = $.extend( {}, data, {
-			lastModifiedMsg: mw.msg( 'popups-last-edited', moment( data.lastModified ).fromNow() ),
-			hasThumbnail: hasThumbnail
-		} );
-
-		$el = mw.template.get( 'ext.popups', 'popup.mustache' )
-			.render( templateData )
-			.appendTo( document.body );
-
-		if ( hasThumbnail ) {
-			$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
-		}
-
-		if ( extract.length ) {
-			$el.find( '.mwe-popups-extract' ).append( extract );
-		}
-
-		preview = {
-			el: $el,
-			hasThumbnail: hasThumbnail,
-			thumbnail: thumbnail,
-			isTall: hasThumbnail && thumbnail.isTall
-		};
+		preview.el.appendTo( document.body );
 
 		return {
 
@@ -139,6 +122,78 @@
 			}
 		};
 	};
+
+	/**
+	 * Creates an instance of the DTO backing a preview.
+	 *
+	 * @param {Object} data
+	 * @return {ext.popups.Preview}
+	 */
+	function createPreview( data ) {
+		var templateData,
+			thumbnail = createThumbnail( data.thumbnail ),
+			hasThumbnail = thumbnail !== null,
+
+			// FIXME: This should probably be moved into the gateway as we'll soon be
+			// fetching HTML from the API. See
+			// https://phabricator.wikimedia.org/T141651 for more detail.
+			extract = renderExtract( data.extract, data.title ),
+
+			$el;
+
+		templateData = $.extend( {}, data, {
+			lastModifiedMsg: mw.msg( 'popups-last-edited', moment( data.lastModified ).fromNow() ),
+			hasThumbnail: hasThumbnail
+		} );
+
+		$el = mw.template.get( 'ext.popups', 'preview.mustache' )
+			.render( templateData );
+
+		if ( hasThumbnail ) {
+			$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
+		}
+
+		if ( extract.length ) {
+			$el.find( '.mwe-popups-extract' ).append( extract );
+		}
+
+		return {
+			el: $el,
+			hasThumbnail: hasThumbnail,
+			thumbnail: thumbnail,
+			isTall: hasThumbnail && thumbnail.isTall
+		};
+	}
+
+	/**
+	 * Creates an instance of the DTO backing a preview. In this case the DTO
+	 * represents a generic preview, which covers the following scenarios:
+	 *
+	 * * The page doesn't exist, i.e. the user hovered over a redlink or a
+	 *   redirect to a page that doesn't exist.
+	 * * The page doesn't have a viable extract.
+	 *
+	 * @param {Object} data
+	 * @return {ext.popups.Preview}
+	 */
+	function createEmptyPreview( data ) {
+		var templateData,
+			$el;
+
+		templateData = $.extend( {}, data, {
+			extractMsg: mw.msg( 'popups-preview-no-preview' ),
+			readMsg: mw.msg( 'popups-preview-footer-read' )
+		} );
+
+		$el = mw.template.get( 'ext.popups', 'preview-empty.mustache' )
+			.render( templateData );
+
+		return {
+			el: $el,
+			hasThumbnail: false,
+			isTall: false
+		};
+	}
 
 	/**
 	 * Converts the extract into a list of elements, which correspond to fragments
@@ -483,7 +538,7 @@
 	 * @return {String[]}
 	 */
 	function getClasses( preview, layout ) {
-		var classes = [ 'mwe-popups' ];
+		var classes = [];
 
 		if ( layout.flippedY ) {
 			classes.push( 'mwe-popups-fade-in-down' );
@@ -550,7 +605,7 @@
 			);
 		}
 
-		popup.attr( 'class', getClasses( preview, layout ).join( ' ' ) );
+		popup.addClass( getClasses( preview, layout ).join( ' ' ) );
 
 		if ( flippedY ) {
 			offsetTop -= popup.outerHeight();

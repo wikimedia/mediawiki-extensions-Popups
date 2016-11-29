@@ -73,7 +73,8 @@
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {
-				"popup.mustache": "resources/ext.popups.desktop/popup.mustache",
+				"preview.mustache": "resources/ext.popups/templates/preview.mustache",
+				"preview-empty.mustache": "resources/ext.popups/templates/preview-empty.mustache",
 				"settings.mustache": "resources/ext.popups.desktop/settings.mustache"
 			},
 			"styles": [
@@ -95,7 +96,9 @@
 				"popups-settings-enable",
 				"popups-settings-help",
 				"popups-settings-help-ok",
-				"popups-send-feedback"
+				"popups-send-feedback",
+				"popups-preview-no-preview",
+				"popups-preview-footer-read"
 			],
 			"dependencies": [
 				"mediawiki.experiments",

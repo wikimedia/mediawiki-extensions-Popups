@@ -76,16 +76,23 @@
 	 * @result {Object}
 	 */
 	function processPage( page ) {
-		var lastModified = new Date( page.revisions[0].timestamp ),
-			result = {
-				title: page.title,
-				languageCode: page.pagelanguagehtmlcode,
-				languageDirection: page.pagelanguagedir,
-				url: page.canonicalurl,
-				lastModified: lastModified,
-				extract: processExtract( page.extract ),
-				isRecent: new Date() - lastModified < ONE_DAY
-			};
+		var lastModified,
+			result;
+
+		result = {
+			title: page.title,
+			languageCode: page.pagelanguagehtmlcode,
+			languageDirection: page.pagelanguagedir,
+			url: page.canonicalurl,
+			extract: processExtract( page.extract )
+		};
+
+		if ( page.revisions && page.revisions.length ) {
+			lastModified = new Date( page.revisions[0].timestamp );
+
+			result.lastModified = lastModified;
+			result.isRecent = new Date() - lastModified < ONE_DAY;
+		}
 
 		if ( page.thumbnail ) {
 			result.thumbnail = page.thumbnail;

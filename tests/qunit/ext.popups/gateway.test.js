@@ -185,4 +185,34 @@
 		} );
 	} );
 
+	QUnit.test( 'it handles missing pages', function ( assert ) {
+		var done = assert.async( 1 ),
+			fetchPreview;
+
+		fetchPreview = createGatewayWithPage( {
+			canonicalurl: 'http://dev.wiki.local.wmftest.net:8080/wiki/Missing_page',
+			contentmodel: 'wikitext',
+			editurl: 'http://dev.wiki.local.wmftest.net:8080/w/index.php?title=Missing_page&action=edit',
+			fullurl: 'http://dev.wiki.local.wmftest.net:8080/wiki/Missing_page',
+			missing: true,
+			ns: 0,
+			pagelanguage: 'en',
+			pagelanguagedir: 'ltr',
+			pagelanguagehtmlcode: 'en',
+			title: 'Missing page'
+		} );
+
+		fetchPreview( 'Missing page' ).done( function ( result ) {
+			assert.deepEqual( result, {
+				title: 'Missing page',
+				languageCode: 'en',
+				languageDirection: 'ltr',
+				url: 'http://dev.wiki.local.wmftest.net:8080/wiki/Missing_page',
+				extract: undefined
+			} );
+
+			done();
+		} );
+	} );
+
 }( mediaWiki, jQuery ) );
