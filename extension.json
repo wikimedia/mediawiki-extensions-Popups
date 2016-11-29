@@ -77,7 +77,7 @@
 				"settings.mustache": "resources/ext.popups.desktop/settings.mustache"
 			},
 			"styles": [
-				"resources/ext.popups.core/ext.popups.core.less",
+				"resources/ext.popups/styles/ext.popups.core.less",
 				"resources/ext.popups.desktop/ext.popups.animation.less",
 				"resources/ext.popups.desktop/ext.popups.settings.less"
 			],

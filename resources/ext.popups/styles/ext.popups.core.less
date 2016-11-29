@@ -55,11 +55,9 @@
 }
 
 .mwe-popups-settings-icon {
-	.background-image-svg( "images/cog.svg", "images/cog.png" );
-}
 
-.mwe-popups-survey-icon {
-	.background-image-svg( "images/horn-ltr.svg", "images/horn-ltr.png" );
+	// N.B. filenames are relative to the LESS file.
+	.background-image-svg( "../images/cog.svg", "../images/cog.png" );
 }
 
 .mwe-popups {
@@ -77,38 +75,13 @@
 	line-height: 20px;
 	min-width: 300px;
 
-	> div {
-		display: block;
+	.mwe-popups-container {
 		margin-top: -9px;
 		padding-top: 9px;
 		color: #000;
 		text-decoration: none;
 
-		> div {
-			padding: 0;
-			margin: 16px;
-			padding-bottom: 48px;
-		}
-
-		div.mwe-popups-is-not-tall,
-		div.mwe-popups-is-tall {
-			margin: 0;
-			height: 250px;
-			width: 200px;
-			padding: 0;
-			background-size: cover;
-			background-repeat: no-repeat;
-			overflow: hidden;
-			/* @noflip */
-			float: right;
-		}
-
-		div.mwe-popups-is-not-tall {
-			height: 200px;
-			width: 300px;
-		}
-
-		> footer {
+		footer {
 			padding: 16px;
 			margin: 0;
 			font-size: 10px;
@@ -117,11 +90,11 @@
 			/* @noflip */
 			left: 0;
 
-			> div.mwe-popups-timestamp-older {
+			.mwe-popups-timestamp-older {
 				color: #555;
 			}
 
-			> div.mwe-popups-timestamp-recent {
+			.mwe-popups-timestamp-recent {
 				color: #00af89;
 			}
 		}

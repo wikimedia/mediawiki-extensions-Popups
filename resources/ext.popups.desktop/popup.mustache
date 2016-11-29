@@ -1,13 +1,12 @@
 {{! Extracted from `mw.popups.render.createPopupElement` }}
 <div class="mwe-popups" role="tooltip" aria-hidden>
-  <div>
+  <div class="mwe-popups-container">
     {{#hasThumbnail}}
     <a href="{{url}}" class="mwe-popups-discreet"></a>
     {{/hasThumbnail}}
     <a dir="{{langdir}}" lang="{{langcode}}" class="mwe-popups-extract" href="{{url}}"></a>
     <footer>
-        <span
-          class="{{#isRecent}}mwe-popups-timestamp-recent{{/isRecent}}{{^isRecent}}mwe-popups-timestamp-older{{/isRecent}}">{{lastModifiedMsg}}</span>
+        <span class="{{#isRecent}}mwe-popups-timestamp-recent{{/isRecent}}{{^isRecent}}mwe-popups-timestamp-older{{/isRecent}}">{{lastModifiedMsg}}</span>
         <a class="mwe-popups-icon mwe-popups-settings-icon"></a>
     </footer>
   </div>
