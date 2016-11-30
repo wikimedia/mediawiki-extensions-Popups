@@ -20,7 +20,7 @@
 		}
 	} );
 
-	QUnit.test( '#processLinks', 1, function ( assert ) {
+	QUnit.test( 'it should only return eligible links', 1, function ( assert ) {
 		var $container = $( '<div>' ),
 			$cancelLink = $( '<span>', {
 				class: 'cancelLink'
@@ -73,11 +73,12 @@
 
 		assert.equal(
 			mw.popups.processLinks( $container, this.blacklist, this.config ).length,
-			1
+			1,
+			'#processLinks should have only returned the eligible link'
 		);
 	} );
 
-	QUnit.test( 'it gets the title of local pages', function ( assert ) {
+	QUnit.test( 'it should get the title of local pages', function ( assert ) {
 		var cases,
 			$container = $( '<div>' ),
 			$processedLinks;
