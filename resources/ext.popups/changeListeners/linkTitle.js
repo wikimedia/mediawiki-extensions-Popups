@@ -12,23 +12,52 @@
 	mw.popups.changeListeners.linkTitle = function () {
 		var title;
 
-		return function ( prevState, state ) {
-			var $link;
+		/**
+		 * Destroys the title attribute of the element, storing its value in local
+		 * state so that it can be restored later (see `restoreTitleAttr`).
+		 *
+		 * @param {Element} el
+		 */
+		function destroyTitleAttr( el ) {
+			var $el = $( el );
 
 			// Has the user dwelled on a link? If we've already removed its title
 			// attribute, then NOOP.
-			if ( state.preview.activeLink && !title ) {
-				$link = $( state.preview.activeLink );
+			if ( title ) {
+				return;
+			}
 
-				title = $link.attr( 'title' );
+			title = $el.attr( 'title' );
 
-				$link.attr( 'title', '' );
+			$el.attr( 'title', '' );
+		}
 
-			// Has the user abandoned the link?
-			} else if ( prevState && prevState.preview.activeLink ) {
-				$( prevState.preview.activeLink ).attr( 'title', title );
+		/**
+		 * Restores the title attribute of the element.
+		 *
+		 * @param {Element} el
+		 */
+		function restoreTitleAttr( el ) {
+			$( el ).attr( 'title', title );
 
-				title = undefined;
+			title = undefined;
+		}
+
+		return function ( prevState, state ) {
+			var hasPrevActiveLink = prevState && prevState.preview.activeLink;
+
+			if ( hasPrevActiveLink ) {
+
+				// Has the user dwelled on a link immediately after abandoning another
+				// (remembering that the LINK_ABANDON_END action is delayed by
+				// ~10e2 ms).
+				if ( prevState.preview.activeLink !== state.preview.activeLink ) {
+					restoreTitleAttr( prevState.preview.activeLink );
+				}
+			}
+
+			if ( state.preview.activeLink ) {
+				destroyTitleAttr( state.preview.activeLink );
 			}
 		};
 	};
