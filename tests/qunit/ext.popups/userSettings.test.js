@@ -26,7 +26,10 @@
 
 		this.userSettings.setIsEnabled( true );
 
-		assert.ok( this.userSettings.getIsEnabled() );
+		assert.ok(
+			this.userSettings.getIsEnabled(),
+			'#getIsEnabled should return true if Page Previews have been enabled'
+		);
 	} );
 
 	QUnit.test( '#hasIsEnabled', 2, function ( assert ) {
