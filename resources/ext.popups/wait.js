@@ -11,7 +11,7 @@
 	 * mw.popups.wait( 150 ).then( continueProcessing );
 	 *
 	 * @param {Number} delay The number of milliseconds to wait
-	 * @return {jQuery.Deferred}
+	 * @return {jQuery.Promise}
 	 */
 	mw.popups.wait = function ( delay ) {
 		var result = $.Deferred();
