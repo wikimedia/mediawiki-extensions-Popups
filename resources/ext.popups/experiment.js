@@ -6,8 +6,7 @@
 	 * they are in the experiment condition.
 	 *
 	 * The user is in the experiment condition if:
-	 * * They've enabled by Page Previews by clicking "Enable previews" in the
-	 *   footer menu.
+	 * * They've enabled by Page Previews via UI interactions.
 	 * * They've enabled Page Previews as a beta feature.
 	 * * They aren't in the control bucket of the experiment.
 	 *
