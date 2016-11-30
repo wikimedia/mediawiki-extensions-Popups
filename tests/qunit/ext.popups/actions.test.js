@@ -43,12 +43,12 @@
 		setup: function () {
 			var that = this;
 
-			that.el = $( '<a>' )
+			this.el = $( '<a>' )
 				.data( 'page-previews-title', 'Foo' )
 				.eq( 0 );
 
-			that.state = {};
-			that.getState = function () {
+			this.state = {};
+			this.getState = function () {
 				return that.state;
 			};
 
