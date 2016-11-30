@@ -1,4 +1,4 @@
-( function ( mw, Redux, ReduxThunk, $ ) {
+( function ( mw, Redux, ReduxThunk ) {
 	var BLACKLISTED_LINKS = [
 		'.extiw',
 		'.image',
@@ -8,23 +8,6 @@
 		'.oo-ui-buttonedElement-button',
 		'.cancelLink a'
 	];
-
-	/**
-	 * Creates an experiment with sensible values for the depenencies.
-	 *
-	 * See `mw.popups.createExperiment`.
-	 *
-	 * @return {Function}
-	 */
-	function isUserInCondition() {
-		var userSettings = mw.popups.createUserSettings( mw.storage, mw.user );
-
-		return mw.popups.createExperiment(
-			mw.config,
-			mw.user,
-			userSettings
-		);
-	}
 
 	/**
 	 * Creates a gateway with sensible values for the dependencies.
@@ -45,13 +28,19 @@
 	 * `mw.popups.changeListeners`.
 	 *
 	 * @param {Redux.Store} store
+	 * @param {Object} actions
+	 * @param {mw.eventLog.Schema} schema
 	 */
-	function registerChangeListeners( store, actions ) {
-		$.each( mw.popups.changeListeners, function ( _, changeListenerFactory ) {
-			var changeListener = changeListenerFactory( actions );
+	function registerChangeListeners( store, actions, schema ) {
 
-			mw.popups.registerChangeListener( store, changeListener );
-		} );
+		// Sugar.
+		var changeListeners = mw.popups.changeListeners,
+			registerChangeListener = mw.popups.registerChangeListener;
+
+		registerChangeListener( store, changeListeners.footerLink( actions ) );
+		registerChangeListener( store, changeListeners.linkTitle() );
+		registerChangeListener( store, changeListeners.render( actions ) );
+		registerChangeListener( store, changeListeners.eventLogging( actions, schema ) );
 	}
 
 	/**
@@ -89,8 +78,17 @@
 		var compose = Redux.compose,
 			store,
 			actions,
+
+			// So-called "services".
 			generateToken = mw.user.generateRandomSessionId,
-			gateway = createGateway();
+			gateway = createGateway(),
+			userSettings,
+			isUserInCondition,
+			schema;
+
+		userSettings = mw.popups.createUserSettings( mw.storage, mw.user );
+		isUserInCondition = mw.popups.createExperiment( mw.config, mw.user, userSettings );
+		schema = mw.popups.createSchema( mw.config, window );
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
@@ -104,12 +102,13 @@
 			) )
 		);
 		actions = createBoundActions( store );
-		registerChangeListeners( store, actions );
+		registerChangeListeners( store, actions, schema );
 
 		actions.boot(
-			isUserInCondition(),
-			mw.user.sessionId(),
-			generateToken
+			isUserInCondition,
+			mw.user,
+			generateToken,
+			mw.config
 		);
 
 		mw.hook( 'wikipage.content' ).add( function ( $container ) {
@@ -136,4 +135,4 @@
 		} );
 	} );
 
-}( mediaWiki, Redux, ReduxThunk, jQuery ) );
+}( mediaWiki, Redux, ReduxThunk ) );

@@ -52,12 +52,8 @@
 		if ( state === undefined ) {
 			state = {
 				enabled: undefined,
-				sessionToken: undefined,
-				pageToken: undefined,
-				linkInteractionToken: undefined,
 				activeLink: undefined,
 				activeEvent: undefined,
-				interactionStarted: undefined,
 				shouldShow: false,
 				isUserDwelling: false
 			};
@@ -66,16 +62,12 @@
 		switch ( action.type ) {
 			case mw.popups.actionTypes.BOOT:
 				return nextState( state, {
-					enabled: action.isUserInCondition,
-					sessionToken: action.sessionToken,
-					pageToken: action.pageToken
+					enabled: action.isUserInCondition
 				} );
 			case mw.popups.actionTypes.LINK_DWELL:
 				return nextState( state, {
 					activeLink: action.el,
 					activeEvent: action.event,
-					interactionStarted: action.interactionStarted,
-					linkInteractionToken: action.linkInteractionToken,
 
 					// When the user dwells on a link with their keyboard, a preview is
 					// renderered, and then dwells on another link, the LINK_ABANDON_END
@@ -95,8 +87,6 @@
 					return nextState( state, {
 						activeLink: undefined,
 						activeEvent: undefined,
-						interactionStarted: undefined,
-						linkInteractionToken: undefined,
 						fetchResponse: undefined,
 						shouldShow: false
 					} );
@@ -125,6 +115,61 @@
 				}
 
 				/* falls through */
+			default:
+				return state;
+		}
+	};
+
+	/**
+	 * Reducer for actions that may result in an event being logged via Event
+	 * Logging.
+	 *
+	 * The base data represents data that's shared between all events logged with
+	 * the Popups schema ("Popups events"). Very nearly all of it is initialized
+	 * during the BOOT action and doesn't change between link interactions, e.g.
+	 * the user being an anon or the number of edits they've made.
+	 *
+	 * The user's number of previews, however, does change between link
+	 * interactions and the associated bucket (a computed property) is what is
+	 * logged. This is reflected in the state tree: the `previewCount` property is
+	 * used to store the user's number of previews and the
+	 * `baseData.previewCountBucket` property is used to store the associated
+	 * bucket.
+	 *
+	 * @param {Object} state
+	 * @param {Object} action
+	 * @return {Object} The state as a result of processing the action
+	 */
+	mw.popups.reducers.eventLogging = function ( state, action ) {
+		if ( state === undefined ) {
+			state = {
+				baseData: {},
+				event: undefined
+			};
+		}
+
+		switch ( action.type ) {
+			case mw.popups.actionTypes.BOOT:
+				return nextState( state, {
+					baseData: {
+						pageTitleSource: action.page.title,
+						namespaceIdSource: action.page.namespaceID,
+						pageIdSource: action.page.id,
+						isAnon: action.isUserAnon,
+						popupEnabled: action.isUserInCondition,
+						pageToken: action.pageToken,
+						sessionToken: action.sessionToken
+					},
+					event: {
+						action: 'pageLoaded'
+					}
+				} );
+
+			case mw.popups.actionTypes.EVENT_LOGGED:
+				return nextState( state, {
+					event: undefined
+				} );
+
 			default:
 				return state;
 		}

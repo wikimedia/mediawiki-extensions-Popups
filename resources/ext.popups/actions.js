@@ -18,7 +18,8 @@
 			PREVIEW_CLICK: 'PREVIEW_CLICK',
 			COG_CLICK: 'COG_CLICK',
 			SETTINGS_DIALOG_RENDERED: 'SETTINGS_DIALOG_RENDERED',
-			SETTINGS_DIALOG_CLOSED: 'SETTINGS_DIALOG_CLOSED'
+			SETTINGS_DIALOG_CLOSED: 'SETTINGS_DIALOG_CLOSED',
+			EVENT_LOGGED: 'EVENT_LOGGED'
 		},
 		FETCH_START_DELAY = 500, // ms.
 		ABANDON_END_DELAY = 300; // ms.
@@ -37,15 +38,23 @@
 	 * so as not to impact latency-critical events.
 	 *
 	 * @param {Function} isUserInCondition See `mw.popups.createExperiment`
-	 * @param {String} sessionToken
+	 * @param {mw.user} user
 	 * @param {Function} generateToken
+	 * @param {mw.Map} config The config of the MediaWiki client-side application,
+	 *  i.e. `mw.config`
 	 */
-	actions.boot = function ( isUserInCondition, sessionToken, generateToken ) {
+	actions.boot = function ( isUserInCondition, user, generateToken, config ) {
 		return {
 			type: types.BOOT,
 			isUserInCondition: isUserInCondition(),
-			sessionToken: sessionToken,
-			pageToken: generateToken()
+			sessionToken: user.sessionId(),
+			pageToken: generateToken(),
+			page: {
+				title: config.get( 'wgTitle' ),
+				namespaceID: config.get( 'wgNamespaceNumber' ),
+				id: config.get( 'wgArticleId' )
+			},
+			isUserAnon: user.isAnon()
 		};
 	};
 
@@ -192,6 +201,18 @@
 	actions.showSettings = function () {
 		return {
 			type: 'COG_CLICK'
+		};
+	};
+
+	/**
+	 * Represents the queued event being logged
+	 * `mw.popups.changeListeners.eventLogging` change listener.
+	 *
+	 * @return {Object}
+	 */
+	actions.eventLogged = function () {
+		return {
+			type: types.EVENT_LOGGED
 		};
 	};
 

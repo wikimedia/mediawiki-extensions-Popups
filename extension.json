@@ -70,6 +70,8 @@
 				"resources/ext.popups/linkTitleChangeListener.js",
 				"resources/ext.popups/renderer.js",
 				"resources/ext.popups/renderChangeListener.js",
+				"resources/ext.popups/schema.js",
+				"resources/ext.popups/eventLoggingChangeListener.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {

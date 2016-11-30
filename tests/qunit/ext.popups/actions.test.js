@@ -6,20 +6,42 @@
 		var isUserInCondition = function () {
 				return false;
 			},
-			sessionID = '0123456789',
 			generateToken = function () {
 				return '9876543210';
-			};
+			},
+			config = new mw.Map(),
+			stubUser;
+
+		config.set( {
+			wgTitle: 'Foo',
+			wgNamespaceNumber: 1,
+			wgArticleId: 2
+		} );
+
+		stubUser = {
+			sessionId: function () {
+				return '0123456789';
+			},
+			isAnon: function () {
+				return true;
+			}
+		};
 
 		assert.expect( 1 );
 
 		assert.deepEqual(
-			mw.popups.actions.boot( isUserInCondition, sessionID, generateToken ),
+			mw.popups.actions.boot( isUserInCondition, stubUser, generateToken, config ),
 			{
 				type: 'BOOT',
 				isUserInCondition: false,
 				sessionToken: '0123456789',
-				pageToken: '9876543210'
+				pageToken: '9876543210',
+				page: {
+					title: 'Foo',
+					namespaceID: 1,
+					id: 2
+				},
+				isUserAnon: true
 			}
 		);
 	} );

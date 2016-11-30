@@ -16,14 +16,14 @@
 			{
 				preview: {
 					enabled: undefined,
-					sessionToken: undefined,
-					pageToken: undefined,
-					linkInteractionToken: undefined,
 					activeLink: undefined,
 					activeEvent: undefined,
-					interactionStarted: undefined,
 					shouldShow: false,
 					isUserDwelling: false
+				},
+				eventLogging: {
+					baseData: {},
+					event: undefined
 				},
 				renderer: {
 					isAnimating: false,
@@ -38,9 +38,7 @@
 	QUnit.test( '#preview: BOOT', function ( assert ) {
 		var action = {
 			type: 'BOOT',
-			isUserInCondition: true,
-			sessionToken: '0123456789',
-			pageToken: '9876543210'
+			isUserInCondition: true
 		};
 
 		assert.expect( 1 );
@@ -48,11 +46,9 @@
 		assert.deepEqual(
 			mw.popups.reducers.preview( {}, action ),
 			{
-				enabled: true,
-				sessionToken: '0123456789',
-				pageToken: '9876543210'
+				enabled: true
 			},
-			'It should set enabled and the session tokens.'
+			'It should set whether or not previews are enabled.'
 		);
 	} );
 
@@ -60,9 +56,7 @@
 		var action = {
 			type: 'LINK_DWELL',
 			el: this.el,
-			event: {},
-			interactionStarted: mw.now(),
-			linkInteractionToken: '0123456789'
+			event: {}
 		};
 
 		assert.deepEqual(
@@ -70,8 +64,6 @@
 			{
 				activeLink: action.el,
 				activeEvent: action.event,
-				interactionStarted: action.interactionStarted,
-				linkInteractionToken: action.linkInteractionToken,
 				shouldShow: false
 			},
 			'It should set active link and event as well as interaction info and hide the preview.'
@@ -92,8 +84,6 @@
 			{
 				activeLink: undefined,
 				activeEvent: undefined,
-				interactionStarted: undefined,
-				linkInteractionToken: undefined,
 				fetchResponse: undefined,
 				shouldShow: false
 			},
