@@ -13,7 +13,7 @@
 	 * @param {mw.Map} config
 	 * @param {mw.user} user The `mw.user` singleton instance
 	 * @param {Object} userSettings An object returned by
-	 *  `ext.popups.createUserSettings`, from which the user's token will be
+	 *  `mw.popups.createUserSettings`, from which the user's token will be
 	 *  retrieved
 	 *
 	 * @return {Function}
