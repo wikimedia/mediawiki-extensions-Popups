@@ -22,7 +22,8 @@
 			 * Gets whether or not the user has previously enabled Page Previews.
 			 *
 			 * N.B. that if the user hasn't previously enabled or disabled Page
-			 * Previews, i.e. mw.popups.userSettings., then they are treated as if they have.
+			 * Previews, i.e. mw.popups.userSettings.setIsEnabled(true), then they
+			 * are treated as if they have enabled them.
 			 *
 			 * @return {Boolean}
 			 */
