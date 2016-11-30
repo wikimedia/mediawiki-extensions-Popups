@@ -58,16 +58,12 @@
 	 * @param {jQuery} $container
 	 * @param {String[]} blacklist If an `<a>` has one or more of these CSS
 	 *  classes, then it will be ignored.
-	 * @param {mw.Map} [config] defaults to the value of mediaWiki.config
+	 * @param {mw.Map} config
 	 *
 	 * @return {jQuery}
 	 */
 	mw.popups.processLinks = function ( $container, blacklist, config ) {
 		var contentNamespaces;
-
-		if ( typeof config === 'undefined' ) {
-			config = mw.config;
-		}
 
 		contentNamespaces = config.get( 'wgContentNamespaces' );
 

@@ -107,7 +107,8 @@
 			var previewLinks =
 				mw.popups.processLinks(
 					$container,
-					BLACKLISTED_LINKS
+					BLACKLISTED_LINKS,
+					mw.config
 				);
 
 			mw.popups.renderer.init();
