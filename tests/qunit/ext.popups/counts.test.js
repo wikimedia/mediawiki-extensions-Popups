@@ -34,4 +34,33 @@
 		}
 	} );
 
+	QUnit.test( '#getPreviewCountBucket', function ( assert ) {
+		var i, count, bucket,
+			cases = [
+				[ -1, 'unknown' ],
+				[ 0, '0 previews' ],
+				[ 1, '1-4 previews' ],
+				[ 2, '1-4 previews' ],
+				[ 4, '1-4 previews' ],
+				[ 5, '5-20 previews' ],
+				[ 10, '5-20 previews' ],
+				[ 20, '5-20 previews' ],
+				[ 21, '21+ previews' ],
+				[ 100, '21+ previews' ],
+				[ 1000, '21+ previews' ]
+			];
+
+		QUnit.expect( cases.length );
+
+		for ( i = 0; i < cases.length; i++ ) {
+			count = cases[ i ][ 0 ];
+			bucket = mw.popups.counts.getPreviewCountBucket( count );
+			assert.equal(
+				bucket,
+				cases[ i ][ 1 ],
+				'Preview count bucket is "' + bucket + '" when preview count is ' + count + '.'
+			);
+		}
+	} );
+
 }( mediaWiki ) );

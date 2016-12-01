@@ -155,6 +155,7 @@
 		switch ( action.type ) {
 			case mw.popups.actionTypes.BOOT:
 				return nextState( state, {
+					previewCount: action.user.previewCount,
 					baseData: {
 						pageTitleSource: action.page.title,
 						namespaceIdSource: action.page.namespaceID,
@@ -163,7 +164,8 @@
 						popupEnabled: action.user.isInCondition,
 						pageToken: action.pageToken,
 						sessionToken: action.sessionToken,
-						editCountBucket: counts.getEditCountBucket( action.user.editCount )
+						editCountBucket: counts.getEditCountBucket( action.user.editCount ),
+						previewCountBucket: counts.getPreviewCountBucket( action.user.previewCount )
 					},
 					event: {
 						action: 'pageLoaded'

@@ -107,6 +107,7 @@
 		actions.boot(
 			isUserInCondition,
 			mw.user,
+			userSettings,
 			generateToken,
 			mw.config
 		);

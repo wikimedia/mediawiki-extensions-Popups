@@ -1,10 +1,11 @@
 ( function ( mw ) {
 
 	/**
-	 * @typedef {Object} mw.popups.UserSettings
+	 * @typedef {Object} ext.popups.UserSettings
 	 */
 
-	var IS_ENABLED_KEY = 'mwe-popups-enabled';
+	var IS_ENABLED_KEY = 'mwe-popups-enabled',
+		PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
 
 	/**
 	 * Given the global state of the application, creates an object whose methods
@@ -13,7 +14,7 @@
 	 * @param {mw.storage} storage The `mw.storage` singleton instance
 	 * @param {mw.user} user The `mw.user` singleton instance
 	 *
-	 * @return {mw.popups.UserSettings}
+	 * @return {ext.popups.UserSettings}
 	 */
 	mw.popups.createUserSettings = function ( storage, user ) {
 		return {
@@ -69,6 +70,34 @@
 				}
 
 				return id;
+			},
+
+			/**
+			 * Gets the number of Page Previews that the user has seen.
+			 *
+			 * If the storage isn't available, then -1 is returned.
+			 *
+			 * @return {Number}
+			 */
+			getPreviewCount: function () {
+				var result = storage.get( PREVIEW_COUNT_KEY );
+
+				if ( result === false ) {
+					return -1;
+				} else if ( result === null ) {
+					return 0;
+				}
+
+				return parseInt( result, 10 );
+			},
+
+			/**
+			 * Sets the number of Page Previews that the user has seen.
+			 *
+			 * @param {Number} count
+			 */
+			setPreviewCount: function ( count ) {
+				storage.set( PREVIEW_COUNT_KEY, count.toString() );
 			}
 		};
 	};

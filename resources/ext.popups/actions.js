@@ -39,12 +39,20 @@
 	 *
 	 * @param {Function} isUserInCondition See `mw.popups.createExperiment`
 	 * @param {mw.user} user
+	 * @param {ext.popups.UserSettings} userSettings
 	 * @param {Function} generateToken
 	 * @param {mw.Map} config The config of the MediaWiki client-side application,
 	 *  i.e. `mw.config`
 	 */
-	actions.boot = function ( isUserInCondition, user, generateToken, config ) {
-		var editCount = config.get( 'wgUserEditCount' );
+	actions.boot = function (
+		isUserInCondition,
+		user,
+		userSettings,
+		generateToken,
+		config
+	) {
+		var editCount = config.get( 'wgUserEditCount' ),
+			previewCount = userSettings.getPreviewCount();
 
 		return {
 			type: types.BOOT,
@@ -58,7 +66,8 @@
 			user: {
 				isInCondition: isUserInCondition(),
 				isAnon: user.isAnon(),
-				editCount: editCount
+				editCount: editCount,
+				previewCount: previewCount
 			}
 		};
 	};

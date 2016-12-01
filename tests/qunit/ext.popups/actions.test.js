@@ -10,7 +10,9 @@
 				return '9876543210';
 			},
 			config = new mw.Map(),
-			stubUser = mw.popups.tests.stubs.createStubUser( /* isAnon = */ true );
+			stubUser = mw.popups.tests.stubs.createStubUser( /* isAnon = */ true ),
+			stubUserSettings,
+			action;
 
 		config.set( {
 			wgTitle: 'Foo',
@@ -19,10 +21,24 @@
 			wgUserEditCount: 3
 		} );
 
+		stubUserSettings = {
+			getPreviewCount: function () {
+				return 22;
+			}
+		};
+
 		assert.expect( 1 );
 
+		action = mw.popups.actions.boot(
+			isUserInCondition,
+			stubUser,
+			stubUserSettings,
+			generateToken,
+			config
+		);
+
 		assert.deepEqual(
-			mw.popups.actions.boot( isUserInCondition, stubUser, generateToken, config ),
+			action,
 			{
 				type: 'BOOT',
 				sessionToken: '0123456789',
@@ -35,7 +51,8 @@
 				user: {
 					isInCondition: false,
 					isAnon: true,
-					editCount: 3
+					editCount: 3,
+					previewCount: 22
 				}
 			}
 		);

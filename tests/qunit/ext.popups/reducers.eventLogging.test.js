@@ -12,24 +12,31 @@
 
 	QUnit.test( 'BOOT', function ( assert ) {
 		var action = {
-			type: 'BOOT',
-			sessionToken: '0123456789',
-			pageToken: '9876543210',
-			page: {
-				title: 'Foo',
-				namespaceID: 1,
-				id: 2
+				type: 'BOOT',
+				sessionToken: '0123456789',
+				pageToken: '9876543210',
+				page: {
+					title: 'Foo',
+					namespaceID: 1,
+					id: 2
+				},
+				user: {
+					isInCondition: true,
+					isAnon: false,
+					editCount: 11,
+					previewCount: 22
+				}
 			},
-			user: {
-				isInCondition: true,
-				isAnon: false,
-				editCount: 11
-			}
-		};
+			expectedEditCountBucket,
+			expectedPreviewCountBucket;
+
+		expectedEditCountBucket = counts.getEditCountBucket( action.user.editCount );
+		expectedPreviewCountBucket = counts.getPreviewCountBucket( action.user.previewCount );
 
 		assert.deepEqual(
 			mw.popups.reducers.eventLogging( this.initialState, action ),
 			{
+				previewCount: action.user.previewCount,
 				baseData: {
 					pageTitleSource: action.page.title,
 					namespaceIdSource: action.page.namespaceID,
@@ -38,7 +45,8 @@
 					popupEnabled: action.user.isInCondition,
 					pageToken: action.pageToken,
 					sessionToken: action.sessionToken,
-					editCountBucket: counts.getEditCountBucket( action.user.editCount )
+					editCountBucket: expectedEditCountBucket,
+					previewCountBucket: expectedPreviewCountBucket
 				},
 				event: {
 					action: 'pageLoaded'

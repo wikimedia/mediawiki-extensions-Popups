@@ -60,4 +60,41 @@
 		assert.equal( this.userSettings.getToken(), this.userSettings.getToken() );
 	} );
 
+	QUnit.test( '#getPreviewCount should return the count as a number', function ( assert ) {
+		assert.expect( 3 );
+
+		assert.strictEqual(
+			this.userSettings.getPreviewCount(),
+			0,
+			'#getPreviewCount returns 0 when the storage is empty.'
+		);
+
+		// ---
+
+		this.storage.set( 'ext.popups.core.previewCount', false );
+
+		assert.strictEqual(
+			this.userSettings.getPreviewCount(),
+			-1,
+			'#getPreviewCount returns -1 when the storage isn\'t available.'
+		);
+
+		// ---
+
+		this.storage.set( 'ext.popups.core.previewCount', '111' );
+
+		assert.strictEqual(
+			this.userSettings.getPreviewCount(),
+			111
+		);
+	} );
+
+	QUnit.test( '#setPreviewCount should store the count as a string', function ( assert ) {
+		assert.expect( 1 );
+
+		this.userSettings.setPreviewCount( 222 );
+
+		assert.strictEqual( this.storage.get( 'ext.popups.core.previewCount' ), '222' );
+	} );
+
 }( mediaWiki ) );
