@@ -2,11 +2,7 @@
 
 	QUnit.module( 'ext.popups/userSettings', {
 		setup: function () {
-			var stubUser = {
-				generateRandomSessionId: function () {
-					return '1234567890';
-				}
-			};
+			var stubUser = mw.popups.tests.stubs.createStubUser( /* isAnon = */ true );
 
 			this.storage = new mw.Map();
 			this.userSettings = mw.popups.createUserSettings( this.storage, stubUser );

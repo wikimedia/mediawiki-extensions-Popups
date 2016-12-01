@@ -102,10 +102,23 @@ class PopupsHooks {
 			return substr( $script, $start );
 		}, $scripts );
 
+		$testModules['qunit']['ext.popups.tests.stubs'] = [
+			'scripts' => [
+				'tests/qunit/ext.popups/stubs/index.js',
+				'tests/qunit/ext.popups/stubs/user.js',
+			],
+			'dependencies' => [
+				'ext.popups', // The mw.popups is required.
+			],
+			'localBasePath' => __DIR__,
+			'remoteExtPath' => 'Popups',
+		];
+
 		$testModules['qunit']['ext.popups.tests'] = [
 			'scripts' => $scripts,
 			'dependencies' => [
 				'ext.popups',
+				'ext.popups.tests.stubs',
 			],
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'Popups',

@@ -1,13 +1,5 @@
 ( function ( mw ) {
 
-	function createStubUser( isAnon ) {
-		return {
-			isAnon: function () {
-				return isAnon;
-			}
-		};
-	}
-
 	function createStubUserSettings( hasIsEnabled ) {
 		return {
 			getToken: function () {
@@ -25,7 +17,7 @@
 	QUnit.module( 'ext.popups/experiment', {
 		setup: function () {
 			this.config = new mw.Map();
-			this.user = createStubUser( /* isAnon = */ true );
+			this.user = mw.popups.tests.stubs.createStubUser( /* isAnon = */ true );
 			this.userSettings = createStubUserSettings( /* hasIsEnabled = */ false );
 			this.isUserInCondition = mw.popups.createExperiment( this.config, this.user, this.userSettings );
 		}
@@ -38,7 +30,7 @@
 	} );
 
 	QUnit.test( '#isUserInCondition', 2, function ( assert ) {
-		var user = createStubUser( /* isAnon = */ false ),
+		var user = mw.popups.tests.stubs.createStubUser( /* isAnon = */ false ),
 			isUserInCondition = mw.popups.createExperiment( this.config, user, this.userSettings );
 
 		this.config.set( {

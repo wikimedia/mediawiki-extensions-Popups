@@ -10,22 +10,13 @@
 				return '9876543210';
 			},
 			config = new mw.Map(),
-			stubUser;
+			stubUser = mw.popups.tests.stubs.createStubUser( /* isAnon = */ true );
 
 		config.set( {
 			wgTitle: 'Foo',
 			wgNamespaceNumber: 1,
 			wgArticleId: 2
 		} );
-
-		stubUser = {
-			sessionId: function () {
-				return '0123456789';
-			},
-			isAnon: function () {
-				return true;
-			}
-		};
 
 		assert.expect( 1 );
 
