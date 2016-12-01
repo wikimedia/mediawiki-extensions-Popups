@@ -1,4 +1,8 @@
 ( function ( mw, $ ) {
+
+	// Sugar for the mw.popups.reducers.eventLogging reducer.
+	var counts = mw.popups.counts;
+
 	mw.popups.reducers = {};
 
 	/**
@@ -62,7 +66,7 @@
 		switch ( action.type ) {
 			case mw.popups.actionTypes.BOOT:
 				return nextState( state, {
-					enabled: action.isUserInCondition
+					enabled: action.user.isInCondition
 				} );
 			case mw.popups.actionTypes.LINK_DWELL:
 				return nextState( state, {
@@ -155,10 +159,11 @@
 						pageTitleSource: action.page.title,
 						namespaceIdSource: action.page.namespaceID,
 						pageIdSource: action.page.id,
-						isAnon: action.isUserAnon,
-						popupEnabled: action.isUserInCondition,
+						isAnon: action.user.isAnon,
+						popupEnabled: action.user.isInCondition,
 						pageToken: action.pageToken,
-						sessionToken: action.sessionToken
+						sessionToken: action.sessionToken,
+						editCountBucket: counts.getEditCountBucket( action.user.editCount )
 					},
 					event: {
 						action: 'pageLoaded'

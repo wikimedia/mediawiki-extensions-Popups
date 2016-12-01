@@ -1,5 +1,7 @@
 ( function ( mw ) {
 
+	var counts = mw.popups.counts;
+
 	QUnit.module( 'ext.popups/reducers#eventLogging', {
 		setup: function () {
 			this.initialState = mw.popups.reducers.eventLogging( undefined, {
@@ -11,7 +13,6 @@
 	QUnit.test( 'BOOT', function ( assert ) {
 		var action = {
 			type: 'BOOT',
-			isUserInCondition: true,
 			sessionToken: '0123456789',
 			pageToken: '9876543210',
 			page: {
@@ -19,7 +20,11 @@
 				namespaceID: 1,
 				id: 2
 			},
-			isUserAnon: true
+			user: {
+				isInCondition: true,
+				isAnon: false,
+				editCount: 11
+			}
 		};
 
 		assert.deepEqual(
@@ -29,10 +34,11 @@
 					pageTitleSource: action.page.title,
 					namespaceIdSource: action.page.namespaceID,
 					pageIdSource: action.page.id,
-					isAnon: action.isUserAnon,
-					popupEnabled: action.isUserInCondition,
+					isAnon: action.user.isAnon,
+					popupEnabled: action.user.isInCondition,
 					pageToken: action.pageToken,
-					sessionToken: action.sessionToken
+					sessionToken: action.sessionToken,
+					editCountBucket: counts.getEditCountBucket( action.user.editCount )
 				},
 				event: {
 					action: 'pageLoaded'

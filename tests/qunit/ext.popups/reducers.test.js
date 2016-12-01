@@ -38,7 +38,9 @@
 	QUnit.test( '#preview: BOOT', function ( assert ) {
 		var action = {
 			type: 'BOOT',
-			isUserInCondition: true
+			user: {
+				isInCondition: true
+			}
 		};
 
 		assert.expect( 1 );

@@ -63,6 +63,7 @@
 				"resources/ext.popups/experiment.js",
 				"resources/ext.popups/actions.js",
 				"resources/ext.popups/processLinks.js",
+				"resources/ext.popups/counts.js",
 				"resources/ext.popups/gateway.js",
 				"resources/ext.popups/reducers.js",
 				"resources/ext.popups/changeListener.js",

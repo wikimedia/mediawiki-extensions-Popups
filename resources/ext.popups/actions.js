@@ -44,9 +44,10 @@
 	 *  i.e. `mw.config`
 	 */
 	actions.boot = function ( isUserInCondition, user, generateToken, config ) {
+		var editCount = config.get( 'wgUserEditCount' );
+
 		return {
 			type: types.BOOT,
-			isUserInCondition: isUserInCondition(),
 			sessionToken: user.sessionId(),
 			pageToken: generateToken(),
 			page: {
@@ -54,7 +55,11 @@
 				namespaceID: config.get( 'wgNamespaceNumber' ),
 				id: config.get( 'wgArticleId' )
 			},
-			isUserAnon: user.isAnon()
+			user: {
+				isInCondition: isUserInCondition(),
+				isAnon: user.isAnon(),
+				editCount: editCount
+			}
 		};
 	};
 

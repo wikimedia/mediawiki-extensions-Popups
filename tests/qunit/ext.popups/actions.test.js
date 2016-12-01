@@ -15,7 +15,8 @@
 		config.set( {
 			wgTitle: 'Foo',
 			wgNamespaceNumber: 1,
-			wgArticleId: 2
+			wgArticleId: 2,
+			wgUserEditCount: 3
 		} );
 
 		assert.expect( 1 );
@@ -24,7 +25,6 @@
 			mw.popups.actions.boot( isUserInCondition, stubUser, generateToken, config ),
 			{
 				type: 'BOOT',
-				isUserInCondition: false,
 				sessionToken: '0123456789',
 				pageToken: '9876543210',
 				page: {
@@ -32,7 +32,11 @@
 					namespaceID: 1,
 					id: 2
 				},
-				isUserAnon: true
+				user: {
+					isInCondition: false,
+					isAnon: true,
+					editCount: 3
+				}
 			}
 		);
 	} );
