@@ -107,7 +107,7 @@
 			isUserDwelling: true
 		};
 
-		assert.deepEqual(
+		assert.equal(
 			mw.popups.reducers.preview( state, action ),
 			state,
 			'It should NOOP if the user is dwelling on the preview.'
