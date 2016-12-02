@@ -96,7 +96,8 @@
 					} );
 				}
 
-				/* falls through */
+				return state;
+
 			case mw.popups.actionTypes.PREVIEW_DWELL:
 				return nextState( state, {
 					isUserDwelling: true
