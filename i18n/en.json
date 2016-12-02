@@ -18,5 +18,7 @@
 	"popups-settings-cancel": "Cancel",
 	"popups-settings-help": "You can turn previews back on using a link in the footer of the page.",
 	"popups-settings-enable": "Enable previews",
-	"popups-send-feedback": "Send Feedback (external link)"
+	"popups-send-feedback": "Send Feedback (external link)",
+	"popups-preview-no-preview": "Looks like there isn't a preview for this topic",
+	"popups-preview-footer-read": "Read article"
 }

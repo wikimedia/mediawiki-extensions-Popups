@@ -60,6 +60,16 @@
 	.background-image-svg( "../images/cog.svg", "../images/cog.png" );
 }
 
+.mwe-popups-sade-face-icon {
+	display: block;
+	width: 37px;
+	height: 27px;
+	margin: 16px 16px 0;
+	background-position: center center;
+	background-repeat: no-repeat;
+	.background-image-svg( "../images/sad-face.svg", "../images/sad-face.png" );
+}
+
 .mwe-popups {
 	position: absolute;
 	z-index: 110;
@@ -160,6 +170,24 @@
 
 		footer {
 			width: 270px;
+		}
+	}
+
+	&.mwe-popups-is-empty {
+		.mwe-popups-extract {
+			padding-top: 4px;
+			margin-bottom: 60px;
+		}
+
+		.mwe-popups-read-link {
+			font-weight: bold;
+			font-size: 12px;
+		}
+
+		// When the user dwells on the "Looks like there isn't..." text, which is a
+		// link to the page, then highlight the "Read" link too.
+		.mwe-popups-extract:hover + footer .mwe-popups-read-link {
+			text-decoration: underline;
 		}
 	}
 
