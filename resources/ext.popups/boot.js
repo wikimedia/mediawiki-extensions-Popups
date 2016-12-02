@@ -75,7 +75,16 @@
 	 */
 	mw.popups.reducers.rootReducer = Redux.combineReducers( mw.popups.reducers );
 
-	// FIXME: Needs doc (or at least one comment line)
+	/*
+	 * Initialize the application by:
+	 * 1. Creating the state store
+	 * 2. Binding the actions to such store
+	 * 3. Trigger the boot action to bootstrap the system
+	 * 4. When the page content is ready:
+	 *   - Process the eligible links for page previews
+	 *   - Initialize the renderer
+	 *   - Bind hover and click events to the eligible links to trigger actions
+	 */
 	mw.requestIdleCallback( function () {
 		var compose = Redux.compose,
 			store,
