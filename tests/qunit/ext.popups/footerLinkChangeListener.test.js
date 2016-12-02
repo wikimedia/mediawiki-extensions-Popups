@@ -63,7 +63,7 @@
 
 		// ---
 
-		prevState = $.extend( {}, this.state );
+		prevState = $.extend( true, {}, this.state );
 		this.state.preview.enabled = true;
 
 		this.footerLinkChangeListener( prevState, this.state );
