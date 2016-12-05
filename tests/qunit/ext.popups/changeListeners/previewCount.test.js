@@ -1,6 +1,6 @@
 ( function ( mw, $ ) {
 
-	QUnit.module( 'ext.popups/previewCountChangeListener', {
+	QUnit.module( 'ext.popups/changeListeners/previewCount', {
 		setup: function () {
 			this.userSettings = {
 				setPreviewCount: this.sandbox.spy()

@@ -67,13 +67,13 @@
 				"resources/ext.popups/gateway.js",
 				"resources/ext.popups/reducers.js",
 				"resources/ext.popups/changeListener.js",
-				"resources/ext.popups/footerLinkChangeListener.js",
-				"resources/ext.popups/linkTitleChangeListener.js",
 				"resources/ext.popups/renderer.js",
-				"resources/ext.popups/renderChangeListener.js",
 				"resources/ext.popups/schema.js",
-				"resources/ext.popups/eventLoggingChangeListener.js",
-				"resources/ext.popups/previewCountChangeListener.js",
+				"resources/ext.popups/changeListeners/footerLink.js",
+				"resources/ext.popups/changeListeners/linkTitle.js",
+				"resources/ext.popups/changeListeners/render.js",
+				"resources/ext.popups/changeListeners/eventLogging.js",
+				"resources/ext.popups/changeListeners/previewCount.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {

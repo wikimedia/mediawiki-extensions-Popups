@@ -2,7 +2,7 @@
 
 	// Since mw.popups.changeListeners.render manipulates the DOM, this test is,
 	// by necessity, an integration test.
-	QUnit.module( 'ext.popups/renderChangeListener @integration' );
+	QUnit.module( 'ext.popups/changeListeners/render @integration' );
 
 	QUnit.test(
 		'it should call the showPreview action creator when the preview is shown',

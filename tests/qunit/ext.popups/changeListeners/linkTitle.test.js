@@ -2,7 +2,7 @@
 
 	// Since mw.popups.changeListeners.footerLink manipulates the DOM, this test
 	// is, by necessity, an integration test.
-	QUnit.module( 'ext.popups/footerLinkChangeListener @integration', {
+	QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 		setup: function () {
 			var that = this;
 
