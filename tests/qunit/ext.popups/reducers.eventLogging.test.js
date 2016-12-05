@@ -76,4 +76,35 @@
 		);
 	} );
 
+	QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
+		var state,
+			count = 22,
+			action,
+			expectedCount = count + 1;
+
+		state = {
+			previewCount: count,
+			baseData: {
+				previewCountBucket: counts.getPreviewCountBucket( count )
+			},
+			event: undefined
+		};
+
+		action = {
+			type: 'PREVIEW_SHOW'
+		};
+
+		assert.deepEqual(
+			mw.popups.reducers.eventLogging( state, action ),
+			{
+				previewCount: expectedCount,
+				baseData: {
+					previewCountBucket: counts.getPreviewCountBucket( expectedCount )
+				},
+				event: undefined
+			},
+			'It increments the user\'s preview count and re-buckets that count.'
+		);
+	} );
+
 }( mediaWiki ) );

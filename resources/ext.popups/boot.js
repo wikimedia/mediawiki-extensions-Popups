@@ -30,8 +30,9 @@
 	 * @param {Redux.Store} store
 	 * @param {Object} actions
 	 * @param {mw.eventLog.Schema} schema
+	 * @param {ext.popups.UserSettings} userSettings
 	 */
-	function registerChangeListeners( store, actions, schema ) {
+	function registerChangeListeners( store, actions, schema, userSettings ) {
 
 		// Sugar.
 		var changeListeners = mw.popups.changeListeners,
@@ -41,6 +42,7 @@
 		registerChangeListener( store, changeListeners.linkTitle() );
 		registerChangeListener( store, changeListeners.render( actions ) );
 		registerChangeListener( store, changeListeners.eventLogging( actions, schema ) );
+		registerChangeListener( store, changeListeners.previewCount( userSettings ) );
 	}
 
 	/**
@@ -102,7 +104,7 @@
 			) )
 		);
 		actions = createBoundActions( store );
-		registerChangeListeners( store, actions, schema );
+		registerChangeListeners( store, actions, schema, userSettings );
 
 		actions.boot(
 			isUserInCondition,

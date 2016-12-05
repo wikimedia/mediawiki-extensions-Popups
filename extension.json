@@ -73,6 +73,7 @@
 				"resources/ext.popups/renderChangeListener.js",
 				"resources/ext.popups/schema.js",
 				"resources/ext.popups/eventLoggingChangeListener.js",
+				"resources/ext.popups/previewCountChangeListener.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {

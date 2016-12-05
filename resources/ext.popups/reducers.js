@@ -145,8 +145,11 @@
 	 * @return {Object} The state as a result of processing the action
 	 */
 	mw.popups.reducers.eventLogging = function ( state, action ) {
+		var nextCount;
+
 		if ( state === undefined ) {
 			state = {
+				previewCount: undefined,
 				baseData: {},
 				event: undefined
 			};
@@ -175,6 +178,16 @@
 			case mw.popups.actionTypes.EVENT_LOGGED:
 				return nextState( state, {
 					event: undefined
+				} );
+
+			case mw.popups.actionTypes.PREVIEW_SHOW:
+				nextCount = state.previewCount + 1;
+
+				return nextState( state, {
+					previewCount: nextCount,
+					baseData: nextState( state.baseData, {
+						previewCountBucket: counts.getPreviewCountBucket( nextCount )
+					} )
 				} );
 
 			default:

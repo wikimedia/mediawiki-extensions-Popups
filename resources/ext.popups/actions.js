@@ -15,6 +15,7 @@
 			PREVIEW_ABANDON_END: 'PREVIEW_ABANDON_END',
 			PREVIEW_ANIMATING: 'PREVIEW_ANIMATING',
 			PREVIEW_INTERACTIVE: 'PREVIEW_INTERACTIVE',
+			PREVIEW_SHOW: 'PREVIEW_SHOW',
 			PREVIEW_CLICK: 'PREVIEW_CLICK',
 			COG_CLICK: 'COG_CLICK',
 			SETTINGS_DIALOG_RENDERED: 'SETTINGS_DIALOG_RENDERED',
@@ -175,7 +176,7 @@
 	};
 
 	/**
-	 * Represents the user dwelling on a preivew with their mouse.
+	 * Represents the user dwelling on a preview with their mouse.
 	 *
 	 * @return {Object}
 	 */
@@ -203,6 +204,20 @@
 						type: types.PREVIEW_ABANDON_END
 					} );
 				} );
+		};
+	};
+
+	/**
+	 * Represents a preview being shown to the user.
+	 *
+	 * This action is dispatched by the `mw.popups.changeListeners.render` change
+	 * listener.
+	 *
+	 * @return {Object}
+	 */
+	actions.previewShow = function () {
+		return {
+			type: types.PREVIEW_SHOW
 		};
 	};
 

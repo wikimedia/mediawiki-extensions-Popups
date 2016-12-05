@@ -22,6 +22,7 @@
 					isUserDwelling: false
 				},
 				eventLogging: {
+					previewCount: undefined,
 					baseData: {},
 					event: undefined
 				},
