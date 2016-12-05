@@ -6,10 +6,10 @@
 	 *
 	 * N.B. OO.copy doesn't copy Element instances, whereas $.extend does.
 	 * However, OO.copy does copy properties whose values are undefined or null,
-	 * whereas $.extend doesn't. Since the state tree contains an Element
-	 * instance - the preview.activeLink property - we need to use $.extend. But
-	 * to copy undefined/null into the state we need to manually iterate over
-	 * updates and check with hasOwnProperty to copy over to the new state.
+	 * whereas $.extend doesn't. Since the state tree contains an Element instance
+	 * - the preview.activeLink property - and we want to copy undefined/null into
+	 * the state we need to manually iterate over updates and check with
+	 * hasOwnProperty to copy over to the new state.
 	 *
 	 * In [change listeners](/doc/change_listeners.md), for example, we talk about
 	 * the previous state and the current state (the `prevState` and `state`
@@ -22,8 +22,14 @@
 	 * @return {Object}
 	 */
 	function nextState( state, updates ) {
-		var result = $.extend( {}, state ),
+		var result = {},
 			key;
+
+		for ( key in state ) {
+			if ( state.hasOwnProperty( key ) && !updates.hasOwnProperty( key ) ) {
+				result[key] = state[key];
+			}
+		}
 
 		for ( key in updates ) {
 			if ( updates.hasOwnProperty( key ) ) {
