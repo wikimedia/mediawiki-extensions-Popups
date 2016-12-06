@@ -126,7 +126,7 @@
 
 			previewLinks
 				.on( 'mouseover focus', function ( event ) {
-					actions.linkDwell( this, event, gateway );
+					actions.linkDwell( this, event, gateway, generateToken );
 				} )
 				.on( 'mouseout blur', function () {
 					actions.linkAbandon( this );

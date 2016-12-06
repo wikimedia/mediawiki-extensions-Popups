@@ -24,7 +24,8 @@
 				eventLogging: {
 					previewCount: undefined,
 					baseData: {},
-					event: undefined
+					event: undefined,
+					interaction: undefined
 				},
 				renderer: {
 					isAnimating: false,

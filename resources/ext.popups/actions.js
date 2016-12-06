@@ -26,6 +26,20 @@
 		ABANDON_END_DELAY = 300; // ms.
 
 	/**
+	 * Mixes in timing information to an action.
+	 *
+	 * Warning: the `baseAction` parameter is modified and returned.
+	 *
+	 * @param {Object} baseAction
+	 * @return {Object}
+	 */
+	function timedAction( baseAction ) {
+		baseAction.timestamp = mw.now();
+
+		return baseAction;
+	}
+
+	/**
 	 * Represents Page Previews booting.
 	 *
 	 * When a Redux store is created, the `@@INIT` action is immediately
@@ -114,16 +128,19 @@
 	 * @param {Element} el
 	 * @param {Event} event
 	 * @param {ext.popups.Gateway} gateway
+	 * @param {Function} generateToken
 	 * @return {Redux.Thunk}
 	 */
-	actions.linkDwell = function ( el, event, gateway ) {
+	actions.linkDwell = function ( el, event, gateway, generateToken ) {
+		var interactionToken = generateToken();
+
 		return function ( dispatch, getState ) {
-			dispatch( {
+			dispatch( timedAction( {
 				type: types.LINK_DWELL,
 				el: el,
 				event: event,
-				interactionStarted: mw.now()
-			} );
+				interactionToken: interactionToken
+			} ) );
 
 			mw.popups.wait( FETCH_START_DELAY )
 				.then( function () {
@@ -146,10 +163,10 @@
 	 */
 	actions.linkAbandon = function ( el ) {
 		return function ( dispatch ) {
-			dispatch( {
+			dispatch( timedAction( {
 				type: types.LINK_ABANDON_START,
 				el: el
-			} );
+			} ) );
 
 			mw.popups.wait( ABANDON_END_DELAY )
 				.then( function () {
@@ -169,10 +186,10 @@
 	 * @return {Object}
 	 */
 	actions.linkClick = function ( el ) {
-		return {
+		return timedAction( {
 			type: 'LINK_CLICK',
 			el: el
-		};
+		} );
 	};
 
 	/**
@@ -200,9 +217,9 @@
 
 			mw.popups.wait( ABANDON_END_DELAY )
 				.then( function () {
-					dispatch( {
+					dispatch( timedAction( {
 						type: types.PREVIEW_ABANDON_END
-					} );
+					} ) );
 				} );
 		};
 	};
@@ -216,9 +233,9 @@
 	 * @return {Object}
 	 */
 	actions.previewShow = function () {
-		return {
+		return timedAction( {
 			type: types.PREVIEW_SHOW
-		};
+		} );
 	};
 
 	/**

@@ -50,7 +50,8 @@
 				},
 				event: {
 					action: 'pageLoaded'
-				}
+				},
+				interaction: undefined
 			}
 		);
 	} );
@@ -104,6 +105,33 @@
 				event: undefined
 			},
 			'It increments the user\'s preview count and re-buckets that count.'
+		);
+	} );
+
+	QUnit.module( 'ext.popups/reducers#eventLogging @integration' );
+
+	QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
+		var state,
+			action;
+
+		state = {
+			interaction: {}
+		};
+
+		action = {
+			type: 'LINK_DWELL',
+			interactionToken: '0987654321',
+			timestamp: mw.now()
+		};
+
+		assert.deepEqual(
+			mw.popups.reducers.eventLogging( state, action ),
+			{
+				interaction: {
+					token: action.interactionToken,
+					started: action.timestamp
+				}
+			}
 		);
 	} );
 

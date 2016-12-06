@@ -1,13 +1,14 @@
 ( function ( mw, $ ) {
 
+	function generateToken() {
+		return '9876543210';
+	}
+
 	QUnit.module( 'ext.popups/actions' );
 
 	QUnit.test( '#boot', function ( assert ) {
 		var isUserInCondition = function () {
 				return false;
-			},
-			generateToken = function () {
-				return '9876543210';
 			},
 			config = new mw.Map(),
 			stubUser = mw.popups.tests.stubs.createStubUser( /* isAnon = */ true ),
@@ -104,14 +105,18 @@
 
 		this.sandbox.stub( mw, 'now' ).returns( new Date() );
 
-		mw.popups.actions.linkDwell( el, event, gateway )( dispatch, this.getState );
+		mw.popups.actions.linkDwell( el, event, gateway, generateToken )(
+			dispatch,
+			this.getState
+		);
 
-		assert.ok( dispatch.calledWith( {
+		assert.deepEqual( dispatch.getCall( 0 ).args[0], {
 			type: 'LINK_DWELL',
 			el: el,
 			event: event,
-			interactionStarted: mw.now()
-		} ) );
+			interactionToken: '9876543210',
+			timestamp: mw.now()
+		} );
 
 		// Stub the state tree being updated.
 		this.state.preview = {
@@ -157,7 +162,8 @@
 	QUnit.test( '#linkDwell doesn\'t dispatch under certain conditions', function ( assert ) {
 		var cases,
 			done,
-			that = this;
+			that = this,
+			event = {};
 
 		cases = [
 			{
@@ -174,7 +180,10 @@
 		$.each( cases, function ( testCase ) {
 			var dispatch = that.sandbox.spy();
 
-			mw.popups.actions.linkDwell( this.el /*, gateway */ )( dispatch, that.getState );
+			mw.popups.actions.linkDwell( that.el, event, /* gateway = */ null, generateToken )(
+				dispatch,
+				that.getState
+			);
 
 			that.state.preview = testCase;
 
@@ -200,11 +209,14 @@
 			dispatch = that.sandbox.spy(),
 			done = assert.async();
 
+		this.sandbox.stub( mw, 'now' ).returns( new Date() );
+
 		mw.popups.actions.linkAbandon( that.el )( dispatch );
 
 		assert.ok( dispatch.calledWith( {
 			type: 'LINK_ABANDON_START',
-			el: that.el
+			el: that.el,
+			timestamp: mw.now()
 		} ) );
 
 		// ---

@@ -151,6 +151,7 @@
 			state = {
 				previewCount: undefined,
 				baseData: {},
+				interaction: undefined,
 				event: undefined
 			};
 		}
@@ -188,6 +189,14 @@
 					baseData: nextState( state.baseData, {
 						previewCountBucket: counts.getPreviewCountBucket( nextCount )
 					} )
+				} );
+
+			case mw.popups.actionTypes.LINK_DWELL:
+				return nextState( state, {
+					interaction: {
+						token: action.interactionToken,
+						started: action.timestamp
+					}
 				} );
 
 			default:
