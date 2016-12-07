@@ -199,6 +199,15 @@
 					}
 				} );
 
+			case mw.popups.actionTypes.LINK_CLICK:
+				return nextState( state, {
+					event: {
+						action: 'opened',
+						linkInteractionToken: state.interaction.token,
+						totalInteractionTime: Math.round( action.timestamp - state.interaction.started )
+					}
+				} );
+
 			default:
 				return state;
 		}

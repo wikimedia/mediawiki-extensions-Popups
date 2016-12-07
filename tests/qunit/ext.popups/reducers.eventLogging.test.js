@@ -135,4 +135,34 @@
 		);
 	} );
 
+	QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
+		var state,
+			now = mw.now();
+
+		state = {
+			interaction: undefined
+		};
+
+		state = mw.popups.reducers.eventLogging( state, {
+			type: 'LINK_DWELL',
+			interactionToken: '0987654321',
+			timestamp: now
+		} );
+
+		state = mw.popups.reducers.eventLogging( state, {
+			type: 'LINK_CLICK',
+			timestamp: now + 250.25
+		} );
+
+		assert.deepEqual(
+			state.event,
+			{
+				action: 'opened',
+				linkInteractionToken: '0987654321',
+				totalInteractionTime: 250
+			},
+			'The event is enqueued and the totalInteractionProperty is an integer.'
+		);
+	} );
+
 }( mediaWiki ) );
