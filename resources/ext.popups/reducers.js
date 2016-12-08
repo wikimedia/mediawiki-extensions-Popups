@@ -188,6 +188,9 @@
 					previewCount: nextCount,
 					baseData: nextState( state.baseData, {
 						previewCountBucket: counts.getPreviewCountBucket( nextCount )
+					} ),
+					interaction: nextState( state.interaction, {
+						timeToPreviewShow: action.timestamp - state.interaction.started
 					} )
 				} );
 
@@ -205,6 +208,24 @@
 						action: 'opened',
 						linkInteractionToken: state.interaction.token,
 						totalInteractionTime: Math.round( action.timestamp - state.interaction.started )
+					}
+				} );
+
+			case mw.popups.actionTypes.LINK_ABANDON_START:
+			case mw.popups.actionTypes.PREVIEW_ABANDON_START:
+				return nextState( state, {
+					interaction: nextState( state.interaction, {
+						finished: action.timestamp
+					} )
+				} );
+
+			case mw.popups.actionTypes.LINK_ABANDON_END:
+			case mw.popups.actionTypes.PREVIEW_ABANDON_END:
+				return nextState( state, {
+					event: {
+						action: state.interaction.timeToPreviewShow ? 'dismissed' : 'dwelledButAbandoned',
+						linkInteractionToken: state.interaction.token,
+						totalInteractionTime: Math.round( state.interaction.finished - state.interaction.started )
 					}
 				} );
 

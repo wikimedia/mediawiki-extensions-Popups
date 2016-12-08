@@ -80,7 +80,6 @@
 	QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
 		var state,
 			count = 22,
-			action,
 			expectedCount = count + 1;
 
 		state = {
@@ -88,23 +87,28 @@
 			baseData: {
 				previewCountBucket: counts.getPreviewCountBucket( count )
 			},
-			event: undefined
+			event: undefined,
+
+			// state.interaction.started is used in this part of the reducer.
+			interaction: {}
 		};
 
-		action = {
+		state = mw.popups.reducers.eventLogging( state, {
 			type: 'PREVIEW_SHOW'
-		};
+		} );
+
+		assert.equal(
+			state.previewCount,
+			expectedCount,
+			'It updates the user\'s preview count.'
+		);
 
 		assert.deepEqual(
-			mw.popups.reducers.eventLogging( state, action ),
+			state.baseData,
 			{
-				previewCount: expectedCount,
-				baseData: {
-					previewCountBucket: counts.getPreviewCountBucket( expectedCount )
-				},
-				event: undefined
+				previewCountBucket: counts.getPreviewCountBucket( expectedCount )
 			},
-			'It increments the user\'s preview count and re-buckets that count.'
+			'It re-buckets the user\'s preview count.'
 		);
 	} );
 
@@ -115,7 +119,7 @@
 			action;
 
 		state = {
-			interaction: {}
+			interaction: undefined
 		};
 
 		action = {
@@ -163,6 +167,32 @@
 			},
 			'The event is enqueued and the totalInteractionProperty is an integer.'
 		);
+	} );
+
+	QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interaction', function ( assert ) {
+		var state,
+			now = mw.now();
+
+		state = {
+			interaction: undefined
+		};
+
+		state = mw.popups.reducers.eventLogging( state, {
+			type: 'LINK_DWELL',
+			interactionToken: '0987654321',
+			timestamp: now
+		} );
+
+		state = mw.popups.reducers.eventLogging( state, {
+			type: 'PREVIEW_SHOW',
+			timestamp: now + 500
+		} );
+
+		assert.deepEqual( state.interaction, {
+			token: '0987654321',
+			started: now,
+			timeToPreviewShow: 500
+		} );
 	} );
 
 }( mediaWiki ) );
