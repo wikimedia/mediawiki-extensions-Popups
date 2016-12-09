@@ -146,7 +146,7 @@
 				}
 				// Is titleText in a content namespace?
 				title = mw.Title.newFromText( titleText );
-				return title && ( $.inArray( title.namespace, contentNamespaces ) >= 0 );
+				return title && contentNamespaces.indexOf( title.namespace ) !== -1;
 			} );
 	};
 
