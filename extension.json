@@ -107,6 +107,7 @@
 				"mediawiki.jqueryMsg",
 				"mediawiki.ui.button",
 				"mediawiki.ui.icon",
+				"mediawiki.Uri",
 				"moment",
 				"jquery.hidpi",
 				"ext.popups.lib"
