@@ -187,7 +187,7 @@
 	 */
 	actions.linkClick = function ( el ) {
 		return timedAction( {
-			type: 'LINK_CLICK',
+			type: types.LINK_CLICK,
 			el: el
 		} );
 	};
