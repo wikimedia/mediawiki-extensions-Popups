@@ -13,11 +13,7 @@
 			PREVIEW_DWELL: 'PREVIEW_DWELL',
 			PREVIEW_ABANDON_START: 'PREVIEW_ABANDON_START',
 			PREVIEW_ABANDON_END: 'PREVIEW_ABANDON_END',
-			PREVIEW_ANIMATING: 'PREVIEW_ANIMATING',
-			PREVIEW_INTERACTIVE: 'PREVIEW_INTERACTIVE',
-			PREVIEW_CLICK: 'PREVIEW_CLICK',
 			COG_CLICK: 'COG_CLICK',
-			SETTINGS_DIALOG_RENDERED: 'SETTINGS_DIALOG_RENDERED',
 			SETTINGS_DIALOG_CLOSED: 'SETTINGS_DIALOG_CLOSED'
 		},
 		FETCH_START_DELAY = 500, // ms.
@@ -146,7 +142,7 @@
 	 */
 	actions.linkClick = function ( el ) {
 		return {
-			type: 'LINK_CLICK',
+			type: types.LINK_CLICK,
 			el: el
 		};
 	};
@@ -191,7 +187,18 @@
 	 */
 	actions.showSettings = function () {
 		return {
-			type: 'COG_CLICK'
+			type: types.COG_CLICK
+		};
+	};
+
+	/**
+	 * Represents the user closing the settings dialog and saving their settings.
+	 *
+	 * @return {Object}
+	 */
+	actions.settingsDialogClosed = function () {
+		return {
+			type: types.SETTINGS_DIALOG_CLOSED
 		};
 	};
 

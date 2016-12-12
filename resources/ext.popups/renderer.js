@@ -267,6 +267,7 @@
 		layoutPreview( preview, layout );
 
 		preview.el.hover( boundActions.previewDwell, boundActions.previewAbandon );
+		preview.el.find( '.mwe-popups-settings-icon' ).click( boundActions.showSettings );
 
 		preview.el.show();
 

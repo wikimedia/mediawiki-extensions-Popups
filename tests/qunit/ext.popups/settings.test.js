@@ -1,8 +1,27 @@
-// render, renderOption, and addFooterLink are already covered in the browser tests
-
 ( function ( $, mw ) {
-	QUnit.module( 'ext.popups.settings' );
+	QUnit.module( 'ext.popups/settingsDialog' );
 
+	QUnit.test( '#render', function ( assert ) {
+		var boundActions = {
+			settingsDialogClosed: function () {}
+		},
+			expected = {
+				show: function () {},
+				hide: function () {}
+			},
+			result = mw.popups.settings.render( boundActions );
+
+		QUnit.expect( 1 );
+
+		// Specifically NOT a deep equal. We only care about the structure in this test.
+		assert.propEqual(
+			result,
+			expected,
+			'It should return an object with show and hide functions'
+		);
+	} );
+
+	/*
 	QUnit.test( 'save', function ( assert ) {
 		var jQueryInit = this.sandbox.stub( jQuery.fn, 'init' ),
 			radioButtonValue;
@@ -80,4 +99,5 @@
 			'Settings dialog is not visible when settings are closed.'
 		);
 	} );
+	*/
 } )( jQuery, mediaWiki );
