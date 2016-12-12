@@ -80,7 +80,7 @@
 			"templates": {
 				"preview.mustache": "resources/ext.popups/templates/preview.mustache",
 				"preview-empty.mustache": "resources/ext.popups/templates/preview-empty.mustache",
-				"settings.mustache": "resources/ext.popups.desktop/settings.mustache"
+				"settings.mustache": "resources/ext.popups/templates/settings.mustache"
 			},
 			"styles": [
 				"resources/ext.popups/styles/ext.popups.core.less",
