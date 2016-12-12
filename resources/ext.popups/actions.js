@@ -255,9 +255,21 @@
 	 *
 	 * @return {Object}
 	 */
-	actions.settingsDialogClosed = function () {
+	actions.hideSettings = function () {
 		return {
 			type: types.SETTINGS_HIDE
+		};
+	};
+
+	/**
+	 * Represents the user saving their settings.
+	 *
+	 * @return {Object}
+	 */
+	actions.saveSettings = function () {
+		return function ( dispatch ) {
+			// ...
+			return dispatch( actions.hideSettings() );
 		};
 	};
 

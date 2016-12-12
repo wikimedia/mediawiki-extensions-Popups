@@ -8,15 +8,22 @@
 	 * @return {ext.popups.ChangeListener}
 	 */
 	mw.popups.changeListeners.settings = function ( boundActions, render ) {
-		var settings;
+		var settings,
+			shown = false;
 
 		return function ( prevState, state ) {
-			if ( state.settings.shouldShow && !settings ) {
-				settings = render( boundActions );
+			if ( state.settings.shouldShow && !shown ) {
+				// Lazily instantiate the settings UI
+				if ( !settings ) {
+					settings = render( boundActions );
+					settings.appendTo( document.body );
+				}
+
 				settings.show();
+				shown = true;
 			} else if ( !state.settings.shouldShow && settings ) {
 				settings.hide();
-				settings = undefined;
+				shown = false;
 			}
 		};
 	};

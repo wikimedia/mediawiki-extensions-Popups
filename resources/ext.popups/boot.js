@@ -31,8 +31,9 @@
 	 * @param {Object} actions
 	 * @param {mw.eventLog.Schema} schema
 	 * @param {ext.popups.UserSettings} userSettings
+	 * @param {Function} settingsDialog
 	 */
-	function registerChangeListeners( store, actions, schema, userSettings ) {
+	function registerChangeListeners( store, actions, schema, userSettings, settingsDialog ) {
 
 		// Sugar.
 		var changeListeners = mw.popups.changeListeners,
@@ -43,6 +44,7 @@
 		registerChangeListener( store, changeListeners.render( actions ) );
 		registerChangeListener( store, changeListeners.eventLogging( actions, schema ) );
 		registerChangeListener( store, changeListeners.previewCount( userSettings ) );
+		registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
 	}
 
 	/**
@@ -85,10 +87,12 @@
 			generateToken = mw.user.generateRandomSessionId,
 			gateway = createGateway(),
 			userSettings,
+			settingsDialog,
 			isUserInCondition,
 			schema;
 
 		userSettings = mw.popups.createUserSettings( mw.storage, mw.user );
+		settingsDialog = mw.popups.createSettingsDialogRenderer();
 		isUserInCondition = mw.popups.createExperiment( mw.config, mw.user, userSettings );
 		schema = mw.popups.createSchema( mw.config, window );
 
@@ -104,7 +108,7 @@
 			) )
 		);
 		actions = createBoundActions( store );
-		registerChangeListeners( store, actions, schema, userSettings );
+		registerChangeListeners( store, actions, schema, userSettings, settingsDialog );
 
 		actions.boot(
 			isUserInCondition,
