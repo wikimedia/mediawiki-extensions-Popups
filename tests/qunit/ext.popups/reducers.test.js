@@ -25,8 +25,10 @@
 					shouldShow: false,
 					isUserDwelling: false
 				},
-				settings: {
-					shouldShow: false
+				renderer: {
+					isAnimating: false,
+					isInteractive: false,
+					showSettings: false
 				}
 			},
 			'It should initialize the state by default'
@@ -183,27 +185,17 @@
 		);
 	} );
 
-	QUnit.test( '#settings: COG_CLICK', function ( assert ) {
+	QUnit.test( '#renderer', function ( assert ) {
 		assert.expect( 1 );
 
 		assert.deepEqual(
-			mw.popups.reducers.settings( {}, { type: 'COG_CLICK' } ),
+			mw.popups.reducers.renderer( {}, { type: 'PREVIEW_ANIMATING' } ),
 			{
-				shouldShow: true
+				isAnimating: true,
+				isInteractive: false,
+				showSettings: false
 			},
-			'It should mark the settings dialog as ready to be shown'
-		);
-	} );
-
-	QUnit.test( '#settings: SETTINGS_DIALOG_CLOSED', function ( assert ) {
-		assert.expect( 1 );
-
-		assert.deepEqual(
-			mw.popups.reducers.settings( {}, { type: 'SETTINGS_DIALOG_CLOSED' } ),
-			{
-				shouldShow: false
-			},
-			'It should mark the settings dialog as ready to be closed'
+			'It should set isAnimating to true on the PREVIEW_ANIMATING action'
 		);
 	} );
 

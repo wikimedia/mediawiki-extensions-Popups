@@ -57,10 +57,7 @@
 		return function ( prevState, state ) {
 			if ( $footerLink === undefined ) {
 				$footerLink = createFooterLink();
-				$footerLink.click( function ( e ) {
-					e.preventDefault();
-					boundActions.showSettings();
-				} );
+				$footerLink.click( boundActions.showSettings );
 			}
 
 			if ( state.preview.enabled ) {

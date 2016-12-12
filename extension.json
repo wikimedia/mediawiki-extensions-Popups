@@ -70,19 +70,17 @@
 				"resources/ext.popups/linkTitleChangeListener.js",
 				"resources/ext.popups/renderer.js",
 				"resources/ext.popups/renderChangeListener.js",
-				"resources/ext.popups/settingsChangeListener.js",
-				"resources/ext.popups/settingsDialog.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {
 				"preview.mustache": "resources/ext.popups/templates/preview.mustache",
 				"preview-empty.mustache": "resources/ext.popups/templates/preview-empty.mustache",
-				"settings.mustache": "resources/ext.popups/templates/settings.mustache"
+				"settings.mustache": "resources/ext.popups.desktop/settings.mustache"
 			},
 			"styles": [
 				"resources/ext.popups/styles/ext.popups.core.less",
 				"resources/ext.popups.desktop/ext.popups.animation.less",
-				"resources/ext.popups/styles/ext.popups.settings.less"
+				"resources/ext.popups.desktop/ext.popups.settings.less"
 			],
 			"messages": [
 				"popups-last-edited",

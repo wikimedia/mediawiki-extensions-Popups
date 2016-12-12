@@ -1,4 +1,4 @@
-( function ( mw ) {
+( function ( mw, $ ) {
 	mw.popups.reducers = {};
 
 	/**
@@ -131,25 +131,61 @@
 	};
 
 	/**
+	 * Reducer for actions that modify the state of the view
+	 *
+	 * @param {Object} state before action
+	 * @param {Object} action Redux action that modified state.
+	 *  Must have `type` property.
+	 * @return {Object} state after action
 	 */
-	mw.popups.reducers.settings = function ( state, action ) {
+	mw.popups.reducers.renderer = function ( state, action ) {
 		if ( state === undefined ) {
 			state = {
-				shouldShow: false
+				isAnimating: false,
+				isInteractive: false,
+				showSettings: false
 			};
 		}
 
 		switch ( action.type ) {
+			case mw.popups.actionTypes.PREVIEW_ANIMATING:
+				return $.extend( {}, state, {
+					isAnimating: true,
+					isInteractive: false,
+					showSettings: false
+				} );
+			case mw.popups.actionTypes.PREVIEW_INTERACTIVE:
+				return $.extend( OO.copy( state ), {
+					isAnimating: false,
+					isInteractive: true,
+					showSettings: false
+				} );
+			case mw.popups.actionTypes.PREVIEW_CLICK:
+				return $.extend( OO.copy( state ), {
+					isAnimating: false,
+					isInteractive: false,
+					showSettings: false
+				} );
 			case mw.popups.actionTypes.COG_CLICK:
-				return nextState( state, {
-					shouldShow: true
+				return $.extend( OO.copy( state ), {
+					isAnimating: true,
+					isInteractive: false,
+					showSettings: true
+				} );
+			case mw.popups.actionTypes.SETTINGS_DIALOG_INTERACTIVE:
+				return $.extend( OO.copy( state ), {
+					isAnimating: false,
+					isInteractive: true,
+					showSettings: true
 				} );
 			case mw.popups.actionTypes.SETTINGS_DIALOG_CLOSED:
-				return nextState( state, {
-					shouldShow: false
+				return $.extend( OO.copy( state ), {
+					isAnimating: false,
+					isInteractive: false,
+					showSettings: false
 				} );
 			default:
 				return state;
 		}
 	};
-}( mediaWiki ) );
+}( mediaWiki, jQuery ) );
