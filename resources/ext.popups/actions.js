@@ -17,9 +17,9 @@
 			PREVIEW_INTERACTIVE: 'PREVIEW_INTERACTIVE',
 			PREVIEW_SHOW: 'PREVIEW_SHOW',
 			PREVIEW_CLICK: 'PREVIEW_CLICK',
-			COG_CLICK: 'COG_CLICK',
 			SETTINGS_DIALOG_RENDERED: 'SETTINGS_DIALOG_RENDERED',
-			SETTINGS_DIALOG_CLOSED: 'SETTINGS_DIALOG_CLOSED',
+			SETTINGS_SHOW: 'SETTINGS_SHOW',
+			SETTINGS_HIDE: 'SETTINGS_HIDE',
 			EVENT_LOGGED: 'EVENT_LOGGED'
 		},
 		FETCH_START_DELAY = 500, // ms.
@@ -246,7 +246,18 @@
 	 */
 	actions.showSettings = function () {
 		return {
-			type: 'COG_CLICK'
+			type: types.SETTINGS_SHOW
+		};
+	};
+
+	/**
+	 * Represents the user closing the settings dialog and saving their settings.
+	 *
+	 * @return {Object}
+	 */
+	actions.settingsDialogClosed = function () {
+		return {
+			type: types.SETTINGS_HIDE
 		};
 	};
 
