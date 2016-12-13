@@ -27,10 +27,8 @@
 					event: undefined,
 					interaction: undefined
 				},
-				renderer: {
-					isAnimating: false,
-					isInteractive: false,
-					showSettings: false
+				settings: {
+					shouldShow: false
 				}
 			},
 			'It should initialize the state by default'
@@ -179,17 +177,27 @@
 		);
 	} );
 
-	QUnit.test( '#renderer', function ( assert ) {
+	QUnit.test( '#settings: SETTINGS_SHOW', function ( assert ) {
 		assert.expect( 1 );
 
 		assert.deepEqual(
-			mw.popups.reducers.renderer( {}, { type: 'PREVIEW_ANIMATING' } ),
+			mw.popups.reducers.settings( {}, { type: 'SETTINGS_SHOW' } ),
 			{
-				isAnimating: true,
-				isInteractive: false,
-				showSettings: false
+				shouldShow: true
 			},
-			'It should set isAnimating to true on the PREVIEW_ANIMATING action'
+			'It should mark the settings dialog as ready to be shown'
+		);
+	} );
+
+	QUnit.test( '#settings: SETTINGS_HIDE', function ( assert ) {
+		assert.expect( 1 );
+
+		assert.deepEqual(
+			mw.popups.reducers.settings( {}, { type: 'SETTINGS_HIDE' } ),
+			{
+				shouldShow: false
+			},
+			'It should mark the settings dialog as ready to be closed'
 		);
 	} );
 
