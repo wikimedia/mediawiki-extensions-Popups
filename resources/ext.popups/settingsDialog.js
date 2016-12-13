@@ -13,10 +13,10 @@
 		 */
 		var $dialog,
 			/**
-			* Cached settings overlay
-			*
-			* @type {jQuery}
-			*/
+			 * Cached settings overlay
+			 *
+			 * @type {jQuery}
+			 */
 			$overlay;
 
 		/**
