@@ -4,6 +4,7 @@
 		setup: function () {
 			this.render = this.sandbox.stub();
 			this.rendered = {
+				appendTo: this.sandbox.spy(),
 				show: this.sandbox.spy(),
 				hide: this.sandbox.spy()
 			};
@@ -33,6 +34,7 @@
 		this.settings( this.defaultState, this.showState );
 
 		assert.ok( this.render.calledWith( 'actions' ), 'The renderer should be called with the actions' );
+		assert.ok( this.rendered.appendTo.called, 'The rendered object should be in the DOM' );
 		assert.ok( this.rendered.show.called, 'The rendered object should be showed' );
 	} );
 
@@ -42,6 +44,7 @@
 		this.settings( this.showState, this.showState );
 
 		assert.ok( this.render.calledOnce, 'The renderer should be called only the first time' );
+		assert.ok( this.rendered.appendTo.calledOnce, 'The rendered object should be in the DOM' );
 		assert.ok( this.rendered.show.calledOnce, 'The rendered object should be showed just once' );
 		assert.notOk( this.rendered.hide.called, 'The rendered object should not be hidden' );
 	} );
