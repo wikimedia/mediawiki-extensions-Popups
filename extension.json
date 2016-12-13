@@ -84,7 +84,7 @@
 			"styles": [
 				"resources/ext.popups/styles/ext.popups.core.less",
 				"resources/ext.popups.desktop/ext.popups.animation.less",
-				"resources/ext.popups.desktop/ext.popups.settings.less"
+				"resources/ext.popups/styles/ext.popups.settings.less"
 			],
 			"messages": [
 				"popups-last-edited",
