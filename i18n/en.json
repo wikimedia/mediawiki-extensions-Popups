@@ -20,5 +20,9 @@
 	"popups-settings-enable": "Enable previews",
 	"popups-send-feedback": "Send Feedback (external link)",
 	"popups-preview-no-preview": "Looks like there isn't a preview for this topic",
-	"popups-preview-footer-read": "Read article"
+	"popups-preview-footer-read": "Read article",
+	"prefs-reading": "Reading preferences",
+	"popups-prefs-optin-title": "Page previews\n\n<em>Get quick previews of a topic while reading an article</em>",
+	"popups-prefs-optin-enabled-label": "Enable previews",
+	"popups-prefs-optin-disabled-label": "Disable"
 }
