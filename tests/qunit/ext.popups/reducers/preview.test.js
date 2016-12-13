@@ -1,41 +1,29 @@
 ( function ( mw, $ ) {
 
-	QUnit.module( 'ext.popups/reducers', {
+	QUnit.module( 'ext.popups/reducers#preview', {
 		setup: function () {
 			this.el = $( '<a>' );
 		}
 	} );
 
-	QUnit.test( '#rootReducer', function ( assert ) {
-		var state = mw.popups.reducers.rootReducer( undefined, { type: '@@INIT' } );
+	QUnit.test( '@@INIT', function ( assert ) {
+		var state = mw.popups.reducers.preview( undefined, { type: '@@INIT' } );
 
 		assert.expect( 1 );
 
 		assert.deepEqual(
 			state,
 			{
-				preview: {
-					enabled: undefined,
-					activeLink: undefined,
-					activeEvent: undefined,
-					shouldShow: false,
-					isUserDwelling: false
-				},
-				eventLogging: {
-					previewCount: undefined,
-					baseData: {},
-					event: undefined,
-					interaction: undefined
-				},
-				settings: {
-					shouldShow: false
-				}
-			},
-			'It should initialize the state by default'
+				enabled: undefined,
+				activeLink: undefined,
+				activeEvent: undefined,
+				shouldShow: false,
+				isUserDwelling: false
+			}
 		);
 	} );
 
-	QUnit.test( '#preview: BOOT', function ( assert ) {
+	QUnit.test( 'BOOT', function ( assert ) {
 		var action = {
 			type: 'BOOT',
 			user: {
@@ -54,7 +42,7 @@
 		);
 	} );
 
-	QUnit.test( '#preview: LINK_DWELL', function ( assert ) {
+	QUnit.test( 'LINK_DWELL', function ( assert ) {
 		var action = {
 			type: 'LINK_DWELL',
 			el: this.el,
@@ -72,7 +60,7 @@
 		);
 	} );
 
-	QUnit.test( '#preview: LINK_ABANDON_END', function ( assert ) {
+	QUnit.test( 'LINK_ABANDON_END', function ( assert ) {
 		var action = {
 				type: 'LINK_ABANDON_END',
 				el: this.el
@@ -106,7 +94,7 @@
 		);
 	} );
 
-	QUnit.test( '#preview: FETCH_END', function ( assert ) {
+	QUnit.test( 'FETCH_END', function ( assert ) {
 		var state = {
 				activeLink: this.el
 			},
@@ -147,7 +135,7 @@
 		);
 	} );
 
-	QUnit.test( '#preview: PREVIEW_DWELL', function ( assert ) {
+	QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
 		var action = {
 			type: 'PREVIEW_DWELL'
 		};
@@ -163,7 +151,7 @@
 		);
 	} );
 
-	QUnit.test( '#preview: PREVIEW_ABANDON_START', function ( assert ) {
+	QUnit.test( 'PREVIEW_ABANDON_START', function ( assert ) {
 		var action = {
 			type: 'PREVIEW_ABANDON_START'
 		};
@@ -177,29 +165,4 @@
 		);
 	} );
 
-	QUnit.test( '#settings: SETTINGS_SHOW', function ( assert ) {
-		assert.expect( 1 );
-
-		assert.deepEqual(
-			mw.popups.reducers.settings( {}, { type: 'SETTINGS_SHOW' } ),
-			{
-				shouldShow: true
-			},
-			'It should mark the settings dialog as ready to be shown'
-		);
-	} );
-
-	QUnit.test( '#settings: SETTINGS_HIDE', function ( assert ) {
-		assert.expect( 1 );
-
-		assert.deepEqual(
-			mw.popups.reducers.settings( {}, { type: 'SETTINGS_HIDE' } ),
-			{
-				shouldShow: false
-			},
-			'It should mark the settings dialog as ready to be closed'
-		);
-	} );
-
 }( mediaWiki, jQuery ) );
-

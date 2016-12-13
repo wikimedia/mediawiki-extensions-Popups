@@ -59,14 +59,13 @@
 	}
 
 	/**
-	 * Root reducer for all actions
+	 * Creates the reducer for all actions.
 	 *
-	 * @param {Object} global state before action
-	 * @param {Object} action Redux action that modified state.
-	 *  Must have `type` property.
-	 * @return {Object} global state after action
+	 * @return {Redux.Reducer}
 	 */
-	mw.popups.reducers.rootReducer = Redux.combineReducers( mw.popups.reducers );
+	function createRootReducer() {
+		return Redux.combineReducers( mw.popups.reducers );
+	}
 
 	/*
 	 * Initialize the application by:
@@ -102,7 +101,7 @@
 		}
 
 		store = Redux.createStore(
-			mw.popups.reducers.rootReducer,
+			createRootReducer(),
 			compose( Redux.applyMiddleware(
 				ReduxThunk.default
 			) )

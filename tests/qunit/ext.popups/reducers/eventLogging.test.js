@@ -10,6 +10,18 @@
 		}
 	} );
 
+	QUnit.test( '@@INIT', function ( assert ) {
+		assert.deepEqual(
+			this.initialState,
+			{
+				previewCount: undefined,
+				baseData: {},
+				event: undefined,
+				interaction: undefined
+			}
+		);
+	} );
+
 	QUnit.test( 'BOOT', function ( assert ) {
 		var action = {
 				type: 'BOOT',
