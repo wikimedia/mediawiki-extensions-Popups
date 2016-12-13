@@ -24,6 +24,10 @@
 				return nextState( state, {
 					enabled: action.user.isInCondition
 				} );
+			case popups.actionTypes.SETTINGS_CHANGE:
+				return nextState( state, {
+					enabled: action.enabled
+				} );
 			case popups.actionTypes.LINK_DWELL:
 				return nextState( state, {
 					activeLink: action.el,

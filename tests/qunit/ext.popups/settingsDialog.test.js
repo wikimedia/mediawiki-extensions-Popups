@@ -9,7 +9,8 @@
 			expected = {
 				appendTo: function () {},
 				show: function () {},
-				hide: function () {}
+				hide: function () {},
+				toggleHelp: function () {}
 			},
 			result = mw.popups.createSettingsDialogRenderer()( boundActions );
 

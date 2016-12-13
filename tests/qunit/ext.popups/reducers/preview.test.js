@@ -42,6 +42,23 @@
 		);
 	} );
 
+	QUnit.test( 'SETTINGS_CHANGE', function ( assert ) {
+		var action = {
+			type: 'SETTINGS_CHANGE',
+			enabled: true
+		};
+
+		assert.expect( 1 );
+
+		assert.deepEqual(
+			mw.popups.reducers.preview( {}, action ),
+			{
+				enabled: true
+			},
+			'It should set whether or not previews are enabled when settings change.'
+		);
+	} );
+
 	QUnit.test( 'LINK_DWELL', function ( assert ) {
 		var action = {
 			type: 'LINK_DWELL',

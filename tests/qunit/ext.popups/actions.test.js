@@ -269,4 +269,23 @@
 		that.waitDeferred.resolve();
 	} );
 
+	QUnit.module( 'ext.popups/actions#saveSettings' );
+
+	QUnit.test( 'it should dispatch an action with previous and current enabled state', function ( assert ) {
+		var dispatch = this.sandbox.spy(),
+			getState = this.sandbox.stub().returns( {
+				preview: {
+					enabled: false
+				}
+			} );
+
+		mw.popups.actions.saveSettings( /* enabled = */ true )( dispatch, getState );
+
+		assert.ok( getState.calledOnce, 'it should query the global state for the current state' );
+		assert.ok( dispatch.calledWith( {
+			type: 'SETTINGS_CHANGE',
+			wasEnabled: false,
+			enabled: true
+		} ), 'it should dispatch the action with the previous and next enabled state' );
+	} );
 }( mediaWiki, jQuery ) );

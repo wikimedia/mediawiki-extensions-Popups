@@ -17,9 +17,9 @@
 			PREVIEW_INTERACTIVE: 'PREVIEW_INTERACTIVE',
 			PREVIEW_SHOW: 'PREVIEW_SHOW',
 			PREVIEW_CLICK: 'PREVIEW_CLICK',
-			SETTINGS_DIALOG_RENDERED: 'SETTINGS_DIALOG_RENDERED',
 			SETTINGS_SHOW: 'SETTINGS_SHOW',
 			SETTINGS_HIDE: 'SETTINGS_HIDE',
+			SETTINGS_CHANGE: 'SETTINGS_CHANGE',
 			EVENT_LOGGED: 'EVENT_LOGGED'
 		},
 		FETCH_START_DELAY = 500, // ms.
@@ -264,12 +264,24 @@
 	/**
 	 * Represents the user saving their settings.
 	 *
-	 * @return {Object}
+	 * N.B. This action returns a Redux.Thunk not because it needs to perform
+	 * asynchronous work, but because it needs to query the global state for the
+	 * current enabled state. In order to keep the enabled state in a single
+	 * place (the preview reducer), we query it and dispatch it as `wasEnabled`
+	 * so that other reducers (like settings) can act on it without having to
+	 * duplicate the `enabled` state locally.
+	 * See doc/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
+	 * details.
+	 *
+	 * @return {Redux.Thunk}
 	 */
-	actions.saveSettings = function () {
-		return function ( dispatch ) {
-			// ...
-			return dispatch( actions.hideSettings() );
+	actions.saveSettings = function ( enabled ) {
+		return function ( dispatch, getState ) {
+			dispatch( {
+				type: types.SETTINGS_CHANGE,
+				wasEnabled: getState().preview.enabled,
+				enabled: enabled
+			} );
 		};
 	};
 

@@ -6,12 +6,26 @@
 			this.rendered = {
 				appendTo: this.sandbox.spy(),
 				show: this.sandbox.spy(),
-				hide: this.sandbox.spy()
+				hide: this.sandbox.spy(),
+				toggleHelp: this.sandbox.spy()
 			};
 			this.render.withArgs( 'actions' ).returns( this.rendered );
 
 			this.defaultState = { settings: { shouldShow: false } };
 			this.showState = { settings: { shouldShow: true } };
+			this.showHelpState = {
+				settings: {
+					shouldShow: true,
+					showHelp: true
+				}
+			};
+			this.hideHelpState = {
+				settings: {
+					shouldShow: true,
+					showHelp: false
+				}
+			};
+
 			this.settings =
 				mw.popups.changeListeners.settings( 'actions', this.render );
 		}
@@ -55,6 +69,24 @@
 		this.settings( this.showState, this.defaultState );
 
 		assert.ok( this.rendered.hide.calledOnce, 'The rendered object should be hidden' );
+	} );
+
+	QUnit.test( 'it should show help when showHelp becomes true', function ( assert ) {
+		this.settings( null, this.defaultState );
+		this.settings( this.defaultState, this.showState );
+		this.settings( this.showState, this.showHelpState );
+
+		assert.ok( this.rendered.toggleHelp.calledWith( true ), 'Help should be shown' );
+	} );
+
+	QUnit.test( 'it should hide help when showHelp becomes false', function ( assert ) {
+		this.settings( null, this.defaultState );
+		this.settings( this.defaultState, this.showState );
+		this.settings( this.showState, this.showHelpState );
+		this.settings( this.showHelpState, this.hideHelpState );
+
+		assert.equal( this.rendered.toggleHelp.callCount, 2, 'Help should have been toggled on and off' );
+		assert.deepEqual( this.rendered.toggleHelp.secondCall.args, [ false ], 'Help should be hidden' );
 	} );
 
 }( mediaWiki ) );

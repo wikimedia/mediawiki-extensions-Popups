@@ -8,11 +8,19 @@
 	 * @return {ext.popups.ChangeListener}
 	 */
 	mw.popups.changeListeners.settings = function ( boundActions, render ) {
-		var settings,
-			shown = false;
+		var settings;
 
 		return function ( prevState, state ) {
-			if ( state.settings.shouldShow && !shown ) {
+			if ( !prevState ) {
+				// Nothing to do on initialization
+				return;
+			}
+
+			// Update global modal visibility
+			if (
+				prevState.settings.shouldShow === false &&
+				state.settings.shouldShow === true
+			) {
 				// Lazily instantiate the settings UI
 				if ( !settings ) {
 					settings = render( boundActions );
@@ -20,10 +28,16 @@
 				}
 
 				settings.show();
-				shown = true;
-			} else if ( !state.settings.shouldShow && settings ) {
+			} else if (
+				prevState.settings.shouldShow === true &&
+				state.settings.shouldShow === false
+			) {
 				settings.hide();
-				shown = false;
+			}
+
+			// Update help visibility
+			if ( prevState.settings.showHelp !== state.settings.showHelp ) {
+				settings.toggleHelp( state.settings.showHelp );
 			}
 		};
 	};

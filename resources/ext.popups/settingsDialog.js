@@ -29,7 +29,16 @@
 				$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
 
 				// Setup event bindings
-				$dialog.find( '.save' ).click( boundActions.saveSettings );
+
+				$dialog.find( '.save' ).click( function () {
+					// Find the selected value (simple|advanced|off)
+					var selected = getSelectedSetting( $dialog ),
+						// Only simple means enabled, advanced is disabled in favor of
+						// NavPops and off means disabled.
+						enabled = selected === 'simple';
+
+					boundActions.saveSettings( enabled );
+				} );
 				$dialog.find( '.close, .okay' ).click( boundActions.hideSettings );
 			}
 
@@ -63,14 +72,15 @@
 				 * Hide the settings dialog.
 				 */
 				hide: function () {
-					if ( $dialog.find( '#mwe-popups-settings-help' ).is( ':visible' ) ) {
-						// TODO: Why is this trying to reload the page?
-						// reloadPage();
-						return;
-					} else {
-						$overlay.hide();
-						$dialog.hide();
-					}
+					$overlay.hide();
+					$dialog.hide();
+				},
+
+				/**
+				 * Toggle the help dialog on or off
+				 */
+				toggleHelp: function ( visible ) {
+					toggleHelp( $dialog, visible );
 				}
 			};
 		};
@@ -126,28 +136,32 @@
 	}
 
 	/**
-	 * Save the setting to the device and close the dialog
+	 * Get the selected value on the radio button
 	 *
-	 * @method save
-	 *
-	function save( boundActions ) {
-		var v = $( 'input[name=mwe-popups-setting]:checked', '#mwe-popups-settings' ).val(),
-			userSettings = mw.popups.createUserSettings( mw.storage, mw.user );
+	 * @param {jQuery.Object} $el the element to extract the setting from
+	 */
+	function getSelectedSetting( $el ) {
+		return $el.find(
+			'input[name=mwe-popups-setting]:checked, #mwe-popups-settings'
+		).val();
+	}
 
-		if ( v === 'simple' ) {
-			// Avoid a refresh if 'enabled' -> 'enabled'
-			if ( !userSettings.getIsEnabled() ) {
-				userSettings.setIsEnabled( true );
-				// TODO: Why is this trying to reload the page?
-				// reloadPage();
-			}
-			boundActions.hideSettings();
+	/**
+	 * Toggles the visibility between a form and the help
+	 * @param {jQuery.Object} $el element that contains form and help
+	 * @param {Boolean} visible if the help should be visible, or the form
+	 */
+	function toggleHelp( $el, visible ) {
+		var formSelectors = '#mwe-popups-settings-form, #mwe-popups-settings .save',
+			helpSelectors = '#mwe-popups-settings-help, #mwe-popups-settings .okay';
+
+		if ( visible ) {
+			$( formSelectors ).hide();
+			$( helpSelectors ).show();
 		} else {
-			userSettings.setIsEnabled( false );
-			$( '#mwe-popups-settings-form, #mwe-popups-settings .save' ).hide();
-			$( '#mwe-popups-settings-help, #mwe-popups-settings .okay' ).show();
+			$( formSelectors ).show();
+			$( helpSelectors ).hide();
 		}
 	}
-	*/
 
 } )( mediaWiki, jQuery );
