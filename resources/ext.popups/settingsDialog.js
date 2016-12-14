@@ -81,6 +81,28 @@
 				 */
 				toggleHelp: function ( visible ) {
 					toggleHelp( $dialog, visible );
+				},
+
+				/**
+				 * Update the form depending on the enabled flag
+				 *
+				 * If false and no navpops, then checks 'off'
+				 * If true, then checks 'on'
+				 * If false, and there are navpops, then checks 'advanced'
+				 *
+				 * @param {Boolean} enabled if page previews are enabled
+				 */
+				setEnabled: function ( enabled ) {
+					var name = 'off';
+					if ( enabled ) {
+						name = 'simple';
+					} else if ( isNavPopupsEnabled() ) {
+						name = 'advanced';
+					}
+
+					// Check the appropiate radio button
+					$dialog.find( '#mwe-popups-settings-' + name )
+						.prop( 'checked', true );
 				}
 			};
 		};
@@ -114,9 +136,7 @@
 				}
 			];
 
-		// Check if NavigationPopups is enabled
-		/*global pg: false*/
-		if ( typeof pg === 'undefined' || pg.fn.disablePopups === undefined ) {
+		if ( !isNavPopupsEnabled() ) {
 			// remove the advanced option
 			choices.splice( 1, 1 );
 		}
@@ -162,6 +182,16 @@
 			$( formSelectors ).show();
 			$( helpSelectors ).hide();
 		}
+	}
+
+	/**
+	 * Checks if the NavigationPopups gadget is enabled by looking at the global
+	 * variables
+	 * @returns {Boolean} if navpops was found to be enabled
+	 */
+	function isNavPopupsEnabled() {
+		/*global pg: false*/
+		return typeof pg !== 'undefined' && pg.fn.disablePopups !== undefined;
 	}
 
 } )( mediaWiki, jQuery );

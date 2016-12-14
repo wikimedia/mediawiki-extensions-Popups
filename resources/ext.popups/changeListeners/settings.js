@@ -27,6 +27,9 @@
 					settings.appendTo( document.body );
 				}
 
+				// Update the UI settings with the current settings
+				settings.setEnabled( state.preview.enabled );
+
 				settings.show();
 			} else if (
 				prevState.settings.shouldShow === true &&

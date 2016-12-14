@@ -10,7 +10,8 @@
 				appendTo: function () {},
 				show: function () {},
 				hide: function () {},
-				toggleHelp: function () {}
+				toggleHelp: function () {},
+				setEnabled: function () {}
 			},
 			result = mw.popups.createSettingsDialogRenderer()( boundActions );
 
