@@ -3,14 +3,14 @@ class SpecialPreferencesPage
   page_url 'Special:Preferences'
 
   a(:beta_features_tab, css: '#preftab-betafeatures')
-  text_field(:hovercards_checkbox, css: '[name=wppopups]')
+  text_field(:page_previews_checkbox, css: '[name=wppopups]')
   button(:submit_button, css: '#prefcontrol')
   div(:notification, css: ".mw-notification")
 
-  def enable_hovercards
+  def enable_page_previews
     beta_features_tab_element.when_present.click
-    return unless hovercards_checkbox_element.attribute('checked').nil?
-    hovercards_checkbox_element.click
+    return unless page_previews_checkbox_element.attribute('checked').nil?
+    page_previews_checkbox_element.click
     submit_button_element.when_present.click
 
     # Note well that Element#wait_until_present is more semantic but is
