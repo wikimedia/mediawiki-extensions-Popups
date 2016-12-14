@@ -41,7 +41,7 @@
 						namespaceIdSource: action.page.namespaceID,
 						pageIdSource: action.page.id,
 						isAnon: action.user.isAnon,
-						popupEnabled: action.user.isInCondition,
+						popupEnabled: action.isEnabled,
 						pageToken: action.pageToken,
 						sessionToken: action.sessionToken,
 						editCountBucket: popups.counts.getEditCountBucket( action.user.editCount ),

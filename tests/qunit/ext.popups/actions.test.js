@@ -7,10 +7,7 @@
 	QUnit.module( 'ext.popups/actions' );
 
 	QUnit.test( '#boot', function ( assert ) {
-		var isUserInCondition = function () {
-				return false;
-			},
-			config = new mw.Map(),
+		var config = new mw.Map(),
 			stubUser = mw.popups.tests.stubs.createStubUser( /* isAnon = */ true ),
 			stubUserSettings,
 			action;
@@ -31,7 +28,7 @@
 		assert.expect( 1 );
 
 		action = mw.popups.actions.boot(
-			isUserInCondition,
+			false,
 			stubUser,
 			stubUserSettings,
 			generateToken,
@@ -42,6 +39,7 @@
 			action,
 			{
 				type: 'BOOT',
+				isEnabled: false,
 				sessionToken: '0123456789',
 				pageToken: '9876543210',
 				page: {
@@ -50,7 +48,6 @@
 					id: 2
 				},
 				user: {
-					isInCondition: false,
 					isAnon: true,
 					editCount: 3,
 					previewCount: 22

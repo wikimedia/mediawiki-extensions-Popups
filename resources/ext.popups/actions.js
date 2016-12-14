@@ -52,7 +52,7 @@
 	 * [`mw.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
 	 * so as not to impact latency-critical events.
 	 *
-	 * @param {Function} isUserInCondition See `mw.popups.createExperiment`
+	 * @param {Boolean} isEnabled See `mw.popups.isEnabled`
 	 * @param {mw.user} user
 	 * @param {ext.popups.UserSettings} userSettings
 	 * @param {Function} generateToken
@@ -60,7 +60,7 @@
 	 *  i.e. `mw.config`
 	 */
 	actions.boot = function (
-		isUserInCondition,
+		isEnabled,
 		user,
 		userSettings,
 		generateToken,
@@ -71,6 +71,7 @@
 
 		return {
 			type: types.BOOT,
+			isEnabled: isEnabled,
 			sessionToken: user.sessionId(),
 			pageToken: generateToken(),
 			page: {
@@ -79,7 +80,6 @@
 				id: config.get( 'wgArticleId' )
 			},
 			user: {
-				isInCondition: isUserInCondition(),
 				isAnon: user.isAnon(),
 				editCount: editCount,
 				previewCount: previewCount

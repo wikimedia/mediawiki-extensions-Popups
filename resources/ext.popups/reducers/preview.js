@@ -22,7 +22,7 @@
 		switch ( action.type ) {
 			case popups.actionTypes.BOOT:
 				return nextState( state, {
-					enabled: action.user.isInCondition
+					enabled: action.isEnabled
 				} );
 			case popups.actionTypes.SETTINGS_CHANGE:
 				return nextState( state, {
