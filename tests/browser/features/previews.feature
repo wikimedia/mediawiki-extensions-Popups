@@ -1,10 +1,9 @@
 @chrome @en.m.wikipedia.beta.wmflabs.org @firefox @test2.m.wikipedia.org @vagrant
 Feature: Previews
   Background:
-    Given the test page has been created
-    And I am logged in
+    Given I am logged in
     And I have enabled the beta feature
-    And I am on the "Popups test page" page
+    And I am on the test page
     And the RL module has loaded
 
   Scenario: Dwelling on a valid link shows a preview
