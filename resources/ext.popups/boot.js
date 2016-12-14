@@ -87,13 +87,14 @@
 			gateway = createGateway(),
 			userSettings,
 			settingsDialog,
-			isUserInCondition,
+			isEnabled,
 			schema;
 
 		userSettings = mw.popups.createUserSettings( mw.storage, mw.user );
 		settingsDialog = mw.popups.createSettingsDialogRenderer();
-		isUserInCondition = mw.popups.createExperiment( mw.config, mw.user, userSettings );
 		schema = mw.popups.createSchema( mw.config, window );
+
+		isEnabled = mw.popups.isEnabled( mw.user, userSettings );
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
@@ -110,7 +111,7 @@
 		registerChangeListeners( store, actions, schema, userSettings, settingsDialog );
 
 		actions.boot(
-			isUserInCondition,
+			isEnabled,
 			mw.user,
 			userSettings,
 			generateToken,
