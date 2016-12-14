@@ -28,9 +28,6 @@
 		"ResourceLoaderGetConfigVars": [
 			"PopupsHooks::onResourceLoaderGetConfigVars"
 		],
-		"MakeGlobalVariablesScript": [
-			"PopupsHooks::onMakeGlobalVariablesScript"
-		],
 		"GetPreferences": [
 			"PopupsHooks::onGetPreferences"
 		]
@@ -49,7 +46,6 @@
 		"PopupsBetaFeature": false,
 		"@SchemaPopupsSamplingRate": "@var number: Sample rate for logging events to Schema:Popups.",
 		"SchemaPopupsSamplingRate": 0,
-		"PopupsExperiment": false,
 		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to enable/disable Page Previews should be hidden on Preferences page. Please note if PopupsBetaFeature is set to true this option will be always hidden. False by default",
 		"PopupsHideOptInOnPreferencesPage": true,
 		"@PopupsOptInDefaultState" : "@var string:[enabled|disabled] Default Page Previews visibility",
@@ -123,7 +119,6 @@
 				"popups-preview-footer-read"
 			],
 			"dependencies": [
-				"mediawiki.experiments",
 				"mediawiki.storage",
 				"mediawiki.Title",
 				"mediawiki.jqueryMsg",

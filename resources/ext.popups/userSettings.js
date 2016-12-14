@@ -12,11 +12,10 @@
 	 * encapsulate all interactions with the given User Agent's storage.
 	 *
 	 * @param {mw.storage} storage The `mw.storage` singleton instance
-	 * @param {mw.user} user The `mw.user` singleton instance
 	 *
 	 * @return {ext.popups.UserSettings}
 	 */
-	mw.popups.createUserSettings = function ( storage, user ) {
+	mw.popups.createUserSettings = function ( storage ) {
 		return {
 
 			/**
@@ -49,27 +48,6 @@
 			 */
 			hasIsEnabled: function () {
 				return storage.get( IS_ENABLED_KEY, undefined ) !== undefined;
-			},
-
-			/**
-			 * Gets the user's Page Previews token.
-			 *
-			 * If the storage doesn't contain a token, then one is generated and
-			 * persisted to the storage before being returned.
-			 *
-			 * @return {String}
-			 */
-			getToken: function () {
-				var key = 'PopupsExperimentID',
-					id = storage.get( key );
-
-				if ( !id ) {
-					id = user.generateRandomSessionId();
-
-					storage.set( key, id );
-				}
-
-				return id;
 			},
 
 			/**

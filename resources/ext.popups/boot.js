@@ -90,7 +90,7 @@
 			isEnabled,
 			schema;
 
-		userSettings = mw.popups.createUserSettings( mw.storage, mw.user );
+		userSettings = mw.popups.createUserSettings( mw.storage );
 		settingsDialog = mw.popups.createSettingsDialogRenderer();
 		schema = mw.popups.createSchema( mw.config, window );
 

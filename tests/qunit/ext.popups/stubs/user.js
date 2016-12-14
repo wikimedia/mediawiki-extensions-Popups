@@ -14,9 +14,6 @@
 			},
 			sessionId: function () {
 				return '0123456789';
-			},
-			generateRandomSessionId: function () {
-				return '9876543210';
 			}
 		};
 	};
