@@ -43,7 +43,7 @@
 		registerChangeListener( store, changeListeners.linkTitle() );
 		registerChangeListener( store, changeListeners.render( actions ) );
 		registerChangeListener( store, changeListeners.eventLogging( actions, schema ) );
-		registerChangeListener( store, changeListeners.previewCount( userSettings ) );
+		registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 		registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
 	}
 
