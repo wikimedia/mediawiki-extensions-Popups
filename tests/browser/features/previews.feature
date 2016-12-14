@@ -4,7 +4,6 @@ Feature: Previews
     Given I am logged in
     And I have enabled the beta feature
     And I am on the test page
-    And the RL module has loaded
 
   Scenario: Dwelling on a valid link shows a preview
     When I dwell on the first valid link
