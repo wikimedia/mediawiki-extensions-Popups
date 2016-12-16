@@ -58,6 +58,7 @@
 	 * @param {Function} generateToken
 	 * @param {mw.Map} config The config of the MediaWiki client-side application,
 	 *  i.e. `mw.config`
+	 * @returns {Object}
 	 */
 	actions.boot = function (
 		isUserInCondition,
@@ -273,6 +274,7 @@
 	 * See doc/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
 	 * details.
 	 *
+	 * @param {Boolean} enabled if previews are enabled or not
 	 * @return {Redux.Thunk}
 	 */
 	actions.saveSettings = function ( enabled ) {

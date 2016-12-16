@@ -3,6 +3,7 @@
 	/**
 	 * Creates a render function that will create the settings dialog and return
 	 * a set of methods to operate on it
+	 * @returns {Function} render function
 	 */
 	mw.popups.createSettingsDialogRenderer = function () {
 
@@ -21,6 +22,8 @@
 
 		/**
 		 * Renders the relevant form and labels in the settings dialog
+		 * @param {Object} boundActions
+		 * @returns {Object} object with methods to affect the rendered UI
 		 */
 		return function ( boundActions ) {
 
@@ -78,6 +81,7 @@
 
 				/**
 				 * Toggle the help dialog on or off
+				 * @param {Boolean} visible if you want to show or hide the help dialog
 				 */
 				toggleHelp: function ( visible ) {
 					toggleHelp( $dialog, visible );
@@ -159,6 +163,7 @@
 	 * Get the selected value on the radio button
 	 *
 	 * @param {jQuery.Object} $el the element to extract the setting from
+	 * @return {String} Which should be (simple|advanced|off)
 	 */
 	function getSelectedSetting( $el ) {
 		return $el.find(
@@ -190,8 +195,8 @@
 	 * @returns {Boolean} if navpops was found to be enabled
 	 */
 	function isNavPopupsEnabled() {
-		/*global pg: false*/
+		/* global pg: false*/
 		return typeof pg !== 'undefined' && pg.fn.disablePopups !== undefined;
 	}
 
-} )( mediaWiki, jQuery );
+}( mediaWiki, jQuery ) );

@@ -13,6 +13,7 @@
 	 *   a preview is shown, then their preview count will be incremented (see
 	 *   `mw.popups.reducers.eventLogging`, and is persisted to local storage.
 	 *
+	 * @param {ext.popups.UserSettings} userSettings
 	 * @return {ext.popups.ChangeListener}
 	 */
 	mw.popups.changeListeners.syncUserSettings = function ( userSettings ) {
@@ -40,7 +41,7 @@
 	 * @return {*}
 	 */
 	function get( state, reducer, prop ) {
-		return state[reducer] && state[reducer][prop];
+		return state[ reducer ] && state[ reducer ][ prop ];
 	}
 
 	/**

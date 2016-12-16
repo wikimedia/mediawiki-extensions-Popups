@@ -1,13 +1,12 @@
-// jscs:disable jsDoc
-/*jshint node:true */
+/* eslint-evn node */
+
 module.exports = function ( grunt ) {
 	var QUNIT_URL_BASE = 'http://localhost:8080/wiki/Special:JavaScriptTest/qunit/plain';
 
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-qunit' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-jscs' );
+	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-jsonlint' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 
@@ -15,53 +14,27 @@ module.exports = function ( grunt ) {
 		banana: {
 			all: 'i18n/'
 		},
-		jscs: {
-			options: {
-				config: '.jscsrc'
-			},
-			main: '<%= jshint.all %>',
-			test: {
+		eslint: {
+			fix: {
 				options: {
-					config: 'tests/.jscsrc.js'
+					fix: true
 				},
-				files: {
-					src: [
-						'tests/qunit/**/*.js',
-						'!tests/qunit/ext.popups.core.test.js'
-					]
-				}
-			}
-		},
-		jshint: {
-			options: {
-				jshintrc: true
+				src: [
+					'<%= eslint.all %>'
+				]
 			},
 			all: [
-				'*.js',
-				'**/*.js',
-				'!node_modules/**',
-				'!resources/ext.popups.lib/**',
-				// FIXME: Remove ignores for legacy code upon removal/refactor
-				'!resources/ext.popups.core/**',
-				'!resources/ext.popups.desktop/**',
-				'!resources/ext.popups.images/**',
-				'!resources/ext.popups.renderer.desktopRenderer/**',
-				'!resources/ext.popups.schemaPopups/**',
-				'!resources/ext.popups.schemaPopups.utils/**',
-				'!resources/ext.popups.targets.desktopTarget/**',
-				// End legacy code
-				'!tests/qunit/**'
-			],
-			test: {
-				files: {
-					src: 'tests/qunit/**/*.js'
-				}
-			}
+				'resources/ext.popups/*.js',
+				'resources/ext.popups/**/*.js',
+				'!docs/**',
+				'!node_modules/**'
+			]
 		},
 		jsonlint: {
 			all: [
 				'*.json',
 				'**/*.json',
+				'!docs/**',
 				'!node_modules/**'
 			]
 		},
@@ -83,7 +56,7 @@ module.exports = function ( grunt ) {
 				syntax: 'less'
 			},
 			all: [
-				'resources/**/*.less'
+				'resources/ext.popups/**/*.less'
 			]
 		},
 		watch: {
@@ -92,7 +65,7 @@ module.exports = function ( grunt ) {
 				debounceDelay: 1000
 			},
 			lint: {
-				files: [ 'resources/**/*.js', 'tests/qunit/**/*.js' ],
+				files: [ 'resources/ext.popups/**/*.less', 'resources/**/*.js', 'tests/qunit/**/*.js' ],
 				tasks: [ 'lint' ]
 			},
 			scripts: {
@@ -108,7 +81,7 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'lint', [ 'jshint', 'jscs', 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'lint', [ 'eslint:all', 'stylelint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'test', [ 'qunit' ] );
-	grunt.registerTask( 'default', [ 'test', 'lint' ] );
+	grunt.registerTask( 'default', [ 'lint', 'test' ] );
 };
