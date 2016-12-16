@@ -10,14 +10,14 @@
 	"type": "betafeatures",
 	"AutoloadClasses": {
 		"PopupsHooks": "Popups.hooks.php",
-		"Popups\\Module": "includes/Module.php"
+		"Popups\\PopupsContext": "includes/PopupsContext.php"
 	},
 	"ConfigRegistry": {
 		"popups": "GlobalVarConfig::newInstance"
 	},
 	"Hooks": {
 		"GetBetaFeaturePreferences": [
-			"PopupsHooks::getPreferences"
+			"PopupsHooks::onGetBetaPreferences"
 		],
 		"BeforePageDisplay": [
 			"PopupsHooks::onBeforePageDisplay"
@@ -46,10 +46,10 @@
 		"PopupsBetaFeature": false,
 		"@SchemaPopupsSamplingRate": "@var number: Sample rate for logging events to Schema:Popups.",
 		"SchemaPopupsSamplingRate": 0,
-		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to enable/disable Page Previews should be hidden on Preferences page. Please note if PopupsBetaFeature is set to true this option will be always hidden. False by default",
-		"PopupsHideOptInOnPreferencesPage": true,
-		"@PopupsOptInDefaultState" : "@var string:[enabled|disabled] Default Page Previews visibility",
-		"PopupsOptInDefaultState" : "disabled"
+		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to senable/disable Page Previews should be hidden on Preferences page. Please note if PopupsBetaFeature is set to true this option will be always hidden. False by default",
+		"PopupsHideOptInOnPreferencesPage": false,
+		"@PopupsOptInDefaultState" : "@var string:['1'|'0'] Default Page Previews visibility. Has to be a string as a compatibility with beta feature settings",
+		"PopupsOptInDefaultState" : "0"
 	},
 	"ResourceModules": {
 		"ext.popups.images": {

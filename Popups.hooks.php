@@ -18,20 +18,19 @@
  * @file
  * @ingroup extensions
  */
-use MediaWiki\Logger\LoggerFactory;
+use Popups\PopupsContext;
 
 class PopupsHooks {
-	const PREVIEWS_ENABLED = 'enabled';
-	const PREVIEWS_DISABLED = 'disabled';
-	const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups-enable';
 	const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
-	static function getPreferences( User $user, array &$prefs ) {
+	private static $context;
+
+	static function onGetBetaPreferences( User $user, array &$prefs ) {
 		global $wgExtensionAssetsPath;
-		if ( self::getConfig()->get( 'PopupsBetaFeature' ) !== true ) {
+		if ( self::getModuleContext()->getConfig()->get( 'PopupsBetaFeature' ) !== true ) {
 			return;
 		}
-		$prefs['popups'] = [
+		$prefs[PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME] = [
 			'label-message' => 'popups-message',
 			'desc-message' => 'popups-desc',
 			'screenshot' => [
@@ -53,60 +52,52 @@ class PopupsHooks {
 	 * @param array $prefs
 	 */
 	static function onGetPreferences( User $user, array &$prefs ) {
-		$module = new \Popups\Module( self::getConfig() );
+		$module = self::getModuleContext();
 
 		if ( !$module->showPreviewsOptInOnPreferencesPage() ) {
 			return;
 		}
-		$prefs[self::PREVIEWS_OPTIN_PREFERENCE_NAME] = [
+		$prefs[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = [
 			'type' => 'radio',
 			'label-message' => 'popups-prefs-optin-title',
 			'options' => [
-				wfMessage( 'popups-prefs-optin-enabled-label' )->text() => self::PREVIEWS_ENABLED,
-				wfMessage( 'popups-prefs-optin-disabled-label' )->text() => self::PREVIEWS_DISABLED
+				wfMessage( 'popups-prefs-optin-enabled-label' )->text()
+					=> PopupsContext::PREVIEWS_ENABLED,
+				wfMessage( 'popups-prefs-optin-disabled-label' )->text()
+					=> PopupsContext::PREVIEWS_DISABLED
 			],
 			'section' => self::PREVIEWS_PREFERENCES_SECTION
 		];
 	}
 
 	/**
-	 * @return Config
+	 * @return PopupsContext
 	 */
-	public static function getConfig() {
-		static $config;
-		if ( !$config ) {
-			$config = ConfigFactory::getDefaultInstance()->makeConfig( 'popups' );
+	private static function getModuleContext() {
+
+		if ( !self::$context ) {
+			self::$context = new \Popups\PopupsContext();
 		}
-		return $config;
+		return self::$context;
+	}
+
+	private static function areDependenciesMet() {
+		$registry = ExtensionRegistry::getInstance();
+		return $registry->isLoaded( 'TextExtracts' ) && class_exists( 'ApiQueryPageImages' );
 	}
 
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		// Enable only if the user has turned it on in Beta Preferences, or BetaFeatures is not installed.
-		// Will only be loaded if PageImages & TextExtracts extensions are installed.
+		$module = self::getModuleContext();
 
-		$registry = ExtensionRegistry::getInstance();
-		if ( !$registry->isLoaded( 'TextExtracts' ) || !class_exists( 'ApiQueryPageImages' ) ) {
-			$logger = LoggerFactory::getInstance( 'popups' );
+		if ( !self::areDependenciesMet() ) {
+			$logger = $module->getLogger();
 			$logger->error( 'Popups requires the PageImages and TextExtracts extensions.' );
 			return true;
 		}
 
-		$config = self::getConfig();
-
-		if ( $config->get( 'PopupsBetaFeature' ) === true ) {
-			if ( !class_exists( 'BetaFeatures' ) ) {
-				$logger = LoggerFactory::getInstance( 'popups' );
-				$logger->error( 'PopupsMode cannot be used as a beta feature unless ' .
-								'the BetaFeatures extension is present.' );
-				return true;
-			}
-			if ( !BetaFeatures::isFeatureEnabled( $skin->getUser(), 'popups' ) ) {
-				return true;
-			}
+		if ( $module->isEnabledByUser( $skin->getUser() ) ) {
+			$out->addModules( [ 'ext.popups' ] );
 		}
-
-		$out->addModules( [ 'ext.popups' ] );
-
 		return true;
 	}
 
@@ -152,7 +143,8 @@ class PopupsHooks {
 	 * @param array $vars
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
-		$conf = self::getConfig();
+		$module = self::getModuleContext();
+		$conf = $module->getConfig();
 		$vars['wgPopupsSchemaPopupsSamplingRate'] = $conf->get( 'SchemaPopupsSamplingRate' );
 	}
 
@@ -169,7 +161,35 @@ class PopupsHooks {
 		 * or when ConfigRegistry gets populated before calling `callback` ExtensionRegistry hook
 		 */
 		$config = \MediaWiki\MediaWikiServices::getInstance()->getMainConfig();
-		$wgDefaultUserOptions[ self::PREVIEWS_OPTIN_PREFERENCE_NAME ] =
+		$wgDefaultUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] =
 			$config->get( 'PopupsOptInDefaultState' );
+	}
+
+	/**
+	 * Inject Mocked context
+	 * As there is no service registration this is used for tests only.
+	 *
+	 * @param PopupsContext $context
+	 * @throws MWException
+	 */
+	public static function injectContext( PopupsContext $context ) {
+		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
+			throw new MWException( 'injectContext() must not be used outside unit tests.' );
+		}
+		self::$context = $context;
+	}
+
+	/**
+	 * Remove cached context.
+	 * As there is no service registration this is used for tests only.
+	 *
+	 *
+	 * @throws MWException
+	 */
+	public static function resetContext() {
+		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
+			throw new MWException( 'injectContext() must not be used outside unit tests.' );
+		}
+		self::$context = null;
 	}
 }
