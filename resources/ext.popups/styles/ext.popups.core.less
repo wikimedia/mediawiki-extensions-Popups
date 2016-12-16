@@ -1,5 +1,5 @@
-@import "mediawiki.mixins.less";
-@import "mediawiki.ui/variables";
+@import 'mediawiki.mixins.less';
+@import 'mediawiki.ui/variables';
 
 /* Code adapted from Yair Rand's NavPopupsRestyled.js
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
@@ -10,7 +10,7 @@
 	top: -1000px;
 }
 
-.mwe-popups-border-triangle-top(@size, @left, @color, @extra) {
+.mwe-popups-border-triangle-top( @size, @left, @color, @extra ) {
 	content: '';
 	position: absolute;
 	border: ( @size + @extra ) solid transparent;
@@ -21,7 +21,7 @@
 	left: @left;
 }
 
-.mwe-popups-border-triangle-bottom(@size, @left, @color, @extra) {
+.mwe-popups-border-triangle-bottom( @size, @left, @color, @extra ) {
 	content: '';
 	position: absolute;
 	border: ( @size + @extra ) solid transparent;
@@ -57,7 +57,7 @@
 .mwe-popups-settings-icon {
 
 	// N.B. filenames are relative to the LESS file.
-	.background-image-svg( "../images/cog.svg", "../images/cog.png" );
+	.background-image-svg( '../images/cog.svg', '../images/cog.png' );
 }
 
 .mwe-popups-sade-face-icon {
@@ -67,7 +67,7 @@
 	margin: 16px 16px 0;
 	background-position: center center;
 	background-repeat: no-repeat;
-	.background-image-svg( "../images/sad-face.svg", "../images/sad-face.png" );
+	.background-image-svg( '../images/sad-face.svg', '../images/sad-face.png' );
 }
 
 .mwe-popups {
@@ -77,8 +77,8 @@
 
 	// FIXME: The .box-shadow mixin provided by mediawiki.mixins doesn't support
 	// multiple values.
-	-webkit-box-shadow: 0 30px 90px -20px rgba(0,0,0,0.3), 0px 0px 1px rgba(0,0,0,0.5);
-	        box-shadow: 0 30px 90px -20px rgba(0,0,0,0.3), 0px 0px 1px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0px 0px 1px rgba( 0, 0, 0, 0.5 );
+	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0px 0px 1px rgba( 0, 0, 0, 0.5 );
 	padding: 0;
 	display: none;
 	font-size: 14px;
@@ -124,17 +124,17 @@
 		}
 
 		&:after {
-			content: " ";
+			content: ' ';
 			position: absolute;
 			right: 0;
 			bottom: 0;
 			width: 25%;
 			height: 24px;
 			background-color: transparent;
-			background-image: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
-			   background-image: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
-			     background-image: -o-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
-			        background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+			background-image: -webkit-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+			background-image: -moz-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+			background-image: -o-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+			background-image: linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 		}
 	}
 
@@ -194,11 +194,11 @@
 	/* Triangles/Pokeys */
 	&.mwe-popups-no-image-tri {
 		&:after {
-			.mwe-popups-border-triangle-top( 7px, 7px, #fff, 4px);
+			.mwe-popups-border-triangle-top( 7px, 7px, #fff, 4px );
 		}
 
 		&:before {
-			.mwe-popups-border-triangle-top( 8px, 10px, #bbb, 0px);
+			.mwe-popups-border-triangle-top( 8px, 10px, #bbb, 0px );
 		}
 	}
 
@@ -221,22 +221,22 @@
 	&.mwe-popups-image-tri {
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-top(9px, 9px, #bbb, 0px);
+			.mwe-popups-border-triangle-top( 9px, 9px, #bbb, 0px );
 		}
 
 		&:after {
-			.mwe-popups-border-triangle-top(8px, 6px, #fff, 4px);
+			.mwe-popups-border-triangle-top( 8px, 6px, #fff, 4px );
 			z-index: 112;
 		}
 
 		&.flipped_x {
 			&:before {
 				z-index: 111;
-				.mwe-popups-border-triangle-top(9px, 273px, #bbb, 0px);
+				.mwe-popups-border-triangle-top( 9px, 273px, #bbb, 0px );
 			}
 
 			&:after {
-				.mwe-popups-border-triangle-top(8px, 269px, #fff, 4px);
+				.mwe-popups-border-triangle-top( 8px, 269px, #fff, 4px );
 				z-index: 112;
 			}
 		}
@@ -260,7 +260,7 @@
 
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-top(9px, 420px, #bbb, 0px);
+			.mwe-popups-border-triangle-top( 9px, 420px, #bbb, 0px );
 		}
 
 		> div > a > svg {
@@ -277,11 +277,11 @@
 	&.flipped_x_y {
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-bottom(9px, 272px, #bbb, 0px);
+			.mwe-popups-border-triangle-bottom( 9px, 272px, #bbb, 0px );
 		}
 
 		&:after {
-			.mwe-popups-border-triangle-bottom(8px, 269px, #fff, 4px);
+			.mwe-popups-border-triangle-bottom( 8px, 269px, #fff, 4px );
 			z-index: 112;
 		}
 
@@ -290,12 +290,12 @@
 
 			&:after {
 				z-index: 112;
-				.mwe-popups-border-triangle-bottom(8px, 417px, #fff, 4px);
+				.mwe-popups-border-triangle-bottom( 8px, 417px, #fff, 4px );
 			}
 
 			&:before {
 				z-index: 111;
-				.mwe-popups-border-triangle-bottom(9px, 420px, #bbb, 0px);
+				.mwe-popups-border-triangle-bottom( 9px, 420px, #bbb, 0px );
 			}
 
 			> div > a > svg {

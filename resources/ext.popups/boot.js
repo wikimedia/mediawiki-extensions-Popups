@@ -97,6 +97,7 @@
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
+			// eslint-disable-next-line no-underscore-dangle
 			compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 		}
 

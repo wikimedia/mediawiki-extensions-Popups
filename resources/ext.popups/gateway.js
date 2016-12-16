@@ -46,11 +46,11 @@
 				maxage: CACHE_LIFETIME,
 				uselang: 'content'
 			},
-			{
-				headers: {
-					'X-Analytics': 'preview=1'
-				}
-			} )
+				{
+					headers: {
+						'X-Analytics': 'preview=1'
+					}
+				} )
 				.then( function ( data ) {
 					// If the response is empty, i.e. data.query.pages is empty or isn't
 					// set, then reject rather than resolve.
@@ -59,7 +59,7 @@
 						data.query.pages &&
 						data.query.pages.length
 					) {
-						return data.query.pages[0];
+						return data.query.pages[ 0 ];
 					}
 
 					return $.Deferred().reject();
@@ -73,7 +73,7 @@
 	 * additional data requested above).
 	 *
 	 * @param {Object} page
-	 * @result {Object}
+	 * @returns {Object}
 	 */
 	function processPage( page ) {
 		var lastModified,
@@ -88,7 +88,7 @@
 		};
 
 		if ( page.revisions && page.revisions.length ) {
-			lastModified = new Date( page.revisions[0].timestamp );
+			lastModified = new Date( page.revisions[ 0 ].timestamp );
 
 			result.lastModified = lastModified;
 			result.isRecent = new Date() - lastModified < ONE_DAY;
@@ -98,7 +98,7 @@
 			result.thumbnail = page.thumbnail;
 
 			result.thumbnail.url = result.thumbnail.source;
-			delete( result.thumbnail.source );
+			delete ( result.thumbnail.source );
 		}
 
 		return result;
@@ -160,7 +160,7 @@
 		for ( i; i < extract.length; i++ ) {
 			ch = extract.charAt( i );
 
-			if ( ch === ')' && level === 0  ) {
+			if ( ch === ')' && level === 0 ) {
 				return extract;
 			}
 			if ( ch === '(' ) {

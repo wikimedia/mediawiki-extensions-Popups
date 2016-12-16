@@ -277,7 +277,7 @@
 	/**
 	 * Extracted from `mw.popups.render.closePopup`.
 	 *
-	 * @preview {ext.popups.Preview} preview
+	 * @param {ext.popups.Preview} preview
 	 * @return {jQuery.Promise} A promise that resolves when the preview has faded
 	 *  out
 	 */

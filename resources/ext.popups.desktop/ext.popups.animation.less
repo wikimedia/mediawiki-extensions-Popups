@@ -1,11 +1,11 @@
 @import "mediawiki.mixins.animation";
 
-.mwe-popups-translate(@x, @y) {
-	-webkit-transform: translate(@x, @y);
-	-moz-transform: translate(@x, @y);
-	-ms-transform: translate(@x, @y);
-	-o-transform: translate(@x, @y);
-	transform: translate(@x, @y);
+.mwe-popups-translate( @x, @y ) {
+	-webkit-transform: translate( @x, @y );
+	-moz-transform: translate( @x, @y );
+	-ms-transform: translate( @x, @y );
+	-o-transform: translate( @x, @y );
+	transform: translate( @x, @y );
 }
 
 /* FIXME: Use Phuedx's approach to make this cleaner
@@ -77,63 +77,63 @@
 .mwe-popups-fade-in-up-frames() {
 	0% {
 		opacity: 0;
-		.mwe-popups-translate(0, 20px);
+		.mwe-popups-translate( 0, 20px );
 	}
 
 	100% {
 		opacity: 1;
-		.mwe-popups-translate(0, 0);
+		.mwe-popups-translate( 0, 0 );
 	}
 }
 
 .mwe-popups-fade-in-down-frames() {
 	0% {
 		opacity: 0;
-		.mwe-popups-translate(0, -20px);
+		.mwe-popups-translate( 0, -20px );
 	}
 
 	100% {
 		opacity: 1;
-		.mwe-popups-translate(0, 0);
+		.mwe-popups-translate( 0, 0 );
 	}
 }
 
 .mwe-popups-fade-out-down-frames() {
 	0% {
 		opacity: 1;
-		.mwe-popups-translate(0, 0);
+		.mwe-popups-translate( 0, 0 );
 	}
 
 	100% {
 		opacity: 0;
-		.mwe-popups-translate(0, 20px);
+		.mwe-popups-translate( 0, 20px );
 	}
 }
 
 .mwe-popups-fade-out-up-frames() {
 	0% {
 		opacity: 1;
-		.mwe-popups-translate(0, 0);
+		.mwe-popups-translate( 0, 0 );
 	}
 
 	100% {
 		opacity: 0;
-		.mwe-popups-translate(0, -20px);
+		.mwe-popups-translate( 0, -20px );
 	}
 }
 
 .mwe-popups-fade-in-up {
-	.animation(mwe-popups-fade-in-up, 0.2s, ease, forwards);
+	.animation( mwe-popups-fade-in-up, 0.2s, ease, forwards );
 }
 
 .mwe-popups-fade-in-down {
-	.animation(mwe-popups-fade-in-down, 0.2s, ease, forwards);
+	.animation( mwe-popups-fade-in-down, 0.2s, ease, forwards );
 }
 
 .mwe-popups-fade-out-down {
-	.animation(mwe-popups-fade-out-down, 0.2s, ease, forwards);
+	.animation( mwe-popups-fade-out-down, 0.2s, ease, forwards );
 }
 
 .mwe-popups-fade-out-up {
-	.animation(mwe-popups-fade-out-up, 0.2s, ease, forwards);
+	.animation( mwe-popups-fade-out-up, 0.2s, ease, forwards );
 }

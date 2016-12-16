@@ -28,13 +28,13 @@
 
 		for ( key in state ) {
 			if ( state.hasOwnProperty( key ) && !updates.hasOwnProperty( key ) ) {
-				result[key] = state[key];
+				result[ key ] = state[ key ];
 			}
 		}
 
 		for ( key in updates ) {
 			if ( updates.hasOwnProperty( key ) ) {
-				result[key] = updates[key];
+				result[ key ] = updates[ key ];
 			}
 		}
 
