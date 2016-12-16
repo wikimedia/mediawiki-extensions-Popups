@@ -21,24 +21,52 @@
 use MediaWiki\Logger\LoggerFactory;
 
 class PopupsHooks {
-	static function getPreferences( User $user, array &$prefs ){
+	const PREVIEWS_ENABLED = 'enabled';
+	const PREVIEWS_DISABLED = 'disabled';
+	const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups-enable';
+	const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
+
+	static function getPreferences( User $user, array &$prefs ) {
 		global $wgExtensionAssetsPath;
 		if ( self::getConfig()->get( 'PopupsBetaFeature' ) !== true ) {
 			return;
 		}
-		$prefs['popups'] = array(
+		$prefs['popups'] = [
 			'label-message' => 'popups-message',
 			'desc-message' => 'popups-desc',
-			'screenshot' => array(
+			'screenshot' => [
 				'ltr' => "$wgExtensionAssetsPath/Popups/images/popups-ltr.svg",
 				'rtl' => "$wgExtensionAssetsPath/Popups/images/popups-rtl.svg",
-			),
+			],
 			'info-link' => 'https://www.mediawiki.org/wiki/Beta_Features/Hovercards',
 			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
-			'requirements' => array(
+			'requirements' => [
 				'javascript' => true,
-			),
-		);
+			],
+		];
+	}
+
+	/**
+	 * Add Page Previews options to user Preferences page
+	 *
+	 * @param User $user
+	 * @param array $prefs
+	 */
+	static function onGetPreferences( User $user, array &$prefs ) {
+		$module = new \Popups\Module( self::getConfig() );
+
+		if ( !$module->showPreviewsOptInOnPreferencesPage() ) {
+			return;
+		}
+		$prefs[self::PREVIEWS_OPTIN_PREFERENCE_NAME] = [
+			'type' => 'radio',
+			'label-message' => 'popups-prefs-optin-title',
+			'options' => [
+				wfMessage( 'popups-prefs-optin-enabled-label' )->text() => self::PREVIEWS_ENABLED,
+				wfMessage( 'popups-prefs-optin-disabled-label' )->text() => self::PREVIEWS_DISABLED
+			],
+			'section' => self::PREVIEWS_PREFERENCES_SECTION
+		];
 	}
 
 	/**
@@ -52,7 +80,7 @@ class PopupsHooks {
 		return $config;
 	}
 
-	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin) {
+	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		// Enable only if the user has turned it on in Beta Preferences, or BetaFeatures is not installed.
 		// Will only be loaded if PageImages & TextExtracts extensions are installed.
 
@@ -83,7 +111,7 @@ class PopupsHooks {
 			}
 		}
 
-		$out->addModules( array( 'ext.popups' ) );
+		$out->addModules( [ 'ext.popups' ] );
 
 		return true;
 	}
@@ -93,7 +121,8 @@ class PopupsHooks {
 	 * @param ResourceLoader $resourceLoader
 	 * @return bool
 	 */
-	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
+	public static function onResourceLoaderTestModules( array &$testModules,
+		ResourceLoader &$resourceLoader ) {
 		$localBasePath = __DIR__;
 		$scripts = glob( "{$localBasePath}/tests/qunit/ext.popups/{,**/}*.test.js", GLOB_BRACE );
 		$start = strlen( $localBasePath ) + 1;
@@ -129,7 +158,7 @@ class PopupsHooks {
 	 * @param array $vars
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
-		$conf = ConfigFactory::getDefaultInstance()->makeConfig( 'popups' );
+		$conf = self::getConfig();
 		$vars['wgPopupsSchemaPopupsSamplingRate'] = $conf->get( 'SchemaPopupsSamplingRate' );
 
 		if ( $conf->get( 'PopupsExperiment' ) ) {
@@ -147,12 +176,29 @@ class PopupsHooks {
 	 * @param OutputPage $out
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $out ) {
-		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'popups' );
+		$config = self::getConfig();
 		$user = $out->getUser();
 
 		if ( $config->get( 'PopupsExperiment' ) ) {
 			$vars['wgPopupsExperimentIsBetaFeatureEnabled'] =
 				class_exists( 'BetaFeatures' ) && BetaFeatures::isFeatureEnabled( $user, 'popups' );
 		}
+	}
+
+	/**
+	 * Register default preferences for popups
+	 */
+	public static function onExtensionRegistration() {
+		global $wgDefaultUserOptions;
+		/**
+		 * We use MainConfig because PopupConfig is not available yet. We cannot use
+		 * ExtensionFunctions as it's called too late (see T153280)
+		 *
+		 * @todo Use ConfigFactory() - when T153280 gets fixed switch it to ExtensionFunctions hook
+		 * or when ConfigRegistry gets populated before calling `callback` ExtensionRegistry hook
+		 */
+		$config = \MediaWiki\MediaWikiServices::getInstance()->getMainConfig();
+		$wgDefaultUserOptions[ self::PREVIEWS_OPTIN_PREFERENCE_NAME ] =
+			$config->get( 'PopupsOptInDefaultState' );
 	}
 }

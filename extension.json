@@ -9,7 +9,8 @@
 	"license-name": "GPL-2.0+",
 	"type": "betafeatures",
 	"AutoloadClasses": {
-		"PopupsHooks": "Popups.hooks.php"
+		"PopupsHooks": "Popups.hooks.php",
+		"Popups\\Module": "includes/Module.php"
 	},
 	"ConfigRegistry": {
 		"popups": "GlobalVarConfig::newInstance"
@@ -29,6 +30,9 @@
 		],
 		"MakeGlobalVariablesScript": [
 			"PopupsHooks::onMakeGlobalVariablesScript"
+		],
+		"GetPreferences": [
+			"PopupsHooks::onGetPreferences"
 		]
 	},
 	"MessagesDirs": {
@@ -39,12 +43,17 @@
 	"EventLoggingSchemas": {
 		"Popups": 16112163
 	},
+	"callback": "PopupsHooks::onExtensionRegistration",
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
 		"PopupsBetaFeature": false,
 		"@SchemaPopupsSamplingRate": "@var number: Sample rate for logging events to Schema:Popups.",
 		"SchemaPopupsSamplingRate": 0,
-		"PopupsExperiment": false
+		"PopupsExperiment": false,
+		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to enable/disable Page Previews should be hidden on Preferences page. Please note if PopupsBetaFeature is set to true this option will be always hidden. False by default",
+		"PopupsHideOptInOnPreferencesPage": true,
+		"@PopupsOptInDefaultState" : "@var string:[enabled|disabled] Default Page Previews visibility",
+		"PopupsOptInDefaultState" : "disabled"
 	},
 	"ResourceModules": {
 		"ext.popups.images": {
