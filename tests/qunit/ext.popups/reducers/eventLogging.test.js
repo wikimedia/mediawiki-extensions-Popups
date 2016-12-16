@@ -25,6 +25,7 @@
 	QUnit.test( 'BOOT', function ( assert ) {
 		var action = {
 				type: 'BOOT',
+				isEnabled: true,
 				sessionToken: '0123456789',
 				pageToken: '9876543210',
 				page: {
@@ -33,7 +34,6 @@
 					id: 2
 				},
 				user: {
-					isInCondition: true,
 					isAnon: false,
 					editCount: 11,
 					previewCount: 22
@@ -54,7 +54,7 @@
 					namespaceIdSource: action.page.namespaceID,
 					pageIdSource: action.page.id,
 					isAnon: action.user.isAnon,
-					popupEnabled: action.user.isInCondition,
+					popupEnabled: action.isEnabled,
 					pageToken: action.pageToken,
 					sessionToken: action.sessionToken,
 					editCountBucket: expectedEditCountBucket,

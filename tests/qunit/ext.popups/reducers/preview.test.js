@@ -26,9 +26,7 @@
 	QUnit.test( 'BOOT', function ( assert ) {
 		var action = {
 			type: 'BOOT',
-			user: {
-				isInCondition: true
-			}
+			isEnabled: true
 		};
 
 		assert.expect( 1 );

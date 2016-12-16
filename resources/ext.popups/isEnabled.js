@@ -17,17 +17,15 @@
 	 * @param {Object} userSettings An object returned by
 	 *  `mw.popups.createUserSettings`
 	 *
-	 * @return {Function}
+	 * @return {Boolean}
 	 */
 	mw.popups.isEnabled = function ( user, userSettings ) {
-		return function () {
-			if ( user.isAnon() ) {
-				return false;
-			}
+		if ( user.isAnon() ) {
+			return false;
+		}
 
-			return !userSettings.hasIsEnabled() ||
-				( userSettings.hasIsEnabled() && userSettings.getIsEnabled() );
-		};
+		return !userSettings.hasIsEnabled() ||
+			( userSettings.hasIsEnabled() && userSettings.getIsEnabled() );
 	};
 
 }( mediaWiki ) );
