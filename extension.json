@@ -69,7 +69,7 @@
 				"resources/ext.popups/index.js",
 				"resources/ext.popups/wait.js",
 				"resources/ext.popups/userSettings.js",
-				"resources/ext.popups/experiment.js",
+				"resources/ext.popups/isEnabled.js",
 				"resources/ext.popups/actions.js",
 				"resources/ext.popups/processLinks.js",
 				"resources/ext.popups/counts.js",
