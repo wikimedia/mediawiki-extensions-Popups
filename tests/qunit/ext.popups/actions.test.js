@@ -71,13 +71,20 @@
 		} );
 	}
 
+	/**
+	 * Sets up an `a` element that can be passed to action creators.
+	 *
+	 * @param {Object} module
+	 */
+	function setupEl( module ) {
+		module.el = $( '<a>' )
+			.data( 'page-previews-title', 'Foo' )
+			.eq( 0 );
+	}
+
 	QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 		setup: function () {
 			var that = this;
-
-			this.el = $( '<a>' )
-				.data( 'page-previews-title', 'Foo' )
-				.eq( 0 );
 
 			this.state = {};
 			this.getState = function () {
@@ -85,31 +92,26 @@
 			};
 
 			setupWait( this );
+			setupEl( this );
 		}
 	} );
 
 	QUnit.test( '#linkDwell', function ( assert ) {
 		var done = assert.async(),
 			event = {},
-			dispatch = this.sandbox.spy(),
-			gatewayDeferred = $.Deferred(),
-			gateway = function () {
-				return gatewayDeferred;
-			},
-			el = this.el,
-			fetchThunk,
-			result = {};
+			dispatch = this.sandbox.spy();
 
 		this.sandbox.stub( mw, 'now' ).returns( new Date() );
+		this.sandbox.stub( mw.popups.actions, 'fetch' );
 
-		mw.popups.actions.linkDwell( el, event, gateway, generateToken )(
+		mw.popups.actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
 			dispatch,
 			this.getState
 		);
 
 		assert.deepEqual( dispatch.getCall( 0 ).args[0], {
 			type: 'LINK_DWELL',
-			el: el,
+			el: this.el,
 			event: event,
 			interactionToken: '9876543210',
 			timestamp: mw.now()
@@ -118,7 +120,7 @@
 		// Stub the state tree being updated.
 		this.state.preview = {
 			enabled: true,
-			activeLink: el
+			activeLink: this.el
 		};
 
 		// ---
@@ -127,32 +129,13 @@
 			assert.strictEqual(
 				dispatch.callCount,
 				2,
-				'The fetch action is dispatched after 500 ms'
+				'The fetch action is dispatched after 50 ms'
 			);
-
-			fetchThunk = dispatch.secondCall.args[0];
-			fetchThunk( dispatch );
-
-			assert.ok( dispatch.calledWith( {
-				type: 'FETCH_START',
-				el: el,
-				title: 'Foo'
-			} ) );
-
-			// ---
-
-			gatewayDeferred.resolve( result );
-
-			assert.ok( dispatch.calledWith( {
-				type: 'FETCH_END',
-				el: el,
-				result: result
-			} ) );
 
 			done();
 		} );
 
-		// After 500 ms...
+		// After 50 ms...
 		this.waitDeferred.resolve();
 	} );
 
@@ -190,10 +173,99 @@
 				done();
 			} );
 
-			// After 500 ms...
+			// After 50 ms...
 			that.waitDeferred.resolve();
 		} );
 	} );
+
+	QUnit.module( 'ext.popups/actions#fetch', {
+		setup: function () {
+			var that = this;
+
+			this.gatewayDeferred = $.Deferred(),
+			this.gatewayPromise = this.gatewayDeferred.promise();
+			this.gateway = this.sandbox.stub().returns( this.gatewayPromise );
+
+			// Setup the mw.now stub.
+			that.now = 0;
+
+			this.sandbox.stub( mw, 'now', function () {
+				return that.now;
+			} );
+
+			setupWait( this );
+			setupEl( this );
+
+			this.dispatch = this.sandbox.spy();
+
+			// Sugar.
+			this.fetch = function () {
+				mw.popups.actions.fetch( that.gateway, that.el, that.now )( that.dispatch );
+			};
+		}
+	} );
+
+	QUnit.test( 'it should fetch data from the gateway immediately', function ( assert ) {
+		this.fetch();
+
+		assert.ok( this.gateway.calledWith( 'Foo' ) );
+
+		assert.ok(
+			this.dispatch.calledWith( {
+				type: 'FETCH_START',
+				el: this.el,
+				title: 'Foo'
+			} ),
+			'It dispatches the FETCH_START action immediately.'
+		);
+	} );
+
+	QUnit.test( 'it should delay dispatching the FETCH_END action', function ( assert ) {
+		var that = this,
+			result = {};
+
+		this.fetch();
+
+		this.gatewayPromise.then( function () {
+			assert.ok(
+				mw.popups.wait.calledWith( 250 ),
+				'FETCH_END is delayed by 250 (500 - 250) ms. ' +
+				'If you\'ve changed FETCH_END_TARGET_DELAY, then have you spoken with #Design about changing this value?'
+			);
+
+			that.waitDeferred.resolve();
+
+			assert.ok( that.dispatch.calledWith( {
+				type: 'FETCH_END',
+				el: that.el,
+				result: result
+			} ) );
+		} );
+
+		// The API request took 250 ms.
+		this.now += 250;
+		this.gatewayDeferred.resolve( result );
+	} );
+
+	QUnit.test(
+		'it shouldn\'t delay dispatching the FETCH_END action if the API request is over the target',
+		function ( assert ) {
+			var that = this;
+
+			this.fetch();
+
+			this.gatewayPromise.then( function () {
+				assert.ok(
+					mw.popups.wait.calledWith( 0 ),
+					'FETCH_END isn\'t delayed.'
+				);
+			} );
+
+			// The API request took 301 ms.
+			this.now += 501;
+			this.gatewayDeferred.resolve();
+		}
+	);
 
 	QUnit.module( 'ext.popups/actions#linkAbandon', {
 		setup: function () {

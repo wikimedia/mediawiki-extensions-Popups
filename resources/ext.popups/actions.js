@@ -24,6 +24,14 @@
 			EVENT_LOGGED: 'EVENT_LOGGED'
 		},
 		FETCH_START_DELAY = 50, // ms.
+
+		// The delay after which a FETCH_END action should be dispatched.
+		//
+		// If the API endpoint responds faster than 500 ms (or, say, the API
+		// response is served from the UA's cache), then we introduce a delay of
+		// 300 - t to make the preview delay consistent to the user.
+		FETCH_END_TARGET_DELAY = 500, // ms.
+
 		ABANDON_END_DELAY = 300; // ms.
 
 	/**
@@ -102,13 +110,14 @@
 	};
 
 	/**
-	 * Represents Page Previews fetching data via the [gateway](./gateway.js).
+	 * Represents Page Previews fetching data via the gateway.
 	 *
 	 * @param {ext.popups.Gateway} gateway
 	 * @param {Element} el
+	 * @param {Date} started The time at which the interaction started.
 	 * @return {Redux.Thunk}
 	 */
-	function fetch( gateway, el ) {
+	actions.fetch = function ( gateway, el, started ) {
 		var title = $( el ).data( 'page-previews-title' );
 
 		return function ( dispatch ) {
@@ -126,14 +135,27 @@
 					} );
 				} )
 				.done( function ( result ) {
-					dispatch( {
-						type: types.FETCH_END,
-						el: el,
-						result: result
-					} );
+					var now = mw.now(),
+						delay;
+
+					// If the API request has taken longer than the target delay, then
+					// don't delay any further.
+					delay = Math.max(
+						FETCH_END_TARGET_DELAY - Math.round( now - started ),
+						0
+					);
+
+					mw.popups.wait( delay )
+						.then( function () {
+							dispatch( {
+								type: types.FETCH_END,
+								el: el,
+								result: result
+							} );
+						} );
 				} );
 		};
-	}
+	};
 
 	/**
 	 * Represents the user dwelling on a link, either by hovering over it with
@@ -149,19 +171,21 @@
 		var interactionToken = generateToken();
 
 		return function ( dispatch, getState ) {
-			dispatch( timedAction( {
+			var action = timedAction( {
 				type: types.LINK_DWELL,
 				el: el,
 				event: event,
 				interactionToken: interactionToken
-			} ) );
+			} );
+
+			dispatch( action );
 
 			mw.popups.wait( FETCH_START_DELAY )
 				.then( function () {
 					var previewState = getState().preview;
 
 					if ( previewState.enabled && previewState.activeLink === el ) {
-						dispatch( fetch( gateway, el ) );
+						dispatch( actions.fetch( gateway, el, action.timestamp ) );
 					}
 				} );
 		};
