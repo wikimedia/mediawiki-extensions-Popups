@@ -123,13 +123,13 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setId( 0 );
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
-			PopupsContext::PREVIEWS_ENABLED );
+			PopupsContext::PREVIEWS_DISABLED );
 		$this->setMwGlobals( [
 			"wgPopupsBetaFeature" => false
 		] );
 
 		$context = new PopupsContext();
-		$this->assertEquals( false, $context->isEnabledByUser( $user ) );
+		$this->assertEquals( true, $context->isEnabledByUser( $user ) );
 	}
 	/**
 	 * @return array/

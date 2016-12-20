@@ -91,7 +91,7 @@ class PopupsContext {
 	 */
 	public function isEnabledByUser( \User $user ) {
 		if ( $user->isAnon() ) {
-			return false;
+			return true;
 		}
 		if ( $this->config->get( 'PopupsBetaFeature' ) ) {
 			if ( !class_exists( 'BetaFeatures' ) ) {
