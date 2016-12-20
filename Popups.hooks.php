@@ -55,17 +55,27 @@ class PopupsHooks {
 		if ( !$module->showPreviewsOptInOnPreferencesPage() ) {
 			return;
 		}
-		$prefs[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = [
+		$option = [
 			'type' => 'radio',
 			'label-message' => 'popups-prefs-optin-title',
 			'options' => [
 				wfMessage( 'popups-prefs-optin-enabled-label' )->text()
-					=> PopupsContext::PREVIEWS_ENABLED,
+				=> PopupsContext::PREVIEWS_ENABLED,
 				wfMessage( 'popups-prefs-optin-disabled-label' )->text()
-					=> PopupsContext::PREVIEWS_DISABLED
+				=> PopupsContext::PREVIEWS_DISABLED
 			],
 			'section' => self::PREVIEWS_PREFERENCES_SECTION
 		];
+		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
+
+		if ( $skinPosition !== false ) {
+			$injectIntoIndex = $skinPosition + 1;
+			$prefs = array_slice( $prefs, 0, $injectIntoIndex, true )
+				+ [ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME => $option ]
+				+ array_slice( $prefs, $injectIntoIndex, count( $prefs ) - 1, true );
+		} else {
+			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] = $option;
+		}
 	}
 
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {

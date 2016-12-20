@@ -86,12 +86,41 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->will( $this->returnValue( true ) );
 
 		PopupsContextTestWrapper::injectTestInstance( $contextMock );
-		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
+		$prefs = [
+			'skin' => 'skin stuff',
+			'someNotEmptyValue' => 'notEmpty',
+			'other' => 'notEmpty'
+		];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertCount( 2, $prefs );
+		$this->assertCount( 4, $prefs );
 		$this->assertEquals( 'notEmpty', $prefs[ 'someNotEmptyValue'] );
 		$this->assertArrayHasKey( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
+		$this->assertEquals( 1, array_search( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+			array_keys( $prefs ) ), ' PagePreviews preferences should be injected after Skin select' );
+	}
+
+	/**
+	 * @covers ::onGetPreferences
+	 */
+	public function testOnGetPreferencesPreviewsEnabledWhenSkinIsNotAvailable() {
+		$contextMock = $this->getMock( PopupsContextTestWrapper::class,
+			[ 'showPreviewsOptInOnPreferencesPage' ], [ ExtensionRegistry::getInstance() ] );
+		$contextMock->expects( $this->once() )
+			->method( 'showPreviewsOptInOnPreferencesPage' )
+			->will( $this->returnValue( true ) );
+
+		PopupsContextTestWrapper::injectTestInstance( $contextMock );
+		$prefs = [
+			'someNotEmptyValue' => 'notEmpty',
+			'other' => 'notEmpty'
+		];
+
+		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
+		$this->assertCount( 3, $prefs );
+		$this->assertArrayHasKey( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
+		$this->assertEquals( 2, array_search( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+			array_keys( $prefs ) ), ' PagePreviews should be injected at end of array' );
 	}
 
 	/**
