@@ -21,6 +21,8 @@
 namespace Popups;
 
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
+use ExtensionRegistry;
 
 /**
  * Popups Module
@@ -68,20 +70,46 @@ class PopupsContext {
 	private $config;
 
 	/**
-	 * Module constructor.
+	 * @var PopupsContext
 	 */
-	public function __construct() {
-		$this->config = \MediaWiki\MediaWikiServices::getInstance()
-			->getConfigFactory()->makeConfig( PopupsContext::EXTENSION_NAME );
+	protected static $instance;
+	/**
+	 * Module constructor.
+	 * @param ExtensionRegistry $extensionRegistry
+	 */
+	protected function __construct( ExtensionRegistry $extensionRegistry ) {
+		/** @todo Use MediaWikiServices Service Locator when it's ready */
+		$this->extensionRegistry = $extensionRegistry;
+		$this->config = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( PopupsContext::EXTENSION_NAME );
 	}
 
+	/**
+	 * Get a PopupsContext instance
+	 *
+	 * @return PopupsContext
+	 */
+	public static function getInstance() {
+		if ( !self::$instance ) {
+			self::$instance = new PopupsContext( ExtensionRegistry::getInstance() );
+		}
+		return self::$instance;
+	}
+	/**
+	 * Is Beta Feature mode enabled
+	 *
+	 * @return bool
+	 */
+	public function isBetaFeatureEnabled() {
+		return $this->config->get( 'PopupsBetaFeature' ) === true;
+	}
 	/**
 	 * Are Page previews visible on User Preferences Page
 	 *
 	 * return @bool
 	 */
 	public function showPreviewsOptInOnPreferencesPage() {
-		return $this->config->get( 'PopupsBetaFeature' ) === false
+		return !$this->isBetaFeatureEnabled()
 			&& $this->config->get( 'PopupsHideOptInOnPreferencesPage' ) === false;
 	}
 
@@ -93,17 +121,25 @@ class PopupsContext {
 		if ( $user->isAnon() ) {
 			return true;
 		}
-		if ( $this->config->get( 'PopupsBetaFeature' ) ) {
-			if ( !class_exists( 'BetaFeatures' ) ) {
-				$this->getLogger()->error( 'PopupsMode cannot be used as a beta feature unless ' .
-					'the BetaFeatures extension is present.' );
-				return false;
-			}
+		if ( $this->isBetaFeatureEnabled() ) {
 			return \BetaFeatures::isFeatureEnabled( $user, self::PREVIEWS_BETA_PREFERENCE_NAME );
 		};
 		return $user->getOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME ) === self::PREVIEWS_ENABLED;
 	}
 
+	/**
+	 * @return bool
+	 */
+	public function areDependenciesMet() {
+		$areMet = $this->extensionRegistry->isLoaded( 'TextExtracts' )
+			&& $this->extensionRegistry->isLoaded( 'PageImages' );
+
+		if ( $this->isBetaFeatureEnabled() ) {
+			$areMet = $areMet && $this->extensionRegistry->isLoaded( 'BetaFeatures' );
+		}
+
+		return $areMet;
+	}
 	/**
 	 * Get module logger
 	 *
@@ -121,4 +157,5 @@ class PopupsContext {
 	public function getConfig() {
 		return $this->config;
 	}
+
 }

@@ -1,4 +1,24 @@
 <?php
+/*
+ * This file is part of the MediaWiki extension Popups.
+ *
+ * Popups is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Popups is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Popups.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @file
+ * @ingroup extensions
+ */
+require_once ( 'PopupsContextTestWrapper.php' );
 
 use Popups\PopupsContext;
 
@@ -6,21 +26,35 @@ use Popups\PopupsContext;
  * Popups module tests
  *
  * @group Popups
+ * @coversDefaultClass Popups\PopupsContext
  */
 class PopupsContextTest extends MediaWikiTestCase {
 	/**
-	 * @covers Popups\PopupsContext::showPreviewsOptInOnPreferencesPage
-	 * @dataProvider provideConfigForShowPreviewsInOptIn
+	 * Anonymous user id
+	 * @see MediaWikiTestCase::addCoreDBData()
 	 */
-	public function testShowPreviewsPreferencesPage( $config, $expected ) {
-		$this->setMwGlobals( $config );
-		$module = new Popups\PopupsContext();
-		$this->assertEquals( $expected, $module->showPreviewsOptInOnPreferencesPage() );
+	const ANONYMOUS_USER = 0;
+
+	public function tearDown() {
+		PopupsContextTestWrapper::resetTestInstance();
+		parent::tearDown();
 	}
 
 	/**
-	 * @covers Popups\PopupsContext::__construct
-	 * @covers Popups\PopupsContext::getConfig
+	 * @covers ::showPreviewsOptInOnPreferencesPage
+	 * @dataProvider provideConfigForShowPreviewsInOptIn
+	 * @param array $config
+	 * @param bool $expected
+	 */
+	public function testShowPreviewsPreferencesPage( $config, $expected ) {
+		$this->setMwGlobals( $config );
+		$context = PopupsContext::getInstance();
+		$this->assertEquals( $expected, $context->showPreviewsOptInOnPreferencesPage() );
+	}
+
+	/**
+	 * @covers ::__construct
+	 * @covers ::getConfig
 	 */
 	public function testContextAndConfigInitialization() {
 		$configMock = $this->getMock( Config::class );
@@ -36,8 +70,8 @@ class PopupsContextTest extends MediaWikiTestCase {
 			return $configFactoryMock;
 		} );
 
-		$module = new Popups\PopupsContext();
-		$this->assertSame( $module->getConfig(), $configMock );
+		$context = PopupsContext::getInstance();
+		$this->assertSame( $context->getConfig(), $configMock );
 	}
 
 	/**
@@ -51,15 +85,13 @@ class PopupsContextTest extends MediaWikiTestCase {
 					"wgPopupsHideOptInOnPreferencesPage" => false
 				],
 				"expected" => true
-			],
-			[
+			], [
 				"options" => [
 					"wgPopupsBetaFeature" => true,
 					"wgPopupsHideOptInOnPreferencesPage" => false
 				],
 				"expected" => false
-			],
-			[
+			], [
 				"options" => [
 					"wgPopupsBetaFeature" => false,
 					"wgPopupsHideOptInOnPreferencesPage" => true
@@ -70,17 +102,20 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers Popups\PopupsContext::isEnabledByUser
+	 * @covers ::isEnabledByUser
+	 * @covers ::isBetaFeatureEnabled
 	 * @dataProvider provideTestDataForIsEnabledByUser
+	 * @param bool $optIn
+	 * @param bool $expected
 	 */
 	public function testIsEnabledByUser( $optIn, $expected ) {
 		$this->setMwGlobals( [
 			"wgPopupsBetaFeature" => false
 		] );
-		$module = new PopupsContext();
+		$context = PopupsContext::getInstance();
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
-		$this->assertEquals( $module->isEnabledByUser( $user ), $expected );
+		$this->assertEquals( $context->isEnabledByUser( $user ), $expected );
 	}
 
 	/**
@@ -100,8 +135,11 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers Popups\PopupsContext::isEnabledByUser
+	 * @covers ::isEnabledByUser
+	 * @covers ::isBetaFeatureEnabled
 	 * @dataProvider provideTestDataForIsEnabledByUserWhenBetaEnabled
+	 * @param bool $optIn
+	 * @param bool $expected
 	 */
 	public function testIsEnabledByUserWhenBetaEnabled( $optIn, $expected ) {
 		if ( !class_exists( 'BetaFeatures' ) ) {
@@ -110,25 +148,27 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$this->setMwGlobals( [
 			"wgPopupsBetaFeature" => true
 		] );
-		$module = new PopupsContext();
+		$context = PopupsContext::getInstance();
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setOption( PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME, $optIn );
-		$this->assertEquals( $module->isEnabledByUser( $user ), $expected );
+		$this->assertEquals( $context->isEnabledByUser( $user ), $expected );
 	}
 
 	/**
 	 * Check that Page Previews are disabled for anonymous user
+	 * @covers ::isEnabledByUser
+	 * @covers ::isBetaFeatureEnabled
 	 */
 	public function testAnonUserHasDisabledPagePreviews() {
 		$user = $this->getMutableTestUser()->getUser();
-		$user->setId( 0 );
+		$user->setId( self::ANONYMOUS_USER );
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			PopupsContext::PREVIEWS_DISABLED );
 		$this->setMwGlobals( [
 			"wgPopupsBetaFeature" => false
 		] );
 
-		$context = new PopupsContext();
+		$context = PopupsContext::getInstance();
 		$this->assertEquals( true, $context->isEnabledByUser( $user ) );
 	}
 	/**
@@ -139,8 +179,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 			[
 				"optin" => PopupsContext::PREVIEWS_ENABLED,
 				'expected' => true
-			],
-			[
+			], [
 				"optin" => PopupsContext::PREVIEWS_DISABLED,
 				'expected' => false
 			]
@@ -148,14 +187,88 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers Popups\PopupsContext::getLogger
+	 * @covers ::areDependenciesMet
+	 * @dataProvider provideTestDataForTestAreDependenciesMet
+	 * @param bool $betaOn
+	 * @param bool $textExtracts
+	 * @param bool $pageImages
+	 * @param bool $betaFeatures
+	 * @param bool $expected
+	 */
+	public function testAreDependenciesMet( $betaOn, $textExtracts, $pageImages,
+		$betaFeatures, $expected ) {
+
+		$this->setMwGlobals( [
+			"wgPopupsBetaFeature" => $betaOn
+		] );
+		$returnValues = [ $textExtracts, $pageImages, $betaFeatures ];
+
+		$mock = $this->getMock( ExtensionRegistry::class, [ 'isLoaded' ] );
+		$mock->expects( $this->any() )
+			->method( 'isLoaded' )
+			->will( new PHPUnit_Framework_MockObject_Stub_ConsecutiveCalls( $returnValues ) );
+		$context = new PopupsContextTestWrapper( $mock );
+		$this->assertEquals( $expected, $context->areDependenciesMet() );
+	}
+
+	/**
+	 * @return array/
+	 */
+	public function provideTestDataForTestAreDependenciesMet() {
+		return [
+			[ // Beta is off, dependencies are met even BetaFeatures ext is not available
+				"betaOn" => false,
+				"textExtracts" => true,
+				"pageImages" => true,
+				"betaFeatures" => false,
+				"expected" => true
+			], [ // textExtracts dep is missing
+				"betaOn" => false,
+				"textExtracts" => false,
+				"pageImages" => true,
+				"betaFeatures" => false,
+				"expected" => false
+			], [ // PageImages dep is missing
+				"betaOn" => false,
+				"textExtracts" => true,
+				"pageImages" => false,
+				"betaFeatures" => false,
+				"expected" => false
+			], [ // Beta is on but BetaFeatures dep is missing
+				"betaOn" => true,
+				"textExtracts" => true,
+				"pageImages" => true,
+				"betaFeatures" => false,
+				"expected" => false
+			], [ // beta is on and all deps are available
+				"betaOn" => true,
+				"textExtracts" => true,
+				"pageImages" => true,
+				"betaFeatures" => true,
+				"expected" => true
+			]
+		];
+	}
+	/**
+	 * @covers ::getLogger
 	 */
 	public function testGetLogger() {
 		$loggerMock = $this->getMock( \Psr\Log\LoggerInterface::class );
 
 		$this->setLogger( PopupsContext::LOGGER_CHANNEL, $loggerMock );
-		$context = new PopupsContext();
+		$context = PopupsContext::getInstance();
 		$this->assertSame( $loggerMock, $context->getLogger() );
+	}
+
+	/**
+	 * @covers ::getInstance
+	 */
+	public function testGetInstanceReturnsSameObjectEveryTime() {
+		$first = PopupsContext::getInstance();
+		$second = PopupsContext::getInstance();
+
+		$this->assertSame( $first, $second );
+		$this->assertInstanceOf( PopupsContext::class, $first );
 	}
 
 }

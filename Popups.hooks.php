@@ -23,11 +23,9 @@ use Popups\PopupsContext;
 class PopupsHooks {
 	const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
-	private static $context;
-
 	static function onGetBetaPreferences( User $user, array &$prefs ) {
 		global $wgExtensionAssetsPath;
-		if ( self::getModuleContext()->getConfig()->get( 'PopupsBetaFeature' ) !== true ) {
+		if ( PopupsContext::getInstance()->isBetaFeatureEnabled() !== true ) {
 			return;
 		}
 		$prefs[PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME] = [
@@ -52,7 +50,7 @@ class PopupsHooks {
 	 * @param array $prefs
 	 */
 	static function onGetPreferences( User $user, array &$prefs ) {
-		$module = self::getModuleContext();
+		$module = PopupsContext::getInstance();
 
 		if ( !$module->showPreviewsOptInOnPreferencesPage() ) {
 			return;
@@ -70,28 +68,13 @@ class PopupsHooks {
 		];
 	}
 
-	/**
-	 * @return PopupsContext
-	 */
-	private static function getModuleContext() {
-
-		if ( !self::$context ) {
-			self::$context = new \Popups\PopupsContext();
-		}
-		return self::$context;
-	}
-
-	private static function areDependenciesMet() {
-		$registry = ExtensionRegistry::getInstance();
-		return $registry->isLoaded( 'TextExtracts' ) && class_exists( 'ApiQueryPageImages' );
-	}
-
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		$module = self::getModuleContext();
+		$module = PopupsContext::getInstance();
 
-		if ( !self::areDependenciesMet() ) {
+		if ( !$module->areDependenciesMet() ) {
 			$logger = $module->getLogger();
-			$logger->error( 'Popups requires the PageImages and TextExtracts extensions.' );
+			$logger->error( 'Popups requires the PageImages and TextExtracts extensions. '
+				. 'If Beta mode is on it requires also BetaFeatures extension' );
 			return true;
 		}
 
@@ -104,7 +87,6 @@ class PopupsHooks {
 	/**
 	 * @param array &$testModules
 	 * @param ResourceLoader $resourceLoader
-	 * @return bool
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules,
 		ResourceLoader &$resourceLoader ) {
@@ -143,8 +125,7 @@ class PopupsHooks {
 	 * @param array $vars
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
-		$module = self::getModuleContext();
-		$conf = $module->getConfig();
+		$conf = PopupsContext::getInstance()->getConfig();
 		$vars['wgPopupsSchemaPopupsSamplingRate'] = $conf->get( 'SchemaPopupsSamplingRate' );
 	}
 
@@ -165,31 +146,4 @@ class PopupsHooks {
 			$config->get( 'PopupsOptInDefaultState' );
 	}
 
-	/**
-	 * Inject Mocked context
-	 * As there is no service registration this is used for tests only.
-	 *
-	 * @param PopupsContext $context
-	 * @throws MWException
-	 */
-	public static function injectContext( PopupsContext $context ) {
-		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
-			throw new MWException( 'injectContext() must not be used outside unit tests.' );
-		}
-		self::$context = $context;
-	}
-
-	/**
-	 * Remove cached context.
-	 * As there is no service registration this is used for tests only.
-	 *
-	 *
-	 * @throws MWException
-	 */
-	public static function resetContext() {
-		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
-			throw new MWException( 'injectContext() must not be used outside unit tests.' );
-		}
-		self::$context = null;
-	}
 }

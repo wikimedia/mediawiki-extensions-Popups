@@ -1,19 +1,40 @@
 <?php
+/*
+ * This file is part of the MediaWiki extension Popups.
+ *
+ * Popups is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Popups is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Popups.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @file
+ * @ingroup extensions
+ */
+require_once ( 'PopupsContextTestWrapper.php' );
 
 /**
  * Integration tests for Page Preview hooks
  *
  * @group Popups
+ * @coversDefaultClass  PopupsHooks
  */
 class PopupsHooksTest extends MediaWikiTestCase {
 
 	protected function tearDown() {
-		PopupsHooks::resetContext();
+		PopupsContextTestWrapper::resetTestInstance();
 		parent::tearDown();
 	}
 
 	/**
-	 * @covers PopupsHooks::onGetBetaPreferences
+	 * @covers ::onGetBetaPreferences
 	 */
 	public function testOnGetBetaPreferencesBetaDisabled() {
 		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
@@ -25,7 +46,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers PopupsHooks::onGetBetaPreferences
+	 * @covers ::onGetBetaPreferences
 	 */
 	public function testOnGetBetaPreferencesBetaEnabled() {
 		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
@@ -37,17 +58,16 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers PopupsHooks::onGetPreferences
-	 * @covers PopupsHooks::injectContext
+	 * @covers ::onGetPreferences
 	 */
 	public function testOnGetPreferencesPreviewsDisabled() {
-		$contextMock = $this->getMock( \Popups\PopupsContext::class,
-			[ 'showPreviewsOptInOnPreferencesPage' ] );
+		$contextMock = $this->getMock( PopupsContextTestWrapper::class,
+			[ 'showPreviewsOptInOnPreferencesPage' ], [ ExtensionRegistry::getInstance() ] );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
 			->will( $this->returnValue( false ) );
 
-		PopupsHooks::injectContext( $contextMock );
+		PopupsContextTestWrapper::injectTestInstance( $contextMock );
 		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
@@ -56,17 +76,16 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers PopupsHooks::onGetPreferences
-	 * @covers PopupsHooks::injectContext
+	 * @covers ::onGetPreferences
 	 */
 	public function testOnGetPreferencesPreviewsEnabled() {
-		$contextMock = $this->getMock( \Popups\PopupsContext::class,
-			[ 'showPreviewsOptInOnPreferencesPage' ] );
+		$contextMock = $this->getMock( PopupsContextTestWrapper::class,
+			[ 'showPreviewsOptInOnPreferencesPage' ], [ ExtensionRegistry::getInstance() ] );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
 			->will( $this->returnValue( true ) );
 
-		PopupsHooks::injectContext( $contextMock );
+		PopupsContextTestWrapper::injectTestInstance( $contextMock );
 		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
@@ -76,7 +95,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers PopupsHooks::onResourceLoaderTestModules
+	 * @covers ::onResourceLoaderTestModules
 	 */
 	public function testOnResourceLoaderTestModules() {
 		$testModules = [ 'someNotEmptyValue' => 'notEmpty' ];
@@ -90,7 +109,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers PopupsHooks::onResourceLoaderGetConfigVars
+	 * @covers ::onResourceLoaderGetConfigVars
 	 */
 	public function testOnResourceLoaderGetConfigVars() {
 		$vars = [ 'something' => 'notEmpty' ];
@@ -114,4 +133,85 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			$wgDefaultUserOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 	}
 
+	/**
+	 * @covers ::onBeforePageDisplay
+	 */
+	public function testOnBeforePageDisplayWhenDependenciesAreNotMet() {
+		$skinMock = $this->getMock( Skin::class );
+		$outPageMock = $this->getMock( OutputPage::class, [ 'addModules' ], [], '', false );
+		$outPageMock->expects( $this->never() )
+			->method( 'addModules' );
+		$loggerMock = $this->getMock( \Psr\Log\LoggerInterface::class );
+		$loggerMock->expects( $this->once() )
+			->method( 'error' );
+
+		$contextMock = $this->getMock( PopupsContextTestWrapper::class,
+			[ 'areDependenciesMet', 'getLogger' ], [ ExtensionRegistry::getInstance() ] );
+		$contextMock->expects( $this->once() )
+			->method( 'areDependenciesMet' )
+			->will( $this->returnValue( false ) );
+		$contextMock->expects( $this->once() )
+			->method( 'getLogger' )
+			->will( $this->returnValue( $loggerMock ) );
+
+		PopupsContextTestWrapper::injectTestInstance( $contextMock );
+		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );
+	}
+
+	/**
+	 * @covers ::onBeforePageDisplay
+	 */
+	public function testOnBeforePageDisplayWhenPagePreviewsAreDisabled() {
+		$userMock = $this->getTestUser()->getUser();
+		$skinMock = $this->getMock( Skin::class );
+		$skinMock->expects( $this->once() )
+			->method( 'getUser' )
+			->will( $this->returnValue( $userMock ) );
+
+		$outPageMock = $this->getMock( OutputPage::class, [ 'addModules' ], [], '', false );
+		$outPageMock->expects( $this->never() )
+			->method( 'addModules' );
+
+		$contextMock = $this->getMock( PopupsContextTestWrapper::class,
+			[ 'areDependenciesMet', 'isEnabledByUser' ], [ ExtensionRegistry::getInstance() ] );
+		$contextMock->expects( $this->once() )
+			->method( 'areDependenciesMet' )
+			->will( $this->returnValue( true ) );
+		$contextMock->expects( $this->once() )
+			->method( 'isEnabledByUser' )
+			->with( $userMock )
+			->will( $this->returnValue( false ) );
+
+		PopupsContextTestWrapper::injectTestInstance( $contextMock );
+		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );
+	}
+
+	/**
+	 * @covers ::onBeforePageDisplay
+	 */
+	public function testOnBeforePageDisplayWhenPagePreviewsAreEnabled() {
+		$userMock = $this->getTestUser()->getUser();
+		$skinMock = $this->getMock( Skin::class );
+		$skinMock->expects( $this->once() )
+			->method( 'getUser' )
+			->will( $this->returnValue( $userMock ) );
+
+		$outPageMock = $this->getMock( OutputPage::class, [ 'addModules' ], [], '', false );
+		$outPageMock->expects( $this->once() )
+			->method( 'addModules' )
+			->with( [ 'ext.popups' ] );
+
+		$contextMock = $this->getMock( PopupsContextTestWrapper::class,
+			[ 'areDependenciesMet', 'isEnabledByUser' ], [ ExtensionRegistry::getInstance() ] );
+		$contextMock->expects( $this->once() )
+			->method( 'areDependenciesMet' )
+			->will( $this->returnValue( true ) );
+		$contextMock->expects( $this->once() )
+			->method( 'isEnabledByUser' )
+			->with( $userMock )
+			->will( $this->returnValue( true ) );
+
+		PopupsContextTestWrapper::injectTestInstance( $contextMock );
+		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );
+	}
 }
