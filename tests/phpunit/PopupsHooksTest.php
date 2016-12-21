@@ -259,61 +259,62 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	/**
 	 * @covers ::onBeforePageDisplay
 	 */
-	public function testOnBeforePageDisplayWhenPagePreviewsAreDisabled() {
-		$userMock = $this->getTestUser()->getUser();
+	public function testOnBeforePageDisplay() {
 		$skinMock = $this->getMock( Skin::class );
-		$skinMock->expects( $this->once() )
-			->method( 'getUser' )
-			->will( $this->returnValue( $userMock ) );
 
-		$outPageMock = $this->getMock( OutputPage::class, [ 'addModules' ], [], '', false );
-		$outPageMock->expects( $this->never() )
-			->method( 'addModules' );
+		$outPageMock = $this->getMock(
+			OutputPage::class,
+			[ 'addModules' ],
+			[],
+			'',
+			false
+		);
+		$outPageMock->expects( $this->once() )
+			->method( 'addModules' )
+			->with( [ 'ext.popups' ] );
 
 		$contextMock = $this->getMockBuilder( PopupsContextTestWrapper::class )
-			->setMethods( [ 'areDependenciesMet', 'isEnabledByUser' ] )
+			->setMethods( [ 'areDependenciesMet' ] )
 			->disableOriginalConstructor()
 			->getMock();
 		$contextMock->expects( $this->once() )
 			->method( 'areDependenciesMet' )
 			->will( $this->returnValue( true ) );
-		$contextMock->expects( $this->once() )
-			->method( 'isEnabledByUser' )
-			->with( $userMock )
-			->will( $this->returnValue( false ) );
 
 		PopupsContextTestWrapper::injectTestInstance( $contextMock );
 		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );
 	}
 
 	/**
-	 * @covers ::onBeforePageDisplay
+	 * @covers PopupsHooks::onMakeGlobalVariablesScript
 	 */
-	public function testOnBeforePageDisplayWhenPagePreviewsAreEnabled() {
-		$userMock = $this->getTestUser()->getUser();
-		$skinMock = $this->getMock( Skin::class );
-		$skinMock->expects( $this->once() )
-			->method( 'getUser' )
-			->will( $this->returnValue( $userMock ) );
+	public function testOnMakeGlobalVariablesScript() {
+		$user = User::newFromId( 0 );
 
-		$outPageMock = $this->getMock( OutputPage::class, [ 'addModules' ], [], '', false );
-		$outPageMock->expects( $this->once() )
-			->method( 'addModules' )
-			->with( [ 'ext.popups' ] );
+		$outputPage = $this->getMockBuilder( OutputPage::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$outputPage->expects( $this->once() )
+			->method( 'getUser' )
+			->willReturn( $user );
 
 		$contextMock = $this->getMockBuilder( PopupsContextTestWrapper::class )
-			->setMethods( [ 'areDependenciesMet', 'isEnabledByUser' ] )
+			->setMethods( [ 'isEnabledByUser' ] )
 			->disableOriginalConstructor()
 			->getMock();
 		$contextMock->expects( $this->once() )
-			->method( 'areDependenciesMet' )
-			->will( $this->returnValue( true ) );
-		$contextMock->expects( $this->once() )
 			->method( 'isEnabledByUser' )
-			->with( $userMock )
-			->will( $this->returnValue( true ) );
+			->with( $user )
+			->willReturn( false );
 
 		PopupsContextTestWrapper::injectTestInstance( $contextMock );
-		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );
+
+		$vars = [];
+
+		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
+
+		$this->assertCount( 1, $vars );
+		$this->assertFalse( $vars[ 'wgPopupsIsEnabledByUser' ] );
 	}
 }

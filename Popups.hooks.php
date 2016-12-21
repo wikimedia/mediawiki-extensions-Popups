@@ -93,9 +93,8 @@ class PopupsHooks {
 			return true;
 		}
 
-		if ( $module->isEnabledByUser( $skin->getUser() ) ) {
-			$out->addModules( [ 'ext.popups' ] );
-		}
+		$out->addModules( [ 'ext.popups' ] );
+
 		return true;
 	}
 
@@ -143,6 +142,24 @@ class PopupsHooks {
 		$conf = PopupsContext::getInstance()->getConfig();
 		$vars['wgPopupsSchemaSamplingRate'] = $conf->get( 'PopupsSchemaSamplingRate' );
 		$vars['wgPopupsBetaFeature'] = $conf->get( 'PopupsBetaFeature' );
+	}
+
+	/**
+	 * MakeGlobalVariablesScript hook handler.
+	 *
+	 * Variables added:
+	 * * `wgPopupsIsEnabledByUser' - The server's notion of whether or not the
+	 *   user has enabled Page Previews (see
+	 *   `\Popups\PopupsContext#isEnabledByUser`).
+	 *
+	 * @param array $vars
+	 * @param OutputPage $out
+	 */
+	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $out ) {
+		$module = PopupsContext::getInstance();
+		$user = $out->getUser();
+
+		$vars['wgPopupsIsEnabledByUser'] = $module->isEnabledByUser( $user );
 	}
 
 	/**

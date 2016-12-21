@@ -97,7 +97,7 @@
 		settingsDialog = mw.popups.createSettingsDialogRenderer();
 		schema = mw.popups.createSchema( mw.config, window );
 
-		isEnabled = mw.popups.isEnabled( mw.user, userSettings );
+		isEnabled = mw.popups.isEnabled( mw.user, userSettings, mw.config );
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
