@@ -63,10 +63,10 @@
 				} );
 			}
 
-			if ( state.preview.enabled ) {
-				$footerLink.hide();
-			} else {
+			if ( state.settings.shouldShowFooterLink ) {
 				$footerLink.show();
+			} else {
+				$footerLink.hide();
 			}
 		};
 	};

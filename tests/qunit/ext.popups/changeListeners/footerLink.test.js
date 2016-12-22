@@ -17,8 +17,8 @@
 				mw.popups.changeListeners.footerLink( boundActions );
 
 			that.state = {
-				preview: {
-					enabled: false
+				settings: {
+					shouldShowFooterLink: true
 				}
 			};
 
@@ -64,7 +64,7 @@
 		// ---
 
 		prevState = $.extend( true, {}, this.state );
-		this.state.preview.enabled = true;
+		this.state.settings.shouldShowFooterLink = false;
 
 		this.footerLinkChangeListener( prevState, this.state );
 

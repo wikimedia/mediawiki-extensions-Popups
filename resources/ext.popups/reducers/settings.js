@@ -11,7 +11,8 @@
 		if ( state === undefined ) {
 			state = {
 				shouldShow: false,
-				showHelp: false
+				showHelp: false,
+				shouldShowFooterLink: false
 			};
 		}
 
@@ -37,8 +38,17 @@
 						// If we enabled, we just hide directly, no help
 						// If we disabled, keep it showing and let the ui show the help.
 						shouldShow: !action.enabled,
-						showHelp: !action.enabled
+						showHelp: !action.enabled,
+
+						// Since the footer link is only ever shown to anonymous users (see
+						// the BOOT case below), state.userIsAnon is always truthy here.
+						shouldShowFooterLink: !action.enabled
 					} );
+
+			case popups.actionTypes.BOOT:
+				return nextState( state, {
+					shouldShowFooterLink: action.user.isAnon && !action.isEnabled
+				} );
 			default:
 				return state;
 		}

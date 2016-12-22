@@ -9,8 +9,39 @@
 			state,
 			{
 				shouldShow: false,
-				showHelp: false
+				showHelp: false,
+				shouldShowFooterLink: false
 			}
+		);
+	} );
+
+	QUnit.test( 'BOOT', function ( assert ) {
+		var action = {
+			type: 'BOOT',
+			isEnabled: false,
+			user: {
+				isAnon: true
+			}
+		};
+
+		assert.deepEqual(
+			mw.popups.reducers.settings( {}, action ),
+			{
+				shouldShowFooterLink: true
+			}
+		);
+
+		// ---
+
+		// And when the user is logged out...
+		action.user.isAnon = false;
+
+		assert.deepEqual(
+			mw.popups.reducers.settings( {}, action ),
+			{
+				shouldShowFooterLink: false
+			},
+			'If the user is logged in, then it doesn\'t signal that the footer link should be shown.'
 		);
 	} );
 
@@ -64,7 +95,8 @@
 			mw.popups.reducers.settings( {}, action( false, true ) ),
 			{
 				shouldShow: false,
-				showHelp: false
+				showHelp: false,
+				shouldShowFooterLink: false
 			},
 			'It should hide the settings dialog and help when we enable.'
 		);
@@ -73,7 +105,8 @@
 			mw.popups.reducers.settings( {}, action( true, false ) ),
 			{
 				shouldShow: true,
-				showHelp: true
+				showHelp: true,
+				shouldShowFooterLink: true
 			},
 			'It should keep the settings showing and show the help when we disable.'
 		);
