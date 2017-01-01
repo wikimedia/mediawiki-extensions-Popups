@@ -8,8 +8,8 @@
 	"popups-message": "כרטיסים מרחפים",
 	"popups-desc": "הצגת כרטיסים מרחפים עם סיכומים של תוכן הדף בעת העברת העכבר מעל קישור לדף.",
 	"popups-last-edited": "נערך $1",
-	"popups-redirects": "מפנה לדף <h3>$1</h3>",
-	"popups-settings-title": "תצוגה מקדימה של דף",
+	"popups-redirects": "הפניה לדף <h3>$1</h3>",
+	"popups-settings-title": "תצוגה מקדימה של דפים",
 	"popups-settings-description": "הכלי הזה מאפשר לך לראות תצוגה מקדימה של קישורים לדפי ויקי ולהערות שוליים.",
 	"popups-settings-option-simple": "מופעל",
 	"popups-settings-option-simple-description": "הצגת תמצית קצר של הנושא בעת קריאת דף אחר.",
@@ -23,6 +23,6 @@
 	"popups-settings-enable": "הפעלת תצוגה מקדימה",
 	"popups-send-feedback": "שליחת משוב (קישור חיצוני)",
 	"popups-mobile-continue-to-page": "להמשיך לדף",
-	"popups-mobile-dismiss": "לסגור",
+	"popups-mobile-dismiss": "סגירה",
 	"popups-mobile-message": "כרטיסים מרחפים (נייד)"
 }
