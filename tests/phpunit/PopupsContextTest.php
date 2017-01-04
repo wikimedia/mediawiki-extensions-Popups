@@ -280,4 +280,24 @@ class PopupsContextTest extends MediaWikiTestCase {
 		] );
 		$this->assertEquals( "2", PopupsContext::getInstance()->getDefaultIsEnabledState() );
 	}
+
+	/**
+	 * @covers ::conflictsWithNavPopupsGadget
+	 */
+	public function testConflictsWithNavPopupsGadget() {
+		$integrationMock = $this->getMockBuilder( \Popups\PopupsGadgetsIntegration::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'conflictsWithNavPopupsGadget' ] )
+			->getMock();
+
+		$user = $this->getTestUser()->getUser();
+
+		$integrationMock->expects( $this->once() )
+			->method( 'conflictsWithNavPopupsGadget' )
+			->with( $user )
+			->willReturn( true );
+
+		$context = new PopupsContextTestWrapper( ExtensionRegistry::getInstance(), $integrationMock );
+		$this->assertEquals( true, $context->conflictsWithNavPopupsGadget( $user ) );
+	}
 }

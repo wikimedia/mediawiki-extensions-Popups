@@ -50,9 +50,9 @@ class PopupsHooks {
 	 * @param array $prefs
 	 */
 	static function onGetPreferences( User $user, array &$prefs ) {
-		$module = PopupsContext::getInstance();
+		$context = PopupsContext::getInstance();
 
-		if ( !$module->showPreviewsOptInOnPreferencesPage() ) {
+		if ( !$context->showPreviewsOptInOnPreferencesPage() ) {
 			return;
 		}
 		$option = [
@@ -66,6 +66,11 @@ class PopupsHooks {
 			],
 			'section' => self::PREVIEWS_PREFERENCES_SECTION
 		];
+		if ( $context->conflictsWithNavPopupsGadget( $user ) ) {
+			$option[ 'disabled' ] = true;
+			$option[ 'help' ] = wfMessage( 'popups-prefs-disable-nav-gadgets-info',
+				'Special:Preferences#mw-prefsection-gadgets' );
+		}
 		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
 
 		if ( $skinPosition !== false ) {

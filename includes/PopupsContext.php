@@ -77,9 +77,12 @@ class PopupsContext {
 	 * Module constructor.
 	 * @param ExtensionRegistry $extensionRegistry
 	 */
-	protected function __construct( ExtensionRegistry $extensionRegistry ) {
+	protected function __construct( ExtensionRegistry $extensionRegistry,
+		PopupsGadgetsIntegration $gadgetsIntegration ) {
 		/** @todo Use MediaWikiServices Service Locator when it's ready */
 		$this->extensionRegistry = $extensionRegistry;
+		$this->gadgetsIntegration = $gadgetsIntegration;
+
 		$this->config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( PopupsContext::EXTENSION_NAME );
 	}
@@ -91,9 +94,19 @@ class PopupsContext {
 	 */
 	public static function getInstance() {
 		if ( !self::$instance ) {
-			self::$instance = new PopupsContext( ExtensionRegistry::getInstance() );
+			$registry = ExtensionRegistry::getInstance();
+			self::$instance = new PopupsContext( $registry,
+				new PopupsGadgetsIntegration( $registry ) );
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * @param \User $user
+	 * @return bool
+	 */
+	public function conflictsWithNavPopupsGadget( \User $user ) {
+		return $this->gadgetsIntegration->conflictsWithNavPopupsGadget( $user );
 	}
 	/**
 	 * Is Beta Feature mode enabled

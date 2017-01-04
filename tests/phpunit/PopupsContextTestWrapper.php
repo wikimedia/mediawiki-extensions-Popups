@@ -31,15 +31,23 @@ use \Popups\PopupsContext;
  * Used for testing only
  * @codeCoverageIgnore
  */
+use Popups\PopupsGadgetsIntegration;
+
 class PopupsContextTestWrapper extends PopupsContext {
 
 	/**
 	 * Override constructor so we can create new instances for testing
-	 * .
+	 *
 	 * @param ExtensionRegistry $extensionRegistry
+	 * @param PopupsGadgetsIntegration $gadgetsIntegration
 	 */
-	public function __construct( ExtensionRegistry $extensionRegistry ) {
-		parent::__construct( $extensionRegistry );
+	public function __construct( ExtensionRegistry $extensionRegistry,
+		PopupsGadgetsIntegration $gadgetsIntegration = null ) {
+
+		$gadgetsIntegration = $gadgetsIntegration ? $gadgetsIntegration :
+			new PopupsGadgetsIntegration( $extensionRegistry );
+
+		parent::__construct( $extensionRegistry, $gadgetsIntegration );
 	}
 
 	/**
