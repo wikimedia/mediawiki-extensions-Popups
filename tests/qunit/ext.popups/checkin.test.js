@@ -82,9 +82,9 @@
 
 		assert.expect( 1 );
 
-		checkin.haveCheckinActionsBeenSetup = true;
 		checkin.setupActions( actionSpy );
-		assert.ok( spy.notCalled, 'setVisibleTimeout has not been called.' );
+		checkin.setupActions( actionSpy );
+		assert.strictEqual( spy.callCount, 1, 'setVisibleTimeout is only ever called once.' );
 	} );
 
 	QUnit.test( 'checkin actions are setup correctly', function ( assert ) {
