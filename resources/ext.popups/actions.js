@@ -3,6 +3,7 @@
 	var actions = {},
 		types = {
 			BOOT: 'BOOT',
+			CHECKIN: 'CHECKIN',
 			LINK_DWELL: 'LINK_DWELL',
 			LINK_ABANDON_START: 'LINK_ABANDON_START',
 			LINK_ABANDON_END: 'LINK_ABANDON_END',
@@ -85,6 +86,18 @@
 				editCount: editCount,
 				previewCount: previewCount
 			}
+		};
+	};
+
+	/**
+	 * How long has the user been actively reading the page?
+	 * @param {number} time The number of seconds the user has seen the page
+	 * @returns {{type: string, time: number}}
+	 */
+	actions.checkin = function ( time ) {
+		return {
+			type: types.CHECKIN,
+			time: time
 		};
 	};
 

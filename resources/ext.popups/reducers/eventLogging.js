@@ -52,6 +52,14 @@
 					}
 				} );
 
+			case popups.actionTypes.CHECKIN:
+				return nextState( state, {
+					event: {
+						action: 'checkin',
+						checkin: action.time
+					}
+				} );
+
 			case popups.actionTypes.EVENT_LOGGED:
 				return nextState( state, {
 					event: undefined

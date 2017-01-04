@@ -38,7 +38,7 @@
 		]
 	},
 	"EventLoggingSchemas": {
-		"Popups": 16112163
+		"Popups": 16163887
 	},
 	"callback": "PopupsHooks::onExtensionRegistration",
 	"config": {
@@ -85,9 +85,9 @@
 				"resources/ext.popups/changeListeners/eventLogging.js",
 				"resources/ext.popups/changeListeners/syncUserSettings.js",
 				"resources/ext.popups/changeListeners/settings.js",
-
 				"resources/ext.popups/settingsDialog.js",
-
+				"resources/ext.popups/pageVisibility.js",
+				"resources/ext.popups/checkin.js",
 				"resources/ext.popups/boot.js"
 			],
 			"templates": {

@@ -73,6 +73,7 @@
 	 * 2. Binding the actions to such store
 	 * 3. Trigger the boot action to bootstrap the system
 	 * 4. When the page content is ready:
+	 *   - Setup `checkin` actions
 	 *   - Process the eligible links for page previews
 	 *   - Initialize the renderer
 	 *   - Bind hover and click events to the eligible links to trigger actions
@@ -126,6 +127,8 @@
 					BLACKLISTED_LINKS,
 					mw.config
 				);
+
+			mw.popups.checkin.setupActions( actions.checkin );
 
 			mw.popups.renderer.init();
 
