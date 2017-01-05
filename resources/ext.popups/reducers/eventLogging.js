@@ -21,7 +21,7 @@
 	 * @return {Object} The state as a result of processing the action
 	 */
 	popups.reducers.eventLogging = function ( state, action ) {
-		var nextCount;
+		var nextCount, abandonEvent;
 
 		if ( state === undefined ) {
 			state = {
@@ -111,12 +111,23 @@
 				} );
 
 			case popups.actionTypes.ABANDON_END:
+				abandonEvent = {
+					linkInteractionToken: state.interaction.token,
+					totalInteractionTime: Math.round( state.interaction.finished - state.interaction.started )
+				};
+
+				// Has the preview been shown? If so, then, in the context of the
+				// instrumentation, then the preview has been dismissed by the user
+				// rather than the user has abandoned the link.
+				if ( state.interaction.timeToPreviewShow !== undefined ) {
+					abandonEvent.action = 'dismissed';
+					abandonEvent.previewType = state.interaction.previewType;
+				} else {
+					abandonEvent.action = 'dwelledButAbandoned';
+				}
+
 				return nextState( state, {
-					event: {
-						action: state.interaction.timeToPreviewShow ? 'dismissed' : 'dwelledButAbandoned',
-						linkInteractionToken: state.interaction.token,
-						totalInteractionTime: Math.round( state.interaction.finished - state.interaction.started )
-					}
+					event: abandonEvent
 				} );
 
 			default:
