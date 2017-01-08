@@ -276,16 +276,25 @@
 	QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 		var that = this,
 			dispatch = that.sandbox.spy(),
+			token = '0123456789',
+			getState = function () {
+				return {
+					preview: {
+						activeToken: token
+					}
+				};
+			},
 			done = assert.async();
 
 		this.sandbox.stub( mw, 'now' ).returns( new Date() );
 
-		mw.popups.actions.linkAbandon( that.el )( dispatch );
+		mw.popups.actions.linkAbandon( that.el )( dispatch, getState );
 
 		assert.ok( dispatch.calledWith( {
 			type: 'LINK_ABANDON_START',
 			el: that.el,
-			timestamp: mw.now()
+			timestamp: mw.now(),
+			token: token
 		} ) );
 
 		// ---
@@ -296,10 +305,14 @@
 		);
 
 		that.waitPromise.then( function () {
-			assert.ok( dispatch.calledWith( {
+			assert.ok(
+				dispatch.calledWith( {
 				type: 'LINK_ABANDON_END',
-				el: that.el
-			} ) );
+				el: that.el,
+				token: token
+				} ),
+				'LINK_ABANDON_* share the same token.'
+			);
 
 			done();
 		} );

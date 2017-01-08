@@ -200,17 +200,21 @@
 	 * @return {Object}
 	 */
 	actions.linkAbandon = function ( el ) {
-		return function ( dispatch ) {
+		return function ( dispatch, getState ) {
+			var token = getState().preview.activeToken;
+
 			dispatch( timedAction( {
 				type: types.LINK_ABANDON_START,
-				el: el
+				el: el,
+				token: token
 			} ) );
 
 			mw.popups.wait( ABANDON_END_DELAY )
 				.then( function () {
 					dispatch( {
 						type: types.LINK_ABANDON_END,
-						el: el
+						el: el,
+						token: token
 					} );
 				} );
 		};
