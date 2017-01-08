@@ -168,14 +168,14 @@
 	 * @return {Redux.Thunk}
 	 */
 	actions.linkDwell = function ( el, event, gateway, generateToken ) {
-		var interactionToken = generateToken();
+		var token = generateToken();
 
 		return function ( dispatch, getState ) {
 			var action = timedAction( {
 				type: types.LINK_DWELL,
 				el: el,
 				event: event,
-				interactionToken: interactionToken
+				token: token
 			} );
 
 			dispatch( action );
