@@ -89,8 +89,6 @@
 	mw.popups.renderer.render = function ( data ) {
 		var preview = data.extract === undefined ? createEmptyPreview( data ) : createPreview( data );
 
-		preview.el.appendTo( document.body );
-
 		return {
 
 			/**
@@ -253,6 +251,8 @@
 	function show( preview, event, boundActions ) {
 		var layout = createLayout( preview, event );
 
+		preview.el.appendTo( document.body );
+
 		// Hack to "refresh" the SVG so that it's displayed.
 		//
 		// Elements get added to the DOM and not to the screen because of different
@@ -299,8 +299,7 @@
 			.addClass( fadeOutClass );
 
 		return mw.popups.wait( 150 ).then( function () {
-			preview.el.hide()
-				.attr( 'aria-hidden', 'true' );
+			preview.el.remove();
 		} );
 	}
 
