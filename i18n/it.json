@@ -3,7 +3,8 @@
 		"authors": [
 			"Beta16",
 			"TecnoMaster",
-			"Fringio"
+			"Fringio",
+			"Nemo bis"
 		]
 	},
 	"popups-message": "Popup",
@@ -15,7 +16,7 @@
 	"popups-settings-option-simple": "Attiva",
 	"popups-settings-option-simple-description": "Ottieni una veloce anteprima di un argomento, mentre stai leggendo una voce.",
 	"popups-settings-option-advanced": "Avanzata",
-	"popups-settings-option-advanced-description": "Vedi un'anteprima dei collegamenti e accedi al menu delle funzioni di modifica. Questo è usato da molti editori.",
+	"popups-settings-option-advanced-description": "Vedi un'anteprima dei collegamenti e accedi al menu delle funzioni di modifica. Questo è usato da molti utenti.",
 	"popups-settings-option-off": "Disattiva",
 	"popups-settings-save": "Salva",
 	"popups-settings-help-ok": "Fatto",
