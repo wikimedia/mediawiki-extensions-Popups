@@ -72,7 +72,8 @@
 				activeLink: action.el,
 				activeEvent: action.event,
 				activeToken: action.token,
-				shouldShow: false
+				shouldShow: false,
+				isUserDwelling: true
 			},
 			'It should set active link and event as well as interaction info and hide the preview.'
 		);
@@ -170,17 +171,21 @@
 	} );
 
 	QUnit.test( 'PREVIEW_ABANDON_START', function ( assert ) {
-		var action = {
-			type: 'PREVIEW_ABANDON_START'
-		};
+		var actions = [ 'PREVIEW_ABANDON_START', 'LINK_ABANDON_START' ];
 
-		assert.deepEqual(
-			mw.popups.reducers.preview( {}, action ),
-			{
-				isUserDwelling: false
-			},
-			'It should mark the preview having been abandoned.'
-		);
+		$.each( actions, function ( i, testCase ) {
+			var action = {
+				type: testCase
+			};
+
+			assert.deepEqual(
+				mw.popups.reducers.preview( {}, action ),
+				{
+					isUserDwelling: false
+				},
+				testCase + ' should mark the preview having been abandoned.'
+			);
+		} );
 	} );
 
 }( mediaWiki, jQuery ) );

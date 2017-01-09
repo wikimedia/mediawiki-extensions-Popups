@@ -177,4 +177,32 @@
 			} );
 	} );
 
+	QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should keep it active after all delays', function ( assert ) {
+		var that = this;
+		this.dwellAndPreviewDwell( 'element', 'event', 42 )
+			.then( function () {
+				var abandonPreviewDeferred, dwellPromise, dwellDeferred;
+
+				// Start abandoning the preview
+				that.abandonPreview( 'element' );
+
+				abandonPreviewDeferred = that.waitDeferred;
+				// Dwell back into the link, new event is triggered
+				dwellPromise = that.dwell( 'element', 'event2', 42 );
+				dwellDeferred = that.waitDeferred;
+
+				// Preview abandon happens next, before the fetch
+				abandonPreviewDeferred.resolve();
+
+				// Then fetch happens
+				dwellDeferred.resolve();
+
+				return dwellPromise;
+			} )
+			.then( function () {
+				var state = that.store.getState();
+				assert.equal( state.preview.activeLink, 'element' );
+			} );
+	} );
+
 }( mediaWiki, jQuery ) );

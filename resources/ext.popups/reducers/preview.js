@@ -40,7 +40,9 @@
 					// action will be ignored.
 					//
 					// Ensure that all the preview is hidden.
-					shouldShow: false
+					shouldShow: false,
+
+					isUserDwelling: true
 				} );
 			case popups.actionTypes.LINK_ABANDON_END:
 				if ( action.el !== state.activeLink ) {
@@ -64,10 +66,13 @@
 				return nextState( state, {
 					isUserDwelling: true
 				} );
+
+			case popups.actionTypes.LINK_ABANDON_START:
 			case popups.actionTypes.PREVIEW_ABANDON_START:
 				return nextState( state, {
 					isUserDwelling: false
 				} );
+
 			case popups.actionTypes.FETCH_START:
 				return nextState( state, {
 					fetchResponse: undefined
