@@ -184,7 +184,7 @@
 				.then( function () {
 					var previewState = getState().preview;
 
-					if ( previewState.enabled && previewState.activeLink === el ) {
+					if ( previewState.enabled && previewState.activeToken === token ) {
 						dispatch( actions.fetch( gateway, el, action.timestamp ) );
 					}
 				} );
