@@ -120,7 +120,8 @@
 		// Stub the state tree being updated.
 		this.state.preview = {
 			enabled: true,
-			activeLink: this.el
+			activeLink: this.el,
+			activeToken: generateToken()
 		};
 
 		// ---
@@ -139,43 +140,59 @@
 		this.waitDeferred.resolve();
 	} );
 
-	QUnit.test( '#linkDwell doesn\'t dispatch under certain conditions', function ( assert ) {
-		var cases,
-			done,
-			that = this,
-			event = {};
+	QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function ( assert ) {
+		var done = assert.async(),
+			event = {},
+			dispatch = this.sandbox.spy();
 
-		cases = [
-			{
-				enabled: false
-			},
-			{
-				enabled: true,
-				activeLink: undefined // Any value other than this.el.
-			}
-		];
+		mw.popups.actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
+			dispatch,
+			this.getState
+		);
 
-		done = assert.async( cases.length );
+		this.state.preview = {
+			enabled: false
+		};
 
-		$.each( cases, function ( testCase ) {
-			var dispatch = that.sandbox.spy();
+		this.waitPromise.then( function () {
+			assert.strictEqual( dispatch.callCount, 1 );
 
-			mw.popups.actions.linkDwell( that.el, event, /* gateway = */ null, generateToken )(
-				dispatch,
-				that.getState
-			);
-
-			that.state.preview = testCase;
-
-			that.waitPromise.then( function () {
-				assert.strictEqual( dispatch.callCount, 1 );
-
-				done();
-			} );
-
-			// After 50 ms...
-			that.waitDeferred.resolve();
+			done();
 		} );
+
+		// After 500 ms...
+		this.waitDeferred.resolve();
+	} );
+
+	QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( assert ) {
+		var done = assert.async(),
+			event = {},
+			dispatch = this.sandbox.spy();
+
+		mw.popups.actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
+			dispatch,
+			this.getState
+		);
+
+		this.state.preview = {
+			enabled: true,
+
+			// Consider the user tabbing back and forth between two links in the time
+			// it takes to start fetching data via the gateway: the active link hasn't
+			// changed, but the active token has.
+			activeLink: this.el,
+
+			activeToken: '0123456789'
+		};
+
+		this.waitPromise.then( function () {
+			assert.strictEqual( dispatch.callCount, 1 );
+
+			done();
+		} );
+
+		// After 500 ms...
+		this.waitDeferred.resolve();
 	} );
 
 	QUnit.module( 'ext.popups/actions#fetch', {
