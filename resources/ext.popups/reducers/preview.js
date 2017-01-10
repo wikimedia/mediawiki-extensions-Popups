@@ -14,6 +14,7 @@
 				enabled: undefined,
 				activeLink: undefined,
 				activeEvent: undefined,
+				activeToken: '',
 				shouldShow: false,
 				isUserDwelling: false
 			};
@@ -32,6 +33,7 @@
 				return nextState( state, {
 					activeLink: action.el,
 					activeEvent: action.event,
+					activeToken: action.token,
 
 					// When the user dwells on a link with their keyboard, a preview is
 					// renderered, and then dwells on another link, the LINK_ABANDON_END

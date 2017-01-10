@@ -17,6 +17,7 @@
 				enabled: undefined,
 				activeLink: undefined,
 				activeEvent: undefined,
+				activeToken: '',
 				shouldShow: false,
 				isUserDwelling: false
 			}
@@ -61,7 +62,8 @@
 		var action = {
 			type: 'LINK_DWELL',
 			el: this.el,
-			event: {}
+			event: {},
+			token: '1234567890'
 		};
 
 		assert.deepEqual(
@@ -69,6 +71,7 @@
 			{
 				activeLink: action.el,
 				activeEvent: action.event,
+				activeToken: action.token,
 				shouldShow: false
 			},
 			'It should set active link and event as well as interaction info and hide the preview.'
