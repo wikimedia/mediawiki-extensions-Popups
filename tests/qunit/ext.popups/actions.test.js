@@ -349,12 +349,21 @@
 	QUnit.test( 'ext.popups/actions#previewAbandon', function ( assert ) {
 		var that = this,
 			dispatch = that.sandbox.spy(),
+			token = '1234567890',
+			getState = function () {
+				return {
+					preview: {
+						activeToken: token
+					}
+				};
+			};
 			done = assert.async();
 
-		mw.popups.actions.previewAbandon()( dispatch );
+		mw.popups.actions.previewAbandon()( dispatch, getState );
 
 		assert.ok( dispatch.calledWith( {
-			type: 'PREVIEW_ABANDON_START'
+			type: 'PREVIEW_ABANDON_START',
+			token: token
 		} ) );
 
 		// ---
@@ -367,7 +376,8 @@
 		that.waitPromise.then( function () {
 			assert.deepEqual( dispatch.getCall( 1 ).args[ 0 ], {
 				type: 'PREVIEW_ABANDON_END',
-				timestamp: mw.now()
+				timestamp: mw.now(),
+				token: token
 			} );
 
 			done();

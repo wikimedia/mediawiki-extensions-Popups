@@ -252,15 +252,19 @@
 	 * @return {Object}
 	 */
 	actions.previewAbandon = function () {
-		return function ( dispatch ) {
+		return function ( dispatch, getState ) {
+			var token = getState().preview.activeToken;
+
 			dispatch( {
-				type: types.PREVIEW_ABANDON_START
+				type: types.PREVIEW_ABANDON_START,
+				token: token
 			} );
 
 			mw.popups.wait( ABANDON_END_DELAY )
 				.then( function () {
 					dispatch( timedAction( {
-						type: types.PREVIEW_ABANDON_END
+						type: types.PREVIEW_ABANDON_END,
+						token: token
 					} ) );
 				} );
 		};
