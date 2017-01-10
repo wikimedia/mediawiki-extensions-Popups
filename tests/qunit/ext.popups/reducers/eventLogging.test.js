@@ -136,7 +136,7 @@
 
 		action = {
 			type: 'LINK_DWELL',
-			interactionToken: '0987654321',
+			token: '0987654321',
 			timestamp: mw.now()
 		};
 
@@ -144,7 +144,7 @@
 			mw.popups.reducers.eventLogging( state, action ),
 			{
 				interaction: {
-					token: action.interactionToken,
+					token: action.token,
 					started: action.timestamp
 				}
 			}
@@ -161,7 +161,7 @@
 
 		state = mw.popups.reducers.eventLogging( state, {
 			type: 'LINK_DWELL',
-			interactionToken: '0987654321',
+			token: '0987654321',
 			timestamp: now
 		} );
 
@@ -191,7 +191,7 @@
 
 		state = mw.popups.reducers.eventLogging( state, {
 			type: 'LINK_DWELL',
-			interactionToken: '0987654321',
+			token: '0987654321',
 			timestamp: now
 		} );
 

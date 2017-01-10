@@ -113,7 +113,7 @@
 			type: 'LINK_DWELL',
 			el: this.el,
 			event: event,
-			interactionToken: '9876543210',
+			token: '9876543210',
 			timestamp: mw.now()
 		} );
 

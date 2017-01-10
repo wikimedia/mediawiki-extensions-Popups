@@ -81,7 +81,7 @@
 			case popups.actionTypes.LINK_DWELL:
 				return nextState( state, {
 					interaction: {
-						token: action.interactionToken,
+						token: action.token,
 						started: action.timestamp
 					}
 				} );
