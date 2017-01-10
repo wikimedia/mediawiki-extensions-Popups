@@ -15,10 +15,8 @@
 				preview.show( state.preview.activeEvent, boundActions )
 					.done( boundActions.previewShow );
 			} else if ( !state.preview.shouldShow && preview ) {
-				preview.hide()
-					.done( function () {
-						preview = undefined;
-					} );
+				preview.hide();
+				preview = undefined;
 			}
 		};
 	};
