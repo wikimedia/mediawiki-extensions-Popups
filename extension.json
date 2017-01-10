@@ -30,6 +30,9 @@
 		],
 		"GetPreferences": [
 			"PopupsHooks::onGetPreferences"
+		],
+		"UserGetDefaultOptions": [
+			"PopupsHooks::onUserGetDefaultOptions"
 		]
 	},
 	"MessagesDirs": {
@@ -40,7 +43,6 @@
 	"EventLoggingSchemas": {
 		"Popups": 16163887
 	},
-	"callback": "PopupsHooks::onExtensionRegistration",
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
 		"PopupsBetaFeature": false,

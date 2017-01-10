@@ -103,6 +103,17 @@ class PopupsContext {
 	public function isBetaFeatureEnabled() {
 		return $this->config->get( 'PopupsBetaFeature' ) === true;
 	}
+
+	/**
+	 * Get default Page previews state
+	 *
+	 * @see PopupsContext::PREVIEWS_ENABLED
+	 * @see PopupsContext::PREVIEWS_DISABLED
+	 * @return string
+	 */
+	public function getDefaultIsEnabledState() {
+		return $this->config->get( 'PopupsOptInDefaultState' );
+	}
 	/**
 	 * Are Page previews visible on User Preferences Page
 	 *
