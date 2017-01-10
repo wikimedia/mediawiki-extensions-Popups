@@ -271,4 +271,13 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$this->assertInstanceOf( PopupsContext::class, $first );
 	}
 
+	/**
+	 * @covers ::getDefaultIsEnabledState
+	 */
+	public function testGetDefaultIsEnabledState() {
+		$this->setMwGlobals( [
+			'wgPopupsOptInDefaultState' => "2"
+		] );
+		$this->assertEquals( "2", PopupsContext::getInstance()->getDefaultIsEnabledState() );
+	}
 }

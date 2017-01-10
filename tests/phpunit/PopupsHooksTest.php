@@ -150,16 +150,27 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers PopupsHooks::onExtensionRegistration
+	 * @covers PopupsHooks::onUserGetDefaultOptions
 	 */
-	public function testOnExtensionRegistration() {
-		global $wgDefaultUserOptions;
+	public function testOnUserGetDefaultOptions() {
+		$userOptions = [
+			'test' => 'not_empty'
+		];
+		$contextMock = $this->getMockBuilder( PopupsContextTestWrapper::class )
+			->setMethods( [ 'getDefaultIsEnabledState' ] )
+			->disableOriginalConstructor()
+			->getMock();
 
-		$test = 'testValue';
-		$this->setMwGlobals( [ 'wgPopupsOptInDefaultState' => $test ] );
-		PopupsHooks::onExtensionRegistration();
-		$this->assertEquals( $test,
-			$wgDefaultUserOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
+		$contextMock->expects( $this->once() )
+			->method( 'getDefaultIsEnabledState' )
+			->willReturn( true );
+
+		PopupsContextTestWrapper::injectTestInstance( $contextMock );
+
+		PopupsHooks::onUserGetDefaultOptions( $userOptions );
+		$this->assertCount( 2, $userOptions );
+		$this->assertEquals( true,
+			$userOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 	}
 
 	/**

@@ -141,19 +141,12 @@ class PopupsHooks {
 
 	/**
 	 * Register default preferences for popups
+	 *
+	 * @param array $wgDefaultUserOptions Reference to default options array
 	 */
-	public static function onExtensionRegistration() {
-		global $wgDefaultUserOptions;
-		/**
-		 * We use MainConfig because PopupConfig is not available yet. We cannot use
-		 * ExtensionFunctions as it's called too late (see T153280)
-		 *
-		 * @todo Use ConfigFactory() - when T153280 gets fixed switch it to ExtensionFunctions hook
-		 * or when ConfigRegistry gets populated before calling `callback` ExtensionRegistry hook
-		 */
-		$config = \MediaWiki\MediaWikiServices::getInstance()->getMainConfig();
+	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
 		$wgDefaultUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] =
-			$config->get( 'PopupsOptInDefaultState' );
+			PopupsContext::getInstance()->getDefaultIsEnabledState();
 	}
 
 }
