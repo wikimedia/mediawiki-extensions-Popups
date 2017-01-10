@@ -10,6 +10,37 @@
 			checkin.haveCheckinActionsBeenSetup = false;
 			this.CHECKIN_TIMES = [ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233,
 				377, 610, 987, 1597, 2584, 4181, 6765 ];
+
+			this.clock = this.sandbox.useFakeTimers( 0, 'setTimeout', 'clearTimeout', 'Date' );
+			// Stub performance.now to be Date.now to make timing work with the
+			// sinon timers and with integers.
+			performance && this.sandbox.stub( performance, 'now', Date.now );
+			this.callback = this.sandbox.spy();
+			this.delay = 5000;
+			this.miniDelay = 10;
+			this.pause = 2000;
+
+			this.setupInitialState = function () {
+				this.sandbox.stub( pageVisibility, 'getDocumentHiddenPropertyName' ).returns( 'customHidden' );
+				this.sandbox.stub( pageVisibility, 'getDocumentVisibilitychangeEventName' ).returns( 'customvisibilitychange' );
+				this.isDocumentHidden = this.sandbox.stub( pageVisibility, 'isDocumentHidden' ).returns( false );
+			};
+
+			this.setupPageHiddenState = function () {
+				this.isDocumentHidden.returns( true );
+				this.clock.tick( this.miniDelay );
+			};
+
+			this.setupPageVisibleState = function () {
+				// resume after `pause` milliseconds
+				this.isDocumentHidden.returns( false );
+				this.clock.tick( this.pause );
+			};
+		},
+
+		tearDown: function () {
+			performance && performance.now.restore();
+			this.clock.restore();
 		}
 	} );
 
@@ -20,60 +51,47 @@
 
 	QUnit.test( 'visible timeout will not fire the callback if the' +
 		' browser does not support the visibility API', function ( assert ) {
-		var delay = 1000,
-			spy = this.sandbox.spy(),
-			done = assert.async();
-
-		assert.expect( 1 );
-
 		this.sandbox.stub( pageVisibility, 'getDocumentHiddenPropertyName' ).returns( undefined );
 
-		checkin.setVisibleTimeout( spy, delay );
-		setTimeout( function () {
-			assert.ok( spy.notCalled );
-			done();
-		}, 2 * delay );  // wait a little more in case the the event loop is busy
+		checkin.setVisibleTimeout( this.callback, 1000 );
+		this.clock.tick( 1001 );
 
+		assert.equal( this.callback.called, false, 'callback should not have been called' );
 	} );
 
-	QUnit.test( 'visible timeout pause works correctly', function ( assert ) {
-		var delay = 5000,
-			pause = 2000,
-			// error margin in milliseconds
-			delta = 50,
-			spy = this.sandbox.spy(),
-			done = assert.async();
+	QUnit.test( '#setVisibleTimeout calls callback if the page is visible', function ( assert ) {
+		this.setupInitialState();
+		checkin.setVisibleTimeout( this.callback, this.delay );
+		this.clock.tick( this.delay + 1 );
 
-		assert.expect( 2 );
+		assert.ok( this.callback.calledOnce, 'callback should have been called' );
+	} );
 
-		this.sandbox.stub( pageVisibility, 'getDocumentHiddenPropertyName' ).returns( 'customHidden' );
-		this.sandbox.stub( pageVisibility, 'getDocumentVisibilitychangeEventName' ).returns( 'customvisibilitychange' );
+	QUnit.test( '#setVisibleTimeout does not call the callback if the page becomes hidden', function ( assert ) {
+		this.setupInitialState();
+		checkin.setVisibleTimeout( this.callback, this.delay );
 
-		checkin.setVisibleTimeout( spy, delay );
-
-		// pause immediately, after making sure the document is hidden
-		this.sandbox.stub( pageVisibility, 'isDocumentHidden' ).returns( true );
+		this.setupPageHiddenState();
 		$( document ).trigger( 'customvisibilitychange' );
 
-		// resume after `pause` milliseconds
-		pageVisibility.isDocumentHidden.restore();
-		this.sandbox.stub( pageVisibility, 'isDocumentHidden' ).returns( false );
-		setTimeout( function () {
-			$( document ).trigger( 'customvisibilitychange' );
-			pageVisibility.isDocumentHidden.restore();
-		}, pause );
+		this.clock.tick( this.delay + 1 );
 
-		setTimeout( function () {
-			// make sure the spy is not called after `delay` as we've paused
-			assert.ok( spy.notCalled );
+		assert.notOk( this.callback.called, 'Callback should have not been called' );
+	} );
 
-			setTimeout( function () {
-				// make sure the spy is called after `delay` + `pause` as we've resumed
-				assert.ok( spy.called );
-				done();
-			}, pause + delta );
-		}, delay + delta );
+	QUnit.test( '#setVisibleTimeout calls callback with the adjusted delay after the page becoming visible', function ( assert ) {
+		this.setupInitialState();
+		checkin.setVisibleTimeout( this.callback, this.delay );
 
+		this.setupPageHiddenState();
+		$( document ).trigger( 'customvisibilitychange' );
+
+		this.setupPageVisibleState();
+		$( document ).trigger( 'customvisibilitychange' );
+
+		this.clock.tick( this.delay - this.miniDelay + 1 );
+
+		assert.equal( this.callback.callCount, 1, 'callback should have been called' );
 	} );
 
 	QUnit.test( 'checkin actions will not be set up if they already have been', function ( assert ) {
@@ -89,20 +107,23 @@
 
 	QUnit.test( 'checkin actions are setup correctly', function ( assert ) {
 		var actionSpy = this.sandbox.spy(),
-			done = assert.async();
+			that = this;
 
 		checkin.CHECKIN_TIMES = [ 1, 2, 3 ];
 
-		assert.expect( checkin.CHECKIN_TIMES.length );
-
 		checkin.setupActions( actionSpy );
-		setTimeout( function () {
-			$.each( checkin.CHECKIN_TIMES, function ( i, time ) {
-				assert.ok( actionSpy.calledWith( time ),
-						'`action` has been called the correct checkin time: ' + time + '.' );
-			} );
-			done();
-		// give two more seconds to catch up
-		}, ( checkin.CHECKIN_TIMES[ checkin.CHECKIN_TIMES.length - 1 ] + 2 ) * 1000 );
+
+		$.each( checkin.CHECKIN_TIMES, function ( i, time ) {
+			that.clock.tick( time * 1000 + 1 );
+		} );
+
+		assert.equal( actionSpy.callCount, 3, 'Action called at the appropiate times' );
+		assert.deepEqual( [
+			actionSpy.getCall( 0 ).args[ 0 ],
+			actionSpy.getCall( 1 ).args[ 0 ],
+			actionSpy.getCall( 2 ).args[ 0 ]
+		], [
+			1, 2, 3
+		], '`action` has been called the with the correct checkin times' );
 	} );
 }( mediaWiki, jQuery ) );
