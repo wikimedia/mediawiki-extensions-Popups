@@ -58,7 +58,7 @@
 		);
 	} );
 
-	QUnit.test( 'LINK_DWELL', function ( assert ) {
+	QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert ) {
 		var action = {
 			type: 'LINK_DWELL',
 			el: this.el,
@@ -76,6 +76,28 @@
 				isUserDwelling: true
 			},
 			'It should set active link and event as well as interaction info and hide the preview.'
+		);
+	} );
+
+	QUnit.test( 'LINK_DWELL on an active link only updates dwell state', function ( assert ) {
+		var action = {
+				type: 'LINK_DWELL',
+				el: this.el,
+				event: {},
+				token: '1234567890'
+			},
+			state = {
+				activeLink: this.el,
+				isUserDwelling: false
+			};
+
+		assert.deepEqual(
+			mw.popups.reducers.preview( state, action ),
+			{
+				activeLink: this.el,
+				isUserDwelling: true
+			},
+			'It should only set isUserDwelling to true'
 		);
 	} );
 

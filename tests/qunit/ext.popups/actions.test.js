@@ -86,7 +86,9 @@
 		setup: function () {
 			var that = this;
 
-			this.state = {};
+			this.state = {
+				preview: {}
+			};
 			this.getState = function () {
 				return that.state;
 			};
@@ -104,12 +106,17 @@
 		this.sandbox.stub( mw, 'now' ).returns( new Date() );
 		this.sandbox.stub( mw.popups.actions, 'fetch' );
 
+		// Set the state for when dispatch is called. New token is accepted
+		this.state.preview = {
+			activeToken: generateToken()
+		};
+
 		mw.popups.actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
 			dispatch,
 			this.getState
 		);
 
-		assert.deepEqual( dispatch.getCall( 0 ).args[0], {
+		assert.deepEqual( dispatch.getCall( 0 ).args[ 0 ], {
 			type: 'LINK_DWELL',
 			el: this.el,
 			event: event,
@@ -184,6 +191,30 @@
 
 			activeToken: '0123456789'
 		};
+
+		this.waitPromise.then( function () {
+			assert.strictEqual( dispatch.callCount, 1 );
+
+			done();
+		} );
+
+		// After 500 ms...
+		this.waitDeferred.resolve();
+	} );
+
+	QUnit.test( '#linkDwell doesn\'t continue if the interaction is the same one', function ( assert ) {
+		var done = assert.async(),
+			event = {},
+			dispatch = this.sandbox.spy();
+
+		this.state.preview = {
+			activeToken: '0123456789'
+		};
+
+		mw.popups.actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
+			dispatch,
+			this.getState
+		);
 
 		this.waitPromise.then( function () {
 			assert.strictEqual( dispatch.callCount, 1 );

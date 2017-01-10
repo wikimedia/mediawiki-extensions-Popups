@@ -30,20 +30,29 @@
 					enabled: action.enabled
 				} );
 			case popups.actionTypes.LINK_DWELL:
-				return nextState( state, {
-					activeLink: action.el,
-					activeEvent: action.event,
-					activeToken: action.token,
+				// New interaction
+				if ( action.el !== state.activeLink ) {
+					return nextState( state, {
+						activeLink: action.el,
+						activeEvent: action.event,
+						activeToken: action.token,
 
-					// When the user dwells on a link with their keyboard, a preview is
-					// renderered, and then dwells on another link, the LINK_ABANDON_END
-					// action will be ignored.
-					//
-					// Ensure that all the preview is hidden.
-					shouldShow: false,
+						// When the user dwells on a link with their keyboard, a preview is
+						// renderered, and then dwells on another link, the LINK_ABANDON_END
+						// action will be ignored.
+						//
+						// Ensure that all the preview is hidden.
+						shouldShow: false,
 
-					isUserDwelling: true
-				} );
+						isUserDwelling: true
+					} );
+				} else {
+					// Dwelling back into the same link
+					return nextState( state, {
+						isUserDwelling: true
+					} );
+				}
+
 			case popups.actionTypes.LINK_ABANDON_END:
 				if ( action.el !== state.activeLink ) {
 					return state;

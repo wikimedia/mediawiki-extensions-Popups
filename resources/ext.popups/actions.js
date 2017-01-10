@@ -178,13 +178,22 @@
 				token: token
 			} );
 
+			// Has the new generated token been accepted?
+			function isNewInteraction() {
+				return getState().preview.activeToken === token;
+			}
+
 			dispatch( action );
+
+			if ( !isNewInteraction() ) {
+				return;
+			}
 
 			mw.popups.wait( FETCH_START_DELAY )
 				.then( function () {
 					var previewState = getState().preview;
 
-					if ( previewState.enabled && previewState.activeToken === token ) {
+					if ( previewState.enabled && isNewInteraction() ) {
 						dispatch( actions.fetch( gateway, el, action.timestamp ) );
 					}
 				} );
