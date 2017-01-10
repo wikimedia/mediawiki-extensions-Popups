@@ -338,7 +338,15 @@
 		that.waitDeferred.resolve();
 	} );
 
-	QUnit.module( 'ext.popups/actions#previewAbandon', function ( assert ) {
+	QUnit.module( 'ext.popups/actions#previewAbandon', {
+		setup: function () {
+			setupWait( this );
+
+			this.sandbox.stub( mw, 'now' ).returns( Date.now() );
+		}
+	} );
+
+	QUnit.test( 'ext.popups/actions#previewAbandon', function ( assert ) {
 		var that = this,
 			dispatch = that.sandbox.spy(),
 			done = assert.async();
@@ -357,9 +365,10 @@
 		);
 
 		that.waitPromise.then( function () {
-			assert.ok( dispatch.calledWith( {
-				type: 'PREVIEW_ABANDON_END'
-			} ) );
+			assert.deepEqual( dispatch.getCall( 1 ).args[ 0 ], {
+				type: 'PREVIEW_ABANDON_END',
+				timestamp: mw.now()
+			} );
 
 			done();
 		} );
