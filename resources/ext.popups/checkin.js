@@ -67,13 +67,13 @@
 				// Timer may not have been started if the document opened in a
 				// hidden tab for example. The timer will be started when the
 				// document is visible to the user.
-				if ( lastStartedAt ) {
-					millisecondsPassed = new Date().getTime() - lastStartedAt;
+				if ( lastStartedAt !== undefined ) {
+					millisecondsPassed = Math.round( mw.now() - lastStartedAt );
 					delay = Math.max( 0, delay - millisecondsPassed );
 					clearTimeout( timeoutId );
 				}
 			} else {
-				lastStartedAt = new Date().getTime();
+				lastStartedAt = Math.round( mw.now() );
 				timeoutId = setTimeout( done, delay );
 			}
 		}
