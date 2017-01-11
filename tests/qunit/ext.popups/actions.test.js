@@ -315,7 +315,7 @@
 		}
 	);
 
-	QUnit.module( 'ext.popups/actions#linkAbandon', {
+	QUnit.module( 'ext.popups/actions#abandon', {
 		setup: function () {
 			setupWait( this );
 		}
@@ -336,10 +336,10 @@
 
 		this.sandbox.stub( mw, 'now' ).returns( new Date() );
 
-		mw.popups.actions.linkAbandon( that.el )( dispatch, getState );
+		mw.popups.actions.abandon( that.el )( dispatch, getState );
 
 		assert.ok( dispatch.calledWith( {
-			type: 'LINK_ABANDON_START',
+			type: 'ABANDON_START',
 			timestamp: mw.now(),
 			token: token
 		} ) );
@@ -354,60 +354,11 @@
 		that.waitPromise.then( function () {
 			assert.ok(
 				dispatch.calledWith( {
-				type: 'LINK_ABANDON_END',
+				type: 'ABANDON_END',
 				token: token
 				} ),
-				'LINK_ABANDON_* share the same token.'
+				'ABANDON_* share the same token.'
 			);
-
-			done();
-		} );
-
-		// After 300 ms...
-		that.waitDeferred.resolve();
-	} );
-
-	QUnit.module( 'ext.popups/actions#previewAbandon', {
-		setup: function () {
-			setupWait( this );
-
-			this.sandbox.stub( mw, 'now' ).returns( Date.now() );
-		}
-	} );
-
-	QUnit.test( 'ext.popups/actions#previewAbandon', function ( assert ) {
-		var that = this,
-			dispatch = that.sandbox.spy(),
-			token = '1234567890',
-			getState = function () {
-				return {
-					preview: {
-						activeToken: token
-					}
-				};
-			};
-			done = assert.async();
-
-		mw.popups.actions.previewAbandon()( dispatch, getState );
-
-		assert.ok( dispatch.calledWith( {
-			type: 'PREVIEW_ABANDON_START',
-			token: token
-		} ) );
-
-		// ---
-
-		assert.ok(
-			mw.popups.wait.calledWith( 300 ),
-			'Have you spoken with #Design about changing this value?'
-		);
-
-		that.waitPromise.then( function () {
-			assert.deepEqual( dispatch.getCall( 1 ).args[ 0 ], {
-				type: 'PREVIEW_ABANDON_END',
-				timestamp: mw.now(),
-				token: token
-			} );
 
 			done();
 		} );

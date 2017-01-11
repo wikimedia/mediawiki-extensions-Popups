@@ -95,16 +95,14 @@
 					}
 				} );
 
-			case popups.actionTypes.LINK_ABANDON_START:
-			case popups.actionTypes.PREVIEW_ABANDON_START:
+			case popups.actionTypes.ABANDON_START:
 				return nextState( state, {
 					interaction: nextState( state.interaction, {
 						finished: action.timestamp
 					} )
 				} );
 
-			case popups.actionTypes.LINK_ABANDON_END:
-			case popups.actionTypes.PREVIEW_ABANDON_END:
+			case popups.actionTypes.ABANDON_END:
 				return nextState( state, {
 					event: {
 						action: state.interaction.timeToPreviewShow ? 'dismissed' : 'dwelledButAbandoned',

@@ -5,15 +5,13 @@
 			BOOT: 'BOOT',
 			CHECKIN: 'CHECKIN',
 			LINK_DWELL: 'LINK_DWELL',
-			LINK_ABANDON_START: 'LINK_ABANDON_START',
-			LINK_ABANDON_END: 'LINK_ABANDON_END',
+			ABANDON_START: 'ABANDON_START',
+			ABANDON_END: 'ABANDON_END',
 			LINK_CLICK: 'LINK_CLICK',
 			FETCH_START: 'FETCH_START',
 			FETCH_END: 'FETCH_END',
 			FETCH_FAILED: 'FETCH_FAILED',
 			PREVIEW_DWELL: 'PREVIEW_DWELL',
-			PREVIEW_ABANDON_START: 'PREVIEW_ABANDON_START',
-			PREVIEW_ABANDON_END: 'PREVIEW_ABANDON_END',
 			PREVIEW_SHOW: 'PREVIEW_SHOW',
 			PREVIEW_CLICK: 'PREVIEW_CLICK',
 			SETTINGS_SHOW: 'SETTINGS_SHOW',
@@ -201,28 +199,24 @@
 	/**
 	 * Represents the user abandoning a link, either by moving their mouse away
 	 * from it or by shifting focus to another UI element using their keyboard or
-	 * an assistive device.
-	 *
-	 * TODO: linkAbandon and previewAbandon share test cases and structure,
-	 * we should collapse them into one action creator in a followup commit,
-	 * maybe keeping a origin: 'LINK'|'PREVIEW' field on the action payload for
-	 * introspection on the devtools.
+	 * an assistive device, or abandoning a preview by moving their mouse away
+	 * from it.
 	 *
 	 * @return {Redux.Thunk}
 	 */
-	actions.linkAbandon = function () {
+	actions.abandon = function () {
 		return function ( dispatch, getState ) {
 			var token = getState().preview.activeToken;
 
 			dispatch( timedAction( {
-				type: types.LINK_ABANDON_START,
+				type: types.ABANDON_START,
 				token: token
 			} ) );
 
 			mw.popups.wait( ABANDON_END_DELAY )
 				.then( function () {
 					dispatch( {
-						type: types.LINK_ABANDON_END,
+						type: types.ABANDON_END,
 						token: token
 					} );
 				} );
@@ -251,31 +245,6 @@
 	actions.previewDwell = function () {
 		return {
 			type: types.PREVIEW_DWELL
-		};
-	};
-
-	/**
-	 * Represents the user abandoning a preview by moving their mouse away from
-	 * it.
-	 *
-	 * @return {Object}
-	 */
-	actions.previewAbandon = function () {
-		return function ( dispatch, getState ) {
-			var token = getState().preview.activeToken;
-
-			dispatch( {
-				type: types.PREVIEW_ABANDON_START,
-				token: token
-			} );
-
-			mw.popups.wait( ABANDON_END_DELAY )
-				.then( function () {
-					dispatch( timedAction( {
-						type: types.PREVIEW_ABANDON_END,
-						token: token
-					} ) );
-				} );
 		};
 	};
 
