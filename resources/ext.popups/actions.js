@@ -205,6 +205,11 @@
 	 * from it or by shifting focus to another UI element using their keyboard or
 	 * an assistive device.
 	 *
+	 * TODO: linkAbandon and previewAbandon share test cases and structure,
+	 * we should collapse them into one action creator in a followup commit,
+	 * maybe keeping a origin: 'LINK'|'PREVIEW' field on the action payload for
+	 * introspection on the devtools.
+	 *
 	 * @param {Element} el
 	 * @return {Object}
 	 */

@@ -101,38 +101,58 @@
 		);
 	} );
 
-	QUnit.test( 'LINK_ABANDON_END', function ( assert ) {
-		var action = {
-				type: 'LINK_ABANDON_END',
-				el: this.el
-			},
+	QUnit.test( 'LINK_ABANDON_END & PREVIEW_ABANDON_END', function ( assert ) {
+		var actions = [ 'PREVIEW_ABANDON_END', 'LINK_ABANDON_END' ];
+
+		$.each( actions, function ( i, testCase ) {
+			var action = {
+					type: testCase,
+					token: 'bananas'
+				},
+				state = {
+					activeToken: 'bananas',
+					isUserDwelling: false
+				};
+
+			assert.deepEqual(
+				mw.popups.reducers.preview( state, action ),
+				{
+					activeLink: undefined,
+					activeToken: undefined,
+					activeEvent: undefined,
+					fetchResponse: undefined,
+					isUserDwelling: false,
+					shouldShow: false
+				},
+				testCase + ' should hide the preview and reset the interaction info.'
+			);
+
+			// ---
+
 			state = {
-				activeLink: this.el
+				activeToken: 'apples',
+				isUserDwelling: true
 			};
 
-		assert.deepEqual(
-			mw.popups.reducers.preview( state, action ),
-			{
-				activeLink: undefined,
-				activeEvent: undefined,
-				fetchResponse: undefined,
-				shouldShow: false
-			},
-			'It should hide the preview and reset the interaction info.'
-		);
+			assert.equal(
+				mw.popups.reducers.preview( state, action ),
+				state,
+				testCase + ' should NOOP if the current interaction has changed.'
+			);
 
-		// ---
+			// ---
 
-		state = {
-			activeLink: this.el,
-			isUserDwelling: true
-		};
+			state = {
+				activeToken: 'bananas',
+				isUserDwelling: true
+			};
 
-		assert.equal(
-			mw.popups.reducers.preview( state, action ),
-			state,
-			'It should NOOP if the user is dwelling on the preview.'
-		);
+			assert.equal(
+				mw.popups.reducers.preview( state, action ),
+				state,
+				testCase + ' should NOOP if the user is dwelling on the preview.'
+			);
+		} );
 	} );
 
 	QUnit.test( 'FETCH_END', function ( assert ) {
@@ -192,7 +212,7 @@
 		);
 	} );
 
-	QUnit.test( 'PREVIEW_ABANDON_START', function ( assert ) {
+	QUnit.test( 'PREVIEW_ABANDON_START & LINK_ABANDON_START', function ( assert ) {
 		var actions = [ 'PREVIEW_ABANDON_START', 'LINK_ABANDON_START' ];
 
 		$.each( actions, function ( i, testCase ) {

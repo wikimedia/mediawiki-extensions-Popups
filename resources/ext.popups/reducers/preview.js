@@ -54,21 +54,16 @@
 				}
 
 			case popups.actionTypes.LINK_ABANDON_END:
-				if ( action.el !== state.activeLink ) {
-					return state;
-				}
-
-				/* falls through */
 			case popups.actionTypes.PREVIEW_ABANDON_END:
-				if ( !state.isUserDwelling ) {
+				if ( action.token === state.activeToken && !state.isUserDwelling ) {
 					return nextState( state, {
 						activeLink: undefined,
+						activeToken: undefined,
 						activeEvent: undefined,
 						fetchResponse: undefined,
 						shouldShow: false
 					} );
 				}
-
 				return state;
 
 			case popups.actionTypes.PREVIEW_DWELL:
