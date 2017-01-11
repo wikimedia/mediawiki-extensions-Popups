@@ -207,7 +207,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$mock->expects( $this->any() )
 			->method( 'isLoaded' )
 			->will( new PHPUnit_Framework_MockObject_Stub_ConsecutiveCalls( $returnValues ) );
-		$context = new PopupsContextTestWrapper( $mock );
+		$context = new PopupsContextTestWrapper( new GlobalVarConfig(), $mock );
 		$this->assertEquals( $expected, $context->areDependenciesMet() );
 	}
 
@@ -297,7 +297,19 @@ class PopupsContextTest extends MediaWikiTestCase {
 			->with( $user )
 			->willReturn( true );
 
-		$context = new PopupsContextTestWrapper( ExtensionRegistry::getInstance(), $integrationMock );
+		$context = new PopupsContextTestWrapper( $this->getConfigMock(),
+			ExtensionRegistry::getInstance(), $integrationMock );
 		$this->assertEquals( true, $context->conflictsWithNavPopupsGadget( $user ) );
+	}
+
+	/**
+	 * @return PHPUnit_Framework_MockObject_MockObject|Config
+	 */
+	private function getConfigMock() {
+		$mock = $this->getMockBuilder( 'Config' )
+			->setMethods( [ 'get', 'has' ] )
+			->getMock();
+
+		return $mock;
 	}
 }

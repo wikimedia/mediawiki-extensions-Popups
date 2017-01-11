@@ -30,6 +30,10 @@ use Popups\PopupsGadgetsIntegration;
 class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 {
 	/**
+	 * Gadget name for testing
+	 */
+	const NAV_POPUPS_GADGET_NAME = 'navigation-test';
+	/**
 	 * Helper constants for easier reading
 	 */
 	const GADGET_ENABLED = true;
@@ -46,9 +50,10 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 			$this->markTestSkipped( 'Skipped as Gadgets extension is not available' );
 		}
 	}
+
 	/**
 	 * @param bool $gadgetsEnabled
-	 * @return ExtensionRegistry
+	 * @return PHPUnit_Framework_MockObject_MockObject|ExtensionRegistry
 	 */
 	private function getExtensionRegistryMock( $gadgetsEnabled ) {
 		$mock = $this->getMock( ExtensionRegistry::class, [ 'isLoaded' ] );
@@ -58,6 +63,23 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 			->willReturn( $gadgetsEnabled );
 		return $mock;
 	}
+
+	/**
+	 * @return PHPUnit_Framework_MockObject_MockObject|Config
+	 */
+	private function getConfigMock() {
+		$mock = $this->getMockBuilder( 'Config' )
+			->setMethods( [ 'get', 'has' ] )
+			->getMock();
+
+		$mock->expects( $this->once() )
+			->method( 'get' )
+			->with( PopupsGadgetsIntegration::CONFIG_NAVIGATION_POPUPS_NAME )
+			->willReturn( self::NAV_POPUPS_GADGET_NAME );
+
+		return $mock;
+	}
+
 	/**
 	 * @covers ::conflictsWithNavPopupsGadget
 	 * @covers ::isGadgetExtensionEnabled
@@ -65,7 +87,8 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 	 */
 	public function testConflictsWithNavPopupsGadgetIfGadgetsExtensionIsNotLoaded() {
 		$user = $this->getTestUser()->getUser();
-		$integration = new PopupsGadgetsIntegration( $this->getExtensionRegistryMock( false ) );
+		$integration = new PopupsGadgetsIntegration( $this->getConfigMock(),
+			$this->getExtensionRegistryMock( false ) );
 		$this->assertEquals( false, $integration->conflictsWithNavPopupsGadget( $user ) );
 	}
 
@@ -110,11 +133,11 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 
 		$gadgetRepoMock->expects( $this->once() )
 			->method( 'getGadgetids' )
-			->willReturn( [ 'Navigation_popups' ] );
+			->willReturn( [ self::NAV_POPUPS_GADGET_NAME ] );
 
 		$gadgetRepoMock->expects( $this->once() )
 			->method( 'getGadget' )
-			->with( 'Navigation_popups' )
+			->with( self::NAV_POPUPS_GADGET_NAME )
 			->willReturn( $gadgetMock );
 
 		$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $gadgetRepoMock,
@@ -132,7 +155,8 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 		$origGadgetsRepo = GadgetRepo::singleton();
 		GadgetRepo::setSingleton( $repoMock );
 
-		$integration = new PopupsGadgetsIntegration( $this->getExtensionRegistryMock( true ) );
+		$integration = new PopupsGadgetsIntegration( $this->getConfigMock(),
+			$this->getExtensionRegistryMock( true ) );
 		$this->assertEquals( $expected, $integration->conflictsWithNavPopupsGadget( $user ) );
 
 		GadgetRepo::setSingleton( $origGadgetsRepo );

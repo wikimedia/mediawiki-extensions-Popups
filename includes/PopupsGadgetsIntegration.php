@@ -20,25 +20,38 @@
 */
 namespace Popups;
 
+use Config;
+use ExtensionRegistry;
+
 /**
 * Gadgets integration
 *
 * @package Popups
 */
 class PopupsGadgetsIntegration {
-	const NAVIGATION_POPUPS_NAME = 'Navigation_popups';
-
+	/**
+	 * @var string
+	 */
+	const CONFIG_NAVIGATION_POPUPS_NAME = 'PopupsConflictingNavPopupsGadgetName';
 	/**
 	 * @var \ExtensionRegistry
 	 */
 	private $extensionRegistry;
 
 	/**
-	 * PopupsGadgetsIntegration constructor.
-	 * @param \ExtensionRegistry $extensionRegistry
+	 * @var string
 	 */
-	public function __construct( \ExtensionRegistry $extensionRegistry ) {
+	private $navPopupsGadgetName;
+
+	/**
+	 * PopupsGadgetsIntegration constructor.
+	 *
+	 * @param Config $config
+	 * @param ExtensionRegistry $extensionRegistry
+	 */
+	public function __construct( Config $config , ExtensionRegistry $extensionRegistry ) {
 		$this->extensionRegistry =  $extensionRegistry;
+		$this->navPopupsGadgetName = $config->get( self::CONFIG_NAVIGATION_POPUPS_NAME );
 	}
 
 	/**
@@ -47,6 +60,7 @@ class PopupsGadgetsIntegration {
 	private function isGadgetExtensionEnabled() {
 		return $this->extensionRegistry->isLoaded( 'Gadgets' );
 	}
+
 	/**
 	 * Check if Page Previews conflicts with Nav Popups Gadget
 	 * If user enabled Nav Popups PagePreviews are not available
@@ -57,9 +71,9 @@ class PopupsGadgetsIntegration {
 	public function conflictsWithNavPopupsGadget( \User $user ) {
 		if ( $this->isGadgetExtensionEnabled() ) {
 			$gadgetsRepo = \GadgetRepo::singleton();
-			$match = array_search( self::NAVIGATION_POPUPS_NAME, $gadgetsRepo->getGadgetIds() );
+			$match = array_search( $this->navPopupsGadgetName, $gadgetsRepo->getGadgetIds() );
 			if ( $match !== false ) {
-				return $gadgetsRepo->getGadget( self::NAVIGATION_POPUPS_NAME )->isEnabled( $user );
+				return $gadgetsRepo->getGadget( $this->navPopupsGadgetName )->isEnabled( $user );
 			}
 		}
 		return false;

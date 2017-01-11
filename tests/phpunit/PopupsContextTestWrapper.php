@@ -18,7 +18,8 @@
  * @file
  * @ingroup extensions
  */
-use \Popups\PopupsContext;
+use Popups\PopupsContext;
+use Popups\PopupsGadgetsIntegration;
 
 /**
  * Create an initializable Popups context.
@@ -31,23 +32,22 @@ use \Popups\PopupsContext;
  * Used for testing only
  * @codeCoverageIgnore
  */
-use Popups\PopupsGadgetsIntegration;
-
 class PopupsContextTestWrapper extends PopupsContext {
 
 	/**
-	 * Override constructor so we can create new instances for testing
+	 * Override constructor so we can create new instances for testing.
 	 *
+	 * @param Config $config
 	 * @param ExtensionRegistry $extensionRegistry
-	 * @param PopupsGadgetsIntegration $gadgetsIntegration
+	 * @param PopupsGadgetsIntegration|null $gadgetsIntegration
 	 */
-	public function __construct( ExtensionRegistry $extensionRegistry,
+	public function __construct( Config $config, ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration = null ) {
 
 		$gadgetsIntegration = $gadgetsIntegration ? $gadgetsIntegration :
-			new PopupsGadgetsIntegration( $extensionRegistry );
+			new PopupsGadgetsIntegration( $config, $extensionRegistry );
 
-		parent::__construct( $extensionRegistry, $gadgetsIntegration );
+		parent::__construct( $config, $extensionRegistry, $gadgetsIntegration );
 	}
 
 	/**

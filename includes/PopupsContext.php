@@ -23,6 +23,7 @@ namespace Popups;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use ExtensionRegistry;
+use Config;
 
 /**
  * Popups Module
@@ -75,16 +76,17 @@ class PopupsContext {
 	protected static $instance;
 	/**
 	 * Module constructor.
+	 * @param Config $config
 	 * @param ExtensionRegistry $extensionRegistry
+	 * @param PopupsGadgetsIntegration $gadgetsIntegration
 	 */
-	protected function __construct( ExtensionRegistry $extensionRegistry,
+	protected function __construct( Config $config, ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration ) {
 		/** @todo Use MediaWikiServices Service Locator when it's ready */
 		$this->extensionRegistry = $extensionRegistry;
 		$this->gadgetsIntegration = $gadgetsIntegration;
 
-		$this->config = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( PopupsContext::EXTENSION_NAME );
+		$this->config = $config;
 	}
 
 	/**
@@ -94,9 +96,13 @@ class PopupsContext {
 	 */
 	public static function getInstance() {
 		if ( !self::$instance ) {
+			/** @todo Use MediaWikiServices Service Locator when it's ready */
+
 			$registry = ExtensionRegistry::getInstance();
-			self::$instance = new PopupsContext( $registry,
-				new PopupsGadgetsIntegration( $registry ) );
+			$config = MediaWikiServices::getInstance()->getConfigFactory()
+				->makeConfig( PopupsContext::EXTENSION_NAME );
+			$gadgetsIntegration = new PopupsGadgetsIntegration( $config, $registry );
+			self::$instance = new PopupsContext( $config, $registry, $gadgetsIntegration );
 		}
 		return self::$instance;
 	}

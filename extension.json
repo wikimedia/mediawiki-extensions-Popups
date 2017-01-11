@@ -52,7 +52,9 @@
 		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to senable/disable Page Previews should be hidden on Preferences page. Please note if PopupsBetaFeature is set to true this option will be always hidden. False by default",
 		"PopupsHideOptInOnPreferencesPage": false,
 		"@PopupsOptInDefaultState" : "@var string:['1'|'0'] Default Page Previews visibility. Has to be a string as a compatibility with beta feature settings",
-		"PopupsOptInDefaultState" : "0"
+		"PopupsOptInDefaultState" : "0",
+		"@PopupsConflictingNavPopupsGadgetName": "@var string: Navigation popups gadget name",
+		"PopupsConflictingNavPopupsGadgetName": "Navigation_popups"
 	},
 	"ResourceModules": {
 		"ext.popups.images": {
