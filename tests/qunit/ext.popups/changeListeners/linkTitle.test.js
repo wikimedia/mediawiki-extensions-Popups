@@ -42,20 +42,53 @@
 
 		// Does the change listener guard against receiving many state tree updates
 		// with the same activeLink property?
-		nextState = $.extend( {}, this.state, {
-			isDelayingFetch: false
-		} );
+		nextState = $.extend( true, {}, this.state );
 
 		this.linkTitleChangeListener( this.state, nextState );
 
 		this.state = nextState;
 
-		nextState = $.extend( {}, this.state );
+		nextState = $.extend( true, {}, this.state );
 		delete nextState.preview.activeLink;
 
 		this.linkTitleChangeListener( this.state, nextState );
 
 		assert.strictEqual( this.$link.attr( 'title' ), 'Foo' );
+	} );
+
+	QUnit.test( 'it should restore the title when the user dwells on another link immediately', function ( assert ) {
+		var nextState,
+			$anotherLink = $( '<a title="Bar">' );
+
+		assert.expect( 3 );
+
+		this.whenTheLinkIsDwelledUpon();
+
+		nextState = $.extend( true, {}, this.state, {
+			preview: {
+				activeLink: $anotherLink
+			}
+		} );
+
+		this.linkTitleChangeListener( this.state, nextState );
+
+		assert.strictEqual( this.$link.attr( 'title' ), 'Foo' );
+		assert.strictEqual( $anotherLink.attr( 'title' ), '' );
+
+		// ---
+
+		this.state = nextState;
+
+		nextState = $.extend( true, {}, nextState );
+		delete nextState.preview.activeLink;
+
+		this.linkTitleChangeListener( this.state, nextState );
+
+		assert.strictEqual(
+			$anotherLink.attr( 'title' ),
+			'Bar',
+			'It should restore the title of the other link.'
+		);
 	} );
 
 }( mediaWiki, jQuery ) );
