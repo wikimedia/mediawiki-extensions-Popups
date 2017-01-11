@@ -19,6 +19,7 @@
  * @ingroup extensions
  */
 require_once ( 'PopupsContextTestWrapper.php' );
+use Popups\PopupsContext;
 
 /**
  * Integration tests for Page Preview hooks
@@ -54,7 +55,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		PopupsHooks::onGetBetaPreferences( $this->getTestUser()->getUser(), $prefs );
 		$this->assertCount( 2, $prefs );
-		$this->assertArrayHasKey( \Popups\PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME, $prefs );
+		$this->assertArrayHasKey( PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME, $prefs );
 	}
 
 	/**
@@ -78,6 +79,36 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	/**
 	 * @covers ::onGetPreferences
 	 */
+	public function testOnGetPreferencesNavPopupGadgetIsOn() {
+		$userMock = $this->getTestUser()->getUser();
+		$contextMock = $this->getMock( PopupsContextTestWrapper::class,
+			[ 'showPreviewsOptInOnPreferencesPage', 'conflictsWithNavPopupsGadget' ],
+			[ ExtensionRegistry::getInstance() ] );
+
+		$contextMock->expects( $this->once() )
+			->method( 'showPreviewsOptInOnPreferencesPage' )
+			->will( $this->returnValue( true ) );
+
+		$contextMock->expects( $this->once() )
+			->method( 'conflictsWithNavPopupsGadget' )
+			->with( $userMock )
+			->will( $this->returnValue( true ) );
+
+		PopupsContextTestWrapper::injectTestInstance( $contextMock );
+		$prefs = [];
+
+		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
+		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
+		$this->assertArrayHasKey( 'disabled',
+			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
+		$this->assertEquals( true,
+			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['disabled'] );
+		$this->assertNotEmpty( $prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['help'] );
+	}
+
+	/**
+	 * @covers ::onGetPreferences
+	 */
 	public function testOnGetPreferencesPreviewsEnabled() {
 		$contextMock = $this->getMock( PopupsContextTestWrapper::class,
 			[ 'showPreviewsOptInOnPreferencesPage' ], [ ExtensionRegistry::getInstance() ] );
@@ -95,7 +126,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
 		$this->assertCount( 4, $prefs );
 		$this->assertEquals( 'notEmpty', $prefs[ 'someNotEmptyValue'] );
-		$this->assertArrayHasKey( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
+		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
 		$this->assertEquals( 1, array_search( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			array_keys( $prefs ) ), ' PagePreviews preferences should be injected after Skin select' );
 	}
@@ -118,8 +149,8 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
 		$this->assertCount( 3, $prefs );
-		$this->assertArrayHasKey( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
-		$this->assertEquals( 2, array_search( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
+		$this->assertEquals( 2, array_search( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			array_keys( $prefs ) ), ' PagePreviews should be injected at end of array' );
 	}
 

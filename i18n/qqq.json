@@ -30,5 +30,6 @@
 	"prefs-reading": "Title for 'Reading preferences' section on preferences page",
 	"popups-prefs-optin-title": "Title for Page Previews option\n\n<em>Description for Page previews option</em>",
 	"popups-prefs-optin-enabled-label": "Label for Page Previews opt in",
-	"popups-prefs-optin-disabled-label": "Label for Page previews opt out"
+	"popups-prefs-optin-disabled-label": "Label for Page previews opt out",
+	"popups-prefs-disable-nav-gadgets-info": "Help message telling to disable Navigation Popups gadget in order to enable Page Previews. Parameters: $1 - link to Preferences page"
 }

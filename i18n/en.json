@@ -24,5 +24,6 @@
 	"prefs-reading": "Reading preferences",
 	"popups-prefs-optin-title": "Page previews\n\n<em>Get quick previews of a topic while reading an article</em>",
 	"popups-prefs-optin-enabled-label": "Enable",
-	"popups-prefs-optin-disabled-label": "Disable"
+	"popups-prefs-optin-disabled-label": "Disable",
+	"popups-prefs-disable-nav-gadgets-info": "You have to [[$1 | disable Navigation Popups Gadget]] from Gadgets tab to enable Page Previews"
 }

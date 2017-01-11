@@ -10,7 +10,8 @@
 	"type": "betafeatures",
 	"AutoloadClasses": {
 		"PopupsHooks": "Popups.hooks.php",
-		"Popups\\PopupsContext": "includes/PopupsContext.php"
+		"Popups\\PopupsContext": "includes/PopupsContext.php",
+		"Popups\\PopupsGadgetsIntegration": "includes/PopupsGadgetsIntegration.php"
 	},
 	"ConfigRegistry": {
 		"popups": "GlobalVarConfig::newInstance"
