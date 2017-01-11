@@ -208,16 +208,14 @@
 	 * maybe keeping a origin: 'LINK'|'PREVIEW' field on the action payload for
 	 * introspection on the devtools.
 	 *
-	 * @param {Element} el
-	 * @return {Object}
+	 * @return {Redux.Thunk}
 	 */
-	actions.linkAbandon = function ( el ) {
+	actions.linkAbandon = function () {
 		return function ( dispatch, getState ) {
 			var token = getState().preview.activeToken;
 
 			dispatch( timedAction( {
 				type: types.LINK_ABANDON_START,
-				el: el,
 				token: token
 			} ) );
 
@@ -225,7 +223,6 @@
 				.then( function () {
 					dispatch( {
 						type: types.LINK_ABANDON_END,
-						el: el,
 						token: token
 					} );
 				} );
