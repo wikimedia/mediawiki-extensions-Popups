@@ -142,6 +142,7 @@ class PopupsHooks {
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
 		$conf = PopupsContext::getInstance()->getConfig();
 		$vars['wgPopupsSchemaSamplingRate'] = $conf->get( 'PopupsSchemaSamplingRate' );
+		$vars['wgPopupsBetaFeature'] = $conf->get( 'PopupsBetaFeature' );
 	}
 
 	/**
