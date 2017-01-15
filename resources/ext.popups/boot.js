@@ -32,8 +32,9 @@
 	 * @param {mw.eventLog.Schema} schema
 	 * @param {ext.popups.UserSettings} userSettings
 	 * @param {Function} settingsDialog
+	 * @param {ext.popups.PreviewBehavior} previewBehavior
 	 */
-	function registerChangeListeners( store, actions, schema, userSettings, settingsDialog ) {
+	function registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior ) {
 
 		// Sugar.
 		var changeListeners = mw.popups.changeListeners,
@@ -41,7 +42,7 @@
 
 		registerChangeListener( store, changeListeners.footerLink( actions ) );
 		registerChangeListener( store, changeListeners.linkTitle() );
-		registerChangeListener( store, changeListeners.render( actions ) );
+		registerChangeListener( store, changeListeners.render( previewBehavior ) );
 		registerChangeListener( store, changeListeners.eventLogging( actions, schema ) );
 		registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 		registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
@@ -89,7 +90,8 @@
 			userSettings,
 			settingsDialog,
 			isEnabled,
-			schema;
+			schema,
+			previewBehavior;
 
 		userSettings = mw.popups.createUserSettings( mw.storage );
 		settingsDialog = mw.popups.createSettingsDialogRenderer();
@@ -110,7 +112,10 @@
 			) )
 		);
 		actions = createBoundActions( store );
-		registerChangeListeners( store, actions, schema, userSettings, settingsDialog );
+
+		previewBehavior = mw.popups.createPreviewBehavior( mw.config, mw.user, actions );
+
+		registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior );
 
 		actions.boot(
 			isEnabled,

@@ -242,13 +242,16 @@
 	 *
 	 * Extracted from `mw.popups.render.openPopup`.
 	 *
+	 * TODO: From the perspective of the client, there's no need to distinguish
+	 * between renderering and showing a preview. Merge #render and Preview#show.
+	 *
 	 * @param {ext.popups.Preview} preview
 	 * @param {Event} event
-	 * @param {Object} boundActions
+	 * @param {ext.popups.PreviewBehavior} behavior
 	 * @return {jQuery.Promise} A promise that resolves when the promise has faded
 	 *  in
 	 */
-	function show( preview, event, boundActions ) {
+	function show( preview, event, behavior ) {
 		var layout = createLayout( preview, event );
 
 		preview.el.appendTo( document.body );
@@ -266,12 +269,16 @@
 
 		layoutPreview( preview, layout );
 
-		preview.el.hover( boundActions.previewDwell, boundActions.abandon );
-		preview.el.find( '.mwe-popups-settings-icon' ).click( boundActions.showSettings );
+		preview.el.hover( behavior.previewDwell, behavior.previewAbandon );
+
+		preview.el.find( '.mwe-popups-settings-icon' )
+			.attr( 'href', behavior.settingsUrl )
+			.click( behavior.showSettings );
 
 		preview.el.show();
 
-		return mw.popups.wait( 200 );
+		return mw.popups.wait( 200 )
+			.then( behavior.previewShow );
 	}
 
 	/**
