@@ -101,58 +101,54 @@
 		);
 	} );
 
-	QUnit.test( 'LINK_ABANDON_END & PREVIEW_ABANDON_END', function ( assert ) {
-		var actions = [ 'PREVIEW_ABANDON_END', 'LINK_ABANDON_END' ];
-
-		$.each( actions, function ( i, testCase ) {
-			var action = {
-					type: testCase,
-					token: 'bananas'
-				},
-				state = {
-					activeToken: 'bananas',
-					isUserDwelling: false
-				};
-
-			assert.deepEqual(
-				mw.popups.reducers.preview( state, action ),
-				{
-					activeLink: undefined,
-					activeToken: undefined,
-					activeEvent: undefined,
-					fetchResponse: undefined,
-					isUserDwelling: false,
-					shouldShow: false
-				},
-				testCase + ' should hide the preview and reset the interaction info.'
-			);
-
-			// ---
-
-			state = {
-				activeToken: 'apples',
-				isUserDwelling: true
-			};
-
-			assert.equal(
-				mw.popups.reducers.preview( state, action ),
-				state,
-				testCase + ' should NOOP if the current interaction has changed.'
-			);
-
-			// ---
-
+	QUnit.test( 'ABANDON_END', function ( assert ) {
+		var action = {
+				type: 'ABANDON_END',
+				token: 'bananas'
+			},
 			state = {
 				activeToken: 'bananas',
-				isUserDwelling: true
+				isUserDwelling: false
 			};
 
-			assert.equal(
-				mw.popups.reducers.preview( state, action ),
-				state,
-				testCase + ' should NOOP if the user is dwelling on the preview.'
-			);
-		} );
+		assert.deepEqual(
+			mw.popups.reducers.preview( state, action ),
+			{
+				activeLink: undefined,
+				activeToken: undefined,
+				activeEvent: undefined,
+				fetchResponse: undefined,
+				isUserDwelling: false,
+				shouldShow: false
+			},
+			'ABANDON_END should hide the preview and reset the interaction info.'
+		);
+
+		// ---
+
+		state = {
+			activeToken: 'apples',
+			isUserDwelling: true
+		};
+
+		assert.equal(
+			mw.popups.reducers.preview( state, action ),
+			state,
+			'ABANDON_END should NOOP if the current interaction has changed.'
+		);
+
+		// ---
+
+		state = {
+			activeToken: 'bananas',
+			isUserDwelling: true
+		};
+
+		assert.equal(
+			mw.popups.reducers.preview( state, action ),
+			state,
+			'ABANDON_END should NOOP if the user is dwelling on the preview.'
+		);
 	} );
 
 	QUnit.test( 'FETCH_END', function ( assert ) {
@@ -212,22 +208,18 @@
 		);
 	} );
 
-	QUnit.test( 'PREVIEW_ABANDON_START & LINK_ABANDON_START', function ( assert ) {
-		var actions = [ 'PREVIEW_ABANDON_START', 'LINK_ABANDON_START' ];
+	QUnit.test( 'ABANDON_START', function ( assert ) {
+		var action = {
+			type: 'ABANDON_START'
+		};
 
-		$.each( actions, function ( i, testCase ) {
-			var action = {
-				type: testCase
-			};
-
-			assert.deepEqual(
-				mw.popups.reducers.preview( {}, action ),
-				{
-					isUserDwelling: false
-				},
-				testCase + ' should mark the preview having been abandoned.'
-			);
-		} );
+		assert.deepEqual(
+			mw.popups.reducers.preview( {}, action ),
+			{
+				isUserDwelling: false
+			},
+			'ABANDON_START should mark the preview having been abandoned.'
+		);
 	} );
 
 }( mediaWiki, jQuery ) );

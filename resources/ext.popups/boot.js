@@ -137,7 +137,7 @@
 					actions.linkDwell( this, event, gateway, generateToken );
 				} )
 				.on( 'mouseout blur', function () {
-					actions.linkAbandon( this );
+					actions.abandon( this );
 				} )
 				.on( 'click', function () {
 					actions.linkClick( this );

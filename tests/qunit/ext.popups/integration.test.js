@@ -92,14 +92,14 @@
 				return p;
 			};
 
-			this.abandon = function ( el ) {
+			this.abandon = function () {
 				that.resetWait();
-				that.actions.linkAbandon( el );
+				that.actions.abandon();
 				return that.waitPromise;
 			};
 
-			this.abandonAndWait = function ( el ) {
-				var p = that.abandon( el );
+			this.abandonAndWait = function () {
+				var p = that.abandon();
 				that.waitDeferred.resolve();
 				return p;
 			};
@@ -121,9 +121,9 @@
 				} );
 			};
 
-			this.abandonPreview = function ( el ) {
+			this.abandonPreview = function () {
 				that.resetWait();
-				that.actions.previewAbandon( el );
+				that.actions.abandon();
 
 				return that.waitPromise;
 			};

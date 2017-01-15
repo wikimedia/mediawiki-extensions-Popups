@@ -38,7 +38,7 @@
 						activeToken: action.token,
 
 						// When the user dwells on a link with their keyboard, a preview is
-						// renderered, and then dwells on another link, the LINK_ABANDON_END
+						// renderered, and then dwells on another link, the ABANDON_END
 						// action will be ignored.
 						//
 						// Ensure that all the preview is hidden.
@@ -53,8 +53,7 @@
 					} );
 				}
 
-			case popups.actionTypes.LINK_ABANDON_END:
-			case popups.actionTypes.PREVIEW_ABANDON_END:
+			case popups.actionTypes.ABANDON_END:
 				if ( action.token === state.activeToken && !state.isUserDwelling ) {
 					return nextState( state, {
 						activeLink: undefined,
@@ -71,8 +70,7 @@
 					isUserDwelling: true
 				} );
 
-			case popups.actionTypes.LINK_ABANDON_START:
-			case popups.actionTypes.PREVIEW_ABANDON_START:
+			case popups.actionTypes.ABANDON_START:
 				return nextState( state, {
 					isUserDwelling: false
 				} );
