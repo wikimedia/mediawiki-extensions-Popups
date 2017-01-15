@@ -188,11 +188,21 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	 */
 	public function testOnResourceLoaderGetConfigVars() {
 		$vars = [ 'something' => 'notEmpty' ];
-		$value = 10;
-		$this->setMwGlobals( [ 'wgPopupsSchemaSamplingRate' => $value ] );
+		$config = [
+			'wgPopupsSchemaSamplingRate' => 10,
+			'wgPopupsBetaFeature' => true,
+		];
+		$this->setMwGlobals( $config );
 		PopupsHooks::onResourceLoaderGetConfigVars( $vars );
-		$this->assertCount( 2, $vars );
-		$this->assertEquals( $value, $vars[ 'wgPopupsSchemaSamplingRate' ] );
+		$this->assertCount( 3, $vars );
+
+		foreach ( $config as $key => $value ) {
+			$this->assertEquals(
+				$value,
+				$vars[ $key ],
+				"It forwards the \"{$key}\" config variable to the client."
+			);
+		}
 	}
 
 	/**
