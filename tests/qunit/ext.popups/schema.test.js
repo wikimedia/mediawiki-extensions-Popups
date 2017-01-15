@@ -3,7 +3,7 @@
 	QUnit.module( 'ext.popups/schema', {
 		setup: function () {
 			this.config = new mw.Map();
-			this.config.set( 'wgPopupsSchemaPopupsSamplingRate', 1 );
+			this.config.set( 'wgPopupsSchemaSamplingRate', 1 );
 
 			this.window = {
 				navigator: {
@@ -16,7 +16,7 @@
 		}
 	} );
 
-	QUnit.test( 'it should use $wgPopupsSchemaPopupsSamplingRate as the sampling rate', function ( assert ) {
+	QUnit.test( 'it should use $wgPopupsSchemaSamplingRate as the sampling rate', function ( assert ) {
 		assert.expect( 2 );
 
 		mw.popups.createSchema( this.config, this.window );
@@ -29,7 +29,7 @@
 
 		assert.ok(
 			mw.eventLog.Schema.calledWith( 'Popups', 0 ),
-			'If $wgPopupsSchemaPopupsSamplingRate isn\'t set, then the sampling rate should be 0.'
+			'If $wgPopupsSchemaSamplingRate isn\'t set, then the sampling rate should be 0.'
 		);
 	} );
 

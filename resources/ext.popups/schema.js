@@ -9,7 +9,7 @@
 	 * @return {mw.eventLog.Schema}
 	 */
 	mw.popups.createSchema = function ( config, window ) {
-		var samplingRate = config.get( 'wgPopupsSchemaPopupsSamplingRate', 0 );
+		var samplingRate = config.get( 'wgPopupsSchemaSamplingRate', 0 );
 
 		if (
 			!window.navigator ||
