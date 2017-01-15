@@ -340,7 +340,6 @@
 
 		assert.ok( dispatch.calledWith( {
 			type: 'LINK_ABANDON_START',
-			el: that.el,
 			timestamp: mw.now(),
 			token: token
 		} ) );
@@ -356,7 +355,6 @@
 			assert.ok(
 				dispatch.calledWith( {
 				type: 'LINK_ABANDON_END',
-				el: that.el,
 				token: token
 				} ),
 				'LINK_ABANDON_* share the same token.'
