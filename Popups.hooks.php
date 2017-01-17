@@ -58,6 +58,7 @@ class PopupsHooks {
 		$option = [
 			'type' => 'radio',
 			'label-message' => 'popups-prefs-optin-title',
+			'help' => wfMessage( 'popups-prefs-conflicting-gadgets-info' ),
 			'options' => [
 				wfMessage( 'popups-prefs-optin-enabled-label' )->text()
 				=> PopupsContext::PREVIEWS_ENABLED,
