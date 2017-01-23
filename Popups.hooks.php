@@ -146,7 +146,7 @@ class PopupsHooks {
 			$rl->register( 'ext.popups.renderer.mobileRenderer', array(
 					'dependencies' => array(
 						'ext.popups.core',
-						'mobile.drawers',
+						'mobile.startup',
 					),
 					'scripts' => array(
 						'resources/ext.popups.renderer.mobileRenderer/mobileRenderer.js',
