@@ -1,7 +1,8 @@
 /* eslint-evn node */
 
 module.exports = function ( grunt ) {
-	var QUNIT_URL_BASE = 'http://localhost:8080/wiki/Special:JavaScriptTest/qunit/plain';
+	var conf = grunt.file.readJSON( 'extension.json' ),
+		QUNIT_URL_BASE = 'http://localhost:8080/wiki/Special:JavaScriptTest/qunit/plain';
 
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 	grunt.loadNpmTasks( 'grunt-contrib-qunit' );
@@ -11,9 +12,7 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 
 	grunt.initConfig( {
-		banana: {
-			all: 'i18n/'
-		},
+		banana: conf.MessagesDirs,
 		eslint: {
 			fix: {
 				options: {
