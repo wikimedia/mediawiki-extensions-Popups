@@ -150,8 +150,9 @@ class PopupsHooks {
 	 *
 	 * Variables added:
 	 * * `wgPopupsIsEnabledByUser' - The server's notion of whether or not the
-	 *   user has enabled Page Previews (see
-	 *   `\Popups\PopupsContext#isEnabledByUser`).
+	 *   user has enabled Page Previews (see `\Popups\PopupsContext#isEnabledByUser`).
+	 * * `wgPopupsConflictsWithNavPopupGadget' - The server's notion of whether or not the
+	 *   user has enabled conflicting Navigational Popups Gadget.
 	 *
 	 * @param array $vars
 	 * @param OutputPage $out
@@ -161,6 +162,8 @@ class PopupsHooks {
 		$user = $out->getUser();
 
 		$vars['wgPopupsIsEnabledByUser'] = $module->isEnabledByUser( $user );
+		$vars['wgPopupsConflictsWithNavPopupGadget'] = $module->conflictsWithNavPopupsGadget(
+			$user );
 	}
 
 	/**

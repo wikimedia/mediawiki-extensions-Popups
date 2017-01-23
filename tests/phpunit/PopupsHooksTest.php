@@ -300,11 +300,15 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->willReturn( $user );
 
 		$contextMock = $this->getMockBuilder( PopupsContextTestWrapper::class )
-			->setMethods( [ 'isEnabledByUser' ] )
+			->setMethods( [ 'isEnabledByUser', 'conflictsWithNavPopupsGadget' ] )
 			->disableOriginalConstructor()
 			->getMock();
 		$contextMock->expects( $this->once() )
 			->method( 'isEnabledByUser' )
+			->with( $user )
+			->willReturn( false );
+		$contextMock->expects( $this->once() )
+			->method( 'conflictsWithNavPopupsGadget' )
 			->with( $user )
 			->willReturn( false );
 
@@ -314,7 +318,8 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
 
-		$this->assertCount( 1, $vars );
+		$this->assertCount( 2, $vars );
 		$this->assertFalse( $vars[ 'wgPopupsIsEnabledByUser' ] );
+		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ] );
 	}
 }
