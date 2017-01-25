@@ -26,6 +26,7 @@
 		var action = {
 				type: 'BOOT',
 				isEnabled: true,
+				isNavPopupsEnabled: false,
 				sessionToken: '0123456789',
 				pageToken: '9876543210',
 				page: {
@@ -58,7 +59,8 @@
 					pageToken: action.pageToken,
 					sessionToken: action.sessionToken,
 					editCountBucket: expectedEditCountBucket,
-					previewCountBucket: expectedPreviewCountBucket
+					previewCountBucket: expectedPreviewCountBucket,
+					hovercardsSuppressedByGadget: action.isNavPopupsEnabled
 				},
 				event: {
 					action: 'pageLoaded'

@@ -78,6 +78,7 @@
 		return {
 			type: types.BOOT,
 			isEnabled: isEnabled,
+			isNavPopupsEnabled: config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
 			sessionToken: user.sessionId(),
 			pageToken: generateToken(),
 			page: {

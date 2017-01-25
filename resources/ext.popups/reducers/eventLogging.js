@@ -45,7 +45,8 @@
 						pageToken: action.pageToken,
 						sessionToken: action.sessionToken,
 						editCountBucket: popups.counts.getEditCountBucket( action.user.editCount ),
-						previewCountBucket: popups.counts.getPreviewCountBucket( action.user.previewCount )
+						previewCountBucket: popups.counts.getPreviewCountBucket( action.user.previewCount ),
+						hovercardsSuppressedByGadget: action.isNavPopupsEnabled
 					},
 					event: {
 						action: 'pageLoaded'
