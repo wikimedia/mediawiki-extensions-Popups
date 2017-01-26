@@ -16,7 +16,8 @@
 			wgTitle: 'Foo',
 			wgNamespaceNumber: 1,
 			wgArticleId: 2,
-			wgUserEditCount: 3
+			wgUserEditCount: 3,
+			wgPopupsConflictsWithNavPopupGadget: true
 		} );
 
 		stubUserSettings = {
@@ -40,6 +41,7 @@
 			{
 				type: 'BOOT',
 				isEnabled: false,
+				isNavPopupsEnabled: true,
 				sessionToken: '0123456789',
 				pageToken: '9876543210',
 				page: {
