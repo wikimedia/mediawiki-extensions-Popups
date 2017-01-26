@@ -97,12 +97,7 @@
 				"resources/ext.popups/reducers/settings.js",
 
 				"resources/ext.popups/changeListener.js",
-				"resources/ext.popups/changeListeners/footerLink.js",
-				"resources/ext.popups/changeListeners/linkTitle.js",
-				"resources/ext.popups/changeListeners/render.js",
-				"resources/ext.popups/changeListeners/eventLogging.js",
-				"resources/ext.popups/changeListeners/syncUserSettings.js",
-				"resources/ext.popups/changeListeners/settings.js",
+				"resources/ext.popups/changeListeners/index.js",
 
 				"resources/ext.popups/settingsDialog.js",
 				"resources/ext.popups/pageVisibility.js",

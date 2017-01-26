@@ -1,4 +1,4 @@
-( function ( mw, $ ) {
+( function ( $ ) {
 
 	/**
 	 * Creates an instance of the event logging change listener.
@@ -12,7 +12,7 @@
 	 * @param {mw.eventLog.Schema} schema
 	 * @return {ext.popups.ChangeListener}
 	 */
-	mw.popups.changeListeners.eventLogging = function ( boundActions, schema ) {
+	module.exports = function ( boundActions, schema ) {
 		return function ( _, state ) {
 			var eventLogging = state.eventLogging,
 				event = eventLogging.event;
@@ -25,4 +25,4 @@
 		};
 	};
 
-}( mediaWiki, jQuery ) );
+}( jQuery ) );

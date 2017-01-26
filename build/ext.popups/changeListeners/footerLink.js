@@ -51,7 +51,7 @@
 	 * @param {Object} boundActions
 	 * @return {ext.popups.ChangeListener}
 	 */
-	mw.popups.changeListeners.footerLink = function ( boundActions ) {
+	module.exports = function ( boundActions ) {
 		var $footerLink;
 
 		return function ( prevState, state ) {

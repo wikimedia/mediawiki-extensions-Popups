@@ -1,4 +1,4 @@
-( function ( mw, $ ) {
+( function ( $ ) {
 
 	/**
 	 * Creates an instance of the link title change listener.
@@ -9,7 +9,7 @@
 	 *
 	 * @return {ext.popups.ChangeListener}
 	 */
-	mw.popups.changeListeners.linkTitle = function () {
+	module.exports = function () {
 		var title;
 
 		/**
@@ -62,4 +62,4 @@
 		};
 	};
 
-}( mediaWiki, jQuery ) );
+}( jQuery ) );

@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "build": "webpack",
     "test": "grunt lint",
     "doc": "jsduck"
   },
@@ -14,6 +15,7 @@
     "grunt-eslint": "19.0.0",
     "grunt-jsonlint": "1.1.0",
     "grunt-stylelint": "^0.6.0",
-    "stylelint-config-wikimedia": "0.3.0"
+    "stylelint-config-wikimedia": "0.3.0",
+    "webpack": "^1.14.0"
   }
 }

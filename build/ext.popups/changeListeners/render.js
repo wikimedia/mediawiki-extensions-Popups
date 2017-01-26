@@ -6,7 +6,7 @@
 	 * @param {ext.popups.PreviewBehavior} previewBehavior
 	 * @return {ext.popups.ChangeListener}
 	 */
-	mw.popups.changeListeners.render = function ( previewBehavior ) {
+	module.exports = function ( previewBehavior ) {
 		var preview;
 
 		return function ( prevState, state ) {
