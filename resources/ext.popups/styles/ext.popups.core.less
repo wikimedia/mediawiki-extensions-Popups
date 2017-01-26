@@ -126,7 +126,6 @@
 		&:after {
 			content: ' ';
 			position: absolute;
-			right: 0;
 			bottom: 0;
 			width: 25%;
 			height: 24px;
@@ -135,6 +134,14 @@
 			background-image: -moz-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 			background-image: -o-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 			background-image: linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+		}
+
+		&[dir='ltr']:after {
+			right: 0;
+		}
+
+		&[dir='rtl']:after {
+			left: 0;
 		}
 	}
 
