@@ -1,7 +1,5 @@
 ( function ( mw ) {
 
-	mw.popups.counts = {};
-
 	/**
 	 * Return count bucket for the number of edits a user has made.
 	 *
@@ -13,7 +11,7 @@
 	 * @param {Number} count
 	 * @return {String}
 	 */
-	mw.popups.counts.getEditCountBucket = function ( count ) {
+	function getEditCountBucket( count ) {
 		var bucket;
 
 		if ( count === 0 ) {
@@ -29,7 +27,7 @@
 		}
 
 		return bucket + ' edits';
-	};
+	}
 
 	/**
 	 * Return count bucket for the number of previews a user has seen.
@@ -45,7 +43,7 @@
 	 * @param {Number} count
 	 * @return {String}
 	 */
-	mw.popups.counts.getPreviewCountBucket = function ( count ) {
+	function getPreviewCountBucket( count ) {
 		var bucket;
 
 		if ( count === -1 ) {
@@ -63,6 +61,11 @@
 		}
 
 		return bucket + ' previews';
+	}
+
+	mw.popups.counts = {
+		getPreviewCountBucket: getPreviewCountBucket,
+		getEditCountBucket: getEditCountBucket
 	};
 
 }( mediaWiki ) );
