@@ -7,7 +7,7 @@
 	 * @param {Object} action
 	 * @return {Object} state after action
 	 */
-	popups.reducers.settings = function ( state, action ) {
+	module.exports = function ( state, action ) {
 		if ( state === undefined ) {
 			state = {
 				shouldShow: false,
@@ -54,4 +54,4 @@
 		}
 	};
 
-}( mediaWiki.popups, mediaWiki.popups.nextState ) );
+}( mediaWiki.popups, require( './nextState' ) ) );

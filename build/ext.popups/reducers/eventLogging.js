@@ -51,7 +51,7 @@
 	 * @param {Object} action
 	 * @return {Object} The state as a result of processing the action
 	 */
-	popups.reducers.eventLogging = function ( state, action ) {
+	module.exports = function ( state, action ) {
 		var nextCount, abandonEvent;
 
 		if ( state === undefined ) {
@@ -155,4 +155,4 @@
 		}
 	};
 
-}( mediaWiki.popups, mediaWiki.popups.nextState ) );
+}( mediaWiki.popups, require( './nextState' ) ) );

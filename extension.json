@@ -92,9 +92,6 @@
 				"resources/ext.popups/schema.js",
 
 				"resources/ext.popups/reducers/index.js",
-				"resources/ext.popups/reducers/preview.js",
-				"resources/ext.popups/reducers/eventLogging.js",
-				"resources/ext.popups/reducers/settings.js",
 
 				"resources/ext.popups/changeListener.js",
 				"resources/ext.popups/changeListeners/index.js",

@@ -8,7 +8,7 @@
 	 *  Must have `type` property.
 	 * @return {Object} state after action
 	 */
-	popups.reducers.preview = function ( state, action ) {
+	module.exports = function ( state, action ) {
 		if ( state === undefined ) {
 			state = {
 				enabled: undefined,
@@ -93,4 +93,4 @@
 		}
 	};
 
-}( mediaWiki.popups, mediaWiki.popups.nextState ) );
+}( mediaWiki.popups, require( './nextState' ) ) );
