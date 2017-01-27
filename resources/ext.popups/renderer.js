@@ -58,7 +58,7 @@
 	 *
 	 * TODO: Rename `isTall` to `isPortrait`.
 	 *
-	 * @typedef {Object} mw.popups.Preview
+	 * @typedef {Object} ext.popups.Preview
 	 * @property {jQuery} el
 	 * @property {Boolean} hasThumbnail
 	 * @property {Object} thumbnail
@@ -84,7 +84,7 @@
 	 * orientation, if necessary.
 	 *
 	 * @param {ext.popups.PreviewModel} model
-	 * @return {mw.popups.Preview}
+	 * @return {ext.popups.Preview}
 	 */
 	mw.popups.renderer.render = function ( model ) {
 		var preview = model.extract === undefined ? createEmptyPreview( model ) : createPreview( model );
