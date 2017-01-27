@@ -4,8 +4,7 @@
 	// configuration file.
 	var EXTRACT_LENGTH = 525,
 		THUMBNAIL_SIZE = 300 * $.bracketedDevicePixelRatio(),
-		CACHE_LIFETIME = 300, // Public and private cache lifetime (5 minutes)
-		ONE_DAY = 24 * 60 * 60 * 1000; // ms.
+		CACHE_LIFETIME = 300; // Public and private cache lifetime (5 minutes)
 
 	/**
 	 * @typedef {Function} ext.popups.Gateway
@@ -64,119 +63,34 @@
 
 					return $.Deferred().reject();
 				} )
-				.then( processPage );
+				.then( convertPageToModel );
 		};
 	};
 
 	/**
-	 * Processes a page as represented by the MediaWiki API (including the
-	 * additional data requested above).
+	 * Mangles the page as represented by the MediaWiki API (including the
+	 * additional data requested above) and passes it to
+	 * `mw.popups.preview.createModel`.
 	 *
 	 * @param {Object} page
-	 * @returns {Object}
+	 * @returns {ext.popups.PreviewModel}
 	 */
-	function processPage( page ) {
-		var lastModified,
-			result;
-
-		result = {
-			title: page.title,
-			languageCode: page.pagelanguagehtmlcode,
-			languageDirection: page.pagelanguagedir,
-			url: page.canonicalurl,
-			extract: processExtract( page.extract )
-		};
+	function convertPageToModel( page ) {
+		var lastModified;
 
 		if ( page.revisions && page.revisions.length ) {
 			lastModified = new Date( page.revisions[ 0 ].timestamp );
-
-			result.lastModified = lastModified;
-			result.isRecent = new Date() - lastModified < ONE_DAY;
 		}
 
-		if ( page.thumbnail ) {
-			result.thumbnail = page.thumbnail;
-		}
-
-		return result;
-	}
-
-	/**
-	 * Processes the extract returned by the TextExtracts MediaWiki API query
-	 * module.
-	 *
-	 * @param {String|undefined} extract
-	 * @return {String|undefined}
-	 */
-	function processExtract( extract ) {
-		var result;
-
-		if ( extract === undefined || extract === '' ) {
-			return undefined;
-		}
-
-		result = extract;
-		result = removeParentheticals( result );
-		result = removeEllipsis( result );
-
-		return result.length > 0 ? result : undefined;
-	}
-
-	/**
-	 * Removes the trailing ellipsis from the extract, if it's there.
-	 *
-	 * This function was extracted from
-	 * `mw.popups.renderer.article#removeEllipsis`.
-	 *
-	 * @param {String} extract
-	 * @return {String}
-	 */
-	function removeEllipsis( extract ) {
-		return extract.replace( /\.\.\.$/, '' );
-	}
-
-	/**
-	 * Removes parentheticals from the extract.
-	 *
-	 * If the parenthesis are unbalanced or out of order, then the extract is
-	 * returned without further processing.
-	 *
-	 * This function was extracted from
-	 * `mw.popups.renderer.article#removeParensFromText`.
-	 *
-	 * @param {String} extract
-	 * @return {String}
-	 */
-	function removeParentheticals( extract ) {
-		var
-			ch,
-			result = '',
-			level = 0,
-			i = 0;
-
-		for ( i; i < extract.length; i++ ) {
-			ch = extract.charAt( i );
-
-			if ( ch === ')' && level === 0 ) {
-				return extract;
-			}
-			if ( ch === '(' ) {
-				level++;
-				continue;
-			} else if ( ch === ')' ) {
-				level--;
-				continue;
-			}
-			if ( level === 0 ) {
-				// Remove leading spaces before brackets
-				if ( ch === ' ' && extract.charAt( i + 1 ) === '(' ) {
-					continue;
-				}
-				result += ch;
-			}
-		}
-
-		return ( level === 0 ) ? result : extract;
+		return mw.popups.preview.createModel(
+			page.title,
+			page.canonicalurl,
+			page.pagelanguagehtmlcode,
+			page.pagelanguagedir,
+			page.extract,
+			lastModified,
+			page.thumbnail
+		);
 	}
 
 }( mediaWiki, jQuery ) );

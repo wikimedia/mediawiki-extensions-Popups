@@ -83,11 +83,11 @@
 	 * response - and "showing/hiding" - positioning the layout and changing its
 	 * orientation, if necessary.
 	 *
-	 * @param {Object} data
+	 * @param {ext.popups.PreviewModel} model
 	 * @return {mw.popups.Preview}
 	 */
-	mw.popups.renderer.render = function ( data ) {
-		var preview = data.extract === undefined ? createEmptyPreview( data ) : createPreview( data );
+	mw.popups.renderer.render = function ( model ) {
+		var preview = model.extract === undefined ? createEmptyPreview( model ) : createPreview( model );
 
 		return {
 
@@ -124,23 +124,23 @@
 	/**
 	 * Creates an instance of the DTO backing a preview.
 	 *
-	 * @param {Object} data
+	 * @param {ext.popups.PreviewModel} model
 	 * @return {ext.popups.Preview}
 	 */
-	function createPreview( data ) {
+	function createPreview( model ) {
 		var templateData,
-			thumbnail = createThumbnail( data.thumbnail ),
+			thumbnail = createThumbnail( model.thumbnail ),
 			hasThumbnail = thumbnail !== null,
 
 			// FIXME: This should probably be moved into the gateway as we'll soon be
 			// fetching HTML from the API. See
 			// https://phabricator.wikimedia.org/T141651 for more detail.
-			extract = renderExtract( data.extract, data.title ),
+			extract = renderExtract( model.extract, model.title ),
 
 			$el;
 
-		templateData = $.extend( {}, data, {
-			lastModifiedMsg: mw.msg( 'popups-last-edited', moment( data.lastModified ).fromNow() ),
+		templateData = $.extend( {}, model, {
+			lastModifiedMsg: mw.msg( 'popups-last-edited', moment( model.lastModified ).fromNow() ),
 			hasThumbnail: hasThumbnail
 		} );
 
@@ -171,14 +171,14 @@
 	 *   redirect to a page that doesn't exist.
 	 * * The page doesn't have a viable extract.
 	 *
-	 * @param {Object} data
+	 * @param {ext.popups.PreviewModel} model
 	 * @return {ext.popups.Preview}
 	 */
-	function createEmptyPreview( data ) {
+	function createEmptyPreview( model ) {
 		var templateData,
 			$el;
 
-		templateData = $.extend( {}, data, {
+		templateData = $.extend( {}, model, {
 			extractMsg: mw.msg( 'popups-preview-no-preview' ),
 			readMsg: mw.msg( 'popups-preview-footer-read' )
 		} );

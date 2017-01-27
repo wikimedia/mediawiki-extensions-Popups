@@ -1,5 +1,7 @@
 ( function ( mw, $ ) {
 
+	var createModel = mw.popups.preview.createModel;
+
 	/**
 	 * @private
 	 *
@@ -115,71 +117,19 @@
 		} );
 
 		fetchPreview( 'Rick Astley' ).done( function ( result ) {
-			assert.deepEqual( result, {
-				title: 'Rick Astley',
-				languageCode: 'en',
-				languageDirection: 'ltr',
-				url: 'https://en.wikipedia.org/wiki/Rick_Astley',
-				thumbnail: {
+			assert.deepEqual( result, createModel(
+				'Rick Astley',
+				'https://en.wikipedia.org/wiki/Rick_Astley',
+				'en',
+				'ltr',
+				'Richard Paul "Rick" Astley is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the',
+				new Date( '2016-11-10T00:14:14Z' ),
+				{
 					height: 300,
 					source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Rick_Astley_-_Pepsifest_2009.jpg/200px-Rick_Astley_-_Pepsifest_2009.jpg',
 					width: 200
-				},
-				lastModified: new Date( '2016-11-10T00:14:14Z' ),
-				extract: 'Richard Paul "Rick" Astley is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the',
-				isRecent: false
-			} );
-
-			done();
-		} );
-	} );
-
-	QUnit.test( 'it handles extracts', function ( assert ) {
-		var cases = [
-				// removeEllipsis
-				[ '', undefined ],
-				[ 'Extract...', 'Extract' ],
-				[ 'Extract.', 'Extract.' ],
-				[ '...', undefined ],
-
-				// removeParentheticals
-				[ 'Foo', 'Foo' ],
-				[ 'Foo (', 'Foo (' ],
-				[ 'Foo (Bar)', 'Foo' ],
-				[ 'Foo (Bar))', 'Foo (Bar))' ],
-				[ 'Foo )(Bar)', 'Foo )(Bar)' ],
-				[ '(Bar)', undefined ]
-			],
-			done = assert.async( cases.length );
-
-		$.each( cases, function ( _, testCase ) {
-			var fetchPreview = createGatewayWithPage( {
-					revisions: [ {
-						timestamp: '2016-11-11T18:28:43Z' // As data.revisions[0] is accessed.
-					} ],
-					extract: testCase[0]
-				} );
-
-			fetchPreview( 'Extract' ).done( function ( result ) {
-				assert.strictEqual( result.extract, testCase[1] );
-
-				done();
-			} );
-		} );
-	} );
-
-	QUnit.test( 'it handles new-ish pages', function ( assert ) {
-		var done = assert.async( 1 ),
-			fetchPreview;
-
-		fetchPreview = createGatewayWithPage( {
-			revisions: [ {
-				timestamp: new Date().toString()
-			} ]
-		} );
-
-		fetchPreview( 'Is Recent?' ).done( function ( result ) {
-			assert.strictEqual( result.isRecent, true );
+				}
+			) );
 
 			done();
 		} );
@@ -203,13 +153,15 @@
 		} );
 
 		fetchPreview( 'Missing page' ).done( function ( result ) {
-			assert.deepEqual( result, {
-				title: 'Missing page',
-				languageCode: 'en',
-				languageDirection: 'ltr',
-				url: 'http://dev.wiki.local.wmftest.net:8080/wiki/Missing_page',
-				extract: undefined
-			} );
+			assert.deepEqual( result, createModel(
+				'Missing page',
+				'http://dev.wiki.local.wmftest.net:8080/wiki/Missing_page',
+				'en',
+				'ltr',
+				undefined,
+				undefined,
+				undefined
+			) );
 
 			done();
 		} );
