@@ -122,7 +122,7 @@
 				url: 'https://en.wikipedia.org/wiki/Rick_Astley',
 				thumbnail: {
 					height: 300,
-					url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Rick_Astley_-_Pepsifest_2009.jpg/200px-Rick_Astley_-_Pepsifest_2009.jpg',
+					source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Rick_Astley_-_Pepsifest_2009.jpg/200px-Rick_Astley_-_Pepsifest_2009.jpg',
 					width: 200
 				},
 				lastModified: new Date( '2016-11-10T00:14:14Z' ),

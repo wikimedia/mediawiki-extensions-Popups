@@ -350,9 +350,9 @@
 			( tall && thumbHeight < SIZES.portraitImage.h ) ||
 			// These characters in URL that could inject CSS and thus JS
 			(
-				rawThumbnail.url.indexOf( '\\' ) > -1 ||
-				rawThumbnail.url.indexOf( '\'' ) > -1 ||
-				rawThumbnail.url.indexOf( '\"' ) > -1
+				rawThumbnail.source.indexOf( '\\' ) > -1 ||
+				rawThumbnail.source.indexOf( '\'' ) > -1 ||
+				rawThumbnail.source.indexOf( '\"' ) > -1
 			)
 		) {
 			return null;
@@ -379,7 +379,7 @@
 		return {
 			el: createThumbnailElement(
 				tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall',
-				rawThumbnail.url,
+				rawThumbnail.source,
 				x,
 				y,
 				thumbWidth,

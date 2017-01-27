@@ -96,9 +96,6 @@
 
 		if ( page.thumbnail ) {
 			result.thumbnail = page.thumbnail;
-
-			result.thumbnail.url = result.thumbnail.source;
-			delete ( result.thumbnail.source );
 		}
 
 		return result;
