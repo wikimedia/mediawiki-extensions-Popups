@@ -100,6 +100,24 @@
 			assert.strictEqual( model.extract, testCase[1] );
 		} );
 
+		// ---
+		// It computes the type property...
+
+		model = createModelWithExtract( 'Foo' );
+
+		assert.strictEqual(
+			model.type,
+			mw.popups.preview.TYPE_EXTRACT,
+			'A non-generic ("extract") preview has an extract.'
+		);
+
+		model = createModelWithExtract( '' );
+
+		assert.strictEqual(
+			model.type,
+			mw.popups.preview.TYPE_GENERIC,
+			'A generic preview has an undefined extract.'
+		);
 	} );
 
 }( mediaWiki ) );

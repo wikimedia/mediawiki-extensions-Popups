@@ -1,6 +1,8 @@
 ( function ( mw ) {
 
-	var ONE_DAY = 24 * 60 * 60 * 1000; // ms.
+	var ONE_DAY = 24 * 60 * 60 * 1000, // ms.
+		TYPE_GENERIC = 'generic',
+		TYPE_EXTRACT = 'extract';
 
 	/**
 	 * @typedef {Object} ext.popups.PreviewModel
@@ -11,12 +13,23 @@
 	 * @property {String|undefined} extract `undefined` if the extract isn't
 	 *  viable, e.g. if it's empty after having ellipsis and parentheticals
 	 *  removed
+	 * @property {String} type Either "EXTRACT" or "GENERIC"
 	 * @property {Date|Number|undefined} lastModified
 	 * @property {Bool|undefined} isRecent If `lastModified` is `undefined`, then
 	 *  this will also be undefined; otherwise, whether or not `lastModified` is
 	 *  less than 24 hours ago
 	 * @property {Object|undefined} thumbnail
 	 */
+
+	/**
+	 * @constant {String}
+	 */
+	mw.popups.preview.TYPE_GENERIC = TYPE_GENERIC;
+
+	/**
+	 * @constant {String}
+	 */
+	mw.popups.preview.TYPE_EXTRACT = TYPE_EXTRACT;
 
 	/**
 	 * Creates a preview model.
@@ -39,14 +52,16 @@
 		lastModified,
 		thumbnail
 	) {
-		var result = {
-			title: title,
-			url: url,
-			languageCode: languageCode,
-			languageDirection: languageDirection,
-			extract: processExtract( extract ),
-			thumbnail: thumbnail
-		};
+		var processedExtract = processExtract( extract ),
+			result = {
+				title: title,
+				url: url,
+				languageCode: languageCode,
+				languageDirection: languageDirection,
+				extract: processedExtract,
+				type: processedExtract === undefined ? TYPE_GENERIC : TYPE_EXTRACT,
+				thumbnail: thumbnail
+			};
 
 		if ( lastModified ) {
 			result.lastModified = lastModified;
