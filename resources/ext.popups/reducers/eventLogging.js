@@ -66,6 +66,13 @@
 					event: undefined
 				} );
 
+			case popups.actionTypes.FETCH_END:
+				return nextState( state, {
+					interaction: nextState( state.interaction, {
+						previewType: action.result.type
+					} )
+				} );
+
 			case popups.actionTypes.PREVIEW_SHOW:
 				nextCount = state.previewCount + 1;
 

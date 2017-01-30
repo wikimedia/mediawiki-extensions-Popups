@@ -209,4 +209,36 @@
 		} );
 	} );
 
+	QUnit.test( 'FETCH_END', function ( assert ) {
+		var model,
+			state = {
+				interaction: {}
+			};
+
+		model = mw.popups.preview.createModel(
+			'Foo',
+			'https://en.wikipedia.org/wiki/Foo',
+			'en',
+			'ltr',
+			'',
+			mw.now(),
+			{}
+		);
+
+		state = mw.popups.reducers.eventLogging( state, {
+			type: 'FETCH_END',
+			result: model
+		} );
+
+		assert.deepEqual(
+			state,
+			{
+				interaction: {
+					previewType: model.type
+				}
+			},
+			'It mixes in the preview type to the interaction state.'
+		);
+	} );
+
 }( mediaWiki ) );
