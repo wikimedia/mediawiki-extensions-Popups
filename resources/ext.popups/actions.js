@@ -124,7 +124,7 @@
 				title: title
 			} );
 
-			gateway( title )
+			gateway.getPageSummary( title )
 				.fail( function () {
 					dispatch( {
 						type: types.FETCH_FAILED,

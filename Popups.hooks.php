@@ -143,6 +143,7 @@ class PopupsHooks {
 		$conf = PopupsContext::getInstance()->getConfig();
 		$vars['wgPopupsSchemaSamplingRate'] = $conf->get( 'PopupsSchemaSamplingRate' );
 		$vars['wgPopupsBetaFeature'] = $conf->get( 'PopupsBetaFeature' );
+		$vars['wgPopupsAPIUseRESTBase'] = $conf->get( 'PopupsAPIUseRESTBase' );
 	}
 
 	/**

@@ -234,7 +234,9 @@
 
 			this.gatewayDeferred = $.Deferred(),
 			this.gatewayPromise = this.gatewayDeferred.promise();
-			this.gateway = this.sandbox.stub().returns( this.gatewayPromise );
+			this.gateway = {
+				getPageSummary: this.sandbox.stub().returns( this.gatewayPromise )
+			};
 
 			// Setup the mw.now stub.
 			that.now = 0;
@@ -258,7 +260,7 @@
 	QUnit.test( 'it should fetch data from the gateway immediately', function ( assert ) {
 		this.fetch();
 
-		assert.ok( this.gateway.calledWith( 'Foo' ) );
+		assert.ok( this.gateway.getPageSummary.calledWith( 'Foo' ) );
 
 		assert.ok(
 			this.dispatch.calledWith( {
