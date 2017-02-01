@@ -1,4 +1,5 @@
 @import 'mediawiki.mixins.less';
+@import 'mediawiki.ui/variables';
 
 @dialog-margin: 50px;
 
@@ -21,7 +22,7 @@
 
 		> div {
 			display: table-cell;
-			width: 3.35em;
+			width: @iconSize + ( 2 * @iconGutterWidth );
 			vertical-align: middle;
 			cursor: pointer;
 		}
@@ -83,7 +84,7 @@
 	}
 }
 
-#mwe-popups-settings-help {
+.mwe-popups-settings-help {
 	font-size: 18px;
 	font-weight: 800;
 	margin: @dialog-margin;
@@ -107,7 +108,7 @@
 	}
 }
 
-.rtl #mwe-popups-settings-help div.mwe-popups-settings-help-image {
+.rtl .mwe-popups-settings-help div.mwe-popups-settings-help-image {
 	.background-image-svg( '../images/footer-rtl.svg', '../images/footer-rtl.png' );
 }
 

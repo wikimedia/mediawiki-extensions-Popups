@@ -177,15 +177,16 @@
 	 * @param {Boolean} visible if the help should be visible, or the form
 	 */
 	function toggleHelp( $el, visible ) {
-		var formSelectors = '#mwe-popups-settings-form, #mwe-popups-settings .save',
-			helpSelectors = '#mwe-popups-settings-help, #mwe-popups-settings .okay';
+		var $dialog = $( '#mwe-popups-settings' ),
+			formSelectors = 'main, .save, .close',
+			helpSelectors = '.mwe-popups-settings-help, .okay';
 
 		if ( visible ) {
-			$( formSelectors ).hide();
-			$( helpSelectors ).show();
+			$dialog.find( formSelectors ).hide();
+			$dialog.find( helpSelectors ).show();
 		} else {
-			$( formSelectors ).show();
-			$( helpSelectors ).hide();
+			$dialog.find( formSelectors ).show();
+			$dialog.find( helpSelectors ).hide();
 		}
 	}
 
