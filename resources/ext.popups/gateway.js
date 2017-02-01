@@ -76,19 +76,12 @@
 	 * @returns {ext.popups.PreviewModel}
 	 */
 	function convertPageToModel( page ) {
-		var lastModified;
-
-		if ( page.revisions && page.revisions.length ) {
-			lastModified = new Date( page.revisions[ 0 ].timestamp );
-		}
-
 		return mw.popups.preview.createModel(
 			page.title,
 			page.canonicalurl,
 			page.pagelanguagehtmlcode,
 			page.pagelanguagedir,
 			page.extract,
-			lastModified,
 			page.thumbnail
 		);
 	}

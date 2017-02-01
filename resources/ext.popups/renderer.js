@@ -140,7 +140,6 @@
 			$el;
 
 		templateData = $.extend( {}, model, {
-			lastModifiedMsg: mw.msg( 'popups-last-edited', moment( model.lastModified ).fromNow() ),
 			hasThumbnail: hasThumbnail
 		} );
 
