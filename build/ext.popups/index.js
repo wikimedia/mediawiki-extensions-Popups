@@ -155,4 +155,6 @@
 
 	// FIXME: Currently needs to be exposed for testing purposes
 	mw.popups = popups;
-}( mediaWiki, require( './popups' ), Redux, ReduxThunk, jQuery ) );
+	window.Redux = Redux;
+	window.ReduxThunk = ReduxThunk;
+}( mediaWiki, require( './popups' ), require( 'redux' ), require( 'redux-thunk' ), jQuery ) );

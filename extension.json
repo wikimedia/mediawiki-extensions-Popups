@@ -110,14 +110,7 @@
 				"mediawiki.ui.button",
 				"mediawiki.ui.icon",
 				"mediawiki.Uri",
-				"jquery.hidpi",
-				"ext.popups.lib"
-			]
-		},
-		"ext.popups.lib": {
-			"scripts": [
-				"resources/ext.popups.lib/redux/redux.js",
-				"resources/ext.popups.lib/redux-thunk/redux-thunk.js"
+				"jquery.hidpi"
 			]
 		}
 	},
