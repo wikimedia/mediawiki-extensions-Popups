@@ -116,7 +116,6 @@
 				"resources/ext.popups/styles/ext.popups.settings.less"
 			],
 			"messages": [
-				"popups-last-edited",
 				"popups-settings-title",
 				"popups-settings-description",
 				"popups-settings-option-simple",
@@ -140,7 +139,6 @@
 				"mediawiki.ui.button",
 				"mediawiki.ui.icon",
 				"mediawiki.Uri",
-				"moment",
 				"jquery.hidpi",
 				"ext.popups.lib"
 			]

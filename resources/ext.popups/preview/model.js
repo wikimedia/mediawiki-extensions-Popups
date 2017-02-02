@@ -1,7 +1,6 @@
 ( function ( mw ) {
 
-	var ONE_DAY = 24 * 60 * 60 * 1000, // ms.
-		TYPE_GENERIC = 'generic',
+	var TYPE_GENERIC = 'generic',
 		TYPE_EXTRACT = 'extract';
 
 	/**
@@ -14,10 +13,6 @@
 	 *  viable, e.g. if it's empty after having ellipsis and parentheticals
 	 *  removed
 	 * @property {String} type Either "EXTRACT" or "GENERIC"
-	 * @property {Date|Number|undefined} lastModified
-	 * @property {Bool|undefined} isRecent If `lastModified` is `undefined`, then
-	 *  this will also be undefined; otherwise, whether or not `lastModified` is
-	 *  less than 24 hours ago
 	 * @property {Object|undefined} thumbnail
 	 */
 
@@ -39,7 +34,6 @@
 	 * @param {String} languageCode
 	 * @param {String} languageDirection Either "ltr" or "rtl"
 	 * @param {String} extract
-	 * @param {Date|Number|undefined} lastModified
 	 * @param {Object|undefined} thumbnail
 	 * @return {ext.popups.PreviewModel}
 	 */
@@ -49,7 +43,6 @@
 		languageCode,
 		languageDirection,
 		extract,
-		lastModified,
 		thumbnail
 	) {
 		var processedExtract = processExtract( extract ),
@@ -62,11 +55,6 @@
 				type: processedExtract === undefined ? TYPE_GENERIC : TYPE_EXTRACT,
 				thumbnail: thumbnail
 			};
-
-		if ( lastModified ) {
-			result.lastModified = lastModified;
-			result.isRecent = mw.now() - lastModified < ONE_DAY;
-		}
 
 		return result;
 	};
