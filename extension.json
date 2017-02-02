@@ -82,7 +82,6 @@
 				"resources/ext.popups/counts.js",
 
 				"resources/ext.popups/preview/index.js",
-				"resources/ext.popups/preview/model.js",
 
 				"resources/ext.popups/gateway/index.js",
 				"resources/ext.popups/gateway/mediawiki.js",

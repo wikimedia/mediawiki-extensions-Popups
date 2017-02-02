@@ -27,6 +27,7 @@ module.exports = function ( grunt ) {
 				'resources/ext.popups/*.js',
 				'resources/ext.popups/**/*.js',
 				'!resources/ext.popups/reducers/*.js',
+				'!resources/ext.popups/preview/*.js',
 				'!resources/ext.popups/changeListeners/*.js',
 				'!docs/**',
 				'!node_modules/**'
