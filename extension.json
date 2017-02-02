@@ -133,6 +133,7 @@
 				"popups-preview-footer-read"
 			],
 			"dependencies": [
+				"ext.popups.images",
 				"mediawiki.storage",
 				"mediawiki.Title",
 				"mediawiki.jqueryMsg",
