@@ -1,7 +1,7 @@
 ( function ( mw ) {
 
 	var TYPE_GENERIC = 'generic',
-		TYPE_EXTRACT = 'extract';
+		TYPE_PAGE = 'page';
 
 	/**
 	 * @typedef {Object} ext.popups.PreviewModel
@@ -24,7 +24,7 @@
 	/**
 	 * @constant {String}
 	 */
-	mw.popups.preview.TYPE_EXTRACT = TYPE_EXTRACT;
+	mw.popups.preview.TYPE_PAGE = TYPE_PAGE;
 
 	/**
 	 * Creates a preview model.
@@ -52,7 +52,7 @@
 				languageCode: languageCode,
 				languageDirection: languageDirection,
 				extract: processedExtract,
-				type: processedExtract === undefined ? TYPE_GENERIC : TYPE_EXTRACT,
+				type: processedExtract === undefined ? TYPE_GENERIC : TYPE_PAGE,
 				thumbnail: thumbnail
 			};
 

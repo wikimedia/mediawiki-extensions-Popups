@@ -62,8 +62,8 @@
 
 		assert.strictEqual(
 			model.type,
-			mw.popups.preview.TYPE_EXTRACT,
-			'A non-generic ("extract") preview has an extract.'
+			mw.popups.preview.TYPE_PAGE,
+			'A non-generic ("page") preview has an extract.'
 		);
 
 		model = createModelWithExtract( '' );
