@@ -62,7 +62,7 @@
 	 *
 	 * @return {jQuery}
 	 */
-	mw.popups.processLinks = function ( $container, blacklist, config ) {
+	module.exports = function ( $container, blacklist, config ) {
 		var contentNamespaces;
 
 		contentNamespaces = config.get( 'wgContentNamespaces' );

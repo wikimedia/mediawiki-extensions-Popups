@@ -13,10 +13,7 @@ module.exports = {
 		filename: '/[name]/index.js'
 	},
 	entry: {
-		'ext.popups/preview': './build/ext.popups/preview/index.js',
-		'ext.popups/reducers': './build/ext.popups/reducers/index.js',
-		'ext.popups/gateway': './build/ext.popups/gateway/index.js',
-		'ext.popups/changeListeners': './build/ext.popups/changeListeners/index.js'
+		'ext.popups': './build/ext.popups/index.js'
 	},
 	devtool: 'source-map'
 };

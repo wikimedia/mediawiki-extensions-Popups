@@ -5,7 +5,7 @@
 	 * a set of methods to operate on it
 	 * @returns {Function} render function
 	 */
-	mw.popups.createSettingsDialogRenderer = function () {
+	module.exports = function () {
 
 		/**
 		 * Cached settings dialog

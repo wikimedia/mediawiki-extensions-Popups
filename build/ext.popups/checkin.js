@@ -1,5 +1,5 @@
 ( function ( mw, $ ) {
-	var pageVisibility = mw.popups.pageVisibility,
+	var pageVisibility = require( './pageVisibility' ),
 		checkin = {
 			/**
 			 * Checkin times - Fibonacci numbers
@@ -125,6 +125,6 @@
 		checkin.haveCheckinActionsBeenSetup = true;
 	};
 
-	mw.popups.checkin = checkin;
+	module.exports = checkin;
 
 }( mediaWiki, jQuery ) );

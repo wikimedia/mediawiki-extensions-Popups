@@ -23,7 +23,7 @@
 	 * @param {Object} actions The action creators bound to the Redux store
 	 * @return {ext.popups.PreviewBehavior}
 	 */
-	mw.popups.createPreviewBehavior = function ( config, user, actions ) {
+	module.exports = function ( config, user, actions ) {
 		var isBetaFeature = config.get( 'wgPopupsBetaFeature' ),
 			rawTitle,
 			settingsUrl,

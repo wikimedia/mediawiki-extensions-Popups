@@ -13,7 +13,7 @@
 	 * @param {Number} delay The number of milliseconds to wait
 	 * @return {jQuery.Promise}
 	 */
-	mw.popups.wait = function ( delay ) {
+	module.exports = function ( delay ) {
 		var result = $.Deferred();
 
 		setTimeout( function () {

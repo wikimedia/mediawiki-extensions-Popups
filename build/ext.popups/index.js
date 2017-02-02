@@ -1,4 +1,4 @@
-( function ( mw, Redux, ReduxThunk, $ ) {
+( function ( mw, popups, Redux, ReduxThunk, $ ) {
 	var BLACKLISTED_LINKS = [
 		'.extiw',
 		'.image',
@@ -17,9 +17,9 @@
 	 */
 	function createGateway( config ) {
 		if ( config.get( 'wgPopupsAPIUseRESTBase' ) ) {
-			return mw.popups.gateway.createRESTBaseGateway( $.ajax );
+			return popups.gateway.createRESTBaseGateway( $.ajax );
 		}
-		return mw.popups.gateway.createMediaWikiApiGateway( new mw.Api() );
+		return popups.gateway.createMediaWikiApiGateway( new mw.Api() );
 	}
 
 	/**
@@ -27,7 +27,7 @@
 	 * [store](http://redux.js.org/docs/api/Store.html#store).
 	 *
 	 * Change listeners are registered by setting a property on
-	 * `mw.popups.changeListeners`.
+	 * `popups.changeListeners`.
 	 *
 	 * @param {Redux.Store} store
 	 * @param {Object} actions
@@ -39,8 +39,8 @@
 	function registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior ) {
 
 		// Sugar.
-		var changeListeners = mw.popups.changeListeners,
-			registerChangeListener = mw.popups.registerChangeListener;
+		var changeListeners = popups.changeListeners,
+			registerChangeListener = popups.registerChangeListener;
 
 		registerChangeListener( store, changeListeners.footerLink( actions ) );
 		registerChangeListener( store, changeListeners.linkTitle() );
@@ -58,7 +58,7 @@
 	 * @return {Object}
 	 */
 	function createBoundActions( store ) {
-		return Redux.bindActionCreators( mw.popups.actions, store.dispatch );
+		return Redux.bindActionCreators( popups.actions, store.dispatch );
 	}
 
 	/**
@@ -67,7 +67,7 @@
 	 * @return {Redux.Reducer}
 	 */
 	function createRootReducer() {
-		return Redux.combineReducers( mw.popups.reducers );
+		return Redux.combineReducers( popups.reducers );
 	}
 
 	/*
@@ -95,11 +95,11 @@
 			schema,
 			previewBehavior;
 
-		userSettings = mw.popups.createUserSettings( mw.storage );
-		settingsDialog = mw.popups.createSettingsDialogRenderer();
-		schema = mw.popups.createSchema( mw.config, window );
+		userSettings = popups.createUserSettings( mw.storage );
+		settingsDialog = popups.createSettingsDialogRenderer();
+		schema = popups.createSchema( mw.config, window );
 
-		isEnabled = mw.popups.isEnabled( mw.user, userSettings, mw.config );
+		isEnabled = popups.isEnabled( mw.user, userSettings, mw.config );
 
 		// If debug mode is enabled, then enable Redux DevTools.
 		if ( mw.config.get( 'debug' ) === true ) {
@@ -115,7 +115,7 @@
 		);
 		actions = createBoundActions( store );
 
-		previewBehavior = mw.popups.createPreviewBehavior( mw.config, mw.user, actions );
+		previewBehavior = popups.createPreviewBehavior( mw.config, mw.user, actions );
 
 		registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior );
 
@@ -129,15 +129,15 @@
 
 		mw.hook( 'wikipage.content' ).add( function ( $container ) {
 			var previewLinks =
-				mw.popups.processLinks(
+				popups.processLinks(
 					$container,
 					BLACKLISTED_LINKS,
 					mw.config
 				);
 
-			mw.popups.checkin.setupActions( actions.checkin );
+			popups.checkin.setupActions( actions.checkin );
 
-			mw.popups.renderer.init();
+			popups.renderer.init();
 
 			previewLinks
 				.on( 'mouseover focus', function ( event ) {
@@ -153,4 +153,6 @@
 		} );
 	} );
 
-}( mediaWiki, Redux, ReduxThunk, jQuery ) );
+	// FIXME: Currently needs to be exposed for testing purposes
+	mw.popups = popups;
+}( mediaWiki, require( './popups' ), Redux, ReduxThunk, jQuery ) );

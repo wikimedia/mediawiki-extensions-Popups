@@ -73,32 +73,7 @@
 		},
 		"ext.popups": {
 			"scripts": [
-				"resources/ext.popups/index.js",
-				"resources/ext.popups/wait.js",
-				"resources/ext.popups/userSettings.js",
-				"resources/ext.popups/isEnabled.js",
-				"resources/ext.popups/actions.js",
-				"resources/ext.popups/processLinks.js",
-				"resources/ext.popups/counts.js",
-
-				"resources/ext.popups/preview/index.js",
-
-				"resources/ext.popups/gateway/index.js",
-
-				"resources/ext.popups/renderer.js",
-				"resources/ext.popups/schema.js",
-
-				"resources/ext.popups/reducers/index.js",
-
-				"resources/ext.popups/changeListener.js",
-				"resources/ext.popups/changeListeners/index.js",
-
-				"resources/ext.popups/settingsDialog.js",
-				"resources/ext.popups/pageVisibility.js",
-				"resources/ext.popups/checkin.js",
-				"resources/ext.popups/previewBehavior.js",
-
-				"resources/ext.popups/boot.js"
+				"resources/ext.popups/index.js"
 			],
 			"templates": {
 				"preview.mustache": "resources/ext.popups/templates/preview.mustache",

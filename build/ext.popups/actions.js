@@ -1,24 +1,7 @@
 ( function ( mw, $ ) {
 
 	var actions = {},
-		types = {
-			BOOT: 'BOOT',
-			CHECKIN: 'CHECKIN',
-			LINK_DWELL: 'LINK_DWELL',
-			ABANDON_START: 'ABANDON_START',
-			ABANDON_END: 'ABANDON_END',
-			LINK_CLICK: 'LINK_CLICK',
-			FETCH_START: 'FETCH_START',
-			FETCH_END: 'FETCH_END',
-			FETCH_FAILED: 'FETCH_FAILED',
-			PREVIEW_DWELL: 'PREVIEW_DWELL',
-			PREVIEW_SHOW: 'PREVIEW_SHOW',
-			PREVIEW_CLICK: 'PREVIEW_CLICK',
-			SETTINGS_SHOW: 'SETTINGS_SHOW',
-			SETTINGS_HIDE: 'SETTINGS_HIDE',
-			SETTINGS_CHANGE: 'SETTINGS_CHANGE',
-			EVENT_LOGGED: 'EVENT_LOGGED'
-		},
+		types = require( './actionTypes' ),
 		FETCH_START_DELAY = 50, // ms.
 
 		// The delay after which a FETCH_END action should be dispatched.
@@ -323,7 +306,6 @@
 		};
 	};
 
-	mw.popups.actions = actions;
-	mw.popups.actionTypes = types;
+	module.exports = actions;
 
 }( mediaWiki, jQuery ) );

@@ -1,6 +1,7 @@
 ( function ( mw, $ ) {
 
 	var isSafari = navigator.userAgent.match( /Safari/ ) !== null,
+		wait = require( './wait' ),
 		SIZES = {
 			portraitImage: {
 				h: 250, // Exact height
@@ -274,7 +275,7 @@
 
 		preview.el.show();
 
-		return mw.popups.wait( 200 )
+		return wait( 200 )
 			.then( behavior.previewShow );
 	}
 
@@ -302,7 +303,7 @@
 			.removeClass( fadeInClass )
 			.addClass( fadeOutClass );
 
-		return mw.popups.wait( 150 ).then( function () {
+		return wait( 150 ).then( function () {
 			preview.el.remove();
 		} );
 	}
@@ -681,7 +682,7 @@
 		return result;
 	}
 
-	mw.popups.renderer = {
+	module.exports = {
 		render: render,
 		init: init
 	};
