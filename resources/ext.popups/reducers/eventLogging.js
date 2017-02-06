@@ -1,13 +1,39 @@
 ( function ( popups, nextState ) {
 
 	/**
-	 * Reducer for actions that may result in an event being logged via Event
-	 * Logging.
+	 * Initialize the data that's shared between all events logged with [the Popups
+	 * schema](https://meta.wikimedia.org/wiki/Schema:Popups).
 	 *
-	 * The base data represents data that's shared between all events logged with
-	 * the Popups schema ("Popups events"). Very nearly all of it is initialized
-	 * during the BOOT action and doesn't change between link interactions, e.g.
-	 * the user being an anon or the number of edits they've made.
+	 * @param {Object} bootAction
+	 * @return {Object}
+	 */
+	function getBaseData( bootAction ) {
+		return {
+			pageTitleSource: bootAction.page.title,
+			namespaceIdSource: bootAction.page.namespaceID,
+			pageIdSource: bootAction.page.id,
+			isAnon: bootAction.user.isAnon,
+			popupEnabled: bootAction.isEnabled,
+			pageToken: bootAction.pageToken,
+			sessionToken: bootAction.sessionToken,
+			editCountBucket: popups.counts.getEditCountBucket( bootAction.user.editCount ),
+			previewCountBucket: popups.counts.getPreviewCountBucket( bootAction.user.previewCount ),
+			hovercardsSuppressedByGadget: bootAction.isNavPopupsEnabled
+		};
+	}
+
+	/**
+	 * Reducer for actions that may result in an event being logged with the
+	 * Popups schema via Event Logging.
+	 *
+	 * TODO: For obvious reasons, this reducer and the associated change listener
+	 * are tightly bound to the Popups schema. This reducer must be
+	 * renamed/moved if we introduce additional instrumentation.
+	 *
+	 * The base data represents data that's shared between all events. Very nearly
+	 * all of it is initialized during the BOOT action (see `getBaseData`) and
+	 * doesn't change between link interactions, e.g. the user being an anon or
+	 * the number of edits they've made.
 	 *
 	 * The user's number of previews, however, does change between link
 	 * interactions and the associated bucket (a computed property) is what is
@@ -36,18 +62,7 @@
 			case popups.actionTypes.BOOT:
 				return nextState( state, {
 					previewCount: action.user.previewCount,
-					baseData: {
-						pageTitleSource: action.page.title,
-						namespaceIdSource: action.page.namespaceID,
-						pageIdSource: action.page.id,
-						isAnon: action.user.isAnon,
-						popupEnabled: action.isEnabled,
-						pageToken: action.pageToken,
-						sessionToken: action.sessionToken,
-						editCountBucket: popups.counts.getEditCountBucket( action.user.editCount ),
-						previewCountBucket: popups.counts.getPreviewCountBucket( action.user.previewCount ),
-						hovercardsSuppressedByGadget: action.isNavPopupsEnabled
-					},
+					baseData: getBaseData( action ),
 					event: {
 						action: 'pageLoaded'
 					}
