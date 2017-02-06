@@ -8,7 +8,7 @@
 	 * @return {Object}
 	 */
 	function getBaseData( bootAction ) {
-		return {
+		var result = {
 			pageTitleSource: bootAction.page.title,
 			namespaceIdSource: bootAction.page.namespaceID,
 			pageIdSource: bootAction.page.id,
@@ -16,10 +16,15 @@
 			popupEnabled: bootAction.isEnabled,
 			pageToken: bootAction.pageToken,
 			sessionToken: bootAction.sessionToken,
-			editCountBucket: popups.counts.getEditCountBucket( bootAction.user.editCount ),
 			previewCountBucket: popups.counts.getPreviewCountBucket( bootAction.user.previewCount ),
 			hovercardsSuppressedByGadget: bootAction.isNavPopupsEnabled
 		};
+
+		if ( !bootAction.user.isAnon ) {
+			result.editCountBucket = popups.counts.getEditCountBucket( bootAction.user.editCount );
+		}
+
+		return result;
 	}
 
 	/**

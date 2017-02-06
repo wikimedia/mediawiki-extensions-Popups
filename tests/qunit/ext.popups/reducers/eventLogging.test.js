@@ -41,13 +41,16 @@
 				}
 			},
 			expectedEditCountBucket,
-			expectedPreviewCountBucket;
+			expectedPreviewCountBucket,
+			state;
 
 		expectedEditCountBucket = counts.getEditCountBucket( action.user.editCount );
 		expectedPreviewCountBucket = counts.getPreviewCountBucket( action.user.previewCount );
 
+		state = mw.popups.reducers.eventLogging( this.initialState, action );
+
 		assert.deepEqual(
-			mw.popups.reducers.eventLogging( this.initialState, action ),
+			state,
 			{
 				previewCount: action.user.previewCount,
 				baseData: {
@@ -67,6 +70,20 @@
 				},
 				interaction: undefined
 			}
+		);
+
+		// ---
+
+		// And when the user is logged out...
+		action.user.isAnon = true;
+
+		state = mw.popups.reducers.eventLogging( this.initialState, action );
+
+		assert.strictEqual( state.baseData.isAnon, true );
+		assert.strictEqual(
+			state.baseData.editCountBucket,
+			undefined,
+			'It shouldn\'t add the editCountBucket property when the user is logged out.'
 		);
 	} );
 
