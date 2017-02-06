@@ -14,7 +14,7 @@
 		]
 	},
 	"popups-message": "Hovercards",
-	"popups-desc": "Afficher des fenêtres au survol avec les résumés des contenus des pages quand l’utilisateur survole un lien de page.",
+	"popups-desc": "Affiche une fenêtre au survol avec un résumé du contenu de la page quand l’utilisateur survole un lien de page.",
 	"popups-last-edited": "Dernière modification $1",
 	"popups-redirects": "redirigé vers <h3>$1</h3>",
 	"popups-settings-title": "Aperçu de la page",
