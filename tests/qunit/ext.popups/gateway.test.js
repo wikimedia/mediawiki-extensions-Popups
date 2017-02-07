@@ -1,8 +1,8 @@
 ( function ( mw, $ ) {
 
 	var createModel = mw.popups.preview.createModel,
-		MediaWikiApiGateway = mw.popups.MediaWikiApiGateway,
-		RESTBaseGateway = mw.popups.RESTBaseGateway,
+		createMediaWikiApiGateway = mw.popups.createMediaWikiApiGateway,
+		createRESTBaseGateway = mw.popups.createRESTBaseGateway,
 		MEDIAWIKI_API_RESPONSE = {
 			query: {
 				pages: [
@@ -74,11 +74,11 @@
 	QUnit.module( 'ext.popups/gateway' );
 
 	QUnit.test( 'MediaWiki API gateway is called with correct arguments', function ( assert ) {
-		var getSpy = this.sandbox.spy(),
+		var spy = this.sandbox.spy(),
 			api = {
-				get: getSpy
+				get: spy
 			},
-			gateway = new MediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api ),
 			expectedOptions = {
 				action: 'query',
 				prop: 'info|extracts|pageimages|revisions|info',
@@ -104,12 +104,15 @@
 
 		gateway.fetch( 'Test Title' );
 
-		assert.deepEqual( getSpy.getCall( 0 ).args[ 0 ], expectedOptions, 'options' );
-		assert.deepEqual( getSpy.getCall( 0 ).args[ 1 ], expectedHeaders, 'headers' );
+		assert.deepEqual( spy.getCall( 0 ).args[ 0 ], expectedOptions, 'options' );
+		assert.deepEqual( spy.getCall( 0 ).args[ 1 ], expectedHeaders, 'headers' );
 	} );
 
 	QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from the response ', function ( assert ) {
-		var gateway = new MediaWikiApiGateway(),
+		var api = {
+				get: this.sandbox.stub()
+			},
+			gateway = createMediaWikiApiGateway( api ),
 			errorCases = [
 				{},
 				{
@@ -151,7 +154,7 @@
 	} );
 
 	QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a model ', function ( assert ) {
-		var gateway = new MediaWikiApiGateway(),
+		var gateway = createMediaWikiApiGateway(),
 			page = gateway.extractPageFromResponse( MEDIAWIKI_API_RESPONSE );
 
 		assert.deepEqual(
@@ -165,7 +168,7 @@
 			api = {
 				get: this.sandbox.stub().returns( deferred.promise() )
 			},
-			gateway = new MediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).fail( function () {
@@ -182,7 +185,7 @@
 					$.Deferred().resolve( MEDIAWIKI_API_RESPONSE ).promise()
 				)
 			},
-			gateway = new MediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
@@ -221,7 +224,7 @@
 					$.Deferred().resolve( response ).promise()
 				)
 			},
-			gateway = new MediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
@@ -233,10 +236,7 @@
 
 	QUnit.test( 'RESTBase gateway is called with correct arguments', function ( assert ) {
 		var getSpy = this.sandbox.spy(),
-			api = {
-				ajax: getSpy
-			},
-			gateway = new RESTBaseGateway( api ),
+			gateway = createRESTBaseGateway( getSpy ),
 			expectedOptions = {
 				url: '/api/rest_v1/page/summary/' + encodeURIComponent( 'Test Title' ),
 				headers: {
@@ -251,7 +251,7 @@
 	} );
 
 	QUnit.test( 'RESTBase gateway is correctly converting the page data to a model ', function ( assert ) {
-		var gateway = new RESTBaseGateway();
+		var gateway = createRESTBaseGateway();
 
 		assert.deepEqual(
 			gateway.convertPageToModel( RESTBASE_RESPONSE ),
@@ -261,10 +261,8 @@
 
 	QUnit.test( 'RESTBase gateway handles the API failure', function ( assert ) {
 		var deferred = $.Deferred(),
-			api = {
-				ajax: this.sandbox.stub().returns( deferred.promise() )
-			},
-			gateway = new RESTBaseGateway( api ),
+			api = this.sandbox.stub().returns( deferred.promise() ),
+			gateway = createRESTBaseGateway( api ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).fail( function () {
@@ -276,12 +274,10 @@
 	} );
 
 	QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
-		var api = {
-				ajax: this.sandbox.stub().returns(
-					$.Deferred().resolve( RESTBASE_RESPONSE ).promise()
-				)
-			},
-			gateway = new RESTBaseGateway( api ),
+		var api = this.sandbox.stub().returns(
+				$.Deferred().resolve( RESTBASE_RESPONSE ).promise()
+			),
+			gateway = createRESTBaseGateway( api ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
@@ -298,12 +294,10 @@
 				detail: 'Page or revision not found.',
 				uri: '/en.wikipedia.org/v1/page/summary/Missing_page'
 			},
-			api = {
-				ajax: this.sandbox.stub().returns(
-					$.Deferred().rejectWith( response ).promise()
-				)
-			},
-			gateway = new RESTBaseGateway( api ),
+			api = this.sandbox.stub().returns(
+				$.Deferred().rejectWith( response ).promise()
+			),
+			gateway = createRESTBaseGateway( api ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Missing Page' ).fail( function () {
