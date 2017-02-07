@@ -1,4 +1,4 @@
-( function ( mw, Redux, ReduxThunk ) {
+( function ( mw, Redux, ReduxThunk, $ ) {
 	var BLACKLISTED_LINKS = [
 		'.extiw',
 		'.image',
@@ -12,12 +12,14 @@
 	/**
 	 * Creates a gateway with sensible values for the dependencies.
 	 *
-	 * See `mw.popups.createGateway`.
-	 *
+	 * @param {mw.Map} config
 	 * @return {ext.popups.Gateway}
 	 */
-	function createGateway() {
-		return mw.popups.createGateway( new mw.Api() );
+	function createGateway( config ) {
+		if ( config.get( 'wgPopupsAPIUseRESTBase' ) ) {
+			return new mw.popups.RESTBaseGateway( $ );
+		}
+		return new mw.popups.MediaWikiApiGateway( new mw.Api() );
 	}
 
 	/**
@@ -86,7 +88,7 @@
 
 			// So-called "services".
 			generateToken = mw.user.generateRandomSessionId,
-			gateway = createGateway(),
+			gateway = createGateway( mw.config ),
 			userSettings,
 			settingsDialog,
 			isEnabled,
@@ -151,4 +153,4 @@
 		} );
 	} );
 
-}( mediaWiki, Redux, ReduxThunk ) );
+}( mediaWiki, Redux, ReduxThunk, jQuery ) );

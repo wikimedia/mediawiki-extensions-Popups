@@ -80,8 +80,10 @@
 
 			this.dwell = function ( el, ev, fetchResponse ) {
 				that.resetWait();
-				that.actions.linkDwell( el, ev, function () {
-					return $.Deferred().resolve( fetchResponse ).promise();
+				that.actions.linkDwell( el, ev, {
+					getPageSummary: function () {
+						return $.Deferred().resolve( fetchResponse ).promise();
+					}
 				}, function () { return 'pagetoken'; } );
 				return that.waitPromise;
 			};
@@ -138,10 +140,16 @@
 	} );
 
 	QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( assert ) {
-		var state;
+		var state,
+			gateway = {
+				getPageSummary: function () {
+					$.Deferred().promise();
+				}
+			};
+
 		this.actions.linkDwell(
 			'element', 'event',
-			/* gateway: */ function () { return $.Deferred().promise(); },
+			gateway,
 			constant( 'pagetoken' )
 		);
 		state = this.store.getState();
