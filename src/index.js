@@ -1,13 +1,14 @@
 ( function ( mw, popups, Redux, ReduxThunk, $ ) {
 	var BLACKLISTED_LINKS = [
-		'.extiw',
-		'.image',
-		'.new',
-		'.internal',
-		'.external',
-		'.oo-ui-buttonedElement-button',
-		'.cancelLink a'
-	];
+			'.extiw',
+			'.image',
+			'.new',
+			'.internal',
+			'.external',
+			'.oo-ui-buttonedElement-button',
+			'.cancelLink a'
+		],
+		constants = require( './constants' );
 
 	/**
 	 * Creates a gateway with sensible values for the dependencies.
@@ -17,9 +18,9 @@
 	 */
 	function createGateway( config ) {
 		if ( config.get( 'wgPopupsAPIUseRESTBase' ) ) {
-			return popups.gateway.createRESTBaseGateway( $.ajax );
+			return popups.gateway.createRESTBaseGateway( $.ajax, constants );
 		}
-		return popups.gateway.createMediaWikiApiGateway( new mw.Api() );
+		return popups.gateway.createMediaWikiApiGateway( new mw.Api(), constants );
 	}
 
 	/**

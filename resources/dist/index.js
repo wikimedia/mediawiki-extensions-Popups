@@ -46,14 +46,15 @@
 
 	( function ( mw, popups, Redux, ReduxThunk, $ ) {
 		var BLACKLISTED_LINKS = [
-			'.extiw',
-			'.image',
-			'.new',
-			'.internal',
-			'.external',
-			'.oo-ui-buttonedElement-button',
-			'.cancelLink a'
-		];
+				'.extiw',
+				'.image',
+				'.new',
+				'.internal',
+				'.external',
+				'.oo-ui-buttonedElement-button',
+				'.cancelLink a'
+			],
+			constants = __webpack_require__( 1 );
 	
 		/**
 		 * Creates a gateway with sensible values for the dependencies.
@@ -63,9 +64,9 @@
 		 */
 		function createGateway( config ) {
 			if ( config.get( 'wgPopupsAPIUseRESTBase' ) ) {
-				return popups.gateway.createRESTBaseGateway( $.ajax );
+				return popups.gateway.createRESTBaseGateway( $.ajax, constants );
 			}
-			return popups.gateway.createMediaWikiApiGateway( new mw.Api() );
+			return popups.gateway.createMediaWikiApiGateway( new mw.Api(), constants );
 		}
 	
 		/**
@@ -203,32 +204,15 @@
 		mw.popups = popups;
 		window.Redux = Redux;
 		window.ReduxThunk = ReduxThunk;
-	}( mediaWiki, __webpack_require__( 1 ), __webpack_require__( 32 ), __webpack_require__( 54 ), jQuery ) );
+	}( mediaWiki, __webpack_require__( 2 ), __webpack_require__( 33 ), __webpack_require__( 55 ), jQuery ) );
 
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = {
-		actions: __webpack_require__( 2 ),
-		actionTypes: __webpack_require__( 3 ),
-		changeListeners: __webpack_require__( 4 ),
-		checkin: __webpack_require__( 11 ),
-		counts: __webpack_require__( 13 ),
-		createPreviewBehavior: __webpack_require__( 14 ),
-		createUserSettings: __webpack_require__( 15 ),
-		createSchema: __webpack_require__( 16 ),
-		createSettingsDialogRenderer: __webpack_require__( 17 ),
-		gateway: __webpack_require__( 18 ),
-		isEnabled: __webpack_require__( 21 ),
-		renderer: __webpack_require__( 22 ),
-		pageVisibility: __webpack_require__( 12 ),
-		preview: __webpack_require__( 24 ),
-		processLinks: __webpack_require__( 25 ),
-		registerChangeListener: __webpack_require__( 26 ),
-		reducers: __webpack_require__( 27 ),
-		wait: __webpack_require__( 23 )
+		THUMBNAIL_SIZE: 300 * $.bracketedDevicePixelRatio()
 	};
 
 
@@ -236,10 +220,36 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = {
+		actions: __webpack_require__( 3 ),
+		actionTypes: __webpack_require__( 4 ),
+		changeListeners: __webpack_require__( 5 ),
+		checkin: __webpack_require__( 12 ),
+		counts: __webpack_require__( 14 ),
+		createPreviewBehavior: __webpack_require__( 15 ),
+		createUserSettings: __webpack_require__( 16 ),
+		createSchema: __webpack_require__( 17 ),
+		createSettingsDialogRenderer: __webpack_require__( 18 ),
+		gateway: __webpack_require__( 19 ),
+		isEnabled: __webpack_require__( 22 ),
+		renderer: __webpack_require__( 23 ),
+		pageVisibility: __webpack_require__( 13 ),
+		preview: __webpack_require__( 25 ),
+		processLinks: __webpack_require__( 26 ),
+		registerChangeListener: __webpack_require__( 27 ),
+		reducers: __webpack_require__( 28 ),
+		wait: __webpack_require__( 24 )
+	};
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
 	( function ( mw, $ ) {
 	
 		var actions = {},
-			types = __webpack_require__( 3 ),
+			types = __webpack_require__( 4 ),
 			FETCH_START_DELAY = 50, // ms.
 	
 			// The delay after which a FETCH_END action should be dispatched.
@@ -550,7 +560,7 @@
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -574,21 +584,21 @@
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-		footerLink: __webpack_require__( 5 ),
-		eventLogging: __webpack_require__( 6 ),
-		linkTitle: __webpack_require__( 7 ),
-		render: __webpack_require__( 8 ),
-		settings: __webpack_require__( 9 ),
-		syncUserSettings: __webpack_require__( 10 )
+		footerLink: __webpack_require__( 6 ),
+		eventLogging: __webpack_require__( 7 ),
+		linkTitle: __webpack_require__( 8 ),
+		render: __webpack_require__( 9 ),
+		settings: __webpack_require__( 10 ),
+		syncUserSettings: __webpack_require__( 11 )
 	};
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	( function ( mw, $ ) {
@@ -668,7 +678,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	( function ( $ ) {
@@ -702,7 +712,7 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	( function ( $ ) {
@@ -773,7 +783,7 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	( function ( mw ) {
@@ -802,7 +812,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	/**
@@ -852,7 +862,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/**
@@ -918,11 +928,11 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	( function ( mw, $ ) {
-		var pageVisibility = __webpack_require__( 12 ),
+		var pageVisibility = __webpack_require__( 13 ),
 			checkin = {
 				/**
 				 * Checkin times - Fibonacci numbers
@@ -1054,7 +1064,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	var pageVisibility = {
@@ -1169,7 +1179,7 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/**
@@ -1242,7 +1252,7 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	( function ( mw, $ ) {
@@ -1303,7 +1313,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	/**
@@ -1388,7 +1398,7 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	( function ( mw, $ ) {
@@ -1419,7 +1429,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	( function ( mw, $ ) {
@@ -1628,7 +1638,7 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1647,19 +1657,18 @@
 	 * it rejects.
 	 */
 	module.exports = {
-		createMediaWikiApiGateway: __webpack_require__( 19 ),
-		createRESTBaseGateway: __webpack_require__( 20 )
+		createMediaWikiApiGateway: __webpack_require__( 20 ),
+		createRESTBaseGateway: __webpack_require__( 21 )
 	};
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
-	( function ( mw, $ ) {
+	( function ( mw ) {
 	
 		var EXTRACT_LENGTH = 525,
-			THUMBNAIL_SIZE = 300 * $.bracketedDevicePixelRatio(),
 			// Public and private cache lifetime (5 minutes)
 			CACHE_LIFETIME = 300;
 	
@@ -1667,9 +1676,10 @@
 		 * MediaWiki API gateway factory
 		 *
 		 * @param {mw.Api} api
+		 * @param {mw.ext.constants } config
 		 * @returns {ext.popups.Gateway}
 		 */
-		function createMediaWikiApiGateway( api ) {
+		function createMediaWikiApiGateway( api, config ) {
 	
 			/**
 			 * Fetch page data from the API
@@ -1691,7 +1701,7 @@
 					explaintext: true,
 	
 					piprop: 'thumbnail',
-					pithumbsize: THUMBNAIL_SIZE,
+					pithumbsize: config.THUMBNAIL_SIZE,
 					rvprop: 'timestamp',
 					inprop: 'url',
 					titles: title,
@@ -1764,14 +1774,14 @@
 	
 		module.exports = createMediaWikiApiGateway;
 	
-	}( mediaWiki, jQuery ) );
+	}( mediaWiki ) );
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
-	( function ( mw ) {
+	( function ( mw, $ ) {
 	
 		var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 			RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0';
@@ -1780,9 +1790,10 @@
 		 * RESTBase gateway factory
 		 *
 		 * @param {Function} ajax function from jQuery for example
+		 * @param {ext.popups.constants} config set of configuration values
 		 * @returns {ext.popups.Gateway}
 		 */
-		function createRESTBaseGateway( ajax ) {
+		function createRESTBaseGateway( ajax, config ) {
 	
 			/**
 			 * Fetch page data from the API
@@ -1808,7 +1819,9 @@
 			 */
 			function getPageSummary( title ) {
 				return fetch( title )
-					.then( convertPageToModel );
+					.then( function( page ) {
+						return convertPageToModel( page, config.THUMBNAIL_SIZE );
+					} );
 			}
 	
 			return {
@@ -1819,29 +1832,50 @@
 		}
 	
 		/**
+		 * Takes the original thumbnail and ensure it fits within limits of THUMBNAIL_SIZE
+		 *
+		 * @param {Object} original image
+		 * @param {int} thumbSize  expected thumbnail size
+		 * @returns {Object}
+		 */
+		function generateThumbnailData( original, thumbSize ) {
+			var parts = original.source.split( '/' ),
+				filename = parts[ parts.length - 1 ];
+	
+			if ( thumbSize > original.width && filename.indexOf( '.svg' ) === -1 ) {
+				thumbSize = original.width;
+			}
+	
+			return $.extend( {}, original, {
+				source: parts.join( '/' ) + '/' + thumbSize + 'px-' + filename
+			} );
+		}
+	
+		/**
 		 * Transform the rest API response to a preview model
 		 *
 		 * @param {Object} page
+		 * @param {int} thumbSize
 		 * @returns {ext.popups.PreviewModel}
 		 */
-		function convertPageToModel( page ) {
+		function convertPageToModel( page, thumbSize ) {
 			return mw.popups.preview.createModel(
 				page.title,
 				new mw.Title( page.title ).getUrl(),
 				page.lang,
 				page.dir,
 				page.extract,
-				page.thumbnail
+				page.originalimage ? generateThumbnailData( page.originalimage, thumbSize ) : undefined
 			);
 		}
 	
 		module.exports = createRESTBaseGateway;
 	
-	}( mediaWiki ) );
+	}( mediaWiki, jQuery ) );
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	/**
@@ -1878,13 +1912,13 @@
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	( function ( mw, $ ) {
 	
 		var isSafari = navigator.userAgent.match( /Safari/ ) !== null,
-			wait = __webpack_require__( 23 ),
+			wait = __webpack_require__( 24 ),
 			SIZES = {
 				portraitImage: {
 					h: 250, // Exact height
@@ -2574,7 +2608,7 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	( function ( mw, $ ) {
@@ -2606,7 +2640,7 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	var createModel,
@@ -2751,7 +2785,7 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	( function ( mw, $ ) {
@@ -2846,7 +2880,7 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	/**
@@ -2890,23 +2924,23 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-		eventLogging: __webpack_require__( 28 ),
-		preview: __webpack_require__( 30 ),
-		settings: __webpack_require__( 31 )
+		eventLogging: __webpack_require__( 29 ),
+		preview: __webpack_require__( 31 ),
+		settings: __webpack_require__( 32 )
 	};
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var actionTypes = __webpack_require__( 3 ),
-		nextState = __webpack_require__( 29 ),
-		counts = __webpack_require__( 13 );
+	var actionTypes = __webpack_require__( 4 ),
+		nextState = __webpack_require__( 30 ),
+		counts = __webpack_require__( 14 );
 	
 	/**
 	 * Initialize the data that's shared between all events logged with [the Popups
@@ -3065,7 +3099,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/**
@@ -3109,11 +3143,11 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var actionTypes = __webpack_require__( 3 ),
-		nextState = __webpack_require__( 29 );
+	var actionTypes = __webpack_require__( 4 ),
+		nextState = __webpack_require__( 30 );
 	
 	/**
 	 * Reducer for actions that modify the state of the preview model
@@ -3210,11 +3244,11 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var actionTypes = __webpack_require__( 3 ),
-		nextState = __webpack_require__( 29 );
+	var actionTypes = __webpack_require__( 4 ),
+		nextState = __webpack_require__( 30 );
 	
 	/**
 	 * Reducer for actions that modify the state of the settings
@@ -3272,7 +3306,7 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -3280,27 +3314,27 @@
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 	
-	var _createStore = __webpack_require__(34);
+	var _createStore = __webpack_require__(35);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(49);
+	var _combineReducers = __webpack_require__(50);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(51);
+	var _bindActionCreators = __webpack_require__(52);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(52);
+	var _applyMiddleware = __webpack_require__(53);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(53);
+	var _compose = __webpack_require__(54);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(50);
+	var _warning = __webpack_require__(51);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -3321,10 +3355,10 @@
 	exports.bindActionCreators = _bindActionCreators2['default'];
 	exports.applyMiddleware = _applyMiddleware2['default'];
 	exports.compose = _compose2['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -3510,7 +3544,7 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3519,11 +3553,11 @@
 	exports.ActionTypes = undefined;
 	exports['default'] = createStore;
 	
-	var _isPlainObject = __webpack_require__(35);
+	var _isPlainObject = __webpack_require__(36);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(45);
+	var _symbolObservable = __webpack_require__(46);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
@@ -3776,12 +3810,12 @@
 	}
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(36),
-	    getPrototype = __webpack_require__(42),
-	    isObjectLike = __webpack_require__(44);
+	var baseGetTag = __webpack_require__(37),
+	    getPrototype = __webpack_require__(43),
+	    isObjectLike = __webpack_require__(45);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -3844,12 +3878,12 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(37),
-	    getRawTag = __webpack_require__(40),
-	    objectToString = __webpack_require__(41);
+	var Symbol = __webpack_require__(38),
+	    getRawTag = __webpack_require__(41),
+	    objectToString = __webpack_require__(42);
 	
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -3878,10 +3912,10 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(38);
+	var root = __webpack_require__(39);
 	
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -3890,10 +3924,10 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(39);
+	var freeGlobal = __webpack_require__(40);
 	
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -3905,7 +3939,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -3916,10 +3950,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(37);
+	var Symbol = __webpack_require__(38);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -3968,7 +4002,7 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -3996,10 +4030,10 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(43);
+	var overArg = __webpack_require__(44);
 	
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -4008,7 +4042,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 	/**
@@ -4029,7 +4063,7 @@
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	/**
@@ -4064,14 +4098,14 @@
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(46);
+	module.exports = __webpack_require__(47);
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
@@ -4080,7 +4114,7 @@
 	  value: true
 	});
 	
-	var _ponyfill = __webpack_require__(48);
+	var _ponyfill = __webpack_require__(49);
 	
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 	
@@ -4103,10 +4137,10 @@
 	
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(47)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(48)(module)))
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -4122,7 +4156,7 @@
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4150,7 +4184,7 @@
 	};
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -4158,13 +4192,13 @@
 	exports.__esModule = true;
 	exports['default'] = combineReducers;
 	
-	var _createStore = __webpack_require__(34);
+	var _createStore = __webpack_require__(35);
 	
-	var _isPlainObject = __webpack_require__(35);
+	var _isPlainObject = __webpack_require__(36);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(50);
+	var _warning = __webpack_require__(51);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -4295,10 +4329,10 @@
 	    return hasChanged ? nextState : state;
 	  };
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4328,7 +4362,7 @@
 	}
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4384,7 +4418,7 @@
 	}
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4395,7 +4429,7 @@
 	
 	exports['default'] = applyMiddleware;
 	
-	var _compose = __webpack_require__(53);
+	var _compose = __webpack_require__(54);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
@@ -4447,7 +4481,7 @@
 	}
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4490,7 +4524,7 @@
 	}
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';

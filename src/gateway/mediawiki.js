@@ -1,7 +1,6 @@
-( function ( mw, $ ) {
+( function ( mw ) {
 
 	var EXTRACT_LENGTH = 525,
-		THUMBNAIL_SIZE = 300 * $.bracketedDevicePixelRatio(),
 		// Public and private cache lifetime (5 minutes)
 		CACHE_LIFETIME = 300;
 
@@ -9,9 +8,10 @@
 	 * MediaWiki API gateway factory
 	 *
 	 * @param {mw.Api} api
+	 * @param {mw.ext.constants } config
 	 * @returns {ext.popups.Gateway}
 	 */
-	function createMediaWikiApiGateway( api ) {
+	function createMediaWikiApiGateway( api, config ) {
 
 		/**
 		 * Fetch page data from the API
@@ -33,7 +33,7 @@
 				explaintext: true,
 
 				piprop: 'thumbnail',
-				pithumbsize: THUMBNAIL_SIZE,
+				pithumbsize: config.THUMBNAIL_SIZE,
 				rvprop: 'timestamp',
 				inprop: 'url',
 				titles: title,
@@ -106,4 +106,4 @@
 
 	module.exports = createMediaWikiApiGateway;
 
-}( mediaWiki, jQuery ) );
+}( mediaWiki ) );

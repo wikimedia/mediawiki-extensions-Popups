@@ -2,14 +2,35 @@
 
 	var createModel = mw.popups.preview.createModel,
 		createRESTBaseGateway = mw.popups.gateway.createRESTBaseGateway,
+		DEFAULT_CONSTANTS = {
+			THUMBNAIL_SIZE: 512
+		},
+		SVG_ORIGINAL_IMAGE = {
+			source: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Ceiling_cat.svg",
+			width: 800,
+			height: 1000
+		},
 		RESTBASE_RESPONSE = {
 			title: 'Barack Obama',
 			extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 			thumbnail: {
 				source: 'https://upload.wikimedia.org/someImage.jpg',
-				width: 256,
-				height: 320
+				width: 200,
+				height: 250
 			},
+			originalimage: {
+				source: "https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg",
+				width: 800,
+				height: 1000
+			},
+			lang: 'en',
+			dir: 'ltr',
+			timestamp: '2017-01-30T10:17:41Z',
+			description: '44th President of the United States of America'
+		},
+		RESTBASE_RESPONSE_WITHOUT_IMAGE = {
+			title: 'Barack Obama',
+			extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 			lang: 'en',
 			dir: 'ltr',
 			timestamp: '2017-01-30T10:17:41Z',
@@ -22,13 +43,11 @@
 			'ltr',
 			'Barack Hussein Obama II born August 4, 1961) ...',
 			{
-				source: 'https://upload.wikimedia.org/someImage.jpg',
-				width: 256,
-				height: 320
+				source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg/512px-President_Barack_Obama.jpg',
+				width: 800,
+				height: 1000
 			}
 		);
-
-	QUnit.module( 'ext.popups/gateway/rest' );
 
 	QUnit.test( 'RESTBase gateway is called with correct arguments', function ( assert ) {
 		var getSpy = this.sandbox.spy(),
@@ -50,8 +69,35 @@
 		var gateway = createRESTBaseGateway();
 
 		assert.deepEqual(
-			gateway.convertPageToModel( RESTBASE_RESPONSE ),
+			gateway.convertPageToModel( RESTBASE_RESPONSE, 512 ),
 			RESTBASE_RESPONSE_PREVIEW_MODEL
+		);
+	} );
+
+	QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) {
+		var model,
+			gateway = createRESTBaseGateway();
+
+		model = gateway.convertPageToModel( RESTBASE_RESPONSE, 2000);
+
+		assert.equal(
+			model.thumbnail.source,
+			'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg/800px-President_Barack_Obama.jpg',
+			'If the requested thumbnail size is bigger than the originalimage width the originalimage width is used'
+		);
+	} );
+
+	QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
+		var model,
+			gateway = createRESTBaseGateway();
+
+		model = gateway.convertPageToModel( $.extend( {}, RESTBASE_RESPONSE, { originalimage: SVG_ORIGINAL_IMAGE } ),
+			2000 );
+
+		assert.equal(
+			model.thumbnail.source,
+			'https://upload.wikimedia.org/wikipedia/commons/8/8d/Ceiling_cat.svg/2000px-Ceiling_cat.svg',
+			'If the requested thumbnail size is bigger than the originalimage and its an SVG all is good'
 		);
 	} );
 
@@ -73,13 +119,25 @@
 		var api = this.sandbox.stub().returns(
 				$.Deferred().resolve( RESTBASE_RESPONSE ).promise()
 			),
-			gateway = createRESTBaseGateway( api ),
+			gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
 			assert.deepEqual( result, RESTBASE_RESPONSE_PREVIEW_MODEL );
 			done();
 		} );
+	} );
+
+	QUnit.test( 'RESTBase gateway handles missing images ', function ( assert ) {
+		var model,
+			gateway = createRESTBaseGateway();
+		model = gateway.convertPageToModel( RESTBASE_RESPONSE_WITHOUT_IMAGE, 300 );
+
+		assert.equal(
+			model.originalimage,
+			undefined,
+			'If restbase handles missing image information'
+		);
 	} );
 
 	QUnit.test( 'RESTBase gateway handles missing pages ', function ( assert ) {
@@ -93,7 +151,7 @@
 			api = this.sandbox.stub().returns(
 				$.Deferred().rejectWith( response ).promise()
 			),
-			gateway = createRESTBaseGateway( api ),
+			gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Missing Page' ).fail( function () {
