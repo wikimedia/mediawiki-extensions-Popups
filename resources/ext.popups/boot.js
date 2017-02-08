@@ -17,9 +17,9 @@
 	 */
 	function createGateway( config ) {
 		if ( config.get( 'wgPopupsAPIUseRESTBase' ) ) {
-			return new mw.popups.RESTBaseGateway( $ );
+			return mw.popups.createRESTBaseGateway( $.ajax );
 		}
-		return new mw.popups.MediaWikiApiGateway( new mw.Api() );
+		return mw.popups.createMediaWikiApiGateway( new mw.Api() );
 	}
 
 	/**

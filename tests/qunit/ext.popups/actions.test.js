@@ -302,7 +302,6 @@
 	QUnit.test(
 		'it shouldn\'t delay dispatching the FETCH_END action if the API request is over the target',
 		function ( assert ) {
-			var that = this;
 
 			this.fetch();
 
@@ -358,8 +357,8 @@
 		that.waitPromise.then( function () {
 			assert.ok(
 				dispatch.calledWith( {
-				type: 'ABANDON_END',
-				token: token
+					type: 'ABANDON_END',
+					token: token
 				} ),
 				'ABANDON_* share the same token.'
 			);

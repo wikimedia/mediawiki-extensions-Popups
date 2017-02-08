@@ -10,16 +10,13 @@
 	/**
 	 * Interface for API gateway that fetches page summary
 	 *
-	 * @interface Gateway
-	 * @function
-	 * @param {mw.Api|jQuery}
+	 * @interface ext.popups.Gateway
 	 */
 
 	/**
-	 * Get page summary
-	 *
+	 * Returns a preview model fetched from the api
 	 * @function
-	 * @name Gateway#getPageSummary
+	 * @name ext.popups.Gateway#getPageSummary
 	 * @param {String} title Page title we're querying
 	 * @returns {jQuery.Promise} that resolves with {ext.popups.PreviewModel}
 	 * if the request is successful and the response is not empty; otherwise
@@ -27,147 +24,163 @@
 	 */
 
 	/**
-	 * MediaWiki API gateway
+	 * MediaWiki API gateway factory
 	 *
-	 * @class
 	 * @param {mw.Api} api
-	 * @implements {ext.popups.Gateway}
+	 * @returns {ext.popups.Gateway}
 	 */
-	function MediaWikiApiGateway( api ) {
-		this.api = api;
-	}
+	function createMediaWikiApiGateway( api ) {
 
-	/**
-	 * Fetch page data from the API
-	 *
-	 * @private
-	 * @param {String} title
-	 * @return {jQuery.Promise}
-	 */
-	MediaWikiApiGateway.prototype.fetch = function ( title ) {
-		return this.api.get( {
-			action: 'query',
-			prop: 'info|extracts|pageimages|revisions|info',
-			formatversion: 2,
-			redirects: true,
-			exintro: true,
-			exchars: EXTRACT_LENGTH,
+		/**
+		 * Fetch page data from the API
+		 *
+		 * @param {String} title
+		 * @return {jQuery.Promise}
+		 */
+		function fetch( title ) {
+			return api.get( {
+				action: 'query',
+				prop: 'info|extracts|pageimages|revisions|info',
+				formatversion: 2,
+				redirects: true,
+				exintro: true,
+				exchars: EXTRACT_LENGTH,
 
-			// There is an added geometric limit on .mwe-popups-extract
-			// so that text does not overflow from the card.
-			explaintext: true,
+				// There is an added geometric limit on .mwe-popups-extract
+				// so that text does not overflow from the card.
+				explaintext: true,
 
-			piprop: 'thumbnail',
-			pithumbsize: THUMBNAIL_SIZE,
-			rvprop: 'timestamp',
-			inprop: 'url',
-			titles: title,
-			smaxage: CACHE_LIFETIME,
-			maxage: CACHE_LIFETIME,
-			uselang: 'content'
-		}, {
-			headers: {
-				'X-Analytics': 'preview=1'
-			}
-		} );
-	};
-
-	/**
-	 * Extract page data from the response
-	 *
-	 * @private
-	 * @param {Object} data API response data
-	 * @throws {Error} Throw an error if page data cannot be extracted,
-	 * i.e. if the response is empty,
-	 * @returns {Object}
-	 */
-	MediaWikiApiGateway.prototype.extractPageFromResponse = function( data ) {
-		if (
-			data.query &&
-			data.query.pages &&
-			data.query.pages.length
-		) {
-			return data.query.pages[ 0 ];
+				piprop: 'thumbnail',
+				pithumbsize: THUMBNAIL_SIZE,
+				rvprop: 'timestamp',
+				inprop: 'url',
+				titles: title,
+				smaxage: CACHE_LIFETIME,
+				maxage: CACHE_LIFETIME,
+				uselang: 'content'
+			}, {
+				headers: {
+					'X-Analytics': 'preview=1'
+				}
+			} );
 		}
 
-		throw new Error( 'API response `query.pages` is empty.' );
-	};
+		/**
+		 * Extract page data from the response
+		 *
+		 * @param {Object} data API response data
+		 * @throws {Error} Throw an error if page data cannot be extracted,
+		 * i.e. if the response is empty,
+		 * @returns {Object}
+		 */
+		function extractPageFromResponse( data ) {
+			if (
+				data.query &&
+				data.query.pages &&
+				data.query.pages.length
+			) {
+				return data.query.pages[ 0 ];
+			}
 
-	/**
-	 * Transform the API response to a preview model
-	 *
-	 * @private
-	 * @param {Object} page
-	 * @returns {ext.popups.PreviewModel}
-	 */
-	MediaWikiApiGateway.prototype.convertPageToModel = function( page ) {
-		return mw.popups.preview.createModel(
-			page.title,
-			page.canonicalurl,
-			page.pagelanguagehtmlcode,
-			page.pagelanguagedir,
-			page.extract,
-			page.thumbnail
-		);
-	};
+			throw new Error( 'API response `query.pages` is empty.' );
+		}
 
-	MediaWikiApiGateway.prototype.getPageSummary = function( title ) {
-		return this.fetch( title )
-			.then( this.extractPageFromResponse )
-			.then( this.convertPageToModel );
-	};
+		/**
+		 * Transform the API response to a preview model
+		 *
+		 * @param {Object} page
+		 * @returns {ext.popups.PreviewModel}
+		 */
+		function convertPageToModel( page ) {
+			return mw.popups.preview.createModel(
+				page.title,
+				page.canonicalurl,
+				page.pagelanguagehtmlcode,
+				page.pagelanguagedir,
+				page.extract,
+				page.thumbnail
+			);
+		}
 
-	/**
-	 * RESTBase gateway
-	 *
-	 * @class
-	 * @param {jQuery} api
-	 * @implements {ext.popups.Gateway}
-	 */
-	function RESTBaseGateway( api ) {
-		this.api = api;
+		/**
+		 * Get the page summary from the api and transform the data
+		 *
+		 * @param {String} title
+		 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
+		 */
+		function getPageSummary( title ) {
+			return fetch( title )
+				.then( extractPageFromResponse )
+				.then( convertPageToModel );
+		}
+
+		return {
+			fetch: fetch,
+			extractPageFromResponse: extractPageFromResponse,
+			convertPageToModel: convertPageToModel,
+			getPageSummary: getPageSummary
+		};
 	}
 
 	/**
-	 * Fetch page data from the API
+	 * RESTBase gateway factory
 	 *
-	 * @private
-	 * @param {String} title
-	 * @return {jQuery.Promise}
+	 * @param {Function} ajax function from jQuery for example
+	 * @returns {ext.popups.Gateway}
 	 */
-	RESTBaseGateway.prototype.fetch = function ( title ) {
-		return this.api.ajax( {
-			url: RESTBASE_ENDPOINT + encodeURIComponent( title ),
-			headers: {
-				Accept: 'application/json; charset=utf-8' +
-					'profile="' + RESTBASE_PROFILE + '"'
-			}
-		} );
-	};
+	function createRESTBaseGateway( ajax ) {
 
-	/**
-	 * Transform the API response to a preview model
-	 *
-	 * @private
-	 * @param {Object} page
-	 * @returns {ext.popups.PreviewModel}
-	 */
-	RESTBaseGateway.prototype.convertPageToModel = function( page ) {
-		return mw.popups.preview.createModel(
-			page.title,
-			new mw.Title( page.title ).getUrl(),
-			page.lang,
-			page.dir,
-			page.extract,
-			page.thumbnail
-		);
-	};
+		/**
+		 * Fetch page data from the API
+		 *
+		 * @param {String} title
+		 * @return {jQuery.Promise}
+		 */
+		function fetch( title ) {
+			return ajax( {
+				url: RESTBASE_ENDPOINT + encodeURIComponent( title ),
+				headers: {
+					Accept: 'application/json; charset=utf-8' +
+						'profile="' + RESTBASE_PROFILE + '"'
+				}
+			} );
+		}
 
-	RESTBaseGateway.prototype.getPageSummary = function( title ) {
-		return this.fetch( title )
-			.then( this.convertPageToModel );
-	};
+		/**
+		 * Transform the API response to a preview model
+		 *
+		 * @param {Object} page
+		 * @returns {ext.popups.PreviewModel}
+		 */
+		function convertPageToModel( page ) {
+			return mw.popups.preview.createModel(
+				page.title,
+				new mw.Title( page.title ).getUrl(),
+				page.lang,
+				page.dir,
+				page.extract,
+				page.thumbnail
+			);
+		}
 
-	mw.popups.MediaWikiApiGateway = MediaWikiApiGateway;
-	mw.popups.RESTBaseGateway = RESTBaseGateway;
+		/**
+		 * Get the page summary from the api and transform the data
+		 *
+		 * @param {String} title
+		 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
+		 */
+		function getPageSummary( title ) {
+			return fetch( title )
+				.then( convertPageToModel );
+		}
+
+		return {
+			fetch: fetch,
+			convertPageToModel: convertPageToModel,
+			getPageSummary: getPageSummary
+		};
+	}
+
+	mw.popups.createMediaWikiApiGateway = createMediaWikiApiGateway;
+	mw.popups.createRESTBaseGateway = createRESTBaseGateway;
 }( mediaWiki, jQuery ) );
