@@ -158,18 +158,28 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * Check that Page Previews are disabled for anonymous user
 	 * @covers ::isEnabledByUser
 	 * @covers ::isBetaFeatureEnabled
+	 * @dataProvider providerAnonUserHasDisabledPagePreviews
 	 */
-	public function testAnonUserHasDisabledPagePreviews() {
+	public function testAnonUserHasDisabledPagePreviews( $betaFeatureEnabled, $expected ) {
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setId( self::ANONYMOUS_USER );
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			PopupsContext::PREVIEWS_DISABLED );
 		$this->setMwGlobals( [
-			"wgPopupsBetaFeature" => false
+			"wgPopupsBetaFeature" => $betaFeatureEnabled,
 		] );
 
 		$context = PopupsContext::getInstance();
-		$this->assertEquals( true, $context->isEnabledByUser( $user ) );
+		$this->assertEquals( $expected, $context->isEnabledByUser( $user ) );
+	}
+
+	public static function providerAnonUserHasDisabledPagePreviews() {
+		return [
+			// If beta feature is enabled we can assume it's opt in only.
+			[ true, false ],
+			// If beta feature is disabled we can assume it's rolled out to everyone.
+			[ false, true ],
+		];
 	}
 	/**
 	 * @return array/

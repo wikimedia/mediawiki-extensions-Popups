@@ -257,10 +257,24 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );
 	}
 
+	public function providerOnBeforePageDisplay() {
+		return [
+			[ false, true, false ],
+			[ true, true, true ],
+			// if the user doesnt have the feature but the beta feature is disabled
+			// we can assume the user has it (as its rolled out to everyone)
+			[ false, false, true ],
+			// If the user has enabled it and the beta feature is disabled
+			// we can assume the code will be loaded.
+			[ true, false, true ]
+		];
+	}
+
 	/**
 	 * @covers ::onBeforePageDisplay
+	 * @dataProvider providerOnBeforePageDisplay
 	 */
-	public function testOnBeforePageDisplay() {
+	public function testOnBeforePageDisplay( $isEnabledByUser, $isBetaFeatureEnabled, $isCodeLoaded ) {
 		$skinMock = $this->getMock( Skin::class );
 
 		$outPageMock = $this->getMock(
@@ -270,17 +284,27 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			'',
 			false
 		);
-		$outPageMock->expects( $this->once() )
+
+		$outPageMock->expects( $isCodeLoaded ? $this->once() : $this->never() )
 			->method( 'addModules' )
 			->with( [ 'ext.popups' ] );
 
 		$contextMock = $this->getMockBuilder( PopupsContextTestWrapper::class )
-			->setMethods( [ 'areDependenciesMet' ] )
+			->setMethods( [ 'areDependenciesMet', 'isBetaFeatureEnabled', 'isEnabledByUser' ] )
 			->disableOriginalConstructor()
 			->getMock();
+
 		$contextMock->expects( $this->once() )
 			->method( 'areDependenciesMet' )
 			->will( $this->returnValue( true ) );
+
+		$contextMock->expects( $this->any() )
+			->method( 'isBetaFeatureEnabled' )
+			->will( $this->returnValue( $isBetaFeatureEnabled ) );
+
+		$contextMock->expects( $this->any() )
+			->method( 'isEnabledByUser' )
+			->will( $this->returnValue( $isEnabledByUser ) );
 
 		PopupsContextTestWrapper::injectTestInstance( $contextMock );
 		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );
