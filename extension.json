@@ -83,7 +83,10 @@
 
 				"resources/ext.popups/preview/index.js",
 				"resources/ext.popups/preview/model.js",
-				"resources/ext.popups/gateway.js",
+
+				"resources/ext.popups/gateway/index.js",
+				"resources/ext.popups/gateway/mediawiki.js",
+				"resources/ext.popups/gateway/rest.js",
 
 				"resources/ext.popups/renderer.js",
 				"resources/ext.popups/schema.js",
