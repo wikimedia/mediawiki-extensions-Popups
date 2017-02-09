@@ -16,8 +16,6 @@
 		},
 		$window = $( window );
 
-	mw.popups.renderer = {};
-
 	/**
 	 * Extracted from `mw.popups.createSVGMasks`.
 	 */
@@ -48,9 +46,9 @@
 	/**
 	 * Initializes the renderer.
 	 */
-	mw.popups.renderer.init = function () {
+	function init() {
 		createPokeyMasks();
-	};
+	}
 
 	/**
 	 * The model of how a view is rendered, which is constructed from a response
@@ -86,7 +84,7 @@
 	 * @param {ext.popups.PreviewModel} model
 	 * @return {ext.popups.Preview}
 	 */
-	mw.popups.renderer.render = function ( model ) {
+	function render( model ) {
 		var preview = model.extract === undefined ? createEmptyPreview( model ) : createPreview( model );
 
 		return {
@@ -119,7 +117,7 @@
 				return hide( preview );
 			}
 		};
-	};
+	}
 
 	/**
 	 * Creates an instance of the DTO backing a preview.
@@ -682,5 +680,10 @@
 
 		return result;
 	}
+
+	mw.popups.renderer = {
+		render: render,
+		init: init
+	};
 
 }( mediaWiki, jQuery ) );
