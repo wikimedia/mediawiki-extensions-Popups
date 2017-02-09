@@ -47,9 +47,9 @@
 	( function ( popups ) {
 	
 		popups.reducers = {
-			eventLogging: __webpack_require__( 8 ),
-			preview: __webpack_require__( 10 ),
-			settings: __webpack_require__( 11 )
+			eventLogging: __webpack_require__( 10 ),
+			preview: __webpack_require__( 12 ),
+			settings: __webpack_require__( 13 )
 		};
 	
 	}( mediaWiki.popups ) );
@@ -63,7 +63,9 @@
 /* 5 */,
 /* 6 */,
 /* 7 */,
-/* 8 */
+/* 8 */,
+/* 9 */,
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	( function ( popups, nextState ) {
@@ -223,11 +225,11 @@
 			}
 		};
 	
-	}( mediaWiki.popups, __webpack_require__( 9 ) ) );
+	}( mediaWiki.popups, __webpack_require__( 11 ) ) );
 
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/**
@@ -271,7 +273,7 @@
 
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	( function ( popups, nextState ) {
@@ -369,11 +371,11 @@
 			}
 		};
 	
-	}( mediaWiki.popups, __webpack_require__( 9 ) ) );
+	}( mediaWiki.popups, __webpack_require__( 11 ) ) );
 
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	( function ( popups, nextState ) {
@@ -432,7 +434,7 @@
 			}
 		};
 	
-	}( mediaWiki.popups, __webpack_require__( 9 ) ) );
+	}( mediaWiki.popups, __webpack_require__( 11 ) ) );
 
 
 /***/ }

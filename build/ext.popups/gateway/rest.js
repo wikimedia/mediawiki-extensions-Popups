@@ -62,6 +62,6 @@
 		);
 	}
 
-	mw.popups.gateway.createRESTBaseGateway = createRESTBaseGateway;
+	module.exports = createRESTBaseGateway;
 
 }( mediaWiki ) );

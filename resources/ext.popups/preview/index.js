@@ -47,14 +47,14 @@
 
 	( function ( mw ) {
 	
-		mw.popups.preview = __webpack_require__( 7 );
+		mw.popups.preview = __webpack_require__( 9 );
 	
 	}( mediaWiki ) );
 
 
 /***/ },
 
-/***/ 7:
+/***/ 9:
 /***/ function(module, exports) {
 
 	var TYPE_GENERIC = 'generic',

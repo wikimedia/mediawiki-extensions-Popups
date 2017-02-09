@@ -104,6 +104,6 @@
 		);
 	}
 
-	mw.popups.gateway.createMediaWikiApiGateway = createMediaWikiApiGateway;
+	module.exports = createMediaWikiApiGateway;
 
 }( mediaWiki, jQuery ) );

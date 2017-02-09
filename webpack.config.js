@@ -15,6 +15,7 @@ module.exports = {
 	entry: {
 		'ext.popups/preview': './build/ext.popups/preview/index.js',
 		'ext.popups/reducers': './build/ext.popups/reducers/index.js',
+		'ext.popups/gateway': './build/ext.popups/gateway/index.js',
 		'ext.popups/changeListeners': './build/ext.popups/changeListeners/index.js'
 	},
 	devtool: 'source-map'
