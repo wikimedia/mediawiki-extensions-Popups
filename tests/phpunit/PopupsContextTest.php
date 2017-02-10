@@ -102,26 +102,26 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::isEnabledByUser
+	 * @covers ::shouldSendModuleToUser
 	 * @covers ::isBetaFeatureEnabled
-	 * @dataProvider provideTestDataForIsEnabledByUser
+	 * @dataProvider provideTestDataForShouldSendModuleToUser
 	 * @param bool $optIn
 	 * @param bool $expected
 	 */
-	public function testIsEnabledByUser( $optIn, $expected ) {
+	public function testShouldSendModuleToUser( $optIn, $expected ) {
 		$this->setMwGlobals( [
 			"wgPopupsBetaFeature" => false
 		] );
 		$context = PopupsContext::getInstance();
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
-		$this->assertEquals( $context->isEnabledByUser( $user ), $expected );
+		$this->assertEquals( $context->shouldSendModuleToUser( $user ), $expected );
 	}
 
 	/**
 	 * @return array/
 	 */
-	public function provideTestDataForIsEnabledByUser() {
+	public function provideTestDataForShouldSendModuleToUser() {
 		return [
 			[
 				"optin" => PopupsContext::PREVIEWS_ENABLED,
@@ -135,13 +135,13 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::isEnabledByUser
+	 * @covers ::shouldSendModuleToUser
 	 * @covers ::isBetaFeatureEnabled
-	 * @dataProvider provideTestDataForIsEnabledByUserWhenBetaEnabled
+	 * @dataProvider provideTestDataForShouldSendModuleToUserWhenBetaEnabled
 	 * @param bool $optIn
 	 * @param bool $expected
 	 */
-	public function testIsEnabledByUserWhenBetaEnabled( $optIn, $expected ) {
+	public function testShouldSendModuleToUserWhenBetaEnabled( $optIn, $expected ) {
 		if ( !class_exists( 'BetaFeatures' ) ) {
 			$this->markTestSkipped( 'Skipped as BetaFeatures is not available' );
 		}
@@ -151,12 +151,12 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = PopupsContext::getInstance();
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setOption( PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME, $optIn );
-		$this->assertEquals( $context->isEnabledByUser( $user ), $expected );
+		$this->assertEquals( $context->shouldSendModuleToUser( $user ), $expected );
 	}
 
 	/**
 	 * Check that Page Previews are disabled for anonymous user
-	 * @covers ::isEnabledByUser
+	 * @covers ::shouldSendModuleToUser
 	 * @covers ::isBetaFeatureEnabled
 	 * @dataProvider providerAnonUserHasDisabledPagePreviews
 	 */
@@ -170,7 +170,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		] );
 
 		$context = PopupsContext::getInstance();
-		$this->assertEquals( $expected, $context->isEnabledByUser( $user ) );
+		$this->assertEquals( $expected, $context->shouldSendModuleToUser( $user ) );
 	}
 
 	public static function providerAnonUserHasDisabledPagePreviews() {
@@ -184,7 +184,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	/**
 	 * @return array/
 	 */
-	public function provideTestDataForIsEnabledByUserWhenBetaEnabled() {
+	public function provideTestDataForShouldSendModuleToUserWhenBetaEnabled() {
 		return [
 			[
 				"optin" => PopupsContext::PREVIEWS_ENABLED,

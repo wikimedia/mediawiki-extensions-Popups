@@ -54,7 +54,7 @@
 			userSettings = createStubUserSettings( false ),
 			config = new mw.Map();
 
-		config.set( 'wgPopupsIsEnabledByUser', true );
+		config.set( 'wgPopupsShouldSendModuleToUser', true );
 
 		assert.ok(
 			mw.popups.isEnabled( user, userSettings, config ),

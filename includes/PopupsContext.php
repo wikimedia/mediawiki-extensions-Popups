@@ -147,7 +147,7 @@ class PopupsContext {
 	 * @param \User $user
 	 * @return bool
 	 */
-	public function isEnabledByUser( \User $user ) {
+	public function shouldSendModuleToUser( \User $user ) {
 		if ( $this->isBetaFeatureEnabled() ) {
 			return $user->isAnon() ? false :
 				\BetaFeatures::isFeatureEnabled( $user, self::PREVIEWS_BETA_PREFERENCE_NAME );

@@ -21,7 +21,7 @@
 	 */
 	mw.popups.isEnabled = function ( user, userSettings, config ) {
 		if ( !user.isAnon() ) {
-			return config.get( 'wgPopupsIsEnabledByUser' );
+			return config.get( 'wgPopupsShouldSendModuleToUser' );
 		}
 
 		if ( config.get( 'wgPopupsBetaFeature' ) ) {
