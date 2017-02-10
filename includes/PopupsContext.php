@@ -148,13 +148,12 @@ class PopupsContext {
 	 * @return bool
 	 */
 	public function isEnabledByUser( \User $user ) {
-		if ( $user->isAnon() ) {
-			return true;
-		}
 		if ( $this->isBetaFeatureEnabled() ) {
-			return \BetaFeatures::isFeatureEnabled( $user, self::PREVIEWS_BETA_PREFERENCE_NAME );
-		};
-		return $user->getOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME ) === self::PREVIEWS_ENABLED;
+			return $user->isAnon() ? false :
+				\BetaFeatures::isFeatureEnabled( $user, self::PREVIEWS_BETA_PREFERENCE_NAME );
+		}
+		return $user->isAnon() ? true :
+			$user->getOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME ) === self::PREVIEWS_ENABLED;
 	}
 
 	/**

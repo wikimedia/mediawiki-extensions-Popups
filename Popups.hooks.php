@@ -86,6 +86,7 @@ class PopupsHooks {
 
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		$module = PopupsContext::getInstance();
+		$user = $out->getUser();
 
 		if ( !$module->areDependenciesMet() ) {
 			$logger = $module->getLogger();
@@ -94,7 +95,9 @@ class PopupsHooks {
 			return true;
 		}
 
-		$out->addModules( [ 'ext.popups' ] );
+		if ( !$module->isBetaFeatureEnabled() || $module->isEnabledByUser( $user ) ) {
+			$out->addModules( [ 'ext.popups' ] );
+		}
 
 		return true;
 	}
