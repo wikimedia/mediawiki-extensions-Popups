@@ -274,7 +274,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	 * @covers ::onBeforePageDisplay
 	 * @dataProvider providerOnBeforePageDisplay
 	 */
-	public function testOnBeforePageDisplay( $isEnabledByUser, $isBetaFeatureEnabled, $isCodeLoaded ) {
+	public function testOnBeforePageDisplay( $shouldSendModuleToUser, $isBetaFeatureEnabled, $isCodeLoaded ) {
 		$skinMock = $this->getMock( Skin::class );
 
 		$outPageMock = $this->getMock(
@@ -290,7 +290,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->with( [ 'ext.popups' ] );
 
 		$contextMock = $this->getMockBuilder( PopupsContextTestWrapper::class )
-			->setMethods( [ 'areDependenciesMet', 'isBetaFeatureEnabled', 'isEnabledByUser' ] )
+			->setMethods( [ 'areDependenciesMet', 'isBetaFeatureEnabled', 'shouldSendModuleToUser' ] )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -303,8 +303,8 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->will( $this->returnValue( $isBetaFeatureEnabled ) );
 
 		$contextMock->expects( $this->any() )
-			->method( 'isEnabledByUser' )
-			->will( $this->returnValue( $isEnabledByUser ) );
+			->method( 'shouldSendModuleToUser' )
+			->will( $this->returnValue( $shouldSendModuleToUser ) );
 
 		PopupsContextTestWrapper::injectTestInstance( $contextMock );
 		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );
@@ -325,11 +325,11 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->willReturn( $user );
 
 		$contextMock = $this->getMockBuilder( PopupsContextTestWrapper::class )
-			->setMethods( [ 'isEnabledByUser', 'conflictsWithNavPopupsGadget' ] )
+			->setMethods( [ 'shouldSendModuleToUser', 'conflictsWithNavPopupsGadget' ] )
 			->disableOriginalConstructor()
 			->getMock();
 		$contextMock->expects( $this->once() )
-			->method( 'isEnabledByUser' )
+			->method( 'shouldSendModuleToUser' )
 			->with( $user )
 			->willReturn( false );
 		$contextMock->expects( $this->once() )
@@ -344,7 +344,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
 
 		$this->assertCount( 2, $vars );
-		$this->assertFalse( $vars[ 'wgPopupsIsEnabledByUser' ] );
+		$this->assertFalse( $vars[ 'wgPopupsShouldSendModuleToUser' ] );
 		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ] );
 	}
 }

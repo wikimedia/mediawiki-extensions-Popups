@@ -95,7 +95,7 @@ class PopupsHooks {
 			return true;
 		}
 
-		if ( !$module->isBetaFeatureEnabled() || $module->isEnabledByUser( $user ) ) {
+		if ( !$module->isBetaFeatureEnabled() || $module->shouldSendModuleToUser( $user ) ) {
 			$out->addModules( [ 'ext.popups' ] );
 		}
 
@@ -153,8 +153,8 @@ class PopupsHooks {
 	 * MakeGlobalVariablesScript hook handler.
 	 *
 	 * Variables added:
-	 * * `wgPopupsIsEnabledByUser' - The server's notion of whether or not the
-	 *   user has enabled Page Previews (see `\Popups\PopupsContext#isEnabledByUser`).
+	 * * `wgPopupsShouldSendModuleToUser' - The server's notion of whether or not the
+	 *   user has enabled Page Previews (see `\Popups\PopupsContext#shouldSendModuleToUser`).
 	 * * `wgPopupsConflictsWithNavPopupGadget' - The server's notion of whether or not the
 	 *   user has enabled conflicting Navigational Popups Gadget.
 	 *
@@ -165,7 +165,7 @@ class PopupsHooks {
 		$module = PopupsContext::getInstance();
 		$user = $out->getUser();
 
-		$vars['wgPopupsIsEnabledByUser'] = $module->isEnabledByUser( $user );
+		$vars['wgPopupsShouldSendModuleToUser'] = $module->shouldSendModuleToUser( $user );
 		$vars['wgPopupsConflictsWithNavPopupGadget'] = $module->conflictsWithNavPopupsGadget(
 			$user );
 	}
