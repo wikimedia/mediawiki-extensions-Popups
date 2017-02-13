@@ -3,8 +3,9 @@
   "scripts": {
     "start": "webpack -w",
     "build": "webpack",
-    "test": "grunt lint",
-    "doc": "jsduck"
+    "test": "grunt lint && npm run check-built-assets",
+    "doc": "jsduck",
+    "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -qr test-build resources/dist && rm -rf test-build"
   },
   "devDependencies": {
     "eslint-config-wikimedia": "0.3.0",
