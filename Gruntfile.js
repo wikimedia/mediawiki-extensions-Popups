@@ -26,7 +26,7 @@ module.exports = function ( grunt ) {
 				'build/**',
 				'resources/ext.popups/*.js',
 				'resources/ext.popups/**/*.js',
-				'!resources/ext.popups/index.js',
+				'!resources/dist/index.js',
 				'!docs/**',
 				'!node_modules/**'
 			]
