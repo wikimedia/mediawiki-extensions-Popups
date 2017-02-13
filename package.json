@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "start": "webpack -w",
     "build": "webpack",
     "test": "grunt lint",
     "doc": "jsduck"
