@@ -1,2 +1,1 @@
-resources/ext.popups/index.js -diff -whitespace
-resources/ext.popups/index.js.map -diff -whitespace
+resources/dist/** -diff -whitespace

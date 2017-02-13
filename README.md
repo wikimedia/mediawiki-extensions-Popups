@@ -6,7 +6,13 @@ what it does.
 ## Development
 
 Popups uses an asset bundler so when developing for the extension you'll need
-to run a script to assemble the frontend assets. So, after an `npm install`:
+to run a script to assemble the frontend assets.
+
+You can find the frontend source files in `src/`, the compiled sources in
+`resources/dist/`, and other frontend assets managed by resource loader in
+`resources/*`.
+
+After an `npm install`:
 
 * `npm start` Will run the bundler in watch mode, re-assembling the files on
   file change.

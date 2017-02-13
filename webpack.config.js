@@ -13,7 +13,7 @@ module.exports = {
 		filename: '/[name].js'
 	},
 	entry: {
-		index: './build/ext.popups/index.js'
+		index: './src/index.js'
 	},
 	devtool: 'source-map'
 };

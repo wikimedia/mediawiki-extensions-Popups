@@ -23,7 +23,7 @@ module.exports = function ( grunt ) {
 				]
 			},
 			all: [
-				'build/**',
+				'src/**',
 				'resources/ext.popups/*.js',
 				'resources/ext.popups/**/*.js',
 				'!resources/dist/index.js',
