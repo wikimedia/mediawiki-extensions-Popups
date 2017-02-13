@@ -204,7 +204,6 @@
 		window.Redux = Redux;
 		window.ReduxThunk = ReduxThunk;
 	}( mediaWiki, __webpack_require__( 1 ), __webpack_require__( 32 ), __webpack_require__( 54 ), jQuery ) );
-	
 
 
 /***/ },
