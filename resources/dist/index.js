@@ -224,21 +224,21 @@
 		actions: __webpack_require__( 3 ),
 		actionTypes: __webpack_require__( 4 ),
 		changeListeners: __webpack_require__( 5 ),
-		checkin: __webpack_require__( 12 ),
-		counts: __webpack_require__( 14 ),
-		createPreviewBehavior: __webpack_require__( 15 ),
-		createUserSettings: __webpack_require__( 16 ),
-		createSchema: __webpack_require__( 17 ),
-		createSettingsDialogRenderer: __webpack_require__( 18 ),
-		gateway: __webpack_require__( 19 ),
-		isEnabled: __webpack_require__( 22 ),
-		renderer: __webpack_require__( 23 ),
-		pageVisibility: __webpack_require__( 13 ),
+		checkin: __webpack_require__( 14 ),
+		counts: __webpack_require__( 16 ),
+		createPreviewBehavior: __webpack_require__( 17 ),
+		createUserSettings: __webpack_require__( 18 ),
+		createSchema: __webpack_require__( 19 ),
+		createSettingsDialogRenderer: __webpack_require__( 20 ),
+		gateway: __webpack_require__( 21 ),
+		isEnabled: __webpack_require__( 24 ),
+		renderer: __webpack_require__( 10 ),
+		pageVisibility: __webpack_require__( 15 ),
 		preview: __webpack_require__( 25 ),
 		processLinks: __webpack_require__( 26 ),
 		registerChangeListener: __webpack_require__( 27 ),
 		reducers: __webpack_require__( 28 ),
-		wait: __webpack_require__( 24 )
+		wait: __webpack_require__( 11 )
 	};
 
 
@@ -602,8 +602,8 @@
 		eventLogging: __webpack_require__( 7 ),
 		linkTitle: __webpack_require__( 8 ),
 		render: __webpack_require__( 9 ),
-		settings: __webpack_require__( 10 ),
-		syncUserSettings: __webpack_require__( 11 )
+		settings: __webpack_require__( 12 ),
+		syncUserSettings: __webpack_require__( 13 )
 	};
 
 
@@ -789,1140 +789,39 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	( function ( mw ) {
+	var renderer = __webpack_require__( 10 );
 	
-		/**
-		 * Creates an instance of the render change listener.
-		 *
-		 * @param {ext.popups.PreviewBehavior} previewBehavior
-		 * @return {ext.popups.ChangeListener}
-		 */
-		module.exports = function ( previewBehavior ) {
-			var preview;
+	/**
+	 * Creates an instance of the render change listener.
+	 *
+	 * @param {ext.popups.PreviewBehavior} previewBehavior
+	 * @return {ext.popups.ChangeListener}
+	 */
+	module.exports = function ( previewBehavior ) {
+		var preview;
 	
-			return function ( prevState, state ) {
-				if ( state.preview.shouldShow && !preview ) {
-					preview = mw.popups.renderer.render( state.preview.fetchResponse );
-					preview.show( state.preview.activeEvent, previewBehavior );
-				} else if ( !state.preview.shouldShow && preview ) {
-					preview.hide();
-					preview = undefined;
-				}
-			};
+		return function ( prevState, state ) {
+			if ( state.preview.shouldShow && !preview ) {
+				preview = renderer.render( state.preview.fetchResponse );
+				preview.show( state.preview.activeEvent, previewBehavior );
+			} else if ( !state.preview.shouldShow && preview ) {
+				preview.hide();
+				preview = undefined;
+			}
 		};
-	
-	}( mediaWiki ) );
+	};
 
 
 /***/ },
 /* 10 */
-/***/ function(module, exports) {
-
-	/**
-	 * Creates an instance of the settings change listener.
-	 *
-	 * @param {Object} boundActions
-	 * @param {Object} render function that renders a jQuery el with the settings
-	 * @return {ext.popups.ChangeListener}
-	 */
-	module.exports = function ( boundActions, render ) {
-		var settings;
-	
-		return function ( prevState, state ) {
-			if ( !prevState ) {
-				// Nothing to do on initialization
-				return;
-			}
-	
-			// Update global modal visibility
-			if (
-				prevState.settings.shouldShow === false &&
-				state.settings.shouldShow === true
-			) {
-				// Lazily instantiate the settings UI
-				if ( !settings ) {
-					settings = render( boundActions );
-					settings.appendTo( document.body );
-				}
-	
-				// Update the UI settings with the current settings
-				settings.setEnabled( state.preview.enabled );
-	
-				settings.show();
-			} else if (
-				prevState.settings.shouldShow === true &&
-				state.settings.shouldShow === false
-			) {
-				settings.hide();
-			}
-	
-			// Update help visibility
-			if ( prevState.settings.showHelp !== state.settings.showHelp ) {
-				settings.toggleHelp( state.settings.showHelp );
-			}
-		};
-	};
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	/**
-	 * Creates an instance of the user settings sync change listener.
-	 *
-	 * This change listener syncs certain parts of the state tree to user
-	 * settings when they change.
-	 *
-	 * Used for:
-	 *
-	 * * Enabled state: If the previews are enabled or disabled.
-	 * * Preview count: When the user dwells on a link for long enough that
-	 *   a preview is shown, then their preview count will be incremented (see
-	 *   `mw.popups.reducers.eventLogging`, and is persisted to local storage.
-	 *
-	 * @param {ext.popups.UserSettings} userSettings
-	 * @return {ext.popups.ChangeListener}
-	 */
-	module.exports = function ( userSettings ) {
-	
-		return function ( prevState, state ) {
-	
-			syncIfChanged(
-				prevState, state, 'eventLogging', 'previewCount',
-				userSettings.setPreviewCount
-			);
-			syncIfChanged(
-				prevState, state, 'preview', 'enabled',
-				userSettings.setIsEnabled
-			);
-	
-		};
-	};
-	
-	/**
-	 * Given a state tree, reducer and property, safely return the value of the
-	 * property if the reducer and property exist
-	 * @param {Object} state tree
-	 * @param {String} reducer key to access on the state tree
-	 * @param {String} prop key to access on the reducer key of the state tree
-	 * @return {*}
-	 */
-	function get( state, reducer, prop ) {
-		return state[ reducer ] && state[ reducer ][ prop ];
-	}
-	
-	/**
-	 * Calls a sync function if the property prop on the property reducer on
-	 * the state trees has changed value.
-	 * @param {Object} prevState
-	 * @param {Object} state
-	 * @param {String} reducer key to access on the state tree
-	 * @param {String} prop key to access on the reducer key of the state tree
-	 * @param {Function} sync function to be called with the newest value if
-	 * changed
-	 */
-	function syncIfChanged( prevState, state, reducer, prop, sync ) {
-		var current = get( state, reducer, prop );
-		if ( prevState && ( get( prevState, reducer, prop ) !== current ) ) {
-			sync( current );
-		}
-	}
-
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	( function ( mw, $ ) {
-		var pageVisibility = __webpack_require__( 13 ),
-			checkin = {
-				/**
-				 * Checkin times - Fibonacci numbers
-				 *
-				 * Exposed for testing only.
-				 *
-				 * @type {number[]}
-				 * @private
-				 */
-				CHECKIN_TIMES: [ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233,
-					377, 610, 987, 1597, 2584, 4181, 6765 ],
-				/**
-				 * Have checkin actions been setup already?
-				 *
-				 * Exposed for testing only.
-				 *
-				 * @private
-				 * @type {boolean}
-				 */
-				haveCheckinActionsBeenSetup: false
-			};
-	
-		/**
-		 * A customized `setTimeout` function that takes page visibility into account
-		 *
-		 * If the document is not visible to the user, e.g. browser window is minimized,
-		 * then pause the time. Otherwise execute `callback` after `delay` milliseconds.
-		 * The callback won't be executed if the browser does not suppor the page visibility
-		 * API.
-		 *
-		 * Exposed for testing only.
-		 *
-		 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
-		 * @private
-		 * @param {Function} callback Function to call when the time is up
-		 * @param {number} delay The number of milliseconds to wait before executing the callback
-		 */
-		checkin.setVisibleTimeout = function ( callback, delay ) {
-			var hiddenPropertyName = pageVisibility.getDocumentHiddenPropertyName( document ),
-				visibilityChangeEventName = pageVisibility.getDocumentVisibilitychangeEventName( document ),
-				timeoutId,
-				lastStartedAt;
-	
-			if ( !hiddenPropertyName || !visibilityChangeEventName ) {
-				return;
-			}
-	
-			/**
-			 * Execute the callback and turn off listening to the visibilitychange event
-			 */
-			function done() {
-				callback();
-				$( document ).off( visibilityChangeEventName, visibilityChangeHandler );
-			}
-	
-			/**
-			 * Pause or resume the timer depending on the page visibility state
-			 */
-			function visibilityChangeHandler() {
-				var millisecondsPassed;
-	
-				// Pause the timer if the page is hidden ...
-				if ( pageVisibility.isDocumentHidden( document ) ) {
-					// ... and only if the timer has started.
-					// Timer may not have been started if the document opened in a
-					// hidden tab for example. The timer will be started when the
-					// document is visible to the user.
-					if ( lastStartedAt !== undefined ) {
-						millisecondsPassed = Math.round( mw.now() - lastStartedAt );
-						delay = Math.max( 0, delay - millisecondsPassed );
-						clearTimeout( timeoutId );
-					}
-				} else {
-					lastStartedAt = Math.round( mw.now() );
-					timeoutId = setTimeout( done, delay );
-				}
-			}
-	
-			visibilityChangeHandler();
-	
-			$( document ).on( visibilityChangeEventName, visibilityChangeHandler );
-		};
-	
-		/**
-		 * Perform the passed `checkin` action at the predefined times
-		 *
-		 * Actions are setup only once no matter how many times this function is
-		 * called. Ideally this function should be called once.
-		 *
-		 * @see checkin.CHECKIN_TIMES
-		 * @param {Function} checkinAction
-		 */
-		checkin.setupActions = function( checkinAction ) {
-			var timeIndex = 0,
-				timesLength = checkin.CHECKIN_TIMES.length,
-				time,  // current checkin time
-				nextTime;  // the checkin time that will be logged next
-	
-			if ( checkin.haveCheckinActionsBeenSetup ) {
-				return;
-			}
-	
-			/**
-			 * Execute the checkin action with the current checkin time
-			 *
-			 * If more checkin times are left, then setup a timer to log the next one.
-			 */
-			function setup() {
-				time = checkin.CHECKIN_TIMES[ timeIndex ];
-				checkinAction( time );
-	
-				timeIndex += 1;
-				if ( timeIndex < timesLength ) {
-					nextTime = checkin.CHECKIN_TIMES[ timeIndex ];
-					// Execute the callback after the number of seconds left till the
-					// next checkin time.
-					checkin.setVisibleTimeout( setup, ( nextTime - time ) * 1000 );
-				}
-			}
-	
-			checkin.setVisibleTimeout( setup, checkin.CHECKIN_TIMES[ timeIndex ] * 1000 );
-	
-			checkin.haveCheckinActionsBeenSetup = true;
-		};
-	
-		module.exports = checkin;
-	
-	}( mediaWiki, jQuery ) );
-
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	var pageVisibility = {
-		/**
-		 * Cached value of the browser specific name of the `document.hidden` property
-		 *
-		 * Exposed for testing only.
-		 *
-		 * @type {null|undefined|string}
-		 * @private
-		 */
-		documentHiddenPropertyName: null,
-		/**
-		 * Cached value of the browser specific name of the `document.visibilitychange` event
-		 *
-		 * Exposed for testing only.
-		 *
-		 * @type {null|undefined|string}
-		 * @private
-		 */
-		documentVisibilityChangeEventName: null
-	};
-	
-	/**
-	 * Return the browser specific name of the `document.hidden` property
-	 *
-	 * Exposed for testing only.
-	 *
-	 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
-	 * @private
-	 * @param {Object} doc window.document object
-	 * @return {string|undefined}
-	 */
-	pageVisibility.getDocumentHiddenPropertyName = function ( doc ) {
-		var property;
-	
-		if ( pageVisibility.documentHiddenPropertyName === null ) {
-			if ( doc.hidden !== undefined ) {
-				property = 'hidden';
-			} else if ( doc.mozHidden !== undefined ) {
-				property = 'mozHidden';
-			} else if ( doc.msHidden !== undefined ) {
-				property = 'msHidden';
-			} else if ( doc.webkitHidden !== undefined ) {
-				property = 'webkitHidden';
-			} else {
-				// let's be explicit about returning `undefined`
-				property = undefined;
-			}
-			// cache
-			pageVisibility.documentHiddenPropertyName = property;
-		}
-	
-		return pageVisibility.documentHiddenPropertyName;
-	};
-	
-	/**
-	 * Return the browser specific name of the `document.visibilitychange` event
-	 *
-	 * Exposed for testing only.
-	 *
-	 * @see https://www.w3.org/TR/page-visibility/#sec-visibilitychange-event
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
-	 * @private
-	 * @param {Object} doc window.document object
-	 * @return {string|undefined}
-	 */
-	pageVisibility.getDocumentVisibilitychangeEventName = function ( doc ) {
-		var eventName;
-	
-		if ( pageVisibility.documentVisibilityChangeEventName === null ) {
-			if ( doc.hidden !== undefined ) {
-				eventName = 'visibilitychange';
-			} else if ( doc.mozHidden !== undefined ) {
-				eventName = 'mozvisibilitychange';
-			} else if ( doc.msHidden !== undefined ) {
-				eventName = 'msvisibilitychange';
-			} else if ( doc.webkitHidden !== undefined ) {
-				eventName = 'webkitvisibilitychange';
-			} else {
-				// let's be explicit about returning `undefined`
-				eventName = undefined;
-			}
-			// cache
-			pageVisibility.documentVisibilityChangeEventName = eventName;
-		}
-	
-		return pageVisibility.documentVisibilityChangeEventName;
-	};
-	
-	/**
-	 * Whether `window.document` is visible
-	 *
-	 * `undefined` is returned if the browser does not support the Visibility API.
-	 *
-	 * Exposed for testing only.
-	 *
-	 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
-	 * @private
-	 * @param {Object} doc window.document object
-	 * @returns {boolean|undefined}
-	 */
-	pageVisibility.isDocumentHidden = function ( doc ) {
-		var property = pageVisibility.getDocumentHiddenPropertyName( doc );
-	
-		return property !== undefined ? doc[ property ] : undefined;
-	};
-	
-	module.exports = pageVisibility;
-
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-	/**
-	 * Return count bucket for the number of edits a user has made.
-	 *
-	 * The buckets are defined as part of
-	 * [the Popups schema](https://meta.wikimedia.org/wiki/Schema:Popups).
-	 *
-	 * Extracted from `mw.popups.schemaPopups.getEditCountBucket`.
-	 *
-	 * @param {Number} count
-	 * @return {String}
-	 */
-	function getEditCountBucket( count ) {
-		var bucket;
-	
-		if ( count === 0 ) {
-			bucket = '0';
-		} else if ( count >= 1 && count <= 4 ) {
-			bucket = '1-4';
-		} else if ( count >= 5 && count <= 99 ) {
-			bucket = '5-99';
-		} else if ( count >= 100 && count <= 999 ) {
-			bucket = '100-999';
-		} else if ( count >= 1000 ) {
-			bucket = '1000+';
-		}
-	
-		return bucket + ' edits';
-	}
-	
-	/**
-	 * Return count bucket for the number of previews a user has seen.
-	 *
-	 * If local storage isn't available - because the user has disabled it
-	 * or the browser doesn't support it - then then "unknown" is returned.
-	 *
-	 * The buckets are defined as part of
-	 * [the Popups schema](https://meta.wikimedia.org/wiki/Schema:Popups).
-	 *
-	 * Extracted from `mw.popups.getPreviewCountBucket`.
-	 *
-	 * @param {Number} count
-	 * @return {String}
-	 */
-	function getPreviewCountBucket( count ) {
-		var bucket;
-	
-		if ( count === -1 ) {
-			return 'unknown';
-		}
-	
-		if ( count === 0 ) {
-			bucket = '0';
-		} else if ( count >= 1 && count <= 4 ) {
-			bucket = '1-4';
-		} else if ( count >= 5 && count <= 20 ) {
-			bucket = '5-20';
-		} else if ( count >= 21 ) {
-			bucket = '21+';
-		}
-	
-		return bucket + ' previews';
-	}
-	
-	module.exports = {
-		getPreviewCountBucket: getPreviewCountBucket,
-		getEditCountBucket: getEditCountBucket
-	};
-
-
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	( function ( mw, $ ) {
-	
-		/**
-		 * @typedef {Object} ext.popups.PreviewBehavior
-		 * @property {String} settingsUrl
-		 * @property {Function} showSettings
-		 * @property {Function} previewDwell
-		 * @property {Function} previewAbandon
-		 */
-	
-		/**
-		 * Creates an instance of `ext.popups.PreviewBehavior`.
-		 *
-		 * If the user is logged out, then clicking the cog should show the settings
-		 * modal.
-		 *
-		 * If the user is logged in, then clicking the cog should send them to the
-		 * Special:Preferences page with the "Beta features" tab open if Page Previews
-		 * is enabled as a beta feature, or the "Appearance" tab otherwise.
-		 *
-		 * @param {mw.Map} config
-		 * @param {mw.User} user
-		 * @param {Object} actions The action creators bound to the Redux store
-		 * @return {ext.popups.PreviewBehavior}
-		 */
-		module.exports = function ( config, user, actions ) {
-			var isBetaFeature = config.get( 'wgPopupsBetaFeature' ),
-				rawTitle,
-				settingsUrl,
-				showSettings = $.noop;
-	
-			if ( user.isAnon() ) {
-				showSettings = function ( event ) {
-					event.preventDefault();
-	
-					actions.showSettings();
-				};
-			} else {
-				rawTitle = 'Special:Preferences#mw-prefsection-';
-				rawTitle += isBetaFeature ? 'betafeatures' : 'rendering';
-	
-				settingsUrl = mw.Title.newFromText( rawTitle )
-					.getUrl();
-			}
-	
-			return {
-				settingsUrl: settingsUrl,
-				showSettings: showSettings,
-				previewDwell: actions.previewDwell,
-				previewAbandon: actions.abandon,
-				previewShow: actions.previewShow
-			};
-		};
-	
-	}( mediaWiki, jQuery ) );
-
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	/**
-	 * @typedef {Object} ext.popups.UserSettings
-	 */
-	
-	var IS_ENABLED_KEY = 'mwe-popups-enabled',
-		PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
-	
-	/**
-	 * Given the global state of the application, creates an object whose methods
-	 * encapsulate all interactions with the given User Agent's storage.
-	 *
-	 * @param {mw.storage} storage The `mw.storage` singleton instance
-	 *
-	 * @return {ext.popups.UserSettings}
-	 */
-	module.exports = function ( storage ) {
-		return {
-	
-			/**
-			 * Gets whether or not the user has previously enabled Page Previews.
-			 *
-			 * N.B. that if the user hasn't previously enabled or disabled Page
-			 * Previews, i.e. mw.popups.userSettings.setIsEnabled(true), then they
-			 * are treated as if they have enabled them.
-			 *
-			 * @return {Boolean}
-			 */
-			getIsEnabled: function () {
-				return storage.get( IS_ENABLED_KEY ) !== '0';
-			},
-	
-			/**
-			 * Sets whether or not the user has enabled Page Previews.
-			 *
-			 * @param {Boolean} isEnabled
-			 */
-			setIsEnabled: function ( isEnabled ) {
-				storage.set( IS_ENABLED_KEY, isEnabled ? '1' : '0' );
-			},
-	
-			/**
-			 * Gets whether or not the user has previously enabled **or disabled**
-			 * Page Previews.
-			 *
-			 * @return {Boolean}
-			 */
-			hasIsEnabled: function () {
-				return storage.get( IS_ENABLED_KEY, undefined ) !== undefined;
-			},
-	
-			/**
-			 * Gets the number of Page Previews that the user has seen.
-			 *
-			 * If the storage isn't available, then -1 is returned.
-			 *
-			 * @return {Number}
-			 */
-			getPreviewCount: function () {
-				var result = storage.get( PREVIEW_COUNT_KEY );
-	
-				if ( result === false ) {
-					return -1;
-				} else if ( result === null ) {
-					return 0;
-				}
-	
-				return parseInt( result, 10 );
-			},
-	
-			/**
-			 * Sets the number of Page Previews that the user has seen.
-			 *
-			 * @param {Number} count
-			 */
-			setPreviewCount: function ( count ) {
-				storage.set( PREVIEW_COUNT_KEY, count.toString() );
-			}
-		};
-	};
-
-
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	( function ( mw, $ ) {
-	
-		/**
-		 * Creates an instance of an EventLogging schema that can be used to log
-		 * Popups events.
-		 *
-		 * @param {mw.Map} config
-		 * @param {Window} window
-		 * @return {mw.eventLog.Schema}
-		 */
-		module.exports = function ( config, window ) {
-			var samplingRate = config.get( 'wgPopupsSchemaSamplingRate', 0 );
-	
-			if (
-				!window.navigator ||
-				!$.isFunction( window.navigator.sendBeacon ) ||
-				window.QUnit
-			) {
-				samplingRate = 0;
-			}
-	
-			return new mw.eventLog.Schema( 'Popups', samplingRate );
-		};
-	
-	}( mediaWiki, jQuery ) );
-
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	var mw = window.mediaWiki,
-		$ = jQuery;
-	
-	/**
-	 * Creates a render function that will create the settings dialog and return
-	 * a set of methods to operate on it
-	 * @returns {Function} render function
-	 */
-	module.exports = function () {
-	
-		/**
-		 * Cached settings dialog
-		 *
-		 * @type {jQuery}
-		 */
-		var $dialog,
-			/**
-			 * Cached settings overlay
-			 *
-			 * @type {jQuery}
-			 */
-			$overlay;
-	
-		/**
-		 * Renders the relevant form and labels in the settings dialog
-		 * @param {Object} boundActions
-		 * @returns {Object} object with methods to affect the rendered UI
-		 */
-		return function ( boundActions ) {
-	
-			if ( !$dialog ) {
-				$dialog = createSettingsDialog();
-				$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
-	
-				// Setup event bindings
-	
-				$dialog.find( '.save' ).click( function () {
-					// Find the selected value (simple|advanced|off)
-					var selected = getSelectedSetting( $dialog ),
-						// Only simple means enabled, advanced is disabled in favor of
-						// NavPops and off means disabled.
-						enabled = selected === 'simple';
-	
-					boundActions.saveSettings( enabled );
-				} );
-				$dialog.find( '.close, .okay' ).click( boundActions.hideSettings );
-			}
-	
-			return {
-				/**
-				 * Append the dialog and overlay to a DOM element
-				 * @param {HTMLElement} el
-				 */
-				appendTo: function ( el ) {
-					$overlay.appendTo( el );
-					$dialog.appendTo( el );
-				},
-	
-				/**
-				 * Show the settings element and position it correctly
-				 */
-				show: function () {
-					var h = $( window ).height(),
-						w = $( window ).width();
-	
-					$overlay.show();
-	
-					// FIXME: Should recalc on browser resize
-					$dialog
-						.show()
-						.css( 'left', ( w - $dialog.outerWidth( true ) ) / 2 )
-						.css( 'top', ( h - $dialog.outerHeight( true ) ) / 2 );
-				},
-	
-				/**
-				 * Hide the settings dialog.
-				 */
-				hide: function () {
-					$overlay.hide();
-					$dialog.hide();
-				},
-	
-				/**
-				 * Toggle the help dialog on or off
-				 * @param {Boolean} visible if you want to show or hide the help dialog
-				 */
-				toggleHelp: function ( visible ) {
-					toggleHelp( $dialog, visible );
-				},
-	
-				/**
-				 * Update the form depending on the enabled flag
-				 *
-				 * If false and no navpops, then checks 'off'
-				 * If true, then checks 'on'
-				 * If false, and there are navpops, then checks 'advanced'
-				 *
-				 * @param {Boolean} enabled if page previews are enabled
-				 */
-				setEnabled: function ( enabled ) {
-					var name = 'off';
-					if ( enabled ) {
-						name = 'simple';
-					} else if ( isNavPopupsEnabled() ) {
-						name = 'advanced';
-					}
-	
-					// Check the appropiate radio button
-					$dialog.find( '#mwe-popups-settings-' + name )
-						.prop( 'checked', true );
-				}
-			};
-		};
-	};
-	
-	/**
-	 * Create the settings dialog
-	 *
-	 * @return {jQuery} settings dialog
-	 */
-	function createSettingsDialog() {
-		var $el,
-			path = mw.config.get( 'wgExtensionAssetsPath' ) + '/Popups/resources/ext.popups/images/',
-			choices = [
-				{
-					id: 'simple',
-					name: mw.msg( 'popups-settings-option-simple' ),
-					description: mw.msg( 'popups-settings-option-simple-description' ),
-					image: path + 'hovercard.svg',
-					isChecked: true
-				},
-				{
-					id: 'advanced',
-					name: mw.msg( 'popups-settings-option-advanced' ),
-					description: mw.msg( 'popups-settings-option-advanced-description' ),
-					image: path + 'navpop.svg'
-				},
-				{
-					id: 'off',
-					name: mw.msg( 'popups-settings-option-off' )
-				}
-			];
-	
-		if ( !isNavPopupsEnabled() ) {
-			// remove the advanced option
-			choices.splice( 1, 1 );
-		}
-	
-		// render the template
-		$el = mw.template.get( 'ext.popups', 'settings.mustache' ).render( {
-			heading: mw.msg( 'popups-settings-title' ),
-			closeLabel: mw.msg( 'popups-settings-cancel' ),
-			saveLabel: mw.msg( 'popups-settings-save' ),
-			helpText: mw.msg( 'popups-settings-help' ),
-			okLabel: mw.msg( 'popups-settings-help-ok' ),
-			descriptionText: mw.msg( 'popups-settings-description' ),
-			choices: choices
-		} );
-	
-		return $el;
-	}
-	
-	/**
-	 * Get the selected value on the radio button
-	 *
-	 * @param {jQuery.Object} $el the element to extract the setting from
-	 * @return {String} Which should be (simple|advanced|off)
-	 */
-	function getSelectedSetting( $el ) {
-		return $el.find(
-			'input[name=mwe-popups-setting]:checked, #mwe-popups-settings'
-		).val();
-	}
-	
-	/**
-	 * Toggles the visibility between a form and the help
-	 * @param {jQuery.Object} $el element that contains form and help
-	 * @param {Boolean} visible if the help should be visible, or the form
-	 */
-	function toggleHelp( $el, visible ) {
-		var $dialog = $( '#mwe-popups-settings' ),
-			formSelectors = 'main, .save, .close',
-			helpSelectors = '.mwe-popups-settings-help, .okay';
-	
-		if ( visible ) {
-			$dialog.find( formSelectors ).hide();
-			$dialog.find( helpSelectors ).show();
-		} else {
-			$dialog.find( formSelectors ).show();
-			$dialog.find( helpSelectors ).hide();
-		}
-	}
-	
-	/**
-	 * Checks if the NavigationPopups gadget is enabled by looking at the global
-	 * variables
-	 * @returns {Boolean} if navpops was found to be enabled
-	 */
-	function isNavPopupsEnabled() {
-		/* global pg: false*/
-		return typeof pg !== 'undefined' && pg.fn.disablePopups !== undefined;
-	}
-
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Interface for API gateway that fetches page summary
-	 *
-	 * @interface ext.popups.Gateway
-	 */
-	
-	/**
-	 * Returns a preview model fetched from the api
-	 * @function
-	 * @name ext.popups.Gateway#getPageSummary
-	 * @param {String} title Page title we're querying
-	 * @returns {jQuery.Promise} that resolves with {ext.popups.PreviewModel}
-	 * if the request is successful and the response is not empty; otherwise
-	 * it rejects.
-	 */
-	module.exports = {
-		createMediaWikiApiGateway: __webpack_require__( 20 ),
-		createRESTBaseGateway: __webpack_require__( 21 )
-	};
-
-
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	( function ( mw ) {
-	
-		var EXTRACT_LENGTH = 525,
-			// Public and private cache lifetime (5 minutes)
-			CACHE_LIFETIME = 300;
-	
-		/**
-		 * MediaWiki API gateway factory
-		 *
-		 * @param {mw.Api} api
-		 * @param {mw.ext.constants } config
-		 * @returns {ext.popups.Gateway}
-		 */
-		function createMediaWikiApiGateway( api, config ) {
-	
-			/**
-			 * Fetch page data from the API
-			 *
-			 * @param {String} title
-			 * @return {jQuery.Promise}
-			 */
-			function fetch( title ) {
-				return api.get( {
-					action: 'query',
-					prop: 'info|extracts|pageimages|revisions|info',
-					formatversion: 2,
-					redirects: true,
-					exintro: true,
-					exchars: EXTRACT_LENGTH,
-	
-					// There is an added geometric limit on .mwe-popups-extract
-					// so that text does not overflow from the card.
-					explaintext: true,
-	
-					piprop: 'thumbnail',
-					pithumbsize: config.THUMBNAIL_SIZE,
-					rvprop: 'timestamp',
-					inprop: 'url',
-					titles: title,
-					smaxage: CACHE_LIFETIME,
-					maxage: CACHE_LIFETIME,
-					uselang: 'content'
-				}, {
-					headers: {
-						'X-Analytics': 'preview=1'
-					}
-				} );
-			}
-	
-			/**
-			 * Get the page summary from the api and transform the data
-			 *
-			 * @param {String} title
-			 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
-			 */
-			function getPageSummary( title ) {
-				return fetch( title )
-					.then( extractPageFromResponse )
-					.then( convertPageToModel );
-			}
-	
-			return {
-				fetch: fetch,
-				extractPageFromResponse: extractPageFromResponse,
-				convertPageToModel: convertPageToModel,
-				getPageSummary: getPageSummary
-			};
-		}
-	
-		/**
-		 * Extract page data from the MediaWiki API response
-		 *
-		 * @param {Object} data API response data
-		 * @throws {Error} Throw an error if page data cannot be extracted,
-		 * i.e. if the response is empty,
-		 * @returns {Object}
-		 */
-		function extractPageFromResponse( data ) {
-			if (
-				data.query &&
-				data.query.pages &&
-				data.query.pages.length
-			) {
-				return data.query.pages[ 0 ];
-			}
-	
-			throw new Error( 'API response `query.pages` is empty.' );
-		}
-	
-		/**
-		 * Transform the MediaWiki API response to a preview model
-		 *
-		 * @param {Object} page
-		 * @returns {ext.popups.PreviewModel}
-		 */
-		function convertPageToModel( page ) {
-			return mw.popups.preview.createModel(
-				page.title,
-				page.canonicalurl,
-				page.pagelanguagehtmlcode,
-				page.pagelanguagedir,
-				page.extract,
-				page.thumbnail
-			);
-		}
-	
-		module.exports = createMediaWikiApiGateway;
-	
-	}( mediaWiki ) );
-
-
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
-
-	( function ( mw, $ ) {
-	
-		var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
-			RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0';
-	
-		/**
-		 * RESTBase gateway factory
-		 *
-		 * @param {Function} ajax function from jQuery for example
-		 * @param {ext.popups.constants} config set of configuration values
-		 * @returns {ext.popups.Gateway}
-		 */
-		function createRESTBaseGateway( ajax, config ) {
-	
-			/**
-			 * Fetch page data from the API
-			 *
-			 * @param {String} title
-			 * @return {jQuery.Promise}
-			 */
-			function fetch( title ) {
-				return ajax( {
-					url: RESTBASE_ENDPOINT + encodeURIComponent( title ),
-					headers: {
-						Accept: 'application/json; charset=utf-8' +
-							'profile="' + RESTBASE_PROFILE + '"'
-					}
-				} );
-			}
-	
-			/**
-			 * Get the page summary from the api and transform the data
-			 *
-			 * @param {String} title
-			 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
-			 */
-			function getPageSummary( title ) {
-				return fetch( title )
-					.then( function( page ) {
-						return convertPageToModel( page, config.THUMBNAIL_SIZE );
-					} );
-			}
-	
-			return {
-				fetch: fetch,
-				convertPageToModel: convertPageToModel,
-				getPageSummary: getPageSummary
-			};
-		}
-	
-		/**
-		 * Takes the original thumbnail and ensure it fits within limits of THUMBNAIL_SIZE
-		 *
-		 * @param {Object} original image
-		 * @param {int} thumbSize  expected thumbnail size
-		 * @returns {Object}
-		 */
-		function generateThumbnailData( original, thumbSize ) {
-			var parts = original.source.split( '/' ),
-				filename = parts[ parts.length - 1 ];
-	
-			if ( thumbSize > original.width && filename.indexOf( '.svg' ) === -1 ) {
-				thumbSize = original.width;
-			}
-	
-			return $.extend( {}, original, {
-				source: parts.join( '/' ) + '/' + thumbSize + 'px-' + filename
-			} );
-		}
-	
-		/**
-		 * Transform the rest API response to a preview model
-		 *
-		 * @param {Object} page
-		 * @param {int} thumbSize
-		 * @returns {ext.popups.PreviewModel}
-		 */
-		function convertPageToModel( page, thumbSize ) {
-			return mw.popups.preview.createModel(
-				page.title,
-				new mw.Title( page.title ).getUrl(),
-				page.lang,
-				page.dir,
-				page.extract,
-				page.originalimage ? generateThumbnailData( page.originalimage, thumbSize ) : undefined
-			);
-		}
-	
-		module.exports = createRESTBaseGateway;
-	
-	}( mediaWiki, jQuery ) );
-
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	/**
-	 * Given the global state of the application, creates a function that gets
-	 * whether or not the user should have Page Previews enabled.
-	 *
-	 * If Page Previews is configured as a beta feature (see
-	 * `$wgPopupsBetaFeature`), the user must be logged in and have enabled the
-	 * beta feature in order to see previews.
-	 *
-	 * If Page Previews is configured as a preference, then the user must either
-	 * be logged in and have enabled the preference or be logged out and have not
-	 * disabled previews via the settings modal.
-	 *
-	 * @param {mw.user} user The `mw.user` singleton instance
-	 * @param {Object} userSettings An object returned by
-	 *  `mw.popups.createUserSettings`
-	 * @param {mw.Map} config
-	 *
-	 * @return {Boolean}
-	 */
-	module.exports = function ( user, userSettings, config ) {
-		if ( !user.isAnon() ) {
-			return config.get( 'wgPopupsShouldSendModuleToUser' );
-		}
-	
-		if ( config.get( 'wgPopupsBetaFeature' ) ) {
-			return false;
-		}
-	
-		return !userSettings.hasIsEnabled() ||
-			( userSettings.hasIsEnabled() && userSettings.getIsEnabled() );
-	};
-
-
-/***/ },
-/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	( function ( mw, $ ) {
 	
 		var isSafari = navigator.userAgent.match( /Safari/ ) !== null,
-			wait = __webpack_require__( 24 ),
+			wait = __webpack_require__( 11 ),
 			SIZES = {
 				portraitImage: {
 					h: 250, // Exact height
@@ -2612,7 +1511,7 @@
 
 
 /***/ },
-/* 24 */
+/* 11 */
 /***/ function(module, exports) {
 
 	var $ = jQuery;
@@ -2638,6 +1537,1105 @@
 		}, delay );
 	
 		return result.promise();
+	};
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	/**
+	 * Creates an instance of the settings change listener.
+	 *
+	 * @param {Object} boundActions
+	 * @param {Object} render function that renders a jQuery el with the settings
+	 * @return {ext.popups.ChangeListener}
+	 */
+	module.exports = function ( boundActions, render ) {
+		var settings;
+	
+		return function ( prevState, state ) {
+			if ( !prevState ) {
+				// Nothing to do on initialization
+				return;
+			}
+	
+			// Update global modal visibility
+			if (
+				prevState.settings.shouldShow === false &&
+				state.settings.shouldShow === true
+			) {
+				// Lazily instantiate the settings UI
+				if ( !settings ) {
+					settings = render( boundActions );
+					settings.appendTo( document.body );
+				}
+	
+				// Update the UI settings with the current settings
+				settings.setEnabled( state.preview.enabled );
+	
+				settings.show();
+			} else if (
+				prevState.settings.shouldShow === true &&
+				state.settings.shouldShow === false
+			) {
+				settings.hide();
+			}
+	
+			// Update help visibility
+			if ( prevState.settings.showHelp !== state.settings.showHelp ) {
+				settings.toggleHelp( state.settings.showHelp );
+			}
+		};
+	};
+
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	/**
+	 * Creates an instance of the user settings sync change listener.
+	 *
+	 * This change listener syncs certain parts of the state tree to user
+	 * settings when they change.
+	 *
+	 * Used for:
+	 *
+	 * * Enabled state: If the previews are enabled or disabled.
+	 * * Preview count: When the user dwells on a link for long enough that
+	 *   a preview is shown, then their preview count will be incremented (see
+	 *   `mw.popups.reducers.eventLogging`, and is persisted to local storage.
+	 *
+	 * @param {ext.popups.UserSettings} userSettings
+	 * @return {ext.popups.ChangeListener}
+	 */
+	module.exports = function ( userSettings ) {
+	
+		return function ( prevState, state ) {
+	
+			syncIfChanged(
+				prevState, state, 'eventLogging', 'previewCount',
+				userSettings.setPreviewCount
+			);
+			syncIfChanged(
+				prevState, state, 'preview', 'enabled',
+				userSettings.setIsEnabled
+			);
+	
+		};
+	};
+	
+	/**
+	 * Given a state tree, reducer and property, safely return the value of the
+	 * property if the reducer and property exist
+	 * @param {Object} state tree
+	 * @param {String} reducer key to access on the state tree
+	 * @param {String} prop key to access on the reducer key of the state tree
+	 * @return {*}
+	 */
+	function get( state, reducer, prop ) {
+		return state[ reducer ] && state[ reducer ][ prop ];
+	}
+	
+	/**
+	 * Calls a sync function if the property prop on the property reducer on
+	 * the state trees has changed value.
+	 * @param {Object} prevState
+	 * @param {Object} state
+	 * @param {String} reducer key to access on the state tree
+	 * @param {String} prop key to access on the reducer key of the state tree
+	 * @param {Function} sync function to be called with the newest value if
+	 * changed
+	 */
+	function syncIfChanged( prevState, state, reducer, prop, sync ) {
+		var current = get( state, reducer, prop );
+		if ( prevState && ( get( prevState, reducer, prop ) !== current ) ) {
+			sync( current );
+		}
+	}
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	( function ( mw, $ ) {
+		var pageVisibility = __webpack_require__( 15 ),
+			checkin = {
+				/**
+				 * Checkin times - Fibonacci numbers
+				 *
+				 * Exposed for testing only.
+				 *
+				 * @type {number[]}
+				 * @private
+				 */
+				CHECKIN_TIMES: [ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233,
+					377, 610, 987, 1597, 2584, 4181, 6765 ],
+				/**
+				 * Have checkin actions been setup already?
+				 *
+				 * Exposed for testing only.
+				 *
+				 * @private
+				 * @type {boolean}
+				 */
+				haveCheckinActionsBeenSetup: false
+			};
+	
+		/**
+		 * A customized `setTimeout` function that takes page visibility into account
+		 *
+		 * If the document is not visible to the user, e.g. browser window is minimized,
+		 * then pause the time. Otherwise execute `callback` after `delay` milliseconds.
+		 * The callback won't be executed if the browser does not suppor the page visibility
+		 * API.
+		 *
+		 * Exposed for testing only.
+		 *
+		 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
+		 * @private
+		 * @param {Function} callback Function to call when the time is up
+		 * @param {number} delay The number of milliseconds to wait before executing the callback
+		 */
+		checkin.setVisibleTimeout = function ( callback, delay ) {
+			var hiddenPropertyName = pageVisibility.getDocumentHiddenPropertyName( document ),
+				visibilityChangeEventName = pageVisibility.getDocumentVisibilitychangeEventName( document ),
+				timeoutId,
+				lastStartedAt;
+	
+			if ( !hiddenPropertyName || !visibilityChangeEventName ) {
+				return;
+			}
+	
+			/**
+			 * Execute the callback and turn off listening to the visibilitychange event
+			 */
+			function done() {
+				callback();
+				$( document ).off( visibilityChangeEventName, visibilityChangeHandler );
+			}
+	
+			/**
+			 * Pause or resume the timer depending on the page visibility state
+			 */
+			function visibilityChangeHandler() {
+				var millisecondsPassed;
+	
+				// Pause the timer if the page is hidden ...
+				if ( pageVisibility.isDocumentHidden( document ) ) {
+					// ... and only if the timer has started.
+					// Timer may not have been started if the document opened in a
+					// hidden tab for example. The timer will be started when the
+					// document is visible to the user.
+					if ( lastStartedAt !== undefined ) {
+						millisecondsPassed = Math.round( mw.now() - lastStartedAt );
+						delay = Math.max( 0, delay - millisecondsPassed );
+						clearTimeout( timeoutId );
+					}
+				} else {
+					lastStartedAt = Math.round( mw.now() );
+					timeoutId = setTimeout( done, delay );
+				}
+			}
+	
+			visibilityChangeHandler();
+	
+			$( document ).on( visibilityChangeEventName, visibilityChangeHandler );
+		};
+	
+		/**
+		 * Perform the passed `checkin` action at the predefined times
+		 *
+		 * Actions are setup only once no matter how many times this function is
+		 * called. Ideally this function should be called once.
+		 *
+		 * @see checkin.CHECKIN_TIMES
+		 * @param {Function} checkinAction
+		 */
+		checkin.setupActions = function( checkinAction ) {
+			var timeIndex = 0,
+				timesLength = checkin.CHECKIN_TIMES.length,
+				time,  // current checkin time
+				nextTime;  // the checkin time that will be logged next
+	
+			if ( checkin.haveCheckinActionsBeenSetup ) {
+				return;
+			}
+	
+			/**
+			 * Execute the checkin action with the current checkin time
+			 *
+			 * If more checkin times are left, then setup a timer to log the next one.
+			 */
+			function setup() {
+				time = checkin.CHECKIN_TIMES[ timeIndex ];
+				checkinAction( time );
+	
+				timeIndex += 1;
+				if ( timeIndex < timesLength ) {
+					nextTime = checkin.CHECKIN_TIMES[ timeIndex ];
+					// Execute the callback after the number of seconds left till the
+					// next checkin time.
+					checkin.setVisibleTimeout( setup, ( nextTime - time ) * 1000 );
+				}
+			}
+	
+			checkin.setVisibleTimeout( setup, checkin.CHECKIN_TIMES[ timeIndex ] * 1000 );
+	
+			checkin.haveCheckinActionsBeenSetup = true;
+		};
+	
+		module.exports = checkin;
+	
+	}( mediaWiki, jQuery ) );
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	var pageVisibility = {
+		/**
+		 * Cached value of the browser specific name of the `document.hidden` property
+		 *
+		 * Exposed for testing only.
+		 *
+		 * @type {null|undefined|string}
+		 * @private
+		 */
+		documentHiddenPropertyName: null,
+		/**
+		 * Cached value of the browser specific name of the `document.visibilitychange` event
+		 *
+		 * Exposed for testing only.
+		 *
+		 * @type {null|undefined|string}
+		 * @private
+		 */
+		documentVisibilityChangeEventName: null
+	};
+	
+	/**
+	 * Return the browser specific name of the `document.hidden` property
+	 *
+	 * Exposed for testing only.
+	 *
+	 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+	 * @private
+	 * @param {Object} doc window.document object
+	 * @return {string|undefined}
+	 */
+	pageVisibility.getDocumentHiddenPropertyName = function ( doc ) {
+		var property;
+	
+		if ( pageVisibility.documentHiddenPropertyName === null ) {
+			if ( doc.hidden !== undefined ) {
+				property = 'hidden';
+			} else if ( doc.mozHidden !== undefined ) {
+				property = 'mozHidden';
+			} else if ( doc.msHidden !== undefined ) {
+				property = 'msHidden';
+			} else if ( doc.webkitHidden !== undefined ) {
+				property = 'webkitHidden';
+			} else {
+				// let's be explicit about returning `undefined`
+				property = undefined;
+			}
+			// cache
+			pageVisibility.documentHiddenPropertyName = property;
+		}
+	
+		return pageVisibility.documentHiddenPropertyName;
+	};
+	
+	/**
+	 * Return the browser specific name of the `document.visibilitychange` event
+	 *
+	 * Exposed for testing only.
+	 *
+	 * @see https://www.w3.org/TR/page-visibility/#sec-visibilitychange-event
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+	 * @private
+	 * @param {Object} doc window.document object
+	 * @return {string|undefined}
+	 */
+	pageVisibility.getDocumentVisibilitychangeEventName = function ( doc ) {
+		var eventName;
+	
+		if ( pageVisibility.documentVisibilityChangeEventName === null ) {
+			if ( doc.hidden !== undefined ) {
+				eventName = 'visibilitychange';
+			} else if ( doc.mozHidden !== undefined ) {
+				eventName = 'mozvisibilitychange';
+			} else if ( doc.msHidden !== undefined ) {
+				eventName = 'msvisibilitychange';
+			} else if ( doc.webkitHidden !== undefined ) {
+				eventName = 'webkitvisibilitychange';
+			} else {
+				// let's be explicit about returning `undefined`
+				eventName = undefined;
+			}
+			// cache
+			pageVisibility.documentVisibilityChangeEventName = eventName;
+		}
+	
+		return pageVisibility.documentVisibilityChangeEventName;
+	};
+	
+	/**
+	 * Whether `window.document` is visible
+	 *
+	 * `undefined` is returned if the browser does not support the Visibility API.
+	 *
+	 * Exposed for testing only.
+	 *
+	 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+	 * @private
+	 * @param {Object} doc window.document object
+	 * @returns {boolean|undefined}
+	 */
+	pageVisibility.isDocumentHidden = function ( doc ) {
+		var property = pageVisibility.getDocumentHiddenPropertyName( doc );
+	
+		return property !== undefined ? doc[ property ] : undefined;
+	};
+	
+	module.exports = pageVisibility;
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	/**
+	 * Return count bucket for the number of edits a user has made.
+	 *
+	 * The buckets are defined as part of
+	 * [the Popups schema](https://meta.wikimedia.org/wiki/Schema:Popups).
+	 *
+	 * Extracted from `mw.popups.schemaPopups.getEditCountBucket`.
+	 *
+	 * @param {Number} count
+	 * @return {String}
+	 */
+	function getEditCountBucket( count ) {
+		var bucket;
+	
+		if ( count === 0 ) {
+			bucket = '0';
+		} else if ( count >= 1 && count <= 4 ) {
+			bucket = '1-4';
+		} else if ( count >= 5 && count <= 99 ) {
+			bucket = '5-99';
+		} else if ( count >= 100 && count <= 999 ) {
+			bucket = '100-999';
+		} else if ( count >= 1000 ) {
+			bucket = '1000+';
+		}
+	
+		return bucket + ' edits';
+	}
+	
+	/**
+	 * Return count bucket for the number of previews a user has seen.
+	 *
+	 * If local storage isn't available - because the user has disabled it
+	 * or the browser doesn't support it - then then "unknown" is returned.
+	 *
+	 * The buckets are defined as part of
+	 * [the Popups schema](https://meta.wikimedia.org/wiki/Schema:Popups).
+	 *
+	 * Extracted from `mw.popups.getPreviewCountBucket`.
+	 *
+	 * @param {Number} count
+	 * @return {String}
+	 */
+	function getPreviewCountBucket( count ) {
+		var bucket;
+	
+		if ( count === -1 ) {
+			return 'unknown';
+		}
+	
+		if ( count === 0 ) {
+			bucket = '0';
+		} else if ( count >= 1 && count <= 4 ) {
+			bucket = '1-4';
+		} else if ( count >= 5 && count <= 20 ) {
+			bucket = '5-20';
+		} else if ( count >= 21 ) {
+			bucket = '21+';
+		}
+	
+		return bucket + ' previews';
+	}
+	
+	module.exports = {
+		getPreviewCountBucket: getPreviewCountBucket,
+		getEditCountBucket: getEditCountBucket
+	};
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	( function ( mw, $ ) {
+	
+		/**
+		 * @typedef {Object} ext.popups.PreviewBehavior
+		 * @property {String} settingsUrl
+		 * @property {Function} showSettings
+		 * @property {Function} previewDwell
+		 * @property {Function} previewAbandon
+		 */
+	
+		/**
+		 * Creates an instance of `ext.popups.PreviewBehavior`.
+		 *
+		 * If the user is logged out, then clicking the cog should show the settings
+		 * modal.
+		 *
+		 * If the user is logged in, then clicking the cog should send them to the
+		 * Special:Preferences page with the "Beta features" tab open if Page Previews
+		 * is enabled as a beta feature, or the "Appearance" tab otherwise.
+		 *
+		 * @param {mw.Map} config
+		 * @param {mw.User} user
+		 * @param {Object} actions The action creators bound to the Redux store
+		 * @return {ext.popups.PreviewBehavior}
+		 */
+		module.exports = function ( config, user, actions ) {
+			var isBetaFeature = config.get( 'wgPopupsBetaFeature' ),
+				rawTitle,
+				settingsUrl,
+				showSettings = $.noop;
+	
+			if ( user.isAnon() ) {
+				showSettings = function ( event ) {
+					event.preventDefault();
+	
+					actions.showSettings();
+				};
+			} else {
+				rawTitle = 'Special:Preferences#mw-prefsection-';
+				rawTitle += isBetaFeature ? 'betafeatures' : 'rendering';
+	
+				settingsUrl = mw.Title.newFromText( rawTitle )
+					.getUrl();
+			}
+	
+			return {
+				settingsUrl: settingsUrl,
+				showSettings: showSettings,
+				previewDwell: actions.previewDwell,
+				previewAbandon: actions.abandon,
+				previewShow: actions.previewShow
+			};
+		};
+	
+	}( mediaWiki, jQuery ) );
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	/**
+	 * @typedef {Object} ext.popups.UserSettings
+	 */
+	
+	var IS_ENABLED_KEY = 'mwe-popups-enabled',
+		PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
+	
+	/**
+	 * Given the global state of the application, creates an object whose methods
+	 * encapsulate all interactions with the given User Agent's storage.
+	 *
+	 * @param {mw.storage} storage The `mw.storage` singleton instance
+	 *
+	 * @return {ext.popups.UserSettings}
+	 */
+	module.exports = function ( storage ) {
+		return {
+	
+			/**
+			 * Gets whether or not the user has previously enabled Page Previews.
+			 *
+			 * N.B. that if the user hasn't previously enabled or disabled Page
+			 * Previews, i.e. mw.popups.userSettings.setIsEnabled(true), then they
+			 * are treated as if they have enabled them.
+			 *
+			 * @return {Boolean}
+			 */
+			getIsEnabled: function () {
+				return storage.get( IS_ENABLED_KEY ) !== '0';
+			},
+	
+			/**
+			 * Sets whether or not the user has enabled Page Previews.
+			 *
+			 * @param {Boolean} isEnabled
+			 */
+			setIsEnabled: function ( isEnabled ) {
+				storage.set( IS_ENABLED_KEY, isEnabled ? '1' : '0' );
+			},
+	
+			/**
+			 * Gets whether or not the user has previously enabled **or disabled**
+			 * Page Previews.
+			 *
+			 * @return {Boolean}
+			 */
+			hasIsEnabled: function () {
+				return storage.get( IS_ENABLED_KEY, undefined ) !== undefined;
+			},
+	
+			/**
+			 * Gets the number of Page Previews that the user has seen.
+			 *
+			 * If the storage isn't available, then -1 is returned.
+			 *
+			 * @return {Number}
+			 */
+			getPreviewCount: function () {
+				var result = storage.get( PREVIEW_COUNT_KEY );
+	
+				if ( result === false ) {
+					return -1;
+				} else if ( result === null ) {
+					return 0;
+				}
+	
+				return parseInt( result, 10 );
+			},
+	
+			/**
+			 * Sets the number of Page Previews that the user has seen.
+			 *
+			 * @param {Number} count
+			 */
+			setPreviewCount: function ( count ) {
+				storage.set( PREVIEW_COUNT_KEY, count.toString() );
+			}
+		};
+	};
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	( function ( mw, $ ) {
+	
+		/**
+		 * Creates an instance of an EventLogging schema that can be used to log
+		 * Popups events.
+		 *
+		 * @param {mw.Map} config
+		 * @param {Window} window
+		 * @return {mw.eventLog.Schema}
+		 */
+		module.exports = function ( config, window ) {
+			var samplingRate = config.get( 'wgPopupsSchemaSamplingRate', 0 );
+	
+			if (
+				!window.navigator ||
+				!$.isFunction( window.navigator.sendBeacon ) ||
+				window.QUnit
+			) {
+				samplingRate = 0;
+			}
+	
+			return new mw.eventLog.Schema( 'Popups', samplingRate );
+		};
+	
+	}( mediaWiki, jQuery ) );
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	var mw = window.mediaWiki,
+		$ = jQuery;
+	
+	/**
+	 * Creates a render function that will create the settings dialog and return
+	 * a set of methods to operate on it
+	 * @returns {Function} render function
+	 */
+	module.exports = function () {
+	
+		/**
+		 * Cached settings dialog
+		 *
+		 * @type {jQuery}
+		 */
+		var $dialog,
+			/**
+			 * Cached settings overlay
+			 *
+			 * @type {jQuery}
+			 */
+			$overlay;
+	
+		/**
+		 * Renders the relevant form and labels in the settings dialog
+		 * @param {Object} boundActions
+		 * @returns {Object} object with methods to affect the rendered UI
+		 */
+		return function ( boundActions ) {
+	
+			if ( !$dialog ) {
+				$dialog = createSettingsDialog();
+				$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
+	
+				// Setup event bindings
+	
+				$dialog.find( '.save' ).click( function () {
+					// Find the selected value (simple|advanced|off)
+					var selected = getSelectedSetting( $dialog ),
+						// Only simple means enabled, advanced is disabled in favor of
+						// NavPops and off means disabled.
+						enabled = selected === 'simple';
+	
+					boundActions.saveSettings( enabled );
+				} );
+				$dialog.find( '.close, .okay' ).click( boundActions.hideSettings );
+			}
+	
+			return {
+				/**
+				 * Append the dialog and overlay to a DOM element
+				 * @param {HTMLElement} el
+				 */
+				appendTo: function ( el ) {
+					$overlay.appendTo( el );
+					$dialog.appendTo( el );
+				},
+	
+				/**
+				 * Show the settings element and position it correctly
+				 */
+				show: function () {
+					var h = $( window ).height(),
+						w = $( window ).width();
+	
+					$overlay.show();
+	
+					// FIXME: Should recalc on browser resize
+					$dialog
+						.show()
+						.css( 'left', ( w - $dialog.outerWidth( true ) ) / 2 )
+						.css( 'top', ( h - $dialog.outerHeight( true ) ) / 2 );
+				},
+	
+				/**
+				 * Hide the settings dialog.
+				 */
+				hide: function () {
+					$overlay.hide();
+					$dialog.hide();
+				},
+	
+				/**
+				 * Toggle the help dialog on or off
+				 * @param {Boolean} visible if you want to show or hide the help dialog
+				 */
+				toggleHelp: function ( visible ) {
+					toggleHelp( $dialog, visible );
+				},
+	
+				/**
+				 * Update the form depending on the enabled flag
+				 *
+				 * If false and no navpops, then checks 'off'
+				 * If true, then checks 'on'
+				 * If false, and there are navpops, then checks 'advanced'
+				 *
+				 * @param {Boolean} enabled if page previews are enabled
+				 */
+				setEnabled: function ( enabled ) {
+					var name = 'off';
+					if ( enabled ) {
+						name = 'simple';
+					} else if ( isNavPopupsEnabled() ) {
+						name = 'advanced';
+					}
+	
+					// Check the appropiate radio button
+					$dialog.find( '#mwe-popups-settings-' + name )
+						.prop( 'checked', true );
+				}
+			};
+		};
+	};
+	
+	/**
+	 * Create the settings dialog
+	 *
+	 * @return {jQuery} settings dialog
+	 */
+	function createSettingsDialog() {
+		var $el,
+			path = mw.config.get( 'wgExtensionAssetsPath' ) + '/Popups/resources/ext.popups/images/',
+			choices = [
+				{
+					id: 'simple',
+					name: mw.msg( 'popups-settings-option-simple' ),
+					description: mw.msg( 'popups-settings-option-simple-description' ),
+					image: path + 'hovercard.svg',
+					isChecked: true
+				},
+				{
+					id: 'advanced',
+					name: mw.msg( 'popups-settings-option-advanced' ),
+					description: mw.msg( 'popups-settings-option-advanced-description' ),
+					image: path + 'navpop.svg'
+				},
+				{
+					id: 'off',
+					name: mw.msg( 'popups-settings-option-off' )
+				}
+			];
+	
+		if ( !isNavPopupsEnabled() ) {
+			// remove the advanced option
+			choices.splice( 1, 1 );
+		}
+	
+		// render the template
+		$el = mw.template.get( 'ext.popups', 'settings.mustache' ).render( {
+			heading: mw.msg( 'popups-settings-title' ),
+			closeLabel: mw.msg( 'popups-settings-cancel' ),
+			saveLabel: mw.msg( 'popups-settings-save' ),
+			helpText: mw.msg( 'popups-settings-help' ),
+			okLabel: mw.msg( 'popups-settings-help-ok' ),
+			descriptionText: mw.msg( 'popups-settings-description' ),
+			choices: choices
+		} );
+	
+		return $el;
+	}
+	
+	/**
+	 * Get the selected value on the radio button
+	 *
+	 * @param {jQuery.Object} $el the element to extract the setting from
+	 * @return {String} Which should be (simple|advanced|off)
+	 */
+	function getSelectedSetting( $el ) {
+		return $el.find(
+			'input[name=mwe-popups-setting]:checked, #mwe-popups-settings'
+		).val();
+	}
+	
+	/**
+	 * Toggles the visibility between a form and the help
+	 * @param {jQuery.Object} $el element that contains form and help
+	 * @param {Boolean} visible if the help should be visible, or the form
+	 */
+	function toggleHelp( $el, visible ) {
+		var $dialog = $( '#mwe-popups-settings' ),
+			formSelectors = 'main, .save, .close',
+			helpSelectors = '.mwe-popups-settings-help, .okay';
+	
+		if ( visible ) {
+			$dialog.find( formSelectors ).hide();
+			$dialog.find( helpSelectors ).show();
+		} else {
+			$dialog.find( formSelectors ).show();
+			$dialog.find( helpSelectors ).hide();
+		}
+	}
+	
+	/**
+	 * Checks if the NavigationPopups gadget is enabled by looking at the global
+	 * variables
+	 * @returns {Boolean} if navpops was found to be enabled
+	 */
+	function isNavPopupsEnabled() {
+		/* global pg: false*/
+		return typeof pg !== 'undefined' && pg.fn.disablePopups !== undefined;
+	}
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Interface for API gateway that fetches page summary
+	 *
+	 * @interface ext.popups.Gateway
+	 */
+	
+	/**
+	 * Returns a preview model fetched from the api
+	 * @function
+	 * @name ext.popups.Gateway#getPageSummary
+	 * @param {String} title Page title we're querying
+	 * @returns {jQuery.Promise} that resolves with {ext.popups.PreviewModel}
+	 * if the request is successful and the response is not empty; otherwise
+	 * it rejects.
+	 */
+	module.exports = {
+		createMediaWikiApiGateway: __webpack_require__( 22 ),
+		createRESTBaseGateway: __webpack_require__( 23 )
+	};
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	( function ( mw ) {
+	
+		var EXTRACT_LENGTH = 525,
+			// Public and private cache lifetime (5 minutes)
+			CACHE_LIFETIME = 300;
+	
+		/**
+		 * MediaWiki API gateway factory
+		 *
+		 * @param {mw.Api} api
+		 * @param {mw.ext.constants } config
+		 * @returns {ext.popups.Gateway}
+		 */
+		function createMediaWikiApiGateway( api, config ) {
+	
+			/**
+			 * Fetch page data from the API
+			 *
+			 * @param {String} title
+			 * @return {jQuery.Promise}
+			 */
+			function fetch( title ) {
+				return api.get( {
+					action: 'query',
+					prop: 'info|extracts|pageimages|revisions|info',
+					formatversion: 2,
+					redirects: true,
+					exintro: true,
+					exchars: EXTRACT_LENGTH,
+	
+					// There is an added geometric limit on .mwe-popups-extract
+					// so that text does not overflow from the card.
+					explaintext: true,
+	
+					piprop: 'thumbnail',
+					pithumbsize: config.THUMBNAIL_SIZE,
+					rvprop: 'timestamp',
+					inprop: 'url',
+					titles: title,
+					smaxage: CACHE_LIFETIME,
+					maxage: CACHE_LIFETIME,
+					uselang: 'content'
+				}, {
+					headers: {
+						'X-Analytics': 'preview=1'
+					}
+				} );
+			}
+	
+			/**
+			 * Get the page summary from the api and transform the data
+			 *
+			 * @param {String} title
+			 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
+			 */
+			function getPageSummary( title ) {
+				return fetch( title )
+					.then( extractPageFromResponse )
+					.then( convertPageToModel );
+			}
+	
+			return {
+				fetch: fetch,
+				extractPageFromResponse: extractPageFromResponse,
+				convertPageToModel: convertPageToModel,
+				getPageSummary: getPageSummary
+			};
+		}
+	
+		/**
+		 * Extract page data from the MediaWiki API response
+		 *
+		 * @param {Object} data API response data
+		 * @throws {Error} Throw an error if page data cannot be extracted,
+		 * i.e. if the response is empty,
+		 * @returns {Object}
+		 */
+		function extractPageFromResponse( data ) {
+			if (
+				data.query &&
+				data.query.pages &&
+				data.query.pages.length
+			) {
+				return data.query.pages[ 0 ];
+			}
+	
+			throw new Error( 'API response `query.pages` is empty.' );
+		}
+	
+		/**
+		 * Transform the MediaWiki API response to a preview model
+		 *
+		 * @param {Object} page
+		 * @returns {ext.popups.PreviewModel}
+		 */
+		function convertPageToModel( page ) {
+			return mw.popups.preview.createModel(
+				page.title,
+				page.canonicalurl,
+				page.pagelanguagehtmlcode,
+				page.pagelanguagedir,
+				page.extract,
+				page.thumbnail
+			);
+		}
+	
+		module.exports = createMediaWikiApiGateway;
+	
+	}( mediaWiki ) );
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	( function ( mw, $ ) {
+	
+		var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
+			RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0';
+	
+		/**
+		 * RESTBase gateway factory
+		 *
+		 * @param {Function} ajax function from jQuery for example
+		 * @param {ext.popups.constants} config set of configuration values
+		 * @returns {ext.popups.Gateway}
+		 */
+		function createRESTBaseGateway( ajax, config ) {
+	
+			/**
+			 * Fetch page data from the API
+			 *
+			 * @param {String} title
+			 * @return {jQuery.Promise}
+			 */
+			function fetch( title ) {
+				return ajax( {
+					url: RESTBASE_ENDPOINT + encodeURIComponent( title ),
+					headers: {
+						Accept: 'application/json; charset=utf-8' +
+							'profile="' + RESTBASE_PROFILE + '"'
+					}
+				} );
+			}
+	
+			/**
+			 * Get the page summary from the api and transform the data
+			 *
+			 * @param {String} title
+			 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
+			 */
+			function getPageSummary( title ) {
+				return fetch( title )
+					.then( function( page ) {
+						return convertPageToModel( page, config.THUMBNAIL_SIZE );
+					} );
+			}
+	
+			return {
+				fetch: fetch,
+				convertPageToModel: convertPageToModel,
+				getPageSummary: getPageSummary
+			};
+		}
+	
+		/**
+		 * Takes the original thumbnail and ensure it fits within limits of THUMBNAIL_SIZE
+		 *
+		 * @param {Object} original image
+		 * @param {int} thumbSize  expected thumbnail size
+		 * @returns {Object}
+		 */
+		function generateThumbnailData( original, thumbSize ) {
+			var parts = original.source.split( '/' ),
+				filename = parts[ parts.length - 1 ];
+	
+			if ( thumbSize > original.width && filename.indexOf( '.svg' ) === -1 ) {
+				thumbSize = original.width;
+			}
+	
+			return $.extend( {}, original, {
+				source: parts.join( '/' ) + '/' + thumbSize + 'px-' + filename
+			} );
+		}
+	
+		/**
+		 * Transform the rest API response to a preview model
+		 *
+		 * @param {Object} page
+		 * @param {int} thumbSize
+		 * @returns {ext.popups.PreviewModel}
+		 */
+		function convertPageToModel( page, thumbSize ) {
+			return mw.popups.preview.createModel(
+				page.title,
+				new mw.Title( page.title ).getUrl(),
+				page.lang,
+				page.dir,
+				page.extract,
+				page.originalimage ? generateThumbnailData( page.originalimage, thumbSize ) : undefined
+			);
+		}
+	
+		module.exports = createRESTBaseGateway;
+	
+	}( mediaWiki, jQuery ) );
+
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	/**
+	 * Given the global state of the application, creates a function that gets
+	 * whether or not the user should have Page Previews enabled.
+	 *
+	 * If Page Previews is configured as a beta feature (see
+	 * `$wgPopupsBetaFeature`), the user must be logged in and have enabled the
+	 * beta feature in order to see previews.
+	 *
+	 * If Page Previews is configured as a preference, then the user must either
+	 * be logged in and have enabled the preference or be logged out and have not
+	 * disabled previews via the settings modal.
+	 *
+	 * @param {mw.user} user The `mw.user` singleton instance
+	 * @param {Object} userSettings An object returned by
+	 *  `mw.popups.createUserSettings`
+	 * @param {mw.Map} config
+	 *
+	 * @return {Boolean}
+	 */
+	module.exports = function ( user, userSettings, config ) {
+		if ( !user.isAnon() ) {
+			return config.get( 'wgPopupsShouldSendModuleToUser' );
+		}
+	
+		if ( config.get( 'wgPopupsBetaFeature' ) ) {
+			return false;
+		}
+	
+		return !userSettings.hasIsEnabled() ||
+			( userSettings.hasIsEnabled() && userSettings.getIsEnabled() );
 	};
 
 
@@ -2942,7 +2940,7 @@
 
 	var actionTypes = __webpack_require__( 4 ),
 		nextState = __webpack_require__( 30 ),
-		counts = __webpack_require__( 14 );
+		counts = __webpack_require__( 16 );
 	
 	/**
 	 * Initialize the data that's shared between all events logged with [the Popups
