@@ -9,7 +9,6 @@
 	},
 	"popups-message": "Ponnahduskortit",
 	"popups-desc": "Näyttää ponnahduskortissa yhteenvedon sivun sisällöstä, kun käyttäjä laittaa hiiren sivulle osoittavan linkin päälle.",
-	"popups-last-edited": "Muokattu $1",
 	"popups-redirects": "ohjaa sivulle <h3>$1</h3>",
 	"popups-settings-title": "Sivun esikatselu",
 	"popups-settings-description": "Tämän työkalun avulla voit esikatsella linkkejä wikisivuihin ja viittauksiin.",
@@ -21,7 +20,5 @@
 	"popups-settings-help-ok": "Valmis",
 	"popups-settings-cancel": "Peruuta",
 	"popups-settings-enable": "Ota esikatselu käyttöön",
-	"popups-send-feedback": "Lähetä palautetta (ulkoinen linkki)",
-	"popups-mobile-continue-to-page": "Jatka sivulle",
-	"popups-mobile-dismiss": "Ohita"
+	"popups-send-feedback": "Lähetä palautetta (ulkoinen linkki)"
 }
