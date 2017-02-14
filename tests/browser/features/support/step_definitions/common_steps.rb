@@ -1,19 +1,13 @@
-Given(/^the hover cards test page is installed$/) do
-  api.create_page 'Popups test page', File.read('samples/links.wikitext')
+TEST_PAGE_TITLE = 'Popups test page'
+
+Given(/^I have enabled the beta feature$/) do
+  visit(SpecialPreferencesPage).enable_page_previews
 end
 
-Given(/^I am on the "(.*?)" page$/) do |page|
-  visit(ArticlePage, using_params: { article_name: page })
-end
+Given(/^I am on the test page$/) do
+  api.create_page TEST_PAGE_TITLE, File.read('fixtures/test_page.wikitext')
 
-Then(/^HoverCards is enabled as a beta feature$/) do
-  visit(SpecialPreferencesPage).enable_hovercards
-end
-
-Given(/^the Hovercards JavaScript module has loaded$/) do
-  on(ArticlePage) do |page|
-    page.wait_until do
-      browser.execute_script("return mw.loader.getState('ext.popups.desktop') === 'ready'")
-    end
+  visit(ArticlePage, using_params: { article_name: TEST_PAGE_TITLE }) do |page|
+    page.wait_until_rl_module_ready('ext.popups')
   end
 end

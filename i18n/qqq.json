@@ -10,7 +10,6 @@
 	},
 	"popups-message": "Name shown in user preference for this extension",
 	"popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
-	"popups-last-edited": "Message to show time span since the page was last edited. Need not include the word \"last\". Parameters:\n* $1 - the timespan in words (localized). e.g. \"3 months ago\"",
 	"popups-redirects": "Unused at this time.\n\nMessage shown when the hovercard is showing a redirected page.\n\nParameters:\n* $1 - Redirect target page",
 	"popups-settings-title": "Title used for the setting's dialog",
 	"popups-settings-description": "Description for the setting's dialog",
@@ -25,7 +24,12 @@
 	"popups-settings-help": "Help text explaining how to re-enable previews",
 	"popups-settings-enable": "Link on the footer to enable hovercards if its disabled.\n\nSee also:\n* {{msg-mw|Popups-settings-option-off}}",
 	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard. Should mention that its an external link.\n{{Identical|Send feedback}}",
-	"popups-mobile-continue-to-page": "Button label visible in the link preview drawer. When clicked, the browser redirects to the target page.",
-	"popups-mobile-dismiss": "Label of button that dismisses the link preview overlay.\n{{Identical|Dismiss}}",
-	"popups-mobile-message": "Name shown in user preference for the mobile hovercards feature of this extension"
+	"popups-preview-no-preview": "The message shown to the user when a preview can't be generated.",
+	"popups-preview-footer-read": "The link shown to the user when a preview can't be generated.",
+	"prefs-reading": "Title for 'Reading preferences' section on preferences page",
+	"popups-prefs-optin-title": "Title for Page Previews option\n\n<em>Description for Page previews option</em>",
+	"popups-prefs-optin-enabled-label": "Label for Page Previews opt in",
+	"popups-prefs-optin-disabled-label": "Label for Page previews opt out",
+	"popups-prefs-disable-nav-gadgets-info": "Help message telling to disable Navigation Popups gadget in order to enable Page Previews. Parameters: $1 - link to Preferences page",
+	"popups-prefs-conflicting-gadgets-info": "Help message informing about possible conflicts with other gadgets/customizations"
 }

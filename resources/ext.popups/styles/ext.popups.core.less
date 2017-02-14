@@ -1,0 +1,324 @@
+@import 'mediawiki.mixins.less';
+@import 'mediawiki.ui/variables';
+
+/* Code adapted from Yair Rand's NavPopupsRestyled.js
+ * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
+ */
+
+#mwe-popups-svg {
+	position: absolute;
+	top: -1000px;
+}
+
+.mwe-popups-border-triangle-top( @size, @left, @color, @extra ) {
+	content: '';
+	position: absolute;
+	border: ( @size + @extra ) solid transparent;
+	border-top: 0;
+	border-bottom: ( @size + @extra ) solid @color;
+	top: -@size;
+	/* @noflip */
+	left: @left;
+}
+
+.mwe-popups-border-triangle-bottom( @size, @left, @color, @extra ) {
+	content: '';
+	position: absolute;
+	border: ( @size + @extra ) solid transparent;
+	border-bottom: 0;
+	border-top: ( @size + @extra ) solid @color;
+	bottom: -@size;
+	/* @noflip */
+	left: @left;
+}
+
+.mwe-popups-icon {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	margin: 0;
+	margin-top: -5px;
+	height: 24px;
+	width: 30px;
+	border-radius: 2px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+
+	&:hover {
+		background-color: @colorGray14;
+	}
+
+	&:active {
+		background-color: @colorGray12;
+	}
+}
+
+.mwe-popups-settings-icon {
+
+	// N.B. filenames are relative to the LESS file.
+	.background-image-svg( '../images/cog.svg', '../images/cog.png' );
+}
+
+.mwe-popups-sade-face-icon {
+	display: block;
+	width: 37px;
+	height: 27px;
+	margin: 16px 16px 0;
+	background-position: center center;
+	background-repeat: no-repeat;
+	.background-image-svg( '../images/sad-face.svg', '../images/sad-face.png' );
+}
+
+.mwe-popups {
+	position: absolute;
+	z-index: 110;
+	background: #fff;
+
+	// FIXME: The .box-shadow mixin provided by mediawiki.mixins doesn't support
+	// multiple values.
+	-webkit-box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0px 0px 1px rgba( 0, 0, 0, 0.5 );
+	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0px 0px 1px rgba( 0, 0, 0, 0.5 );
+	padding: 0;
+	display: none;
+	font-size: 14px;
+	line-height: 20px;
+	min-width: 300px;
+	border-radius: 2px;
+
+	.mwe-popups-container {
+		margin-top: -9px;
+		padding-top: 9px;
+		color: #000;
+		text-decoration: none;
+
+		footer {
+			padding: 16px;
+			margin: 0;
+			font-size: 10px;
+			position: absolute;
+			bottom: 0;
+			/* @noflip */
+			left: 0;
+
+			.mwe-popups-icon {
+				float: right;
+			}
+		}
+	}
+
+	.mwe-popups-extract {
+		margin: 0;
+		padding: 16px;
+		display: block;
+		color: #000;
+		text-decoration: none;
+		position: relative;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&:after {
+			content: ' ';
+			position: absolute;
+			bottom: 0;
+			width: 25%;
+			height: 24px;
+			background-color: transparent;
+			background-image: -webkit-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+			background-image: -moz-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+			background-image: -o-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+			background-image: linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+		}
+
+		&[dir='ltr']:after {
+			right: 0;
+		}
+
+		&[dir='rtl']:after {
+			left: 0;
+		}
+	}
+
+	&.mwe-popups-is-tall {
+		width: 450px;
+
+		> div > a > svg {
+			margin-bottom: -7px;
+		}
+
+		.mwe-popups-extract {
+			width: 215px;
+			height: 142px;
+			overflow: hidden;
+			/* @noflip */
+			float: left;
+		}
+
+		footer {
+			width: 215px;
+		}
+	}
+
+	&.mwe-popups-is-not-tall {
+		width: 300px;
+
+		.mwe-popups-extract {
+			max-height: 120px;
+			overflow: hidden;
+			margin-bottom: 47px;
+			padding-bottom: 0;
+		}
+
+		footer {
+			width: 270px;
+		}
+	}
+
+	&.mwe-popups-is-empty {
+		.mwe-popups-extract {
+			padding-top: 4px;
+			margin-bottom: 60px;
+		}
+
+		.mwe-popups-read-link {
+			font-weight: bold;
+			font-size: 12px;
+		}
+
+		// When the user dwells on the "Looks like there isn't..." text, which is a
+		// link to the page, then highlight the "Read" link too.
+		.mwe-popups-extract:hover + footer .mwe-popups-read-link {
+			text-decoration: underline;
+		}
+	}
+
+	/* Triangles/Pokeys */
+	&.mwe-popups-no-image-tri {
+		&:after {
+			.mwe-popups-border-triangle-top( 7px, 7px, #fff, 4px );
+		}
+
+		&:before {
+			.mwe-popups-border-triangle-top( 8px, 10px, #bbb, 0px );
+		}
+	}
+
+	&.flipped_x.mwe-popups-no-image-tri {
+		&:after {
+			/* @noflip */
+			left: auto;
+			/* @noflip */
+			right: 7px;
+		}
+
+		&:before {
+			/* @noflip */
+			left: auto;
+			/* @noflip */
+			right: 10px;
+		}
+	}
+
+	&.mwe-popups-image-tri {
+		&:before {
+			z-index: 111;
+			.mwe-popups-border-triangle-top( 9px, 9px, #bbb, 0px );
+		}
+
+		&:after {
+			.mwe-popups-border-triangle-top( 8px, 6px, #fff, 4px );
+			z-index: 112;
+		}
+
+		&.flipped_x {
+			&:before {
+				z-index: 111;
+				.mwe-popups-border-triangle-top( 9px, 273px, #bbb, 0px );
+			}
+
+			&:after {
+				.mwe-popups-border-triangle-top( 8px, 269px, #fff, 4px );
+				z-index: 112;
+			}
+		}
+
+		.mwe-popups-extract {
+			padding-top: 32px;
+			margin-top: 190px;
+		}
+
+		> div > a > svg {
+			margin-top: -8px;
+			position: absolute;
+			z-index: 113;
+			/* @noflip */
+			left: 0;
+		}
+	}
+
+	&.flipped_x.mwe-popups-is-tall {
+		min-height: 242px;
+
+		&:before {
+			z-index: 111;
+			.mwe-popups-border-triangle-top( 9px, 420px, #bbb, 0px );
+		}
+
+		> div > a > svg {
+			margin: 0;
+			margin-top: -8px;
+			margin-bottom: -7px;
+			position: absolute;
+			z-index: 113;
+			/* @noflip */
+			right: 0;
+		}
+	}
+
+	&.flipped_x_y {
+		&:before {
+			z-index: 111;
+			.mwe-popups-border-triangle-bottom( 9px, 272px, #bbb, 0px );
+		}
+
+		&:after {
+			.mwe-popups-border-triangle-bottom( 8px, 269px, #fff, 4px );
+			z-index: 112;
+		}
+
+		&.mwe-popups-is-tall {
+			min-height: 242px;
+
+			&:after {
+				z-index: 112;
+				.mwe-popups-border-triangle-bottom( 8px, 417px, #fff, 4px );
+			}
+
+			&:before {
+				z-index: 111;
+				.mwe-popups-border-triangle-bottom( 9px, 420px, #bbb, 0px );
+			}
+
+			> div > a > svg {
+				position: absolute;
+				z-index: 113;
+				margin: 0;
+				margin-bottom: -9px;
+				/* @noflip */
+				right: 0;
+			}
+		}
+	}
+
+	&.flipped_y {
+		&:after {
+			.mwe-popups-border-triangle-bottom( 7px, 7px, #fff, 4px );
+		}
+
+		&:before {
+			.mwe-popups-border-triangle-bottom( 8px, 10px, #bbb, 0px );
+		}
+	}
+}

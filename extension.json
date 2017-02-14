@@ -9,14 +9,16 @@
 	"license-name": "GPL-2.0+",
 	"type": "betafeatures",
 	"AutoloadClasses": {
-		"PopupsHooks": "Popups.hooks.php"
+		"PopupsHooks": "Popups.hooks.php",
+		"Popups\\PopupsContext": "includes/PopupsContext.php",
+		"Popups\\PopupsGadgetsIntegration": "includes/PopupsGadgetsIntegration.php"
 	},
 	"ConfigRegistry": {
 		"popups": "GlobalVarConfig::newInstance"
 	},
 	"Hooks": {
 		"GetBetaFeaturePreferences": [
-			"PopupsHooks::getPreferences"
+			"PopupsHooks::onGetBetaPreferences"
 		],
 		"BeforePageDisplay": [
 			"PopupsHooks::onBeforePageDisplay"
@@ -24,14 +26,14 @@
 		"ResourceLoaderTestModules": [
 			"PopupsHooks::onResourceLoaderTestModules"
 		],
-		"ResourceLoaderRegisterModules": [
-			"PopupsHooks::onResourceLoaderRegisterModules"
-		],
 		"ResourceLoaderGetConfigVars": [
 			"PopupsHooks::onResourceLoaderGetConfigVars"
 		],
-		"BeforePageDisplayMobile": [
-			"PopupsHooks::onBeforePageDisplayMobile"
+		"GetPreferences": [
+			"PopupsHooks::onGetPreferences"
+		],
+		"UserGetDefaultOptions": [
+			"PopupsHooks::onUserGetDefaultOptions"
 		],
 		"MakeGlobalVariablesScript": [
 			"PopupsHooks::onMakeGlobalVariablesScript"
@@ -43,55 +45,24 @@
 		]
 	},
 	"EventLoggingSchemas": {
-		"Popups": 15906495
+		"Popups": 16208085
 	},
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
 		"PopupsBetaFeature": false,
-		"@PopupsSurveyLink": "@var bool|string: When defined a link will be rendered at the bottom of the popup for the user to provide feedback. The URL must start with https or http. If not, then an error is thrown client-side. The link is annotated with `rel=\"noreferrer\"` so no referrer information or `window.opener` is leaked to the survey hosting site (see https://html.spec.whatwg.org/multipage/semantics.html#link-type-noreferrer for more information).",
-		"PopupsSurveyLink": false,
-		"EnablePopupsMobile": false,
-		"@SchemaPopupsSamplingRate": "@var number: Sample rate for logging events to Schema:Popups.",
-		"SchemaPopupsSamplingRate": 0,
-		"PopupsExperiment": false
-	},
-	"DefaultUserOptions": {
-		"popupsmobile": "1"
+		"@PopupsSchemaSamplingRate": "@var number: Sample rate for logging events to Schema:Popups.",
+		"PopupsSchemaSamplingRate": 0,
+		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to senable/disable Page Previews should be hidden on Preferences page. Please note if PopupsBetaFeature is set to true this option will be always hidden. False by default",
+		"PopupsHideOptInOnPreferencesPage": false,
+		"@PopupsOptInDefaultState" : "@var string:['1'|'0'] Default Page Previews visibility. Has to be a string as a compatibility with beta feature settings",
+		"PopupsOptInDefaultState" : "0",
+		"@PopupsConflictingNavPopupsGadgetName": "@var string: Navigation popups gadget name",
+		"PopupsConflictingNavPopupsGadgetName": "Navigation_popups",
+		"PopupsConflictingNavPopupsGadgetName": "Navigation_popups",
+		"@PopupsAPIUseRESTBase": "Whether to use RESTBase rather than the MediaWiki API for fetching Popups data.",
+		"PopupsAPIUseRESTBase": false
 	},
 	"ResourceModules": {
-		"ext.popups.core": {
-			"scripts": [
-				"resources/ext.popups.core/ext.popups.core.js"
-			],
-			"dependencies": [
-				"mediawiki.api",
-				"mediawiki.Title",
-				"mediawiki.Uri",
-				"mediawiki.RegExp",
-				"mediawiki.storage",
-				"mediawiki.user",
-				"mediawiki.experiments"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			],
-			"styles": [
-				"resources/ext.popups.core/ext.popups.core.less"
-			]
-		},
-		"ext.popups.targets.desktopTarget": {
-			"scripts": [
-				"resources/ext.popups.targets.desktopTarget/desktopTarget.js"
-			],
-			"dependencies": [
-				"mediawiki.storage",
-				"jquery.client",
-				"ext.popups.core",
-				"ext.popups.renderer.desktopRenderer"
-			],
-			"targets": [ "desktop" ]
-		},
 		"ext.popups.images": {
 			"selector": ".mw-ui-icon-{name}:before",
 			"class": "ResourceLoaderImageModule",
@@ -100,27 +71,47 @@
 				"popups-close": "resources/ext.popups.images/close.svg"
 			}
 		},
-		"ext.popups.renderer.desktopRenderer": {
+		"ext.popups": {
 			"scripts": [
-				"resources/ext.popups.renderer.desktopRenderer/desktopRenderer.js"
+				"resources/dist/index.js"
+			],
+			"templates": {
+				"preview.mustache": "resources/ext.popups/templates/preview.mustache",
+				"preview-empty.mustache": "resources/ext.popups/templates/preview-empty.mustache",
+				"settings.mustache": "resources/ext.popups/templates/settings.mustache"
+			},
+			"styles": [
+				"resources/ext.popups/styles/ext.popups.core.less",
+				"resources/ext.popups/styles/ext.popups.animation.less",
+				"resources/ext.popups/styles/ext.popups.settings.less"
+			],
+			"messages": [
+				"popups-settings-title",
+				"popups-settings-description",
+				"popups-settings-option-simple",
+				"popups-settings-option-simple-description",
+				"popups-settings-option-advanced",
+				"popups-settings-option-advanced-description",
+				"popups-settings-option-off",
+				"popups-settings-save",
+				"popups-settings-cancel",
+				"popups-settings-enable",
+				"popups-settings-help",
+				"popups-settings-help-ok",
+				"popups-send-feedback",
+				"popups-preview-no-preview",
+				"popups-preview-footer-read"
 			],
 			"dependencies": [
-				"ext.popups.core"
-			]
-		},
-		"ext.popups.schemaPopups.utils": {
-			"scripts": [
-				"resources/ext.popups.schemaPopups.utils/ext.popups.schemaPopups.utils.js"
-			],
-			"dependencies": [
-				"mediawiki.experiments",
+				"ext.popups.images",
+				"mediawiki.storage",
 				"mediawiki.Title",
-				"mediawiki.user",
-				"ext.popups.core",
-				"ext.popups.renderer.desktopRenderer"
-			],
-			"targets": [
-				"desktop"
+				"mediawiki.jqueryMsg",
+				"mediawiki.ui.button",
+				"mediawiki.ui.icon",
+				"mediawiki.Uri",
+				"jquery.hidpi",
+				"ext.eventLogging.Schema"
 			]
 		}
 	},
