@@ -18,8 +18,18 @@
  * @file
  * @ingroup extensions
  */
-use Popups\PopupsContext;
+namespace Popups;
 
+use User;
+use OutputPage;
+use Skin;
+use ResourceLoader;
+
+/**
+ * Hooks definitions for Popups extension
+ *
+ * @package Popups
+ */
 class PopupsHooks {
 	const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
@@ -119,8 +129,8 @@ class PopupsHooks {
 
 		$testModules['qunit']['ext.popups.tests.stubs'] = [
 			'scripts' => [
-				'tests/qunit/ext.popups/stubs/index.js',
-				'tests/qunit/ext.popups/stubs/user.js',
+				'../tests/qunit/ext.popups/stubs/index.js',
+				'../tests/qunit/ext.popups/stubs/user.js',
 			],
 			'dependencies' => [
 				'ext.popups', // The mw.popups is required.
