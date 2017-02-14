@@ -1,65 +1,63 @@
-( function ( $ ) {
+var $ = jQuery;
+
+/**
+ * Creates an instance of the link title change listener.
+ *
+ * While the user dwells on a link, then it becomes the active link. The
+ * change listener will remove a link's `title` attribute while it's the
+ * active link.
+ *
+ * @return {ext.popups.ChangeListener}
+ */
+module.exports = function () {
+	var title;
 
 	/**
-	 * Creates an instance of the link title change listener.
+	 * Destroys the title attribute of the element, storing its value in local
+	 * state so that it can be restored later (see `restoreTitleAttr`).
 	 *
-	 * While the user dwells on a link, then it becomes the active link. The
-	 * change listener will remove a link's `title` attribute while it's the
-	 * active link.
-	 *
-	 * @return {ext.popups.ChangeListener}
+	 * @param {Element} el
 	 */
-	module.exports = function () {
-		var title;
+	function destroyTitleAttr( el ) {
+		var $el = $( el );
 
-		/**
-		 * Destroys the title attribute of the element, storing its value in local
-		 * state so that it can be restored later (see `restoreTitleAttr`).
-		 *
-		 * @param {Element} el
-		 */
-		function destroyTitleAttr( el ) {
-			var $el = $( el );
-
-			// Has the user dwelled on a link? If we've already removed its title
-			// attribute, then NOOP.
-			if ( title ) {
-				return;
-			}
-
-			title = $el.attr( 'title' );
-
-			$el.attr( 'title', '' );
+		// Has the user dwelled on a link? If we've already removed its title
+		// attribute, then NOOP.
+		if ( title ) {
+			return;
 		}
 
-		/**
-		 * Restores the title attribute of the element.
-		 *
-		 * @param {Element} el
-		 */
-		function restoreTitleAttr( el ) {
-			$( el ).attr( 'title', title );
+		title = $el.attr( 'title' );
 
-			title = undefined;
+		$el.attr( 'title', '' );
+	}
+
+	/**
+	 * Restores the title attribute of the element.
+	 *
+	 * @param {Element} el
+	 */
+	function restoreTitleAttr( el ) {
+		$( el ).attr( 'title', title );
+
+		title = undefined;
+	}
+
+	return function ( prevState, state ) {
+		var hasPrevActiveLink = prevState && prevState.preview.activeLink;
+
+		if ( hasPrevActiveLink ) {
+
+			// Has the user dwelled on a link immediately after abandoning another
+			// (remembering that the ABANDON_END action is delayed by
+			// ~10e2 ms).
+			if ( prevState.preview.activeLink !== state.preview.activeLink ) {
+				restoreTitleAttr( prevState.preview.activeLink );
+			}
 		}
 
-		return function ( prevState, state ) {
-			var hasPrevActiveLink = prevState && prevState.preview.activeLink;
-
-			if ( hasPrevActiveLink ) {
-
-				// Has the user dwelled on a link immediately after abandoning another
-				// (remembering that the ABANDON_END action is delayed by
-				// ~10e2 ms).
-				if ( prevState.preview.activeLink !== state.preview.activeLink ) {
-					restoreTitleAttr( prevState.preview.activeLink );
-				}
-			}
-
-			if ( state.preview.activeLink ) {
-				destroyTitleAttr( state.preview.activeLink );
-			}
-		};
+		if ( state.preview.activeLink ) {
+			destroyTitleAttr( state.preview.activeLink );
+		}
 	};
-
-}( jQuery ) );
+};
