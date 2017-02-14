@@ -204,7 +204,7 @@
 		mw.popups = popups;
 		window.Redux = Redux;
 		window.ReduxThunk = ReduxThunk;
-	}( mediaWiki, __webpack_require__( 2 ), __webpack_require__( 33 ), __webpack_require__( 55 ), jQuery ) );
+	}( mediaWiki, __webpack_require__( 2 ), __webpack_require__( 34 ), __webpack_require__( 56 ), jQuery ) );
 
 
 /***/ },
@@ -231,13 +231,13 @@
 		createSchema: __webpack_require__( 19 ),
 		createSettingsDialogRenderer: __webpack_require__( 20 ),
 		gateway: __webpack_require__( 21 ),
-		isEnabled: __webpack_require__( 24 ),
+		isEnabled: __webpack_require__( 25 ),
 		renderer: __webpack_require__( 10 ),
 		pageVisibility: __webpack_require__( 15 ),
-		preview: __webpack_require__( 25 ),
-		processLinks: __webpack_require__( 26 ),
-		registerChangeListener: __webpack_require__( 27 ),
-		reducers: __webpack_require__( 28 ),
+		preview: __webpack_require__( 26 ),
+		processLinks: __webpack_require__( 27 ),
+		registerChangeListener: __webpack_require__( 28 ),
+		reducers: __webpack_require__( 29 ),
 		wait: __webpack_require__( 11 )
 	};
 
@@ -2381,127 +2381,268 @@
 	 */
 	module.exports = {
 		createMediaWikiApiGateway: __webpack_require__( 22 ),
-		createRESTBaseGateway: __webpack_require__( 23 )
+		createRESTBaseGateway: __webpack_require__( 24 )
 	};
 
 
 /***/ },
 /* 22 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	( function ( mw ) {
+	var EXTRACT_LENGTH = 525,
+		// Public and private cache lifetime (5 minutes)
+		CACHE_LIFETIME = 300,
+		createModel = __webpack_require__( 23 ).createModel;
 	
-		var EXTRACT_LENGTH = 525,
-			// Public and private cache lifetime (5 minutes)
-			CACHE_LIFETIME = 300;
+	/**
+	 * MediaWiki API gateway factory
+	 *
+	 * @param {mw.Api} api
+	 * @param {mw.ext.constants} config
+	 * @returns {ext.popups.Gateway}
+	 */
+	function createMediaWikiApiGateway( api, config ) {
 	
 		/**
-		 * MediaWiki API gateway factory
+		 * Fetch page data from the API
 		 *
-		 * @param {mw.Api} api
-		 * @param {mw.ext.constants } config
-		 * @returns {ext.popups.Gateway}
+		 * @param {String} title
+		 * @return {jQuery.Promise}
 		 */
-		function createMediaWikiApiGateway( api, config ) {
+		function fetch( title ) {
+			return api.get( {
+				action: 'query',
+				prop: 'info|extracts|pageimages|revisions|info',
+				formatversion: 2,
+				redirects: true,
+				exintro: true,
+				exchars: EXTRACT_LENGTH,
 	
-			/**
-			 * Fetch page data from the API
-			 *
-			 * @param {String} title
-			 * @return {jQuery.Promise}
-			 */
-			function fetch( title ) {
-				return api.get( {
-					action: 'query',
-					prop: 'info|extracts|pageimages|revisions|info',
-					formatversion: 2,
-					redirects: true,
-					exintro: true,
-					exchars: EXTRACT_LENGTH,
+				// There is an added geometric limit on .mwe-popups-extract
+				// so that text does not overflow from the card.
+				explaintext: true,
 	
-					// There is an added geometric limit on .mwe-popups-extract
-					// so that text does not overflow from the card.
-					explaintext: true,
-	
-					piprop: 'thumbnail',
-					pithumbsize: config.THUMBNAIL_SIZE,
-					rvprop: 'timestamp',
-					inprop: 'url',
-					titles: title,
-					smaxage: CACHE_LIFETIME,
-					maxage: CACHE_LIFETIME,
-					uselang: 'content'
-				}, {
-					headers: {
-						'X-Analytics': 'preview=1'
-					}
-				} );
-			}
-	
-			/**
-			 * Get the page summary from the api and transform the data
-			 *
-			 * @param {String} title
-			 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
-			 */
-			function getPageSummary( title ) {
-				return fetch( title )
-					.then( extractPageFromResponse )
-					.then( convertPageToModel );
-			}
-	
-			return {
-				fetch: fetch,
-				extractPageFromResponse: extractPageFromResponse,
-				convertPageToModel: convertPageToModel,
-				getPageSummary: getPageSummary
-			};
+				piprop: 'thumbnail',
+				pithumbsize: config.THUMBNAIL_SIZE,
+				rvprop: 'timestamp',
+				inprop: 'url',
+				titles: title,
+				smaxage: CACHE_LIFETIME,
+				maxage: CACHE_LIFETIME,
+				uselang: 'content'
+			}, {
+				headers: {
+					'X-Analytics': 'preview=1'
+				}
+			} );
 		}
 	
 		/**
-		 * Extract page data from the MediaWiki API response
+		 * Get the page summary from the api and transform the data
 		 *
-		 * @param {Object} data API response data
-		 * @throws {Error} Throw an error if page data cannot be extracted,
-		 * i.e. if the response is empty,
-		 * @returns {Object}
+		 * @param {String} title
+		 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
 		 */
-		function extractPageFromResponse( data ) {
-			if (
-				data.query &&
-				data.query.pages &&
-				data.query.pages.length
-			) {
-				return data.query.pages[ 0 ];
-			}
-	
-			throw new Error( 'API response `query.pages` is empty.' );
+		function getPageSummary( title ) {
+			return fetch( title )
+				.then( extractPageFromResponse )
+				.then( convertPageToModel );
 		}
 	
-		/**
-		 * Transform the MediaWiki API response to a preview model
-		 *
-		 * @param {Object} page
-		 * @returns {ext.popups.PreviewModel}
-		 */
-		function convertPageToModel( page ) {
-			return mw.popups.preview.createModel(
-				page.title,
-				page.canonicalurl,
-				page.pagelanguagehtmlcode,
-				page.pagelanguagedir,
-				page.extract,
-				page.thumbnail
-			);
+		return {
+			fetch: fetch,
+			extractPageFromResponse: extractPageFromResponse,
+			convertPageToModel: convertPageToModel,
+			getPageSummary: getPageSummary
+		};
+	}
+	
+	/**
+	 * Extract page data from the MediaWiki API response
+	 *
+	 * @param {Object} data API response data
+	 * @throws {Error} Throw an error if page data cannot be extracted,
+	 * i.e. if the response is empty,
+	 * @returns {Object}
+	 */
+	function extractPageFromResponse( data ) {
+		if (
+			data.query &&
+			data.query.pages &&
+			data.query.pages.length
+		) {
+			return data.query.pages[ 0 ];
 		}
 	
-		module.exports = createMediaWikiApiGateway;
+		throw new Error( 'API response `query.pages` is empty.' );
+	}
 	
-	}( mediaWiki ) );
+	/**
+	 * Transform the MediaWiki API response to a preview model
+	 *
+	 * @param {Object} page
+	 * @returns {ext.popups.PreviewModel}
+	 */
+	function convertPageToModel( page ) {
+		return createModel(
+			page.title,
+			page.canonicalurl,
+			page.pagelanguagehtmlcode,
+			page.pagelanguagedir,
+			page.extract,
+			page.thumbnail
+		);
+	}
+	
+	module.exports = createMediaWikiApiGateway;
 
 
 /***/ },
 /* 23 */
+/***/ function(module, exports) {
+
+	var TYPE_GENERIC = 'generic',
+		TYPE_PAGE = 'page';
+	
+	/**
+	 * @typedef {Object} ext.popups.PreviewModel
+	 * @property {String} title
+	 * @property {String} url The canonical URL of the page being previewed
+	 * @property {String} languageCode
+	 * @property {String} languageDirection Either "ltr" or "rtl"
+	 * @property {String|undefined} extract `undefined` if the extract isn't
+	 *  viable, e.g. if it's empty after having ellipsis and parentheticals
+	 *  removed
+	 * @property {String} type Either "EXTRACT" or "GENERIC"
+	 * @property {Object|undefined} thumbnail
+	 */
+	
+	/**
+	 * Creates a preview model.
+	 *
+	 * @param {String} title
+	 * @param {String} url The canonical URL of the page being previewed
+	 * @param {String} languageCode
+	 * @param {String} languageDirection Either "ltr" or "rtl"
+	 * @param {String} extract
+	 * @param {Object|undefined} thumbnail
+	 * @return {ext.popups.PreviewModel}
+	 */
+	function createModel(
+		title,
+		url,
+		languageCode,
+		languageDirection,
+		extract,
+		thumbnail
+	) {
+		var processedExtract = processExtract( extract ),
+			result = {
+				title: title,
+				url: url,
+				languageCode: languageCode,
+				languageDirection: languageDirection,
+				extract: processedExtract,
+				type: processedExtract === undefined ? TYPE_GENERIC : TYPE_PAGE,
+				thumbnail: thumbnail
+			};
+	
+		return result;
+	}
+	
+	/**
+	 * Processes the extract returned by the TextExtracts MediaWiki API query
+	 * module.
+	 *
+	 * @param {String|undefined} extract
+	 * @return {String|undefined}
+	 */
+	function processExtract( extract ) {
+		var result;
+	
+		if ( extract === undefined || extract === '' ) {
+			return undefined;
+		}
+	
+		result = extract;
+		result = removeParentheticals( result );
+		result = removeEllipsis( result );
+	
+		return result.length > 0 ? result : undefined;
+	}
+	
+	/**
+	 * Removes the trailing ellipsis from the extract, if it's there.
+	 *
+	 * This function was extracted from
+	 * `mw.popups.renderer.article#removeEllipsis`.
+	 *
+	 * @param {String} extract
+	 * @return {String}
+	 */
+	function removeEllipsis( extract ) {
+		return extract.replace( /\.\.\.$/, '' );
+	}
+	
+	/**
+	 * Removes parentheticals from the extract.
+	 *
+	 * If the parenthesis are unbalanced or out of order, then the extract is
+	 * returned without further processing.
+	 *
+	 * This function was extracted from
+	 * `mw.popups.renderer.article#removeParensFromText`.
+	 *
+	 * @param {String} extract
+	 * @return {String}
+	 */
+	function removeParentheticals( extract ) {
+		var
+			ch,
+			result = '',
+			level = 0,
+			i = 0;
+	
+		for ( i; i < extract.length; i++ ) {
+			ch = extract.charAt( i );
+	
+			if ( ch === ')' && level === 0 ) {
+				return extract;
+			}
+			if ( ch === '(' ) {
+				level++;
+				continue;
+			} else if ( ch === ')' ) {
+				level--;
+				continue;
+			}
+			if ( level === 0 ) {
+				// Remove leading spaces before brackets
+				if ( ch === ' ' && extract.charAt( i + 1 ) === '(' ) {
+					continue;
+				}
+				result += ch;
+			}
+		}
+	
+		return ( level === 0 ) ? result : extract;
+	}
+	
+	module.exports = {
+		/**
+		* @constant {String}
+		*/
+		TYPE_GENERIC: TYPE_GENERIC,
+		/**
+		* @constant {String}
+		*/
+		TYPE_PAGE: TYPE_PAGE,
+		createModel: createModel
+	};
+
+
+/***/ },
+/* 24 */
 /***/ function(module, exports) {
 
 	( function ( mw, $ ) {
@@ -2598,7 +2739,7 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	/**
@@ -2635,7 +2776,7 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	var createModel,
@@ -2780,7 +2921,7 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	var mw = window.mediaWiki,
@@ -2874,7 +3015,7 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	/**
@@ -2918,22 +3059,22 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-		eventLogging: __webpack_require__( 29 ),
-		preview: __webpack_require__( 31 ),
-		settings: __webpack_require__( 32 )
+		eventLogging: __webpack_require__( 30 ),
+		preview: __webpack_require__( 32 ),
+		settings: __webpack_require__( 33 )
 	};
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var actionTypes = __webpack_require__( 4 ),
-		nextState = __webpack_require__( 30 ),
+		nextState = __webpack_require__( 31 ),
 		counts = __webpack_require__( 16 );
 	
 	/**
@@ -3093,7 +3234,7 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/**
@@ -3137,11 +3278,11 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var actionTypes = __webpack_require__( 4 ),
-		nextState = __webpack_require__( 30 );
+		nextState = __webpack_require__( 31 );
 	
 	/**
 	 * Reducer for actions that modify the state of the preview model
@@ -3238,11 +3379,11 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var actionTypes = __webpack_require__( 4 ),
-		nextState = __webpack_require__( 30 );
+		nextState = __webpack_require__( 31 );
 	
 	/**
 	 * Reducer for actions that modify the state of the settings
@@ -3300,7 +3441,7 @@
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -3308,27 +3449,27 @@
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 	
-	var _createStore = __webpack_require__(35);
+	var _createStore = __webpack_require__(36);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(50);
+	var _combineReducers = __webpack_require__(51);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(52);
+	var _bindActionCreators = __webpack_require__(53);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(53);
+	var _applyMiddleware = __webpack_require__(54);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(54);
+	var _compose = __webpack_require__(55);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(51);
+	var _warning = __webpack_require__(52);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -3349,10 +3490,10 @@
 	exports.bindActionCreators = _bindActionCreators2['default'];
 	exports.applyMiddleware = _applyMiddleware2['default'];
 	exports.compose = _compose2['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)))
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -3538,7 +3679,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3547,11 +3688,11 @@
 	exports.ActionTypes = undefined;
 	exports['default'] = createStore;
 	
-	var _isPlainObject = __webpack_require__(36);
+	var _isPlainObject = __webpack_require__(37);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(46);
+	var _symbolObservable = __webpack_require__(47);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
@@ -3804,12 +3945,12 @@
 	}
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(37),
-	    getPrototype = __webpack_require__(43),
-	    isObjectLike = __webpack_require__(45);
+	var baseGetTag = __webpack_require__(38),
+	    getPrototype = __webpack_require__(44),
+	    isObjectLike = __webpack_require__(46);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -3872,12 +4013,12 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(38),
-	    getRawTag = __webpack_require__(41),
-	    objectToString = __webpack_require__(42);
+	var Symbol = __webpack_require__(39),
+	    getRawTag = __webpack_require__(42),
+	    objectToString = __webpack_require__(43);
 	
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -3906,10 +4047,10 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(39);
+	var root = __webpack_require__(40);
 	
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -3918,10 +4059,10 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(40);
+	var freeGlobal = __webpack_require__(41);
 	
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -3933,7 +4074,7 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -3944,10 +4085,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(38);
+	var Symbol = __webpack_require__(39);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -3996,7 +4137,7 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -4024,10 +4165,10 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(44);
+	var overArg = __webpack_require__(45);
 	
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -4036,7 +4177,7 @@
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	/**
@@ -4057,7 +4198,7 @@
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/**
@@ -4092,14 +4233,14 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(47);
+	module.exports = __webpack_require__(48);
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
@@ -4108,7 +4249,7 @@
 	  value: true
 	});
 	
-	var _ponyfill = __webpack_require__(49);
+	var _ponyfill = __webpack_require__(50);
 	
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 	
@@ -4131,10 +4272,10 @@
 	
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(48)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(49)(module)))
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -4150,7 +4291,7 @@
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4178,7 +4319,7 @@
 	};
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -4186,13 +4327,13 @@
 	exports.__esModule = true;
 	exports['default'] = combineReducers;
 	
-	var _createStore = __webpack_require__(35);
+	var _createStore = __webpack_require__(36);
 	
-	var _isPlainObject = __webpack_require__(36);
+	var _isPlainObject = __webpack_require__(37);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(51);
+	var _warning = __webpack_require__(52);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -4323,10 +4464,10 @@
 	    return hasChanged ? nextState : state;
 	  };
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)))
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4356,7 +4497,7 @@
 	}
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4412,7 +4553,7 @@
 	}
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4423,7 +4564,7 @@
 	
 	exports['default'] = applyMiddleware;
 	
-	var _compose = __webpack_require__(54);
+	var _compose = __webpack_require__(55);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
@@ -4475,7 +4616,7 @@
 	}
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4518,7 +4659,7 @@
 	}
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports) {
 
 	'use strict';
