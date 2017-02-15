@@ -5,7 +5,6 @@
 		]
 	},
 	"popups-message": "Hovercards",
-	"popups-last-edited": "Geännert $1",
 	"popups-redirects": "Viruleedung op <h3>$1</h3",
 	"popups-settings-title": "Säit kucken ouni ofzespäicheren",
 	"popups-settings-description": "Dësen Tool erlaabt et Linken op Wikisäiten an op Referenzen ze kucken ouni se ze späicheren.",
@@ -17,7 +16,8 @@
 	"popups-settings-cancel": "Ofbriechen",
 	"popups-settings-enable": "Kucken ouni ze späicheren aktivéieren",
 	"popups-send-feedback": "Feedback schécken (externe Link)",
-	"popups-mobile-continue-to-page": "Virun op d'Säit",
-	"popups-mobile-dismiss": "Verwerfen",
-	"popups-mobile-message": "Hovercards (mobil)"
+	"popups-preview-footer-read": "Liesen",
+	"prefs-reading": "Lies-Astellungen",
+	"popups-prefs-optin-enabled-label": "Aschalten",
+	"popups-prefs-optin-disabled-label": "Ausschalten"
 }

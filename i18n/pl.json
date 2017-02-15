@@ -10,7 +10,6 @@
 	},
 	"popups-message": "Wyskakujące okienka",
 	"popups-desc": "Wyświetla wyskakujące okienka z podsumowaniem treści strony docelowej po umieszczeniu wskaźnika myszy na odnośniku.",
-	"popups-last-edited": "Edytowano $1",
 	"popups-redirects": "przekierowuje do<h3>$1</h3>",
 	"popups-settings-title": "Podgląd strony",
 	"popups-settings-description": "To narzędzie umożliwia szybki podgląd linków do stron wiki i przypisów.",
@@ -24,6 +23,7 @@
 	"popups-settings-help": "Możesz ponownie włączyć podgląd za pomocą linku znajdującego się w stopce strony.",
 	"popups-settings-enable": "Aktywuj podgląd",
 	"popups-send-feedback": "Wyślij opinię (link zewnętrzny)",
-	"popups-mobile-continue-to-page": "Przejdź do strony",
-	"popups-mobile-dismiss": "Odrzuć"
+	"popups-preview-no-preview": "Wygląda na to, że nie ma podglądu tej strony",
+	"popups-prefs-optin-enabled-label": "Włącz",
+	"popups-prefs-optin-disabled-label": "Wyłącz"
 }

@@ -27,6 +27,7 @@
 	"popups-preview-no-preview": "Es scheint, als ob es keine Vorschau für diese Seite gibt.",
 	"popups-preview-footer-read": "Lesen",
 	"prefs-reading": "Leseeinstellungen",
+	"popups-prefs-optin-title": "Seitenvorschaubilder\n\n<em>Ruft schnelle Vorschaubilder zu einem Thema ab, während du einen Artikel liest.</em>",
 	"popups-prefs-optin-enabled-label": "Aktivieren",
 	"popups-prefs-optin-disabled-label": "Deaktivieren",
 	"popups-prefs-disable-nav-gadgets-info": "Du musst [[$1 |das Helferlein „Navigations-Popups“]] in der Registerkarte „Helferlein“ deaktivieren, um Seitenvorschaubilder zu aktivieren.",
