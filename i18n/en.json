@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": []
 	},
-	"popups-message": "Hovercards",
-	"popups-desc": "Displays hovercards with summaries of page contents when the user hovers over a page link",
+	"popups-message": "Page previews",
+	"popups-desc": "Displays previews when the user hovers over a page link.",
 	"popups-redirects": "redirects to <h3>$1</h3>",
 	"popups-settings-title": "Page preview",
 	"popups-settings-description": "This tool lets you preview links to wiki pages and to references.",
