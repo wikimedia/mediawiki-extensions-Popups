@@ -1,0 +1,17 @@
+/**
+	* Creates a **minimal** stub that can be used in place of an `mw.User`
+	* instance.
+	*
+	* @param {boolean} isAnon The return value of the `#isAnon`.
+	* @return {Object}
+	*/
+exports.createStubUser = function createStubUser( isAnon ) {
+	return {
+		isAnon: function () {
+			return isAnon;
+		},
+		sessionId: function () {
+			return '0123456789';
+		}
+	};
+};
