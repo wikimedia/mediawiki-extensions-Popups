@@ -20,6 +20,7 @@
  */
 require_once ( 'PopupsContextTestWrapper.php' );
 use Popups\PopupsContext;
+use Popups\PopupsHooks;
 
 /**
  * Integration tests for Page Preview hooks

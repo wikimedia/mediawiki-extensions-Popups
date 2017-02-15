@@ -9,7 +9,7 @@
 	"license-name": "GPL-2.0+",
 	"type": "betafeatures",
 	"AutoloadClasses": {
-		"PopupsHooks": "Popups.hooks.php",
+		"Popups\\PopupsHooks": "includes/PopupsHooks.php",
 		"Popups\\PopupsContext": "includes/PopupsContext.php",
 		"Popups\\PopupsGadgetsIntegration": "includes/PopupsGadgetsIntegration.php"
 	},
@@ -18,25 +18,25 @@
 	},
 	"Hooks": {
 		"GetBetaFeaturePreferences": [
-			"PopupsHooks::onGetBetaPreferences"
+			"Popups\\PopupsHooks::onGetBetaPreferences"
 		],
 		"BeforePageDisplay": [
-			"PopupsHooks::onBeforePageDisplay"
+			"Popups\\PopupsHooks::onBeforePageDisplay"
 		],
 		"ResourceLoaderTestModules": [
-			"PopupsHooks::onResourceLoaderTestModules"
+			"Popups\\PopupsHooks::onResourceLoaderTestModules"
 		],
 		"ResourceLoaderGetConfigVars": [
-			"PopupsHooks::onResourceLoaderGetConfigVars"
+			"Popups\\PopupsHooks::onResourceLoaderGetConfigVars"
 		],
 		"GetPreferences": [
-			"PopupsHooks::onGetPreferences"
+			"Popups\\PopupsHooks::onGetPreferences"
 		],
 		"UserGetDefaultOptions": [
-			"PopupsHooks::onUserGetDefaultOptions"
+			"Popups\\PopupsHooks::onUserGetDefaultOptions"
 		],
 		"MakeGlobalVariablesScript": [
-			"PopupsHooks::onMakeGlobalVariablesScript"
+			"Popups\\PopupsHooks::onMakeGlobalVariablesScript"
 		]
 	},
 	"MessagesDirs": {
