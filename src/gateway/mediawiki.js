@@ -1,6 +1,5 @@
-var EXTRACT_LENGTH = 525,
-	// Public and private cache lifetime (5 minutes)
-	CACHE_LIFETIME = 300,
+// Public and private cache lifetime (5 minutes)
+var CACHE_LIFETIME = 300,
 	createModel = require( '../preview/model' ).createModel;
 
 /**
@@ -25,7 +24,7 @@ function createMediaWikiApiGateway( api, config ) {
 			formatversion: 2,
 			redirects: true,
 			exintro: true,
-			exchars: EXTRACT_LENGTH,
+			exchars: config.EXTRACT_LENGTH,
 
 			// There is an added geometric limit on .mwe-popups-extract
 			// so that text does not overflow from the card.

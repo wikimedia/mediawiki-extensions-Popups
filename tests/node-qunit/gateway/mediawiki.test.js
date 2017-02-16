@@ -1,7 +1,8 @@
 var createModel = require( '../../../src/preview/model' ).createModel,
 	createMediaWikiApiGateway = require( '../../../src/gateway/mediawiki' ),
 	DEFAULT_CONSTANTS = {
-		THUMBNAIL_SIZE: 300
+		THUMBNAIL_SIZE: 300,
+		EXTRACT_LENGTH: 525
 	},
 	MEDIAWIKI_API_RESPONSE = {
 		query: {

@@ -1842,7 +1842,8 @@ function syncIfChanged( prevState, state, reducer, prop, sync ) {
 /***/ (function(module, exports) {
 
 module.exports = {
-	THUMBNAIL_SIZE: 300 * $.bracketedDevicePixelRatio()
+	THUMBNAIL_SIZE: 300 * $.bracketedDevicePixelRatio(),
+	EXTRACT_LENGTH: 525
 };
 
 
@@ -1925,9 +1926,8 @@ module.exports = {
 /***/ "./src/gateway/mediawiki.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-var EXTRACT_LENGTH = 525,
-	// Public and private cache lifetime (5 minutes)
-	CACHE_LIFETIME = 300,
+// Public and private cache lifetime (5 minutes)
+var CACHE_LIFETIME = 300,
 	createModel = __webpack_require__( "./src/preview/model.js" ).createModel;
 
 /**
@@ -1952,7 +1952,7 @@ function createMediaWikiApiGateway( api, config ) {
 			formatversion: 2,
 			redirects: true,
 			exintro: true,
-			exchars: EXTRACT_LENGTH,
+			exchars: config.EXTRACT_LENGTH,
 
 			// There is an added geometric limit on .mwe-popups-extract
 			// so that text does not overflow from the card.
