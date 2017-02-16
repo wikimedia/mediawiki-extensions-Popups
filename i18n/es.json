@@ -5,12 +5,12 @@
 			"Macofe",
 			"Jduranboger",
 			"Tusca",
-			"Peter Bowman"
+			"Peter Bowman",
+			"Dgstranz"
 		]
 	},
 	"popups-message": "Cuadros emergentes",
 	"popups-desc": "Muestra un cuadro emergente con el resumen del contenido de una página cuando el usuario posa el ratón sobre un enlace",
-	"popups-last-edited": "Modificado $1",
 	"popups-redirects": "redirige a <h3>$1</h3>",
 	"popups-settings-title": "Previsualización de página",
 	"popups-settings-description": "Esta herramienta permite previsualizar enlaces a páginas wikis y a referencias.",
@@ -25,7 +25,8 @@
 	"popups-settings-help": "Puedes volver a habilitar las vistas previas usando un enlace al pie de la página.",
 	"popups-settings-enable": "Activar previsualizaciones",
 	"popups-send-feedback": "Enviar comentario (enlace externo)",
-	"popups-mobile-continue-to-page": "Continuar a la página",
-	"popups-mobile-dismiss": "Descartar",
-	"popups-mobile-message": "Cuadros emergentes (móvil)"
+	"popups-preview-footer-read": "Leer",
+	"prefs-reading": "Preferencias de lectura",
+	"popups-prefs-optin-enabled-label": "Activar",
+	"popups-prefs-optin-disabled-label": "Desactivar"
 }

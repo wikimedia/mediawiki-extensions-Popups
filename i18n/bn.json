@@ -7,7 +7,6 @@
 	},
 	"popups-message": "পপআপ",
 	"popups-desc": "যখন একটি পাতার সংযোগে মাউস নেয়া হয় তখন পাতার বিষয়বস্তুর সারসংক্ষেপ প্রদর্শন করে।",
-	"popups-last-edited": "$1 সম্পাদিত",
 	"popups-redirects": "<h3>$1</h3>-এ পুননির্দেশিত",
 	"popups-settings-title": "পাতা প্রাকদর্শন",
 	"popups-settings-description": "এই সরঞ্জাম আপনাকে নীল লিংক এবং তথ্যসূত্রের প্রাকদর্শন দেখতে দেয়",
@@ -19,5 +18,9 @@
 	"popups-settings-save": "সংরক্ষণ",
 	"popups-settings-help-ok": "সম্পন্ন",
 	"popups-settings-cancel": "বাতিল",
-	"popups-settings-enable": "প্রাকদর্শন সক্রিয় করুন"
+	"popups-settings-enable": "প্রাকদর্শন সক্রিয় করুন",
+	"popups-preview-footer-read": "পড়ুন",
+	"prefs-reading": "পড়ার পছন্দ",
+	"popups-prefs-optin-enabled-label": "সক্রিয়",
+	"popups-prefs-optin-disabled-label": "নিস্ক্রিয়"
 }

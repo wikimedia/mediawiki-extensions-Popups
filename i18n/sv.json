@@ -9,7 +9,6 @@
 	},
 	"popups-message": "Hovercards",
 	"popups-desc": "Visar skyltfönster med sammanfattningar av sidans innehåll när användaren för muspekaren över en sidlänk",
-	"popups-last-edited": "Redigerades $1",
 	"popups-redirects": "omdirigering till <h3>$1</h3>",
 	"popups-settings-title": "Sidförhandsgranskning",
 	"popups-settings-description": "Detta verktyg låter dig förhandsgranska länkar till wikisidor och till referenser",
@@ -23,6 +22,9 @@
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-enable": "Aktivera förhandsgranskning",
 	"popups-send-feedback": "Skicka återkoppling (extern länk)",
-	"popups-mobile-continue-to-page": "Fortsätt till sidan",
-	"popups-mobile-dismiss": "Stäng"
+	"popups-preview-no-preview": "Ser ut som det inte finns en förhandsgranskning för denna sida",
+	"popups-preview-footer-read": "Läs",
+	"prefs-reading": "Läsningsinställningar",
+	"popups-prefs-optin-enabled-label": "Aktivera",
+	"popups-prefs-optin-disabled-label": "Inaktivera"
 }
