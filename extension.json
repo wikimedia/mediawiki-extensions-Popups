@@ -58,7 +58,6 @@
 		"PopupsOptInDefaultState" : "0",
 		"@PopupsConflictingNavPopupsGadgetName": "@var string: Navigation popups gadget name",
 		"PopupsConflictingNavPopupsGadgetName": "Navigation_popups",
-		"PopupsConflictingNavPopupsGadgetName": "Navigation_popups",
 		"@PopupsAPIUseRESTBase": "Whether to use RESTBase rather than the MediaWiki API for fetching Popups data.",
 		"PopupsAPIUseRESTBase": false
 	},
