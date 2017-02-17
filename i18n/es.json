@@ -25,6 +25,7 @@
 	"popups-settings-help": "Puedes volver a habilitar las vistas previas usando un enlace al pie de la página.",
 	"popups-settings-enable": "Activar previsualizaciones",
 	"popups-send-feedback": "Enviar comentario (enlace externo)",
+	"popups-preview-no-preview": "Parece que no hay una vista previa de esta página",
 	"popups-preview-footer-read": "Leer",
 	"prefs-reading": "Preferencias de lectura",
 	"popups-prefs-optin-enabled-label": "Activar",

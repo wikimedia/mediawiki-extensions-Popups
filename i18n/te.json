@@ -2,8 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Chaduvari",
-			"Ravichandra"
+			"Ravichandra",
+			"Veeven"
 		]
 	},
-	"popups-message": "బుడగలు"
+	"popups-message": "బుడగలు",
+	"popups-prefs-optin-enabled-label": "సచేతనం",
+	"popups-prefs-optin-disabled-label": "అచేతనం"
 }
