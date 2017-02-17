@@ -2,6 +2,9 @@
 
 	var createModel = mw.popups.preview.createModel,
 		createMediaWikiApiGateway = mw.popups.gateway.createMediaWikiApiGateway,
+		DEFAULT_CONSTANTS = {
+			THUMBNAIL_SIZE: 300
+		},
 		MEDIAWIKI_API_RESPONSE = {
 			query: {
 				pages: [
@@ -52,7 +55,7 @@
 			api = {
 				get: spy
 			},
-			gateway = createMediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS),
 			expectedOptions = {
 				action: 'query',
 				prop: 'info|extracts|pageimages|revisions|info',
@@ -62,7 +65,7 @@
 				exchars: 525,
 				explaintext: true,
 				piprop: 'thumbnail',
-				pithumbsize: 300 * $.bracketedDevicePixelRatio(),
+				pithumbsize: DEFAULT_CONSTANTS.THUMBNAIL_SIZE,
 				rvprop: 'timestamp',
 				inprop: 'url',
 				titles: 'Test Title',
@@ -86,7 +89,7 @@
 		var api = {
 				get: this.sandbox.stub()
 			},
-			gateway = createMediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS ),
 			errorCases = [
 				{},
 				{
@@ -142,7 +145,7 @@
 			api = {
 				get: this.sandbox.stub().returns( deferred.promise() )
 			},
-			gateway = createMediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).fail( function () {
@@ -159,7 +162,7 @@
 					$.Deferred().resolve( MEDIAWIKI_API_RESPONSE ).promise()
 				)
 			},
-			gateway = createMediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS ),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
@@ -198,7 +201,7 @@
 					$.Deferred().resolve( response ).promise()
 				)
 			},
-			gateway = createMediaWikiApiGateway( api ),
+			gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS),
 			done = assert.async( 1 );
 
 		gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
