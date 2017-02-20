@@ -51,7 +51,7 @@
 		constants = __webpack_require__( 24 ),
 	
 		createRESTBaseGateway = __webpack_require__( 25 ),
-		createMediaWikiApiGateway = __webpack_require__( 26 ),
+		createMediaWikiApiGateway = __webpack_require__( 27 ),
 		createUserSettings = __webpack_require__( 28 ),
 		createPreviewBehavior = __webpack_require__( 29 ),
 		createSchema = __webpack_require__( 30 ),
@@ -1475,118 +1475,22 @@
 
 /***/ },
 /* 25 */
-/***/ function(module, exports) {
-
-	( function ( mw, $ ) {
-	
-		var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
-			RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0';
-	
-		/**
-		 * RESTBase gateway factory
-		 *
-		 * @param {Function} ajax function from jQuery for example
-		 * @param {ext.popups.constants} config set of configuration values
-		 * @returns {ext.popups.Gateway}
-		 */
-		function createRESTBaseGateway( ajax, config ) {
-	
-			/**
-			 * Fetch page data from the API
-			 *
-			 * @param {String} title
-			 * @return {jQuery.Promise}
-			 */
-			function fetch( title ) {
-				return ajax( {
-					url: RESTBASE_ENDPOINT + encodeURIComponent( title ),
-					headers: {
-						Accept: 'application/json; charset=utf-8' +
-							'profile="' + RESTBASE_PROFILE + '"'
-					}
-				} );
-			}
-	
-			/**
-			 * Get the page summary from the api and transform the data
-			 *
-			 * @param {String} title
-			 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
-			 */
-			function getPageSummary( title ) {
-				return fetch( title )
-					.then( function( page ) {
-						return convertPageToModel( page, config.THUMBNAIL_SIZE );
-					} );
-			}
-	
-			return {
-				fetch: fetch,
-				convertPageToModel: convertPageToModel,
-				getPageSummary: getPageSummary
-			};
-		}
-	
-		/**
-		 * Takes the original thumbnail and ensure it fits within limits of THUMBNAIL_SIZE
-		 *
-		 * @param {Object} original image
-		 * @param {int} thumbSize  expected thumbnail size
-		 * @returns {Object}
-		 */
-		function generateThumbnailData( original, thumbSize ) {
-			var parts = original.source.split( '/' ),
-				filename = parts[ parts.length - 1 ];
-	
-			if ( thumbSize > original.width && filename.indexOf( '.svg' ) === -1 ) {
-				thumbSize = original.width;
-			}
-	
-			return $.extend( {}, original, {
-				source: parts.join( '/' ) + '/' + thumbSize + 'px-' + filename
-			} );
-		}
-	
-		/**
-		 * Transform the rest API response to a preview model
-		 *
-		 * @param {Object} page
-		 * @param {int} thumbSize
-		 * @returns {ext.popups.PreviewModel}
-		 */
-		function convertPageToModel( page, thumbSize ) {
-			return mw.popups.preview.createModel(
-				page.title,
-				new mw.Title( page.title ).getUrl(),
-				page.lang,
-				page.dir,
-				page.extract,
-				page.originalimage ? generateThumbnailData( page.originalimage, thumbSize ) : undefined
-			);
-		}
-	
-		module.exports = createRESTBaseGateway;
-	
-	}( mediaWiki, jQuery ) );
-
-
-/***/ },
-/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EXTRACT_LENGTH = 525,
-		// Public and private cache lifetime (5 minutes)
-		CACHE_LIFETIME = 300,
-		createModel = __webpack_require__( 27 ).createModel;
+	var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
+		RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0',
+		createModel = __webpack_require__( 26 ).createModel,
+		$ = window.jQuery,
+		mw = window.mediaWiki;
 	
 	/**
-	 * MediaWiki API gateway factory
+	 * RESTBase gateway factory
 	 *
-	 * @param {mw.Api} api
-	 * @param {mw.ext.constants} config
+	 * @param {Function} ajax function from jQuery for example
+	 * @param {ext.popups.constants} config set of configuration values
 	 * @returns {ext.popups.Gateway}
 	 */
-	function createMediaWikiApiGateway( api, config ) {
+	function createRESTBaseGateway( ajax, config ) {
 	
 		/**
 		 * Fetch page data from the API
@@ -1595,29 +1499,11 @@
 		 * @return {jQuery.Promise}
 		 */
 		function fetch( title ) {
-			return api.get( {
-				action: 'query',
-				prop: 'info|extracts|pageimages|revisions|info',
-				formatversion: 2,
-				redirects: true,
-				exintro: true,
-				exchars: EXTRACT_LENGTH,
-	
-				// There is an added geometric limit on .mwe-popups-extract
-				// so that text does not overflow from the card.
-				explaintext: true,
-	
-				piprop: 'thumbnail',
-				pithumbsize: config.THUMBNAIL_SIZE,
-				rvprop: 'timestamp',
-				inprop: 'url',
-				titles: title,
-				smaxage: CACHE_LIFETIME,
-				maxage: CACHE_LIFETIME,
-				uselang: 'content'
-			}, {
+			return ajax( {
+				url: RESTBASE_ENDPOINT + encodeURIComponent( title ),
 				headers: {
-					'X-Analytics': 'preview=1'
+					Accept: 'application/json; charset=utf-8' +
+						'profile="' + RESTBASE_PROFILE + '"'
 				}
 			} );
 		}
@@ -1630,60 +1516,61 @@
 		 */
 		function getPageSummary( title ) {
 			return fetch( title )
-				.then( extractPageFromResponse )
-				.then( convertPageToModel );
+				.then( function( page ) {
+					return convertPageToModel( page, config.THUMBNAIL_SIZE );
+				} );
 		}
 	
 		return {
 			fetch: fetch,
-			extractPageFromResponse: extractPageFromResponse,
 			convertPageToModel: convertPageToModel,
 			getPageSummary: getPageSummary
 		};
 	}
 	
 	/**
-	 * Extract page data from the MediaWiki API response
+	 * Takes the original thumbnail and ensure it fits within limits of THUMBNAIL_SIZE
 	 *
-	 * @param {Object} data API response data
-	 * @throws {Error} Throw an error if page data cannot be extracted,
-	 * i.e. if the response is empty,
+	 * @param {Object} original image
+	 * @param {int} thumbSize  expected thumbnail size
 	 * @returns {Object}
 	 */
-	function extractPageFromResponse( data ) {
-		if (
-			data.query &&
-			data.query.pages &&
-			data.query.pages.length
-		) {
-			return data.query.pages[ 0 ];
+	function generateThumbnailData( original, thumbSize ) {
+		var parts = original.source.split( '/' ),
+			filename = parts[ parts.length - 1 ];
+	
+		if ( thumbSize > original.width && filename.indexOf( '.svg' ) === -1 ) {
+			thumbSize = original.width;
 		}
 	
-		throw new Error( 'API response `query.pages` is empty.' );
+		return $.extend( {}, original, {
+			source: parts.join( '/' ) + '/' + thumbSize + 'px-' + filename
+		} );
 	}
 	
 	/**
-	 * Transform the MediaWiki API response to a preview model
+	 * Transform the rest API response to a preview model
 	 *
 	 * @param {Object} page
+	 * @param {int} thumbSize
 	 * @returns {ext.popups.PreviewModel}
 	 */
-	function convertPageToModel( page ) {
+	function convertPageToModel( page, thumbSize ) {
 		return createModel(
 			page.title,
-			page.canonicalurl,
-			page.pagelanguagehtmlcode,
-			page.pagelanguagedir,
+			new mw.Title( page.title ).getUrl(),
+			page.lang,
+			page.dir,
 			page.extract,
-			page.thumbnail
+			page.originalimage ? generateThumbnailData( page.originalimage, thumbSize ) : undefined
 		);
 	}
 	
-	module.exports = createMediaWikiApiGateway;
+	module.exports = createRESTBaseGateway;
 
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports) {
 
 	var TYPE_GENERIC = 'generic',
@@ -1824,6 +1711,118 @@
 		TYPE_PAGE: TYPE_PAGE,
 		createModel: createModel
 	};
+
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var EXTRACT_LENGTH = 525,
+		// Public and private cache lifetime (5 minutes)
+		CACHE_LIFETIME = 300,
+		createModel = __webpack_require__( 26 ).createModel;
+	
+	/**
+	 * MediaWiki API gateway factory
+	 *
+	 * @param {mw.Api} api
+	 * @param {mw.ext.constants} config
+	 * @returns {ext.popups.Gateway}
+	 */
+	function createMediaWikiApiGateway( api, config ) {
+	
+		/**
+		 * Fetch page data from the API
+		 *
+		 * @param {String} title
+		 * @return {jQuery.Promise}
+		 */
+		function fetch( title ) {
+			return api.get( {
+				action: 'query',
+				prop: 'info|extracts|pageimages|revisions|info',
+				formatversion: 2,
+				redirects: true,
+				exintro: true,
+				exchars: EXTRACT_LENGTH,
+	
+				// There is an added geometric limit on .mwe-popups-extract
+				// so that text does not overflow from the card.
+				explaintext: true,
+	
+				piprop: 'thumbnail',
+				pithumbsize: config.THUMBNAIL_SIZE,
+				rvprop: 'timestamp',
+				inprop: 'url',
+				titles: title,
+				smaxage: CACHE_LIFETIME,
+				maxage: CACHE_LIFETIME,
+				uselang: 'content'
+			}, {
+				headers: {
+					'X-Analytics': 'preview=1'
+				}
+			} );
+		}
+	
+		/**
+		 * Get the page summary from the api and transform the data
+		 *
+		 * @param {String} title
+		 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
+		 */
+		function getPageSummary( title ) {
+			return fetch( title )
+				.then( extractPageFromResponse )
+				.then( convertPageToModel );
+		}
+	
+		return {
+			fetch: fetch,
+			extractPageFromResponse: extractPageFromResponse,
+			convertPageToModel: convertPageToModel,
+			getPageSummary: getPageSummary
+		};
+	}
+	
+	/**
+	 * Extract page data from the MediaWiki API response
+	 *
+	 * @param {Object} data API response data
+	 * @throws {Error} Throw an error if page data cannot be extracted,
+	 * i.e. if the response is empty,
+	 * @returns {Object}
+	 */
+	function extractPageFromResponse( data ) {
+		if (
+			data.query &&
+			data.query.pages &&
+			data.query.pages.length
+		) {
+			return data.query.pages[ 0 ];
+		}
+	
+		throw new Error( 'API response `query.pages` is empty.' );
+	}
+	
+	/**
+	 * Transform the MediaWiki API response to a preview model
+	 *
+	 * @param {Object} page
+	 * @returns {ext.popups.PreviewModel}
+	 */
+	function convertPageToModel( page ) {
+		return createModel(
+			page.title,
+			page.canonicalurl,
+			page.pagelanguagehtmlcode,
+			page.pagelanguagedir,
+			page.extract,
+			page.thumbnail
+		);
+	}
+	
+	module.exports = createMediaWikiApiGateway;
 
 
 /***/ },
@@ -4547,7 +4546,7 @@
 	 * it rejects.
 	 */
 	module.exports = {
-		createMediaWikiApiGateway: __webpack_require__( 26 ),
+		createMediaWikiApiGateway: __webpack_require__( 27 ),
 		createRESTBaseGateway: __webpack_require__( 25 )
 	};
 
