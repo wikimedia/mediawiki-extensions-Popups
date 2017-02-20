@@ -5,12 +5,12 @@
 			"Sayginer",
 			"Incelemeelemani",
 			"Meelo",
-			"McAang"
+			"McAang",
+			"Katpatuka"
 		]
 	},
 	"popups-message": "Vurgulanmış kartlar",
 	"popups-desc": "Kullanıcı bir makale bağlantısı üzerine geldiğinde, makale içeriği özetini içeren açılır pencereler görüntüler.",
-	"popups-last-edited": "$1 düzenlenmiş",
 	"popups-redirects": "<h3>$1</h3> yönlendiriliyor",
 	"popups-settings-title": "Sayfa önizleme",
 	"popups-settings-description": "Bu araç, viki sayfalarındaki referans bağlantıları önizlemenizi sağlar.",
@@ -25,7 +25,7 @@
 	"popups-settings-help": "Sayfanın alt kısmındaki bir bağlantıyı kullanarak önizlemeyi geri açabilirsiniz.",
 	"popups-settings-enable": "Önizlemeyi etkinleştir",
 	"popups-send-feedback": "Geri Bildirim (dış bağlantı)",
-	"popups-mobile-continue-to-page": "Sayfaya devam",
-	"popups-mobile-dismiss": "Reddet",
-	"popups-mobile-message": "Vurgulanmış kartlar (mobil)"
+	"popups-preview-footer-read": "Oku",
+	"popups-prefs-optin-enabled-label": "Etkinleştir",
+	"popups-prefs-optin-disabled-label": "Devre dışı bırak"
 }
