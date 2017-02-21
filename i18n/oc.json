@@ -9,5 +9,6 @@
 	"popups-redirects": "redirigit cap a <h3>$1</h3>",
 	"popups-settings-option-simple": "Activar",
 	"popups-settings-option-off": "Desactivar",
-	"popups-settings-help-ok": "Fait"
+	"popups-settings-help-ok": "Fait",
+	"popups-prefs-optin-enabled-label": "Activar"
 }
