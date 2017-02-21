@@ -3,9 +3,10 @@
   "scripts": {
     "start": "webpack -w",
     "build": "webpack",
-    "test": "grunt lint && npm run check-built-assets",
+    "test": "grunt lint && npm run check-built-assets && npm run test:node",
     "doc": "jsduck",
-    "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -qr test-build resources/dist && rm -rf test-build"
+    "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -qr test-build resources/dist && rm -rf test-build",
+    "test:node": "mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js | tap-dot"
   },
   "devDependencies": {
     "eslint-config-wikimedia": "0.3.0",
@@ -17,9 +18,11 @@
     "grunt-eslint": "19.0.0",
     "grunt-jsonlint": "1.1.0",
     "grunt-stylelint": "^0.6.0",
+    "mw-node-qunit": "^1.0.1",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "stylelint-config-wikimedia": "0.3.0",
+    "tap-dot": "^1.0.5",
     "webpack": "^1.14.0"
   }
 }
