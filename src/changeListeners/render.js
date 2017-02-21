@@ -3,6 +3,10 @@ var renderer = require( '../renderer' );
 /**
  * Creates an instance of the render change listener.
  *
+ * FIXME: Remove hard coupling with renderer, inject it as a parameter
+ * * Wire it up in index.js
+ * * Fix tests to remove require mocking
+ *
  * @param {ext.popups.PreviewBehavior} previewBehavior
  * @return {ext.popups.ChangeListener}
  */
