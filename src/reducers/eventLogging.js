@@ -75,14 +75,6 @@ module.exports = function ( state, action ) {
 				}
 			} );
 
-		case actionTypes.CHECKIN:
-			return nextState( state, {
-				event: {
-					action: 'checkin',
-					checkin: action.time
-				}
-			} );
-
 		case actionTypes.EVENT_LOGGED:
 			return nextState( state, {
 				event: undefined

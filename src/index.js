@@ -13,7 +13,6 @@ var mw = mediaWiki,
 	registerChangeListener = require( './changeListener' ),
 	createIsEnabled = require( './isEnabled' ),
 	processLinks = require( './processLinks' ),
-	checkin = require( './checkin' ),
 	renderer = require( './renderer' ),
 
 	changeListeners = require( './changeListeners' ),
@@ -89,7 +88,6 @@ function createRootReducer() {
  * 2. Binding the actions to such store
  * 3. Trigger the boot action to bootstrap the system
  * 4. When the page content is ready:
- *   - Setup `checkin` actions
  *   - Process the eligible links for page previews
  *   - Initialize the renderer
  *   - Bind hover and click events to the eligible links to trigger actions
@@ -147,8 +145,6 @@ mw.requestIdleCallback( function () {
 				BLACKLISTED_LINKS,
 				mw.config
 			);
-
-		checkin.setupActions( actions.checkin );
 
 		renderer.init();
 

@@ -78,18 +78,6 @@ actions.boot = function (
 };
 
 /**
- * How long has the user been actively reading the page?
- * @param {number} time The number of seconds the user has seen the page
- * @returns {{type: string, time: number}}
- */
-actions.checkin = function ( time ) {
-	return {
-		type: types.CHECKIN,
-		time: time
-	};
-};
-
-/**
  * Represents Page Previews fetching data via the gateway.
  *
  * @param {ext.popups.Gateway} gateway

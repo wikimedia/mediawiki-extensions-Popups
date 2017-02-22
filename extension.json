@@ -45,7 +45,7 @@
 		]
 	},
 	"EventLoggingSchemas": {
-		"Popups": 16208085
+		"Popups": 16364296
 	},
 	"config": {
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",

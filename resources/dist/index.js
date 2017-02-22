@@ -59,12 +59,11 @@
 		registerChangeListener = __webpack_require__( 32 ),
 		createIsEnabled = __webpack_require__( 33 ),
 		processLinks = __webpack_require__( 34 ),
-		checkin = __webpack_require__( 35 ),
-		renderer = __webpack_require__( 37 ),
+		renderer = __webpack_require__( 35 ),
 	
-		changeListeners = __webpack_require__( 39 ),
-		actions = __webpack_require__( 46 ),
-		reducers = __webpack_require__( 48 ),
+		changeListeners = __webpack_require__( 37 ),
+		actions = __webpack_require__( 44 ),
+		reducers = __webpack_require__( 46 ),
 	
 		BLACKLISTED_LINKS = [
 			'.extiw',
@@ -135,7 +134,6 @@
 	 * 2. Binding the actions to such store
 	 * 3. Trigger the boot action to bootstrap the system
 	 * 4. When the page content is ready:
-	 *   - Setup `checkin` actions
 	 *   - Process the eligible links for page previews
 	 *   - Initialize the renderer
 	 *   - Bind hover and click events to the eligible links to trigger actions
@@ -194,8 +192,6 @@
 					mw.config
 				);
 	
-			checkin.setupActions( actions.checkin );
-	
 			renderer.init();
 	
 			previewLinks
@@ -213,7 +209,7 @@
 	} );
 	
 	// FIXME: Currently needs to be exposed for testing purposes
-	mw.popups = __webpack_require__( 54 );
+	mw.popups = __webpack_require__( 52 );
 	window.Redux = Redux;
 	window.ReduxThunk = ReduxThunk;
 
@@ -2387,260 +2383,10 @@
 /* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mw = mediaWiki,
-		$ = jQuery,
-		pageVisibility = __webpack_require__( 36 ),
-		checkin = {
-			/**
-			 * Checkin times - Fibonacci numbers
-			 *
-			 * Exposed for testing only.
-			 *
-			 * @type {number[]}
-			 * @private
-			 */
-			CHECKIN_TIMES: [ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233,
-				377, 610, 987, 1597, 2584, 4181, 6765 ],
-			/**
-			 * Have checkin actions been setup already?
-			 *
-			 * Exposed for testing only.
-			 *
-			 * @private
-			 * @type {boolean}
-			 */
-			haveCheckinActionsBeenSetup: false
-		};
-	
-	/**
-	 * A customized `setTimeout` function that takes page visibility into account
-	 *
-	 * If the document is not visible to the user, e.g. browser window is minimized,
-	 * then pause the time. Otherwise execute `callback` after `delay` milliseconds.
-	 * The callback won't be executed if the browser does not suppor the page visibility
-	 * API.
-	 *
-	 * Exposed for testing only.
-	 *
-	 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
-	 * @private
-	 * @param {Function} callback Function to call when the time is up
-	 * @param {number} delay The number of milliseconds to wait before executing the callback
-	 */
-	checkin.setVisibleTimeout = function ( callback, delay ) {
-		var hiddenPropertyName = pageVisibility.getDocumentHiddenPropertyName( document ),
-			visibilityChangeEventName = pageVisibility.getDocumentVisibilitychangeEventName( document ),
-			timeoutId,
-			lastStartedAt;
-	
-		if ( !hiddenPropertyName || !visibilityChangeEventName ) {
-			return;
-		}
-	
-		/**
-		 * Execute the callback and turn off listening to the visibilitychange event
-		 */
-		function done() {
-			callback();
-			$( document ).off( visibilityChangeEventName, visibilityChangeHandler );
-		}
-	
-		/**
-		 * Pause or resume the timer depending on the page visibility state
-		 */
-		function visibilityChangeHandler() {
-			var millisecondsPassed;
-	
-			// Pause the timer if the page is hidden ...
-			if ( pageVisibility.isDocumentHidden( document ) ) {
-				// ... and only if the timer has started.
-				// Timer may not have been started if the document opened in a
-				// hidden tab for example. The timer will be started when the
-				// document is visible to the user.
-				if ( lastStartedAt !== undefined ) {
-					millisecondsPassed = Math.round( mw.now() - lastStartedAt );
-					delay = Math.max( 0, delay - millisecondsPassed );
-					clearTimeout( timeoutId );
-				}
-			} else {
-				lastStartedAt = Math.round( mw.now() );
-				timeoutId = setTimeout( done, delay );
-			}
-		}
-	
-		visibilityChangeHandler();
-	
-		$( document ).on( visibilityChangeEventName, visibilityChangeHandler );
-	};
-	
-	/**
-	 * Perform the passed `checkin` action at the predefined times
-	 *
-	 * Actions are setup only once no matter how many times this function is
-	 * called. Ideally this function should be called once.
-	 *
-	 * @see checkin.CHECKIN_TIMES
-	 * @param {Function} checkinAction
-	 */
-	checkin.setupActions = function( checkinAction ) {
-		var timeIndex = 0,
-			timesLength = checkin.CHECKIN_TIMES.length,
-			time,  // current checkin time
-			nextTime;  // the checkin time that will be logged next
-	
-		if ( checkin.haveCheckinActionsBeenSetup ) {
-			return;
-		}
-	
-		/**
-		 * Execute the checkin action with the current checkin time
-		 *
-		 * If more checkin times are left, then setup a timer to log the next one.
-		 */
-		function setup() {
-			time = checkin.CHECKIN_TIMES[ timeIndex ];
-			checkinAction( time );
-	
-			timeIndex += 1;
-			if ( timeIndex < timesLength ) {
-				nextTime = checkin.CHECKIN_TIMES[ timeIndex ];
-				// Execute the callback after the number of seconds left till the
-				// next checkin time.
-				checkin.setVisibleTimeout( setup, ( nextTime - time ) * 1000 );
-			}
-		}
-	
-		checkin.setVisibleTimeout( setup, checkin.CHECKIN_TIMES[ timeIndex ] * 1000 );
-	
-		checkin.haveCheckinActionsBeenSetup = true;
-	};
-	
-	module.exports = checkin;
-
-
-/***/ },
-/* 36 */
-/***/ function(module, exports) {
-
-	var pageVisibility = {
-		/**
-		 * Cached value of the browser specific name of the `document.hidden` property
-		 *
-		 * Exposed for testing only.
-		 *
-		 * @type {null|undefined|string}
-		 * @private
-		 */
-		documentHiddenPropertyName: null,
-		/**
-		 * Cached value of the browser specific name of the `document.visibilitychange` event
-		 *
-		 * Exposed for testing only.
-		 *
-		 * @type {null|undefined|string}
-		 * @private
-		 */
-		documentVisibilityChangeEventName: null
-	};
-	
-	/**
-	 * Return the browser specific name of the `document.hidden` property
-	 *
-	 * Exposed for testing only.
-	 *
-	 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
-	 * @private
-	 * @param {Object} doc window.document object
-	 * @return {string|undefined}
-	 */
-	pageVisibility.getDocumentHiddenPropertyName = function ( doc ) {
-		var property;
-	
-		if ( pageVisibility.documentHiddenPropertyName === null ) {
-			if ( doc.hidden !== undefined ) {
-				property = 'hidden';
-			} else if ( doc.mozHidden !== undefined ) {
-				property = 'mozHidden';
-			} else if ( doc.msHidden !== undefined ) {
-				property = 'msHidden';
-			} else if ( doc.webkitHidden !== undefined ) {
-				property = 'webkitHidden';
-			} else {
-				// let's be explicit about returning `undefined`
-				property = undefined;
-			}
-			// cache
-			pageVisibility.documentHiddenPropertyName = property;
-		}
-	
-		return pageVisibility.documentHiddenPropertyName;
-	};
-	
-	/**
-	 * Return the browser specific name of the `document.visibilitychange` event
-	 *
-	 * Exposed for testing only.
-	 *
-	 * @see https://www.w3.org/TR/page-visibility/#sec-visibilitychange-event
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
-	 * @private
-	 * @param {Object} doc window.document object
-	 * @return {string|undefined}
-	 */
-	pageVisibility.getDocumentVisibilitychangeEventName = function ( doc ) {
-		var eventName;
-	
-		if ( pageVisibility.documentVisibilityChangeEventName === null ) {
-			if ( doc.hidden !== undefined ) {
-				eventName = 'visibilitychange';
-			} else if ( doc.mozHidden !== undefined ) {
-				eventName = 'mozvisibilitychange';
-			} else if ( doc.msHidden !== undefined ) {
-				eventName = 'msvisibilitychange';
-			} else if ( doc.webkitHidden !== undefined ) {
-				eventName = 'webkitvisibilitychange';
-			} else {
-				// let's be explicit about returning `undefined`
-				eventName = undefined;
-			}
-			// cache
-			pageVisibility.documentVisibilityChangeEventName = eventName;
-		}
-	
-		return pageVisibility.documentVisibilityChangeEventName;
-	};
-	
-	/**
-	 * Whether `window.document` is visible
-	 *
-	 * `undefined` is returned if the browser does not support the Visibility API.
-	 *
-	 * Exposed for testing only.
-	 *
-	 * @see https://www.w3.org/TR/page-visibility/#dom-document-hidden
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
-	 * @private
-	 * @param {Object} doc window.document object
-	 * @returns {boolean|undefined}
-	 */
-	pageVisibility.isDocumentHidden = function ( doc ) {
-		var property = pageVisibility.getDocumentHiddenPropertyName( doc );
-	
-		return property !== undefined ? doc[ property ] : undefined;
-	};
-	
-	module.exports = pageVisibility;
-
-
-/***/ },
-/* 37 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var mw = window.mediaWiki,
 		$ = jQuery,
 		isSafari = navigator.userAgent.match( /Safari/ ) !== null,
-		wait = __webpack_require__( 38 ),
+		wait = __webpack_require__( 36 ),
 		SIZES = {
 			portraitImage: {
 				h: 250, // Exact height
@@ -3328,7 +3074,7 @@
 
 
 /***/ },
-/* 38 */
+/* 36 */
 /***/ function(module, exports) {
 
 	var $ = jQuery;
@@ -3358,21 +3104,21 @@
 
 
 /***/ },
-/* 39 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-		footerLink: __webpack_require__( 40 ),
-		eventLogging: __webpack_require__( 41 ),
-		linkTitle: __webpack_require__( 42 ),
-		render: __webpack_require__( 43 ),
-		settings: __webpack_require__( 44 ),
-		syncUserSettings: __webpack_require__( 45 )
+		footerLink: __webpack_require__( 38 ),
+		eventLogging: __webpack_require__( 39 ),
+		linkTitle: __webpack_require__( 40 ),
+		render: __webpack_require__( 41 ),
+		settings: __webpack_require__( 42 ),
+		syncUserSettings: __webpack_require__( 43 )
 	};
 
 
 /***/ },
-/* 40 */
+/* 38 */
 /***/ function(module, exports) {
 
 	var mw = window.mediaWiki,
@@ -3451,7 +3197,7 @@
 
 
 /***/ },
-/* 41 */
+/* 39 */
 /***/ function(module, exports) {
 
 	var $ = jQuery;
@@ -3483,7 +3229,7 @@
 
 
 /***/ },
-/* 42 */
+/* 40 */
 /***/ function(module, exports) {
 
 	var $ = jQuery;
@@ -3552,10 +3298,10 @@
 
 
 /***/ },
-/* 43 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var renderer = __webpack_require__( 37 );
+	var renderer = __webpack_require__( 35 );
 	
 	/**
 	 * Creates an instance of the render change listener.
@@ -3583,7 +3329,7 @@
 
 
 /***/ },
-/* 44 */
+/* 42 */
 /***/ function(module, exports) {
 
 	/**
@@ -3633,7 +3379,7 @@
 
 
 /***/ },
-/* 45 */
+/* 43 */
 /***/ function(module, exports) {
 
 	/**
@@ -3699,13 +3445,13 @@
 
 
 /***/ },
-/* 46 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $ = jQuery,
 		mw = window.mediaWiki,
 		actions = {},
-		types = __webpack_require__( 47 ),
+		types = __webpack_require__( 45 ),
 		FETCH_START_DELAY = 50, // ms.
 	
 		// The delay after which a FETCH_END action should be dispatched.
@@ -3778,18 +3524,6 @@
 				editCount: editCount,
 				previewCount: previewCount
 			}
-		};
-	};
-	
-	/**
-	 * How long has the user been actively reading the page?
-	 * @param {number} time The number of seconds the user has seen the page
-	 * @returns {{type: string, time: number}}
-	 */
-	actions.checkin = function ( time ) {
-		return {
-			type: types.CHECKIN,
-			time: time
 		};
 	};
 	
@@ -4026,12 +3760,11 @@
 
 
 /***/ },
-/* 47 */
+/* 45 */
 /***/ function(module, exports) {
 
 	module.exports = {
 		BOOT: 'BOOT',
-		CHECKIN: 'CHECKIN',
 		LINK_DWELL: 'LINK_DWELL',
 		ABANDON_START: 'ABANDON_START',
 		ABANDON_END: 'ABANDON_END',
@@ -4050,23 +3783,23 @@
 
 
 /***/ },
-/* 48 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-		eventLogging: __webpack_require__( 49 ),
-		preview: __webpack_require__( 52 ),
-		settings: __webpack_require__( 53 )
+		eventLogging: __webpack_require__( 47 ),
+		preview: __webpack_require__( 50 ),
+		settings: __webpack_require__( 51 )
 	};
 
 
 /***/ },
-/* 49 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var actionTypes = __webpack_require__( 47 ),
-		nextState = __webpack_require__( 50 ),
-		counts = __webpack_require__( 51 );
+	var actionTypes = __webpack_require__( 45 ),
+		nextState = __webpack_require__( 48 ),
+		counts = __webpack_require__( 49 );
 	
 	/**
 	 * Initialize the data that's shared between all events logged with [the Popups
@@ -4138,14 +3871,6 @@
 					baseData: getBaseData( action ),
 					event: {
 						action: 'pageLoaded'
-					}
-				} );
-	
-			case actionTypes.CHECKIN:
-				return nextState( state, {
-					event: {
-						action: 'checkin',
-						checkin: action.time
 					}
 				} );
 	
@@ -4225,7 +3950,7 @@
 
 
 /***/ },
-/* 50 */
+/* 48 */
 /***/ function(module, exports) {
 
 	/**
@@ -4269,7 +3994,7 @@
 
 
 /***/ },
-/* 51 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/**
@@ -4342,11 +4067,11 @@
 
 
 /***/ },
-/* 52 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var actionTypes = __webpack_require__( 47 ),
-		nextState = __webpack_require__( 50 );
+	var actionTypes = __webpack_require__( 45 ),
+		nextState = __webpack_require__( 48 );
 	
 	/**
 	 * Reducer for actions that modify the state of the preview model
@@ -4443,11 +4168,11 @@
 
 
 /***/ },
-/* 53 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var actionTypes = __webpack_require__( 47 ),
-		nextState = __webpack_require__( 50 );
+	var actionTypes = __webpack_require__( 45 ),
+		nextState = __webpack_require__( 48 );
 	
 	/**
 	 * Reducer for actions that modify the state of the settings
@@ -4505,33 +4230,31 @@
 
 
 /***/ },
-/* 54 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-		actions: __webpack_require__( 46 ),
-		actionTypes: __webpack_require__( 47 ),
-		changeListeners: __webpack_require__( 39 ),
-		checkin: __webpack_require__( 35 ),
-		counts: __webpack_require__( 51 ),
+		actions: __webpack_require__( 44 ),
+		actionTypes: __webpack_require__( 45 ),
+		changeListeners: __webpack_require__( 37 ),
+		counts: __webpack_require__( 49 ),
 		createPreviewBehavior: __webpack_require__( 29 ),
 		createUserSettings: __webpack_require__( 28 ),
 		createSchema: __webpack_require__( 30 ),
 		createSettingsDialogRenderer: __webpack_require__( 31 ),
-		gateway: __webpack_require__( 55 ),
+		gateway: __webpack_require__( 53 ),
 		isEnabled: __webpack_require__( 33 ),
-		renderer: __webpack_require__( 37 ),
-		pageVisibility: __webpack_require__( 36 ),
-		preview: __webpack_require__( 56 ),
+		renderer: __webpack_require__( 35 ),
+		preview: __webpack_require__( 54 ),
 		processLinks: __webpack_require__( 34 ),
 		registerChangeListener: __webpack_require__( 32 ),
-		reducers: __webpack_require__( 48 ),
-		wait: __webpack_require__( 38 )
+		reducers: __webpack_require__( 46 ),
+		wait: __webpack_require__( 36 )
 	};
 
 
 /***/ },
-/* 55 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -4556,7 +4279,7 @@
 
 
 /***/ },
-/* 56 */
+/* 54 */
 /***/ function(module, exports) {
 
 	var createModel,
