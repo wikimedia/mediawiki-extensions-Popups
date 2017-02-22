@@ -7,7 +7,6 @@
 	},
 	"popups-message": "بطاقات الحوم",
 	"popups-desc": "يقوم بعرض بطاقات حوم بملخصات عن محتوى الصفحة عندما يقوم المستخدم بحوم المؤشر على رابط الصفحة",
-	"popups-last-edited": "آخر تعديل جرى $1",
 	"popups-redirects": "إعادة توجيه إلى <h3>$1</h3>",
 	"popups-settings-title": "معاينة الصفحة",
 	"popups-settings-description": "تتيح هذه الأداة معاينة الوصلات إلى صفحات الويكي والمراجع.",
@@ -19,7 +18,5 @@
 	"popups-settings-help-ok": "موافق",
 	"popups-settings-cancel": "ألغ",
 	"popups-settings-enable": "فعل المعاينات",
-	"popups-mobile-continue-to-page": "واصل إلى الصفحة",
-	"popups-mobile-dismiss": "تجاوز",
-	"popups-mobile-message": "بطاقات الحوم (الجوال)"
+	"prefs-reading": "تفضيلات القراءة"
 }
