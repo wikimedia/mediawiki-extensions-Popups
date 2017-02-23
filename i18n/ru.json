@@ -6,12 +6,12 @@
 			"Mariya",
 			"Ole Yves",
 			"Amire80",
-			"Kaganer"
+			"Kaganer",
+			"Redredsonia"
 		]
 	},
 	"popups-message": "Всплывающие окна",
 	"popups-desc": "При наведении курсора на ссылку, ведущую на страницу, отображает всплывающие окошки с описанием содержания страницы.",
-	"popups-last-edited": "Отредактировано $1",
 	"popups-redirects": "перенаправляет на <h3>$1</h3>",
 	"popups-settings-title": "Предпросмотр страницы",
 	"popups-settings-description": "Этот инструмент позволяет просматривать ссылки на вики-страницы и примечания.",
@@ -26,7 +26,7 @@
 	"popups-settings-help": "Можно вновь включить предпросмотр используя ссылку в конце страницы.",
 	"popups-settings-enable": "Включить предпросмотр",
 	"popups-send-feedback": "Отправить отзыв (внешняя ссылка)",
-	"popups-mobile-continue-to-page": "Продолжить на страницу",
-	"popups-mobile-dismiss": "Закрыть",
-	"popups-mobile-message": "Всплывающие окна (мобильные)"
+	"popups-preview-footer-read": "Читать",
+	"popups-prefs-optin-enabled-label": "Включить",
+	"popups-prefs-optin-disabled-label": "Отключить"
 }
