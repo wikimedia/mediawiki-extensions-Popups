@@ -2,11 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Y-M D",
-			"Fohanno"
+			"Fohanno",
+			"Fulup"
 		]
 	},
-	"popups-last-edited": "Kemm diwezhañ $1",
 	"popups-settings-option-simple": "Eeun",
 	"popups-settings-save": "Enrollañ",
-	"popups-settings-cancel": "Nullañ"
+	"popups-settings-cancel": "Nullañ",
+	"popups-preview-footer-read": "Lenn",
+	"prefs-reading": "Penndibaboù lenn",
+	"popups-prefs-optin-enabled-label": "Gweredekaat",
+	"popups-prefs-optin-disabled-label": "Diweredekaat"
 }

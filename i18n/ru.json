@@ -26,6 +26,7 @@
 	"popups-settings-help": "Можно вновь включить предпросмотр используя ссылку в конце страницы.",
 	"popups-settings-enable": "Включить предпросмотр",
 	"popups-send-feedback": "Отправить отзыв (внешняя ссылка)",
+	"popups-preview-no-preview": "Предварительный просмотр страницы недоступен",
 	"popups-preview-footer-read": "Читать",
 	"popups-prefs-optin-enabled-label": "Включить",
 	"popups-prefs-optin-disabled-label": "Отключить"
