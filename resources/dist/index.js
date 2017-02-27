@@ -3452,6 +3452,7 @@
 		mw = window.mediaWiki,
 		actions = {},
 		types = __webpack_require__( 45 ),
+		wait = __webpack_require__( 36 ),
 		FETCH_START_DELAY = 50, // ms.
 	
 		// The delay after which a FETCH_END action should be dispatched.
@@ -3563,11 +3564,7 @@
 						0
 					);
 	
-					// FIXME: This needs to reference a global because the tests are
-					// stubbing a global, so can't be required at the top at the moment.
-					// When the tests are moved to common.js we should find a different way
-					// of stubbing this wait
-					mw.popups.wait( delay )
+					wait( delay )
 						.then( function () {
 							dispatch( {
 								type: types.FETCH_END,
@@ -3611,11 +3608,7 @@
 				return;
 			}
 	
-			// FIXME: This needs to reference a global because the tests are stubbing
-			// a global, so can't be required at the top at the moment. When the tests
-			// are moved to common.js we should find a different way of stubbing this
-			// wait
-			mw.popups.wait( FETCH_START_DELAY )
+			wait( FETCH_START_DELAY )
 				.then( function () {
 					var previewState = getState().preview;
 	
@@ -3643,11 +3636,7 @@
 				token: token
 			} ) );
 	
-			// FIXME: This needs to reference a global because the tests are stubbing
-			// a global, so can't be required at the top at the moment. When the tests
-			// are moved to common.js we should find a different way of stubbing this
-			// wait
-			mw.popups.wait( ABANDON_END_DELAY )
+			wait( ABANDON_END_DELAY )
 				.then( function () {
 					dispatch( {
 						type: types.ABANDON_END,
