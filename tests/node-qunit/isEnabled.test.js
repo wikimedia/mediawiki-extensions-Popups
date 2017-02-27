@@ -14,6 +14,14 @@ function createStubUserSettings( isEnabled ) {
 	};
 }
 
+function createStubExperiments( isSampled ) {
+	return {
+		getBucket: function () {
+			return isSampled ? 'A' : 'control';
+		}
+	};
+}
+
 QUnit.module( 'ext.popups#isEnabled (logged out)', {
 	setup: function () {
 		this.user = stubs.createStubUser( /* isAnon = */ true );
@@ -25,44 +33,73 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 		cases,
 		i, testCase,
 		userSettings,
+		experiments,
 		config = new Map();
 
 	cases = [
-		[ undefined, true, 'When the user hasn\'t enabled or disabled the feature' ],
-		[ false, false, 'When the user has disabled the feature' ],
-		[ true, true, 'When the user has enabled the feature' ]
+		[ undefined, true, true, 'When the user hasn\'t enabled or disabled' +
+		  ' the feature and the user is in the sample.' ],
+		[ undefined, false, false, 'When the user hasn\'t enabled or disabled' +
+		  ' the feature and the user is not in the sample.' ],
+		[ false, true, false, 'When the user has disabled the feature' +
+		  ' and the user is in the sample.'],
+		[ false, false, false, 'When the user has disabled the feature' +
+		  ' and the user is not in the sample.'],
+		[ true, true, true, 'When the user has enabled the feature' +
+		  ' and the user is in the sample.' ],
+		[ true, false, true, 'When the user has enabled the feature' +
+		  ' and the user is not in the sample.' ]
 	];
 
 	for ( i = 0; i < cases.length; i++ ) {
 		testCase = cases[ i ];
 		userSettings = createStubUserSettings( testCase[ 0 ] );
+		experiments = createStubExperiments( testCase[ 1 ] );
 
 		assert.equal(
-			isEnabled( user, userSettings, config ),
-			testCase[ 1 ],
-			testCase[ 2 ]
+			isEnabled( user, userSettings, config, experiments ),
+			testCase[ 2 ],
+			testCase[ 3 ]
 		);
 	}
 
 	// ---
 
 	config.set( 'wgPopupsBetaFeature', true );
+	experiments = createStubExperiments( true );
 
 	assert.notOk(
-		isEnabled( user, userSettings, config ),
-		'When Page Previews is enabled as a beta feature, then it\'s not enabled for logged out users.'
+		isEnabled( user, userSettings, config, experiments ),
+		'When Page Previews is enabled as a beta feature, then it\'s not' +
+			' enabled for logged out users when they are in the sample.'
+	);
+
+	experiments = createStubExperiments( false );
+
+	assert.notOk(
+		isEnabled( user, userSettings, config, experiments ),
+		'When Page Previews is enabled as a beta feature, then it\'s not' +
+			' enabled for logged out users when they are not in the sample.'
 	);
 } );
 
 QUnit.test( 'it should handle logged in users', function ( assert ) {
 	var user = stubs.createStubUser( /* isAnon = */ false ),
 		userSettings = createStubUserSettings( false ),
+		experiments = createStubExperiments( true ),
 		config = new Map();
 
 	config.set( 'wgPopupsShouldSendModuleToUser', true );
 
 	assert.ok(
-		isEnabled( user, userSettings, config ),
+		isEnabled( user, userSettings, config, experiments ),
 		'If the user is logged in and Page Previews has booted, then it\'s enabled.'
+	);
+
+	experiments = createStubExperiments( false );
+	assert.ok(
+		isEnabled( user, userSettings, config, experiments ),
+		'Anon sampling does not have an affect on logged in users.' +
+			'If the user is logged in and Page Previews has booted, then it\'s enabled.'
 	);
 } );

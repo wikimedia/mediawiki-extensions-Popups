@@ -158,6 +158,7 @@ class PopupsHooks {
 		$vars['wgPopupsSchemaSamplingRate'] = $conf->get( 'PopupsSchemaSamplingRate' );
 		$vars['wgPopupsBetaFeature'] = $conf->get( 'PopupsBetaFeature' );
 		$vars['wgPopupsAPIUseRESTBase'] = $conf->get( 'PopupsAPIUseRESTBase' );
+		$vars['wgPopupsAnonsEnabledSamplingRate'] = $conf->get( 'PopupsAnonsEnabledSamplingRate' );
 	}
 
 	/**

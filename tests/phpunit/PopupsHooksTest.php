@@ -193,10 +193,11 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			'wgPopupsSchemaSamplingRate' => 10,
 			'wgPopupsBetaFeature' => true,
 			'wgPopupsAPIUseRESTBase' => false,
+			'wgPopupsAnonsEnabledSamplingRate' => 0.9,
 		];
 		$this->setMwGlobals( $config );
 		PopupsHooks::onResourceLoaderGetConfigVars( $vars );
-		$this->assertCount( 4, $vars );
+		$this->assertCount( 5, $vars );
 
 		foreach ( $config as $key => $value ) {
 			$this->assertEquals(

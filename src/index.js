@@ -110,7 +110,7 @@ mw.requestIdleCallback( function () {
 	settingsDialog = createSettingsDialogRenderer();
 	schema = createSchema( mw.config, window );
 
-	isEnabled = createIsEnabled( mw.user, userSettings, mw.config );
+	isEnabled = createIsEnabled( mw.user, userSettings, mw.config, mw.experiments );
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) === true ) {
