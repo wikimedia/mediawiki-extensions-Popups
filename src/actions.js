@@ -2,6 +2,7 @@ var $ = jQuery,
 	mw = window.mediaWiki,
 	actions = {},
 	types = require( './actionTypes' ),
+	wait = require( './wait' ),
 	FETCH_START_DELAY = 50, // ms.
 
 	// The delay after which a FETCH_END action should be dispatched.
@@ -113,11 +114,7 @@ actions.fetch = function ( gateway, el, started ) {
 					0
 				);
 
-				// FIXME: This needs to reference a global because the tests are
-				// stubbing a global, so can't be required at the top at the moment.
-				// When the tests are moved to common.js we should find a different way
-				// of stubbing this wait
-				mw.popups.wait( delay )
+				wait( delay )
 					.then( function () {
 						dispatch( {
 							type: types.FETCH_END,
@@ -161,11 +158,7 @@ actions.linkDwell = function ( el, event, gateway, generateToken ) {
 			return;
 		}
 
-		// FIXME: This needs to reference a global because the tests are stubbing
-		// a global, so can't be required at the top at the moment. When the tests
-		// are moved to common.js we should find a different way of stubbing this
-		// wait
-		mw.popups.wait( FETCH_START_DELAY )
+		wait( FETCH_START_DELAY )
 			.then( function () {
 				var previewState = getState().preview;
 
@@ -193,11 +186,7 @@ actions.abandon = function () {
 			token: token
 		} ) );
 
-		// FIXME: This needs to reference a global because the tests are stubbing
-		// a global, so can't be required at the top at the moment. When the tests
-		// are moved to common.js we should find a different way of stubbing this
-		// wait
-		mw.popups.wait( ABANDON_END_DELAY )
+		wait( ABANDON_END_DELAY )
 			.then( function () {
 				dispatch( {
 					type: types.ABANDON_END,
