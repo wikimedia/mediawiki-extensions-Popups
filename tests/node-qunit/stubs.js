@@ -15,3 +15,22 @@ exports.createStubUser = function createStubUser( isAnon ) {
 		}
 	};
 };
+
+/**
+ * Creates a **minimal** stub that can be used in place of an `mw.Map`
+ * instance.
+ *
+ * @return {mw.Map}
+ */
+exports.createStubMap = function createStubMap() {
+	var m = new Map(); /* global Map */
+	m.get = function ( key, fallback ) {
+		fallback = arguments.length > 1 ? fallback : null;
+		if ( typeof key === 'string' ) {
+			return m.has( key ) ? Map.prototype.get.call( m, key ) : fallback;
+		}
+		// Invalid selection key
+		return null;
+	};
+	return m;
+};
