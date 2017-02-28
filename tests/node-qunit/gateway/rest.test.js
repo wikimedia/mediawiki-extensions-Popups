@@ -3,21 +3,34 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 	DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 512
 	},
-	SVG_ORIGINAL_IMAGE = {
-		source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/Ceiling_cat.svg',
-		width: 800,
-		height: 1000
-	},
 	RESTBASE_RESPONSE = {
 		title: 'Barack Obama',
 		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 		thumbnail: {
-			source: 'https://upload.wikimedia.org/someImage.jpg',
+			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/200px-President_Barack_Obama.jpg',
 			width: 200,
 			height: 250
 		},
 		originalimage: {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
+			width: 800,
+			height: 1000
+		},
+		lang: 'en',
+		dir: 'ltr',
+		timestamp: '2017-01-30T10:17:41Z',
+		description: '44th President of the United States of America'
+	},
+	SVG_RESTBASE_RESPONSE = {
+		title: 'Barack Obama',
+		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+		thumbnail: {
+			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/200px-President_Barack_Obama.svg',
+			width: 200,
+			height: 250
+		},
+		originalimage: {
+			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.svg',
 			width: 800,
 			height: 1000
 		},
@@ -41,9 +54,9 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 		'ltr',
 		'Barack Hussein Obama II born August 4, 1961) ...',
 		{
-			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg/512px-President_Barack_Obama.jpg',
-			width: 800,
-			height: 1000
+			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/512px-President_Barack_Obama.jpg',
+			width: 512,
+			height: 640
 		}
 	);
 
@@ -91,7 +104,7 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 
 	assert.equal(
 		model.thumbnail.source,
-		'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg/800px-President_Barack_Obama.jpg',
+		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/800px-President_Barack_Obama.jpg',
 		'If the requested thumbnail size is bigger than the originalimage width the originalimage width is used'
 	);
 } );
@@ -100,12 +113,11 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 	var model,
 		gateway = createRESTBaseGateway();
 
-	model = gateway.convertPageToModel( $.extend( {}, RESTBASE_RESPONSE, { originalimage: SVG_ORIGINAL_IMAGE } ),
-		2000 );
+	model = gateway.convertPageToModel( SVG_RESTBASE_RESPONSE, 2000 );
 
 	assert.equal(
 		model.thumbnail.source,
-		'https://upload.wikimedia.org/wikipedia/commons/8/8d/Ceiling_cat.svg/2000px-Ceiling_cat.svg',
+		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/2000px-President_Barack_Obama.svg',
 		'If the requested thumbnail size is bigger than the originalimage and its an SVG all is good'
 	);
 } );

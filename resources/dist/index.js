@@ -1476,7 +1476,6 @@
 	var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 		RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0',
 		createModel = __webpack_require__( 26 ).createModel,
-		$ = window.jQuery,
 		mw = window.mediaWiki;
 	
 	/**
@@ -1525,23 +1524,37 @@
 	}
 	
 	/**
-	 * Takes the original thumbnail and ensure it fits within limits of THUMBNAIL_SIZE
+	 * Resizes the thumbnail to the requested width, preserving its aspect ratio.
 	 *
-	 * @param {Object} original image
-	 * @param {int} thumbSize  expected thumbnail size
+	 * The requested width is limited to that of the original image unless the image
+	 * is an SVG, which can be scaled infinitely.
+	 *
+	 * This function is only intended to mangle the pretty thumbnail URLs used on
+	 * Wikimedia Commons. Once [an official thumb API](https://phabricator.wikimedia.org/T66214)
+	 * is fully specified and implemented, this function can be made more general.
+	 *
+	 * @param {Object} thumbnail The thumbnail image
+	 * @param {Object} original The original image
+	 * @param {int} thumbSize The requested size
 	 * @returns {Object}
 	 */
-	function generateThumbnailData( original, thumbSize ) {
-		var parts = original.source.split( '/' ),
-			filename = parts[ parts.length - 1 ];
+	function generateThumbnailData( thumbnail, original, thumbSize ) {
+		var parts = thumbnail.source.split( '/' ),
+			filename = parts[ parts.length - 2 ];
 	
 		if ( thumbSize > original.width && filename.indexOf( '.svg' ) === -1 ) {
 			thumbSize = original.width;
 		}
 	
-		return $.extend( {}, original, {
-			source: parts.join( '/' ) + '/' + thumbSize + 'px-' + filename
-		} );
+		parts[ parts.length - 1 ] = thumbSize + 'px-' + filename;
+	
+		return {
+			source: parts.join( '/' ),
+	
+			// Scale the thumbnail's dimensions, preserving its aspect ratio.
+			width: thumbSize,
+			height: ( thumbSize / thumbnail.width ) * thumbnail.height
+		};
 	}
 	
 	/**
@@ -1558,7 +1571,7 @@
 			page.lang,
 			page.dir,
 			page.extract,
-			page.originalimage ? generateThumbnailData( page.originalimage, thumbSize ) : undefined
+			page.thumbnail ? generateThumbnailData( page.thumbnail, page.originalimage, thumbSize ) : undefined
 		);
 	}
 	
