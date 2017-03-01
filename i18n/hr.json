@@ -6,14 +6,18 @@
 	},
 	"popups-message": "Sažetak u lebdećem prozorčiću",
 	"popups-desc": "Prikazuje sažet sadržaj stranice prelaskom miša preko poveznice.",
-	"popups-last-edited": "Zadnja izmjena $1",
 	"popups-settings-title": "Pregled stranice",
 	"popups-settings-description": "Ovaj alat omogućava pregled plavih poveznica i izvora",
 	"popups-settings-option-simple": "Jednostavno",
 	"popups-settings-option-simple-description": "Pregled uvodne rečenice i slike na stranici. Preporučljivo za čitatelje.",
+	"popups-settings-option-advanced": "Napredno",
 	"popups-settings-option-off": "Onemogući preglede",
-	"popups-settings-option-off-description": "Možete promijeniti ovu postavku klikom na poveznicu na dnu stranice.",
 	"popups-settings-save": "Spremi",
+	"popups-settings-help-ok": "Gotovo",
 	"popups-settings-cancel": "Odustani",
-	"popups-settings-enable": "Omogući preglede"
+	"popups-settings-enable": "Omogući preglede",
+	"popups-preview-no-preview": "Izgleda da ne postoji pretpregled ove stranice",
+	"popups-preview-footer-read": "Pročitaj",
+	"popups-prefs-optin-enabled-label": "Omogući",
+	"popups-prefs-optin-disabled-label": "Onemogući"
 }
