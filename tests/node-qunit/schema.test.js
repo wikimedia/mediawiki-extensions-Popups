@@ -1,13 +1,6 @@
 var mw = mediaWiki,
-	createSchema = require( '../../src/schema' );
-
-function createStubMap() {
-	var m = new Map(); /* global Map */
-	m.get = function ( key, def ) {
-		return Map.prototype.get.call( m, key ) || def;
-	};
-	return m;
-}
+	createSchema = require( '../../src/schema' ),
+	createStubMap = require( './stubs' ).createStubMap;
 
 QUnit.module( 'ext.popups/schema', {
 	setup: function () {
