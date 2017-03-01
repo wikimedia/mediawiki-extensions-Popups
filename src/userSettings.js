@@ -45,7 +45,9 @@ module.exports = function ( storage ) {
 		 * @return {Boolean}
 		 */
 		hasIsEnabled: function () {
-			return storage.get( IS_ENABLED_KEY, undefined ) !== undefined;
+			var value = storage.get( IS_ENABLED_KEY );
+
+			return Boolean( value ) !== false;
 		},
 
 		/**

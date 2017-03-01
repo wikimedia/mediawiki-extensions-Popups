@@ -9,11 +9,7 @@
 		}
 	} );
 
-	QUnit.test( '#getIsEnabled should return true if the storage is empty', 1, function ( assert ) {
-		assert.ok( this.userSettings.getIsEnabled() );
-	} );
-
-	QUnit.test( '#getIsEnabled should return false if Link Previews have been disabled', 2, function ( assert ) {
+	QUnit.test( '#getIsEnabled should return false if Page Previews have been disabled', 2, function ( assert ) {
 		this.userSettings.setIsEnabled( false );
 
 		assert.notOk( this.userSettings.getIsEnabled() );
@@ -28,8 +24,13 @@
 		);
 	} );
 
-	QUnit.test( '#hasIsEnabled', 2, function ( assert ) {
-		assert.notOk( this.userSettings.hasIsEnabled() );
+	QUnit.test( '#hasIsEnabled', 3, function ( assert ) {
+		var getStub;
+
+		assert.notOk(
+			this.userSettings.hasIsEnabled(),
+			'#hasIsEnabled should return false if the storage is empty.'
+		);
 
 		// ---
 
@@ -39,6 +40,17 @@
 			this.userSettings.hasIsEnabled(),
 			'#hasIsEnabled should return true even if "isEnabled" has been set to falsy.'
 		);
+
+		// ---
+
+		getStub = this.sandbox.stub( this.storage, 'get' ).returns( false );
+
+		assert.notOk(
+			this.userSettings.hasIsEnabled(),
+			'#hasIsEnabled should return false if the storage is disabled.'
+		);
+
+		getStub.restore();
 	} );
 
 	QUnit.test( '#getPreviewCount should return the count as a number', function ( assert ) {
