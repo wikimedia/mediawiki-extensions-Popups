@@ -5,7 +5,7 @@
     "build": "webpack",
     "test": "grunt lint && npm run check-built-assets && npm run test:node",
     "doc": "jsduck",
-    "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -qr test-build resources/dist && rm -rf test-build",
+    "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -r test-build resources/dist && rm -rf test-build",
     "test:node": "mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js | tap-dot"
   },
   "devDependencies": {
