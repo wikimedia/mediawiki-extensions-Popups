@@ -1,6 +1,13 @@
 ( function ( mw, $ ) {
 
-	QUnit.module( 'ext.popups/processLinks', {
+	/**
+	 * processLinks QUnit tests remain integration tests given their dependency
+	 * on a running MediaWiki instance with properly configured variables for
+	 * 'wgContentNamespaces', 'wgArticlePath', and other configuration variables
+	 * accessed by `mw.Title`.
+	 */
+
+	QUnit.module( 'ext.popups/processLinks @integration', {
 		setup: function () {
 			this.config = new mw.Map();
 			this.config.set( {
