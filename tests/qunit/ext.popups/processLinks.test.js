@@ -12,7 +12,7 @@
 			this.config = new mw.Map();
 			this.config.set( {
 				wgArticlePath: '/wiki/$1',
-				wgContentNamespaces: [0]
+				wgContentNamespaces: [ 0 ]
 			} );
 
 			this.blacklist = [
@@ -30,15 +30,15 @@
 	QUnit.test( 'it should only return eligible links', 1, function ( assert ) {
 		var $container = $( '<div>' ),
 			$cancelLink = $( '<span>', {
-				class: 'cancelLink'
+				'class': 'cancelLink'
 			} );
 
 		// Add links that should be filtered.
-		$.each( ['extiw', 'new', 'external'], function ( i, className ) {
+		$.each( [ 'extiw', 'new', 'external' ], function ( i, className ) {
 			$( '<a>', {
 				text: 'link with tooltip',
 				title: 'link title',
-				class: className,
+				'class': className,
 				href: '/wiki/Popups'
 			} ).appendTo( $container );
 		} );
@@ -101,16 +101,15 @@
 			[ '/w/index.php?title=%E6%B8%AC%E8%A9%A6', '測試' ],
 			[ '/w/index.php?oldid=1', undefined ],
 			[ '/Foo', undefined ],
-			/*jshint  -W107 */
+			// eslint-disable-next-line no-script-url
 			[ 'javascript:void(0);', undefined ],
-			/*jshint +W107 */
 
 			[ 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', undefined ]
 		];
 
 		$.each( cases, function ( _, testCase ) {
 			$( '<a>', {
-				href: testCase[0],
+				href: testCase[ 0 ],
 				title: 'link title'
 			} ).appendTo( $container );
 		} );
@@ -119,7 +118,7 @@
 
 		// Now let's make some assertions!
 		cases = $.grep( cases, function ( testCase ) {
-			return testCase[1];
+			return testCase[ 1 ];
 		} );
 
 		QUnit.expect( cases.length + 1 );
@@ -133,7 +132,7 @@
 		$.each( cases, function ( i, testCase ) {
 			assert.strictEqual(
 				$processedLinks.eq( i ).data( 'page-previews-title' ),
-				testCase[1]
+				testCase[ 1 ]
 			);
 		} );
 	} );
