@@ -208,8 +208,6 @@
 		} );
 	} );
 	
-	// FIXME: Currently needs to be exposed for testing purposes
-	mw.popups = __webpack_require__( 52 );
 	window.Redux = Redux;
 	window.ReduxThunk = ReduxThunk;
 
@@ -1861,8 +1859,8 @@
 			 * Gets whether or not the user has previously enabled Page Previews.
 			 *
 			 * N.B. that if the user hasn't previously enabled or disabled Page
-			 * Previews, i.e. mw.popups.userSettings.setIsEnabled(true), then they
-			 * are treated as if they have enabled them.
+			 * Previews, i.e. userSettings.setIsEnabled(true), then they are treated as
+			 * if they have enabled them.
 			 *
 			 * @return {Boolean}
 			 */
@@ -2284,8 +2282,7 @@
 	 * the sampling rate defined by `wgPopupsAnonsEnabledSamplingRate`.
 	 *
 	 * @param {mw.user} user The `mw.user` singleton instance
-	 * @param {Object} userSettings An object returned by
-	 *  `mw.popups.createUserSettings`
+	 * @param {Object} userSettings An object returned by `userSettings.js`
 	 * @param {mw.Map} config
 	 * @param {mw.experiments} experiments The `mw.experiments` singleton instance
 	 *
@@ -2403,7 +2400,7 @@
 	 *
 	 * @return {jQuery}
 	 */
-	module.exports = function ( $container, blacklist, config ) {
+	function processLinks( $container, blacklist, config ) {
 		var contentNamespaces;
 	
 		contentNamespaces = config.get( 'wgContentNamespaces' );
@@ -2425,7 +2422,14 @@
 					return true;
 				}
 			} );
-	};
+	}
+	
+	module.exports = processLinks;
+	
+	// Add processLinks to a global namespace to be tested in
+	// tests/qunit/ext.popups/processLinks.test.js
+	mw.popups = mw.popups || {};
+	mw.popups.processLinks = processLinks;
 
 
 /***/ },
@@ -3442,7 +3446,7 @@
 	 * * Enabled state: If the previews are enabled or disabled.
 	 * * Preview count: When the user dwells on a link for long enough that
 	 *   a preview is shown, then their preview count will be incremented (see
-	 *   `mw.popups.reducers.eventLogging`, and is persisted to local storage.
+	 *   `reducers/eventLogging.js`, and is persisted to local storage.
 	 *
 	 * @param {ext.popups.UserSettings} userSettings
 	 * @return {ext.popups.ChangeListener}
@@ -3540,7 +3544,7 @@
 	 * [`mw.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
 	 * so as not to impact latency-critical events.
 	 *
-	 * @param {Boolean} isEnabled See `mw.popups.isEnabled`
+	 * @param {Boolean} isEnabled See `isEnabled.js`
 	 * @param {mw.user} user
 	 * @param {ext.popups.UserSettings} userSettings
 	 * @param {Function} generateToken
@@ -3723,7 +3727,7 @@
 	/**
 	 * Represents a preview being shown to the user.
 	 *
-	 * This action is dispatched by the `mw.popups.changeListeners.render` change
+	 * This action is dispatched by the `./changeListeners/render.js` change
 	 * listener.
 	 *
 	 * @return {Object}
@@ -3783,8 +3787,8 @@
 	};
 	
 	/**
-	 * Represents the queued event being logged
-	 * `mw.popups.changeListeners.eventLogging` change listener.
+	 * Represents the queued event being logged `changeListeners/eventLogging.js`
+	 * change listener.
 	 *
 	 * @return {Object}
 	 */
@@ -4264,200 +4268,6 @@
 			default:
 				return state;
 		}
-	};
-
-
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-		actions: __webpack_require__( 44 ),
-		actionTypes: __webpack_require__( 45 ),
-		changeListeners: __webpack_require__( 37 ),
-		counts: __webpack_require__( 49 ),
-		createPreviewBehavior: __webpack_require__( 29 ),
-		createUserSettings: __webpack_require__( 28 ),
-		createSchema: __webpack_require__( 30 ),
-		createSettingsDialogRenderer: __webpack_require__( 31 ),
-		gateway: __webpack_require__( 53 ),
-		isEnabled: __webpack_require__( 33 ),
-		renderer: __webpack_require__( 35 ),
-		preview: __webpack_require__( 54 ),
-		processLinks: __webpack_require__( 34 ),
-		registerChangeListener: __webpack_require__( 32 ),
-		reducers: __webpack_require__( 46 ),
-		wait: __webpack_require__( 36 )
-	};
-
-
-/***/ },
-/* 53 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Interface for API gateway that fetches page summary
-	 *
-	 * @interface ext.popups.Gateway
-	 */
-	
-	/**
-	 * Returns a preview model fetched from the api
-	 * @function
-	 * @name ext.popups.Gateway#getPageSummary
-	 * @param {String} title Page title we're querying
-	 * @returns {jQuery.Promise} that resolves with {ext.popups.PreviewModel}
-	 * if the request is successful and the response is not empty; otherwise
-	 * it rejects.
-	 */
-	module.exports = {
-		createMediaWikiApiGateway: __webpack_require__( 27 ),
-		createRESTBaseGateway: __webpack_require__( 25 )
-	};
-
-
-/***/ },
-/* 54 */
-/***/ function(module, exports) {
-
-	var createModel,
-		TYPE_GENERIC = 'generic',
-		TYPE_PAGE = 'page';
-	
-	/**
-	 * @typedef {Object} ext.popups.PreviewModel
-	 * @property {String} title
-	 * @property {String} url The canonical URL of the page being previewed
-	 * @property {String} languageCode
-	 * @property {String} languageDirection Either "ltr" or "rtl"
-	 * @property {String|undefined} extract `undefined` if the extract isn't
-	 *  viable, e.g. if it's empty after having ellipsis and parentheticals
-	 *  removed
-	 * @property {String} type Either "EXTRACT" or "GENERIC"
-	 * @property {Object|undefined} thumbnail
-	 */
-	
-	/**
-	 * Creates a preview model.
-	 *
-	 * @param {String} title
-	 * @param {String} url The canonical URL of the page being previewed
-	 * @param {String} languageCode
-	 * @param {String} languageDirection Either "ltr" or "rtl"
-	 * @param {String} extract
-	 * @param {Object|undefined} thumbnail
-	 * @return {ext.popups.PreviewModel}
-	 */
-	createModel = function (
-		title,
-		url,
-		languageCode,
-		languageDirection,
-		extract,
-		thumbnail
-	) {
-		var processedExtract = processExtract( extract ),
-			result = {
-				title: title,
-				url: url,
-				languageCode: languageCode,
-				languageDirection: languageDirection,
-				extract: processedExtract,
-				type: processedExtract === undefined ? TYPE_GENERIC : TYPE_PAGE,
-				thumbnail: thumbnail
-			};
-	
-		return result;
-	};
-	
-	/**
-	 * Processes the extract returned by the TextExtracts MediaWiki API query
-	 * module.
-	 *
-	 * @param {String|undefined} extract
-	 * @return {String|undefined}
-	 */
-	function processExtract( extract ) {
-		var result;
-	
-		if ( extract === undefined || extract === '' ) {
-			return undefined;
-		}
-	
-		result = extract;
-		result = removeParentheticals( result );
-		result = removeEllipsis( result );
-	
-		return result.length > 0 ? result : undefined;
-	}
-	
-	/**
-	 * Removes the trailing ellipsis from the extract, if it's there.
-	 *
-	 * This function was extracted from
-	 * `mw.popups.renderer.article#removeEllipsis`.
-	 *
-	 * @param {String} extract
-	 * @return {String}
-	 */
-	function removeEllipsis( extract ) {
-		return extract.replace( /\.\.\.$/, '' );
-	}
-	
-	/**
-	 * Removes parentheticals from the extract.
-	 *
-	 * If the parenthesis are unbalanced or out of order, then the extract is
-	 * returned without further processing.
-	 *
-	 * This function was extracted from
-	 * `mw.popups.renderer.article#removeParensFromText`.
-	 *
-	 * @param {String} extract
-	 * @return {String}
-	 */
-	function removeParentheticals( extract ) {
-		var
-			ch,
-			result = '',
-			level = 0,
-			i = 0;
-	
-		for ( i; i < extract.length; i++ ) {
-			ch = extract.charAt( i );
-	
-			if ( ch === ')' && level === 0 ) {
-				return extract;
-			}
-			if ( ch === '(' ) {
-				level++;
-				continue;
-			} else if ( ch === ')' ) {
-				level--;
-				continue;
-			}
-			if ( level === 0 ) {
-				// Remove leading spaces before brackets
-				if ( ch === ' ' && extract.charAt( i + 1 ) === '(' ) {
-					continue;
-				}
-				result += ch;
-			}
-		}
-	
-		return ( level === 0 ) ? result : extract;
-	}
-	
-	module.exports = {
-		/**
-		* @constant {String}
-		*/
-		TYPE_GENERIC: TYPE_GENERIC,
-		/**
-		* @constant {String}
-		*/
-		TYPE_PAGE: TYPE_PAGE,
-		createModel: createModel
 	};
 
 

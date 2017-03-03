@@ -162,7 +162,5 @@ mw.requestIdleCallback( function () {
 	} );
 } );
 
-// FIXME: Currently needs to be exposed for testing purposes
-mw.popups = require( './popups' );
 window.Redux = Redux;
 window.ReduxThunk = ReduxThunk;

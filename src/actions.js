@@ -41,7 +41,7 @@ function timedAction( baseAction ) {
  * [`mw.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
  * so as not to impact latency-critical events.
  *
- * @param {Boolean} isEnabled See `mw.popups.isEnabled`
+ * @param {Boolean} isEnabled See `isEnabled.js`
  * @param {mw.user} user
  * @param {ext.popups.UserSettings} userSettings
  * @param {Function} generateToken
@@ -224,7 +224,7 @@ actions.previewDwell = function () {
 /**
  * Represents a preview being shown to the user.
  *
- * This action is dispatched by the `mw.popups.changeListeners.render` change
+ * This action is dispatched by the `./changeListeners/render.js` change
  * listener.
  *
  * @return {Object}
@@ -284,8 +284,8 @@ actions.saveSettings = function ( enabled ) {
 };
 
 /**
- * Represents the queued event being logged
- * `mw.popups.changeListeners.eventLogging` change listener.
+ * Represents the queued event being logged `changeListeners/eventLogging.js`
+ * change listener.
  *
  * @return {Object}
  */

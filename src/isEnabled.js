@@ -14,8 +14,7 @@
  * the sampling rate defined by `wgPopupsAnonsEnabledSamplingRate`.
  *
  * @param {mw.user} user The `mw.user` singleton instance
- * @param {Object} userSettings An object returned by
- *  `mw.popups.createUserSettings`
+ * @param {Object} userSettings An object returned by `userSettings.js`
  * @param {mw.Map} config
  * @param {mw.experiments} experiments The `mw.experiments` singleton instance
  *

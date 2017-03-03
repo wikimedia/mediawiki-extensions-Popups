@@ -9,7 +9,7 @@
  * * Enabled state: If the previews are enabled or disabled.
  * * Preview count: When the user dwells on a link for long enough that
  *   a preview is shown, then their preview count will be incremented (see
- *   `mw.popups.reducers.eventLogging`, and is persisted to local storage.
+ *   `reducers/eventLogging.js`, and is persisted to local storage.
  *
  * @param {ext.popups.UserSettings} userSettings
  * @return {ext.popups.ChangeListener}

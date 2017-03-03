@@ -63,7 +63,7 @@ function getTitle( href, config ) {
  *
  * @return {jQuery}
  */
-module.exports = function ( $container, blacklist, config ) {
+function processLinks( $container, blacklist, config ) {
 	var contentNamespaces;
 
 	contentNamespaces = config.get( 'wgContentNamespaces' );
@@ -85,4 +85,11 @@ module.exports = function ( $container, blacklist, config ) {
 				return true;
 			}
 		} );
-};
+}
+
+module.exports = processLinks;
+
+// Add processLinks to a global namespace to be tested in
+// tests/qunit/ext.popups/processLinks.test.js
+mw.popups = mw.popups || {};
+mw.popups.processLinks = processLinks;
