@@ -31,3 +31,5 @@ After an `npm install`:
     * `npm install -g nodemon`
     * Example running linting and node unit tests:
       * `nodemon -w src/ --exec "grunt lint:all && npm run test:node"`
+  * Get code coverage report with `npm run coverage`
+    * Reports printed in the `coverage/` folder
