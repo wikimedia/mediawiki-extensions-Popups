@@ -181,7 +181,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->assertCount( 2, $testModules );
 		$this->assertEquals( 'notEmpty', $testModules[ 'someNotEmptyValue' ] );
 		$this->assertArrayHasKey( 'qunit', $testModules, 'ResourceLoader expects qunit test modules' );
-		$this->assertCount( 2, $testModules[ 'qunit' ], 'ResourceLoader expects 2 test modules. ' );
+		$this->assertCount( 1, $testModules[ 'qunit' ], 'ResourceLoader expects 1 test module. ' );
 	}
 
 	/**
