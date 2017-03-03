@@ -104,6 +104,7 @@
 				"popups-preview-footer-read"
 			],
 			"dependencies": [
+				"es5-shim",
 				"ext.popups.images",
 				"mediawiki.experiments",
 				"mediawiki.storage",
