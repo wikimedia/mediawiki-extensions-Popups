@@ -16,5 +16,7 @@
 	"popups-settings-option-off": "გათიშვა",
 	"popups-settings-save": "შენახვა",
 	"popups-settings-help-ok": "გაკეთდა",
-	"popups-settings-cancel": "გაუქმება"
+	"popups-settings-cancel": "გაუქმება",
+	"popups-preview-no-preview": "გვერდის წინასწარი გადახედვა მიუწვდომელია",
+	"popups-preview-footer-read": "კითხვა"
 }
