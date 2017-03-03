@@ -36,7 +36,7 @@ function createPokeyMasks() {
 						'<polygon points="0 8, 174 8, 182 0, 190 8, 1000 8, 1000 1000, 0 1000"/>' +
 					'</clippath>' +
 					'<clippath id="mwe-popups-landscape-mask-flip">' +
-						'<polygon points="0 0, 1000 0, 1000 243, 190 243, 182 250, 174 243, 0 243"/>' +
+						'<polygon points="0 0, 1000 0, 1000 242, 190 242, 182 250, 174 242, 0 242"/>' +
 					'</clippath>' +
 				'</defs>' +
 			'</svg>'
