@@ -21,5 +21,11 @@ module.exports = {
 			redux: path.resolve(__dirname, 'node_modules/redux/dist/redux.js'),
 			'redux-thunk': path.resolve(__dirname, 'node_modules/redux-thunk/dist/redux-thunk.js')
 		}
-	}
+	},
+	plugins: [
+		// To generate identifiers that are preserved over builds, webpack supplies
+		// the NamedModulesPlugin (generates comments with file names on bundle)
+		// https://webpack.js.org/guides/caching/#deterministic-hashes
+		new webpack.NamedModulesPlugin()
+	]
 };

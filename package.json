@@ -26,6 +26,6 @@
     "redux-thunk": "2.2.0",
     "stylelint-config-wikimedia": "0.3.0",
     "tap-dot": "^1.0.5",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1"
   }
 }
