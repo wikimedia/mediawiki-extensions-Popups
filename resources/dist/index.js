@@ -1761,6 +1761,7 @@
 	
 				piprop: 'thumbnail',
 				pithumbsize: config.THUMBNAIL_SIZE,
+				pilicense: 'any',
 				rvprop: 'timestamp',
 				inprop: 'url',
 				titles: title,
