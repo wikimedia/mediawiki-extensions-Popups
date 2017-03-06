@@ -109,8 +109,13 @@
 	}
 
 	.mwe-popups-extract {
-		margin: 0;
-		padding: 16px;
+
+		// T156800, T139297: "Pad" the extract horizontally using a margin so the
+		// SVG element is forced not to occlude the truncating pseudo-element and
+		// the settings cog in IE9-11.
+		padding: 16px 0;
+		margin: 0 16px;
+
 		display: block;
 		color: #000;
 		text-decoration: none;
