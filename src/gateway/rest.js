@@ -65,10 +65,20 @@ function createRESTBaseGateway( ajax, config ) {
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
 	var parts = thumbnail.source.split( '/' ),
-		filename = parts[ parts.length - 2 ];
+		lastPart = parts[ parts.length - 1 ],
+		filename;
 
-	if ( thumbSize > original.width && filename.indexOf( '.svg' ) === -1 ) {
-		thumbSize = original.width;
+	// The last part, the thumbnail's full filename, is in the following form:
+	// ${width}px-${filename}.${extension}. Splitting the thumbnail's filename
+	// makes this function resilient to the thumbnail not having the same
+	// extension as the original image, which is definitely the case for SVG's
+	// where the thumbnail's extension is .svg.png.
+	filename = lastPart.substr( lastPart.indexOf( 'px-' ) + 3 );
+
+	// If the image isn't an SVG then it shouldn't be scaled past its original
+	// dimensions.
+	if ( thumbSize >= original.width && filename.indexOf( '.svg' ) === -1 ) {
+		return original;
 	}
 
 	parts[ parts.length - 1 ] = thumbSize + 'px-' + filename;

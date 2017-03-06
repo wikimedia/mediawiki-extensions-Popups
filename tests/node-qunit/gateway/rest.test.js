@@ -25,7 +25,7 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 		title: 'Barack Obama',
 		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 		thumbnail: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/200px-President_Barack_Obama.svg',
+			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/200px-President_Barack_Obama.svg.png',
 			width: 200,
 			height: 250
 		},
@@ -46,6 +46,33 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 		dir: 'ltr',
 		timestamp: '2017-01-30T10:17:41Z',
 		description: '44th President of the United States of America'
+	},
+
+	// Note well that the thumbnail and originalimage properties are
+	// identical. This can be the case where RESTBase requests a thumbnail at
+	// 320px width but the original image isn't that wide, in which instance
+	// PageImages - and therefore RESTBase - return the original image as the
+	// thumbnail.
+	//
+	// See https://phabricator.wikimedia.org/T158632#3071104 onward for additional
+	// context.
+	RESTBASE_RESPONSE_WITH_SMALL_IMAGE = {
+		title: "PreviewsNonFreeImage/sandbox",
+		extract: "Hello, I am the non-free image and parenthetical page (YOU CAN'T SEE THIS). My preview should contain an image that is not free. My preview should contain a parenthetical you cannot see..",
+		thumbnail: {
+			source: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png",
+			width: 300,
+			height:126,
+			original: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png"
+		},
+		originalimage: {
+			source: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png",
+			width: 300,
+			height: 126
+		},
+		lang: "en",
+		dir: "ltr",
+		timestamp: "2017-02-17T22:29:56Z"
 	},
 	RESTBASE_RESPONSE_PREVIEW_MODEL = createModel(
 		'Barack Obama',
@@ -98,14 +125,51 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a model '
 
 QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) {
 	var model,
-		gateway = createRESTBaseGateway();
+		gateway = createRESTBaseGateway(),
+		response;
 
 	model = gateway.convertPageToModel( RESTBASE_RESPONSE, 2000 );
 
-	assert.equal(
+	assert.deepEqual(
+		model.thumbnail,
+		RESTBASE_RESPONSE.originalimage,
+		'If the requested thumbnail size is bigger than that of the orignal, then use the original.'
+	);
+
+	// ---
+	model = gateway.convertPageToModel( RESTBASE_RESPONSE, RESTBASE_RESPONSE.originalimage.width );
+
+	assert.deepEqual(
+		model.thumbnail,
+		RESTBASE_RESPONSE.originalimage,
+		'If the requested thumbnail size is the same as that of the original, then use the original.'
+	);
+
+	// ---
+	model = gateway.convertPageToModel( RESTBASE_RESPONSE_WITH_SMALL_IMAGE, 320 );
+
+	assert.deepEqual(
+		model.thumbnail,
+		RESTBASE_RESPONSE_WITH_SMALL_IMAGE.originalimage,
+		'If the requested thumbnail can\'t be generated because the orignal is too small, then use the original.'
+	);
+} );
+
+QUnit.test( 'RESTBase gateway handles awkwardly thumbnails', function ( assert ) {
+	var gateway = createRESTBaseGateway(),
+		response,
+		model;
+
+	response = Object.assign( {}, RESTBASE_RESPONSE );
+	response.thumbnail = Object.assign( {}, RESTBASE_RESPONSE.thumbnail );
+	response.thumbnail.source = 'http://foo.bar/baz/Qux-320px-Quux.png/800px-Qux-320px-Quux.png';
+
+	model = gateway.convertPageToModel( response, 500 );
+
+	assert.deepEqual(
 		model.thumbnail.source,
-		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/800px-President_Barack_Obama.jpg',
-		'If the requested thumbnail size is bigger than the originalimage width the originalimage width is used'
+		'http://foo.bar/baz/Qux-320px-Quux.png/500px-Qux-320px-Quux.png',
+		'If the requested thumbnail size is the same as that of the original, then use the original.'
 	);
 } );
 
@@ -117,8 +181,8 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 
 	assert.equal(
 		model.thumbnail.source,
-		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/2000px-President_Barack_Obama.svg',
-		'If the requested thumbnail size is bigger than the originalimage and its an SVG all is good'
+		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/2000px-President_Barack_Obama.svg.png',
+		'If the requested thumbnail is for an SVG, then it\'s always scaled.'
 	);
 } );
 
