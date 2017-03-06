@@ -1,4 +1,4 @@
-var createModel = require( '../../../src/preview' ).createModel,
+var createModel = require( '../../../src/preview/model' ).createModel,
 	createMediaWikiApiGateway = require( '../../../src/gateway/mediawiki' ),
 	DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 300
