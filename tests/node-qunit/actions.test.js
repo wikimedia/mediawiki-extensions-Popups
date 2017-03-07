@@ -281,7 +281,8 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 		this.dispatch.calledWith( {
 			type: 'FETCH_START',
 			el: this.el,
-			title: 'Foo'
+			title: 'Foo',
+			timestamp: this.now
 		} ),
 		'It dispatches the FETCH_START action immediately.'
 	);
@@ -308,6 +309,7 @@ QUnit.test( 'it should delay dispatching the FETCH_END action', function ( asser
 		done();
 	} );
 
+
 	this.waitPromise.then( function () {
 		// Let the wait.then execute to run the dispatch before asserting
 		setTimeout( function () {
@@ -315,7 +317,9 @@ QUnit.test( 'it should delay dispatching the FETCH_END action', function ( asser
 			assert.deepEqual( that.dispatch.getCall( 1 ).args[ 0 ], {
 				type: 'FETCH_END',
 				el: that.el,
-				result: result
+				result: result,
+				delay: 250,
+				timestamp: 250
 			} );
 
 			done();

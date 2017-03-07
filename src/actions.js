@@ -90,11 +90,11 @@ actions.fetch = function ( gateway, el, started ) {
 	var title = $( el ).data( 'page-previews-title' );
 
 	return function ( dispatch ) {
-		dispatch( {
+		dispatch( timedAction( {
 			type: types.FETCH_START,
 			el: el,
 			title: title
-		} );
+		} ) );
 
 		gateway.getPageSummary( title )
 			.fail( function () {
@@ -116,11 +116,12 @@ actions.fetch = function ( gateway, el, started ) {
 
 				wait( delay )
 					.then( function () {
-						dispatch( {
+						dispatch( timedAction( {
 							type: types.FETCH_END,
 							el: el,
-							result: result
-						} );
+							result: result,
+							delay: delay
+						} ) );
 					} );
 			} );
 	};
@@ -295,4 +296,15 @@ actions.eventLogged = function () {
 	};
 };
 
+/**
+ * Represents the queued statsv event being logged.
+ * See `mw.popups.changeListeners.statsv` change listener.
+ *
+ * @return {Object}
+ */
+actions.statsvLogged = function () {
+	return {
+		type: types.STATSV_LOGGED
+	};
+};
 module.exports = actions;

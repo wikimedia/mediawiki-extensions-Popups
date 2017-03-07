@@ -4,5 +4,6 @@ module.exports = {
 	linkTitle: require( './linkTitle' ),
 	render: require( './render' ),
 	settings: require( './settings' ),
+	statsv: require( './statsv' ),
 	syncUserSettings: require( './syncUserSettings' )
 };

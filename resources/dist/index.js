@@ -1134,7 +1134,8 @@ module.exports = {
 	SETTINGS_SHOW: 'SETTINGS_SHOW',
 	SETTINGS_HIDE: 'SETTINGS_HIDE',
 	SETTINGS_CHANGE: 'SETTINGS_CHANGE',
-	EVENT_LOGGED: 'EVENT_LOGGED'
+	EVENT_LOGGED: 'EVENT_LOGGED',
+	STATSV_LOGGED: 'STATSV_LOGGED'
 };
 
 
@@ -1235,11 +1236,11 @@ actions.fetch = function ( gateway, el, started ) {
 	var title = $( el ).data( 'page-previews-title' );
 
 	return function ( dispatch ) {
-		dispatch( {
+		dispatch( timedAction( {
 			type: types.FETCH_START,
 			el: el,
 			title: title
-		} );
+		} ) );
 
 		gateway.getPageSummary( title )
 			.fail( function () {
@@ -1261,11 +1262,12 @@ actions.fetch = function ( gateway, el, started ) {
 
 				wait( delay )
 					.then( function () {
-						dispatch( {
+						dispatch( timedAction( {
 							type: types.FETCH_END,
 							el: el,
-							result: result
-						} );
+							result: result,
+							delay: delay
+						} ) );
 					} );
 			} );
 	};
@@ -1440,6 +1442,17 @@ actions.eventLogged = function () {
 	};
 };
 
+/**
+ * Represents the queued statsv event being logged.
+ * See `mw.popups.changeListeners.statsv` change listener.
+ *
+ * @return {Object}
+ */
+actions.statsvLogged = function () {
+	return {
+		type: types.STATSV_LOGGED
+	};
+};
 module.exports = actions;
 
 
@@ -1612,6 +1625,7 @@ module.exports = {
 	linkTitle: __webpack_require__( "./src/changeListeners/linkTitle.js" ),
 	render: __webpack_require__( "./src/changeListeners/render.js" ),
 	settings: __webpack_require__( "./src/changeListeners/settings.js" ),
+	statsv: __webpack_require__( "./src/changeListeners/statsv.js" ),
 	syncUserSettings: __webpack_require__( "./src/changeListeners/syncUserSettings.js" )
 };
 
@@ -1764,6 +1778,36 @@ module.exports = function ( boundActions, render ) {
 		// Update help visibility
 		if ( prevState.settings.showHelp !== state.settings.showHelp ) {
 			settings.toggleHelp( state.settings.showHelp );
+		}
+	};
+};
+
+
+/***/ }),
+
+/***/ "./src/changeListeners/statsv.js":
+/***/ (function(module, exports) {
+
+/**
+ * Creates an instance of the statsv change listener.
+ *
+ * The listener will log events to a statsv endpoint by delegating the work
+ * to the `ext.wikimediaEvents` module which is added to the output page
+ * by the WikimediaEvents extension.
+ *
+ * @param {Object} boundActions
+ * @param {bool} isLoggingEnabled
+ * @param {Function} track mw.track
+ * @return {ext.popups.ChangeListener}
+ */
+module.exports = function ( boundActions, isLoggingEnabled, track ) {
+	return function ( _, state ) {
+		var statsv = state.statsv;
+
+		if ( isLoggingEnabled && statsv.action ) {
+			track( statsv.action, statsv.data );
+
+			boundActions.statsvLogged();
 		}
 	};
 };
@@ -2184,6 +2228,7 @@ var mw = mediaWiki,
 	createIsEnabled = __webpack_require__( "./src/isEnabled.js" ),
 	processLinks = __webpack_require__( "./src/processLinks.js" ),
 	renderer = __webpack_require__( "./src/renderer.js" ),
+	statsvInstrumentation = __webpack_require__( "./src/statsvInstrumentation.js" ),
 
 	changeListeners = __webpack_require__( "./src/changeListeners/index.js" ),
 	actions = __webpack_require__( "./src/actions.js" ),
@@ -2222,12 +2267,15 @@ function createGateway( config ) {
  * @param {ext.popups.UserSettings} userSettings
  * @param {Function} settingsDialog
  * @param {ext.popups.PreviewBehavior} previewBehavior
+ * @param {bool} isStatsvLoggingEnabled
+ * @param {Function} track mw.track
  */
-function registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior ) {
+function registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior, isStatsvLoggingEnabled, track ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
 	registerChangeListener( store, changeListeners.eventLogging( actions, schema ) );
+	registerChangeListener( store, changeListeners.statsv( actions, isStatsvLoggingEnabled, track ) );
 	registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
 }
@@ -2274,11 +2322,13 @@ mw.requestIdleCallback( function () {
 		settingsDialog,
 		isEnabled,
 		schema,
-		previewBehavior;
+		previewBehavior,
+		isStatsvLoggingEnabled;
 
 	userSettings = createUserSettings( mw.storage );
 	settingsDialog = createSettingsDialogRenderer();
 	schema = createSchema( mw.config, window );
+	isStatsvLoggingEnabled = statsvInstrumentation.isEnabled( mw.user, mw.config, mw.experiments );
 
 	isEnabled = createIsEnabled( mw.user, userSettings, mw.config, mw.experiments );
 
@@ -2298,7 +2348,10 @@ mw.requestIdleCallback( function () {
 
 	previewBehavior = createPreviewBehavior( mw.config, mw.user, actions );
 
-	registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior );
+	registerChangeListeners(
+		store, actions, schema, userSettings, settingsDialog,
+		previewBehavior, isStatsvLoggingEnabled, mw.track
+	);
 
 	actions.boot(
 		isEnabled,
@@ -2879,7 +2932,8 @@ module.exports = function ( state, action ) {
 module.exports = {
 	eventLogging: __webpack_require__( "./src/reducers/eventLogging.js" ),
 	preview: __webpack_require__( "./src/reducers/preview.js" ),
-	settings: __webpack_require__( "./src/reducers/settings.js" )
+	settings: __webpack_require__( "./src/reducers/settings.js" ),
+	statsv: __webpack_require__( "./src/reducers/statsv.js" )
 };
 
 
@@ -3087,6 +3141,65 @@ module.exports = function ( state, action ) {
 			return nextState( state, {
 				shouldShowFooterLink: action.user.isAnon && !action.isEnabled
 			} );
+		default:
+			return state;
+	}
+};
+
+
+/***/ }),
+
+/***/ "./src/reducers/statsv.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var actionTypes = __webpack_require__( "./src/actionTypes.js" ),
+	nextState = __webpack_require__( "./src/reducers/nextState.js" );
+
+/**
+ * Reducer for actions that may result in an event being logged via statsv.
+ *
+ * @param {Object} state
+ * @param {Object} action
+ * @return {Object} state after action
+ */
+module.exports = function ( state, action ) {
+	state = state || {};
+
+	switch ( action.type ) {
+		case actionTypes.FETCH_START:
+			return nextState( state, {
+				fetchStartedAt: action.timestamp
+			} );
+
+		case actionTypes.FETCH_END:
+			return nextState( state, {
+				action: 'timing.PagePreviewsApiResponse',
+				data: action.timestamp - state.fetchStartedAt - action.delay
+			} );
+
+		case actionTypes.FETCH_FAILED:
+			return nextState( state, {
+				action: 'counter.PagePreviewsApiFailure',
+				data: 1
+			} );
+
+		case actionTypes.LINK_DWELL:
+			return nextState( state, {
+				linkDwellStartedAt: action.timestamp
+			} );
+
+		case actionTypes.PREVIEW_SHOW:
+			return nextState( state, {
+				action: 'timing.PagePreviewsPreviewShow',
+				data: action.timestamp - state.linkDwellStartedAt
+			} );
+
+		case actionTypes.STATSV_LOGGED:
+			return nextState( state, {
+				action: null,
+				data: null
+			} );
+
 		default:
 			return state;
 	}
@@ -4026,6 +4139,39 @@ function isNavPopupsEnabled() {
 	/* global pg: false*/
 	return typeof pg !== 'undefined' && pg.fn.disablePopups !== undefined;
 }
+
+
+/***/ }),
+
+/***/ "./src/statsvInstrumentation.js":
+/***/ (function(module, exports) {
+
+/**
+ * Whether statsv logging is enabled
+ *
+ * @param {mw.user} user The `mw.user` singleton instance
+ * @param {mw.Map} config The `mw.config` singleton instance
+ * @param {mw.experiments} experiments The `mw.experiments` singleton instance
+ * @returns {bool} Whether the statsv logging is enabled for the user
+ *  given the sampling rate.
+ */
+function isEnabled( user, config, experiments ) {
+	var samplingRate = config.get( 'wgPopupsStatsvSamplingRate', 0 ),
+		bucket = experiments.getBucket( {
+			name: 'ext.Popups.statsv',
+			enabled: true,
+			buckets: {
+				control: 1 - samplingRate,
+				A: samplingRate
+			}
+		}, user.sessionId() );
+
+	return bucket === 'A';
+}
+
+module.exports = {
+	isEnabled: isEnabled
+};
 
 
 /***/ }),

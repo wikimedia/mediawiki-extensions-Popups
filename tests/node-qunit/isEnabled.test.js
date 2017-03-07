@@ -14,13 +14,6 @@ function createStubUserSettings( isEnabled ) {
 	};
 }
 
-function createStubExperiments( isSampled ) {
-	return {
-		getBucket: function () {
-			return isSampled ? 'A' : 'control';
-		}
-	};
-}
 
 QUnit.module( 'ext.popups#isEnabled (logged out)', {
 	setup: function () {
@@ -54,7 +47,7 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 	for ( i = 0; i < cases.length; i++ ) {
 		testCase = cases[ i ];
 		userSettings = createStubUserSettings( testCase[ 0 ] );
-		experiments = createStubExperiments( testCase[ 1 ] );
+		experiments = stubs.createStubExperiments( testCase[ 1 ] );
 
 		assert.equal(
 			isEnabled( user, userSettings, config, experiments ),
@@ -66,7 +59,7 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 	// ---
 
 	config.set( 'wgPopupsBetaFeature', true );
-	experiments = createStubExperiments( true );
+	experiments = stubs.createStubExperiments( true );
 
 	assert.notOk(
 		isEnabled( user, userSettings, config, experiments ),
@@ -74,7 +67,7 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 			' enabled for logged out users when they are in the sample.'
 	);
 
-	experiments = createStubExperiments( false );
+	experiments = stubs.createStubExperiments( false );
 
 	assert.notOk(
 		isEnabled( user, userSettings, config, experiments ),
@@ -86,7 +79,7 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 QUnit.test( 'it should handle logged in users', function ( assert ) {
 	var user = stubs.createStubUser( /* isAnon = */ false ),
 		userSettings = createStubUserSettings( false ),
-		experiments = createStubExperiments( true ),
+		experiments = stubs.createStubExperiments( true ),
 		config = new Map();
 
 	config.set( 'wgPopupsShouldSendModuleToUser', true );
@@ -96,7 +89,7 @@ QUnit.test( 'it should handle logged in users', function ( assert ) {
 		'If the user is logged in and Page Previews has booted, then it\'s enabled.'
 	);
 
-	experiments = createStubExperiments( false );
+	experiments = stubs.createStubExperiments( false );
 	assert.ok(
 		isEnabled( user, userSettings, config, experiments ),
 		'Anon sampling does not have an affect on logged in users.' +

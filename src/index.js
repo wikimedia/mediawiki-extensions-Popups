@@ -14,6 +14,7 @@ var mw = mediaWiki,
 	createIsEnabled = require( './isEnabled' ),
 	processLinks = require( './processLinks' ),
 	renderer = require( './renderer' ),
+	statsvInstrumentation = require( './statsvInstrumentation' ),
 
 	changeListeners = require( './changeListeners' ),
 	actions = require( './actions' ),
@@ -52,12 +53,15 @@ function createGateway( config ) {
  * @param {ext.popups.UserSettings} userSettings
  * @param {Function} settingsDialog
  * @param {ext.popups.PreviewBehavior} previewBehavior
+ * @param {bool} isStatsvLoggingEnabled
+ * @param {Function} track mw.track
  */
-function registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior ) {
+function registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior, isStatsvLoggingEnabled, track ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
 	registerChangeListener( store, changeListeners.eventLogging( actions, schema ) );
+	registerChangeListener( store, changeListeners.statsv( actions, isStatsvLoggingEnabled, track ) );
 	registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
 }
@@ -104,11 +108,13 @@ mw.requestIdleCallback( function () {
 		settingsDialog,
 		isEnabled,
 		schema,
-		previewBehavior;
+		previewBehavior,
+		isStatsvLoggingEnabled;
 
 	userSettings = createUserSettings( mw.storage );
 	settingsDialog = createSettingsDialogRenderer();
 	schema = createSchema( mw.config, window );
+	isStatsvLoggingEnabled = statsvInstrumentation.isEnabled( mw.user, mw.config, mw.experiments );
 
 	isEnabled = createIsEnabled( mw.user, userSettings, mw.config, mw.experiments );
 
@@ -128,7 +134,10 @@ mw.requestIdleCallback( function () {
 
 	previewBehavior = createPreviewBehavior( mw.config, mw.user, actions );
 
-	registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior );
+	registerChangeListeners(
+		store, actions, schema, userSettings, settingsDialog,
+		previewBehavior, isStatsvLoggingEnabled, mw.track
+	);
 
 	actions.boot(
 		isEnabled,
