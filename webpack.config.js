@@ -15,5 +15,11 @@ module.exports = {
 	entry: {
 		index: './src/index.js'
 	},
-	devtool: 'source-map'
+	devtool: 'source-map',
+	resolve: {
+		alias: {
+			redux: path.resolve(__dirname, 'node_modules/redux/dist/redux.js'),
+			'redux-thunk': path.resolve(__dirname, 'node_modules/redux-thunk/dist/redux-thunk.js')
+		}
+	}
 };
