@@ -2352,7 +2352,7 @@ mw.requestIdleCallback( function () {
 		renderer.init();
 
 		previewLinks
-			.on( 'mouseover focus', function ( event ) {
+			.on( 'mouseover keyup', function ( event ) {
 				boundActions.linkDwell( this, event, gateway, generateToken );
 			} )
 			.on( 'mouseout blur', function () {
