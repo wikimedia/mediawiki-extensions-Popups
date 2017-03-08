@@ -6,7 +6,8 @@
     "test": "grunt lint && npm run check-built-assets && npm run test:node",
     "doc": "jsduck",
     "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -r test-build resources/dist && rm -rf test-build",
-    "test:node": "mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js | tap-dot"
+    "test:node": "mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js | tap-dot",
+    "coverage": "istanbul cover node_modules/.bin/mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js"
   },
   "devDependencies": {
     "eslint-config-wikimedia": "0.3.0",
@@ -18,8 +19,9 @@
     "grunt-eslint": "19.0.0",
     "grunt-jsonlint": "1.1.0",
     "grunt-stylelint": "^0.6.0",
-    "mw-node-qunit": "^1.0.6",
+    "istanbul": "^0.4.5",
     "mock-require": "^2.0.1",
+    "mw-node-qunit": "^1.0.6",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "stylelint-config-wikimedia": "0.3.0",
