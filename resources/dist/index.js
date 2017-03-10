@@ -2107,7 +2107,9 @@ function createRESTBaseGateway( ajax, config ) {
 function generateThumbnailData( thumbnail, original, thumbSize ) {
 	var parts = thumbnail.source.split( '/' ),
 		lastPart = parts[ parts.length - 1 ],
-		filename;
+		filename,
+		width,
+		height;
 
 	// The last part, the thumbnail's full filename, is in the following form:
 	// ${width}px-${filename}.${extension}. Splitting the thumbnail's filename
@@ -2116,20 +2118,27 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 	// where the thumbnail's extension is .svg.png.
 	filename = lastPart.substr( lastPart.indexOf( 'px-' ) + 3 );
 
-	// If the image isn't an SVG then it shouldn't be scaled past its original
+		// Scale the thumbnail's largest dimension.
+	if ( thumbnail.width > thumbnail.height ) {
+		width = thumbSize;
+		height = Math.floor( ( thumbSize / thumbnail.width ) * thumbnail.height );
+	} else {
+		width = Math.floor( ( thumbSize / thumbnail.height ) * thumbnail.width );
+		height = thumbSize;
+	}
+
+	// If the image isn't an SVG, then it shouldn't be scaled past its original
 	// dimensions.
-	if ( thumbSize >= original.width && filename.indexOf( '.svg' ) === -1 ) {
+	if ( width >= original.width && filename.indexOf( '.svg' ) === -1 ) {
 		return original;
 	}
 
-	parts[ parts.length - 1 ] = thumbSize + 'px-' + filename;
+	parts[ parts.length - 1 ] = width + 'px-' + filename;
 
 	return {
 		source: parts.join( '/' ),
-
-		// Scale the thumbnail's dimensions, preserving its aspect ratio.
-		width: thumbSize,
-		height: ( thumbSize / thumbnail.width ) * thumbnail.height
+		width: width,
+		height: height
 	};
 }
 

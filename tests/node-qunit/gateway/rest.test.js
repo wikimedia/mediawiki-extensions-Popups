@@ -62,13 +62,31 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 		thumbnail: {
 			source: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png",
 			width: 300,
-			height:126,
+			height: 126,
 			original: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png"
 		},
 		originalimage: {
 			source: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png",
 			width: 300,
 			height: 126
+		},
+		lang: "en",
+		dir: "ltr",
+		timestamp: "2017-02-17T22:29:56Z"
+	},
+	RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE = {
+		title: "Landscape",
+		extract: "Landscape",
+		thumbnail: {
+			source: "http://foo/bar/baz.png/500px-baz.png",
+			width: 500,
+			height: 300,
+			original: "http://foo/bar/baz.png"
+		},
+		originalimage: {
+			source: "http://foo/bar/baz.png",
+			width: 1000,
+			height: 600
 		},
 		lang: "en",
 		dir: "ltr",
@@ -81,9 +99,9 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 		'ltr',
 		'Barack Hussein Obama II born August 4, 1961) ...',
 		{
-			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/512px-President_Barack_Obama.jpg',
-			width: 512,
-			height: 640
+			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
+			width: 409,
+			height: 512
 		}
 	);
 
@@ -137,7 +155,7 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	);
 
 	// ---
-	model = gateway.convertPageToModel( RESTBASE_RESPONSE, RESTBASE_RESPONSE.originalimage.width );
+	model = gateway.convertPageToModel( RESTBASE_RESPONSE, RESTBASE_RESPONSE.originalimage.height );
 
 	assert.deepEqual(
 		model.thumbnail,
@@ -152,6 +170,19 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 		model.thumbnail,
 		RESTBASE_RESPONSE_WITH_SMALL_IMAGE.originalimage,
 		'If the requested thumbnail can\'t be generated because the orignal is too small, then use the original.'
+	);
+
+	// ---
+	model = gateway.convertPageToModel( RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE, 640 );
+
+	assert.deepEqual(
+		model.thumbnail,
+		{
+			source: 'http://foo/bar/baz.png/640px-baz.png',
+			width: 640,
+			height: 384 // ( 640 / 500 ) * 300
+		},
+		'When the requested thumbnail is scaled, then its largest dimension is preserved.'
 	);
 } );
 
@@ -168,7 +199,7 @@ QUnit.test( 'RESTBase gateway handles awkwardly thumbnails', function ( assert )
 
 	assert.deepEqual(
 		model.thumbnail.source,
-		'http://foo.bar/baz/Qux-320px-Quux.png/500px-Qux-320px-Quux.png',
+		'http://foo.bar/baz/Qux-320px-Quux.png/400px-Qux-320px-Quux.png',
 		'If the requested thumbnail size is the same as that of the original, then use the original.'
 	);
 } );
@@ -181,7 +212,7 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 
 	assert.equal(
 		model.thumbnail.source,
-		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/2000px-President_Barack_Obama.svg.png',
+		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/1600px-President_Barack_Obama.svg.png',
 		'If the requested thumbnail is for an SVG, then it\'s always scaled.'
 	);
 } );
