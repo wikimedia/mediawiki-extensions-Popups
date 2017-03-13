@@ -3836,7 +3836,7 @@ function layoutPreview( preview, layout ) {
 
 	if ( flippedY && hasThumbnail ) {
 		popup.find( 'image' )[ 0 ]
-			.setAttribute( 'clip-path', '' );
+			.removeAttribute( 'clip-path' );
 	}
 
 	if ( flippedY && flippedX && hasThumbnail && isTall ) {
