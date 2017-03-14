@@ -2281,17 +2281,6 @@ function registerChangeListeners( store, actions, schema, userSettings, settings
 }
 
 /**
- * Binds the actions (or "action creators") to the
- * [store](http://redux.js.org/docs/api/Store.html#store).
- *
- * @param {Redux.Store} store
- * @return {Object}
- */
-function createBoundActions( store ) {
-	return Redux.bindActionCreators( actions, store.dispatch );
-}
-
-/**
  * Creates the reducer for all actions.
  *
  * @return {Redux.Reducer}
@@ -2313,7 +2302,7 @@ function createRootReducer() {
 mw.requestIdleCallback( function () {
 	var compose = Redux.compose,
 		store,
-		actions,
+		boundActions,
 
 		// So-called "services".
 		generateToken = mw.user.generateRandomSessionId,
@@ -2344,16 +2333,16 @@ mw.requestIdleCallback( function () {
 			ReduxThunk.default
 		) )
 	);
-	actions = createBoundActions( store );
+	boundActions = Redux.bindActionCreators( actions, store.dispatch );
 
-	previewBehavior = createPreviewBehavior( mw.config, mw.user, actions );
+	previewBehavior = createPreviewBehavior( mw.config, mw.user, boundActions );
 
 	registerChangeListeners(
-		store, actions, schema, userSettings, settingsDialog,
+		store, boundActions, schema, userSettings, settingsDialog,
 		previewBehavior, isStatsvLoggingEnabled, mw.track
 	);
 
-	actions.boot(
+	boundActions.boot(
 		isEnabled,
 		mw.user,
 		userSettings,
@@ -2373,13 +2362,13 @@ mw.requestIdleCallback( function () {
 
 		previewLinks
 			.on( 'mouseover focus', function ( event ) {
-				actions.linkDwell( this, event, gateway, generateToken );
+				boundActions.linkDwell( this, event, gateway, generateToken );
 			} )
 			.on( 'mouseout blur', function () {
-				actions.abandon( this );
+				boundActions.abandon( this );
 			} )
 			.on( 'click', function () {
-				actions.linkClick( this );
+				boundActions.linkClick( this );
 			} );
 
 	} );
