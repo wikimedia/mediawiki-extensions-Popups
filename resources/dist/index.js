@@ -2280,15 +2280,6 @@ function registerChangeListeners( store, actions, schema, userSettings, settings
 	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
 }
 
-/**
- * Creates the reducer for all actions.
- *
- * @return {Redux.Reducer}
- */
-function createRootReducer() {
-	return Redux.combineReducers( reducers );
-}
-
 /*
  * Initialize the application by:
  * 1. Creating the state store
@@ -2328,7 +2319,7 @@ mw.requestIdleCallback( function () {
 	}
 
 	store = Redux.createStore(
-		createRootReducer(),
+		Redux.combineReducers( reducers ),
 		compose( Redux.applyMiddleware(
 			ReduxThunk.default
 		) )
