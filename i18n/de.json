@@ -8,8 +8,8 @@
 			"Kghbln"
 		]
 	},
-	"popups-message": "Hovercards",
-	"popups-desc": "Ermöglicht beim Führen des Mauszeigers über einen Seitenlink das Einblenden entsprechender Inhaltszusammenfassungen",
+	"popups-message": "Seitenvorschaubilder",
+	"popups-desc": "Zeigt Vorschaubilder an, wenn der Benutzer die Maus über einen Seitenlink führt.",
 	"popups-redirects": "leitet weiter auf <h3>$1</h3>",
 	"popups-settings-title": "Seitenvorschau",
 	"popups-settings-description": "Dieses Werkzeug ermöglicht dir das Vorschauen von Links auf Wikiseiten und auf Einzelnachweise.",

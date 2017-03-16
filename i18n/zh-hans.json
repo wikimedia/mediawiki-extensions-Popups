@@ -6,8 +6,8 @@
 			"Yfdyh000"
 		]
 	},
-	"popups-message": "悬停卡片",
-	"popups-desc": "当用户在页面链接上悬停鼠标指针时，显示带有页面内容摘要的悬停卡片",
+	"popups-message": "页面预览",
+	"popups-desc": "当用户在页面链接上悬停时显示预览。",
 	"popups-redirects": "重定向至<h3>$1</h3>",
 	"popups-settings-title": "页面预览",
 	"popups-settings-description": "此工具允许您预览至wiki页面及参考资料的链接。",
