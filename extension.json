@@ -115,8 +115,7 @@
 				"mediawiki.ui.button",
 				"mediawiki.ui.icon",
 				"mediawiki.Uri",
-				"jquery.hidpi",
-				"ext.eventLogging.Schema"
+				"jquery.hidpi"
 			]
 		}
 	},

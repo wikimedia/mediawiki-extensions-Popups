@@ -2263,18 +2263,16 @@ function createGateway( config ) {
  *
  * @param {Redux.Store} store
  * @param {Object} actions
- * @param {mw.eventLog.Schema} schema
  * @param {ext.popups.UserSettings} userSettings
  * @param {Function} settingsDialog
  * @param {ext.popups.PreviewBehavior} previewBehavior
  * @param {bool} isStatsvLoggingEnabled
  * @param {Function} track mw.track
  */
-function registerChangeListeners( store, actions, schema, userSettings, settingsDialog, previewBehavior, isStatsvLoggingEnabled, track ) {
+function registerChangeListeners( store, actions, userSettings, settingsDialog, previewBehavior, isStatsvLoggingEnabled, track ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
-	registerChangeListener( store, changeListeners.eventLogging( actions, schema ) );
 	registerChangeListener( store, changeListeners.statsv( actions, isStatsvLoggingEnabled, track ) );
 	registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
@@ -2307,7 +2305,6 @@ mw.requestIdleCallback( function () {
 
 	userSettings = createUserSettings( mw.storage );
 	settingsDialog = createSettingsDialogRenderer();
-	schema = createSchema( mw.config, window );
 	isStatsvLoggingEnabled = statsvInstrumentation.isEnabled( mw.user, mw.config, mw.experiments );
 
 	isEnabled = createIsEnabled( mw.user, userSettings, mw.config, mw.experiments );
@@ -2329,9 +2326,15 @@ mw.requestIdleCallback( function () {
 	previewBehavior = createPreviewBehavior( mw.config, mw.user, boundActions );
 
 	registerChangeListeners(
-		store, boundActions, schema, userSettings, settingsDialog,
+		store, boundActions, userSettings, settingsDialog,
 		previewBehavior, isStatsvLoggingEnabled, mw.track
 	);
+
+	// Load EventLogging schema if possible...
+	mw.loader.using( 'ext.eventLogging.Schema' ).done( function () {
+		schema = createSchema( mw.config, window );
+		registerChangeListener( store, changeListeners.eventLogging( boundActions, schema ) );
+	} );
 
 	boundActions.boot(
 		isEnabled,
