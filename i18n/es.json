@@ -9,7 +9,7 @@
 			"Dgstranz"
 		]
 	},
-	"popups-message": "Cuadros emergentes",
+	"popups-message": "Vistas previas de páginas",
 	"popups-desc": "Muestra un cuadro emergente con el resumen del contenido de una página cuando el usuario posa el ratón sobre un enlace",
 	"popups-redirects": "redirige a <h3>$1</h3>",
 	"popups-settings-title": "Previsualización de página",

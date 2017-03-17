@@ -13,8 +13,8 @@
 			"The RedBurn"
 		]
 	},
-	"popups-message": "Hovercards",
-	"popups-desc": "Affiche une fenêtre au survol avec un résumé du contenu de la page quand l’utilisateur survole un lien de page.",
+	"popups-message": "Aperçus de page",
+	"popups-desc": "Affiche un aperçu quand l’utilisateur survole un lien de page.",
 	"popups-redirects": "redirigé vers <h3>$1</h3>",
 	"popups-settings-title": "Aperçu de la page",
 	"popups-settings-description": "Cet outil vous donne un aperçu des liens vers les pages wiki et les références.",
