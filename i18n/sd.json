@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"Indus Asia"
 		]
 	},
+	"popups-message": "صحفي جي نمائش",
 	"popups-settings-option-advanced": "متقدم"
 }
