@@ -8,8 +8,8 @@
 			"Marek Pavlica"
 		]
 	},
-	"popups-message": "Vyskakovací kartičky",
-	"popups-desc": "Zobrazuje vyskakovací kartičky se shrnutím obsahu cílové stránky, když uživatel umístí kurzor myši nad odkaz.",
+	"popups-message": "Náhledy stránek",
+	"popups-desc": "Zobrazuje náhledy, když uživatel umístí kurzor myši nad odkaz.",
 	"popups-redirects": "přesměrování na <h3>$1</h3>",
 	"popups-settings-title": "Náhled stránky",
 	"popups-settings-description": "Tento nástroj vám umožňuje zobrazovat náhledy odkazů na články a na reference.",

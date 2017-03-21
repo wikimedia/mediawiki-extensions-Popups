@@ -8,9 +8,8 @@
 			"Tgr"
 		]
 	},
-	"popups-message": "Lapleíró kártya",
-	"popups-desc": "Amikor a felhasználó egy belső hivatkozás fölé viszi az egérmutatót, kis felugró ablakban megjelenik az oldal összefoglalója.",
-	"popups-last-edited": "Szerkesztve $1",
+	"popups-message": "Lapelőnézetek",
+	"popups-desc": "Amikor a felhasználó egy belső hivatkozás fölé viszi az egérmutatót, megjelenik az előnézete.",
 	"popups-redirects": "Átirányítás a(z) <h3>$1</h3> oldalra",
 	"popups-settings-title": "Lapok előnézete",
 	"popups-settings-description": "Ez az eszköz lehetővé teszi wikilapokra és forrásokra mutató linkek előnézetének megtekintését.",
@@ -19,14 +18,10 @@
 	"popups-settings-option-advanced": "Haladó",
 	"popups-settings-option-advanced-description": "Linkek előnézetének megjelenítése és hozzáférés szerkesztési funkciók menüihez. Ezt sok szerkesztő használja.",
 	"popups-settings-option-off": "Előnézetek letiltása",
-	"popups-settings-option-off-description": "Ezt a beállítást a lap alján található linkkel változtathatod meg.",
 	"popups-settings-save": "Mentés",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Mégse",
 	"popups-settings-help": "Az előnézetet a lap alján található link segítségével kapcsolhatod vissza.",
 	"popups-settings-enable": "Előnézetek engedélyezése",
-	"popups-send-feedback": "Visszajelzés küldése (külső link)",
-	"popups-mobile-continue-to-page": "Tovább a laphoz",
-	"popups-mobile-dismiss": "Elrejt",
-	"popups-mobile-message": "Lapleíró kártya (mobil)"
+	"popups-send-feedback": "Visszajelzés küldése (külső link)"
 }

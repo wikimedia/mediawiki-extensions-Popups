@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Guycn2"
+			"Guycn2",
+			"Uziel302"
 		]
 	},
-	"popups-message": "תצוגות דפים",
+	"popups-message": "תצוגה מקדימה של דפים",
 	"popups-desc": "הצגת תצוגה מקדימה עם סיכומים של תוכן הדף בעת העברת העכבר מעל קישור לדף.",
 	"popups-redirects": "הפניה לדף <h3>$1</h3>",
 	"popups-settings-title": "תצוגה מקדימה של דפים",

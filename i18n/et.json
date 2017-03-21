@@ -4,9 +4,8 @@
 			"Pikne"
 		]
 	},
-	"popups-message": "Hõljukkaardid",
-	"popups-desc": "Kuvab lehekülje kokkuvõtte hõljukkaardil, kui liigutada kursor üle leheküljelingi.",
-	"popups-last-edited": "Muudetud $1",
+	"popups-message": "Lehekülgede eelvaade",
+	"popups-desc": "Kuvab lehekülje eelvaate, kui liigutada kursor üle leheküljelingi.",
 	"popups-redirects": "suunab ümber leheküljele <h3>$1</h3>",
 	"popups-settings-title": "Lehekülje eelvaatlus",
 	"popups-settings-description": "See tööriist võimaldab eelvaadelda linke, mis viitavad viki lehekülgedele ja viidetele.",
