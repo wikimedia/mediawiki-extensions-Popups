@@ -143,7 +143,11 @@ QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
 	);
 } );
 
-QUnit.module( 'ext.popups/reducers#eventLogging @integration' );
+QUnit.module( 'ext.popups/reducers#eventLogging @integration', {
+	setUp: function () {
+		this.link = $( '<a>' );
+	}
+} );
 
 QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 	var state,
@@ -155,6 +159,7 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 
 	action = {
 		type: 'LINK_DWELL',
+		el: this.link,
 		token: '0987654321',
 		timestamp: Date.now()
 	};
@@ -163,9 +168,47 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 		eventLogging( state, action ),
 		{
 			interaction: {
+				link: action.el,
 				token: action.token,
-				started: action.timestamp
+				started: action.timestamp,
+
+				isUserDwelling: true
 			}
+		}
+	);
+} );
+
+QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain conditions', function ( assert ) {
+	var state,
+		now = Date.now(),
+		action;
+
+	state = {
+		interaction: undefined
+	};
+
+	action = {
+		type: 'LINK_DWELL',
+		el: this.link,
+		token: '0987654321',
+		timestamp: now
+	};
+
+	state = eventLogging( state, action );
+
+	action.token = '1234567890';
+	action.timestamp = now + 200;
+
+	state = eventLogging( state, action );
+
+	assert.deepEqual(
+		state.interaction,
+		{
+			link: action.el,
+			token: '0987654321',
+			started: now,
+
+			isUserDwelling: true
 		}
 	);
 } );
@@ -210,6 +253,7 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 
 	state = eventLogging( state, {
 		type: 'LINK_DWELL',
+		el: this.link,
 		token: '0987654321',
 		timestamp: now
 	} );
@@ -220,8 +264,12 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 	} );
 
 	assert.deepEqual( state.interaction, {
+		link: this.link,
 		token: '0987654321',
 		started: now,
+
+		isUserDwelling: true,
+
 		timeToPreviewShow: 500
 	} );
 } );
@@ -254,5 +302,70 @@ QUnit.test( 'FETCH_END', function ( assert ) {
 			}
 		},
 		'It mixes in the preview type to the interaction state.'
+	);
+
+	QUnit.test( 'ABANDON_START', function ( assert ) {
+		var state = {
+				interaction: {}
+			};
+
+		state = eventLogging( state, {
+			type: 'ABANDON_START',
+			timestamp: Date.now()
+		} );
+
+		assert.notOk(
+			state.interaction.isUserDwelling,
+			'It should mark the link or preview as having been abandoned.'
+		);
+	} );
+} );
+
+QUnit.test( 'ABANDON_END', function ( assert ) {
+	var state,
+		action;
+
+	action = {
+		type: 'LINK_DWELL',
+		el: this.link,
+		token: '1234567890'
+	};
+
+	state = eventLogging( state, action );
+
+	action = {
+		type: 'ABANDON_END',
+		token: '1234567890'
+	};
+
+	assert.deepEqual(
+		eventLogging( state, action ),
+		state,
+		'ABANDON_END should NOOP if the user is dwelling on the preview or the link.'
+	);
+
+	// ---
+
+	action.token = '0987654321';
+
+	assert.deepEqual(
+		eventLogging( state, action ),
+		state,
+		'ABANDON_END should NOOP if the current interaction has changed.'
+	);
+} );
+
+QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
+	var state = {
+			interaction: {}
+		};
+
+	state = eventLogging( state, {
+		type: 'PREVIEW_DWELL'
+	} );
+
+	assert.ok(
+		state.interaction.isUserDwelling,
+		'It should mark the link or preview as being dwelled on.'
 	);
 } );

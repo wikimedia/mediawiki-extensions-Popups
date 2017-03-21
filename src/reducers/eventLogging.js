@@ -101,11 +101,34 @@ module.exports = function ( state, action ) {
 			} );
 
 		case actionTypes.LINK_DWELL:
+
+			// Not a new interaction?
+			if ( state.interaction && action.el === state.interaction.link ) {
+				return nextState( state, {
+					interaction: nextState( state.interaction, {
+						isUserDwelling: true
+					} )
+				} );
+			}
+
 			return nextState( state, {
+
+				// TODO: Extract this object into a module that can be shared between
+				// this and the preview reducer.
 				interaction: {
+					link: action.el,
 					token: action.token,
-					started: action.timestamp
+					started: action.timestamp,
+
+					isUserDwelling: true
 				}
+			} );
+
+		case actionTypes.PREVIEW_DWELL:
+			return nextState( state, {
+				interaction: nextState( state.interaction, {
+					isUserDwelling: true
+				} )
 			} );
 
 		case actionTypes.LINK_CLICK:
@@ -120,29 +143,36 @@ module.exports = function ( state, action ) {
 		case actionTypes.ABANDON_START:
 			return nextState( state, {
 				interaction: nextState( state.interaction, {
-					finished: action.timestamp
+					finished: action.timestamp,
+
+					isUserDwelling: false
 				} )
 			} );
 
 		case actionTypes.ABANDON_END:
-			abandonEvent = {
-				linkInteractionToken: state.interaction.token,
-				totalInteractionTime: Math.round( state.interaction.finished - state.interaction.started )
-			};
+			if ( action.token === state.interaction.token && !state.interaction.isUserDwelling ) {
+				abandonEvent = {
+					linkInteractionToken: state.interaction.token,
+					totalInteractionTime: Math.round( state.interaction.finished - state.interaction.started )
+				};
 
-			// Has the preview been shown? If so, then, in the context of the
-			// instrumentation, then the preview has been dismissed by the user
-			// rather than the user has abandoned the link.
-			if ( state.interaction.timeToPreviewShow !== undefined ) {
-				abandonEvent.action = 'dismissed';
-				abandonEvent.previewType = state.interaction.previewType;
-			} else {
-				abandonEvent.action = 'dwelledButAbandoned';
+				// Has the preview been shown? If so, then, in the context of the
+				// instrumentation, then the preview has been dismissed by the user
+				// rather than the user has abandoned the link.
+				if ( state.interaction.timeToPreviewShow !== undefined ) {
+					abandonEvent.action = 'dismissed';
+					abandonEvent.previewType = state.interaction.previewType;
+				} else {
+					abandonEvent.action = 'dwelledButAbandoned';
+				}
+
+				return nextState( state, {
+					interaction: undefined,
+					event: abandonEvent
+				} );
 			}
 
-			return nextState( state, {
-				event: abandonEvent
-			} );
+			return state;
 
 		default:
 			return state;
