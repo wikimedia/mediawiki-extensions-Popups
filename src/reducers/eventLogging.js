@@ -174,6 +174,13 @@ module.exports = function ( state, action ) {
 
 			return state;
 
+		case actionTypes.SETTINGS_SHOW:
+			return nextState( state, {
+				event: {
+					action: 'tapped settings cog'
+				}
+			} );
+
 		default:
 			return state;
 	}

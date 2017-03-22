@@ -369,3 +369,20 @@ QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
 		'It should mark the link or preview as being dwelled on.'
 	);
 } );
+
+QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', function ( assert ) {
+	var state = {
+		interaction: {}
+	};
+
+	state = eventLogging( state, {
+		type: 'SETTINGS_SHOW'
+	} );
+
+	assert.deepEqual(
+		state.event,
+		{
+			action: 'tapped settings cog'
+		}
+	);
+} );
