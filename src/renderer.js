@@ -267,6 +267,22 @@ function show( preview, event, behavior ) {
 
 	layoutPreview( preview, layout );
 
+	preview.el.show();
+
+	return wait( 200 )
+		.then( function () {
+			bindBehavior( preview, behavior );
+		} )
+		.then( behavior.previewShow );
+}
+
+/**
+ * Binds the behavior to the interactive elements of the preview.
+ *
+ * @param {ext.popups.Preview} preview
+ * @param {ext.popups.PreviewBehavior} behavior
+ */
+function bindBehavior( preview, behavior ) {
 	preview.el.hover( behavior.previewDwell, behavior.previewAbandon );
 
 	preview.el.click( behavior.click );
@@ -278,11 +294,6 @@ function show( preview, event, behavior ) {
 
 			behavior.showSettings();
 		} );
-
-	preview.el.show();
-
-	return wait( 200 )
-		.then( behavior.previewShow );
 }
 
 /**
