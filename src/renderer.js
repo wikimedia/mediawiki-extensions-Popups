@@ -269,9 +269,15 @@ function show( preview, event, behavior ) {
 
 	preview.el.hover( behavior.previewDwell, behavior.previewAbandon );
 
+	preview.el.click( behavior.click );
+
 	preview.el.find( '.mwe-popups-settings-icon' )
 		.attr( 'href', behavior.settingsUrl )
-		.click( behavior.showSettings );
+		.click( function ( event ) {
+			event.stopPropagation();
+
+			behavior.showSettings();
+		} );
 
 	preview.el.show();
 

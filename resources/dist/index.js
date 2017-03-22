@@ -2606,6 +2606,7 @@ var mw = window.mediaWiki,
  * @property {Function} showSettings
  * @property {Function} previewDwell
  * @property {Function} previewAbandon
+ * @property {Function} click handler for the entire preview
  */
 
 /**
@@ -2648,7 +2649,8 @@ module.exports = function ( config, user, actions ) {
 		showSettings: showSettings,
 		previewDwell: actions.previewDwell,
 		previewAbandon: actions.abandon,
-		previewShow: actions.previewShow
+		previewShow: actions.previewShow,
+		click: actions.linkClick
 	};
 };
 
@@ -3500,9 +3502,15 @@ function show( preview, event, behavior ) {
 
 	preview.el.hover( behavior.previewDwell, behavior.previewAbandon );
 
+	preview.el.click( behavior.click );
+
 	preview.el.find( '.mwe-popups-settings-icon' )
 		.attr( 'href', behavior.settingsUrl )
-		.click( behavior.showSettings );
+		.click( function ( event ) {
+			event.stopPropagation();
+
+			behavior.showSettings();
+		} );
 
 	preview.el.show();
 

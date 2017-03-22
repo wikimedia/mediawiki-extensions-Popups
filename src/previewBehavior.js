@@ -7,6 +7,7 @@ var mw = window.mediaWiki,
  * @property {Function} showSettings
  * @property {Function} previewDwell
  * @property {Function} previewAbandon
+ * @property {Function} click handler for the entire preview
  */
 
 /**
@@ -49,6 +50,7 @@ module.exports = function ( config, user, actions ) {
 		showSettings: showSettings,
 		previewDwell: actions.previewDwell,
 		previewAbandon: actions.abandon,
-		previewShow: actions.previewShow
+		previewShow: actions.previewShow,
+		click: actions.linkClick
 	};
 };

@@ -84,10 +84,12 @@ QUnit.test( 'it should mix in default actions', function ( assert ) {
 	actions.previewDwell = function () {};
 	actions.abandon = function () {};
 	actions.previewShow = function () {};
+	actions.linkClick = function () {};
 
 	behavior = createPreviewBehavior( this.config, user, actions );
 
 	assert.strictEqual( behavior.previewDwell, actions.previewDwell );
 	assert.strictEqual( behavior.previewAbandon, actions.abandon );
 	assert.strictEqual( behavior.previewShow, actions.previewShow );
+	assert.strictEqual( behavior.click, actions.linkClick );
 } );
