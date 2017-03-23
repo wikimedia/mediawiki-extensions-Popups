@@ -10,7 +10,7 @@ module.exports = {
 
 		// Write each chunk (entries, here) to a file named after the entry, e.g.
 		// the "index" entry gets written to index.js.
-		filename: '/[name].js'
+		filename: '[name].js'
 	},
 	entry: {
 		index: './src/index.js'
