@@ -173,7 +173,8 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 				started: action.timestamp,
 
 				isUserDwelling: true
-			}
+			},
+			event: undefined
 		}
 	);
 } );
@@ -212,6 +213,44 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 		}
 	);
 } );
+
+QUnit.test(
+	'LINK_CLICK should enqueue a "dismissed" or "dwelledButAbandoned" event under certain conditions',
+	function ( assert ) {
+		var state,
+			now = Date.now();
+
+		// Read: The user dwells on link A, abandons it, and dwells on link B fewer
+		// than 300 ms after (before the ABANDON_END action is reduced).
+		state = eventLogging( undefined, {
+			type: 'LINK_DWELL',
+			el: this.link,
+			token: '0987654321',
+			timestamp: now
+		} );
+
+		state = eventLogging( state, {
+			type: 'ABANDON_START',
+			timestamp: now + 250,
+		} );
+
+		state = eventLogging( state, {
+			type: 'LINK_DWELL',
+			el: $( '<a>' ),
+			token: '1234567890',
+			timestamp: now + 500
+		} );
+
+		assert.deepEqual(
+			state.event,
+			{
+				linkInteractionToken: '0987654321',
+				totalInteractionTime: 250, // 250 - 0
+				action: 'dwelledButAbandoned'
+			}
+		);
+	}
+);
 
 QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 	var state,

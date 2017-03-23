@@ -148,7 +148,11 @@ module.exports = function ( state, action ) {
 					started: action.timestamp,
 
 					isUserDwelling: true
-				}
+				},
+
+				// Was the user interacting with another link? If so, then log the
+				// abandoned event.
+				event: state.interaction ? createAbandonEvent( state.interaction ) : undefined
 			} );
 
 		case actionTypes.PREVIEW_DWELL:
