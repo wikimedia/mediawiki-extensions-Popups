@@ -2794,6 +2794,33 @@ function getBaseData( bootAction ) {
 }
 
 /**
+ * Creates an event that, when mixed into the base data (see `getBaseData`),
+ * represents the user abandoning a link or preview.
+ *
+ * @param {Object} interaction
+ * @param {Number} endTimestamp
+ * @return {Object}
+ */
+function createAbandonEvent( interaction ) {
+	var result = {
+		linkInteractionToken: interaction.token,
+		totalInteractionTime: Math.round( interaction.finished - interaction.started )
+	};
+
+	// Has the preview been shown? If so, then, in the context of the
+	// instrumentation, then the preview has been dismissed by the user
+	// rather than the user has abandoned the link.
+	if ( interaction.timeToPreviewShow !== undefined ) {
+		result.action = 'dismissed';
+		result.previewType = interaction.previewType;
+	} else {
+		result.action = 'dwelledButAbandoned';
+	}
+
+	return result;
+}
+
+/**
  * Reducer for actions that may result in an event being logged with the
  * Popups schema via Event Logging.
  *
@@ -2818,7 +2845,7 @@ function getBaseData( bootAction ) {
  * @return {Object} The state as a result of processing the action
  */
 module.exports = function ( state, action ) {
-	var nextCount, abandonEvent;
+	var nextCount;
 
 	if ( state === undefined ) {
 		state = {
@@ -2915,24 +2942,9 @@ module.exports = function ( state, action ) {
 
 		case actionTypes.ABANDON_END:
 			if ( action.token === state.interaction.token && !state.interaction.isUserDwelling ) {
-				abandonEvent = {
-					linkInteractionToken: state.interaction.token,
-					totalInteractionTime: Math.round( state.interaction.finished - state.interaction.started )
-				};
-
-				// Has the preview been shown? If so, then, in the context of the
-				// instrumentation, then the preview has been dismissed by the user
-				// rather than the user has abandoned the link.
-				if ( state.interaction.timeToPreviewShow !== undefined ) {
-					abandonEvent.action = 'dismissed';
-					abandonEvent.previewType = state.interaction.previewType;
-				} else {
-					abandonEvent.action = 'dwelledButAbandoned';
-				}
-
 				return nextState( state, {
 					interaction: undefined,
-					event: abandonEvent
+					event: createAbandonEvent( state.interaction )
 				} );
 			}
 

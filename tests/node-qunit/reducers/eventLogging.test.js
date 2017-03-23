@@ -239,7 +239,7 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 			linkInteractionToken: '0987654321',
 			totalInteractionTime: 250
 		},
-		'The event is enqueued and the totalInteractionProperty is an integer.'
+		'The event is enqueued and the totalInteractionTime property is an integer.'
 	);
 } );
 
@@ -384,5 +384,107 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 		{
 			action: 'tapped settings cog'
 		}
+	);
+} );
+
+QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
+	var dwelledState,
+		token = '0987654321',
+		now = Date.now(),
+		state;
+
+	dwelledState = eventLogging( undefined, {
+		type: 'LINK_DWELL',
+		el: this.link,
+		token: token,
+		timestamp: now
+	} );
+
+	state = eventLogging( dwelledState, {
+		type: 'ABANDON_START',
+		token: token,
+		timestamp: now + 500
+	} );
+
+	state = eventLogging( state, {
+		type: 'ABANDON_END',
+		token: token,
+	} );
+
+	assert.deepEqual(
+		state.event,
+		{
+			linkInteractionToken: token,
+			totalInteractionTime: 500,
+			action: 'dwelledButAbandoned'
+		},
+		'It should enqueue a "dwelledButAbandoned" event when the preview hasn\'t been shown.'
+	);
+
+	// ---
+
+	state = eventLogging( dwelledState, {
+		type: 'PREVIEW_SHOW',
+		timestamp: now + 700
+	} );
+
+	state = eventLogging( state, {
+		type: 'ABANDON_START',
+		token: token,
+		timestamp: now + 850
+	} );
+
+	state = eventLogging( state, {
+		type: 'ABANDON_END',
+		token: token,
+	} );
+
+	assert.deepEqual(
+		state.event,
+		{
+			linkInteractionToken: token,
+			totalInteractionTime: 850,
+			action: 'dismissed',
+
+			// N.B. that the FETCH_* actions have been skipped.
+			previewType: undefined
+		},
+		'It should enqueue a "dismissed" event when the preview has been shown.'
+	);
+} );
+
+QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', function ( assert ) {
+	var dwelledState,
+		state;
+
+	dwelledState = eventLogging( undefined, {
+		type: 'LINK_DWELL',
+		el: this.link,
+		token: '0987654321',
+		timestamp: Date.now()
+	} );
+
+	state = eventLogging( dwelledState, {
+		type: 'ABANDON_END',
+		token: '1234567890'
+	} );
+
+	assert.strictEqual(
+		state.event,
+		undefined,
+		'It shouldn\'t enqueue an event if there\'s a new interaction.'
+	);
+
+	// ---
+
+	state = eventLogging( dwelledState, {
+		type: 'ABANDON_END',
+		token: '0987654321'
+	} );
+
+	assert.strictEqual(
+		state.event,
+		undefined,
+		'It shouldn\'t enqueue an event if the use is dwelling on the preview or the link.'
 	);
 } );
