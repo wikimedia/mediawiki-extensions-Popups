@@ -3,7 +3,12 @@ var $ = jQuery,
 	actions = {},
 	types = require( './actionTypes' ),
 	wait = require( './wait' ),
-	FETCH_START_DELAY = 50, // ms.
+
+	// See the following for context around this value.
+	//
+	// * https://phabricator.wikimedia.org/T161284
+	// * https://phabricator.wikimedia.org/T70861#3129780
+	FETCH_START_DELAY = 150, // ms.
 
 	// The delay after which a FETCH_END action should be dispatched.
 	//
