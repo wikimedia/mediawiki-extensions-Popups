@@ -33,18 +33,16 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
+QUnit.test( 'FETCH_END', function ( assert ) {
 	var startedAt, endedAt, delay, action, state;
 
 	assert.expect( 1 );
 
 	startedAt = 200;
 	endedAt = 500;
-	delay = 100;
 	action = {
-		type: 'FETCH_COMPLETE',
+		type: 'FETCH_END',
 		timestamp: endedAt,
-		delay: delay
 	};
 	state = statsv( { fetchStartedAt: startedAt }, action );
 
@@ -53,7 +51,7 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 		{
 			fetchStartedAt: startedAt,
 			action: 'timing.PagePreviewsApiResponse',
-			data: endedAt - startedAt - delay
+			data: endedAt - startedAt
 		}
 	);
 } );

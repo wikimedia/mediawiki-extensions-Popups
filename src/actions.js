@@ -129,8 +129,7 @@ actions.fetch = function ( gateway, el, started ) {
 						dispatch( timedAction( {
 							type: types.FETCH_COMPLETE,
 							el: el,
-							result: result,
-							delay: delay
+							result: result
 						} ) );
 					} );
 			} );

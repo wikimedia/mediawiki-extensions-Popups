@@ -329,7 +329,6 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 					type: 'FETCH_COMPLETE',
 					el: that.el,
 					result: result,
-					delay: 250,
 					timestamp: 250
 				},
 				'It should dispatch the FETCH_COMPLETE action when the preview model is resolved.'

@@ -1276,8 +1276,7 @@ actions.fetch = function ( gateway, el, started ) {
 						dispatch( timedAction( {
 							type: types.FETCH_COMPLETE,
 							el: el,
-							result: result,
-							delay: delay
+							result: result
 						} ) );
 					} );
 			} );
@@ -3224,10 +3223,10 @@ module.exports = function ( state, action ) {
 				fetchStartedAt: action.timestamp
 			} );
 
-		case actionTypes.FETCH_COMPLETE:
+		case actionTypes.FETCH_END:
 			return nextState( state, {
 				action: 'timing.PagePreviewsApiResponse',
-				data: action.timestamp - state.fetchStartedAt - action.delay
+				data: action.timestamp - state.fetchStartedAt
 			} );
 
 		case actionTypes.FETCH_FAILED:
