@@ -288,7 +288,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 	);
 } );
 
-QUnit.test( 'it should delay dispatching the FETCH_END action', function ( assert ) {
+QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( assert ) {
 	var that = this,
 		result = {},
 		done = assert.async( 2 );
@@ -300,8 +300,8 @@ QUnit.test( 'it should delay dispatching the FETCH_END action', function ( asser
 	this.gatewayPromise.then( function () {
 		assert.ok(
 			that.wait.calledWith( 250 ),
-			'FETCH_END is delayed by 250 (500 - 250) ms. ' +
-			'If you\'ve changed FETCH_END_TARGET_DELAY, then have you spoken with #Design about changing this value?'
+			'FETCH_COMPLETE is delayed by 250 (500 - 250) ms. ' +
+			'If you\'ve changed FETCH_COMPLETE_TARGET_DELAY, then have you spoken with #Design about changing this value?'
 		);
 
 		that.waitDeferred.resolve();
@@ -315,7 +315,7 @@ QUnit.test( 'it should delay dispatching the FETCH_END action', function ( asser
 		setTimeout( function () {
 			assert.equal( that.dispatch.callCount, 2, 'dispatch called for start and end' );
 			assert.deepEqual( that.dispatch.getCall( 1 ).args[ 0 ], {
-				type: 'FETCH_END',
+				type: 'FETCH_COMPLETE',
 				el: that.el,
 				result: result,
 				delay: 250,
@@ -332,7 +332,7 @@ QUnit.test( 'it should delay dispatching the FETCH_END action', function ( asser
 } );
 
 QUnit.test(
-	'it shouldn\'t delay dispatching the FETCH_END action if the API request is over the target',
+	'it shouldn\'t delay dispatching the FETCH_COMPLETE action if the API request is over the target',
 	function ( assert ) {
 		var that = this,
 			done = assert.async();
@@ -342,7 +342,7 @@ QUnit.test(
 		this.gatewayPromise.then( function () {
 			assert.ok(
 				that.wait.calledWith( 0 ),
-				'FETCH_END isn\'t delayed.'
+				'FETCH_COMPLETE isn\'t delayed.'
 			);
 			done();
 		} );

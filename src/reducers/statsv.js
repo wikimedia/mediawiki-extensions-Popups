@@ -17,7 +17,7 @@ module.exports = function ( state, action ) {
 				fetchStartedAt: action.timestamp
 			} );
 
-		case actionTypes.FETCH_END:
+		case actionTypes.FETCH_COMPLETE:
 			return nextState( state, {
 				action: 'timing.PagePreviewsApiResponse',
 				data: action.timestamp - state.fetchStartedAt - action.delay

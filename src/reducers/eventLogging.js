@@ -107,7 +107,7 @@ module.exports = function ( state, action ) {
 				event: undefined
 			} );
 
-		case actionTypes.FETCH_END:
+		case actionTypes.FETCH_COMPLETE:
 			return nextState( state, {
 				interaction: nextState( state.interaction, {
 					previewType: action.result.type

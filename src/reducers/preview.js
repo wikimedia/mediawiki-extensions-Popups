@@ -80,7 +80,7 @@ module.exports = function ( state, action ) {
 			return nextState( state, {
 				fetchResponse: undefined
 			} );
-		case actionTypes.FETCH_END:
+		case actionTypes.FETCH_COMPLETE:
 			if ( action.el === state.activeLink ) {
 				return nextState( state, {
 					fetchResponse: action.result,

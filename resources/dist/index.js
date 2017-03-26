@@ -1127,6 +1127,7 @@ module.exports = {
 	LINK_CLICK: 'LINK_CLICK',
 	FETCH_START: 'FETCH_START',
 	FETCH_END: 'FETCH_END',
+	FETCH_COMPLETE: 'FETCH_COMPLETE',
 	FETCH_FAILED: 'FETCH_FAILED',
 	PREVIEW_DWELL: 'PREVIEW_DWELL',
 	PREVIEW_SHOW: 'PREVIEW_SHOW',
@@ -1156,12 +1157,12 @@ var $ = jQuery,
 	// * https://phabricator.wikimedia.org/T70861#3129780
 	FETCH_START_DELAY = 150, // ms.
 
-	// The delay after which a FETCH_END action should be dispatched.
+	// The delay after which a FETCH_COMPLETE action should be dispatched.
 	//
 	// If the API endpoint responds faster than 500 ms (or, say, the API
 	// response is served from the UA's cache), then we introduce a delay of
-	// 300 - t to make the preview delay consistent to the user.
-	FETCH_END_TARGET_DELAY = 500, // ms.
+	// 500 - t to make the preview delay consistent to the user.
+	FETCH_COMPLETE_TARGET_DELAY = 500, // ms.
 
 	ABANDON_END_DELAY = 300; // ms.
 
@@ -1261,14 +1262,14 @@ actions.fetch = function ( gateway, el, started ) {
 				// If the API request has taken longer than the target delay, then
 				// don't delay any further.
 				delay = Math.max(
-					FETCH_END_TARGET_DELAY - Math.round( now - started ),
+					FETCH_COMPLETE_TARGET_DELAY - Math.round( now - started ),
 					0
 				);
 
 				wait( delay )
 					.then( function () {
 						dispatch( timedAction( {
-							type: types.FETCH_END,
+							type: types.FETCH_COMPLETE,
 							el: el,
 							result: result,
 							delay: delay
@@ -2875,7 +2876,7 @@ module.exports = function ( state, action ) {
 				event: undefined
 			} );
 
-		case actionTypes.FETCH_END:
+		case actionTypes.FETCH_COMPLETE:
 			return nextState( state, {
 				interaction: nextState( state.interaction, {
 					previewType: action.result.type
@@ -3116,7 +3117,7 @@ module.exports = function ( state, action ) {
 			return nextState( state, {
 				fetchResponse: undefined
 			} );
-		case actionTypes.FETCH_END:
+		case actionTypes.FETCH_COMPLETE:
 			if ( action.el === state.activeLink ) {
 				return nextState( state, {
 					fetchResponse: action.result,
@@ -3218,7 +3219,7 @@ module.exports = function ( state, action ) {
 				fetchStartedAt: action.timestamp
 			} );
 
-		case actionTypes.FETCH_END:
+		case actionTypes.FETCH_COMPLETE:
 			return nextState( state, {
 				action: 'timing.PagePreviewsApiResponse',
 				data: action.timestamp - state.fetchStartedAt - action.delay

@@ -33,7 +33,7 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'FETCH_END', function ( assert ) {
+QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	var startedAt, endedAt, delay, action, state;
 
 	assert.expect( 1 );
@@ -42,7 +42,7 @@ QUnit.test( 'FETCH_END', function ( assert ) {
 	endedAt = 500;
 	delay = 100;
 	action = {
-		type: 'FETCH_END',
+		type: 'FETCH_COMPLETE',
 		timestamp: endedAt,
 		delay: delay
 	};

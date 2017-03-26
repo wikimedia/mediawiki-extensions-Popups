@@ -151,12 +151,12 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'FETCH_END', function ( assert ) {
+QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	var state = {
 			activeLink: this.el
 		},
 		action = {
-			type: 'FETCH_END',
+			type: 'FETCH_COMPLETE',
 			el: this.el,
 			result: {}
 		};
@@ -180,7 +180,7 @@ QUnit.test( 'FETCH_END', function ( assert ) {
 		activeLink: 'another active link'
 	};
 	action = {
-		type: 'FETCH_END',
+		type: 'FETCH_COMPLETE',
 		el: this.el,
 		result: {}
 	};

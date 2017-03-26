@@ -313,7 +313,7 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 	} );
 } );
 
-QUnit.test( 'FETCH_END', function ( assert ) {
+QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	var model,
 		state = {
 			interaction: {}
@@ -329,7 +329,7 @@ QUnit.test( 'FETCH_END', function ( assert ) {
 	);
 
 	state = eventLogging( state, {
-		type: 'FETCH_END',
+		type: 'FETCH_COMPLETE',
 		result: model
 	} );
 
