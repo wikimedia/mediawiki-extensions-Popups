@@ -293,7 +293,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 		result = {},
 		done = assert.async( 2 );
 
-	assert.expect( 3 );
+	assert.expect( 4 );
 
 	this.fetch();
 
@@ -309,18 +309,31 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 		done();
 	} );
 
-
 	this.waitPromise.then( function () {
 		// Let the wait.then execute to run the dispatch before asserting
 		setTimeout( function () {
-			assert.equal( that.dispatch.callCount, 2, 'dispatch called for start and end' );
-			assert.deepEqual( that.dispatch.getCall( 1 ).args[ 0 ], {
-				type: 'FETCH_COMPLETE',
-				el: that.el,
-				result: result,
-				delay: 250,
-				timestamp: 250
-			} );
+			assert.equal( that.dispatch.callCount, 3, 'dispatch called for start and end' );
+			assert.deepEqual(
+				that.dispatch.getCall( 1 ).args[ 0 ],
+				{
+					type: 'FETCH_END',
+					el: that.el,
+					timestamp: 250
+				},
+				'It should dispatch the FETCH_END action when the gateway request ends.'
+			);
+
+			assert.deepEqual(
+				that.dispatch.getCall( 2 ).args[ 0 ],
+				{
+					type: 'FETCH_COMPLETE',
+					el: that.el,
+					result: result,
+					delay: 250,
+					timestamp: 250
+				},
+				'It should dispatch the FETCH_COMPLETE action when the preview model is resolved.'
+			);
 
 			done();
 		} );

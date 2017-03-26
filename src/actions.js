@@ -112,6 +112,11 @@ actions.fetch = function ( gateway, el, started ) {
 				var now = mw.now(),
 					delay;
 
+				dispatch( timedAction( {
+					type: types.FETCH_END,
+					el: el
+				} ) );
+
 				// If the API request has taken longer than the target delay, then
 				// don't delay any further.
 				delay = Math.max(
