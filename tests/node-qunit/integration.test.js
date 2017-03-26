@@ -107,7 +107,15 @@ QUnit.module( 'ext.popups preview @integration', {
 		this.dwellAndShowPreview = function ( el, ev, fetchResponse ) {
 			that.dwell( el, ev, fetchResponse );
 			that.waitDeferred.resolve();
-			return wait( 0 ); // Wait for next tick to resolve pending callbacks
+
+			// Wait for the next tick to resolve pending callbacks. N.B. that the
+			// fetch action invokes wait twice.
+			return wait( 0 )
+				.then( function () {
+					that.waitDeferred.resolve();
+
+					return that.waitPromise;
+				} );
 		};
 
 		this.abandon = function () {

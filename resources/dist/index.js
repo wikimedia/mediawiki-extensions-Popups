@@ -1235,50 +1235,43 @@ actions.boot = function (
  *
  * @param {ext.popups.Gateway} gateway
  * @param {Element} el
- * @param {Date} started The time at which the interaction started.
  * @return {Redux.Thunk}
  */
-actions.fetch = function ( gateway, el, started ) {
+actions.fetch = function ( gateway, el ) {
 	var title = $( el ).data( 'page-previews-title' );
 
 	return function ( dispatch ) {
+		var request;
+
 		dispatch( timedAction( {
 			type: types.FETCH_START,
 			el: el,
 			title: title
 		} ) );
 
-		gateway.getPageSummary( title )
-			.fail( function () {
-				dispatch( {
-					type: types.FETCH_FAILED,
-					el: el
-				} );
-			} )
-			.done( function ( result ) {
-				var now = mw.now(),
-					delay;
-
+		request = gateway.getPageSummary( title )
+			.then( function ( result ) {
 				dispatch( timedAction( {
 					type: types.FETCH_END,
 					el: el
 				} ) );
 
-				// If the API request has taken longer than the target delay, then
-				// don't delay any further.
-				delay = Math.max(
-					FETCH_COMPLETE_TARGET_DELAY - Math.round( now - started ),
-					0
-				);
+				return result;
+			} )
+			.fail( function () {
+				dispatch( {
+					type: types.FETCH_FAILED,
+					el: el
+				} );
+			} );
 
-				wait( delay )
-					.then( function () {
-						dispatch( timedAction( {
-							type: types.FETCH_COMPLETE,
-							el: el,
-							result: result
-						} ) );
-					} );
+		$.when( request, wait( FETCH_COMPLETE_TARGET_DELAY ) )
+			.then( function ( result ) {
+				dispatch( timedAction( {
+					type: types.FETCH_COMPLETE,
+					el: el,
+					result: result
+				} ) );
 			} );
 	};
 };
@@ -1320,7 +1313,7 @@ actions.linkDwell = function ( el, event, gateway, generateToken ) {
 				var previewState = getState().preview;
 
 				if ( previewState.enabled && isNewInteraction() ) {
-					dispatch( actions.fetch( gateway, el, action.timestamp ) );
+					dispatch( actions.fetch( gateway, el ) );
 				}
 			} );
 	};

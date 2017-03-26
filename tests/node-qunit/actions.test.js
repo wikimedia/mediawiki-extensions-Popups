@@ -311,80 +311,72 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 	);
 } );
 
-QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( assert ) {
+QUnit.test( 'it should dispatch the FETCH_END action when the API request ends', function ( assert ) {
 	var that = this,
-		result = {},
-		done = assert.async( 2 );
-
-	assert.expect( 3 );
+		done = assert.async();
 
 	this.fetch();
 
+	this.now += 115;
+	this.gatewayDeferred.resolve( {} );
+
 	this.gatewayPromise.then( function () {
 		assert.deepEqual(
-			that.dispatch.getCall( 1 ).args[ 0 ],
+			that.dispatch.getCall( 1 ).args[0],
 			{
 				type: 'FETCH_END',
 				el: that.el,
-				timestamp: 250
-			},
-			'It should dispatch the FETCH_END action when the gateway request ends.'
-		);
-
-		assert.ok(
-			that.wait.calledWith( 250 ),
-			'FETCH_COMPLETE is delayed by 250 (500 - 250) ms. ' +
-			'If you\'ve changed FETCH_COMPLETE_TARGET_DELAY, then have you spoken with #Design about changing this value?'
+				timestamp: 115
+			}
 		);
 
 		done();
 	} );
-
-	this.now += 250;
-	this.gatewayDeferred.resolve( result );
-
-	this.waitPromises[ 0 ].then( function () {
-		setTimeout( function () {
-			assert.deepEqual(
-				that.dispatch.getCall( 2 ).args[ 0 ],
-				{
-					type: 'FETCH_COMPLETE',
-					el: that.el,
-					timestamp: 500,
-					result: {}
-				},
-				'It should dispatch the FETCH_END action when the gateway request ends.'
-			);
-
-			done();
-		} );
-	} );
-
-	this.now += 250;
-	this.waitDeferreds[ 0 ].resolve();
 } );
 
-QUnit.test(
-	'it shouldn\'t delay dispatching the FETCH_COMPLETE action if the API request is over the target',
-	function ( assert ) {
-		var that = this,
-			done = assert.async();
+QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( assert ) {
+	var whenDeferred = $.Deferred(),
+		whenSpy,
+		args,
+		result = {},
+		that = this;
+ 
+	whenSpy = this.sandbox.stub( $, 'when' )
+		.returns( whenDeferred.promise() );
 
-		this.fetch();
+	this.fetch();
 
-		this.gatewayPromise.then( function () {
-			assert.ok(
-				that.wait.calledWith( 0 ),
-				'FETCH_COMPLETE isn\'t delayed.'
-			);
-			done();
-		} );
+	assert.strictEqual(
+		this.wait.getCall( 0 ).args[ 0 ],
+		500,
+		'It waits for FETCH_COMPLETE_TARGET_DELAY milliseconds.'
+	);
 
-		// The API request took 301 ms.
-		this.now += 501;
-		this.gatewayDeferred.resolve();
-	}
-);
+	// ---
+	args = whenSpy.getCall( 0 ).args;
+
+	// This assertion is disabled due to $.Promise#then and #fail returning a new
+	// instance of $.Promise.
+	//assert.strictEqual( args[ 0 ], this.gatewayPromise, 'Promise' );
+
+	assert.strictEqual( args[ 1 ], this.waitPromises[ 0 ] );
+
+	// ---
+	this.now += 500;
+	whenDeferred.resolve();
+
+	whenDeferred.then( function () {
+		assert.deepEqual(
+			that.dispatch.getCall( 2 ).args[ 0 ],
+			{
+				type: 'FETCH_COMPLETE',
+				el: that.el,
+				result: result,
+				timestamp: 500
+			}
+		);
+	} );
+} );
 
 QUnit.module( 'ext.popups/actions#abandon', {
 	setup: function () {
