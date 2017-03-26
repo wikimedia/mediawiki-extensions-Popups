@@ -66,9 +66,18 @@ QUnit.test( '#boot', function ( assert ) {
 	* @param {Object} module
 	*/
 function setupWait( module ) {
-	module.waitDeferred = $.Deferred();
-	module.waitPromise = module.waitDeferred.promise();
-	module.wait = module.sandbox.stub().returns( module.waitPromise );
+	module.waitDeferreds = [];
+	module.waitPromises = [];
+
+	module.wait = module.sandbox.spy( function () {
+		var deferred = $.Deferred(),
+			promise = deferred.promise();
+
+		module.waitDeferreds.push( deferred );
+		module.waitPromises.push( promise );
+
+		return promise;
+	} );
 
 	mock( '../../src/wait', module.wait );
 	// Re-require actions so that it uses the mocked wait module
@@ -101,7 +110,7 @@ QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 			return that.state;
 		};
 
-		// Fake implementation of mw.now
+		// The worst-case implementation of mw.now.
 		mw.now = function () { return Date.now(); };
 
 		setupWait( this );
@@ -120,7 +129,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
 	this.sandbox.stub( actions, 'fetch' );
 
-	// Set the state for when dispatch is called. New token is accepted
+	// Stub the state tree being updated by the LINK_DWELL action.
 	this.state.preview = {
 		activeToken: generateToken()
 	};
@@ -147,18 +156,18 @@ QUnit.test( '#linkDwell', function ( assert ) {
 
 	// ---
 
-	this.waitPromise.then( function () {
+	this.waitPromises[ 0 ].then( function () {
 		assert.strictEqual(
 			dispatch.callCount,
 			2,
-			'The fetch action is dispatched after 50 ms'
+			'The fetch action is dispatched after FETCH_COMPLETE milliseconds.'
 		);
 
 		done();
 	} );
 
-	// After 50 ms...
-	this.waitDeferred.resolve();
+	// After FETCH_START_DELAY milliseconds...
+	this.waitDeferreds[ 0 ].resolve();
 } );
 
 QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function ( assert ) {
@@ -166,23 +175,28 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 		event = {},
 		dispatch = this.sandbox.spy();
 
+	// Stub the state tree being updated by the LINK_DWELL action.
+	this.state.preview = {
+		enabled: false,
+		activeLink: this.el,
+		activeToken: generateToken()
+	};
+
 	actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
 		dispatch,
 		this.getState
 	);
 
-	this.state.preview = {
-		enabled: false
-	};
+	assert.strictEqual( this.wait.callCount, 1 );
 
-	this.waitPromise.then( function () {
+	this.waitPromises[ 0 ].then( function () {
 		assert.strictEqual( dispatch.callCount, 1 );
 
 		done();
 	} );
 
-	// After 500 ms...
-	this.waitDeferred.resolve();
+	// After FETCH_START_DELAY milliseconds...
+	this.waitDeferreds[ 0 ].resolve();
 } );
 
 QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( assert ) {
@@ -190,11 +204,19 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 		event = {},
 		dispatch = this.sandbox.spy();
 
+	// Stub the state tree being updated by a LINK_DWELL action.
+	this.state.preview = {
+		enabled: true,
+		activeLink: this.el,
+		activeToken: generateToken()
+	};
+
 	actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
 		dispatch,
 		this.getState
 	);
 
+	// Stub the state tree being updated by another LINK_DWELL action.
 	this.state.preview = {
 		enabled: true,
 
@@ -203,26 +225,27 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 		// changed, but the active token has.
 		activeLink: this.el,
 
-		activeToken: '0123456789'
+		activeToken: 'banana'
 	};
 
-	this.waitPromise.then( function () {
+	this.waitPromises[ 0 ].then( function () {
 		assert.strictEqual( dispatch.callCount, 1 );
 
 		done();
 	} );
 
-	// After 500 ms...
-	this.waitDeferred.resolve();
+	// After FETCH_START_DELAY milliseconds...
+	this.waitDeferreds[ 0 ].resolve();
 } );
 
-QUnit.test( '#linkDwell doesn\'t continue if the interaction is the same one', function ( assert ) {
+QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 	var done = assert.async(),
 		event = {},
 		dispatch = this.sandbox.spy();
 
 	this.state.preview = {
-		activeToken: '0123456789'
+		enabled: true,
+		activeToken: generateToken()
 	};
 
 	actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
@@ -230,14 +253,14 @@ QUnit.test( '#linkDwell doesn\'t continue if the interaction is the same one', f
 		this.getState
 	);
 
-	this.waitPromise.then( function () {
-		assert.strictEqual( dispatch.callCount, 1 );
+	this.waitPromises[ 0 ].then( function () {
+		assert.strictEqual( dispatch.callCount, 2 );
 
 		done();
 	} );
 
-	// After 500 ms...
-	this.waitDeferred.resolve();
+	// After FETCH_START_DELAY milliseconds...
+	this.waitDeferreds[ 0 ].resolve();
 } );
 
 QUnit.module( 'ext.popups/actions#fetch', {
@@ -293,54 +316,52 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 		result = {},
 		done = assert.async( 2 );
 
-	assert.expect( 4 );
+	assert.expect( 3 );
 
 	this.fetch();
 
 	this.gatewayPromise.then( function () {
+		assert.deepEqual(
+			that.dispatch.getCall( 1 ).args[ 0 ],
+			{
+				type: 'FETCH_END',
+				el: that.el,
+				timestamp: 250
+			},
+			'It should dispatch the FETCH_END action when the gateway request ends.'
+		);
+
 		assert.ok(
 			that.wait.calledWith( 250 ),
 			'FETCH_COMPLETE is delayed by 250 (500 - 250) ms. ' +
 			'If you\'ve changed FETCH_COMPLETE_TARGET_DELAY, then have you spoken with #Design about changing this value?'
 		);
 
-		that.waitDeferred.resolve();
-
 		done();
 	} );
 
-	this.waitPromise.then( function () {
-		// Let the wait.then execute to run the dispatch before asserting
-		setTimeout( function () {
-			assert.equal( that.dispatch.callCount, 3, 'dispatch called for start and end' );
-			assert.deepEqual(
-				that.dispatch.getCall( 1 ).args[ 0 ],
-				{
-					type: 'FETCH_END',
-					el: that.el,
-					timestamp: 250
-				},
-				'It should dispatch the FETCH_END action when the gateway request ends.'
-			);
+	this.now += 250;
+	this.gatewayDeferred.resolve( result );
 
+	this.waitPromises[ 0 ].then( function () {
+		setTimeout( function () {
 			assert.deepEqual(
 				that.dispatch.getCall( 2 ).args[ 0 ],
 				{
 					type: 'FETCH_COMPLETE',
 					el: that.el,
-					result: result,
-					timestamp: 250
+					timestamp: 500,
+					result: {}
 				},
-				'It should dispatch the FETCH_COMPLETE action when the preview model is resolved.'
+				'It should dispatch the FETCH_END action when the gateway request ends.'
 			);
 
 			done();
 		} );
 	} );
 
-	// The API request took 250 ms.
 	this.now += 250;
-	this.gatewayDeferred.resolve( result );
+	this.waitDeferreds[ 0 ].resolve();
 } );
 
 QUnit.test(
@@ -403,7 +424,7 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 		'Have you spoken with #Design about changing this value?'
 	);
 
-	this.waitPromise.then( function () {
+	this.waitPromises[ 0 ].then( function () {
 		assert.ok(
 			dispatch.calledWith( {
 				type: 'ABANDON_END',
@@ -415,8 +436,8 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 		done();
 	} );
 
-	// After 300 ms...
-	this.waitDeferred.resolve();
+	// After ABANDON_END_DELAY milliseconds...
+	this.waitDeferreds[ 0 ].resolve();
 } );
 
 QUnit.module( 'ext.popups/actions#saveSettings' );
