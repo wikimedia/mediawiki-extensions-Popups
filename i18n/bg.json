@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"StanProg"
+			"StanProg",
+			"Termininja"
 		]
 	},
+	"popups-message": "Преглед на страница",
+	"popups-desc": "Показва предварителен преглед на дадена страница, когато потребителят задържи курсора върху дадена връзка.",
 	"popups-settings-save": "Съхраняване",
 	"popups-settings-help-ok": "Готово"
 }
