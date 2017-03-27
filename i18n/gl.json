@@ -8,7 +8,6 @@
 	},
 	"popups-message": "Ventás emerxentes",
 	"popups-desc": "Mostra ventás emerxentes co resumo dos contidos dunha páxina ao pasar o cursor por riba dunha ligazón",
-	"popups-last-edited": "Modificado $1",
 	"popups-redirects": "redirixe cara a \"<h3>$1</h3>\"",
 	"popups-settings-title": "Vista previa da páxina",
 	"popups-settings-description": "Esta ferramenta permite ver unha vista previa de ligazóns a páxinas wiki e a referencias",
@@ -23,7 +22,7 @@
 	"popups-settings-help": "Pode volver a habilitar as vistas previas empregando a ligazón do pé de páxina.",
 	"popups-settings-enable": "Habilitar vista previa",
 	"popups-send-feedback": "Enviar comentarios (ligazón externa)",
-	"popups-mobile-continue-to-page": "Continuar á páxina",
-	"popups-mobile-dismiss": "Agochar",
-	"popups-mobile-message": "Ventás emerxentes (móbil)"
+	"popups-preview-footer-read": "Ler",
+	"popups-prefs-optin-enabled-label": "Activar",
+	"popups-prefs-optin-disabled-label": "Desactivar"
 }
