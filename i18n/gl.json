@@ -6,8 +6,8 @@
 			"Elisardojm"
 		]
 	},
-	"popups-message": "Ventás emerxentes",
-	"popups-desc": "Mostra ventás emerxentes co resumo dos contidos dunha páxina ao pasar o cursor por riba dunha ligazón",
+	"popups-message": "Previsualizacións de páxinas",
+	"popups-desc": "Mostra previsualizacións ao pasar o cursor por riba dunha ligazón.",
 	"popups-redirects": "redirixe cara a \"<h3>$1</h3>\"",
 	"popups-settings-title": "Vista previa da páxina",
 	"popups-settings-description": "Esta ferramenta permite ver unha vista previa de ligazóns a páxinas wiki e a referencias",
@@ -22,7 +22,9 @@
 	"popups-settings-help": "Pode volver a habilitar as vistas previas empregando a ligazón do pé de páxina.",
 	"popups-settings-enable": "Habilitar vista previa",
 	"popups-send-feedback": "Enviar comentarios (ligazón externa)",
+	"popups-preview-no-preview": "Parece que non hai unha previsualización para esta páxina",
 	"popups-preview-footer-read": "Ler",
+	"prefs-reading": "Preferencias de lectura",
 	"popups-prefs-optin-enabled-label": "Activar",
 	"popups-prefs-optin-disabled-label": "Desactivar"
 }
