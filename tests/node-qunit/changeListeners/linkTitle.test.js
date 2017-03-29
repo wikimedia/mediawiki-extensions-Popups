@@ -11,6 +11,7 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 
 		this.state = {
 			preview: {
+				enabled: true,
 				activeLink: this.$link
 			}
 		};
@@ -24,17 +25,21 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 } );
 
 QUnit.test( 'it should remove the title', function ( assert ) {
-	assert.expect( 1 );
-
 	this.whenTheLinkIsDwelledUpon();
 
 	assert.strictEqual( this.$link.attr( 'title' ), '' );
 } );
 
+QUnit.test( 'it shouldn\'t remove the title under certain conditions', function ( assert ) {
+	this.state.preview.enabled = false;
+
+	this.whenTheLinkIsDwelledUpon();
+
+	assert.strictEqual( this.$link.attr( 'title' ), 'Foo' );
+} );
+
 QUnit.test( 'it should restore the title', function ( assert ) {
 	var nextState;
-
-	assert.expect( 1 );
 
 	this.whenTheLinkIsDwelledUpon();
 
@@ -57,8 +62,6 @@ QUnit.test( 'it should restore the title', function ( assert ) {
 QUnit.test( 'it should restore the title when the user dwells on another link immediately', function ( assert ) {
 	var nextState,
 		$anotherLink = $( '<a title="Bar">' );
-
-	assert.expect( 3 );
 
 	this.whenTheLinkIsDwelledUpon();
 

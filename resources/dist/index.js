@@ -1688,6 +1688,10 @@ module.exports = function () {
 	return function ( prevState, state ) {
 		var hasPrevActiveLink = prevState && prevState.preview.activeLink;
 
+		if ( !state.preview.enabled ) {
+			return;
+		}
+
 		if ( hasPrevActiveLink ) {
 
 			// Has the user dwelled on a link immediately after abandoning another
