@@ -44,14 +44,18 @@ class PopupsContext {
 	const LOGGER_CHANNEL = 'popups';
 	/**
 	 * User preference value for enabled Page Previews
+	 * Identical to \HTMLFeatureField::OPTION_ENABLED in BetaFeatures
+	 *
 	 * @var string
 	 */
-	const PREVIEWS_ENABLED = \HTMLFeatureField::OPTION_ENABLED;
+	const PREVIEWS_ENABLED = '1';
 	/**
 	 * User preference value for disabled Page Previews
+	 * Identical to \HTMLFeatureField::OPTION_DISABLED in BetaFeatures
+	 *
 	 * @var string
 	 */
-	const PREVIEWS_DISABLED = \HTMLFeatureField::OPTION_DISABLED;
+	const PREVIEWS_DISABLED = '0';
 	/**
 	 * User preference to enable/disable Page Previews
 	 * Currently for BETA and regular opt in we use same preference name
