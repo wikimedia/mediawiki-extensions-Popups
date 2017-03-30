@@ -5,7 +5,7 @@
 		]
 	},
 	"popups-message": "Apercebuts de la pagina",
-	"popups-desc": "Afichar de fenèstras al susvòl amb los resumits dels contenguts de las paginas quand l’utilizaire susvòla un ligam de pagina.",
+	"popups-desc": "Aficha un apercebut quand l’utilizaire susvòla un ligam de pagina.",
 	"popups-redirects": "redirigit cap a <h3>$1</h3>",
 	"popups-settings-option-simple": "Activar",
 	"popups-settings-option-off": "Desactivar",
