@@ -3258,7 +3258,6 @@ module.exports = function ( state, action ) {
 
 var mw = window.mediaWiki,
 	$ = jQuery,
-	isSafari = navigator.userAgent.match( /Safari/ ) !== null,
 	wait = __webpack_require__( "./src/wait.js" ),
 	SIZES = {
 		portraitImage: {
@@ -3512,17 +3511,6 @@ function show( preview, event, behavior ) {
 
 	preview.el.appendTo( document.body );
 
-	// Hack to "refresh" the SVG so that it's displayed.
-	//
-	// Elements get added to the DOM and not to the screen because of different
-	// namespaces of HTML and SVG.
-	//
-	// See http://stackoverflow.com/a/13654655/366138 for more detail.
-	//
-	// TODO: Find out how early on in the render that this could be done, e.g.
-	// createThumbnail?
-	preview.el.html( preview.el.html() );
-
 	layoutPreview( preview, layout );
 
 	preview.el.show();
@@ -3687,14 +3675,11 @@ function createThumbnail( rawThumbnail ) {
  */
 function createThumbnailElement( className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath ) {
 	var $thumbnailSVGImage, $thumbnail,
-		ns = 'http://www.w3.org/2000/svg',
+		nsSvg = 'http://www.w3.org/2000/svg',
+		nsXlink = 'http://www.w3.org/1999/xlink';
 
-		// Use createElementNS to create the svg:image tag as jQuery uses
-		// createElement instead. Some browsers mistakenly map the image tag to
-		// img tag.
-		svgElement = document.createElementNS( 'http://www.w3.org/2000/svg', 'image' );
-
-	$thumbnailSVGImage = $( svgElement );
+	$thumbnailSVGImage = $( document.createElementNS( nsSvg, 'image' ) );
+	$thumbnailSVGImage[ 0 ].setAttributeNS( nsXlink, 'href', url );
 	$thumbnailSVGImage
 		.addClass( className )
 		.attr( {
@@ -3705,18 +3690,9 @@ function createThumbnailElement( className, url, x, y, thumbnailWidth, thumbnail
 			'clip-path': 'url(#' + clipPath + ')'
 		} );
 
-	// Certain browsers, e.g. IE9, will not correctly set attributes from
-	// foreign namespaces using Element#setAttribute (see T134979). Apart from
-	// Safari, all supported browsers can set them using Element#setAttributeNS
-	// (see T134979).
-	if ( isSafari ) {
-		svgElement.setAttribute( 'xlink:href', url );
-	} else {
-		svgElement.setAttributeNS( ns, 'xlink:href', url );
-	}
-	$thumbnail = $( '<svg>' )
+	$thumbnail = $( document.createElementNS( nsSvg, 'svg' ) )
 		.attr( {
-			xmlns: ns,
+			xmlns: nsSvg,
 			width: width,
 			height: height
 		} )
