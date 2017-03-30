@@ -12,7 +12,7 @@
 			"烈羽"
 		]
 	},
-	"popups-message": "懸停卡片",
+	"popups-message": "頁面預覽",
 	"popups-desc": "在游標停駐於頁面連結上方時，顯示頁面預覽。",
 	"popups-redirects": "重新導向至 <h3>$1</h3>",
 	"popups-settings-title": "頁面預覽",
