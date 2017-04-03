@@ -219,7 +219,7 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 
 QUnit.test( 'RESTBase gateway handles the API failure', function ( assert ) {
 	var deferred = $.Deferred(),
-		api = this.sandbox.stub().returns( deferred.promise() ),
+		api = this.sandbox.stub().returns( deferred.reject( { status: 500 } ).promise() ),
 		gateway = createRESTBaseGateway( api ),
 		done = assert.async( 1 );
 
@@ -228,7 +228,18 @@ QUnit.test( 'RESTBase gateway handles the API failure', function ( assert ) {
 		done();
 	} );
 
-	deferred.reject();
+} );
+
+QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( assert ) {
+	var deferred = $.Deferred(),
+		api = this.sandbox.stub().returns( deferred.reject( { status: 404 } ).promise() ),
+		gateway = createRESTBaseGateway( api ),
+		done = assert.async( 1 );
+
+	gateway.getPageSummary( 'Test Title' ).done( function () {
+		assert.ok( true );
+		done();
+	} );
 } );
 
 QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
@@ -265,7 +276,7 @@ QUnit.test( 'RESTBase gateway handles missing pages ', function ( assert ) {
 			uri: '/en.wikipedia.org/v1/page/summary/Missing_page'
 		},
 		api = this.sandbox.stub().returns(
-			$.Deferred().rejectWith( response ).promise()
+			$.Deferred().reject( response ).promise()
 		),
 		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS ),
 		done = assert.async( 1 );

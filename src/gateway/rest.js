@@ -1,7 +1,8 @@
 var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0',
 	createModel = require( '../preview/model' ).createModel,
-	mw = window.mediaWiki;
+	mw = window.mediaWiki,
+	$ = jQuery;
 
 /**
  * RESTBase gateway factory
@@ -31,14 +32,38 @@ function createRESTBaseGateway( ajax, config ) {
 	/**
 	 * Get the page summary from the api and transform the data
 	 *
+	 * Do not treat 404 as a failure as we want to show a generic
+	 * preview for missing pages.
+	 *
 	 * @param {String} title
 	 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
 	 */
 	function getPageSummary( title ) {
-		return fetch( title )
-			.then( function( page ) {
-				return convertPageToModel( page, config.THUMBNAIL_SIZE );
-			} );
+		var result = $.Deferred();
+
+		fetch( title )
+			.then(
+				function( page ) {
+					result.resolve(
+						convertPageToModel( page, config.THUMBNAIL_SIZE ) );
+				},
+				function ( jqXHR ) {
+					if ( jqXHR.status === 404 ) {
+						result.resolve(
+							convertPageToModel( {
+								title: title,
+								lang: '',
+								dir: '',
+								extract: ''
+							}, 0 )
+						);
+					} else {
+						result.reject();
+					}
+				}
+			);
+
+		return result.promise();
 	}
 
 	return {
