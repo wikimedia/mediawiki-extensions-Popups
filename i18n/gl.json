@@ -26,5 +26,6 @@
 	"popups-preview-footer-read": "Ler",
 	"prefs-reading": "Preferencias de lectura",
 	"popups-prefs-optin-enabled-label": "Activar",
-	"popups-prefs-optin-disabled-label": "Desactivar"
+	"popups-prefs-optin-disabled-label": "Desactivar",
+	"popups-prefs-conflicting-gadgets-info": "Certos trebellos e outras personalizacións poden afectar ó rendemento desta funcionalidade. Se atopa algún problema, por favor, revise os seus trebellos e secuencias de ordes de usuario."
 }
