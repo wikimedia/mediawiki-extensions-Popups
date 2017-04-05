@@ -280,7 +280,7 @@ function bindBehavior( preview, behavior ) {
 		.click( function ( event ) {
 			event.stopPropagation();
 
-			behavior.showSettings();
+			behavior.showSettings( event );
 		} );
 }
 

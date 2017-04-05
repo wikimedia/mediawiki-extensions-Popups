@@ -2603,6 +2603,11 @@ var mw = window.mediaWiki,
 	$ = jQuery;
 
 /**
+ * A collection of event handlers specific to how the user interacts with all
+ * previews. The event handlers  are are agnostic to how/when they are bound
+ * //but not to what they are bound//, i.e. the showSettings event handler is
+ * written to be bound to either an `<a>` or `<button>` element.
+ *
  * @typedef {Object} ext.popups.PreviewBehavior
  * @property {String} settingsUrl
  * @property {Function} showSettings
@@ -3538,7 +3543,7 @@ function bindBehavior( preview, behavior ) {
 		.click( function ( event ) {
 			event.stopPropagation();
 
-			behavior.showSettings();
+			behavior.showSettings( event );
 		} );
 }
 
