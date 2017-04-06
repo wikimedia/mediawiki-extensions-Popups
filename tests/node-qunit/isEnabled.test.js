@@ -96,3 +96,18 @@ QUnit.test( 'it should handle logged in users', function ( assert ) {
 			'If the user is logged in and Page Previews has booted, then it\'s enabled.'
 	);
 } );
+
+QUnit.test( 'it should handle the conflict with the Navigation Popups Gadget', function ( assert ) {
+	var user = stubs.createStubUser( /* isAnon = */ false ),
+		userSettings = createStubUserSettings( false ),
+		experiments = stubs.createStubExperiments( true ),
+		config = new Map();
+
+	config.set( 'wgPopupsConflictsWithNavPopupGadget', true );
+
+	assert.notOk(
+		isEnabled( user, userSettings, config, experiments ),
+		'Page Previews is disabled when it conflicts with the Navigation Popups Gadget.'
+	);
+
+} );

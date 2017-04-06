@@ -2413,6 +2413,8 @@ window.ReduxThunk = ReduxThunk;
  * Given the global state of the application, creates a function that gets
  * whether or not the user should have Page Previews enabled.
  *
+ * Page Preview is disabled when the Navigation Popups gadget is enabled.
+ *
  * If Page Previews is configured as a beta feature (see
  * `$wgPopupsBetaFeature`), the user must be logged in and have enabled the
  * beta feature in order to see previews. Logged out users won't be able
@@ -2432,6 +2434,10 @@ window.ReduxThunk = ReduxThunk;
  * @return {Boolean}
  */
 module.exports = function ( user, userSettings, config, experiments ) {
+	if ( config.get( 'wgPopupsConflictsWithNavPopupGadget' ) ) {
+		return false;
+	}
+
 	if ( !user.isAnon() ) {
 		return config.get( 'wgPopupsShouldSendModuleToUser' );
 	}
