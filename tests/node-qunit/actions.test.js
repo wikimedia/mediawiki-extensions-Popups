@@ -348,8 +348,8 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 
 	assert.strictEqual(
 		this.wait.getCall( 0 ).args[ 0 ],
-		500,
-		'It waits for FETCH_COMPLETE_TARGET_DELAY milliseconds.'
+		350,
+		'It waits for FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY milliseconds.'
 	);
 
 	// ---

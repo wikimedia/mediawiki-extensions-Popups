@@ -118,7 +118,7 @@ actions.fetch = function ( gateway, el ) {
 				} );
 			} );
 
-		$.when( request, wait( FETCH_COMPLETE_TARGET_DELAY ) )
+		$.when( request, wait( FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY ) )
 			.then( function ( result ) {
 				dispatch( timedAction( {
 					type: types.FETCH_COMPLETE,
