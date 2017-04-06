@@ -6,11 +6,12 @@
 			"Jduranboger",
 			"Tusca",
 			"Peter Bowman",
-			"Dgstranz"
+			"Dgstranz",
+			"Joaquin Oltra"
 		]
 	},
 	"popups-message": "Vistas previas de páginas",
-	"popups-desc": "Muestra un cuadro emergente con el resumen del contenido de una página cuando el usuario posa el ratón sobre un enlace",
+	"popups-desc": "Muestra una previsualización cuando el usuario posa el ratón sobre un enlace.",
 	"popups-redirects": "redirige a <h3>$1</h3>",
 	"popups-settings-title": "Previsualización de página",
 	"popups-settings-description": "Esta herramienta permite previsualizar enlaces a páginas wikis y a referencias.",
@@ -28,6 +29,9 @@
 	"popups-preview-no-preview": "Parece que no hay una previsualización de esta página",
 	"popups-preview-footer-read": "Leer",
 	"prefs-reading": "Preferencias de lectura",
+	"popups-prefs-optin-title": "Vistas previas de páginas\n\n<em>Obtén vistas previas de un tema mientras lees un articulo</em>",
 	"popups-prefs-optin-enabled-label": "Activar",
-	"popups-prefs-optin-disabled-label": "Desactivar"
+	"popups-prefs-optin-disabled-label": "Desactivar",
+	"popups-prefs-disable-nav-gadgets-info": "Tienes que [[$1|desactivar \"Popups de navegación\"]] en la pestaña de Accesorios para habilitar Vistas previas.",
+	"popups-prefs-conflicting-gadgets-info": "Ciertos accesorios y otras personalizaciones pueden afectar al funcionamiento de esta funcionalidad. Si tienes problemas por favor revisa tus accesorios y scripts de usuario."
 }
