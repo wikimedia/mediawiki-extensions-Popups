@@ -340,7 +340,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 		args,
 		result = {},
 		that = this;
- 
+
 	whenSpy = this.sandbox.stub( $, 'when' )
 		.returns( whenDeferred.promise() );
 
