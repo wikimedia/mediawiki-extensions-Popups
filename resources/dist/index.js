@@ -2913,11 +2913,15 @@ module.exports = function ( state, action ) {
 			} );
 
 		case actionTypes.FETCH_COMPLETE:
-			return nextState( state, {
-				interaction: nextState( state.interaction, {
-					previewType: action.result.type
-				} )
-			} );
+			if ( state.interaction && action.token === state.interaction.token ) {
+				return nextState( state, {
+					interaction: nextState( state.interaction, {
+						previewType: action.result.type
+					} )
+				} );
+			}
+
+			return state;
 
 		case actionTypes.PREVIEW_SHOW:
 			nextCount = state.previewCount + 1;
@@ -3154,7 +3158,7 @@ module.exports = function ( state, action ) {
 				fetchResponse: undefined
 			} );
 		case actionTypes.FETCH_COMPLETE:
-			if ( action.el === state.activeLink ) {
+			if ( action.token === state.activeToken ) {
 				return nextState( state, {
 					fetchResponse: action.result,
 					shouldShow: true

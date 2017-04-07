@@ -315,9 +315,13 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 
 QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	var model,
-		state = {
-			interaction: {}
-		};
+		token = '1234567890',
+		initialState = {
+			interaction: {
+				token: token
+			},
+		},
+		state;
 
 	model = createModel(
 		'Foo',
@@ -328,19 +332,44 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 		{}
 	);
 
-	state = eventLogging( state, {
+	state = eventLogging( initialState, {
 		type: 'FETCH_COMPLETE',
-		result: model
+		result: model,
+		token: token
 	} );
 
-	assert.deepEqual(
-		state,
-		{
-			interaction: {
-				previewType: model.type
-			}
-		},
+	assert.strictEqual(
+		state.interaction.previewType,
+		model.type,
 		'It mixes in the preview type to the interaction state.'
+	);
+
+	// ---
+	state = eventLogging( initialState, {
+		type: 'FETCH_COMPLETE',
+		result: model,
+		token: 'banana'
+	} );
+
+	assert.strictEqual(
+		initialState,
+		state,
+		'It should NOOP if there\'s a new interaction.'
+	);
+
+	// ---
+	delete initialState.interaction;
+
+	state = eventLogging( initialState, {
+		type: 'FETCH_COMPLETE',
+		result: model,
+		token: '0123456789'
+	} );
+
+	assert.strictEqual(
+		initialState,
+		state,
+		'It should NOOP if the interaction has been finalised.'
 	);
 
 	QUnit.test( 'ABANDON_START', function ( assert ) {

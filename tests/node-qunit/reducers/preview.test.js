@@ -152,12 +152,13 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 } );
 
 QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
-	var state = {
-			activeLink: this.el
+	var token = '1234567890',
+		state = {
+			activeToken: token
 		},
 		action = {
 			type: 'FETCH_COMPLETE',
-			el: this.el,
+			token: token,
 			result: {}
 		};
 
@@ -166,7 +167,7 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	assert.deepEqual(
 		preview( state, action ),
 		{
-			activeLink: state.activeLink, // Previous state.
+			activeToken: state.activeToken, // Previous state.
 
 			fetchResponse: action.result,
 			shouldShow: true
@@ -176,12 +177,9 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 
 	// ---
 
-	state = {
-		activeLink: 'another active link'
-	};
 	action = {
 		type: 'FETCH_COMPLETE',
-		el: this.el,
+		token: 'banana',
 		result: {}
 	};
 

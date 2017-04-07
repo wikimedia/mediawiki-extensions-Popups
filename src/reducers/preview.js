@@ -81,7 +81,7 @@ module.exports = function ( state, action ) {
 				fetchResponse: undefined
 			} );
 		case actionTypes.FETCH_COMPLETE:
-			if ( action.el === state.activeLink ) {
+			if ( action.token === state.activeToken ) {
 				return nextState( state, {
 					fetchResponse: action.result,
 					shouldShow: true
