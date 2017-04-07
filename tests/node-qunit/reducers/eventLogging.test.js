@@ -371,22 +371,22 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 		state,
 		'It should NOOP if the interaction has been finalised.'
 	);
+} );
 
-	QUnit.test( 'ABANDON_START', function ( assert ) {
-		var state = {
-				interaction: {}
-			};
+QUnit.test( 'ABANDON_START', function ( assert ) {
+	var state = {
+			interaction: {}
+		};
 
-		state = eventLogging( state, {
-			type: 'ABANDON_START',
-			timestamp: Date.now()
-		} );
-
-		assert.notOk(
-			state.interaction.isUserDwelling,
-			'It should mark the link or preview as having been abandoned.'
-		);
+	state = eventLogging( state, {
+		type: 'ABANDON_START',
+		timestamp: Date.now()
 	} );
+
+	assert.notOk(
+		state.interaction.isUserDwelling,
+		'It should mark the link or preview as having been abandoned.'
+	);
 } );
 
 QUnit.test( 'ABANDON_END', function ( assert ) {
