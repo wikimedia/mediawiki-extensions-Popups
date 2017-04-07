@@ -268,7 +268,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 		var that = this;
 
 		// Setup the mw.now stub before actions is re-required in setupWait
-		that.now = 0;
+		this.now = 0;
 
 		this.sandbox.stub( mw, 'now', function () {
 			return that.now;
@@ -285,9 +285,11 @@ QUnit.module( 'ext.popups/actions#fetch', {
 
 		this.dispatch = this.sandbox.spy();
 
+		this.token = '1234567890';
+
 		// Sugar.
 		this.fetch = function () {
-			actions.fetch( that.gateway, that.el, that.now )( that.dispatch );
+			actions.fetch( that.gateway, that.el, that.token )( that.dispatch );
 		};
 	},
 	teardown: function () {
@@ -339,8 +341,9 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 		whenSpy,
 		args,
 		result = {},
-		that = this;
-
+		that = this,
+		done = assert.async();
+ 
 	whenSpy = this.sandbox.stub( $, 'when' )
 		.returns( whenDeferred.promise() );
 
@@ -357,24 +360,34 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 
 	// This assertion is disabled due to $.Promise#then and #fail returning a new
 	// instance of $.Promise.
-	//assert.strictEqual( args[ 0 ], this.gatewayPromise, 'Promise' );
+	//assert.strictEqual( args[ 0 ], this.gatewayPromise );
 
 	assert.strictEqual( args[ 1 ], this.waitPromises[ 0 ] );
 
 	// ---
 	this.now += 500;
-	whenDeferred.resolve();
+	whenDeferred.resolve( result );
 
 	whenDeferred.then( function () {
-		assert.deepEqual(
-			that.dispatch.getCall( 2 ).args[ 0 ],
-			{
-				type: 'FETCH_COMPLETE',
-				el: that.el,
-				result: result,
-				timestamp: 500
-			}
-		);
+
+		// Ensure the following assertions are made after all callbacks have been
+		// executed. Use setTimeout( _, 0 ) since it's not critical that these
+		// assertions are run before I/O is processed, i.e. we don't require
+		// process.nextTick.
+		setTimeout( function () {
+			assert.deepEqual(
+				that.dispatch.getCall( 1 ).args[ 0 ],
+				{
+					type: 'FETCH_COMPLETE',
+					el: that.el,
+					result: result,
+					timestamp: 500,
+					token: that.token
+				}
+			);
+
+			done();
+		}, 0 );
 	} );
 } );
 

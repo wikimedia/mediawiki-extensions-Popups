@@ -88,9 +88,11 @@ actions.boot = function (
  *
  * @param {ext.popups.Gateway} gateway
  * @param {Element} el
+ * @param {String} token The unique token representing the link interaction that
+ *  triggered the fetch
  * @return {Redux.Thunk}
  */
-actions.fetch = function ( gateway, el ) {
+actions.fetch = function ( gateway, el, token ) {
 	var title = $( el ).data( 'page-previews-title' );
 
 	return function ( dispatch ) {
@@ -123,7 +125,8 @@ actions.fetch = function ( gateway, el ) {
 				dispatch( timedAction( {
 					type: types.FETCH_COMPLETE,
 					el: el,
-					result: result
+					result: result,
+					token: token
 				} ) );
 			} );
 	};
@@ -166,7 +169,7 @@ actions.linkDwell = function ( el, event, gateway, generateToken ) {
 				var previewState = getState().preview;
 
 				if ( previewState.enabled && isNewInteraction() ) {
-					dispatch( actions.fetch( gateway, el ) );
+					dispatch( actions.fetch( gateway, el, token ) );
 				}
 			} );
 	};
