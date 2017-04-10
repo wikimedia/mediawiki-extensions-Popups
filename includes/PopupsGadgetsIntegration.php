@@ -51,9 +51,19 @@ class PopupsGadgetsIntegration {
 	 */
 	public function __construct( Config $config , ExtensionRegistry $extensionRegistry ) {
 		$this->extensionRegistry =  $extensionRegistry;
-		$this->navPopupsGadgetName = $config->get( self::CONFIG_NAVIGATION_POPUPS_NAME );
+		$this->navPopupsGadgetName = $this->sanitizeGadgetName(
+			$config->get( self::CONFIG_NAVIGATION_POPUPS_NAME ) );
 	}
 
+	/**
+	 * Sanitize gadget name
+	 *
+	 * @param $gadgetName
+	 * @return string
+	 */
+	private function sanitizeGadgetName( $gadgetName ) {
+		return str_replace( ' ', '_', trim( $gadgetName ) );
+	}
 	/**
 	 * @return bool
 	 */
@@ -73,7 +83,12 @@ class PopupsGadgetsIntegration {
 			$gadgetsRepo = \GadgetRepo::singleton();
 			$match = array_search( $this->navPopupsGadgetName, $gadgetsRepo->getGadgetIds() );
 			if ( $match !== false ) {
-				return $gadgetsRepo->getGadget( $this->navPopupsGadgetName )->isEnabled( $user );
+				try {
+					return $gadgetsRepo->getGadget( $this->navPopupsGadgetName )
+						->isEnabled( $user );
+				} catch ( \InvalidArgumentException $e ) {
+					return false;
+				}
 			}
 		}
 		return false;

@@ -106,8 +106,8 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 			->method( 'getGadgetIds' )
 			->willReturn( [] );
 
-		$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $gadgetRepoMock,
-			self::GADGET_DISABLED );
+		$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $this->getConfigMock(),
+			$gadgetRepoMock, self::GADGET_DISABLED );
 	}
 
 	/**
@@ -132,7 +132,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 			[ 'getGadgetIds', 'getGadget' ] );
 
 		$gadgetRepoMock->expects( $this->once() )
-			->method( 'getGadgetids' )
+			->method( 'getGadgetIds' )
 			->willReturn( [ self::NAV_POPUPS_GADGET_NAME ] );
 
 		$gadgetRepoMock->expects( $this->once() )
@@ -140,22 +140,104 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 			->with( self::NAV_POPUPS_GADGET_NAME )
 			->willReturn( $gadgetMock );
 
-		$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $gadgetRepoMock,
+		$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $this->getConfigMock(),
+			$gadgetRepoMock, self::GADGET_ENABLED );
+	}
+
+	/**
+	 * Test the edge case when GadgetsRepo::getGadget throws an exception
+	 * @covers ::conflictsWithNavPopupsGadget
+	 */
+	public function testConflictsWithNavPopupsGadgetWhenGadgetNotExists() {
+			$this->checkRequiredDependencies();
+
+			$user = $this->getTestUser()->getUser();
+
+			$gadgetRepoMock = $this->getMock( GadgetRepo::class,
+				[ 'getGadgetIds', 'getGadget' ] );
+
+			$gadgetRepoMock->expects( $this->once() )
+				->method( 'getGadgetIds' )
+				->willReturn( [ self::NAV_POPUPS_GADGET_NAME ] );
+
+			$gadgetRepoMock->expects( $this->once() )
+				->method( 'getGadget' )
+				->with( self::NAV_POPUPS_GADGET_NAME )
+				->willThrowException( new InvalidArgumentException() );
+
+			$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $this->getConfigMock(),
+				$gadgetRepoMock, self::GADGET_DISABLED );
+	}
+
+	/**
+	 * @covers ::sanitizeGadgetName
+	 * @dataProvider provideGadgetNamesWithSanitizedVersion
+	 */
+	public function testConflictsWithNavPopupsGadgetNameSanitization( $name, $sanitized ) {
+		$this->checkRequiredDependencies();
+
+		$user = $this->getTestUser()->getUser();
+
+		$configMock = $this->getMockBuilder( 'Config' )
+			->setMethods( [ 'get', 'has' ] )
+			->getMock();
+
+		$configMock->expects( $this->once() )
+			->method( 'get' )
+			->with( PopupsGadgetsIntegration::CONFIG_NAVIGATION_POPUPS_NAME )
+			->willReturn( $name );
+
+		$gadgetMock = $this->getMockBuilder( Gadget::class )
+			->setMethods( [ 'isEnabled' ] )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$gadgetMock->expects( $this->once() )
+			->method( 'isEnabled' )
+			->willReturn( self::GADGET_ENABLED );
+
+		$gadgetRepoMock = $this->getMock( GadgetRepo::class,
+			[ 'getGadgetIds', 'getGadget' ] );
+
+		$gadgetRepoMock->expects( $this->once() )
+			->method( 'getGadgetIds' )
+			->willReturn( [ $sanitized ] );
+
+		$gadgetRepoMock->expects( $this->once() )
+			->method( 'getGadget' )
+			->with( $sanitized )
+			->willReturn( $gadgetMock );
+
+		$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $configMock, $gadgetRepoMock,
 			self::GADGET_ENABLED );
 	}
 
 	/**
-	 * Execute test and restore orGadgetRepo
+	 * @return array
+	 */
+	public function provideGadgetNamesWithSanitizedVersion() {
+		return [
+			[ ' Popups ', 'Popups' ],
+			[ 'Navigation_popups-API', 'Navigation_popups-API' ],
+			[ 'Navigation popups ', 'Navigation_popups' ]
+		];
+	}
+
+	/**
+	 * Execute test and restore GadgetRepo
 	 *
 	 * @param $user
+	 * @param $config
 	 * @param $repoMock
 	 * @param $expected
 	 */
-	private function executeConflictsWithNavPopupsGadgetSafeCheck( $user, $repoMock, $expected ) {
+	private function executeConflictsWithNavPopupsGadgetSafeCheck( $user, $config, $repoMock,
+		$expected ) {
+
 		$origGadgetsRepo = GadgetRepo::singleton();
 		GadgetRepo::setSingleton( $repoMock );
 
-		$integration = new PopupsGadgetsIntegration( $this->getConfigMock(),
+		$integration = new PopupsGadgetsIntegration( $config,
 			$this->getExtensionRegistryMock( true ) );
 		$this->assertEquals( $expected, $integration->conflictsWithNavPopupsGadget( $user ) );
 
