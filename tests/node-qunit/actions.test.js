@@ -464,3 +464,20 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 		enabled: true
 	} ), 'it should dispatch the action with the previous and next enabled state' );
 } );
+
+QUnit.module( 'ext.popups/actions#previewShow' );
+
+QUnit.test( 'it should dispatch the PREVIEW_SHOW action', function ( assert ) {
+	var token = '1234567890';
+
+	this.sandbox.stub( mw, 'now' ).returns( new Date() );
+
+	assert.deepEqual(
+		actions.previewShow( token ),
+		{
+			type: 'PREVIEW_SHOW',
+			token: token,
+			timestamp: mw.now()
+		}
+	);
+} );

@@ -16,7 +16,11 @@ module.exports = function ( previewBehavior ) {
 	return function ( prevState, state ) {
 		if ( state.preview.shouldShow && !preview ) {
 			preview = renderer.render( state.preview.fetchResponse );
-			preview.show( state.preview.activeEvent, previewBehavior );
+			preview.show(
+				state.preview.activeEvent,
+				previewBehavior,
+				state.preview.activeToken
+				);
 		} else if ( !state.preview.shouldShow && preview ) {
 			preview.hide();
 			preview = undefined;
