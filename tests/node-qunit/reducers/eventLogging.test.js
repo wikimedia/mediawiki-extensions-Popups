@@ -111,7 +111,8 @@ QUnit.test( 'EVENT_LOGGED', function ( assert ) {
 QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
 	var state,
 		count = 22,
-		expectedCount = count + 1;
+		expectedCount = count + 1,
+		token = '1234567890';
 
 	state = {
 		previewCount: count,
@@ -121,11 +122,14 @@ QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
 		event: undefined,
 
 		// state.interaction.started is used in this part of the reducer.
-		interaction: {}
+		interaction: {
+			token: token
+		}
 	};
 
 	state = eventLogging( state, {
-		type: 'PREVIEW_SHOW'
+		type: 'PREVIEW_SHOW',
+		token: token
 	} );
 
 	assert.equal(
@@ -284,7 +288,8 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 
 QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interaction', function ( assert ) {
 	var state,
-		now = Date.now();
+		now = Date.now(),
+		token = '1234567890';
 
 	state = {
 		interaction: undefined
@@ -293,18 +298,19 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 	state = eventLogging( state, {
 		type: 'LINK_DWELL',
 		el: this.link,
-		token: '0987654321',
+		token: token,
 		timestamp: now
 	} );
 
 	state = eventLogging( state, {
 		type: 'PREVIEW_SHOW',
+		token: token,
 		timestamp: now + 500
 	} );
 
 	assert.deepEqual( state.interaction, {
 		link: this.link,
-		token: '0987654321',
+		token: token,
 		started: now,
 
 		isUserDwelling: true,
@@ -493,6 +499,7 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 
 	state = eventLogging( dwelledState, {
 		type: 'PREVIEW_SHOW',
+		token: token,
 		timestamp: now + 700
 	} );
 
