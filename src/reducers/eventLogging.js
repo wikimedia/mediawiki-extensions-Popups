@@ -84,7 +84,8 @@ module.exports = function ( state, action ) {
 	var nextCount,
 		actionTypesWithTokens = [
 			actionTypes.FETCH_COMPLETE,
-			actionTypes.ABANDON_END
+			actionTypes.ABANDON_END,
+			actionTypes.PREVIEW_SHOW
 		];
 
 	if ( state === undefined ) {
