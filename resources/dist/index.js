@@ -2892,7 +2892,11 @@ function createAbandonEvent( interaction ) {
  * @return {Object} The state as a result of processing the action
  */
 module.exports = function ( state, action ) {
-	var nextCount;
+	var nextCount,
+		actionTypesWithTokens = [
+			actionTypes.FETCH_COMPLETE,
+			actionTypes.ABANDON_END
+		];
 
 	if ( state === undefined ) {
 		state = {
@@ -2901,6 +2905,15 @@ module.exports = function ( state, action ) {
 			interaction: undefined,
 			event: undefined
 		};
+	}
+
+	// Was the action delayed? Then it requires a token to be reduced. Enforce
+	// this here to avoid repetion and reduce nesting below.
+	if (
+		actionTypesWithTokens.indexOf( action.type ) !== -1 &&
+		( !state.interaction || action.token !== state.interaction.token )
+	) {
+		return state;
 	}
 
 	switch ( action.type ) {
@@ -2919,15 +2932,11 @@ module.exports = function ( state, action ) {
 			} );
 
 		case actionTypes.FETCH_COMPLETE:
-			if ( state.interaction && action.token === state.interaction.token ) {
-				return nextState( state, {
-					interaction: nextState( state.interaction, {
-						previewType: action.result.type
-					} )
-				} );
-			}
-
-			return state;
+			return nextState( state, {
+				interaction: nextState( state.interaction, {
+					previewType: action.result.type
+				} )
+			} );
 
 		case actionTypes.PREVIEW_SHOW:
 			nextCount = state.previewCount + 1;
@@ -2996,7 +3005,7 @@ module.exports = function ( state, action ) {
 			} );
 
 		case actionTypes.ABANDON_END:
-			if ( action.token === state.interaction.token && !state.interaction.isUserDwelling ) {
+			if ( !state.interaction.isUserDwelling ) {
 				return nextState( state, {
 					interaction: undefined,
 					event: createAbandonEvent( state.interaction )
