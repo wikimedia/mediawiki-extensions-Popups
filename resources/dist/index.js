@@ -1380,11 +1380,13 @@ actions.previewDwell = function () {
  * This action is dispatched by the `./changeListeners/render.js` change
  * listener.
  *
+ * @param {String} token
  * @return {Object}
  */
-actions.previewShow = function () {
+actions.previewShow = function ( token ) {
 	return timedAction( {
-		type: types.PREVIEW_SHOW
+		type: types.PREVIEW_SHOW,
+		token: token
 	} );
 };
 
@@ -1733,7 +1735,11 @@ module.exports = function ( previewBehavior ) {
 	return function ( prevState, state ) {
 		if ( state.preview.shouldShow && !preview ) {
 			preview = renderer.render( state.preview.fetchResponse );
-			preview.show( state.preview.activeEvent, previewBehavior );
+			preview.show(
+				state.preview.activeEvent,
+				previewBehavior,
+				state.preview.activeToken
+				);
 		} else if ( !state.preview.shouldShow && preview ) {
 			preview.hide();
 			preview = undefined;
@@ -3401,10 +3407,12 @@ function render( model ) {
 		 * @param {Object} boundActions The
 		 *  [bound action creators](http://redux.js.org/docs/api/bindActionCreators.html)
 		 *  that were (likely) created in [boot.js](./boot.js).
+		 * @param {String} token The unique token representing the link interaction
+		 *  that resulted in showing the preview
 		 * @return {jQuery.Promise}
 		 */
-		show: function ( event, boundActions ) {
-			return show( preview, event, boundActions );
+		show: function ( event, boundActions, token ) {
+			return show( preview, event, boundActions, token );
 		},
 
 		/**
@@ -3546,10 +3554,11 @@ function renderExtract( extract, title ) {
  * @param {ext.popups.Preview} preview
  * @param {Event} event
  * @param {ext.popups.PreviewBehavior} behavior
+ * @param {String} token
  * @return {jQuery.Promise} A promise that resolves when the promise has faded
  *  in
  */
-function show( preview, event, behavior ) {
+function show( preview, event, behavior, token ) {
 	var layout = createLayout( preview, event );
 
 	preview.el.appendTo( document.body );
@@ -3562,7 +3571,9 @@ function show( preview, event, behavior ) {
 		.then( function () {
 			bindBehavior( preview, behavior );
 		} )
-		.then( behavior.previewShow );
+		.then( function () {
+			behavior.previewShow( token );
+		} );
 }
 
 /**

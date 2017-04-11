@@ -233,11 +233,13 @@ actions.previewDwell = function () {
  * This action is dispatched by the `./changeListeners/render.js` change
  * listener.
  *
+ * @param {String} token
  * @return {Object}
  */
-actions.previewShow = function () {
+actions.previewShow = function ( token ) {
 	return timedAction( {
-		type: types.PREVIEW_SHOW
+		type: types.PREVIEW_SHOW,
+		token: token
 	} );
 };
 

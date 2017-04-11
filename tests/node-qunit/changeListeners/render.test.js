@@ -31,7 +31,8 @@ QUnit.test(
 		state = {
 			preview: {
 				shouldShow: true,
-				activeEvent: {}
+				activeEvent: {},
+				activeToken: '1234567890'
 			}
 		};
 
@@ -40,7 +41,8 @@ QUnit.test(
 
 		assert.ok( this.preview.show.calledWith(
 			state.preview.activeEvent,
-			previewBehavior
+			previewBehavior,
+			state.preview.activeToken
 		) );
 	}
 );
