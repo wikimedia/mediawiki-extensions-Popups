@@ -2989,6 +2989,7 @@ module.exports = function ( state, action ) {
 
 		case actionTypes.LINK_CLICK:
 			return nextState( state, {
+				interaction: undefined,
 				event: {
 					action: 'opened',
 					linkInteractionToken: state.interaction.token,

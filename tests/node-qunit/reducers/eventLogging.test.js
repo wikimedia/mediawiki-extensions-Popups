@@ -219,7 +219,7 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 } );
 
 QUnit.test(
-	'LINK_CLICK should enqueue a "dismissed" or "dwelledButAbandoned" event under certain conditions',
+	'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" event under certain conditions',
 	function ( assert ) {
 		var state,
 			now = Date.now();
@@ -283,6 +283,12 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 			totalInteractionTime: 250
 		},
 		'The event is enqueued and the totalInteractionTime property is an integer.'
+	);
+
+	assert.strictEqual(
+		state.interaction,
+		undefined,
+		'It should finalize the interaction.'
 	);
 } );
 
@@ -493,6 +499,12 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 			action: 'dwelledButAbandoned'
 		},
 		'It should enqueue a "dwelledButAbandoned" event when the preview hasn\'t been shown.'
+	);
+
+	assert.strictEqual(
+		state.interaction,
+		undefined,
+		'It should finalize the interaction.'
 	);
 
 	// ---
