@@ -33,15 +33,25 @@ function getBaseData( bootAction ) {
  * Creates an event that, when mixed into the base data (see `getBaseData`),
  * represents the user abandoning a link or preview.
  *
+ * Since the event should be logged when the user has either abandoned a link or
+ * dwelled on a different link, we refer to these events as "closing" events as
+ * the link interaction has finished and a new one will be created later.
+ *
+ * If the link interaction is finalized, i.e. if an event has already been
+ * logged for the link interaction, then no closing event is created.
+ *
  * @param {Object} interaction
- * @param {Number} endTimestamp
- * @return {Object}
+ * @return {Object|undefined}
  */
-function createAbandonEvent( interaction ) {
+function createClosingEvent( interaction ) {
 	var result = {
 		linkInteractionToken: interaction.token,
 		totalInteractionTime: Math.round( interaction.finished - interaction.started )
 	};
+
+	if ( interaction.finalized ) {
+		return undefined;
+	}
 
 	// Has the preview been shown? If so, then, in the context of the
 	// instrumentation, then the preview has been dismissed by the user
@@ -166,7 +176,7 @@ module.exports = function ( state, action ) {
 
 				// Was the user interacting with another link? If so, then log the
 				// abandoned event.
-				event: state.interaction ? createAbandonEvent( state.interaction ) : undefined
+				event: state.interaction ? createClosingEvent( state.interaction ) : undefined
 			} );
 
 		case actionTypes.PREVIEW_DWELL:
@@ -178,7 +188,9 @@ module.exports = function ( state, action ) {
 
 		case actionTypes.LINK_CLICK:
 			return nextState( state, {
-				interaction: undefined,
+				interaction: {
+					finalized: true
+				},
 				event: {
 					action: 'opened',
 					linkInteractionToken: state.interaction.token,
@@ -199,7 +211,7 @@ module.exports = function ( state, action ) {
 			if ( !state.interaction.isUserDwelling ) {
 				return nextState( state, {
 					interaction: undefined,
-					event: createAbandonEvent( state.interaction )
+					event: createClosingEvent( state.interaction )
 				} );
 			}
 

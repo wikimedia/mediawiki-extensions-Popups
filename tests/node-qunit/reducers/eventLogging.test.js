@@ -221,15 +221,16 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 QUnit.test(
 	'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" event under certain conditions',
 	function ( assert ) {
-		var state,
-			now = Date.now();
+		var token = '0987654321',
+			now = Date.now(),
+			state;
 
 		// Read: The user dwells on link A, abandons it, and dwells on link B fewer
 		// than 300 ms after (before the ABANDON_END action is reduced).
 		state = eventLogging( undefined, {
 			type: 'LINK_DWELL',
 			el: this.link,
-			token: '0987654321',
+			token: token,
 			timestamp: now
 		} );
 
@@ -252,6 +253,33 @@ QUnit.test(
 				totalInteractionTime: 250, // 250 - 0
 				action: 'dwelledButAbandoned'
 			}
+		);
+
+		// ---
+
+		state = eventLogging( undefined, {
+			type: 'LINK_DWELL',
+			el: this.link,
+			token: token,
+			timestamp: now
+		} );
+
+		state = eventLogging( state, {
+			type: 'LINK_CLICK',
+			el: this.link
+		} );
+
+		state = eventLogging( state, {
+			type: 'LINK_DWELL',
+			el: $( '<a>' ),
+			token: 'banana',
+			timestamp: now + 500
+		} );
+
+		assert.strictEqual(
+			state.event,
+			undefined,
+			'It shouldn\'t enqueue either event if the interaction is finalized.'
 		);
 	}
 );
@@ -286,8 +314,8 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 	);
 
 	assert.strictEqual(
-		state.interaction,
-		undefined,
+		state.interaction.finalized,
+		true,
 		'It should finalize the interaction.'
 	);
 } );
@@ -504,7 +532,7 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 	assert.strictEqual(
 		state.interaction,
 		undefined,
-		'It should finalize the interaction.'
+		'It should close the interaction.'
 	);
 
 	// ---
@@ -541,14 +569,16 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 } );
 
 QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', function ( assert ) {
-	var dwelledState,
+	var token = '0987654321',
+		now = Date.now(),
+		dwelledState,
 		state;
 
 	dwelledState = eventLogging( undefined, {
 		type: 'LINK_DWELL',
 		el: this.link,
-		token: '0987654321',
-		timestamp: Date.now()
+		token: token,
+		timestamp: now
 	} );
 
 	state = eventLogging( dwelledState, {
@@ -566,12 +596,35 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 
 	state = eventLogging( dwelledState, {
 		type: 'ABANDON_END',
-		token: '0987654321'
+		token: token
 	} );
 
 	assert.strictEqual(
 		state.event,
 		undefined,
-		'It shouldn\'t enqueue an event if the use is dwelling on the preview or the link.'
+		'It shouldn\'t enqueue an event if the user is dwelling on the preview or the link.'
+	);
+
+	// ---
+
+	state = eventLogging( dwelledState, {
+		type: 'LINK_CLICK',
+		timestamp: now + 500
+	} );
+
+	state = eventLogging( state, {
+		type: 'ABANDON_START',
+		timestamp: now + 700
+	} );
+
+	state = eventLogging( state, {
+		type: 'ABANDON_END',
+		timestamp: now + 1000 // ABANDON_END_DELAY is 300 ms.
+	} );
+
+	assert.strictEqual(
+		state.event,
+		undefined,
+		'It shouldn\'t enqueue an event if the interaction is finalized.'
 	);
 } );
