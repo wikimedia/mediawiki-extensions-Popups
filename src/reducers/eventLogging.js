@@ -3,8 +3,8 @@ var actionTypes = require( './../actionTypes' ),
 	counts = require( './../counts' );
 
 /**
- * Initialize the data that's shared between all events logged with [the Popups
- * schema](https://meta.wikimedia.org/wiki/Schema:Popups).
+ * Initialize the data that's shared between all
+ * [Popups](https://meta.wikimedia.org/wiki/Schema:Popups) events.
  *
  * @param {Object} bootAction
  * @return {Object}
@@ -74,21 +74,34 @@ function createClosingEvent( interaction ) {
  * are tightly bound to the Popups schema. This reducer must be
  * renamed/moved if we introduce additional instrumentation.
  *
- * The base data represents data that's shared between all events. Very nearly
- * all of it is initialized during the BOOT action (see `getBaseData`) and
- * doesn't change between link interactions, e.g. the user being an anon or
- * the number of edits they've made.
+ * The complexity of this reducer reflects the complexity of the
+ * [Popups](https://meta.wikimedia.org/wiki/Schema:Popups) instrumentation. This
+ * complexity is further increased by requiring that actions are conditionally
+ * reduced rather than conditionally dispatched in order to handle two delays
+ * introduced by the system in order to provide a consistent UX.
  *
- * The user's number of previews, however, does change between link
- * interactions and the associated bucket (a computed property) is what is
- * logged. This is reflected in the state tree: the `previewCount` property is
- * used to store the user's number of previews and the
- * `baseData.previewCountBucket` property is used to store the associated
- * bucket.
+ * The reducer must:
+ *
+ * * Accumulate the state required to log
+ *   [Popups](https://meta.wikimedia.org/wiki/Schema:Popups) events. This state
+ *   is referred to as "the interaction state" or "the interaction";
+ * * Handle only logging only one event per link interaction;
+ * * Defend against delayed actions being dispatched and, as a direct
+ *   consequence;
+ * * Handle transitioning from one interaction to another at the same time.
+ *
+ * Furthermore, we distinguish between "finalizing" and "closing" the current
+ * interaction state. Since only one
+ * [Popups](https://meta.wikimedia.org/wiki/Schema:Popups) event should be
+ * logged per link interaction, we say that the interaction state is
+ * //finalized// when an event has been logged and is //closed// when a new
+ * interaction state should be created, e.g. the interaction state is only
+ * finalized when the user clicks a link or a preview.
  *
  * @param {Object} state
  * @param {Object} action
- * @return {Object} The state as a result of processing the action
+ * @return {Object} The state resulting from reducing the action with the
+ *  current state
  */
 module.exports = function ( state, action ) {
 	var nextCount,
