@@ -4,13 +4,14 @@
 			"Jopparn",
 			"Lokal Profil",
 			"WikiPhoenix",
-			"Josve05a"
+			"Josve05a",
+			"Johan"
 		]
 	},
-	"popups-message": "Sidförhandsgranskningar",
+	"popups-message": "Sidförhandsvisning",
 	"popups-desc": "Visar förhandsgranskningar när användaren för muspekaren över en sidlänk.",
 	"popups-redirects": "omdirigering till <h3>$1</h3>",
-	"popups-settings-title": "Sidförhandsgranskning",
+	"popups-settings-title": "Sidförhandsvisning",
 	"popups-settings-description": "Detta verktyg låter dig förhandsgranska länkar till wikisidor och till referenser",
 	"popups-settings-option-simple": "Aktivera",
 	"popups-settings-option-simple-description": "Se den inledande meningen av en sida och visa en förhandsgranskningsbild. Denna rekommenderas för läsare.",

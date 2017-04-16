@@ -7,12 +7,12 @@
 			"Dianakc",
 			"Diniscoelho",
 			"Macofe",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Fúlvio"
 		]
 	},
-	"popups-message": "Cartões flutuantes",
-	"popups-desc": "Apresenta painéis com resumos do conteúdo das páginas quando o utilizador passa o ponteiro do rato por cima da ligação para uma página.",
-	"popups-last-edited": "Editado $1",
+	"popups-message": "Resumo de página",
+	"popups-desc": "Mostra um resumo quando o utilizador passa o ponteiro do rato por cima da ligação para uma página.",
 	"popups-redirects": "redireciona para <h3>$1</h3>",
 	"popups-settings-title": "Antevisão de página",
 	"popups-settings-description": "Esta ferramenta permite-lhe ver ligações para páginas wiki e referências.",
@@ -26,8 +26,5 @@
 	"popups-settings-cancel": "Cancelar",
 	"popups-settings-help": "Pode reativar as antevisões ao utilizar a ligação existente no rodapé da página.",
 	"popups-settings-enable": "Ativar antevisão",
-	"popups-send-feedback": "Enviar comentário (ligação externa)",
-	"popups-mobile-continue-to-page": "Continuar para a página",
-	"popups-mobile-dismiss": "Ignorar",
-	"popups-mobile-message": "Cartões flutuantes (dispositivos móveis)"
+	"popups-send-feedback": "Enviar comentário (ligação externa)"
 }
