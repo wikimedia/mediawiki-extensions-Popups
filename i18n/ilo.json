@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lam-ang"
+		]
+	},
+	"popups-message": "Dagiti panangipadas ti panid",
+	"popups-desc": "Agiparang kadagiti panangipadas no agkallautang ti agar-aramat iti rabaw ti silpo ti panid.",
+	"popups-redirects": "ibaw-ing iti <h3>$1</h3>",
+	"popups-settings-title": "Panangipadas ti panid",
+	"popups-settings-description": "Daytoy a panid ket mangipalubos kenka a mangipadas kadagiti silpo kadagiti panid ti wiki ken kadagiti reperensia.",
+	"popups-settings-option-simple": "Pakabaelan",
+	"popups-settings-option-simple-description": "Agala kadagiti nadaras a panangipadas iti topiko bayat nga agbasbasa iti maysa nga artikulo",
+	"popups-settings-option-advanced": "Napasayaat",
+	"popups-settings-option-advanced-description": "Agkita kadagiti panangipadas ti silpo ken mangserrek kadagiti menu ti annong. Daytoy ket inus-usar babaen dagiti adu nga editor.",
+	"popups-settings-option-off": "Ibaldado",
+	"popups-settings-save": "Idulin",
+	"popups-settings-help-ok": "Nalpasen",
+	"popups-settings-cancel": "Ukasen",
+	"popups-settings-help": "Mabalinmo a maipasubli dagiti panangipadas babaen ti panagusar ti silpo iti sakaanan ti panid.",
+	"popups-settings-enable": "Pakabaelan dagiti panangipadas",
+	"popups-send-feedback": "Agipatulod ti Feedback (akinruar a silpo)",
+	"popups-preview-no-preview": "Mabalin a kasla awan ti panangipadas para iti daytoy a panid",
+	"popups-preview-footer-read": "Basaen",
+	"prefs-reading": "Dagiti kakaykayatan ti panagbasa",
+	"popups-prefs-optin-title": "Dagiti panangipadas ti panid\n\n<em>Agala kadagiti nadaras a panangipadas iti topiko bayat nga agbasbasa iti maysa nga artikulo</em>",
+	"popups-prefs-optin-enabled-label": "Pakabaelan",
+	"popups-prefs-optin-disabled-label": "Ibaldado",
+	"popups-prefs-disable-nav-gadgets-info": "Nasken nga [[$1 | ibaldadom ti Navigation Popups Gadget]] manipud iti etiketa dagiti Gadget tapno mapakabaelan ti Page Previews",
+	"popups-prefs-conflicting-gadgets-info": "Adda dagiti dadduma a gadget ken dagiti sabali a panangiduma a mabalin a makaapekto iti panagpataray daytoy a langa. No makasanayka kadagiti problema pangngaasi nga irepasom dagiti gadgetmo ken dagiti script ti agar-aramat."
+}
