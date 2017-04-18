@@ -445,6 +445,21 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 	this.waitDeferreds[ 0 ].resolve();
 } );
 
+QUnit.test( 'it shouldn\'t dispatch under certain conditions', function ( assert ) {
+	var dispatch = this.sandbox.spy(),
+		getState = function () {
+			return {
+				preview: {
+					activeToken: undefined
+				}
+			};
+		};
+
+	actions.abandon( this.el )( dispatch, getState );
+
+	assert.ok( dispatch.notCalled );
+} );
+
 QUnit.module( 'ext.popups/actions#saveSettings' );
 
 QUnit.test( 'it should dispatch an action with previous and current enabled state', function ( assert ) {
