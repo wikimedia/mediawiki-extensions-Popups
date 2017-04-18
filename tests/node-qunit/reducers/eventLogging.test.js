@@ -285,37 +285,43 @@ QUnit.test(
 );
 
 QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
-	var state,
+	var token = '0987654321',
+		state,
+		expectedState,
 		now = Date.now();
 
 	state = {
 		interaction: undefined
 	};
 
-	state = eventLogging( state, {
+	expectedState = state = eventLogging( state, {
 		type: 'LINK_DWELL',
-		token: '0987654321',
+		el: this.link,
+		token: token,
 		timestamp: now
 	} );
 
 	state = eventLogging( state, {
 		type: 'LINK_CLICK',
-		timestamp: now + 250.25
+		el: this.link,
+		timestamp: now + 250
 	} );
 
 	assert.deepEqual(
 		state.event,
 		{
 			action: 'opened',
-			linkInteractionToken: '0987654321',
+			linkInteractionToken: token,
 			totalInteractionTime: 250
 		},
 		'The event is enqueued and the totalInteractionTime property is an integer.'
 	);
 
-	assert.strictEqual(
-		state.interaction.finalized,
-		true,
+	expectedState.interaction.finalized = true;
+
+	assert.deepEqual(
+		state.interaction,
+		expectedState.interaction,
 		'It should finalize the interaction.'
 	);
 } );
@@ -613,12 +619,18 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 	} );
 
 	state = eventLogging( state, {
+		type: 'EVENT_LOGGED'
+	} );
+
+	state = eventLogging( state, {
 		type: 'ABANDON_START',
+		token: token,
 		timestamp: now + 700
 	} );
 
 	state = eventLogging( state, {
 		type: 'ABANDON_END',
+		token: token,
 		timestamp: now + 1000 // ABANDON_END_DELAY is 300 ms.
 	} );
 

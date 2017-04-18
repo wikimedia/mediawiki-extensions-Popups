@@ -201,9 +201,9 @@ module.exports = function ( state, action ) {
 
 		case actionTypes.LINK_CLICK:
 			return nextState( state, {
-				interaction: {
+				interaction: nextState( state.interaction, {
 					finalized: true
-				},
+				} ),
 				event: {
 					action: 'opened',
 					linkInteractionToken: state.interaction.token,
