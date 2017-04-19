@@ -187,6 +187,10 @@ actions.abandon = function () {
 	return function ( dispatch, getState ) {
 		var token = getState().preview.activeToken;
 
+		if ( !token ) {
+			return;
+		}
+
 		dispatch( timedAction( {
 			type: types.ABANDON_START,
 			token: token
