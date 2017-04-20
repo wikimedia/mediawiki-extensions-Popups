@@ -71,6 +71,7 @@
 			"class": "ResourceLoaderImageModule",
 			"prefix": "mw-ui",
 			"images": {
+				"popups-settings": "resources/ext.popups.images/cog.svg",
 				"popups-close": "resources/ext.popups.images/close.svg"
 			}
 		},
