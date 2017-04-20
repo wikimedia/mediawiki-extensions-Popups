@@ -25,6 +25,7 @@
 	"popups-preview-no-preview": "Parece que non hai unha previsualización para esta páxina",
 	"popups-preview-footer-read": "Ler",
 	"prefs-reading": "Preferencias de lectura",
+	"popups-prefs-optin-title": "Vistas previas de páxinas\n\n<em>Obtén vistas previas dun tema mentres le un artigo</em>",
 	"popups-prefs-optin-enabled-label": "Activar",
 	"popups-prefs-optin-disabled-label": "Desactivar",
 	"popups-prefs-conflicting-gadgets-info": "Certos trebellos e outras personalizacións poden afectar ó rendemento desta funcionalidade. Se atopa algún problema, por favor, revise os seus trebellos e secuencias de ordes de usuario."
