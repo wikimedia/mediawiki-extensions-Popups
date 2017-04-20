@@ -3855,7 +3855,7 @@ function createLayout( preview, event ) {
 		// Mirror the positioning of the preview when there's no "Y flip": rest
 		// the pokey on the edge of the link's bounding rectangle. In this case
 		// the edge is the top-most.
-		offsetTop = link.offset().top - SIZES.pokeySize;
+		offsetTop = link.offset().top;
 
 		// Change the Y position to the top of the link
 		if ( event.pageY ) {
@@ -3867,6 +3867,8 @@ function createLayout( preview, event ) {
 				true
 			) + $window.scrollTop();
 		}
+
+		offsetTop -= SIZES.pokeySize;
 	}
 
 	return {
