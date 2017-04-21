@@ -3207,7 +3207,7 @@ module.exports = function ( state, action ) {
 			if ( action.token === state.activeToken ) {
 				return nextState( state, {
 					fetchResponse: action.result,
-					shouldShow: true
+					shouldShow: state.isUserDwelling
 				} );
 			}
 
