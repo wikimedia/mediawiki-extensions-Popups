@@ -5,12 +5,12 @@
 			"Whym",
 			"赤城。",
 			"Sujiniku",
-			"Otokoume"
+			"Otokoume",
+			"Omotecho"
 		]
 	},
-	"popups-message": "ホバーカード",
-	"popups-desc": "ページへのリンクにホバーした際に、ページ内容の要約のホバーカードを表示する",
-	"popups-last-edited": "最終更新: $1",
+	"popups-message": "ページのプレビュー",
+	"popups-desc": "ページへのリンクにホバーした際に、プレビューを表示する",
 	"popups-settings-title": "ページのプレビュー",
 	"popups-settings-description": "このツールによって、ウィキのページへのリンクから内容の要約をプレビューできます。",
 	"popups-settings-option-simple": "有効化",
@@ -20,7 +20,5 @@
 	"popups-settings-cancel": "取り消し",
 	"popups-settings-help": "ページのフッターにあるリンクから、プレビューを元に戻すことができます。",
 	"popups-settings-enable": "プレビューを有効にする",
-	"popups-send-feedback": "フィードバックを送信 (外部リンク)",
-	"popups-mobile-dismiss": "非表示",
-	"popups-mobile-message": "ホバーカード (モバイル)"
+	"popups-send-feedback": "フィードバックを送信 (外部リンク)"
 }
