@@ -154,7 +154,8 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	var token = '1234567890',
 		state = {
-			activeToken: token
+			activeToken: token,
+			isUserDwelling: true
 		},
 		action = {
 			type: 'FETCH_COMPLETE',
@@ -162,17 +163,38 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 			result: {}
 		};
 
-	assert.expect( 2 );
+	assert.expect( 3 );
 
 	assert.deepEqual(
 		preview( state, action ),
 		{
-			activeToken: state.activeToken, // Previous state.
+			// Previous state.
+			activeToken: state.activeToken,
+			isUserDwelling: true,
 
 			fetchResponse: action.result,
 			shouldShow: true
 		},
 		'It should store the result and signal that a preview should be rendered.'
+	);
+
+	// ---
+
+	state = preview( state, {
+		type: 'ABANDON_START',
+		token: token
+	} );
+
+	assert.deepEqual(
+		preview( state, action ),
+		{
+			activeToken: token,
+			isUserDwelling: false, // Set when ABANDON_START is reduced.
+
+			fetchResponse: action.result,
+			shouldShow: false
+		},
+		'It shouldn\'t signal that a preview should be rendered if the user has abandoned the link since the gateway request was made.'
 	);
 
 	// ---
@@ -186,8 +208,9 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	assert.deepEqual(
 		preview( state, action ),
 		state,
-		'It should NOOP if the user has interacted with another link since the request was dispatched via the gateway.'
+		'It should NOOP if the user has interacted with another link since the gateway request was made.'
 	);
+
 } );
 
 QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
