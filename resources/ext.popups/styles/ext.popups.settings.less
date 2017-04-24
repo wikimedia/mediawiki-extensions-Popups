@@ -1,8 +1,6 @@
 @import 'mediawiki.mixins.less';
 @import 'mediawiki.ui/variables';
 
-@dialog-margin: 50px;
-
 #mwe-popups-settings {
 	position: fixed;
 	z-index: 1000;
@@ -85,31 +83,24 @@
 }
 
 .mwe-popups-settings-help {
-	font-size: 18px;
+	@imageWidth: 180px;
+	@imageHeight: 140px;
+
+	.background-image-svg( '../images/footer-ltr.svg', '../images/footer-ltr.png' );
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size: @imageWidth @imageHeight;
+	font-size: 13px;
 	font-weight: 800;
-	margin: @dialog-margin;
-	margin-bottom: 20px;
-	margin-right: 0;
+	height: @imageHeight;
+	margin: 40px;
+	position: relative;
 
 	p {
-		margin-right: 150px;
+		left: @imageWidth;
+		bottom: 20px;
+		position: absolute;
 	}
-
-	div.mwe-popups-settings-help-image {
-		margin-left: -@dialog-margin;
-		margin-top: 20px;
-		margin-bottom: 50px;
-		background: #eee;
-		height: 65px;
-		width: 450px;
-		.background-image-svg( '../images/footer-ltr.svg', '../images/footer-ltr.png' );
-		background-position: center;
-		background-repeat: no-repeat;
-	}
-}
-
-.rtl .mwe-popups-settings-help div.mwe-popups-settings-help-image {
-	.background-image-svg( '../images/footer-rtl.svg', '../images/footer-rtl.png' );
 }
 
 .mwe-popups-overlay {
