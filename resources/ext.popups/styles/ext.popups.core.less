@@ -5,6 +5,11 @@
  * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
  */
 
+@popupPadding: 16px;
+@popupWidth: 300px;
+@popupTallWidth: 215px;
+@cogIconSize: 30px;
+
 #mwe-popups-svg {
 	position: absolute;
 	top: -1000px;
@@ -32,18 +37,14 @@
 	left: @left;
 }
 
-.mwe-popups-icon {
-	display: inline-block;
-	vertical-align: middle;
-	cursor: pointer;
-	margin: 0;
-	margin-top: -5px;
-	height: 24px;
-	width: 30px;
+.mwe-popups-settings-icon {
+	// For purpose of active and hover states
 	border-radius: 2px;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 24px 24px;
+	// Icon sizes are relative to font size. Override any parents.
+	font-size: 16px;
+	// position icon
+	/* stylelint-disable value-keyword-case */
+	margin-right: -@iconSize / 2;
 
 	&:hover {
 		background-color: @colorGray14;
@@ -52,12 +53,6 @@
 	&:active {
 		background-color: @colorGray12;
 	}
-}
-
-.mwe-popups-settings-icon {
-
-	// N.B. filenames are relative to the LESS file.
-	.background-image-svg( '../images/cog.svg', '../images/cog.png' );
 }
 
 .mwe-popups-sade-face-icon {
@@ -93,7 +88,7 @@
 		text-decoration: none;
 
 		footer {
-			padding: 16px;
+			padding: @popupPadding;
 			margin: 0;
 			font-size: 10px;
 			position: absolute;
@@ -101,7 +96,7 @@
 			/* @noflip */
 			left: 0;
 
-			.mwe-popups-icon {
+			.mwe-popups-settings-icon {
 				float: right;
 			}
 		}
@@ -113,7 +108,7 @@
 		// SVG element is forced not to occlude the truncating pseudo-element and
 		// the settings cog in IE9-11.
 		padding: 16px 0;
-		margin: 0 16px;
+		margin: 0 @popupPadding;
 
 		display: block;
 		color: #000;
@@ -175,7 +170,7 @@
 		}
 
 		.mwe-popups-extract {
-			width: 215px;
+			width: @popupTallWidth;
 			height: 142px;
 			overflow: hidden;
 			/* @noflip */
@@ -183,12 +178,12 @@
 		}
 
 		footer {
-			width: 215px;
+			width: @popupTallWidth;
 		}
 	}
 
 	&.mwe-popups-is-not-tall {
-		width: 300px;
+		width: @popupWidth;
 
 		.mwe-popups-extract {
 			max-height: 120px;
@@ -198,7 +193,7 @@
 		}
 
 		footer {
-			width: 270px;
+			width: @popupWidth - @cogIconSize;
 		}
 	}
 
