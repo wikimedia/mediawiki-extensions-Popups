@@ -9,20 +9,19 @@ QUnit.module( 'ext.popups/statsvInstrumentation', {
 } );
 
 QUnit.test( 'isEnabled', function ( assert ) {
-	assert.expect( 2 );
+	var experiments = stubs.createStubExperiments( true );
 
-	var experiments = stubs.createStubExperiments( true ),
-		samplingRate;
+	assert.expect( 2 );
 
 	assert.ok(
 		statsv.isEnabled( this.user, this.config, experiments ),
-		"Logging is enabled when the user is in the sample."
+		'Logging is enabled when the user is in the sample.'
 	);
 
 	experiments = stubs.createStubExperiments( false );
 
 	assert.notOk(
 		statsv.isEnabled( this.user, this.config, experiments ),
-		"Logging is disabled when the user is not in the sample."
+		'Logging is disabled when the user is not in the sample.'
 	);
 } );

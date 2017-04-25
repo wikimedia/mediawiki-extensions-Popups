@@ -324,7 +324,7 @@ QUnit.test( 'it should dispatch the FETCH_END action when the API request ends',
 
 	this.gatewayPromise.then( function () {
 		assert.deepEqual(
-			that.dispatch.getCall( 1 ).args[0],
+			that.dispatch.getCall( 1 ).args[ 0 ],
 			{
 				type: 'FETCH_END',
 				el: that.el,
@@ -343,7 +343,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 		result = {},
 		that = this,
 		done = assert.async();
- 
+
 	whenSpy = this.sandbox.stub( $, 'when' )
 		.returns( whenDeferred.promise() );
 
@@ -360,7 +360,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 
 	// This assertion is disabled due to $.Promise#then and #fail returning a new
 	// instance of $.Promise.
-	//assert.strictEqual( args[ 0 ], this.gatewayPromise );
+	// assert.strictEqual( args[ 0 ], this.gatewayPromise );
 
 	assert.strictEqual( args[ 1 ], this.waitPromises[ 0 ] );
 

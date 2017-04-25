@@ -34,7 +34,7 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 } );
 
 QUnit.test( 'FETCH_END', function ( assert ) {
-	var startedAt, endedAt, delay, action, state;
+	var startedAt, endedAt, action, state;
 
 	assert.expect( 1 );
 
@@ -42,7 +42,7 @@ QUnit.test( 'FETCH_END', function ( assert ) {
 	endedAt = 500;
 	action = {
 		type: 'FETCH_END',
-		timestamp: endedAt,
+		timestamp: endedAt
 	};
 	state = statsv( { fetchStartedAt: startedAt }, action );
 
@@ -136,4 +136,3 @@ QUnit.test( 'STATSV_LOGGED', function ( assert ) {
 		}
 	);
 } );
-

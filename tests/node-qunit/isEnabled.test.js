@@ -14,7 +14,6 @@ function createStubUserSettings( isEnabled ) {
 	};
 }
 
-
 QUnit.module( 'ext.popups#isEnabled (logged out)', {
 	setup: function () {
 		this.user = stubs.createStubUser( /* isAnon = */ true );
@@ -31,17 +30,17 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 
 	cases = [
 		[ undefined, true, true, 'When the user hasn\'t enabled or disabled' +
-		  ' the feature and the user is in the sample.' ],
+			' the feature and the user is in the sample.' ],
 		[ undefined, false, false, 'When the user hasn\'t enabled or disabled' +
-		  ' the feature and the user is not in the sample.' ],
+			' the feature and the user is not in the sample.' ],
 		[ false, true, false, 'When the user has disabled the feature' +
-		  ' and the user is in the sample.'],
+			' and the user is in the sample.' ],
 		[ false, false, false, 'When the user has disabled the feature' +
-		  ' and the user is not in the sample.'],
+			' and the user is not in the sample.' ],
 		[ true, true, true, 'When the user has enabled the feature' +
-		  ' and the user is in the sample.' ],
+			' and the user is in the sample.' ],
 		[ true, false, true, 'When the user has enabled the feature' +
-		  ' and the user is not in the sample.' ]
+			' and the user is not in the sample.' ]
 	];
 
 	for ( i = 0; i < cases.length; i++ ) {

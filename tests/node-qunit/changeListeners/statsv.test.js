@@ -83,4 +83,3 @@ QUnit.test( 'it should not log when no action is given', function ( assert ) {
 		'The statsvLoggged bound action is not called when no action is given.'
 	);
 } );
-

@@ -236,7 +236,7 @@ QUnit.test(
 
 		state = eventLogging( state, {
 			type: 'ABANDON_START',
-			timestamp: now + 250,
+			timestamp: now + 250
 		} );
 
 		state = eventLogging( state, {
@@ -365,7 +365,7 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 		initialState = {
 			interaction: {
 				token: token
-			},
+			}
 		},
 		state;
 
@@ -421,8 +421,8 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 
 QUnit.test( 'ABANDON_START', function ( assert ) {
 	var state = {
-			interaction: {}
-		};
+		interaction: {}
+	};
 
 	state = eventLogging( state, {
 		type: 'ABANDON_START',
@@ -471,8 +471,8 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 
 QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
 	var state = {
-			interaction: {}
-		};
+		interaction: {}
+	};
 
 	state = eventLogging( state, {
 		type: 'PREVIEW_DWELL'
@@ -522,7 +522,7 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 
 	state = eventLogging( state, {
 		type: 'ABANDON_END',
-		token: token,
+		token: token
 	} );
 
 	assert.deepEqual(
@@ -557,7 +557,7 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 
 	state = eventLogging( state, {
 		type: 'ABANDON_END',
-		token: token,
+		token: token
 	} );
 
 	assert.deepEqual(

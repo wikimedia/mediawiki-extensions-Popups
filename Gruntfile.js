@@ -24,6 +24,7 @@ module.exports = function ( grunt ) {
 				'src/**',
 				'resources/ext.popups/*.js',
 				'resources/ext.popups/**/*.js',
+				'tests/node-qunit/**/*.js',
 				'!resources/dist/index.js',
 				'!docs/**',
 				'!node_modules/**'

@@ -57,40 +57,40 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 	// See https://phabricator.wikimedia.org/T158632#3071104 onward for additional
 	// context.
 	RESTBASE_RESPONSE_WITH_SMALL_IMAGE = {
-		title: "PreviewsNonFreeImage/sandbox",
-		extract: "Hello, I am the non-free image and parenthetical page (YOU CAN'T SEE THIS). My preview should contain an image that is not free. My preview should contain a parenthetical you cannot see..",
+		title: 'PreviewsNonFreeImage/sandbox',
+		extract: 'Hello, I am the non-free image and parenthetical page (YOU CAN\'T SEE THIS). My preview should contain an image that is not free. My preview should contain a parenthetical you cannot see..',
 		thumbnail: {
-			source: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png",
+			source: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png',
 			width: 300,
 			height: 126,
-			original: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png"
+			original: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png'
 		},
 		originalimage: {
-			source: "https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png",
+			source: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png',
 			width: 300,
 			height: 126
 		},
-		lang: "en",
-		dir: "ltr",
-		timestamp: "2017-02-17T22:29:56Z"
+		lang: 'en',
+		dir: 'ltr',
+		timestamp: '2017-02-17T22:29:56Z'
 	},
 	RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE = {
-		title: "Landscape",
-		extract: "Landscape",
+		title: 'Landscape',
+		extract: 'Landscape',
 		thumbnail: {
-			source: "http://foo/bar/baz.png/500px-baz.png",
+			source: 'http://foo/bar/baz.png/500px-baz.png',
 			width: 500,
 			height: 300,
-			original: "http://foo/bar/baz.png"
+			original: 'http://foo/bar/baz.png'
 		},
 		originalimage: {
-			source: "http://foo/bar/baz.png",
+			source: 'http://foo/bar/baz.png',
 			width: 1000,
 			height: 600
 		},
-		lang: "en",
-		dir: "ltr",
-		timestamp: "2017-02-17T22:29:56Z"
+		lang: 'en',
+		dir: 'ltr',
+		timestamp: '2017-02-17T22:29:56Z'
 	},
 	RESTBASE_RESPONSE_PREVIEW_MODEL = createModel(
 		'Barack Obama',
@@ -143,8 +143,7 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a model '
 
 QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) {
 	var model,
-		gateway = createRESTBaseGateway(),
-		response;
+		gateway = createRESTBaseGateway();
 
 	model = gateway.convertPageToModel( RESTBASE_RESPONSE, 2000 );
 
