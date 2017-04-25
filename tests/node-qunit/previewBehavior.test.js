@@ -9,6 +9,9 @@ QUnit.module( 'ext.popups.preview.settingsBehavior', {
 
 		mediaWiki.Title = { newFromText: newFromText };
 		/* global Map */ this.config = new Map();
+	},
+	afterEach: function () {
+		mediaWiki.Title = null;
 	}
 } );
 
