@@ -3,7 +3,7 @@ var footerLink = require( '../../../src/changeListeners/footerLink' );
 // Since footerLink manipulates the DOM, this test is, by necessity, an
 // integration test.
 QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
-	setup: function () {
+	beforeEach: function () {
 		var boundActions = {};
 
 		// Stub internal usage of mw.message
@@ -37,7 +37,7 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 			return this.$footer.find( 'li' );
 		};
 	},
-	teardown: function () {
+	afterEach: function () {
 		this.$footer.remove();
 	}
 } );

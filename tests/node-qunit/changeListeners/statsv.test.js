@@ -1,7 +1,7 @@
 var statsv = require( '../../../src/changeListeners/statsv' );
 
 QUnit.module( 'ext.popups/changeListeners/statsv', {
-	setup: function () {
+	beforeEach: function () {
 		this.boundActions = {
 			statsvLogged: this.sandbox.spy()
 		};

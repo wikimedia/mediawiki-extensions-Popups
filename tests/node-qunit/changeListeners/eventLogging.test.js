@@ -1,7 +1,7 @@
 var eventLogging = require( '../../../src/changeListeners/eventLogging' );
 
 QUnit.module( 'ext.popups/eventLogging', {
-	setup: function () {
+	beforeEach: function () {
 		this.boundActions = {
 			eventLogged: this.sandbox.spy()
 		};

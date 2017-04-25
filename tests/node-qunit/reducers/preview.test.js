@@ -1,7 +1,7 @@
 var preview = require( '../../../src/reducers/preview' );
 
 QUnit.module( 'ext.popups/reducers#preview', {
-	setup: function () {
+	beforeEach: function () {
 		this.el = 'active link';
 	}
 } );

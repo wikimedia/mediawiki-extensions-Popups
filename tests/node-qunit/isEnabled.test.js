@@ -15,7 +15,7 @@ function createStubUserSettings( isEnabled ) {
 }
 
 QUnit.module( 'ext.popups#isEnabled (logged out)', {
-	setup: function () {
+	beforeEach: function () {
 		this.user = stubs.createStubUser( /* isAnon = */ true );
 	}
 } );

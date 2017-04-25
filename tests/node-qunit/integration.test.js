@@ -42,7 +42,7 @@ function constant( x ) { return function () { return x; }; }
 	*/
 
 QUnit.module( 'ext.popups preview @integration', {
-	setup: function () {
+	beforeEach: function () {
 		var that = this,
 			reducers, actions, registerChangeListener;
 

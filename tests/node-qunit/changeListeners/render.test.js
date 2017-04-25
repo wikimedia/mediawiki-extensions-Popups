@@ -2,7 +2,7 @@ var mock = require( 'mock-require' ),
 	render;
 
 QUnit.module( 'ext.popups/changeListeners/render', {
-	setup: function () {
+	beforeEach: function () {
 		this.preview = {
 			show: this.sandbox.stub().returns( $.Deferred().resolve() )
 		};

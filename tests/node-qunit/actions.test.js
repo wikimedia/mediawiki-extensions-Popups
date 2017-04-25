@@ -100,7 +100,7 @@ function setupEl( module ) {
 }
 
 QUnit.module( 'ext.popups/actions#linkDwell @integration', {
-	setup: function () {
+	beforeEach: function () {
 		var that = this;
 
 		this.state = {
@@ -116,7 +116,7 @@ QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 		setupWait( this );
 		setupEl( this );
 	},
-	teardown: function () {
+	afterEach: function () {
 		teardownWait();
 	}
 } );
@@ -264,7 +264,7 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 } );
 
 QUnit.module( 'ext.popups/actions#fetch', {
-	setup: function () {
+	beforeEach: function () {
 		var that = this;
 
 		// Setup the mw.now stub before actions is re-required in setupWait
@@ -292,7 +292,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 			actions.fetch( that.gateway, that.el, that.token )( that.dispatch );
 		};
 	},
-	teardown: function () {
+	afterEach: function () {
 		teardownWait();
 	}
 } );
@@ -392,10 +392,10 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 } );
 
 QUnit.module( 'ext.popups/actions#abandon', {
-	setup: function () {
+	beforeEach: function () {
 		setupWait( this );
 	},
-	teardown: function () {
+	afterEach: function () {
 		teardownWait();
 	}
 } );

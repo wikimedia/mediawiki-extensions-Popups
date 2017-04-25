@@ -2,7 +2,7 @@ var createPreviewBehavior = require( '../../src/previewBehavior' ),
 	createStubUser = require( './stubs' ).createStubUser;
 
 QUnit.module( 'ext.popups.preview.settingsBehavior', {
-	setup: function () {
+	beforeEach: function () {
 		function newFromText( title ) {
 			return { getUrl: function () { return 'url/' + title; } };
 		}

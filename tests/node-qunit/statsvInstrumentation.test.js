@@ -2,7 +2,7 @@ var stubs = require( './stubs' ),
 	statsv = require( '../../src/statsvInstrumentation' );
 
 QUnit.module( 'ext.popups/statsvInstrumentation', {
-	setup: function () {
+	beforeEach: function () {
 		this.user = stubs.createStubUser();
 		this.config = stubs.createStubMap();
 	}

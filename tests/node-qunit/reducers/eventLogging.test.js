@@ -3,7 +3,7 @@ var counts = require( '../../../src/counts' ),
 	eventLogging = require( '../../../src/reducers/eventLogging' );
 
 QUnit.module( 'ext.popups/reducers#eventLogging', {
-	setup: function () {
+	beforeEach: function () {
 		this.initialState = eventLogging( undefined, {
 			type: '@@INIT'
 		} );
@@ -148,7 +148,7 @@ QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
 } );
 
 QUnit.module( 'ext.popups/reducers#eventLogging @integration', {
-	setUp: function () {
+	beforeEach: function () {
 		this.link = $( '<a>' );
 	}
 } );

@@ -4,7 +4,7 @@ var stubs = require( './stubs' ),
 	createUserSettings = require( '../../src/userSettings' );
 
 QUnit.module( 'ext.popups/userSettings', {
-	setup: function () {
+	beforeEach: function () {
 		var stubUser = createStubUser( /* isAnon = */ true );
 
 		this.storage = createStubMap();

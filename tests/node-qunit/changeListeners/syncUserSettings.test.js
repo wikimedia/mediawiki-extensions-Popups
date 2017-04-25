@@ -1,7 +1,7 @@
 var syncUserSettings = require( '../../../src/changeListeners/syncUserSettings' );
 
 QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
-	setup: function () {
+	beforeEach: function () {
 		this.userSettings = {
 			setPreviewCount: this.sandbox.spy(),
 			setIsEnabled: this.sandbox.spy()

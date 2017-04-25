@@ -3,7 +3,7 @@ var mw = mediaWiki,
 	createStubMap = require( './stubs' ).createStubMap;
 
 QUnit.module( 'ext.popups/schema', {
-	setup: function () {
+	beforeEach: function () {
 		this.config = createStubMap();
 
 		this.config.set( 'wgPopupsSchemaSamplingRate', 1 );

@@ -1,7 +1,7 @@
 var settings = require( '../../../src/changeListeners/settings' );
 
 QUnit.module( 'ext.popups/changeListeners/settings', {
-	setup: function () {
+	beforeEach: function () {
 		this.render = this.sandbox.stub();
 		this.rendered = {
 			appendTo: this.sandbox.spy(),

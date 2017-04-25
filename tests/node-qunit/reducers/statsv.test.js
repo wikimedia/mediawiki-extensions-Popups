@@ -1,7 +1,7 @@
 var statsv = require( '../../../src/reducers/statsv' );
 
 QUnit.module( 'ext.popups/reducers#eventLogging', {
-	setup: function () {
+	beforeEach: function () {
 		this.initialState = statsv( undefined, {
 			type: '@@INIT'
 		} );
