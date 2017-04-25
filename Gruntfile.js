@@ -1,11 +1,9 @@
 /* eslint-evn node */
 
 module.exports = function ( grunt ) {
-	var conf = grunt.file.readJSON( 'extension.json' ),
-		QUNIT_URL_BASE = 'http://localhost:8080/wiki/Special:JavaScriptTest/qunit/plain';
+	var conf = grunt.file.readJSON( 'extension.json' );
 
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
-	grunt.loadNpmTasks( 'grunt-contrib-qunit' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-jsonlint' );
@@ -39,19 +37,6 @@ module.exports = function ( grunt ) {
 				'!node_modules/**'
 			]
 		},
-		qunit: {
-			all: {
-				options: {
-					timeout: 10000, // Using the filter query param takes longer
-					summaryOnly: true,
-					urls: [
-						// Execute any QUnit test in those module whose names begin with
-						// "ext.popups".
-						QUNIT_URL_BASE + '?filter=ext.popups'
-					]
-				}
-			}
-		},
 		stylelint: {
 			options: {
 				syntax: 'less'
@@ -66,12 +51,8 @@ module.exports = function ( grunt ) {
 				debounceDelay: 1000
 			},
 			lint: {
-				files: [ 'resources/ext.popups/**/*.less', 'resources/**/*.js', 'tests/qunit/**/*.js' ],
+				files: [ 'resources/ext.popups/**/*.less', 'resources/**/*.js' ],
 				tasks: [ 'lint' ]
-			},
-			scripts: {
-				files: [ 'resources/**/*.js', 'tests/qunit/**/*.js' ],
-				tasks: [ 'test' ]
 			},
 			configFiles: {
 				files: [ 'Gruntfile.js' ],
@@ -83,6 +64,5 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'lint', [ 'eslint:all', 'stylelint', 'jsonlint', 'banana' ] );
-	grunt.registerTask( 'test', [ 'qunit' ] );
-	grunt.registerTask( 'default', [ 'lint', 'test' ] );
+	grunt.registerTask( 'default', [ 'lint' ] );
 };
