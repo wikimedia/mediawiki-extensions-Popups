@@ -23,9 +23,6 @@
 		"BeforePageDisplay": [
 			"Popups\\PopupsHooks::onBeforePageDisplay"
 		],
-		"ResourceLoaderTestModules": [
-			"Popups\\PopupsHooks::onResourceLoaderTestModules"
-		],
 		"ResourceLoaderGetConfigVars": [
 			"Popups\\PopupsHooks::onResourceLoaderGetConfigVars"
 		],

@@ -114,22 +114,6 @@ class PopupsHooks {
 	}
 
 	/**
-	 * @param array &$testModules
-	 * @param ResourceLoader $resourceLoader
-	 */
-	public static function onResourceLoaderTestModules( array &$testModules,
-		ResourceLoader &$resourceLoader ) {
-		$testModules['qunit']['ext.popups.tests'] = [
-			'scripts' => [
-				'tests/qunit/ext.popups/processLinks.test.js',
-				'src/processLinks.js',
-			],
-			'localBasePath' => __DIR__ . '/..',
-			'remoteExtPath' => 'Popups',
-		];
-	}
-
-	/**
 	 * @param array $vars
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {

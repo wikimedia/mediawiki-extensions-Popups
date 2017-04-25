@@ -171,20 +171,6 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::onResourceLoaderTestModules
-	 */
-	public function testOnResourceLoaderTestModules() {
-		$testModules = [ 'someNotEmptyValue' => 'notEmpty' ];
-		$resourceLoaderMock = $this->getMock( ResourceLoader::class );
-		PopupsHooks::onResourceLoaderTestModules( $testModules, $resourceLoaderMock );
-
-		$this->assertCount( 2, $testModules );
-		$this->assertEquals( 'notEmpty', $testModules[ 'someNotEmptyValue' ] );
-		$this->assertArrayHasKey( 'qunit', $testModules, 'ResourceLoader expects qunit test modules' );
-		$this->assertCount( 1, $testModules[ 'qunit' ], 'ResourceLoader expects 1 test module. ' );
-	}
-
-	/**
 	 * @covers ::onResourceLoaderGetConfigVars
 	 */
 	public function testOnResourceLoaderGetConfigVars() {
