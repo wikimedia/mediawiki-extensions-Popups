@@ -142,7 +142,7 @@ mw.requestIdleCallback( function () {
 	// Load EventLogging schema if possible...
 	mw.loader.using( 'ext.eventLogging.Schema' ).done( function () {
 		schema = createSchema( mw.config, window );
-		registerChangeListener( store, changeListeners.eventLogging( boundActions, schema ) );
+		registerChangeListener( store, changeListeners.eventLogging( boundActions, schema, statsvTracker ) );
 	} );
 
 	boundActions.boot(
