@@ -656,6 +656,7 @@ function layoutPreview( preview, layout ) {
  * we need to look at all rectangles and not just the rectangle that
  * encloses the point.
  *
+ * @private
  * @param {Number} y the point for which the closest location is being
  *  looked for
  * @param {ClientRectList} rects list of rectangles defined by four edges
@@ -684,5 +685,7 @@ function getClosestYPosition( y, rects, isTop ) {
 
 module.exports = {
 	render: render,
-	init: init
+	init: init,
+	// The following are exposed for teseting purposes only
+	getClosestYPosition: getClosestYPosition
 };
