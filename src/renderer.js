@@ -18,8 +18,10 @@ var mw = window.mediaWiki,
 
 /**
  * Extracted from `mw.popups.createSVGMasks`.
+ * @private
+ * @param {Object} container DOM object to which pokey masks are appended
  */
-function createPokeyMasks() {
+function createPokeyMasks( container ) {
 	$( '<div>' )
 		.attr( 'id', 'mwe-popups-svg' )
 		.html(
@@ -40,14 +42,14 @@ function createPokeyMasks() {
 				'</defs>' +
 			'</svg>'
 		)
-		.appendTo( document.body );
+		.appendTo( container );
 }
 
 /**
  * Initializes the renderer.
  */
 function init() {
-	createPokeyMasks();
+	createPokeyMasks( document.body );
 }
 
 /**
@@ -687,5 +689,6 @@ module.exports = {
 	render: render,
 	init: init,
 	// The following are exposed for teseting purposes only
+	createPokeyMasks: createPokeyMasks,
 	getClosestYPosition: getClosestYPosition
 };
