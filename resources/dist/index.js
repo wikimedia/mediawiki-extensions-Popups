@@ -1811,20 +1811,20 @@ module.exports = function ( boundActions, render ) {
 /**
  * Creates an instance of the statsv change listener.
  *
- * The listener will log events to a statsv endpoint by delegating the work
- * to the `ext.wikimediaEvents` module which is added to the output page
- * by the WikimediaEvents extension.
+ * The listener will log events to StatsD via the [the "StatsD timers and
+ * counters" analytics event protocol][0].
+ *
+ * [0]: https://github.com/wikimedia/mediawiki-extensions-WikimediaEvents/blob/master/modules/ext.wikimediaEvents.statsd.js
  *
  * @param {Object} boundActions
- * @param {bool} isLoggingEnabled
- * @param {Function} track mw.track
+ * @param {ext.popups.EventTracker} track
  * @return {ext.popups.ChangeListener}
  */
-module.exports = function ( boundActions, isLoggingEnabled, track ) {
+module.exports = function ( boundActions, track ) {
 	return function ( _, state ) {
 		var statsv = state.statsv;
 
-		if ( isLoggingEnabled && statsv.action ) {
+		if ( statsv.action ) {
 			track( statsv.action, statsv.data );
 
 			boundActions.statsvLogged();
@@ -2290,6 +2290,12 @@ var mw = mediaWiki,
 	];
 
 /**
+ * @typedef {Function} ext.popups.EventTracker
+ *
+ * An analytics event tracker like `mw.track`.
+ */
+
+/**
  * Creates a gateway with sensible values for the dependencies.
  *
  * @param {mw.Map} config
@@ -2303,6 +2309,24 @@ function createGateway( config ) {
 }
 
 /**
+ * Gets the appropriate analytics event tracker for logging metrics to StatsD
+ * via the [the "StatsD timers and counters" analytics event protocol][0].
+ *
+ * If logging metrics to StatsD is enabled for the user, then the appriopriate
+ * function is `mw.track`; otherwise it's `$.noop`.
+ *
+ * [0]: https://github.com/wikimedia/mediawiki-extensions-WikimediaEvents/blob/master/modules/ext.wikimediaEvents.statsd.js
+ *
+ * @param {Object} user
+ * @param {Object} config
+ * @param {Object} experiments
+ * @return {ext.popups.EventTracker}
+ */
+function getStatsvTracker( user, config, experiments ) {
+	return statsvInstrumentation.isEnabled( user, config, experiments ) ? mw.track : $.noop;
+}
+
+/**
  * Subscribes the registered change listeners to the
  * [store](http://redux.js.org/docs/api/Store.html#store).
  *
@@ -2311,14 +2335,13 @@ function createGateway( config ) {
  * @param {ext.popups.UserSettings} userSettings
  * @param {Function} settingsDialog
  * @param {ext.popups.PreviewBehavior} previewBehavior
- * @param {bool} isStatsvLoggingEnabled
- * @param {Function} track mw.track
+ * @param {ext.popups.EventTracker} statsvTracker
  */
-function registerChangeListeners( store, actions, userSettings, settingsDialog, previewBehavior, isStatsvLoggingEnabled, track ) {
+function registerChangeListeners( store, actions, userSettings, settingsDialog, previewBehavior, statsvTracker ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
-	registerChangeListener( store, changeListeners.statsv( actions, isStatsvLoggingEnabled, track ) );
+	registerChangeListener( store, changeListeners.statsv( actions, statsvTracker ) );
 	registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
 }
@@ -2343,14 +2366,14 @@ mw.requestIdleCallback( function () {
 		gateway = createGateway( mw.config ),
 		userSettings,
 		settingsDialog,
+		statsvTracker,
 		isEnabled,
 		schema,
-		previewBehavior,
-		isStatsvLoggingEnabled;
+		previewBehavior;
 
 	userSettings = createUserSettings( mw.storage );
 	settingsDialog = createSettingsDialogRenderer();
-	isStatsvLoggingEnabled = statsvInstrumentation.isEnabled( mw.user, mw.config, mw.experiments );
+	statsvTracker = getStatsvTracker( mw.user, mw.config, mw.experiments );
 
 	isEnabled = createIsEnabled( mw.user, userSettings, mw.config, mw.experiments );
 
@@ -2372,7 +2395,7 @@ mw.requestIdleCallback( function () {
 
 	registerChangeListeners(
 		store, boundActions, userSettings, settingsDialog,
-		previewBehavior, isStatsvLoggingEnabled, mw.track
+		previewBehavior, statsvTracker
 	);
 
 	// Load EventLogging schema if possible...
