@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="264" height="162" viewBox="0 0 264 162" id="svg2">
-    <defs id="defs78">
-        <clipPath id="jagged-edge">
-            <path id="path4183" d="M0 0v152l12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10V0z"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="264" height="162" viewBox="0 0 264 162">
+    <defs>
+        <clipPath id="a">
+            <path d="M0 0v152l12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10 12 10 12-10V0z"/>
         </clipPath>
     </defs>
-    <g transform="matrix(-1 0 0 1 264 0)" id="screenshot" clip-path="url(#jagged-edge)">
-        <path d="M263.5 162.25l-263-.5V.5h263z" id="background" fill="#fff"/>
-        <path d="M252 162.496V29H48v133.496z" id="article" fill="#e5e5e5"/>
-        <path d="M11 22c0-7.732 6.268-14 14-14s14 6.268 14 14-6.268 14-14 14-14-6.268-14-14z" id="logo" fill="#e5e5e5"/>
-        <path d="M38 163.807V58H13v105.807h25z" id="sidebar" fill="#e5e5e5"/>
-        <g id="personal-tools" fill="#e5e5e5">
-            <path id="path4191" d="M233 5h26v6h-26V5zm-24 0h22v6h-22zm-24 0h22v6h-22zm-23 0h13v6h-13zm15 0h6v6h-6zm-23 0h6v6h-6z"/>
+    <g transform="matrix(-1 0 0 1 264 0)" clip-path="url(#a)">
+        <path d="M263.5 162.25l-263-.5V.5h263z" fill="#fff"/>
+        <path d="M252 162.496V29H48v133.496zM11 22c0-7.732 6.268-14 14-14s14 6.268 14 14-6.268 14-14 14-14-6.268-14-14zm27 141.807V58H13v105.807h25zM233 5h26v6h-26V5zm-24 0h22v6h-22zm-24 0h22v6h-22zm-23 0h13v6h-13zm15 0h6v6h-6zm-23 0h6v6h-6z" fill="#e5e5e5"/>
+        <g fill="#e5e5e5">
+            <path d="M258 16v4h-92v-4h92m1-1h-94v6h94v-6z"/>
+            <path d="M168 17h2v2h-2z"/>
         </g>
-        <g id="search" fill="#e5e5e5">
-            <path d="M258 16v4h-92v-4h92m1-1h-94v6h94v-6z" id="path5717"/>
-            <path d="M168 17h2v2h-2z" id="icon"/>
+        <path d="M38 45v-5H13v5h25z" fill="#e5e5e5"/>
+        <path d="M0 0v162h264V0zm1 1h262v150.533l-11 9.166-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-11-9.168z" fill="#e5e5e5"/>
+        <g fill="#9b9b9b">
+            <path d="M143.756 56h-38.14v7.782h38.14V56zm56.732 35.02v-8.755h-50.814v8.755h50.814zm-89.725-22.374H89.929v8.633h20.833v-8.634zm98.535 7.782v-7.782h-37.695v7.782h37.695zm-88.645 5.716H94.955v7.782h25.698v-7.782zM195.233 56h-46.207v7.782h46.207V56z"/>
+            <path d="M114.735 68.646v9.2h51.558v-9.2h-51.558z" fill="#36c"/>
         </g>
-        <path d="M38 45v-5H13v5h25z" id="sitename" fill="#e5e5e5"/>
-        <path id="border" d="M0 0v162h264V0zm1 1h262v150.533l-11 9.166-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-12-10-12 10-11-9.168z" fill="#e5e5e5"/>
-        <g id="g18" fill="#9b9b9b">
-            <path id="path20" d="M140.244 68h38.14v7.782h-38.14V68zm-56.732 35.02v-8.755h50.814v8.755H83.512zm89.725-22.374h20.834v8.633h-20.833v-8.634zm-98.535 7.782v-7.782h37.695v7.782H74.702zm88.645 5.716h25.698v7.782h-25.698v-7.782zM88.767 68h46.207v7.782H88.767V68z" transform="matrix(-1 0 0 1 284 -12)"/>
-            <path id="path22" d="M169.265 80.646v9.2h-51.558v-9.2h51.558z" fill="#36c" transform="matrix(-1 0 0 1 284 -12)"/>
-        </g>
-        <g id="g24">
-            <path id="path26" d="M170 94H95v44h75z" fill="#fff" transform="matrix(-1 0 0 1 284 -12)"/>
-            <path id="path28" d="M95 94h31v44H95V94zm18.167 24.13l-5.904 9.652-3.206-2.958-4.83 6.05 21.137.03-6.244-12.775h-.953z" fill="#36c" transform="matrix(-1 0 0 1 284 -12)"/>
-            <g id="g30" transform="translate(284 -12)" fill="#d0d0d0">
-                <rect id="rect32" y="100" x="-163" rx="1" height="1" width="20"/>
-                <rect id="rect34" y="104" x="-163" rx="1" height="1" width="20"/>
-                <rect id="rect36" y="108" x="-163" rx="1" height="1" width="20"/>
-                <rect id="rect38" y="112" x="-163" rx="1" height="1" width="28"/>
-                <rect id="rect40" y="116" x="-163" rx="1" height="1" width="28"/>
-                <rect id="rect42" y="120" x="-163" rx="1" height="1" width="28"/>
-                <rect id="rect44" y="124" x="-163" rx="1" height="1" width="28"/>
-                <rect id="rect46" y="128" x="-163" rx="1" height="1" width="28"/>
-            </g>
+        <path d="M114 82h75v44h-75z" fill="#fff"/>
+        <path d="M189 82h-31v44h31V82zm-18.167 24.13l5.904 9.652 3.206-2.958 4.83 6.05-21.137.03 6.244-12.775h.953z" fill="#36c"/>
+        <g transform="translate(284 -12)" fill="#d0d0d0">
+            <rect y="100" x="-163" rx="1" height="1" width="20"/>
+            <rect y="104" x="-163" rx="1" height="1" width="20"/>
+            <rect y="108" x="-163" rx="1" height="1" width="20"/>
+            <rect y="112" x="-163" rx="1" height="1" width="28"/>
+            <rect y="116" x="-163" rx="1" height="1" width="28"/>
+            <rect y="120" x="-163" rx="1" height="1" width="28"/>
+            <rect y="124" x="-163" rx="1" height="1" width="28"/>
+            <rect y="128" x="-163" rx="1" height="1" width="28"/>
         </g>
     </g>
 </svg>
