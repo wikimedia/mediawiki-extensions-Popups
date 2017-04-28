@@ -1,20 +1,20 @@
 /**
  * Creates an instance of the statsv change listener.
  *
- * The listener will log events to a statsv endpoint by delegating the work
- * to the `ext.wikimediaEvents` module which is added to the output page
- * by the WikimediaEvents extension.
+ * The listener will log events to StatsD via the [the "StatsD timers and
+ * counters" analytics event protocol][0].
+ *
+ * [0]: https://github.com/wikimedia/mediawiki-extensions-WikimediaEvents/blob/master/modules/ext.wikimediaEvents.statsd.js
  *
  * @param {Object} boundActions
- * @param {bool} isLoggingEnabled
- * @param {Function} track mw.track
+ * @param {ext.popups.EventTracker} track
  * @return {ext.popups.ChangeListener}
  */
-module.exports = function ( boundActions, isLoggingEnabled, track ) {
+module.exports = function ( boundActions, track ) {
 	return function ( _, state ) {
 		var statsv = state.statsv;
 
-		if ( isLoggingEnabled && statsv.action ) {
+		if ( statsv.action ) {
 			track( statsv.action, statsv.data );
 
 			boundActions.statsvLogged();

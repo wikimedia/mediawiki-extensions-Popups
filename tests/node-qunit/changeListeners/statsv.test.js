@@ -21,7 +21,7 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 			data: 123
 		}
 	};
-	changeListener = statsv( this.boundActions, true, this.track );
+	changeListener = statsv( this.boundActions, this.track );
 	changeListener( undefined, state );
 
 	assert.ok(
@@ -35,31 +35,6 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'it should not log when logging is disabled', function ( assert ) {
-	var state, changeListener;
-
-	assert.expect( 2 );
-
-	state = {
-		statsv: {
-			action: 'myAction',
-			data: 123
-		}
-	};
-	changeListener = statsv( this.boundActions, false, this.track );
-	changeListener( undefined, state );
-
-	assert.ok(
-		this.track.notCalled,
-		'No logging occurs when logging is disabled.'
-	);
-
-	assert.ok(
-		this.boundActions.statsvLogged.notCalled,
-		'The statsvLoggged bound action is not called when logging is disabled.'
-	);
-} );
-
 QUnit.test( 'it should not log when no action is given', function ( assert ) {
 	var state, changeListener;
 
@@ -70,7 +45,7 @@ QUnit.test( 'it should not log when no action is given', function ( assert ) {
 			data: 123
 		}
 	};
-	changeListener = statsv( this.boundActions, true, this.track );
+	changeListener = statsv( this.boundActions, this.track );
 	changeListener( undefined, state );
 
 	assert.ok(
