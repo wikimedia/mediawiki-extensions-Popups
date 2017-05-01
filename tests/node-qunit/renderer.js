@@ -33,6 +33,35 @@ QUnit.test( 'createPokeyMasks', function ( assert ) {
 	} );
 } );
 
+QUnit.test( 'createThumbnailElement', function ( assert ) {
+	var className = 'thumb-class',
+		url = 'https://thumbnail.url',
+		x = 25,
+		y = 50,
+		thumbnailWidth = 200,
+		thumbnailHeight = 250,
+		width = 500,
+		height = 300,
+		clipPath = 'mwe-popups-mask',
+		$thumbnail = renderer.createThumbnailElement(
+			className, url, x, y, thumbnailWidth, thumbnailHeight,
+			width, height, clipPath );
+
+	assert.equal(
+		$thumbnail.html(),
+		'<image href="https://thumbnail.url" class="thumb-class" x="25" y="50" width="200" height="250" clip-path="url(#mwe-popups-mask)"></image>',
+		'Thumbnail HTML is correct.'
+	);
+	assert.equal(
+		$thumbnail.attr( 'xmlns' ),
+		'http://www.w3.org/2000/svg',
+		'SVG namespace is correct.'
+	);
+	assert.equal( $thumbnail.attr( 'height' ), height, 'SVG height is correct.' );
+	assert.equal( $thumbnail.attr( 'width' ), width, 'SVG width is correct.' );
+
+} );
+
 QUnit.test( 'getProcessedElements', function ( assert ) {
 	var cases = [
 		[
