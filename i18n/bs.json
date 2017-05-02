@@ -5,7 +5,7 @@
 		]
 	},
 	"popups-message": "Info kartice",
-	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko linka stranice",
+	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko linka stranice.",
 	"popups-redirects": "preusmjerava na <h3>$1</h3>",
 	"popups-settings-title": "Pregled stranice",
 	"popups-settings-description": "Ovaj alat vam omogućava pregled linkova wiki stranica i referenci.",
