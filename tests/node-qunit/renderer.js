@@ -3,14 +3,36 @@ var $ = jQuery,
 
 QUnit.module( 'ext.popups#renderer', {
 	beforeEach: function () {
+		var self = this;
+
 		window.mediaWiki.RegExp = {
 			escape: this.sandbox.spy( function( str ) {
 				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
 			} )
 		};
+
+		window.mediaWiki.msg = function ( key ) {
+			switch ( key ) {
+				case 'popups-preview-no-preview':
+					return 'Looks like there isn\'t a preview for this page';
+				case 'popups-preview-footer-read':
+					return 'Read';
+			}
+		};
+
+		this.renderSpy = this.sandbox.spy();
+		window.mediaWiki.template = {
+			get: function () {
+				return {
+					render: self.renderSpy
+				};
+			}
+		};
 	},
 	afterEach: function () {
 		window.mediaWiki.RegExp = null;
+		window.mediaWiki.msg = null;
+		window.mediaWiki.template = null;
 	}
 } );
 
@@ -31,6 +53,45 @@ QUnit.test( 'createPokeyMasks', function ( assert ) {
 			case_[ 1 ]
 		);
 	} );
+} );
+
+QUnit.test( 'createEmptyPreview', function ( assert ) {
+	var model = {
+			title: 'Test',
+			url: 'https://en.wikipedia.org/wiki/Test',
+			languageCode: 'en',
+			languageDirection: 'ltr',
+			extract: 'This is a test page.',
+			thumbnail: {
+				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
+				width: 409,
+				height: 512
+			}
+		},
+		emptyPreview = renderer.createEmptyPreview( model );
+
+	assert.equal(
+		emptyPreview.hasThumbnail,
+		false,
+		'Empty preview doesn\'t have a thumbnail (even though one is provided).'
+	);
+
+	assert.equal(
+		emptyPreview.isTall,
+		false,
+		'Empty preview is never tall (even though the supplied thumbnail is tall).'
+	);
+
+	assert.ok( this.renderSpy.calledOnce, 'Template has been rendered.' );
+
+	assert.deepEqual(
+		this.renderSpy.getCall( 0 ).args[ 0 ],
+		$.extend( {}, model, {
+			extractMsg: 'Looks like there isn\'t a preview for this page',
+			readMsg: 'Read'
+		} ),
+		'Template is called with the correct data.'
+	);
 } );
 
 QUnit.test( 'createThumbnailElement', function ( assert ) {
