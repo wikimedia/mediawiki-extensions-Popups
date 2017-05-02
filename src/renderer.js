@@ -690,7 +690,9 @@ module.exports = {
 	init: init,
 	// The following are exposed for teseting purposes only
 	createPokeyMasks: createPokeyMasks,
+	createPreview: createPreview,
 	createEmptyPreview: createEmptyPreview,
+	createThumbnail: createThumbnail,
 	createThumbnailElement: createThumbnailElement,
 	renderExtract: renderExtract,
 	getClasses: getClasses,

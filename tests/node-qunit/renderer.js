@@ -5,6 +5,10 @@ QUnit.module( 'ext.popups#renderer', {
 	beforeEach: function () {
 		var self = this;
 
+		$.bracketedDevicePixelRatio = function () {
+			return 1;
+		};
+
 		window.mediaWiki.RegExp = {
 			escape: this.sandbox.spy( function( str ) {
 				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
@@ -30,6 +34,7 @@ QUnit.module( 'ext.popups#renderer', {
 		};
 	},
 	afterEach: function () {
+		$.bracketedDevicePixelRatio = null;
 		window.mediaWiki.RegExp = null;
 		window.mediaWiki.msg = null;
 		window.mediaWiki.template = null;
@@ -53,6 +58,52 @@ QUnit.test( 'createPokeyMasks', function ( assert ) {
 			case_[ 1 ]
 		);
 	} );
+} );
+
+QUnit.test( 'createPreview', function ( assert ) {
+	var model = {
+			title: 'Test',
+			url: 'https://en.wikipedia.org/wiki/Test',
+			languageCode: 'en',
+			languageDirection: 'ltr',
+			extract: 'This is a test page.',
+			thumbnail: {
+				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
+				width: 409,
+				height: 512
+			}
+		},
+		preview;
+
+	window.mediaWiki.template = {
+		get: function () {
+			return {
+				render: function () {
+					return $( '<div>', { 'class': 'mwe-popups-discreet' } )
+						.append( $( '<div>', { 'class': 'mwe-popups-extract' } ) );
+				}
+			};
+		}
+	};
+
+	preview = renderer.createPreview( model );
+
+	assert.equal( preview.hasThumbnail, true, 'Preview has thumbnail.' );
+	assert.deepEqual(
+		preview.thumbnail,
+		renderer.createThumbnail( model.thumbnail ),
+		'Preview thumbnail is the correct one.'
+	);
+	assert.equal(
+		preview.isTall,
+		true,
+		'Preview is tall (because the thumbnail is tall).'
+	);
+	assert.equal(
+		preview.el.find( '.mwe-popups-extract' ).text(),
+		'This is a test page.',
+		'Preview extract is correct.'
+	);
 } );
 
 QUnit.test( 'createEmptyPreview', function ( assert ) {
