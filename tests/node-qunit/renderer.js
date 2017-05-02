@@ -145,6 +145,58 @@ QUnit.test( 'createEmptyPreview', function ( assert ) {
 	);
 } );
 
+QUnit.test( 'createThumbnail - tall image', function ( assert ) {
+	var devicePixelRatio = $.bracketedDevicePixelRatio(),
+		rawThumbnail = {
+			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
+			width: 409,
+			height: 512
+		},
+		thumbnail = renderer.createThumbnail( rawThumbnail );
+
+	assert.equal(
+		thumbnail.isTall,
+		true,
+		'Thumbnail is tall.'
+	);
+	assert.equal(
+		thumbnail.width,
+		thumbnail.width / devicePixelRatio,
+		'Thumbnail width is correct.'
+	);
+	assert.equal(
+		thumbnail.height,
+		thumbnail.height / devicePixelRatio,
+		'Thumbnail height is correct.'
+	);
+} );
+
+QUnit.test( 'createThumbnail - landscape image', function ( assert ) {
+	var devicePixelRatio = $.bracketedDevicePixelRatio(),
+		rawThumbnail = {
+			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg',
+			width: 500,
+			height: 400
+		},
+		thumbnail = renderer.createThumbnail( rawThumbnail );
+
+	assert.equal(
+		thumbnail.isTall,
+		false,
+		'Thumbnail is not tall.'
+	);
+	assert.equal(
+		thumbnail.width,
+		thumbnail.width / devicePixelRatio,
+		'Thumbnail width is correct.'
+	);
+	assert.equal(
+		thumbnail.height,
+		thumbnail.height / devicePixelRatio,
+		'Thumbnail height is correct.'
+	);
+} );
+
 QUnit.test( 'createThumbnailElement', function ( assert ) {
 	var className = 'thumb-class',
 		url = 'https://thumbnail.url',
