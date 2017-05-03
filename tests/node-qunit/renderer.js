@@ -84,6 +84,240 @@ QUnit.test( 'getProcessedElements', function ( assert ) {
 	} );
 } );
 
+QUnit.test( '#getClasses when no thumbnail is available', function ( assert ) {
+	var cases = [
+		// [ previewOptions, layoutOptions, expected, message ]
+		[
+			{
+				hasThumbnail: false,
+				isTall: false
+			},
+			{
+				flippedX: false,
+				flippedY: false
+			},
+			[
+				'mwe-popups-fade-in-up',
+				'mwe-popups-no-image-tri',
+				'mwe-popups-is-not-tall'
+			],
+			'No flip.'
+		],
+		[
+			{
+				hasThumbnail: false,
+				isTall: false
+			},
+			{
+				flippedX: false,
+				flippedY: true
+			},
+			[
+				'mwe-popups-fade-in-down',
+				'flipped_y',
+				'mwe-popups-is-not-tall'
+			],
+			'Y flipped.'
+		],
+		[
+			{
+				hasThumbnail: false,
+				isTall: false
+			},
+			{
+				flippedX: true,
+				flippedY: false
+			},
+			[
+				'mwe-popups-fade-in-up',
+				'flipped_x',
+				'mwe-popups-no-image-tri',
+				'mwe-popups-is-not-tall'
+			],
+			'X flipped.'
+		],
+		[
+			{
+				hasThumbnail: false,
+				isTall: false
+			},
+			{
+				flippedX: true,
+				flippedY: true
+			},
+			[
+				'mwe-popups-fade-in-down',
+				'flipped_x_y',
+				'mwe-popups-is-not-tall'
+			],
+			'X and Y flipped.'
+		]
+	];
+
+	cases.forEach( function ( case_ ) {
+		assert.deepEqual(
+			renderer.getClasses( case_[ 0 ], case_[ 1 ] ),
+			case_[ 2 ],
+			case_[ 3 ]
+		);
+	} );
+} );
+QUnit.test( '#getClasses when a non-tall thumbnail is available', function ( assert ) {
+	var cases = [
+		[
+			{
+				hasThumbnail: true,
+				isTall: false
+			},
+			{
+				flippedX: false,
+				flippedY: false
+			},
+			[
+				'mwe-popups-fade-in-up',
+				'mwe-popups-image-tri',
+				'mwe-popups-is-not-tall'
+			],
+			'No flip.'
+		],
+		[
+			{
+				hasThumbnail: true,
+				isTall: false
+			},
+			{
+				flippedX: false,
+				flippedY: true
+			},
+			[
+				'mwe-popups-fade-in-down',
+				'flipped_y',
+				'mwe-popups-is-not-tall'
+			],
+			'Y flipped.'
+		],
+		[
+			{
+				hasThumbnail: true,
+				isTall: false
+			},
+			{
+				flippedX: true,
+				flippedY: false
+			},
+			[
+				'mwe-popups-fade-in-up',
+				'flipped_x',
+				'mwe-popups-image-tri',
+				'mwe-popups-is-not-tall'
+			],
+			'X flipped.'
+		],
+		[
+			{
+				hasThumbnail: true,
+				isTall: false
+			},
+			{
+				flippedX: true,
+				flippedY: true
+			},
+			[
+				'mwe-popups-fade-in-down',
+				'flipped_x_y',
+				'mwe-popups-is-not-tall'
+			],
+			'X and Y flipped.'
+		]
+	];
+
+	cases.forEach( function ( case_ ) {
+		assert.deepEqual(
+			renderer.getClasses( case_[ 0 ], case_[ 1 ] ),
+			case_[ 2 ],
+			case_[ 3 ]
+		);
+	} );
+} );
+
+QUnit.test( '#getClasses when a tall thumbnail is available', function ( assert ) {
+	var cases = [
+		[
+			{
+				hasThumbnail: true,
+				isTall: true
+			},
+			{
+				flippedX: false,
+				flippedY: false
+			},
+			[
+				'mwe-popups-fade-in-up',
+				'mwe-popups-no-image-tri',
+				'mwe-popups-is-tall'
+			],
+			'No flip.'
+		],
+		[
+			{
+				hasThumbnail: true,
+				isTall: true
+			},
+			{
+				flippedX: false,
+				flippedY: true
+			},
+			[
+				'mwe-popups-fade-in-down',
+				'flipped_y',
+				'mwe-popups-is-tall'
+			],
+			'Y flipped.'
+		],
+		[
+			{
+				hasThumbnail: true,
+				isTall: true
+			},
+			{
+				flippedX: true,
+				flippedY: false
+			},
+			[
+				'mwe-popups-fade-in-up',
+				'flipped_x',
+				'mwe-popups-no-image-tri',
+				'mwe-popups-is-tall'
+			],
+			'X flipped.'
+		],
+		[
+			{
+				hasThumbnail: true,
+				isTall: true
+			},
+			{
+				flippedX: true,
+				flippedY: true
+			},
+			[
+				'mwe-popups-fade-in-down',
+				'flipped_x_y',
+				'mwe-popups-is-tall'
+			],
+			'X and Y flipped.'
+		]
+	];
+
+	cases.forEach( function ( case_ ) {
+		assert.deepEqual(
+			renderer.getClasses( case_[ 0 ], case_[ 1 ] ),
+			case_[ 2 ],
+			case_[ 3 ]
+		);
+	} );
+} );
+
 QUnit.test( 'getClosestYPosition', function ( assert ) {
 	assert.equal( renderer.getClosestYPosition( 100, [
 		{
