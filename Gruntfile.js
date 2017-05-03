@@ -12,14 +12,6 @@ module.exports = function ( grunt ) {
 	grunt.initConfig( {
 		banana: conf.MessagesDirs,
 		eslint: {
-			fix: {
-				options: {
-					fix: true
-				},
-				src: [
-					'<%= eslint.all %>'
-				]
-			},
 			all: [
 				'src/**',
 				'resources/ext.popups/*.js',
@@ -64,6 +56,6 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'lint', [ 'eslint:all', 'stylelint', 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', [ 'lint' ] );
 };
