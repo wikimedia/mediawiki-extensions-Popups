@@ -51,8 +51,8 @@ QUnit.test( 'it computes the extract property', function ( assert ) {
 	}
 
 	for ( i = 0; i < cases.length; i++ ) {
-		testCase = cases[ i ],
-			model = createModelWithExtract( testCase[ 0 ] );
+		testCase = cases[ i ];
+		model = createModelWithExtract( testCase[ 0 ] );
 
 		assert.strictEqual( model.extract, testCase[ 1 ] );
 	}

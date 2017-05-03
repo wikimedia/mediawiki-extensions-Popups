@@ -277,7 +277,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 		setupWait( this );
 		setupEl( this );
 
-		this.gatewayDeferred = $.Deferred(),
+		this.gatewayDeferred = $.Deferred();
 		this.gatewayPromise = this.gatewayDeferred.promise();
 		this.gateway = {
 			getPageSummary: this.sandbox.stub().returns( this.gatewayPromise )
