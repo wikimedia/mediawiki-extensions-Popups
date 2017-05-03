@@ -690,5 +690,6 @@ module.exports = {
 	init: init,
 	// The following are exposed for teseting purposes only
 	createPokeyMasks: createPokeyMasks,
+	renderExtract: renderExtract,
 	getClosestYPosition: getClosestYPosition
 };
