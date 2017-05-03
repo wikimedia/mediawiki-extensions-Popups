@@ -145,6 +145,74 @@ QUnit.test( 'createEmptyPreview', function ( assert ) {
 	);
 } );
 
+QUnit.test( 'hide - fade out up', function ( assert ) {
+	var preview = {
+			el: $( '<div>', { 'class': 'mwe-popups-fade-in-down' } ),
+			hasThumbnail: false,
+			thumbnail: null,
+			isTall: false
+		},
+		done = assert.async( 1 ),
+		$container = $( '<div>' ).append( preview.el ),
+		promise = renderer.hide( preview );
+
+	assert.ok(
+		preview.el.hasClass( 'mwe-popups-fade-out-up' ),
+		'Thumbnail has faded out up.'
+	);
+	assert.notOk(
+		preview.el.hasClass( 'mwe-popups-fade-in-down' ),
+		'Fade-in class has been removed.'
+	);
+	assert.notEqual(
+		$container.html(),
+		'',
+		'Preview is still in the container.'
+	);
+	promise.done( function () {
+		assert.equal(
+			$container.html(),
+			'',
+			'Preview has been removed from the container.'
+		);
+		done();
+	} );
+} );
+
+QUnit.test( 'hide - fade out down', function ( assert ) {
+	var preview = {
+			el: $( '<div>', { 'class': 'mwe-popups-fade-in-up' } ),
+			hasThumbnail: false,
+			thumbnail: null,
+			isTall: false
+		},
+		done = assert.async( 1 ),
+		$container = $( '<div>' ).append( preview.el ),
+		promise = renderer.hide( preview );
+
+	assert.ok(
+		preview.el.hasClass( 'mwe-popups-fade-out-down' ),
+		'Thumbnail has faded out down.'
+	);
+	assert.notOk(
+		preview.el.hasClass( 'mwe-popups-fade-in-up' ),
+		'Fade-in class has been removed.'
+	);
+	assert.notEqual(
+		$container.html(),
+		'',
+		'Preview is still in the container.'
+	);
+	promise.done( function () {
+		assert.equal(
+			$container.html(),
+			'',
+			'Preview has been removed from the container.'
+		);
+		done();
+	} );
+} );
+
 QUnit.test( 'createThumbnail - tall image', function ( assert ) {
 	var devicePixelRatio = $.bracketedDevicePixelRatio(),
 		rawThumbnail = {
