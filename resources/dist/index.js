@@ -4134,6 +4134,7 @@ module.exports = {
 	createPokeyMasks: createPokeyMasks,
 	createPreview: createPreview,
 	createEmptyPreview: createEmptyPreview,
+	bindBehavior: bindBehavior,
 	hide: hide,
 	createThumbnail: createThumbnail,
 	createThumbnailElement: createThumbnailElement,

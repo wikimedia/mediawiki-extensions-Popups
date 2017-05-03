@@ -1,6 +1,25 @@
 var $ = jQuery,
 	renderer = require( '../../src/renderer' );
 
+function createPreview() {
+	return {
+		el: $( '<div>' )
+			.append( $( '<a>', { 'class': 'mwe-popups-extract', text: 'extract' } ) )
+			.append( $( '<a>', { 'class': 'mwe-popups-settings-icon' } ) )
+	};
+}
+
+function createBehavior( sandbox ) {
+	return {
+		settingsUrl: 'https://settings.url',
+		showSettings: sandbox.spy(),
+		previewDwell: sandbox.spy(),
+		previewAbandon: sandbox.spy(),
+		previewShow: sandbox.spy(),
+		click: sandbox.spy()
+	};
+}
+
 QUnit.module( 'ext.popups#renderer', {
 	beforeEach: function () {
 		var self = this;
@@ -142,6 +161,71 @@ QUnit.test( 'createEmptyPreview', function ( assert ) {
 			readMsg: 'Read'
 		} ),
 		'Template is called with the correct data.'
+	);
+} );
+
+QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
+	var preview = createPreview(),
+		behavior = createBehavior( this.sandbox );
+
+	renderer.bindBehavior( preview, behavior );
+	preview.el.mouseenter();
+
+	assert.ok( behavior.previewDwell.calledOnce, 'Preview dwell is called.' );
+	assert.notOk( behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
+	assert.notOk( behavior.click.called, 'Click is NOT called.' );
+	assert.notOk( behavior.showSettings.called, 'Show settings is NOT called.' );
+} );
+
+QUnit.test( 'bindBehavior - preview abandon', function ( assert ) {
+	var preview = createPreview(),
+		behavior = createBehavior( this.sandbox );
+
+	renderer.bindBehavior( preview, behavior );
+	preview.el.mouseleave();
+
+	assert.notOk( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
+	assert.ok( behavior.previewAbandon.calledOnce, 'Preview abandon is called.' );
+	assert.notOk( behavior.click.called, 'Click is NOT called.' );
+	assert.notOk( behavior.showSettings.called, 'Show settings is NOT called.' );
+} );
+
+QUnit.test( 'bindBehavior - preview click', function ( assert ) {
+	var preview = createPreview(),
+		behavior = createBehavior( this.sandbox );
+
+	renderer.bindBehavior( preview, behavior );
+	preview.el.click();
+
+	assert.notOk( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
+	assert.notOk( behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
+	assert.ok( behavior.click.calledOnce, 'Click is called.' );
+	assert.notOk( behavior.showSettings.called, 'Settings link click is NOT called.' );
+} );
+
+QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
+	var preview = createPreview(),
+		behavior = createBehavior( this.sandbox );
+
+	renderer.bindBehavior( preview, behavior );
+	preview.el.find( '.mwe-popups-settings-icon' ).click();
+
+	assert.notOk( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
+	assert.notOk( behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
+	assert.notOk( behavior.click.called, 'Click is NOT called.' );
+	assert.ok( behavior.showSettings.calledOnce, 'Settings link click is called.' );
+} );
+
+QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
+	var preview = createPreview(),
+		behavior = createBehavior( this.sandbox );
+
+	renderer.bindBehavior( preview, behavior );
+
+	assert.equal(
+		preview.el.find( '.mwe-popups-settings-icon' ).attr( 'href' ),
+		behavior.settingsUrl,
+		'Settings link URL is correct.'
 	);
 } );
 
