@@ -568,7 +568,9 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 			action: 'dismissed',
 
 			// N.B. that the FETCH_* actions have been skipped.
-			previewType: undefined
+			previewType: undefined,
+
+			perceivedWait: 700
 		},
 		'It should enqueue a "dismissed" event when the preview has been shown.'
 	);

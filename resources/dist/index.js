@@ -2969,6 +2969,7 @@ function createClosingEvent( interaction ) {
 	if ( interaction.timeToPreviewShow !== undefined ) {
 		result.action = 'dismissed';
 		result.previewType = interaction.previewType;
+		result.perceivedWait = interaction.timeToPreviewShow;
 	} else {
 		result.action = 'dwelledButAbandoned';
 	}
