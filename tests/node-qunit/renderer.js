@@ -29,7 +29,7 @@ QUnit.module( 'ext.popups#renderer', {
 		};
 
 		window.mediaWiki.RegExp = {
-			escape: this.sandbox.spy( function( str ) {
+			escape: this.sandbox.spy( function ( str ) {
 				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
 			} )
 		};

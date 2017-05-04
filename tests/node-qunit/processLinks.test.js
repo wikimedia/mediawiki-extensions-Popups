@@ -4,7 +4,7 @@ var mock = require( 'mock-require' ),
 /* global Map */
 
 QUnit.module( 'ext.popups/processLinks', {
-	beforeEach: function() {
+	beforeEach: function () {
 		this.getTitle = this.sandbox.stub().throws( 'UNIMPLEMENTED' );
 		mock( '../../src/getTitle', this.getTitle );
 		processLinks = mock.reRequire( '../../src/processLinks' );
@@ -20,13 +20,13 @@ QUnit.module( 'ext.popups/processLinks', {
 			newFromText: this.sandbox.stub().throws( 'UNIMPLEMENTED' )
 		};
 	},
-	afterEach: function() {
+	afterEach: function () {
 		mock.stop( '../../src/getTitle' );
 		window.mediaWiki.Title = null;
 	}
 } );
 
-QUnit.test( 'it should not return links without a href attribute', function( assert ) {
+QUnit.test( 'it should not return links without a href attribute', function ( assert ) {
 	this.$container.html(
 		'<a title="title" class="blacklisted">Skip this link</a>'
 	);
@@ -36,7 +36,7 @@ QUnit.test( 'it should not return links without a href attribute', function( ass
 	);
 } );
 
-QUnit.test( 'it should not return links without a title attribute', function( assert ) {
+QUnit.test( 'it should not return links without a title attribute', function ( assert ) {
 	this.$container.html(
 		'<a href="link" class="blacklisted">Skip this link</a>'
 	);
@@ -47,14 +47,14 @@ QUnit.test( 'it should not return links without a title attribute', function( as
 	);
 } );
 
-QUnit.test( 'it should not return links in the blacklist', function( assert ) {
+QUnit.test( 'it should not return links in the blacklist', function ( assert ) {
 	assert.deepEqual(
 		processLinks( this.$container, [ '.blacklisted' ], this.config ).length,
 		0
 	);
 } );
 
-QUnit.test( 'it should not return links without valid page title', function( assert ) {
+QUnit.test( 'it should not return links without valid page title', function ( assert ) {
 	this.getTitle.withArgs( 'link', this.config ).returns( null );
 
 	assert.deepEqual(
@@ -65,7 +65,7 @@ QUnit.test( 'it should not return links without valid page title', function( ass
 	assert.deepEqual( this.getTitle.getCall( 0 ).args, [ 'link', this.config ] );
 } );
 
-QUnit.test( 'it should not return links without valid mediawiki title', function( assert ) {
+QUnit.test( 'it should not return links without valid mediawiki title', function ( assert ) {
 	this.getTitle.withArgs( 'link', this.config ).returns( 'title' );
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
 
@@ -77,7 +77,7 @@ QUnit.test( 'it should not return links without valid mediawiki title', function
 	assert.deepEqual( window.mediaWiki.Title.newFromText.getCall( 0 ).args, [ 'title' ] );
 } );
 
-QUnit.test( 'it should not return links without valid namespace', function( assert ) {
+QUnit.test( 'it should not return links without valid namespace', function ( assert ) {
 	this.getTitle.withArgs( 'link', this.config ).returns( 'title' );
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( {
 		namespace: 1
@@ -91,7 +91,7 @@ QUnit.test( 'it should not return links without valid namespace', function( asse
 	);
 } );
 
-QUnit.test( 'it should return only valid links', function( assert ) {
+QUnit.test( 'it should return only valid links', function ( assert ) {
 	// Valid link
 	this.getTitle.withArgs( 'link', this.config ).returns( 'title' );
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( {

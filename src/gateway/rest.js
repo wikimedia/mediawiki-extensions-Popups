@@ -43,7 +43,7 @@ function createRESTBaseGateway( ajax, config ) {
 
 		fetch( title )
 			.then(
-				function( page ) {
+				function ( page ) {
 					result.resolve(
 						convertPageToModel( page, config.THUMBNAIL_SIZE ) );
 				},

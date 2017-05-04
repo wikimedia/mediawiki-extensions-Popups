@@ -3,21 +3,21 @@ var getTitle = require( '../../src/getTitle' );
 /* global Map */
 
 QUnit.module( 'getTitle', {
-	beforeEach: function() {
+	beforeEach: function () {
 		this.config = new Map();
 		this.config.set( 'wgArticlePath', '/wiki/$1' );
 
 		this.location = global.location = { hostname: 'en.wikipedia.org' };
 
 		window.mediaWiki.RegExp = {
-			escape: this.sandbox.spy( function( str ) {
+			escape: this.sandbox.spy( function ( str ) {
 				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
 			} )
 		};
 
 		window.mediaWiki.Uri = this.sandbox.stub().throws( 'UNIMPLEMENTED' );
 	},
-	afterEach: function() {
+	afterEach: function () {
 		global.location = null;
 		window.mediaWiki.RegExp = null;
 		window.mediaWiki.Uri = null;
