@@ -323,6 +323,69 @@ QUnit.test( 'createThumbnail - tall image', function ( assert ) {
 	);
 } );
 
+QUnit.test( 'createThumbnail - tall image element', function ( assert ) {
+	var thumbnail,
+		cases = [
+			{
+				width: 200,
+				height: 300,
+				expectedX: 203 - 200,
+				expectedY: ( 300 - 250 ) / -2,
+				expectedSVGWidth: 203,
+				expectedSVGHeight: 250,
+				message: 'Width smaller than the predefined width (203).'
+			},
+			{
+				width: 250,
+				height: 300,
+				expectedX: ( 250 - 203 ) / -2,
+				expectedY: ( 300 - 250 ) / -2,
+				expectedSVGWidth: 203,
+				expectedSVGHeight: 250,
+				message: 'Width bigger than the predefined width (203).'
+			}
+		];
+
+	cases.forEach( function ( case_ ) {
+		thumbnail = renderer.createThumbnail( {
+			source: 'https://image.url',
+			width: case_.width,
+			height: case_.height
+		} );
+
+		assert.equal(
+			thumbnail.el.find( 'image' ).attr( 'x' ),
+			case_.expectedX,
+			'Image element x coordinate is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.find( 'image' ).attr( 'y' ),
+			case_.expectedY,
+			'Image element y coordinate is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.find( 'image' ).attr( 'width' ),
+			case_.width,
+			'Image element width is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.find( 'image' ).attr( 'height' ),
+			case_.height,
+			'Image element height is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.attr( 'width' ),
+			case_.expectedSVGWidth,
+			'Image SVG width is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.attr( 'height' ),
+			case_.expectedSVGHeight,
+			'Image SVG height is correct. ' + case_.message
+		);
+	} );
+} );
+
 QUnit.test( 'createThumbnail - landscape image', function ( assert ) {
 	var devicePixelRatio = $.bracketedDevicePixelRatio(),
 		rawThumbnail = {
@@ -347,6 +410,116 @@ QUnit.test( 'createThumbnail - landscape image', function ( assert ) {
 		thumbnail.height / devicePixelRatio,
 		'Thumbnail height is correct.'
 	);
+} );
+
+QUnit.test( 'createThumbnail - landscape image element', function ( assert ) {
+	var thumbnail,
+		cases = [
+			{
+				width: 400,
+				height: 150,
+				expectedX: 0,
+				expectedY: 0,
+				expectedSVGWidth: 300 + 3,
+				expectedSVGHeight: 150,
+				message: 'Height smaller than the predefined height (200).'
+			},
+			{
+				width: 400,
+				height: 250,
+				expectedX: 0,
+				expectedY: ( 250 - 200 ) / -2,
+				expectedSVGWidth: 300 + 3,
+				expectedSVGHeight: 200,
+				message: 'Height bigger than the predefined height (200).'
+			}
+		];
+
+	cases.forEach( function ( case_ ) {
+		thumbnail = renderer.createThumbnail( {
+			source: 'https://image.url',
+			width: case_.width,
+			height: case_.height
+		} );
+
+		assert.equal(
+			thumbnail.el.find( 'image' ).attr( 'x' ),
+			case_.expectedX,
+			'Image x coordinate is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.find( 'image' ).attr( 'y' ),
+			case_.expectedY,
+			'Image y coordinate is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.find( 'image' ).attr( 'width' ),
+			case_.width,
+			'Image element width is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.find( 'image' ).attr( 'height' ),
+			case_.height,
+			'Image element height is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.attr( 'width' ),
+			case_.expectedSVGWidth,
+			'Image SVG width is correct. ' + case_.message
+		);
+		assert.equal(
+			thumbnail.el.attr( 'height' ),
+			case_.expectedSVGHeight,
+			'Image SVG height is correct. ' + case_.message
+		);
+	} );
+} );
+
+QUnit.test( 'createThumbnail - no raw thumbnail', function ( assert ) {
+	var thumbnail = renderer.createThumbnail( null );
+
+	assert.equal( thumbnail, null, 'No thumbnail.' );
+} );
+
+QUnit.test( 'createThumbnail - small wide image', function ( assert ) {
+	var rawThumbnail = {
+			source: 'https://landscape-image.jpg',
+			width: 299,
+			height: 298
+		},
+		thumbnail = renderer.createThumbnail( rawThumbnail );
+
+	assert.equal( thumbnail, null, 'No thumbnail.' );
+} );
+
+QUnit.test( 'createThumbnail - small tall image', function ( assert ) {
+	var rawThumbnail = {
+			source: 'https://tall-image.jpg',
+			width: 248,
+			height: 249
+		},
+		thumbnail = renderer.createThumbnail( rawThumbnail );
+
+	assert.equal( thumbnail, null, 'No thumbnail.' );
+} );
+
+QUnit.test( 'createThumbnail - insecure URL', function ( assert ) {
+	var cases = [
+			'https://tall-ima\\ge.jpg',
+			'https://tall-ima\'ge.jpg',
+			'https://tall-ima\"ge.jpg'
+		],
+		thumbnail;
+
+	cases.forEach( function ( case_ ) {
+		thumbnail = renderer.createThumbnail( {
+			source: case_,
+			width: 500,
+			height: 400
+		} );
+
+		assert.equal( thumbnail, null, 'No thumbnail.' );
+	} );
 } );
 
 QUnit.test( 'createThumbnailElement', function ( assert ) {
