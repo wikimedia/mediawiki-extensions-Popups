@@ -55,13 +55,3 @@ QUnit.test( 'it should use a 0 sampling rate when sendBeacon isn\'t supported', 
 
 	assert.deepEqual( mw.eventLog.Schema.getCall( 1 ).args, expectedArgs );
 } );
-
-QUnit.test( 'it should use a 0 sampling rate in a unit testing environment', function ( assert ) {
-	assert.expect( 1 );
-
-	this.window.QUnit = {};
-
-	createSchema( this.config, this.window );
-
-	assert.ok( mw.eventLog.Schema.calledWith( 'Popups', 0 ) );
-} );

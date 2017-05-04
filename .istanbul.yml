@@ -3,6 +3,5 @@ instrumentation:
   excludes: [
     "resources/dist/*", # Compiled assets
     "*.js", # Gruntfile.js and webpack.config.js
-    "src/processLinks.js", # Covered by browser QUnit integration test
     "src/index.js", # Application entry point
   ]

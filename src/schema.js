@@ -14,8 +14,7 @@ module.exports = function ( config, window ) {
 
 	if (
 		!window.navigator ||
-		!$.isFunction( window.navigator.sendBeacon ) ||
-		window.QUnit
+		!$.isFunction( window.navigator.sendBeacon )
 	) {
 		samplingRate = 0;
 	}
