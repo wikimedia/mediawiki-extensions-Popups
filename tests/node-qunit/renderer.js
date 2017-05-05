@@ -602,6 +602,137 @@ QUnit.test( 'getProcessedElements', function ( assert ) {
 	} );
 } );
 
+QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top left of the page', function ( assert ) {
+	var isPreviewTall = false,
+		eventData = {
+			pageX: 252,
+			pageY: 1146,
+			clientY: 36
+		},
+		linkData = {
+			clientRects: [ {
+				bottom: 37,
+				height: 13,
+				left: 201,
+				right: 357,
+				top: 24,
+				width: 156
+			} ],
+			offset: {
+				top: 1134,
+				left: 201
+			},
+			width: 156,
+			height: 13
+		},
+		windowData = {
+			scrollTop: 1109,
+			width: 1239,
+			height: 827
+		},
+		pokeySize = 8,
+		layout = renderer.createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize );
+
+	assert.deepEqual(
+		layout,
+		{
+			offset: {
+				top: 1154,
+				left: 232
+			},
+			flippedX: false,
+			flippedY: false
+		},
+		'Layout is correct.'
+	);
+} );
+
+QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom center of the page', function ( assert ) {
+	var isPreviewTall = true,
+		eventData = {
+			pageX: 176,
+			pageY: 1252,
+			clientY: 628
+		},
+		linkData = {
+			clientRects: [ {
+				bottom: 640,
+				height: 13,
+				left: 177,
+				right: 209,
+				top: 627,
+				width: 32
+			} ],
+			offset: {
+				top: 1250,
+				left: 177
+			},
+			width: 32,
+			height: 13
+		},
+		windowData = {
+			scrollTop: 623,
+			width: 587,
+			height: 827
+		},
+		pokeySize = 8,
+		layout = renderer.createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize );
+
+	assert.deepEqual(
+		layout,
+		{
+			offset: {
+				top: 1242,
+				left: 156
+			},
+			flippedX: false,
+			flippedY: true
+		},
+		'Layout is correct. Y is flipped.'
+	);
+} );
+
+QUnit.test( '#createLayout - empty preview, keyboard event, link is on the center right of the page', function ( assert ) {
+	var isPreviewTall = false,
+		eventData = {},
+		linkData = {
+			clientRects: [ {
+				bottom: 442,
+				height: 13,
+				left: 654,
+				right: 692,
+				top: 430,
+				width: 38
+			} ],
+			offset: {
+				top: 1118,
+				left: 654
+			},
+			width: 38,
+			height: 13
+		},
+		windowData = {
+			scrollTop: 689,
+			width: 801,
+			height: 827
+		},
+		pokeySize = 8,
+		layout = renderer.createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize );
+
+	assert.deepEqual(
+		layout,
+		{
+			offset: {
+				top: 1110,
+				left: 392
+			},
+			flippedX: true,
+			flippedY: true
+		},
+		'Layout is correct. Both X and Y are flipped.'
+	);
+} );
+
 QUnit.test( '#getClasses when no thumbnail is available', function ( assert ) {
 	var cases = [
 		// [ previewOptions, layoutOptions, expected, message ]

@@ -3696,7 +3696,27 @@ function renderExtract( extract, title ) {
  *  in
  */
 function show( preview, event, behavior, token ) {
-	var layout = createLayout( preview, event );
+	var $link = $( event.target ),
+		layout = createLayout(
+			preview.isTall,
+			{
+				pageX: event.pageX,
+				pageY: event.pageY,
+				clientY: event.clientY
+			},
+			{
+				clientRects: $link.get( 0 ).getClientRects(),
+				offset: $link.offset(),
+				width: $link.width(),
+				height: $link.height()
+			},
+			{
+				scrollTop: $window.scrollTop(),
+				width: $window.width(),
+				height: $window.height()
+			},
+			SIZES.pokeySize
+		);
 
 	preview.el.appendTo( document.body );
 
@@ -3899,73 +3919,85 @@ function createThumbnailElement( className, url, x, y, thumbnailWidth, thumbnail
  *
  * @typedef {Object} ext.popups.PreviewLayout
  * @property {Object} offset
+ * @property {number} offset.top
+ * @property {number} offset.left
  * @property {Boolean} flippedX
  * @property {Boolean} flippedY
  */
 
 /**
- * Extracted from `mw.popups.renderer.article.getOffset`.
- *
- * @param {ext.popups.Preview} preview
- * @param {Object} event
+ * @param {isPreviewTall} isPreviewTall
+ * @param {Object} eventData Data related to the event that triggered showing a popup
+ * @param {number} eventData.pageX
+ * @param {number} eventData.pageY
+ * @param {number} eventData.clientY
+ * @param {Object} linkData Data related to the link that’s used for showing a popup
+ * @param {ClientRectList} linkData.clientRects list of rectangles defined by four edges
+ * @param {Object} linkData.offset
+ * @param {number} linkData.width
+ * @param {number} linkData.height
+ * @param {Object} windowData Data related to the window
+ * @param {number} windowData.scrollTop
+ * @param {number} windowData.width
+ * @param {number} windowData.height
+ * @param {number} pokeySize Space reserved for the pokey
  * @return {ext.popups.PreviewLayout}
  */
-function createLayout( preview, event ) {
+function createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize ) {
 	var flippedX = false,
 		flippedY = false,
-		link = $( event.target ),
-		offsetTop = ( event.pageY ) ? // If it was a mouse event
+		offsetTop = ( eventData.pageY ) ? // If it was a mouse event
 			// Position according to mouse
 			// Since client rectangles are relative to the viewport,
 			// take scroll position into account.
 			getClosestYPosition(
-				event.pageY - $window.scrollTop(),
-				link.get( 0 ).getClientRects(),
+				eventData.pageY - windowData.scrollTop,
+				linkData.clientRects,
 				false
-			) + $window.scrollTop() + SIZES.pokeySize :
+			) + windowData.scrollTop + pokeySize :
 			// Position according to link position or size
-			link.offset().top + link.height() + SIZES.pokeySize,
-		clientTop = ( event.clientY ) ?
-			event.clientY :
+			linkData.offset.top + linkData.height + pokeySize,
+		clientTop = ( eventData.clientY ) ?
+			eventData.clientY :
 			offsetTop,
-		offsetLeft = ( event.pageX ) ?
-			event.pageX :
-			link.offset().left;
+		offsetLeft = ( eventData.pageX ) ?
+			eventData.pageX :
+			linkData.offset.left;
 
 	// X Flip
-	if ( offsetLeft > ( $window.width() / 2 ) ) {
-		offsetLeft += ( !event.pageX ) ? link.width() : 0;
-		offsetLeft -= !preview.isTall ?
+	if ( offsetLeft > ( windowData.width / 2 ) ) {
+		offsetLeft += ( !eventData.pageX ) ? linkData.width : 0;
+		offsetLeft -= !isPreviewTall ?
 			SIZES.portraitPopupWidth :
 			SIZES.landscapePopupWidth;
 		flippedX = true;
 	}
 
-	if ( event.pageX ) {
+	if ( eventData.pageX ) {
 		offsetLeft += ( flippedX ) ? 20 : -20;
 	}
 
 	// Y Flip
-	if ( clientTop > ( $window.height() / 2 ) ) {
+	if ( clientTop > ( windowData.height / 2 ) ) {
 		flippedY = true;
 
 		// Mirror the positioning of the preview when there's no "Y flip": rest
 		// the pokey on the edge of the link's bounding rectangle. In this case
 		// the edge is the top-most.
-		offsetTop = link.offset().top;
+		offsetTop = linkData.offset.top;
 
 		// Change the Y position to the top of the link
-		if ( event.pageY ) {
+		if ( eventData.pageY ) {
 			// Since client rectangles are relative to the viewport,
 			// take scroll position into account.
 			offsetTop = getClosestYPosition(
-				event.pageY - $window.scrollTop(),
-				link.get( 0 ).getClientRects(),
+				eventData.pageY - windowData.scrollTop,
+				linkData.clientRects,
 				true
-			) + $window.scrollTop();
+			) + windowData.scrollTop;
 		}
 
-		offsetTop -= SIZES.pokeySize;
+		offsetTop -= pokeySize;
 	}
 
 	return {
@@ -4139,6 +4171,7 @@ module.exports = {
 	createThumbnail: createThumbnail,
 	createThumbnailElement: createThumbnailElement,
 	renderExtract: renderExtract,
+	createLayout: createLayout,
 	getClasses: getClasses,
 	getClosestYPosition: getClosestYPosition
 };
