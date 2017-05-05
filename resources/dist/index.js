@@ -3721,7 +3721,10 @@ function show( preview, event, behavior, token ) {
 
 	preview.el.appendTo( document.body );
 
-	layoutPreview( preview, layout );
+	layoutPreview(
+		preview, layout, getClasses( preview, layout ),
+		SIZES.landscapeImage.h, SIZES.pokeySize
+	);
 
 	preview.el.show();
 
@@ -4070,8 +4073,11 @@ function getClasses( preview, layout ) {
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewLayout} layout
+ * @param {string[]} classes class names used for layout out the preview
+ * @param {number} predefinedLandscapeImageHeight landscape image height
+ * @param {number} pokeySize
  */
-function layoutPreview( preview, layout ) {
+function layoutPreview( preview, layout, classes, predefinedLandscapeImageHeight, pokeySize ) {
 	var popup = preview.el,
 		isTall = preview.isTall,
 		hasThumbnail = preview.hasThumbnail,
@@ -4080,14 +4086,17 @@ function layoutPreview( preview, layout ) {
 		flippedX = layout.flippedX,
 		offsetTop = layout.offset.top;
 
-	if ( !flippedY && !isTall && hasThumbnail && thumbnail.height < SIZES.landscapeImage.h ) {
-		$( '.mwe-popups-extract' ).css(
+	if (
+		!flippedY && !isTall && hasThumbnail &&
+			thumbnail.height < predefinedLandscapeImageHeight
+	) {
+		popup.find( '.mwe-popups-extract' ).css(
 			'margin-top',
-			thumbnail.height - SIZES.pokeySize
+			thumbnail.height - pokeySize
 		);
 	}
 
-	popup.addClass( getClasses( preview, layout ).join( ' ' ) );
+	popup.addClass( classes.join( ' ' ) );
 
 	if ( flippedY ) {
 		offsetTop -= popup.outerHeight();
@@ -4174,6 +4183,7 @@ module.exports = {
 	renderExtract: renderExtract,
 	createLayout: createLayout,
 	getClasses: getClasses,
+	layoutPreview: layoutPreview,
 	getClosestYPosition: getClosestYPosition
 };
 

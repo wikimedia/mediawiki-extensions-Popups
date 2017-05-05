@@ -1,11 +1,23 @@
 var $ = jQuery,
 	renderer = require( '../../src/renderer' );
 
-function createPreview() {
+/**
+ * A utility function that creates a bare bones preview
+ *
+ * @param {boolean} [isTall]
+ * @param {boolean} [hasThumbnail]
+ * @param {ext.popups.Thumbnail} [thumbnail]
+ * @return {ext.popups.Preview}
+ */
+function createPreview( isTall, hasThumbnail, thumbnail ) {
 	return {
 		el: $( '<div>' )
+			.append( hasThumbnail ? $( '<image>' ) : '' )
 			.append( $( '<a>', { 'class': 'mwe-popups-extract', text: 'extract' } ) )
-			.append( $( '<a>', { 'class': 'mwe-popups-settings-icon' } ) )
+			.append( $( '<a>', { 'class': 'mwe-popups-settings-icon' } ) ),
+		isTall: isTall,
+		hasThumbnail: hasThumbnail,
+		thumbnail: thumbnail
 	};
 }
 
@@ -965,6 +977,270 @@ QUnit.test( '#getClasses when a tall thumbnail is available', function ( assert 
 			case_[ 3 ]
 		);
 	} );
+} );
+
+QUnit.test( '#layoutPreview - no thumbnail', function ( assert ) {
+	var preview = createPreview( false, false, null ),
+		layout = {
+			flippedX: false,
+			flippedY: false,
+			offset: {
+				top: 100,
+				left: 200
+			}
+		},
+		classes = [ 'some-class', 'another-class' ];
+
+	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+
+	assert.ok(
+		preview.el.hasClass( classes.join( ' ' ) ),
+		'Classes have been added.'
+	);
+	assert.equal(
+		preview.el.css( 'top' ),
+		layout.offset.top + 'px',
+		'Top is correct.'
+	);
+	assert.equal(
+		preview.el.css( 'left' ),
+		layout.offset.left + 'px',
+		'Left is correct.'
+	);
+} );
+
+QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function ( assert ) {
+	var preview = createPreview( true, true, { height: 200 } ),
+		layout = {
+			flippedX: true,
+			flippedY: false,
+			offset: {
+				top: 100,
+				left: 200
+			}
+		},
+		classes = [ 'some-class', 'another-class' ];
+
+	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+
+	assert.ok(
+		preview.el.hasClass( classes.join( ' ' ) ),
+		'Classes have been added.'
+	);
+	assert.equal(
+		preview.el.css( 'top' ),
+		layout.offset.top + 'px',
+		'Top is correct.'
+	);
+	assert.equal(
+		preview.el.css( 'left' ),
+		layout.offset.left + 'px',
+		'Left is correct.'
+	);
+	assert.notOk(
+		preview.el.hasClass( 'mwe-popups-no-image-tri' ),
+		'A class has been removed.'
+	);
+	assert.equal(
+		preview.el.find( 'image' ).attr( 'clip-path' ),
+		'url(#mwe-popups-landscape-mask)',
+		'Image clip path is correct.'
+	);
+} );
+
+QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small height', function ( assert ) {
+	var preview = createPreview( false, true, { height: 199 } ),
+		layout = {
+			flippedX: true,
+			flippedY: false,
+			offset: {
+				top: 100,
+				left: 200
+			}
+		},
+		classes = [ 'some-class', 'another-class' ];
+
+	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+
+	assert.ok(
+		preview.el.hasClass( classes.join( ' ' ) ),
+		'Classes have been added.'
+	);
+	assert.equal(
+		preview.el.css( 'top' ),
+		layout.offset.top + 'px',
+		'Top is correct.'
+	);
+	assert.equal(
+		preview.el.css( 'left' ),
+		layout.offset.left + 'px',
+		'Left is correct.'
+	);
+	assert.equal(
+		preview.el.find( '.mwe-popups-extract' ).css( 'margin-top' ),
+		( 199 - 8 ) + 'px',  // thumb height - pokey size
+		'Extract margin top has been set when preview height is smaller than the predefined landscape image height.'
+	);
+	assert.equal(
+		preview.el.find( 'image' ).attr( 'clip-path' ),
+		'url(#mwe-popups-mask-flip)',
+		'Image clip path is correct.'
+	);
+} );
+
+QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big height', function ( assert ) {
+	var preview = createPreview( false, true, { height: 201 } ),
+		layout = {
+			flippedX: true,
+			flippedY: false,
+			offset: {
+				top: 100,
+				left: 200
+			}
+		},
+		classes = [ 'some-class', 'another-class' ];
+
+	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+
+	assert.ok(
+		preview.el.hasClass( classes.join( ' ' ) ),
+		'Classes have been added.'
+	);
+	assert.equal(
+		preview.el.css( 'top' ),
+		layout.offset.top + 'px',
+		'Top is correct.'
+	);
+	assert.equal(
+		preview.el.css( 'left' ),
+		layout.offset.left + 'px',
+		'Left is correct.'
+	);
+	assert.equal(
+		preview.el.find( '.mwe-popups-extract' ).attr( 'margin-top' ),
+		undefined,
+		'Extract margin top has NOT been set when preview height is bigger than the predefined landscape image height.'
+	);
+	assert.equal(
+		preview.el.find( 'image' ).attr( 'clip-path' ),
+		'url(#mwe-popups-mask-flip)',
+		'Image clip path is correct.'
+	);
+} );
+
+QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', function ( assert ) {
+	var preview = createPreview( true, true, { height: 200 } ),
+		layout = {
+			flippedX: false,
+			flippedY: true,
+			offset: {
+				top: 100,
+				left: 200
+			}
+		},
+		classes = [ 'some-class', 'another-class' ];
+
+	preview.el.outerHeight = function () {
+		return 20;
+	};
+
+	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+
+	assert.ok(
+		preview.el.hasClass( classes.join( ' ' ) ),
+		'Classes have been added.'
+	);
+	assert.equal(
+		preview.el.css( 'top' ),
+		( layout.offset.top - 20 ) + 'px',  // - outer height
+		'Top is correct.'
+	);
+	assert.equal(
+		preview.el.css( 'left' ),
+		layout.offset.left + 'px',
+		'Left is correct.'
+	);
+	assert.notOk(
+		preview.el.find( 'image' ).attr( 'clip-path' ),
+		'Image clip path is not set.'
+	);
+} );
+
+QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', function ( assert ) {
+	var preview = createPreview( true, true, { height: 200 } ),
+		layout = {
+			flippedX: true,
+			flippedY: true,
+			offset: {
+				top: 100,
+				left: 200
+			}
+		},
+		classes = [ 'some-class', 'another-class' ];
+
+	preview.el.outerHeight = function () {
+		return 20;
+	};
+
+	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+
+	assert.ok(
+		preview.el.hasClass( classes.join( ' ' ) ),
+		'Classes have been added.'
+	);
+	assert.equal(
+		preview.el.css( 'top' ),
+		( layout.offset.top - 20 ) + 'px',  // - outer height
+		'Top is correct.'
+	);
+	assert.equal(
+		preview.el.css( 'left' ),
+		layout.offset.left + 'px',
+		'Left is correct.'
+	);
+	assert.equal(
+		preview.el.find( 'image' ).attr( 'clip-path' ),
+		'url(#mwe-popups-landscape-mask-flip)',
+		'Image clip path is not set.'
+	);
+} );
+
+QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y', function ( assert ) {
+	var preview = createPreview( false, true, { height: 200 } ),
+		layout = {
+			flippedX: true,
+			flippedY: true,
+			offset: {
+				top: 100,
+				left: 200
+			}
+		},
+		classes = [ 'some-class', 'another-class' ];
+
+	preview.el.outerHeight = function () {
+		return 20;
+	};
+
+	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+
+	assert.ok(
+		preview.el.hasClass( classes.join( ' ' ) ),
+		'Classes have been added.'
+	);
+	assert.equal(
+		preview.el.css( 'top' ),
+		( layout.offset.top - 20 ) + 'px',  // - outer height
+		'Top is correct.'
+	);
+	assert.equal(
+		preview.el.css( 'left' ),
+		layout.offset.left + 'px',
+		'Left is correct.'
+	);
+	assert.notOk(
+		preview.el.find( 'image' ).attr( 'clip-path' ),
+		'Image clip path is not set.'
+	);
 } );
 
 QUnit.test( 'getClosestYPosition', function ( assert ) {
