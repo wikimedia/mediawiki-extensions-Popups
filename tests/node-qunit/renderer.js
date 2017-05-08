@@ -241,6 +241,71 @@ QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
 	);
 } );
 
+QUnit.test( 'show', function ( assert ) {
+	var preview = createPreview(),
+		event = {
+			pageX: 252,
+			pageY: 1146,
+			clientY: 36
+		},
+		link = {
+			get: function () {
+				return {
+					getClientRects: function () {
+						return [ {
+							bottom: 37,
+							height: 13,
+							left: 201,
+							right: 357,
+							top: 24,
+							width: 156
+						} ];
+					}
+				};
+			},
+			offset: function () {
+				return {
+					top: 1134,
+					left: 201
+				};
+			},
+			width: function () {
+				return 156;
+			},
+			height: function () {
+				return 13;
+			}
+		},
+		behavior = createBehavior( this.sandbox ),
+		token = 'some-token',
+		$container = $( '<div>' ),
+		done = assert.async( 1 ),
+		promise;
+
+	preview.el.show = this.sandbox.stub();
+
+	promise = renderer.show(
+		preview, event, link, behavior, token, $container.get( 0 ) );
+
+	assert.notEqual(
+		$container.html(),
+		'',
+		'Container is not empty.'
+	);
+	assert.ok(
+		preview.el.show.calledOnce,
+		'Preview has been shown.'
+	);
+
+	promise.done( function () {
+		assert.ok(
+			behavior.previewShow.calledWith( token ),
+			'previewShow has been called with the correct token.'
+		);
+		done();
+	} );
+} );
+
 QUnit.test( 'hide - fade out up', function ( assert ) {
 	var preview = {
 			el: $( '<div>', { 'class': 'mwe-popups-fade-in-down' } ),

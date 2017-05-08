@@ -107,7 +107,10 @@ function render( model ) {
 		 * @return {jQuery.Promise}
 		 */
 		show: function ( event, boundActions, token ) {
-			return show( preview, event, boundActions, token );
+			return show(
+				preview, event, $( event.target ), boundActions, token,
+				document.body
+			);
 		},
 
 		/**
@@ -248,35 +251,36 @@ function renderExtract( extract, title ) {
  *
  * @param {ext.popups.Preview} preview
  * @param {Event} event
+ * @param {jQuery} $link event target
  * @param {ext.popups.PreviewBehavior} behavior
  * @param {String} token
+ * @param {Object} container DOM object to which pokey masks are appended
  * @return {jQuery.Promise} A promise that resolves when the promise has faded
  *  in
  */
-function show( preview, event, behavior, token ) {
-	var $link = $( event.target ),
-		layout = createLayout(
-			preview.isTall,
-			{
-				pageX: event.pageX,
-				pageY: event.pageY,
-				clientY: event.clientY
-			},
-			{
-				clientRects: $link.get( 0 ).getClientRects(),
-				offset: $link.offset(),
-				width: $link.width(),
-				height: $link.height()
-			},
-			{
-				scrollTop: $window.scrollTop(),
-				width: $window.width(),
-				height: $window.height()
-			},
-			SIZES.pokeySize
-		);
+function show( preview, event, $link, behavior, token, container ) {
+	var layout = createLayout(
+		preview.isTall,
+		{
+			pageX: event.pageX,
+			pageY: event.pageY,
+			clientY: event.clientY
+		},
+		{
+			clientRects: $link.get( 0 ).getClientRects(),
+			offset: $link.offset(),
+			width: $link.width(),
+			height: $link.height()
+		},
+		{
+			scrollTop: $window.scrollTop(),
+			width: $window.width(),
+			height: $window.height()
+		},
+		SIZES.pokeySize
+	);
 
-	preview.el.appendTo( document.body );
+	preview.el.appendTo( container );
 
 	layoutPreview(
 		preview, layout, getClasses( preview, layout ),
@@ -734,6 +738,7 @@ module.exports = {
 	createPreview: createPreview,
 	createEmptyPreview: createEmptyPreview,
 	bindBehavior: bindBehavior,
+	show: show,
 	hide: hide,
 	createThumbnail: createThumbnail,
 	createThumbnailElement: createThumbnailElement,
