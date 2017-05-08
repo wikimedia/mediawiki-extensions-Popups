@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "webpack -w",
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
     "test": "grunt lint && npm run check-built-assets && npm run test:node",
     "doc": "jsduck",
     "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -r test-build resources/dist && rm -rf test-build",
