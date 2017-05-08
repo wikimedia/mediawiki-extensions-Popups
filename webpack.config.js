@@ -1,6 +1,8 @@
-var path = require( 'path' );
-var webpack = require( 'webpack' );
-var PUBLIC_PATH = '/w/extensions/Popups';
+/* global __dirname */
+
+var path = require( 'path' ),
+	webpack = require( 'webpack' ),
+	PUBLIC_PATH = '/w/extensions/Popups';
 
 module.exports = {
 	output: {
@@ -18,8 +20,8 @@ module.exports = {
 	devtool: 'source-map',
 	resolve: {
 		alias: {
-			redux: path.resolve(__dirname, 'node_modules/redux/dist/redux.js'),
-			'redux-thunk': path.resolve(__dirname, 'node_modules/redux-thunk/dist/redux-thunk.js')
+			redux: path.resolve( __dirname, 'node_modules/redux/dist/redux.js' ),
+			'redux-thunk': path.resolve( __dirname, 'node_modules/redux-thunk/dist/redux-thunk.js' )
 		}
 	},
 	plugins: [
