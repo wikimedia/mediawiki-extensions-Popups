@@ -161,7 +161,7 @@ module.exports = function ( state, action ) {
 					previewCountBucket: counts.getPreviewCountBucket( nextCount )
 				} ),
 				interaction: nextState( state.interaction, {
-					timeToPreviewShow: action.timestamp - state.interaction.started
+					timeToPreviewShow: Math.round( action.timestamp - state.interaction.started )
 				} )
 			} );
 
