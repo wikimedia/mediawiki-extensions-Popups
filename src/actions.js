@@ -93,7 +93,9 @@ actions.boot = function (
  * @return {Redux.Thunk}
  */
 actions.fetch = function ( gateway, el, token ) {
-	var title = $( el ).data( 'page-previews-title' );
+	var title = $( el ).data( 'page-previews-title' ),
+		titleText = title.getPrefixedText(),
+		namespaceID = title.namespace;
 
 	return function ( dispatch ) {
 		var request;
@@ -101,10 +103,11 @@ actions.fetch = function ( gateway, el, token ) {
 		dispatch( timedAction( {
 			type: types.FETCH_START,
 			el: el,
-			title: title
+			title: titleText,
+			namespaceID: namespaceID
 		} ) );
 
-		request = gateway.getPageSummary( title )
+		request = gateway.getPageSummary( titleText )
 			.then( function ( result ) {
 				dispatch( timedAction( {
 					type: types.FETCH_END,

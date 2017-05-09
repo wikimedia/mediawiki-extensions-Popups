@@ -92,11 +92,17 @@ QUnit.test( 'it should not return links without valid namespace', function ( ass
 } );
 
 QUnit.test( 'it should return only valid links', function ( assert ) {
+	var $links,
+		$link,
+		title;
+
 	// Valid link
-	this.getTitle.withArgs( 'link', this.config ).returns( 'title' );
-	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( {
+	title = {
 		namespace: 5
-	} );
+	};
+
+	this.getTitle.withArgs( 'link', this.config ).returns( 'title' );
+	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( title );
 
 	// Invalid link because of namespace
 	this.$container.add( '<a href="link2" title="title">Banana</a>' );
@@ -108,8 +114,15 @@ QUnit.test( 'it should return only valid links', function ( assert ) {
 	// Valid namespaces for content
 	this.config.set( 'wgContentNamespaces', [ 5 ] );
 
-	assert.deepEqual(
-		processLinks( this.$container, [], this.config ).length,
-		1
+	$links = processLinks( this.$container, [], this.config );
+
+	assert.strictEqual( $links.length, 1 );
+
+	$link = $links.eq( 0 );
+
+	assert.strictEqual(
+		$link.data( 'page-previews-title' ),
+		title,
+		'It should store the title object using jQuery\'s data method.'
 	);
 } );

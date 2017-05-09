@@ -48,3 +48,20 @@ exports.createStubExperiments = function createStubExperiments( isSampled ) {
 		}
 	};
 };
+
+/**
+ * Creates a **minimal** stub that can be used in place of an instance of
+ * `mw.Title`.
+ *
+ * @param {Number} namespace
+ * @param {String} prefixedText e.g. Foo, or File:Bar.jpg
+ * @return {Object}
+ */
+exports.createStubTitle = function createStubTitle( namespace, prefixedText ) {
+	return {
+		namespace: namespace,
+		getPrefixedText: function () {
+			return prefixedText;
+		}
+	};
+};

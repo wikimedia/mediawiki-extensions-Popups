@@ -164,6 +164,8 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 	action = {
 		type: 'LINK_DWELL',
 		el: this.link,
+		title: 'Foo',
+		namespaceID: 1,
 		token: '0987654321',
 		timestamp: Date.now()
 	};
@@ -173,6 +175,8 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 		{
 			interaction: {
 				link: action.el,
+				title: 'Foo',
+				namespaceID: 1,
 				token: action.token,
 				started: action.timestamp,
 
@@ -195,6 +199,8 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 	action = {
 		type: 'LINK_DWELL',
 		el: this.link,
+		title: 'Foo',
+		namespaceID: 1,
 		token: '0987654321',
 		timestamp: now
 	};
@@ -210,6 +216,8 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 		state.interaction,
 		{
 			link: action.el,
+			title: 'Foo',
+			namespaceID: 1,
 			token: '0987654321',
 			started: now,
 
@@ -230,6 +238,8 @@ QUnit.test(
 		state = eventLogging( undefined, {
 			type: 'LINK_DWELL',
 			el: this.link,
+			title: 'Foo',
+			namespaceID: 1,
 			token: token,
 			timestamp: now
 		} );
@@ -242,6 +252,8 @@ QUnit.test(
 		state = eventLogging( state, {
 			type: 'LINK_DWELL',
 			el: $( '<a>' ),
+			title: 'Bar',
+			namespaceID: 1,
 			token: '1234567890',
 			timestamp: now + 500
 		} );
@@ -249,6 +261,8 @@ QUnit.test(
 		assert.deepEqual(
 			state.event,
 			{
+				pageTitleHover: 'Foo',
+				namespaceIdHover: 1,
 				linkInteractionToken: '0987654321',
 				totalInteractionTime: 250, // 250 - 0
 				action: 'dwelledButAbandoned'
@@ -260,6 +274,8 @@ QUnit.test(
 		state = eventLogging( undefined, {
 			type: 'LINK_DWELL',
 			el: this.link,
+			title: 'Foo',
+			namespaceID: 1,
 			token: token,
 			timestamp: now
 		} );
@@ -272,6 +288,8 @@ QUnit.test(
 		state = eventLogging( state, {
 			type: 'LINK_DWELL',
 			el: $( '<a>' ),
+			title: 'Bar',
+			namespaceID: 1,
 			token: 'banana',
 			timestamp: now + 500
 		} );
@@ -297,6 +315,8 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 	expectedState = state = eventLogging( state, {
 		type: 'LINK_DWELL',
 		el: this.link,
+		title: 'Foo',
+		namespaceID: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -311,6 +331,8 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 		state.event,
 		{
 			action: 'opened',
+			pageTitleHover: 'Foo',
+			namespaceIdHover: 1,
 			linkInteractionToken: token,
 			totalInteractionTime: 250
 		},
@@ -338,6 +360,8 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 	state = eventLogging( state, {
 		type: 'LINK_DWELL',
 		el: this.link,
+		title: 'Foo',
+		namespaceID: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -350,6 +374,8 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 
 	assert.deepEqual( state.interaction, {
 		link: this.link,
+		title: 'Foo',
+		namespaceID: 1,
 		token: token,
 		started: now,
 
@@ -442,7 +468,10 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 	action = {
 		type: 'LINK_DWELL',
 		el: this.link,
-		token: '1234567890'
+		title: 'Foo',
+		namespaceID: 1,
+		token: '1234567890',
+		timestamp: Date.now()
 	};
 
 	state = eventLogging( state, action );
@@ -510,6 +539,8 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 	dwelledState = eventLogging( undefined, {
 		type: 'LINK_DWELL',
 		el: this.link,
+		title: 'Foo',
+		namespaceID: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -528,6 +559,8 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 	assert.deepEqual(
 		state.event,
 		{
+			pageTitleHover: 'Foo',
+			namespaceIdHover: 1,
 			linkInteractionToken: token,
 			totalInteractionTime: 500,
 			action: 'dwelledButAbandoned'
@@ -563,6 +596,8 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 	assert.deepEqual(
 		state.event,
 		{
+			pageTitleHover: 'Foo',
+			namespaceIdHover: 1,
 			linkInteractionToken: token,
 			totalInteractionTime: 850,
 			action: 'dismissed',
@@ -585,6 +620,8 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 	dwelledState = eventLogging( undefined, {
 		type: 'LINK_DWELL',
 		el: this.link,
+		title: 'Foo',
+		namespaceID: 1,
 		token: token,
 		timestamp: now
 	} );

@@ -30,6 +30,25 @@ function getBaseData( bootAction ) {
 }
 
 /**
+ * Takes data specific to the action and adds the following properties:
+ *
+ * * `linkInteractionToken`;
+ * * `pageTitleHover` and `namespaceIdHover`.
+ *
+ * @param {Object} interaction
+ * @param {Object} actionData Data specific to the action, e.g. see
+ *  `createClosingEvent`
+ * @return {Object}
+ */
+function createEvent( interaction, actionData ) {
+	actionData.linkInteractionToken = interaction.token;
+	actionData.pageTitleHover = interaction.title;
+	actionData.namespaceIdHover = interaction.namespaceID;
+
+	return actionData;
+}
+
+/**
  * Creates an event that, when mixed into the base data (see `getBaseData`),
  * represents the user abandoning a link or preview.
  *
@@ -44,8 +63,7 @@ function getBaseData( bootAction ) {
  * @return {Object|undefined}
  */
 function createClosingEvent( interaction ) {
-	var result = {
-		linkInteractionToken: interaction.token,
+	var actionData = {
 		totalInteractionTime: Math.round( interaction.finished - interaction.started )
 	};
 
@@ -57,14 +75,14 @@ function createClosingEvent( interaction ) {
 	// instrumentation, then the preview has been dismissed by the user
 	// rather than the user has abandoned the link.
 	if ( interaction.timeToPreviewShow !== undefined ) {
-		result.action = 'dismissed';
-		result.previewType = interaction.previewType;
-		result.perceivedWait = interaction.timeToPreviewShow;
+		actionData.action = 'dismissed';
+		actionData.previewType = interaction.previewType;
+		actionData.perceivedWait = interaction.timeToPreviewShow;
 	} else {
-		result.action = 'dwelledButAbandoned';
+		actionData.action = 'dwelledButAbandoned';
 	}
 
-	return result;
+	return createEvent( interaction, actionData );
 }
 
 /**
@@ -182,6 +200,8 @@ module.exports = function ( state, action ) {
 				// this and the preview reducer.
 				interaction: {
 					link: action.el,
+					title: action.title,
+					namespaceID: action.namespaceID,
 					token: action.token,
 					started: action.timestamp,
 
@@ -205,11 +225,10 @@ module.exports = function ( state, action ) {
 				interaction: nextState( state.interaction, {
 					finalized: true
 				} ),
-				event: {
+				event: createEvent( state.interaction, {
 					action: 'opened',
-					linkInteractionToken: state.interaction.token,
 					totalInteractionTime: Math.round( action.timestamp - state.interaction.started )
-				}
+				} )
 			} );
 
 		case actionTypes.ABANDON_START:

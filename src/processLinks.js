@@ -36,10 +36,13 @@ function processLinks( $container, blacklist, config ) {
 			if ( !titleText ) {
 				return false;
 			}
+
 			// Is titleText in a content namespace?
 			title = mw.Title.newFromText( titleText );
 			if ( title && ( $.inArray( title.namespace, contentNamespaces ) >= 0 ) ) {
-				$( this ).data( 'page-previews-title', titleText );
+				$( this ).data( {
+					'page-previews-title': title
+				} );
 
 				return true;
 			}

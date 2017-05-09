@@ -1,5 +1,5 @@
 var mock = require( 'mock-require' ),
-	createStubUser = require( './stubs' ).createStubUser,
+	stubs = require( './stubs' ),
 	actions = require( '../../src/actions' ),
 	mw = mediaWiki;
 
@@ -11,7 +11,7 @@ QUnit.module( 'ext.popups/actions' );
 
 QUnit.test( '#boot', function ( assert ) {
 	var config = new Map(), /* global Map */
-		stubUser = createStubUser( /* isAnon = */ true ),
+		stubUser = stubs.createStubUser( /* isAnon = */ true ),
 		stubUserSettings,
 		action;
 
@@ -89,13 +89,16 @@ function teardownWait() {
 }
 
 /**
-	* Sets up an `a` element that can be passed to action creators.
+	* Sets up a link/mw.Title stub pair that can be passed to the linkDwell action
+	* creator.
 	*
 	* @param {Object} module
 	*/
 function setupEl( module ) {
+	var title = stubs.createStubTitle( 1, 'Foo' );
+
 	module.el = $( '<a>' )
-		.data( 'page-previews-title', 'Foo' )
+		.data( 'page-previews-title', title )
 		.eq( 0 );
 }
 
@@ -302,13 +305,16 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 
 	assert.ok( this.gateway.getPageSummary.calledWith( 'Foo' ) );
 
-	assert.ok(
-		this.dispatch.calledWith( {
+	assert.ok( this.dispatch.calledOnce );
+	assert.deepEqual(
+		this.dispatch.getCall( 0 ).args[ 0 ],
+		{
 			type: 'FETCH_START',
 			el: this.el,
 			title: 'Foo',
+			namespaceID: 1,
 			timestamp: this.now
-		} ),
+		},
 		'It dispatches the FETCH_START action immediately.'
 	);
 } );
