@@ -1577,7 +1577,8 @@ module.exports = function ( boundActions, schema, track ) {
 		var eventLogging = state.eventLogging,
 			event = eventLogging.event,
 			token,
-			key;
+			hash,
+			shouldLog = true;
 
 		if ( !event ) {
 			return;
@@ -1587,6 +1588,8 @@ module.exports = function ( boundActions, schema, track ) {
 
 		if ( tokenToSeenMap[ token ] === true ) {
 			track( 'counter.PagePreviews.EventLogging.DuplicateToken', 1 );
+
+			shouldLog = false;
 		}
 
 		tokenToSeenMap[ token ] = true;
@@ -1598,14 +1601,18 @@ module.exports = function ( boundActions, schema, track ) {
 		// ...
 		//
 		// It's also remarkably easy to implement!!1
-		key = fnv1a32( JSON.stringify( event ) ).toString( 16 );
+		hash = fnv1a32( JSON.stringify( event ) ).toString( 16 );
 
 		// Has the event been seen before?
-		if ( hashToSeenMap[ key ] === true ) {
+		if ( hashToSeenMap[ hash ] === true ) {
 			track( 'counter.PagePreviews.EventLogging.DuplicateEvent', 1 );
-		} else {
-			hashToSeenMap[ key ] = true;
 
+			shouldLog = false;
+		}
+
+		hashToSeenMap[ hash ] = true;
+
+		if ( shouldLog ) {
 			schema.log( $.extend( true, {}, eventLogging.baseData, event ) );
 		}
 

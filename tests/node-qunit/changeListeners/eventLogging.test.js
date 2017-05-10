@@ -167,4 +167,9 @@ QUnit.test( 'it should handle duplicate tokens', function ( assert ) {
 		],
 		'It should increment the duplicate token counter.'
 	);
+
+	assert.ok(
+		this.schema.log.calledOnce,
+		'It shouldn\'t log the event with the duplicate token.'
+	);
 } );
