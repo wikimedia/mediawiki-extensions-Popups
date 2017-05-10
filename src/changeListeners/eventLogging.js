@@ -92,10 +92,14 @@ module.exports = function ( boundActions, schema, track ) {
 
 		hashToSeenMap[ hash ] = true;
 
+		event = $.extend( true, {}, eventLogging.baseData, event );
+
 		if ( shouldLog ) {
-			schema.log( $.extend( true, {}, eventLogging.baseData, event ) );
+			schema.log( event );
 		}
 
-		boundActions.eventLogged();
+		// Dispatch the eventLogged action even if it was a duplicate so that the
+		// state tree can be cleared/updated.
+		boundActions.eventLogged( event );
 	};
 };

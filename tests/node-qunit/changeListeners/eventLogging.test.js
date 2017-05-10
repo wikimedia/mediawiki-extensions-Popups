@@ -75,6 +75,9 @@ QUnit.test( 'it should call the eventLogged bound action creator', function ( as
 	this.changeListener( undefined, state );
 
 	assert.ok( this.boundActions.eventLogged.called );
+	assert.deepEqual( this.boundActions.eventLogged.getCall( 0 ).args[ 0 ], {
+		action: 'pageLoaded'
+	} );
 } );
 
 QUnit.test( 'it should handle duplicate events', function ( assert ) {

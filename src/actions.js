@@ -307,11 +307,13 @@ actions.saveSettings = function ( enabled ) {
  * Represents the queued event being logged `changeListeners/eventLogging.js`
  * change listener.
  *
+ * @param {Object} event
  * @return {Object}
  */
-actions.eventLogged = function () {
+actions.eventLogged = function ( event ) {
 	return {
-		type: types.EVENT_LOGGED
+		type: types.EVENT_LOGGED,
+		event: event
 	};
 };
 

@@ -96,7 +96,8 @@ QUnit.test( 'EVENT_LOGGED', function ( assert ) {
 	};
 
 	action = {
-		type: 'EVENT_LOGGED'
+		type: 'EVENT_LOGGED',
+		event: {}
 	};
 
 	assert.deepEqual(
@@ -106,6 +107,28 @@ QUnit.test( 'EVENT_LOGGED', function ( assert ) {
 		},
 		'It dequeues any event queued for logging.'
 	);
+
+	// ---
+
+	state = {
+		interaction: { token: 'asdf' },
+		event: { linkInteractionToken: 'asdf' }
+	};
+
+	action = {
+		type: 'EVENT_LOGGED',
+		event: state.event
+	};
+
+	assert.deepEqual(
+		eventLogging( state, action ),
+		{
+			event: undefined,
+			interaction: undefined
+		},
+		'It destroys current interaction if an event for it was logged.'
+	);
+
 } );
 
 QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
@@ -658,7 +681,8 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 	} );
 
 	state = eventLogging( state, {
-		type: 'EVENT_LOGGED'
+		type: 'EVENT_LOGGED',
+		event: {}
 	} );
 
 	state = eventLogging( state, {

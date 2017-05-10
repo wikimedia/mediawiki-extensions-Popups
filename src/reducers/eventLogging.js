@@ -123,7 +123,7 @@ function createClosingEvent( interaction ) {
  *  current state
  */
 module.exports = function ( state, action ) {
-	var nextCount,
+	var nextCount, newState,
 		actionTypesWithTokens = [
 			actionTypes.FETCH_COMPLETE,
 			actionTypes.ABANDON_END,
@@ -148,6 +148,22 @@ module.exports = function ( state, action ) {
 		return state;
 	}
 
+	// If there is no interaction ongoing, ignore all actions except for:
+	// * Application initialization
+	// * New link dwells (which start a new interaction)
+	// * Clearing queued events
+	//
+	// For example, after ctrl+clicking a link or preview, any other actions
+	// until the new interaction should be ignored.
+	if (
+		!state.interaction &&
+		action.type !== actionTypes.BOOT &&
+		action.type !== actionTypes.LINK_DWELL &&
+		action.type !== actionTypes.EVENT_LOGGED
+	) {
+		return state;
+	}
+
 	switch ( action.type ) {
 		case actionTypes.BOOT:
 			return nextState( state, {
@@ -159,9 +175,23 @@ module.exports = function ( state, action ) {
 			} );
 
 		case actionTypes.EVENT_LOGGED:
-			return nextState( state, {
+			newState = nextState( state, {
 				event: undefined
 			} );
+
+			// If an event was logged with an interaction token, and it is still
+			// the current interaction, finish the interaction since logging is
+			// the exit point of the state machine and an interaction should never
+			// be logged twice.
+			if (
+				action.event.linkInteractionToken &&
+				state.interaction &&
+				( action.event.linkInteractionToken === state.interaction.token )
+			) {
+				newState.interaction = undefined;
+			}
+
+			return newState;
 
 		case actionTypes.FETCH_COMPLETE:
 			return nextState( state, {
