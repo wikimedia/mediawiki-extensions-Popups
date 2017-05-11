@@ -14,7 +14,7 @@
 	"popups-message": "Resumo de página",
 	"popups-desc": "Mostra um resumo quando o utilizador passa o ponteiro do rato por cima da ligação para uma página.",
 	"popups-redirects": "redireciona para <h3>$1</h3>",
-	"popups-settings-title": "Antevisão de página",
+	"popups-settings-title": "Resumo de página",
 	"popups-settings-description": "Esta ferramenta permite-lhe ver ligações para páginas wiki e referências.",
 	"popups-settings-option-simple": "Ativar",
 	"popups-settings-option-simple-description": "Obtenha visualizações rápidas sobre um tópico ao ler um artigo.",
@@ -26,5 +26,12 @@
 	"popups-settings-cancel": "Cancelar",
 	"popups-settings-help": "Pode reativar as antevisões ao utilizar a ligação existente no rodapé da página.",
 	"popups-settings-enable": "Ativar antevisão",
-	"popups-send-feedback": "Enviar comentário (ligação externa)"
+	"popups-send-feedback": "Enviar comentário (ligação externa)",
+	"popups-preview-no-preview": "Parece que não existe uma antevisão desta página",
+	"popups-preview-footer-read": "Ler",
+	"prefs-reading": "Preferências de leitura",
+	"popups-prefs-optin-title": "Resumo de páginas\n\n<em>Obtém o resumo de um tópico enquanto lê um artigo</em>",
+	"popups-prefs-optin-enabled-label": "Activar",
+	"popups-prefs-optin-disabled-label": "Desactivar",
+	"popups-prefs-disable-nav-gadgets-info": "Necessita [[$1 | desactivar os Pop-ups de Navegação]] da guia de Gadgets para activar o Resumo de Páginas"
 }
