@@ -147,7 +147,9 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		el: this.el,
 		event: event,
 		token: '9876543210',
-		timestamp: mw.now()
+		timestamp: mw.now(),
+		title: 'Foo',
+		namespaceID: 1
 	} );
 
 	// Stub the state tree being updated.

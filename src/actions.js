@@ -146,14 +146,19 @@ actions.fetch = function ( gateway, el, token ) {
  * @return {Redux.Thunk}
  */
 actions.linkDwell = function ( el, event, gateway, generateToken ) {
-	var token = generateToken();
+	var token = generateToken(),
+		title = $( el ).data( 'page-previews-title' ),
+		titleText = title.getPrefixedText(),
+		namespaceID = title.namespace;
 
 	return function ( dispatch, getState ) {
 		var action = timedAction( {
 			type: types.LINK_DWELL,
 			el: el,
 			event: event,
-			token: token
+			token: token,
+			title: titleText,
+			namespaceID: namespaceID
 		} );
 
 		// Has the new generated token been accepted?
