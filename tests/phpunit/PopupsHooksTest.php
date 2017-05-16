@@ -263,7 +263,8 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	 * @covers ::onBeforePageDisplay
 	 * @dataProvider providerOnBeforePageDisplay
 	 */
-	public function testOnBeforePageDisplay( $shouldSendModuleToUser, $isBetaFeatureEnabled, $isCodeLoaded ) {
+	public function testOnBeforePageDisplay( $shouldSendModuleToUser,
+		$isBetaFeatureEnabled, $isCodeLoaded ) {
 		$skinMock = $this->getMock( Skin::class );
 
 		$outPageMock = $this->getMock(

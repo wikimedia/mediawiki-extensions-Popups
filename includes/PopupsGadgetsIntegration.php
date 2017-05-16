@@ -49,7 +49,7 @@ class PopupsGadgetsIntegration {
 	 * @param Config $config
 	 * @param ExtensionRegistry $extensionRegistry
 	 */
-	public function __construct( Config $config , ExtensionRegistry $extensionRegistry ) {
+	public function __construct( Config $config, ExtensionRegistry $extensionRegistry ) {
 		$this->extensionRegistry =  $extensionRegistry;
 		$this->navPopupsGadgetName = $this->sanitizeGadgetName(
 			$config->get( self::CONFIG_NAVIGATION_POPUPS_NAME ) );
