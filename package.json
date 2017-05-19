@@ -6,7 +6,7 @@
     "test:node": "mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js | tap-dot",
     "test:dev": "grunt lint && npm run test:node",
     "test": " npm run check-built-assets && npm run test:dev",
-    "doc": "jsduck",
+    "doc": "jsdoc -c jsdoc.json",
     "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -r test-build resources/dist && rm -rf test-build",
     "coverage": "istanbul cover node_modules/.bin/mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js",
     "precommit": "npm run test:dev && npm run build && git add resources/dist"
@@ -22,6 +22,7 @@
     "grunt-stylelint": "^0.6.0",
     "husky": "^0.13.3",
     "istanbul": "^0.4.5",
+    "jsdoc": "^3.4.3",
     "mock-require": "^2.0.1",
     "mw-node-qunit": "^1.0.6",
     "redux": "3.6.0",
