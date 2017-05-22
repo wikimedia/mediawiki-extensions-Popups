@@ -1,14 +1,19 @@
+/**
+ * @module wait
+ */
+
 var $ = jQuery;
 
 /**
  * Sugar around `window.setTimeout`.
  *
  * @example
- * function continueProcessing() {
- *   // ...
- * }
+ * var wait = require( './wait' );
  *
- * wait( 150 ).then( continueProcessing );
+ * wait( 150 )
+ *   .then( function () {
+ *     // Continue processing...
+ *   } );
  *
  * @param {Number} delay The number of milliseconds to wait
  * @return {jQuery.Promise}
