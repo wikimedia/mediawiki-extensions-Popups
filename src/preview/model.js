@@ -1,17 +1,33 @@
+/**
+ * @module preview/model
+ */
+
 var TYPE_GENERIC = 'generic',
 	TYPE_PAGE = 'page';
 
 /**
- * @typedef {Object} ext.popups.PreviewModel
+ * @constant {String}
+ */
+exports.TYPE_GENERIC = TYPE_GENERIC;
+
+/**
+ * @constant {String}
+ */
+exports.TYPE_PAGE = TYPE_PAGE;
+
+/**
+ * @typedef {Object} PreviewModel
  * @property {String} title
  * @property {String} url The canonical URL of the page being previewed
  * @property {String} languageCode
  * @property {String} languageDirection Either "ltr" or "rtl"
- * @property {String|undefined} extract `undefined` if the extract isn't
+ * @property {?String} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed
  * @property {String} type Either "EXTRACT" or "GENERIC"
- * @property {Object|undefined} thumbnail
+ * @property {?Object} thumbnail
+ *
+ * @global
  */
 
 /**
@@ -22,10 +38,10 @@ var TYPE_GENERIC = 'generic',
  * @param {String} languageCode
  * @param {String} languageDirection Either "ltr" or "rtl"
  * @param {String} extract
- * @param {Object|undefined} thumbnail
- * @return {ext.popups.PreviewModel}
+ * @param {?Object} thumbnail
+ * @return {PreviewModel}
  */
-function createModel(
+exports.createModel = function createModel(
 	title,
 	url,
 	languageCode,
@@ -33,26 +49,29 @@ function createModel(
 	extract,
 	thumbnail
 ) {
-	var processedExtract = processExtract( extract ),
-		result = {
-			title: title,
-			url: url,
-			languageCode: languageCode,
-			languageDirection: languageDirection,
-			extract: processedExtract,
-			type: processedExtract === undefined ? TYPE_GENERIC : TYPE_PAGE,
-			thumbnail: thumbnail
-		};
+	var processedExtract = processExtract( extract );
 
-	return result;
-}
+	return {
+		title: title,
+		url: url,
+		languageCode: languageCode,
+		languageDirection: languageDirection,
+		extract: processedExtract,
+		type: processedExtract === undefined ? TYPE_GENERIC : TYPE_PAGE,
+		thumbnail: thumbnail
+	};
+};
 
 /**
  * Processes the extract returned by the TextExtracts MediaWiki API query
  * module.
  *
- * @param {String|undefined} extract
- * @return {String|undefined}
+ * If the extract is `undefined`, `null`, or empty, then `undefined` is
+ * returned. Otherwise, parentheticals and trailing ellipsis are removed. If
+ * after processing the extract is empty, then `undefined` is returned.
+ *
+ * @param {?String} extract
+ * @return {?String}
  */
 function processExtract( extract ) {
 	var result;
@@ -124,15 +143,3 @@ function removeParentheticals( extract ) {
 
 	return ( level === 0 ) ? result : extract;
 }
-
-module.exports = {
-	/**
-	* @constant {String}
-	*/
-	TYPE_GENERIC: TYPE_GENERIC,
-	/**
-	* @constant {String}
-	*/
-	TYPE_PAGE: TYPE_PAGE,
-	createModel: createModel
-};
