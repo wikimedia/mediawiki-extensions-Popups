@@ -1,5 +1,9 @@
 /**
- * Return count bucket for the number of edits a user has made.
+ * @module counts
+ */
+
+/**
+ * Gets the count bucket for the number of edits a user has made.
  *
  * The buckets are defined as part of
  * [the Popups schema](https://meta.wikimedia.org/wiki/Schema:Popups).
@@ -9,7 +13,7 @@
  * @param {Number} count
  * @return {String}
  */
-function getEditCountBucket( count ) {
+exports.getEditCountBucket = function getEditCountBucket( count ) {
 	var bucket;
 
 	if ( count === 0 ) {
@@ -25,10 +29,10 @@ function getEditCountBucket( count ) {
 	}
 
 	return bucket + ' edits';
-}
+};
 
 /**
- * Return count bucket for the number of previews a user has seen.
+ * Gets the count bucket for the number of previews a user has seen.
  *
  * If local storage isn't available - because the user has disabled it
  * or the browser doesn't support it - then then "unknown" is returned.
@@ -41,7 +45,7 @@ function getEditCountBucket( count ) {
  * @param {Number} count
  * @return {String}
  */
-function getPreviewCountBucket( count ) {
+exports.getPreviewCountBucket = function getPreviewCountBucket( count ) {
 	var bucket;
 
 	if ( count === -1 ) {
@@ -59,9 +63,4 @@ function getPreviewCountBucket( count ) {
 	}
 
 	return bucket + ' previews';
-}
-
-module.exports = {
-	getPreviewCountBucket: getPreviewCountBucket,
-	getEditCountBucket: getEditCountBucket
 };
