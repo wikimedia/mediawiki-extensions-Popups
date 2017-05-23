@@ -24,7 +24,7 @@
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
     "mock-require": "^2.0.1",
-    "mw-node-qunit": "^1.0.6",
+    "mw-node-qunit": "^2.0.0",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "stylelint-config-wikimedia": "0.4.1",
