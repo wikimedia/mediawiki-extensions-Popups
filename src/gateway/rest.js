@@ -1,3 +1,7 @@
+/**
+ * @module gateway/rest
+ */
+
 var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0',
 	createModel = require( '../preview/model' ).createModel,
@@ -5,17 +9,36 @@ var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 	$ = jQuery;
 
 /**
- * RESTBase gateway factory
+ * @interface RESTBaseGateway
+ * @extends Gateway
  *
- * @param {Function} ajax function from jQuery for example
- * @param {ext.popups.constants} config set of configuration values
- * @returns {ext.popups.Gateway}
+ * @global
  */
-function createRESTBaseGateway( ajax, config ) {
+
+/**
+ * Creates an instance of the RESTBase gateway.
+ *
+ * This gateway differs from the {@link MediaWikiGateway MediaWiki gateway} in
+ * that it fetches page data from [the RESTBase page summary endpoint][0].
+ *
+ * [0]: https://en.wikipedia.org/api/rest_v1/#!/Page_content/get_page_summary_title
+ *
+ * @param {Function} ajax A function with the same signature as `jQuery.ajax`
+ * @param {Object} config Configuration that affects the major behavior of the
+ *  gateway.
+ * @param {Number} config.THUMBNAIL_SIZE The length of the major dimension of
+ *  the thumbnail.
+ * @returns {RESTBaseGateway}
+ */
+module.exports = function createRESTBaseGateway( ajax, config ) {
 
 	/**
-	 * Fetch page data from the API
+	 * Fetches page data from [the RESTBase page summary endpoint][0].
 	 *
+	 * [0]: https://en.wikipedia.org/api/rest_v1/#!/Page_content/get_page_summary_title
+	 *
+	 * @function
+	 * @name MediaWikiGateway#fetch
 	 * @param {String} title
 	 * @return {jQuery.Promise}
 	 */
@@ -29,15 +52,6 @@ function createRESTBaseGateway( ajax, config ) {
 		} );
 	}
 
-	/**
-	 * Get the page summary from the api and transform the data
-	 *
-	 * Do not treat 404 as a failure as we want to show a generic
-	 * preview for missing pages.
-	 *
-	 * @param {String} title
-	 * @returns {jQuery.Promise<ext.popups.PreviewModel>}
-	 */
 	function getPageSummary( title ) {
 		var result = $.Deferred();
 
@@ -71,7 +85,7 @@ function createRESTBaseGateway( ajax, config ) {
 		convertPageToModel: convertPageToModel,
 		getPageSummary: getPageSummary
 	};
-}
+};
 
 /**
  * Resizes the thumbnail to the requested width, preserving its aspect ratio.
@@ -85,7 +99,7 @@ function createRESTBaseGateway( ajax, config ) {
  *
  * @param {Object} thumbnail The thumbnail image
  * @param {Object} original The original image
- * @param {int} thumbSize The requested size
+ * @param {Number} thumbSize The requested size
  * @returns {Object}
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
@@ -127,11 +141,13 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 }
 
 /**
- * Transform the rest API response to a preview model
+ * Converts the API response to a preview model.
  *
+ * @function
+ * @name RESTBaseGateway#convertPageToModel
  * @param {Object} page
- * @param {int} thumbSize
- * @returns {ext.popups.PreviewModel}
+ * @param {Number} thumbSize
+ * @returns {PreviewModel}
  */
 function convertPageToModel( page, thumbSize ) {
 	return createModel(
@@ -143,5 +159,3 @@ function convertPageToModel( page, thumbSize ) {
 		page.thumbnail ? generateThumbnailData( page.thumbnail, page.originalimage, thumbSize ) : undefined
 	);
 }
-
-module.exports = createRESTBaseGateway;
