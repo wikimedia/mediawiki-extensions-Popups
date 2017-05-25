@@ -1,28 +1,36 @@
 /**
- * @typedef {Object} ext.popups.UserSettings
+ * @module userSettings
+ */
+
+/**
+ * @interface UserSettings
+ *
+ * @global
  */
 
 var IS_ENABLED_KEY = 'mwe-popups-enabled',
 	PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
 
 /**
- * Given the global state of the application, creates an object whose methods
- * encapsulate all interactions with the given User Agent's storage.
+ * Creates an object whose methods encapsulate all interactions with the UA's
+ * storage.
  *
- * @param {mw.storage} storage The `mw.storage` singleton instance
+ * @param {Object} storage The `mw.storage` singleton instance
  *
- * @return {ext.popups.UserSettings}
+ * @return {UserSettings}
  */
 module.exports = function ( storage ) {
 	return {
 
 		/**
-		 * Gets whether or not the user has previously enabled Page Previews.
+		 * Gets whether the user has previously enabled Page Previews.
 		 *
 		 * N.B. that if the user hasn't previously enabled or disabled Page
 		 * Previews, i.e. userSettings.setIsEnabled(true), then they are treated as
 		 * if they have enabled them.
 		 *
+		 * @function
+		 * @name UserSettings#getIsEnabled
 		 * @return {Boolean}
 		 */
 		getIsEnabled: function () {
@@ -30,8 +38,10 @@ module.exports = function ( storage ) {
 		},
 
 		/**
-		 * Sets whether or not the user has enabled Page Previews.
+		 * Sets whether the user has enabled Page Previews.
 		 *
+		 * @function
+		 * @name UserSettings#setIsEnabled
 		 * @param {Boolean} isEnabled
 		 */
 		setIsEnabled: function ( isEnabled ) {
@@ -39,9 +49,11 @@ module.exports = function ( storage ) {
 		},
 
 		/**
-		 * Gets whether or not the user has previously enabled **or disabled**
-		 * Page Previews.
+		 * Gets whether the user has previously enabled **or disabled** Page
+		 * Previews.
 		 *
+		 * @function
+		 * @name UserSettings#hasIsEnabled
 		 * @return {Boolean}
 		 */
 		hasIsEnabled: function () {
@@ -51,10 +63,12 @@ module.exports = function ( storage ) {
 		},
 
 		/**
-		 * Gets the number of Page Previews that the user has seen.
+		 * Gets the number of previews that the user has seen.
 		 *
 		 * If the storage isn't available, then -1 is returned.
 		 *
+		 * @function
+		 * @name UserSettings#getPreviewCount
 		 * @return {Number}
 		 */
 		getPreviewCount: function () {
@@ -70,8 +84,10 @@ module.exports = function ( storage ) {
 		},
 
 		/**
-		 * Sets the number of Page Previews that the user has seen.
+		 * Sets the number of previews that the user has seen.
 		 *
+		 * @function
+		 * @name UserSettings#setPreviewCount
 		 * @param {Number} count
 		 */
 		setPreviewCount: function ( count ) {
