@@ -7,6 +7,7 @@
     "test:dev": "grunt lint && npm run test:node",
     "test": " npm run check-built-assets && npm run test:dev",
     "doc": "jsdoc -c jsdoc.json",
+    "doc:start": "nodemon --watch src --exec 'npm run doc'",
     "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -r test-build resources/dist && rm -rf test-build",
     "coverage": "istanbul cover node_modules/.bin/mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js",
     "precommit": "npm run test:dev && npm run build && git add resources/dist"
@@ -25,6 +26,7 @@
     "jsdoc": "^3.4.3",
     "mock-require": "^2.0.1",
     "mw-node-qunit": "^2.0.0",
+    "nodemon": "^1.11.0",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "stylelint-config-wikimedia": "0.4.1",
