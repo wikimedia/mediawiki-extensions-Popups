@@ -1,13 +1,20 @@
 /**
- * Whether statsv logging is enabled
+ * @module statsvInstrumentation
+ */
+
+/**
+ * Gets whether Graphite logging (via [the statsv HTTP endpoint][0]) is enabled
+ * for duration of the browser session. The sampling rate is controlled by
+ * `wgPopupsStatsvSamplingRate`.
+ *
+ * [0]: https://wikitech.wikimedia.org/wiki/Graphite#statsv
  *
  * @param {mw.user} user The `mw.user` singleton instance
  * @param {mw.Map} config The `mw.config` singleton instance
  * @param {mw.experiments} experiments The `mw.experiments` singleton instance
- * @returns {bool} Whether the statsv logging is enabled for the user
- *  given the sampling rate.
+ * @returns {Boolean}
  */
-function isEnabled( user, config, experiments ) {
+exports.isEnabled = function isEnabled( user, config, experiments ) {
 	var samplingRate = config.get( 'wgPopupsStatsvSamplingRate', 0 ),
 		bucket = experiments.getBucket( {
 			name: 'ext.Popups.statsv',
@@ -19,8 +26,4 @@ function isEnabled( user, config, experiments ) {
 		}, user.sessionId() );
 
 	return bucket === 'A';
-}
-
-module.exports = {
-	isEnabled: isEnabled
 };
