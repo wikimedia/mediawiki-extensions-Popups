@@ -12,10 +12,9 @@ module.exports = function createContainer() {
 		cache = {};
 
 	/**
-	 * @interface Container
-	 *
 	 * The interface implemented by all service containers.
 	 *
+	 * @interface Container
 	 * @global
 	 */
 	return {
