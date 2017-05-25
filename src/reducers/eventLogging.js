@@ -45,6 +45,12 @@ function createEvent( interaction, actionData ) {
 	actionData.pageTitleHover = interaction.title;
 	actionData.namespaceIdHover = interaction.namespaceID;
 
+	// Has the preview been shown?
+	if ( interaction.timeToPreviewShow !== undefined ) {
+		actionData.previewType = interaction.previewType;
+		actionData.perceivedWait = interaction.timeToPreviewShow;
+	}
+
 	return actionData;
 }
 
@@ -74,13 +80,7 @@ function createClosingEvent( interaction ) {
 	// Has the preview been shown? If so, then, in the context of the
 	// instrumentation, then the preview has been dismissed by the user
 	// rather than the user has abandoned the link.
-	if ( interaction.timeToPreviewShow !== undefined ) {
-		actionData.action = 'dismissed';
-		actionData.previewType = interaction.previewType;
-		actionData.perceivedWait = interaction.timeToPreviewShow;
-	} else {
-		actionData.action = 'dwelledButAbandoned';
-	}
+	actionData.action = interaction.timeToPreviewShow ? 'dismissed' : 'dwelledButAbandoned';
 
 	return createEvent( interaction, actionData );
 }

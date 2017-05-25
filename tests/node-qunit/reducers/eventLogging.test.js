@@ -408,6 +408,53 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 	} );
 } );
 
+QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been shown', function ( assert ) {
+	var token = '0987654321',
+		state,
+		now = Date.now();
+
+	state = {
+		interaction: undefined
+	};
+
+	state = eventLogging( state, {
+		type: 'LINK_DWELL',
+		el: this.link,
+		title: 'Foo',
+		namespaceID: 1,
+		token: token,
+		timestamp: now
+	} );
+
+	state = eventLogging( state, {
+		type: 'PREVIEW_SHOW',
+		token: token,
+		timestamp: now + 750
+	} );
+
+	state = eventLogging( state, {
+		type: 'LINK_CLICK',
+		el: this.link,
+		timestamp: now + 1050
+	} );
+
+	assert.deepEqual(
+		state.event,
+		{
+			action: 'opened',
+			pageTitleHover: 'Foo',
+			namespaceIdHover: 1,
+			linkInteractionToken: token,
+			totalInteractionTime: 1050,
+
+			// N.B. that the FETCH_* actions have been skipped.
+			previewType: undefined,
+			perceivedWait: 750
+		},
+		'The prevewType and perceivedWait properties are set if the preview has been shown.'
+	);
+} );
+
 QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	var model,
 		token = '1234567890',
