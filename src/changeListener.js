@@ -1,4 +1,8 @@
 /**
+ * @module changeListener
+ */
+
+/**
  * @typedef {Function} ext.popups.ChangeListener
  * @param {Object} prevState The previous state
  * @param {Object} state The current state

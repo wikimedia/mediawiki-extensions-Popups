@@ -1,3 +1,7 @@
+/**
+ * @module getTitle
+ */
+
 var mw = window.mediaWiki;
 
 /**

@@ -1,3 +1,7 @@
+/**
+ * @module processLinks
+ */
+
 var mw = window.mediaWiki,
 	$ = jQuery,
 	getTitle = require( './getTitle' );

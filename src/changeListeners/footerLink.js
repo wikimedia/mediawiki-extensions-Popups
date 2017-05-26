@@ -1,3 +1,7 @@
+/**
+ * @module changeListeners/footerLink
+ */
+
 var mw = window.mediaWiki,
 	$ = jQuery;
 

@@ -1,3 +1,7 @@
+/**
+ * @module previewBehaviour
+ */
+
 var mw = window.mediaWiki,
 	$ = jQuery;
 

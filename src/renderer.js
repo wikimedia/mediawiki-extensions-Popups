@@ -1,3 +1,7 @@
+/**
+ * @module renderer
+ */
+
 var mw = window.mediaWiki,
 	$ = jQuery,
 	wait = require( './wait' ),

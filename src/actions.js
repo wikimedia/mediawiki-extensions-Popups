@@ -1,3 +1,7 @@
+/**
+ * @module actions
+ */
+
 var $ = jQuery,
 	mw = window.mediaWiki,
 	actions = {},

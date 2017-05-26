@@ -1,4 +1,8 @@
 /**
+ * @module changeListeners/syncUserSettings
+ */
+
+/**
  * Creates an instance of the user settings sync change listener.
  *
  * This change listener syncs certain parts of the state tree to user

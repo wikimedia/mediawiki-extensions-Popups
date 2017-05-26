@@ -1,3 +1,7 @@
+/**
+ * @module actionTypes
+ */
+
 module.exports = {
 	BOOT: 'BOOT',
 	LINK_DWELL: 'LINK_DWELL',

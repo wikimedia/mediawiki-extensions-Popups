@@ -1,3 +1,7 @@
+/**
+ * @module settingsDialog
+ */
+
 var mw = window.mediaWiki,
 	$ = jQuery;
 

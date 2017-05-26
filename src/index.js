@@ -1,3 +1,7 @@
+/**
+ * @module popups
+ */
+
 var mw = mediaWiki,
 	$ = jQuery,
 	Redux = require( 'redux' ),
