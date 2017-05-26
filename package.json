@@ -5,7 +5,7 @@
     "build": "NODE_ENV=production webpack",
     "test:node": "mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js | tap-dot",
     "test:dev": "grunt lint && npm run test:node",
-    "test": " npm run check-built-assets && npm run test:dev",
+    "test": " npm run check-built-assets && npm run test:dev && npm run doc",
     "doc": "jsdoc -c jsdoc.json",
     "doc:start": "nodemon --watch src --exec 'npm run doc'",
     "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -r test-build resources/dist && rm -rf test-build",
