@@ -9,6 +9,7 @@
 @popupWidth: 300px;
 @popupTallWidth: 215px;
 @cogIconSize: 30px;
+@lineHeight: 20px;
 
 #mwe-popups-svg {
 	position: absolute;
@@ -77,7 +78,7 @@
 	padding: 0;
 	display: none;
 	font-size: 14px;
-	line-height: 20px;
+	line-height: @lineHeight;
 	min-width: 300px;
 	border-radius: 2px;
 
@@ -107,8 +108,7 @@
 		// T156800, T139297: "Pad" the extract horizontally using a margin so the
 		// SVG element is forced not to occlude the truncating pseudo-element and
 		// the settings cog in IE9-11.
-		padding: 16px 0;
-		margin: 0 @popupPadding;
+		margin: @popupPadding;
 
 		display: block;
 		color: #000;
@@ -124,7 +124,7 @@
 			position: absolute;
 			bottom: 0;
 			width: 25%;
-			height: 24px;
+			height: @lineHeight;
 			background-color: transparent;
 		}
 
@@ -171,7 +171,7 @@
 
 		.mwe-popups-extract {
 			width: @popupTallWidth;
-			height: 142px;
+			height: 7 * @lineHeight;
 			overflow: hidden;
 			/* @noflip */
 			float: left;
