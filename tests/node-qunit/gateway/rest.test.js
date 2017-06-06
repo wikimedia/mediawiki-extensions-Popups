@@ -122,8 +122,8 @@ QUnit.test( 'RESTBase gateway is called with correct arguments', function ( asse
 		expectedOptions = {
 			url: '/api/rest_v1/page/summary/' + encodeURIComponent( 'Test Title' ),
 			headers: {
-				Accept: 'application/json; charset=utf-8' +
-					'profile="https://www.mediawiki.org/wiki/Specs/Summary/1.0.0"'
+				Accept: 'application/json; charset=utf-8; ' +
+					'profile="https://www.mediawiki.org/wiki/Specs/Summary/1.2.0"'
 			}
 		};
 

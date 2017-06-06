@@ -3,7 +3,7 @@
  */
 
 var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
-	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.0.0',
+	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
 	createModel = require( '../preview/model' ).createModel,
 	mw = window.mediaWiki,
 	$ = jQuery;
@@ -46,7 +46,7 @@ module.exports = function createRESTBaseGateway( ajax, config ) {
 		return ajax( {
 			url: RESTBASE_ENDPOINT + encodeURIComponent( title ),
 			headers: {
-				Accept: 'application/json; charset=utf-8' +
+				Accept: 'application/json; charset=utf-8; ' +
 					'profile="' + RESTBASE_PROFILE + '"'
 			}
 		} );
