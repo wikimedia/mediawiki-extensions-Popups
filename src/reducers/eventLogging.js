@@ -280,9 +280,9 @@ module.exports = function ( state, action ) {
 
 		case actionTypes.SETTINGS_SHOW:
 			return nextState( state, {
-				event: {
+				event: createEvent( state.interaction, {
 					action: 'tapped settings cog'
-				}
+				} )
 			} );
 
 		default:

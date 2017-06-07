@@ -584,9 +584,39 @@ QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
 } );
 
 QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', function ( assert ) {
-	var state = {
-		interaction: {}
-	};
+	var initialState = {
+			interaction: {}
+		},
+		state,
+		token = '0123456789';
+
+	state = eventLogging( initialState, {
+		type: 'SETTINGS_SHOW'
+	} );
+
+	// Note well that this is a valid event. The "tapped settings cog" event is
+	// also logged as a result of clicking the footer link.
+	assert.deepEqual(
+		state.event,
+		{
+			action: 'tapped settings cog',
+			linkInteractionToken: undefined,
+			namespaceIdHover: undefined,
+			pageTitleHover: undefined
+		},
+		'It shouldn\'t fail if there\'s no interaction.'
+	);
+
+	// ---
+
+	state = eventLogging( initialState, {
+		type: 'LINK_DWELL',
+		el: this.link,
+		title: 'Foo',
+		namespaceID: 1,
+		token: token,
+		timestamp: Date.now()
+	} );
 
 	state = eventLogging( state, {
 		type: 'SETTINGS_SHOW'
@@ -595,8 +625,12 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 	assert.deepEqual(
 		state.event,
 		{
-			action: 'tapped settings cog'
-		}
+			action: 'tapped settings cog',
+			linkInteractionToken: token,
+			namespaceIdHover: 1,
+			pageTitleHover: 'Foo'
+		},
+		'It should include the interaction information if there\'s an interaction.'
 	);
 } );
 
