@@ -1,5 +1,5 @@
 /**
- * @module getTitle
+ * @module title
  */
 
 var mw = window.mediaWiki;
@@ -44,4 +44,6 @@ function getTitle( href, config ) {
 	return undefined;
 }
 
-module.exports = getTitle;
+module.exports = {
+	getTitle: getTitle
+};

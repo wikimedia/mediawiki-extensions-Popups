@@ -1,8 +1,8 @@
-var getTitle = require( '../../src/getTitle' );
+var getTitle = require( '../../src/title' ).getTitle;
 
 /* global Map */
 
-QUnit.module( 'getTitle', {
+QUnit.module( 'title#getTitle', {
 	beforeEach: function () {
 		this.config = new Map();
 		this.config.set( 'wgArticlePath', '/wiki/$1' );

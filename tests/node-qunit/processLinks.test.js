@@ -6,7 +6,7 @@ var mock = require( 'mock-require' ),
 QUnit.module( 'ext.popups/processLinks', {
 	beforeEach: function () {
 		this.getTitle = this.sandbox.stub().throws( 'UNIMPLEMENTED' );
-		mock( '../../src/getTitle', this.getTitle );
+		mock( '../../src/title', { getTitle: this.getTitle } );
 		processLinks = mock.reRequire( '../../src/processLinks' );
 
 		this.$container = $( '<div />' );
@@ -21,7 +21,7 @@ QUnit.module( 'ext.popups/processLinks', {
 		};
 	},
 	afterEach: function () {
-		mock.stop( '../../src/getTitle' );
+		mock.stop( '../../src/title' );
 		window.mediaWiki.Title = null;
 	}
 } );

@@ -4,7 +4,7 @@
 
 var mw = window.mediaWiki,
 	$ = jQuery,
-	getTitle = require( './getTitle' );
+	getTitle = require( './title' ).getTitle;
 
 /**
  * Processes and returns link elements (or "`<a>`s") that are eligible for
