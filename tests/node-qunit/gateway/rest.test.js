@@ -97,7 +97,7 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 		'url/Barack Obama', // Generated in the stub below
 		'en',
 		'ltr',
-		'Barack Hussein Obama II born August 4, 1961) ...',
+		[ document.createTextNode( 'Barack Hussein Obama II born August 4, 1961) ' ) ],
 		{
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
 			width: 409,
@@ -107,12 +107,18 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 
 QUnit.module( 'gateway/rest', {
 	beforeEach: function () {
-		mediaWiki.Title = function ( title ) {
+		window.mediaWiki.RegExp = {
+			escape: this.sandbox.spy( function ( str ) {
+				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
+			} )
+		};
+		window.mediaWiki.Title = function ( title ) {
 			this.getUrl = function () { return 'url/' + title; };
 		};
 	},
 	afterEach: function () {
-		mediaWiki.Title = null;
+		window.mediaWiki.RegExp = null;
+		window.mediaWiki.Title = null;
 	}
 } );
 

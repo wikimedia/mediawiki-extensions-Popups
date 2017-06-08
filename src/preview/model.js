@@ -21,7 +21,7 @@ exports.TYPE_PAGE = TYPE_PAGE;
  * @property {String} url The canonical URL of the page being previewed
  * @property {String} languageCode
  * @property {String} languageDirection Either "ltr" or "rtl"
- * @property {?String} extract `undefined` if the extract isn't
+ * @property {?Array} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed
  * @property {String} type Either "EXTRACT" or "GENERIC"
@@ -37,7 +37,7 @@ exports.TYPE_PAGE = TYPE_PAGE;
  * @param {String} url The canonical URL of the page being previewed
  * @param {String} languageCode
  * @param {String} languageDirection Either "ltr" or "rtl"
- * @param {String} extract
+ * @param {?Array} extract
  * @param {?Object} thumbnail
  * @return {PreviewModel}
  */
@@ -67,79 +67,14 @@ exports.createModel = function createModel(
  * module.
  *
  * If the extract is `undefined`, `null`, or empty, then `undefined` is
- * returned. Otherwise, parentheticals and trailing ellipsis are removed. If
- * after processing the extract is empty, then `undefined` is returned.
+ * returned.
  *
- * @param {?String} extract
+ * @param {?Array} extract
  * @return {?String}
  */
 function processExtract( extract ) {
-	var result;
-
-	if ( extract === undefined || extract === '' ) {
+	if ( extract === undefined || extract.length === 0 ) {
 		return undefined;
 	}
-
-	result = extract;
-	result = removeParentheticals( result );
-	result = removeEllipsis( result );
-
-	return result.length > 0 ? result : undefined;
-}
-
-/**
- * Removes the trailing ellipsis from the extract, if it's there.
- *
- * This function was extracted from
- * `mw.popups.renderer.article#removeEllipsis`.
- *
- * @param {String} extract
- * @return {String}
- */
-function removeEllipsis( extract ) {
-	return extract.replace( /\.\.\.$/, '' );
-}
-
-/**
- * Removes parentheticals from the extract.
- *
- * If the parenthesis are unbalanced or out of order, then the extract is
- * returned without further processing.
- *
- * This function was extracted from
- * `mw.popups.renderer.article#removeParensFromText`.
- *
- * @param {String} extract
- * @return {String}
- */
-function removeParentheticals( extract ) {
-	var
-		ch,
-		result = '',
-		level = 0,
-		i = 0;
-
-	for ( i; i < extract.length; i++ ) {
-		ch = extract.charAt( i );
-
-		if ( ch === ')' && level === 0 ) {
-			return extract;
-		}
-		if ( ch === '(' ) {
-			level++;
-			continue;
-		} else if ( ch === ')' ) {
-			level--;
-			continue;
-		}
-		if ( level === 0 ) {
-			// Remove leading spaces before brackets
-			if ( ch === ' ' && extract.charAt( i + 1 ) === '(' ) {
-				continue;
-			}
-			result += ch;
-		}
-	}
-
-	return ( level === 0 ) ? result : extract;
+	return extract;
 }

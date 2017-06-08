@@ -5,6 +5,7 @@
 var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
 	createModel = require( '../preview/model' ).createModel,
+	plainTextHTMLizer = require( '../formatter' ).htmlize,
 	mw = window.mediaWiki,
 	$ = jQuery;
 
@@ -155,7 +156,7 @@ function convertPageToModel( page, thumbSize ) {
 		new mw.Title( page.title ).getUrl(),
 		page.lang,
 		page.dir,
-		page.extract,
+		plainTextHTMLizer( page.extract, page.title ),
 		page.thumbnail ? generateThumbnailData( page.thumbnail, page.originalimage, thumbSize ) : undefined
 	);
 }

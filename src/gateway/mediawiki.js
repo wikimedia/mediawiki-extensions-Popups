@@ -13,7 +13,9 @@
 //
 // FIXME: Move this to src/constants.js.
 var CACHE_LIFETIME = 300,
-	createModel = require( '../preview/model' ).createModel;
+	createModel = require( '../preview/model' ).createModel,
+	plainTextHTMLizer = require( '../formatter' ).htmlize,
+	$ = jQuery;
 
 /**
  * Creates an instance of the MediaWiki API gateway.
@@ -69,6 +71,7 @@ module.exports = function createMediaWikiApiGateway( api, config ) {
 	function getPageSummary( title ) {
 		return fetch( title )
 			.then( extractPageFromResponse )
+			.then( htmlize )
 			.then( convertPageToModel );
 	}
 
@@ -76,7 +79,8 @@ module.exports = function createMediaWikiApiGateway( api, config ) {
 		fetch: fetch,
 		extractPageFromResponse: extractPageFromResponse,
 		convertPageToModel: convertPageToModel,
-		getPageSummary: getPageSummary
+		getPageSummary: getPageSummary,
+		htmlize: htmlize
 	};
 };
 
@@ -100,6 +104,20 @@ function extractPageFromResponse( data ) {
 	}
 
 	throw new Error( 'API response `query.pages` is empty.' );
+}
+
+/**
+ * HTMLize plain text response
+ *
+ * @function
+ * @name MediaWikiGateway#htmlize
+ * @param {Object} data The response
+ * @returns {Object}
+ */
+function htmlize( data ) {
+	var result = $.extend( {}, data );
+	result.extract = plainTextHTMLizer( data.extract, data.title );
+	return result;
 }
 
 /**

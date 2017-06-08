@@ -39,7 +39,7 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 		'https://en.wikipedia.org/wiki/Rick_Astley',
 		'en',
 		'ltr',
-		'Richard Paul "Rick" Astley is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the',
+		[ document.createTextNode( 'Richard Paul "Rick" Astley is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the' ) ],
 		{
 			height: 300,
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Rick_Astley_-_Pepsifest_2009.jpg/200px-Rick_Astley_-_Pepsifest_2009.jpg',
@@ -47,7 +47,18 @@ var createModel = require( '../../../src/preview/model' ).createModel,
 		}
 	);
 
-QUnit.module( 'ext.popups/gateway/mediawiki' );
+QUnit.module( 'ext.popups/gateway/mediawiki', {
+	beforeEach: function () {
+		window.mediaWiki.RegExp = {
+			escape: this.sandbox.spy( function ( str ) {
+				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
+			} )
+		};
+	},
+	afterEach: function () {
+		window.mediaWiki.RegExp = null;
+	}
+} );
 
 QUnit.test( 'MediaWiki API gateway is called with correct arguments', function ( assert ) {
 	var spy = this.sandbox.spy(),
@@ -135,17 +146,7 @@ QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a mo
 		page = gateway.extractPageFromResponse( MEDIAWIKI_API_RESPONSE );
 
 	assert.deepEqual(
-		gateway.convertPageToModel( page ),
-		MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL
-	);
-} );
-
-QUnit.test( 'banana', function ( assert ) {
-	var gateway = createMediaWikiApiGateway(),
-		page = gateway.extractPageFromResponse( MEDIAWIKI_API_RESPONSE );
-
-	assert.deepEqual(
-		gateway.convertPageToModel( page ),
+		gateway.convertPageToModel( gateway.htmlize( page ) ),
 		MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL
 	);
 } );

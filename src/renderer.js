@@ -140,12 +140,7 @@ function createPreview( model ) {
 	var templateData,
 		thumbnail = createThumbnail( model.thumbnail ),
 		hasThumbnail = thumbnail !== null,
-
-		// FIXME: This should probably be moved into the gateway as we'll soon be
-		// fetching HTML from the API. See
-		// https://phabricator.wikimedia.org/T141651 for more detail.
-		extract = renderExtract( model.extract, model.title ),
-
+		extract = model.extract,
 		$el;
 
 	templateData = $.extend( {}, model, {
@@ -158,8 +153,7 @@ function createPreview( model ) {
 	if ( hasThumbnail ) {
 		$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
 	}
-
-	if ( extract.length ) {
+	if ( extract ) {
 		$el.find( '.mwe-popups-extract' ).append( extract );
 	}
 
@@ -199,50 +193,6 @@ function createEmptyPreview( model ) {
 		hasThumbnail: false,
 		isTall: false
 	};
-}
-
-/**
- * Converts the extract into a list of elements, which correspond to fragments
- * of the extract. Fragements that match the title verbatim are wrapped in a
- * `<b>` element.
- *
- * Using the bolded elements of the extract of the page directly is covered by
- * [T141651](https://phabricator.wikimedia.org/T141651).
- *
- * Extracted from `mw.popups.renderer.article.getProcessedElements`.
- *
- * @param {String} extract
- * @param {String} title
- * @return {Array}
- */
-function renderExtract( extract, title ) {
-	var regExp, escapedTitle,
-		elements = [],
-		boldIdentifier = '<bi-' + Math.random() + '>',
-		snip = '<snip-' + Math.random() + '>';
-
-	title = title.replace( /\s+/g, ' ' ).trim(); // Remove extra white spaces
-	escapedTitle = mw.RegExp.escape( title ); // Escape RegExp elements
-	regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'i' );
-
-	// Remove text in parentheses along with the parentheses
-	extract = extract.replace( /\s+/, ' ' ); // Remove extra white spaces
-
-	// Make title bold in the extract text
-	// As the extract is html escaped there can be no such string in it
-	// Also, the title is escaped of RegExp elements thus can't have "*"
-	extract = extract.replace( regExp, '$1' + snip + boldIdentifier + '$2' + snip + '$3' );
-	extract = extract.split( snip );
-
-	$.each( extract, function ( index, part ) {
-		if ( part.indexOf( boldIdentifier ) === 0 ) {
-			elements.push( $( '<b>' ).text( part.substring( boldIdentifier.length ) ) );
-		} else {
-			elements.push( document.createTextNode( part ) );
-		}
-	} );
-
-	return elements;
 }
 
 /**
@@ -746,7 +696,6 @@ module.exports = {
 	hide: hide,
 	createThumbnail: createThumbnail,
 	createThumbnailElement: createThumbnailElement,
-	renderExtract: renderExtract,
 	createLayout: createLayout,
 	getClasses: getClasses,
 	layoutPreview: layoutPreview,
