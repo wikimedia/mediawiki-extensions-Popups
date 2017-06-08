@@ -1,4 +1,6 @@
-var getTitle = require( '../../src/title' ).getTitle;
+var title = require( '../../src/title' ),
+	getTitle = title.getTitle,
+	isValid	= title.isValid;
 
 /* global Map */
 
@@ -98,4 +100,46 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 	} );
 
 	assert.equal( getTitle( href, this.config ), undefined );
+} );
+
+QUnit.module( 'title#isValid', {
+	beforeEach: function () {
+		window.mediaWiki.Title = {
+			newFromText: this.sandbox.stub().throws( 'UNIMPLEMENTED' )
+		};
+	},
+	afterEach: function () {
+		window.mediaWiki.Title = null;
+	}
+} );
+
+QUnit.test( 'it should return null if the title is empty', function ( assert ) {
+	assert.equal( isValid(), null, 'Doesn\'t accept null titles' );
+	assert.equal( isValid( '' ), null, 'Doesn\'t accept empty titles' );
+} );
+
+QUnit.test( 'it should return null if the title can\'t be parsed properly', function ( assert ) {
+	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
+	assert.equal( isValid( 'title' ), null );
+} );
+
+QUnit.test( 'it should return null if the title can\'t be parsed properly', function ( assert ) {
+	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
+	assert.equal( isValid( 'title' ), null );
+	assert.equal( window.mediaWiki.Title.newFromText.callCount, 1, 'mediaWiki.Title.newFromText called for parsing the title' );
+} );
+
+QUnit.test( 'it should return null if the title is not from a content namespace', function ( assert ) {
+	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( {
+		namespace: 1
+	} );
+	assert.equal( isValid( 'title', [ 5 ] ), null );
+} );
+
+QUnit.test( 'it should return the title object if the title is from a content namespace', function ( assert ) {
+	var mwTitle = {
+		namespace: 3
+	};
+	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( mwTitle );
+	assert.strictEqual( isValid( 'title', [ 1, 3, 5 ] ), mwTitle );
 } );

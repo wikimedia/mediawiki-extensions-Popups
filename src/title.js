@@ -44,6 +44,32 @@ function getTitle( href, config ) {
 	return undefined;
 }
 
+/**
+ * Given a page title it will return the mediawiki.Title if it is an eligible
+ * link for showing page previews, null otherwise
+ *
+ * @param {String} title page title to check if it should show preview
+ * @param {Number[]} contentNamespaces contentNamespaces as specified in
+ * wgContentNamespaces
+ * @returns {mw.Title|null}
+ */
+function isValid( title, contentNamespaces ) {
+	var mwTitle;
+
+	if ( !title ) {
+		return null;
+	}
+
+	// Is title in a content namespace?
+	mwTitle = mw.Title.newFromText( title );
+	if ( mwTitle && ( $.inArray( mwTitle.namespace, contentNamespaces ) >= 0 ) ) {
+		return mwTitle;
+	}
+
+	return null;
+}
+
 module.exports = {
-	getTitle: getTitle
+	getTitle: getTitle,
+	isValid: isValid
 };
