@@ -95,11 +95,8 @@ function teardownWait() {
 	* @param {Object} module
 	*/
 function setupEl( module ) {
-	var title = stubs.createStubTitle( 1, 'Foo' );
-
-	module.el = $( '<a>' )
-		.data( 'page-previews-title', title )
-		.eq( 0 );
+	module.title = stubs.createStubTitle( 1, 'Foo' );
+	module.el = $( '<a>' ).eq( 0 );
 }
 
 QUnit.module( 'ext.popups/actions#linkDwell @integration', {
@@ -137,7 +134,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
+	actions.linkDwell( this.title, this.el, event, /* gateway = */ null, generateToken )(
 		dispatch,
 		this.getState
 	);
@@ -187,7 +184,7 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
+	actions.linkDwell( this.title, this.el, event, /* gateway = */ null, generateToken )(
 		dispatch,
 		this.getState
 	);
@@ -216,7 +213,7 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
+	actions.linkDwell( this.title, this.el, event, /* gateway = */ null, generateToken )(
 		dispatch,
 		this.getState
 	);
@@ -253,7 +250,7 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell( this.el, event, /* gateway = */ null, generateToken )(
+	actions.linkDwell( this.title, this.el, event, /* gateway = */ null, generateToken )(
 		dispatch,
 		this.getState
 	);
@@ -294,7 +291,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 
 		// Sugar.
 		this.fetch = function () {
-			actions.fetch( that.gateway, that.el, that.token )( that.dispatch );
+			actions.fetch( that.gateway, that.title, that.el, that.token )( that.dispatch );
 		};
 	},
 	afterEach: function () {

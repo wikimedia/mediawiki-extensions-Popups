@@ -16,7 +16,7 @@ var mw = mediaWiki,
 	createSettingsDialogRenderer = require( './settingsDialog' ),
 	registerChangeListener = require( './changeListener' ),
 	createIsEnabled = require( './isEnabled' ),
-	processLinks = require( './processLinks' ),
+	title = require( './title' ),
 	renderer = require( './renderer' ),
 	statsvInstrumentation = require( './statsvInstrumentation' ),
 
@@ -158,24 +158,32 @@ mw.requestIdleCallback( function () {
 	);
 
 	mw.hook( 'wikipage.content' ).add( function ( $container ) {
-		var previewLinks =
-			processLinks(
-				$container,
-				BLACKLISTED_LINKS,
-				mw.config
-			);
+		var invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
+			validLinkSelector = 'a[href][title]:not(' + invalidLinksSelector + ')';
 
 		renderer.init();
 
-		previewLinks
-			.on( 'mouseover keyup', function ( event ) {
-				boundActions.linkDwell( this, event, gateway, generateToken );
+		$container
+			.on( 'mouseover keyup', validLinkSelector, function ( event ) {
+				var mwTitle = title.fromElement( this, mw.config );
+
+				if ( mwTitle ) {
+					boundActions.linkDwell( mwTitle, this, event, gateway, generateToken );
+				}
 			} )
-			.on( 'mouseout blur', function () {
-				boundActions.abandon( this );
+			.on( 'mouseout blur', validLinkSelector, function () {
+				var mwTitle = title.fromElement( this, mw.config );
+
+				if ( mwTitle ) {
+					boundActions.abandon( this );
+				}
 			} )
-			.on( 'click', function () {
-				boundActions.linkClick( this );
+			.on( 'click', validLinkSelector, function () {
+				var mwTitle = title.fromElement( this, mw.config );
+
+				if ( mwTitle ) {
+					boundActions.linkClick( this );
+				}
 			} );
 
 	} );

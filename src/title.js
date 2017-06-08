@@ -69,7 +69,20 @@ function isValid( title, contentNamespaces ) {
 	return null;
 }
 
+/**
+ * Return a mw.Title from a HTMLElement if valid for hovercards. Convenience
+ * method
+ *
+ * @param {Element} el
+ * @param {mw.Map} config
+ * @return {mw.Title|null}
+ */
+function fromElement( el, config ) {
+	return isValid( getTitle( el.href, config ), config.get( 'wgContentNamespaces' ) );
+}
+
 module.exports = {
 	getTitle: getTitle,
-	isValid: isValid
+	isValid: isValid,
+	fromElement: fromElement
 };

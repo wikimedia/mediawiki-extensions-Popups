@@ -91,14 +91,14 @@ actions.boot = function (
  * Represents Page Previews fetching data via the gateway.
  *
  * @param {ext.popups.Gateway} gateway
+ * @param {mw.Title} title
  * @param {Element} el
  * @param {String} token The unique token representing the link interaction that
  *  triggered the fetch
  * @return {Redux.Thunk}
  */
-actions.fetch = function ( gateway, el, token ) {
-	var title = $( el ).data( 'page-previews-title' ),
-		titleText = title.getPrefixedText(),
+actions.fetch = function ( gateway, title, el, token ) {
+	var titleText = title.getPrefixedText(),
 		namespaceID = title.namespace;
 
 	return function ( dispatch ) {
@@ -143,15 +143,15 @@ actions.fetch = function ( gateway, el, token ) {
  * Represents the user dwelling on a link, either by hovering over it with
  * their mouse or by focussing it using their keyboard or an assistive device.
  *
+ * @param {mw.Title} title
  * @param {Element} el
  * @param {Event} event
  * @param {ext.popups.Gateway} gateway
  * @param {Function} generateToken
  * @return {Redux.Thunk}
  */
-actions.linkDwell = function ( el, event, gateway, generateToken ) {
+actions.linkDwell = function ( title, el, event, gateway, generateToken ) {
 	var token = generateToken(),
-		title = $( el ).data( 'page-previews-title' ),
 		titleText = title.getPrefixedText(),
 		namespaceID = title.namespace;
 
@@ -181,7 +181,7 @@ actions.linkDwell = function ( el, event, gateway, generateToken ) {
 				var previewState = getState().preview;
 
 				if ( previewState.enabled && isNewInteraction() ) {
-					dispatch( actions.fetch( gateway, el, token ) );
+					dispatch( actions.fetch( gateway, title, el, token ) );
 				}
 			} );
 	};

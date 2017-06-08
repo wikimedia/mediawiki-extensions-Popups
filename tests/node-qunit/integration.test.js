@@ -46,8 +46,7 @@ function constant( x ) { return function () { return x; }; }
 QUnit.module( 'ext.popups preview @integration', {
 	beforeEach: function () {
 		var that = this,
-			reducers, actions, registerChangeListener,
-			title;
+			reducers, actions, registerChangeListener;
 
 		// The worst-case implementation of mw.now.
 		mw.now = function () { return Date.now(); };
@@ -83,10 +82,9 @@ QUnit.module( 'ext.popups preview @integration', {
 			return registerChangeListener( that.store, fn );
 		};
 
-		title = stubs.createStubTitle( 1, 'Foo' );
+		this.title = stubs.createStubTitle( 1, 'Foo' );
 
-		this.el = $( '<a href="/wiki/Foo">' )
-			.data( 'page-previews-title', title );
+		this.el = $( '<a href="/wiki/Foo">' );
 
 		this.actions.boot(
 			/* isEnabled: */
@@ -102,9 +100,9 @@ QUnit.module( 'ext.popups preview @integration', {
 			{ get: identity }
 		);
 
-		this.dwell = function ( el, ev, fetchResponse ) {
+		this.dwell = function ( title, el, ev, fetchResponse ) {
 			that.resetWait();
-			that.actions.linkDwell( el, ev, {
+			that.actions.linkDwell( title, el, ev, {
 				getPageSummary: function () {
 					return $.Deferred().resolve( fetchResponse ).promise();
 				}
@@ -112,8 +110,8 @@ QUnit.module( 'ext.popups preview @integration', {
 			return that.waitPromise;
 		};
 
-		this.dwellAndShowPreview = function ( el, ev, fetchResponse ) {
-			that.dwell( el, ev, fetchResponse );
+		this.dwellAndShowPreview = function ( title, el, ev, fetchResponse ) {
+			that.dwell( title, el, ev, fetchResponse );
 			that.waitDeferred.resolve();
 
 			// Wait for the next tick to resolve pending callbacks. N.B. that the
@@ -138,8 +136,8 @@ QUnit.module( 'ext.popups preview @integration', {
 			return wait( 0 ); // Wait for next tick to resolve pending callbacks
 		};
 
-		this.dwellAndPreviewDwell = function ( el, ev, res ) {
-			return that.dwellAndShowPreview( el, ev, res ).then( function () {
+		this.dwellAndPreviewDwell = function ( title, el, ev, res ) {
+			return that.dwellAndShowPreview( title, el, ev, res ).then( function () {
 
 				// Get out of the link, and before the delay ends...
 				var abandonPromise = that.abandon( el ),
@@ -180,7 +178,7 @@ QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( 
 		};
 
 	this.actions.linkDwell(
-		this.el, 'event',
+		this.title, this.el, 'event',
 		gateway,
 		constant( 'pagetoken' )
 	);
@@ -194,7 +192,7 @@ QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert 
 		done = assert.async(),
 		el = this.el;
 
-	this.dwellAndShowPreview( el, 'event', 42 ).then( function () {
+	this.dwellAndShowPreview( this.title, el, 'event', 42 ).then( function () {
 		var state = store.getState();
 		assert.equal( state.preview.activeLink, el );
 		assert.equal( state.preview.shouldShow, true, 'Should show when data has been fetched' );
@@ -207,7 +205,7 @@ QUnit.test( 'in ACTIVE state, abandon start, and then end, switch it to INACTIVE
 		done = assert.async(),
 		el = this.el;
 
-	this.dwellAndShowPreview( el, 'event', 42 ).then( function () {
+	this.dwellAndShowPreview( this.title, el, 'event', 42 ).then( function () {
 		return that.abandonAndWait( el );
 	} ).then( function () {
 		var state = that.store.getState();
@@ -221,7 +219,7 @@ QUnit.test( 'in ACTIVE state, abandon link, and then dwell preview, should keep 
 		done = assert.async(),
 		el = this.el;
 
-	this.dwellAndPreviewDwell( el, 'event', 42 )
+	this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( function () {
 			var state = that.store.getState();
 			assert.equal( state.preview.activeLink, el );
@@ -234,7 +232,7 @@ QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should 
 		done = assert.async(),
 		el = this.el;
 
-	this.dwellAndPreviewDwell( el, 'event', 42 )
+	this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( function () {
 			var abandonPreviewDeferred, dwellPromise, dwellDeferred;
 
@@ -243,7 +241,7 @@ QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should 
 
 			abandonPreviewDeferred = that.waitDeferred;
 			// Dwell back into the link, new event is triggered
-			dwellPromise = that.dwell( el, 'event2', 42 );
+			dwellPromise = that.dwell( that.title, el, 'event2', 42 );
 			dwellDeferred = that.waitDeferred;
 
 			// Preview abandon happens next, before the fetch
