@@ -2,18 +2,14 @@
  * @module preview/model
  */
 
+/**
+ * @constant {String}
+ */
 var TYPE_GENERIC = 'generic',
+/**
+ * @constant {String}
+ */
 	TYPE_PAGE = 'page';
-
-/**
- * @constant {String}
- */
-exports.TYPE_GENERIC = TYPE_GENERIC;
-
-/**
- * @constant {String}
- */
-exports.TYPE_PAGE = TYPE_PAGE;
 
 /**
  * @typedef {Object} PreviewModel
@@ -24,11 +20,17 @@ exports.TYPE_PAGE = TYPE_PAGE;
  * @property {?Array} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed
- * @property {String} type Either "EXTRACT" or "GENERIC"
+ * @property {String} type Either "extract" or "generic"
  * @property {?Object} thumbnail
  *
  * @global
  */
+module.exports = {
+	TYPE_GENERIC: TYPE_GENERIC,
+	TYPE_PAGE: TYPE_PAGE,
+	createModel: createModel,
+	createNullModel: createNullModel
+};
 
 /**
  * Creates a preview model.
@@ -41,7 +43,7 @@ exports.TYPE_PAGE = TYPE_PAGE;
  * @param {?Object} thumbnail
  * @return {PreviewModel}
  */
-exports.createModel = function createModel(
+function createModel(
 	title,
 	url,
 	languageCode,
@@ -60,7 +62,17 @@ exports.createModel = function createModel(
 		type: processedExtract === undefined ? TYPE_GENERIC : TYPE_PAGE,
 		thumbnail: thumbnail
 	};
-};
+}
+
+/**
+ * Creates an empty preview model.
+ *
+ * @param {String} title
+ * @return {PreviewModel}
+ */
+function createNullModel( title ) {
+	return createModel( title, '', '', '', [], '' );
+}
 
 /**
  * Processes the extract returned by the TextExtracts MediaWiki API query
@@ -69,11 +81,11 @@ exports.createModel = function createModel(
  * If the extract is `undefined`, `null`, or empty, then `undefined` is
  * returned.
  *
- * @param {?Array} extract
- * @return {?String}
+ * @param {Array|undefined|null} extract
+ * @return {Array|undefined} Array when extract is an not empty array, undefined otherwise
  */
 function processExtract( extract ) {
-	if ( extract === undefined || extract.length === 0 ) {
+	if ( extract === undefined || extract === null || extract.length === 0 ) {
 		return undefined;
 	}
 	return extract;

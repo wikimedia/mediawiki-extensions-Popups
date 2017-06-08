@@ -7,14 +7,14 @@ var $ = jQuery,
  * @param {String} title
  * @returns {Array}
  */
-function htmlize( plainTextExtract, title ) {
+function formatPlainTextExtract( plainTextExtract, title ) {
 	var extract = plainTextExtract;
 	if ( plainTextExtract === undefined ) {
 		return [];
 	}
 
 	extract = removeParentheticals( extract );
-	extract = removeEllipsis( extract );
+	extract = removeTrailingEllipsis( extract );
 
 	// After cleaning the extract it may have been blanked
 	if ( extract.length === 0 ) {
@@ -78,7 +78,7 @@ function makeTitleInExtractBold( extract, title ) {
  * @param {String} extract
  * @return {String}
  */
-function removeEllipsis( extract ) {
+function removeTrailingEllipsis( extract ) {
 	return extract.replace( /\.\.\.$/, '' );
 }
 
@@ -127,5 +127,7 @@ function removeParentheticals( extract ) {
 }
 
 module.exports = {
-	htmlize: htmlize
+	formatPlainTextExtract: formatPlainTextExtract,
+	removeTrailingEllipsis: removeTrailingEllipsis,
+	removeParentheticals: removeParentheticals
 };

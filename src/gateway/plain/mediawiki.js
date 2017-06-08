@@ -13,8 +13,8 @@
 //
 // FIXME: Move this to src/constants.js.
 var CACHE_LIFETIME = 300,
-	createModel = require( '../preview/model' ).createModel,
-	plainTextHTMLizer = require( '../formatter' ).htmlize,
+	modelBuilder = require( '../../preview/model' ),
+	formatter = require( '../../formatter' ),
 	$ = jQuery;
 
 /**
@@ -71,7 +71,7 @@ module.exports = function createMediaWikiApiGateway( api, config ) {
 	function getPageSummary( title ) {
 		return fetch( title )
 			.then( extractPageFromResponse )
-			.then( htmlize )
+			.then( formatPlainTextExtract )
 			.then( convertPageToModel );
 	}
 
@@ -80,7 +80,7 @@ module.exports = function createMediaWikiApiGateway( api, config ) {
 		extractPageFromResponse: extractPageFromResponse,
 		convertPageToModel: convertPageToModel,
 		getPageSummary: getPageSummary,
-		htmlize: htmlize
+		formatPlainTextExtract: formatPlainTextExtract
 	};
 };
 
@@ -107,16 +107,16 @@ function extractPageFromResponse( data ) {
 }
 
 /**
- * HTMLize plain text response
+ * Make plain text nicer by applying formatter.
  *
  * @function
- * @name MediaWikiGateway#htmlize
+ * @name MediaWikiGateway#formatPlainTextExtract
  * @param {Object} data The response
  * @returns {Object}
  */
-function htmlize( data ) {
+function formatPlainTextExtract( data ) {
 	var result = $.extend( {}, data );
-	result.extract = plainTextHTMLizer( data.extract, data.title );
+	result.extract = formatter.formatPlainTextExtract( data.extract, data.title );
 	return result;
 }
 
@@ -129,7 +129,7 @@ function htmlize( data ) {
  * @returns {PreviewModel}
  */
 function convertPageToModel( page ) {
-	return createModel(
+	return modelBuilder.createModel(
 		page.title,
 		page.canonicalurl,
 		page.pagelanguagehtmlcode,

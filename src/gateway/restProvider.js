@@ -4,11 +4,9 @@
 
 var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
-	createModel = require( '../preview/model' ).createModel,
-	plainTextHTMLizer = require( '../formatter' ).htmlize,
+	modelBuilder = require( '../preview/model' ),
 	mw = window.mediaWiki,
 	$ = jQuery;
-
 /**
  * @interface RESTBaseGateway
  * @extends Gateway
@@ -29,9 +27,10 @@ var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
  *  gateway.
  * @param {Number} config.THUMBNAIL_SIZE The length of the major dimension of
  *  the thumbnail.
+ * @param {Function} extractParser A function that takes response and returns parsed extract
  * @returns {RESTBaseGateway}
  */
-module.exports = function createRESTBaseGateway( ajax, config ) {
+module.exports = function createRESTBaseGateway( ajax, config, extractParser ) {
 
 	/**
 	 * Fetches page data from [the RESTBase page summary endpoint][0].
@@ -60,17 +59,13 @@ module.exports = function createRESTBaseGateway( ajax, config ) {
 			.then(
 				function ( page ) {
 					result.resolve(
-						convertPageToModel( page, config.THUMBNAIL_SIZE ) );
+						convertPageToModel( page, config.THUMBNAIL_SIZE, extractParser ) );
 				},
 				function ( jqXHR ) {
 					if ( jqXHR.status === 404 ) {
+
 						result.resolve(
-							convertPageToModel( {
-								title: title,
-								lang: '',
-								dir: '',
-								extract: ''
-							}, 0 )
+							modelBuilder.createNullModel( title )
 						);
 					} else {
 						result.reject();
@@ -117,7 +112,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 	// where the thumbnail's extension is .svg.png.
 	filename = lastPart.substr( lastPart.indexOf( 'px-' ) + 3 );
 
-		// Scale the thumbnail's largest dimension.
+	// Scale the thumbnail's largest dimension.
 	if ( thumbnail.width > thumbnail.height ) {
 		width = thumbSize;
 		height = Math.floor( ( thumbSize / thumbnail.width ) * thumbnail.height );
@@ -148,15 +143,16 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
  * @name RESTBaseGateway#convertPageToModel
  * @param {Object} page
  * @param {Number} thumbSize
+ * @param {Function} extractParser
  * @returns {PreviewModel}
  */
-function convertPageToModel( page, thumbSize ) {
-	return createModel(
+function convertPageToModel( page, thumbSize, extractParser ) {
+	return modelBuilder.createModel(
 		page.title,
 		new mw.Title( page.title ).getUrl(),
 		page.lang,
 		page.dir,
-		plainTextHTMLizer( page.extract, page.title ),
+		extractParser( page ),
 		page.thumbnail ? generateThumbnailData( page.thumbnail, page.originalimage, thumbSize ) : undefined
 	);
 }

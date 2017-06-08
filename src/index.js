@@ -8,8 +8,7 @@ var mw = mediaWiki,
 	ReduxThunk = require( 'redux-thunk' ),
 	constants = require( './constants' ),
 
-	createRESTBaseGateway = require( './gateway/rest' ),
-	createMediaWikiApiGateway = require( './gateway/mediawiki' ),
+	gatewayBuilder = require( './gateway/index' ),
 	createUserSettings = require( './userSettings' ),
 	createPreviewBehavior = require( './previewBehavior' ),
 	createSchema = require( './schema' ),
@@ -47,10 +46,16 @@ var mw = mediaWiki,
  * @return {ext.popups.Gateway}
  */
 function createGateway( config ) {
-	if ( config.get( 'wgPopupsAPIUseRESTBase' ) ) {
-		return createRESTBaseGateway( $.ajax, constants );
+	switch ( config.get( 'wgPopupsGateway' ) ) {
+		case 'mwApiPlain':
+			return gatewayBuilder.mwApiPlain( new mw.Api(), constants );
+		case 'restbasePlain':
+			return gatewayBuilder.restbasePlain( $.ajax, constants );
+		case 'restbaseHTML':
+			return gatewayBuilder.restbaseHTML( $.ajax, constants );
+		default:
+			throw new Error( 'Unknown gateway' );
 	}
-	return createMediaWikiApiGateway( new mw.Api(), constants );
 }
 
 /**

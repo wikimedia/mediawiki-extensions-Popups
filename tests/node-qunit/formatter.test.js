@@ -55,7 +55,7 @@ QUnit.test( 'Title is bold', function ( assert ) {
 
 	function test( extract, title, expected, msg ) {
 		var $div = $( '<div>' ).append(
-			formatter.htmlize( extract, title )
+			formatter.formatPlainTextExtract( extract, title )
 		);
 		assert.equal( $div.html(), expected, msg );
 	}
@@ -86,7 +86,7 @@ QUnit.test( 'it strips ellipsis and parentheticals', function ( assert ) {
 		testCase = cases[ i ];
 
 		$div = $( '<div>' ).append(
-			formatter.htmlize( testCase[ 0 ], 'Test' )
+			formatter.formatPlainTextExtract( testCase[ 0 ], 'Test' )
 		);
 
 		assert.equal( $div.html(), testCase[ 1 ] );

@@ -1,5 +1,5 @@
 var createModel = require( '../../../src/preview/model' ).createModel,
-	createMediaWikiApiGateway = require( '../../../src/gateway/mediawiki' ),
+	createMediaWikiApiGateway = require( '../../../src/gateway/plain/mediawiki' ),
 	DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 300,
 		EXTRACT_LENGTH: 525
@@ -146,7 +146,7 @@ QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a mo
 		page = gateway.extractPageFromResponse( MEDIAWIKI_API_RESPONSE );
 
 	assert.deepEqual(
-		gateway.convertPageToModel( gateway.htmlize( page ) ),
+		gateway.convertPageToModel( gateway.formatPlainTextExtract( page ) ),
 		MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL
 	);
 } );

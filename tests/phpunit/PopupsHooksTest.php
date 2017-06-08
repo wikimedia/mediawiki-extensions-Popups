@@ -178,7 +178,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$config = [
 			'wgPopupsSchemaSamplingRate' => 10,
 			'wgPopupsBetaFeature' => true,
-			'wgPopupsAPIUseRESTBase' => false,
+			'wgPopupsGateway' => 'mwApiPlain',
 			'wgPopupsAnonsEnabledSamplingRate' => 0.9,
 			'wgPopupsStatsvSamplingRate' => 0
 		];

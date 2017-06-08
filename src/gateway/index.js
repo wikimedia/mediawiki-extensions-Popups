@@ -18,6 +18,7 @@
  */
 
 module.exports = {
-	createMediaWikiApiGateway: require( './mediawiki' ),
-	createRESTBaseGateway: require( './rest' )
+	mwApiPlain: require( './plain/mediawiki' ),
+	restbasePlain: require( './plain/rest' ),
+	restbaseHTML: require( './html/rest' )
 };
