@@ -12,8 +12,15 @@ function htmlize( plainTextExtract, title ) {
 	if ( plainTextExtract === undefined ) {
 		return [];
 	}
+
 	extract = removeParentheticals( extract );
 	extract = removeEllipsis( extract );
+
+	// After cleaning the extract it may have been blanked
+	if ( extract.length === 0 ) {
+		return [];
+	}
+
 	extract = makeTitleInExtractBold( extract, title );
 	return extract;
 }
