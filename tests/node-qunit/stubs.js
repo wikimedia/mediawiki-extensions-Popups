@@ -54,14 +54,14 @@ exports.createStubExperiments = function createStubExperiments( isSampled ) {
  * `mw.Title`.
  *
  * @param {Number} namespace
- * @param {String} prefixedText e.g. Foo, or File:Bar.jpg
+ * @param {String} prefixedDb, e.g. Foo, or File:Bar.jpg
  * @return {Object}
  */
-exports.createStubTitle = function createStubTitle( namespace, prefixedText ) {
+exports.createStubTitle = function createStubTitle( namespace, prefixedDb ) {
 	return {
 		namespace: namespace,
-		getPrefixedText: function () {
-			return prefixedText;
+		getPrefixedDb: function () {
+			return prefixedDb;
 		}
 	};
 };

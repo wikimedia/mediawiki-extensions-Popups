@@ -98,7 +98,7 @@ actions.boot = function (
  * @return {Redux.Thunk}
  */
 actions.fetch = function ( gateway, title, el, token ) {
-	var titleText = title.getPrefixedText(),
+	var titleText = title.getPrefixedDb(),
 		namespaceID = title.namespace;
 
 	return function ( dispatch ) {
@@ -152,7 +152,7 @@ actions.fetch = function ( gateway, title, el, token ) {
  */
 actions.linkDwell = function ( title, el, event, gateway, generateToken ) {
 	var token = generateToken(),
-		titleText = title.getPrefixedText(),
+		titleText = title.getPrefixedDb(),
 		namespaceID = title.namespace;
 
 	return function ( dispatch, getState ) {
