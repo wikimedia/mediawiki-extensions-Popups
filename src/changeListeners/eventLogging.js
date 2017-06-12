@@ -84,8 +84,8 @@ module.exports = function ( boundActions, schema, track ) {
 		//
 		// ...
 		//
-		// It's also remarkably easy to implement!!1
-		hash = fnv1a32( JSON.stringify( event ) ).toString( 16 );
+		// It's also remarkably easy to implement!
+		hash = fnv1a32( JSON.stringify( event ) ).toString( 32 );
 
 		// Has the event been seen before?
 		if ( hashToSeenMap[ hash ] === true ) {
