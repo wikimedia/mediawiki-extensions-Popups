@@ -17,6 +17,7 @@ var mw = mediaWiki,
 	createIsEnabled = require( './isEnabled' ),
 	title = require( './title' ),
 	renderer = require( './renderer' ),
+	createExperiments = require( './experiments' ),
 	statsvInstrumentation = require( './statsvInstrumentation' ),
 
 	changeListeners = require( './changeListeners' ),
@@ -116,6 +117,7 @@ mw.requestIdleCallback( function () {
 		gateway = createGateway( mw.config ),
 		userSettings,
 		settingsDialog,
+		experiments,
 		statsvTracker,
 		isEnabled,
 		schema,
@@ -123,7 +125,8 @@ mw.requestIdleCallback( function () {
 
 	userSettings = createUserSettings( mw.storage );
 	settingsDialog = createSettingsDialogRenderer();
-	statsvTracker = getStatsvTracker( mw.user, mw.config, mw.experiments );
+	experiments = createExperiments( mw.experiments );
+	statsvTracker = getStatsvTracker( mw.user, mw.config, experiments );
 
 	isEnabled = createIsEnabled( mw.user, userSettings, mw.config, mw.experiments );
 
