@@ -1,10 +1,9 @@
-var mw = mediaWiki,
-	createSchema = require( '../../src/schema' ),
-	createStubMap = require( './stubs' ).createStubMap;
+var isEnabled = require( '../../src/schema' ).isEnabled,
+	stubs = require( './stubs' );
 
 QUnit.module( 'ext.popups/schema', {
 	beforeEach: function () {
-		this.config = createStubMap();
+		this.config = stubs.createStubMap();
 
 		this.config.set( 'wgPopupsSchemaSamplingRate', 1 );
 
@@ -14,44 +13,82 @@ QUnit.module( 'ext.popups/schema', {
 			}
 		};
 
-		// Stub out the mw.eventLog.Schema constructor function.
-		mw.eventLog = { Schema: this.sandbox.stub() };
+		this.experiments = {
+			weightedBoolean: this.sandbox.stub()
+		};
+
+		this.user = stubs.createStubUser();
+
+		// Helper function that DRYs up the tests below.
+		this.isEnabled = function () {
+			return isEnabled(
+				this.user,
+				this.config,
+				this.experiments,
+				this.window
+			);
+		};
 	}
 } );
 
-QUnit.test( 'it should use $wgPopupsSchemaSamplingRate as the sampling rate', function ( assert ) {
-	assert.expect( 2 );
+QUnit.test( 'it should use wgPopupsSchemaSamplingRate as the sampling rate', function ( assert ) {
+	this.isEnabled();
 
-	createSchema( this.config, this.window );
-
-	assert.ok( mw.eventLog.Schema.calledWith( 'Popups', 1 ) );
+	assert.ok( this.experiments.weightedBoolean.calledOnce );
+	assert.deepEqual(
+		this.experiments.weightedBoolean.getCall( 0 ).args,
+		[
+			'ext.Popups.instrumentation.eventLogging',
+			this.config.get( 'wgPopupsSchemaSamplingRate' ),
+			this.user.sessionId()
+		]
+	);
 
 	// ---
 
-	createSchema( createStubMap(), this.window );
+	this.config.delete( 'wgPopupsSchemaSamplingRate' );
 
-	assert.ok(
-		mw.eventLog.Schema.calledWith( 'Popups', 0 ),
-		'If $wgPopupsSchemaSamplingRate isn\'t set, then the sampling rate should be 0.'
+	this.isEnabled();
+
+	assert.strictEqual(
+		this.experiments.weightedBoolean.getCall( 1 ).args[ 1 ],
+		0,
+		'The bucketing rate should be 0 by default.'
 	);
 } );
 
-QUnit.test( 'it should use a 0 sampling rate when sendBeacon isn\'t supported', function ( assert ) {
-	var expectedArgs = [ 'Popups', 0 ];
+QUnit.test( 'it should use a 0 bucketing rate when sendBeacon isn\'t supported', function ( assert ) {
+	var window = {};
 
-	assert.expect( 2 );
+	isEnabled( this.user, this.config, this.experiments, window );
 
-	createSchema( this.config, { } );
-
-	assert.deepEqual( mw.eventLog.Schema.getCall( 0 ).args, expectedArgs );
+	assert.deepEqual(
+		this.experiments.weightedBoolean.getCall( 0 ).args[ 1 ],
+		/* trueWeight = */ 0
+	);
 
 	// ---
 
-	createSchema( this.config, {
-		navigator: {
-			sendBeacon: 'NOT A FUNCTION'
-		}
-	} );
+	window.navigator = {
+		sendBeacon: 'NOT A FUNCTION'
+	};
 
-	assert.deepEqual( mw.eventLog.Schema.getCall( 1 ).args, expectedArgs );
+	isEnabled( this.user, this.config, this.experiments, window );
+
+	assert.deepEqual(
+		this.experiments.weightedBoolean.getCall( 1 ).args[ 1 ],
+		/* trueWeight = */ 0
+	);
+} );
+
+QUnit.test( 'it should return the weighted boolean', function ( assert ) {
+	this.experiments.weightedBoolean.returns( true );
+
+	assert.ok( this.isEnabled() );
+
+	// ---
+
+	this.experiments.weightedBoolean.returns( false );
+
+	assert.notOk( this.isEnabled() );
 } );

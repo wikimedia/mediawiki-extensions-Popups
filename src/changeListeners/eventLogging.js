@@ -46,14 +46,14 @@ function fnv1a32( string ) {
  * * https://phabricator.wikimedia.org/T161769
  * * https://phabricator.wikimedia.org/T163198
  *
- * [0]: https://github.com/wikimedia/mediawiki-extensions-WikimediaEvents/blob/master/modules/ext.wikimediaEvents.statsd.js
+ * [0]: https://github.com/wikimedia/mediawiki-extensions-WikimediaEvents/blob/29c864a0/modules/ext.wikimediaEvents.statsd.js
  *
  * @param {Object} boundActions
- * @param {mw.eventLog.Schema} schema
- * @param {ext.popups.EventTracker} track
+ * @param {EventTracker} eventLoggingTracker
+ * @param {EventTracker} statsvTracker
  * @return {ext.popups.ChangeListener}
  */
-module.exports = function ( boundActions, schema, track ) {
+module.exports = function ( boundActions, eventLoggingTracker, statsvTracker ) {
 	var tokenToSeenMap = {},
 		hashToSeenMap = {};
 
@@ -71,7 +71,7 @@ module.exports = function ( boundActions, schema, track ) {
 		token = event.linkInteractionToken;
 
 		if ( tokenToSeenMap[ token ] === true ) {
-			track( 'counter.PagePreviews.EventLogging.DuplicateToken', 1 );
+			statsvTracker( 'counter.PagePreviews.EventLogging.DuplicateToken', 1 );
 
 			shouldLog = false;
 		}
@@ -89,7 +89,7 @@ module.exports = function ( boundActions, schema, track ) {
 
 		// Has the event been seen before?
 		if ( hashToSeenMap[ hash ] === true ) {
-			track( 'counter.PagePreviews.EventLogging.DuplicateEvent', 1 );
+			statsvTracker( 'counter.PagePreviews.EventLogging.DuplicateEvent', 1 );
 
 			shouldLog = false;
 		}
@@ -99,7 +99,7 @@ module.exports = function ( boundActions, schema, track ) {
 		event = $.extend( true, {}, eventLogging.baseData, event );
 
 		if ( shouldLog ) {
-			schema.log( event );
+			eventLoggingTracker( 'event.Popups', event );
 		}
 
 		// Dispatch the eventLogged action even if it was a duplicate so that the

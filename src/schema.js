@@ -2,22 +2,21 @@
  * @module schema
  */
 
-var mw = window.mediaWiki,
-	$ = jQuery;
-
 /**
- * Creates an instance of the [EventLogging Schema class][0] with a sampling
- * rate of `wgPopupsSchemaSamplingRate` if the UA supports [the Beacon API][1]
- * or `0` if it doesn't.
+ * Gets whether EventLogging logging is enabled for the duration of the user's
+ * session. The bucketing rate is controlled by `wgPopupsSchemaSamplingRate`.
+ * However, if the UA doesn't support [the Beacon API][1], then bucketing is
+ * disabled.
  *
- * [0]: https://github.com/wikimedia/mediawiki-extensions-EventLogging/blob/master/modules/ext.eventLogging.Schema.js
  * [1]: https://w3c.github.io/beacon/
  *
- * @param {mw.Map} config
+ * @param {mw.user} user The `mw.user` singleton instance
+ * @param {mw.Map} config The `mw.config` singleton instance
+ * @param {Experiments} experiments
  * @param {Window} window
- * @return {mw.eventLog.Schema}
+ * @return {Boolean}
  */
-module.exports = function ( config, window ) {
+exports.isEnabled = function isEnabled( user, config, experiments, window ) {
 	var samplingRate = config.get( 'wgPopupsSchemaSamplingRate', 0 );
 
 	if (
@@ -27,5 +26,9 @@ module.exports = function ( config, window ) {
 		samplingRate = 0;
 	}
 
-	return new mw.eventLog.Schema( 'Popups', samplingRate );
+	return experiments.weightedBoolean(
+		'ext.Popups.instrumentation.eventLogging',
+		samplingRate,
+		user.sessionId()
+	);
 };

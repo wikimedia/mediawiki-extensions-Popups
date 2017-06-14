@@ -6,16 +6,13 @@ QUnit.module( 'ext.popups/eventLogging', {
 			eventLogged: this.sandbox.spy()
 		};
 
-		this.schema = {
-			log: this.sandbox.spy()
-		};
-
-		this.track = this.sandbox.spy();
+		this.eventLoggingTracker = this.sandbox.spy();
+		this.statsvTracker = this.sandbox.spy();
 
 		this.changeListener = eventLogging(
 			this.boundActions,
-			this.schema,
-			this.track
+			this.eventLoggingTracker,
+			this.statsvTracker
 		);
 	}
 } );
@@ -33,8 +30,6 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 	var baseData,
 		state;
 
-	assert.expect( 1 );
-
 	baseData = {
 		foo: 'bar',
 		baz: 'qux'
@@ -47,11 +42,14 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 	this.changeListener( undefined, state );
 
 	assert.ok(
-		this.schema.log.calledWith( {
-			foo: 'bar',
-			baz: 'qux',
-			action: 'pageLoaded'
-		} ),
+		this.eventLoggingTracker.calledWith(
+			'event.Popups',
+			{
+				foo: 'bar',
+				baz: 'qux',
+				action: 'pageLoaded'
+			}
+		),
 		'It should merge the event data and the accumulated base data.'
 	);
 } );
@@ -93,16 +91,16 @@ QUnit.test( 'it should handle duplicate events', function ( assert ) {
 	this.changeListener( undefined, state );
 	this.changeListener( state, nextState );
 
-	assert.ok( this.track.calledTwice );
+	assert.ok( this.statsvTracker.calledTwice );
 	assert.deepEqual(
-		this.track.getCall( 0 ).args,
+		this.statsvTracker.getCall( 0 ).args,
 		[
 			'counter.PagePreviews.EventLogging.DuplicateToken',
 			1
 		]
 	);
 	assert.deepEqual(
-		this.track.getCall( 1 ).args,
+		this.statsvTracker.getCall( 1 ).args,
 		[
 			'counter.PagePreviews.EventLogging.DuplicateEvent',
 			1
@@ -111,7 +109,7 @@ QUnit.test( 'it should handle duplicate events', function ( assert ) {
 	);
 
 	assert.notOk(
-		this.schema.log.calledTwice,
+		this.eventLoggingTracker.calledTwice,
 		'It shouldn\'t log the event.'
 	);
 
@@ -126,7 +124,7 @@ QUnit.test( 'it should handle duplicate events', function ( assert ) {
 	this.changeListener( state, nextState );
 
 	assert.notOk(
-		this.track.calledThrice,
+		this.statsvTracker.calledThrice,
 		'The counter isn\'t incremented if the event isn\'t a duplicate'
 	);
 } );
@@ -139,7 +137,7 @@ QUnit.test( 'it should handle no event being logged', function ( assert ) {
 	this.changeListener( undefined, state );
 	this.changeListener( state, state );
 
-	assert.ok( this.track.notCalled );
+	assert.ok( this.statsvTracker.notCalled );
 } );
 
 QUnit.test( 'it should handle duplicate tokens', function ( assert ) {
@@ -161,9 +159,9 @@ QUnit.test( 'it should handle duplicate tokens', function ( assert ) {
 	this.changeListener( undefined, state );
 	this.changeListener( state, nextState );
 
-	assert.ok( this.track.calledOnce );
+	assert.ok( this.statsvTracker.calledOnce );
 	assert.deepEqual(
-		this.track.getCall( 0 ).args,
+		this.statsvTracker.getCall( 0 ).args,
 		[
 			'counter.PagePreviews.EventLogging.DuplicateToken',
 			1
@@ -172,7 +170,7 @@ QUnit.test( 'it should handle duplicate tokens', function ( assert ) {
 	);
 
 	assert.ok(
-		this.schema.log.calledOnce,
+		this.eventLoggingTracker.calledOnce,
 		'It shouldn\'t log the event with the duplicate token.'
 	);
 } );

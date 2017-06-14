@@ -10,7 +10,6 @@ var mw = mediaWiki,
 	createGateway = require( './gateway' ),
 	createUserSettings = require( './userSettings' ),
 	createPreviewBehavior = require( './previewBehavior' ),
-	createSchema = require( './schema' ),
 	createSettingsDialogRenderer = require( './settingsDialog' ),
 	registerChangeListener = require( './changeListener' ),
 	createIsEnabled = require( './isEnabled' ),
@@ -18,6 +17,7 @@ var mw = mediaWiki,
 	renderer = require( './renderer' ),
 	createExperiments = require( './experiments' ),
 	statsvInstrumentation = require( './statsvInstrumentation' ),
+	eventLoggingInstrumentation = require( './schema' ),
 
 	changeListeners = require( './changeListeners' ),
 	actions = require( './actions' ),
@@ -34,27 +34,58 @@ var mw = mediaWiki,
 	];
 
 /**
- * @typedef {Function} ext.popups.EventTracker
+ * @typedef {Function} EventTracker
  *
- * An analytics event tracker like `mw.track`.
+ * An analytics event tracker, i.e. `mw.track`.
+ *
+ * @param {String} topic
+ * @param {Object} data
+ *
+ * @global
  */
 
 /**
  * Gets the appropriate analytics event tracker for logging metrics to StatsD
- * via the [the "StatsD timers and counters" analytics event protocol][0].
+ * via [the "StatsD timers and counters" analytics event protocol][0].
  *
- * If logging metrics to StatsD is enabled for the user, then the appriopriate
- * function is `mw.track`; otherwise it's `$.noop`.
+ * If logging metrics to StatsD is enabled for the duration of the user's
+ * session, then the appriopriate function is `mw.track`; otherwise it's
+ * `$.noop`.
  *
- * [0]: https://github.com/wikimedia/mediawiki-extensions-WikimediaEvents/blob/master/modules/ext.wikimediaEvents.statsd.js
+ * [0]: https://github.com/wikimedia/mediawiki-extensions-WikimediaEvents/blob/29c864a0/modules/ext.wikimediaEvents.statsd.js
  *
  * @param {Object} user
  * @param {Object} config
- * @param {Object} experiments
- * @return {ext.popups.EventTracker}
+ * @param {Experiments} experiments
+ * @return {EventTracker}
  */
 function getStatsvTracker( user, config, experiments ) {
 	return statsvInstrumentation.isEnabled( user, config, experiments ) ? mw.track : $.noop;
+}
+
+/**
+ * Gets the appropriate analytics event tracker for logging EventLogging events
+ * via [the "EventLogging subscriber" analytics event protocol][0].
+ *
+ * If logging EventLogging events is enabled for the duration of the user's
+ * session, then the appriopriate function is `mw.track`; otherwise it's
+ * `$.noop`.
+ *
+ * [0]: https://github.com/wikimedia/mediawiki-extensions-EventLogging/blob/d1409759/modules/ext.eventLogging.subscriber.js
+ *
+ * @param {Object} user
+ * @param {Object} config
+ * @param {Experiments} experiments
+ * @param {Window} window
+ * @return {EventTracker}
+ */
+function getEventLoggingTracker( user, config, experiments, window ) {
+	return eventLoggingInstrumentation.isEnabled(
+		user,
+		config,
+		experiments,
+		window
+	) ? mw.track : $.noop;
 }
 
 /**
@@ -63,18 +94,20 @@ function getStatsvTracker( user, config, experiments ) {
  *
  * @param {Redux.Store} store
  * @param {Object} actions
- * @param {ext.popups.UserSettings} userSettings
+ * @param {UserSettings} userSettings
  * @param {Function} settingsDialog
- * @param {ext.popups.PreviewBehavior} previewBehavior
- * @param {ext.popups.EventTracker} statsvTracker
+ * @param {PreviewBehavior} previewBehavior
+ * @param {EventTracker} statsvTracker
+ * @param {EventTracker} eventLoggingTracker
  */
-function registerChangeListeners( store, actions, userSettings, settingsDialog, previewBehavior, statsvTracker ) {
+function registerChangeListeners( store, actions, userSettings, settingsDialog, previewBehavior, statsvTracker, eventLoggingTracker ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
 	registerChangeListener( store, changeListeners.statsv( actions, statsvTracker ) );
 	registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
+	registerChangeListener( store, changeListeners.eventLogging( actions, eventLoggingTracker, statsvTracker ) );
 }
 
 /*
@@ -99,14 +132,20 @@ mw.requestIdleCallback( function () {
 		settingsDialog,
 		experiments,
 		statsvTracker,
+		eventLoggingTracker,
 		isEnabled,
-		schema,
 		previewBehavior;
 
 	userSettings = createUserSettings( mw.storage );
 	settingsDialog = createSettingsDialogRenderer();
 	experiments = createExperiments( mw.experiments );
 	statsvTracker = getStatsvTracker( mw.user, mw.config, experiments );
+	eventLoggingTracker = getEventLoggingTracker(
+		mw.user,
+		mw.config,
+		experiments,
+		window
+	);
 
 	isEnabled = createIsEnabled( mw.user, userSettings, mw.config, mw.experiments );
 
@@ -128,14 +167,8 @@ mw.requestIdleCallback( function () {
 
 	registerChangeListeners(
 		store, boundActions, userSettings, settingsDialog,
-		previewBehavior, statsvTracker
+		previewBehavior, statsvTracker, eventLoggingTracker
 	);
-
-	// Load EventLogging schema if possible...
-	mw.loader.using( 'ext.eventLogging.Schema' ).done( function () {
-		schema = createSchema( mw.config, window );
-		registerChangeListener( store, changeListeners.eventLogging( boundActions, schema, statsvTracker ) );
-	} );
 
 	boundActions.boot(
 		isEnabled,
