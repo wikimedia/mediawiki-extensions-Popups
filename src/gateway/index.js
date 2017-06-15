@@ -1,9 +1,9 @@
 var mw = mediaWiki,
 	$ = jQuery,
 	constants = require( '../constants' ),
-	mwApiPlain = require( './plain/mediawiki' ),
-	restbasePlain = require( './plain/rest' ),
-	restbaseHTML = require( './html/rest' );
+	createMediaWikiApiGateway = require( './mediawiki' ),
+	createRESTBaseGateway = require( './rest' ),
+	formatters = require( './restFormatters' );
 
 // Note that this interface definition is in the global scope.
 /**
@@ -33,11 +33,11 @@ var mw = mediaWiki,
 function createGateway( config ) {
 	switch ( config.get( 'wgPopupsGateway' ) ) {
 		case 'mwApiPlain':
-			return mwApiPlain( new mw.Api(), constants );
+			return createMediaWikiApiGateway( new mw.Api(), constants );
 		case 'restbasePlain':
-			return restbasePlain( $.ajax, constants );
+			return createRESTBaseGateway( $.ajax, constants, formatters.parsePlainTextResponse );
 		case 'restbaseHTML':
-			return restbaseHTML( $.ajax, constants );
+			return createRESTBaseGateway( $.ajax, constants, formatters.parseHTMLResponse );
 		default:
 			throw new Error( 'Unknown gateway' );
 	}

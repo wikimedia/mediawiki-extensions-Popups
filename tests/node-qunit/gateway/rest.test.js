@@ -1,5 +1,5 @@
 var createModel = require( '../../../src/preview/model' ).createModel,
-	createRESTBaseGateway = require( '../../../src/gateway/restProvider' ),
+	createRESTBaseGateway = require( '../../../src/gateway/rest' ),
 	DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 512
 	},

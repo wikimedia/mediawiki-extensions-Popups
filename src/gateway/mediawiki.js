@@ -13,8 +13,8 @@
 //
 // FIXME: Move this to src/constants.js.
 var CACHE_LIFETIME = 300,
-	modelBuilder = require( '../../preview/model' ),
-	formatter = require( '../../formatter' ),
+	modelBuilder = require( '../preview/model' ),
+	formatter = require( '../formatter' ),
 	$ = jQuery;
 
 /**

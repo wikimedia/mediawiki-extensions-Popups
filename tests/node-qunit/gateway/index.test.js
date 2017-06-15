@@ -6,12 +6,10 @@ QUnit.module( 'gateway/index.js', {
 		jQuery.bracketedDevicePixelRatio = function () { return 1; };
 		mediaWiki.Api = function () {};
 
-		this.mwApiPlain = this.sandbox.stub();
-		mock( '../../../src/gateway/plain/mediawiki', this.mwApiPlain );
-		this.restbasePlain = this.sandbox.stub();
-		mock( '../../../src/gateway/plain/rest', this.restbasePlain );
-		this.restbaseHTML = this.sandbox.stub();
-		mock( '../../../src/gateway/html/rest', this.restbaseHTML );
+		this.createMediaWikiApiGateway = this.sandbox.stub();
+		mock( '../../../src/gateway/mediawiki', this.createMediaWikiApiGateway );
+		this.createRESTBaseGateway = this.sandbox.stub();
+		mock( '../../../src/gateway/rest', this.createRESTBaseGateway );
 
 		createGateway = mock.reRequire( '../../../src/gateway' );
 
@@ -19,9 +17,8 @@ QUnit.module( 'gateway/index.js', {
 	},
 	afterEach: function () {
 		jQuery.bracketedDevicePixelRatio = undefined;
-		mock.stop( '../../../src/gateway/plain/mediawiki' );
-		mock.stop( '../../../src/gateway/plain/rest' );
-		mock.stop( '../../../src/gateway/html/rest' );
+		mock.stop( '../../../src/gateway/mediawiki' );
+		mock.stop( '../../../src/gateway/rest' );
 	}
 } );
 
@@ -30,7 +27,7 @@ QUnit.test( 'it uses mediawiki plain text gateway with wgPopupsGateway == "mwApi
 
 	createGateway( this.config );
 
-	assert.ok( this.mwApiPlain.called, 'MW plain text gateway called' );
+	assert.ok( this.createMediaWikiApiGateway.called, 'MW plain text gateway called' );
 } );
 
 QUnit.test( 'it uses rest plain text gateway with wgPopupsGateway == "restbasePlain"', function ( assert ) {
@@ -38,7 +35,7 @@ QUnit.test( 'it uses rest plain text gateway with wgPopupsGateway == "restbasePl
 
 	createGateway( this.config );
 
-	assert.ok( this.restbasePlain.called, 'REST plain text gateway called' );
+	assert.ok( this.createRESTBaseGateway.called, 'REST plain text gateway called' );
 } );
 
 QUnit.test( 'it uses rest HTML gateway with wgPopupsGateway == "restbaseHTML"', function ( assert ) {
@@ -46,5 +43,5 @@ QUnit.test( 'it uses rest HTML gateway with wgPopupsGateway == "restbaseHTML"', 
 
 	createGateway( this.config );
 
-	assert.ok( this.restbaseHTML.called, 'REST HTML gateway called' );
+	assert.ok( this.createRESTBaseGateway.called, 'REST HTML gateway called' );
 } );
