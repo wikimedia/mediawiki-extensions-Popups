@@ -1,5 +1,5 @@
-var createModel = require( '../../../src/preview/model' ).createModel,
-	createMediaWikiApiGateway = require( '../../../src/gateway/plain/mediawiki' ),
+var createModel = require( '../../../../src/preview/model' ).createModel,
+	createMediaWikiApiGateway = require( '../../../../src/gateway/plain/mediawiki' ),
 	DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 300,
 		EXTRACT_LENGTH: 525

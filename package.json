@@ -3,7 +3,7 @@
   "scripts": {
     "start": "webpack -w",
     "build": "NODE_ENV=production webpack",
-    "test:node": "mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js | tap-dot",
+    "test:node": "mw-node-qunit `find tests/node-qunit -type f -name '*.js'` | tap-dot",
     "test:dev": "grunt lint && npm run test:node",
     "test": " npm run check-built-assets && npm run test:dev && npm run doc",
     "doc": "jsdoc -c jsdoc.json",
