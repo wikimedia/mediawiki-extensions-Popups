@@ -1,7 +1,7 @@
-var isEnabled = require( '../../src/schema' ).isEnabled,
-	stubs = require( './stubs' );
+var isEnabled = require( '../../../src/instrumentation/eventLogging' ).isEnabled,
+	stubs = require( '../stubs' );
 
-QUnit.module( 'ext.popups/schema', {
+QUnit.module( 'ext.popups/instrumentation/eventLogging', {
 	beforeEach: function () {
 		this.config = stubs.createStubMap();
 
