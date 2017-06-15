@@ -6,9 +6,8 @@ var mw = mediaWiki,
 	$ = jQuery,
 	Redux = require( 'redux' ),
 	ReduxThunk = require( 'redux-thunk' ),
-	constants = require( './constants' ),
 
-	gatewayBuilder = require( './gateway/index' ),
+	createGateway = require( './gateway' ),
 	createUserSettings = require( './userSettings' ),
 	createPreviewBehavior = require( './previewBehavior' ),
 	createSchema = require( './schema' ),
@@ -39,25 +38,6 @@ var mw = mediaWiki,
  *
  * An analytics event tracker like `mw.track`.
  */
-
-/**
- * Creates a gateway with sensible values for the dependencies.
- *
- * @param {mw.Map} config
- * @return {ext.popups.Gateway}
- */
-function createGateway( config ) {
-	switch ( config.get( 'wgPopupsGateway' ) ) {
-		case 'mwApiPlain':
-			return gatewayBuilder.mwApiPlain( new mw.Api(), constants );
-		case 'restbasePlain':
-			return gatewayBuilder.restbasePlain( $.ajax, constants );
-		case 'restbaseHTML':
-			return gatewayBuilder.restbaseHTML( $.ajax, constants );
-		default:
-			throw new Error( 'Unknown gateway' );
-	}
-}
 
 /**
  * Gets the appropriate analytics event tracker for logging metrics to StatsD

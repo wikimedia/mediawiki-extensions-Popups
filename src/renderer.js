@@ -71,7 +71,7 @@ function init() {
  */
 
 /**
- * Renders a preview given data from the {@link gateway ext.popups.Gateway}.
+ * Renders a preview given data from the {@link gateway Gateway}.
  * The preview is rendered and added to the DOM but will remain hidden until
  * the `show` method is called.
  *

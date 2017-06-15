@@ -90,7 +90,7 @@ actions.boot = function (
 /**
  * Represents Page Previews fetching data via the gateway.
  *
- * @param {ext.popups.Gateway} gateway
+ * @param {Gateway} gateway
  * @param {mw.Title} title
  * @param {Element} el
  * @param {String} token The unique token representing the link interaction that
@@ -146,7 +146,7 @@ actions.fetch = function ( gateway, title, el, token ) {
  * @param {mw.Title} title
  * @param {Element} el
  * @param {Event} event
- * @param {ext.popups.Gateway} gateway
+ * @param {Gateway} gateway
  * @param {Function} generateToken
  * @return {Redux.Thunk}
  */

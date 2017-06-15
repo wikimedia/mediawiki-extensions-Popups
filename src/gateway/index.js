@@ -1,3 +1,10 @@
+var mw = mediaWiki,
+	$ = jQuery,
+	constants = require( '../constants' ),
+	mwApiPlain = require( './plain/mediawiki' ),
+	restbasePlain = require( './plain/rest' ),
+	restbaseHTML = require( './html/rest' );
+
 // Note that this interface definition is in the global scope.
 /**
  * The interface implemented by all preview gateways.
@@ -17,8 +24,23 @@
  * @returns {jQuery.Promise<PreviewModel>}
  */
 
-module.exports = {
-	mwApiPlain: require( './plain/mediawiki' ),
-	restbasePlain: require( './plain/rest' ),
-	restbaseHTML: require( './html/rest' )
-};
+/**
+ * Creates a gateway with sensible values for the dependencies.
+ *
+ * @param {mw.Map} config
+ * @return {Gateway}
+ */
+function createGateway( config ) {
+	switch ( config.get( 'wgPopupsGateway' ) ) {
+		case 'mwApiPlain':
+			return mwApiPlain( new mw.Api(), constants );
+		case 'restbasePlain':
+			return restbasePlain( $.ajax, constants );
+		case 'restbaseHTML':
+			return restbaseHTML( $.ajax, constants );
+		default:
+			throw new Error( 'Unknown gateway' );
+	}
+}
+
+module.exports = createGateway;
