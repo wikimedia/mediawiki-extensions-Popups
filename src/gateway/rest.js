@@ -4,7 +4,9 @@
 
 var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
-	modelBuilder = require( '../preview/model' ),
+	model = require( '../preview/model' ),
+	createModel = model.createModel,
+	createNullModel = model.createNullModel,
 	mw = window.mediaWiki,
 	$ = jQuery;
 /**
@@ -65,7 +67,7 @@ module.exports = function createRESTBaseGateway( ajax, config, extractParser ) {
 					if ( jqXHR.status === 404 ) {
 
 						result.resolve(
-							modelBuilder.createNullModel( title )
+							createNullModel( title )
 						);
 					} else {
 						result.reject();
@@ -147,7 +149,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
  * @returns {PreviewModel}
  */
 function convertPageToModel( page, thumbSize, extractParser ) {
-	return modelBuilder.createModel(
+	return createModel(
 		page.title,
 		new mw.Title( page.title ).getUrl(),
 		page.lang,

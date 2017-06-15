@@ -13,7 +13,7 @@
 //
 // FIXME: Move this to src/constants.js.
 var CACHE_LIFETIME = 300,
-	modelBuilder = require( '../preview/model' ),
+	createModel = require( '../preview/model' ).createModel,
 	formatter = require( '../formatter' ),
 	$ = jQuery;
 
@@ -129,7 +129,7 @@ function formatPlainTextExtract( data ) {
  * @returns {PreviewModel}
  */
 function convertPageToModel( page ) {
-	return modelBuilder.createModel(
+	return createModel(
 		page.title,
 		page.canonicalurl,
 		page.pagelanguagehtmlcode,
