@@ -18,7 +18,7 @@
  * @file
  * @ingroup extensions
  */
-require_once ( 'PopupsContextTestWrapper.php' );
+require_once 'PopupsContextTestWrapper.php';
 
 use Popups\PopupsContext;
 
@@ -66,7 +66,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 			->will( $this->returnValue( $configMock ) );
 
 		$mwServices = $this->overrideMwServices();
-		$mwServices->redefineService( 'ConfigFactory', function() use ( $configFactoryMock ) {
+		$mwServices->redefineService( 'ConfigFactory', function () use ( $configFactoryMock ) {
 			return $configFactoryMock;
 		} );
 
@@ -207,7 +207,6 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 */
 	public function testAreDependenciesMet( $betaOn, $textExtracts, $pageImages,
 		$betaFeatures, $expected ) {
-
 		$this->setMwGlobals( [
 			"wgPopupsBetaFeature" => $betaOn
 		] );

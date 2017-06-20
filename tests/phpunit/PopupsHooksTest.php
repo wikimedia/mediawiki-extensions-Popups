@@ -18,7 +18,7 @@
  * @file
  * @ingroup extensions
  */
-require_once ( 'PopupsContextTestWrapper.php' );
+require_once 'PopupsContextTestWrapper.php';
 use Popups\PopupsContext;
 use Popups\PopupsHooks;
 
