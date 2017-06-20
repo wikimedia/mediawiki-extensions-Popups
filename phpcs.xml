@@ -1,15 +1,22 @@
 <?xml version="1.0"?>
 <ruleset>
-	<rule ref="vendor/mediawiki/mediawiki-codesniffer/MediaWiki"/>
+	<rule ref="vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingParamComment" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingParamTag" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingReturn" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.ParamNameNoMatch" />
+		<exclude name="MediaWiki.FunctionComment.Missing.Public" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
+	</rule>
 	<file>.</file>
-	<arg name="extensions" value="php,php5,inc"/>
-	<arg name="encoding" value="utf8"/>
+	<arg name="extensions" value="php,php5,inc" />
+	<arg name="encoding" value="utf8" />
 	<exclude-pattern>vendor</exclude-pattern>
 
 	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
 		<properties>
 			<property name="equalsSpacing" value="1" />
-				<property name="requiredSpacesAfterOpen" value="1"/>
+				<property name="requiredSpacesAfterOpen" value="1" />
 				<property name="requiredSpacesBeforeClose" value="1" />
 		</properties>
 	</rule>

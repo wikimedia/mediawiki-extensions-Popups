@@ -1,6 +1,5 @@
 <?php
-/*
-* This file is part of the MediaWiki extension Popups.
+/** This file is part of the MediaWiki extension Popups.
 *
 * Popups is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -27,8 +26,7 @@ use Popups\PopupsGadgetsIntegration;
 * @group Popups
 * @coversDefaultClass Popups\PopupsGadgetsIntegration
 */
-class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
-{
+class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	/**
 	 * Gadget name for testing
 	 */
@@ -233,7 +231,6 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase
 	 */
 	private function executeConflictsWithNavPopupsGadgetSafeCheck( $user, $config, $repoMock,
 		$expected ) {
-
 		$origGadgetsRepo = GadgetRepo::singleton();
 		GadgetRepo::setSingleton( $repoMock );
 

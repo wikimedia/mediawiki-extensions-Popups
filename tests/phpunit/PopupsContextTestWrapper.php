@@ -43,7 +43,6 @@ class PopupsContextTestWrapper extends PopupsContext {
 	 */
 	public function __construct( Config $config, ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration = null ) {
-
 		$gadgetsIntegration = $gadgetsIntegration ? $gadgetsIntegration :
 			new PopupsGadgetsIntegration( $config, $extensionRegistry );
 
