@@ -1,7 +1,7 @@
-var stubs = require( './stubs' ),
-	statsv = require( '../../src/statsvInstrumentation' );
+var stubs = require( './../stubs' ),
+	statsv = require( '../../../src/instrumentation/statsv' );
 
-QUnit.module( 'ext.popups/statsvInstrumentation' );
+QUnit.module( 'ext.popups/instrumentation/statsv' );
 
 QUnit.test( '#isEnabled', function ( assert ) {
 	var user = stubs.createStubUser(),
