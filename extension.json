@@ -112,6 +112,7 @@
 				"mediawiki.ui.button",
 				"mediawiki.ui.icon",
 				"mediawiki.Uri",
+				"mediawiki.user",
 				"jquery.hidpi"
 			]
 		}
