@@ -29,6 +29,52 @@ function fnv1a32( string ) {
 }
 
 /**
+ * Check if token was already used
+ *
+ * @param {Object} seenMap Map of known tokens
+ * @param {String} token Token
+ * @returns {boolean}
+ */
+function isDuplicateToken( seenMap, token ) {
+	// Tokens without link interaction token are not tracked
+	if ( token === undefined ) {
+		return false;
+	}
+	// Has the event been seen before?
+	if ( seenMap[ token ] === true ) {
+		return true;
+	}
+	seenMap[ token ] = true;
+	return false;
+}
+
+/**
+ * Check if event is known
+ *
+ * @param {Object} seenMap Hash map of known events
+ * @param {Object} event event
+ * @returns {boolean}
+ */
+function isDuplicateEvent( seenMap, event ) {
+	// Use 32-bit FNV-1a based on Ian Boyd's (incredibly detailed) analysis of
+	// several algorithms designed to quickly hash a string
+	// <https://softwareengineering.stackexchange.com/a/145633>.
+	//
+	// ...
+	//
+	// It's also remarkably easy to implement!
+	var hash = fnv1a32( JSON.stringify( event ) ).toString( 32 );
+
+	// Has the event been seen before?
+	if ( seenMap[ hash ] === true ) {
+		return true;
+	}
+
+	seenMap[ hash ] = true;
+	return false;
+}
+
+/**
  * Creates an instance of the event logging change listener.
  *
  * When an event is enqueued it'll be logged using the schema. Since it's the
@@ -60,41 +106,19 @@ module.exports = function ( boundActions, eventLoggingTracker, statsvTracker ) {
 	return function ( _, state ) {
 		var eventLogging = state.eventLogging,
 			event = eventLogging.event,
-			token,
-			hash,
 			shouldLog = true;
 
 		if ( !event ) {
 			return;
 		}
-
-		token = event.linkInteractionToken;
-
-		if ( tokenToSeenMap[ token ] === true ) {
+		if ( isDuplicateToken( tokenToSeenMap, event.linkInteractionToken ) ) {
 			statsvTracker( 'counter.PagePreviews.EventLogging.DuplicateToken', 1 );
-
 			shouldLog = false;
 		}
-
-		tokenToSeenMap[ token ] = true;
-
-		// Use 32-bit FNV-1a based on Ian Boyd's (incredibly detailed) analysis of
-		// several algorithms designed to quickly hash a string
-		// <https://softwareengineering.stackexchange.com/a/145633>.
-		//
-		// ...
-		//
-		// It's also remarkably easy to implement!
-		hash = fnv1a32( JSON.stringify( event ) ).toString( 32 );
-
-		// Has the event been seen before?
-		if ( hashToSeenMap[ hash ] === true ) {
+		if ( isDuplicateEvent( hashToSeenMap, event ) ) {
 			statsvTracker( 'counter.PagePreviews.EventLogging.DuplicateEvent', 1 );
-
 			shouldLog = false;
 		}
-
-		hashToSeenMap[ hash ] = true;
 
 		event = $.extend( true, {}, eventLogging.baseData, event );
 

@@ -8,7 +8,6 @@ QUnit.module( 'ext.popups/eventLogging', {
 
 		this.eventLoggingTracker = this.sandbox.spy();
 		this.statsvTracker = this.sandbox.spy();
-
 		this.changeListener = eventLogging(
 			this.boundActions,
 			this.eventLoggingTracker,
@@ -63,8 +62,6 @@ QUnit.test( 'it should call the eventLogged bound action creator', function ( as
 		this.boundActions.eventLogged.called,
 		'It shouldn\'t call the eventLogged bound action creator if there\'s no queued event.'
 	);
-
-	// ---
 
 	state.eventLogging.event = {
 		action: 'pageLoaded'
@@ -172,5 +169,30 @@ QUnit.test( 'it should handle duplicate tokens', function ( assert ) {
 	assert.ok(
 		this.eventLoggingTracker.calledOnce,
 		'It shouldn\'t log the event with the duplicate token.'
+	);
+} );
+
+QUnit.test( 'it should handle undefined tokens', function ( assert ) {
+	var state,
+		state2;
+
+	state = createState( undefined, {
+		action: 'pageLoaded'
+	} );
+
+	state2 = createState( undefined, {
+		action: 'disabled'
+	} );
+
+	this.changeListener( undefined, state );
+	this.changeListener( undefined, state2 );
+
+	assert.ok(
+		this.statsvTracker.notCalled,
+		'It shouldn\'t increment the duplicate token counter.'
+	);
+	assert.ok(
+		this.eventLoggingTracker.calledTwice,
+		'It should log the event twice.'
 	);
 } );
