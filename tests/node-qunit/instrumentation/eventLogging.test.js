@@ -92,3 +92,12 @@ QUnit.test( 'it should return the weighted boolean', function ( assert ) {
 
 	assert.notOk( this.isEnabled() );
 } );
+
+QUnit.test( 'it should respect the debug flag', function ( assert ) {
+	this.config.set( 'wgPopupsSchemaSamplingRate', 0 );
+	this.config.set( 'debug', false );
+	assert.notOk( this.isEnabled() );
+
+	this.config.set( 'debug', true );
+	assert.ok( this.isEnabled() );
+} );

@@ -19,6 +19,11 @@
 exports.isEnabled = function isEnabled( user, config, experiments, window ) {
 	var samplingRate = config.get( 'wgPopupsSchemaSamplingRate', 0 );
 
+	// if debug mode is on, always enable event logging. @see T168847
+	if ( config.get( 'debug' ) === true ) {
+		return true;
+	}
+
 	if (
 		!window.navigator ||
 		!$.isFunction( window.navigator.sendBeacon )
