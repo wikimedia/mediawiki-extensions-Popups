@@ -157,11 +157,11 @@ module.exports = function ( state, action ) {
 		!state.interaction &&
 		action.type !== actionTypes.BOOT &&
 		action.type !== actionTypes.LINK_DWELL &&
-		action.type !== actionTypes.EVENT_LOGGED
+		action.type !== actionTypes.EVENT_LOGGED &&
+		action.type !== actionTypes.SETTINGS_CHANGE
 	) {
 		return state;
 	}
-
 	switch ( action.type ) {
 		case actionTypes.BOOT:
 			return nextState( state, {
@@ -188,7 +188,6 @@ module.exports = function ( state, action ) {
 			) {
 				newState.interaction = undefined;
 			}
-
 			return newState;
 
 		case actionTypes.FETCH_COMPLETE:
@@ -285,6 +284,16 @@ module.exports = function ( state, action ) {
 				} )
 			} );
 
+		case actionTypes.SETTINGS_CHANGE:
+			if ( action.wasEnabled && !action.enabled ) {
+				return nextState( state, {
+					event: {
+						action: 'disabled'
+					}
+				} );
+			} else {
+				return state;
+			}
 		default:
 			return state;
 	}

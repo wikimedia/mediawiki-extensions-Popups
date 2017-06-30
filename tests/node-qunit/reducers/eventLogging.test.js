@@ -634,6 +634,47 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 	);
 } );
 
+QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', function ( assert ) {
+	var state = eventLogging( undefined, {
+		type: 'SETTINGS_CHANGE',
+		wasEnabled: false,
+		enabled: false
+	} );
+
+	assert.equal(
+		state.event,
+		undefined,
+		'It shouldn\'t enqueue a "disabled" event when there is no change'
+	);
+
+	state = eventLogging( state, {
+		type: 'SETTINGS_CHANGE',
+		wasEnabled: true,
+		enabled: false
+	} );
+
+	assert.deepEqual(
+		state.event,
+		{
+			action: 'disabled'
+		},
+		'It should enqueue a "disabled" event when the previews has been disabled'
+	);
+
+	delete state.event;
+	state = eventLogging( state, {
+		type: 'SETTINGS_CHANGE',
+		wasEnabled: false,
+		enabled: true
+	} );
+
+	assert.equal(
+		state.event,
+		undefined,
+		'It shouldn\'t enqueue a "disabled" event when page previews has been enabled'
+	);
+} );
+
 QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 	var dwelledState,
 		token = '0987654321',
