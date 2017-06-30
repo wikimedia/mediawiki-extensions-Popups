@@ -4,5 +4,20 @@
 			"Joetaras"
 		]
 	},
-	"popups-settings-help-ok": "OK"
+	"popups-message": "Andeprime de le pàggene",
+	"popups-desc": "Fà 'ndrucà 'n'andeprime quanne l'utende passe 'u pundatore sus a 'u collegamende a 'na pàgene.",
+	"popups-redirects": "redirezzione sus a <h3>$1</h3>",
+	"popups-settings-title": "Andeprime d'a pàgene",
+	"popups-settings-description": "Stu strumende te face 'ndrucà 'n'andeprime de le collegaminde a pàggene uicchi e a le refereminde.",
+	"popups-settings-option-simple": "Abbilite",
+	"popups-settings-option-advanced": "Avanzate",
+	"popups-settings-option-off": "Disabbilite",
+	"popups-settings-save": "Reggistre",
+	"popups-settings-help-ok": "Fatte",
+	"popups-settings-cancel": "Annulle",
+	"popups-preview-footer-read": "Ligge",
+	"prefs-reading": "Preferenze de letture",
+	"popups-prefs-optin-title": "Andeprime de le pàggene\n\n<em>'Ndruche 'n'aneprime veloce veloce de 'n'argomende quanne ste lìgge 'a vôsce</em>",
+	"popups-prefs-optin-enabled-label": "Abbilite",
+	"popups-prefs-optin-disabled-label": "Disabbilite"
 }
