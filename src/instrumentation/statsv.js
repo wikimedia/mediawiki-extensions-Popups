@@ -1,5 +1,5 @@
 /**
- * @module statsvInstrumentation
+ * @module instrumentation/statsv
  */
 
 /**
