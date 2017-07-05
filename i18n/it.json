@@ -14,7 +14,7 @@
 	"popups-settings-title": "Anteprima della pagina",
 	"popups-settings-description": "Questo strumento ti consente di visualizzare un'anteprima dei collegamenti a pagine wiki e a riferimenti.",
 	"popups-settings-option-simple": "Attiva",
-	"popups-settings-option-simple-description": "Ottieni una veloce anteprima di un argomento, mentre stai leggendo una voce.",
+	"popups-settings-option-simple-description": "Ottieni una veloce anteprima di un argomento, mentre stai leggendo una pagina.",
 	"popups-settings-option-advanced": "Avanzata",
 	"popups-settings-option-advanced-description": "Vedi un'anteprima dei collegamenti e accedi al menu delle funzioni di modifica. Questo è usato da molti utenti.",
 	"popups-settings-option-off": "Disattiva",
@@ -27,7 +27,7 @@
 	"popups-preview-no-preview": "Sembra che non ci sia un'anteprima per questa pagina",
 	"popups-preview-footer-read": "Leggi",
 	"prefs-reading": "Preferenze di lettura",
-	"popups-prefs-optin-title": "Anteprima delle pagine\n\n<em>Vedi una veloce anteprima di un argomento mentre leggi una voce</em>",
+	"popups-prefs-optin-title": "Anteprima delle pagine\n\n<em>Vedi una veloce anteprima di un argomento mentre leggi una pagina</em>",
 	"popups-prefs-optin-enabled-label": "Attiva",
 	"popups-prefs-optin-disabled-label": "Disattiva",
 	"popups-prefs-conflicting-gadgets-info": "Alcuni accessori e altre personalizzazioni potrebbero influire sulle prestazioni di questa funzionalità. Se hai qualche problema rivedi i tuoi accessori e gli script utente."
