@@ -14,7 +14,7 @@
 	"popups-settings-title": "Náhled stránky",
 	"popups-settings-description": "Tento nástroj vám umožňuje zobrazovat náhledy odkazů na články a na reference.",
 	"popups-settings-option-simple": "Zapnout",
-	"popups-settings-option-simple-description": "Získat rychlé náhledy tématu během čtení článku.",
+	"popups-settings-option-simple-description": "Získat rychlé náhledy tématu během čtení stránky.",
 	"popups-settings-option-advanced": "Pokročilý",
 	"popups-settings-option-advanced-description": "Zobrazí náhledy odkazů a zpřístupní menu editačních funkcí. Nastavení užívané mnoha editory.",
 	"popups-settings-option-off": "Vypnout",
@@ -27,7 +27,7 @@
 	"popups-preview-no-preview": "Vypadá to, že pro tuto stránku neexistuje náhled",
 	"popups-preview-footer-read": "Číst",
 	"prefs-reading": "Nastavení čtení",
-	"popups-prefs-optin-title": "Náhledy stránek\n\n<em>Při čtení článku poskytne rychlé náhledy tématu</em>",
+	"popups-prefs-optin-title": "Náhledy stránek\n\n<em>Při čtení stránky poskytne rychlé náhledy tématu</em>",
 	"popups-prefs-optin-enabled-label": "Zapnout",
 	"popups-prefs-optin-disabled-label": "Vypnout",
 	"popups-prefs-conflicting-gadgets-info": "Některá udělátka a další přizpůsobení mohou ovlivnit činnost této funkce. Pokud narazíte na problémy, zkontrolujte si prosím svá udělátka a uživatelské skripty."
