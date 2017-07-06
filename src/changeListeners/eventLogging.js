@@ -29,6 +29,16 @@ function fnv1a32( string ) {
 }
 
 /**
+ * Check if event is an interaction event
+ *
+ * @param {Object} event Event
+ * @returns {boolean}
+ */
+function isInteractionEvent( event ) {
+	return event.linkInteractionToken !== undefined;
+}
+
+/**
  * Check if token was already used
  *
  * @param {Object} seenMap Map of known tokens
@@ -111,21 +121,22 @@ module.exports = function ( boundActions, eventLoggingTracker, statsvTracker ) {
 		if ( !event ) {
 			return;
 		}
-		if ( isDuplicateToken( tokenToSeenMap, event.linkInteractionToken ) ) {
-			statsvTracker( 'counter.PagePreviews.EventLogging.DuplicateToken', 1 );
-			shouldLog = false;
-		}
-		if ( isDuplicateEvent( hashToSeenMap, event ) ) {
-			statsvTracker( 'counter.PagePreviews.EventLogging.DuplicateEvent', 1 );
-			shouldLog = false;
+
+		// We log duplicates only for interaction events
+		if ( isInteractionEvent( event ) ) {
+			if ( isDuplicateToken( tokenToSeenMap, event.linkInteractionToken ) ) {
+				shouldLog = false;
+				statsvTracker( 'counter.PagePreviews.EventLogging.DuplicateToken', 1 );
+			}
+			if ( isDuplicateEvent( hashToSeenMap, event ) ) {
+				statsvTracker( 'counter.PagePreviews.EventLogging.DuplicateEvent', 1 );
+			}
 		}
 
 		event = $.extend( true, {}, eventLogging.baseData, event );
-
 		if ( shouldLog ) {
 			eventLoggingTracker( 'event.Popups', event );
 		}
-
 		// Dispatch the eventLogged action even if it was a duplicate so that the
 		// state tree can be cleared/updated.
 		boundActions.eventLogged( event );

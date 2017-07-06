@@ -109,7 +109,6 @@ QUnit.test( 'it should handle duplicate events', function ( assert ) {
 		this.eventLoggingTracker.calledTwice,
 		'It shouldn\'t log the event.'
 	);
-
 	// ---
 
 	nextState = createState( {
@@ -165,7 +164,6 @@ QUnit.test( 'it should handle duplicate tokens', function ( assert ) {
 		],
 		'It should increment the duplicate token counter.'
 	);
-
 	assert.ok(
 		this.eventLoggingTracker.calledOnce,
 		'It shouldn\'t log the event with the duplicate token.'
@@ -174,7 +172,8 @@ QUnit.test( 'it should handle duplicate tokens', function ( assert ) {
 
 QUnit.test( 'it should handle undefined tokens', function ( assert ) {
 	var state,
-		state2;
+		state2,
+		state3;
 
 	state = createState( undefined, {
 		action: 'pageLoaded'
@@ -184,15 +183,21 @@ QUnit.test( 'it should handle undefined tokens', function ( assert ) {
 		action: 'disabled'
 	} );
 
+	state3 = createState( undefined, {
+		action: 'disabled'
+	} );
+
 	this.changeListener( undefined, state );
 	this.changeListener( undefined, state2 );
+	this.changeListener( undefined, state3 );
 
 	assert.ok(
 		this.statsvTracker.notCalled,
 		'It shouldn\'t increment the duplicate token counter.'
 	);
+
 	assert.ok(
-		this.eventLoggingTracker.calledTwice,
+		this.eventLoggingTracker.calledThrice,
 		'It should log the event twice.'
 	);
 } );
