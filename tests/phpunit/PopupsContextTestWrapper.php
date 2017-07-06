@@ -18,8 +18,11 @@
  * @file
  * @ingroup extensions
  */
+
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
+use Popups\EventLogging\EventLogger;
+use Popups\EventLogging\NullLogger;
 
 /**
  * Create an initializable Popups context.
@@ -40,13 +43,16 @@ class PopupsContextTestWrapper extends PopupsContext {
 	 * @param Config $config
 	 * @param ExtensionRegistry $extensionRegistry
 	 * @param PopupsGadgetsIntegration|null $gadgetsIntegration
+	 * @param EventLogger|null $eventLogger
 	 */
 	public function __construct( Config $config, ExtensionRegistry $extensionRegistry,
-		PopupsGadgetsIntegration $gadgetsIntegration = null ) {
+		PopupsGadgetsIntegration $gadgetsIntegration = null,
+		EventLogger $eventLogger = null ) {
 		$gadgetsIntegration = $gadgetsIntegration ? $gadgetsIntegration :
 			new PopupsGadgetsIntegration( $config, $extensionRegistry );
+		$eventLogger = $eventLogger ? $eventLogger : new NullLogger();
 
-		parent::__construct( $config, $extensionRegistry, $gadgetsIntegration );
+		parent::__construct( $config, $extensionRegistry, $gadgetsIntegration, $eventLogger );
 	}
 
 	/**
