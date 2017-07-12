@@ -45,8 +45,8 @@ class PopupsGadgetsIntegration {
 	/**
 	 * PopupsGadgetsIntegration constructor.
 	 *
-	 * @param Config $config
-	 * @param ExtensionRegistry $extensionRegistry
+	 * @param Config $config MediaWiki configuration
+	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 */
 	public function __construct( Config $config, ExtensionRegistry $extensionRegistry ) {
 		$this->extensionRegistry =  $extensionRegistry;
@@ -74,7 +74,7 @@ class PopupsGadgetsIntegration {
 	 * Check if Page Previews conflicts with Nav Popups Gadget
 	 * If user enabled Nav Popups PagePreviews are not available
 	 *
-	 * @param \User $user
+	 * @param \User $user User whose gadget settings are checked
 	 * @return bool
 	 */
 	public function conflictsWithNavPopupsGadget( \User $user ) {

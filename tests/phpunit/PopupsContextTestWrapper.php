@@ -40,10 +40,10 @@ class PopupsContextTestWrapper extends PopupsContext {
 	/**
 	 * Override constructor so we can create new instances for testing.
 	 *
-	 * @param Config $config
-	 * @param ExtensionRegistry $extensionRegistry
-	 * @param PopupsGadgetsIntegration|null $gadgetsIntegration
-	 * @param EventLogger|null $eventLogger
+	 * @param Config $config MediaWiki config
+	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
+	 * @param PopupsGadgetsIntegration|null $gadgetsIntegration Gadgets integration helper
+	 * @param EventLogger|null $eventLogger EventLogger
 	 */
 	public function __construct( Config $config, ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration = null,
@@ -65,7 +65,7 @@ class PopupsContextTestWrapper extends PopupsContext {
 	/**
 	 * Override cached instance
 	 *
-	 * @param PopupsContext $testInstance
+	 * @param PopupsContext $testInstance PopupsContext/Mock class to test
 	 */
 	public static function injectTestInstance( PopupsContext $testInstance ) {
 		self::$instance = $testInstance;

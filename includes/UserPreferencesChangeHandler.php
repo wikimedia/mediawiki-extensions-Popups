@@ -40,7 +40,7 @@ class UserPreferencesChangeHandler {
 
 	/**
 	 * UserPreferencesChangeHandler constructor.
-	 * @param PopupsContext $context
+	 * @param PopupsContext $context Popups context instance
 	 */
 	public function __construct( PopupsContext $context ) {
 		$this->popupsContext = $context;
@@ -50,8 +50,8 @@ class UserPreferencesChangeHandler {
 	 * Hook executed on Preferences Form Save, when user disables Page Previews call PopupsContext
 	 * to log `disabled` event.
 	 *
-	 * @param User $user
-	 * @param array $oldUserOptions
+	 * @param User $user Logged-in user
+	 * @param array $oldUserOptions Old user options array
 	 */
 	public function doPreferencesFormPreSave( User $user, array $oldUserOptions ) {
 		if ( !array_key_exists( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $oldUserOptions ) ) {
@@ -77,11 +77,11 @@ class UserPreferencesChangeHandler {
 	}
 
 	/**
-	 * @param array $formData
-	 * @param PreferencesForm $form
-	 * @param User $user
-	 * @param boolean $result
-	 * @param array $oldUserOptions
+	 * @param array $formData Form data submitted by user
+	 * @param PreferencesForm $form A preferences form
+	 * @param User $user Logged-in user
+	 * @param boolean $result Variable defining is form save successful
+	 * @param array $oldUserOptions Old user options array
 	 */
 	public static function onPreferencesFormPreSave(
 		array $formData,

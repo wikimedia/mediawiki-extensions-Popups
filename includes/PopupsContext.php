@@ -83,10 +83,11 @@ class PopupsContext {
 	protected static $instance;
 	/**
 	 * Module constructor.
-	 * @param Config $config
-	 * @param ExtensionRegistry $extensionRegistry
-	 * @param PopupsGadgetsIntegration $gadgetsIntegration
-	 * @param EventLogger $eventLogger
+	 * @param Config $config Mediawiki configuration
+	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
+	 * @param PopupsGadgetsIntegration $gadgetsIntegration Gadgets integration helper
+	 * @param EventLogger $eventLogger A logger capable of logging EventLogging
+	 *  events
 	 */
 	protected function __construct( Config $config, ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration, EventLogger $eventLogger ) {
@@ -120,7 +121,7 @@ class PopupsContext {
 	}
 
 	/**
-	 * @param \User $user
+	 * @param \User $user User whose gadgets settings are being checked
 	 * @return bool
 	 */
 	public function conflictsWithNavPopupsGadget( \User $user ) {
@@ -156,7 +157,7 @@ class PopupsContext {
 	}
 
 	/**
-	 * @param \User $user
+	 * @param \User $user User whose preferences are checked
 	 * @return bool
 	 */
 	public function shouldSendModuleToUser( \User $user ) {
