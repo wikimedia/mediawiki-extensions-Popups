@@ -27,6 +27,11 @@ interface EventLogger {
 	 */
 	const PREVIEWS_SCHEMA_NAME = 'Popups';
 
+	/**
+	 * Log event
+	 *
+	 * @param array $event An associative array containing event data
+	 */
 	public function log( array $event );
 
 }

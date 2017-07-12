@@ -31,16 +31,24 @@ class EventLoggerFactory {
 	private $registry;
 
 	/**
-	 * @var \Config
+	 * @var Config
 	 */
 	private $config;
 
+	/**
+	 * EventLoggerFactory constructor
+	 *
+	 * @param Config $config MediaWiki config
+	 * @param ExtensionRegistry $registry MediaWiki extension registry
+	 */
 	public function __construct( Config $config, ExtensionRegistry $registry ) {
 		$this->registry = $registry;
 		$this->config = $config;
 	}
 
 	/**
+	 * Get the EventLogger instance
+	 *
 	 * @return EventLogger
 	 */
 	public function get() {

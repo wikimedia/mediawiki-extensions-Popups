@@ -33,6 +33,11 @@ use ResourceLoader;
 class PopupsHooks {
 	const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
+	/**
+	 * Hook executed on retrieving User beta preferences
+	 * @param User $user User whose beta preferences are retrieved
+	 * @param array &$prefs An associative array of all beta preferences
+	 */
 	static function onGetBetaPreferences( User $user, array &$prefs ) {
 		global $wgExtensionAssetsPath;
 		if ( PopupsContext::getInstance()->isBetaFeatureEnabled() !== true ) {
@@ -95,6 +100,13 @@ class PopupsHooks {
 		}
 	}
 
+	/**
+	 * Allows last minute changes to the output page, e.g. adding of CSS or JavaScript by extensions.
+	 *
+	 * @param OutputPage &$out The Output page object
+	 * @param Skin &$skin &Skin object that will be used to generate the page
+	 * @return bool
+	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		$module = PopupsContext::getInstance();
 		$user = $out->getUser();

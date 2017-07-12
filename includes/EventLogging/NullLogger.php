@@ -22,6 +22,11 @@ namespace Popups\EventLogging;
 
 class NullLogger implements EventLogger {
 
+	/**
+	 * Log event
+	 *
+	 * @param array $event An associative array containing event data
+	 */
 	public function log( array $event ) {
 		// just do nothing
 	}

@@ -58,9 +58,14 @@ class MWEventLogger implements EventLogger {
 		return (float)wfRandom() <= (float)$samplingRate;
 	}
 
+	/**
+	 * Log event
+	 *
+	 * @param array $event An associative array containing event data
+	 */
 	public function log( array $event ) {
 		if ( !$this->shouldLog() ) {
-			return false;
+			return;
 		}
 		$eventLoggingSchemas = $this->registry->getAttribute( 'EventLoggingSchemas' );
 
