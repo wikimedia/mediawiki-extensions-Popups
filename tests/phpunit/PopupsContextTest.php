@@ -312,6 +312,23 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers ::logUserDisabledPagePreviewsEvent
+	 */
+	public function testLogsEvent() {
+		$loggerMock = $this->getMock( \Popups\EventLogging\EventLogger::class );
+		$loggerMock->expects( $this->once() )
+			->method( 'log' );
+		$integrationMock = $this->getMockBuilder( \Popups\PopupsGadgetsIntegration::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'conflictsWithNavPopupsGadget' ] )
+			->getMock();
+
+		$context = new PopupsContextTestWrapper( $this->getConfigMock(),
+			ExtensionRegistry::getInstance(), $integrationMock, $loggerMock );
+		$context->logUserDisabledPagePreviewsEvent();
+	}
+
+	/**
 	 * @return PHPUnit_Framework_MockObject_MockObject|Config
 	 */
 	private function getConfigMock() {

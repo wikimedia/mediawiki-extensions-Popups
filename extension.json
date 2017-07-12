@@ -11,7 +11,12 @@
 	"AutoloadClasses": {
 		"Popups\\PopupsHooks": "includes/PopupsHooks.php",
 		"Popups\\PopupsContext": "includes/PopupsContext.php",
-		"Popups\\PopupsGadgetsIntegration": "includes/PopupsGadgetsIntegration.php"
+		"Popups\\PopupsGadgetsIntegration": "includes/PopupsGadgetsIntegration.php",
+		"Popups\\UserPreferencesChangeHandler": "includes/UserPreferencesChangeHandler.php",
+		"Popups\\EventLogging\\EventLogger": "includes/EventLogging/EventLogger.php",
+		"Popups\\EventLogging\\NullLogger": "includes/EventLogging/NullLogger.php",
+		"Popups\\EventLogging\\MWEventLogger": "includes/EventLogging/MWEventLogger.php",
+		"Popups\\EventLogging\\EventLoggerFactory": "includes/EventLogging/EventLoggerFactory.php"
 	},
 	"ConfigRegistry": {
 		"popups": "GlobalVarConfig::newInstance"
@@ -28,6 +33,9 @@
 		],
 		"GetPreferences": [
 			"Popups\\PopupsHooks::onGetPreferences"
+		],
+		"PreferencesFormPreSave" : [
+			"Popups\\UserPreferencesChangeHandler::onPreferencesFormPreSave"
 		],
 		"UserGetDefaultOptions": [
 			"Popups\\PopupsHooks::onUserGetDefaultOptions"

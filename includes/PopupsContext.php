@@ -24,6 +24,10 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use ExtensionRegistry;
 use Config;
+use Popups\EventLogging\EventLogger;
+use Popups\EventLogging\EventLoggerFactory;
+use Popups\EventLogging\MWEventLogger;
+use Popups\EventLogging\NullLogger;
 
 /**
  * Popups Module
@@ -68,7 +72,6 @@ class PopupsContext {
 	 * @var string
 	 */
 	const PREVIEWS_BETA_PREFERENCE_NAME = 'popups';
-
 	/**
 	 * @var \Config
 	 */
@@ -83,12 +86,14 @@ class PopupsContext {
 	 * @param Config $config
 	 * @param ExtensionRegistry $extensionRegistry
 	 * @param PopupsGadgetsIntegration $gadgetsIntegration
+	 * @param EventLogger $eventLogger
 	 */
 	protected function __construct( Config $config, ExtensionRegistry $extensionRegistry,
-		PopupsGadgetsIntegration $gadgetsIntegration ) {
+		PopupsGadgetsIntegration $gadgetsIntegration, EventLogger $eventLogger ) {
 		/** @todo Use MediaWikiServices Service Locator when it's ready */
 		$this->extensionRegistry = $extensionRegistry;
 		$this->gadgetsIntegration = $gadgetsIntegration;
+		$this->eventLogger = $eventLogger;
 
 		$this->config = $config;
 	}
@@ -106,7 +111,10 @@ class PopupsContext {
 			$config = MediaWikiServices::getInstance()->getConfigFactory()
 				->makeConfig( PopupsContext::EXTENSION_NAME );
 			$gadgetsIntegration = new PopupsGadgetsIntegration( $config, $registry );
-			self::$instance = new PopupsContext( $config, $registry, $gadgetsIntegration );
+			$eventLoggerFactory = new EventLoggerFactory( $config, $registry );
+
+			self::$instance = new PopupsContext( $config, $registry,
+				$gadgetsIntegration, $eventLoggerFactory->get() );
 		}
 		return self::$instance;
 	}
@@ -189,6 +197,25 @@ class PopupsContext {
 	 */
 	public function getConfig() {
 		return $this->config;
+	}
+
+	/**
+	 * Log disabled event
+	 */
+	public function logUserDisabledPagePreviewsEvent() {
+		// @see https://phabricator.wikimedia.org/T167365
+		$this->eventLogger->log( [
+			'pageTitleSource' => 'Special:Preferences',
+			'namespaceIdSource' => NS_SPECIAL,
+			'pageIdSource' => -1,
+			'hovercardsSuppressedByGadget' => false,
+			'pageToken' => wfRandomString(),
+			'sessionToken' => wfRandomString(), // we don't have access to mw.user.sessionId()
+			'action' => 'disabled',
+			'isAnon' => false,
+			'popupEnabled' => false,
+			'previewCountBucket' => 'unknown'
+		] );
 	}
 
 }
