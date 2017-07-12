@@ -38,6 +38,7 @@ class MWEventLogger implements EventLogger {
 	/**
 	 * Module constructor.
 	 * @param Config $config MediaWiki configuration
+	 * @param ExtensionRegistry $registry MediaWiki extension registry
 	 */
 	public function __construct( Config $config, ExtensionRegistry $registry ) {
 		$this->config = $config;

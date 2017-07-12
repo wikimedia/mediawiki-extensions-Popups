@@ -57,7 +57,7 @@ class PopupsHooks {
 	 * Add Page Previews options to user Preferences page
 	 *
 	 * @param User $user User whose preferences are being modified
-	 * @param array $prefs Preferences description array, to be fed to a HTMLForm object
+	 * @param array &$prefs Preferences description array, to be fed to a HTMLForm object
 	 */
 	static function onGetPreferences( User $user, array &$prefs ) {
 		$context = PopupsContext::getInstance();
@@ -114,7 +114,7 @@ class PopupsHooks {
 	}
 
 	/**
-	 * @param array $vars Array of variables to be added into the output of the startup module
+	 * @param array &$vars Array of variables to be added into the output of the startup module
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
 		$conf = PopupsContext::getInstance()->getConfig();
@@ -134,7 +134,7 @@ class PopupsHooks {
 	 * * `wgPopupsConflictsWithNavPopupGadget' - The server's notion of whether or not the
 	 *   user has enabled conflicting Navigational Popups Gadget.
 	 *
-	 * @param array $vars variables to be added into the output of OutputPage::headElement
+	 * @param array &$vars variables to be added into the output of OutputPage::headElement
 	 * @param OutputPage $out OutputPage instance calling the hook
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $out ) {
@@ -149,7 +149,7 @@ class PopupsHooks {
 	/**
 	 * Register default preferences for popups
 	 *
-	 * @param array $wgDefaultUserOptions Reference to default options array
+	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 */
 	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
 		$wgDefaultUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] =
