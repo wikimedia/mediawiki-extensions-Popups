@@ -149,7 +149,7 @@ class PopupsContext {
 	/**
 	 * Are Page previews visible on User Preferences Page
 	 *
-	 * return @bool
+	 * @return bool
 	 */
 	public function showPreviewsOptInOnPreferencesPage() {
 		return !$this->isBetaFeatureEnabled()
