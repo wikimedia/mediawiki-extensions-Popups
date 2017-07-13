@@ -225,31 +225,40 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 */
 	public function provideTestDataForTestAreDependenciesMet() {
 		return [
-			[ // Beta is off, dependencies are met even BetaFeatures ext is not available
+			// Beta is off, dependencies are met even BetaFeatures ext is not available
+			[
 				"betaOn" => false,
 				"textExtracts" => true,
 				"pageImages" => true,
 				"betaFeatures" => false,
 				"expected" => true
-			], [ // textExtracts dep is missing
+			],
+			// textExtracts dep is missing
+			[
 				"betaOn" => false,
 				"textExtracts" => false,
 				"pageImages" => true,
 				"betaFeatures" => false,
 				"expected" => false
-			], [ // PageImages dep is missing
+			],
+			// PageImages dep is missing
+			[
 				"betaOn" => false,
 				"textExtracts" => true,
 				"pageImages" => false,
 				"betaFeatures" => false,
 				"expected" => false
-			], [ // Beta is on but BetaFeatures dep is missing
+			],
+			// Beta is on but BetaFeatures dep is missing
+			[
 				"betaOn" => true,
 				"textExtracts" => true,
 				"pageImages" => true,
 				"betaFeatures" => false,
 				"expected" => false
-			], [ // beta is on and all deps are available
+			],
+			// beta is on and all deps are available
+			[
 				"betaOn" => true,
 				"textExtracts" => true,
 				"pageImages" => true,

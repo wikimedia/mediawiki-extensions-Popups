@@ -211,7 +211,8 @@ class PopupsContext {
 			'pageIdSource' => -1,
 			'hovercardsSuppressedByGadget' => false,
 			'pageToken' => wfRandomString(),
-			'sessionToken' => wfRandomString(), // we don't have access to mw.user.sessionId()
+			// we don't have access to mw.user.sessionId()
+			'sessionToken' => wfRandomString(),
 			'action' => 'disabled',
 			'isAnon' => false,
 			'popupEnabled' => false,
