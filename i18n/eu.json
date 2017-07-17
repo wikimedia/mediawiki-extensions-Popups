@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Subi",
-			"Sator"
+			"Sator",
+			"Mikel Ibaiba"
 		]
 	},
+	"popups-settings-option-simple-description": "Gai baten aurreikuspena lortu orrialdea irakurtzen duzun bitartean.",
 	"popups-settings-save": "Gorde",
 	"popups-settings-help-ok": "Egina",
 	"popups-settings-cancel": "Utzi"
