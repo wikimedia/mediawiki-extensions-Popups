@@ -288,7 +288,8 @@ module.exports = function ( state, action ) {
 			if ( action.wasEnabled && !action.enabled ) {
 				return nextState( state, {
 					event: {
-						action: 'disabled'
+						action: 'disabled',
+						popupEnabled: false
 					}
 				} );
 			} else {

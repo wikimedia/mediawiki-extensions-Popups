@@ -656,7 +656,8 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', function ( assert )
 	assert.deepEqual(
 		state.event,
 		{
-			action: 'disabled'
+			action: 'disabled',
+			popupEnabled: false
 		},
 		'It should enqueue a "disabled" event when the previews has been disabled'
 	);
