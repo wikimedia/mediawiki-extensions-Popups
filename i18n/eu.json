@@ -9,5 +9,6 @@
 	"popups-settings-option-simple-description": "Gai baten aurreikuspena lortu orrialdea irakurtzen duzun bitartean.",
 	"popups-settings-save": "Gorde",
 	"popups-settings-help-ok": "Egina",
-	"popups-settings-cancel": "Utzi"
+	"popups-settings-cancel": "Utzi",
+	"popups-prefs-optin-title": "Orrialdearen aurreikuspenak\n\n<em>Gaiaren inguruko aurreikuespen azkarrak lortu orrialdea irakurtzen duzun bitartean</em>"
 }
