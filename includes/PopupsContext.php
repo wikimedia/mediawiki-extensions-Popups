@@ -20,14 +20,10 @@
  */
 namespace Popups;
 
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use ExtensionRegistry;
 use Config;
 use Popups\EventLogging\EventLogger;
-use Popups\EventLogging\EventLoggerFactory;
-use Popups\EventLogging\MWEventLogger;
-use Popups\EventLogging\NullLogger;
 
 /**
  * Popups Module
@@ -89,35 +85,13 @@ class PopupsContext {
 	 * @param EventLogger $eventLogger A logger capable of logging EventLogging
 	 *  events
 	 */
-	protected function __construct( Config $config, ExtensionRegistry $extensionRegistry,
+	public function __construct( Config $config, ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration, EventLogger $eventLogger ) {
-		/** @todo Use MediaWikiServices Service Locator when it's ready */
 		$this->extensionRegistry = $extensionRegistry;
 		$this->gadgetsIntegration = $gadgetsIntegration;
 		$this->eventLogger = $eventLogger;
 
 		$this->config = $config;
-	}
-
-	/**
-	 * Get a PopupsContext instance
-	 *
-	 * @return PopupsContext
-	 */
-	public static function getInstance() {
-		if ( !self::$instance ) {
-			/** @todo Use MediaWikiServices Service Locator when it's ready */
-
-			$registry = ExtensionRegistry::getInstance();
-			$config = MediaWikiServices::getInstance()->getConfigFactory()
-				->makeConfig( self::EXTENSION_NAME );
-			$gadgetsIntegration = new PopupsGadgetsIntegration( $config, $registry );
-			$eventLoggerFactory = new EventLoggerFactory( $config, $registry );
-
-			self::$instance = new PopupsContext( $config, $registry,
-				$gadgetsIntegration, $eventLoggerFactory->get() );
-		}
-		return self::$instance;
 	}
 
 	/**
@@ -188,16 +162,7 @@ class PopupsContext {
 	 * @return \Psr\Log\LoggerInterface
 	 */
 	public function getLogger() {
-		return LoggerFactory::getInstance( self::LOGGER_CHANNEL );
-	}
-
-	/**
-	 * Get Module config
-	 *
-	 * @return \Config
-	 */
-	public function getConfig() {
-		return $this->config;
+		return MediaWikiServices::getInstance()->getService( 'Popups.Logger' );
 	}
 
 	/**

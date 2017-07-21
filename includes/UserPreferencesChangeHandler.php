@@ -20,6 +20,7 @@
  */
 namespace Popups;
 
+use MediaWiki\MediaWikiServices;
 use User;
 use PreferencesForm;
 
@@ -30,10 +31,6 @@ use PreferencesForm;
  */
 class UserPreferencesChangeHandler {
 	/**
-	 * @var UserPreferencesChangeHandler
-	 */
-	private static $instance;
-	/**
 	 * @var PopupsContext
 	 */
 	private $popupsContext;
@@ -42,7 +39,7 @@ class UserPreferencesChangeHandler {
 	 * UserPreferencesChangeHandler constructor.
 	 * @param PopupsContext $context Popups context instance
 	 */
-	public function __construct( PopupsContext $context ) {
+	public function __construct( $context ) {
 		$this->popupsContext = $context;
 	}
 
@@ -70,10 +67,7 @@ class UserPreferencesChangeHandler {
 	 * @return UserPreferencesChangeHandler
 	 */
 	private static function newFromGlobalState() {
-		if ( self::$instance === null ) {
-			self::$instance = new UserPreferencesChangeHandler( PopupsContext::getInstance() );
-		}
-		return self::$instance;
+		return MediaWikiServices::getInstance()->getService( 'Popups.UserPreferencesChangeHandler' );
 	}
 
 	/**
