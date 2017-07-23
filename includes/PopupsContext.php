@@ -110,7 +110,7 @@ class PopupsContext {
 
 			$registry = ExtensionRegistry::getInstance();
 			$config = MediaWikiServices::getInstance()->getConfigFactory()
-				->makeConfig( PopupsContext::EXTENSION_NAME );
+				->makeConfig( self::EXTENSION_NAME );
 			$gadgetsIntegration = new PopupsGadgetsIntegration( $config, $registry );
 			$eventLoggerFactory = new EventLoggerFactory( $config, $registry );
 
