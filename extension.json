@@ -8,6 +8,9 @@
 	"descriptionmsg": "popups-desc",
 	"license-name": "GPL-2.0+",
 	"type": "betafeatures",
+	"requires": {
+		"MediaWiki" : ">= 1.30.0"
+	},
 	"AutoloadClasses": {
 		"Popups\\PopupsHooks": "includes/PopupsHooks.php",
 		"Popups\\PopupsContext": "includes/PopupsContext.php",
