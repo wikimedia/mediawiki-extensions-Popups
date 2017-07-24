@@ -5,7 +5,8 @@
 			"Csega",
 			"Dorgan",
 			"Tacsipacsi",
-			"Tgr"
+			"Tgr",
+			"Bencemac"
 		]
 	},
 	"popups-message": "Lapelőnézetek",
@@ -13,15 +14,21 @@
 	"popups-redirects": "Átirányítás a(z) <h3>$1</h3> oldalra",
 	"popups-settings-title": "Lapok előnézete",
 	"popups-settings-description": "Ez az eszköz lehetővé teszi wikilapokra és forrásokra mutató linkek előnézetének megtekintését.",
-	"popups-settings-option-simple": "Egyszerű",
-	"popups-settings-option-simple-description": "Bevezető mondat és egy kép megjelenítése. Ez ajánlott az olvasóknak.",
+	"popups-settings-option-simple": "Engedélyezés",
+	"popups-settings-option-simple-description": "Gyors előnézetek megjelenítése, miközben olvasod az oldalt.",
 	"popups-settings-option-advanced": "Haladó",
 	"popups-settings-option-advanced-description": "Linkek előnézetének megjelenítése és hozzáférés szerkesztési funkciók menüihez. Ezt sok szerkesztő használja.",
-	"popups-settings-option-off": "Előnézetek letiltása",
+	"popups-settings-option-off": "Letiltás",
 	"popups-settings-save": "Mentés",
-	"popups-settings-help-ok": "OK",
+	"popups-settings-help-ok": "Kész",
 	"popups-settings-cancel": "Mégse",
 	"popups-settings-help": "Az előnézetet a lap alján található link segítségével kapcsolhatod vissza.",
 	"popups-settings-enable": "Előnézetek engedélyezése",
-	"popups-send-feedback": "Visszajelzés küldése (külső link)"
+	"popups-send-feedback": "Visszajelzés küldése (külső link)",
+	"popups-preview-no-preview": "Úgy tűnik, nincs előnézet a laphoz",
+	"popups-preview-footer-read": "Olvasás",
+	"prefs-reading": "Olvasási preferenciák",
+	"popups-prefs-optin-title": "Lapelőnézet\n\n<em>Az egeret egy belső hivatkozás fölött tartva gyors összefoglalót kaphatsz a cikkről anélkül, hogy elnavigálnál az oldalról.</em>",
+	"popups-prefs-optin-enabled-label": "Engedélyezés",
+	"popups-prefs-optin-disabled-label": "Letiltás"
 }
