@@ -132,5 +132,8 @@
 		"localBasePath": "",
 		"remoteExtPath": "Popups"
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWirings.php"
+	],
 	"manifest_version": 1
 }

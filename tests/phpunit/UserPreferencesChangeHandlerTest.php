@@ -18,7 +18,6 @@
  * @file
  * @ingroup extensions
  */
-require_once 'PopupsContextTestWrapper.php';
 use Popups\PopupsContext;
 use Popups\UserPreferencesChangeHandler;
 
@@ -30,18 +29,13 @@ use Popups\UserPreferencesChangeHandler;
  */
 class UserPreferencesChangeHandlerTest extends MediaWikiTestCase {
 
-	protected function tearDown() {
-		PopupsContextTestWrapper::resetTestInstance();
-		parent::tearDown();
-	}
-
 	/**
 	 * @covers ::handle
 	 * @covers ::__construct
 	 * @dataProvider provideDataForEventHandling
 	 */
 	public function testEventHandling( $oldOption, $newOption, $expectedMethodCallsCount ) {
-		$contextMock = $this->getMockBuilder( PopupsContextTestWrapper::class )
+		$contextMock = $this->getMockBuilder( PopupsContexts::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'logUserDisabledPagePreviewsEvent' ] )
 			->getMock();

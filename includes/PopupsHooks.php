@@ -20,6 +20,7 @@
  */
 namespace Popups;
 
+use MediaWiki\MediaWikiServices;
 use User;
 use OutputPage;
 use Skin;
@@ -40,7 +41,9 @@ class PopupsHooks {
 	 */
 	static function onGetBetaPreferences( User $user, array &$prefs ) {
 		global $wgExtensionAssetsPath;
-		if ( PopupsContext::getInstance()->isBetaFeatureEnabled() !== true ) {
+		/** @var PopupsContext $context */
+		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
+		if ( $context->isBetaFeatureEnabled() !== true ) {
 			return;
 		}
 		$prefs[PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME] = [
@@ -65,7 +68,7 @@ class PopupsHooks {
 	 * @param array &$prefs Preferences description array, to be fed to a HTMLForm object
 	 */
 	static function onGetPreferences( User $user, array &$prefs ) {
-		$context = PopupsContext::getInstance();
+		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 
 		if ( !$context->showPreviewsOptInOnPreferencesPage() ) {
 			return;
@@ -108,17 +111,17 @@ class PopupsHooks {
 	 * @return bool
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		$module = PopupsContext::getInstance();
+		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		$user = $out->getUser();
 
-		if ( !$module->areDependenciesMet() ) {
-			$logger = $module->getLogger();
+		if ( !$context->areDependenciesMet() ) {
+			$logger = $context->getLogger();
 			$logger->error( 'Popups requires the PageImages and TextExtracts extensions. '
 				. 'If Beta mode is on it requires also BetaFeatures extension' );
 			return true;
 		}
 
-		if ( !$module->isBetaFeatureEnabled() || $module->shouldSendModuleToUser( $user ) ) {
+		if ( !$context->isBetaFeatureEnabled() || $context->shouldSendModuleToUser( $user ) ) {
 			$out->addModules( [ 'ext.popups' ] );
 		}
 
@@ -129,7 +132,7 @@ class PopupsHooks {
 	 * @param array &$vars Array of variables to be added into the output of the startup module
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
-		$conf = PopupsContext::getInstance()->getConfig();
+		$conf = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 		$vars['wgPopupsSchemaSamplingRate'] = $conf->get( 'PopupsSchemaSamplingRate' );
 		$vars['wgPopupsBetaFeature'] = $conf->get( 'PopupsBetaFeature' );
 		$vars['wgPopupsGateway'] = $conf->get( 'PopupsGateway' );
@@ -150,11 +153,11 @@ class PopupsHooks {
 	 * @param OutputPage $out OutputPage instance calling the hook
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $out ) {
-		$module = PopupsContext::getInstance();
+		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		$user = $out->getUser();
 
-		$vars['wgPopupsShouldSendModuleToUser'] = $module->shouldSendModuleToUser( $user );
-		$vars['wgPopupsConflictsWithNavPopupGadget'] = $module->conflictsWithNavPopupsGadget(
+		$vars['wgPopupsShouldSendModuleToUser'] = $context->shouldSendModuleToUser( $user );
+		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget(
 			$user );
 	}
 
@@ -164,8 +167,9 @@ class PopupsHooks {
 	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 */
 	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
+		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		$wgDefaultUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] =
-			PopupsContext::getInstance()->getDefaultIsEnabledState();
+			$context->getDefaultIsEnabledState();
 	}
 
 }
