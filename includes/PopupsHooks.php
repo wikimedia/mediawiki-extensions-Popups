@@ -112,7 +112,9 @@ class PopupsHooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
-		$user = $out->getUser();
+		if ( $context->isTitleBlacklisted( $out->getTitle() ) ) {
+			return false;
+		}
 
 		if ( !$context->areDependenciesMet() ) {
 			$logger = $context->getLogger();
@@ -121,6 +123,7 @@ class PopupsHooks {
 			return true;
 		}
 
+		$user = $out->getUser();
 		if ( !$context->isBetaFeatureEnabled() || $context->shouldSendModuleToUser( $user ) ) {
 			$out->addModules( [ 'ext.popups' ] );
 		}

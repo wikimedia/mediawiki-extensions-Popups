@@ -231,10 +231,13 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		$contextMock = $this->getMockBuilder( PopupsContext::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'areDependenciesMet', 'getLogger' ] )
+			->setMethods( [ 'areDependenciesMet', 'getLogger', 'isTitleBlacklisted' ] )
 			->getMock();
 		$contextMock->expects( $this->once() )
 			->method( 'areDependenciesMet' )
+			->will( $this->returnValue( false ) );
+		$contextMock->expects( $this->once() )
+			->method( 'isTitleBlacklisted' )
 			->will( $this->returnValue( false ) );
 		$contextMock->expects( $this->once() )
 			->method( 'getLogger' )
@@ -246,14 +249,15 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 	public function providerOnBeforePageDisplay() {
 		return [
-			[ false, true, false ],
-			[ true, true, true ],
+			[ false, true, false, false ],
+			[ true, true, true, false ],
 			// if the user doesnt have the feature but the beta feature is disabled
 			// we can assume the user has it (as its rolled out to everyone)
-			[ false, false, true ],
+			[ false, false, true, false ],
 			// If the user has enabled it and the beta feature is disabled
 			// we can assume the code will be loaded.
-			[ true, false, true ]
+			[ true, false, true, false ],
+			[ false, false, false, true ]
 		];
 	}
 
@@ -262,7 +266,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	 * @dataProvider providerOnBeforePageDisplay
 	 */
 	public function testOnBeforePageDisplay( $shouldSendModuleToUser,
-		$isBetaFeatureEnabled, $isCodeLoaded ) {
+			$isBetaFeatureEnabled, $isCodeLoaded, $isTitleBlacklisted ) {
 		$skinMock = $this->getMock( Skin::class );
 
 		$outPageMock = $this->getMock(
@@ -278,13 +282,16 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->with( [ 'ext.popups' ] );
 
 		$contextMock = $this->getMockBuilder( PopupsContext::class )
-			->setMethods( [ 'areDependenciesMet', 'isBetaFeatureEnabled', 'shouldSendModuleToUser' ] )
+			->setMethods( [ 'areDependenciesMet', 'isBetaFeatureEnabled',
+				'shouldSendModuleToUser', 'isTitleBlacklisted' ] )
 			->disableOriginalConstructor()
 			->getMock();
 
-		$contextMock->expects( $this->once() )
-			->method( 'areDependenciesMet' )
-			->will( $this->returnValue( true ) );
+		if ( !$isTitleBlacklisted ) {
+			$contextMock->expects( $this->once() )
+				->method( 'areDependenciesMet' )
+				->will( $this->returnValue( true ) );
+		}
 
 		$contextMock->expects( $this->any() )
 			->method( 'isBetaFeatureEnabled' )
@@ -293,6 +300,10 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$contextMock->expects( $this->any() )
 			->method( 'shouldSendModuleToUser' )
 			->will( $this->returnValue( $shouldSendModuleToUser ) );
+
+		$contextMock->expects( $this->once() )
+			->method( 'isTitleBlacklisted' )
+			->will( $this->returnValue( $isTitleBlacklisted ) );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );

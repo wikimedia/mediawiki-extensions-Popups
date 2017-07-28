@@ -266,6 +266,35 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers ::isTitleBlacklisted
+	 * @dataProvider provideTestIsTitleBLacklisted
+	 * @param array $blacklist
+	 * @param Title $title
+	 $ @param bool $expected
+	 */
+	public function testIsTitleBlacklisted( $blacklist, Title $title, $expected ) {
+		$this->setMwGlobals( [ "wgPopupsPageBlacklist" => $blacklist ] );
+		$context = $this->getContext();
+		$this->assertEquals( $expected, $context->isTitleBlacklisted( $title ) );
+	}
+
+	/**
+	 * @return array/
+	 */
+	public function provideTestIsTitleBlacklisted() {
+		$blacklist = [ 'Special:UserLogin', 'Special:CreateAccount', 'User:A' ];
+		return [
+			[ $blacklist, Title::newFromText( 'Main_Page' ), false ],
+			[ $blacklist, Title::newFromText( 'Special:UserLogin' ), true ],
+			[ $blacklist, Title::newFromText( 'Special:CreateAccount' ), true ],
+			[ $blacklist, Title::newFromText( 'User:A' ), true ],
+			[ $blacklist, Title::newFromText( 'User:A/B' ), true ],
+			[ $blacklist, Title::newFromText( 'User:B' ), false ],
+			[ $blacklist, Title::newFromText( 'User:B/A' ), false ],
+		];
+	}
+
+	/**
 	 * @covers ::getDefaultIsEnabledState
 	 */
 	public function testGetDefaultIsEnabledState() {
