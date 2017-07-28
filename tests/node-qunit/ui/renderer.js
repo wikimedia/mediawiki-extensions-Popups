@@ -1,5 +1,5 @@
 var $ = jQuery,
-	renderer = require( '../../src/renderer' );
+	renderer = require( '../../../src/ui/renderer' );
 
 /**
  * A utility function that creates a bare bones preview

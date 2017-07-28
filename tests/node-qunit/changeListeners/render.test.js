@@ -11,13 +11,13 @@ QUnit.module( 'ext.popups/changeListeners/render', {
 			render: this.sandbox.stub().returns( this.preview )
 		};
 
-		mock( '../../../src/renderer', this.renderer );
+		mock( '../../../src/ui/renderer', this.renderer );
 		render = this.sandbox.spy(
 			mock.reRequire( '../../../src/changeListeners/render' )
 		);
 	},
 	afterEach: function () {
-		mock.stop( '../../../src/renderer' );
+		mock.stop( '../../../src/ui/renderer' );
 	}
 } );
 

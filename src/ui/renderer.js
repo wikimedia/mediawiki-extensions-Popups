@@ -4,7 +4,7 @@
 
 var mw = window.mediaWiki,
 	$ = jQuery,
-	wait = require( './wait' ),
+	wait = require( '../wait' ),
 	SIZES = {
 		portraitImage: {
 			h: 250, // Exact height

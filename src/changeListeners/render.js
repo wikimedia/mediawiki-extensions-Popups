@@ -1,4 +1,4 @@
-var renderer = require( '../renderer' );
+var renderer = require( '../ui/renderer' );
 
 /**
  * Creates an instance of the render change listener.
