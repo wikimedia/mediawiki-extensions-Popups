@@ -109,7 +109,7 @@ function isDuplicateEvent( seenMap, event ) {
  * @param {EventTracker} statsvTracker
  * @return {ext.popups.ChangeListener}
  */
-module.exports = function ( boundActions, eventLoggingTracker, statsvTracker ) {
+export default function eventLogging( boundActions, eventLoggingTracker, statsvTracker ) {
 	var tokenToSeenMap = {},
 		hashToSeenMap = {};
 
@@ -141,4 +141,4 @@ module.exports = function ( boundActions, eventLoggingTracker, statsvTracker ) {
 		// state tree can be cleared/updated.
 		boundActions.eventLogged( event );
 	};
-};
+}

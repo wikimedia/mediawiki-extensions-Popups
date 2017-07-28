@@ -2,11 +2,10 @@
  * @module gateway/rest
  */
 
+import { createModel, createNullModel } from '../preview/model';
+
 var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
 	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
-	model = require( '../preview/model' ),
-	createModel = model.createModel,
-	createNullModel = model.createNullModel,
 	mw = window.mediaWiki,
 	$ = jQuery;
 /**
@@ -32,7 +31,7 @@ var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
  * @param {Function} extractParser A function that takes response and returns parsed extract
  * @returns {RESTBaseGateway}
  */
-module.exports = function createRESTBaseGateway( ajax, config, extractParser ) {
+export default function createRESTBaseGateway( ajax, config, extractParser ) {
 
 	/**
 	 * Fetches page data from [the RESTBase page summary endpoint][0].
@@ -83,7 +82,7 @@ module.exports = function createRESTBaseGateway( ajax, config, extractParser ) {
 		convertPageToModel: convertPageToModel,
 		getPageSummary: getPageSummary
 	};
-};
+}
 
 /**
  * Resizes the thumbnail to the requested width, preserving its aspect ratio.

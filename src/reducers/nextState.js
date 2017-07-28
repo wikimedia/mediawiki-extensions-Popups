@@ -18,7 +18,7 @@
  * @param {Object} updates
  * @return {Object}
  */
-module.exports = function ( state, updates ) {
+export default function nextState( state, updates ) {
 	var result = {},
 		key;
 
@@ -35,4 +35,4 @@ module.exports = function ( state, updates ) {
 	}
 
 	return result;
-};
+}

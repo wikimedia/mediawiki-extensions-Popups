@@ -1,4 +1,4 @@
-var renderer = require( '../ui/renderer' );
+import * as renderer from '../ui/renderer';
 
 /**
  * Creates an instance of the render change listener.
@@ -10,7 +10,7 @@ var renderer = require( '../ui/renderer' );
  * @param {ext.popups.PreviewBehavior} previewBehavior
  * @return {ext.popups.ChangeListener}
  */
-module.exports = function ( previewBehavior ) {
+export default function render( previewBehavior ) {
 	var preview;
 
 	return function ( prevState, state ) {
@@ -26,4 +26,4 @@ module.exports = function ( previewBehavior ) {
 			preview = undefined;
 		}
 	};
-};
+}

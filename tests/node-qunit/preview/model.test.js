@@ -1,7 +1,4 @@
-var model = require( '../../../src/preview/model' ),
-	createModel = model.createModel,
-	TYPE_PAGE = model.TYPE_PAGE,
-	TYPE_GENERIC = model.TYPE_GENERIC;
+import { createModel, TYPE_PAGE, TYPE_GENERIC } from '../../../src/preview/model';
 
 QUnit.module( 'ext.popups.preview#createModel' );
 
@@ -24,6 +21,8 @@ QUnit.test( 'it should copy the basic properties', function ( assert ) {
 } );
 
 QUnit.test( 'it computes the type property', function ( assert ) {
+	var model;
+
 	function createModelWithExtract( extract ) {
 		return createModel(
 			'Foo',

@@ -1,4 +1,4 @@
-var createContainer = require( '../../src/container' );
+import createContainer from '../../src/container';
 
 QUnit.module( 'container', {
 	beforeEach: function () {

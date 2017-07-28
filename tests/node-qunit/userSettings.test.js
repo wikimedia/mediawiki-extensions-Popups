@@ -1,7 +1,5 @@
-var stubs = require( './stubs' ),
-	createStubUser = stubs.createStubUser,
-	createStubMap = stubs.createStubMap,
-	createUserSettings = require( '../../src/userSettings' );
+import { createStubUser, createStubMap } from './stubs';
+import createUserSettings from '../../src/userSettings';
 
 QUnit.module( 'ext.popups/userSettings', {
 	beforeEach: function () {

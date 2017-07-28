@@ -1,4 +1,4 @@
-var counts = require( '../../src/counts' );
+import * as counts from '../../src/counts';
 
 QUnit.module( 'ext.popups/counts' );
 

@@ -2,7 +2,7 @@
  * @module actionTypes
  */
 
-module.exports = {
+export default {
 	BOOT: 'BOOT',
 	LINK_DWELL: 'LINK_DWELL',
 	ABANDON_START: 'ABANDON_START',

@@ -1,4 +1,4 @@
-var syncUserSettings = require( '../../../src/changeListeners/syncUserSettings' );
+import syncUserSettings from '../../../src/changeListeners/syncUserSettings';
 
 QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
 	beforeEach: function () {

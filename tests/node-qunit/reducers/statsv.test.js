@@ -1,4 +1,4 @@
-var statsv = require( '../../../src/reducers/statsv' );
+import statsv from '../../../src/reducers/statsv';
 
 QUnit.module( 'ext.popups/reducers#eventLogging', {
 	beforeEach: function () {

@@ -15,14 +15,15 @@
  * @param {mw.experiments} mwExperiments The `mw.experiments` singleton instance
  * @return {Experiments}
  */
-module.exports = function createExperiments( mwExperiments ) {
+export default function createExperiments( mwExperiments ) {
 	return {
 
 		/**
 		 * Gets whether something is true given a name and a token.
 		 *
 		 * @example
-		 * const experiments = require( './src/experiments' )( mw.experiments );
+		 * import createExperiments from './src/experiments';
+		 * const experiments = createExperiments( mw.experiments );
 		 * const isFooEnabled = experiments.weightedBoolean(
 		 *   'foo',
 		 *   10 / 100, // 10% of all unique tokens should have foo enabled.
@@ -52,4 +53,4 @@ module.exports = function createExperiments( mwExperiments ) {
 			}, token ) === 'true';
 		}
 	};
-};
+}

@@ -1,4 +1,4 @@
-var settings = require( '../../../src/reducers/settings' );
+import settings from '../../../src/reducers/settings';
 
 QUnit.module( 'reducers/settings' );
 

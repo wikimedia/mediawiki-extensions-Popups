@@ -1,4 +1,4 @@
-var preview = require( '../../../src/reducers/preview' );
+import preview from '../../../src/reducers/preview';
 
 QUnit.module( 'ext.popups/reducers#preview', {
 	beforeEach: function () {

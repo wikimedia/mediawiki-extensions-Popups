@@ -23,7 +23,7 @@
  * @param {Redux.Store} store
  * @param {ext.popups.ChangeListener} callback
  */
-module.exports = function ( store, callback ) {
+export default function registerChangeListener( store, callback ) {
 	// This function is based on the example in [the documentation for
 	// Store#subscribe](http://redux.js.org/docs/api/Store.html#subscribe),
 	// which was written by Dan Abramov.
@@ -39,4 +39,4 @@ module.exports = function ( store, callback ) {
 			callback( prevState, state );
 		}
 	} );
-};
+}

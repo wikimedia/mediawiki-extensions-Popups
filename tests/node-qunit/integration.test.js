@@ -1,10 +1,15 @@
-var mock = require( 'mock-require' ),
-	Redux = require( 'redux' ),
-	ReduxThunk = require( 'redux-thunk' ),
-	wait = require( '../../src/wait' ),
-	mw = mediaWiki,
-	stubs = require( './stubs' ),
-	$ = jQuery;
+import * as Redux from 'redux';
+import * as ReduxThunk from 'redux-thunk';
+import * as WaitModule from '../../src/wait';
+import * as stubs from './stubs';
+import * as actions from '../../src/actions';
+import reducers from '../../src/reducers';
+import registerChangeListener from '../../src/changeListener';
+
+var mw = mediaWiki,
+	$ = jQuery,
+	// Store the real wait to be actually used in tests
+	wait = WaitModule.default;
 
 function identity( x ) { return x; }
 function constant( x ) { return function () { return x; }; }
@@ -45,8 +50,7 @@ function constant( x ) { return function () { return x; }; }
 
 QUnit.module( 'ext.popups preview @integration', {
 	beforeEach: function () {
-		var that = this,
-			reducers, actions, registerChangeListener;
+		var that = this;
 
 		// The worst-case implementation of mw.now.
 		mw.now = function () { return Date.now(); };
@@ -57,16 +61,8 @@ QUnit.module( 'ext.popups preview @integration', {
 			that.wait.returns( that.waitPromise );
 		};
 
-		this.wait = this.sandbox.stub();
+		this.wait = this.sandbox.stub( WaitModule, 'default' );
 		this.resetWait();
-
-		mock( '../../src/wait', this.wait );
-
-		// Require modules after the setting require mocks, invalidating the
-		// require cache for modules that depend on the wait function.
-		actions = mock.reRequire( '../../src/actions' );
-		reducers = require( '../../src/reducers' );
-		registerChangeListener = require( '../../src/changeListener' );
 
 		this.store = Redux.createStore(
 			Redux.combineReducers( reducers ),

@@ -1,4 +1,4 @@
-var createSettingsDialogRenderer = require( '../../../src/ui/settingsDialog' );
+import createSettingsDialogRenderer from '../../../src/ui/settingsDialog';
 
 QUnit.module( 'ext.popups/settingsDialog', {
 	beforeEach: function () {

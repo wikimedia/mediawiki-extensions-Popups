@@ -2,9 +2,9 @@
  * @module reducers/eventLogging
  */
 
-var actionTypes = require( './../actionTypes' ),
-	nextState = require( './nextState' ),
-	counts = require( './../counts' );
+import actionTypes from '../actionTypes';
+import nextState from './nextState';
+import * as counts from '../counts';
 
 /**
  * Initialize the data that's shared between all events.
@@ -120,7 +120,7 @@ function createClosingEvent( interaction ) {
  * @return {Object} The state resulting from reducing the action with the
  *  current state
  */
-module.exports = function ( state, action ) {
+export default function eventLogging( state, action ) {
 	var nextCount, newState,
 		actionTypesWithTokens = [
 			actionTypes.FETCH_COMPLETE,
@@ -298,4 +298,4 @@ module.exports = function ( state, action ) {
 		default:
 			return state;
 	}
-};
+}

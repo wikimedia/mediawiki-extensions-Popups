@@ -1,5 +1,5 @@
-var actionTypes = require( './../actionTypes' ),
-	nextState = require( './nextState' );
+import actionTypes from '../actionTypes';
+import nextState from './nextState';
 
 /**
  * Reducer for actions that modify the state of the settings
@@ -8,7 +8,7 @@ var actionTypes = require( './../actionTypes' ),
  * @param {Object} action
  * @return {Object} state after action
  */
-module.exports = function ( state, action ) {
+export default function settings( state, action ) {
 	if ( state === undefined ) {
 		state = {
 			shouldShow: false,
@@ -53,4 +53,4 @@ module.exports = function ( state, action ) {
 		default:
 			return state;
 	}
-};
+}

@@ -1,5 +1,5 @@
-var isEnabled = require( '../../../src/instrumentation/eventLogging' ).isEnabled,
-	stubs = require( '../stubs' );
+import { isEnabled } from '../../../src/instrumentation/eventLogging';
+import * as stubs from '../stubs';
 
 QUnit.module( 'ext.popups/instrumentation/eventLogging', {
 	beforeEach: function () {

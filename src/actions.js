@@ -2,11 +2,11 @@
  * @module actions
  */
 
+import types from './actionTypes';
+import wait from './wait';
+
 var $ = jQuery,
 	mw = window.mediaWiki,
-	actions = {},
-	types = require( './actionTypes' ),
-	wait = require( './wait' ),
 
 	// See the following for context around this value.
 	//
@@ -58,7 +58,7 @@ function timedAction( baseAction ) {
  *  i.e. `mw.config`
  * @returns {Object}
  */
-actions.boot = function (
+export function boot(
 	isEnabled,
 	user,
 	userSettings,
@@ -85,7 +85,7 @@ actions.boot = function (
 			previewCount: previewCount
 		}
 	};
-};
+}
 
 /**
  * Represents Page Previews fetching data via the gateway.
@@ -97,7 +97,7 @@ actions.boot = function (
  *  triggered the fetch
  * @return {Redux.Thunk}
  */
-actions.fetch = function ( gateway, title, el, token ) {
+export function fetch( gateway, title, el, token ) {
 	var titleText = title.getPrefixedDb(),
 		namespaceID = title.namespace;
 
@@ -137,7 +137,7 @@ actions.fetch = function ( gateway, title, el, token ) {
 				} ) );
 			} );
 	};
-};
+}
 
 /**
  * Represents the user dwelling on a link, either by hovering over it with
@@ -150,7 +150,7 @@ actions.fetch = function ( gateway, title, el, token ) {
  * @param {Function} generateToken
  * @return {Redux.Thunk}
  */
-actions.linkDwell = function ( title, el, event, gateway, generateToken ) {
+export function linkDwell( title, el, event, gateway, generateToken ) {
 	var token = generateToken(),
 		titleText = title.getPrefixedDb(),
 		namespaceID = title.namespace;
@@ -181,11 +181,11 @@ actions.linkDwell = function ( title, el, event, gateway, generateToken ) {
 				var previewState = getState().preview;
 
 				if ( previewState.enabled && isNewInteraction() ) {
-					dispatch( actions.fetch( gateway, title, el, token ) );
+					dispatch( fetch( gateway, title, el, token ) );
 				}
 			} );
 	};
-};
+}
 
 /**
  * Represents the user abandoning a link, either by moving their mouse away
@@ -195,7 +195,7 @@ actions.linkDwell = function ( title, el, event, gateway, generateToken ) {
  *
  * @return {Redux.Thunk}
  */
-actions.abandon = function () {
+export function abandon() {
 	return function ( dispatch, getState ) {
 		var token = getState().preview.activeToken;
 
@@ -216,7 +216,7 @@ actions.abandon = function () {
 				} );
 			} );
 	};
-};
+}
 
 /**
  * Represents the user clicking on a link with their mouse, keyboard, or an
@@ -225,23 +225,23 @@ actions.abandon = function () {
  * @param {Element} el
  * @return {Object}
  */
-actions.linkClick = function ( el ) {
+export function linkClick( el ) {
 	return timedAction( {
 		type: types.LINK_CLICK,
 		el: el
 	} );
-};
+}
 
 /**
  * Represents the user dwelling on a preview with their mouse.
  *
  * @return {Object}
  */
-actions.previewDwell = function () {
+export function previewDwell() {
 	return {
 		type: types.PREVIEW_DWELL
 	};
-};
+}
 
 /**
  * Represents a preview being shown to the user.
@@ -252,12 +252,12 @@ actions.previewDwell = function () {
  * @param {String} token
  * @return {Object}
  */
-actions.previewShow = function ( token ) {
+export function previewShow( token ) {
 	return timedAction( {
 		type: types.PREVIEW_SHOW,
 		token: token
 	} );
-};
+}
 
 /**
  * Represents the user clicking either the "Enable previews" footer menu link,
@@ -265,22 +265,22 @@ actions.previewShow = function ( token ) {
  *
  * @return {Object}
  */
-actions.showSettings = function () {
+export function showSettings() {
 	return {
 		type: types.SETTINGS_SHOW
 	};
-};
+}
 
 /**
  * Represents the user closing the settings dialog and saving their settings.
  *
  * @return {Object}
  */
-actions.hideSettings = function () {
+export function hideSettings() {
 	return {
 		type: types.SETTINGS_HIDE
 	};
-};
+}
 
 /**
  * Represents the user saving their settings.
@@ -297,7 +297,7 @@ actions.hideSettings = function () {
  * @param {Boolean} enabled if previews are enabled or not
  * @return {Redux.Thunk}
  */
-actions.saveSettings = function ( enabled ) {
+export function saveSettings( enabled ) {
 	return function ( dispatch, getState ) {
 		dispatch( {
 			type: types.SETTINGS_CHANGE,
@@ -305,7 +305,7 @@ actions.saveSettings = function ( enabled ) {
 			enabled: enabled
 		} );
 	};
-};
+}
 
 /**
  * Represents the queued event being logged `changeListeners/eventLogging.js`
@@ -314,12 +314,12 @@ actions.saveSettings = function ( enabled ) {
  * @param {Object} event
  * @return {Object}
  */
-actions.eventLogged = function ( event ) {
+export function eventLogged( event ) {
 	return {
 		type: types.EVENT_LOGGED,
 		event: event
 	};
-};
+}
 
 /**
  * Represents the queued statsv event being logged.
@@ -327,9 +327,8 @@ actions.eventLogged = function ( event ) {
  *
  * @return {Object}
  */
-actions.statsvLogged = function () {
+export function statsvLogged() {
 	return {
 		type: types.STATSV_LOGGED
 	};
-};
-module.exports = actions;
+}

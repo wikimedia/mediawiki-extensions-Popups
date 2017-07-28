@@ -14,7 +14,7 @@
  * @param {Experiments} experiments
  * @returns {Boolean}
  */
-exports.isEnabled = function isEnabled( user, config, experiments ) {
+export function isEnabled( user, config, experiments ) {
 	var bucketingRate = config.get( 'wgPopupsStatsvSamplingRate', 0 );
 
 	return experiments.weightedBoolean(
@@ -22,4 +22,4 @@ exports.isEnabled = function isEnabled( user, config, experiments ) {
 		bucketingRate,
 		user.sessionId()
 	);
-};
+}

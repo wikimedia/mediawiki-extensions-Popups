@@ -1,5 +1,5 @@
-var actionTypes = require( './../actionTypes' ),
-	nextState = require( './nextState' );
+import actionTypes from '../actionTypes';
+import nextState from './nextState';
 
 /**
  * Reducer for actions that modify the state of the preview model
@@ -9,7 +9,7 @@ var actionTypes = require( './../actionTypes' ),
  *  Must have `type` property.
  * @return {Object} state after action
  */
-module.exports = function ( state, action ) {
+export default function preview( state, action ) {
 	if ( state === undefined ) {
 		state = {
 			enabled: undefined,
@@ -92,4 +92,4 @@ module.exports = function ( state, action ) {
 		default:
 			return state;
 	}
-};
+}

@@ -9,7 +9,7 @@ var $ = jQuery;
  *
  * @return {ext.popups.ChangeListener}
  */
-module.exports = function () {
+export default function linkTitle() {
 	var title;
 
 	/**
@@ -64,4 +64,4 @@ module.exports = function () {
 			destroyTitleAttr( state.preview.activeLink );
 		}
 	};
-};
+}

@@ -10,7 +10,7 @@
  * @param {EventTracker} track
  * @return {ext.popups.ChangeListener}
  */
-module.exports = function ( boundActions, track ) {
+export default function statsv( boundActions, track ) {
 	return function ( _, state ) {
 		var statsv = state.statsv;
 
@@ -20,4 +20,4 @@ module.exports = function ( boundActions, track ) {
 			boundActions.statsvLogged();
 		}
 	};
-};
+}

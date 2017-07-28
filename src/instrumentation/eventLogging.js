@@ -16,7 +16,7 @@
  * @param {Window} window
  * @return {Boolean}
  */
-exports.isEnabled = function isEnabled( user, config, experiments, window ) {
+export function isEnabled( user, config, experiments, window ) {
 	var samplingRate = config.get( 'wgPopupsSchemaSamplingRate', 0 );
 
 	// if debug mode is on, always enable event logging. @see T168847
@@ -36,4 +36,4 @@ exports.isEnabled = function isEnabled( user, config, experiments, window ) {
 		samplingRate,
 		user.sessionId()
 	);
-};
+}

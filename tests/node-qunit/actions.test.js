@@ -1,7 +1,8 @@
-var mock = require( 'mock-require' ),
-	stubs = require( './stubs' ),
-	actions = require( '../../src/actions' ),
-	mw = mediaWiki;
+import { createStubUser, createStubTitle } from './stubs';
+import * as actions from '../../src/actions';
+import * as WaitModule from '../../src/wait';
+
+var mw = mediaWiki;
 
 function generateToken() {
 	return '9876543210';
@@ -11,7 +12,7 @@ QUnit.module( 'ext.popups/actions' );
 
 QUnit.test( '#boot', function ( assert ) {
 	var config = new Map(), /* global Map */
-		stubUser = stubs.createStubUser( /* isAnon = */ true ),
+		stubUser = createStubUser( /* isAnon = */ true ),
 		stubUserSettings,
 		action;
 
@@ -79,13 +80,7 @@ function setupWait( module ) {
 		return promise;
 	} );
 
-	mock( '../../src/wait', module.wait );
-	// Re-require actions so that it uses the mocked wait module
-	actions = mock.reRequire( '../../src/actions' );
-}
-
-function teardownWait() {
-	mock.stop( '../../src/wait' );
+	module.sandbox.stub( WaitModule, 'default', module.wait );
 }
 
 /**
@@ -95,7 +90,7 @@ function teardownWait() {
 	* @param {Object} module
 	*/
 function setupEl( module ) {
-	module.title = stubs.createStubTitle( 1, 'Foo' );
+	module.title = createStubTitle( 1, 'Foo' );
 	module.el = $( '<a>' ).eq( 0 );
 }
 
@@ -115,9 +110,6 @@ QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 
 		setupWait( this );
 		setupEl( this );
-	},
-	afterEach: function () {
-		teardownWait();
 	}
 } );
 
@@ -293,9 +285,6 @@ QUnit.module( 'ext.popups/actions#fetch', {
 		this.fetch = function () {
 			actions.fetch( that.gateway, that.title, that.el, that.token )( that.dispatch );
 		};
-	},
-	afterEach: function () {
-		teardownWait();
 	}
 } );
 
@@ -399,9 +388,6 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 QUnit.module( 'ext.popups/actions#abandon', {
 	beforeEach: function () {
 		setupWait( this );
-	},
-	afterEach: function () {
-		teardownWait();
 	}
 } );
 

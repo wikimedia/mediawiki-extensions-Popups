@@ -34,7 +34,7 @@ var mw = window.mediaWiki,
  * @param {Object} actions The action creators bound to the Redux store
  * @return {ext.popups.PreviewBehavior}
  */
-module.exports = function ( config, user, actions ) {
+export default function createPreviewBehavior( config, user, actions ) {
 	var isBetaFeature = config.get( 'wgPopupsBetaFeature' ),
 		rawTitle,
 		settingsUrl,
@@ -62,4 +62,4 @@ module.exports = function ( config, user, actions ) {
 		previewShow: actions.previewShow,
 		click: actions.linkClick
 	};
-};
+}
