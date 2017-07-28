@@ -1,5 +1,5 @@
 /**
- * @module schema
+ * @module instrumentation/eventLogging
  */
 
 /**
@@ -28,7 +28,7 @@ exports.isEnabled = function isEnabled( user, config, experiments, window ) {
 		!window.navigator ||
 		!$.isFunction( window.navigator.sendBeacon )
 	) {
-		samplingRate = 0;
+		return false;
 	}
 
 	return experiments.weightedBoolean(

@@ -57,15 +57,10 @@ QUnit.test( 'it should use wgPopupsSchemaSamplingRate as the sampling rate', fun
 	);
 } );
 
-QUnit.test( 'it should use a 0 bucketing rate when sendBeacon isn\'t supported', function ( assert ) {
+QUnit.test( 'it should return false when sendBeacon isn\'t supported', function ( assert ) {
 	var window = {};
 
-	isEnabled( this.user, this.config, this.experiments, window );
-
-	assert.deepEqual(
-		this.experiments.weightedBoolean.getCall( 0 ).args[ 1 ],
-		/* trueWeight = */ 0
-	);
+	assert.notOk( isEnabled( this.user, this.config, this.experiments, window ) );
 
 	// ---
 
@@ -73,12 +68,7 @@ QUnit.test( 'it should use a 0 bucketing rate when sendBeacon isn\'t supported',
 		sendBeacon: 'NOT A FUNCTION'
 	};
 
-	isEnabled( this.user, this.config, this.experiments, window );
-
-	assert.deepEqual(
-		this.experiments.weightedBoolean.getCall( 1 ).args[ 1 ],
-		/* trueWeight = */ 0
-	);
+	assert.notOk( isEnabled( this.user, this.config, this.experiments, window ) );
 } );
 
 QUnit.test( 'it should return the weighted boolean', function ( assert ) {
