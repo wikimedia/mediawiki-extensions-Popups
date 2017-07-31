@@ -24,6 +24,7 @@ use MediaWiki\MediaWikiServices;
 use ExtensionRegistry;
 use Config;
 use Popups\EventLogging\EventLogger;
+use Title;
 
 /**
  * Popups Module
@@ -155,6 +156,34 @@ class PopupsContext {
 		}
 
 		return $areMet;
+	}
+
+	/**
+	 * Whether popups code should be shipped to $title
+	 *
+	 * For example, if 'Special:UserLogin' is blacklisted, and the user is on 'Special:UserLogin',
+	 * then the title is considered blacklisted.
+	 *
+	 * A title is also considered blacklisted if its root matches one of the page names
+	 * from the config variable. For example, if 'User:A' is blacklisted, and the
+	 * title is 'User:A/b', then this title is considered blacklisted.
+	 *
+	 * Language specific blacklisted titles affect all languages. For example, if "Main_Page" is
+	 * blacklisted, "Bosh_Sahifa" (which is "Main_Page" in Uzbek) is considered blacklisted
+	 * too.
+	 *
+	 * @param Title $title title being tested
+	 * @return bool
+	 */
+	public function isTitleBlacklisted( $title ) {
+		$blacklistedPages = $this->config->get( 'PopupsPageBlacklist' );
+		foreach ( $blacklistedPages as $page ) {
+			$blacklistedTitle = Title::newFromText( $page );
+			if ( $title->getRootTitle() == $blacklistedTitle->getRootTitle() ) {
+				return true;
+			}
+		}
+		return false;
 	}
 	/**
 	 * Get module logger
