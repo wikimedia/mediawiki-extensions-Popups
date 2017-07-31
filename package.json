@@ -29,6 +29,7 @@
     "nodemon": "^1.11.0",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
+    "stylelint": "7.8.0",
     "stylelint-config-wikimedia": "0.4.1",
     "tap-dot": "^1.0.5",
     "webpack": "^2.6.0"
