@@ -19,9 +19,11 @@ import { isEnabled as isEventLoggingEnabled } from './instrumentation/eventLoggi
 import changeListeners from './changeListeners';
 import * as actions from './actions';
 import reducers from './reducers';
+import registerMediaWikiPopupsObject from './integrations/mwpopups';
 
 var mw = mediaWiki,
 	$ = jQuery,
+
 	BLACKLISTED_LINKS = [
 		'.extiw',
 		'.image',
@@ -177,6 +179,7 @@ mw.requestIdleCallback( function () {
 		mw.config
 	);
 
+	registerMediaWikiPopupsObject( store );
 	mw.hook( 'wikipage.content' ).add( function ( $container ) {
 		var invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
 			validLinkSelector = 'a[href][title]:not(' + invalidLinksSelector + ')';
