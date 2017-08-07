@@ -1,4 +1,4 @@
-var eventLogging = require( '../../../src/changeListeners/eventLogging' );
+import eventLogging from '../../../src/changeListeners/eventLogging';
 
 QUnit.module( 'ext.popups/eventLogging', {
 	beforeEach: function () {

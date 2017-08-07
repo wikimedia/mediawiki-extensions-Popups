@@ -11,7 +11,7 @@ var mw = window.mediaWiki;
  * @param {mw.Map} config
  * @return {String|undefined}
  */
-function getTitle( href, config ) {
+export function getTitle( href, config ) {
 	var linkHref,
 		matches,
 		queryLength,
@@ -53,7 +53,7 @@ function getTitle( href, config ) {
  * wgContentNamespaces
  * @returns {mw.Title|null}
  */
-function isValid( title, contentNamespaces ) {
+export function isValid( title, contentNamespaces ) {
 	var mwTitle;
 
 	if ( !title ) {
@@ -77,12 +77,6 @@ function isValid( title, contentNamespaces ) {
  * @param {mw.Map} config
  * @return {mw.Title|null}
  */
-function fromElement( el, config ) {
+export function fromElement( el, config ) {
 	return isValid( getTitle( el.href, config ), config.get( 'wgContentNamespaces' ) );
 }
-
-module.exports = {
-	getTitle: getTitle,
-	isValid: isValid,
-	fromElement: fromElement
-};

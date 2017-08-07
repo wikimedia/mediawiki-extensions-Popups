@@ -1,5 +1,5 @@
-var actionTypes = require( './../actionTypes' ),
-	nextState = require( './nextState' );
+import actionTypes from './../actionTypes';
+import nextState from './nextState';
 
 /**
  * Reducer for actions that may result in an event being logged via statsv.
@@ -8,7 +8,7 @@ var actionTypes = require( './../actionTypes' ),
  * @param {Object} action
  * @return {Object} state after action
  */
-module.exports = function ( state, action ) {
+export default function statsv( state, action ) {
 	state = state || {};
 
 	switch ( action.type ) {
@@ -49,4 +49,4 @@ module.exports = function ( state, action ) {
 		default:
 			return state;
 	}
-};
+}

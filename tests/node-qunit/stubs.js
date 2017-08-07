@@ -5,7 +5,7 @@
  * @param {boolean} isAnon The return value of the `#isAnon`.
  * @return {Object}
  */
-exports.createStubUser = function createStubUser( isAnon ) {
+export function createStubUser( isAnon ) {
 	return {
 		isAnon: function () {
 			return isAnon;
@@ -14,7 +14,7 @@ exports.createStubUser = function createStubUser( isAnon ) {
 			return '0123456789';
 		}
 	};
-};
+}
 
 /**
  * Creates a **minimal** stub that can be used in place of an `mw.Map`
@@ -22,7 +22,7 @@ exports.createStubUser = function createStubUser( isAnon ) {
  *
  * @return {mw.Map}
  */
-exports.createStubMap = function createStubMap() {
+export function createStubMap() {
 	var m = new Map(); /* global Map */
 	m.get = function ( key, fallback ) {
 		fallback = arguments.length > 1 ? fallback : null;
@@ -33,7 +33,7 @@ exports.createStubMap = function createStubMap() {
 		return null;
 	};
 	return m;
-};
+}
 
 /**
  * Creates a stub that can be used as a replacement to mw.experiements
@@ -41,13 +41,13 @@ exports.createStubMap = function createStubMap() {
  *  return 'A' otherwise 'control'.
  * @return {object}
  */
-exports.createStubExperiments = function createStubExperiments( isSampled ) {
+export function createStubExperiments( isSampled ) {
 	return {
 		getBucket: function () {
 			return isSampled ? 'A' : 'control';
 		}
 	};
-};
+}
 
 /**
  * Creates a **minimal** stub that can be used in place of an instance of
@@ -57,11 +57,11 @@ exports.createStubExperiments = function createStubExperiments( isSampled ) {
  * @param {String} prefixedDb, e.g. Foo, or File:Bar.jpg
  * @return {Object}
  */
-exports.createStubTitle = function createStubTitle( namespace, prefixedDb ) {
+export function createStubTitle( namespace, prefixedDb ) {
 	return {
 		namespace: namespace,
 		getPrefixedDb: function () {
 			return prefixedDb;
 		}
 	};
-};
+}

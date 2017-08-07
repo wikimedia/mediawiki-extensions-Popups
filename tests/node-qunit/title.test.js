@@ -1,6 +1,4 @@
-var title = require( '../../src/title' ),
-	getTitle = title.getTitle,
-	isValid	= title.isValid;
+import { getTitle, isValid } from '../../src/title';
 
 /* global Map */
 

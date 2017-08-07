@@ -10,7 +10,7 @@ var mw = window.mediaWiki,
  * a set of methods to operate on it
  * @returns {Function} render function
  */
-module.exports = function () {
+export default function createSettingsDialogRenderer() {
 
 	/**
 	 * Cached settings dialog
@@ -115,7 +115,7 @@ module.exports = function () {
 			}
 		};
 	};
-};
+}
 
 /**
  * Create the settings dialog

@@ -5,7 +5,7 @@
  * @param {Object} render function that renders a jQuery el with the settings
  * @return {ext.popups.ChangeListener}
  */
-module.exports = function ( boundActions, render ) {
+export default function settings( boundActions, render ) {
 	var settings;
 
 	return function ( prevState, state ) {
@@ -41,4 +41,4 @@ module.exports = function ( boundActions, render ) {
 			settings.toggleHelp( state.settings.showHelp );
 		}
 	};
-};
+}

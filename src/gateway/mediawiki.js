@@ -9,12 +9,13 @@
  * @global
  */
 
+import { createModel } from '../preview/model';
+import * as formatter from '../formatter';
+
 // Public and private cache lifetime (5 minutes)
 //
 // FIXME: Move this to src/constants.js.
 var CACHE_LIFETIME = 300,
-	createModel = require( '../preview/model' ).createModel,
-	formatter = require( '../formatter' ),
 	$ = jQuery;
 
 /**
@@ -29,7 +30,7 @@ var CACHE_LIFETIME = 300,
  *  of the extract.
  * @returns {MediaWikiGateway}
  */
-module.exports = function createMediaWikiApiGateway( api, config ) {
+export default function createMediaWikiApiGateway( api, config ) {
 
 	/**
 	 * Fetches page data from the API.
@@ -82,7 +83,7 @@ module.exports = function createMediaWikiApiGateway( api, config ) {
 		getPageSummary: getPageSummary,
 		formatPlainTextExtract: formatPlainTextExtract
 	};
-};
+}
 
 /**
  * Extracts page data from the API response.

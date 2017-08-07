@@ -5,11 +5,12 @@
 /**
  * @constant {String}
  */
-var TYPE_GENERIC = 'generic',
+export var TYPE_GENERIC = 'generic';
+
 /**
  * @constant {String}
  */
-	TYPE_PAGE = 'page';
+export var TYPE_PAGE = 'page'; // eslint-disable-line one-var
 
 /**
  * @typedef {Object} PreviewModel
@@ -25,12 +26,6 @@ var TYPE_GENERIC = 'generic',
  *
  * @global
  */
-module.exports = {
-	TYPE_GENERIC: TYPE_GENERIC,
-	TYPE_PAGE: TYPE_PAGE,
-	createModel: createModel,
-	createNullModel: createNullModel
-};
 
 /**
  * Creates a preview model.
@@ -43,7 +38,7 @@ module.exports = {
  * @param {?Object} thumbnail
  * @return {PreviewModel}
  */
-function createModel(
+export function createModel(
 	title,
 	url,
 	languageCode,
@@ -70,7 +65,7 @@ function createModel(
  * @param {String} title
  * @return {PreviewModel}
  */
-function createNullModel( title ) {
+export function createNullModel( title ) {
 	return createModel( title, '', '', '', [], '' );
 }
 

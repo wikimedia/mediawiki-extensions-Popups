@@ -19,7 +19,7 @@ var IS_ENABLED_KEY = 'mwe-popups-enabled',
  *
  * @return {UserSettings}
  */
-module.exports = function ( storage ) {
+export default function createUserSettings( storage ) {
 	return {
 
 		/**
@@ -94,4 +94,4 @@ module.exports = function ( storage ) {
 			storage.set( PREVIEW_COUNT_KEY, count.toString() );
 		}
 	};
-};
+}

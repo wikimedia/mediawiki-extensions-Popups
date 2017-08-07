@@ -26,7 +26,7 @@
  *
  * @return {Boolean}
  */
-module.exports = function ( user, userSettings, config, experiments ) {
+export default function isEnabled( user, userSettings, config, experiments ) {
 	if ( config.get( 'wgPopupsConflictsWithNavPopupGadget' ) ) {
 		return false;
 	}
@@ -44,7 +44,7 @@ module.exports = function ( user, userSettings, config, experiments ) {
 	}
 
 	return userSettings.getIsEnabled();
-};
+}
 
 /**
  * Is the user sampled based on a sampling rate?

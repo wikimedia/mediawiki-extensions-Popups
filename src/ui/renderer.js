@@ -2,9 +2,10 @@
  * @module renderer
  */
 
+import wait from '../wait';
+
 var mw = window.mediaWiki,
 	$ = jQuery,
-	wait = require( '../wait' ),
 	SIZES = {
 		portraitImage: {
 			h: 250, // Exact height
@@ -25,7 +26,7 @@ var mw = window.mediaWiki,
  * @private
  * @param {Object} container DOM object to which pokey masks are appended
  */
-function createPokeyMasks( container ) {
+export function createPokeyMasks( container ) {
 	$( '<div>' )
 		.attr( 'id', 'mwe-popups-svg' )
 		.html(
@@ -52,7 +53,7 @@ function createPokeyMasks( container ) {
 /**
  * Initializes the renderer.
  */
-function init() {
+export function init() {
 	createPokeyMasks( document.body );
 }
 
@@ -90,7 +91,7 @@ function init() {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-function render( model ) {
+export function render( model ) {
 	var preview = model.extract === undefined ? createEmptyPreview( model ) : createPreview( model );
 
 	return {
@@ -136,7 +137,7 @@ function render( model ) {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-function createPreview( model ) {
+export function createPreview( model ) {
 	var templateData,
 		thumbnail = createThumbnail( model.thumbnail ),
 		hasThumbnail = thumbnail !== null,
@@ -176,7 +177,7 @@ function createPreview( model ) {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-function createEmptyPreview( model ) {
+export function createEmptyPreview( model ) {
 	var templateData,
 		$el;
 
@@ -212,7 +213,7 @@ function createEmptyPreview( model ) {
  * @return {jQuery.Promise} A promise that resolves when the promise has faded
  *  in
  */
-function show( preview, event, $link, behavior, token, container ) {
+export function show( preview, event, $link, behavior, token, container ) {
 	var layout = createLayout(
 		preview.isTall,
 		{
@@ -258,7 +259,7 @@ function show( preview, event, $link, behavior, token, container ) {
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewBehavior} behavior
  */
-function bindBehavior( preview, behavior ) {
+export function bindBehavior( preview, behavior ) {
 	preview.el.hover( behavior.previewDwell, behavior.previewAbandon );
 
 	preview.el.click( behavior.click );
@@ -279,7 +280,7 @@ function bindBehavior( preview, behavior ) {
  * @return {jQuery.Promise} A promise that resolves when the preview has faded
  *  out
  */
-function hide( preview ) {
+export function hide( preview ) {
 	var fadeInClass,
 		fadeOutClass;
 
@@ -321,7 +322,7 @@ function hide( preview ) {
  * @param {Object} rawThumbnail
  * @return {ext.popups.Thumbnail|null}
  */
-function createThumbnail( rawThumbnail ) {
+export function createThumbnail( rawThumbnail ) {
 	var tall, thumbWidth, thumbHeight,
 		x, y, width, height, clipPath,
 		devicePixelRatio = $.bracketedDevicePixelRatio();
@@ -403,7 +404,7 @@ function createThumbnail( rawThumbnail ) {
  * @param {String} clipPath
  * @return {jQuery}
  */
-function createThumbnailElement( className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath ) {
+export function createThumbnailElement( className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath ) {
 	var $thumbnailSVGImage, $thumbnail,
 		nsSvg = 'http://www.w3.org/2000/svg',
 		nsXlink = 'http://www.w3.org/1999/xlink';
@@ -462,7 +463,7 @@ function createThumbnailElement( className, url, x, y, thumbnailWidth, thumbnail
  * @param {number} pokeySize Space reserved for the pokey
  * @return {ext.popups.PreviewLayout}
  */
-function createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize ) {
+export function createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize ) {
 	var flippedX = false,
 		flippedY = false,
 		offsetTop = ( eventData.pageY ) ? // If it was a mouse event
@@ -537,7 +538,7 @@ function createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize
  * @param {ext.popups.PreviewLayout} layout
  * @return {String[]}
  */
-function getClasses( preview, layout ) {
+export function getClasses( preview, layout ) {
 	var classes = [];
 
 	if ( layout.flippedY ) {
@@ -592,7 +593,7 @@ function getClasses( preview, layout ) {
  * @param {number} predefinedLandscapeImageHeight landscape image height
  * @param {number} pokeySize
  */
-function layoutPreview( preview, layout, classes, predefinedLandscapeImageHeight, pokeySize ) {
+export function layoutPreview( preview, layout, classes, predefinedLandscapeImageHeight, pokeySize ) {
 	var popup = preview.el,
 		isTall = preview.isTall,
 		hasThumbnail = preview.hasThumbnail,
@@ -665,7 +666,7 @@ function layoutPreview( preview, layout, classes, predefinedLandscapeImageHeight
  *  boundary be returned. By default the bottom 'y' value is returned.
  * @return {Number}
  */
-function getClosestYPosition( y, rects, isTop ) {
+export function getClosestYPosition( y, rects, isTop ) {
 	var result,
 		deltaY,
 		minY = null;
@@ -683,21 +684,3 @@ function getClosestYPosition( y, rects, isTop ) {
 
 	return result;
 }
-
-module.exports = {
-	render: render,
-	init: init,
-	// The following are exposed for teseting purposes only
-	createPokeyMasks: createPokeyMasks,
-	createPreview: createPreview,
-	createEmptyPreview: createEmptyPreview,
-	bindBehavior: bindBehavior,
-	show: show,
-	hide: hide,
-	createThumbnail: createThumbnail,
-	createThumbnailElement: createThumbnailElement,
-	createLayout: createLayout,
-	getClasses: getClasses,
-	layoutPreview: layoutPreview,
-	getClosestYPosition: getClosestYPosition
-};

@@ -1,6 +1,7 @@
-var createModel = require( '../../../src/preview/model' ).createModel,
-	createRESTBaseGateway = require( '../../../src/gateway/rest' ),
-	DEFAULT_CONSTANTS = {
+import { createModel } from '../../../src/preview/model';
+import createRESTBaseGateway from '../../../src/gateway/rest';
+
+var DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 512
 	},
 	RESTBASE_RESPONSE = {

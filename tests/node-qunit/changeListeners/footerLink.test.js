@@ -1,4 +1,4 @@
-var footerLink = require( '../../../src/changeListeners/footerLink' );
+import footerLink from '../../../src/changeListeners/footerLink';
 
 // Since footerLink manipulates the DOM, this test is, by necessity, an
 // integration test.

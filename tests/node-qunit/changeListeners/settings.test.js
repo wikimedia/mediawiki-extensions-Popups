@@ -1,4 +1,4 @@
-var settings = require( '../../../src/changeListeners/settings' );
+import settings from '../../../src/changeListeners/settings';
 
 QUnit.module( 'ext.popups/changeListeners/settings', {
 	beforeEach: function () {

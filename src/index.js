@@ -2,27 +2,26 @@
  * @module popups
  */
 
+import * as Redux from 'redux';
+import * as ReduxThunk from 'redux-thunk';
+
+import createGateway from './gateway';
+import createUserSettings from './userSettings';
+import createPreviewBehavior from './previewBehavior';
+import createSettingsDialogRenderer from './ui/settingsDialog';
+import registerChangeListener from './changeListener';
+import createIsEnabled from './isEnabled';
+import { fromElement as titleFromElement } from './title';
+import { init as rendererInit } from './ui/renderer';
+import createExperiments from './experiments';
+import { isEnabled as isStatsvEnabled } from './instrumentation/statsv';
+import { isEnabled as isEventLoggingEnabled } from './instrumentation/eventLogging';
+import changeListeners from './changeListeners';
+import * as actions from './actions';
+import reducers from './reducers';
+
 var mw = mediaWiki,
 	$ = jQuery,
-	Redux = require( 'redux' ),
-	ReduxThunk = require( 'redux-thunk' ),
-
-	createGateway = require( './gateway' ),
-	createUserSettings = require( './userSettings' ),
-	createPreviewBehavior = require( './previewBehavior' ),
-	createSettingsDialogRenderer = require( './ui/settingsDialog' ),
-	registerChangeListener = require( './changeListener' ),
-	createIsEnabled = require( './isEnabled' ),
-	title = require( './title' ),
-	renderer = require( './ui/renderer' ),
-	createExperiments = require( './experiments' ),
-	statsvInstrumentation = require( './instrumentation/statsv' ),
-	eventLoggingInstrumentation = require( './instrumentation/eventLogging' ),
-
-	changeListeners = require( './changeListeners' ),
-	actions = require( './actions' ),
-	reducers = require( './reducers' ),
-
 	BLACKLISTED_LINKS = [
 		'.extiw',
 		'.image',
@@ -60,7 +59,7 @@ var mw = mediaWiki,
  * @return {EventTracker}
  */
 function getStatsvTracker( user, config, experiments ) {
-	return statsvInstrumentation.isEnabled( user, config, experiments ) ? mw.track : $.noop;
+	return isStatsvEnabled( user, config, experiments ) ? mw.track : $.noop;
 }
 
 /**
@@ -80,7 +79,7 @@ function getStatsvTracker( user, config, experiments ) {
  * @return {EventTracker}
  */
 function getEventLoggingTracker( user, config, experiments, window ) {
-	return eventLoggingInstrumentation.isEnabled(
+	return isEventLoggingEnabled(
 		user,
 		config,
 		experiments,
@@ -182,25 +181,25 @@ mw.requestIdleCallback( function () {
 		var invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
 			validLinkSelector = 'a[href][title]:not(' + invalidLinksSelector + ')';
 
-		renderer.init();
+		rendererInit();
 
 		$container
 			.on( 'mouseover keyup', validLinkSelector, function ( event ) {
-				var mwTitle = title.fromElement( this, mw.config );
+				var mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.linkDwell( mwTitle, this, event, gateway, generateToken );
 				}
 			} )
 			.on( 'mouseout blur', validLinkSelector, function () {
-				var mwTitle = title.fromElement( this, mw.config );
+				var mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.abandon( this );
 				}
 			} )
 			.on( 'click', validLinkSelector, function () {
-				var mwTitle = title.fromElement( this, mw.config );
+				var mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.linkClick( this );

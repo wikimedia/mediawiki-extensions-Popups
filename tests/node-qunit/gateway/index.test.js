@@ -1,24 +1,15 @@
-var mock = require( 'mock-require' ),
-	createGateway;
+import createGateway from '../../../src/gateway';
+import * as RestModule from '../../../src/gateway/rest';
+import * as MediawikiModule from '../../../src/gateway/mediawiki';
 
 QUnit.module( 'gateway/index.js', {
 	beforeEach: function () {
-		jQuery.bracketedDevicePixelRatio = function () { return 1; };
 		mediaWiki.Api = function () {};
 
-		this.createMediaWikiApiGateway = this.sandbox.stub();
-		mock( '../../../src/gateway/mediawiki', this.createMediaWikiApiGateway );
-		this.createRESTBaseGateway = this.sandbox.stub();
-		mock( '../../../src/gateway/rest', this.createRESTBaseGateway );
-
-		createGateway = mock.reRequire( '../../../src/gateway' );
+		this.createMediaWikiApiGateway = this.sandbox.stub( MediawikiModule, 'default' );
+		this.createRESTBaseGateway = this.sandbox.stub( RestModule, 'default' );
 
 		this.config = new Map(); /* global Map */
-	},
-	afterEach: function () {
-		jQuery.bracketedDevicePixelRatio = undefined;
-		mock.stop( '../../../src/gateway/mediawiki' );
-		mock.stop( '../../../src/gateway/rest' );
 	}
 } );
 

@@ -1,7 +1,6 @@
-var registerChangeListener = require( '../../src/changeListener' ),
-	stubStore;
+import registerChangeListener from '../../src/changeListener';
 
-stubStore = ( function () {
+var stubStore = ( function () {
 	var state;
 
 	return {

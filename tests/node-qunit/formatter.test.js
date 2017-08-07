@@ -1,5 +1,6 @@
-var $ = jQuery,
-	formatter = require( '../../src/formatter' );
+import * as formatter from '../../src/formatter';
+
+var $ = jQuery;
 
 QUnit.module( 'ext.popups.formatter', {
 	beforeEach: function () {

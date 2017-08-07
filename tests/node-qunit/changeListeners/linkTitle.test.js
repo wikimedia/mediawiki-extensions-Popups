@@ -1,4 +1,4 @@
-var linkTitle = require( '../../../src/changeListeners/linkTitle' );
+import linkTitle from '../../../src/changeListeners/linkTitle';
 
 // Since footerLink manipulates the DOM, this test is, by necessity, an
 // integration test.

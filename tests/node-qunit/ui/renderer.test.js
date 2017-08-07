@@ -1,5 +1,6 @@
-var $ = jQuery,
-	renderer = require( '../../../src/ui/renderer' );
+import * as renderer from '../../../src/ui/renderer';
+
+var $ = jQuery;
 
 /**
  * A utility function that creates a bare bones preview

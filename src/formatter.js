@@ -7,7 +7,7 @@ var $ = jQuery,
  * @param {String} title
  * @returns {Array}
  */
-function formatPlainTextExtract( plainTextExtract, title ) {
+export function formatPlainTextExtract( plainTextExtract, title ) {
 	var extract = plainTextExtract;
 	if ( plainTextExtract === undefined ) {
 		return [];
@@ -78,7 +78,7 @@ function makeTitleInExtractBold( extract, title ) {
  * @param {String} extract
  * @return {String}
  */
-function removeTrailingEllipsis( extract ) {
+export function removeTrailingEllipsis( extract ) {
 	return extract.replace( /\.\.\.$/, '' );
 }
 
@@ -94,7 +94,7 @@ function removeTrailingEllipsis( extract ) {
  * @param {String} extract
  * @return {String}
  */
-function removeParentheticals( extract ) {
+export function removeParentheticals( extract ) {
 	var
 		ch,
 		result = '',
@@ -125,9 +125,3 @@ function removeParentheticals( extract ) {
 
 	return ( level === 0 ) ? result : extract;
 }
-
-module.exports = {
-	formatPlainTextExtract: formatPlainTextExtract,
-	removeTrailingEllipsis: removeTrailingEllipsis,
-	removeParentheticals: removeParentheticals
-};

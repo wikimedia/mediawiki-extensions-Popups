@@ -1,7 +1,7 @@
 /* global Map: false */
 
-var stubs = require( './stubs' ),
-	isEnabled = require( '../../src/isEnabled' );
+import * as stubs from './stubs';
+import isEnabled from '../../src/isEnabled';
 
 function createStubUserSettings( isEnabled ) {
 	return {

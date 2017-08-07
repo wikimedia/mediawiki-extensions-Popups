@@ -7,7 +7,7 @@
  *
  * @return {Container}
  */
-module.exports = function createContainer() {
+export default function createContainer() {
 	var factories = {},
 		cache = {};
 
@@ -91,4 +91,4 @@ module.exports = function createContainer() {
 			return cache[ name ];
 		}
 	};
-};
+}

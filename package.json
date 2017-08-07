@@ -3,7 +3,7 @@
   "scripts": {
     "start": "webpack -w",
     "build": "NODE_ENV=production webpack",
-    "test:node": "mw-node-qunit 'tests/node-qunit/**/*.js' | tap-dot",
+    "test:node": "node tests/node-qunit/run.js 'tests/node-qunit/**/*.test.js' | tap-dot",
     "test:dev": "grunt lint && npm run test:node",
     "test": " npm run check-built-assets && npm run test:dev && npm run doc",
     "doc": "jsdoc -c jsdoc.json",
@@ -13,6 +13,8 @@
     "precommit": "npm run test:dev && npm run build && git add resources/dist"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.24.1",
     "eslint-config-wikimedia": "0.4.0",
     "grunt": "1.0.1",
     "grunt-banana-checker": "0.5.0",
@@ -23,7 +25,6 @@
     "husky": "^0.13.3",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
-    "mock-require": "^2.0.1",
     "mw-node-qunit": "^2.1.1",
     "nodemon": "^1.11.0",
     "redux": "3.6.0",

@@ -1,5 +1,5 @@
-var stubs = require( './../stubs' ),
-	statsv = require( '../../../src/instrumentation/statsv' );
+import * as stubs from './../stubs';
+import { isEnabled } from '../../../src/instrumentation/statsv';
 
 QUnit.module( 'ext.popups/instrumentation/statsv' );
 
@@ -13,7 +13,7 @@ QUnit.test( '#isEnabled', function ( assert ) {
 
 	config.set( 'wgPopupsStatsvSamplingRate', 0.3141 );
 
-	statsv.isEnabled( user, config, experiments );
+	isEnabled( user, config, experiments );
 
 	assert.ok( weightedBooleanStub.calledOnce );
 	assert.deepEqual(
@@ -29,7 +29,7 @@ QUnit.test( '#isEnabled', function ( assert ) {
 
 	config.delete( 'wgPopupsStatsvSamplingRate' );
 
-	statsv.isEnabled( user, config, experiments );
+	isEnabled( user, config, experiments );
 
 	assert.deepEqual(
 		weightedBooleanStub.getCall( 1 ).args[ 1 ],

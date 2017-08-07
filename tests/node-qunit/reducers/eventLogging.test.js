@@ -1,6 +1,6 @@
-var counts = require( '../../../src/counts' ),
-	createModel = require( '../../../src/preview/model' ).createModel,
-	eventLogging = require( '../../../src/reducers/eventLogging' );
+import * as counts from '../../../src/counts';
+import { createModel } from '../../../src/preview/model';
+import eventLogging from '../../../src/reducers/eventLogging';
 
 QUnit.module( 'ext.popups/reducers#eventLogging', {
 	beforeEach: function () {

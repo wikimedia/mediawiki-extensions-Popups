@@ -1,5 +1,5 @@
-var mock = require( 'mock-require' ),
-	render;
+import render from '../../../src/changeListeners/render';
+import * as RendererModule from '../../../src/ui/renderer';
 
 QUnit.module( 'ext.popups/changeListeners/render', {
 	beforeEach: function () {
@@ -7,17 +7,7 @@ QUnit.module( 'ext.popups/changeListeners/render', {
 			show: this.sandbox.stub().returns( $.Deferred().resolve() )
 		};
 
-		this.renderer = {
-			render: this.sandbox.stub().returns( this.preview )
-		};
-
-		mock( '../../../src/ui/renderer', this.renderer );
-		render = this.sandbox.spy(
-			mock.reRequire( '../../../src/changeListeners/render' )
-		);
-	},
-	afterEach: function () {
-		mock.stop( '../../../src/ui/renderer' );
+		this.sandbox.stub( RendererModule, 'render', this.sandbox.stub().returns( this.preview ) );
 	}
 } );
 
@@ -62,7 +52,7 @@ QUnit.test( 'it should render the preview', function ( assert ) {
 	changeListener( undefined, state );
 
 	assert.ok(
-		this.renderer.render.calledWith( state.preview.fetchResponse ),
+		RendererModule.render.calledWith( state.preview.fetchResponse ),
 		'It should use the data from the gateway.'
 	);
 } );

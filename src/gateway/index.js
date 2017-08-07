@@ -1,9 +1,10 @@
+import constants from '../constants';
+import createMediaWikiApiGateway from './mediawiki';
+import createRESTBaseGateway from './rest';
+import * as formatters from './restFormatters';
+
 var mw = mediaWiki,
-	$ = jQuery,
-	constants = require( '../constants' ),
-	createMediaWikiApiGateway = require( './mediawiki' ),
-	createRESTBaseGateway = require( './rest' ),
-	formatters = require( './restFormatters' );
+	$ = jQuery;
 
 // Note that this interface definition is in the global scope.
 /**
@@ -30,7 +31,7 @@ var mw = mediaWiki,
  * @param {mw.Map} config
  * @return {Gateway}
  */
-function createGateway( config ) {
+export default function createGateway( config ) {
 	switch ( config.get( 'wgPopupsGateway' ) ) {
 		case 'mwApiPlain':
 			return createMediaWikiApiGateway( new mw.Api(), constants );
@@ -42,5 +43,3 @@ function createGateway( config ) {
 			throw new Error( 'Unknown gateway' );
 	}
 }
-
-module.exports = createGateway;
