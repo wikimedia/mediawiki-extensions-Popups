@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fwolff"
+		]
+	},
+	"popups-message": "Bladsyvoorskoue",
+	"popups-desc": "Wys voorskoue wanneer die gebruiker die muis oor 'n bladsyskakel hou.",
+	"popups-redirects": "stuur aan na <h3>$1</h3>",
+	"popups-settings-title": "Bladsyvoorskou",
+	"popups-settings-description": "Hierdie gee 'n voorskou van skakels na wikibladsye en verwysings.",
+	"popups-settings-option-simple": "Aktiveer",
+	"popups-settings-option-simple-description": "Kry gou 'n voorskou van 'n onderwerp terwyl die bladsy gelees word.",
+	"popups-settings-option-advanced": "Gevorderd",
+	"popups-settings-option-off": "Deaktiveer",
+	"popups-settings-save": "Stoor",
+	"popups-settings-help-ok": "Klaar",
+	"popups-settings-cancel": "Kanselleer",
+	"popups-settings-help": "Voorskoue kan weer aangeskakel word met 'n skakel aan die voet van die bladsy.",
+	"popups-settings-enable": "Aktiveer voorskoue",
+	"popups-send-feedback": "Gee terugvoer (eksterne skakel)",
+	"popups-preview-no-preview": "Daar is blykbaar nie 'n voorskou vir dié bladsy nie",
+	"popups-preview-footer-read": "Lees",
+	"prefs-reading": "Leesvoorkeure",
+	"popups-prefs-optin-title": "Bladsyvoorskoue\n\n<em>Kry gou 'n voorskou van 'n onderwerp terwyl die bladsy gelees word</em>",
+	"popups-prefs-optin-enabled-label": "Aktiveer",
+	"popups-prefs-optin-disabled-label": "Deaktiveer"
+}
