@@ -5,11 +5,12 @@
 			"Littledogboy",
 			"Cvanca",
 			"Dvorapa",
-			"Marek Pavlica"
+			"Marek Pavlica",
+			"Walter Klosse"
 		]
 	},
 	"popups-message": "Náhledy stránek",
-	"popups-desc": "Zobrazuje náhledy, když uživatel umístí kurzor myši nad odkaz.",
+	"popups-desc": "Zobrazuje náhledy, když uživatel umístí kurzor myši na odkaz.",
 	"popups-redirects": "přesměrování na <h3>$1</h3>",
 	"popups-settings-title": "Náhled stránky",
 	"popups-settings-description": "Tento nástroj vám umožňuje zobrazovat náhledy odkazů na články a na reference.",
@@ -30,5 +31,6 @@
 	"popups-prefs-optin-title": "Náhledy stránek\n\n<em>Při čtení stránky poskytne rychlé náhledy tématu</em>",
 	"popups-prefs-optin-enabled-label": "Zapnout",
 	"popups-prefs-optin-disabled-label": "Vypnout",
+	"popups-prefs-disable-nav-gadgets-info": "Musíte [[$1 | zakázat udělátko Navigation Popups]] z nástrojů pro povolení udělátka náhledy stránek.",
 	"popups-prefs-conflicting-gadgets-info": "Některá udělátka a další přizpůsobení mohou ovlivnit činnost této funkce. Pokud narazíte na problémy, zkontrolujte si prosím svá udělátka a uživatelské skripty."
 }
