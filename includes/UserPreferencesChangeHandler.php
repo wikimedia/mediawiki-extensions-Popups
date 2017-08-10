@@ -74,7 +74,7 @@ class UserPreferencesChangeHandler {
 	 * @param array $formData Form data submitted by user
 	 * @param PreferencesForm $form A preferences form
 	 * @param User $user Logged-in user
-	 * @param boolean &$result Variable defining is form save successful
+	 * @param bool &$result Variable defining is form save successful
 	 * @param array $oldUserOptions Old user options array
 	 */
 	public static function onPreferencesFormPreSave(
