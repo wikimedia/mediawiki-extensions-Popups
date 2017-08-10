@@ -174,10 +174,10 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	public function testOnResourceLoaderGetConfigVars() {
 		$vars = [ 'something' => 'notEmpty' ];
 		$config = [
-			'wgPopupsSchemaSamplingRate' => 10,
+			'wgPopupsAnonsExperimentalGroupSize' => 0.1,
+			'wgPopupsEventLogging' => false,
 			'wgPopupsBetaFeature' => true,
 			'wgPopupsGateway' => 'mwApiPlain',
-			'wgPopupsAnonsEnabledSamplingRate' => 0.9,
 			'wgPopupsStatsvSamplingRate' => 0
 		];
 		$this->setMwGlobals( $config );

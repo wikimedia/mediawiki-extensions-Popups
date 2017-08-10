@@ -2,6 +2,7 @@
 
 import * as stubs from './stubs';
 import isEnabled from '../../src/isEnabled';
+import { BUCKETS } from '../../src/constants';
 
 function createStubUserSettings( isEnabled ) {
 	return {
@@ -25,31 +26,34 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 		cases,
 		i, testCase,
 		userSettings,
-		experiments,
 		config = new Map();
 
 	cases = [
-		[ undefined, true, true, 'When the user hasn\'t enabled or disabled' +
+		/*
+		[
+			<isAnon>, <bucket>, <expected value of isEnabled>, <test description>
+		]
+		*/
+		[ undefined, BUCKETS.on, true, 'When the user hasn\'t enabled or disabled' +
 			' the feature and the user is in the sample.' ],
-		[ undefined, false, false, 'When the user hasn\'t enabled or disabled' +
+		[ undefined, BUCKETS.control, false, 'When the user hasn\'t enabled or disabled' +
 			' the feature and the user is not in the sample.' ],
-		[ false, true, false, 'When the user has disabled the feature' +
+		[ false, BUCKETS.on, false, 'When the user has disabled the feature' +
 			' and the user is in the sample.' ],
-		[ false, false, false, 'When the user has disabled the feature' +
+		[ false, BUCKETS.control, false, 'When the user has disabled the feature' +
 			' and the user is not in the sample.' ],
-		[ true, true, true, 'When the user has enabled the feature' +
+		[ true, BUCKETS.on, true, 'When the user has enabled the feature' +
 			' and the user is in the sample.' ],
-		[ true, false, true, 'When the user has enabled the feature' +
+		[ true, BUCKETS.control, true, 'When the user has enabled the feature' +
 			' and the user is not in the sample.' ]
 	];
 
 	for ( i = 0; i < cases.length; i++ ) {
 		testCase = cases[ i ];
 		userSettings = createStubUserSettings( testCase[ 0 ] );
-		experiments = stubs.createStubExperiments( testCase[ 1 ] );
 
 		assert.equal(
-			isEnabled( user, userSettings, config, experiments ),
+			isEnabled( user, userSettings, config, testCase[ 1 ] ),
 			testCase[ 2 ],
 			testCase[ 3 ]
 		);
@@ -58,54 +62,60 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 	// ---
 
 	config.set( 'wgPopupsBetaFeature', true );
-	experiments = stubs.createStubExperiments( true );
 
 	assert.notOk(
-		isEnabled( user, userSettings, config, experiments ),
+		isEnabled( user, userSettings, config, BUCKETS.on ),
 		'When Page Previews is enabled as a beta feature, then it\'s not' +
-			' enabled for logged out users when they are in the sample.'
+			' enabled for logged out users when they are in the on group.'
 	);
 
-	experiments = stubs.createStubExperiments( false );
+	assert.notOk(
+		isEnabled( user, userSettings, config, BUCKETS.control ),
+		'When Page Previews is enabled as a beta feature, then it\'s not' +
+			' enabled for logged out users when they are not in the control group.'
+	);
 
 	assert.notOk(
-		isEnabled( user, userSettings, config, experiments ),
+		isEnabled( user, userSettings, config, BUCKETS.off ),
 		'When Page Previews is enabled as a beta feature, then it\'s not' +
-			' enabled for logged out users when they are not in the sample.'
+			' enabled for logged out users when they are in the off group.'
 	);
 } );
 
 QUnit.test( 'it should handle logged in users', function ( assert ) {
 	var user = stubs.createStubUser( /* isAnon = */ false ),
 		userSettings = createStubUserSettings( false ),
-		experiments = stubs.createStubExperiments( true ),
 		config = new Map();
 
 	config.set( 'wgPopupsShouldSendModuleToUser', true );
 
 	assert.ok(
-		isEnabled( user, userSettings, config, experiments ),
-		'If the user is logged in and Page Previews has booted, then it\'s enabled.'
+		isEnabled( user, userSettings, config, BUCKETS.on ),
+		'If the user is logged in and the user is in the on group, then it\'s enabled.'
 	);
 
-	experiments = stubs.createStubExperiments( false );
 	assert.ok(
-		isEnabled( user, userSettings, config, experiments ),
-		'Anon sampling does not have an affect on logged in users.' +
-			'If the user is logged in and Page Previews has booted, then it\'s enabled.'
+		isEnabled( user, userSettings, config, BUCKETS.control ),
+		'Bucket does not have an affect on logged in users.' +
+			'If the user is logged in and they are in the control group it\'s still enabled.'
+	);
+
+	assert.ok(
+		isEnabled( user, userSettings, config, BUCKETS.off ),
+		'Bucket does not have an affect on logged in users.' +
+			'If the user is logged in and the user is bucketed as off then it\'s still enabled.'
 	);
 } );
 
 QUnit.test( 'it should handle the conflict with the Navigation Popups Gadget', function ( assert ) {
 	var user = stubs.createStubUser( /* isAnon = */ false ),
 		userSettings = createStubUserSettings( false ),
-		experiments = stubs.createStubExperiments( true ),
 		config = new Map();
 
 	config.set( 'wgPopupsConflictsWithNavPopupGadget', true );
 
 	assert.notOk(
-		isEnabled( user, userSettings, config, experiments ),
+		isEnabled( user, userSettings, config, BUCKETS.on ),
 		'Page Previews is disabled when it conflicts with the Navigation Popups Gadget.'
 	);
 

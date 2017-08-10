@@ -37,14 +37,13 @@ export function createStubMap() {
 
 /**
  * Creates a stub that can be used as a replacement to mw.experiements
- * @param {bool} isSampled If `true` then the `getBucket` method will
- *  return 'A' otherwise 'control'.
+ * @param {string} bucket getBucket will respond with this bucket.
  * @return {object}
  */
-export function createStubExperiments( isSampled ) {
+export function createStubExperiments( bucket ) {
 	return {
 		getBucket: function () {
-			return isSampled ? 'A' : 'control';
+			return bucket;
 		}
 	};
 }

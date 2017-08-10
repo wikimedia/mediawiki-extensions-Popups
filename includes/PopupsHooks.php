@@ -136,10 +136,10 @@ class PopupsHooks {
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
 		$conf = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
-		$vars['wgPopupsSchemaSamplingRate'] = $conf->get( 'PopupsSchemaSamplingRate' );
 		$vars['wgPopupsBetaFeature'] = $conf->get( 'PopupsBetaFeature' );
 		$vars['wgPopupsGateway'] = $conf->get( 'PopupsGateway' );
-		$vars['wgPopupsAnonsEnabledSamplingRate'] = $conf->get( 'PopupsAnonsEnabledSamplingRate' );
+		$vars['wgPopupsEventLogging'] = $conf->get( 'PopupsEventLogging' );
+		$vars['wgPopupsAnonsExperimentalGroupSize'] = $conf->get( 'PopupsAnonsExperimentalGroupSize' );
 		$vars['wgPopupsStatsvSamplingRate'] = $conf->get( 'PopupsStatsvSamplingRate' );
 	}
 

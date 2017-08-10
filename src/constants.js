@@ -6,6 +6,12 @@ var $ = jQuery,
 	// example)
 	pixelRatio = $.bracketedDevicePixelRatio && $.bracketedDevicePixelRatio() || 1;
 
+export const BUCKETS = {
+	off: 'off',
+	on: 'on',
+	control: 'control'
+};
+
 export default {
 	THUMBNAIL_SIZE: 300 * pixelRatio,
 	EXTRACT_LENGTH: 525

@@ -46,27 +46,11 @@ class MWEventLogger implements EventLogger {
 	}
 
 	/**
-	 * @return bool
-	 */
-	public function shouldLog() {
-		// 1 fully enabled, 0 disabled
-		$samplingRate = $this->config->get( 'PopupsSchemaSamplingRate' );
-		if ( $samplingRate == 0 ) {
-			return false;
-		}
-
-		return (float)wfRandom() <= (float)$samplingRate;
-	}
-
-	/**
 	 * Log event
 	 *
 	 * @param array $event An associative array containing event data
 	 */
 	public function log( array $event ) {
-		if ( !$this->shouldLog() ) {
-			return;
-		}
 		$eventLoggingSchemas = $this->registry->getAttribute( 'EventLoggingSchemas' );
 
 		\EventLogging::logEvent(
