@@ -108,7 +108,7 @@ function registerChangeListeners( store, actions, userSettings, settingsDialog, 
 	registerChangeListener( store, changeListeners.statsv( actions, statsvTracker ) );
 	registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
-	registerChangeListener( store, changeListeners.eventLogging( actions, eventLoggingTracker, statsvTracker ) );
+	registerChangeListener( store, changeListeners.eventLogging( actions, eventLoggingTracker ) );
 }
 
 /*

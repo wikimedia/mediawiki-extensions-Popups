@@ -7,11 +7,9 @@ QUnit.module( 'ext.popups/eventLogging', {
 		};
 
 		this.eventLoggingTracker = this.sandbox.spy();
-		this.statsvTracker = this.sandbox.spy();
 		this.changeListener = eventLogging(
 			this.boundActions,
-			this.eventLoggingTracker,
-			this.statsvTracker
+			this.eventLoggingTracker
 		);
 	}
 } );
@@ -73,131 +71,4 @@ QUnit.test( 'it should call the eventLogged bound action creator', function ( as
 	assert.deepEqual( this.boundActions.eventLogged.getCall( 0 ).args[ 0 ], {
 		action: 'pageLoaded'
 	} );
-} );
-
-QUnit.test( 'it should handle duplicate events', function ( assert ) {
-	var state,
-		nextState;
-
-	state = nextState = createState( undefined, {
-		action: 'dwelledButAbandoned',
-		linkInteractionToken: '1234567890',
-		totalInteractionTime: 48
-	} );
-
-	this.changeListener( undefined, state );
-	this.changeListener( state, nextState );
-
-	assert.ok( this.statsvTracker.calledTwice );
-	assert.deepEqual(
-		this.statsvTracker.getCall( 0 ).args,
-		[
-			'counter.PagePreviews.EventLogging.DuplicateToken',
-			1
-		]
-	);
-	assert.deepEqual(
-		this.statsvTracker.getCall( 1 ).args,
-		[
-			'counter.PagePreviews.EventLogging.DuplicateEvent',
-			1
-		],
-		'It should increment the duplicate token and event counters.'
-	);
-
-	assert.notOk(
-		this.eventLoggingTracker.calledTwice,
-		'It shouldn\'t log the event.'
-	);
-	// ---
-
-	nextState = createState( {
-		action: 'dwelledButAbandoned',
-		linkInteractionToken: '0987654321',
-		totalInteractionTime: 16
-	} );
-
-	this.changeListener( state, nextState );
-
-	assert.notOk(
-		this.statsvTracker.calledThrice,
-		'The counter isn\'t incremented if the event isn\'t a duplicate'
-	);
-} );
-
-QUnit.test( 'it should handle no event being logged', function ( assert ) {
-	var state;
-
-	state = createState( undefined );
-
-	this.changeListener( undefined, state );
-	this.changeListener( state, state );
-
-	assert.ok( this.statsvTracker.notCalled );
-} );
-
-QUnit.test( 'it should handle duplicate tokens', function ( assert ) {
-	var state,
-		nextState;
-
-	state = createState( undefined, {
-		action: 'opened',
-		linkInteractionToken: '1234567890',
-		totalInteractionTime: 48
-	} );
-
-	nextState = createState( undefined, {
-		action: 'dwelledButAbandoned',
-		linkInteractionToken: '1234567890',
-		totalInteractionTime: 96
-	} );
-
-	this.changeListener( undefined, state );
-	this.changeListener( state, nextState );
-
-	assert.ok( this.statsvTracker.calledOnce );
-	assert.deepEqual(
-		this.statsvTracker.getCall( 0 ).args,
-		[
-			'counter.PagePreviews.EventLogging.DuplicateToken',
-			1
-		],
-		'It should increment the duplicate token counter.'
-	);
-	assert.ok(
-		this.eventLoggingTracker.calledOnce,
-		'It shouldn\'t log the event with the duplicate token.'
-	);
-} );
-
-QUnit.test( 'it should handle undefined tokens', function ( assert ) {
-	var state,
-		state2,
-		state3;
-
-	state = createState( undefined, {
-		action: 'pageLoaded'
-	} );
-
-	state2 = createState( undefined, {
-		action: 'disabled'
-	} );
-
-	state3 = createState( undefined, {
-		action: 'disabled'
-	} );
-
-	this.changeListener( undefined, state );
-	this.changeListener( undefined, state2 );
-	this.changeListener( undefined, state3 );
-
-	assert.ok(
-		this.statsvTracker.notCalled,
-		'It shouldn\'t increment the duplicate token counter.'
-	);
-
-	assert.ok(
-		this.eventLoggingTracker.calledThrice,
-		'It should log the event twice.'
-	);
 } );
