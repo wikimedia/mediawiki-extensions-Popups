@@ -49,7 +49,7 @@ class PopupsGadgetsIntegration {
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 */
 	public function __construct( Config $config, ExtensionRegistry $extensionRegistry ) {
-		$this->extensionRegistry =  $extensionRegistry;
+		$this->extensionRegistry = $extensionRegistry;
 		$this->navPopupsGadgetName = $this->sanitizeGadgetName(
 			$config->get( self::CONFIG_NAVIGATION_POPUPS_NAME ) );
 	}
