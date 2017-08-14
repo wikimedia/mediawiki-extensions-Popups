@@ -2,16 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Asaifm",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"ديفيد"
 		]
 	},
-	"popups-message": "بطاقات الحوم",
-	"popups-desc": "يقوم بعرض بطاقات حوم بملخصات عن محتوى الصفحة عندما يقوم المستخدم بحوم المؤشر على رابط الصفحة",
+	"popups-message": "معاينات الصفحة",
+	"popups-desc": "يقوم بعرض معاينات عندما يقوم المستخدم بحوم المؤشر على رابط الصفحة",
 	"popups-redirects": "إعادة توجيه إلى <h3>$1</h3>",
 	"popups-settings-title": "معاينة الصفحة",
 	"popups-settings-description": "تتيح هذه الأداة معاينة الوصلات إلى صفحات الويكي والمراجع.",
 	"popups-settings-option-simple": "تمكين",
-	"popups-settings-option-simple-description": "اعرض الجملة الأولى في الصفحة بالإضافة إلى صورة معاينة.",
+	"popups-settings-option-simple-description": "الحصول على معاينة سريعة للموضوع أثناء قراءة الصفحة.",
 	"popups-settings-option-advanced": "متقدمة",
 	"popups-settings-option-off": "تعطيل",
 	"popups-settings-save": "احفظ",
