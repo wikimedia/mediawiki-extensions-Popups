@@ -37,6 +37,11 @@ QUnit.test( '#getEditCountBucket', function ( assert ) {
 QUnit.test( '#getPreviewCountBucket', function ( assert ) {
 	var i, count, bucket,
 		cases = [
+			[ false, 'unknown' ],
+			[ NaN, 'unknown' ],
+			[ undefined, 'unknown' ],
+			[ null, 'unknown' ],
+			[ '', 'unknown' ],
 			[ -1, 'unknown' ],
 			[ 0, '0 previews' ],
 			[ 1, '1-4 previews' ],

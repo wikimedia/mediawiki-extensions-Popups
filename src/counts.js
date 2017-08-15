@@ -48,10 +48,6 @@ exports.getEditCountBucket = function getEditCountBucket( count ) {
 exports.getPreviewCountBucket = function getPreviewCountBucket( count ) {
 	var bucket;
 
-	if ( count === -1 ) {
-		return 'unknown';
-	}
-
 	if ( count === 0 ) {
 		bucket = '0';
 	} else if ( count >= 1 && count <= 4 ) {
@@ -62,5 +58,5 @@ exports.getPreviewCountBucket = function getPreviewCountBucket( count ) {
 		bucket = '21+';
 	}
 
-	return bucket + ' previews';
+	return bucket !== undefined ? ( bucket + ' previews' ) : 'unknown';
 };
