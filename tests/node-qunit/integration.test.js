@@ -185,50 +185,43 @@ QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( 
 
 QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert ) {
 	var store = this.store,
-		done = assert.async(),
 		el = this.el;
 
-	this.dwellAndShowPreview( this.title, el, 'event', 42 ).then( function () {
+	return this.dwellAndShowPreview( this.title, el, 'event', 42 ).then( function () {
 		var state = store.getState();
 		assert.equal( state.preview.activeLink, el );
 		assert.equal( state.preview.shouldShow, true, 'Should show when data has been fetched' );
-		done();
 	} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon start, and then end, switch it to INACTIVE', function ( assert ) {
 	var that = this,
-		done = assert.async(),
 		el = this.el;
 
-	this.dwellAndShowPreview( this.title, el, 'event', 42 ).then( function () {
+	return this.dwellAndShowPreview( this.title, el, 'event', 42 ).then( function () {
 		return that.abandonAndWait( el );
 	} ).then( function () {
 		var state = that.store.getState();
 		assert.equal( state.preview.activeLink, undefined, 'After abandoning, preview is back to INACTIVE' );
-		done();
 	} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, and then dwell preview, should keep it active after all delays', function ( assert ) {
 	var that = this,
-		done = assert.async(),
 		el = this.el;
 
-	this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
+	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( function () {
 			var state = that.store.getState();
 			assert.equal( state.preview.activeLink, el );
-			done();
 		} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should keep it active after all delays', function ( assert ) {
 	var that = this,
-		done = assert.async(),
 		el = this.el;
 
-	this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
+	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( function () {
 			var abandonPreviewDeferred, dwellPromise, dwellDeferred;
 
@@ -251,6 +244,5 @@ QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should 
 		.then( function () {
 			var state = that.store.getState();
 			assert.equal( state.preview.activeLink, el );
-			done();
 		} );
 } );

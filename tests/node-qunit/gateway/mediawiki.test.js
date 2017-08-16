@@ -153,19 +153,19 @@ QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a mo
 } );
 
 QUnit.test( 'MediaWiki API gateway handles the API failure', function ( assert ) {
-	var deferred = $.Deferred(),
+	var p,
+		deferred = $.Deferred(),
 		api = {
 			get: this.sandbox.stub().returns( deferred.promise() )
 		},
-		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS ),
-		done = assert.async( 1 );
+		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	gateway.getPageSummary( 'Test Title' ).fail( function () {
+	p = gateway.getPageSummary( 'Test Title' ).catch( function () {
 		assert.ok( true );
-		done();
 	} );
 
 	deferred.reject();
+	return p;
 } );
 
 QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert ) {
@@ -174,12 +174,10 @@ QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert
 				$.Deferred().resolve( MEDIAWIKI_API_RESPONSE ).promise()
 			)
 		},
-		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS ),
-		done = assert.async( 1 );
+		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
 		assert.deepEqual( result, MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL );
-		done();
 	} );
 } );
 
@@ -213,12 +211,9 @@ QUnit.test( 'MediaWiki API gateway handles missing pages ', function ( assert ) 
 				$.Deferred().resolve( response ).promise()
 			)
 		},
-		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS ),
-		done = assert.async( 1 );
+		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
 		assert.deepEqual( result, model );
-
-		done();
 	} );
 } );

@@ -231,12 +231,10 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 QUnit.test( 'RESTBase gateway handles the API failure', function ( assert ) {
 	var deferred = $.Deferred(),
 		api = this.sandbox.stub().returns( deferred.reject( { status: 500 } ).promise() ),
-		gateway = createRESTBaseGateway( api ),
-		done = assert.async( 1 );
+		gateway = createRESTBaseGateway( api );
 
-	gateway.getPageSummary( 'Test Title' ).fail( function () {
+	return gateway.getPageSummary( 'Test Title' ).catch( function () {
 		assert.ok( true );
-		done();
 	} );
 
 } );
@@ -244,12 +242,10 @@ QUnit.test( 'RESTBase gateway handles the API failure', function ( assert ) {
 QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( assert ) {
 	var deferred = $.Deferred(),
 		api = this.sandbox.stub().returns( deferred.reject( { status: 404 } ).promise() ),
-		gateway = createRESTBaseGateway( api, { THUMBNAIL_SIZE: 200 }, provideParsedExtract ),
-		done = assert.async( 1 );
+		gateway = createRESTBaseGateway( api, { THUMBNAIL_SIZE: 200 }, provideParsedExtract );
 
-	gateway.getPageSummary( 'Test Title' ).done( function () {
+	return gateway.getPageSummary( 'Test Title' ).done( function () {
 		assert.ok( true );
-		done();
 	} );
 } );
 
@@ -257,12 +253,10 @@ QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
 	var api = this.sandbox.stub().returns(
 			$.Deferred().resolve( RESTBASE_RESPONSE ).promise()
 		),
-		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract ),
-		done = assert.async( 1 );
+		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
 		assert.deepEqual( result, RESTBASE_RESPONSE_PREVIEW_MODEL );
-		done();
 	} );
 } );
 
@@ -289,12 +283,9 @@ QUnit.test( 'RESTBase gateway handles missing pages ', function ( assert ) {
 		api = this.sandbox.stub().returns(
 			$.Deferred().reject( response ).promise()
 		),
-		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract ),
-		done = assert.async( 1 );
+		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	gateway.getPageSummary( 'Missing Page' ).fail( function () {
+	return gateway.getPageSummary( 'Missing Page' ).catch( function () {
 		assert.ok( true );
-
-		done();
 	} );
 } );

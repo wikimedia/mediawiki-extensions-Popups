@@ -280,7 +280,6 @@ QUnit.test( 'show', function ( assert ) {
 		behavior = createBehavior( this.sandbox ),
 		token = 'some-token',
 		$container = $( '<div>' ),
-		done = assert.async( 1 ),
 		promise;
 
 	preview.el.show = this.sandbox.stub();
@@ -298,12 +297,11 @@ QUnit.test( 'show', function ( assert ) {
 		'Preview has been shown.'
 	);
 
-	promise.done( function () {
+	return promise.done( function () {
 		assert.ok(
 			behavior.previewShow.calledWith( token ),
 			'previewShow has been called with the correct token.'
 		);
-		done();
 	} );
 } );
 
@@ -314,7 +312,6 @@ QUnit.test( 'hide - fade out up', function ( assert ) {
 			thumbnail: null,
 			isTall: false
 		},
-		done = assert.async( 1 ),
 		$container = $( '<div>' ).append( preview.el ),
 		promise = renderer.hide( preview );
 
@@ -331,13 +328,12 @@ QUnit.test( 'hide - fade out up', function ( assert ) {
 		'',
 		'Preview is still in the container.'
 	);
-	promise.done( function () {
+	return promise.done( function () {
 		assert.equal(
 			$container.html(),
 			'',
 			'Preview has been removed from the container.'
 		);
-		done();
 	} );
 } );
 
@@ -348,7 +344,6 @@ QUnit.test( 'hide - fade out down', function ( assert ) {
 			thumbnail: null,
 			isTall: false
 		},
-		done = assert.async( 1 ),
 		$container = $( '<div>' ).append( preview.el ),
 		promise = renderer.hide( preview );
 
@@ -365,13 +360,12 @@ QUnit.test( 'hide - fade out down', function ( assert ) {
 		'',
 		'Preview is still in the container.'
 	);
-	promise.done( function () {
+	return promise.done( function () {
 		assert.equal(
 			$container.html(),
 			'',
 			'Preview has been removed from the container.'
 		);
-		done();
 	} );
 } );
 
