@@ -66,21 +66,28 @@ export default function createUserSettings( storage ) {
 		 * Gets the number of previews that the user has seen.
 		 *
 		 * If the storage isn't available, then -1 is returned.
+		 * If the value in storage is not a number it will override stored value to 0
 		 *
 		 * @function
 		 * @name UserSettings#getPreviewCount
 		 * @return {Number}
 		 */
 		getPreviewCount: function () {
-			var result = storage.get( PREVIEW_COUNT_KEY );
+			var result = storage.get( PREVIEW_COUNT_KEY ), count;
 
 			if ( result === false ) {
 				return -1;
 			} else if ( result === null ) {
 				return 0;
 			}
+			count = parseInt( result, 10 );
 
-			return parseInt( result, 10 );
+			// stored number is not a zero, override it to zero and store new value
+			if ( Number.isNaN( count ) ) {
+				count = 0;
+				this.setPreviewCount( count );
+			}
+			return count;
 		},
 
 		/**

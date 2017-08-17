@@ -92,3 +92,10 @@ QUnit.test( '#setPreviewCount should store the count as a string', function ( as
 
 	assert.strictEqual( this.storage.get( 'ext.popups.core.previewCount' ), '222' );
 } );
+
+QUnit.test( '#getPreviewCount should override value in storage when is not a number', function ( assert ) {
+	this.storage.set( 'ext.popups.core.previewCount', 'NaN' );
+
+	assert.strictEqual( this.userSettings.getPreviewCount(), 0 );
+	assert.strictEqual( this.storage.get( 'ext.popups.core.previewCount' ), '0' );
+} );
