@@ -24,7 +24,9 @@
 	"popups-settings-enable": "미리 보기 활성화",
 	"popups-preview-no-preview": "이 페이지에 미리 보기가 없는 것 같습니다",
 	"popups-preview-footer-read": "읽기",
+	"prefs-reading": "읽기 환경 설정",
 	"popups-prefs-optin-title": "문서 미리 보기\n\n<em>문서를 읽는 동안 주제를 빠르게 미리 봅니다</em>",
 	"popups-prefs-optin-enabled-label": "활성화",
-	"popups-prefs-optin-disabled-label": "비활성화"
+	"popups-prefs-optin-disabled-label": "비활성화",
+	"popups-prefs-conflicting-gadgets-info": "일부 소도구와 기타 사용자 지정 기능으로 인해 이 기능의 성능에 영향을 미칠 수 있습니다. 문제가 있으면 소도구와 사용자 스크립트를 확인해 보십시오."
 }
