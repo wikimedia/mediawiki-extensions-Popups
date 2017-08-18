@@ -108,27 +108,24 @@ class PopupsHooks {
 	 *
 	 * @param OutputPage &$out The Output page object
 	 * @param Skin &$skin &Skin object that will be used to generate the page
-	 * @return bool
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		if ( $context->isTitleBlacklisted( $out->getTitle() ) ) {
-			return false;
+			return;
 		}
 
 		if ( !$context->areDependenciesMet() ) {
 			$logger = $context->getLogger();
 			$logger->error( 'Popups requires the PageImages and TextExtracts extensions. '
 				. 'If Beta mode is on it requires also BetaFeatures extension' );
-			return true;
+			return;
 		}
 
 		$user = $out->getUser();
 		if ( !$context->isBetaFeatureEnabled() || $context->shouldSendModuleToUser( $user ) ) {
 			$out->addModules( [ 'ext.popups' ] );
 		}
-
-		return true;
 	}
 
 	/**
