@@ -7,7 +7,7 @@
 	"popups-message": "Lehekülgede eelvaade",
 	"popups-desc": "Kuvab lehekülje eelvaate, kui liigutada kursor üle leheküljelingi.",
 	"popups-redirects": "suunab ümber leheküljele <h3>$1</h3>",
-	"popups-settings-title": "Lehekülje eelvaatlus",
+	"popups-settings-title": "Lehekülgede eelvaade",
 	"popups-settings-description": "See tööriist võimaldab eelvaadelda linke, mis viitavad viki lehekülgedele ja viidetele.",
 	"popups-settings-option-simple": "Luba",
 	"popups-settings-option-simple-description": "Näita lehekülje lugemisel teemade põgusat eelvaadet.",
@@ -19,5 +19,12 @@
 	"popups-settings-cancel": "Loobu",
 	"popups-settings-help": "Saad eelvaatluse tagasi sisse lülitada, kasutades linki lehekülje jaluses.",
 	"popups-settings-enable": "Luba eelvaatlus",
-	"popups-send-feedback": "Saada tagasisidet (välislink)"
+	"popups-send-feedback": "Saada tagasisidet (välislink)",
+	"popups-preview-no-preview": "Paistab, et selle lehekülje eelvaade puudub.",
+	"popups-preview-footer-read": "Loe",
+	"prefs-reading": "Lugemiseelistused",
+	"popups-prefs-optin-title": "Lehekülgede eelvaade\n\n<em>Näita lehekülje lugemisel teemadest kiireelvaateid.</em>",
+	"popups-prefs-optin-enabled-label": "Luba",
+	"popups-prefs-optin-disabled-label": "Keela",
+	"popups-prefs-conflicting-gadgets-info": "Teatud tööriistad ja muud kohandused võivad selle funktsiooni toimimist mõjutada. Kui koged probleeme, siis vaata palun üle oma tööriistad ja kasutajaskriptid."
 }
