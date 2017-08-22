@@ -244,7 +244,7 @@ QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( ass
 		api = this.sandbox.stub().returns( deferred.reject( { status: 404 } ).promise() ),
 		gateway = createRESTBaseGateway( api, { THUMBNAIL_SIZE: 200 }, provideParsedExtract );
 
-	return gateway.getPageSummary( 'Test Title' ).done( function () {
+	return gateway.getPageSummary( 'Test Title' ).then( function () {
 		assert.ok( true );
 	} );
 } );
@@ -255,7 +255,7 @@ QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
 		),
 		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).then( function ( result ) {
 		assert.deepEqual( result, RESTBASE_RESPONSE_PREVIEW_MODEL );
 	} );
 } );

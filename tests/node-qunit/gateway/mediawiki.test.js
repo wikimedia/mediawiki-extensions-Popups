@@ -176,7 +176,7 @@ QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	return gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).then( function ( result ) {
 		assert.deepEqual( result, MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL );
 	} );
 } );
@@ -213,7 +213,7 @@ QUnit.test( 'MediaWiki API gateway handles missing pages ', function ( assert ) 
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	return gateway.getPageSummary( 'Test Title' ).done( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).then( function ( result ) {
 		assert.deepEqual( result, model );
 	} );
 } );

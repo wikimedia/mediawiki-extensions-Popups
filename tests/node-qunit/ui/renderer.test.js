@@ -280,11 +280,11 @@ QUnit.test( 'show', function ( assert ) {
 		behavior = createBehavior( this.sandbox ),
 		token = 'some-token',
 		$container = $( '<div>' ),
-		promise;
+		showPreview;
 
 	preview.el.show = this.sandbox.stub();
 
-	promise = renderer.show(
+	showPreview = renderer.show(
 		preview, event, link, behavior, token, $container.get( 0 ) );
 
 	assert.notEqual(
@@ -297,7 +297,7 @@ QUnit.test( 'show', function ( assert ) {
 		'Preview has been shown.'
 	);
 
-	return promise.done( function () {
+	return showPreview.then( function () {
 		assert.ok(
 			behavior.previewShow.calledWith( token ),
 			'previewShow has been called with the correct token.'
@@ -313,7 +313,7 @@ QUnit.test( 'hide - fade out up', function ( assert ) {
 			isTall: false
 		},
 		$container = $( '<div>' ).append( preview.el ),
-		promise = renderer.hide( preview );
+		hidePreview = renderer.hide( preview );
 
 	assert.ok(
 		preview.el.hasClass( 'mwe-popups-fade-out-up' ),
@@ -328,7 +328,7 @@ QUnit.test( 'hide - fade out up', function ( assert ) {
 		'',
 		'Preview is still in the container.'
 	);
-	return promise.done( function () {
+	return hidePreview.then( function () {
 		assert.equal(
 			$container.html(),
 			'',
@@ -345,7 +345,7 @@ QUnit.test( 'hide - fade out down', function ( assert ) {
 			isTall: false
 		},
 		$container = $( '<div>' ).append( preview.el ),
-		promise = renderer.hide( preview );
+		hidePreview = renderer.hide( preview );
 
 	assert.ok(
 		preview.el.hasClass( 'mwe-popups-fade-out-down' ),
@@ -360,7 +360,7 @@ QUnit.test( 'hide - fade out down', function ( assert ) {
 		'',
 		'Preview is still in the container.'
 	);
-	return promise.done( function () {
+	return hidePreview.then( function () {
 		assert.equal(
 			$container.html(),
 			'',
