@@ -6,7 +6,7 @@
 		]
 	},
 	"popups-message": "Bladsyvoorskoue",
-	"popups-desc": "Wys voorskoue wanneer die gebruiker die muis oor 'n bladsyskakel hou.",
+	"popups-desc": "Vertoon voorskoue as die gebruiker se muis oor 'n bladsyskakel beweeg.",
 	"popups-redirects": "stuur aan na <h3>$1</h3>",
 	"popups-settings-title": "Bladsyvoorskou",
 	"popups-settings-description": "Dié funksie stel jou tot 'n voorskou van skakels na wikibladsye en verwysings in staat.",
@@ -17,7 +17,7 @@
 	"popups-settings-save": "Stoor",
 	"popups-settings-help-ok": "Klaar",
 	"popups-settings-cancel": "Kanselleer",
-	"popups-settings-help": "Voorskoue kan weer aangeskakel word met 'n skakel aan die voet van die bladsy.",
+	"popups-settings-help": "U kan die voorskou-funksie weer aanskakel, as u die skakel in die voetskrif benut.",
 	"popups-settings-enable": "Aktiveer voorskoue",
 	"popups-send-feedback": "Lewer terugvoer (eksterne skakel)",
 	"popups-preview-no-preview": "Dit blyk daar is geen voorskou vir hierdie blad nie",

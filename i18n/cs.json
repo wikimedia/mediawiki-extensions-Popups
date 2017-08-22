@@ -31,6 +31,6 @@
 	"popups-prefs-optin-title": "Náhledy stránek\n\n<em>Při čtení stránky poskytne rychlé náhledy tématu</em>",
 	"popups-prefs-optin-enabled-label": "Zapnout",
 	"popups-prefs-optin-disabled-label": "Vypnout",
-	"popups-prefs-disable-nav-gadgets-info": "Musíte [[$1 | zakázat udělátko Navigation Popups]] z nástrojů pro povolení udělátka náhledy stránek.",
+	"popups-prefs-disable-nav-gadgets-info": "Abyste {{GENDER:|mohl|mohla|mohli}} zapnout Náhledy stránek, musíte [[$1 | vypnout udělátko Navigation Popups]] na záložce Udělátka",
 	"popups-prefs-conflicting-gadgets-info": "Některá udělátka a další přizpůsobení mohou ovlivnit činnost této funkce. Pokud narazíte na problémy, zkontrolujte si prosím svá udělátka a uživatelské skripty."
 }
