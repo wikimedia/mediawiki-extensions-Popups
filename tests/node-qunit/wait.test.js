@@ -11,13 +11,15 @@ QUnit.test( 'it should resolve after waiting', function ( assert ) {
 		callback();
 	} );
 
-	return wait( 150 ).done( function () {
+	return wait( 150 ).then( function () {
 		assert.strictEqual(
 			timeout.getCall( 0 ).args[ 1 ],
 			150,
 			'It waits for the given duration'
 		);
-	} ).always( function () {
 		timeout.restore();
+	} ).catch( function ( err ) {
+		timeout.restore();
+		throw err;
 	} );
 } );
