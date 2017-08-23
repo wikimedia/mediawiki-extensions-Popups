@@ -120,14 +120,16 @@ export function fetch( gateway, title, el, token ) {
 
 				return result;
 			} )
-			.fail( function () {
+			.catch( function ( err ) {
 				dispatch( {
 					type: types.FETCH_FAILED,
 					el: el
 				} );
+				// Keep the request promise in a rejected status since it failed.
+				throw err;
 			} );
 
-		$.when( request, wait( FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY ) )
+		return $.when( request, wait( FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY ) )
 			.then( function ( result ) {
 				dispatch( timedAction( {
 					type: types.FETCH_COMPLETE,

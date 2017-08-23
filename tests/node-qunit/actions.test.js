@@ -279,7 +279,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 
 		// Sugar.
 		this.fetch = function () {
-			actions.fetch( that.gateway, that.title, that.el, that.token )( that.dispatch );
+			return actions.fetch( that.gateway, that.title, that.el, that.token )( that.dispatch );
 		};
 	}
 } );
@@ -373,6 +373,55 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 			);
 		}, 0 );
 	} );
+} );
+
+QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails', function ( assert ) {
+	var that = this;
+
+	assert.expect( 2 );
+
+	this.gatewayDeferred.reject( new Error( 'API req failed' ) );
+
+	const fetch = this.fetch().catch( function () {
+		assert.equal( that.dispatch.callCount, 2, 'dispatch called twice, START and FAILED' );
+		assert.deepEqual(
+			that.dispatch.getCall( 1 ).args[ 0 ],
+			{
+				type: 'FETCH_FAILED',
+				el: that.el
+			}
+		);
+	} );
+
+	this.now += 115;
+
+	return fetch;
+} );
+
+QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails even after the wait timeout', function ( assert ) {
+	var that = this;
+
+	assert.expect( 2 );
+
+	const fetch = this.fetch().catch( function () {
+		assert.equal( that.dispatch.callCount, 2, 'dispatch called twice, START and FAILED' );
+		assert.deepEqual(
+			that.dispatch.getCall( 1 ).args[ 0 ],
+			{
+				type: 'FETCH_FAILED',
+				el: that.el
+			}
+		);
+	} );
+
+	// After the wait interval happens, resolve the gateway request
+	this.waitPromises[ 0 ].then( function () {
+		that.gatewayDeferred.reject( new Error( 'API req failed' ) );
+	} );
+
+	this.waitDeferreds[ 0 ].resolve();
+
+	return fetch;
 } );
 
 QUnit.module( 'ext.popups/actions#abandon', {
