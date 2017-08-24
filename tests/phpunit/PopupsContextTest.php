@@ -279,19 +279,37 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @return array/
+	 * @return array
 	 */
 	public function provideTestIsTitleBlacklisted() {
-		$blacklist = [ 'Special:UserLogin', 'Special:CreateAccount', 'User:A' ];
+		$blacklist = [ 'Special:Userlogin', 'Special:CreateAccount', 'User:A' ];
 		return [
 			[ $blacklist, Title::newFromText( 'Main_Page' ), false ],
-			[ $blacklist, Title::newFromText( 'Special:UserLogin' ), true ],
 			[ $blacklist, Title::newFromText( 'Special:CreateAccount' ), true ],
 			[ $blacklist, Title::newFromText( 'User:A' ), true ],
 			[ $blacklist, Title::newFromText( 'User:A/B' ), true ],
 			[ $blacklist, Title::newFromText( 'User:B' ), false ],
 			[ $blacklist, Title::newFromText( 'User:B/A' ), false ],
+			// test canonical name handling
+			[ $blacklist, Title::newFromText( 'Special:UserLogin' ), true ],
 		];
+	}
+
+	/**
+	 * Test if special page in different language is blacklisted
+	 *
+	 * @covers ::isTitleBlacklisted
+	 */
+	public function testIsTranslatedTitleBlacklisted() {
+		$page = 'Specjalna:Preferencje';
+		$blacklist = [ $page ];
+
+		$this->setMwGlobals( [
+			"wgPopupsPageBlacklist" => $blacklist,
+			"wgLanguageCode" => "pl"
+		] );
+		$context = $this->getContext();
+		$this->assertEquals( true, $context->isTitleBlacklisted( Title::newFromText( $page ) ) );
 	}
 
 	/**
