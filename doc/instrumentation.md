@@ -1,6 +1,6 @@
 # Instrumentation
 
-Page Previews is thoroughly instrumented. Currently, there's one [Event Logging](https://www.mediawiki.org/wiki/Extension:EventLogging) ("EL") schema that captures all of the data that we record about a user's interactions with the Page Previews extension, the [Schema:Popups](https://meta.wikimedia.org/wiki/Schema:Popups) schema. There is also a statsv instrumentation, which is visualized as a [Graphana dashboard](https://grafana.wikimedia.org/dashboard/db/reading-web-page-previews). The primary purpose of the statsv instrumentation is to monitor the performance of PagePreviews in production.
+Page Previews is thoroughly instrumented. Currently, there's one [Event Logging](https://www.mediawiki.org/wiki/Extension:EventLogging) ("EL") schema that captures all of the data that we record about a user's interactions with the Page Previews extension, the [Schema:Popups](https://meta.wikimedia.org/wiki/Schema:Popups) schema. There is also a statsv instrumentation, which is visualized as a [Grafana dashboard](https://grafana.wikimedia.org/dashboard/db/reading-web-page-previews). The primary purpose of the statsv instrumentation is to monitor the performance of PagePreviews in production.
 
 Tilman Bayer captured the high level state and user action's that should trigger an event to be logged via EL [here](https://www.mediawiki.org/wiki/File:State_diagram_for_Schema-Popups_(Hovercards_instrumentation).svg) – indeed, this diagram was a catalyst for rewriting the Page Previews application as a large finite state machine.
 
