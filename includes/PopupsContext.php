@@ -177,9 +177,21 @@ class PopupsContext {
 	 */
 	public function isTitleBlacklisted( $title ) {
 		$blacklistedPages = $this->config->get( 'PopupsPageBlacklist' );
+		$canonicalTitle = $title->getRootTitle();
+
+		if ( $title->isSpecialPage() ) {
+			// it's special page, translate it to canonical name
+			list( $name, $subpage ) = \SpecialPageFactory::resolveAlias( $canonicalTitle->getText() );
+
+			if ( $name !== null ) {
+				$canonicalTitle = Title::newFromText( $name, NS_SPECIAL );
+			}
+		}
+
 		foreach ( $blacklistedPages as $page ) {
 			$blacklistedTitle = Title::newFromText( $page );
-			if ( $title->getRootTitle() == $blacklistedTitle->getRootTitle() ) {
+
+			if ( $canonicalTitle->equals( $blacklistedTitle ) ) {
 				return true;
 			}
 		}

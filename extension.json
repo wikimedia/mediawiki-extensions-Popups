@@ -72,8 +72,8 @@
 		"PopupsEventLogging": false,
 		"@PopupsStatsvSamplingRate": "Sampling rate for logging performance data to statsv.",
 		"PopupsStatsvSamplingRate": 0,
-		"@PopupsPageBlacklist": "Blacklisted pages are subject to the HTML cache policy of the wiki. A purge on a blacklisted page maybe needed to see the effect of this configuration variable.",
-		"PopupsPageBlacklist": [ "Special:UserLogin", "Special:CreateAccount" ]
+		"@PopupsPageBlacklist": "Blacklisted pages are subject to the HTML cache policy of the wiki. A purge on a blacklisted page maybe needed to see the effect of this configuration variable. Every blacklisted page should be defined by a canonical name, eg: Special:Userlogin",
+		"PopupsPageBlacklist": [ "Special:Userlogin", "Special:CreateAccount" ]
 	},
 	"ResourceModules": {
 		"ext.popups.images": {
