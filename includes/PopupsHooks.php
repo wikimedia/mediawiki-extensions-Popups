@@ -53,7 +53,7 @@ class PopupsHooks {
 				'ltr' => "$wgExtensionAssetsPath/Popups/images/popups-ltr.svg",
 				'rtl' => "$wgExtensionAssetsPath/Popups/images/popups-rtl.svg",
 			],
-			'info-link' => 'https://www.mediawiki.org/wiki/Beta_Features/Hovercards',
+			'info-link' => 'https://www.mediawiki.org/wiki/Special:MyLanguage/Beta_Features/Hovercards',
 			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
 			'requirements' => [
 				'javascript' => true,
