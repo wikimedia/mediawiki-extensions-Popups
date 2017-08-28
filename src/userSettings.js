@@ -83,7 +83,7 @@ export default function createUserSettings( storage ) {
 			count = parseInt( result, 10 );
 
 			// stored number is not a zero, override it to zero and store new value
-			if ( Number.isNaN( count ) ) {
+			if ( isNaN( count ) ) {
 				count = 0;
 				this.setPreviewCount( count );
 			}
