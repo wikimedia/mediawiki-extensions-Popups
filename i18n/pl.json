@@ -9,7 +9,7 @@
 		]
 	},
 	"popups-message": "Wyskakujące okienka",
-	"popups-desc": "Wyświetla wyskakujące okienka z podsumowaniem treści strony docelowej po umieszczeniu wskaźnika myszy na odnośniku.",
+	"popups-desc": "Wyświetla podgląd po umieszczeniu wskaźnika myszy na odnośniku",
 	"popups-redirects": "przekierowuje do<h3>$1</h3>",
 	"popups-settings-title": "Podgląd strony",
 	"popups-settings-description": "To narzędzie umożliwia szybki podgląd linków do stron wiki i przypisów.",
