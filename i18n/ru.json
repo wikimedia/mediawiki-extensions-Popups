@@ -9,7 +9,8 @@
 			"Kaganer",
 			"Redredsonia",
 			"Facenapalm",
-			"Iniquity"
+			"Iniquity",
+			"Jack who built the house"
 		]
 	},
 	"popups-message": "Предварительный просмотр страницы",
@@ -31,7 +32,7 @@
 	"popups-preview-no-preview": "Предварительный просмотр страницы недоступен",
 	"popups-preview-footer-read": "Читать",
 	"prefs-reading": "Настройки чтения",
-	"popups-prefs-optin-title": "Предпросмотр страниц\n\n<em>Получите быстрый предпросмотр темы при чтении статьи</em>",
+	"popups-prefs-optin-title": "Предпросмотр страниц\n\n<em>Показывать быстрый предпросмотр тем при наведении мыши</em>",
 	"popups-prefs-optin-enabled-label": "Включить",
 	"popups-prefs-optin-disabled-label": "Отключить",
 	"popups-prefs-disable-nav-gadgets-info": "Вы должны [[$1 | отключить гаджет «Навигационные окошки»]] во вкладке «Гаджеты» для активации предпросмотра страниц",

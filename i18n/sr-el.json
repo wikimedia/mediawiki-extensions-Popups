@@ -2,21 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"Milicevic01",
-			"Srdjan m"
+			"Srdjan m",
+			"Obsuser"
 		]
 	},
 	"popups-message": "Info kartice",
 	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko veze prema stranici",
-	"popups-last-edited": "Zadnja izmena $1",
 	"popups-settings-title": "Pregled stranice",
 	"popups-settings-description": "Ovaj alat omogućava pregled viki veza i referenci.",
-	"popups-settings-option-simple": "Jednostavno",
-	"popups-settings-option-simple-description": "Prikazuje uvodnu rečenicu i sliku sa stranice. Preporučeno za čitaoce.",
-	"popups-settings-option-off": "Isključi info kartice",
-	"popups-settings-option-off-description": "Možete promeniti ovo podešavanje klikom na vezu na dnu stranice.",
+	"popups-settings-option-simple": "Omogući",
+	"popups-settings-option-simple-description": "Brz pretpregled teme pri čitanju stranice.",
+	"popups-settings-option-off": "Onemogući",
 	"popups-settings-save": "Sačuvaj",
 	"popups-settings-help-ok": "U redu",
 	"popups-settings-cancel": "Otkaži",
 	"popups-settings-help": "Info kartice možete ponovo uključiti koristeći vezu na dnu stranice.",
-	"popups-settings-enable": "Uključi info kartice"
+	"popups-settings-enable": "Uključi info kartice",
+	"prefs-reading": "Čitanje",
+	"popups-prefs-optin-title": "Pretpregledi stranica\n\n<em>Brz pretpregled teme pri čitanju stranice</em>",
+	"popups-prefs-conflicting-gadgets-info": "Određene spravice i druga prilagođavanja mogu da utiču na rad ove opcije. Ako naiđete na probleme, proverite svoje spravice i korisničke skripte."
 }

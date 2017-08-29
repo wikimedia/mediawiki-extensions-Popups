@@ -4,7 +4,8 @@
 			"Rancher",
 			"Milicevic01",
 			"Srdjan m",
-			"Сербијана"
+			"Сербијана",
+			"Obsuser"
 		]
 	},
 	"popups-message": "Инфо картице",
@@ -12,12 +13,15 @@
 	"popups-redirects": "преусмерења на <h3>$1</h3>",
 	"popups-settings-title": "Преглед странице",
 	"popups-settings-description": "Овај алат омогућава преглед вики веза и референци.",
-	"popups-settings-option-simple": "Омогућено",
-	"popups-settings-option-simple-description": "Приказује уводну реченицу и слику са странице. Препоручено за читаоце.",
+	"popups-settings-option-simple": "Омогући",
+	"popups-settings-option-simple-description": "Брз претпреглед теме при читању странице.",
 	"popups-settings-option-off": "Онемогући",
 	"popups-settings-save": "Сачувај",
 	"popups-settings-help-ok": "Готово",
 	"popups-settings-cancel": "Откажи",
 	"popups-settings-help": "Инфо картице можете поново укључити користећи везу на дну странице.",
-	"popups-settings-enable": "Укључи инфо картице"
+	"popups-settings-enable": "Укључи инфо картице",
+	"prefs-reading": "Читање",
+	"popups-prefs-optin-title": "Претпрегледи страница\n\n<em>Брз претпреглед теме при читању странице</em>",
+	"popups-prefs-conflicting-gadgets-info": "Одређене справице и друга прилагођавања могу да утичу на рад ове опције. Ако наиђете на проблеме, проверите своје справице и корисничке скрипте."
 }
