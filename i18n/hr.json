@@ -1,23 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
-			"MaGa"
+			"MaGa",
+			"Bugoslav"
 		]
 	},
 	"popups-message": "Sažetak u lebdećem prozorčiću",
 	"popups-desc": "Prikazuje sažet sadržaj stranice prelaskom miša preko poveznice.",
+	"popups-redirects": "preusmjerava na <h3>$1</h3>",
 	"popups-settings-title": "Pregled stranice",
-	"popups-settings-description": "Ovaj alat omogućava pregled plavih poveznica i izvora",
-	"popups-settings-option-simple": "Jednostavno",
-	"popups-settings-option-simple-description": "Pregled uvodne rečenice i slike na stranici. Preporučljivo za čitatelje.",
+	"popups-settings-description": "Ovo oruđe omogućava Vam pregled poveznica na wikistranicama i prema referencijama.",
+	"popups-settings-option-simple": "Omogući",
+	"popups-settings-option-simple-description": "Dohvaća brzo pregledanje teme pri čitanju stranice.",
 	"popups-settings-option-advanced": "Napredno",
-	"popups-settings-option-off": "Onemogući preglede",
+	"popups-settings-option-off": "Onemogući",
 	"popups-settings-save": "Spremi",
 	"popups-settings-help-ok": "Gotovo",
 	"popups-settings-cancel": "Odustani",
+	"popups-settings-help": "Pregled stranica možete ponovo uključiti rabeći poveznicu na dnu stranice.",
 	"popups-settings-enable": "Omogući preglede",
+	"popups-send-feedback": "Pošalji povratne obavijesti (vanjska poveznica)",
 	"popups-preview-no-preview": "Izgleda da ne postoji pretpregled ove stranice",
 	"popups-preview-footer-read": "Pročitaj",
+	"prefs-reading": "Postavke prikaza načina čitanja",
+	"popups-prefs-optin-title": "Pregled stranica\n\n<em>Brzo pregledanje bilo koje teme dok čitate stranicu</em>",
 	"popups-prefs-optin-enabled-label": "Omogući",
-	"popups-prefs-optin-disabled-label": "Onemogući"
+	"popups-prefs-optin-disabled-label": "Onemogući",
+	"popups-prefs-disable-nav-gadgets-info": "Morate [[$1 | isključiti dodatak Navigacijski prozorčići ''(Navigation Popups)'']] iz kartice »Dodatci« u Postavkama da biste uključili Pregled stranica",
+	"popups-prefs-conflicting-gadgets-info": "Neki dodatci i druge prilagodbe mogu utjecati na rad ove mogućnosti. Ako naiđete na probleme, provjerite svoje dodatke i suradničke skripte."
 }
