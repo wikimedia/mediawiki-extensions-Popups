@@ -24,7 +24,10 @@ conf = {
 
 		// Write each chunk (entries, here) to a file named after the entry, e.g.
 		// the "index" entry gets written to index.js.
-		filename: '[name].js'
+		filename: '[name].js',
+		// as we cannot serve .map files from production servers store map files
+		// with .json extension
+		sourceMapFilename: "[file].json"
 	},
 	entry: {
 		index: './src/index.js'
