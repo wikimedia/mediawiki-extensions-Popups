@@ -120,13 +120,14 @@ export function fetch( gateway, title, el, token ) {
 
 				return result;
 			} )
-			.catch( function ( err ) {
+			// FIXME: Convert to Promises A/A+ when "T124742: Upgrade to jQuery 3" is
+			// fully rolled out by changing fail to catch, and re-throwing the error
+			// to keep the promise in a rejected state.
+			.fail( function () {
 				dispatch( {
 					type: types.FETCH_FAILED,
 					el: el
 				} );
-				// Keep the request promise in a rejected status since it failed.
-				throw err;
 			} );
 
 		return $.when( request, wait( FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY ) )
