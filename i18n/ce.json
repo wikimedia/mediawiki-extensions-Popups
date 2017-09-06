@@ -5,16 +5,22 @@
 			"Исмаил Садуев"
 		]
 	},
-	"popups-message": "Гучу довлу кораш",
+	"popups-message": "АгӀоне хьалха хьажар",
 	"popups-desc": "Лелочо агӀона хьажорган тӀе курсор хӀоттайича агӀона чулацамах лаьцна хаам болу кораш гучу долу",
-	"popups-last-edited": "ТӀеххьара тайина $1",
 	"popups-redirects": "дӀасахӀажайо <h3>$1</h3> тӀе",
 	"popups-settings-title": "АгӀоне хьалха хьажар",
 	"popups-settings-description": "ХӀокху гӀирсо йиш хуьлуьйту сийна хьажоргашка а билгалдахаршка ахьажа",
-	"popups-settings-option-simple": "Атта",
+	"popups-settings-option-simple": "Латае",
 	"popups-settings-option-advanced": "Шуьйра",
-	"popups-settings-option-off": "Латаде хьалха хьажар",
+	"popups-settings-option-off": "ДӀаяйа",
 	"popups-settings-save": "Ӏалашъян",
+	"popups-settings-help-ok": "Кийчча ю",
 	"popups-settings-cancel": "Цаоьшу",
-	"popups-settings-enable": "Латтаде хьалха хьажар"
+	"popups-settings-enable": "Латтаде хьалха хьажар",
+	"popups-send-feedback": "Хетарг дита (арахьара хьожорг)",
+	"popups-preview-footer-read": "Ешар",
+	"prefs-reading": "Ешаран гӀирс",
+	"popups-prefs-optin-title": "АгӀонашка хьалха хьажар\n\n<em>Курсор тӀе йигча сиха гайта агӀона чулацам</em>",
+	"popups-prefs-optin-enabled-label": "Латае",
+	"popups-prefs-optin-disabled-label": "ДӀаяйа"
 }
