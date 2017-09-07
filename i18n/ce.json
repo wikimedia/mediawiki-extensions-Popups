@@ -22,5 +22,6 @@
 	"prefs-reading": "Ешаран гӀирс",
 	"popups-prefs-optin-title": "АгӀонашка хьалха хьажар\n\n<em>Курсор тӀе йигча сиха гайта агӀона чулацам</em>",
 	"popups-prefs-optin-enabled-label": "Латае",
-	"popups-prefs-optin-disabled-label": "ДӀаяйа"
+	"popups-prefs-optin-disabled-label": "ДӀаяйа",
+	"popups-prefs-conflicting-gadgets-info": "Цхьайолу гаджеташ а, нисдаран гӀирсаш а хӀокху функцин халонаш ян мега. Хьайна халонаш хиллехь дехар до гаджеташка а, долара серипташка а хьажа."
 }
