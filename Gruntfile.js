@@ -12,15 +12,24 @@ module.exports = function ( grunt ) {
 	grunt.initConfig( {
 		banana: conf.MessagesDirs,
 		eslint: {
-			all: [
-				'src/**',
-				'resources/ext.popups/*.js',
-				'resources/ext.popups/**/*.js',
-				'tests/node-qunit/**/*.js',
-				'!resources/dist/index.js',
-				'!docs/**',
-				'!node_modules/**'
-			]
+			// Lint the built artifacts with ES5 so that no ES6 slips to production
+			build: {
+				options: {
+					configFile: '.eslintrc.es5.json'
+				},
+				src: [
+					'resources/dist/*.js'
+				]
+			},
+			sources: {
+				src: [
+					'src/**',
+					'tests/node-qunit/**/*.js',
+					'!resources/dist/index.js',
+					'!docs/**',
+					'!node_modules/**'
+				]
+			}
 		},
 		jsonlint: {
 			all: [
@@ -56,6 +65,6 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'jsonlint', 'banana', 'eslint:build' ] );
 	grunt.registerTask( 'default', [ 'lint' ] );
 };
