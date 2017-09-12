@@ -23,6 +23,8 @@
 	"popups-settings-help": "Инфо картице можете поново укључити користећи везу на дну странице.",
 	"popups-settings-enable": "Укључи инфо картице",
 	"prefs-reading": "Читање",
-	"popups-prefs-optin-title": "Претпрегледи страница\n\n<em>Брз претпреглед теме приликом читања странице</em>",
+	"popups-prefs-optin-title": "Претпрегледи страница\n\n<em>Брз претпреглед теме при читању странице</em>",
+	"popups-prefs-optin-enabled-label": "Омогући",
+	"popups-prefs-optin-disabled-label": "Онемогући",
 	"popups-prefs-conflicting-gadgets-info": "Одређене справице и друга прилагођавања могу да утичу на рад ове опције. Ако наиђете на проблеме, проверите своје справице и корисничке скрипте."
 }
