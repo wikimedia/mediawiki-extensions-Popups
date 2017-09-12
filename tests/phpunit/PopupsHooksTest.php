@@ -105,7 +105,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 		$this->assertEquals( true,
 			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['disabled'] );
-		$this->assertNotEmpty( $prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['help'] );
+		$this->assertNotEmpty( $prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['help-message'] );
 	}
 
 	/**

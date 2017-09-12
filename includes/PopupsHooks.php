@@ -76,7 +76,7 @@ class PopupsHooks {
 		$option = [
 			'type' => 'radio',
 			'label-message' => 'popups-prefs-optin-title',
-			'help' => wfMessage( 'popups-prefs-conflicting-gadgets-info' ),
+			'help-message' => 'popups-prefs-conflicting-gadgets-info',
 			'options' => [
 				wfMessage( 'popups-prefs-optin-enabled-label' )->text()
 				=> PopupsContext::PREVIEWS_ENABLED,
@@ -87,8 +87,8 @@ class PopupsHooks {
 		];
 		if ( $context->conflictsWithNavPopupsGadget( $user ) ) {
 			$option[ 'disabled' ] = true;
-			$option[ 'help' ] = wfMessage( 'popups-prefs-disable-nav-gadgets-info',
-				'Special:Preferences#mw-prefsection-gadgets' );
+			$option[ 'help-message' ] = [ 'popups-prefs-disable-nav-gadgets-info',
+				'Special:Preferences#mw-prefsection-gadgets' ];
 		}
 
 		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
