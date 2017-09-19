@@ -5,14 +5,13 @@
 			"Jon Harald Søby"
 		]
 	},
-	"popups-message": "Hovercards",
+	"popups-message": "Sideforhåndsvisning",
 	"popups-desc": "Viser et lite forhåndsvisningsvindu når brukeren fører muspekeren over en lenke.",
-	"popups-last-edited": "Redigert $1",
 	"popups-redirects": "omdirigerer til <h3>$1</h3>",
 	"popups-settings-title": "Forhåndsvisning",
 	"popups-settings-description": "Verktøyet lar deg forhåndsvise lenker til wikisider og referanser.",
 	"popups-settings-option-simple": "Slå på",
-	"popups-settings-option-simple-description": "Få raske forhåndsvisninger av et emne mens man leser en artikkel.",
+	"popups-settings-option-simple-description": "Få raske forhåndsvisninger av et emne mens man leser en side.",
 	"popups-settings-option-advanced": "Avansert",
 	"popups-settings-option-advanced-description": "Forhåndsvis lenker og få tilgang til redigeringsmenyer. Dette brukes av mange skribenter.",
 	"popups-settings-option-off": "Slå av",
@@ -22,7 +21,12 @@
 	"popups-settings-help": "Du kan skru på igjen forhåndsvisning ved å bruke lenken i sidens bunntekst.",
 	"popups-settings-enable": "Skru på forhåndsvisning",
 	"popups-send-feedback": "Gi tilbakemelding (ekstern lenke)",
-	"popups-mobile-continue-to-page": "Fortsett til side",
-	"popups-mobile-dismiss": "Lukk",
-	"popups-mobile-message": "Hovercards (mobil)"
+	"popups-preview-no-preview": "Det ser ut som om det ikke er noen tilgjengelig forhåndsvisning av denne siden.",
+	"popups-preview-footer-read": "Les",
+	"prefs-reading": "Lesepreferanser",
+	"popups-prefs-optin-title": "Sideforhåndsvisning\n\n<em>Få en rask forhåndsvisning av et emne mens du leser en side</em>",
+	"popups-prefs-optin-enabled-label": "Slå på",
+	"popups-prefs-optin-disabled-label": "Slå av",
+	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideforhåndsvisning",
+	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke hvordan denne funksjonen virker. Om du opplever problemer, gå gjennom tilleggsfunksjonene og brukerskriptene dine."
 }

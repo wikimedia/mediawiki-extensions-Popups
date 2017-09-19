@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Janezdrilc"
+		]
+	},
+	"popups-message": "Povzetki strani",
+	"popups-desc": "Prikaži povzetke, ko z miško obstaneš na notranji povezavi",
+	"popups-redirects": "preusmeritev na <h3>$1</h3>",
+	"popups-settings-title": "Povzetek strani",
+	"popups-settings-description": "S tem orodjem lahko preveriš povezave na wikistrani in na sklice.",
+	"popups-settings-option-simple": "Vključi",
+	"popups-settings-option-simple-description": "Oglej si kratke povzetke teme, medtem ko bereš članek.",
+	"popups-settings-option-advanced": "Napredno",
+	"popups-settings-option-advanced-description": "Poglej si povzetke povezav in dostopaj do urejevalskih funkcij. Uporabljeno pri mnogih uporabnikih.",
+	"popups-settings-option-off": "Izključi",
+	"popups-settings-save": "Shrani",
+	"popups-settings-help-ok": "Končano",
+	"popups-settings-cancel": "Prekliči",
+	"popups-settings-help": "Povzetke lahko ponovno vključiš na povezavi na dnu strani.",
+	"popups-settings-enable": "Vključi povzetke",
+	"popups-send-feedback": "Pošlji svoje mnenje (zunanja povezava)",
+	"popups-preview-no-preview": "Izgleda, da za to stran povzetek ne obstaja",
+	"popups-preview-footer-read": "Preberi",
+	"prefs-reading": "Nastavitve za branje",
+	"popups-prefs-optin-title": "Povzetki strani\n\n<em>Oglej si kratke povzetke teme, medtem ko bereš članek</em>",
+	"popups-prefs-optin-enabled-label": "Vključi",
+	"popups-prefs-optin-disabled-label": "Izključi",
+	"popups-prefs-disable-nav-gadgets-info": "Če želiš vključiti povzetke strani, moraš [[$1 | izključiti Navigacijske izskokce]] na zavihku Vtičniki",
+	"popups-prefs-conflicting-gadgets-info": "Nekateri vtičniki in druge nastavitve lahko vplivajo na delovanje te funkcije. Če naletiš na težavo, prosimo, da preveriš vtičnike in uporabniške skripte."
+}
