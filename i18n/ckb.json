@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lost Whispers"
+		]
+	},
+	"popups-message": "بینینەکانی پەڕە",
+	"popups-settings-option-simple": "کاراکردن",
+	"popups-settings-option-off": "لەکارخستن",
+	"prefs-reading": "ھەڵبژاردەکانی خوێندنەوە",
+	"popups-prefs-optin-title": "بینینەکانی پەڕە\n\n<em>بەدەستھێنانی بینینەکانی بابەت لەکاتی خوێندنەوەی پەڕەیەک</em>",
+	"popups-prefs-optin-enabled-label": "کاراکردن",
+	"popups-prefs-optin-disabled-label": "لەکارخستن"
+}
