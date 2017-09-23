@@ -492,7 +492,7 @@ QUnit.test( 'createThumbnail - landscape image element', function ( assert ) {
 				height: 150,
 				expectedX: 0,
 				expectedY: 0,
-				expectedSVGWidth: 300 + 3,
+				expectedSVGWidth: 320 + 3,
 				expectedSVGHeight: 150,
 				message: 'Height smaller than the predefined height (200).'
 			},
@@ -501,7 +501,7 @@ QUnit.test( 'createThumbnail - landscape image element', function ( assert ) {
 				height: 250,
 				expectedX: 0,
 				expectedY: ( 250 - 200 ) / -2,
-				expectedSVGWidth: 300 + 3,
+				expectedSVGWidth: 320 + 3,
 				expectedSVGHeight: 200,
 				message: 'Height bigger than the predefined height (200).'
 			}
@@ -745,7 +745,7 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 		{
 			offset: {
 				top: 1110,
-				left: 392
+				left: 372
 			},
 			flippedX: true,
 			flippedY: true

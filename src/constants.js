@@ -14,6 +14,6 @@ var $ = jQuery,
 export { BUCKETS };
 
 export default {
-	THUMBNAIL_SIZE: 300 * pixelRatio,
+	THUMBNAIL_SIZE: 320 * pixelRatio,
 	EXTRACT_LENGTH: 525
 };
