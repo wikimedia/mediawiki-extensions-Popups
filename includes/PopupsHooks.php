@@ -24,7 +24,6 @@ use MediaWiki\MediaWikiServices;
 use User;
 use OutputPage;
 use Skin;
-use ResourceLoader;
 
 /**
  * Hooks definitions for Popups extension
