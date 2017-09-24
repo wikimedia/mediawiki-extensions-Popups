@@ -22,5 +22,7 @@
 	"popups-settings-help-ok": "تأیید",
 	"popups-settings-cancel": "انصراف",
 	"popups-settings-enable": "فعال کردن پیش‌نمایش‌ها",
-	"popups-prefs-optin-enabled-label": "فعال"
+	"popups-preview-footer-read": "خواندن",
+	"popups-prefs-optin-enabled-label": "فعال",
+	"popups-prefs-optin-disabled-label": "غیرفعال سازی"
 }
