@@ -6,7 +6,8 @@
 			"Alirezaaa",
 			"Reza1615",
 			"Huji",
-			"Arash.pt"
+			"Arash.pt",
+			"Obzord"
 		]
 	},
 	"popups-message": "کارت‌های معلق",
@@ -14,7 +15,7 @@
 	"popups-redirects": "تغییرمسیر به <h3>$1</h3>",
 	"popups-settings-title": "صفحه پیش‌نمایش",
 	"popups-settings-option-simple": "ساده",
-	"popups-settings-option-simple-description": "جمله رهبر یک صفحه و پیش‌نمایش تصویر را ببینید. این پیشنهاد برای خوانندگان است",
+	"popups-settings-option-simple-description": "پیش‌نمایشی سریع از یک موضوع را هنگام خواندن یک صفحه ببینید",
 	"popups-settings-option-advanced": "پیشرفته",
 	"popups-settings-option-advanced-description": "دیدن پیش‌نمایش پیوندها و دسترسی برای ویرایش منوهای تابعی. این توسط بسیاری از ویراستاران استفاده می‌شود.",
 	"popups-settings-option-off": "غیرفعال کردن پیش‌نمایش‌ها",
@@ -23,6 +24,9 @@
 	"popups-settings-cancel": "انصراف",
 	"popups-settings-enable": "فعال کردن پیش‌نمایش‌ها",
 	"popups-preview-footer-read": "خواندن",
+	"prefs-reading": "ترجیحات خواندن",
+	"popups-prefs-optin-title": "پیش‌نمایش صفحات\n\n<em>پیش‌نمایشی سریع از یک موضوع را هنگام خواندن یک صفحه ببینید</em>",
 	"popups-prefs-optin-enabled-label": "فعال",
-	"popups-prefs-optin-disabled-label": "غیرفعال سازی"
+	"popups-prefs-optin-disabled-label": "غیرفعال سازی",
+	"popups-prefs-conflicting-gadgets-info": "برخی ابزارهای خاص و تنظیمات دیگر ممکن است کارایی این ویژگی را تحت‌تأثیر قرار دهند. اگر به مشکلی برخوردید لطفاً ابزارها و اسکریپت‌های کاربردی خود را بررسی کنید."
 }
