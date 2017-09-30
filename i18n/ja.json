@@ -6,7 +6,8 @@
 			"赤城。",
 			"Sujiniku",
 			"Otokoume",
-			"Omotecho"
+			"Omotecho",
+			"Kkairri"
 		]
 	},
 	"popups-message": "ページのプレビュー",
@@ -20,5 +21,10 @@
 	"popups-settings-cancel": "取り消し",
 	"popups-settings-help": "ページのフッターにあるリンクから、プレビューを元に戻すことができます。",
 	"popups-settings-enable": "プレビューを有効にする",
-	"popups-send-feedback": "フィードバックを送信 (外部リンク)"
+	"popups-send-feedback": "フィードバックを送信 (外部リンク)",
+	"prefs-reading": "閲覧設定",
+	"popups-prefs-optin-enabled-label": "有効",
+	"popups-prefs-optin-disabled-label": "無効",
+	"popups-prefs-disable-nav-gadgets-info": "Page Previews を有効にするには、ガジェットタブから[[$1 | ナビゲーション・ポップアップを無効]]にしてください",
+	"popups-prefs-conflicting-gadgets-info": "一部のガジェットやカスタマイズが、この機能の動作に影響を与える可能性があります。不具合を経験されましたら、ガジェットやユーザースクリプトをご報告ください。"
 }
