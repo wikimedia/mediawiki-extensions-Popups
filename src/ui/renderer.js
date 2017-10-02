@@ -13,10 +13,10 @@ var mw = window.mediaWiki,
 		},
 		landscapeImage: {
 			h: 200, // Max height
-			w: 300 // Exact Width
+			w: 320 // Exact Width
 		},
 		landscapePopupWidth: 450,
-		portraitPopupWidth: 300,
+		portraitPopupWidth: 320,
 		pokeySize: 8 // Height of the pokey.
 	},
 	$window = $( window );
