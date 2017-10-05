@@ -8,7 +8,8 @@
 			"MedShot",
 			"HanV",
 			"Robin van der Vliet",
-			"Mainframe98"
+			"Mainframe98",
+			"Romaine"
 		]
 	},
 	"popups-message": "Pop-uppagina's",
@@ -24,6 +25,7 @@
 	"popups-settings-help-ok": "Afgerond",
 	"popups-settings-cancel": "Annuleren",
 	"popups-settings-enable": "Voorvertoningen inschakelen",
+	"popups-prefs-optin-title": "<em>Krijg snelle voorvertoningen van een onderwerp tijdens het lezen van een pagina</em>",
 	"popups-prefs-optin-enabled-label": "Inschakelen",
 	"popups-prefs-optin-disabled-label": "Uitschakelen"
 }
