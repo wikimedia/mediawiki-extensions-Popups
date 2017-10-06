@@ -3,7 +3,8 @@
 		"authors": [
 			"Asaifm",
 			"محمد أحمد عبد الفتاح",
-			"ديفيد"
+			"ديفيد",
+			"علاء"
 		]
 	},
 	"popups-message": "معاينات الصفحة",
@@ -19,5 +20,6 @@
 	"popups-settings-help-ok": "موافق",
 	"popups-settings-cancel": "ألغ",
 	"popups-settings-enable": "فعل المعاينات",
+	"popups-preview-no-preview": "يبدو أنه لا توجة معاينة لهذه الصفحة",
 	"prefs-reading": "تفضيلات القراءة"
 }
