@@ -5,7 +5,7 @@ var $ = jQuery,
  * Improves the plain text extracts
  * @param {String} plainTextExtract
  * @param {String} title
- * @returns {Array}
+ * @return {Array}
  */
 export function formatPlainTextExtract( plainTextExtract, title ) {
 	var extract = plainTextExtract;

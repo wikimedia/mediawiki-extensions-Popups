@@ -22,7 +22,7 @@ var mw = mediaWiki,
  * @function
  * @name Gateway#getPageSummary
  * @param {String} title The title of the page
- * @returns {jQuery.Promise<PreviewModel>}
+ * @return {jQuery.Promise<PreviewModel>}
  */
 
 /**

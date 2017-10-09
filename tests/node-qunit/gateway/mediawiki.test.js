@@ -52,7 +52,7 @@ QUnit.module( 'ext.popups/gateway/mediawiki', {
 	beforeEach: function () {
 		window.mediaWiki.RegExp = {
 			escape: this.sandbox.spy( function ( str ) {
-				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
+				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 	},

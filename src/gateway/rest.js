@@ -29,7 +29,7 @@ var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
  * @param {Number} config.THUMBNAIL_SIZE The length of the major dimension of
  *  the thumbnail.
  * @param {Function} extractParser A function that takes response and returns parsed extract
- * @returns {RESTBaseGateway}
+ * @return {RESTBaseGateway}
  */
 export default function createRESTBaseGateway( ajax, config, extractParser ) {
 
@@ -97,7 +97,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
  * @param {Object} thumbnail The thumbnail image
  * @param {Object} original The original image
  * @param {Number} thumbSize The requested size
- * @returns {Object}
+ * @return {Object}
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
 	var parts = thumbnail.source.split( '/' ),
@@ -145,7 +145,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
  * @param {Object} page
  * @param {Number} thumbSize
  * @param {Function} extractParser
- * @returns {PreviewModel}
+ * @return {PreviewModel}
  */
 function convertPageToModel( page, thumbSize, extractParser ) {
 	return createModel(

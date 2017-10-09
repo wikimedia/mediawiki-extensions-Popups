@@ -51,7 +51,7 @@ export function getTitle( href, config ) {
  * @param {String} title page title to check if it should show preview
  * @param {Number[]} contentNamespaces contentNamespaces as specified in
  * wgContentNamespaces
- * @returns {mw.Title|null}
+ * @return {mw.Title|null}
  */
 export function isValid( title, contentNamespaces ) {
 	var mwTitle;

@@ -11,7 +11,7 @@ QUnit.module( 'title#getTitle', {
 
 		window.mediaWiki.RegExp = {
 			escape: this.sandbox.spy( function ( str ) {
-				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
+				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 

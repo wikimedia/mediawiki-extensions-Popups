@@ -6,7 +6,7 @@ QUnit.module( 'ext.popups.formatter', {
 	beforeEach: function () {
 		window.mediaWiki.RegExp = {
 			escape: this.sandbox.spy( function ( str ) {
-				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
+				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 	},
@@ -38,8 +38,8 @@ QUnit.test( 'Title is bold', function ( assert ) {
 			'Correct escaping'
 		],
 		[
-			'\"Heroes\" is a David Bowie album', '\"Heroes\"',
-			'<b>\"Heroes\"</b> is a David Bowie album',
+			'"Heroes" is a David Bowie album', '"Heroes"',
+			'<b>"Heroes"</b> is a David Bowie album',
 			'Quotes in title'
 		],
 		[
@@ -67,21 +67,22 @@ QUnit.test( 'Title is bold', function ( assert ) {
 } );
 
 QUnit.test( 'it strips ellipsis and parentheticals', function ( assert ) {
-	var i, testCase, cases = [
-		// removeEllipsis
-		[ 'Extract...', 'Extract' ],
-		[ 'Extract.', 'Extract.' ],
-		[ '..Extract..', '..Extract..' ],
-		[ '...', '' ],
+	var i, testCase, $div,
+		cases = [
+			// removeEllipsis
+			[ 'Extract...', 'Extract' ],
+			[ 'Extract.', 'Extract.' ],
+			[ '..Extract..', '..Extract..' ],
+			[ '...', '' ],
 
-		// removeParentheticals
-		[ 'Foo', 'Foo' ],
-		[ 'Foo (', 'Foo (' ],
-		[ 'Foo (Bar)', 'Foo' ],
-		[ 'Foo (Bar))', 'Foo (Bar))' ],
-		[ 'Foo )(Bar)', 'Foo )(Bar)' ],
-		[ '(Bar)', '' ]
-		], $div;
+			// removeParentheticals
+			[ 'Foo', 'Foo' ],
+			[ 'Foo (', 'Foo (' ],
+			[ 'Foo (Bar)', 'Foo' ],
+			[ 'Foo (Bar))', 'Foo (Bar))' ],
+			[ 'Foo )(Bar)', 'Foo )(Bar)' ],
+			[ '(Bar)', '' ]
+		];
 
 	for ( i = 0; i < cases.length; i++ ) {
 		testCase = cases[ i ];

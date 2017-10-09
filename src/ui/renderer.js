@@ -344,7 +344,7 @@ export function createThumbnail( rawThumbnail ) {
 		(
 			rawThumbnail.source.indexOf( '\\' ) > -1 ||
 			rawThumbnail.source.indexOf( '\'' ) > -1 ||
-			rawThumbnail.source.indexOf( '\"' ) > -1
+			rawThumbnail.source.indexOf( '"' ) > -1
 		)
 	) {
 		return null;
@@ -466,8 +466,8 @@ export function createThumbnailElement( className, url, x, y, thumbnailWidth, th
 export function createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize ) {
 	var flippedX = false,
 		flippedY = false,
-		offsetTop = ( eventData.pageY ) ? // If it was a mouse event
-			// Position according to mouse
+		offsetTop = eventData.pageY ?
+			// If it was a mouse event, position according to mouse
 			// Since client rectangles are relative to the viewport,
 			// take scroll position into account.
 			getClosestYPosition(

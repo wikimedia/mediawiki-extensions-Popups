@@ -28,7 +28,7 @@ var CACHE_LIFETIME = 300,
  *  the thumbnail.
  * @param {Number} config.EXTRACT_LENGTH The maximum length, in characters,
  *  of the extract.
- * @returns {MediaWikiGateway}
+ * @return {MediaWikiGateway}
  */
 export default function createMediaWikiApiGateway( api, config ) {
 
@@ -93,7 +93,7 @@ export default function createMediaWikiApiGateway( api, config ) {
  * @param {Object} data The response
  * @throws {Error} If the response is empty or doesn't contain data about the
  *  page
- * @returns {Object}
+ * @return {Object}
  */
 function extractPageFromResponse( data ) {
 	if (
@@ -113,7 +113,7 @@ function extractPageFromResponse( data ) {
  * @function
  * @name MediaWikiGateway#formatPlainTextExtract
  * @param {Object} data The response
- * @returns {Object}
+ * @return {Object}
  */
 function formatPlainTextExtract( data ) {
 	var result = $.extend( {}, data );
@@ -127,7 +127,7 @@ function formatPlainTextExtract( data ) {
  * @function
  * @name MediaWikiGateway#convertPageToModel
  * @param {Object} page
- * @returns {PreviewModel}
+ * @return {PreviewModel}
  */
 function convertPageToModel( page ) {
 	return createModel(

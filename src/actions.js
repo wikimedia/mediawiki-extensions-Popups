@@ -56,7 +56,7 @@ function timedAction( baseAction ) {
  * @param {Function} generateToken
  * @param {mw.Map} config The config of the MediaWiki client-side application,
  *  i.e. `mw.config`
- * @returns {Object}
+ * @return {Object}
  */
 export function boot(
 	isEnabled,

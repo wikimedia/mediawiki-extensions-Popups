@@ -20,7 +20,7 @@ export default function render( previewBehavior ) {
 				state.preview.activeEvent,
 				previewBehavior,
 				state.preview.activeToken
-				);
+			);
 		} else if ( !state.preview.shouldShow && preview ) {
 			preview.hide();
 			preview = undefined;

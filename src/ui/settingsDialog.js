@@ -8,7 +8,7 @@ var mw = window.mediaWiki,
 /**
  * Creates a render function that will create the settings dialog and return
  * a set of methods to operate on it
- * @returns {Function} render function
+ * @return {Function} render function
  */
 export default function createSettingsDialogRenderer() {
 
@@ -28,7 +28,7 @@ export default function createSettingsDialogRenderer() {
 	/**
 	 * Renders the relevant form and labels in the settings dialog
 	 * @param {Object} boundActions
-	 * @returns {Object} object with methods to affect the rendered UI
+	 * @return {Object} object with methods to affect the rendered UI
 	 */
 	return function ( boundActions ) {
 
@@ -198,7 +198,7 @@ function toggleHelp( $el, visible ) {
 /**
  * Checks if the NavigationPopups gadget is enabled by looking at the global
  * variables
- * @returns {Boolean} if navpops was found to be enabled
+ * @return {Boolean} if navpops was found to be enabled
  */
 function isNavPopupsEnabled() {
 	/* global pg: false*/

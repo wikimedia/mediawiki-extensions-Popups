@@ -43,7 +43,7 @@ QUnit.module( 'ext.popups#renderer', {
 
 		window.mediaWiki.RegExp = {
 			escape: this.sandbox.spy( function ( str ) {
-				return str.replace( /([\\{}()|.?*+\-\^$\[\]])/g, '\\$1' );
+				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 
@@ -579,7 +579,7 @@ QUnit.test( 'createThumbnail - insecure URL', function ( assert ) {
 	var cases = [
 			'https://tall-ima\\ge.jpg',
 			'https://tall-ima\'ge.jpg',
-			'https://tall-ima\"ge.jpg'
+			'https://tall-ima"ge.jpg'
 		],
 		thumbnail;
 
@@ -1087,7 +1087,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 	);
 	assert.equal(
 		preview.el.find( '.mwe-popups-extract' ).css( 'margin-top' ),
-		( 199 - 8 ) + 'px',  // thumb height - pokey size
+		( 199 - 8 ) + 'px', // thumb height - pokey size
 		'Extract margin top has been set when preview height is smaller than the predefined landscape image height.'
 	);
 	assert.equal(
@@ -1161,7 +1161,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', function 
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		( layout.offset.top - 20 ) + 'px',  // - outer height
+		( layout.offset.top - 20 ) + 'px', // - outer height
 		'Top is correct.'
 	);
 	assert.equal(
@@ -1199,7 +1199,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', fun
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		( layout.offset.top - 20 ) + 'px',  // - outer height
+		( layout.offset.top - 20 ) + 'px', // - outer height
 		'Top is correct.'
 	);
 	assert.equal(
@@ -1238,7 +1238,7 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		( layout.offset.top - 20 ) + 'px',  // - outer height
+		( layout.offset.top - 20 ) + 'px', // - outer height
 		'Top is correct.'
 	);
 	assert.equal(
