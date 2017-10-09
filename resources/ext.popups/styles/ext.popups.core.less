@@ -40,7 +40,7 @@
 
 .mwe-popups-settings-icon {
 	// For purpose of active and hover states
-	border-radius: 2px;
+	border-radius: @borderRadius;
 	// Icon sizes are relative to font size. Override any parents.
 	font-size: 16px;
 	// position icon
@@ -67,25 +67,21 @@
 }
 
 .mwe-popups {
+	background: #fff;
 	position: absolute;
 	z-index: 110;
-	background: #fff;
-
-	// FIXME: The .box-shadow mixin provided by mediawiki.mixins doesn't support
-	// multiple values.
-	-webkit-box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0px 0px 1px rgba( 0, 0, 0, 0.5 );
-	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0px 0px 1px rgba( 0, 0, 0, 0.5 );
+	.box-shadow( 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px @colorGray10; );
 	padding: 0;
 	display: none;
 	font-size: 14px;
 	line-height: @lineHeight;
 	min-width: 300px;
-	border-radius: 2px;
+	border-radius: @borderRadius;
 
 	.mwe-popups-container {
+		color: @colorText;
 		margin-top: -9px;
 		padding-top: 9px;
-		color: #000;
 		text-decoration: none;
 
 		footer {
@@ -104,14 +100,13 @@
 	}
 
 	.mwe-popups-extract {
-
 		// T156800, T139297: "Pad" the extract horizontally using a margin so the
 		// SVG element is forced not to occlude the truncating pseudo-element and
 		// the settings cog in IE9-11.
 		margin: @popupPadding;
 
 		display: block;
-		color: #000;
+		color: @colorText;
 		text-decoration: none;
 		position: relative;
 
@@ -236,7 +231,7 @@
 		}
 
 		&:before {
-			.mwe-popups-border-triangle-top( 8px, 10px, #bbb, 0px );
+			.mwe-popups-border-triangle-top( 8px, 10px, @colorGray10, 0px );
 		}
 	}
 
@@ -259,7 +254,7 @@
 	&.mwe-popups-image-tri {
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-top( 9px, 9px, #bbb, 0px );
+			.mwe-popups-border-triangle-top( 9px, 9px, @colorGray10, 0px );
 		}
 
 		&:after {
@@ -270,7 +265,7 @@
 		&.flipped_x {
 			&:before {
 				z-index: 111;
-				.mwe-popups-border-triangle-top( 9px, 273px, #bbb, 0px );
+				.mwe-popups-border-triangle-top( 9px, 273px, @colorGray10, 0px );
 			}
 
 			&:after {
@@ -298,7 +293,7 @@
 
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-top( 9px, 420px, #bbb, 0px );
+			.mwe-popups-border-triangle-top( 9px, 420px, @colorGray10, 0px );
 		}
 
 		> div > a > svg {
@@ -315,7 +310,7 @@
 	&.flipped_x_y {
 		&:before {
 			z-index: 111;
-			.mwe-popups-border-triangle-bottom( 9px, 272px, #bbb, 0px );
+			.mwe-popups-border-triangle-bottom( 9px, 272px, @colorGray10, 0px );
 		}
 
 		&:after {
@@ -333,7 +328,7 @@
 
 			&:before {
 				z-index: 111;
-				.mwe-popups-border-triangle-bottom( 9px, 420px, #bbb, 0px );
+				.mwe-popups-border-triangle-bottom( 9px, 420px, @colorGray10, 0px );
 			}
 
 			> div > a > svg {
@@ -353,7 +348,7 @@
 		}
 
 		&:before {
-			.mwe-popups-border-triangle-bottom( 8px, 10px, #bbb, 0px );
+			.mwe-popups-border-triangle-bottom( 8px, 10px, @colorGray10, 0px );
 		}
 	}
 }
