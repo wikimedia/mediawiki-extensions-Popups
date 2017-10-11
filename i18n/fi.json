@@ -7,8 +7,8 @@
 			"Pyscowicz"
 		]
 	},
-	"popups-message": "Ponnahduskortit",
-	"popups-desc": "Näyttää ponnahduskortissa yhteenvedon sivun sisällöstä, kun käyttäjä laittaa hiiren sivulle osoittavan linkin päälle.",
+	"popups-message": "Sivun esikatselut",
+	"popups-desc": "Näyttää esikatselut, kun käyttäjä vie hiiren sivulle osoittavan linkin päälle",
 	"popups-redirects": "ohjaa sivulle <h3>$1</h3>",
 	"popups-settings-title": "Sivun esikatselu",
 	"popups-settings-description": "Tämän työkalun avulla voit esikatsella linkkejä wikisivuihin ja viittauksiin.",
@@ -20,5 +20,10 @@
 	"popups-settings-help-ok": "Valmis",
 	"popups-settings-cancel": "Peruuta",
 	"popups-settings-enable": "Ota esikatselu käyttöön",
-	"popups-send-feedback": "Lähetä palautetta (ulkoinen linkki)"
+	"popups-send-feedback": "Lähetä palautetta (ulkoinen linkki)",
+	"popups-preview-footer-read": "Lue",
+	"prefs-reading": "Lukemisen asetukset",
+	"popups-prefs-optin-title": "Sivun esikatselut\n\n<em>Näe nopeasti aiheen esikatselut sivua lukiessasi</em>",
+	"popups-prefs-optin-enabled-label": "Ota käyttöön",
+	"popups-prefs-optin-disabled-label": "Poista käytöstä"
 }
