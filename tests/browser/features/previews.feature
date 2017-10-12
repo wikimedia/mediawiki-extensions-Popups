@@ -1,9 +1,7 @@
 @chrome @en.m.wikipedia.beta.wmflabs.org @firefox @test2.m.wikipedia.org @vagrant @integration
 Feature: Previews
   Background:
-    Given I am logged in
-    And I have enabled the beta feature
-    And I am on the test page
+    Given I am on the test page
 
   Scenario: Dwelling on a valid link shows a preview
     When I dwell on the first valid link
