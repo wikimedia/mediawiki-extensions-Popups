@@ -43,16 +43,7 @@ conf = {
 		// To generate identifiers that are preserved over builds, webpack supplies
 		// the NamedModulesPlugin (generates comments with file names on bundle)
 		// https://webpack.js.org/guides/caching/#deterministic-hashes
-		new webpack.NamedModulesPlugin(),
-
-		// Disable ResourceLoader minification since we're going to be minifying
-		// with uglify
-		new webpack.BannerPlugin( {
-			banner: '/*@nomin*/', // ResourceLoader::FILTER_NOMIN
-			// Don't wrap the banner in a comment. It's easier to keep the banner in
-			// sync with ResourceLoader::FILTER_NOMIN this way
-			raw: true
-		} )
+		new webpack.NamedModulesPlugin()
 	]
 };
 
