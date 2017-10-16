@@ -115,7 +115,7 @@ export default function createSettingsDialogRenderer() {
 function createSettingsDialog() {
 	var $el,
 		path = mw.config.get( 'wgExtensionAssetsPath' ) +
-			'/Popups/resources/ext.popups/images/',
+			'/Popups/resources/ext.popups.main/images/',
 		choices = [
 			{
 				id: 'simple',
@@ -142,7 +142,7 @@ function createSettingsDialog() {
 	}
 
 	// render the template
-	$el = mw.template.get( 'ext.popups', 'settings.mustache' ).render( {
+	$el = mw.template.get( 'ext.popups.main', 'settings.mustache' ).render( {
 		heading: mw.msg( 'popups-settings-title' ),
 		closeLabel: mw.msg( 'popups-settings-cancel' ),
 		saveLabel: mw.msg( 'popups-settings-save' ),

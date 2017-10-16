@@ -46,7 +46,7 @@ module.exports = function ( grunt ) {
 				syntax: 'less'
 			},
 			all: [
-				'resources/ext.popups/**/*.less'
+				'resources/ext.popups.main/**/*.less'
 			]
 		},
 		watch: {
@@ -55,7 +55,7 @@ module.exports = function ( grunt ) {
 				debounceDelay: 1000
 			},
 			lint: {
-				files: [ 'resources/ext.popups/**/*.less', 'resources/**/*.js' ],
+				files: [ 'resources/ext.popups.main/**/*.less', 'resources/**/*.js' ],
 				tasks: [ 'lint' ]
 			},
 			configFiles: {

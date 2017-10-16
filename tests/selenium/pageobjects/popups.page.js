@@ -3,7 +3,7 @@ const Page = require( '../../../../../tests/selenium/pageobjects/page' );
 const TEST_PAGE_TITLE = 'Popups test page';
 
 const POPUPS_SELECTOR = '.mwe-popups';
-const POPUPS_MODULE_NAME = 'ext.popups';
+const POPUPS_MODULE_NAME = 'ext.popups.main';
 
 const fs = require('fs');
 const EditPage = require( '../../../../../tests/selenium/pageobjects/edit.page' );
@@ -26,7 +26,7 @@ class PopupsPage extends Page {
 	}
 
 	resourceLoaderModuleStatus( moduleName, moduleStatus, errMsg ) {
-		return browser.waitUntil( function () {
+		browser.waitUntil( function () {
 			return browser.execute( function ( module ) {
 				return mw && mw.loader && mw.loader.getState( module.name ) === module.status;
 			}, { status: moduleStatus, name: moduleName } );
@@ -38,14 +38,18 @@ class PopupsPage extends Page {
 	}
 
 	abandonLink() {
-		browser.moveToObject( '#content h1' );
+		browser.moveToObject( '#content h1.firstHeading' );
 	}
 
 	dwellLink() {
+		const PAUSE = 1000;
 		this.isReady();
-		browser.moveToObject( '#content h1' );
+		browser.pause( PAUSE );
+		this.abandonLink()
+		browser.pause( PAUSE );
 		browser.moveToObject( '#content ul a' );
-		browser.waitForExist( POPUPS_SELECTOR );
+		browser.pause( PAUSE );
+		browser.waitForExist( POPUPS_SELECTOR, 5000 );
 	}
 
 	doNotSeePreview() {

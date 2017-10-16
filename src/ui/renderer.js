@@ -150,7 +150,7 @@ export function createPreview( model ) {
 		hasThumbnail: hasThumbnail
 	} );
 
-	$el = mw.template.get( 'ext.popups', 'preview.mustache' )
+	$el = mw.template.get( 'ext.popups.main', 'preview.mustache' )
 		.render( templateData );
 
 	if ( hasThumbnail ) {
@@ -188,7 +188,7 @@ export function createEmptyPreview( model ) {
 		readMsg: mw.msg( 'popups-preview-footer-read' )
 	} );
 
-	$el = mw.template.get( 'ext.popups', 'preview-empty.mustache' )
+	$el = mw.template.get( 'ext.popups.main', 'preview-empty.mustache' )
 		.render( templateData );
 
 	return {

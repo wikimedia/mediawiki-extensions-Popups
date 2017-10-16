@@ -92,21 +92,26 @@
 		},
 		"ext.popups": {
 			"scripts": [
+				"resources/ext.popups/index.js"
+			]
+		},
+		"ext.popups.main": {
+			"scripts": [
 				"resources/dist/index.js"
 			],
 			"templates": {
-				"preview.mustache": "resources/ext.popups/templates/preview.mustache",
-				"preview-empty.mustache": "resources/ext.popups/templates/preview-empty.mustache",
-				"settings.mustache": "resources/ext.popups/templates/settings.mustache"
+				"preview.mustache": "resources/ext.popups.main/templates/preview.mustache",
+				"preview-empty.mustache": "resources/ext.popups.main/templates/preview-empty.mustache",
+				"settings.mustache": "resources/ext.popups.main/templates/settings.mustache"
 			},
 			"styles": [
-				"resources/ext.popups/styles/ext.popups.core.less",
-				"resources/ext.popups/styles/ext.popups.animation.less",
-				"resources/ext.popups/styles/ext.popups.settings.less"
+				"resources/ext.popups.main/styles/ext.popups.core.less",
+				"resources/ext.popups.main/styles/ext.popups.animation.less",
+				"resources/ext.popups.main/styles/ext.popups.settings.less"
 			],
 			"skinStyles": {
 				"vector": [
-					"resources/ext.popups/styles/ext.popups.settings.vector.less"
+					"resources/ext.popups.main/styles/ext.popups.settings.vector.less"
 				]
 			},
 			"messages": [
