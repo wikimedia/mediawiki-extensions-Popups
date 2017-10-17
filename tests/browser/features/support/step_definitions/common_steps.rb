@@ -1,9 +1,5 @@
 TEST_PAGE_TITLE = 'Popups test page'
 
-Given(/^I have enabled the beta feature$/) do
-  visit(SpecialPreferencesPage).enable_page_previews
-end
-
 Given(/^I am on the test page$/) do
   api.create_page TEST_PAGE_TITLE, File.read('fixtures/test_page.wikitext')
 
