@@ -5,10 +5,10 @@
 	position: fixed;
 	z-index: 1000;
 	background: #fff;
-	width: 450px;
-	border: 1px solid #ccc;
-	box-shadow: 0px 1px 1px rgba( 0, 0, 0, 0.1 );
-	border-radius: 2px;
+	width: 420px;
+	border: 1px solid #a2a9b1;
+	box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
+	border-radius: @borderRadius;
 
 	header {
 		.box-sizing( border-box );
@@ -30,6 +30,7 @@
 			width: 100%;
 			font-family: sans-serif;
 			font-size: 18px;
+			font-weight: bold;
 			text-align: center;
 		}
 	}
@@ -37,13 +38,17 @@
 	main {
 		display: block;
 		width: 350px;
-		padding: 50px 0 40px;
+		padding: 32px 0 24px;
 		margin: 0 auto;
 
 		p {
-			color: #999;
+			color: #54595d;
 			font-size: 17px;
-			margin: 0 0 20px 0;
+			margin: 16px 0 0;
+
+			&:first-child {
+				margin-top: 0;
+			}
 		}
 
 		form {
