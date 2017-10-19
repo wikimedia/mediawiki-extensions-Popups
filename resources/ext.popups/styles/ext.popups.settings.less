@@ -35,6 +35,19 @@
 		}
 	}
 
+	.mwe-ui-icon-popups-close {
+		opacity: 0.87; // = `#222` on `background-color: #fff`
+		.transition( opacity 100ms );
+
+		&:hover {
+			opacity: 0.73; // = `#454545` on `background-color: #fff`, closest to `#444`
+		}
+
+		&:active {
+			opacity: 1;
+		}
+	}
+
 	main {
 		display: block;
 		width: 350px;
