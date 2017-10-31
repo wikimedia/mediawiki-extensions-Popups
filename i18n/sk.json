@@ -1,11 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sudo77(new)"
+			"Sudo77(new)",
+			"Teslaton"
 		]
 	},
 	"popups-message": "Vyskakovacie kartičky",
 	"popups-desc": "Keď používateľ podrží kurzor nad odkazom, zobrazí sa vyskakovacia kartička so zhrnutím obsahu stránky.",
-	"popups-last-edited": "Posledná úprava $1",
-	"popups-redirects": "presmerovanie na <h3>$1</h3>"
+	"popups-redirects": "presmerovanie na <h3>$1</h3>",
+	"prefs-reading": "Nastavenia čítania",
+	"popups-prefs-optin-title": "Náhľady stránok\n\n<em>Pri čítaní stránky poskytne rýchle náhľady tém</em>",
+	"popups-prefs-optin-enabled-label": "Zapnúť",
+	"popups-prefs-optin-disabled-label": "Vypnúť",
+	"popups-prefs-conflicting-gadgets-info": "Niektoré nástroje a ďalšie prispôsobenia môžu mať vplyv na činnosť tejto funkcie. Ak natrafíte na problémy, skontrolujte si prosím aktívne nástroje a používateľské skripty."
 }
