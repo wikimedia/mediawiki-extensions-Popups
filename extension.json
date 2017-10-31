@@ -99,6 +99,11 @@
 				"resources/ext.popups/styles/ext.popups.animation.less",
 				"resources/ext.popups/styles/ext.popups.settings.less"
 			],
+			"skinStyles": {
+				"vector": [
+					"resources/ext.popups/styles/ext.popups.settings.vector.less"
+				]
+			},
 			"messages": [
 				"popups-settings-title",
 				"popups-settings-description",
