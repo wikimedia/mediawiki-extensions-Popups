@@ -31,5 +31,5 @@
 	"popups-prefs-optin-enabled-label": "Aktivieren",
 	"popups-prefs-optin-disabled-label": "Deaktivieren",
 	"popups-prefs-disable-nav-gadgets-info": "Du musst [[$1 |das Helferlein „Navigations-Popups“]] in der Registerkarte „Helferlein“ deaktivieren, um Seitenvorschaubilder zu aktivieren.",
-	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls du Probleme entdeckst, überprüfe bitte deine Helferlein und Benutzerskripte."
+	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls du Probleme entdeckst, überprüfe bitte deine Helferlein und Benutzerskripte, inklusive globaler."
 }
