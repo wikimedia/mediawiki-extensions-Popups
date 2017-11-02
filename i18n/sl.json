@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Janezdrilc"
+			"Janezdrilc",
+			"HairyFotr"
 		]
 	},
 	"popups-message": "Povzetki strani",
@@ -27,5 +28,5 @@
 	"popups-prefs-optin-enabled-label": "Vključi",
 	"popups-prefs-optin-disabled-label": "Izključi",
 	"popups-prefs-disable-nav-gadgets-info": "Če želiš vključiti povzetke strani, moraš [[$1 | izključiti Navigacijske izskokce]] na zavihku Vtičniki",
-	"popups-prefs-conflicting-gadgets-info": "Nekateri vtičniki in druge nastavitve lahko vplivajo na delovanje te funkcije. Če naletiš na težavo, prosimo, da preveriš vtičnike in uporabniške skripte."
+	"popups-prefs-conflicting-gadgets-info": "Nekateri vtičniki in druge nastavitve lahko vplivajo na delovanje te funkcije. Če naletiš na težavo, prosimo, da preveriš vtičnike in uporabniške skripte, vključno z globalnimi."
 }
