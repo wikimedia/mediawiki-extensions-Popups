@@ -30,5 +30,6 @@
 	"popups-prefs-optin-title": "Anteprima delle pagine\n\n<em>Vedi una veloce anteprima di un argomento mentre leggi una pagina</em>",
 	"popups-prefs-optin-enabled-label": "Attiva",
 	"popups-prefs-optin-disabled-label": "Disattiva",
+	"popups-prefs-disable-nav-gadgets-info": "Devi [[$1|disabilitare il gadget Popup di navigazione]] dalla scheda Accessori per abilitare le anteprime delle pagine",
 	"popups-prefs-conflicting-gadgets-info": "Alcuni accessori e altre personalizzazioni potrebbero influire sulle prestazioni di questa funzionalità. Se hai qualche problema rivedi i tuoi accessori e gli script utente, inclusi quelli globali."
 }
