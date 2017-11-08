@@ -27,7 +27,8 @@ module.exports = function ( grunt ) {
 					'tests/node-qunit/**/*.js',
 					'!resources/dist/index.js',
 					'!docs/**',
-					'!node_modules/**'
+					'!node_modules/**',
+					'!vendor/**'
 				]
 			}
 		},
@@ -36,7 +37,8 @@ module.exports = function ( grunt ) {
 				'*.json',
 				'**/*.json',
 				'!docs/**',
-				'!node_modules/**'
+				'!node_modules/**',
+				'!vendor/**'
 			]
 		},
 		stylelint: {
