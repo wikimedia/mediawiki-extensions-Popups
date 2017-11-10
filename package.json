@@ -25,7 +25,7 @@
     "husky": "^0.13.3",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
-    "mw-node-qunit": "^2.1.1",
+    "mw-node-qunit": "^2.2.0",
     "nodemon": "^1.11.0",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
