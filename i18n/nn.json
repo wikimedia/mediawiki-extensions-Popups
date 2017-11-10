@@ -5,7 +5,6 @@
 		]
 	},
 	"popups-message": "Svevesamandrag",
-	"popups-last-edited": "Endra $1",
 	"popups-redirects": "omdirigerer til <h3>$1</h3>",
 	"popups-settings-title": "Sideførehandsvising",
 	"popups-settings-description": "Verktøyet lèt deg førehandsvisa lenkjer til wikisider og til referansar.",
@@ -13,9 +12,9 @@
 	"popups-settings-option-simple-description": "Sjå byrjinga på sida og eit førehandsivisingsbilete. Dette er tilrådd for lesarar.",
 	"popups-settings-option-advanced": "Avansert",
 	"popups-settings-option-off": "Slå av førehandsvising",
-	"popups-settings-option-off-description": "Du kan endra denne innstillinga ved å nytta lenkja i botnen av sida.",
 	"popups-settings-save": "Lagra",
 	"popups-settings-help-ok": "Greitt",
 	"popups-settings-cancel": "Avbryt",
-	"popups-settings-enable": "Slå på førehandsvising"
+	"popups-settings-enable": "Slå på førehandsvising",
+	"popups-preview-no-preview": "Det ser ut som det ikkje finst noka førehandsvising av denne sida."
 }
