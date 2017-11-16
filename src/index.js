@@ -91,6 +91,18 @@ function getEventLoggingTracker( user, config, bucket, window ) {
 }
 
 /**
+ * Returns timestamp since the beginning of the current document's origin
+ * as reported by `window.performance.now()`.
+ * @return {number|null}
+ */
+function getCurrentTimestamp() {
+	if ( window.performance && window.performance.now ) {
+		return window.performance.now();
+	}
+	return null;
+}
+
+/**
  * Subscribes the registered change listeners to the
  * [store](http://redux.js.org/docs/api/Store.html#store).
  *
@@ -101,15 +113,16 @@ function getEventLoggingTracker( user, config, bucket, window ) {
  * @param {PreviewBehavior} previewBehavior
  * @param {EventTracker} statsvTracker
  * @param {EventTracker} eventLoggingTracker
+ * @param {Function} getCurrentTimestamp
  */
-function registerChangeListeners( store, actions, userSettings, settingsDialog, previewBehavior, statsvTracker, eventLoggingTracker ) {
+function registerChangeListeners( store, actions, userSettings, settingsDialog, previewBehavior, statsvTracker, eventLoggingTracker, getCurrentTimestamp ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
 	registerChangeListener( store, changeListeners.statsv( actions, statsvTracker ) );
 	registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
-	registerChangeListener( store, changeListeners.eventLogging( actions, eventLoggingTracker ) );
+	registerChangeListener( store, changeListeners.eventLogging( actions, eventLoggingTracker, getCurrentTimestamp ) );
 }
 
 /*
@@ -172,7 +185,8 @@ mw.requestIdleCallback( function () {
 
 	registerChangeListeners(
 		store, boundActions, userSettings, settingsDialog,
-		previewBehavior, statsvTracker, eventLoggingTracker
+		previewBehavior, statsvTracker, eventLoggingTracker,
+		getCurrentTimestamp
 	);
 
 	boundActions.boot(

@@ -14,9 +14,12 @@ var $ = jQuery;
  *
  * @param {Object} boundActions
  * @param {EventTracker} eventLoggingTracker
+ * @param {Function} getCurrentTimestamp
  * @return {ext.popups.ChangeListener}
  */
-export default function eventLogging( boundActions, eventLoggingTracker ) {
+export default function eventLogging(
+	boundActions, eventLoggingTracker, getCurrentTimestamp
+) {
 	return function ( _, state ) {
 		var eventLogging = state.eventLogging,
 			event = eventLogging.event;
@@ -25,7 +28,9 @@ export default function eventLogging( boundActions, eventLoggingTracker ) {
 			return;
 		}
 
-		event = $.extend( true, {}, eventLogging.baseData, event );
+		event = $.extend( true, {}, eventLogging.baseData, event, {
+			timestamp: getCurrentTimestamp()
+		} );
 		eventLoggingTracker( 'event.Popups', event );
 		// Dispatch the eventLogged action so that the state tree can be
 		// cleared/updated.
