@@ -7,7 +7,8 @@
 			"Sujiniku",
 			"Otokoume",
 			"Omotecho",
-			"Kkairri"
+			"Kkairri",
+			"Suzukaze-c"
 		]
 	},
 	"popups-message": "ページのプレビュー",
@@ -22,7 +23,10 @@
 	"popups-settings-help": "ページのフッターにあるリンクから、プレビューを元に戻すことができます。",
 	"popups-settings-enable": "プレビューを有効にする",
 	"popups-send-feedback": "フィードバックを送信 (外部リンク)",
+	"popups-preview-no-preview": "このページのプレビューはないようです。",
+	"popups-preview-footer-read": "読む",
 	"prefs-reading": "閲覧設定",
+	"popups-prefs-optin-title": "ページのプレビュー\n\n<em>ページを読みながら題目をプレビュー</em>",
 	"popups-prefs-optin-enabled-label": "有効",
 	"popups-prefs-optin-disabled-label": "無効",
 	"popups-prefs-disable-nav-gadgets-info": "Page Previews を有効にするには、ガジェットタブから[[$1 | ナビゲーション・ポップアップを無効]]にしてください",
