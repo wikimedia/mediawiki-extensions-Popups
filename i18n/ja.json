@@ -30,5 +30,5 @@
 	"popups-prefs-optin-enabled-label": "有効",
 	"popups-prefs-optin-disabled-label": "無効",
 	"popups-prefs-disable-nav-gadgets-info": "Page Previews を有効にするには、ガジェットタブから[[$1 | ナビゲーション・ポップアップを無効]]にしてください",
-	"popups-prefs-conflicting-gadgets-info": "一部のガジェットやカスタマイズが、この機能の動作に影響を与える可能性があります。不具合を経験されましたら、ガジェットやユーザースクリプトをご報告ください。"
+	"popups-prefs-conflicting-gadgets-info": "一部のガジェットやカスタマイズが、この機能の動作に影響を与える可能性があります。不具合を経験されましたら、グローバルの設定とローカルのガジェットやユーザースクリプトをご確認ください。"
 }
