@@ -97,7 +97,8 @@ function getEventLoggingTracker( user, config, bucket, window ) {
  */
 function getCurrentTimestamp() {
 	if ( window.performance && window.performance.now ) {
-		return window.performance.now();
+		// return an integer; see T182000
+		return Math.round( window.performance.now() );
 	}
 	return null;
 }
