@@ -260,7 +260,8 @@ export function show( preview, event, $link, behavior, token, container ) {
  * @param {ext.popups.PreviewBehavior} behavior
  */
 export function bindBehavior( preview, behavior ) {
-	preview.el.hover( behavior.previewDwell, behavior.previewAbandon );
+	preview.el.on( 'mouseenter', behavior.previewDwell )
+		.on( 'mouseleave', behavior.previewAbandon );
 
 	preview.el.click( behavior.click );
 
