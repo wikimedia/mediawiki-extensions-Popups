@@ -5,14 +5,12 @@
 			"Sociologist"
 		]
 	},
-	"popups-last-edited": "$1 tahrir qilingan",
 	"popups-settings-title": "Qisqa tanishuv",
 	"popups-settings-description": "Ushbu moslama berilgan havolalar bilan qisqa tanishib chiqish imkoniyatini beradi.",
 	"popups-settings-option-simple": "Oddiy",
 	"popups-settings-option-simple-description": "Sahifadagi birinchi gap va rasm koʻrsatiladi. Mutolaa etuvchilar uchun tavsiya etiladi.",
 	"popups-settings-option-advanced": "Kengaytirilgan",
 	"popups-settings-option-off": "Oʻchirilsin",
-	"popups-settings-option-off-description": "Ushbu moslamani sahifa ostidagi havola orqali oʻzgartirishingiz mumkin.",
 	"popups-settings-save": "Saqlash",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Bekor qilish",
