@@ -28,5 +28,5 @@
 	"popups-prefs-optin-enabled-label": "Slå på",
 	"popups-prefs-optin-disabled-label": "Slå av",
 	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideforhåndsvisning",
-	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke hvordan denne funksjonen virker. Om du opplever problemer, gå gjennom tilleggsfunksjonene og brukerskriptene dine."
+	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke hvordan denne funksjonen virker. Om du opplever problemer, gå gjennom tilleggsfunksjonene og brukerskriptene dine, inkludert de globale."
 }
