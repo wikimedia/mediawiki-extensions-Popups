@@ -7,8 +7,6 @@ import * as formatter from '../formatter';
  */
 export function parseHTMLResponse( page ) {
 	var extract = page.extract_html;
-	extract = formatter.removeTrailingEllipsis( extract );
-	extract = formatter.removeParentheticals( extract );
 
 	return extract.length === 0 ? [] : $.parseHTML( extract );
 }
