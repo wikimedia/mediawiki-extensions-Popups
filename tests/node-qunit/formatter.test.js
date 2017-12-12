@@ -65,32 +65,3 @@ QUnit.test( 'Title is bold', function ( assert ) {
 		test( case_[ 0 ], case_[ 1 ], case_[ 2 ], case_[ 3 ] );
 	} );
 } );
-
-QUnit.test( 'it strips ellipsis and parentheticals', function ( assert ) {
-	var i, testCase, $div,
-		cases = [
-			// removeEllipsis
-			[ 'Extract...', 'Extract' ],
-			[ 'Extract.', 'Extract.' ],
-			[ '..Extract..', '..Extract..' ],
-			[ '...', '' ],
-
-			// removeParentheticals
-			[ 'Foo', 'Foo' ],
-			[ 'Foo (', 'Foo (' ],
-			[ 'Foo (Bar)', 'Foo' ],
-			[ 'Foo (Bar))', 'Foo (Bar))' ],
-			[ 'Foo )(Bar)', 'Foo )(Bar)' ],
-			[ '(Bar)', '' ]
-		];
-
-	for ( i = 0; i < cases.length; i++ ) {
-		testCase = cases[ i ];
-
-		$div = $( '<div>' ).append(
-			formatter.formatPlainTextExtract( testCase[ 0 ], 'Test' )
-		);
-
-		assert.equal( $div.html(), testCase[ 1 ] );
-	}
-} );

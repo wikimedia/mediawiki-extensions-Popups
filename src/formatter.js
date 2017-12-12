@@ -13,9 +13,6 @@ export function formatPlainTextExtract( plainTextExtract, title ) {
 		return [];
 	}
 
-	extract = removeParentheticals( extract );
-	extract = removeTrailingEllipsis( extract );
-
 	// After cleaning the extract it may have been blanked
 	if ( extract.length === 0 ) {
 		return [];
@@ -71,61 +68,4 @@ function makeTitleInExtractBold( extract, title ) {
 	} );
 
 	return elements;
-}
-
-/**
- * Removes the trailing ellipsis from the extract, if it's there.
- *
- * This function was extracted from
- * `mw.popups.renderer.article#removeEllipsis`.
- *
- * @param {String} extract
- * @return {String}
- */
-export function removeTrailingEllipsis( extract ) {
-	return extract.replace( /\.\.\.$/, '' );
-}
-
-/**
- * Removes parentheticals from the extract.
- *
- * If the parenthesis are unbalanced or out of order, then the extract is
- * returned without further processing.
- *
- * This function was extracted from
- * `mw.popups.renderer.article#removeParensFromText`.
- *
- * @param {String} extract
- * @return {String}
- */
-export function removeParentheticals( extract ) {
-	var
-		ch,
-		result = '',
-		level = 0,
-		i = 0;
-
-	for ( i; i < extract.length; i++ ) {
-		ch = extract.charAt( i );
-
-		if ( ch === ')' && level === 0 ) {
-			return extract;
-		}
-		if ( ch === '(' ) {
-			level++;
-			continue;
-		} else if ( ch === ')' ) {
-			level--;
-			continue;
-		}
-		if ( level === 0 ) {
-			// Remove leading spaces before brackets
-			if ( ch === ' ' && extract.charAt( i + 1 ) === '(' ) {
-				continue;
-			}
-			result += ch;
-		}
-	}
-
-	return ( level === 0 ) ? result : extract;
 }

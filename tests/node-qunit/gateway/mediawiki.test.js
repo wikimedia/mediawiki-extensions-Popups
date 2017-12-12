@@ -10,7 +10,7 @@ var DEFAULT_CONSTANTS = {
 			pages: [
 				{
 					contentmodel: 'wikitext',
-					extract: 'Richard Paul "Rick" Astley (/\u02c8r\u026ak \u02c8\u00e6stli/; born 6 February 1966) is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the...',
+					extract: 'Richard Paul "Rick" Astley is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the',
 					lastrevid: 748725726,
 					length: 32132,
 					fullurl: 'https://en.wikipedia.org/wiki/Rick_Astley',
