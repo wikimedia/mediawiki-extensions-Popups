@@ -26,8 +26,6 @@ var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
  * @param {Function} ajax A function with the same signature as `jQuery.ajax`
  * @param {Object} config Configuration that affects the major behavior of the
  *  gateway.
- * @param {Number} config.THUMBNAIL_SIZE The length of the major dimension of
- *  the thumbnail.
  * @param {Function} extractParser A function that takes response and returns parsed extract
  * @return {RESTBaseGateway}
  */
@@ -59,6 +57,14 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 		fetch( title )
 			.then(
 				function ( page ) {
+					// Endpoint response may be empty.
+					if ( !page ) {
+						page = { title: title };
+					}
+					// And extract may be omitted if empty string
+					if ( page.extract === undefined ) {
+						page.extract = '';
+					}
 					result.resolve(
 						convertPageToModel( page, config.THUMBNAIL_SIZE, extractParser ) );
 				},

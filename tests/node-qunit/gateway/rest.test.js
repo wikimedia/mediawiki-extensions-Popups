@@ -272,6 +272,24 @@ QUnit.test( 'RESTBase gateway handles missing images ', function ( assert ) {
 	);
 } );
 
+QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
+	var api = this.sandbox.stub().returns( $.Deferred().resolve( {} ).promise() ),
+		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
+
+	return gateway.getPageSummary( 'Test Title with missing extract' ).then( function ( result ) {
+		assert.equal( result.extract, '!!', 'Extract' );
+	} );
+} );
+
+QUnit.test( 'RESTBase gateway handles no content success responses', function ( assert ) {
+	var api = this.sandbox.stub().returns( $.Deferred().resolve( { status: 204 } ).promise() ),
+		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
+
+	return gateway.getPageSummary( 'Test Title with empty response' ).then( function ( result ) {
+		assert.equal( result.extract, '!!', 'Extract' );
+	} );
+} );
+
 QUnit.test( 'RESTBase gateway handles missing pages ', function ( assert ) {
 	var response = {
 			type: 'https://mediawiki.org/wiki/HyperSwitch/errors/not_found',
