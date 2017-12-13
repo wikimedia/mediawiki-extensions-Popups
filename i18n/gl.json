@@ -29,5 +29,5 @@
 	"popups-prefs-optin-enabled-label": "Activar",
 	"popups-prefs-optin-disabled-label": "Desactivar",
 	"popups-prefs-disable-nav-gadgets-info": "Necesita [[$1 | desactivar os trebello de Pop-ups de Navegación]] da pestana de Trebellos para activar as Vistas previas",
-	"popups-prefs-conflicting-gadgets-info": "Certos trebellos e outras personalizacións poden afectar ó rendemento desta funcionalidade. Se atopa algún problema, por favor, revise os seus trebellos e secuencias de ordes de usuario."
+	"popups-prefs-conflicting-gadgets-info": "Certos trebellos e outras personalizacións poden afectar ó rendemento desta funcionalidade. Se atopa algún problema, por favor, revise os seus trebellos e secuencias de ordes de usuario, incluíndo os globais."
 }
