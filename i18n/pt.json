@@ -8,7 +8,8 @@
 			"Diniscoelho",
 			"Macofe",
 			"Hamilton Abreu",
-			"Fúlvio"
+			"Fúlvio",
+			"MokaAkashiyaPT"
 		]
 	},
 	"popups-message": "Antevisões de páginas",
@@ -34,5 +35,5 @@
 	"popups-prefs-optin-enabled-label": "Ativar",
 	"popups-prefs-optin-disabled-label": "Desativar",
 	"popups-prefs-disable-nav-gadgets-info": "Tem de [[$1 | desativar os Popups de Navegação]] no separador Gadgets para ativar a Antevisão de Páginas",
-	"popups-prefs-conflicting-gadgets-info": "Certos gadgets e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus gadgets e ficheiros de comandos (''scripts'') de utilizador."
+	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais."
 }
