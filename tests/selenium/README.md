@@ -13,7 +13,7 @@ Set up MediaWiki-Vagrant:
 
 From mediawiki/core folder:
 
-    echo 'include_once "$IP/extensions/Popups/tests/browser/LocalSettings.php";' >> LocalSettings.php
+    echo 'include_once "$IP/extensions/Popups/tests/selenium/LocalSettings.php";' >> LocalSettings.php
 
 Run both mediawiki/core and Popups tests from mediawiki/core folder:
 
