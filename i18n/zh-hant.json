@@ -9,7 +9,8 @@
 			"Wctaiwan",
 			"Zhxy 519",
 			"Alexsh",
-			"烈羽"
+			"烈羽",
+			"A2093064"
 		]
 	},
 	"popups-message": "頁面預覽",
@@ -29,6 +30,9 @@
 	"popups-settings-enable": "開啟預覽",
 	"popups-send-feedback": "送出回饋意見 (外部連結)",
 	"popups-preview-no-preview": "該頁面無法預覽",
+	"prefs-reading": "閱讀設定",
+	"popups-prefs-optin-title": "頁面預覽\n\n<em>當閱讀條目時，取得對應頁面的快速預覽</em>",
 	"popups-prefs-optin-enabled-label": "啟用",
-	"popups-prefs-optin-disabled-label": "關閉"
+	"popups-prefs-optin-disabled-label": "關閉",
+	"popups-prefs-disable-nav-gadgets-info": "您需要[[$1 |事先禁用導航Popups小工具]]才能啟用頁面預覽"
 }
