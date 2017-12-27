@@ -25,12 +25,12 @@ use Popups\UserPreferencesChangeHandler;
  * Integration tests for Page Preview hooks
  *
  * @group Popups
- * @coversDefaultClass  UserPreferencesChangeHandlerTest
+ * @coversDefaultClass \Popups\UserPreferencesChangeHandler
  */
 class UserPreferencesChangeHandlerTest extends MediaWikiTestCase {
 
 	/**
-	 * @covers ::handle
+	 * @covers ::doPreferencesFormPreSave
 	 * @covers ::__construct
 	 * @dataProvider provideDataForEventHandling
 	 */

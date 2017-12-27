@@ -26,7 +26,7 @@ use Popups\EventLogging\EventLoggerFactory;
  * Integration tests for Page Preview hooks
  *
  * @group Popups
- * @coversDefaultClass  EventLoggerFactory
+ * @coversDefaultClass \Popups\EventLogging\EventLoggerFactory
  */
 class EventLoggerFactoryTest extends MediaWikiTestCase {
 

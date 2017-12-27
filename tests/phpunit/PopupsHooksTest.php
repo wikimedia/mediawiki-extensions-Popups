@@ -25,7 +25,7 @@ use Popups\PopupsHooks;
  * Integration tests for Page Preview hooks
  *
  * @group Popups
- * @coversDefaultClass  PopupsHooks
+ * @coversDefaultClass \Popups\PopupsHooks
  */
 class PopupsHooksTest extends MediaWikiTestCase {
 
@@ -194,7 +194,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers PopupsHooks::onUserGetDefaultOptions
+	 * @covers ::onUserGetDefaultOptions
 	 */
 	public function testOnUserGetDefaultOptions() {
 		$userOptions = [
@@ -310,7 +310,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers PopupsHooks::onMakeGlobalVariablesScript
+	 * @covers ::onMakeGlobalVariablesScript
 	 */
 	public function testOnMakeGlobalVariablesScript() {
 		$user = User::newFromId( 0 );
