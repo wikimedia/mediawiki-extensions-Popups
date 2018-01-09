@@ -9,7 +9,8 @@
 			"HanV",
 			"Robin van der Vliet",
 			"Mainframe98",
-			"Romaine"
+			"Romaine",
+			"Dinosaur918"
 		]
 	},
 	"popups-message": "Pop-uppagina's",
@@ -18,13 +19,16 @@
 	"popups-settings-title": "Paginavoorvertoning",
 	"popups-settings-description": "Met dit hulpmiddel krijgt u een voorvertoning van wiki pagina's en referenties",
 	"popups-settings-option-simple": "Inschakelen",
-	"popups-settings-option-simple-description": "Bekijk de inleidende paragraaf van een pagina met een afbeelding. Dit is aanbevolen voor lezers",
+	"popups-settings-option-simple-description": "Bekijk de inleidende paragraaf en een eventuele afbeelding van een pagina.",
 	"popups-settings-option-advanced": "Geavanceerd",
 	"popups-settings-option-off": "Uitschakelen",
 	"popups-settings-save": "Opslaan",
-	"popups-settings-help-ok": "Afgerond",
+	"popups-settings-help-ok": "Afronden",
 	"popups-settings-cancel": "Annuleren",
+	"popups-settings-help": "U kan voorvertoningen terug inschakelen met behulp van een link onderaan de pagina.",
 	"popups-settings-enable": "Voorvertoningen inschakelen",
+	"popups-preview-no-preview": "Er is geen voorvertoning mogelijk voor deze pagina",
+	"popups-preview-footer-read": "Lezen",
 	"popups-prefs-optin-title": "<em>Krijg snelle voorvertoningen van een onderwerp tijdens het lezen van een pagina</em>",
 	"popups-prefs-optin-enabled-label": "Inschakelen",
 	"popups-prefs-optin-disabled-label": "Uitschakelen"
