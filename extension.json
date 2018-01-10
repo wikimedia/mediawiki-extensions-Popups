@@ -9,7 +9,7 @@
 	"license-name": "GPL-2.0+",
 	"type": "betafeatures",
 	"requires": {
-		"MediaWiki" : ">= 1.30.0"
+		"MediaWiki": ">= 1.30.0"
 	},
 	"AutoloadClasses": {
 		"Popups\\PopupsHooks": "includes/PopupsHooks.php",
@@ -37,7 +37,7 @@
 		"GetPreferences": [
 			"Popups\\PopupsHooks::onGetPreferences"
 		],
-		"PreferencesFormPreSave" : [
+		"PreferencesFormPreSave": [
 			"Popups\\UserPreferencesChangeHandler::onPreferencesFormPreSave"
 		],
 		"UserGetDefaultOptions": [
