@@ -1,7 +1,9 @@
 import * as renderer from '../../../src/ui/renderer';
 import { createNullModel } from '../../../src/preview/model';
 
-var $ = jQuery;
+var $ = jQuery,
+	MSG_NO_PREVIEW = 'There was an issue displaying this preview',
+	MSG_GO_TO_PAGE = 'Go to this page';
 
 /**
  * A utility function that creates a bare bones preview
@@ -51,9 +53,9 @@ QUnit.module( 'ext.popups#renderer', {
 		window.mediaWiki.msg = function ( key ) {
 			switch ( key ) {
 				case 'popups-preview-no-preview':
-					return 'Looks like there isn\'t a preview for this page';
+					return MSG_NO_PREVIEW;
 				case 'popups-preview-footer-read':
-					return 'Read';
+					return MSG_GO_TO_PAGE;
 			}
 		};
 
@@ -171,8 +173,8 @@ QUnit.test( 'createEmptyPreview(model)', function ( assert ) {
 	assert.deepEqual(
 		this.renderSpy.getCall( 0 ).args[ 0 ],
 		$.extend( {}, model, {
-			extractMsg: 'Looks like there isn\'t a preview for this page',
-			readMsg: 'Read'
+			extractMsg: MSG_NO_PREVIEW,
+			readMsg: MSG_GO_TO_PAGE
 		} ),
 		'Template is called with the correct data.'
 	);
@@ -199,8 +201,8 @@ QUnit.test( 'createEmptyPreview(null model)', function ( assert ) {
 	assert.deepEqual(
 		this.renderSpy.getCall( 0 ).args[ 0 ],
 		$.extend( {}, model, {
-			extractMsg: 'Looks like there isn\'t a preview for this page',
-			readMsg: 'Read'
+			extractMsg: MSG_NO_PREVIEW,
+			readMsg: MSG_GO_TO_PAGE
 		} ),
 		'Template is called with the correct data.'
 	);
