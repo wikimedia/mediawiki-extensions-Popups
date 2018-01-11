@@ -1,4 +1,5 @@
 import preview from '../../../src/reducers/preview';
+import actionTypes from '../../../src/actionTypes';
 
 QUnit.module( 'ext.popups/reducers#preview', {
 	beforeEach: function () {
@@ -211,6 +212,30 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 		'It should NOOP if the user has interacted with another link since the gateway request was made.'
 	);
 
+} );
+
+QUnit.test( actionTypes.FETCH_FAILED, function ( assert ) {
+	var token = '1234567890',
+		state = {
+			activeToken: token,
+			isUserDwelling: true
+		},
+		action = {
+			type: actionTypes.FETCH_FAILED,
+			token: token
+		};
+
+	assert.expect( 1 );
+
+	assert.deepEqual(
+		preview( state, action ),
+		{
+			// Previous state.
+			activeToken: state.activeToken,
+			isUserDwelling: true
+		},
+		'It should store the result and not transition states.'
+	);
 } );
 
 QUnit.test( 'PREVIEW_DWELL', function ( assert ) {

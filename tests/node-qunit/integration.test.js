@@ -9,7 +9,13 @@ import registerChangeListener from '../../src/changeListener';
 var mw = mediaWiki,
 	$ = jQuery,
 	// Store the real wait to be actually used in tests
-	wait = WaitModule.default;
+	wait = WaitModule.default,
+
+	/**
+	* Whether Gateway#getPageSummary is resolved or rejected.
+	* @enum {number}
+	*/
+	FETCH_RESOLUTION = { RESOLVE: 0, REJECT: 1 };
 
 function identity( x ) { return x; }
 function constant( x ) { return function () { return x; }; }
@@ -96,18 +102,19 @@ QUnit.module( 'ext.popups preview @integration', {
 			{ get: identity }
 		);
 
-		this.dwell = function ( title, el, ev, fetchResponse ) {
+		this.dwell = function ( title, el, ev, fetchResponse, resolution = FETCH_RESOLUTION.RESOLVE ) {
 			that.resetWait();
 			that.actions.linkDwell( title, el, ev, {
 				getPageSummary: function () {
-					return $.Deferred().resolve( fetchResponse ).promise();
+					var method = resolution === FETCH_RESOLUTION.RESOLVE ? 'resolve' : 'reject';
+					return $.Deferred()[ method ]( fetchResponse ).promise();
 				}
 			}, function () { return 'pagetoken'; } );
 			return that.waitPromise;
 		};
 
-		this.dwellAndShowPreview = function ( title, el, ev, fetchResponse ) {
-			that.dwell( title, el, ev, fetchResponse );
+		this.dwellAndShowPreview = function ( title, el, ev, fetchResponse, reject = FETCH_RESOLUTION.RESOLVE ) {
+			that.dwell( title, el, ev, fetchResponse, reject );
 			that.waitDeferred.resolve();
 
 			// Wait for the next tick to resolve pending callbacks. N.B. that the
@@ -191,6 +198,17 @@ QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert 
 		var state = store.getState();
 		assert.equal( state.preview.activeLink, el );
 		assert.equal( state.preview.shouldShow, true, 'Should show when data has been fetched' );
+	} );
+} );
+
+QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert ) {
+	var store = this.store,
+		el = this.el;
+
+	return this.dwellAndShowPreview( this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT ).then( function () {
+		var state = store.getState();
+		assert.equal( state.preview.activeLink, el );
+		assert.equal( state.preview.shouldShow, false, 'Shouldn\'t show when data couldn\'t be fetched' );
 	} );
 } );
 
