@@ -20,7 +20,7 @@ export var TYPE_PAGE = 'page'; // eslint-disable-line one-var
  * @property {String} languageDirection Either "ltr" or "rtl"
  * @property {?Array} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
- *  removed
+ *  removed; this can be used to present default or error states
  * @property {String} type Either "extract" or "generic"
  * @property {?Object} thumbnail
  *
@@ -62,11 +62,12 @@ export function createModel(
 /**
  * Creates an empty preview model.
  *
- * @param {String} title
- * @return {PreviewModel}
+ * @param {!String} title
+ * @param {!String} url
+ * @return {!PreviewModel}
  */
-export function createNullModel( title ) {
-	return createModel( title, '', '', '', [], '' );
+export function createNullModel( title, url ) {
+	return createModel( title, url, '', '', [], '' );
 }
 
 /**

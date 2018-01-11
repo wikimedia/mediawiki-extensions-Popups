@@ -52,15 +52,18 @@ export function createStubExperiments( bucket ) {
  * Creates a **minimal** stub that can be used in place of an instance of
  * `mw.Title`.
  *
- * @param {Number} namespace
- * @param {String} prefixedDb, e.g. Foo, or File:Bar.jpg
- * @return {Object}
+ * @param {!Number} namespace
+ * @param {!String} prefixedDb, e.g. Foo, or File:Bar.jpg
+ * @return {!Object}
  */
 export function createStubTitle( namespace, prefixedDb ) {
 	return {
 		namespace: namespace,
 		getPrefixedDb: function () {
 			return prefixedDb;
+		},
+		getUrl: function () {
+			return `/wiki/${prefixedDb}`;
 		}
 	};
 }

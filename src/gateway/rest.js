@@ -57,9 +57,9 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 		fetch( title )
 			.then(
 				function ( page ) {
-					// Endpoint response may be empty.
-					if ( !page ) {
-						page = { title: title };
+					// Endpoint response may be empty or simply missing a title.
+					if ( !page || !page.title ) {
+						page = $.extend( true, page || {}, { title: title } );
 					}
 					// And extract may be omitted if empty string
 					if ( page.extract === undefined ) {
@@ -70,9 +70,8 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 				},
 				function ( jqXHR ) {
 					if ( jqXHR.status === 404 ) {
-
 						result.resolve(
-							createNullModel( title )
+							createNullModel( title, new mw.Title( title ).getUrl() )
 						);
 					} else {
 						result.reject();

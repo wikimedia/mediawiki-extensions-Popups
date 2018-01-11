@@ -144,7 +144,7 @@ QUnit.test( 'RESTBase provider uses extract parser', function ( assert ) {
 	assert.deepEqual( getSpy.getCall( 0 ).args[ 0 ], RESTBASE_RESPONSE );
 } );
 
-QUnit.test( 'RESTBase gateway is correctly converting the page data to a model ', function ( assert ) {
+QUnit.test( 'RESTBase gateway is correctly converting the page data to a model', function ( assert ) {
 	var gateway = createRESTBaseGateway();
 
 	assert.deepEqual(
@@ -162,7 +162,7 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	assert.deepEqual(
 		model.thumbnail,
 		RESTBASE_RESPONSE.originalimage,
-		'If the requested thumbnail size is bigger than that of the orignal, then use the original.'
+		'If the requested thumbnail size is bigger than that of the original, then use the original.'
 	);
 
 	// ---
@@ -180,7 +180,7 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	assert.deepEqual(
 		model.thumbnail,
 		RESTBASE_RESPONSE_WITH_SMALL_IMAGE.originalimage,
-		'If the requested thumbnail can\'t be generated because the orignal is too small, then use the original.'
+		'If the requested thumbnail can\'t be generated because the original is too small, then use the original.'
 	);
 
 	// ---
@@ -197,7 +197,7 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	);
 } );
 
-QUnit.test( 'RESTBase gateway handles awkwardly thumbnails', function ( assert ) {
+QUnit.test( 'RESTBase gateway handles awkward thumbnails', function ( assert ) {
 	var gateway = createRESTBaseGateway(),
 		response,
 		model;
@@ -228,24 +228,33 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'RESTBase gateway handles the API failure', function ( assert ) {
-	var deferred = $.Deferred(),
-		api = this.sandbox.stub().returns( deferred.reject( { status: 500 } ).promise() ),
+QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
+	var api = this.sandbox.stub().returns( $.Deferred().reject( { status: 500 } ).promise() ),
 		gateway = createRESTBaseGateway( api );
 
 	return gateway.getPageSummary( 'Test Title' ).catch( function () {
 		assert.ok( true );
 	} );
-
 } );
 
 QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( assert ) {
-	var deferred = $.Deferred(),
-		api = this.sandbox.stub().returns( deferred.reject( { status: 404 } ).promise() ),
-		gateway = createRESTBaseGateway( api, { THUMBNAIL_SIZE: 200 }, provideParsedExtract );
+	var response = {
+			status: 404,
+			type: 'https://mediawiki.org/wiki/HyperSwitch/errors/not_found',
+			title: 'Not found.',
+			method: 'get',
+			detail: 'Page or revision not found.',
+			uri: '/en.wikipedia.org/v1/page/summary/Missing_page'
+		},
+		api = this.sandbox.stub().returns(
+			$.Deferred().reject( response ).promise()
+		),
+		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( 'Test Title' ).then( function () {
-		assert.ok( true );
+	return gateway.getPageSummary( 'Missing Page' ).then( function ( result ) {
+		assert.equal( result.title, 'Missing Page', 'Title' );
+		// Extract is undefined since the parser is only invoked for successful responses.
+		assert.equal( result.extract, undefined, 'Extract' );
 	} );
 } );
 
@@ -277,6 +286,7 @@ QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
 		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
 
 	return gateway.getPageSummary( 'Test Title with missing extract' ).then( function ( result ) {
+		assert.equal( result.title, 'Test Title with missing extract', 'Title' );
 		assert.equal( result.extract, '!!', 'Extract' );
 	} );
 } );
@@ -286,24 +296,7 @@ QUnit.test( 'RESTBase gateway handles no content success responses', function ( 
 		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
 
 	return gateway.getPageSummary( 'Test Title with empty response' ).then( function ( result ) {
+		assert.equal( result.title, 'Test Title with empty response', 'Title' );
 		assert.equal( result.extract, '!!', 'Extract' );
-	} );
-} );
-
-QUnit.test( 'RESTBase gateway handles missing pages ', function ( assert ) {
-	var response = {
-			type: 'https://mediawiki.org/wiki/HyperSwitch/errors/not_found',
-			title: 'Not found.',
-			method: 'get',
-			detail: 'Page or revision not found.',
-			uri: '/en.wikipedia.org/v1/page/summary/Missing_page'
-		},
-		api = this.sandbox.stub().returns(
-			$.Deferred().reject( response ).promise()
-		),
-		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
-
-	return gateway.getPageSummary( 'Missing Page' ).catch( function () {
-		assert.ok( true );
 	} );
 } );

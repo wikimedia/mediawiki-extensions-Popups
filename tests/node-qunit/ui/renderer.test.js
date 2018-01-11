@@ -1,4 +1,5 @@
 import * as renderer from '../../../src/ui/renderer';
+import { createNullModel } from '../../../src/preview/model';
 
 var $ = jQuery;
 
@@ -138,7 +139,7 @@ QUnit.test( 'createPreview', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'createEmptyPreview', function ( assert ) {
+QUnit.test( 'createEmptyPreview(model)', function ( assert ) {
 	var model = {
 			title: 'Test',
 			url: 'https://en.wikipedia.org/wiki/Test',
@@ -163,6 +164,34 @@ QUnit.test( 'createEmptyPreview', function ( assert ) {
 		emptyPreview.isTall,
 		false,
 		'Empty preview is never tall (even though the supplied thumbnail is tall).'
+	);
+
+	assert.ok( this.renderSpy.calledOnce, 'Template has been rendered.' );
+
+	assert.deepEqual(
+		this.renderSpy.getCall( 0 ).args[ 0 ],
+		$.extend( {}, model, {
+			extractMsg: 'Looks like there isn\'t a preview for this page',
+			readMsg: 'Read'
+		} ),
+		'Template is called with the correct data.'
+	);
+} );
+
+QUnit.test( 'createEmptyPreview(null model)', function ( assert ) {
+	var model = createNullModel( 'Test', '/wiki/Test' ),
+		emptyPreview = renderer.createEmptyPreview( model );
+
+	assert.equal(
+		emptyPreview.hasThumbnail,
+		false,
+		'Null preview doesn\'t have a thumbnail.'
+	);
+
+	assert.equal(
+		emptyPreview.isTall,
+		false,
+		'Null preview is never tall.'
 	);
 
 	assert.ok( this.renderSpy.calledOnce, 'Template has been rendered.' );

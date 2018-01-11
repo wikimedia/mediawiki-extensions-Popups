@@ -81,7 +81,7 @@ export function init() {
  * # The position of the mouse when the user dwells on the link with their
  *   mouse.
  * # The centermost point of the link when the user dwells on the link with
- *   their keboard or other assistive device.
+ *   their keyboard or other assistive device.
  *
  * Since the content of the preview doesn't change but its position might, we
  * distinguish between "rendering" - generating HTML from a MediaWiki API
@@ -92,6 +92,7 @@ export function init() {
  * @return {ext.popups.Preview}
  */
 export function render( model ) {
+	// `undefined` is the default extract for null objects.
 	var preview = model.extract === undefined ? createEmptyPreview( model ) : createPreview( model );
 
 	return {

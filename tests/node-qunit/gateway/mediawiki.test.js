@@ -152,20 +152,15 @@ QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a mo
 	);
 } );
 
-QUnit.test( 'MediaWiki API gateway handles the API failure', function ( assert ) {
-	var p,
-		deferred = $.Deferred(),
-		api = {
-			get: this.sandbox.stub().returns( deferred.promise() )
+QUnit.test( 'MediaWiki API gateway handles API failure', function ( assert ) {
+	var api = {
+			get: this.sandbox.stub().returns( $.Deferred().reject( { status: 400 } ).promise() )
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	p = gateway.getPageSummary( 'Test Title' ).catch( function () {
+	return gateway.getPageSummary( 'Test Title' ).catch( function () {
 		assert.ok( true );
 	} );
-
-	deferred.reject();
-	return p;
 } );
 
 QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert ) {
