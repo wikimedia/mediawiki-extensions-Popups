@@ -208,7 +208,7 @@ QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert
 	return this.dwellAndShowPreview( this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT ).then( function () {
 		var state = store.getState();
 		assert.equal( state.preview.activeLink, el );
-		assert.equal( state.preview.shouldShow, false, 'Shouldn\'t show when data couldn\'t be fetched' );
+		assert.equal( state.preview.shouldShow, true, 'Should show when data couldn\'t be fetched' );
 	} );
 } );
 

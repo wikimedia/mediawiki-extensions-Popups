@@ -4,6 +4,7 @@
 
 import types from './actionTypes';
 import wait from './wait';
+import { createNullModel } from './preview/model';
 
 var $ = jQuery,
 	mw = window.mediaWiki,
@@ -132,12 +133,32 @@ export function fetch( gateway, title, el, token ) {
 
 		return $.when( request, wait( FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY ) )
 			.then( function ( result ) {
-				dispatch( timedAction( {
+				dispatch( {
 					type: types.FETCH_COMPLETE,
 					el: el,
 					result: result,
 					token: token
-				} ) );
+				} );
+			} )
+			.fail( function ( data, result ) {
+				// All failures, except those due to being offline or network error, should present "There
+				// was an issue displaying this preview". e.g.:
+				// - Show (timeout): data="http" {xhr: {…}, textStatus: "timeout", exception: "timeout"}
+				// - Show (bad MW request): data="unknown_action" {error: {…}}
+				// - Show (RB 4xx): data="http" {xhr: {…}, textStatus: "error", exception: "Bad Request"}
+				// - Show (RB 5xx): data="http" {xhr: {…}, textStatus: "error", exception: "Service Unavailable"}
+				// - Suppress (offline or network error): data="http" result={xhr: {…}, textStatus: "error", exception: ""}
+				var networkError = result && result.xhr && result.xhr.readyState === 0 &&
+					result.textStatus === 'error' && result.exception === '';
+				if ( !networkError ) {
+					dispatch( {
+						// Both FETCH_FAILED and FETCH_END conclude with FETCH_COMPLETE.
+						type: types.FETCH_COMPLETE,
+						el: el,
+						result: createNullModel( titleText, title.getUrl() ),
+						token: token
+					} );
+				}
 			} );
 	};
 }

@@ -8,9 +8,13 @@ export default {
 	ABANDON_START: 'ABANDON_START',
 	ABANDON_END: 'ABANDON_END',
 	LINK_CLICK: 'LINK_CLICK',
+	/** Precedes a fetch. */
 	FETCH_START: 'FETCH_START',
+	/** Follows a successful fetch. */
 	FETCH_END: 'FETCH_END',
+	/** Follows a fetch regardless of whether it was successful. */
 	FETCH_COMPLETE: 'FETCH_COMPLETE',
+	/** Follows an unsuccessful fetch. */
 	FETCH_FAILED: 'FETCH_FAILED',
 	PREVIEW_DWELL: 'PREVIEW_DWELL',
 	PREVIEW_SHOW: 'PREVIEW_SHOW',

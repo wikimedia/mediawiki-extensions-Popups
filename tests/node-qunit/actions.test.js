@@ -323,7 +323,7 @@ QUnit.test( 'it should dispatch the FETCH_END action when the API request ends',
 	} );
 } );
 
-QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( assert ) {
+QUnit.test( 'it should dispatch the FETCH_COMPLETE action', function ( assert ) {
 	var whenDeferred = $.Deferred(),
 		whenSpy,
 		args,
@@ -351,7 +351,6 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 	assert.strictEqual( args[ 1 ], this.waitPromises[ 0 ] );
 
 	// ---
-	this.now += 500;
 	whenDeferred.resolve( result );
 
 	return whenDeferred.then( function () {
@@ -367,7 +366,6 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 					type: 'FETCH_COMPLETE',
 					el: that.el,
 					result: result,
-					timestamp: 500,
 					token: that.token
 				}
 			);
@@ -383,7 +381,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 	this.gatewayDeferred.reject( new Error( 'API req failed' ) );
 
 	const fetch = this.fetch().catch( function () {
-		assert.equal( that.dispatch.callCount, 2, 'dispatch called twice, START and FAILED' );
+		assert.equal( that.dispatch.callCount, 3, 'dispatch called thrice, START, FAILED, and COMPLETE' );
 		assert.deepEqual(
 			that.dispatch.getCall( 1 ).args[ 0 ],
 			{
@@ -404,7 +402,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 	assert.expect( 2 );
 
 	const fetch = this.fetch().catch( function () {
-		assert.equal( that.dispatch.callCount, 2, 'dispatch called twice, START and FAILED' );
+		assert.equal( that.dispatch.callCount, 3, 'dispatch called thrice, START, FAILED, and COMPLETE' );
 		assert.deepEqual(
 			that.dispatch.getCall( 1 ).args[ 0 ],
 			{

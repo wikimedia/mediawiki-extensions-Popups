@@ -1,5 +1,6 @@
 import preview from '../../../src/reducers/preview';
 import actionTypes from '../../../src/actionTypes';
+import { createNullModel } from '../../../src/preview/model';
 
 QUnit.module( 'ext.popups/reducers#preview', {
 	beforeEach: function () {
@@ -225,16 +226,35 @@ QUnit.test( actionTypes.FETCH_FAILED, function ( assert ) {
 			token: token
 		};
 
-	assert.expect( 1 );
+	assert.expect( 2 );
 
 	assert.deepEqual(
 		preview( state, action ),
 		{
-			// Previous state.
 			activeToken: state.activeToken,
 			isUserDwelling: true
 		},
-		'It should store the result and not transition states.'
+		'It should not transition states.'
+	);
+
+	// ---
+
+	action = {
+		type: actionTypes.FETCH_COMPLETE,
+		token: token,
+		result: { title: createNullModel( 'Title', '/wiki/Title' ) }
+	};
+
+	assert.deepEqual(
+		preview( state, action ),
+		{
+			activeToken: state.activeToken,
+			isUserDwelling: true,
+
+			fetchResponse: action.result,
+			shouldShow: true
+		},
+		'It should store the result and signal that an error preview should be rendered.'
 	);
 } );
 

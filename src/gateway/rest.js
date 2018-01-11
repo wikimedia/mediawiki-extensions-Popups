@@ -68,13 +68,17 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 					result.resolve(
 						convertPageToModel( page, config.THUMBNAIL_SIZE, extractParser ) );
 				},
-				function ( jqXHR ) {
+				function ( jqXHR, textStatus, errorThrown ) {
+					// Adapt the response to the ideal API.
+					// TODO: should we just let the client handle this too?
 					if ( jqXHR.status === 404 ) {
 						result.resolve(
 							createNullModel( title, new mw.Title( title ).getUrl() )
 						);
 					} else {
-						result.reject();
+						// The client will choose how to handle these errors which may include those due to HTTP
+						// 5xx status. The rejection typing matches Fetch failures.
+						result.reject( 'http', { xhr: jqXHR, textStatus: textStatus, exception: errorThrown } );
 					}
 				}
 			);

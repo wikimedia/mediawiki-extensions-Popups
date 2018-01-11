@@ -4,10 +4,10 @@ import nextState from './nextState';
 /**
  * Reducer for actions that modify the state of the preview model
  *
- * @param {Object} state before action
- * @param {Object} action Redux action that modified state.
+ * @param {?Object} state before action
+ * @param {!Object} action Redux action that modified state.
  *  Must have `type` property.
- * @return {Object} state after action
+ * @return {!Object} state after action
  */
 export default function preview( state, action ) {
 	if ( state === undefined ) {
@@ -26,10 +26,12 @@ export default function preview( state, action ) {
 			return nextState( state, {
 				enabled: action.isEnabled
 			} );
+
 		case actionTypes.SETTINGS_CHANGE:
 			return nextState( state, {
 				enabled: action.enabled
 			} );
+
 		case actionTypes.LINK_DWELL:
 			// New interaction
 			if ( action.el !== state.activeLink ) {
@@ -47,12 +49,11 @@ export default function preview( state, action ) {
 
 					isUserDwelling: true
 				} );
-			} else {
-				// Dwelling back into the same link
-				return nextState( state, {
-					isUserDwelling: true
-				} );
 			}
+			// Dwelling back into the same link
+			return nextState( state, {
+				isUserDwelling: true
+			} );
 
 		case actionTypes.ABANDON_END:
 			if ( action.token === state.activeToken && !state.isUserDwelling ) {
@@ -80,15 +81,14 @@ export default function preview( state, action ) {
 			return nextState( state, {
 				fetchResponse: undefined
 			} );
+
 		case actionTypes.FETCH_COMPLETE:
 			if ( action.token === state.activeToken ) {
 				return nextState( state, {
 					fetchResponse: action.result,
 					shouldShow: state.isUserDwelling
 				} );
-			}
-
-			/* falls through */
+			} // else fall through
 		default:
 			return state;
 	}
