@@ -8,13 +8,13 @@
 			"Ty221"
 		]
 	},
-	"popups-message": "Wyskakujące okienka",
+	"popups-message": "Podglądy strony",
 	"popups-desc": "Wyświetla podgląd po umieszczeniu wskaźnika myszy na odnośniku",
 	"popups-redirects": "przekierowuje do<h3>$1</h3>",
 	"popups-settings-title": "Podgląd strony",
 	"popups-settings-description": "To narzędzie umożliwia szybki podgląd linków do stron wiki i przypisów.",
 	"popups-settings-option-simple": "Włącz",
-	"popups-settings-option-simple-description": "Zobacz zdanie wprowadzające oraz podgląd obrazka na stronie. Zalecane dla czytelników.",
+	"popups-settings-option-simple-description": "Uzyskaj szybkie podglądy tematu podczas czytania strony.",
 	"popups-settings-option-advanced": "Zaawansowany",
 	"popups-settings-option-off": "Wyłącz",
 	"popups-settings-save": "Zapisz",
@@ -26,5 +26,6 @@
 	"popups-preview-no-preview": "Wygląda na to, że nie ma podglądu tej strony",
 	"prefs-reading": "Preferencje czytania",
 	"popups-prefs-optin-enabled-label": "Włącz",
-	"popups-prefs-optin-disabled-label": "Wyłącz"
+	"popups-prefs-optin-disabled-label": "Wyłącz",
+	"popups-prefs-conflicting-gadgets-info": "Niektóre gadżety i inne ustawienia mogą wpływać na wydajność tej funkcji. Jeśli wystąpią problemy, przejrzyj swoje gadżety i skrypty, w tym globalne."
 }
