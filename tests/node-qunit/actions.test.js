@@ -323,7 +323,7 @@ QUnit.test( 'it should dispatch the FETCH_END action when the API request ends',
 	} );
 } );
 
-QUnit.test( 'it should dispatch the FETCH_COMPLETE action', function ( assert ) {
+QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( assert ) {
 	var whenDeferred = $.Deferred(),
 		whenSpy,
 		args,
