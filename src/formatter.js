@@ -55,12 +55,16 @@ function makeTitleInExtractBold( extract, title ) {
 	// Make title bold in the extract text
 	// As the extract is html escaped there can be no such string in it
 	// Also, the title is escaped of RegExp elements thus can't have "*"
-	extract = extract.replace( regExp, '$1' + snip + boldIdentifier + '$2' + snip + '$3' );
+	extract = extract.replace(
+		regExp,
+		'$1' + snip + boldIdentifier + '$2' + snip + '$3'
+	);
 	extract = extract.split( snip );
 
 	$.each( extract, function ( index, part ) {
 		if ( part.indexOf( boldIdentifier ) === 0 ) {
-			elements.push( $( '<b>' ).text( part.substring( boldIdentifier.length ) ) );
+			elements.push( $( '<b>' )
+				.text( part.substring( boldIdentifier.length ) ) );
 		} else {
 			elements.push( document.createTextNode( part ) );
 		}

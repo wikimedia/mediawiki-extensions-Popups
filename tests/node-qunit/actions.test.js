@@ -126,7 +126,9 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell( this.title, this.el, event, /* gateway = */ null, generateToken )(
+	actions.linkDwell(
+		this.title, this.el, event, /* gateway = */ null, generateToken
+	)(
 		dispatch,
 		this.getState
 	);
@@ -175,7 +177,9 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell( this.title, this.el, event, /* gateway = */ null, generateToken )(
+	actions.linkDwell(
+		this.title, this.el, event, /* gateway = */ null, generateToken
+	)(
 		dispatch,
 		this.getState
 	);
@@ -203,7 +207,9 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell( this.title, this.el, event, /* gateway = */ null, generateToken )(
+	actions.linkDwell(
+		this.title, this.el, event, /* gateway = */ null, generateToken
+	)(
 		dispatch,
 		this.getState
 	);
@@ -239,7 +245,9 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell( this.title, this.el, event, /* gateway = */ null, generateToken )(
+	actions.linkDwell(
+		this.title, this.el, event, /* gateway = */ null, generateToken
+	)(
 		dispatch,
 		this.getState
 	);
@@ -279,7 +287,9 @@ QUnit.module( 'ext.popups/actions#fetch', {
 
 		// Sugar.
 		this.fetch = function () {
-			return actions.fetch( that.gateway, that.title, that.el, that.token )( that.dispatch );
+			return actions.fetch(
+				that.gateway, that.title, that.el, that.token
+			)( that.dispatch );
 		};
 	}
 } );
@@ -381,7 +391,10 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 	this.gatewayDeferred.reject( new Error( 'API req failed' ) );
 
 	const fetch = this.fetch().catch( function () {
-		assert.equal( that.dispatch.callCount, 3, 'dispatch called thrice, START, FAILED, and COMPLETE' );
+		assert.equal(
+			that.dispatch.callCount, 3,
+			'dispatch called thrice, START, FAILED, and COMPLETE'
+		);
 		assert.deepEqual(
 			that.dispatch.getCall( 1 ).args[ 0 ],
 			{
@@ -402,7 +415,10 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 	assert.expect( 2 );
 
 	const fetch = this.fetch().catch( function () {
-		assert.equal( that.dispatch.callCount, 3, 'dispatch called thrice, START, FAILED, and COMPLETE' );
+		assert.equal(
+			that.dispatch.callCount, 3,
+			'dispatch called thrice, START, FAILED, and COMPLETE'
+		);
 		assert.deepEqual(
 			that.dispatch.getCall( 1 ).args[ 0 ],
 			{
@@ -498,12 +514,18 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 
 	actions.saveSettings( /* enabled = */ true )( dispatch, getState );
 
-	assert.ok( getState.calledOnce, 'it should query the global state for the current state' );
-	assert.ok( dispatch.calledWith( {
-		type: 'SETTINGS_CHANGE',
-		wasEnabled: false,
-		enabled: true
-	} ), 'it should dispatch the action with the previous and next enabled state' );
+	assert.ok(
+		getState.calledOnce,
+		'it should query the global state for the current state'
+	);
+	assert.ok(
+		dispatch.calledWith( {
+			type: 'SETTINGS_CHANGE',
+			wasEnabled: false,
+			enabled: true
+		} ),
+		'it should dispatch the action with the previous and next enabled state'
+	);
 } );
 
 QUnit.module( 'ext.popups/actions#previewShow' );

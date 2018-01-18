@@ -7,7 +7,10 @@ QUnit.module( 'ext.popups/changeListeners/render', {
 			show: this.sandbox.stub().returns( $.Deferred().resolve() )
 		};
 
-		this.sandbox.stub( RendererModule, 'render', this.sandbox.stub().returns( this.preview ) );
+		this.sandbox.stub(
+			RendererModule, 'render',
+			this.sandbox.stub().returns( this.preview )
+		);
 	}
 } );
 

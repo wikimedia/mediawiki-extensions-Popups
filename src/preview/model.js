@@ -78,7 +78,8 @@ export function createNullModel( title, url ) {
  * returned.
  *
  * @param {Array|undefined|null} extract
- * @return {Array|undefined} Array when extract is an not empty array, undefined otherwise
+ * @return {Array|undefined} Array when extract is an not empty array, undefined
+ *  otherwise
  */
 function processExtract( extract ) {
 	if ( extract === undefined || extract === null || extract.length === 0 ) {

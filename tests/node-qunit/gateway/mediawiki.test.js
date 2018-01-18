@@ -154,7 +154,8 @@ QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a mo
 
 QUnit.test( 'MediaWiki API gateway handles API failure', function ( assert ) {
 	var api = {
-			get: this.sandbox.stub().returns( $.Deferred().reject( { status: 400 } ).promise() )
+			get: this.sandbox.stub()
+				.returns( $.Deferred().reject( { status: 400 } ).promise() )
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 

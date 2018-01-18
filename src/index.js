@@ -15,7 +15,8 @@ import { fromElement as titleFromElement } from './title';
 import { init as rendererInit } from './ui/renderer';
 import createExperiments from './experiments';
 import { isEnabled as isStatsvEnabled } from './instrumentation/statsv';
-import { isEnabled as isEventLoggingEnabled } from './instrumentation/eventLogging';
+import { isEnabled as isEventLoggingEnabled }
+	from './instrumentation/eventLogging';
 import changeListeners from './changeListeners';
 import * as actions from './actions';
 import reducers from './reducers';
@@ -116,14 +117,24 @@ function getCurrentTimestamp() {
  * @param {EventTracker} eventLoggingTracker
  * @param {Function} getCurrentTimestamp
  */
-function registerChangeListeners( store, actions, userSettings, settingsDialog, previewBehavior, statsvTracker, eventLoggingTracker, getCurrentTimestamp ) {
+function registerChangeListeners(
+	store, actions, userSettings, settingsDialog, previewBehavior,
+	statsvTracker, eventLoggingTracker, getCurrentTimestamp
+) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
-	registerChangeListener( store, changeListeners.statsv( actions, statsvTracker ) );
-	registerChangeListener( store, changeListeners.syncUserSettings( userSettings ) );
-	registerChangeListener( store, changeListeners.settings( actions, settingsDialog ) );
-	registerChangeListener( store, changeListeners.eventLogging( actions, eventLoggingTracker, getCurrentTimestamp ) );
+	registerChangeListener(
+		store, changeListeners.statsv( actions, statsvTracker ) );
+	registerChangeListener(
+		store, changeListeners.syncUserSettings( userSettings ) );
+	registerChangeListener(
+		store, changeListeners.settings( actions, settingsDialog ) );
+	registerChangeListener(
+		store,
+		changeListeners.eventLogging(
+			actions, eventLoggingTracker, getCurrentTimestamp
+		) );
 }
 
 /*
@@ -153,7 +164,9 @@ mw.requestIdleCallback( function () {
 		isEnabled,
 		previewBehavior;
 
-	userBucket = getUserBucket( mw.experiments, mw.config.get( 'wgPopupsAnonsExperimentalGroupSize' ),
+	userBucket = getUserBucket(
+		mw.experiments,
+		mw.config.get( 'wgPopupsAnonsExperimentalGroupSize' ),
 		mw.user.sessionId() );
 	userSettings = createUserSettings( mw.storage );
 	settingsDialog = createSettingsDialogRenderer();
@@ -215,7 +228,9 @@ mw.requestIdleCallback( function () {
 				var mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
-					boundActions.linkDwell( mwTitle, this, event, gateway, generateToken );
+					boundActions.linkDwell(
+						mwTitle, this, event, gateway, generateToken
+					);
 				}
 			} )
 			.on( 'mouseout blur', validLinkSelector, function () {

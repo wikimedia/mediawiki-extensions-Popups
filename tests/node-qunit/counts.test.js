@@ -63,7 +63,8 @@ QUnit.test( '#getPreviewCountBucket', function ( assert ) {
 		assert.equal(
 			bucket,
 			cases[ i ][ 1 ],
-			'Preview count bucket is "' + bucket + '" when preview count is ' + count + '.'
+			'Preview count bucket is "' +
+				bucket + '" when preview count is ' + count + '.'
 		);
 	}
 } );

@@ -8,9 +8,9 @@ import { BUCKETS } from './../constants';
  * session.
  * If wgPopupsEventLogging is false this will return false unless debug=true has
  * been enabled.
- * If an experiment is being run (ie. wgPopupsAnonsExperimentalGroupSize has been
- * defined) then event logging will only be enabled for those in the `on` or `control`
- * groups.
+ * If an experiment is being run (ie. wgPopupsAnonsExperimentalGroupSize has
+ * been defined) then event logging will only be enabled for those in the `on`
+ * or `control` groups.
  * However, if the UA doesn't support [the Beacon API][1], then bucketing is
  * disabled.
  *

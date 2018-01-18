@@ -65,7 +65,9 @@ QUnit.test( 'if experiment is running on group is subject to event logging', fun
 
 QUnit.test( 'if experiment is running control group is subject to event logging', function ( assert ) {
 	assert.ok( this.isEnabled( true, BUCKETS.control ), 'anons are logged' );
-	assert.notOk( this.isEnabled( false, BUCKETS.control ), 'but not authenticated users' );
+	assert.notOk(
+		this.isEnabled( false, BUCKETS.control ),
+		'but not authenticated users' );
 } );
 
 QUnit.test( 'if experiment is running off group is not subject to event logging', function ( assert ) {
@@ -85,6 +87,9 @@ QUnit.test( 'it should respect the debug flag always', function ( assert ) {
 
 	this.config.set( 'wgPopupsEventLogging', true );
 
-	assert.ok( this.isEnabled( true, BUCKETS.off ), 'Even when user is bucketed as off' );
-	assert.ok( this.isEnabled( false, BUCKETS.off ), 'Even when user is logged in and bucketed as off' );
+	assert.ok(
+		this.isEnabled( true, BUCKETS.off ), 'Even when user is bucketed as off' );
+	assert.ok(
+		this.isEnabled( false, BUCKETS.off ),
+		'Even when user is logged in and bucketed as off' );
 } );

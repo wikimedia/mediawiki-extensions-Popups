@@ -157,7 +157,8 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	var model,
 		gateway = createRESTBaseGateway();
 
-	model = gateway.convertPageToModel( RESTBASE_RESPONSE, 2000, provideParsedExtract );
+	model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE, 2000, provideParsedExtract );
 
 	assert.deepEqual(
 		model.thumbnail,
@@ -166,7 +167,11 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	);
 
 	// ---
-	model = gateway.convertPageToModel( RESTBASE_RESPONSE, RESTBASE_RESPONSE.originalimage.height, provideParsedExtract );
+	model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE,
+		RESTBASE_RESPONSE.originalimage.height,
+		provideParsedExtract
+	);
 
 	assert.deepEqual(
 		model.thumbnail,
@@ -175,7 +180,8 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	);
 
 	// ---
-	model = gateway.convertPageToModel( RESTBASE_RESPONSE_WITH_SMALL_IMAGE, 320, provideParsedExtract );
+	model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE_WITH_SMALL_IMAGE, 320, provideParsedExtract );
 
 	assert.deepEqual(
 		model.thumbnail,
@@ -184,7 +190,8 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	);
 
 	// ---
-	model = gateway.convertPageToModel( RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE, 640, provideParsedExtract );
+	model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE, 640, provideParsedExtract );
 
 	assert.deepEqual(
 		model.thumbnail,
@@ -219,7 +226,8 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 	var model,
 		gateway = createRESTBaseGateway();
 
-	model = gateway.convertPageToModel( SVG_RESTBASE_RESPONSE, 2000, provideParsedExtract );
+	model = gateway.convertPageToModel(
+		SVG_RESTBASE_RESPONSE, 2000, provideParsedExtract );
 
 	assert.equal(
 		model.thumbnail.source,
@@ -229,7 +237,8 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 } );
 
 QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
-	var api = this.sandbox.stub().returns( $.Deferred().reject( { status: 500 } ).promise() ),
+	var api = this.sandbox.stub()
+			.returns( $.Deferred().reject( { status: 500 } ).promise() ),
 		gateway = createRESTBaseGateway( api );
 
 	return gateway.getPageSummary( 'Test Title' ).catch( function () {
@@ -249,11 +258,13 @@ QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( ass
 		api = this.sandbox.stub().returns(
 			$.Deferred().reject( response ).promise()
 		),
-		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
+		gateway = createRESTBaseGateway(
+			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
 	return gateway.getPageSummary( 'Missing Page' ).then( function ( result ) {
 		assert.equal( result.title, 'Missing Page', 'Title' );
-		// Extract is undefined since the parser is only invoked for successful responses.
+		// Extract is undefined since the parser is only invoked for successful
+		// responses.
 		assert.equal( result.extract, undefined, 'Extract' );
 	} );
 } );
@@ -262,7 +273,8 @@ QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
 	var api = this.sandbox.stub().returns(
 			$.Deferred().resolve( RESTBASE_RESPONSE ).promise()
 		),
-		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
+		gateway = createRESTBaseGateway(
+			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
 	return gateway.getPageSummary( 'Test Title' ).then( function ( result ) {
 		assert.deepEqual( result, RESTBASE_RESPONSE_PREVIEW_MODEL );
@@ -272,7 +284,8 @@ QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
 QUnit.test( 'RESTBase gateway handles missing images ', function ( assert ) {
 	var model,
 		gateway = createRESTBaseGateway();
-	model = gateway.convertPageToModel( RESTBASE_RESPONSE_WITHOUT_IMAGE, 300, provideParsedExtract );
+	model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE_WITHOUT_IMAGE, 300, provideParsedExtract );
 
 	assert.equal(
 		model.originalimage,
@@ -283,20 +296,25 @@ QUnit.test( 'RESTBase gateway handles missing images ', function ( assert ) {
 
 QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
 	var api = this.sandbox.stub().returns( $.Deferred().resolve( {} ).promise() ),
-		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
+		gateway = createRESTBaseGateway(
+			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( 'Test Title with missing extract' ).then( function ( result ) {
-		assert.equal( result.title, 'Test Title with missing extract', 'Title' );
-		assert.equal( result.extract, '!!', 'Extract' );
-	} );
+	return gateway.getPageSummary( 'Test Title with missing extract' )
+		.then( function ( result ) {
+			assert.equal( result.title, 'Test Title with missing extract', 'Title' );
+			assert.equal( result.extract, '!!', 'Extract' );
+		} );
 } );
 
 QUnit.test( 'RESTBase gateway handles no content success responses', function ( assert ) {
-	var api = this.sandbox.stub().returns( $.Deferred().resolve( { status: 204 } ).promise() ),
-		gateway = createRESTBaseGateway( api, DEFAULT_CONSTANTS, provideParsedExtract );
+	var api = this.sandbox.stub()
+			.returns( $.Deferred().resolve( { status: 204 } ).promise() ),
+		gateway = createRESTBaseGateway(
+			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( 'Test Title with empty response' ).then( function ( result ) {
-		assert.equal( result.title, 'Test Title with empty response', 'Title' );
-		assert.equal( result.extract, '!!', 'Extract' );
-	} );
+	return gateway.getPageSummary( 'Test Title with empty response' )
+		.then( function ( result ) {
+			assert.equal( result.title, 'Test Title with empty response', 'Title' );
+			assert.equal( result.extract, '!!', 'Extract' );
+		} );
 } );

@@ -21,12 +21,15 @@ function getBaseData( bootAction ) {
 		popupEnabled: bootAction.isEnabled,
 		pageToken: bootAction.pageToken,
 		sessionToken: bootAction.sessionToken,
-		previewCountBucket: counts.getPreviewCountBucket( bootAction.user.previewCount ),
+		previewCountBucket: counts.getPreviewCountBucket(
+			bootAction.user.previewCount
+		),
 		hovercardsSuppressedByGadget: bootAction.isNavPopupsEnabled
 	};
 
 	if ( !bootAction.user.isAnon ) {
-		result.editCountBucket = counts.getEditCountBucket( bootAction.user.editCount );
+		result.editCountBucket =
+			counts.getEditCountBucket( bootAction.user.editCount );
 	}
 
 	return result;
@@ -74,7 +77,8 @@ function createEvent( interaction, actionData ) {
  */
 function createClosingEvent( interaction ) {
 	var actionData = {
-		totalInteractionTime: Math.round( interaction.finished - interaction.started )
+		totalInteractionTime:
+			Math.round( interaction.finished - interaction.started )
 	};
 
 	if ( interaction.finalized ) {
@@ -84,7 +88,8 @@ function createClosingEvent( interaction ) {
 	// Has the preview been shown? If so, then, in the context of the
 	// instrumentation, then the preview has been dismissed by the user
 	// rather than the user has abandoned the link.
-	actionData.action = interaction.timeToPreviewShow ? 'dismissed' : 'dwelledButAbandoned';
+	actionData.action =
+		interaction.timeToPreviewShow ? 'dismissed' : 'dwelledButAbandoned';
 
 	return createEvent( interaction, actionData );
 }
@@ -206,7 +211,8 @@ export default function eventLogging( state, action ) {
 					previewCountBucket: counts.getPreviewCountBucket( nextCount )
 				} ),
 				interaction: nextState( state.interaction, {
-					timeToPreviewShow: Math.round( action.timestamp - state.interaction.started )
+					timeToPreviewShow:
+						Math.round( action.timestamp - state.interaction.started )
 				} )
 			} );
 
@@ -237,7 +243,8 @@ export default function eventLogging( state, action ) {
 
 				// Was the user interacting with another link? If so, then log the
 				// abandoned event.
-				event: state.interaction ? createClosingEvent( state.interaction ) : undefined
+				event: state.interaction ?
+					createClosingEvent( state.interaction ) : undefined
 			} );
 
 		case actionTypes.PREVIEW_DWELL:
@@ -254,7 +261,8 @@ export default function eventLogging( state, action ) {
 				} ),
 				event: createEvent( state.interaction, {
 					action: 'opened',
-					totalInteractionTime: Math.round( action.timestamp - state.interaction.started )
+					totalInteractionTime:
+						Math.round( action.timestamp - state.interaction.started )
 				} )
 			} );
 
