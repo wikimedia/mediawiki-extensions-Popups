@@ -6,7 +6,9 @@
 		]
 	},
 	"popups-message": "صحفي جي نمائش",
+	"popups-settings-option-simple": "قابل-بڻايو",
 	"popups-settings-option-advanced": "متقدم",
 	"popups-settings-save": "سانڍيو",
-	"popups-preview-footer-read": "پڙھو"
+	"popups-preview-footer-read": "پڙھو",
+	"popups-prefs-optin-enabled-label": "قابل-بڻايو"
 }

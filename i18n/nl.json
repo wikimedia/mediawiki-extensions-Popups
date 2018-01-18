@@ -10,26 +10,32 @@
 			"Robin van der Vliet",
 			"Mainframe98",
 			"Romaine",
-			"Dinosaur918"
+			"Dinosaur918",
+			"Mar(c)"
 		]
 	},
 	"popups-message": "Pop-uppagina's",
-	"popups-desc": "Geeft pop-uppagina's weer met samenvattingen van de inhoud van pagina's bij zweven boven koppelingen",
+	"popups-desc": "Toont voorvertoningen wanneer de gebruiker met de muis over paginakoppelingen gaat.",
 	"popups-redirects": "verwijst door naar <h3>$1</h3>",
 	"popups-settings-title": "Paginavoorvertoning",
 	"popups-settings-description": "Met dit hulpmiddel krijgt u een voorvertoning van wiki pagina's en referenties",
 	"popups-settings-option-simple": "Inschakelen",
 	"popups-settings-option-simple-description": "Bekijk de inleidende paragraaf en een eventuele afbeelding van een pagina.",
 	"popups-settings-option-advanced": "Geavanceerd",
+	"popups-settings-option-advanced-description": "Voorvertoningen van koppelingen weergeven en toegang krijgen tot bewerkingsmenu's. Dit wordt door veel bewerkers gebruikt.",
 	"popups-settings-option-off": "Uitschakelen",
 	"popups-settings-save": "Opslaan",
 	"popups-settings-help-ok": "Afronden",
 	"popups-settings-cancel": "Annuleren",
 	"popups-settings-help": "U kan voorvertoningen terug inschakelen met behulp van een link onderaan de pagina.",
 	"popups-settings-enable": "Voorvertoningen inschakelen",
-	"popups-preview-no-preview": "Er is geen voorvertoning mogelijk voor deze pagina",
-	"popups-preview-footer-read": "Lezen",
-	"popups-prefs-optin-title": "<em>Krijg snelle voorvertoningen van een onderwerp tijdens het lezen van een pagina</em>",
+	"popups-send-feedback": "Feedback geven (externe link)",
+	"popups-preview-no-preview": "Er was een probleem met het weergeven van deze voorvertoning",
+	"popups-preview-footer-read": "Ga naar deze pagina",
+	"prefs-reading": "Leesvoorkeuren",
+	"popups-prefs-optin-title": "Paginavoorvertoningen tijdens het lezen:",
 	"popups-prefs-optin-enabled-label": "Inschakelen",
-	"popups-prefs-optin-disabled-label": "Uitschakelen"
+	"popups-prefs-optin-disabled-label": "Uitschakelen",
+	"popups-prefs-disable-nav-gadgets-info": "Om paginavoorvertoningen te kunnen inschakelen, moet u eerst Navigatiepop-ups uitschakelen [[$1 | op het Uitbreidingen-tabblad]]",
+	"popups-prefs-conflicting-gadgets-info": "Bepaalde uitbreidingen en andere aanpassingen kunnen de prestaties van deze functie beïnvloeden. Als u problemen ondervindt, controleer dan uw gadgets en gebruikersscripts, inclusief de globale."
 }

@@ -5,7 +5,8 @@
 			"Liuxinyu970226",
 			"Robby",
 			"Nemo bis",
-			"Mateon1"
+			"Mateon1",
+			"Mar(c)"
 		]
 	},
 	"popups-message": "Name shown in user preference for this extension",
@@ -30,6 +31,6 @@
 	"popups-prefs-optin-title": "Title for Page Previews option\n\n<em>Description for Page previews option</em>",
 	"popups-prefs-optin-enabled-label": "Label for Page Previews opt in\n{{Identical|Enable}}",
 	"popups-prefs-optin-disabled-label": "Label for Page previews opt out\n{{Identical|Disable}}",
-	"popups-prefs-disable-nav-gadgets-info": "Help message telling to disable Navigation Popups gadget in order to enable Page Previews. Parameters: $1 - link to Preferences page",
+	"popups-prefs-disable-nav-gadgets-info": "Help message telling to disable Navigation Popups gadget in order to enable Page Previews.\n\nParameters:\n* $1 – Link to the Gadgets tab of Preferences",
 	"popups-prefs-conflicting-gadgets-info": "Help message informing about possible conflicts with other gadgets/customizations"
 }

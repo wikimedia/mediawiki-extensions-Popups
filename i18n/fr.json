@@ -10,7 +10,8 @@
 			"Cl3m3n7",
 			"Wladek92",
 			"C13m3n7",
-			"The RedBurn"
+			"The RedBurn",
+			"Trizek (WMF)"
 		]
 	},
 	"popups-message": "Aperçus de page",
@@ -29,10 +30,10 @@
 	"popups-settings-help": "Vous pouvez activer des aperçus sur l'utilisation d'un lien dans le pied de page.",
 	"popups-settings-enable": "Activer les aperçus",
 	"popups-send-feedback": "Envoyer des Commentaires (lien externe)",
-	"popups-preview-no-preview": "Il semble qu’il n’y a pas d’aperçu pour cette page",
-	"popups-preview-footer-read": "Lire",
+	"popups-preview-no-preview": "Il y a eu un problème pour afficher cet aperçu",
+	"popups-preview-footer-read": "Aller à cette page",
 	"prefs-reading": "Préférences de lecture",
-	"popups-prefs-optin-title": "Aperçus de page\n\n<em>Obtenir des aperçus rapides d’un sujet en lisant une page</em>",
+	"popups-prefs-optin-title": "Aperçus de page\n\n<em>Avoir un aperçu rapide d’un sujet alors qu'on lit une page</em>",
 	"popups-prefs-optin-enabled-label": "Activer",
 	"popups-prefs-optin-disabled-label": "Désactiver",
 	"popups-prefs-disable-nav-gadgets-info": "Vous devez [[$1 |désactiver le Gadget Navigation Popups]] dans l’onglet des Gadgets pour activer les Aperçus de page",
