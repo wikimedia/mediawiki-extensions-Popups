@@ -73,8 +73,7 @@ export default function createMediaWikiApiGateway( api, config ) {
 		return fetch( title )
 			.then( extractPageFromResponse )
 			.then( formatPlainTextExtract )
-			.then( convertPageToModel )
-			.promise();
+			.then( convertPageToModel );
 	}
 
 	return {
