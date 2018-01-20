@@ -24,7 +24,9 @@
 	"popups-settings-enable": "Aktywuj podgląd",
 	"popups-send-feedback": "Wyślij opinię (link zewnętrzny)",
 	"popups-preview-no-preview": "Wygląda na to, że nie ma podglądu tej strony",
+	"popups-preview-footer-read": "Przejdź do tej strony",
 	"prefs-reading": "Preferencje czytania",
+	"popups-prefs-optin-title": "Podgląd stron\n\n<em>Podczas czytania strony zapewni szybki podgląd tematu</em>",
 	"popups-prefs-optin-enabled-label": "Włącz",
 	"popups-prefs-optin-disabled-label": "Wyłącz",
 	"popups-prefs-conflicting-gadgets-info": "Niektóre gadżety i inne ustawienia mogą wpływać na wydajność tej funkcji. Jeśli wystąpią problemy, przejrzyj swoje gadżety i skrypty, w tym globalne."
