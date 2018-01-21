@@ -10,7 +10,8 @@
 			"Redredsonia",
 			"Facenapalm",
 			"Iniquity",
-			"Jack who built the house"
+			"Jack who built the house",
+			"Gehhrr"
 		]
 	},
 	"popups-message": "Предварительный просмотр страницы",
@@ -30,7 +31,7 @@
 	"popups-settings-enable": "Включить предпросмотр",
 	"popups-send-feedback": "Отправить отзыв (внешняя ссылка)",
 	"popups-preview-no-preview": "Предварительный просмотр страницы недоступен",
-	"popups-preview-footer-read": "Читать",
+	"popups-preview-footer-read": "Перейти на страницу",
 	"prefs-reading": "Настройки чтения",
 	"popups-prefs-optin-title": "Предпросмотр страниц\n\n<em>Показывать быстрый предпросмотр тем при наведении мыши</em>",
 	"popups-prefs-optin-enabled-label": "Включить",

@@ -3,11 +3,26 @@
 		"authors": [
 			"Zygimantus",
 			"Eitvys200",
-			"Nersip"
+			"Nersip",
+			"Manvydasz"
 		]
 	},
 	"popups-message": "Puslapio peržiūra",
+	"popups-desc": "Rodo puslapio peržiūrą, kai naudotojas užveda pelę ant puslapio nuorodos",
+	"popups-redirects": "nukreipia į <h3>$1</h3>",
+	"popups-settings-title": "Puslapio peržiūra",
+	"popups-settings-description": "Šis įrankis įgalina viki puslapių ir išnašų peržiūras.",
 	"popups-settings-option-simple": "Įgalinti",
+	"popups-settings-option-advanced": "Išplėstinis",
 	"popups-settings-option-off": "Išjungti",
-	"popups-settings-help-ok": "Atlikta"
+	"popups-settings-save": "Išsaugoti",
+	"popups-settings-help-ok": "Atlikta",
+	"popups-settings-cancel": "Atšaukti",
+	"popups-settings-enable": "Išjungti puslapio peržiūrą",
+	"popups-send-feedback": "Siųsti atsiliepimą (išorinė nuoroda)",
+	"popups-preview-no-preview": "Puslapio peržiūros klaida",
+	"popups-preview-footer-read": "Eiti į šį puslapį",
+	"prefs-reading": "Skaitymo nustatymai",
+	"popups-prefs-optin-enabled-label": "Įgalinti",
+	"popups-prefs-optin-disabled-label": "Išjungti"
 }
