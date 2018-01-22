@@ -216,7 +216,8 @@ QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
 	preview.el.mouseenter();
 
 	assert.ok( behavior.previewDwell.calledOnce, 'Preview dwell is called.' );
-	assert.notOk( behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
+	assert.notOk(
+		behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
 	assert.notOk( behavior.click.called, 'Click is NOT called.' );
 	assert.notOk( behavior.showSettings.called, 'Show settings is NOT called.' );
 } );
@@ -242,9 +243,11 @@ QUnit.test( 'bindBehavior - preview click', function ( assert ) {
 	preview.el.click();
 
 	assert.notOk( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
-	assert.notOk( behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
+	assert.notOk(
+		behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
 	assert.ok( behavior.click.calledOnce, 'Click is called.' );
-	assert.notOk( behavior.showSettings.called, 'Settings link click is NOT called.' );
+	assert.notOk( behavior.showSettings.called,
+		'Settings link click is NOT called.' );
 } );
 
 QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
@@ -255,9 +258,11 @@ QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
 	preview.el.find( '.mwe-popups-settings-icon' ).click();
 
 	assert.notOk( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
-	assert.notOk( behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
+	assert.notOk(
+		behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
 	assert.notOk( behavior.click.called, 'Click is NOT called.' );
-	assert.ok( behavior.showSettings.calledOnce, 'Settings link click is called.' );
+	assert.ok(
+		behavior.showSettings.calledOnce, 'Settings link click is called.' );
 } );
 
 QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
@@ -683,7 +688,8 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 			height: 827
 		},
 		pokeySize = 8,
-		layout = renderer.createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize );
+		layout = renderer.createLayout(
+			isPreviewTall, eventData, linkData, windowData, pokeySize );
 
 	assert.deepEqual(
 		layout,
@@ -728,7 +734,8 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 			height: 827
 		},
 		pokeySize = 8,
-		layout = renderer.createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize );
+		layout = renderer.createLayout(
+			isPreviewTall, eventData, linkData, windowData, pokeySize );
 
 	assert.deepEqual(
 		layout,
@@ -769,7 +776,8 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 			height: 827
 		},
 		pokeySize = 8,
-		layout = renderer.createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize );
+		layout = renderer.createLayout(
+			isPreviewTall, eventData, linkData, windowData, pokeySize );
 
 	assert.deepEqual(
 		layout,

@@ -36,9 +36,11 @@ export default function createGateway( config ) {
 		case 'mwApiPlain':
 			return createMediaWikiApiGateway( new mw.Api(), constants );
 		case 'restbasePlain':
-			return createRESTBaseGateway( $.ajax, constants, formatters.parsePlainTextResponse );
+			return createRESTBaseGateway(
+				$.ajax, constants, formatters.parsePlainTextResponse );
 		case 'restbaseHTML':
-			return createRESTBaseGateway( $.ajax, constants, formatters.parseHTMLResponse );
+			return createRESTBaseGateway(
+				$.ajax, constants, formatters.parseHTMLResponse );
 		default:
 			throw new Error( 'Unknown gateway' );
 	}

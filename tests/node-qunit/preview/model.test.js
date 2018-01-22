@@ -1,4 +1,5 @@
-import { createModel, TYPE_PAGE, TYPE_GENERIC } from '../../../src/preview/model';
+import { createModel, TYPE_PAGE, TYPE_GENERIC }
+	from '../../../src/preview/model';
 
 QUnit.module( 'ext.popups.preview#createModel' );
 

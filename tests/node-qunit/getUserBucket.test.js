@@ -4,7 +4,8 @@ import getUserBucket from '../../src/getUserBucket';
 QUnit.module( 'ext.popups#getUserBucket' );
 
 QUnit.test( 'If no users are subject to experiment everyone is bucketed as on', function ( assert ) {
-	assert.ok( getUserBucket( stubs.createStubExperiments( 'A' ), 0, 'a' ) === 'on' );
+	assert.ok(
+		getUserBucket( stubs.createStubExperiments( 'A' ), 0, 'a' ) === 'on' );
 } );
 
 QUnit.test( 'Define how experiment size impacts buckets', function ( assert ) {
@@ -26,10 +27,16 @@ QUnit.test( 'Define how experiment size impacts buckets', function ( assert ) {
 		getUserBucket( experiments, test[ 0 ], 'a' );
 
 		actualBuckets = spy.getCall( 0 ).args[ 0 ].buckets;
-		// To avoid precision issues we'll need to test them all individually rather than check
-		// use calledWith. Otherwise we'll get some false positives.
-		assert.ok( actualBuckets.off.toFixed( 2 ) === expectedBuckets.off.toFixed( 2 ) );
-		assert.ok( actualBuckets.on.toFixed( 2 ) === expectedBuckets.on.toFixed( 2 ) );
-		assert.ok( actualBuckets.control.toFixed( 2 ) === expectedBuckets.control.toFixed( 2 ) );
+		// To avoid precision issues we'll need to test them all individually
+		// rather than check use calledWith. Otherwise we'll get some false
+		// positives.
+		assert.ok(
+			actualBuckets.off.toFixed( 2 ) === expectedBuckets.off.toFixed( 2 ) );
+		assert.ok(
+			actualBuckets.on.toFixed( 2 ) === expectedBuckets.on.toFixed( 2 ) );
+		assert.ok(
+			actualBuckets.control.toFixed( 2 ) ===
+			expectedBuckets.control.toFixed( 2 )
+		);
 	} );
 } );

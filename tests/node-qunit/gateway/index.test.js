@@ -6,7 +6,8 @@ QUnit.module( 'gateway/index.js', {
 	beforeEach: function () {
 		mediaWiki.Api = function () {};
 
-		this.createMediaWikiApiGateway = this.sandbox.stub( MediawikiModule, 'default' );
+		this.createMediaWikiApiGateway =
+			this.sandbox.stub( MediawikiModule, 'default' );
 		this.createRESTBaseGateway = this.sandbox.stub( RestModule, 'default' );
 
 		this.config = new Map(); /* global Map */
@@ -18,7 +19,8 @@ QUnit.test( 'it uses mediawiki plain text gateway with wgPopupsGateway == "mwApi
 
 	createGateway( this.config );
 
-	assert.ok( this.createMediaWikiApiGateway.called, 'MW plain text gateway called' );
+	assert.ok( this.createMediaWikiApiGateway.called,
+		'MW plain text gateway called' );
 } );
 
 QUnit.test( 'it uses rest plain text gateway with wgPopupsGateway == "restbasePlain"', function ( assert ) {
@@ -26,7 +28,8 @@ QUnit.test( 'it uses rest plain text gateway with wgPopupsGateway == "restbasePl
 
 	createGateway( this.config );
 
-	assert.ok( this.createRESTBaseGateway.called, 'REST plain text gateway called' );
+	assert.ok( this.createRESTBaseGateway.called,
+		'REST plain text gateway called' );
 } );
 
 QUnit.test( 'it uses rest HTML gateway with wgPopupsGateway == "restbaseHTML"', function ( assert ) {

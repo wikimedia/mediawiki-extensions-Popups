@@ -124,7 +124,9 @@ QUnit.test( 'it should return null if the title can\'t be parsed properly', func
 QUnit.test( 'it should return null if the title can\'t be parsed properly', function ( assert ) {
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
 	assert.equal( isValid( 'title' ), null );
-	assert.equal( window.mediaWiki.Title.newFromText.callCount, 1, 'mediaWiki.Title.newFromText called for parsing the title' );
+	assert.equal(
+		window.mediaWiki.Title.newFromText.callCount, 1,
+		'mediaWiki.Title.newFromText called for parsing the title' );
 } );
 
 QUnit.test( 'it should return null if the title is not from a content namespace', function ( assert ) {

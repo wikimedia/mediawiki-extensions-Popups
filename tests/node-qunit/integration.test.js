@@ -102,18 +102,23 @@ QUnit.module( 'ext.popups preview @integration', {
 			{ get: identity }
 		);
 
-		this.dwell = function ( title, el, ev, fetchResponse, resolution = FETCH_RESOLUTION.RESOLVE ) {
+		this.dwell = function (
+			title, el, ev, fetchResponse, resolution = FETCH_RESOLUTION.RESOLVE
+		) {
 			that.resetWait();
 			that.actions.linkDwell( title, el, ev, {
 				getPageSummary: function () {
-					var method = resolution === FETCH_RESOLUTION.RESOLVE ? 'resolve' : 'reject';
+					var method = resolution === FETCH_RESOLUTION.RESOLVE ?
+						'resolve' : 'reject';
 					return $.Deferred()[ method ]( fetchResponse ).promise();
 				}
 			}, function () { return 'pagetoken'; } );
 			return that.waitPromise;
 		};
 
-		this.dwellAndShowPreview = function ( title, el, ev, fetchResponse, reject = FETCH_RESOLUTION.RESOLVE ) {
+		this.dwellAndShowPreview = function (
+			title, el, ev, fetchResponse, reject = FETCH_RESOLUTION.RESOLVE
+		) {
 			that.dwell( title, el, ev, fetchResponse, reject );
 			that.waitDeferred.resolve();
 
@@ -194,21 +199,27 @@ QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert 
 	var store = this.store,
 		el = this.el;
 
-	return this.dwellAndShowPreview( this.title, el, 'event', 42 ).then( function () {
-		var state = store.getState();
-		assert.equal( state.preview.activeLink, el );
-		assert.equal( state.preview.shouldShow, true, 'Should show when data has been fetched' );
-	} );
+	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
+		.then( function () {
+			var state = store.getState();
+			assert.equal( state.preview.activeLink, el );
+			assert.equal(
+				state.preview.shouldShow, true,
+				'Should show when data has been fetched' );
+		} );
 } );
 
 QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert ) {
 	var store = this.store,
 		el = this.el;
 
-	return this.dwellAndShowPreview( this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT ).then( function () {
+	return this.dwellAndShowPreview(
+		this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT
+	).then( function () {
 		var state = store.getState();
 		assert.equal( state.preview.activeLink, el );
-		assert.equal( state.preview.shouldShow, true, 'Should show when data couldn\'t be fetched' );
+		assert.equal( state.preview.shouldShow, true,
+			'Should show when data couldn\'t be fetched' );
 	} );
 } );
 
@@ -216,12 +227,14 @@ QUnit.test( 'in ACTIVE state, abandon start, and then end, switch it to INACTIVE
 	var that = this,
 		el = this.el;
 
-	return this.dwellAndShowPreview( this.title, el, 'event', 42 ).then( function () {
-		return that.abandonAndWait( el );
-	} ).then( function () {
-		var state = that.store.getState();
-		assert.equal( state.preview.activeLink, undefined, 'After abandoning, preview is back to INACTIVE' );
-	} );
+	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
+		.then( function () {
+			return that.abandonAndWait( el );
+		} ).then( function () {
+			var state = that.store.getState();
+			assert.equal( state.preview.activeLink, undefined,
+				'After abandoning, preview is back to INACTIVE' );
+		} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, and then dwell preview, should keep it active after all delays', function ( assert ) {

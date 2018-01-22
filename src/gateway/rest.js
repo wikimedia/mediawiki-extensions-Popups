@@ -26,7 +26,8 @@ var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
  * @param {Function} ajax A function with the same signature as `jQuery.ajax`
  * @param {Object} config Configuration that affects the major behavior of the
  *  gateway.
- * @param {Function} extractParser A function that takes response and returns parsed extract
+ * @param {Function} extractParser A function that takes response and returns
+ *  parsed extract
  * @return {RESTBaseGateway}
  */
 export default function createRESTBaseGateway( ajax, config, extractParser ) {
@@ -76,9 +77,14 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 							createNullModel( title, new mw.Title( title ).getUrl() )
 						);
 					} else {
-						// The client will choose how to handle these errors which may include those due to HTTP
-						// 5xx status. The rejection typing matches Fetch failures.
-						result.reject( 'http', { xhr: jqXHR, textStatus: textStatus, exception: errorThrown } );
+						// The client will choose how to handle these errors which may
+						// include those due to HTTP 5xx status. The rejection typing
+						// matches Fetch failures.
+						result.reject( 'http', {
+							xhr: jqXHR,
+							textStatus: textStatus,
+							exception: errorThrown
+						} );
 					}
 				}
 			);
@@ -163,6 +169,9 @@ function convertPageToModel( page, thumbSize, extractParser ) {
 		page.lang,
 		page.dir,
 		extractParser( page ),
-		page.thumbnail ? generateThumbnailData( page.thumbnail, page.originalimage, thumbSize ) : undefined
+		page.thumbnail ?
+			generateThumbnailData(
+				page.thumbnail, page.originalimage, thumbSize
+			) : undefined
 	);
 }

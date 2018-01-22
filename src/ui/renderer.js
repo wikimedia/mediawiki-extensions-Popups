@@ -93,7 +93,8 @@ export function init() {
  */
 export function render( model ) {
 	// `undefined` is the default extract for null objects.
-	var preview = model.extract === undefined ? createEmptyPreview( model ) : createPreview( model );
+	var preview = model.extract === undefined ?
+		createEmptyPreview( model ) : createPreview( model );
 
 	return {
 
@@ -406,7 +407,9 @@ export function createThumbnail( rawThumbnail ) {
  * @param {String} clipPath
  * @return {jQuery}
  */
-export function createThumbnailElement( className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath ) {
+export function createThumbnailElement(
+	className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath
+) {
 	var $thumbnailSVGImage, $thumbnail,
 		nsSvg = 'http://www.w3.org/2000/svg',
 		nsXlink = 'http://www.w3.org/1999/xlink';
@@ -449,12 +452,15 @@ export function createThumbnailElement( className, url, x, y, thumbnailWidth, th
 
 /**
  * @param {isPreviewTall} isPreviewTall
- * @param {Object} eventData Data related to the event that triggered showing a popup
+ * @param {Object} eventData Data related to the event that triggered showing
+ *  a popup
  * @param {number} eventData.pageX
  * @param {number} eventData.pageY
  * @param {number} eventData.clientY
- * @param {Object} linkData Data related to the link that’s used for showing a popup
- * @param {ClientRectList} linkData.clientRects list of rectangles defined by four edges
+ * @param {Object} linkData Data related to the link that’s used for showing
+ *  a popup
+ * @param {ClientRectList} linkData.clientRects list of rectangles defined by
+ *  four edges
  * @param {Object} linkData.offset
  * @param {number} linkData.width
  * @param {number} linkData.height
@@ -465,7 +471,9 @@ export function createThumbnailElement( className, url, x, y, thumbnailWidth, th
  * @param {number} pokeySize Space reserved for the pokey
  * @return {ext.popups.PreviewLayout}
  */
-export function createLayout( isPreviewTall, eventData, linkData, windowData, pokeySize ) {
+export function createLayout(
+	isPreviewTall, eventData, linkData, windowData, pokeySize
+) {
 	var flippedX = false,
 		flippedY = false,
 		offsetTop = eventData.pageY ?
@@ -595,7 +603,9 @@ export function getClasses( preview, layout ) {
  * @param {number} predefinedLandscapeImageHeight landscape image height
  * @param {number} pokeySize
  */
-export function layoutPreview( preview, layout, classes, predefinedLandscapeImageHeight, pokeySize ) {
+export function layoutPreview(
+	preview, layout, classes, predefinedLandscapeImageHeight, pokeySize
+) {
 	var popup = preview.el,
 		isTall = preview.isTall,
 		hasThumbnail = preview.hasThumbnail,

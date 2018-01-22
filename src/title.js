@@ -78,5 +78,8 @@ export function isValid( title, contentNamespaces ) {
  * @return {mw.Title|null}
  */
 export function fromElement( el, config ) {
-	return isValid( getTitle( el.href, config ), config.get( 'wgContentNamespaces' ) );
+	return isValid(
+		getTitle( el.href, config ),
+		config.get( 'wgContentNamespaces' )
+	);
 }

@@ -124,7 +124,8 @@ export default function createSettingsDialogRenderer() {
  */
 function createSettingsDialog() {
 	var $el,
-		path = mw.config.get( 'wgExtensionAssetsPath' ) + '/Popups/resources/ext.popups/images/',
+		path = mw.config.get( 'wgExtensionAssetsPath' ) +
+			'/Popups/resources/ext.popups/images/',
 		choices = [
 			{
 				id: 'simple',
