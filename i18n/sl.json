@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Janezdrilc",
-			"HairyFotr"
+			"HairyFotr",
+			"Dbc334"
 		]
 	},
 	"popups-message": "Povzetki strani",
@@ -21,8 +22,8 @@
 	"popups-settings-help": "Povzetke lahko ponovno vključiš na povezavi na dnu strani.",
 	"popups-settings-enable": "Vključi povzetke",
 	"popups-send-feedback": "Pošlji svoje mnenje (zunanja povezava)",
-	"popups-preview-no-preview": "Izgleda, da za to stran povzetek ne obstaja",
-	"popups-preview-footer-read": "Preberi",
+	"popups-preview-no-preview": "Pri prikazu predogleda je prišlo do težave",
+	"popups-preview-footer-read": "Pojdi na stran",
 	"prefs-reading": "Nastavitve za branje",
 	"popups-prefs-optin-title": "Povzetki strani\n\n<em>Oglej si kratke povzetke teme, medtem ko bereš članek</em>",
 	"popups-prefs-optin-enabled-label": "Vključi",
