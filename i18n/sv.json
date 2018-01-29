@@ -5,28 +5,32 @@
 			"Lokal Profil",
 			"WikiPhoenix",
 			"Josve05a",
-			"Johan"
+			"Johan",
+			"Skalman"
 		]
 	},
 	"popups-message": "Sidförhandsvisning",
-	"popups-desc": "Visar förhandsgranskningar när användaren för muspekaren över en sidlänk.",
+	"popups-desc": "Visar förhandsvisningar när användaren för muspekaren över en sidlänk.",
 	"popups-redirects": "omdirigering till <h3>$1</h3>",
 	"popups-settings-title": "Sidförhandsvisning",
 	"popups-settings-description": "Detta verktyg låter dig förhandsgranska länkar till wikisidor och till referenser",
 	"popups-settings-option-simple": "Aktivera",
 	"popups-settings-option-simple-description": "Hämta snabbförhandsvisningar för ett ämne när en sida läses.",
 	"popups-settings-option-advanced": "Avancerad",
-	"popups-settings-option-advanced-description": "Se förhandsgranskningar av länkar och ge tillgång till menyer för redigeringsfunktionalitet. Detta används av många redigerare.",
+	"popups-settings-option-advanced-description": "Se förhandsvisningar av länkar och ge tillgång till menyer för redigeringsfunktionalitet. Detta används av många redigerare.",
 	"popups-settings-option-off": "Inaktivera",
 	"popups-settings-save": "Spara",
 	"popups-settings-help-ok": "Klar",
 	"popups-settings-cancel": "Avbryt",
-	"popups-settings-enable": "Aktivera förhandsgranskning",
+	"popups-settings-help": "Du kan slå på förhandsvisningen igen med en länk i sidfoten.",
+	"popups-settings-enable": "Aktivera förhandsvisning",
 	"popups-send-feedback": "Skicka återkoppling (extern länk)",
-	"popups-preview-no-preview": "Ett fel uppstod när denna förhandsgranskning visade",
+	"popups-preview-no-preview": "Ett fel uppstod vid denna förhandsvisning",
 	"popups-preview-footer-read": "Gå till denna sida",
 	"prefs-reading": "Läsningsinställningar",
 	"popups-prefs-optin-title": "Sidförhandsvisningar\n\n<em>Få snabbförhandsvisningar av ett ämne medan du läser en sida</em>",
 	"popups-prefs-optin-enabled-label": "Aktivera",
-	"popups-prefs-optin-disabled-label": "Inaktivera"
+	"popups-prefs-optin-disabled-label": "Inaktivera",
+	"popups-prefs-disable-nav-gadgets-info": "Du måste [[$1 | avaktivera Navigation Popups Gadget]] från Finesser-fliken för att aktivera sidförhandsvisningar",
+	"popups-prefs-conflicting-gadgets-info": "Vissa finesser och andra anpassningar kan påverka den här funktionens prestanda. Om du upplever problem, vänligen granska dina finesser och användarskript, medräknat globala sådana."
 }
