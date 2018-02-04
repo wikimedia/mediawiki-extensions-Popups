@@ -125,7 +125,7 @@
 
 		/* Stylelint rule broken for vendor prefixes: https://github.com/stylelint/stylelint/issues/1939 */
 		/* stylelint-disable function-linear-gradient-no-nonstandard-direction */
-		&[dir='ltr']:after {
+		&[ dir='ltr' ]:after {
 			/* @noflip */
 			right: 0;
 			/* @noflip */
@@ -138,7 +138,7 @@
 			background-image: linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 		}
 
-		&[dir='rtl']:after {
+		&[ dir='rtl' ]:after {
 			/* @noflip */
 			left: 0;
 			/* @noflip */
