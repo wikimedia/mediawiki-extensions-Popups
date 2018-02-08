@@ -76,11 +76,10 @@ function setupWait( module ) {
 
 		module.waitDeferreds.push( deferred );
 		module.waitPromises.push( promise );
-
 		return promise;
 	} );
 
-	module.sandbox.stub( WaitModule, 'default', module.wait );
+	module.sandbox.stub( WaitModule, 'default' ).callsFake( module.wait );
 }
 
 /**
@@ -268,7 +267,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 		// Setup the mw.now stub before actions is re-required in setupWait
 		this.now = 0;
 
-		this.sandbox.stub( mw, 'now', function () {
+		this.sandbox.stub( mw, 'now' ).callsFake( function () {
 			return that.now;
 		} );
 
