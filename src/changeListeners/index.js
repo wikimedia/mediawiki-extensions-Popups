@@ -1,6 +1,7 @@
 import footerLink from './footerLink';
 import eventLogging from './eventLogging';
 import linkTitle from './linkTitle';
+import pageviews from './pageviews';
 import render from './render';
 import settings from './settings';
 import statsv from './statsv';
@@ -10,6 +11,7 @@ export default {
 	footerLink: footerLink,
 	eventLogging: eventLogging,
 	linkTitle: linkTitle,
+	pageviews: pageviews,
 	render: render,
 	settings: settings,
 	statsv: statsv,

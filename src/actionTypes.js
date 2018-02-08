@@ -16,9 +16,13 @@ export default {
 	FETCH_COMPLETE: 'FETCH_COMPLETE',
 	/** Follows an unsuccessful fetch. */
 	FETCH_FAILED: 'FETCH_FAILED',
+	PAGEVIEW_LOGGED: 'PAGEVIEW_LOGGED',
 	PREVIEW_DWELL: 'PREVIEW_DWELL',
 	PREVIEW_SHOW: 'PREVIEW_SHOW',
 	PREVIEW_CLICK: 'PREVIEW_CLICK',
+	/* Occurs when a preview has been opened for a significant amount of
+	time and can be assumed to have been 'seen' */
+	PREVIEW_SEEN: 'PREVIEW_SEEN',
 	SETTINGS_SHOW: 'SETTINGS_SHOW',
 	SETTINGS_HIDE: 'SETTINGS_HIDE',
 	SETTINGS_CHANGE: 'SETTINGS_CHANGE',

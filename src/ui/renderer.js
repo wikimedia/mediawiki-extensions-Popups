@@ -215,7 +215,9 @@ export function createEmptyPreview( model ) {
  * @return {jQuery.Promise} A promise that resolves when the promise has faded
  *  in
  */
-export function show( preview, event, $link, behavior, token, container ) {
+export function show( preview, event, $link, behavior,
+	token, container
+) {
 	var layout = createLayout(
 		preview.isTall,
 		{

@@ -471,19 +471,108 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 	);
 } );
 
-QUnit.module( 'ext.popups/actions#previewShow' );
+QUnit.module( 'ext.popups/actions#previewShow', {
+	beforeEach: function () {
+		setupWait( this );
+	}
+} );
 
-QUnit.test( 'it should dispatch the PREVIEW_SHOW action', function ( assert ) {
-	var token = '1234567890';
+QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', function ( assert ) {
+	var previewShow,
+		token = '1234567890',
+		dispatch = this.sandbox.spy(),
+		getState = this.sandbox.stub().returns( {
+			preview: {
+				activeToken: token,
+				fetchResponse: {
+					title: 'A',
+					type: 'page'
+				}
+			}
+		} );
 
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
+	previewShow = actions
+		.previewShow( token )( dispatch, getState );
 
-	assert.deepEqual(
-		actions.previewShow( token ),
-		{
+	assert.ok(
+		dispatch.calledWith( {
 			type: 'PREVIEW_SHOW',
 			token: token,
 			timestamp: mw.now()
-		}
+		} ),
+		'dispatches the preview show event'
 	);
+
+	assert.strictEqual(
+		this.wait.getCall( 0 ).args[ 0 ],
+		1000,
+		'It waits for PAGE_VIEW_VISIBILITY_DURATION milliseconds before trigging a pageview.'
+	);
+	return previewShow.then( function () {
+		assert.ok(
+			dispatch.calledTwice,
+			'Dispatch was called twice - once for PREVIEW_SHOW then for PREVIEW_SEEN'
+		);
+		assert.ok(
+			dispatch.calledWith( {
+				type: 'PREVIEW_SEEN',
+				namespace: 0,
+				title: 'A'
+			} ),
+			'Dispatches virtual page view'
+		);
+	} );
+} );
+
+QUnit.test( 'PREVIEW_SEEN action not called if activeToken changes', function ( assert ) {
+	var previewShow,
+		token = '1234567890',
+		dispatch = this.sandbox.spy(),
+		getState = this.sandbox.stub().returns( {
+			preview: {
+				activeToken: '911',
+				fetchResponse: {
+					title: 'A',
+					type: 'page'
+				}
+			}
+		} );
+
+	// dispatch event
+	previewShow = actions
+		.previewShow( token )( dispatch, getState );
+
+	return previewShow.then( function () {
+		assert.ok(
+			dispatch.calledOnce,
+			'Dispatch was only called for PREVIEW_SHOW'
+		);
+	} );
+} );
+
+QUnit.test( 'PREVIEW_SEEN action not called if preview type not page', function ( assert ) {
+	var previewShow,
+		token = '1234567890',
+		dispatch = this.sandbox.spy(),
+		getState = this.sandbox.stub().returns( {
+			preview: {
+				activeToken: token,
+				fetchResponse: {
+					title: 'A',
+					type: 'empty'
+				}
+			}
+		} );
+
+	// dispatch event
+	previewShow = actions
+		.previewShow( token )( dispatch, getState );
+
+	return previewShow.then( function () {
+		assert.ok(
+			dispatch.calledOnce,
+			'Dispatch was only called for PREVIEW_SHOW'
+		);
+	} );
 } );

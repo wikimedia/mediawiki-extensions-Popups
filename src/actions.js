@@ -15,6 +15,11 @@ var $ = jQuery,
 	// * https://phabricator.wikimedia.org/T70861#3129780
 	FETCH_START_DELAY = 150, // ms.
 
+	// The minimum time a preview must be open before we judge it
+	// has been seen.
+	// See https://phabricator.wikimedia.org/T184793
+	PREVIEW_SEEN_DURATION = 1000, // ms
+
 	// The delay after which a FETCH_COMPLETE action should be dispatched.
 	//
 	// If the API endpoint responds faster than 500 ms (or, say, the API
@@ -285,10 +290,51 @@ export function previewDwell() {
  * @return {Object}
  */
 export function previewShow( token ) {
-	return timedAction( {
-		type: types.PREVIEW_SHOW,
-		token: token
-	} );
+	return function ( dispatch, getState ) {
+		dispatch(
+			timedAction( {
+				type: types.PREVIEW_SHOW,
+				token: token
+			} )
+		);
+
+		return wait( PREVIEW_SEEN_DURATION )
+			.then( function () {
+				var state = getState(),
+					preview = state.preview,
+					fetchResponse = preview && preview.fetchResponse,
+					currentToken = preview && preview.activeToken;
+
+				if (
+					// Check the page view can still be associated with original event
+					currentToken && currentToken === token &&
+					// and the preview is still active and of type `page`
+					fetchResponse && fetchResponse.type === 'page'
+				) {
+					dispatch( {
+						type: types.PREVIEW_SEEN,
+						title: fetchResponse.title,
+						// The existing version of summary endpoint does not
+						// provide namespace information, but new version
+						// will. Given we only show page views for main namespace
+						// this is hardcoded until the newer version is available.
+						namespace: 0
+					} );
+				}
+			} );
+	};
+}
+
+/**
+ * Represents the situation when a page view has been logged
+ * (see previewShow and PREVIEW_SEEN action type)
+ *
+ * @return {Object}
+ */
+export function pageViewLogged() {
+	return {
+		type: types.PAGEVIEW_LOGGED
+	};
 }
 
 /**
