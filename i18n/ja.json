@@ -9,11 +9,13 @@
 			"Omotecho",
 			"Kkairri",
 			"Suzukaze-c",
-			"S2KTS"
+			"S2KTS",
+			"Yusuke1109"
 		]
 	},
 	"popups-message": "ページのプレビュー",
 	"popups-desc": "ページへのリンクにホバーした際に、プレビューを表示する",
+	"popups-redirects": "<h3>$1</h3>にリダイレクト",
 	"popups-settings-title": "ページのプレビュー",
 	"popups-settings-description": "このツールによって、ウィキのページへのリンクから内容の要約をプレビューできます。",
 	"popups-settings-option-simple": "有効化",
