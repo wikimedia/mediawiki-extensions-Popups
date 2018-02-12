@@ -1,0 +1,30 @@
+{
+  "multipass": true,
+  "js2svg": {
+    "pretty": true,
+    "indent": "\t"
+  },
+  "plugins": [
+    {
+      "collapseGroups": false
+    },
+    {
+      "mergePaths": false
+    },
+    {
+      "cleanupIDs": false
+    },
+    {
+      "removeDesc": false
+    },
+    {
+      "removeTitle": false
+    },
+    {
+      "removeViewBox": false
+    },
+    {
+      "removeXMLProcInst": false
+    }
+  ]
+}
