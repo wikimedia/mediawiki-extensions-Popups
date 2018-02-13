@@ -107,7 +107,6 @@ QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 		// The worst-case implementation of mw.now.
 		mw.now = function () { return Date.now(); };
 
-		setupWait( this );
 		setupEl( this );
 	}
 } );
@@ -125,7 +124,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell(
+	p = actions.linkDwell(
 		this.title, this.el, event, /* gateway = */ null, generateToken
 	)(
 		dispatch,
@@ -151,16 +150,13 @@ QUnit.test( '#linkDwell', function ( assert ) {
 
 	// ---
 
-	p = this.waitPromises[ 0 ].then( function () {
+	p.then( function () {
 		assert.strictEqual(
 			dispatch.callCount,
 			2,
 			'The fetch action is dispatched after FETCH_COMPLETE milliseconds.'
 		);
 	} );
-
-	// After FETCH_START_DELAY milliseconds...
-	this.waitDeferreds[ 0 ].resolve();
 	return p;
 } );
 
@@ -176,21 +172,19 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell(
+	p = actions.linkDwell(
 		this.title, this.el, event, /* gateway = */ null, generateToken
 	)(
 		dispatch,
 		this.getState
 	);
 
-	assert.strictEqual( this.wait.callCount, 1 );
+	assert.strictEqual( dispatch.callCount, 1 );
 
-	p = this.waitPromises[ 0 ].then( function () {
+	p.then( function () {
 		assert.strictEqual( dispatch.callCount, 1 );
 	} );
 
-	// After FETCH_START_DELAY milliseconds...
-	this.waitDeferreds[ 0 ].resolve();
 	return p;
 } );
 
@@ -206,7 +200,7 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell(
+	p = actions.linkDwell(
 		this.title, this.el, event, /* gateway = */ null, generateToken
 	)(
 		dispatch,
@@ -225,12 +219,10 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 		activeToken: 'banana'
 	};
 
-	p = this.waitPromises[ 0 ].then( function () {
+	p.then( function () {
 		assert.strictEqual( dispatch.callCount, 1 );
 	} );
 
-	// After FETCH_START_DELAY milliseconds...
-	this.waitDeferreds[ 0 ].resolve();
 	return p;
 } );
 
@@ -244,19 +236,15 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 		activeToken: generateToken()
 	};
 
-	actions.linkDwell(
+	p = actions.linkDwell(
 		this.title, this.el, event, /* gateway = */ null, generateToken
 	)(
 		dispatch,
 		this.getState
-	);
-
-	p = this.waitPromises[ 0 ].then( function () {
+	).then( function () {
 		assert.strictEqual( dispatch.callCount, 2 );
 	} );
 
-	// After FETCH_START_DELAY milliseconds...
-	this.waitDeferreds[ 0 ].resolve();
 	return p;
 } );
 
@@ -439,7 +427,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 
 QUnit.module( 'ext.popups/actions#abandon', {
 	beforeEach: function () {
-		setupWait( this );
+		setupEl( this );
 	}
 } );
 
@@ -455,6 +443,8 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 		}, p;
 
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
+
+	setupWait( this );
 
 	actions.abandon( this.el )( dispatch, getState );
 
@@ -496,9 +486,10 @@ QUnit.test( 'it shouldn\'t dispatch under certain conditions', function ( assert
 			};
 		};
 
-	actions.abandon( this.el )( dispatch, getState );
-
-	assert.ok( dispatch.notCalled );
+	return actions.abandon( this.el )( dispatch, getState )
+		.then( function () {
+			assert.ok( dispatch.notCalled );
+		} );
 } );
 
 QUnit.module( 'ext.popups/actions#saveSettings' );

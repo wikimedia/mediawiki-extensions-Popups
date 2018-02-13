@@ -121,14 +121,13 @@ export function fetch( gateway, title, el, token ) {
 
 				return result;
 			} )
-			// FIXME: Convert to Promises A/A+ when "T124742: Upgrade to jQuery 3" is
-			// fully rolled out by changing fail to catch, and re-throwing the error
-			// to keep the promise in a rejected state.
-			.fail( function () {
+			.catch( function ( err ) {
 				dispatch( {
 					type: types.FETCH_FAILED,
 					el: el
 				} );
+				// Keep the request promise in a rejected status since it failed.
+				throw err;
 			} );
 
 		return $.when(
@@ -206,10 +205,10 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 		dispatch( action );
 
 		if ( !isNewInteraction() ) {
-			return;
+			return $.Deferred().resolve();
 		}
 
-		wait( FETCH_START_DELAY )
+		return wait( FETCH_START_DELAY )
 			.then( function () {
 				var previewState = getState().preview;
 
@@ -233,7 +232,7 @@ export function abandon() {
 		var token = getState().preview.activeToken;
 
 		if ( !token ) {
-			return;
+			return $.Deferred().resolve();
 		}
 
 		dispatch( timedAction( {
@@ -241,7 +240,7 @@ export function abandon() {
 			token: token
 		} ) );
 
-		wait( ABANDON_END_DELAY )
+		return wait( ABANDON_END_DELAY )
 			.then( function () {
 				dispatch( {
 					type: types.ABANDON_END,
