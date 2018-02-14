@@ -57,23 +57,14 @@ export default function createSettingsDialogRenderer() {
 			 */
 			appendTo: function ( el ) {
 				$overlay.appendTo( el );
-				$dialog.appendTo( el );
+				$dialog.appendTo( $overlay );
 			},
 
 			/**
 			 * Show the settings element and position it correctly
 			 */
 			show: function () {
-				var h = $( window ).height(),
-					w = $( window ).width();
-
 				$overlay.show();
-
-				// FIXME: Should recalc on browser resize
-				$dialog
-					.show()
-					.css( 'left', ( w - $dialog.outerWidth( true ) ) / 2 )
-					.css( 'top', ( h - $dialog.outerHeight( true ) ) / 2 );
 			},
 
 			/**
@@ -81,7 +72,6 @@ export default function createSettingsDialogRenderer() {
 			 */
 			hide: function () {
 				$overlay.hide();
-				$dialog.hide();
 			},
 
 			/**
