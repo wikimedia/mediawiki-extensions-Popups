@@ -45,7 +45,8 @@ var DEFAULT_CONSTANTS = {
 			height: 300,
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Rick_Astley_-_Pepsifest_2009.jpg/200px-Rick_Astley_-_Pepsifest_2009.jpg',
 			width: 200
-		}
+		},
+		447541
 	);
 
 QUnit.module( 'ext.popups/gateway/mediawiki', {

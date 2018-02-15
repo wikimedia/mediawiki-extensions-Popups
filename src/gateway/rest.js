@@ -172,6 +172,7 @@ function convertPageToModel( page, thumbSize, extractParser ) {
 		page.thumbnail ?
 			generateThumbnailData(
 				page.thumbnail, page.originalimage, thumbSize
-			) : undefined
+			) : undefined,
+		page.pageid
 	);
 }

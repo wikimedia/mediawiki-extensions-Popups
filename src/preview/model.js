@@ -36,6 +36,7 @@ export var TYPE_PAGE = 'page'; // eslint-disable-line one-var
  * @param {String} languageDirection Either "ltr" or "rtl"
  * @param {?Array} extract
  * @param {?Object} thumbnail
+ * @param {?Number} pageId
  * @return {PreviewModel}
  */
 export function createModel(
@@ -44,7 +45,8 @@ export function createModel(
 	languageCode,
 	languageDirection,
 	extract,
-	thumbnail
+	thumbnail,
+	pageId
 ) {
 	var processedExtract = processExtract( extract );
 
@@ -55,7 +57,8 @@ export function createModel(
 		languageDirection: languageDirection,
 		extract: processedExtract,
 		type: processedExtract === undefined ? TYPE_GENERIC : TYPE_PAGE,
-		thumbnail: thumbnail
+		thumbnail: thumbnail,
+		pageId: pageId
 	};
 }
 
