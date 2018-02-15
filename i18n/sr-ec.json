@@ -6,7 +6,8 @@
 			"Srdjan m",
 			"Сербијана",
 			"Obsuser",
-			"Prevodim"
+			"Prevodim",
+			"Acamicamacaraca"
 		]
 	},
 	"popups-message": "Претпрегледи страница",
@@ -27,7 +28,7 @@
 	"popups-send-feedback": "Пошаљи повратне информације (спољашња веза)",
 	"popups-preview-no-preview": "Изгледа да нема претпрегледа за ову страницу",
 	"popups-preview-footer-read": "Читај",
-	"prefs-reading": "Читање",
+	"prefs-reading": "Подешавања читања",
 	"popups-prefs-optin-title": "Претпрегледи страница\n\n<em>Брз претпреглед теме при читању странице</em>",
 	"popups-prefs-optin-enabled-label": "Омогући",
 	"popups-prefs-optin-disabled-label": "Онемогући",
