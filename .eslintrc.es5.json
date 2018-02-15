@@ -10,6 +10,7 @@
 		"qunit": true
 	},
 	"rules": {
+		"camelcase": 0,
 		"spaced-comment": 0,
 		"space-in-parens": 0,
 		"block-spacing": 0,

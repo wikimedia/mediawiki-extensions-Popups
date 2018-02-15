@@ -2,7 +2,8 @@ import { createStubUser, createStubTitle } from './stubs';
 import * as actions from '../../src/actions';
 import * as WaitModule from '../../src/wait';
 
-var mw = mediaWiki;
+var mw = mediaWiki,
+	REFERRER = 'https://en.wikipedia.org/wiki/Kitten';
 
 function generateToken() {
 	return '9876543210';
@@ -35,7 +36,8 @@ QUnit.test( '#boot', function ( assert ) {
 		stubUser,
 		stubUserSettings,
 		generateToken,
-		config
+		config,
+		REFERRER
 	);
 
 	assert.deepEqual(
@@ -47,6 +49,7 @@ QUnit.test( '#boot', function ( assert ) {
 			sessionToken: '0123456789',
 			pageToken: '9876543210',
 			page: {
+				url: REFERRER,
 				title: 'Foo',
 				namespaceId: 1,
 				id: 2
@@ -56,7 +59,8 @@ QUnit.test( '#boot', function ( assert ) {
 				editCount: 3,
 				previewCount: 22
 			}
-		}
+		},
+		'boots with the initial state'
 	);
 } );
 
@@ -486,6 +490,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 				activeToken: token,
 				fetchResponse: {
 					title: 'A',
+					pageId: 42,
 					type: 'page'
 				}
 			}
@@ -518,6 +523,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 			dispatch.calledWith( {
 				type: 'PREVIEW_SEEN',
 				namespace: 0,
+				pageId: 42,
 				title: 'A'
 			} ),
 			'Dispatches virtual pageview'

@@ -1,9 +1,18 @@
 import pageviews from '../../../src/reducers/pageviews';
 
+/* eslint-disable camelcase */
 var PAGEVIEW = {
-	title: 'Bears',
-	namespace: 0
-};
+		page_title: 'Bears',
+		page_id: 1,
+		page_namespace: 0
+	}, PAGE = {
+		url: 'http://localhost:8888/w/index.php?title=Bird_like_dinosaur',
+		title: 'Bird like dinosaur',
+		namespaceId: 0,
+		id: 673
+	};
+
+/* eslint-enable camelcase */
 
 QUnit.module( 'ext.popups/reducers#pageviews', {
 	beforeEach: function () {
@@ -13,18 +22,36 @@ QUnit.module( 'ext.popups/reducers#pageviews', {
 	}
 } );
 
+QUnit.test( 'BOOT', function ( assert ) {
+	var action = {
+		type: 'BOOT',
+		page: PAGE
+	};
+
+	assert.deepEqual(
+		pageviews( this.initialState, action ),
+		{
+			page: PAGE,
+			pageview: undefined
+		},
+		'It should set the current page.'
+	);
+} );
+
 QUnit.test( 'PREVIEW_SEEN', function ( assert ) {
 	var action = {
 		type: 'PREVIEW_SEEN',
 		title: 'Bears',
+		pageId: 1,
 		namespace: 0
 	};
 
 	assert.expect( 1 );
 
 	assert.deepEqual(
-		pageviews( this.initialState, action ),
+		pageviews( { page: PAGE }, action ),
 		{
+			page: PAGE,
 			pageview: PAGEVIEW
 		},
 		'It should set a flag requesting a pageview is recorded.'
@@ -39,8 +66,9 @@ QUnit.test( 'PAGEVIEW_LOGGED', function ( assert ) {
 	assert.expect( 1 );
 
 	assert.deepEqual(
-		pageviews( { pageview: PAGEVIEW }, action ),
+		pageviews( { pageview: PAGEVIEW, page: PAGE }, action ),
 		{
+			page: PAGE,
 			pageview: undefined
 		},
 		'When complete it should remove the pageview record.'

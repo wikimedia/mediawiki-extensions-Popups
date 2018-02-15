@@ -147,7 +147,7 @@ function registerChangeListeners(
 			actions, eventLoggingTracker, getCurrentTimestamp
 		) );
 	registerChangeListener( store,
-		changeListeners.pageviews( actions, pageviewTracker, window.location.href )
+		changeListeners.pageviews( actions, pageviewTracker )
 	);
 }
 
@@ -226,7 +226,8 @@ mw.requestIdleCallback( function () {
 		mw.user,
 		userSettings,
 		generateToken,
-		mw.config
+		mw.config,
+		window.location.href
 	);
 
 	/*

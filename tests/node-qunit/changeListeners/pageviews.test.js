@@ -1,6 +1,16 @@
 import pageviews from '../../../src/changeListeners/pageviews';
 
-var REFERRER = 'https://en.m.wikipedia.org/wiki/Kittens';
+var page,
+	REFERRER = 'https://en.m.wikipedia.org/wiki/Kittens';
+
+/* eslint-disable camelcase */
+page = {
+	namespaceId: 1,
+	id: 42,
+	title: 'Kittens',
+	url: REFERRER
+};
+/* eslint-enable camelcase */
 
 QUnit.module( 'ext.popups/pageviews', {
 	beforeEach: function () {
@@ -11,21 +21,21 @@ QUnit.module( 'ext.popups/pageviews', {
 		this.pageviewTracker = this.sandbox.spy();
 		this.changeListener = pageviews(
 			this.boundActions,
-			this.pageviewTracker,
-			REFERRER
+			this.pageviewTracker
 		);
 	}
 } );
-
 function createState( title ) {
 	return title ? {
 		pageviews: {
+			page: page,
 			pageview: {
-				title: title
+				page_title: title // eslint-disable-line camelcase
 			}
 		}
 	} : {
 		pageviews: {
+			page: page,
 			pageview: undefined
 		}
 	};
@@ -40,11 +50,16 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 		this.pageviewTracker.calledWith(
 			'event.VirtualPageView',
 			{
-				title: 'Rainbows',
-				referrer: REFERRER
+				/* eslint-disable camelcase */
+				page_title: 'Rainbows',
+				source_url: REFERRER,
+				source_page_id: 42,
+				source_namespace: 1,
+				source_title: 'Kittens'
+				/* eslint-enable camelcase */
 			}
 		),
-		'Event is logged verbatim'
+		'Event is logged with the current page context'
 	);
 	assert.ok(
 		this.boundActions.pageviewLogged.called,

@@ -11,17 +11,23 @@
  *
  * @param {Object} boundActions
  * @param {EventTracker} pageviewTracker
- * @param {String} referrer url
  * @return {ext.popups.ChangeListener}
  */
 export default function pageviews(
-	boundActions, pageviewTracker, referrer
+	boundActions, pageviewTracker
 ) {
 	return function ( _, state ) {
-		if ( state.pageviews && state.pageviews.pageview ) {
+		var page;
+		if ( state.pageviews && state.pageviews.pageview && state.pageviews.page ) {
+			page = state.pageviews.page;
 			pageviewTracker( 'event.VirtualPageView', $.extend( {},
 				{
-					referrer: referrer
+					/* eslint-disable camelcase */
+					source_page_id: page.id,
+					source_namespace: page.namespaceId,
+					source_title: page.title,
+					source_url: page.url
+					/* eslint-enable camelcase */
 				},
 				state.pageviews.pageview )
 			);

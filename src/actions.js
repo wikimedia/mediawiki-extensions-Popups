@@ -62,6 +62,7 @@ function timedAction( baseAction ) {
  * @param {Function} generateToken
  * @param {mw.Map} config The config of the MediaWiki client-side application,
  *  i.e. `mw.config`
+ * @param {String} url url
  * @return {Object}
  */
 export function boot(
@@ -69,7 +70,8 @@ export function boot(
 	user,
 	userSettings,
 	generateToken,
-	config
+	config,
+	url
 ) {
 	var editCount = config.get( 'wgUserEditCount' ),
 		previewCount = userSettings.getPreviewCount();
@@ -81,6 +83,7 @@ export function boot(
 		sessionToken: user.sessionId(),
 		pageToken: generateToken(),
 		page: {
+			url: url,
 			title: config.get( 'wgTitle' ),
 			namespaceId: config.get( 'wgNamespaceNumber' ),
 			id: config.get( 'wgArticleId' )
@@ -314,6 +317,7 @@ export function previewShow( token ) {
 					dispatch( {
 						type: types.PREVIEW_SEEN,
 						title: fetchResponse.title,
+						pageId: fetchResponse.pageId,
 						// The existing version of summary endpoint does not
 						// provide namespace information, but new version
 						// will. Given we only show pageviews for main namespace

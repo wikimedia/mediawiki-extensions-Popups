@@ -24,6 +24,10 @@ export default function pageviews( state, action ) {
 	}
 
 	switch ( action.type ) {
+		case actionTypes.BOOT:
+			return nextState( state, {
+				page: action.page
+			} );
 		case actionTypes.PAGEVIEW_LOGGED:
 			return nextState( state, {
 				pageview: undefined
@@ -31,8 +35,11 @@ export default function pageviews( state, action ) {
 		case actionTypes.PREVIEW_SEEN:
 			return nextState( state, {
 				pageview: {
-					title: action.title,
-					namespace: action.namespace
+					/* eslint-disable camelcase */
+					page_title: action.title,
+					page_id: action.pageId,
+					page_namespace: action.namespace
+					/* eslint-enable camelcase */
 				}
 			} );
 		default:
