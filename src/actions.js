@@ -205,7 +205,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 		dispatch( action );
 
 		if ( !isNewInteraction() ) {
-			return $.Deferred().resolve();
+			return $.Deferred().resolve().promise();
 		}
 
 		return wait( FETCH_START_DELAY )
@@ -232,7 +232,7 @@ export function abandon() {
 		var token = getState().preview.activeToken;
 
 		if ( !token ) {
-			return $.Deferred().resolve();
+			return $.Deferred().resolve().promise();
 		}
 
 		dispatch( timedAction( {
