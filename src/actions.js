@@ -142,7 +142,7 @@ export function fetch( gateway, title, el, token ) {
 					token: token
 				} );
 			} )
-			.fail( function ( data, result ) {
+			.catch( function ( data, result ) {
 				// All failures, except those due to being offline or network error,
 				// should present "There was an issue displaying this preview".
 				// e.g.:
@@ -213,7 +213,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 				var previewState = getState().preview;
 
 				if ( previewState.enabled && isNewInteraction() ) {
-					dispatch( fetch( gateway, title, el, token ) );
+					return dispatch( fetch( gateway, title, el, token ) );
 				}
 			} );
 	};

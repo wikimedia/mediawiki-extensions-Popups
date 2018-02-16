@@ -14,8 +14,7 @@ QUnit.test( '#has', function ( assert ) {
 } );
 
 QUnit.test( '#get', function ( assert ) {
-	var service = {},
-		that = this;
+	var service = {};
 
 	this.factory.returns( service );
 
@@ -39,9 +38,7 @@ QUnit.test( '#get', function ( assert ) {
 	// ---
 
 	assert.throws(
-		function () {
-			that.container.get( 'bar' );
-		},
+		() => { this.container.get( 'bar' ); },
 		/The service "bar" hasn't been defined./
 	);
 } );
