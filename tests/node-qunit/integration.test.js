@@ -8,9 +8,6 @@ import registerChangeListener from '../../src/changeListener';
 
 var mw = mediaWiki,
 	$ = jQuery,
-	// Store the real wait to be actually used in tests
-	wait = WaitModule.default,
-
 	/**
 	* Whether Gateway#getPageSummary is resolved or rejected.
 	* @enum {number}
@@ -56,15 +53,13 @@ function constant( x ) { return function () { return x; }; }
 
 QUnit.module( 'ext.popups preview @integration', {
 	beforeEach: function () {
-		var that = this;
-
 		// The worst-case implementation of mw.now.
 		mw.now = function () { return Date.now(); };
 
-		this.resetWait = function () {
-			that.waitDeferred = $.Deferred();
-			that.waitPromise = that.waitDeferred.promise();
-			that.wait.returns( that.waitPromise );
+		this.resetWait = () => {
+			this.waitDeferred = $.Deferred();
+			this.waitPromise = this.waitDeferred.promise();
+			this.wait.returns( this.waitPromise );
 		};
 
 		this.wait = this.sandbox.stub( WaitModule, 'default' );
@@ -80,8 +75,8 @@ QUnit.module( 'ext.popups preview @integration', {
 			this.store.dispatch
 		);
 
-		this.registerChangeListener = function ( fn ) {
-			return registerChangeListener( that.store, fn );
+		this.registerChangeListener = ( fn ) => {
+			return registerChangeListener( this.store, fn );
 		};
 
 		this.title = stubs.createStubTitle( 1, 'Foo' );
@@ -102,70 +97,54 @@ QUnit.module( 'ext.popups preview @integration', {
 			{ get: identity }
 		);
 
-		this.dwell = function (
+		this.dwell = (
 			title, el, ev, fetchResponse, resolution = FETCH_RESOLUTION.RESOLVE
-		) {
-			that.resetWait();
-			that.actions.linkDwell( title, el, ev, {
+		) => {
+			this.resetWait();
+			return this.actions.linkDwell( title, el, ev, {
 				getPageSummary: function () {
 					var method = resolution === FETCH_RESOLUTION.RESOLVE ?
 						'resolve' : 'reject';
 					return $.Deferred()[ method ]( fetchResponse ).promise();
 				}
 			}, function () { return 'pagetoken'; } );
-			return that.waitPromise;
 		};
 
-		this.dwellAndShowPreview = function (
+		this.dwellAndShowPreview = (
 			title, el, ev, fetchResponse, reject = FETCH_RESOLUTION.RESOLVE
-		) {
-			that.dwell( title, el, ev, fetchResponse, reject );
-			that.waitDeferred.resolve();
-
-			// Wait for the next tick to resolve pending callbacks. N.B. that the
-			// fetch action invokes wait twice.
-			return wait( 0 )
-				.then( function () {
-					that.waitDeferred.resolve();
-
-					return that.waitPromise;
-				} );
+		) => {
+			var dwelled = this.dwell( title, el, ev, fetchResponse, reject );
+			// Resolve the wait timeout for the linkDwell and the fetch action
+			this.waitDeferred.resolve();
+			return dwelled;
 		};
 
-		this.abandon = function () {
-			that.resetWait();
-			that.actions.abandon();
-			return that.waitPromise;
+		this.abandon = () => {
+			this.resetWait();
+			return this.actions.abandon();
 		};
 
-		this.abandonAndWait = function () {
-			that.abandon();
-			that.waitDeferred.resolve();
-			return wait( 0 ); // Wait for next tick to resolve pending callbacks
+		this.abandonAndWait = () => {
+			var abandoned = this.abandon();
+			this.waitDeferred.resolve();
+			return abandoned;
 		};
 
-		this.dwellAndPreviewDwell = function ( title, el, ev, res ) {
-			return that.dwellAndShowPreview( title, el, ev, res ).then( function () {
+		this.dwellAndPreviewDwell = ( title, el, ev, res ) => {
+			return this.dwellAndShowPreview( title, el, ev, res ).then( () => {
 
 				// Get out of the link, and before the delay ends...
-				var abandonPromise = that.abandon( el ),
-					abandonDeferred = that.waitDeferred;
+				var abandonPromise = this.abandon(),
+					abandonWaitDeferred = this.waitDeferred;
 
 				// Dwell over the preview
-				that.actions.previewDwell( el );
+				this.actions.previewDwell( el );
 
 				// Then the abandon delay finishes
-				abandonDeferred.resolve();
+				abandonWaitDeferred.resolve();
 
 				return abandonPromise;
 			} );
-		};
-
-		this.abandonPreview = function () {
-			that.resetWait();
-			that.actions.abandon();
-
-			return that.waitPromise;
 		};
 	}
 } );
@@ -224,56 +203,54 @@ QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert
 } );
 
 QUnit.test( 'in ACTIVE state, abandon start, and then end, switch it to INACTIVE', function ( assert ) {
-	var that = this,
-		el = this.el;
+	var el = this.el;
 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
-		.then( function () {
-			return that.abandonAndWait( el );
-		} ).then( function () {
-			var state = that.store.getState();
+		.then( () => {
+			return this.abandonAndWait( el );
+		} ).then( () => {
+			var state = this.store.getState();
 			assert.equal( state.preview.activeLink, undefined,
 				'After abandoning, preview is back to INACTIVE' );
 		} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, and then dwell preview, should keep it active after all delays', function ( assert ) {
-	var that = this,
-		el = this.el;
+	var el = this.el;
 
 	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
-		.then( function () {
-			var state = that.store.getState();
+		.then( () => {
+			var state = this.store.getState();
 			assert.equal( state.preview.activeLink, el );
 		} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should keep it active after all delays', function ( assert ) {
-	var that = this,
-		el = this.el;
+	var el = this.el;
 
+	// Dwell link, abandon it & hover preview
 	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
-		.then( function () {
-			var abandonPreviewDeferred, dwellPromise, dwellDeferred;
+		.then( () => {
+			var abandonedPreview, abandonWaitDeferred, dwelled, dwellWaitDeferred;
 
 			// Start abandoning the preview
-			that.abandonPreview( el );
+			abandonedPreview = this.abandon();
+			abandonWaitDeferred = this.waitDeferred;
 
-			abandonPreviewDeferred = that.waitDeferred;
-			// Dwell back into the link, new event is triggered
-			dwellPromise = that.dwell( that.title, el, 'event2', 42 );
-			dwellDeferred = that.waitDeferred;
+			// Dwell back into the link, new event ('event2') is triggered
+			dwelled = this.dwell( this.title, el, 'event2', 42 );
+			dwellWaitDeferred = this.waitDeferred;
 
 			// Preview abandon happens next, before the fetch
-			abandonPreviewDeferred.resolve();
+			abandonWaitDeferred.resolve();
 
-			// Then fetch happens
-			dwellDeferred.resolve();
+			// Then dwell wait & fetch happens
+			dwellWaitDeferred.resolve();
 
-			return dwellPromise;
+			return $.when( abandonedPreview, dwelled );
 		} )
-		.then( function () {
-			var state = that.store.getState();
+		.then( () => {
+			var state = this.store.getState();
 			assert.equal( state.preview.activeLink, el );
 		} );
 } );

@@ -16,8 +16,7 @@ QUnit.module( 'ext.popups.preview.settingsBehavior', {
 } );
 
 QUnit.test( 'it should set the settingsUrl on wgPopupsBetaFeature', function ( assert ) {
-	var that = this,
-		user = createStubUser( /* isAnon = */ false ),
+	var user = createStubUser( /* isAnon = */ false ),
 		actions = {},
 		cases;
 
@@ -26,12 +25,12 @@ QUnit.test( 'it should set the settingsUrl on wgPopupsBetaFeature', function ( a
 		[ false, 'Special:Preferences#mw-prefsection-rendering' ]
 	];
 
-	$.each( cases, function ( i, testCase ) {
+	cases.forEach( ( testCase ) => {
 		var behavior;
 
-		that.config.set( 'wgPopupsBetaFeature', testCase[ 0 ] );
+		this.config.set( 'wgPopupsBetaFeature', testCase[ 0 ] );
 
-		behavior = createPreviewBehavior( that.config, user, actions );
+		behavior = createPreviewBehavior( this.config, user, actions );
 
 		assert.deepEqual(
 			behavior.settingsUrl,
