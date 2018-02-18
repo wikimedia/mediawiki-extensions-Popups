@@ -25,5 +25,6 @@
 	"prefs-reading": "Lukemisen asetukset",
 	"popups-prefs-optin-title": "Sivun esikatselut\n\n<em>Näe nopeasti aiheen esikatselut sivua lukiessasi</em>",
 	"popups-prefs-optin-enabled-label": "Ota käyttöön",
-	"popups-prefs-optin-disabled-label": "Poista käytöstä"
+	"popups-prefs-optin-disabled-label": "Poista käytöstä",
+	"popups-prefs-conflicting-gadgets-info": "Tietyt gadgetit ja muut muokkaukset voivat vaikuttaa tämän ominaisuuden suorituskykyyn. Jos sinulla on ongelmia, tutustu gadgeteihisi ja käyttäjäskripteihisi, mukaan lukien järjestelmänlaajuiset."
 }

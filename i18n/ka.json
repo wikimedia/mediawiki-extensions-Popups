@@ -18,5 +18,6 @@
 	"popups-settings-help-ok": "გაკეთდა",
 	"popups-settings-cancel": "გაუქმება",
 	"popups-preview-no-preview": "გვერდის წინასწარი გადახედვა მიუწვდომელია",
-	"popups-preview-footer-read": "გვერდზე გადასვლა"
+	"popups-preview-footer-read": "გვერდზე გადასვლა",
+	"popups-prefs-optin-title": "გვერდის წინასწარი გადახედვა\n\n<em>თემის სწრაფი წინასწარი ჩვენება გვერდის კითვისას</em>"
 }
