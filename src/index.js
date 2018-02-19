@@ -67,6 +67,16 @@ function getStatsvTracker( user, config, experiments ) {
 }
 
 /**
+ * Gets the appropriate analytics event tracker for logging virtual page views.
+ *
+ * @param {Object} config
+ * @return {EventTracker}
+ */
+function getPageViewTracker( config ) {
+	return config.get( 'wgPopupsVirtualPageViews' ) ? mw.track : $.noop;
+}
+
+/**
  * Gets the appropriate analytics event tracker for logging EventLogging events
  * via [the "EventLogging subscriber" analytics event protocol][0].
  *
@@ -115,11 +125,12 @@ function getCurrentTimestamp() {
  * @param {PreviewBehavior} previewBehavior
  * @param {EventTracker} statsvTracker
  * @param {EventTracker} eventLoggingTracker
+ * @param {EventTracker} pageViewTracker
  * @param {Function} getCurrentTimestamp
  */
 function registerChangeListeners(
 	store, actions, userSettings, settingsDialog, previewBehavior,
-	statsvTracker, eventLoggingTracker, getCurrentTimestamp
+	statsvTracker, eventLoggingTracker, pageViewTracker, getCurrentTimestamp
 ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
@@ -135,6 +146,9 @@ function registerChangeListeners(
 		changeListeners.eventLogging(
 			actions, eventLoggingTracker, getCurrentTimestamp
 		) );
+	registerChangeListener( store,
+		changeListeners.pageviews( actions, pageViewTracker, window.location.href )
+	);
 }
 
 /*
@@ -152,6 +166,7 @@ mw.requestIdleCallback( function () {
 		userBucket,
 		store,
 		boundActions,
+		pageViewTracker,
 
 		// So-called "services".
 		generateToken = mw.user.generateRandomSessionId,
@@ -172,6 +187,8 @@ mw.requestIdleCallback( function () {
 	settingsDialog = createSettingsDialogRenderer();
 	experiments = createExperiments( mw.experiments );
 	statsvTracker = getStatsvTracker( mw.user, mw.config, experiments );
+	// Virtual page views are always tracked.
+	pageViewTracker = getPageViewTracker( mw.config );
 	eventLoggingTracker = getEventLoggingTracker(
 		mw.user,
 		mw.config,
@@ -200,6 +217,7 @@ mw.requestIdleCallback( function () {
 	registerChangeListeners(
 		store, boundActions, userSettings, settingsDialog,
 		previewBehavior, statsvTracker, eventLoggingTracker,
+		pageViewTracker,
 		getCurrentTimestamp
 	);
 

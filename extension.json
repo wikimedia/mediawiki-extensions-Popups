@@ -53,9 +53,12 @@
 		]
 	},
 	"EventLoggingSchemas": {
-		"Popups": 17540736
+		"Popups": 17540736,
+		"VirtualPageView": 17737148
 	},
 	"config": {
+		"@PopupsVirtualPageViews": "@var bool: Whether the extension should log virtual page views.",
+		"PopupsVirtualPageViews": false,
 		"@PopupsBetaFeature": "@var bool: Whether the extension should be enabled as an opt-in beta feature. If true, the BetaFeatures extension must be installed. False by default.",
 		"PopupsBetaFeature": false,
 		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to enable/disable Page Previews should be hidden on Preferences page. Please note if PopupsBetaFeature is set to true this option will be always hidden. False by default",

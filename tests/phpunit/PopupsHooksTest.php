@@ -177,12 +177,13 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			'wgPopupsAnonsExperimentalGroupSize' => 0.1,
 			'wgPopupsEventLogging' => false,
 			'wgPopupsBetaFeature' => true,
+			'wgPopupsVirtualPageViews' => true,
 			'wgPopupsGateway' => 'mwApiPlain',
 			'wgPopupsStatsvSamplingRate' => 0
 		];
 		$this->setMwGlobals( $config );
 		PopupsHooks::onResourceLoaderGetConfigVars( $vars );
-		$this->assertCount( 6, $vars );
+		$this->assertCount( 7, $vars );
 
 		foreach ( $config as $key => $value ) {
 			$this->assertEquals(
