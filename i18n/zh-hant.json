@@ -10,7 +10,8 @@
 			"Zhxy 519",
 			"Alexsh",
 			"烈羽",
-			"A2093064"
+			"A2093064",
+			"Hello903hello"
 		]
 	},
 	"popups-message": "頁面預覽",
@@ -19,7 +20,7 @@
 	"popups-settings-title": "頁面預覽",
 	"popups-settings-description": "此工具讓您可以預覽內部連結和參考資料。",
 	"popups-settings-option-simple": "啟用",
-	"popups-settings-option-simple-description": "取得文章的的快速預覽",
+	"popups-settings-option-simple-description": "取得頁面的的快速預覽",
 	"popups-settings-option-advanced": "進階",
 	"popups-settings-option-advanced-description": "預覽連結並存取編輯功能選單（許多編輯者使用）。",
 	"popups-settings-option-off": "關閉",
@@ -29,7 +30,7 @@
 	"popups-settings-help": "您可以用頁尾的連結重新開啟預覽功能。",
 	"popups-settings-enable": "開啟預覽",
 	"popups-send-feedback": "送出回饋意見 (外部連結)",
-	"popups-preview-no-preview": "該頁面無法預覽",
+	"popups-preview-no-preview": "顯示此頁面預覽時出現問題",
 	"prefs-reading": "閱讀設定",
 	"popups-prefs-optin-title": "頁面預覽\n\n<em>當閱讀條目時，取得對應頁面的快速預覽</em>",
 	"popups-prefs-optin-enabled-label": "啟用",
