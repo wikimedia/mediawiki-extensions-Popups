@@ -1,6 +1,6 @@
 import pageviews from '../../../src/reducers/pageviews';
 
-var PAGE_VIEW = {
+var PAGEVIEW = {
 	title: 'Bears',
 	namespace: 0
 };
@@ -25,9 +25,9 @@ QUnit.test( 'PREVIEW_SEEN', function ( assert ) {
 	assert.deepEqual(
 		pageviews( this.initialState, action ),
 		{
-			pageview: PAGE_VIEW
+			pageview: PAGEVIEW
 		},
-		'It should set a flag requesting a page view is recorded.'
+		'It should set a flag requesting a pageview is recorded.'
 	);
 } );
 
@@ -39,7 +39,7 @@ QUnit.test( 'PAGEVIEW_LOGGED', function ( assert ) {
 	assert.expect( 1 );
 
 	assert.deepEqual(
-		pageviews( { pageview: PAGE_VIEW }, action ),
+		pageviews( { pageview: PAGEVIEW }, action ),
 		{
 			pageview: undefined
 		},

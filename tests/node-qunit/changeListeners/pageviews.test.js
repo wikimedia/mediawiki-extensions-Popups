@@ -5,13 +5,13 @@ var REFERRER = 'https://en.m.wikipedia.org/wiki/Kittens';
 QUnit.module( 'ext.popups/pageviews', {
 	beforeEach: function () {
 		this.boundActions = {
-			pageViewLogged: this.sandbox.spy()
+			pageviewLogged: this.sandbox.spy()
 		};
 
-		this.pageViewTracker = this.sandbox.spy();
+		this.pageviewTracker = this.sandbox.spy();
 		this.changeListener = pageviews(
 			this.boundActions,
-			this.pageViewTracker,
+			this.pageviewTracker,
 			REFERRER
 		);
 	}
@@ -37,7 +37,7 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 	this.changeListener( undefined, state );
 
 	assert.ok(
-		this.pageViewTracker.calledWith(
+		this.pageviewTracker.calledWith(
 			'event.VirtualPageView',
 			{
 				title: 'Rainbows',
@@ -47,8 +47,8 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 		'Event is logged verbatim'
 	);
 	assert.ok(
-		this.boundActions.pageViewLogged.called,
-		'When logged an action is taken to unqueue the page view'
+		this.boundActions.pageviewLogged.called,
+		'When logged an action is taken to unqueue the pageview'
 	);
 } );
 
@@ -58,11 +58,11 @@ QUnit.test( 'it should not log something that is not a pageview', function ( ass
 	this.changeListener( undefined, state );
 
 	assert.notOk(
-		this.pageViewTracker.called,
-		'No page view tracked'
+		this.pageviewTracker.called,
+		'No pageview tracked'
 	);
 	assert.notOk(
-		this.boundActions.pageViewLogged.called,
+		this.boundActions.pageviewLogged.called,
 		'No action taken'
 	);
 } );

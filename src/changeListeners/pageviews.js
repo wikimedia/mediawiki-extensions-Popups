@@ -10,23 +10,23 @@
  * deliver logged events.
  *
  * @param {Object} boundActions
- * @param {EventTracker} pageViewTracker
+ * @param {EventTracker} pageviewTracker
  * @param {String} referrer url
  * @return {ext.popups.ChangeListener}
  */
 export default function pageviews(
-	boundActions, pageViewTracker, referrer
+	boundActions, pageviewTracker, referrer
 ) {
 	return function ( _, state ) {
 		if ( state.pageviews && state.pageviews.pageview ) {
-			pageViewTracker( 'event.VirtualPageView', $.extend( {},
+			pageviewTracker( 'event.VirtualPageView', $.extend( {},
 				{
 					referrer: referrer
 				},
 				state.pageviews.pageview )
 			);
-			// Clear the page view now its been logged.
-			boundActions.pageViewLogged();
+			// Clear the pageview now its been logged.
+			boundActions.pageviewLogged();
 		}
 	};
 }

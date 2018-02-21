@@ -507,7 +507,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 	assert.strictEqual(
 		this.wait.getCall( 0 ).args[ 0 ],
 		1000,
-		'It waits for PAGE_VIEW_VISIBILITY_DURATION milliseconds before trigging a pageview.'
+		'It waits for PAGEVIEW_VISIBILITY_DURATION milliseconds before trigging a pageview.'
 	);
 	return previewShow.then( function () {
 		assert.ok(
@@ -520,7 +520,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 				namespace: 0,
 				title: 'A'
 			} ),
-			'Dispatches virtual page view'
+			'Dispatches virtual pageview'
 		);
 	} );
 } );

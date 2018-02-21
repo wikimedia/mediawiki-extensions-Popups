@@ -306,7 +306,7 @@ export function previewShow( token ) {
 					currentToken = preview && preview.activeToken;
 
 				if (
-					// Check the page view can still be associated with original event
+					// Check the pageview can still be associated with original event
 					currentToken && currentToken === token &&
 					// and the preview is still active and of type `page`
 					fetchResponse && fetchResponse.type === 'page'
@@ -316,7 +316,7 @@ export function previewShow( token ) {
 						title: fetchResponse.title,
 						// The existing version of summary endpoint does not
 						// provide namespace information, but new version
-						// will. Given we only show page views for main namespace
+						// will. Given we only show pageviews for main namespace
 						// this is hardcoded until the newer version is available.
 						namespace: 0
 					} );
@@ -326,12 +326,12 @@ export function previewShow( token ) {
 }
 
 /**
- * Represents the situation when a page view has been logged
+ * Represents the situation when a pageview has been logged
  * (see previewShow and PREVIEW_SEEN action type)
  *
  * @return {Object}
  */
-export function pageViewLogged() {
+export function pageviewLogged() {
 	return {
 		type: types.PAGEVIEW_LOGGED
 	};

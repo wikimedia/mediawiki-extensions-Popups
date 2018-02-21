@@ -7,7 +7,7 @@ import nextState from './nextState';
 
 /**
  * Reducer for actions that queues and clears events for
- * being logged as virtual page views [0]
+ * being logged as virtual pageviews [0]
  *
  * [0]: https://meta.wikimedia.org/wiki/Schema:VirtualPageViews
  *
