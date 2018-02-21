@@ -75,6 +75,25 @@ var DEFAULT_CONSTANTS = {
 		dir: 'ltr',
 		timestamp: '2017-02-17T22:29:56Z'
 	},
+	// As above, a no "px-" thumbnail is provided which is not customizable.
+	RESTBASE_RESPONSE_WITH_NO_PX_IMAGE = {
+		title: 'Barack Obama',
+		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+		thumbnail: {
+			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
+			width: 800,
+			height: 1000
+		},
+		originalimage: {
+			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
+			width: 800,
+			height: 1000
+		},
+		lang: 'en',
+		dir: 'ltr',
+		timestamp: '2017-01-30T10:17:41Z',
+		description: '44th President of the United States of America'
+	},
 	RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE = {
 		title: 'Landscape',
 		extract: 'Landscape',
@@ -201,6 +220,19 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 			height: 384 // ( 640 / 500 ) * 300
 		},
 		'When the requested thumbnail is scaled, then its largest dimension is preserved.'
+	);
+} );
+
+QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', function ( assert ) {
+	var model,
+		gateway = createRESTBaseGateway();
+	model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE_WITH_NO_PX_IMAGE, 300, provideParsedExtract );
+
+	assert.equal(
+		model.thumbnail.source,
+		'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
+		'If restbase handles missing image dimensions in thumbnail URLs'
 	);
 } );
 

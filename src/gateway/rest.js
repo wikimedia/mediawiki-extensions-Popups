@@ -118,6 +118,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 	var parts = thumbnail.source.split( '/' ),
 		lastPart = parts[ parts.length - 1 ],
 		filename,
+		filenamePxIndex,
 		width,
 		height;
 
@@ -126,7 +127,23 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 	// makes this function resilient to the thumbnail not having the same
 	// extension as the original image, which is definitely the case for SVG's
 	// where the thumbnail's extension is .svg.png.
-	filename = lastPart.substr( lastPart.indexOf( 'px-' ) + 3 );
+	filenamePxIndex = lastPart.indexOf( 'px-' );
+	if ( filenamePxIndex === -1 ) {
+		// The thumbnail size is not customizable. Presumably, RESTBase requested a
+		// width greater than the original and so MediaWiki returned the original's
+		// URL instead of a thumbnail compatible URL. An original URL does not have
+		// a "thumb" path, e.g.:
+		//
+		//   https://upload.wikimedia.org/wikipedia/commons/a/aa/Red_Giant_Earth_warm.jpg
+		//
+		// Instead of:
+		//
+		//   https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Red_Giant_Earth_warm.jpg/512px-Red_Giant_Earth_warm.jpg
+		//
+		// Use the original.
+		return original;
+	}
+	filename = lastPart.substr( filenamePxIndex + 3 );
 
 	// Scale the thumbnail's largest dimension.
 	if ( thumbnail.width > thumbnail.height ) {
