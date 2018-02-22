@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Snævar"
+			"Snævar",
+			"Sveinn í Felli"
 		]
 	},
 	"popups-redirects": "tilvísun á <h3>$1</h3>",
 	"popups-settings-title": "Forskoðun síðu",
 	"popups-settings-option-simple": "Virkja",
-	"popups-settings-option-simple-description": "Fá snögga forskoðun á viðfangsefni á meðan þú lest grein.",
+	"popups-settings-option-simple-description": "Fá snögga forskoðun á viðfangsefni á meðan þú lest síðu.",
 	"popups-settings-option-advanced": "Flókið",
 	"popups-settings-option-advanced-description": "Sjá forskoðanir tengla og fá aðgang að breytingar valmyndum. Þetta er notað af mörgum notendum.",
 	"popups-settings-option-off": "Afvirkja",
@@ -16,5 +17,8 @@
 	"popups-settings-cancel": "Hætta við",
 	"popups-settings-help": "Þú getur kveikt aftur á forskoðun með því að nota tengil neðst á síðunni.",
 	"popups-settings-enable": "Virkja forskoðun",
-	"popups-send-feedback": "Senda svörun (ytri tengill)"
+	"popups-send-feedback": "Senda svörun (ytri tengill)",
+	"prefs-reading": "Kjörstillingar við lestur",
+	"popups-prefs-optin-enabled-label": "Gera virkt",
+	"popups-prefs-optin-disabled-label": "Gera óvirkt"
 }
