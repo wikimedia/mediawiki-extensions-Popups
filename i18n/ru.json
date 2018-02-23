@@ -11,7 +11,8 @@
 			"Facenapalm",
 			"Iniquity",
 			"Jack who built the house",
-			"Gehhrr"
+			"Gehhrr",
+			"Mouse21"
 		]
 	},
 	"popups-message": "Предварительный просмотр страницы",
@@ -20,7 +21,7 @@
 	"popups-settings-title": "Предпросмотр страницы",
 	"popups-settings-description": "Этот инструмент позволяет просматривать ссылки на вики-страницы и примечания.",
 	"popups-settings-option-simple": "Включить",
-	"popups-settings-option-simple-description": "Получите быстрый предварительный просмотр темы при чтении статьи.",
+	"popups-settings-option-simple-description": "Получите быстрый предварительный просмотр темы при страницы.",
 	"popups-settings-option-advanced": "Расширенный",
 	"popups-settings-option-advanced-description": "Показывать предпросмотр ссылок и получать меню для функций правки. Это используют многие редакторы.",
 	"popups-settings-option-off": "Отключить",
@@ -37,5 +38,5 @@
 	"popups-prefs-optin-enabled-label": "Включить",
 	"popups-prefs-optin-disabled-label": "Отключить",
 	"popups-prefs-disable-nav-gadgets-info": "Вы должны [[$1 | отключить гаджет «Навигационные окошки»]] во вкладке «Гаджеты» для активации предпросмотра страниц",
-	"popups-prefs-conflicting-gadgets-info": "Некоторые гаджеты и прочие настройки могут влиять на производительность этой функции. Если вы испытываете проблемы, пожалуйста, осмотрите свои гаджеты и пользовательские скрипты."
+	"popups-prefs-conflicting-gadgets-info": "Некоторые гаджеты и прочие настройки могут влиять на производительность этой функции. Если вы испытываете проблемы, пожалуйста, осмотрите свои гаджеты и пользовательские скрипты, включая глобальные."
 }

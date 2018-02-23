@@ -4,7 +4,8 @@
 			"Stryn",
 			"Mikahama",
 			"Nike",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Pxos"
 		]
 	},
 	"popups-message": "Sivun esikatselut",
@@ -21,6 +22,7 @@
 	"popups-settings-cancel": "Peruuta",
 	"popups-settings-enable": "Ota esikatselu käyttöön",
 	"popups-send-feedback": "Lähetä palautetta (ulkoinen linkki)",
+	"popups-preview-no-preview": "Virheen vuoksi esikatselua ei voida näyttää",
 	"popups-preview-footer-read": "Lue",
 	"prefs-reading": "Lukemisen asetukset",
 	"popups-prefs-optin-title": "Sivun esikatselut\n\n<em>Näe nopeasti aiheen esikatselut sivua lukiessasi</em>",
