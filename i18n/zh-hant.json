@@ -31,9 +31,11 @@
 	"popups-settings-enable": "開啟預覽",
 	"popups-send-feedback": "送出回饋意見 (外部連結)",
 	"popups-preview-no-preview": "顯示此頁面預覽時出現問題",
+	"popups-preview-footer-read": "前往該頁面",
 	"prefs-reading": "閱讀設定",
 	"popups-prefs-optin-title": "頁面預覽\n\n<em>當閱讀條目時，取得對應頁面的快速預覽</em>",
 	"popups-prefs-optin-enabled-label": "啟用",
 	"popups-prefs-optin-disabled-label": "關閉",
-	"popups-prefs-disable-nav-gadgets-info": "您需要[[$1 |事先禁用導航Popups小工具]]才能啟用頁面預覽"
+	"popups-prefs-disable-nav-gadgets-info": "您需要[[$1 |事先禁用導航Popups小工具]]才能啟用頁面預覽",
+	"popups-prefs-conflicting-gadgets-info": "個別小工具和其他自定義功能可能會影響該功能的性能。如果您遇到了問題，請檢查您的小工具和用戶腳本，包括全域的。"
 }
