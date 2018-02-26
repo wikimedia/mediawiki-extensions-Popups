@@ -27,7 +27,7 @@ conf = {
 		filename: '[name].js',
 		// as we cannot serve .map files from production servers store map files
 		// with .json extension
-		sourceMapFilename: "[file].json"
+		sourceMapFilename: '[file].json'
 	},
 	entry: {
 		index: './src/index.js'
