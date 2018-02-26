@@ -15,7 +15,7 @@ import * as counts from '../counts';
 function getBaseData( bootAction ) {
 	var result = {
 		pageTitleSource: bootAction.page.title,
-		namespaceIdSource: bootAction.page.namespaceID,
+		namespaceIdSource: bootAction.page.namespaceId,
 		pageIdSource: bootAction.page.id,
 		isAnon: bootAction.user.isAnon,
 		popupEnabled: bootAction.isEnabled,
@@ -50,7 +50,7 @@ function getBaseData( bootAction ) {
 function createEvent( interaction, actionData ) {
 	actionData.linkInteractionToken = interaction.token;
 	actionData.pageTitleHover = interaction.title;
-	actionData.namespaceIdHover = interaction.namespaceID;
+	actionData.namespaceIdHover = interaction.namespaceId;
 
 	// Has the preview been shown?
 	if ( interaction.timeToPreviewShow !== undefined ) {
@@ -234,7 +234,7 @@ export default function eventLogging( state, action ) {
 				interaction: {
 					link: action.el,
 					title: action.title,
-					namespaceID: action.namespaceID,
+					namespaceId: action.namespaceId,
 					token: action.token,
 					started: action.timestamp,
 

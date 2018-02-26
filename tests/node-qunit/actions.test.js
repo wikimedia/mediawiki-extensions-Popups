@@ -48,7 +48,7 @@ QUnit.test( '#boot', function ( assert ) {
 			pageToken: '9876543210',
 			page: {
 				title: 'Foo',
-				namespaceID: 1,
+				namespaceId: 1,
 				id: 2
 			},
 			user: {
@@ -127,7 +127,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		token: '9876543210',
 		timestamp: mw.now(),
 		title: 'Foo',
-		namespaceID: 1
+		namespaceId: 1
 	} );
 
 	// Stub the state tree being updated.
@@ -278,7 +278,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 			type: 'FETCH_START',
 			el: this.el,
 			title: 'Foo',
-			namespaceID: 1,
+			namespaceId: 1,
 			timestamp: this.now
 		},
 		'It dispatches the FETCH_START action immediately.'

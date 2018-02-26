@@ -31,7 +31,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 			pageToken: '9876543210',
 			page: {
 				title: 'Foo',
-				namespaceID: 1,
+				namespaceId: 1,
 				id: 2
 			},
 			user: {
@@ -56,7 +56,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 			previewCount: action.user.previewCount,
 			baseData: {
 				pageTitleSource: action.page.title,
-				namespaceIdSource: action.page.namespaceID,
+				namespaceIdSource: action.page.namespaceId,
 				pageIdSource: action.page.id,
 				isAnon: action.user.isAnon,
 				popupEnabled: action.isEnabled,
@@ -189,7 +189,7 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: '0987654321',
 		timestamp: Date.now()
 	};
@@ -200,7 +200,7 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 			interaction: {
 				link: action.el,
 				title: 'Foo',
-				namespaceID: 1,
+				namespaceId: 1,
 				token: action.token,
 				started: action.timestamp,
 
@@ -224,7 +224,7 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: '0987654321',
 		timestamp: now
 	};
@@ -241,7 +241,7 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 		{
 			link: action.el,
 			title: 'Foo',
-			namespaceID: 1,
+			namespaceId: 1,
 			token: '0987654321',
 			started: now,
 
@@ -261,7 +261,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -275,7 +275,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 		type: 'LINK_DWELL',
 		el: $( '<a>' ),
 		title: 'Bar',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: '1234567890',
 		timestamp: now + 500
 	} );
@@ -297,7 +297,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -311,7 +311,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 		type: 'LINK_DWELL',
 		el: $( '<a>' ),
 		title: 'Bar',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: 'banana',
 		timestamp: now + 500
 	} );
@@ -337,7 +337,7 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -382,7 +382,7 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -396,7 +396,7 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 	assert.deepEqual( state.interaction, {
 		link: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		started: now,
 
@@ -419,7 +419,7 @@ QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been sho
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -537,7 +537,7 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: '1234567890',
 		timestamp: Date.now()
 	};
@@ -611,7 +611,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		timestamp: Date.now()
 	} );
@@ -684,7 +684,7 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		timestamp: now
 	} );
@@ -765,7 +765,7 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 		type: 'LINK_DWELL',
 		el: this.link,
 		title: 'Foo',
-		namespaceID: 1,
+		namespaceId: 1,
 		token: token,
 		timestamp: now
 	} );

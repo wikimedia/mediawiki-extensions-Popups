@@ -82,7 +82,7 @@ export function boot(
 		pageToken: generateToken(),
 		page: {
 			title: config.get( 'wgTitle' ),
-			namespaceID: config.get( 'wgNamespaceNumber' ),
+			namespaceId: config.get( 'wgNamespaceNumber' ),
 			id: config.get( 'wgArticleId' )
 		},
 		user: {
@@ -105,7 +105,7 @@ export function boot(
  */
 export function fetch( gateway, title, el, token ) {
 	var titleText = title.getPrefixedDb(),
-		namespaceID = title.namespace;
+		namespaceId = title.namespace;
 
 	return function ( dispatch ) {
 		var request;
@@ -114,7 +114,7 @@ export function fetch( gateway, title, el, token ) {
 			type: types.FETCH_START,
 			el: el,
 			title: titleText,
-			namespaceID: namespaceID
+			namespaceId: namespaceId
 		} ) );
 
 		request = gateway.getPageSummary( titleText )
@@ -190,7 +190,7 @@ export function fetch( gateway, title, el, token ) {
 export function linkDwell( title, el, event, gateway, generateToken ) {
 	var token = generateToken(),
 		titleText = title.getPrefixedDb(),
-		namespaceID = title.namespace;
+		namespaceId = title.namespace;
 
 	return function ( dispatch, getState ) {
 		var action = timedAction( {
@@ -199,7 +199,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 			event: event,
 			token: token,
 			title: titleText,
-			namespaceID: namespaceID
+			namespaceId: namespaceId
 		} );
 
 		// Has the new generated token been accepted?
