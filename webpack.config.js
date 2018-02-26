@@ -65,6 +65,18 @@ if ( isProduction ) {
 		} ),
 		new webpack.optimize.UglifyJsPlugin( {
 			sourceMap: true,
+			// Preserve @nomin comments that disable ResourceLoader minification if
+			// present. Right now a banner with @nomin is not being added since in
+			// production mode the source-map comment will end up in a compound
+			// bundle (as load.php will bundle a many modules in a single request)
+			// thus breaking source-maps for other sources than the Popups ones. We
+			// should add the @nomin banner in the future if ResourceLoader supports
+			// combining/merging source-maps from different modules. For the moment,
+			// the source map comment will be stripped in ResourceLoader's production
+			// mode to not interfere with debugging other sources loaded alongside
+			// Popups.
+			//
+			// See https://phabricator.wikimedia.org/T188081 for more info
 			comments: /@nomin/
 		} )
 	] );
