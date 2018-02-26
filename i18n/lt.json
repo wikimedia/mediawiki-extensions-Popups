@@ -23,6 +23,7 @@
 	"popups-preview-no-preview": "Puslapio peržiūros klaida",
 	"popups-preview-footer-read": "Eiti į šį puslapį",
 	"prefs-reading": "Skaitymo nustatymai",
+	"popups-prefs-optin-title": "<em>Rodyti trumpas straipsnių santraukas, kai skaitote straipsnį</em>",
 	"popups-prefs-optin-enabled-label": "Įgalinti",
 	"popups-prefs-optin-disabled-label": "Išjungti"
 }
