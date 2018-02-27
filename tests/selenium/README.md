@@ -1,8 +1,8 @@
 # Selenium tests
 
-Please see tests/selenium/README.md file in mediawiki/core repository.
+Please see tests/selenium/README.md file in mediawiki/core repository, usually at mediawiki/vagrant/mediawiki folder.
 
-## Usage
+## Setup
 
 Set up MediaWiki-Vagrant:
 
@@ -10,23 +10,34 @@ Set up MediaWiki-Vagrant:
     vagrant up
     vagrant roles enable popups
     vagrant provision
-
-From mediawiki/core folder:
-
+    cd mediawiki
+    npm install
     echo 'include_once "$IP/extensions/Popups/tests/selenium/LocalSettings.php";' >> LocalSettings.php
 
-Run both mediawiki/core and Popups tests from mediawiki/core folder:
+## Start Chromedriver and run all tests
+
+Run both mediawiki/core and extension tests from mediawiki/core repository (usually at mediawiki/vagrant/mediawiki folder):
 
     npm run selenium
 
-To run only Popups tests in one terminal window or tab start Chromedriver:
+## Start Chromedriver
+
+To run only some tests, you first have to start Chromedriver in one terminal tab (or window):
 
     chromedriver --url-base=wd/hub --port=4444
 
-In another terminal tab or window go to mediawiki/core folder:
+## Run test(s) from one file
 
-    ./node_modules/.bin/wdio tests/selenium/wdio.conf.js --spec extensions/Popups/tests/selenium/specs/*.js
+Then, in another terminal tab (or window) run this from mediawiki/core repository (usually at mediawiki/vagrant/mediawiki folder):
 
-Run only one Popups test file from mediawiki/core:
+    ./node_modules/.bin/wdio tests/selenium/wdio.conf.js --spec extensions/EXTENSION-NAME/tests/selenium/specs/FILE-NAME.js
 
-    ./node_modules/.bin/wdio tests/selenium/wdio.conf.js --spec extensions/Popups/tests/selenium/specs/file-name.js
+`wdio` is a dependency of mediawiki/core that you have installed with `npm install`.
+
+## Run specific test(s)
+
+To run only test(s) which name contains string TEST-NAME, run this from mediawiki/core repository (usually at mediawiki/vagrant/mediawiki folder):
+
+    ./node_modules/.bin/wdio tests/selenium/wdio.conf.js --spec extensions/EXTENSION-NAME/tests/selenium/specs/FILE-NAME.js --mochaOpts.grep TEST-NAME
+
+Make sure Chromedriver is running when executing the above command.
