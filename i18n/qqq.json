@@ -26,7 +26,7 @@
 	"popups-settings-enable": "Link on the footer to enable hovercards if its disabled.\n\nSee also:\n* {{msg-mw|Popups-settings-option-off}}",
 	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard. Should mention that its an external link.\n{{Identical|Send feedback}}",
 	"popups-preview-no-preview": "The message shown to the user when a preview can't be generated.",
-	"popups-preview-footer-read": "The link shown to the user when a preview can't be generated.\n{{Identical|Read}}",
+	"popups-preview-footer-read": "The link shown to the user when a preview can't be generated.",
 	"prefs-reading": "Title for 'Reading preferences' section on preferences page",
 	"popups-prefs-optin-title": "Title for Page Previews option\n\n<em>Description for Page previews option</em>",
 	"popups-prefs-optin-enabled-label": "Label for Page Previews opt in\n{{Identical|Enable}}",
