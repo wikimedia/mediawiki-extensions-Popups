@@ -103,7 +103,14 @@ function getEventLoggingTracker( user, config, bucket, window ) {
 
 /**
  * Returns timestamp since the beginning of the current document's origin
- * as reported by `window.performance.now()`.
+ * as reported by `window.performance.now()`. See
+ * https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp#The_time_origin
+ * for a detailed explanation of the time origin.
+ *
+ * The value returned by this function is used for [the `timestamp` property
+ * of the Schema:Popups events sent by the EventLogging
+ * instrumentation](./src/changeListeners/eventLogging.js).
+ *
  * @return {number|null}
  */
 function getCurrentTimestamp() {

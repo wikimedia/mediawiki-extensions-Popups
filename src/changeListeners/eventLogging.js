@@ -28,9 +28,17 @@ export default function eventLogging(
 			return;
 		}
 
+		// Per https://meta.wikimedia.org/wiki/Schema:Popups, the timestamp
+		// property should be the time at which the event is logged and not the
+		// time at which the interaction started.
+		//
+		// Rightly or wrongly, it's left as an exercise for the analyst to
+		// calculate the time at which the interaction started as part of their
+		// analyses, e.g. https://phabricator.wikimedia.org/T186016#4002923.
 		event = $.extend( true, {}, eventLogging.baseData, event, {
 			timestamp: getCurrentTimestamp()
 		} );
+
 		eventLoggingTracker( 'event.Popups', event );
 		// Dispatch the eventLogged action so that the state tree can be
 		// cleared/updated.
