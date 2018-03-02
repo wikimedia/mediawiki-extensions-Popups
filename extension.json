@@ -6,7 +6,7 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:Popups",
 	"descriptionmsg": "popups-desc",
-	"license-name": "GPL-2.0+",
+	"license-name": "GPL-2.0-or-later",
 	"type": "betafeatures",
 	"requires": {
 		"MediaWiki": ">= 1.30.0"
