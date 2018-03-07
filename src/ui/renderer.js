@@ -3,6 +3,7 @@
  */
 
 import wait from '../wait';
+import pokeyMaskSVG from './pokey-mask.svg';
 import { previewTypes } from '../preview/model';
 
 var mw = window.mediaWiki,
@@ -30,24 +31,7 @@ var mw = window.mediaWiki,
 export function createPokeyMasks( container ) {
 	$( '<div>' )
 		.attr( 'id', 'mwe-popups-svg' )
-		.html(
-			'<svg width="0" height="0">' +
-				'<defs>' +
-					'<clippath id="mwe-popups-mask">' +
-						'<polygon points="0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000"/>' +
-					'</clippath>' +
-					'<clippath id="mwe-popups-mask-flip">' +
-						'<polygon points="0 8, 274 8, 282 0, 290 8, 1000 8, 1000 1000, 0 1000"/>' +
-					'</clippath>' +
-					'<clippath id="mwe-popups-landscape-mask">' +
-						'<polygon points="0 8, 174 8, 182 0, 190 8, 1000 8, 1000 1000, 0 1000"/>' +
-					'</clippath>' +
-					'<clippath id="mwe-popups-landscape-mask-flip">' +
-						'<polygon points="0 0, 1000 0, 1000 242, 190 242, 182 250, 174 242, 0 242"/>' +
-					'</clippath>' +
-				'</defs>' +
-			'</svg>'
-		)
+		.html( pokeyMaskSVG )
 		.appendTo( container );
 }
 

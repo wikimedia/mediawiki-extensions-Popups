@@ -32,6 +32,7 @@
     "redux-thunk": "2.2.0",
     "stylelint": "8.2.0",
     "stylelint-config-wikimedia": "0.4.2",
+    "svg-inline-loader": "0.8.0",
     "tap-dot": "^1.0.5",
     "webpack": "^2.6.0"
   },

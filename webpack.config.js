@@ -39,6 +39,17 @@ conf = {
 			'redux-thunk': path.resolve( __dirname, reduxThunkPath )
 		}
 	},
+	module: {
+		rules: [
+			{
+				test: /\.svg$/,
+				loader: 'svg-inline-loader',
+				options: {
+					removeSVGTagAttrs: false // Keep width and height attributes.
+				}
+			}
+		]
+	},
 	plugins: [
 		// To generate identifiers that are preserved over builds, webpack supplies
 		// the NamedModulesPlugin (generates comments with file names on bundle)
