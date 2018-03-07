@@ -33,3 +33,10 @@ After an `npm install`:
       * `nodemon -w src/ --exec "grunt lint:all && npm run test:node"`
   * Get code coverage report with `npm run coverage`
     * Reports printed in the `coverage/` folder
+
+Developers are likely to work with local MediaWiki instances that do not have
+content to test with. To reduce this pain, you can create a single page with
+a list of links that point to an existing and external wiki by using the
+following config flag:
+
+	$wgPopupsRestGatewayEndpoint = 'https://en.m.wikipedia.org/api/rest_v1/page/summary/';

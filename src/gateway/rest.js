@@ -4,8 +4,7 @@
 
 import { createModel, createNullModel } from '../preview/model';
 
-var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
-	RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
+var RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
 	mw = window.mediaWiki,
 	$ = jQuery;
 /**
@@ -31,7 +30,6 @@ var RESTBASE_ENDPOINT = '/api/rest_v1/page/summary/',
  * @return {RESTBaseGateway}
  */
 export default function createRESTBaseGateway( ajax, config, extractParser ) {
-
 	/**
 	 * Fetches page data from [the RESTBase page summary endpoint][0].
 	 *
@@ -43,8 +41,10 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	 * @return {jQuery.Promise}
 	 */
 	function fetch( title ) {
+		var endpoint = config.endpoint;
+
 		return ajax( {
-			url: RESTBASE_ENDPOINT + encodeURIComponent( title ),
+			url: endpoint + encodeURIComponent( title ),
 			headers: {
 				Accept: 'application/json; charset=utf-8; ' +
 					'profile="' + RESTBASE_PROFILE + '"'

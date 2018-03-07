@@ -2,7 +2,8 @@ import { createModel } from '../../../src/preview/model';
 import createRESTBaseGateway from '../../../src/gateway/rest';
 
 var DEFAULT_CONSTANTS = {
-		THUMBNAIL_SIZE: 512
+		THUMBNAIL_SIZE: 512,
+		endpoint: '/api/rest_v1/page/summary/'
 	},
 	RESTBASE_RESPONSE = {
 		title: 'Barack Obama',
@@ -142,9 +143,9 @@ QUnit.module( 'gateway/rest', {
 
 QUnit.test( 'RESTBase gateway is called with correct arguments', function ( assert ) {
 	var getSpy = this.sandbox.spy(),
-		gateway = createRESTBaseGateway( getSpy ),
+		gateway = createRESTBaseGateway( getSpy, DEFAULT_CONSTANTS ),
 		expectedOptions = {
-			url: '/api/rest_v1/page/summary/' + encodeURIComponent( 'Test Title' ),
+			url: DEFAULT_CONSTANTS.endpoint + encodeURIComponent( 'Test Title' ),
 			headers: {
 				Accept: 'application/json; charset=utf-8; ' +
 					'profile="https://www.mediawiki.org/wiki/Specs/Summary/1.2.0"'
@@ -271,7 +272,7 @@ QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
 QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
 	var api = this.sandbox.stub()
 			.returns( $.Deferred().reject( { status: 500 } ).promise() ),
-		gateway = createRESTBaseGateway( api );
+		gateway = createRESTBaseGateway( api, {} );
 
 	return gateway.getPageSummary( 'Test Title' ).catch( function () {
 		assert.ok( true );

@@ -69,6 +69,8 @@
 		"PopupsConflictingNavPopupsGadgetName": "Navigation_popups",
 		"@PopupsGateway": "Which gateway to use for fetching Popups data. Available options: [mwApiPlain|restbasePlain|restbaseHTML]. Full and always up to date list is available in src/gateway/index.js",
 		"PopupsGateway": "mwApiPlain",
+		"@PopupsRestGatewayEndpoint": "Specify a REST endpoint where summaries should be sourced from. Endpoint must meet the spec at https://www.mediawiki.org/wiki/Specs/Summary/1.2.0",
+		"PopupsRestGatewayEndpoint": "/api/rest_v1/page/summary/",
 		"@PopupsAnonsExperimentalGroupSize": "Defines the fraction of users that should be subject to an A/B test. When enabled half of users in this group will see page previews. The rest will be divided into one of two buckets where previews will not show and the control group size will match the enabled bucket. If undefined, or 0, no users will be subject to experimentation and previews will be enabled for everyone unless wgPopupsBetaFeature is enabled.",
 		"PopupsAnonsExperimentalGroupSize": 0,
 		"@PopupsEventLogging": "Whether we should log events. This should be used carefully alongside PopupsAnonsExperimentalGroupSize. Note if this is enabled without using that variable events will be logged for all users. Be careful!",

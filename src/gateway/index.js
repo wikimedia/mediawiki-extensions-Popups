@@ -32,15 +32,20 @@ var mw = mediaWiki,
  * @return {Gateway}
  */
 export default function createGateway( config ) {
+	var restConfig = $.extend( {}, constants,
+		{
+			endpoint: config.get( 'wgPopupsRestGatewayEndpoint' )
+		}
+	);
 	switch ( config.get( 'wgPopupsGateway' ) ) {
 		case 'mwApiPlain':
 			return createMediaWikiApiGateway( new mw.Api(), constants );
 		case 'restbasePlain':
 			return createRESTBaseGateway(
-				$.ajax, constants, formatters.parsePlainTextResponse );
+				$.ajax, restConfig, formatters.parsePlainTextResponse );
 		case 'restbaseHTML':
 			return createRESTBaseGateway(
-				$.ajax, constants, formatters.parseHTMLResponse );
+				$.ajax, restConfig, formatters.parseHTMLResponse );
 		default:
 			throw new Error( 'Unknown gateway' );
 	}
