@@ -27,6 +27,8 @@
 	"popups-send-feedback": "Tooltip for the send feedback icon on the hovercard. Should mention that its an external link.\n{{Identical|Send feedback}}",
 	"popups-preview-no-preview": "The message shown to the user when a preview can't be generated.",
 	"popups-preview-footer-read": "The link shown to the user when a preview can't be generated.",
+	"popups-preview-disambiguation": "The description shown on a preview for a disambiguation page",
+	"popups-preview-disambiguation-link": "The link shown on a preview for a disambiguation page",
 	"prefs-reading": "Title for 'Reading preferences' section on preferences page",
 	"popups-prefs-optin-title": "Title for Page Previews option\n\n<em>Description for Page previews option</em>",
 	"popups-prefs-optin-enabled-label": "Label for Page Previews opt in\n{{Identical|Enable}}",

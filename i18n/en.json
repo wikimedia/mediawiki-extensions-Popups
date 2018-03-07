@@ -20,6 +20,8 @@
 	"popups-send-feedback": "Send Feedback (external link)",
 	"popups-preview-no-preview": "There was an issue displaying this preview",
 	"popups-preview-footer-read": "Go to this page",
+	"popups-preview-disambiguation": "This title relates to more than one page",
+	"popups-preview-disambiguation-link": "View similar pages",
 	"prefs-reading": "Reading preferences",
 	"popups-prefs-optin-title": "Page previews\n\n<em>Get quick previews of a topic while reading a page</em>",
 	"popups-prefs-optin-enabled-label": "Enable",

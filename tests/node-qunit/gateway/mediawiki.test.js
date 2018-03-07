@@ -41,6 +41,7 @@ var DEFAULT_CONSTANTS = {
 		'en',
 		'ltr',
 		[ document.createTextNode( 'Richard Paul "Rick" Astley is an English singer, songwriter, musician, and radio personality. His 1987 song, "Never Gonna Give You Up" was a No. 1 hit single in 25 countries. By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.\nAstley made a comeback in 2007, becoming an Internet phenomenon when his video "Never Gonna Give You Up" became integral to the meme known as "rickrolling". Astley was voted "Best Act Ever" by Internet users at the' ) ],
+		undefined,
 		{
 			height: 300,
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Rick_Astley_-_Pepsifest_2009.jpg/200px-Rick_Astley_-_Pepsifest_2009.jpg',
@@ -200,6 +201,7 @@ QUnit.test( 'MediaWiki API gateway handles missing pages ', function ( assert ) 
 			'http://dev.wiki.local.wmftest.net:8080/wiki/Missing_page',
 			'en',
 			'ltr',
+			undefined,
 			undefined,
 			undefined
 		),

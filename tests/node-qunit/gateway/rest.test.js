@@ -6,6 +6,7 @@ var DEFAULT_CONSTANTS = {
 		endpoint: '/api/rest_v1/page/summary/'
 	},
 	RESTBASE_RESPONSE = {
+		type: 'standard',
 		title: 'Barack Obama',
 		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 		thumbnail: {
@@ -24,6 +25,7 @@ var DEFAULT_CONSTANTS = {
 		description: '44th President of the United States of America'
 	},
 	SVG_RESTBASE_RESPONSE = {
+		type: 'standard',
 		title: 'Barack Obama',
 		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 		thumbnail: {
@@ -42,6 +44,7 @@ var DEFAULT_CONSTANTS = {
 		description: '44th President of the United States of America'
 	},
 	RESTBASE_RESPONSE_WITHOUT_IMAGE = {
+		type: 'standard',
 		title: 'Barack Obama',
 		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 		lang: 'en',
@@ -59,6 +62,7 @@ var DEFAULT_CONSTANTS = {
 	// See https://phabricator.wikimedia.org/T158632#3071104 onward for additional
 	// context.
 	RESTBASE_RESPONSE_WITH_SMALL_IMAGE = {
+		type: 'standard',
 		title: 'PreviewsNonFreeImage/sandbox',
 		extract: 'Hello, I am the non-free image and parenthetical page (YOU CAN\'T SEE THIS). My preview should contain an image that is not free. My preview should contain a parenthetical you cannot see..',
 		thumbnail: {
@@ -78,6 +82,7 @@ var DEFAULT_CONSTANTS = {
 	},
 	// As above, a no "px-" thumbnail is provided which is not customizable.
 	RESTBASE_RESPONSE_WITH_NO_PX_IMAGE = {
+		type: 'standard',
 		title: 'Barack Obama',
 		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 		thumbnail: {
@@ -96,6 +101,7 @@ var DEFAULT_CONSTANTS = {
 		description: '44th President of the United States of America'
 	},
 	RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE = {
+		type: 'standard',
 		title: 'Landscape',
 		extract: 'Landscape',
 		thumbnail: {
@@ -113,17 +119,34 @@ var DEFAULT_CONSTANTS = {
 		dir: 'ltr',
 		timestamp: '2017-02-17T22:29:56Z'
 	},
+	RESTBASE_RESPONSE_DISAMBIGUATION = {
+		type: 'disambiguation',
+		title: 'Barack (disambiguation)',
+		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+		lang: 'en',
+		dir: 'ltr',
+		timestamp: '2017-02-17T22:29:56Z'
+	},
 	RESTBASE_RESPONSE_PREVIEW_MODEL = createModel(
 		'Barack Obama',
 		'url/Barack Obama', // Generated in the stub below
 		'en',
 		'ltr',
 		'!Barack Hussein Obama II born August 4, 1961) ...!',
+		'standard',
 		{
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
 			width: 409,
 			height: 512
 		}
+	),
+	RESTBASE_RESPONSE_DISAMBIGUATION_MODEL = createModel(
+		'Barack (disambiguation)',
+		'url/Barack (disambiguation)',
+		'en',
+		'ltr',
+		'!Barack Hussein Obama II born August 4, 1961) ...!',
+		'disambiguation'
 	);
 
 function provideParsedExtract( page ) {
@@ -170,6 +193,16 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a model',
 	assert.deepEqual(
 		gateway.convertPageToModel( RESTBASE_RESPONSE, 512, provideParsedExtract ),
 		RESTBASE_RESPONSE_PREVIEW_MODEL
+	);
+} );
+
+QUnit.test( 'RESTBase gateway is correctly converting the page data to a disambiguation model', function ( assert ) {
+	var gateway = createRESTBaseGateway();
+
+	assert.deepEqual(
+		gateway.convertPageToModel( RESTBASE_RESPONSE_DISAMBIGUATION,
+			512, provideParsedExtract ),
+		RESTBASE_RESPONSE_DISAMBIGUATION_MODEL
 	);
 } );
 

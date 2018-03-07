@@ -53,7 +53,7 @@
 		]
 	},
 	"EventLoggingSchemas": {
-		"Popups": 17540736,
+		"Popups": 17807993,
 		"VirtualPageView": 17742133
 	},
 	"config": {
@@ -84,10 +84,11 @@
 		"ext.popups.images": {
 			"selector": ".mw-ui-icon-{name}:before",
 			"class": "ResourceLoaderImageModule",
-			"prefix": "mw-ui",
 			"images": {
 				"popups-settings": "resources/ext.popups.images/cog.svg",
-				"popups-close": "resources/ext.popups.images/close.svg"
+				"popups-close": "resources/ext.popups.images/close.svg",
+				"preview-generic": "resources/ext.popups.images/sad-face.svg",
+				"preview-disambiguation": "resources/ext.popups.images/multiple-articles.svg"
 			}
 		},
 		"ext.popups": {
@@ -101,7 +102,7 @@
 			],
 			"templates": {
 				"preview.mustache": "resources/ext.popups.main/templates/preview.mustache",
-				"preview-empty.mustache": "resources/ext.popups.main/templates/preview-empty.mustache",
+				"preview-generic.mustache": "resources/ext.popups.main/templates/preview-generic.mustache",
 				"settings.mustache": "resources/ext.popups.main/templates/settings.mustache"
 			},
 			"styles": [
@@ -129,7 +130,9 @@
 				"popups-settings-help-ok",
 				"popups-send-feedback",
 				"popups-preview-no-preview",
-				"popups-preview-footer-read"
+				"popups-preview-footer-read",
+				"popups-preview-disambiguation",
+				"popups-preview-disambiguation-link"
 			],
 			"dependencies": [
 				"ext.popups.images",

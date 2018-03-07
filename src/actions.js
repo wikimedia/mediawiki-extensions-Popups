@@ -4,7 +4,7 @@
 
 import types from './actionTypes';
 import wait from './wait';
-import { createNullModel } from './preview/model';
+import { createNullModel, previewTypes } from './preview/model';
 
 var $ = jQuery,
 	mw = window.mediaWiki,
@@ -306,13 +306,17 @@ export function previewShow( token ) {
 				var state = getState(),
 					preview = state.preview,
 					fetchResponse = preview && preview.fetchResponse,
-					currentToken = preview && preview.activeToken;
+					currentToken = preview && preview.activeToken,
+					validType = fetchResponse && [
+						previewTypes.TYPE_PAGE,
+						previewTypes.TYPE_DISAMBIGUATION
+					].indexOf( fetchResponse.type ) > -1;
 
 				if (
 					// Check the pageview can still be associated with original event
 					currentToken && currentToken === token &&
 					// and the preview is still active and of type `page`
-					fetchResponse && fetchResponse.type === 'page'
+					fetchResponse && validType
 				) {
 					dispatch( {
 						type: types.PREVIEW_SEEN,

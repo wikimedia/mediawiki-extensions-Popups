@@ -186,6 +186,7 @@ function convertPageToModel( page, thumbSize, extractParser ) {
 		page.lang,
 		page.dir,
 		extractParser( page ),
+		page.type,
 		page.thumbnail ?
 			generateThumbnailData(
 				page.thumbnail, page.originalimage, thumbSize
