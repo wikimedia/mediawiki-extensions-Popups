@@ -24,7 +24,19 @@ var mw = window.mediaWiki,
 	$window = $( window );
 
 /**
- * Extracted from `mw.popups.createSVGMasks`.
+ * Extracted from `mw.popups.createSVGMasks`. This is just an SVG mask to point
+ * or "poke" at the link that's hovered over. The "pokey" appears to be cut out
+ * of the image itself:
+ *   _______     _______     link
+ *  |       |   |_/\____|    _/\____ <-- Pokey pointing at link
+ *  |       | +           = |       |
+ *  |_______|               |_______|
+ *  Background    Pokey     Page preview
+ *    image       mask      bubble w/ pokey
+ *
+ * SVG masks are used in place of CSS masks for browser support issues (see
+ * https://caniuse.com/#feat=css-masks).
+ *
  * @private
  * @param {Object} container DOM object to which pokey masks are appended
  */
