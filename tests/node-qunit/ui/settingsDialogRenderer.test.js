@@ -1,6 +1,6 @@
-import createSettingsDialogRenderer from '../../../src/ui/settingsDialog';
+import createSettingsDialogRenderer from '../../../src/ui/settingsDialogRenderer';
 
-QUnit.module( 'ext.popups/settingsDialog', {
+QUnit.module( 'ext.popups/settingsDialogRenderer', {
 	beforeEach: function () {
 		function render() { return $( '<div>' ); }
 		function getTemplate() { return { render: render }; }

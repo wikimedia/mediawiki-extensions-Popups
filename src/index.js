@@ -8,7 +8,7 @@ import * as ReduxThunk from 'redux-thunk';
 import createGateway from './gateway';
 import createUserSettings from './userSettings';
 import createPreviewBehavior from './previewBehavior';
-import createSettingsDialogRenderer from './ui/settingsDialog';
+import createSettingsDialogRenderer from './ui/settingsDialogRenderer';
 import registerChangeListener from './changeListener';
 import createIsEnabled from './isEnabled';
 import { fromElement as titleFromElement } from './title';
