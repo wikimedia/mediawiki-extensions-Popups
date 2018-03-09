@@ -195,9 +195,12 @@
 		width: @popupWidth;
 
 		.mwe-popups-extract {
+			@minHeight: 2 * @lineHeight;
+			// On short summaries, we want to avoid an overlap with the gradient.
+			min-height: @minHeight;
 			max-height: 7 * @lineHeight;
 			overflow: hidden;
-			margin-bottom: 47px;
+			margin-bottom: @minHeight + 7px;
 			padding-bottom: 0;
 		}
 
