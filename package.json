@@ -13,6 +13,7 @@
     "precommit": "npm run test:dev && npm run build && git add resources/dist && bundlesize"
   },
   "devDependencies": {
+    "babel-loader": "7.1.4",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
     "bundlesize": "0.15.3",

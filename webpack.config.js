@@ -49,6 +49,14 @@ conf = {
 	module: {
 		rules: [
 			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: { cacheDirectory: true }
+				}
+			},
+			{
 				test: /\.svg$/,
 				loader: 'svg-inline-loader',
 				options: {

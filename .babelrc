@@ -1,0 +1,23 @@
+{
+	"presets": [
+		[
+			"env",
+			{
+				// Do not transform modules to CommonJS.
+				"modules": false,
+				// See modern tier: https://www.mediawiki.org/wiki/Compatibility#Browser_support_matrix
+				"targets": {
+					// https://en.wikipedia.org/wiki/Google_Chrome_version_history
+					"chrome": "64",
+					"ie": "11",
+					// https://en.wikipedia.org/wiki/Firefox_version_history
+					"firefox": "58",
+					"safari": "5.1",
+					"opera": "15",
+					"ios": "6.1",
+					"android": "4.1"
+				}
+			}
+		]
+	]
+}
