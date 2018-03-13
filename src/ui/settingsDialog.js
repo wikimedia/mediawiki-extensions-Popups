@@ -2,10 +2,12 @@
  * @module settingsDialog
  */
 
+import { renderSettingsDialog } from './templates/settingsDialog';
+
 var mw = window.mediaWiki;
 
 /**
- * Create the settings dialog
+ * Create the settings dialog shown to anonymous users.
  *
  * @param {boolean} navPopupsEnabled
  * @return {jQuery} settings dialog
@@ -40,7 +42,7 @@ export function createSettingsDialog( navPopupsEnabled ) {
 	}
 
 	// render the template
-	$el = mw.template.get( 'ext.popups.main', 'settings.mustache' ).render( {
+	$el = $( $.parseHTML( renderSettingsDialog( {
 		heading: mw.msg( 'popups-settings-title' ),
 		closeLabel: mw.msg( 'popups-settings-cancel' ),
 		saveLabel: mw.msg( 'popups-settings-save' ),
@@ -48,7 +50,7 @@ export function createSettingsDialog( navPopupsEnabled ) {
 		okLabel: mw.msg( 'popups-settings-help-ok' ),
 		descriptionText: mw.msg( 'popups-settings-description' ),
 		choices: choices
-	} );
+	} ) ) );
 
 	return $el;
 }

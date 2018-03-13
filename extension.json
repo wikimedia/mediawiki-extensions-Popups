@@ -100,11 +100,6 @@
 			"scripts": [
 				"resources/dist/index.js"
 			],
-			"templates": {
-				"preview.mustache": "resources/ext.popups.main/templates/preview.mustache",
-				"preview-generic.mustache": "resources/ext.popups.main/templates/preview-generic.mustache",
-				"settings.mustache": "resources/ext.popups.main/templates/settings.mustache"
-			},
 			"styles": [
 				"resources/ext.popups.main/styles/ext.popups.core.less",
 				"resources/ext.popups.main/styles/ext.popups.animation.less",

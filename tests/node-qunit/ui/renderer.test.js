@@ -41,8 +41,6 @@ function createBehavior( sandbox ) {
 
 QUnit.module( 'ext.popups#renderer', {
 	beforeEach: function () {
-		var self = this;
-
 		$.bracketedDevicePixelRatio = function () {
 			return 1;
 		};
@@ -66,20 +64,13 @@ QUnit.module( 'ext.popups#renderer', {
 			}
 		};
 
-		this.renderSpy = this.sandbox.spy();
-		window.mediaWiki.template = {
-			get: function () {
-				return {
-					render: self.renderSpy
-				};
-			}
-		};
+		window.mediaWiki.html = { escape: str => str };
 	},
 	afterEach: function () {
 		$.bracketedDevicePixelRatio = null;
 		window.mediaWiki.RegExp = null;
 		window.mediaWiki.msg = null;
-		window.mediaWiki.template = null;
+		window.mediaWiki.html = null;
 	}
 } );
 
@@ -118,23 +109,12 @@ QUnit.test( 'createPagePreview', function ( assert ) {
 		},
 		preview;
 
-	window.mediaWiki.template = {
-		get: function () {
-			return {
-				render: function () {
-					return $( '<div>', { 'class': 'mwe-popups-discreet' } )
-						.append( $( '<div>', { 'class': 'mwe-popups-extract' } ) );
-				}
-			};
-		}
-	};
-
 	preview = renderer.createPreviewWithType( model );
 
 	assert.equal( preview.hasThumbnail, true, 'Preview has thumbnail.' );
 	assert.deepEqual(
-		preview.thumbnail,
-		createThumbnail( model.thumbnail ),
+		preview.thumbnail.el.html(),
+		createThumbnail( model.thumbnail ).el.html(),
 		'Preview thumbnail is the correct one.'
 	);
 	assert.equal(
@@ -177,15 +157,20 @@ QUnit.test( 'createEmptyPreview(model)', function ( assert ) {
 		'Empty preview is never tall (even though the supplied thumbnail is tall).'
 	);
 
-	assert.ok( this.renderSpy.calledOnce, 'Template has been rendered.' );
-
-	assert.deepEqual(
-		this.renderSpy.getCall( 0 ).args[ 0 ],
-		$.extend( {}, model, {
-			extractMsg: MSG_NO_PREVIEW,
-			linkMsg: MSG_GO_TO_PAGE
-		} ),
-		'Template is called with the correct data.'
+	assert.equal(
+		emptyPreview.el.find( '.mwe-popups-title' ).text().trim(),
+		'',
+		'Empty preview title is hidden.'
+	);
+	assert.equal(
+		emptyPreview.el.find( '.mwe-popups-extract' ).text().trim(),
+		MSG_NO_PREVIEW,
+		'Empty preview extract is correct.'
+	);
+	assert.equal(
+		emptyPreview.el.find( '.mwe-popups-read-link' ).text().trim(),
+		MSG_GO_TO_PAGE,
+		'Empty preview link text is correct.'
 	);
 } );
 
@@ -205,15 +190,20 @@ QUnit.test( 'createEmptyPreview(null model)', function ( assert ) {
 		'Null preview is never tall.'
 	);
 
-	assert.ok( this.renderSpy.calledOnce, 'Template has been rendered.' );
-
-	assert.deepEqual(
-		this.renderSpy.getCall( 0 ).args[ 0 ],
-		$.extend( {}, model, {
-			extractMsg: MSG_NO_PREVIEW,
-			linkMsg: MSG_GO_TO_PAGE
-		} ),
-		'Template is called with the correct data.'
+	assert.equal(
+		emptyPreview.el.find( '.mwe-popups-title' ).text().trim(),
+		'',
+		'Empty preview title is hidden.'
+	);
+	assert.equal(
+		emptyPreview.el.find( '.mwe-popups-extract' ).text().trim(),
+		MSG_NO_PREVIEW,
+		'Empty preview extract is correct.'
+	);
+	assert.equal(
+		emptyPreview.el.find( '.mwe-popups-read-link' ).text().trim(),
+		MSG_GO_TO_PAGE,
+		'Empty preview link text is correct.'
 	);
 } );
 
@@ -240,16 +230,20 @@ QUnit.test( 'createDisambiguationPreview(model)', function ( assert ) {
 		'Disambiguation preview is never tall.'
 	);
 
-	assert.ok( this.renderSpy.calledOnce, 'Template has been rendered.' );
-
-	assert.deepEqual(
-		this.renderSpy.getCall( 0 ).args[ 0 ],
-		$.extend( {}, model, {
-			showTitle: true,
-			extractMsg: MSG_DISAMBIGUATION,
-			linkMsg: MSG_DISAMBIGUATION_LINK
-		} ),
-		'Template is called with the correct data.'
+	assert.equal(
+		preview.el.find( '.mwe-popups-title' ).text().trim(),
+		'Barack (disambiguation)',
+		'Preview title is show.'
+	);
+	assert.equal(
+		preview.el.find( '.mwe-popups-extract' ).text().trim(),
+		MSG_DISAMBIGUATION,
+		'Preview extract is correct.'
+	);
+	assert.equal(
+		preview.el.find( '.mwe-popups-read-link' ).text().trim(),
+		MSG_DISAMBIGUATION_LINK,
+		'Preview link text is correct.'
 	);
 } );
 

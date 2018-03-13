@@ -32,8 +32,8 @@ conf = {
 	entry: { index: './src' },
 	performance: {
 		hints: isProduction ? 'error' : false,
-		maxAssetSize: 32.9 * 1024,
-		maxEntrypointSize: 32.9 * 1024,
+		maxAssetSize: 35.2 * 1024,
+		maxEntrypointSize: 35.2 * 1024,
 		assetFilter: function ( filename ) {
 			// The default filter excludes map files but we rename ours to .filename.
 			return filename.endsWith( '.js' );

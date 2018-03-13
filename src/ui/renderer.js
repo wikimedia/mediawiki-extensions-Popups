@@ -6,6 +6,8 @@ import wait from '../wait';
 import pokeyMaskSVG from './pokey-mask.svg';
 import { SIZES, createThumbnail } from './thumbnail';
 import { previewTypes } from '../preview/model';
+import { renderPreview } from './templates/preview';
+import { renderPagePreview } from './templates/pagePreview';
 
 var mw = window.mediaWiki,
 	$ = jQuery,
@@ -127,7 +129,6 @@ export function render( model ) {
  * @return {ext.popups.Preview}
  */
 export function createPreviewWithType( model ) {
-
 	switch ( model.type ) {
 		case previewTypes.TYPE_PAGE:
 			return createPagePreview( model );
@@ -145,18 +146,12 @@ export function createPreviewWithType( model ) {
  * @return {ext.popups.Preview}
  */
 export function createPagePreview( model ) {
-	var templateData,
-		thumbnail = createThumbnail( model.thumbnail ),
+	var thumbnail = createThumbnail( model.thumbnail ),
 		hasThumbnail = thumbnail !== null,
 		extract = model.extract,
 		$el;
 
-	templateData = $.extend( {}, model, {
-		hasThumbnail: hasThumbnail
-	} );
-
-	$el = mw.template.get( 'ext.popups.main', 'preview.mustache' )
-		.render( templateData );
+	$el = $( $.parseHTML( renderPagePreview( model, hasThumbnail ) ) );
 
 	if ( hasThumbnail ) {
 		$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
@@ -185,16 +180,14 @@ export function createPagePreview( model ) {
  * @return {ext.popups.Preview}
  */
 export function createEmptyPreview( model ) {
-	var templateData,
+	var showTitle = false,
+		extractMsg = mw.msg( 'popups-preview-no-preview' ),
+		linkMsg = mw.msg( 'popups-preview-footer-read' ),
 		$el;
 
-	templateData = $.extend( {}, model, {
-		extractMsg: mw.msg( 'popups-preview-no-preview' ),
-		linkMsg: mw.msg( 'popups-preview-footer-read' )
-	} );
-
-	$el = mw.template.get( 'ext.popups.main', 'preview-generic.mustache' )
-		.render( templateData );
+	$el = $(
+		$.parseHTML( renderPreview( model, showTitle, extractMsg, linkMsg ) )
+	);
 
 	return {
 		el: $el,
@@ -210,17 +203,14 @@ export function createEmptyPreview( model ) {
  * @return {ext.popups.Preview}
  */
 export function createDisambiguationPreview( model ) {
-	var templateData,
+	var showTitle = true,
+		extractMsg = mw.msg( 'popups-preview-disambiguation' ),
+		linkMsg = mw.msg( 'popups-preview-disambiguation-link' ),
 		$el;
 
-	templateData = $.extend( {}, model, {
-		showTitle: true,
-		extractMsg: mw.msg( 'popups-preview-disambiguation' ),
-		linkMsg: mw.msg( 'popups-preview-disambiguation-link' )
-	} );
-
-	$el = mw.template.get( 'ext.popups.main', 'preview-generic.mustache' )
-		.render( templateData );
+	$el = $(
+		$.parseHTML( renderPreview( model, showTitle, extractMsg, linkMsg ) )
+	);
 
 	return {
 		el: $el,
@@ -235,7 +225,7 @@ export function createDisambiguationPreview( model ) {
  * Extracted from `mw.popups.render.openPopup`.
  *
  * TODO: From the perspective of the client, there's no need to distinguish
- * between renderering and showing a preview. Merge #render and Preview#show.
+ * between rendering and showing a preview. Merge #render and Preview#show.
  *
  * @param {ext.popups.Preview} preview
  * @param {Event} event

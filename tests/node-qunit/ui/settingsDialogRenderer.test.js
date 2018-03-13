@@ -5,14 +5,16 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 		function render() { return $( '<div>' ); }
 		function getTemplate() { return { render: render }; }
 
+		mediaWiki.html = { escape: str => str };
 		mediaWiki.template = { get: getTemplate };
 		mediaWiki.config = { get: function () {} };
 		mediaWiki.msg = function () {};
 	},
 	afterEach: function () {
+		mediaWiki.msg = null;
 		mediaWiki.config = null;
 		mediaWiki.template = null;
-		mediaWiki.msg = null;
+		mediaWiki.html = null;
 	}
 } );
 
