@@ -26,6 +26,8 @@
 	"popups-send-feedback": "Rückmeldung senden (externer Link)",
 	"popups-preview-no-preview": "Es gab ein Problem bei der Anzeige dieser Vorschau",
 	"popups-preview-footer-read": "Zu dieser Seite gehen",
+	"popups-preview-disambiguation": "Dieser Titel bezieht sich auf mehr als eine Seite",
+	"popups-preview-disambiguation-link": "Ähnliche Seiten ansehen",
 	"prefs-reading": "Leseeinstellungen",
 	"popups-prefs-optin-title": "Seitenvorschaubilder\n\n<em>Ruft schnelle Vorschaubilder zu einem Thema ab, während du eine Seite liest.</em>",
 	"popups-prefs-optin-enabled-label": "Aktivieren",
