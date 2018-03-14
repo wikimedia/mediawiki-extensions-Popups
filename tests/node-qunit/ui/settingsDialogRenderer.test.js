@@ -1,16 +1,16 @@
 import createSettingsDialogRenderer from '../../../src/ui/settingsDialogRenderer';
 
 QUnit.module( 'ext.popups/settingsDialogRenderer', {
-	beforeEach: function () {
+	beforeEach() {
 		function render() { return $( '<div>' ); }
 		function getTemplate() { return { render }; }
 
 		mediaWiki.html = { escape: str => str };
 		mediaWiki.template = { get: getTemplate };
-		mediaWiki.config = { get: function () {} };
+		mediaWiki.config = { get() {} };
 		mediaWiki.msg = function () {};
 	},
-	afterEach: function () {
+	afterEach() {
 		mediaWiki.msg = null;
 		mediaWiki.config = null;
 		mediaWiki.template = null;
@@ -20,15 +20,15 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 
 QUnit.test( '#render', function ( assert ) {
 	var boundActions = {
-			saveSettings: function () {},
-			hideSettings: function () {}
+			saveSettings() {},
+			hideSettings() {}
 		},
 		expected = {
-			appendTo: function () {},
-			show: function () {},
-			hide: function () {},
-			toggleHelp: function () {},
-			setEnabled: function () {}
+			appendTo() {},
+			show() {},
+			hide() {},
+			toggleHelp() {},
+			setEnabled() {}
 		},
 		result = createSettingsDialogRenderer()( boundActions );
 

@@ -6,17 +6,17 @@ import { BUCKETS } from '../../src/constants';
 
 function createStubUserSettings( isEnabled ) {
 	return {
-		hasIsEnabled: function () {
+		hasIsEnabled() {
 			return isEnabled !== undefined;
 		},
-		getIsEnabled: function () {
+		getIsEnabled() {
 			return Boolean( isEnabled );
 		}
 	};
 }
 
 QUnit.module( 'ext.popups#isEnabled (logged out)', {
-	beforeEach: function () {
+	beforeEach() {
 		this.user = stubs.createStubUser( /* isAnon = */ true );
 	}
 } );

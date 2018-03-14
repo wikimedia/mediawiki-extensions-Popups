@@ -3,7 +3,7 @@ import { createModel } from '../../../src/preview/model';
 import eventLogging from '../../../src/reducers/eventLogging';
 
 QUnit.module( 'ext.popups/reducers#eventLogging', {
-	beforeEach: function () {
+	beforeEach() {
 		this.initialState = eventLogging( undefined, {
 			type: '@@INIT'
 		} );
@@ -172,7 +172,7 @@ QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
 } );
 
 QUnit.module( 'ext.popups/reducers#eventLogging @integration', {
-	beforeEach: function () {
+	beforeEach() {
 		this.link = $( '<a>' );
 	}
 } );

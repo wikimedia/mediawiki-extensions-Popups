@@ -1,7 +1,7 @@
 import settings from '../../../src/changeListeners/settings';
 
 QUnit.module( 'ext.popups/changeListeners/settings', {
-	beforeEach: function () {
+	beforeEach() {
 		this.render = this.sandbox.stub();
 		this.rendered = {
 			appendTo: this.sandbox.spy(),

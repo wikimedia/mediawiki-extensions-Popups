@@ -40,7 +40,7 @@ function createBehavior( sandbox ) {
 }
 
 QUnit.module( 'ext.popups#renderer', {
-	beforeEach: function () {
+	beforeEach() {
 		$.bracketedDevicePixelRatio = function () {
 			return 1;
 		};
@@ -66,7 +66,7 @@ QUnit.module( 'ext.popups#renderer', {
 
 		window.mediaWiki.html = { escape: str => str };
 	},
-	afterEach: function () {
+	afterEach() {
 		$.bracketedDevicePixelRatio = null;
 		window.mediaWiki.RegExp = null;
 		window.mediaWiki.msg = null;
@@ -325,9 +325,9 @@ QUnit.test( 'show', function ( assert ) {
 			clientY: 36
 		},
 		link = {
-			get: function () {
+			get() {
 				return {
-					getClientRects: function () {
+					getClientRects() {
 						return [ {
 							bottom: 37,
 							height: 13,
@@ -339,16 +339,16 @@ QUnit.test( 'show', function ( assert ) {
 					}
 				};
 			},
-			offset: function () {
+			offset() {
 				return {
 					top: 1134,
 					left: 201
 				};
 			},
-			width: function () {
+			width() {
 				return 156;
 			},
-			height: function () {
+			height() {
 				return 13;
 			}
 		},

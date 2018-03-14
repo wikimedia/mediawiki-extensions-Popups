@@ -51,14 +51,14 @@ var DEFAULT_CONSTANTS = {
 	);
 
 QUnit.module( 'ext.popups/gateway/mediawiki', {
-	beforeEach: function () {
+	beforeEach() {
 		window.mediaWiki.RegExp = {
 			escape: this.sandbox.spy( function ( str ) {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 	},
-	afterEach: function () {
+	afterEach() {
 		window.mediaWiki.RegExp = null;
 	}
 } );

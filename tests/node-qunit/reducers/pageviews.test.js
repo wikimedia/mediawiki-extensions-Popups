@@ -15,7 +15,7 @@ var PAGEVIEW = {
 /* eslint-enable camelcase */
 
 QUnit.module( 'ext.popups/reducers#pageviews', {
-	beforeEach: function () {
+	beforeEach() {
 		this.initialState = pageviews( undefined, {
 			type: '@@INIT'
 		} );

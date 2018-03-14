@@ -24,7 +24,7 @@ QUnit.test( '#boot', function ( assert ) {
 	config.set( 'wgPopupsConflictsWithNavPopupGadget', true );
 
 	stubUserSettings = {
-		getPreviewCount: function () {
+		getPreviewCount() {
 			return 22;
 		}
 	};
@@ -89,7 +89,7 @@ function setupEl( module ) {
 }
 
 QUnit.module( 'ext.popups/actions#linkDwell @integration', {
-	beforeEach: function () {
+	beforeEach() {
 		this.state = {
 			preview: {}
 		};
@@ -240,7 +240,7 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 } );
 
 QUnit.module( 'ext.popups/actions#fetch', {
-	beforeEach: function () {
+	beforeEach() {
 		this.now = 0;
 
 		this.sandbox.stub( mw, 'now' ).callsFake( () => this.now );
@@ -386,7 +386,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 } );
 
 QUnit.module( 'ext.popups/actions#abandon', {
-	beforeEach: function () {
+	beforeEach() {
 		setupWait( this );
 		setupEl( this );
 	}
@@ -476,7 +476,7 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 } );
 
 QUnit.module( 'ext.popups/actions#previewShow', {
-	beforeEach: function () {
+	beforeEach() {
 		setupWait( this );
 	}
 } );

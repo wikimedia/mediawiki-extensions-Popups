@@ -2,7 +2,7 @@ import render from '../../../src/changeListeners/render';
 import * as RendererModule from '../../../src/ui/renderer';
 
 QUnit.module( 'ext.popups/changeListeners/render', {
-	beforeEach: function () {
+	beforeEach() {
 		this.preview = {
 			show: this.sandbox.stub().returns( $.Deferred().resolve() )
 		};

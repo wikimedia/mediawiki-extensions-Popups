@@ -2,15 +2,15 @@ import createPreviewBehavior from '../../src/previewBehavior';
 import { createStubUser } from './stubs';
 
 QUnit.module( 'ext.popups.preview.settingsBehavior', {
-	beforeEach: function () {
+	beforeEach() {
 		function newFromText( title ) {
-			return { getUrl: function () { return 'url/' + title; } };
+			return { getUrl() { return 'url/' + title; } };
 		}
 
 		mediaWiki.Title = { newFromText };
 		/* global Map */ this.config = new Map();
 	},
-	afterEach: function () {
+	afterEach() {
 		mediaWiki.Title = null;
 	}
 } );

@@ -1,7 +1,7 @@
 import createContainer from '../../src/container';
 
 QUnit.module( 'container', {
-	beforeEach: function () {
+	beforeEach() {
 		this.container = createContainer();
 		this.factory = this.sandbox.stub();
 	}

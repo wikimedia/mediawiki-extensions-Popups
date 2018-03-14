@@ -27,7 +27,7 @@ export default function createContainer() {
 		 * @param {String} name
 		 * @param {*} factory
 		 */
-		set: function ( name, factory ) {
+		set( name, factory ) {
 			factories[ name ] = factory;
 		},
 
@@ -40,7 +40,7 @@ export default function createContainer() {
 		 * @return {Boolean} `true` if the service has been defined; otherwise,
 		 *  `false`
 		 */
-		has: function ( name ) {
+		has( name ) {
 			return factories.hasOwnProperty( name );
 		},
 
@@ -71,7 +71,7 @@ export default function createContainer() {
 		 * @return {*}
 		 * @throws Error If the service hasn't been defined
 		 */
-		get: function ( name ) {
+		get( name ) {
 			var factory;
 
 			if ( !this.has( name ) ) {

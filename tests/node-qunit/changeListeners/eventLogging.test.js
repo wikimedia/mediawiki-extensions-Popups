@@ -5,7 +5,7 @@ function getCurrentTimestamp() {
 }
 
 QUnit.module( 'ext.popups/eventLogging', {
-	beforeEach: function () {
+	beforeEach() {
 		this.boundActions = {
 			eventLogged: this.sandbox.spy()
 		};

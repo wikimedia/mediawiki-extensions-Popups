@@ -3,7 +3,7 @@ import actionTypes from '../../../src/actionTypes';
 import { createNullModel } from '../../../src/preview/model';
 
 QUnit.module( 'ext.popups/reducers#preview', {
-	beforeEach: function () {
+	beforeEach() {
 		this.el = 'active link';
 	}
 } );

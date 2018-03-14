@@ -7,10 +7,10 @@
  */
 export function createStubUser( isAnon ) {
 	return {
-		isAnon: function () {
+		isAnon() {
 			return isAnon;
 		},
-		sessionId: function () {
+		sessionId() {
 			return '0123456789';
 		}
 	};
@@ -42,7 +42,7 @@ export function createStubMap() {
  */
 export function createStubExperiments( bucket ) {
 	return {
-		getBucket: function () {
+		getBucket() {
 			return bucket;
 		}
 	};
@@ -59,10 +59,10 @@ export function createStubExperiments( bucket ) {
 export function createStubTitle( namespace, prefixedDb ) {
 	return {
 		namespace,
-		getPrefixedDb: function () {
+		getPrefixedDb() {
 			return prefixedDb;
 		},
-		getUrl: function () {
+		getUrl() {
 			return `/wiki/${prefixedDb}`;
 		}
 	};

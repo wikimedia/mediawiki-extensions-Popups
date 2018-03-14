@@ -3,14 +3,14 @@ import { BUCKETS } from '../../../src/constants';
 import * as stubs from '../stubs';
 
 QUnit.module( 'ext.popups/instrumentation/eventLogging', {
-	beforeEach: function () {
+	beforeEach() {
 		this.config = stubs.createStubMap();
 
 		this.config.set( 'wgPopupsEventLogging', true );
 
 		this.window = {
 			navigator: {
-				sendBeacon: function () {}
+				sendBeacon() {}
 			}
 		};
 

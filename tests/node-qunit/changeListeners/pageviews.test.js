@@ -13,7 +13,7 @@ page = {
 /* eslint-enable camelcase */
 
 QUnit.module( 'ext.popups/pageviews', {
-	beforeEach: function () {
+	beforeEach() {
 		this.boundActions = {
 			pageviewLogged: this.sandbox.spy()
 		};

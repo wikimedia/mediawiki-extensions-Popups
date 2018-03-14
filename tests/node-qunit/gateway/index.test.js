@@ -3,7 +3,7 @@ import * as RestModule from '../../../src/gateway/rest';
 import * as MediawikiModule from '../../../src/gateway/mediawiki';
 
 QUnit.module( 'gateway/index.js', {
-	beforeEach: function () {
+	beforeEach() {
 		mediaWiki.Api = function () {};
 
 		this.createMediaWikiApiGateway =

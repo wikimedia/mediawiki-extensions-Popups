@@ -3,14 +3,14 @@ import * as formatter from '../../src/formatter';
 var $ = jQuery;
 
 QUnit.module( 'ext.popups.formatter', {
-	beforeEach: function () {
+	beforeEach() {
 		window.mediaWiki.RegExp = {
 			escape: this.sandbox.spy( function ( str ) {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 	},
-	afterEach: function () {
+	afterEach() {
 		window.mediaWiki.RegExp = null;
 	}
 } );

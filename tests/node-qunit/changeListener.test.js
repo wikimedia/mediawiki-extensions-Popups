@@ -4,10 +4,10 @@ var stubStore = ( function () {
 	var state;
 
 	return {
-		getState: function () {
+		getState() {
 			return state;
 		},
-		setState: function ( value ) {
+		setState( value ) {
 			state = value;
 		}
 	};

@@ -3,12 +3,12 @@ import { createThumbnail, createThumbnailElement } from '../../../src/ui/thumbna
 var $ = jQuery;
 
 QUnit.module( 'ext.popups#thumbnail', {
-	beforeEach: function () {
+	beforeEach() {
 		$.bracketedDevicePixelRatio = function () {
 			return 1;
 		};
 	},
-	afterEach: function () {
+	afterEach() {
 		$.bracketedDevicePixelRatio = null;
 	}
 } );

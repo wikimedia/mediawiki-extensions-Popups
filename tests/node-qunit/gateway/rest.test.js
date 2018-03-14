@@ -154,12 +154,12 @@ function provideParsedExtract( page ) {
 }
 
 QUnit.module( 'gateway/rest', {
-	beforeEach: function () {
+	beforeEach() {
 		window.mediaWiki.Title = function ( title ) {
 			this.getUrl = function () { return 'url/' + title; };
 		};
 	},
-	afterEach: function () {
+	afterEach() {
 		window.mediaWiki.Title = null;
 	}
 } );

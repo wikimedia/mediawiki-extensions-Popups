@@ -41,7 +41,7 @@ export default function createExperiments( mwExperiments ) {
 		 *  of the experiment
 		 * @return {Boolean}
 		 */
-		weightedBoolean: function ( name, trueWeight, token ) {
+		weightedBoolean( name, trueWeight, token ) {
 			return mwExperiments.getBucket( {
 				enabled: true,
 

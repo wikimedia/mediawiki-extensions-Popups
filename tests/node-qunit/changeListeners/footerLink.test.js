@@ -3,13 +3,13 @@ import footerLink from '../../../src/changeListeners/footerLink';
 // Since footerLink manipulates the DOM, this test is, by necessity, an
 // integration test.
 QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
-	beforeEach: function () {
+	beforeEach() {
 		var boundActions = {};
 
 		// Stub internal usage of mw.message
 		mediaWiki.message = function ( str ) {
 			return {
-				text: function () { return str; }
+				text() { return str; }
 			};
 		};
 
@@ -37,7 +37,7 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 			return this.$footer.find( 'li' );
 		};
 	},
-	afterEach: function () {
+	afterEach() {
 		this.$footer.remove();
 	}
 } );

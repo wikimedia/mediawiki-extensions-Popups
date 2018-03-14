@@ -52,7 +52,7 @@ function constant( x ) { return function () { return x; }; }
 	*/
 
 QUnit.module( 'ext.popups preview @integration', {
-	beforeEach: function () {
+	beforeEach() {
 		// The worst-case implementation of mw.now.
 		mw.now = function () { return Date.now(); };
 
@@ -102,7 +102,7 @@ QUnit.module( 'ext.popups preview @integration', {
 		) => {
 			this.resetWait();
 			return this.actions.linkDwell( title, el, ev, {
-				getPageSummary: function () {
+				getPageSummary() {
 					var method = resolution === FETCH_RESOLUTION.RESOLVE ?
 						'resolve' : 'reject';
 					return $.Deferred()[ method ]( fetchResponse ).promise();
@@ -159,7 +159,7 @@ QUnit.test( 'it boots in INACTIVE state', function ( assert ) {
 QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( assert ) {
 	var state,
 		gateway = {
-			getPageSummary: function () {
+			getPageSummary() {
 				$.Deferred().promise();
 			}
 		};

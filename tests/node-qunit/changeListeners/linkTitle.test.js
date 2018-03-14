@@ -3,7 +3,7 @@ import linkTitle from '../../../src/changeListeners/linkTitle';
 // Since footerLink manipulates the DOM, this test is, by necessity, an
 // integration test.
 QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
-	beforeEach: function () {
+	beforeEach() {
 		this.$link = $( '<a>' )
 			.attr( 'title', 'Foo' );
 

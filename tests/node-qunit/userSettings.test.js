@@ -2,7 +2,7 @@ import { createStubUser, createStubMap } from './stubs';
 import createUserSettings from '../../src/userSettings';
 
 QUnit.module( 'ext.popups/userSettings', {
-	beforeEach: function () {
+	beforeEach() {
 		var stubUser = createStubUser( /* isAnon = */ true );
 
 		this.storage = createStubMap();

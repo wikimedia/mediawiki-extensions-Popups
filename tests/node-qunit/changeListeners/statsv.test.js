@@ -1,7 +1,7 @@
 import statsv from '../../../src/changeListeners/statsv';
 
 QUnit.module( 'ext.popups/changeListeners/statsv', {
-	beforeEach: function () {
+	beforeEach() {
 		this.boundActions = {
 			statsvLogged: this.sandbox.spy()
 		};

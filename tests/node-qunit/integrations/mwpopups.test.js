@@ -7,7 +7,7 @@ import createMwPopups from '../../../src/integrations/mwpopups';
  */
 function mockStore( state ) {
 	return {
-		getState: function () {
+		getState() {
 			return state;
 		}
 	};

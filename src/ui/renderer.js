@@ -102,7 +102,7 @@ export function render( model ) {
 		 *  that resulted in showing the preview
 		 * @return {jQuery.Promise}
 		 */
-		show: function ( event, boundActions, token ) {
+		show( event, boundActions, token ) {
 			return show(
 				preview, event, $( event.target ), boundActions, token,
 				document.body
@@ -116,7 +116,7 @@ export function render( model ) {
 		 *
 		 * @return {jQuery.Promise}
 		 */
-		hide: function () {
+		hide() {
 			return hide( preview );
 		}
 	};

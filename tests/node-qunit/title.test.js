@@ -3,7 +3,7 @@ import { getTitle, isValid } from '../../src/title';
 /* global Map */
 
 QUnit.module( 'title#getTitle', {
-	beforeEach: function () {
+	beforeEach() {
 		this.config = new Map();
 		this.config.set( 'wgArticlePath', '/wiki/$1' );
 
@@ -17,7 +17,7 @@ QUnit.module( 'title#getTitle', {
 
 		window.mediaWiki.Uri = this.sandbox.stub().throws( 'UNIMPLEMENTED' );
 	},
-	afterEach: function () {
+	afterEach() {
 		global.location = null;
 		window.mediaWiki.RegExp = null;
 		window.mediaWiki.Uri = null;
@@ -101,12 +101,12 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 } );
 
 QUnit.module( 'title#isValid', {
-	beforeEach: function () {
+	beforeEach() {
 		window.mediaWiki.Title = {
 			newFromText: this.sandbox.stub().throws( 'UNIMPLEMENTED' )
 		};
 	},
-	afterEach: function () {
+	afterEach() {
 		window.mediaWiki.Title = null;
 	}
 } );

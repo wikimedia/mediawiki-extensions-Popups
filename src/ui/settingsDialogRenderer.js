@@ -56,7 +56,7 @@ export default function createSettingsDialogRenderer() {
 			 * Append the dialog and overlay to a DOM element
 			 * @param {HTMLElement} el
 			 */
-			appendTo: function ( el ) {
+			appendTo( el ) {
 				$overlay.appendTo( el );
 				$dialog.appendTo( $overlay );
 			},
@@ -64,14 +64,14 @@ export default function createSettingsDialogRenderer() {
 			/**
 			 * Show the settings element and position it correctly
 			 */
-			show: function () {
+			show() {
 				$overlay.show();
 			},
 
 			/**
 			 * Hide the settings dialog.
 			 */
-			hide: function () {
+			hide() {
 				$overlay.hide();
 			},
 
@@ -79,7 +79,7 @@ export default function createSettingsDialogRenderer() {
 			 * Toggle the help dialog on or off
 			 * @param {Boolean} visible if you want to show or hide the help dialog
 			 */
-			toggleHelp: function ( visible ) {
+			toggleHelp( visible ) {
 				toggleHelp( $dialog, visible );
 			},
 
@@ -92,7 +92,7 @@ export default function createSettingsDialogRenderer() {
 			 *
 			 * @param {Boolean} enabled if page previews are enabled
 			 */
-			setEnabled: function ( enabled ) {
+			setEnabled( enabled ) {
 				var name = 'off';
 				if ( enabled ) {
 					name = 'simple';
