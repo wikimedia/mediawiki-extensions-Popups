@@ -77,11 +77,11 @@ export default function createMediaWikiApiGateway( api, config ) {
 	}
 
 	return {
-		fetch: fetch,
-		extractPageFromResponse: extractPageFromResponse,
-		convertPageToModel: convertPageToModel,
-		getPageSummary: getPageSummary,
-		formatPlainTextExtract: formatPlainTextExtract
+		fetch,
+		extractPageFromResponse,
+		convertPageToModel,
+		getPageSummary,
+		formatPlainTextExtract
 	};
 }
 

@@ -21,7 +21,7 @@ function getUserBucket( experiments, experimentGroupSize, sessionId ) {
 		enabled: true,
 		buckets: {
 			off: 1 - experimentGroupSize,
-			control: control,
+			control,
 			on: control
 		}
 	}, sessionId );

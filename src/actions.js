@@ -78,20 +78,20 @@ export function boot(
 
 	return {
 		type: types.BOOT,
-		isEnabled: isEnabled,
+		isEnabled,
 		isNavPopupsEnabled: config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
 		sessionToken: user.sessionId(),
 		pageToken: generateToken(),
 		page: {
-			url: url,
+			url,
 			title: config.get( 'wgTitle' ),
 			namespaceId: config.get( 'wgNamespaceNumber' ),
 			id: config.get( 'wgArticleId' )
 		},
 		user: {
 			isAnon: user.isAnon(),
-			editCount: editCount,
-			previewCount: previewCount
+			editCount,
+			previewCount
 		}
 	};
 }
@@ -115,16 +115,16 @@ export function fetch( gateway, title, el, token ) {
 
 		dispatch( timedAction( {
 			type: types.FETCH_START,
-			el: el,
+			el,
 			title: titleText,
-			namespaceId: namespaceId
+			namespaceId
 		} ) );
 
 		request = gateway.getPageSummary( titleText )
 			.then( function ( result ) {
 				dispatch( timedAction( {
 					type: types.FETCH_END,
-					el: el
+					el
 				} ) );
 
 				return result;
@@ -132,7 +132,7 @@ export function fetch( gateway, title, el, token ) {
 			.catch( function ( err ) {
 				dispatch( {
 					type: types.FETCH_FAILED,
-					el: el
+					el
 				} );
 				// Keep the request promise in a rejected status since it failed.
 				throw err;
@@ -145,9 +145,9 @@ export function fetch( gateway, title, el, token ) {
 			.then( function ( result ) {
 				dispatch( {
 					type: types.FETCH_COMPLETE,
-					el: el,
-					result: result,
-					token: token
+					el,
+					result,
+					token
 				} );
 			} )
 			.catch( function ( data, result ) {
@@ -170,9 +170,9 @@ export function fetch( gateway, title, el, token ) {
 					dispatch( {
 						// Both FETCH_FAILED and FETCH_END conclude with FETCH_COMPLETE.
 						type: types.FETCH_COMPLETE,
-						el: el,
+						el,
 						result: createNullModel( titleText, title.getUrl() ),
-						token: token
+						token
 					} );
 				}
 			} );
@@ -198,11 +198,11 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 	return function ( dispatch, getState ) {
 		var action = timedAction( {
 			type: types.LINK_DWELL,
-			el: el,
-			event: event,
-			token: token,
+			el,
+			event,
+			token,
 			title: titleText,
-			namespaceId: namespaceId
+			namespaceId
 		} );
 
 		// Has the new generated token been accepted?
@@ -245,14 +245,14 @@ export function abandon() {
 
 		dispatch( timedAction( {
 			type: types.ABANDON_START,
-			token: token
+			token
 		} ) );
 
 		return wait( ABANDON_END_DELAY )
 			.then( function () {
 				dispatch( {
 					type: types.ABANDON_END,
-					token: token
+					token
 				} );
 			} );
 	};
@@ -268,7 +268,7 @@ export function abandon() {
 export function linkClick( el ) {
 	return timedAction( {
 		type: types.LINK_CLICK,
-		el: el
+		el
 	} );
 }
 
@@ -297,7 +297,7 @@ export function previewShow( token ) {
 		dispatch(
 			timedAction( {
 				type: types.PREVIEW_SHOW,
-				token: token
+				token
 			} )
 		);
 
@@ -388,7 +388,7 @@ export function saveSettings( enabled ) {
 		dispatch( {
 			type: types.SETTINGS_CHANGE,
 			wasEnabled: getState().preview.enabled,
-			enabled: enabled
+			enabled
 		} );
 	};
 }
@@ -403,7 +403,7 @@ export function saveSettings( enabled ) {
 export function eventLogged( event ) {
 	return {
 		type: types.EVENT_LOGGED,
-		event: event
+		event
 	};
 }
 

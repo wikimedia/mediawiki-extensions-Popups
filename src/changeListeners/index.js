@@ -8,12 +8,12 @@ import statsv from './statsv';
 import syncUserSettings from './syncUserSettings';
 
 export default {
-	footerLink: footerLink,
-	eventLogging: eventLogging,
-	linkTitle: linkTitle,
-	pageviews: pageviews,
-	render: render,
-	settings: settings,
-	statsv: statsv,
-	syncUserSettings: syncUserSettings
+	footerLink,
+	eventLogging,
+	linkTitle,
+	pageviews,
+	render,
+	settings,
+	statsv,
+	syncUserSettings
 };

@@ -130,8 +130,8 @@ export function createThumbnailElement(
 	$thumbnailSVGImage
 		.addClass( className )
 		.attr( {
-			x: x,
-			y: y,
+			x,
+			y,
 			width: thumbnailWidth,
 			height: thumbnailHeight,
 			'clip-path': 'url(#' + clipPath + ')'
@@ -140,8 +140,8 @@ export function createThumbnailElement(
 	$thumbnail = $( document.createElementNS( nsSvg, 'svg' ) )
 		.attr( {
 			xmlns: nsSvg,
-			width: width,
-			height: height
+			width,
+			height
 		} )
 		.append( $thumbnailSVGImage );
 

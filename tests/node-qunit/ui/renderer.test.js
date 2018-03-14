@@ -22,9 +22,9 @@ function createPagePreview( isTall, hasThumbnail, thumbnail ) {
 			.append( hasThumbnail ? $( '<image>' ) : '' )
 			.append( $( '<a>', { 'class': 'mwe-popups-extract', text: 'extract' } ) )
 			.append( $( '<a>', { 'class': 'mwe-popups-settings-icon' } ) ),
-		isTall: isTall,
-		hasThumbnail: hasThumbnail,
-		thumbnail: thumbnail
+		isTall,
+		hasThumbnail,
+		thumbnail
 	};
 }
 

@@ -63,14 +63,14 @@ export function createModel(
 		previewType = getPreviewType( type, processedExtract );
 
 	return {
-		title: title,
-		url: url,
-		languageCode: languageCode,
-		languageDirection: languageDirection,
+		title,
+		url,
+		languageCode,
+		languageDirection,
 		extract: processedExtract,
 		type: previewType,
-		thumbnail: thumbnail,
-		pageId: pageId
+		thumbnail,
+		pageId
 	};
 }
 

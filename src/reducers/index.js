@@ -5,9 +5,9 @@ import settings from './settings';
 import statsv from './statsv';
 
 export default {
-	eventLogging: eventLogging,
-	pageviews: pageviews,
-	preview: preview,
-	settings: settings,
-	statsv: statsv
+	eventLogging,
+	pageviews,
+	preview,
+	settings,
+	statsv
 };

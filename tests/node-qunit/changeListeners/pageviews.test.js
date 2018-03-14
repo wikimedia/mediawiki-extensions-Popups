@@ -28,14 +28,14 @@ QUnit.module( 'ext.popups/pageviews', {
 function createState( title ) {
 	return title ? {
 		pageviews: {
-			page: page,
+			page,
 			pageview: {
 				page_title: title // eslint-disable-line camelcase
 			}
 		}
 	} : {
 		pageviews: {
-			page: page,
+			page,
 			pageview: undefined
 		}
 	};

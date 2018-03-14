@@ -83,7 +83,7 @@ QUnit.test( 'LINK_DWELL', function ( assert ) {
 	timestamp = 100;
 	action = {
 		type: 'LINK_DWELL',
-		timestamp: timestamp
+		timestamp
 	};
 	state = statsv( {}, action );
 

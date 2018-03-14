@@ -58,7 +58,7 @@ export function createStubExperiments( bucket ) {
  */
 export function createStubTitle( namespace, prefixedDb ) {
 	return {
-		namespace: namespace,
+		namespace,
 		getPrefixedDb: function () {
 			return prefixedDb;
 		},

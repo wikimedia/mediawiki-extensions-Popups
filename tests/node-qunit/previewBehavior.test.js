@@ -7,7 +7,7 @@ QUnit.module( 'ext.popups.preview.settingsBehavior', {
 			return { getUrl: function () { return 'url/' + title; } };
 		}
 
-		mediaWiki.Title = { newFromText: newFromText };
+		mediaWiki.Title = { newFromText };
 		/* global Map */ this.config = new Map();
 	},
 	afterEach: function () {

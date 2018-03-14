@@ -161,7 +161,7 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 		},
 		action = {
 			type: 'FETCH_COMPLETE',
-			token: token,
+			token,
 			result: {}
 		};
 
@@ -184,7 +184,7 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 
 	state = preview( state, {
 		type: 'ABANDON_START',
-		token: token
+		token
 	} );
 
 	assert.deepEqual(
@@ -223,7 +223,7 @@ QUnit.test( actionTypes.FETCH_FAILED, function ( assert ) {
 		},
 		action = {
 			type: actionTypes.FETCH_FAILED,
-			token: token
+			token
 		};
 
 	assert.expect( 2 );
@@ -241,7 +241,7 @@ QUnit.test( actionTypes.FETCH_FAILED, function ( assert ) {
 
 	action = {
 		type: actionTypes.FETCH_COMPLETE,
-		token: token,
+		token,
 		result: { title: createNullModel( 'Title', '/wiki/Title' ) }
 	};
 

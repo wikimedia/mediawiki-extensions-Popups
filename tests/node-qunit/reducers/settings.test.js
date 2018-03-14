@@ -75,8 +75,8 @@ QUnit.test( 'SETTINGS_CHANGE', function ( assert ) {
 	var action = function ( wasEnabled, enabled ) {
 		return {
 			type: 'SETTINGS_CHANGE',
-			wasEnabled: wasEnabled,
-			enabled: enabled
+			wasEnabled,
+			enabled
 		};
 	};
 

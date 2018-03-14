@@ -60,7 +60,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 				function ( page ) {
 					// Endpoint response may be empty or simply missing a title.
 					if ( !page || !page.title ) {
-						page = $.extend( true, page || {}, { title: title } );
+						page = $.extend( true, page || {}, { title } );
 					}
 					// And extract may be omitted if empty string
 					if ( page.extract === undefined ) {
@@ -82,7 +82,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 						// matches Fetch failures.
 						result.reject( 'http', {
 							xhr: jqXHR,
-							textStatus: textStatus,
+							textStatus,
 							exception: errorThrown
 						} );
 					}
@@ -93,9 +93,9 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	}
 
 	return {
-		fetch: fetch,
-		convertPageToModel: convertPageToModel,
-		getPageSummary: getPageSummary
+		fetch,
+		convertPageToModel,
+		getPageSummary
 	};
 }
 
@@ -164,8 +164,8 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 
 	return {
 		source: parts.join( '/' ),
-		width: width,
-		height: height
+		width,
+		height
 	};
 }
 

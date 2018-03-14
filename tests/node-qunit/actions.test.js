@@ -127,7 +127,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 	assert.deepEqual( dispatch.getCall( 0 ).args[ 0 ], {
 		type: 'LINK_DWELL',
 		el: this.el,
-		event: event,
+		event,
 		token: '9876543210',
 		timestamp: mw.now(),
 		title: 'Foo',
@@ -330,7 +330,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 			{
 				type: 'FETCH_COMPLETE',
 				el: this.el,
-				result: result,
+				result,
 				token: this.token
 			}
 		);
@@ -412,7 +412,7 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 	assert.ok( dispatch.calledWith( {
 		type: 'ABANDON_START',
 		timestamp: mw.now(),
-		token: token
+		token
 	} ) );
 
 	// ---
@@ -426,7 +426,7 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 		assert.ok(
 			dispatch.calledWith( {
 				type: 'ABANDON_END',
-				token: token
+				token
 			} ),
 			'ABANDON_* share the same token.'
 		);
@@ -503,7 +503,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 	assert.ok(
 		dispatch.calledWith( {
 			type: 'PREVIEW_SHOW',
-			token: token,
+			token,
 			timestamp: mw.now()
 		} ),
 		'dispatches the preview show event'

@@ -147,13 +147,13 @@ QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
 
 		// state.interaction.started is used in this part of the reducer.
 		interaction: {
-			token: token
+			token
 		}
 	};
 
 	state = eventLogging( state, {
 		type: 'PREVIEW_SHOW',
-		token: token
+		token
 	} );
 
 	assert.equal(
@@ -262,7 +262,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		timestamp: now
 	} );
 
@@ -298,7 +298,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		timestamp: now
 	} );
 
@@ -338,7 +338,7 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		timestamp: now
 	} );
 
@@ -383,13 +383,13 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		timestamp: now
 	} );
 
 	state = eventLogging( state, {
 		type: 'PREVIEW_SHOW',
-		token: token,
+		token,
 		timestamp: now + 500
 	} );
 
@@ -397,7 +397,7 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 		link: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		started: now,
 
 		isUserDwelling: true,
@@ -420,13 +420,13 @@ QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been sho
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		timestamp: now
 	} );
 
 	state = eventLogging( state, {
 		type: 'PREVIEW_SHOW',
-		token: token,
+		token,
 		timestamp: now + 750
 	} );
 
@@ -458,7 +458,7 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 		token = '1234567890',
 		initialState = {
 			interaction: {
-				token: token
+				token
 			}
 		},
 		state;
@@ -475,7 +475,7 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 	state = eventLogging( initialState, {
 		type: 'FETCH_COMPLETE',
 		result: model,
-		token: token
+		token
 	} );
 
 	assert.strictEqual(
@@ -612,7 +612,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		timestamp: Date.now()
 	} );
 
@@ -685,19 +685,19 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		timestamp: now
 	} );
 
 	state = eventLogging( dwelledState, {
 		type: 'ABANDON_START',
-		token: token,
+		token,
 		timestamp: now + 500
 	} );
 
 	state = eventLogging( state, {
 		type: 'ABANDON_END',
-		token: token
+		token
 	} );
 
 	assert.deepEqual(
@@ -722,19 +722,19 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 
 	state = eventLogging( dwelledState, {
 		type: 'PREVIEW_SHOW',
-		token: token,
+		token,
 		timestamp: now + 700
 	} );
 
 	state = eventLogging( state, {
 		type: 'ABANDON_START',
-		token: token,
+		token,
 		timestamp: now + 850
 	} );
 
 	state = eventLogging( state, {
 		type: 'ABANDON_END',
-		token: token
+		token
 	} );
 
 	assert.deepEqual(
@@ -766,7 +766,7 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
-		token: token,
+		token,
 		timestamp: now
 	} );
 
@@ -785,7 +785,7 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 
 	state = eventLogging( dwelledState, {
 		type: 'ABANDON_END',
-		token: token
+		token
 	} );
 
 	assert.strictEqual(
@@ -808,13 +808,13 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 
 	state = eventLogging( state, {
 		type: 'ABANDON_START',
-		token: token,
+		token,
 		timestamp: now + 700
 	} );
 
 	state = eventLogging( state, {
 		type: 'ABANDON_END',
-		token: token,
+		token,
 		timestamp: now + 1000 // ABANDON_END_DELAY is 300 ms.
 	} );
 

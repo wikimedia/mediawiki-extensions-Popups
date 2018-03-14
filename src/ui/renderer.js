@@ -162,8 +162,8 @@ export function createPagePreview( model ) {
 
 	return {
 		el: $el,
-		hasThumbnail: hasThumbnail,
-		thumbnail: thumbnail,
+		hasThumbnail,
+		thumbnail,
 		isTall: hasThumbnail && thumbnail.isTall
 	};
 }
@@ -426,8 +426,8 @@ export function createLayout(
 			top: offsetTop,
 			left: offsetLeft
 		},
-		flippedX: flippedX,
-		flippedY: flippedY
+		flippedX,
+		flippedY
 	};
 }
 

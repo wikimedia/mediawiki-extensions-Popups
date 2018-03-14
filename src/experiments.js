@@ -45,7 +45,7 @@ export default function createExperiments( mwExperiments ) {
 			return mwExperiments.getBucket( {
 				enabled: true,
 
-				name: name,
+				name,
 				buckets: {
 					'true': trueWeight,
 					'false': 1 - trueWeight

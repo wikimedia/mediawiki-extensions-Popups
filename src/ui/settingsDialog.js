@@ -49,7 +49,7 @@ export function createSettingsDialog( navPopupsEnabled ) {
 		helpText: mw.msg( 'popups-settings-help' ),
 		okLabel: mw.msg( 'popups-settings-help-ok' ),
 		descriptionText: mw.msg( 'popups-settings-description' ),
-		choices: choices
+		choices
 	} ) ) );
 
 	return $el;

@@ -55,8 +55,8 @@ export default function createPreviewBehavior( config, user, actions ) {
 	}
 
 	return {
-		settingsUrl: settingsUrl,
-		showSettings: showSettings,
+		settingsUrl,
+		showSettings,
 		previewDwell: actions.previewDwell,
 		previewAbandon: actions.abandon,
 		previewShow: actions.previewShow,

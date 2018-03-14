@@ -22,8 +22,8 @@ QUnit.module( 'ext.popups/eventLogging', {
 function createState( baseData, event ) {
 	return {
 		eventLogging: {
-			baseData: baseData,
-			event: event
+			baseData,
+			event
 		}
 	};
 }
