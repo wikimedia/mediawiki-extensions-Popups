@@ -3,16 +3,25 @@
  */
 
 /**
- * @constant {String}
+ * Page Preview types as defined in Schema:Popups
+ * https://meta.wikimedia.org/wiki/Schema:Popups
+ *
+ * @constant {Object}
  */
-export var TYPE_GENERIC = 'generic';
+var previewTypes = {
+	/** empty preview */
+	TYPE_GENERIC: 'generic',
+	/** standard preview */
+	TYPE_PAGE: 'page',
+	/** disambiguation preview */
+	TYPE_DISAMBIGUATION: 'disambiguation'
+};
+
+export { previewTypes };
 
 /**
- * @constant {String}
- */
-export var TYPE_PAGE = 'page'; // eslint-disable-line one-var
-
-/**
+ * Preview Model
+ *
  * @typedef {Object} PreviewModel
  * @property {String} title
  * @property {String} url The canonical URL of the page being previewed
@@ -21,7 +30,7 @@ export var TYPE_PAGE = 'page'; // eslint-disable-line one-var
  * @property {?Array} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed; this can be used to present default or error states
- * @property {String} type Either "extract" or "generic"
+ * @property {String} type One of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION
  * @property {?Object} thumbnail
  *
  * @global
@@ -35,6 +44,7 @@ export var TYPE_PAGE = 'page'; // eslint-disable-line one-var
  * @param {String} languageCode
  * @param {String} languageDirection Either "ltr" or "rtl"
  * @param {?Array} extract
+ * @param {String} type
  * @param {?Object} thumbnail
  * @param {?Number} pageId
  * @return {PreviewModel}
@@ -45,10 +55,12 @@ export function createModel(
 	languageCode,
 	languageDirection,
 	extract,
+	type,
 	thumbnail,
 	pageId
 ) {
-	var processedExtract = processExtract( extract );
+	var processedExtract = processExtract( extract ),
+		previewType = getPreviewType( type, processedExtract );
 
 	return {
 		title: title,
@@ -56,7 +68,7 @@ export function createModel(
 		languageCode: languageCode,
 		languageDirection: languageDirection,
 		extract: processedExtract,
-		type: processedExtract === undefined ? TYPE_GENERIC : TYPE_PAGE,
+		type: previewType,
 		thumbnail: thumbnail,
 		pageId: pageId
 	};
@@ -89,4 +101,38 @@ function processExtract( extract ) {
 		return undefined;
 	}
 	return extract;
+}
+
+/**
+ * Determines the preview type based on whether or not:
+ * a. Is the preview empty.
+ * b. The preview type matches one of previewTypes.
+ * c. Assume standard page preview if both above are false
+ *
+ * @param {String} type
+ * @param {string} [processedExtract]
+ * @return {String} one of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION.
+ */
+
+function getPreviewType( type, processedExtract ) {
+
+	if ( processedExtract === undefined ) {
+		return previewTypes.TYPE_GENERIC;
+	}
+
+	switch ( type ) {
+		case previewTypes.TYPE_GENERIC:
+		case previewTypes.TYPE_DISAMBIGUATION:
+		case previewTypes.TYPE_PAGE:
+			return type;
+		default:
+			/**
+			 * Assume type="page" if extract exists & not one of previewTypes.
+			 * Note:
+			 * - Restbase response includes "type" prop but other gateways don't.
+			 * - event-logging Schema:Popups requires type="page" but restbase
+			 * provides type="standard". Model must conform to event-logging schema.
+			 */
+			return previewTypes.TYPE_PAGE;
+	}
 }

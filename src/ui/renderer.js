@@ -3,6 +3,7 @@
  */
 
 import wait from '../wait';
+import { previewTypes } from '../preview/model';
 
 var mw = window.mediaWiki,
 	$ = jQuery,
@@ -92,9 +93,8 @@ export function init() {
  * @return {ext.popups.Preview}
  */
 export function render( model ) {
-	// `undefined` is the default extract for null objects.
-	var preview = model.extract === undefined ?
-		createEmptyPreview( model ) : createPreview( model );
+
+	var preview = createPreviewWithType( model );
 
 	return {
 
@@ -132,6 +132,24 @@ export function render( model ) {
 		}
 	};
 }
+/**
+ * Creates an instance of a Preview based on
+ * the type property of the PreviewModel
+ *
+ * @param {ext.popups.PreviewModel} model
+ * @return {ext.popups.Preview}
+ */
+export function createPreviewWithType( model ) {
+
+	switch ( model.type ) {
+		case previewTypes.TYPE_PAGE:
+			return createPagePreview( model );
+		case previewTypes.TYPE_DISAMBIGUATION:
+			return createDisambiguationPreview( model );
+		default:
+			return createEmptyPreview( model );
+	}
+}
 
 /**
  * Creates an instance of the DTO backing a preview.
@@ -139,7 +157,7 @@ export function render( model ) {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function createPreview( model ) {
+export function createPagePreview( model ) {
 	var templateData,
 		thumbnail = createThumbnail( model.thumbnail ),
 		hasThumbnail = thumbnail !== null,
@@ -185,10 +203,36 @@ export function createEmptyPreview( model ) {
 
 	templateData = $.extend( {}, model, {
 		extractMsg: mw.msg( 'popups-preview-no-preview' ),
-		readMsg: mw.msg( 'popups-preview-footer-read' )
+		linkMsg: mw.msg( 'popups-preview-footer-read' )
 	} );
 
-	$el = mw.template.get( 'ext.popups.main', 'preview-empty.mustache' )
+	$el = mw.template.get( 'ext.popups.main', 'preview-generic.mustache' )
+		.render( templateData );
+
+	return {
+		el: $el,
+		hasThumbnail: false,
+		isTall: false
+	};
+}
+
+/**
+ * Creates an instance of the disambiguation preview.
+ *
+ * @param {ext.popups.PreviewModel} model
+ * @return {ext.popups.Preview}
+ */
+export function createDisambiguationPreview( model ) {
+	var templateData,
+		$el;
+
+	templateData = $.extend( {}, model, {
+		showTitle: true,
+		extractMsg: mw.msg( 'popups-preview-disambiguation' ),
+		linkMsg: mw.msg( 'popups-preview-disambiguation-link' )
+	} );
+
+	$el = mw.template.get( 'ext.popups.main', 'preview-generic.mustache' )
 		.render( templateData );
 
 	return {

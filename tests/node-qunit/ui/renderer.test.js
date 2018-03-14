@@ -1,9 +1,11 @@
 import * as renderer from '../../../src/ui/renderer';
-import { createNullModel } from '../../../src/preview/model';
+import { createNullModel, previewTypes } from '../../../src/preview/model';
 
 var $ = jQuery,
 	MSG_NO_PREVIEW = 'There was an issue displaying this preview',
-	MSG_GO_TO_PAGE = 'Go to this page';
+	MSG_GO_TO_PAGE = 'Go to this page',
+	MSG_DISAMBIGUATION = 'This title relates to more than one page',
+	MSG_DISAMBIGUATION_LINK = 'View similar pages';
 
 /**
  * A utility function that creates a bare bones preview
@@ -13,7 +15,7 @@ var $ = jQuery,
  * @param {ext.popups.Thumbnail} [thumbnail]
  * @return {ext.popups.Preview}
  */
-function createPreview( isTall, hasThumbnail, thumbnail ) {
+function createPagePreview( isTall, hasThumbnail, thumbnail ) {
 	return {
 		el: $( '<div>' )
 			.append( hasThumbnail ? $( '<image>' ) : '' )
@@ -56,6 +58,10 @@ QUnit.module( 'ext.popups#renderer', {
 					return MSG_NO_PREVIEW;
 				case 'popups-preview-footer-read':
 					return MSG_GO_TO_PAGE;
+				case 'popups-preview-disambiguation':
+					return MSG_DISAMBIGUATION;
+				case 'popups-preview-disambiguation-link':
+					return MSG_DISAMBIGUATION_LINK;
 			}
 		};
 
@@ -95,13 +101,14 @@ QUnit.test( 'createPokeyMasks', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'createPreview', function ( assert ) {
+QUnit.test( 'createPagePreview', function ( assert ) {
 	var model = {
 			title: 'Test',
 			url: 'https://en.wikipedia.org/wiki/Test',
 			languageCode: 'en',
 			languageDirection: 'ltr',
 			extract: 'This is a test page.',
+			type: previewTypes.TYPE_PAGE,
 			thumbnail: {
 				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
 				width: 409,
@@ -121,7 +128,7 @@ QUnit.test( 'createPreview', function ( assert ) {
 		}
 	};
 
-	preview = renderer.createPreview( model );
+	preview = renderer.createPreviewWithType( model );
 
 	assert.equal( preview.hasThumbnail, true, 'Preview has thumbnail.' );
 	assert.deepEqual(
@@ -148,13 +155,14 @@ QUnit.test( 'createEmptyPreview(model)', function ( assert ) {
 			languageCode: 'en',
 			languageDirection: 'ltr',
 			extract: 'This is a test page.',
+			type: previewTypes.TYPE_GENERIC,
 			thumbnail: {
 				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
 				width: 409,
 				height: 512
 			}
 		},
-		emptyPreview = renderer.createEmptyPreview( model );
+		emptyPreview = renderer.createPreviewWithType( model );
 
 	assert.equal(
 		emptyPreview.hasThumbnail,
@@ -174,7 +182,7 @@ QUnit.test( 'createEmptyPreview(model)', function ( assert ) {
 		this.renderSpy.getCall( 0 ).args[ 0 ],
 		$.extend( {}, model, {
 			extractMsg: MSG_NO_PREVIEW,
-			readMsg: MSG_GO_TO_PAGE
+			linkMsg: MSG_GO_TO_PAGE
 		} ),
 		'Template is called with the correct data.'
 	);
@@ -182,7 +190,7 @@ QUnit.test( 'createEmptyPreview(model)', function ( assert ) {
 
 QUnit.test( 'createEmptyPreview(null model)', function ( assert ) {
 	var model = createNullModel( 'Test', '/wiki/Test' ),
-		emptyPreview = renderer.createEmptyPreview( model );
+		emptyPreview = renderer.createPreviewWithType( model );
 
 	assert.equal(
 		emptyPreview.hasThumbnail,
@@ -202,14 +210,50 @@ QUnit.test( 'createEmptyPreview(null model)', function ( assert ) {
 		this.renderSpy.getCall( 0 ).args[ 0 ],
 		$.extend( {}, model, {
 			extractMsg: MSG_NO_PREVIEW,
-			readMsg: MSG_GO_TO_PAGE
+			linkMsg: MSG_GO_TO_PAGE
+		} ),
+		'Template is called with the correct data.'
+	);
+} );
+
+QUnit.test( 'createDisambiguationPreview(model)', function ( assert ) {
+	var model = {
+			title: 'Barack (disambiguation)',
+			url: 'url/Barack (disambiguation)',
+			languageCode: 'en',
+			languageDirection: 'ltr',
+			extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+			type: previewTypes.TYPE_DISAMBIGUATION
+		},
+		preview = renderer.createPreviewWithType( model );
+
+	assert.equal(
+		preview.hasThumbnail,
+		false,
+		'Disambiguation preview doesn\'t have a thumbnail.'
+	);
+
+	assert.equal(
+		preview.isTall,
+		false,
+		'Disambiguation preview is never tall.'
+	);
+
+	assert.ok( this.renderSpy.calledOnce, 'Template has been rendered.' );
+
+	assert.deepEqual(
+		this.renderSpy.getCall( 0 ).args[ 0 ],
+		$.extend( {}, model, {
+			showTitle: true,
+			extractMsg: MSG_DISAMBIGUATION,
+			linkMsg: MSG_DISAMBIGUATION_LINK
 		} ),
 		'Template is called with the correct data.'
 	);
 } );
 
 QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
-	var preview = createPreview(),
+	var preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -223,7 +267,7 @@ QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
 } );
 
 QUnit.test( 'bindBehavior - preview abandon', function ( assert ) {
-	var preview = createPreview(),
+	var preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -236,7 +280,7 @@ QUnit.test( 'bindBehavior - preview abandon', function ( assert ) {
 } );
 
 QUnit.test( 'bindBehavior - preview click', function ( assert ) {
-	var preview = createPreview(),
+	var preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -251,7 +295,7 @@ QUnit.test( 'bindBehavior - preview click', function ( assert ) {
 } );
 
 QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
-	var preview = createPreview(),
+	var preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -266,7 +310,7 @@ QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
 } );
 
 QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
-	var preview = createPreview(),
+	var preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -279,7 +323,7 @@ QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
 } );
 
 QUnit.test( 'show', function ( assert ) {
-	var preview = createPreview(),
+	var preview = createPagePreview(),
 		event = {
 			pageX: 252,
 			pageY: 1146,
@@ -1028,7 +1072,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', function ( assert 
 } );
 
 QUnit.test( '#layoutPreview - no thumbnail', function ( assert ) {
-	var preview = createPreview( false, false, null ),
+	var preview = createPagePreview( false, false, null ),
 		layout = {
 			flippedX: false,
 			flippedY: false,
@@ -1058,7 +1102,7 @@ QUnit.test( '#layoutPreview - no thumbnail', function ( assert ) {
 } );
 
 QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function ( assert ) {
-	var preview = createPreview( true, true, { height: 200 } ),
+	var preview = createPagePreview( true, true, { height: 200 } ),
 		layout = {
 			flippedX: true,
 			flippedY: false,
@@ -1097,7 +1141,7 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function 
 } );
 
 QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small height', function ( assert ) {
-	var preview = createPreview( false, true, { height: 199 } ),
+	var preview = createPagePreview( false, true, { height: 199 } ),
 		layout = {
 			flippedX: true,
 			flippedY: false,
@@ -1137,7 +1181,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 } );
 
 QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big height', function ( assert ) {
-	var preview = createPreview( false, true, { height: 201 } ),
+	var preview = createPagePreview( false, true, { height: 201 } ),
 		layout = {
 			flippedX: true,
 			flippedY: false,
@@ -1177,7 +1221,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 } );
 
 QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', function ( assert ) {
-	var preview = createPreview( true, true, { height: 200 } ),
+	var preview = createPagePreview( true, true, { height: 200 } ),
 		layout = {
 			flippedX: false,
 			flippedY: true,
@@ -1215,7 +1259,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', function 
 } );
 
 QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', function ( assert ) {
-	var preview = createPreview( true, true, { height: 200 } ),
+	var preview = createPagePreview( true, true, { height: 200 } ),
 		layout = {
 			flippedX: true,
 			flippedY: true,
@@ -1254,7 +1298,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', fun
 } );
 
 QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y', function ( assert ) {
-	var preview = createPreview( false, true, { height: 200 } ),
+	var preview = createPagePreview( false, true, { height: 200 } ),
 		layout = {
 			flippedX: true,
 			flippedY: true,

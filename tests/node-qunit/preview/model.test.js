@@ -1,4 +1,4 @@
-import { createModel, TYPE_PAGE, TYPE_GENERIC }
+import { createModel, previewTypes }
 	from '../../../src/preview/model';
 
 QUnit.module( 'ext.popups.preview#createModel' );
@@ -11,6 +11,7 @@ QUnit.test( 'it should copy the basic properties', function ( assert ) {
 			'en',
 			'ltr',
 			'Foo bar baz.',
+			'standard',
 			thumbnail
 		);
 
@@ -18,35 +19,50 @@ QUnit.test( 'it should copy the basic properties', function ( assert ) {
 	assert.strictEqual( model.url, 'https://en.wikipedia.org/wiki/Foo' );
 	assert.strictEqual( model.languageCode, 'en' );
 	assert.strictEqual( model.languageDirection, 'ltr' );
+	assert.strictEqual( model.type, previewTypes.TYPE_PAGE );
 	assert.strictEqual( model.thumbnail, thumbnail );
 } );
 
 QUnit.test( 'it computes the type property', function ( assert ) {
-	var model;
 
-	function createModelWithExtract( extract ) {
+	function createModelWith( { extract, type } ) {
 		return createModel(
 			'Foo',
 			'https://en.wikipedia.org/wiki/Foo',
 			'en',
 			'ltr',
-			extract
+			extract,
+			type
 		);
 	}
 
-	model = createModelWithExtract( 'Foo' );
-
 	assert.strictEqual(
-		model.type,
-		TYPE_PAGE,
-		'A non-generic ("page") preview has an extract.'
+		createModelWith( { extract: 'Foo', type: 'standard' } ).type,
+		previewTypes.TYPE_PAGE,
+		'A non-generic ("page") preview has an extract and type "standard" property.'
 	);
 
-	model = createModelWithExtract( '' );
+	assert.strictEqual(
+		createModelWith( { extract: 'Foo', type: undefined } ).type,
+		previewTypes.TYPE_PAGE,
+		'A non-generic ("page") preview has an extract with an undefined "type" property.'
+	);
 
 	assert.strictEqual(
-		model.type,
-		TYPE_GENERIC,
-		'A generic preview has an undefined extract.'
+		createModelWith( { extract: undefined, type: undefined } ).type,
+		previewTypes.TYPE_GENERIC,
+		'A generic ("empty") preview has an undefined extract and an undefined "type" property.'
+	);
+
+	assert.strictEqual(
+		createModelWith( { extract: undefined, type: 'standard' } ).type,
+		previewTypes.TYPE_GENERIC,
+		'A generic ("empty") preview has an undefined extract regardless of "type".'
+	);
+
+	assert.strictEqual(
+		createModelWith( { extract: 'Foo', type: 'disambiguation' } ).type,
+		previewTypes.TYPE_DISAMBIGUATION,
+		'A disambiguation preview has an extract and type ("disambiguation") property.'
 	);
 } );

@@ -136,6 +136,7 @@ function convertPageToModel( page ) {
 		page.pagelanguagehtmlcode,
 		page.pagelanguagedir,
 		page.extract,
+		page.type,
 		page.thumbnail,
 		page.pageid
 	);

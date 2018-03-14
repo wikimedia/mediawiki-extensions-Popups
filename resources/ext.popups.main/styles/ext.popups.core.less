@@ -56,14 +56,9 @@
 	}
 }
 
-.mwe-popups-sade-face-icon {
-	display: block;
-	width: 37px;
-	height: 27px;
-	margin: 16px 16px 0;
-	background-position: center center;
-	background-repeat: no-repeat;
-	.background-image-svg( '../images/sad-face.svg', '../images/sad-face.png' );
+/* slightly shrinking disambiguation icon */
+.mw-ui-icon.mw-ui-icon-element.mw-ui-icon-preview-disambiguation:before {
+	background-size: 90% auto;
 }
 
 .mwe-popups {
@@ -97,6 +92,12 @@
 				float: right;
 			}
 		}
+	}
+
+	.mwe-popups-title {
+		display: block;
+		font-weight: bold;
+		margin: 0 16px;
 	}
 
 	.mwe-popups-extract {
@@ -209,10 +210,13 @@
 		}
 	}
 
-	&.mwe-popups-is-empty {
+	&.mwe-popups-type-generic,
+	&.mwe-popups-type-disambiguation {
 		.mwe-popups-extract {
+			min-height: auto;
 			padding-top: 4px;
 			margin-bottom: 60px;
+			margin-top: 0;
 		}
 
 		.mwe-popups-read-link {
