@@ -273,7 +273,6 @@ mw.requestIdleCallback( function () {
 					boundActions.linkClick( this );
 				}
 			} );
-
 	} );
 } );
 

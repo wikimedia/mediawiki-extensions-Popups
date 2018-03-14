@@ -3,7 +3,7 @@ import getUserBucket from '../../src/getUserBucket';
 
 QUnit.module( 'ext.popups#getUserBucket' );
 
-QUnit.test( 'If no users are subject to experiment everyone is bucketed as on', function ( assert ) {
+QUnit.test( 'If no users are subject to experiment everyone is bucketed as on', ( assert ) => {
 	assert.ok(
 		getUserBucket( stubs.createStubExperiments( 'A' ), 0, 'a' ) === 'on' );
 } );

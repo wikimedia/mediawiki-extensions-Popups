@@ -41,7 +41,7 @@ export default function createPreviewBehavior( config, user, actions ) {
 		showSettings = $.noop;
 
 	if ( user.isAnon() ) {
-		showSettings = function ( event ) {
+		showSettings = ( event ) => {
 			event.preventDefault();
 
 			actions.showSettings();

@@ -4,16 +4,14 @@ var $ = jQuery;
 
 QUnit.module( 'ext.popups#thumbnail', {
 	beforeEach() {
-		$.bracketedDevicePixelRatio = function () {
-			return 1;
-		};
+		$.bracketedDevicePixelRatio = () => 1;
 	},
 	afterEach() {
 		$.bracketedDevicePixelRatio = null;
 	}
 } );
 
-QUnit.test( 'createThumbnail - tall image', function ( assert ) {
+QUnit.test( 'createThumbnail - tall image', ( assert ) => {
 	var devicePixelRatio = $.bracketedDevicePixelRatio(),
 		rawThumbnail = {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
@@ -39,7 +37,7 @@ QUnit.test( 'createThumbnail - tall image', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'createThumbnail - tall image element', function ( assert ) {
+QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 	var thumbnail,
 		cases = [
 			{
@@ -62,7 +60,7 @@ QUnit.test( 'createThumbnail - tall image element', function ( assert ) {
 			}
 		];
 
-	cases.forEach( function ( case_ ) {
+	cases.forEach( ( case_ ) => {
 		thumbnail = createThumbnail( {
 			source: 'https://image.url',
 			width: case_.width,
@@ -102,7 +100,7 @@ QUnit.test( 'createThumbnail - tall image element', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'createThumbnail - landscape image', function ( assert ) {
+QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
 	var devicePixelRatio = $.bracketedDevicePixelRatio(),
 		rawThumbnail = {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg',
@@ -128,7 +126,7 @@ QUnit.test( 'createThumbnail - landscape image', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'createThumbnail - landscape image element', function ( assert ) {
+QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 	var thumbnail,
 		cases = [
 			{
@@ -151,7 +149,7 @@ QUnit.test( 'createThumbnail - landscape image element', function ( assert ) {
 			}
 		];
 
-	cases.forEach( function ( case_ ) {
+	cases.forEach( ( case_ ) => {
 		thumbnail = createThumbnail( {
 			source: 'https://image.url',
 			width: case_.width,
@@ -191,13 +189,13 @@ QUnit.test( 'createThumbnail - landscape image element', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'createThumbnail - no raw thumbnail', function ( assert ) {
+QUnit.test( 'createThumbnail - no raw thumbnail', ( assert ) => {
 	var thumbnail = createThumbnail( null );
 
 	assert.equal( thumbnail, null, 'No thumbnail.' );
 } );
 
-QUnit.test( 'createThumbnail - small wide image', function ( assert ) {
+QUnit.test( 'createThumbnail - small wide image', ( assert ) => {
 	var rawThumbnail = {
 			source: 'https://landscape-image.jpg',
 			width: 299,
@@ -208,7 +206,7 @@ QUnit.test( 'createThumbnail - small wide image', function ( assert ) {
 	assert.equal( thumbnail, null, 'No thumbnail.' );
 } );
 
-QUnit.test( 'createThumbnail - small tall image', function ( assert ) {
+QUnit.test( 'createThumbnail - small tall image', ( assert ) => {
 	var rawThumbnail = {
 			source: 'https://tall-image.jpg',
 			width: 248,
@@ -219,7 +217,7 @@ QUnit.test( 'createThumbnail - small tall image', function ( assert ) {
 	assert.equal( thumbnail, null, 'No thumbnail.' );
 } );
 
-QUnit.test( 'createThumbnail - insecure URL', function ( assert ) {
+QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
 	var cases = [
 			'https://tall-ima\\ge.jpg',
 			'https://tall-ima\'ge.jpg',
@@ -227,7 +225,7 @@ QUnit.test( 'createThumbnail - insecure URL', function ( assert ) {
 		],
 		thumbnail;
 
-	cases.forEach( function ( case_ ) {
+	cases.forEach( ( case_ ) => {
 		thumbnail = createThumbnail( {
 			source: case_,
 			width: 500,
@@ -238,7 +236,7 @@ QUnit.test( 'createThumbnail - insecure URL', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'createThumbnailElement', function ( assert ) {
+QUnit.test( 'createThumbnailElement', ( assert ) => {
 	var className = 'thumb-class',
 		url = 'https://thumbnail.url',
 		x = 25,

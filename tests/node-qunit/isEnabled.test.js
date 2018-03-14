@@ -21,7 +21,7 @@ QUnit.module( 'ext.popups#isEnabled (logged out)', {
 	}
 } );
 
-QUnit.test( 'is should handle logged out users', function ( assert ) {
+QUnit.test( 'is should handle logged out users', ( assert ) => {
 	var user = stubs.createStubUser( /* isAnon = */ true ),
 		cases,
 		i, testCase,
@@ -82,7 +82,7 @@ QUnit.test( 'is should handle logged out users', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'it should handle logged in users', function ( assert ) {
+QUnit.test( 'it should handle logged in users', ( assert ) => {
 	var user = stubs.createStubUser( /* isAnon = */ false ),
 		userSettings = createStubUserSettings( false ),
 		config = new Map();
@@ -107,7 +107,7 @@ QUnit.test( 'it should handle logged in users', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'it should handle the conflict with the Navigation Popups Gadget', function ( assert ) {
+QUnit.test( 'it should handle the conflict with the Navigation Popups Gadget', ( assert ) => {
 	var user = stubs.createStubUser( /* isAnon = */ false ),
 		userSettings = createStubUserSettings( false ),
 		config = new Map();

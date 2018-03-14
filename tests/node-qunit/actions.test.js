@@ -11,7 +11,7 @@ function generateToken() {
 
 QUnit.module( 'ext.popups/actions' );
 
-QUnit.test( '#boot', function ( assert ) {
+QUnit.test( '#boot', ( assert ) => {
 	var config = new Map(), /* global Map */
 		stubUser = createStubUser( /* isAnon = */ true ),
 		stubUserSettings,
@@ -72,9 +72,9 @@ QUnit.test( '#boot', function ( assert ) {
 	*/
 function setupWait( module ) {
 	module.waitPromise = $.Deferred().resolve().promise();
-	module.wait = module.sandbox.stub( WaitModule, 'default' ).callsFake( function () {
-		return module.waitPromise;
-	} );
+	module.wait = module.sandbox.stub( WaitModule, 'default' ).callsFake(
+		() => module.waitPromise
+	);
 }
 
 /**
@@ -96,7 +96,7 @@ QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 		this.getState = () => this.state;
 
 		// The worst-case implementation of mw.now.
-		mw.now = function () { return Date.now(); };
+		mw.now = () => Date.now();
 
 		setupEl( this );
 	}
@@ -143,7 +143,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 
 	// ---
 
-	return linkDwelled.then( function () {
+	return linkDwelled.then( () => {
 		assert.strictEqual(
 			dispatch.callCount,
 			2,
@@ -175,7 +175,7 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 
 	assert.strictEqual( dispatch.callCount, 1 );
 
-	return linkDwelled.then( function () {
+	return linkDwelled.then( () => {
 		assert.strictEqual( dispatch.callCount, 1 );
 	} );
 } );
@@ -213,7 +213,7 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 		activeToken: 'banana'
 	};
 
-	return linkDwelled.then( function () {
+	return linkDwelled.then( () => {
 		assert.strictEqual( dispatch.callCount, 1 );
 	} );
 } );
@@ -234,7 +234,7 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 	)(
 		dispatch,
 		this.getState
-	).then( function () {
+	).then( () => {
 		assert.strictEqual( dispatch.callCount, 2 );
 	} );
 } );
@@ -395,13 +395,13 @@ QUnit.module( 'ext.popups/actions#abandon', {
 QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 	var dispatch = this.sandbox.spy(),
 		token = '0123456789',
-		getState = function () {
-			return {
+		getState = () =>
+			( {
 				preview: {
 					activeToken: token
 				}
-			};
-		}, abandoned;
+			} ),
+		abandoned;
 
 	assert.expect( 3 );
 
@@ -422,7 +422,7 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 		'Have you spoken with #Design about changing this value?'
 	);
 
-	return abandoned.then( function () {
+	return abandoned.then( () => {
 		assert.ok(
 			dispatch.calledWith( {
 				type: 'ABANDON_END',
@@ -435,16 +435,15 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 
 QUnit.test( 'it shouldn\'t dispatch under certain conditions', function ( assert ) {
 	var dispatch = this.sandbox.spy(),
-		getState = function () {
-			return {
+		getState = () =>
+			( {
 				preview: {
 					activeToken: undefined
 				}
-			};
-		};
+			} );
 
 	return actions.abandon( this.el )( dispatch, getState )
-		.then( function () {
+		.then( () => {
 			assert.ok( dispatch.notCalled );
 		} );
 } );
@@ -514,7 +513,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 		1000,
 		'It waits for PAGEVIEW_VISIBILITY_DURATION milliseconds before trigging a pageview.'
 	);
-	return previewShow.then( function () {
+	return previewShow.then( () => {
 		assert.ok(
 			dispatch.calledTwice,
 			'Dispatch was called twice - once for PREVIEW_SHOW then for PREVIEW_SEEN'
@@ -549,7 +548,7 @@ QUnit.test( 'PREVIEW_SEEN action not called if activeToken changes', function ( 
 	previewShow = actions
 		.previewShow( token )( dispatch, getState );
 
-	return previewShow.then( function () {
+	return previewShow.then( () => {
 		assert.ok(
 			dispatch.calledOnce,
 			'Dispatch was only called for PREVIEW_SHOW'
@@ -575,7 +574,7 @@ QUnit.test( 'PREVIEW_SEEN action not called if preview type not page', function 
 	previewShow = actions
 		.previewShow( token )( dispatch, getState );
 
-	return previewShow.then( function () {
+	return previewShow.then( () => {
 		assert.ok(
 			dispatch.calledOnce,
 			'Dispatch was only called for PREVIEW_SHOW'

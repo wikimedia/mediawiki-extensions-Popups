@@ -7,18 +7,18 @@ QUnit.test( 'it should resolve after waiting', function ( assert ) {
 
 	assert.expect( 1 );
 
-	timeout = this.sandbox.stub( global, 'setTimeout' ).callsFake( function ( callback ) {
+	timeout = this.sandbox.stub( global, 'setTimeout' ).callsFake( ( callback ) => {
 		callback();
 	} );
 
-	return wait( 150 ).then( function () {
+	return wait( 150 ).then( () => {
 		assert.strictEqual(
 			timeout.getCall( 0 ).args[ 1 ],
 			150,
 			'It waits for the given duration'
 		);
 		timeout.restore();
-	} ).catch( function ( err ) {
+	} ).catch( ( err ) => {
 		timeout.restore();
 		throw err;
 	} );

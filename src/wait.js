@@ -11,7 +11,7 @@ var $ = jQuery;
  * import wait from './wait';
  *
  * wait( 150 )
- *   .then( function () {
+ *   .then( () => {
  *     // Continue processing...
  *   } );
  *
@@ -21,7 +21,7 @@ var $ = jQuery;
 export default function wait( delay ) {
 	var result = $.Deferred();
 
-	setTimeout( function () {
+	setTimeout( () => {
 		result.resolve();
 	}, delay );
 

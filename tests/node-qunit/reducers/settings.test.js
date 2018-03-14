@@ -2,7 +2,7 @@ import settings from '../../../src/reducers/settings';
 
 QUnit.module( 'reducers/settings' );
 
-QUnit.test( '@@INIT', function ( assert ) {
+QUnit.test( '@@INIT', ( assert ) => {
 	var state = settings( undefined, { type: '@@INIT' } );
 
 	assert.deepEqual(
@@ -15,7 +15,7 @@ QUnit.test( '@@INIT', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'BOOT', function ( assert ) {
+QUnit.test( 'BOOT', ( assert ) => {
 	var action = {
 		type: 'BOOT',
 		isEnabled: false,
@@ -45,7 +45,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'SETTINGS_SHOW', function ( assert ) {
+QUnit.test( 'SETTINGS_SHOW', ( assert ) => {
 	assert.expect( 1 );
 
 	assert.deepEqual(
@@ -58,7 +58,7 @@ QUnit.test( 'SETTINGS_SHOW', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'SETTINGS_HIDE', function ( assert ) {
+QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
 	assert.expect( 1 );
 
 	assert.deepEqual(
@@ -71,8 +71,8 @@ QUnit.test( 'SETTINGS_HIDE', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'SETTINGS_CHANGE', function ( assert ) {
-	var action = function ( wasEnabled, enabled ) {
+QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
+	var action = ( wasEnabled, enabled ) => {
 		return {
 			type: 'SETTINGS_CHANGE',
 			wasEnabled,

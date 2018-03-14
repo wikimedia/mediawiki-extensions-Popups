@@ -58,7 +58,7 @@ function makeTitleInExtractBold( extract, title ) {
 	);
 	extract = extract.split( snip );
 
-	$.each( extract, function ( index, part ) {
+	$.each( extract, ( index, part ) => {
 		if ( part.indexOf( boldIdentifier ) === 0 ) {
 			elements.push( $( '<b>' )
 				.text( part.substring( boldIdentifier.length ) ) );

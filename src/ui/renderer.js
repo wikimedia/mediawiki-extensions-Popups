@@ -270,10 +270,10 @@ export function show( preview, event, $link, behavior,
 	preview.el.show();
 
 	return wait( 200 )
-		.then( function () {
+		.then( () => {
 			bindBehavior( preview, behavior );
 		} )
-		.then( function () {
+		.then( () => {
 			behavior.previewShow( token );
 		} );
 }
@@ -292,7 +292,7 @@ export function bindBehavior( preview, behavior ) {
 
 	preview.el.find( '.mwe-popups-settings-icon' )
 		.attr( 'href', behavior.settingsUrl )
-		.click( function ( event ) {
+		.click( ( event ) => {
 			event.stopPropagation();
 
 			behavior.showSettings( event );
@@ -323,7 +323,7 @@ export function hide( preview ) {
 		.removeClass( fadeInClass )
 		.addClass( fadeOutClass );
 
-	return wait( 150 ).then( function () {
+	return wait( 150 ).then( () => {
 		preview.el.remove();
 	} );
 }
@@ -574,7 +574,7 @@ export function getClosestYPosition( y, rects, isTop ) {
 		deltaY,
 		minY = null;
 
-	$.each( rects, function ( i, rect ) {
+	$.each( rects, ( i, rect ) => {
 		deltaY = Math.abs( y - rect.top + y - rect.bottom );
 
 		if ( minY === null || minY > deltaY ) {

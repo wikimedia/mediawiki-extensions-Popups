@@ -43,7 +43,7 @@ export default function linkTitle() {
 		title = undefined;
 	}
 
-	return function ( prevState, state ) {
+	return ( prevState, state ) => {
 		var hasPrevActiveLink = prevState && prevState.preview.activeLink;
 
 		if ( !state.preview.enabled ) {

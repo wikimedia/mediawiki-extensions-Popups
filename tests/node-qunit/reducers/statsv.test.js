@@ -33,7 +33,7 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'FETCH_END', function ( assert ) {
+QUnit.test( 'FETCH_END', ( assert ) => {
 	var startedAt, endedAt, action, state;
 
 	assert.expect( 1 );
@@ -56,7 +56,7 @@ QUnit.test( 'FETCH_END', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'FETCH_FAILED', function ( assert ) {
+QUnit.test( 'FETCH_FAILED', ( assert ) => {
 	var action, state;
 
 	assert.expect( 1 );
@@ -75,7 +75,7 @@ QUnit.test( 'FETCH_FAILED', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'LINK_DWELL', function ( assert ) {
+QUnit.test( 'LINK_DWELL', ( assert ) => {
 	var timestamp, action, state;
 
 	assert.expect( 1 );
@@ -95,7 +95,7 @@ QUnit.test( 'LINK_DWELL', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
+QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 	var startedAt, endedAt, action, state;
 
 	assert.expect( 1 );
@@ -118,7 +118,7 @@ QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'STATSV_LOGGED', function ( assert ) {
+QUnit.test( 'STATSV_LOGGED', ( assert ) => {
 	var action, state;
 
 	assert.expect( 1 );

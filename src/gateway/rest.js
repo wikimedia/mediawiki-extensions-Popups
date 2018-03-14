@@ -57,7 +57,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 
 		fetch( title )
 			.then(
-				function ( page ) {
+				( page ) => {
 					// Endpoint response may be empty or simply missing a title.
 					if ( !page || !page.title ) {
 						page = $.extend( true, page || {}, { title } );
@@ -69,7 +69,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 					result.resolve(
 						convertPageToModel( page, config.THUMBNAIL_SIZE, extractParser ) );
 				},
-				function ( jqXHR, textStatus, errorThrown ) {
+				( jqXHR, textStatus, errorThrown ) => {
 					// Adapt the response to the ideal API.
 					// TODO: should we just let the client handle this too?
 					if ( jqXHR.status === 404 ) {

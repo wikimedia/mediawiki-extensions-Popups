@@ -38,7 +38,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'PREVIEW_SEEN', function ( assert ) {
+QUnit.test( 'PREVIEW_SEEN', ( assert ) => {
 	var action = {
 		type: 'PREVIEW_SEEN',
 		title: 'Bears',
@@ -58,7 +58,7 @@ QUnit.test( 'PREVIEW_SEEN', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'PAGEVIEW_LOGGED', function ( assert ) {
+QUnit.test( 'PAGEVIEW_LOGGED', ( assert ) => {
 	var action = {
 		type: 'PAGEVIEW_LOGGED'
 	};

@@ -20,7 +20,7 @@ var $ = jQuery;
 export default function eventLogging(
 	boundActions, eventLoggingTracker, getCurrentTimestamp
 ) {
-	return function ( _, state ) {
+	return ( _, state ) => {
 		var eventLogging = state.eventLogging,
 			event = eventLogging.event;
 

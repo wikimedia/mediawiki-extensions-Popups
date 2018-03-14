@@ -7,11 +7,10 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 		var boundActions = {};
 
 		// Stub internal usage of mw.message
-		mediaWiki.message = function ( str ) {
-			return {
+		mediaWiki.message = ( str ) =>
+			( {
 				text() { return str; }
-			};
-		};
+			} );
 
 		boundActions.showSettings = this.showSettingsSpy = this.sandbox.spy();
 

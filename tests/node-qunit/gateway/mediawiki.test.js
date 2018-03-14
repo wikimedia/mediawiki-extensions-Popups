@@ -53,9 +53,9 @@ var DEFAULT_CONSTANTS = {
 QUnit.module( 'ext.popups/gateway/mediawiki', {
 	beforeEach() {
 		window.mediaWiki.RegExp = {
-			escape: this.sandbox.spy( function ( str ) {
-				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
-			} )
+			escape: this.sandbox.spy(
+				( str ) => str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' )
+			)
 		};
 	},
 	afterEach() {
@@ -130,13 +130,13 @@ QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from th
 
 	assert.expect( errorCases.length + successCases.length );
 
-	$.each( errorCases, function ( _, data ) {
-		assert.throws( function () {
+	$.each( errorCases, ( _, data ) => {
+		assert.throws( () => {
 			gateway.extractPageFromResponse( data );
 		} );
 	} );
 
-	$.each( successCases, function ( _, data ) {
+	$.each( successCases, ( _, data ) => {
 		assert.deepEqual(
 			gateway.extractPageFromResponse( data[ 0 ] ),
 			data[ 1 ]
@@ -144,7 +144,7 @@ QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from th
 	} );
 } );
 
-QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a model', function ( assert ) {
+QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a model', ( assert ) => {
 	var gateway = createMediaWikiApiGateway(),
 		page = gateway.extractPageFromResponse( MEDIAWIKI_API_RESPONSE );
 
@@ -161,7 +161,7 @@ QUnit.test( 'MediaWiki API gateway handles API failure', function ( assert ) {
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	return gateway.getPageSummary( 'Test Title' ).catch( function () {
+	return gateway.getPageSummary( 'Test Title' ).catch( () => {
 		assert.ok( true );
 	} );
 } );
@@ -174,7 +174,7 @@ QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	return gateway.getPageSummary( 'Test Title' ).then( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).then( ( result ) => {
 		assert.deepEqual( result, MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL );
 	} );
 } );
@@ -212,7 +212,7 @@ QUnit.test( 'MediaWiki API gateway handles missing pages ', function ( assert ) 
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	return gateway.getPageSummary( 'Test Title' ).then( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).then( ( result ) => {
 		assert.deepEqual( result, model );
 	} );
 } );

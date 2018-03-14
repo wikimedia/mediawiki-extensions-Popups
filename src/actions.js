@@ -110,7 +110,7 @@ export function fetch( gateway, title, el, token ) {
 	var titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
 
-	return function ( dispatch ) {
+	return ( dispatch ) => {
 		var request;
 
 		dispatch( timedAction( {
@@ -121,7 +121,7 @@ export function fetch( gateway, title, el, token ) {
 		} ) );
 
 		request = gateway.getPageSummary( titleText )
-			.then( function ( result ) {
+			.then( ( result ) => {
 				dispatch( timedAction( {
 					type: types.FETCH_END,
 					el
@@ -129,7 +129,7 @@ export function fetch( gateway, title, el, token ) {
 
 				return result;
 			} )
-			.catch( function ( err ) {
+			.catch( ( err ) => {
 				dispatch( {
 					type: types.FETCH_FAILED,
 					el
@@ -142,7 +142,7 @@ export function fetch( gateway, title, el, token ) {
 			request,
 			wait( FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY )
 		)
-			.then( function ( result ) {
+			.then( ( result ) => {
 				dispatch( {
 					type: types.FETCH_COMPLETE,
 					el,
@@ -150,7 +150,7 @@ export function fetch( gateway, title, el, token ) {
 					token
 				} );
 			} )
-			.catch( function ( data, result ) {
+			.catch( ( data, result ) => {
 				// All failures, except those due to being offline or network error,
 				// should present "There was an issue displaying this preview".
 				// e.g.:
@@ -195,7 +195,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 		titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
 
-	return function ( dispatch, getState ) {
+	return ( dispatch, getState ) => {
 		var action = timedAction( {
 			type: types.LINK_DWELL,
 			el,
@@ -217,7 +217,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 		}
 
 		return wait( FETCH_START_DELAY )
-			.then( function () {
+			.then( () => {
 				var previewState = getState().preview;
 
 				if ( previewState.enabled && isNewInteraction() ) {
@@ -236,7 +236,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
  * @return {Redux.Thunk}
  */
 export function abandon() {
-	return function ( dispatch, getState ) {
+	return ( dispatch, getState ) => {
 		var token = getState().preview.activeToken;
 
 		if ( !token ) {
@@ -249,7 +249,7 @@ export function abandon() {
 		} ) );
 
 		return wait( ABANDON_END_DELAY )
-			.then( function () {
+			.then( () => {
 				dispatch( {
 					type: types.ABANDON_END,
 					token
@@ -293,7 +293,7 @@ export function previewDwell() {
  * @return {Object}
  */
 export function previewShow( token ) {
-	return function ( dispatch, getState ) {
+	return ( dispatch, getState ) => {
 		dispatch(
 			timedAction( {
 				type: types.PREVIEW_SHOW,
@@ -302,7 +302,7 @@ export function previewShow( token ) {
 		);
 
 		return wait( PREVIEW_SEEN_DURATION )
-			.then( function () {
+			.then( () => {
 				var state = getState(),
 					preview = state.preview,
 					fetchResponse = preview && preview.fetchResponse,
@@ -384,7 +384,7 @@ export function hideSettings() {
  * @return {Redux.Thunk}
  */
 export function saveSettings( enabled ) {
-	return function ( dispatch, getState ) {
+	return ( dispatch, getState ) => {
 		dispatch( {
 			type: types.SETTINGS_CHANGE,
 			wasEnabled: getState().preview.enabled,

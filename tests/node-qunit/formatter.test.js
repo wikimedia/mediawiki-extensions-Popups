@@ -5,7 +5,7 @@ var $ = jQuery;
 QUnit.module( 'ext.popups.formatter', {
 	beforeEach() {
 		window.mediaWiki.RegExp = {
-			escape: this.sandbox.spy( function ( str ) {
+			escape: this.sandbox.spy( ( str ) => {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
@@ -15,7 +15,7 @@ QUnit.module( 'ext.popups.formatter', {
 	}
 } );
 
-QUnit.test( 'Title is bold', function ( assert ) {
+QUnit.test( 'Title is bold', ( assert ) => {
 	var cases = [
 		[
 			'Isaac Newton was born in', 'Isaac Newton',
@@ -61,7 +61,7 @@ QUnit.test( 'Title is bold', function ( assert ) {
 		assert.equal( $div.html(), expected, msg );
 	}
 
-	cases.forEach( function ( case_ ) {
+	cases.forEach( ( case_ ) => {
 		test( case_[ 0 ], case_[ 1 ], case_[ 2 ], case_[ 3 ] );
 	} );
 } );

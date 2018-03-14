@@ -20,7 +20,7 @@
  */
 export default function syncUserSettings( userSettings ) {
 
-	return function ( prevState, state ) {
+	return ( prevState, state ) => {
 
 		syncIfChanged(
 			prevState, state, 'eventLogging', 'previewCount',

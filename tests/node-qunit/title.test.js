@@ -10,7 +10,7 @@ QUnit.module( 'title#getTitle', {
 		this.location = global.location = { hostname: 'en.wikipedia.org' };
 
 		window.mediaWiki.RegExp = {
-			escape: this.sandbox.spy( function ( str ) {
+			escape: this.sandbox.spy( ( str ) => {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
@@ -111,17 +111,17 @@ QUnit.module( 'title#isValid', {
 	}
 } );
 
-QUnit.test( 'it should return null if the title is empty', function ( assert ) {
+QUnit.test( 'it should return null if the title is empty', ( assert ) => {
 	assert.equal( isValid(), null, 'Doesn\'t accept null titles' );
 	assert.equal( isValid( '' ), null, 'Doesn\'t accept empty titles' );
 } );
 
-QUnit.test( 'it should return null if the title can\'t be parsed properly', function ( assert ) {
+QUnit.test( 'it should return null if the title can\'t be parsed properly', ( assert ) => {
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
 	assert.equal( isValid( 'title' ), null );
 } );
 
-QUnit.test( 'it should return null if the title can\'t be parsed properly', function ( assert ) {
+QUnit.test( 'it should return null if the title can\'t be parsed properly', ( assert ) => {
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
 	assert.equal( isValid( 'title' ), null );
 	assert.equal(
@@ -129,14 +129,14 @@ QUnit.test( 'it should return null if the title can\'t be parsed properly', func
 		'mediaWiki.Title.newFromText called for parsing the title' );
 } );
 
-QUnit.test( 'it should return null if the title is not from a content namespace', function ( assert ) {
+QUnit.test( 'it should return null if the title is not from a content namespace', ( assert ) => {
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( {
 		namespace: 1
 	} );
 	assert.equal( isValid( 'title', [ 5 ] ), null );
 } );
 
-QUnit.test( 'it should return the title object if the title is from a content namespace', function ( assert ) {
+QUnit.test( 'it should return the title object if the title is from a content namespace', ( assert ) => {
 	var mwTitle = {
 		namespace: 3
 	};

@@ -13,7 +13,7 @@ import * as renderer from '../ui/renderer';
 export default function render( previewBehavior ) {
 	var preview;
 
-	return function ( prevState, state ) {
+	return ( prevState, state ) => {
 		if ( state.preview.shouldShow && !preview ) {
 			preview = renderer.render( state.preview.fetchResponse );
 			preview.show(

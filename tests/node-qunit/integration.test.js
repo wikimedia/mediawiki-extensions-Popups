@@ -15,7 +15,7 @@ var mw = mediaWiki,
 	FETCH_RESOLUTION = { RESOLVE: 0, REJECT: 1 };
 
 function identity( x ) { return x; }
-function constant( x ) { return function () { return x; }; }
+function constant( x ) { return () => x; }
 
 /*
 	* Integration tests for actions and state of the preview part of the system.
@@ -54,7 +54,7 @@ function constant( x ) { return function () { return x; }; }
 QUnit.module( 'ext.popups preview @integration', {
 	beforeEach() {
 		// The worst-case implementation of mw.now.
-		mw.now = function () { return Date.now(); };
+		mw.now = () => Date.now();
 
 		this.resetWait = () => {
 			this.waitDeferred = $.Deferred();
@@ -107,7 +107,7 @@ QUnit.module( 'ext.popups preview @integration', {
 						'resolve' : 'reject';
 					return $.Deferred()[ method ]( fetchResponse ).promise();
 				}
-			}, function () { return 'pagetoken'; } );
+			}, () => 'pagetoken' );
 		};
 
 		this.dwellAndShowPreview = (
@@ -179,7 +179,7 @@ QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert 
 		el = this.el;
 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
-		.then( function () {
+		.then( () => {
 			var state = store.getState();
 			assert.equal( state.preview.activeLink, el );
 			assert.equal(
@@ -194,7 +194,7 @@ QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert
 
 	return this.dwellAndShowPreview(
 		this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT
-	).then( function () {
+	).then( () => {
 		var state = store.getState();
 		assert.equal( state.preview.activeLink, el );
 		assert.equal( state.preview.shouldShow, true,

@@ -16,7 +16,7 @@
 export default function pageviews(
 	boundActions, pageviewTracker
 ) {
-	return function ( _, state ) {
+	return ( _, state ) => {
 		var page;
 		if ( state.pageviews && state.pageviews.pageview && state.pageviews.page ) {
 			page = state.pageviews.page;

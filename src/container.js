@@ -57,7 +57,7 @@ export default function createContainer() {
 		 * var container = createContainer();
 		 *
 		 * container.set( 'foo', true );
-		 * container.set( 'baz', function ( c ) {
+		 * container.set( 'baz', ( c ) => {
 		 *   if ( c.get( 'foo' ) ) {
 		 *     return 'qux';
 		 *   }

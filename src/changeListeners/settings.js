@@ -8,7 +8,7 @@
 export default function settings( boundActions, render ) {
 	var settings;
 
-	return function ( prevState, state ) {
+	return ( prevState, state ) => {
 		if ( !prevState ) {
 			// Nothing to do on initialization
 			return;

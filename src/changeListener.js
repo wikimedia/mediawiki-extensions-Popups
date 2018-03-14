@@ -30,7 +30,7 @@ export default function registerChangeListener( store, callback ) {
 
 	var state;
 
-	store.subscribe( function () {
+	store.subscribe( () => {
 		var prevState = state;
 
 		state = store.getState();

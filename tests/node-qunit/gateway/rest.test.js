@@ -156,7 +156,7 @@ function provideParsedExtract( page ) {
 QUnit.module( 'gateway/rest', {
 	beforeEach() {
 		window.mediaWiki.Title = function ( title ) {
-			this.getUrl = function () { return 'url/' + title; };
+			this.getUrl = () => 'url/' + title;
 		};
 	},
 	afterEach() {
@@ -187,7 +187,7 @@ QUnit.test( 'RESTBase provider uses extract parser', function ( assert ) {
 	assert.deepEqual( getSpy.getCall( 0 ).args[ 0 ], RESTBASE_RESPONSE );
 } );
 
-QUnit.test( 'RESTBase gateway is correctly converting the page data to a model', function ( assert ) {
+QUnit.test( 'RESTBase gateway is correctly converting the page data to a model', ( assert ) => {
 	var gateway = createRESTBaseGateway();
 
 	assert.deepEqual(
@@ -196,7 +196,7 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a model',
 	);
 } );
 
-QUnit.test( 'RESTBase gateway is correctly converting the page data to a disambiguation model', function ( assert ) {
+QUnit.test( 'RESTBase gateway is correctly converting the page data to a disambiguation model', ( assert ) => {
 	var gateway = createRESTBaseGateway();
 
 	assert.deepEqual(
@@ -206,7 +206,7 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a disambi
 	);
 } );
 
-QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) {
+QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', ( assert ) => {
 	var model,
 		gateway = createRESTBaseGateway();
 
@@ -257,7 +257,7 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', function ( assert ) 
 	);
 } );
 
-QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', function ( assert ) {
+QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', ( assert ) => {
 	var model,
 		gateway = createRESTBaseGateway();
 	model = gateway.convertPageToModel(
@@ -270,7 +270,7 @@ QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', f
 	);
 } );
 
-QUnit.test( 'RESTBase gateway handles awkward thumbnails', function ( assert ) {
+QUnit.test( 'RESTBase gateway handles awkward thumbnails', ( assert ) => {
 	var gateway = createRESTBaseGateway(),
 		response,
 		model;
@@ -288,7 +288,7 @@ QUnit.test( 'RESTBase gateway handles awkward thumbnails', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'RESTBase gateway stretches SVGs', function ( assert ) {
+QUnit.test( 'RESTBase gateway stretches SVGs', ( assert ) => {
 	var model,
 		gateway = createRESTBaseGateway();
 
@@ -307,7 +307,7 @@ QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
 			.returns( $.Deferred().reject( { status: 500 } ).promise() ),
 		gateway = createRESTBaseGateway( api, {} );
 
-	return gateway.getPageSummary( 'Test Title' ).catch( function () {
+	return gateway.getPageSummary( 'Test Title' ).catch( () => {
 		assert.ok( true );
 	} );
 } );
@@ -327,7 +327,7 @@ QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( ass
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( 'Missing Page' ).then( function ( result ) {
+	return gateway.getPageSummary( 'Missing Page' ).then( ( result ) => {
 		assert.equal( result.title, 'Missing Page', 'Title' );
 		// Extract is undefined since the parser is only invoked for successful
 		// responses.
@@ -342,12 +342,12 @@ QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( 'Test Title' ).then( function ( result ) {
+	return gateway.getPageSummary( 'Test Title' ).then( ( result ) => {
 		assert.deepEqual( result, RESTBASE_RESPONSE_PREVIEW_MODEL );
 	} );
 } );
 
-QUnit.test( 'RESTBase gateway handles missing images ', function ( assert ) {
+QUnit.test( 'RESTBase gateway handles missing images ', ( assert ) => {
 	var model,
 		gateway = createRESTBaseGateway();
 	model = gateway.convertPageToModel(
@@ -366,7 +366,7 @@ QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
 	return gateway.getPageSummary( 'Test Title with missing extract' )
-		.then( function ( result ) {
+		.then( ( result ) => {
 			assert.equal( result.title, 'Test Title with missing extract', 'Title' );
 			assert.equal( result.extract, '!!', 'Extract' );
 		} );
@@ -379,7 +379,7 @@ QUnit.test( 'RESTBase gateway handles no content success responses', function ( 
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
 	return gateway.getPageSummary( 'Test Title with empty response' )
-		.then( function ( result ) {
+		.then( ( result ) => {
 			assert.equal( result.title, 'Test Title with empty response', 'Title' );
 			assert.equal( result.extract, '!!', 'Extract' );
 		} );

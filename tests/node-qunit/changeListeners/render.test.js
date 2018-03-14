@@ -39,7 +39,7 @@ QUnit.test(
 	}
 );
 
-QUnit.test( 'it should render the preview', function ( assert ) {
+QUnit.test( 'it should render the preview', ( assert ) => {
 	var state,
 		changeListener;
 

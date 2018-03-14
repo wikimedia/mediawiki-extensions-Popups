@@ -8,7 +8,7 @@ QUnit.module( 'ext.popups/reducers#preview', {
 	}
 } );
 
-QUnit.test( '@@INIT', function ( assert ) {
+QUnit.test( '@@INIT', ( assert ) => {
 	var state = preview( undefined, { type: '@@INIT' } );
 
 	assert.expect( 1 );
@@ -26,7 +26,7 @@ QUnit.test( '@@INIT', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'BOOT', function ( assert ) {
+QUnit.test( 'BOOT', ( assert ) => {
 	var action = {
 		type: 'BOOT',
 		isEnabled: true
@@ -43,7 +43,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'SETTINGS_CHANGE', function ( assert ) {
+QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 	var action = {
 		type: 'SETTINGS_CHANGE',
 		enabled: true
@@ -103,7 +103,7 @@ QUnit.test( 'LINK_DWELL on an active link only updates dwell state', function ( 
 	);
 } );
 
-QUnit.test( 'ABANDON_END', function ( assert ) {
+QUnit.test( 'ABANDON_END', ( assert ) => {
 	var action = {
 			type: 'ABANDON_END',
 			token: 'bananas'
@@ -153,7 +153,7 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
+QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 	var token = '1234567890',
 		state = {
 			activeToken: token,
@@ -215,7 +215,7 @@ QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
 
 } );
 
-QUnit.test( actionTypes.FETCH_FAILED, function ( assert ) {
+QUnit.test( actionTypes.FETCH_FAILED, ( assert ) => {
 	var token = '1234567890',
 		state = {
 			activeToken: token,
@@ -258,7 +258,7 @@ QUnit.test( actionTypes.FETCH_FAILED, function ( assert ) {
 	);
 } );
 
-QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
+QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 	var action = {
 		type: 'PREVIEW_DWELL'
 	};
@@ -274,7 +274,7 @@ QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'ABANDON_START', function ( assert ) {
+QUnit.test( 'ABANDON_START', ( assert ) => {
 	var action = {
 		type: 'ABANDON_START'
 	};

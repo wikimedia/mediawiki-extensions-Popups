@@ -11,15 +11,15 @@ const EditPage = require( '../../../../../tests/selenium/pageobjects/edit.page' 
 
 class PopupsPage extends Page {
 	setup() {
-		browser.call( function () {
-			return new Promise( function ( resolve ) {
-				fs.readFile(`${__dirname}/../fixtures/test_page.wikitext`, 'utf-8', function (err, content) {
+		browser.call( () => {
+			return new Promise( ( resolve ) => {
+				fs.readFile(`${__dirname}/../fixtures/test_page.wikitext`, 'utf-8', (err, content) => {
 					if ( err ) {
 						throw err;
 					}
 					resolve( content );
 				} );
-			} ).then( function ( content ) {
+			} ).then( ( content ) => {
 				return EditPage.apiEdit( TEST_PAGE_TITLE, content );
 			} );
 		} );
@@ -31,8 +31,8 @@ class PopupsPage extends Page {
 		// (https://github.com/webdriverio/webdriverio/blob/master/lib/utils/Timer.js) NOT a Promise.
 		// Webdriver IO will run waitUntil synchronously so not returning it will block JavaScript
 		// execution while returning it will not.
-		browser.waitUntil( function () {
-			return browser.execute( function ( module ) {
+		browser.waitUntil( () => {
+			return browser.execute( ( module ) => {
 				return mw && mw.loader && mw.loader.getState( module.name ) === module.status;
 			}, { status: moduleStatus, name: moduleName } );
 		}, 10000, errMsg );
@@ -57,9 +57,7 @@ class PopupsPage extends Page {
 	}
 
 	doNotSeePreview() {
-		return browser.waitUntil( function () {
-			return !browser.isVisible( POPUPS_SELECTOR );
-		} );
+		return browser.waitUntil( () => !browser.isVisible( POPUPS_SELECTOR ) );
 	}
 
 	seePreview() {

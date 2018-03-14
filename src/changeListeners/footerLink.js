@@ -59,10 +59,10 @@ function createFooterLink() {
 export default function footerLink( boundActions ) {
 	var $footerLink;
 
-	return function ( prevState, state ) {
+	return ( prevState, state ) => {
 		if ( $footerLink === undefined ) {
 			$footerLink = createFooterLink();
-			$footerLink.click( function ( e ) {
+			$footerLink.click( ( e ) => {
 				e.preventDefault();
 				boundActions.showSettings();
 			} );

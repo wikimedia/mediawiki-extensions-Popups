@@ -8,7 +8,7 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 		mediaWiki.html = { escape: str => str };
 		mediaWiki.template = { get: getTemplate };
 		mediaWiki.config = { get() {} };
-		mediaWiki.msg = function () {};
+		mediaWiki.msg = () => {};
 	},
 	afterEach() {
 		mediaWiki.msg = null;
@@ -18,7 +18,7 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 	}
 } );
 
-QUnit.test( '#render', function ( assert ) {
+QUnit.test( '#render', ( assert ) => {
 	var boundActions = {
 			saveSettings() {},
 			hideSettings() {}

@@ -31,7 +31,7 @@ export default function createSettingsDialogRenderer() {
 	 * @param {Object} boundActions
 	 * @return {Object} object with methods to affect the rendered UI
 	 */
-	return function ( boundActions ) {
+	return ( boundActions ) => {
 
 		if ( !$dialog ) {
 			$dialog = createSettingsDialog( isNavPopupsEnabled() );
@@ -39,7 +39,7 @@ export default function createSettingsDialogRenderer() {
 
 			// Setup event bindings
 
-			$dialog.find( '.save' ).click( function () {
+			$dialog.find( '.save' ).click( () => {
 				// Find the selected value (simple|advanced|off)
 				var selected = getSelectedSetting( $dialog ),
 					// Only simple means enabled, advanced is disabled in favor of

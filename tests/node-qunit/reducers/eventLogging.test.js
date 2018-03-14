@@ -88,7 +88,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'EVENT_LOGGED', function ( assert ) {
+QUnit.test( 'EVENT_LOGGED', ( assert ) => {
 	var state,
 		action;
 
@@ -132,7 +132,7 @@ QUnit.test( 'EVENT_LOGGED', function ( assert ) {
 
 } );
 
-QUnit.test( 'PREVIEW_SHOW', function ( assert ) {
+QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 	var state,
 		count = 22,
 		expectedCount = count + 1,
@@ -453,7 +453,7 @@ QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been sho
 	);
 } );
 
-QUnit.test( 'FETCH_COMPLETE', function ( assert ) {
+QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 	var model,
 		token = '1234567890',
 		initialState = {
@@ -566,7 +566,7 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'PREVIEW_DWELL', function ( assert ) {
+QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 	var state = {
 		interaction: {}
 	};
@@ -632,7 +632,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 	);
 } );
 
-QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', function ( assert ) {
+QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 	var state = eventLogging( undefined, {
 		type: 'SETTINGS_CHANGE',
 		wasEnabled: false,

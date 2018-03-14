@@ -3,7 +3,7 @@ import { createModel, previewTypes }
 
 QUnit.module( 'ext.popups.preview#createModel' );
 
-QUnit.test( 'it should copy the basic properties', function ( assert ) {
+QUnit.test( 'it should copy the basic properties', ( assert ) => {
 	var thumbnail = {},
 		model = createModel(
 			'Foo',
@@ -23,7 +23,7 @@ QUnit.test( 'it should copy the basic properties', function ( assert ) {
 	assert.strictEqual( model.thumbnail, thumbnail );
 } );
 
-QUnit.test( 'it computes the type property', function ( assert ) {
+QUnit.test( 'it computes the type property', ( assert ) => {
 
 	function createModelWith( { extract, type } ) {
 		return createModel(
