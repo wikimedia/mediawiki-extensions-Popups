@@ -27,6 +27,8 @@
 	"popups-send-feedback": "Skicka återkoppling (extern länk)",
 	"popups-preview-no-preview": "Ett fel uppstod vid denna förhandsvisning",
 	"popups-preview-footer-read": "Gå till denna sida",
+	"popups-preview-disambiguation": "Denna titel relateras till fler än en sida",
+	"popups-preview-disambiguation-link": "Visa liknande sidor",
 	"prefs-reading": "Läsningsinställningar",
 	"popups-prefs-optin-title": "Sidförhandsvisningar\n\n<em>Få snabbförhandsvisningar av ett ämne medan du läser en sida</em>",
 	"popups-prefs-optin-enabled-label": "Aktivera",

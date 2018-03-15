@@ -10,7 +10,7 @@
 	"popups-settings-title": "Преглед на страница",
 	"popups-settings-description": "Алаткава овозможува преглед на врски до викстраници и наводи.",
 	"popups-settings-option-simple": "Овозможи",
-	"popups-settings-option-simple-description": "Брз преглед на некоја тема додека ја читате статија.",
+	"popups-settings-option-simple-description": "Брз преглед на некоја тема додека ја читате страница.",
 	"popups-settings-option-advanced": "Напредно",
 	"popups-settings-option-advanced-description": "Преглед на содржината на врските и пристап до менија со функции за уредување. Ова го користат многу уредници.",
 	"popups-settings-option-off": "Оневозможи",
@@ -20,12 +20,14 @@
 	"popups-settings-help": "Можете повторно да ги вклучите прегледите преку врска во подножјето на страницата.",
 	"popups-settings-enable": "Овозможи прегледи",
 	"popups-send-feedback": "Испрати мислење (надворешна врска)",
-	"popups-preview-no-preview": "Изгледа дека нема преглед за страницава",
-	"popups-preview-footer-read": "Прочитајте",
+	"popups-preview-no-preview": "Се јави проблем при приказот на прегледот",
+	"popups-preview-footer-read": "Оди на страницава",
+	"popups-preview-disambiguation": "Насловот се однесува на повеќе од една страница",
+	"popups-preview-disambiguation-link": "Погл. слични страници",
 	"prefs-reading": "Нагодувања за читање",
-	"popups-prefs-optin-title": "Преглед на страници\n\n<em>Брз преглед на тема додека читате статија</em>",
+	"popups-prefs-optin-title": "Преглед на страници\n\n<em>Брз преглед на тема додека читате страница</em>",
 	"popups-prefs-optin-enabled-label": "Овозможи",
 	"popups-prefs-optin-disabled-label": "Оневозможи",
 	"popups-prefs-disable-nav-gadgets-info": "Ќе мора да ја [[$1 | оневозможите алатката „Прегледнички отскочници“]] во јазичето Алатки за да го овозможите „Прегледи на страници“",
-	"popups-prefs-conflicting-gadgets-info": "Извесни алатки и други прилагодувања може да ја засегнат работата на оваа можност. Ако се соочите со проблеми, прегледајте ги алатките и корисничките скрипти."
+	"popups-prefs-conflicting-gadgets-info": "Извесни алатки и други прилагодувања може да ја засегнат работата на оваа можност. Ако се соочите со проблеми, прегледајте ги алатките и корисничките скрипти, вклучувајќи ги глобалните."
 }

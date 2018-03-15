@@ -31,6 +31,8 @@
 	"popups-send-feedback": "Enviar comentário (hiperligação externa)",
 	"popups-preview-no-preview": "Ocorreu um erro ao mostrar esta antevisão",
 	"popups-preview-footer-read": "Vá para esta página",
+	"popups-preview-disambiguation": "Este título está relacionado com mais do que uma página",
+	"popups-preview-disambiguation-link": "Ver páginas semelhantes",
 	"prefs-reading": "Preferências de leitura",
 	"popups-prefs-optin-title": "Antevisões de páginas\n\n<em>Obter antevisões rápidas de assuntos durante a leitura de uma página</em>",
 	"popups-prefs-optin-enabled-label": "Ativar",

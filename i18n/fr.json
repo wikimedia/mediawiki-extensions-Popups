@@ -32,6 +32,8 @@
 	"popups-send-feedback": "Envoyer des Commentaires (lien externe)",
 	"popups-preview-no-preview": "Il y a eu un problème pour afficher cet aperçu",
 	"popups-preview-footer-read": "Aller à cette page",
+	"popups-preview-disambiguation": "Ce titre est relatif à plusieurs pages",
+	"popups-preview-disambiguation-link": "Afficher des pages similaires",
 	"prefs-reading": "Préférences de lecture",
 	"popups-prefs-optin-title": "Aperçus de page\n\n<em>Avoir un aperçu rapide d’un sujet alors qu'on lit une page</em>",
 	"popups-prefs-optin-enabled-label": "Activer",

@@ -6,7 +6,8 @@
 			"Cvanca",
 			"Dvorapa",
 			"Marek Pavlica",
-			"Walter Klosse"
+			"Walter Klosse",
+			"Ilimanaq29"
 		]
 	},
 	"popups-message": "Náhledy stránek",
@@ -27,6 +28,8 @@
 	"popups-send-feedback": "Poslat názor (externí odkaz)",
 	"popups-preview-no-preview": "Vypadá to, že pro tuto stránku neexistuje náhled",
 	"popups-preview-footer-read": "Číst",
+	"popups-preview-disambiguation": "Tento název má více než jedna stránka",
+	"popups-preview-disambiguation-link": "Zobrazit podobné stránky",
 	"prefs-reading": "Nastavení čtení",
 	"popups-prefs-optin-title": "Náhledy stránek\n\n<em>Při čtení stránky poskytne rychlé náhledy tématu</em>",
 	"popups-prefs-optin-enabled-label": "Zapnout",
