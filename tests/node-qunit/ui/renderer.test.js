@@ -43,12 +43,6 @@ QUnit.module( 'ext.popups#renderer', {
 	beforeEach() {
 		$.bracketedDevicePixelRatio = () => 1;
 
-		window.mediaWiki.RegExp = {
-			escape: this.sandbox.spy( ( str ) =>
-				str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' )
-			)
-		};
-
 		window.mediaWiki.msg = ( key ) => {
 			switch ( key ) {
 				case 'popups-preview-no-preview':
@@ -66,7 +60,6 @@ QUnit.module( 'ext.popups#renderer', {
 	},
 	afterEach() {
 		$.bracketedDevicePixelRatio = null;
-		window.mediaWiki.RegExp = null;
 		window.mediaWiki.msg = null;
 		window.mediaWiki.html = null;
 	}
