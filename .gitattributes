@@ -1,1 +1,2 @@
 resources/dist/** -diff -whitespace
+package-lock.json -diff -whitespace
