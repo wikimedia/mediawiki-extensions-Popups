@@ -26,6 +26,11 @@ class PopupsPage extends Page {
 	}
 
 	resourceLoaderModuleStatus( moduleName, moduleStatus, errMsg ) {
+		// Word of caution:
+		// browser.waitUntil [http://webdriver.io/api/utility/waitUntil.html] returns a Timer class
+		// (https://github.com/webdriverio/webdriverio/blob/master/lib/utils/Timer.js) NOT a Promise.
+		// Webdriver IO will run waitUntil synchronously so not returning it will block JavaScript
+		// execution while returning it will not.
 		browser.waitUntil( function () {
 			return browser.execute( function ( module ) {
 				return mw && mw.loader && mw.loader.getState( module.name ) === module.status;
@@ -33,23 +38,22 @@ class PopupsPage extends Page {
 		}, 10000, errMsg );
 	}
 
-	isReady() {
-		return this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Page previews did not load' );
+	ready() {
+		this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Page previews did not load' );
 	}
 
 	abandonLink() {
-		browser.moveToObject( '#content h1.firstHeading' );
+		browser.moveToObject( '#content h1' );
 	}
 
 	dwellLink() {
 		const PAUSE = 1000;
-		this.isReady();
+		this.ready();
 		browser.pause( PAUSE );
 		this.abandonLink()
 		browser.pause( PAUSE );
 		browser.moveToObject( '#content ul a' );
-		browser.pause( PAUSE );
-		browser.waitForExist( POPUPS_SELECTOR, 5000 );
+		browser.waitForExist( POPUPS_SELECTOR );
 	}
 
 	doNotSeePreview() {
