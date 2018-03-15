@@ -11,7 +11,7 @@ import * as renderer from '../ui/renderer';
  * @return {ext.popups.ChangeListener}
  */
 export default function render( previewBehavior ) {
-	var preview;
+	let preview;
 
 	return ( prevState, state ) => {
 		if ( state.preview.shouldShow && !preview ) {

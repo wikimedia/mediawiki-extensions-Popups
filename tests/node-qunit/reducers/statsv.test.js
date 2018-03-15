@@ -15,7 +15,7 @@ QUnit.test( '@@INIT', function ( assert ) {
 } );
 
 QUnit.test( 'FETCH_START', function ( assert ) {
-	var action, state;
+	let action, state;
 
 	assert.expect( 1 );
 
@@ -34,7 +34,7 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 } );
 
 QUnit.test( 'FETCH_END', ( assert ) => {
-	var startedAt, endedAt, action, state;
+	let startedAt, endedAt, action, state;
 
 	assert.expect( 1 );
 
@@ -57,7 +57,7 @@ QUnit.test( 'FETCH_END', ( assert ) => {
 } );
 
 QUnit.test( 'FETCH_FAILED', ( assert ) => {
-	var action, state;
+	let action, state;
 
 	assert.expect( 1 );
 
@@ -76,7 +76,7 @@ QUnit.test( 'FETCH_FAILED', ( assert ) => {
 } );
 
 QUnit.test( 'LINK_DWELL', ( assert ) => {
-	var timestamp, action, state;
+	let timestamp, action, state;
 
 	assert.expect( 1 );
 
@@ -96,7 +96,7 @@ QUnit.test( 'LINK_DWELL', ( assert ) => {
 } );
 
 QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
-	var startedAt, endedAt, action, state;
+	let startedAt, endedAt, action, state;
 
 	assert.expect( 1 );
 
@@ -119,7 +119,7 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 } );
 
 QUnit.test( 'STATSV_LOGGED', ( assert ) => {
-	var action, state;
+	let action, state;
 
 	assert.expect( 1 );
 

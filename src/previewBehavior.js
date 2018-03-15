@@ -2,7 +2,7 @@
  * @module previewBehaviour
  */
 
-var mw = window.mediaWiki,
+let mw = window.mediaWiki,
 	$ = jQuery;
 
 /**
@@ -35,7 +35,7 @@ var mw = window.mediaWiki,
  * @return {ext.popups.PreviewBehavior}
  */
 export default function createPreviewBehavior( config, user, actions ) {
-	var isBetaFeature = config.get( 'wgPopupsBetaFeature' ),
+	let isBetaFeature = config.get( 'wgPopupsBetaFeature' ),
 		rawTitle,
 		settingsUrl,
 		showSettings = $.noop;

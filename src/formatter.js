@@ -1,4 +1,4 @@
-var $ = jQuery,
+let $ = jQuery,
 	mw = window.mediaWiki;
 
 /**
@@ -8,7 +8,7 @@ var $ = jQuery,
  * @return {Array}
  */
 export function formatPlainTextExtract( plainTextExtract, title ) {
-	var extract = plainTextExtract;
+	let extract = plainTextExtract;
 	if ( plainTextExtract === undefined ) {
 		return [];
 	}
@@ -37,7 +37,7 @@ export function formatPlainTextExtract( plainTextExtract, title ) {
  * @return {Array} A set of HTML Elements
  */
 function makeTitleInExtractBold( extract, title ) {
-	var regExp, escapedTitle,
+	let regExp, escapedTitle,
 		elements = [],
 		boldIdentifier = '<bi-' + Math.random() + '>',
 		snip = '<snip-' + Math.random() + '>';

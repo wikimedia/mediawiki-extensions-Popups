@@ -14,7 +14,7 @@ QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
 QUnit.test(
 	'it shouldn\'t update the storage if the preview count hasn\'t changed',
 	function ( assert ) {
-		var state,
+		let state,
 			prevState;
 
 		assert.expect( 1 );
@@ -38,7 +38,7 @@ QUnit.test(
 );
 
 QUnit.test( 'it should update the storage if the previewCount has changed', function ( assert ) {
-	var prevState,
+	let prevState,
 		state;
 
 	assert.expect( 1 );
@@ -60,7 +60,7 @@ QUnit.test( 'it should update the storage if the previewCount has changed', func
 QUnit.test(
 	'it shouldn\'t update the storage if the enabled state hasn\'t changed',
 	function ( assert ) {
-		var state,
+		let state,
 			prevState;
 
 		assert.expect( 1 );
@@ -84,7 +84,7 @@ QUnit.test(
 );
 
 QUnit.test( 'it should update the storage if the enabled flag has changed', function ( assert ) {
-	var prevState,
+	let prevState,
 		state;
 
 	assert.expect( 1 );

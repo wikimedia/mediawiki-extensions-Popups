@@ -23,7 +23,7 @@ import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getUserBucket from './getUserBucket';
 
-var mw = mediaWiki,
+let mw = mediaWiki,
 	$ = jQuery,
 
 	BLACKLISTED_LINKS = [
@@ -169,7 +169,7 @@ function registerChangeListeners(
  *   - Bind hover and click events to the eligible links to trigger actions
  */
 mw.requestIdleCallback( function () {
-	var compose = Redux.compose,
+	let compose = Redux.compose,
 		userBucket,
 		store,
 		boundActions,
@@ -244,14 +244,14 @@ mw.requestIdleCallback( function () {
 	mw.popups = createMediaWikiPopupsObject( store );
 
 	mw.hook( 'wikipage.content' ).add( function ( $container ) {
-		var invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
+		let invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
 			validLinkSelector = 'a[href][title]:not(' + invalidLinksSelector + ')';
 
 		rendererInit();
 
 		$container
 			.on( 'mouseover keyup', validLinkSelector, function ( event ) {
-				var mwTitle = titleFromElement( this, mw.config );
+				let mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.linkDwell(
@@ -260,14 +260,14 @@ mw.requestIdleCallback( function () {
 				}
 			} )
 			.on( 'mouseout blur', validLinkSelector, function () {
-				var mwTitle = titleFromElement( this, mw.config );
+				let mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.abandon( this );
 				}
 			} )
 			.on( 'click', validLinkSelector, function () {
-				var mwTitle = titleFromElement( this, mw.config );
+				let mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.linkClick( this );

@@ -3,7 +3,7 @@ import createUserSettings from '../../src/userSettings';
 
 QUnit.module( 'ext.popups/userSettings', {
 	beforeEach() {
-		var stubUser = createStubUser( /* isAnon = */ true );
+		let stubUser = createStubUser( /* isAnon = */ true );
 
 		this.storage = createStubMap();
 		this.userSettings = createUserSettings( this.storage, stubUser );
@@ -28,7 +28,7 @@ QUnit.test( '#getIsEnabled should return false if Page Previews have been disabl
 } );
 
 QUnit.test( '#hasIsEnabled', function ( assert ) {
-	var getStub;
+	let getStub;
 
 	assert.expect( 3 );
 

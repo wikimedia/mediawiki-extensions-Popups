@@ -14,7 +14,7 @@
  * @return {String}
  */
 exports.getEditCountBucket = function getEditCountBucket( count ) {
-	var bucket;
+	let bucket;
 
 	if ( count === 0 ) {
 		bucket = '0';
@@ -46,7 +46,7 @@ exports.getEditCountBucket = function getEditCountBucket( count ) {
  * @return {String}
  */
 exports.getPreviewCountBucket = function getPreviewCountBucket( count ) {
-	var bucket;
+	let bucket;
 
 	if ( count === 0 ) {
 		bucket = '0';

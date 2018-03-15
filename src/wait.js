@@ -2,7 +2,7 @@
  * @module wait
  */
 
-var $ = jQuery;
+let $ = jQuery;
 
 /**
  * Sugar around `window.setTimeout`.
@@ -19,7 +19,7 @@ var $ = jQuery;
  * @return {jQuery.Promise}
  */
 export default function wait( delay ) {
-	var result = $.Deferred();
+	let result = $.Deferred();
 
 	setTimeout( () => {
 		result.resolve();

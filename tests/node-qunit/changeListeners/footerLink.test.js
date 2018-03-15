@@ -4,7 +4,7 @@ import footerLink from '../../../src/changeListeners/footerLink';
 // integration test.
 QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 	beforeEach() {
-		var boundActions = {};
+		let boundActions = {};
 
 		// Stub internal usage of mw.message
 		mediaWiki.message = ( str ) =>
@@ -42,7 +42,7 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 } );
 
 QUnit.test( 'it should append the link to the footer menu', function ( assert ) {
-	var $link;
+	let $link;
 
 	assert.expect( 2 );
 
@@ -59,7 +59,7 @@ QUnit.test( 'it should append the link to the footer menu', function ( assert ) 
 } );
 
 QUnit.test( 'it should show and hide the link', function ( assert ) {
-	var $link,
+	let $link,
 		prevState;
 
 	assert.expect( 2 );
@@ -89,7 +89,7 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 } );
 
 QUnit.test( 'it should call the showSettings bound action creator', function ( assert ) {
-	var $link;
+	let $link;
 
 	assert.expect( 1 );
 

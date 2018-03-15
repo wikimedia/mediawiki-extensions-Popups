@@ -9,7 +9,7 @@ import { previewTypes } from '../preview/model';
 import { renderPreview } from './templates/preview';
 import { renderPagePreview } from './templates/pagePreview';
 
-var mw = window.mediaWiki,
+let mw = window.mediaWiki,
 	$ = jQuery,
 	$window = $( window ),
 	landscapePopupWidth = 450,
@@ -83,7 +83,7 @@ export function init() {
  */
 export function render( model ) {
 
-	var preview = createPreviewWithType( model );
+	let preview = createPreviewWithType( model );
 
 	return {
 
@@ -146,7 +146,7 @@ export function createPreviewWithType( model ) {
  * @return {ext.popups.Preview}
  */
 export function createPagePreview( model ) {
-	var thumbnail = createThumbnail( model.thumbnail ),
+	let thumbnail = createThumbnail( model.thumbnail ),
 		hasThumbnail = thumbnail !== null,
 		extract = model.extract,
 		$el;
@@ -180,7 +180,7 @@ export function createPagePreview( model ) {
  * @return {ext.popups.Preview}
  */
 export function createEmptyPreview( model ) {
-	var showTitle = false,
+	let showTitle = false,
 		extractMsg = mw.msg( 'popups-preview-no-preview' ),
 		linkMsg = mw.msg( 'popups-preview-footer-read' ),
 		$el;
@@ -203,7 +203,7 @@ export function createEmptyPreview( model ) {
  * @return {ext.popups.Preview}
  */
 export function createDisambiguationPreview( model ) {
-	var showTitle = true,
+	let showTitle = true,
 		extractMsg = mw.msg( 'popups-preview-disambiguation' ),
 		linkMsg = mw.msg( 'popups-preview-disambiguation-link' ),
 		$el;
@@ -239,7 +239,7 @@ export function createDisambiguationPreview( model ) {
 export function show( preview, event, $link, behavior,
 	token, container
 ) {
-	var layout = createLayout(
+	let layout = createLayout(
 		preview.isTall,
 		{
 			pageX: event.pageX,
@@ -307,7 +307,7 @@ export function bindBehavior( preview, behavior ) {
  *  out
  */
 export function hide( preview ) {
-	var fadeInClass,
+	let fadeInClass,
 		fadeOutClass;
 
 	// FIXME: This method clearly needs access to the layout of the preview.
@@ -365,7 +365,7 @@ export function hide( preview ) {
 export function createLayout(
 	isPreviewTall, eventData, linkData, windowData, pokeySize
 ) {
-	var flippedX = false,
+	let flippedX = false,
 		flippedY = false,
 		offsetTop = eventData.pageY ?
 			// If it was a mouse event, position according to mouse
@@ -440,7 +440,7 @@ export function createLayout(
  * @return {String[]}
  */
 export function getClasses( preview, layout ) {
-	var classes = [];
+	let classes = [];
 
 	if ( layout.flippedY ) {
 		classes.push( 'mwe-popups-fade-in-down' );
@@ -497,7 +497,7 @@ export function getClasses( preview, layout ) {
 export function layoutPreview(
 	preview, layout, classes, predefinedLandscapeImageHeight, pokeySize
 ) {
-	var popup = preview.el,
+	let popup = preview.el,
 		isTall = preview.isTall,
 		hasThumbnail = preview.hasThumbnail,
 		thumbnail = preview.thumbnail,
@@ -570,7 +570,7 @@ export function layoutPreview(
  * @return {Number}
  */
 export function getClosestYPosition( y, rects, isTop ) {
-	var result,
+	let result,
 		deltaY,
 		minY = null;
 

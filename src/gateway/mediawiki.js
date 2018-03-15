@@ -15,7 +15,7 @@ import * as formatter from '../formatter';
 // Public and private cache lifetime (5 minutes)
 //
 // FIXME: Move this to src/constants.js.
-var CACHE_LIFETIME = 300,
+let CACHE_LIFETIME = 300,
 	$ = jQuery;
 
 /**
@@ -116,7 +116,7 @@ function extractPageFromResponse( data ) {
  * @return {Object}
  */
 function formatPlainTextExtract( data ) {
-	var result = $.extend( {}, data );
+	let result = $.extend( {}, data );
 	result.extract = formatter.formatPlainTextExtract( data.extract, data.title );
 	return result;
 }

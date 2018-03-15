@@ -6,7 +6,7 @@ import types from './actionTypes';
 import wait from './wait';
 import { createNullModel, previewTypes } from './preview/model';
 
-var $ = jQuery,
+let $ = jQuery,
 	mw = window.mediaWiki,
 
 	// See the following for context around this value.
@@ -73,7 +73,7 @@ export function boot(
 	config,
 	url
 ) {
-	var editCount = config.get( 'wgUserEditCount' ),
+	let editCount = config.get( 'wgUserEditCount' ),
 		previewCount = userSettings.getPreviewCount();
 
 	return {
@@ -107,11 +107,11 @@ export function boot(
  * @return {Redux.Thunk}
  */
 export function fetch( gateway, title, el, token ) {
-	var titleText = title.getPrefixedDb(),
+	let titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
 
 	return ( dispatch ) => {
-		var request;
+		let request;
 
 		dispatch( timedAction( {
 			type: types.FETCH_START,
@@ -163,7 +163,7 @@ export function fetch( gateway, title, el, token ) {
 				//   exception: "Service Unavailable"}
 				// - Suppress (offline or network error): data="http"
 				//   result={xhr: {…}, textStatus: "error", exception: ""}
-				var networkError = result && result.xhr &&
+				let networkError = result && result.xhr &&
 					result.xhr.readyState === 0 && result.textStatus === 'error' &&
 					result.exception === '';
 				if ( !networkError ) {
@@ -191,12 +191,12 @@ export function fetch( gateway, title, el, token ) {
  * @return {Redux.Thunk}
  */
 export function linkDwell( title, el, event, gateway, generateToken ) {
-	var token = generateToken(),
+	let token = generateToken(),
 		titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
 
 	return ( dispatch, getState ) => {
-		var action = timedAction( {
+		let action = timedAction( {
 			type: types.LINK_DWELL,
 			el,
 			event,
@@ -218,7 +218,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 
 		return wait( FETCH_START_DELAY )
 			.then( () => {
-				var previewState = getState().preview;
+				let previewState = getState().preview;
 
 				if ( previewState.enabled && isNewInteraction() ) {
 					return dispatch( fetch( gateway, title, el, token ) );
@@ -237,7 +237,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
  */
 export function abandon() {
 	return ( dispatch, getState ) => {
-		var token = getState().preview.activeToken;
+		let token = getState().preview.activeToken;
 
 		if ( !token ) {
 			return $.Deferred().resolve().promise();
@@ -303,7 +303,7 @@ export function previewShow( token ) {
 
 		return wait( PREVIEW_SEEN_DURATION )
 			.then( () => {
-				var state = getState(),
+				let state = getState(),
 					preview = state.preview,
 					fetchResponse = preview && preview.fetchResponse,
 					currentToken = preview && preview.activeToken,

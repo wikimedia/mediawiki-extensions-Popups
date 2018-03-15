@@ -2,7 +2,7 @@ import { createStubUser, createStubTitle } from './stubs';
 import * as actions from '../../src/actions';
 import * as WaitModule from '../../src/wait';
 
-var mw = mediaWiki,
+let mw = mediaWiki,
 	REFERRER = 'https://en.wikipedia.org/wiki/Kitten';
 
 function generateToken() {
@@ -12,7 +12,7 @@ function generateToken() {
 QUnit.module( 'ext.popups/actions' );
 
 QUnit.test( '#boot', ( assert ) => {
-	var config = new Map(), /* global Map */
+	let config = new Map(), /* global Map */
 		stubUser = createStubUser( /* isAnon = */ true ),
 		stubUserSettings,
 		action;
@@ -103,7 +103,7 @@ QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 } );
 
 QUnit.test( '#linkDwell', function ( assert ) {
-	var linkDwelled,
+	let linkDwelled,
 		event = {},
 		dispatch = this.sandbox.spy();
 
@@ -153,7 +153,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 } );
 
 QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function ( assert ) {
-	var linkDwelled,
+	let linkDwelled,
 		event = {},
 		dispatch = this.sandbox.spy();
 
@@ -181,7 +181,7 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 } );
 
 QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( assert ) {
-	var linkDwelled,
+	let linkDwelled,
 		event = {},
 		dispatch = this.sandbox.spy();
 
@@ -219,7 +219,7 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 } );
 
 QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
-	var event = {},
+	let event = {},
 		dispatch = this.sandbox.spy();
 
 	assert.expect( 1 );
@@ -290,7 +290,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 } );
 
 QUnit.test( 'it should dispatch the FETCH_END action when the API request ends', function ( assert ) {
-	var fetched;
+	let fetched;
 
 	assert.expect( 1 );
 
@@ -312,7 +312,7 @@ QUnit.test( 'it should dispatch the FETCH_END action when the API request ends',
 } );
 
 QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( assert ) {
-	var result = {},
+	let result = {},
 		fetched = this.fetch();
 
 	assert.expect( 2 );
@@ -338,7 +338,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 } );
 
 QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails', function ( assert ) {
-	var fetched = this.fetch();
+	let fetched = this.fetch();
 
 	assert.expect( 2 );
 
@@ -362,7 +362,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 } );
 
 QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails even after the wait timeout', function ( assert ) {
-	var fetched = this.fetch();
+	let fetched = this.fetch();
 
 	assert.expect( 2 );
 
@@ -393,7 +393,7 @@ QUnit.module( 'ext.popups/actions#abandon', {
 } );
 
 QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
-	var dispatch = this.sandbox.spy(),
+	let dispatch = this.sandbox.spy(),
 		token = '0123456789',
 		getState = () =>
 			( {
@@ -434,7 +434,7 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 } );
 
 QUnit.test( 'it shouldn\'t dispatch under certain conditions', function ( assert ) {
-	var dispatch = this.sandbox.spy(),
+	let dispatch = this.sandbox.spy(),
 		getState = () =>
 			( {
 				preview: {
@@ -451,7 +451,7 @@ QUnit.test( 'it shouldn\'t dispatch under certain conditions', function ( assert
 QUnit.module( 'ext.popups/actions#saveSettings' );
 
 QUnit.test( 'it should dispatch an action with previous and current enabled state', function ( assert ) {
-	var dispatch = this.sandbox.spy(),
+	let dispatch = this.sandbox.spy(),
 		getState = this.sandbox.stub().returns( {
 			preview: {
 				enabled: false
@@ -481,7 +481,7 @@ QUnit.module( 'ext.popups/actions#previewShow', {
 } );
 
 QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', function ( assert ) {
-	var previewShow,
+	let previewShow,
 		token = '1234567890',
 		dispatch = this.sandbox.spy(),
 		getState = this.sandbox.stub().returns( {
@@ -531,7 +531,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 } );
 
 QUnit.test( 'PREVIEW_SEEN action not called if activeToken changes', function ( assert ) {
-	var previewShow,
+	let previewShow,
 		token = '1234567890',
 		dispatch = this.sandbox.spy(),
 		getState = this.sandbox.stub().returns( {
@@ -557,7 +557,7 @@ QUnit.test( 'PREVIEW_SEEN action not called if activeToken changes', function ( 
 } );
 
 QUnit.test( 'PREVIEW_SEEN action not called if preview type not page', function ( assert ) {
-	var previewShow,
+	let previewShow,
 		token = '1234567890',
 		dispatch = this.sandbox.spy(),
 		getState = this.sandbox.stub().returns( {

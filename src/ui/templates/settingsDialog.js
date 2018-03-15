@@ -46,7 +46,7 @@ function escapeChoices( choices = [] ) {
  * @return {string} HTML string.
  */
 export function renderSettingsDialog( model ) {
-	var
+	let
 		heading = escapeHTML( model.heading ),
 		saveLabel = escapeHTML( model.saveLabel ),
 		helpText = escapeHTML( model.helpText ),

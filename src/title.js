@@ -2,7 +2,7 @@
  * @module title
  */
 
-var mw = window.mediaWiki;
+let mw = window.mediaWiki;
 
 /**
  * Gets the title of a local page from an href given some configuration.
@@ -12,7 +12,7 @@ var mw = window.mediaWiki;
  * @return {String|undefined}
  */
 export function getTitle( href, config ) {
-	var linkHref,
+	let linkHref,
 		matches,
 		queryLength,
 		titleRegex = new RegExp( mw.RegExp.escape( config.get( 'wgArticlePath' ) )
@@ -54,7 +54,7 @@ export function getTitle( href, config ) {
  * @return {mw.Title|null}
  */
 export function isValid( title, contentNamespaces ) {
-	var mwTitle;
+	let mwTitle;
 
 	if ( !title ) {
 		return null;

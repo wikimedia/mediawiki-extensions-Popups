@@ -8,7 +8,7 @@
  * @global
  */
 
-var IS_ENABLED_KEY = 'mwe-popups-enabled',
+let IS_ENABLED_KEY = 'mwe-popups-enabled',
 	PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
 
 /**
@@ -57,7 +57,7 @@ export default function createUserSettings( storage ) {
 		 * @return {Boolean}
 		 */
 		hasIsEnabled() {
-			var value = storage.get( IS_ENABLED_KEY );
+			let value = storage.get( IS_ENABLED_KEY );
 
 			return Boolean( value ) !== false;
 		},
@@ -74,7 +74,7 @@ export default function createUserSettings( storage ) {
 		 * @return {Number}
 		 */
 		getPreviewCount() {
-			var result = storage.get( PREVIEW_COUNT_KEY ), count;
+			let result = storage.get( PREVIEW_COUNT_KEY ), count;
 
 			if ( result === false ) {
 				return -1;

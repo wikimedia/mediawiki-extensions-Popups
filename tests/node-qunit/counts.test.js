@@ -3,7 +3,7 @@ import * as counts from '../../src/counts';
 QUnit.module( 'ext.popups/counts' );
 
 QUnit.test( '#getEditCountBucket', ( assert ) => {
-	var i, bucket, count,
+	let i, bucket, count,
 		cases = [
 			[ 0, '0 edits' ],
 			[ 1, '1-4 edits' ],
@@ -35,7 +35,7 @@ QUnit.test( '#getEditCountBucket', ( assert ) => {
 } );
 
 QUnit.test( '#getPreviewCountBucket', ( assert ) => {
-	var i, count, bucket,
+	let i, count, bucket,
 		cases = [
 			[ false, 'unknown' ],
 			[ NaN, 'unknown' ],

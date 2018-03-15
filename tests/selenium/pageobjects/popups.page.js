@@ -1,19 +1,17 @@
 'use strict';
-const Page = require( '../../../../../tests/selenium/pageobjects/page' );
-const TEST_PAGE_TITLE = 'Popups test page';
-
-const POPUPS_SELECTOR = '.mwe-popups';
-const POPUPS_MODULE_NAME = 'ext.popups.main';
-
-const fs = require('fs');
-const EditPage = require( '../../../../../tests/selenium/pageobjects/edit.page' );
-
+const
+	fs = require( 'fs' ),
+	EditPage = require( '../../../../../tests/selenium/pageobjects/edit.page' ),
+	Page = require( '../../../../../tests/selenium/pageobjects/page' ),
+	TEST_PAGE_TITLE = 'Popups test page',
+	POPUPS_SELECTOR = '.mwe-popups',
+	POPUPS_MODULE_NAME = 'ext.popups.main';
 
 class PopupsPage extends Page {
 	setup() {
 		browser.call( () => {
 			return new Promise( ( resolve ) => {
-				fs.readFile(`${__dirname}/../fixtures/test_page.wikitext`, 'utf-8', (err, content) => {
+				fs.readFile( `${__dirname}/../fixtures/test_page.wikitext`, 'utf-8', ( err, content ) => {
 					if ( err ) {
 						throw err;
 					}
@@ -50,7 +48,7 @@ class PopupsPage extends Page {
 		const PAUSE = 1000;
 		this.ready();
 		browser.pause( PAUSE );
-		this.abandonLink()
+		this.abandonLink();
 		browser.pause( PAUSE );
 		browser.moveToObject( '#content ul a' );
 		browser.waitForExist( POPUPS_SELECTOR );

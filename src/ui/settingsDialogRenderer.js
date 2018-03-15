@@ -4,7 +4,7 @@ import { createSettingsDialog } from './settingsDialog';
  * @module settingsDialogRenderer
  */
 
-var $ = jQuery;
+let $ = jQuery;
 
 /**
  * Creates a render function that will create the settings dialog and return
@@ -18,7 +18,7 @@ export default function createSettingsDialogRenderer() {
 	 *
 	 * @type {jQuery}
 	 */
-	var $dialog,
+	let $dialog,
 		/**
 		 * Cached settings overlay
 		 *
@@ -41,7 +41,7 @@ export default function createSettingsDialogRenderer() {
 
 			$dialog.find( '.save' ).click( () => {
 				// Find the selected value (simple|advanced|off)
-				var selected = getSelectedSetting( $dialog ),
+				let selected = getSelectedSetting( $dialog ),
 					// Only simple means enabled, advanced is disabled in favor of
 					// NavPops and off means disabled.
 					enabled = selected === 'simple';
@@ -93,7 +93,7 @@ export default function createSettingsDialogRenderer() {
 			 * @param {Boolean} enabled if page previews are enabled
 			 */
 			setEnabled( enabled ) {
-				var name = 'off';
+				let name = 'off';
 				if ( enabled ) {
 					name = 'simple';
 				} else if ( isNavPopupsEnabled() ) {
@@ -126,7 +126,7 @@ function getSelectedSetting( $el ) {
  * @param {Boolean} visible if the help should be visible, or the form
  */
 function toggleHelp( $el, visible ) {
-	var $dialog = $( '#mwe-popups-settings' ),
+	let $dialog = $( '#mwe-popups-settings' ),
 		formSelectors = 'main, .save, .close',
 		helpSelectors = '.mwe-popups-settings-help, .okay';
 

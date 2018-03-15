@@ -17,7 +17,7 @@ export default function pageviews(
 	boundActions, pageviewTracker
 ) {
 	return ( _, state ) => {
-		var page;
+		let page;
 		if ( state.pageviews && state.pageviews.pageview && state.pageviews.page ) {
 			page = state.pageviews.page;
 			pageviewTracker( 'event.VirtualPageView', $.extend( {},

@@ -20,6 +20,7 @@
 	"rules": {
 		"dot-notation": [ "error", { "allowKeywords": true } ],
 		"no-use-before-define": 0,
+		"no-var": 2,
 		"max-len": [
 				"warn",
 				{

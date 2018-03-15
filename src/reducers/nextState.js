@@ -19,7 +19,7 @@
  * @return {Object}
  */
 export default function nextState( state, updates ) {
-	var result = {},
+	let result = {},
 		key;
 
 	for ( key in state ) {

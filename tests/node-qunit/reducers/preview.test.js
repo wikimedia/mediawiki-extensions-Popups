@@ -9,7 +9,7 @@ QUnit.module( 'ext.popups/reducers#preview', {
 } );
 
 QUnit.test( '@@INIT', ( assert ) => {
-	var state = preview( undefined, { type: '@@INIT' } );
+	let state = preview( undefined, { type: '@@INIT' } );
 
 	assert.expect( 1 );
 
@@ -27,7 +27,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 } );
 
 QUnit.test( 'BOOT', ( assert ) => {
-	var action = {
+	let action = {
 		type: 'BOOT',
 		isEnabled: true
 	};
@@ -44,7 +44,7 @@ QUnit.test( 'BOOT', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
-	var action = {
+	let action = {
 		type: 'SETTINGS_CHANGE',
 		enabled: true
 	};
@@ -61,7 +61,7 @@ QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 } );
 
 QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert ) {
-	var action = {
+	let action = {
 		type: 'LINK_DWELL',
 		el: this.el,
 		event: {},
@@ -82,7 +82,7 @@ QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert
 } );
 
 QUnit.test( 'LINK_DWELL on an active link only updates dwell state', function ( assert ) {
-	var action = {
+	let action = {
 			type: 'LINK_DWELL',
 			el: this.el,
 			event: {},
@@ -104,7 +104,7 @@ QUnit.test( 'LINK_DWELL on an active link only updates dwell state', function ( 
 } );
 
 QUnit.test( 'ABANDON_END', ( assert ) => {
-	var action = {
+	let action = {
 			type: 'ABANDON_END',
 			token: 'bananas'
 		},
@@ -154,7 +154,7 @@ QUnit.test( 'ABANDON_END', ( assert ) => {
 } );
 
 QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
-	var token = '1234567890',
+	let token = '1234567890',
 		state = {
 			activeToken: token,
 			isUserDwelling: true
@@ -216,7 +216,7 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 } );
 
 QUnit.test( actionTypes.FETCH_FAILED, ( assert ) => {
-	var token = '1234567890',
+	let token = '1234567890',
 		state = {
 			activeToken: token,
 			isUserDwelling: true
@@ -259,7 +259,7 @@ QUnit.test( actionTypes.FETCH_FAILED, ( assert ) => {
 } );
 
 QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
-	var action = {
+	let action = {
 		type: 'PREVIEW_DWELL'
 	};
 
@@ -275,7 +275,7 @@ QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 } );
 
 QUnit.test( 'ABANDON_START', ( assert ) => {
-	var action = {
+	let action = {
 		type: 'ABANDON_START'
 	};
 

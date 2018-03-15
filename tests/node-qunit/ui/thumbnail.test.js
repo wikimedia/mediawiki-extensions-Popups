@@ -1,6 +1,6 @@
 import { createThumbnail, createThumbnailElement } from '../../../src/ui/thumbnail';
 
-var $ = jQuery;
+let $ = jQuery;
 
 QUnit.module( 'ext.popups#thumbnail', {
 	beforeEach() {
@@ -12,7 +12,7 @@ QUnit.module( 'ext.popups#thumbnail', {
 } );
 
 QUnit.test( 'createThumbnail - tall image', ( assert ) => {
-	var devicePixelRatio = $.bracketedDevicePixelRatio(),
+	let devicePixelRatio = $.bracketedDevicePixelRatio(),
 		rawThumbnail = {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
 			width: 409,
@@ -38,7 +38,7 @@ QUnit.test( 'createThumbnail - tall image', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
-	var thumbnail,
+	let thumbnail,
 		cases = [
 			{
 				width: 200,
@@ -101,7 +101,7 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
-	var devicePixelRatio = $.bracketedDevicePixelRatio(),
+	let devicePixelRatio = $.bracketedDevicePixelRatio(),
 		rawThumbnail = {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg',
 			width: 500,
@@ -127,7 +127,7 @@ QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
-	var thumbnail,
+	let thumbnail,
 		cases = [
 			{
 				width: 400,
@@ -190,13 +190,13 @@ QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - no raw thumbnail', ( assert ) => {
-	var thumbnail = createThumbnail( null );
+	let thumbnail = createThumbnail( null );
 
 	assert.equal( thumbnail, null, 'No thumbnail.' );
 } );
 
 QUnit.test( 'createThumbnail - small wide image', ( assert ) => {
-	var rawThumbnail = {
+	let rawThumbnail = {
 			source: 'https://landscape-image.jpg',
 			width: 299,
 			height: 298
@@ -207,7 +207,7 @@ QUnit.test( 'createThumbnail - small wide image', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - small tall image', ( assert ) => {
-	var rawThumbnail = {
+	let rawThumbnail = {
 			source: 'https://tall-image.jpg',
 			width: 248,
 			height: 249
@@ -218,7 +218,7 @@ QUnit.test( 'createThumbnail - small tall image', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
-	var cases = [
+	let cases = [
 			'https://tall-ima\\ge.jpg',
 			'https://tall-ima\'ge.jpg',
 			'https://tall-ima"ge.jpg'
@@ -237,7 +237,7 @@ QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnailElement', ( assert ) => {
-	var className = 'thumb-class',
+	let className = 'thumb-class',
 		url = 'https://thumbnail.url',
 		x = 25,
 		y = 50,

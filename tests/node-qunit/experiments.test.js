@@ -3,7 +3,7 @@ import createExperiments from '../../src/experiments';
 QUnit.module( 'ext.popups/experiments#weightedBoolean' );
 
 QUnit.test( 'it should call mw.experiments#getBucket', function ( assert ) {
-	var getBucketStub = this.sandbox.stub(),
+	let getBucketStub = this.sandbox.stub(),
 		stubMWExperiments = {
 			getBucket: getBucketStub
 		},
