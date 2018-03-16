@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack -w",
-    "build": "NODE_ENV=production webpack",
+    "start": "webpack -dw",
+    "build": "NODE_ENV=production webpack -p",
     "test:node": "node tests/node-qunit/run.js 'tests/node-qunit/**/*.test.js' | tap-dot",
     "test:dev": "grunt lint && npm run test:node",
     "test": " npm run check-built-assets && npm run test:dev && npm run doc",
@@ -34,12 +34,13 @@
     "stylelint-config-wikimedia": "0.4.2",
     "svg-inline-loader": "0.8.0",
     "tap-dot": "^1.0.5",
-    "webpack": "^2.6.0"
+    "webpack": "4.1.1",
+    "webpack-cli": "2.0.12"
   },
   "bundlesize": [
     {
       "path": "resources/dist/index.js",
-      "maxSize": "12KB"
+      "maxSize": "10.9KB"
     }
   ]
 }

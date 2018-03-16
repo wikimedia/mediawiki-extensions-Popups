@@ -29,13 +29,11 @@ conf = {
 		// with .json extension
 		sourceMapFilename: '[file].json'
 	},
-	entry: {
-		index: './src/index.js'
-	},
+	entry: { index: './src' },
 	performance: {
 		hints: isProduction ? 'error' : false,
-		maxAssetSize: 38.9 * 1024,
-		maxEntrypointSize: 38.9 * 1024,
+		maxAssetSize: 32.9 * 1024,
+		maxEntrypointSize: 32.9 * 1024,
 		assetFilter: function ( filename ) {
 			// The default filter excludes map files but we rename ours to .filename.
 			return filename.endsWith( '.js' );
@@ -68,9 +66,8 @@ conf = {
 };
 
 // Production settings.
-// Enable minification and dead code elimination with uglify. Define the
-// global process.env.NODE_ENV so that libraries like redux and redux-thunk get
-// development code trimmed.
+// Define the global process.env.NODE_ENV so that libraries like redux and
+// redux-thunk get development code trimmed.
 // Enable minimize flags for webpack loaders and disable debug.
 if ( isProduction ) {
 	conf.plugins = conf.plugins.concat( [
@@ -82,22 +79,6 @@ if ( isProduction ) {
 			'process.env': {
 				NODE_ENV: JSON.stringify( 'production' )
 			}
-		} ),
-		new webpack.optimize.UglifyJsPlugin( {
-			sourceMap: true,
-			// Preserve @nomin comments that disable ResourceLoader minification if
-			// present. Right now a banner with @nomin is not being added since in
-			// production mode the source-map comment will end up in a compound
-			// bundle (as load.php will bundle a many modules in a single request)
-			// thus breaking source-maps for other sources than the Popups ones. We
-			// should add the @nomin banner in the future if ResourceLoader supports
-			// combining/merging source-maps from different modules. For the moment,
-			// the source map comment will be stripped in ResourceLoader's production
-			// mode to not interfere with debugging other sources loaded alongside
-			// Popups.
-			//
-			// See https://phabricator.wikimedia.org/T188081 for more info
-			comments: /@nomin/
 		} )
 	] );
 }
