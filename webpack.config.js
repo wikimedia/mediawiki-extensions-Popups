@@ -32,6 +32,15 @@ conf = {
 	entry: {
 		index: './src/index.js'
 	},
+	performance: {
+		hints: isProduction ? 'error' : false,
+		maxAssetSize: 38.9 * 1024,
+		maxEntrypointSize: 38.9 * 1024,
+		assetFilter: function ( filename ) {
+			// The default filter excludes map files but we rename ours to .filename.
+			return filename.endsWith( '.js' );
+		}
+	},
 	devtool: 'source-map',
 	resolve: {
 		alias: {
