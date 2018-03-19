@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Kenrick95",
-			"Iwan Novirion"
+			"Iwan Novirion",
+			"Davis Hardiansyah"
 		]
 	},
 	"popups-desc": "Menampilkan jendela pop-up dengan ringkasan isi halaman bila pengguna melakukan hover dengan mouse di atas sebuah pranala wiki",
-	"popups-settings-title": "Pratayang halaman"
+	"popups-settings-title": "Pratayang halaman",
+	"popups-preview-disambiguation-link": "View similar pages"
 }

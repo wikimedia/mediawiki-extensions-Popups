@@ -24,6 +24,8 @@
 	"popups-send-feedback": "שליחת משוב (קישור חיצוני)",
 	"popups-preview-no-preview": "הייתה בעיה עם הצגת התצוגה המקדימה הזאת",
 	"popups-preview-footer-read": "מעבַר לדף הזה",
+	"popups-preview-disambiguation": "הכותרת הזאת מתייחסת ליותר מדף אחד",
+	"popups-preview-disambiguation-link": "דפים דומים מאוד",
 	"prefs-reading": "העדפות קריאה",
 	"popups-prefs-optin-title": "תצוגה מקדימה של דפים\n\n<em>קבלת תצוגה מקדימה מהירה של נושא בזמן קריאת דף</em>",
 	"popups-prefs-optin-enabled-label": "הפעלה",

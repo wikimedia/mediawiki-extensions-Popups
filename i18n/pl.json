@@ -5,7 +5,8 @@
 			"Peter Bowman",
 			"Rezonansowy",
 			"WTM",
-			"Ty221"
+			"Ty221",
+			"Railfail536"
 		]
 	},
 	"popups-message": "Podglądy strony",
@@ -25,6 +26,8 @@
 	"popups-send-feedback": "Wyślij opinię (link zewnętrzny)",
 	"popups-preview-no-preview": "Wygląda na to, że nie ma podglądu tej strony",
 	"popups-preview-footer-read": "Przejdź do tej strony",
+	"popups-preview-disambiguation": "Ten tytuł odnosi się do więcej niż jednej strony",
+	"popups-preview-disambiguation-link": "Pokaż podobne strony",
 	"prefs-reading": "Preferencje czytania",
 	"popups-prefs-optin-title": "Podgląd stron\n\n<em>Podczas czytania strony zapewni szybki podgląd tematu</em>",
 	"popups-prefs-optin-enabled-label": "Włącz",

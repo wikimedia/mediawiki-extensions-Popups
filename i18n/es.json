@@ -28,6 +28,8 @@
 	"popups-send-feedback": "Enviar comentario (enlace externo)",
 	"popups-preview-no-preview": "Hubo un problema al mostrar esta previsualización",
 	"popups-preview-footer-read": "Ir a esta página",
+	"popups-preview-disambiguation": "Este título hace referencia a más de una página",
+	"popups-preview-disambiguation-link": "Ver páginas similares",
 	"prefs-reading": "Preferencias de lectura",
 	"popups-prefs-optin-title": "Vistas previas de páginas\n\n<em>Obtén vistas previas de un tema mientras lees una página</em>",
 	"popups-prefs-optin-enabled-label": "Activar",

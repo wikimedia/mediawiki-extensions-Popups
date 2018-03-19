@@ -7,7 +7,8 @@
 			"Dvorapa",
 			"Marek Pavlica",
 			"Walter Klosse",
-			"Ilimanaq29"
+			"Ilimanaq29",
+			"Matěj Suchánek"
 		]
 	},
 	"popups-message": "Náhledy stránek",
@@ -26,8 +27,8 @@
 	"popups-settings-help": "Náhledy můžete opět zapnout pomocí odkazu v patičce stránky.",
 	"popups-settings-enable": "Zapnout náhledy",
 	"popups-send-feedback": "Poslat názor (externí odkaz)",
-	"popups-preview-no-preview": "Vypadá to, že pro tuto stránku neexistuje náhled",
-	"popups-preview-footer-read": "Číst",
+	"popups-preview-no-preview": "Při zobrazování tohoto náhledu se objevil problém",
+	"popups-preview-footer-read": "Přejít na tuto stránku",
 	"popups-preview-disambiguation": "Tento název má více než jedna stránka",
 	"popups-preview-disambiguation-link": "Zobrazit podobné stránky",
 	"prefs-reading": "Nastavení čtení",

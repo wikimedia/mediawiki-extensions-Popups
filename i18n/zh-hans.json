@@ -24,6 +24,8 @@
 	"popups-send-feedback": "发送反馈",
 	"popups-preview-no-preview": "显示此预览时出现问题",
 	"popups-preview-footer-read": "前往该页面",
+	"popups-preview-disambiguation": "此条目与多于一个页面相关",
+	"popups-preview-disambiguation-link": "查看相似页面",
 	"prefs-reading": "阅读参数设置",
 	"popups-prefs-optin-title": "页面预览\n\n<em>当阅读条目时，获取对应页面的快速预览</em>",
 	"popups-prefs-optin-enabled-label": "启用",

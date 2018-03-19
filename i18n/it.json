@@ -26,6 +26,8 @@
 	"popups-send-feedback": "Invia parere (collegamento esterno)",
 	"popups-preview-no-preview": "Si è verificato un problema nella visualizzazione di questa anteprima",
 	"popups-preview-footer-read": "Vai a questa pagina",
+	"popups-preview-disambiguation": "Questo titolo si riferisce a più di una pagina",
+	"popups-preview-disambiguation-link": "Vedi pagine simili",
 	"prefs-reading": "Preferenze di lettura",
 	"popups-prefs-optin-title": "Anteprima delle pagine\n\n<em>Vedi una veloce anteprima di un argomento mentre leggi una pagina</em>",
 	"popups-prefs-optin-enabled-label": "Attiva",
