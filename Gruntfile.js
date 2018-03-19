@@ -12,6 +12,9 @@ module.exports = function ( grunt ) {
 	grunt.initConfig( {
 		banana: conf.MessagesDirs,
 		eslint: {
+			options: {
+				maxWarnings: 0
+			},
 			// Lint the built artifacts with ES5 so that no ES6 slips to production
 			build: {
 				options: {
