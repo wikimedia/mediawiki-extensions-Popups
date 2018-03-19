@@ -18,13 +18,13 @@
 		"ReduxThunk": false
 	},
 	"rules": {
-		"dot-notation": [ "error", { "allowKeywords": true } ],
+		"dot-notation": [ 2, { "allowKeywords": true } ],
 		"no-use-before-define": 0,
 		"no-var": 2,
 		"prefer-const": 1,
 		"one-var": 0, // Interferes with prefer-const.
 		"max-len": [
-				"warn",
+				1,
 				{
 					"tabWidth": 2,
 					// Exclude by default:
