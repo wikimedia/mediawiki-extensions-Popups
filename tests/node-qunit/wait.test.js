@@ -3,11 +3,9 @@ import wait from '../../src/wait';
 QUnit.module( 'ext.popups/wait' );
 
 QUnit.test( 'it should resolve after waiting', function ( assert ) {
-	let timeout;
-
 	assert.expect( 1 );
 
-	timeout = this.sandbox.stub( global, 'setTimeout' ).callsFake( ( callback ) => {
+	const timeout = this.sandbox.stub( global, 'setTimeout' ).callsFake( ( callback ) => {
 		callback();
 	} );
 

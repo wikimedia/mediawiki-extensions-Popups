@@ -29,15 +29,12 @@ function createState( baseData, event ) {
 }
 
 QUnit.test( 'it should log the queued event', function ( assert ) {
-	let baseData,
-		state;
-
-	baseData = {
+	const baseData = {
 		foo: 'bar',
 		baz: 'qux'
 	};
 
-	state = createState( baseData, {
+	const state = createState( baseData, {
 		action: 'pageLoaded'
 	} );
 
@@ -58,7 +55,7 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 } );
 
 QUnit.test( 'it should call the eventLogged bound action creator', function ( assert ) {
-	let state = createState( {}, undefined );
+	const state = createState( {}, undefined );
 
 	this.changeListener( undefined, state );
 

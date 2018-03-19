@@ -11,17 +11,15 @@ QUnit.module( 'ext.popups/changeListeners/statsv', {
 } );
 
 QUnit.test( 'it should log the queued event', function ( assert ) {
-	let state, changeListener;
-
 	assert.expect( 2 );
 
-	state = {
+	const state = {
 		statsv: {
 			action: 'myAction',
 			data: 123
 		}
 	};
-	changeListener = statsv( this.boundActions, this.track );
+	const changeListener = statsv( this.boundActions, this.track );
 	changeListener( undefined, state );
 
 	assert.ok(
@@ -36,16 +34,14 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 } );
 
 QUnit.test( 'it should not log when no action is given', function ( assert ) {
-	let state, changeListener;
-
 	assert.expect( 2 );
 
-	state = {
+	const state = {
 		statsv: {
 			data: 123
 		}
 	};
-	changeListener = statsv( this.boundActions, this.track );
+	const changeListener = statsv( this.boundActions, this.track );
 	changeListener( undefined, state );
 
 	assert.ok(

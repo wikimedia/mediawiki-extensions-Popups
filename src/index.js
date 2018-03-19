@@ -23,7 +23,7 @@ import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getUserBucket from './getUserBucket';
 
-let mw = mediaWiki,
+const mw = mediaWiki,
 	$ = jQuery,
 
 	BLACKLISTED_LINKS = [
@@ -169,41 +169,31 @@ function registerChangeListeners(
  *   - Bind hover and click events to the eligible links to trigger actions
  */
 mw.requestIdleCallback( function () {
-	let compose = Redux.compose,
-		userBucket,
-		store,
-		boundActions,
-		pageviewTracker,
-
+	let compose = Redux.compose;
+	const
 		// So-called "services".
 		generateToken = mw.user.generateRandomSessionId,
-		gateway = createGateway( mw.config ),
-		userSettings,
-		settingsDialog,
-		experiments,
-		statsvTracker,
-		eventLoggingTracker,
-		isEnabled,
-		previewBehavior;
+		gateway = createGateway( mw.config );
 
-	userBucket = getUserBucket(
+	const userBucket = getUserBucket(
 		mw.experiments,
 		mw.config.get( 'wgPopupsAnonsExperimentalGroupSize' ),
 		mw.user.sessionId() );
-	userSettings = createUserSettings( mw.storage );
-	settingsDialog = createSettingsDialogRenderer();
-	experiments = createExperiments( mw.experiments );
-	statsvTracker = getStatsvTracker( mw.user, mw.config, experiments );
+	const userSettings = createUserSettings( mw.storage );
+	const settingsDialog = createSettingsDialogRenderer();
+	const experiments = createExperiments( mw.experiments );
+	const statsvTracker = getStatsvTracker( mw.user, mw.config, experiments );
 	// Virtual pageviews are always tracked.
-	pageviewTracker = getPageViewTracker( mw.config );
-	eventLoggingTracker = getEventLoggingTracker(
+	const pageviewTracker = getPageViewTracker( mw.config );
+	const eventLoggingTracker = getEventLoggingTracker(
 		mw.user,
 		mw.config,
 		userBucket,
 		window
 	);
 
-	isEnabled = createIsEnabled( mw.user, userSettings, mw.config, userBucket );
+	const isEnabled =
+		createIsEnabled( mw.user, userSettings, mw.config, userBucket );
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) === true ) {
@@ -211,15 +201,16 @@ mw.requestIdleCallback( function () {
 		compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 	}
 
-	store = Redux.createStore(
+	const store = Redux.createStore(
 		Redux.combineReducers( reducers ),
 		compose( Redux.applyMiddleware(
 			ReduxThunk.default
 		) )
 	);
-	boundActions = Redux.bindActionCreators( actions, store.dispatch );
+	const boundActions = Redux.bindActionCreators( actions, store.dispatch );
 
-	previewBehavior = createPreviewBehavior( mw.config, mw.user, boundActions );
+	const previewBehavior =
+		createPreviewBehavior( mw.config, mw.user, boundActions );
 
 	registerChangeListeners(
 		store, boundActions, userSettings, settingsDialog,
@@ -244,14 +235,14 @@ mw.requestIdleCallback( function () {
 	mw.popups = createMediaWikiPopupsObject( store );
 
 	mw.hook( 'wikipage.content' ).add( function ( $container ) {
-		let invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
+		const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
 			validLinkSelector = 'a[href][title]:not(' + invalidLinksSelector + ')';
 
 		rendererInit();
 
 		$container
 			.on( 'mouseover keyup', validLinkSelector, function ( event ) {
-				let mwTitle = titleFromElement( this, mw.config );
+				const mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.linkDwell(
@@ -260,14 +251,14 @@ mw.requestIdleCallback( function () {
 				}
 			} )
 			.on( 'mouseout blur', validLinkSelector, function () {
-				let mwTitle = titleFromElement( this, mw.config );
+				const mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.abandon( this );
 				}
 			} )
 			.on( 'click', validLinkSelector, function () {
-				let mwTitle = titleFromElement( this, mw.config );
+				const mwTitle = titleFromElement( this, mw.config );
 
 				if ( mwTitle ) {
 					boundActions.linkClick( this );

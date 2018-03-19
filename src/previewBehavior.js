@@ -2,7 +2,7 @@
  * @module previewBehaviour
  */
 
-let mw = window.mediaWiki,
+const mw = window.mediaWiki,
 	$ = jQuery;
 
 /**
@@ -35,10 +35,8 @@ let mw = window.mediaWiki,
  * @return {ext.popups.PreviewBehavior}
  */
 export default function createPreviewBehavior( config, user, actions ) {
-	let isBetaFeature = config.get( 'wgPopupsBetaFeature' ),
-		rawTitle,
-		settingsUrl,
-		showSettings = $.noop;
+	const isBetaFeature = config.get( 'wgPopupsBetaFeature' );
+	let settingsUrl, showSettings = $.noop;
 
 	if ( user.isAnon() ) {
 		showSettings = ( event ) => {
@@ -47,7 +45,7 @@ export default function createPreviewBehavior( config, user, actions ) {
 			actions.showSettings();
 		};
 	} else {
-		rawTitle = 'Special:Preferences#mw-prefsection-';
+		let rawTitle = 'Special:Preferences#mw-prefsection-';
 		rawTitle += isBetaFeature ? 'betafeatures' : 'rendering';
 
 		settingsUrl = mw.Title.newFromText( rawTitle )

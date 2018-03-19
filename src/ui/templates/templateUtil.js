@@ -2,7 +2,7 @@
  * @module templateUtil
  */
 
-let mw = window.mediaWiki;
+const mw = window.mediaWiki;
 
 /**
  * @param {string} str

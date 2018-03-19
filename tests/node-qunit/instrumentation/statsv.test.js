@@ -4,7 +4,7 @@ import { isEnabled } from '../../../src/instrumentation/statsv';
 QUnit.module( 'ext.popups/instrumentation/statsv' );
 
 QUnit.test( '#isEnabled', function ( assert ) {
-	let user = stubs.createStubUser(),
+	const user = stubs.createStubUser(),
 		config = stubs.createStubMap(),
 		weightedBooleanStub = this.sandbox.stub(),
 		experiments = {

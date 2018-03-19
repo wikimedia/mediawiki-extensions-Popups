@@ -9,7 +9,7 @@ import { previewTypes } from '../preview/model';
 import { renderPreview } from './templates/preview';
 import { renderPagePreview } from './templates/pagePreview';
 
-let mw = window.mediaWiki,
+const mw = window.mediaWiki,
 	$ = jQuery,
 	$window = $( window ),
 	landscapePopupWidth = 450,
@@ -83,7 +83,7 @@ export function init() {
  */
 export function render( model ) {
 
-	let preview = createPreviewWithType( model );
+	const preview = createPreviewWithType( model );
 
 	return {
 
@@ -146,12 +146,11 @@ export function createPreviewWithType( model ) {
  * @return {ext.popups.Preview}
  */
 export function createPagePreview( model ) {
-	let thumbnail = createThumbnail( model.thumbnail ),
+	const thumbnail = createThumbnail( model.thumbnail ),
 		hasThumbnail = thumbnail !== null,
-		extract = model.extract,
-		$el;
+		extract = model.extract;
 
-	$el = $( $.parseHTML( renderPagePreview( model, hasThumbnail ) ) );
+	const $el = $( $.parseHTML( renderPagePreview( model, hasThumbnail ) ) );
 
 	if ( hasThumbnail ) {
 		$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
@@ -180,12 +179,11 @@ export function createPagePreview( model ) {
  * @return {ext.popups.Preview}
  */
 export function createEmptyPreview( model ) {
-	let showTitle = false,
+	const showTitle = false,
 		extractMsg = mw.msg( 'popups-preview-no-preview' ),
-		linkMsg = mw.msg( 'popups-preview-footer-read' ),
-		$el;
+		linkMsg = mw.msg( 'popups-preview-footer-read' );
 
-	$el = $(
+	const $el = $(
 		$.parseHTML( renderPreview( model, showTitle, extractMsg, linkMsg ) )
 	);
 
@@ -203,12 +201,11 @@ export function createEmptyPreview( model ) {
  * @return {ext.popups.Preview}
  */
 export function createDisambiguationPreview( model ) {
-	let showTitle = true,
+	const showTitle = true,
 		extractMsg = mw.msg( 'popups-preview-disambiguation' ),
-		linkMsg = mw.msg( 'popups-preview-disambiguation-link' ),
-		$el;
+		linkMsg = mw.msg( 'popups-preview-disambiguation-link' );
 
-	$el = $(
+	const $el = $(
 		$.parseHTML( renderPreview( model, showTitle, extractMsg, linkMsg ) )
 	);
 
@@ -239,7 +236,7 @@ export function createDisambiguationPreview( model ) {
 export function show( preview, event, $link, behavior,
 	token, container
 ) {
-	let layout = createLayout(
+	const layout = createLayout(
 		preview.isTall,
 		{
 			pageX: event.pageX,
@@ -307,15 +304,12 @@ export function bindBehavior( preview, behavior ) {
  *  out
  */
 export function hide( preview ) {
-	let fadeInClass,
-		fadeOutClass;
-
 	// FIXME: This method clearly needs access to the layout of the preview.
-	fadeInClass = ( preview.el.hasClass( 'mwe-popups-fade-in-up' ) ) ?
+	const fadeInClass = ( preview.el.hasClass( 'mwe-popups-fade-in-up' ) ) ?
 		'mwe-popups-fade-in-up' :
 		'mwe-popups-fade-in-down';
 
-	fadeOutClass = ( fadeInClass === 'mwe-popups-fade-in-up' ) ?
+	const fadeOutClass = ( fadeInClass === 'mwe-popups-fade-in-up' ) ?
 		'mwe-popups-fade-out-down' :
 		'mwe-popups-fade-out-up';
 
@@ -378,12 +372,8 @@ export function createLayout(
 			) + windowData.scrollTop + pokeySize :
 			// Position according to link position or size
 			linkData.offset.top + linkData.height + pokeySize,
-		clientTop = ( eventData.clientY ) ?
-			eventData.clientY :
-			offsetTop,
-		offsetLeft = ( eventData.pageX ) ?
-			eventData.pageX :
-			linkData.offset.left;
+		offsetLeft = eventData.pageX ? eventData.pageX : linkData.offset.left;
+	const clientTop = eventData.clientY ? eventData.clientY : offsetTop;
 
 	// X Flip
 	if ( offsetLeft > ( windowData.width / 2 ) ) {
@@ -440,7 +430,7 @@ export function createLayout(
  * @return {String[]}
  */
 export function getClasses( preview, layout ) {
-	let classes = [];
+	const classes = [];
 
 	if ( layout.flippedY ) {
 		classes.push( 'mwe-popups-fade-in-down' );
@@ -497,13 +487,13 @@ export function getClasses( preview, layout ) {
 export function layoutPreview(
 	preview, layout, classes, predefinedLandscapeImageHeight, pokeySize
 ) {
-	let popup = preview.el,
+	const popup = preview.el,
 		isTall = preview.isTall,
 		hasThumbnail = preview.hasThumbnail,
 		thumbnail = preview.thumbnail,
 		flippedY = layout.flippedY,
-		flippedX = layout.flippedX,
-		offsetTop = layout.offset.top;
+		flippedX = layout.flippedX;
+	let offsetTop = layout.offset.top;
 
 	if (
 		!flippedY && !isTall && hasThumbnail &&
@@ -570,12 +560,10 @@ export function layoutPreview(
  * @return {Number}
  */
 export function getClosestYPosition( y, rects, isTop ) {
-	let result,
-		deltaY,
-		minY = null;
+	let minY = null, result;
 
 	$.each( rects, ( i, rect ) => {
-		deltaY = Math.abs( y - rect.top + y - rect.bottom );
+		const deltaY = Math.abs( y - rect.top + y - rect.bottom );
 
 		if ( minY === null || minY > deltaY ) {
 			minY = deltaY;

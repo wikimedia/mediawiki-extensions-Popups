@@ -1,6 +1,6 @@
 import { createThumbnail, createThumbnailElement } from '../../../src/ui/thumbnail';
 
-let $ = jQuery;
+const $ = jQuery;
 
 QUnit.module( 'ext.popups#thumbnail', {
 	beforeEach() {
@@ -12,7 +12,7 @@ QUnit.module( 'ext.popups#thumbnail', {
 } );
 
 QUnit.test( 'createThumbnail - tall image', ( assert ) => {
-	let devicePixelRatio = $.bracketedDevicePixelRatio(),
+	const devicePixelRatio = $.bracketedDevicePixelRatio(),
 		rawThumbnail = {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
 			width: 409,
@@ -38,30 +38,29 @@ QUnit.test( 'createThumbnail - tall image', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
-	let thumbnail,
-		cases = [
-			{
-				width: 200,
-				height: 300,
-				expectedX: 203 - 200,
-				expectedY: ( 300 - 250 ) / -2,
-				expectedSVGWidth: 203,
-				expectedSVGHeight: 250,
-				message: 'Width smaller than the predefined width (203).'
-			},
-			{
-				width: 250,
-				height: 300,
-				expectedX: ( 250 - 203 ) / -2,
-				expectedY: ( 300 - 250 ) / -2,
-				expectedSVGWidth: 203,
-				expectedSVGHeight: 250,
-				message: 'Width bigger than the predefined width (203).'
-			}
-		];
+	const cases = [
+		{
+			width: 200,
+			height: 300,
+			expectedX: 203 - 200,
+			expectedY: ( 300 - 250 ) / -2,
+			expectedSVGWidth: 203,
+			expectedSVGHeight: 250,
+			message: 'Width smaller than the predefined width (203).'
+		},
+		{
+			width: 250,
+			height: 300,
+			expectedX: ( 250 - 203 ) / -2,
+			expectedY: ( 300 - 250 ) / -2,
+			expectedSVGWidth: 203,
+			expectedSVGHeight: 250,
+			message: 'Width bigger than the predefined width (203).'
+		}
+	];
 
 	cases.forEach( ( case_ ) => {
-		thumbnail = createThumbnail( {
+		const thumbnail = createThumbnail( {
 			source: 'https://image.url',
 			width: case_.width,
 			height: case_.height
@@ -101,7 +100,7 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
-	let devicePixelRatio = $.bracketedDevicePixelRatio(),
+	const devicePixelRatio = $.bracketedDevicePixelRatio(),
 		rawThumbnail = {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg',
 			width: 500,
@@ -127,30 +126,29 @@ QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
-	let thumbnail,
-		cases = [
-			{
-				width: 400,
-				height: 150,
-				expectedX: 0,
-				expectedY: 0,
-				expectedSVGWidth: 320 + 3,
-				expectedSVGHeight: 150,
-				message: 'Height smaller than the predefined height (200).'
-			},
-			{
-				width: 400,
-				height: 250,
-				expectedX: 0,
-				expectedY: ( 250 - 200 ) / -2,
-				expectedSVGWidth: 320 + 3,
-				expectedSVGHeight: 200,
-				message: 'Height bigger than the predefined height (200).'
-			}
-		];
+	const cases = [
+		{
+			width: 400,
+			height: 150,
+			expectedX: 0,
+			expectedY: 0,
+			expectedSVGWidth: 320 + 3,
+			expectedSVGHeight: 150,
+			message: 'Height smaller than the predefined height (200).'
+		},
+		{
+			width: 400,
+			height: 250,
+			expectedX: 0,
+			expectedY: ( 250 - 200 ) / -2,
+			expectedSVGWidth: 320 + 3,
+			expectedSVGHeight: 200,
+			message: 'Height bigger than the predefined height (200).'
+		}
+	];
 
 	cases.forEach( ( case_ ) => {
-		thumbnail = createThumbnail( {
+		const thumbnail = createThumbnail( {
 			source: 'https://image.url',
 			width: case_.width,
 			height: case_.height
@@ -190,13 +188,13 @@ QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - no raw thumbnail', ( assert ) => {
-	let thumbnail = createThumbnail( null );
+	const thumbnail = createThumbnail( null );
 
 	assert.equal( thumbnail, null, 'No thumbnail.' );
 } );
 
 QUnit.test( 'createThumbnail - small wide image', ( assert ) => {
-	let rawThumbnail = {
+	const rawThumbnail = {
 			source: 'https://landscape-image.jpg',
 			width: 299,
 			height: 298
@@ -207,7 +205,7 @@ QUnit.test( 'createThumbnail - small wide image', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - small tall image', ( assert ) => {
-	let rawThumbnail = {
+	const rawThumbnail = {
 			source: 'https://tall-image.jpg',
 			width: 248,
 			height: 249
@@ -218,15 +216,14 @@ QUnit.test( 'createThumbnail - small tall image', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
-	let cases = [
-			'https://tall-ima\\ge.jpg',
-			'https://tall-ima\'ge.jpg',
-			'https://tall-ima"ge.jpg'
-		],
-		thumbnail;
+	const cases = [
+		'https://tall-ima\\ge.jpg',
+		'https://tall-ima\'ge.jpg',
+		'https://tall-ima"ge.jpg'
+	];
 
 	cases.forEach( ( case_ ) => {
-		thumbnail = createThumbnail( {
+		const thumbnail = createThumbnail( {
 			source: case_,
 			width: 500,
 			height: 400
@@ -237,7 +234,7 @@ QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnailElement', ( assert ) => {
-	let className = 'thumb-class',
+	const className = 'thumb-class',
 		url = 'https://thumbnail.url',
 		x = 25,
 		y = 50,

@@ -9,7 +9,7 @@ QUnit.test( 'If no users are subject to experiment everyone is bucketed as on', 
 } );
 
 QUnit.test( 'Define how experiment size impacts buckets', function ( assert ) {
-	let tests = [
+	const tests = [
 		[ 1, { off: 0, control: 0.5, on: 0.5 } ],
 		[ 0.9, { off: 0.1, control: 0.45, on: 0.45 } ],
 		[ 0.3, { off: 0.7, control: 0.15, on: 0.15 } ],
@@ -19,14 +19,13 @@ QUnit.test( 'Define how experiment size impacts buckets', function ( assert ) {
 	];
 
 	tests.forEach( ( test ) => {
-		let actualBuckets,
-			experiments = stubs.createStubExperiments( 'A' ),
+		const experiments = stubs.createStubExperiments( 'A' ),
 			spy = this.sandbox.spy( experiments, 'getBucket' ),
 			expectedBuckets = test[ 1 ];
 
 		getUserBucket( experiments, test[ 0 ], 'a' );
 
-		actualBuckets = spy.getCall( 0 ).args[ 0 ].buckets;
+		const actualBuckets = spy.getCall( 0 ).args[ 0 ].buckets;
 		// To avoid precision issues we'll need to test them all individually
 		// rather than check use calledWith. Otherwise we'll get some false
 		// positives.

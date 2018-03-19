@@ -4,7 +4,7 @@ import footerLink from '../../../src/changeListeners/footerLink';
 // integration test.
 QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 	beforeEach() {
-		let boundActions = {};
+		const boundActions = {};
 
 		// Stub internal usage of mw.message
 		mediaWiki.message = ( str ) =>
@@ -42,13 +42,11 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 } );
 
 QUnit.test( 'it should append the link to the footer menu', function ( assert ) {
-	let $link;
-
 	assert.expect( 2 );
 
 	this.whenLinkPreviewsBoots();
 
-	$link = this.getLink();
+	const $link = this.getLink();
 
 	assert.strictEqual( $link.length, 1 );
 	assert.equal(
@@ -59,14 +57,11 @@ QUnit.test( 'it should append the link to the footer menu', function ( assert ) 
 } );
 
 QUnit.test( 'it should show and hide the link', function ( assert ) {
-	let $link,
-		prevState;
-
 	assert.expect( 2 );
 
 	this.whenLinkPreviewsBoots();
 
-	$link = this.getLink();
+	const $link = this.getLink();
 
 	assert.equal(
 		$link.css( 'display' ),
@@ -76,7 +71,7 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 
 	// ---
 
-	prevState = $.extend( true, {}, this.state );
+	const prevState = $.extend( true, {}, this.state );
 	this.state.settings.shouldShowFooterLink = false;
 
 	this.footerLinkChangeListener( prevState, this.state );
@@ -89,13 +84,11 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 } );
 
 QUnit.test( 'it should call the showSettings bound action creator', function ( assert ) {
-	let $link;
-
 	assert.expect( 1 );
 
 	this.whenLinkPreviewsBoots();
 
-	$link = this.getLink();
+	const $link = this.getLink();
 	$link.click();
 
 	assert.ok( this.showSettingsSpy.called );

@@ -13,7 +13,7 @@ import * as counts from '../counts';
  * @return {Object}
  */
 function getBaseData( bootAction ) {
-	let result = {
+	const result = {
 		pageTitleSource: bootAction.page.title,
 		namespaceIdSource: bootAction.page.namespaceId,
 		pageIdSource: bootAction.page.id,
@@ -76,7 +76,7 @@ function createEvent( interaction, actionData ) {
  * @return {Object|undefined}
  */
 function createClosingEvent( interaction ) {
-	let actionData = {
+	const actionData = {
 		totalInteractionTime:
 			Math.round( interaction.finished - interaction.started )
 	};
@@ -126,12 +126,12 @@ function createClosingEvent( interaction ) {
  *  current state
  */
 export default function eventLogging( state, action ) {
-	let nextCount, newState,
-		actionTypesWithTokens = [
-			actionTypes.FETCH_COMPLETE,
-			actionTypes.ABANDON_END,
-			actionTypes.PREVIEW_SHOW
-		];
+	let nextCount, newState;
+	const actionTypesWithTokens = [
+		actionTypes.FETCH_COMPLETE,
+		actionTypes.ABANDON_END,
+		actionTypes.PREVIEW_SHOW
+	];
 
 	if ( state === undefined ) {
 		state = {

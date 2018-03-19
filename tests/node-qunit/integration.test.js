@@ -6,7 +6,7 @@ import * as actions from '../../src/actions';
 import reducers from '../../src/reducers';
 import registerChangeListener from '../../src/changeListener';
 
-let mw = mediaWiki,
+const mw = mediaWiki,
 	$ = jQuery,
 	/**
 	* Whether Gateway#getPageSummary is resolved or rejected.
@@ -103,7 +103,7 @@ QUnit.module( 'ext.popups preview @integration', {
 			this.resetWait();
 			return this.actions.linkDwell( title, el, ev, {
 				getPageSummary() {
-					let method = resolution === FETCH_RESOLUTION.RESOLVE ?
+					const method = resolution === FETCH_RESOLUTION.RESOLVE ?
 						'resolve' : 'reject';
 					return $.Deferred()[ method ]( fetchResponse ).promise();
 				}
@@ -113,7 +113,7 @@ QUnit.module( 'ext.popups preview @integration', {
 		this.dwellAndShowPreview = (
 			title, el, ev, fetchResponse, reject = FETCH_RESOLUTION.RESOLVE
 		) => {
-			let dwelled = this.dwell( title, el, ev, fetchResponse, reject );
+			const dwelled = this.dwell( title, el, ev, fetchResponse, reject );
 			// Resolve the wait timeout for the linkDwell and the fetch action
 			this.waitDeferred.resolve();
 			return dwelled;
@@ -125,7 +125,7 @@ QUnit.module( 'ext.popups preview @integration', {
 		};
 
 		this.abandonAndWait = () => {
-			let abandoned = this.abandon();
+			const abandoned = this.abandon();
 			this.waitDeferred.resolve();
 			return abandoned;
 		};
@@ -134,7 +134,7 @@ QUnit.module( 'ext.popups preview @integration', {
 			return this.dwellAndShowPreview( title, el, ev, res ).then( () => {
 
 				// Get out of the link, and before the delay ends...
-				let abandonPromise = this.abandon(),
+				const abandonPromise = this.abandon(),
 					abandonWaitDeferred = this.waitDeferred;
 
 				// Dwell over the preview
@@ -150,37 +150,36 @@ QUnit.module( 'ext.popups preview @integration', {
 } );
 
 QUnit.test( 'it boots in INACTIVE state', function ( assert ) {
-	let state = this.store.getState();
+	const state = this.store.getState();
 
 	assert.equal( state.preview.activeLink, undefined );
 	assert.equal( state.preview.linkInteractionToken, undefined );
 } );
 
 QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( assert ) {
-	let state,
-		gateway = {
-			getPageSummary() {
-				$.Deferred().promise();
-			}
-		};
+	const gateway = {
+		getPageSummary() {
+			$.Deferred().promise();
+		}
+	};
 
 	this.actions.linkDwell(
 		this.title, this.el, 'event',
 		gateway,
 		constant( 'pagetoken' )
 	);
-	state = this.store.getState();
+	const state = this.store.getState();
 	assert.equal( state.preview.activeLink, this.el, 'It has an active link' );
 	assert.equal( state.preview.shouldShow, false, 'Initializes with NO_DATA' );
 } );
 
 QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert ) {
-	let store = this.store,
+	const store = this.store,
 		el = this.el;
 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
 		.then( () => {
-			let state = store.getState();
+			const state = store.getState();
 			assert.equal( state.preview.activeLink, el );
 			assert.equal(
 				state.preview.shouldShow, true,
@@ -189,13 +188,13 @@ QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert 
 } );
 
 QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert ) {
-	let store = this.store,
+	const store = this.store,
 		el = this.el;
 
 	return this.dwellAndShowPreview(
 		this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT
 	).then( () => {
-		let state = store.getState();
+		const state = store.getState();
 		assert.equal( state.preview.activeLink, el );
 		assert.equal( state.preview.shouldShow, true,
 			'Should show when data couldn\'t be fetched' );
@@ -203,43 +202,41 @@ QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert
 } );
 
 QUnit.test( 'in ACTIVE state, abandon start, and then end, switch it to INACTIVE', function ( assert ) {
-	let el = this.el;
+	const el = this.el;
 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
 		.then( () => {
 			return this.abandonAndWait( el );
 		} ).then( () => {
-			let state = this.store.getState();
+			const state = this.store.getState();
 			assert.equal( state.preview.activeLink, undefined,
 				'After abandoning, preview is back to INACTIVE' );
 		} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, and then dwell preview, should keep it active after all delays', function ( assert ) {
-	let el = this.el;
+	const el = this.el;
 
 	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( () => {
-			let state = this.store.getState();
+			const state = this.store.getState();
 			assert.equal( state.preview.activeLink, el );
 		} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should keep it active after all delays', function ( assert ) {
-	let el = this.el;
+	const el = this.el;
 
 	// Dwell link, abandon it & hover preview
 	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( () => {
-			let abandonedPreview, abandonWaitDeferred, dwelled, dwellWaitDeferred;
-
 			// Start abandoning the preview
-			abandonedPreview = this.abandon();
-			abandonWaitDeferred = this.waitDeferred;
+			const abandonedPreview = this.abandon();
+			const abandonWaitDeferred = this.waitDeferred;
 
 			// Dwell back into the link, new event ('event2') is triggered
-			dwelled = this.dwell( this.title, el, 'event2', 42 );
-			dwellWaitDeferred = this.waitDeferred;
+			const dwelled = this.dwell( this.title, el, 'event2', 42 );
+			const dwellWaitDeferred = this.waitDeferred;
 
 			// Preview abandon happens next, before the fetch
 			abandonWaitDeferred.resolve();
@@ -250,7 +247,7 @@ QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should 
 			return $.when( abandonedPreview, dwelled );
 		} )
 		.then( () => {
-			let state = this.store.getState();
+			const state = this.store.getState();
 			assert.equal( state.preview.activeLink, el );
 		} );
 } );

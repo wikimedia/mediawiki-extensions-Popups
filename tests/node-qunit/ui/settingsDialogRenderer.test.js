@@ -19,7 +19,7 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 } );
 
 QUnit.test( '#render', ( assert ) => {
-	let boundActions = {
+	const boundActions = {
 			saveSettings() {},
 			hideSettings() {}
 		},

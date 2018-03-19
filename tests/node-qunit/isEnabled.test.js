@@ -22,13 +22,10 @@ QUnit.module( 'ext.popups#isEnabled (logged out)', {
 } );
 
 QUnit.test( 'is should handle logged out users', ( assert ) => {
-	let user = stubs.createStubUser( /* isAnon = */ true ),
-		cases,
-		i, testCase,
-		userSettings,
+	const user = stubs.createStubUser( /* isAnon = */ true ),
 		config = new Map();
 
-	cases = [
+	const cases = [
 		/*
 		[
 			<isAnon>, <bucket>, <expected value of isEnabled>, <test description>
@@ -48,8 +45,9 @@ QUnit.test( 'is should handle logged out users', ( assert ) => {
 			' and the user is not in the sample.' ]
 	];
 
-	for ( i = 0; i < cases.length; i++ ) {
-		testCase = cases[ i ];
+	let userSettings;
+	for ( let i = 0; i < cases.length; i++ ) {
+		const testCase = cases[ i ];
 		userSettings = createStubUserSettings( testCase[ 0 ] );
 
 		assert.equal(
@@ -83,7 +81,7 @@ QUnit.test( 'is should handle logged out users', ( assert ) => {
 } );
 
 QUnit.test( 'it should handle logged in users', ( assert ) => {
-	let user = stubs.createStubUser( /* isAnon = */ false ),
+	const user = stubs.createStubUser( /* isAnon = */ false ),
 		userSettings = createStubUserSettings( false ),
 		config = new Map();
 
@@ -108,7 +106,7 @@ QUnit.test( 'it should handle logged in users', ( assert ) => {
 } );
 
 QUnit.test( 'it should handle the conflict with the Navigation Popups Gadget', ( assert ) => {
-	let user = stubs.createStubUser( /* isAnon = */ false ),
+	const user = stubs.createStubUser( /* isAnon = */ false ),
 		userSettings = createStubUserSettings( false ),
 		config = new Map();
 

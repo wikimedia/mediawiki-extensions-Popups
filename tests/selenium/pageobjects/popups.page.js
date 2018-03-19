@@ -1,4 +1,3 @@
-'use strict';
 const
 	fs = require( 'fs' ),
 	EditPage = require( '../../../../../tests/selenium/pageobjects/edit.page' ),
@@ -24,14 +23,16 @@ class PopupsPage extends Page {
 	}
 
 	resourceLoaderModuleStatus( moduleName, moduleStatus, errMsg ) {
-		// Word of caution:
-		// browser.waitUntil [http://webdriver.io/api/utility/waitUntil.html] returns a Timer class
-		// (https://github.com/webdriverio/webdriverio/blob/master/lib/utils/Timer.js) NOT a Promise.
-		// Webdriver IO will run waitUntil synchronously so not returning it will block JavaScript
-		// execution while returning it will not.
+		// Word of caution: browser.waitUntil returns a Timer class NOT a Promise.
+		// Webdriver IO will run waitUntil synchronously so not returning it will
+		// block JavaScript execution while returning it will not.
+		// http://webdriver.io/api/utility/waitUntil.html
+		// https://github.com/webdriverio/webdriverio/blob/master/lib/utils/Timer.js
 		browser.waitUntil( () => {
 			return browser.execute( ( module ) => {
-				return mw && mw.loader && mw.loader.getState( module.name ) === module.status;
+				return mediaWiki &&
+					mediaWiki.loader &&
+					mediaWiki.loader.getState( module.name ) === module.status;
 			}, { status: moduleStatus, name: moduleName } );
 		}, 10000, errMsg );
 	}

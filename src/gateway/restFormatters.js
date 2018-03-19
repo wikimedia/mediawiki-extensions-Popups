@@ -6,7 +6,7 @@ import * as formatter from '../formatter';
  * @return {Array} An array of DOM Elements
  */
 export function parseHTMLResponse( page ) {
-	let extract = page.extract_html;
+	const extract = page.extract_html;
 
 	return extract.length === 0 ? [] : $.parseHTML( extract );
 }

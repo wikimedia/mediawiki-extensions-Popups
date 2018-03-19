@@ -1,7 +1,7 @@
 /**
  * @module constants
  */
-let $ = jQuery,
+const $ = jQuery,
 	// If bracketedDevicePixelRatio is not available default to 1 (in tests for
 	// example)
 	pixelRatio = $.bracketedDevicePixelRatio &&

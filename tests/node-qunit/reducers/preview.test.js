@@ -9,7 +9,7 @@ QUnit.module( 'ext.popups/reducers#preview', {
 } );
 
 QUnit.test( '@@INIT', ( assert ) => {
-	let state = preview( undefined, { type: '@@INIT' } );
+	const state = preview( undefined, { type: '@@INIT' } );
 
 	assert.expect( 1 );
 
@@ -27,7 +27,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 } );
 
 QUnit.test( 'BOOT', ( assert ) => {
-	let action = {
+	const action = {
 		type: 'BOOT',
 		isEnabled: true
 	};
@@ -44,7 +44,7 @@ QUnit.test( 'BOOT', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
-	let action = {
+	const action = {
 		type: 'SETTINGS_CHANGE',
 		enabled: true
 	};
@@ -61,7 +61,7 @@ QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 } );
 
 QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert ) {
-	let action = {
+	const action = {
 		type: 'LINK_DWELL',
 		el: this.el,
 		event: {},
@@ -82,7 +82,7 @@ QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert
 } );
 
 QUnit.test( 'LINK_DWELL on an active link only updates dwell state', function ( assert ) {
-	let action = {
+	const action = {
 			type: 'LINK_DWELL',
 			el: this.el,
 			event: {},
@@ -104,14 +104,14 @@ QUnit.test( 'LINK_DWELL on an active link only updates dwell state', function ( 
 } );
 
 QUnit.test( 'ABANDON_END', ( assert ) => {
-	let action = {
-			type: 'ABANDON_END',
-			token: 'bananas'
-		},
-		state = {
-			activeToken: 'bananas',
-			isUserDwelling: false
-		};
+	const action = {
+		type: 'ABANDON_END',
+		token: 'bananas'
+	};
+	let state = {
+		activeToken: 'bananas',
+		isUserDwelling: false
+	};
 
 	assert.deepEqual(
 		preview( state, action ),
@@ -154,8 +154,8 @@ QUnit.test( 'ABANDON_END', ( assert ) => {
 } );
 
 QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
-	let token = '1234567890',
-		state = {
+	const token = '1234567890';
+	let state = {
 			activeToken: token,
 			isUserDwelling: true
 		},
@@ -216,15 +216,15 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 } );
 
 QUnit.test( actionTypes.FETCH_FAILED, ( assert ) => {
-	let token = '1234567890',
+	const token = '1234567890',
 		state = {
 			activeToken: token,
 			isUserDwelling: true
-		},
-		action = {
-			type: actionTypes.FETCH_FAILED,
-			token
 		};
+	let action = {
+		type: actionTypes.FETCH_FAILED,
+		token
+	};
 
 	assert.expect( 2 );
 
@@ -259,7 +259,7 @@ QUnit.test( actionTypes.FETCH_FAILED, ( assert ) => {
 } );
 
 QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
-	let action = {
+	const action = {
 		type: 'PREVIEW_DWELL'
 	};
 
@@ -275,7 +275,7 @@ QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 } );
 
 QUnit.test( 'ABANDON_START', ( assert ) => {
-	let action = {
+	const action = {
 		type: 'ABANDON_START'
 	};
 

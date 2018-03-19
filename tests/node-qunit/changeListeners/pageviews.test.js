@@ -1,14 +1,12 @@
 import pageviews from '../../../src/changeListeners/pageviews';
 
-let page,
-	REFERRER = 'https://en.m.wikipedia.org/wiki/Kittens';
-
-page = {
-	namespaceId: 1,
-	id: 42,
-	title: 'Kittens',
-	url: REFERRER
-};
+const REFERRER = 'https://en.m.wikipedia.org/wiki/Kittens',
+	page = {
+		namespaceId: 1,
+		id: 42,
+		title: 'Kittens',
+		url: REFERRER
+	};
 
 QUnit.module( 'ext.popups/pageviews', {
 	beforeEach() {
@@ -40,7 +38,7 @@ function createState( title ) {
 }
 
 QUnit.test( 'it should log the queued event', function ( assert ) {
-	let state = createState( 'Rainbows' );
+	const state = createState( 'Rainbows' );
 
 	this.changeListener( undefined, state );
 
@@ -66,7 +64,7 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 } );
 
 QUnit.test( 'it should not log something that is not a pageview', function ( assert ) {
-	let state = createState();
+	const state = createState();
 
 	this.changeListener( undefined, state );
 

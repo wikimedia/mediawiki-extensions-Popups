@@ -19,16 +19,15 @@
  * @return {Object}
  */
 export default function nextState( state, updates ) {
-	let result = {},
-		key;
+	const result = {};
 
-	for ( key in state ) {
+	for ( const key in state ) {
 		if ( state.hasOwnProperty( key ) && !updates.hasOwnProperty( key ) ) {
 			result[ key ] = state[ key ];
 		}
 	}
 
-	for ( key in updates ) {
+	for ( const key in updates ) {
 		if ( updates.hasOwnProperty( key ) ) {
 			result[ key ] = updates[ key ];
 		}

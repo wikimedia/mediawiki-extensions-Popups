@@ -8,7 +8,7 @@
  *
  * @constant {Object}
  */
-let previewTypes = {
+const previewTypes = {
 	/** empty preview */
 	TYPE_GENERIC: 'generic',
 	/** standard preview */
@@ -59,7 +59,7 @@ export function createModel(
 	thumbnail,
 	pageId
 ) {
-	let processedExtract = processExtract( extract ),
+	const processedExtract = processExtract( extract ),
 		previewType = getPreviewType( type, processedExtract );
 
 	return {

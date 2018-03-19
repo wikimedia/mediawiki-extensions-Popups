@@ -2,7 +2,7 @@ import * as renderer from '../../../src/ui/renderer';
 import { createNullModel, previewTypes } from '../../../src/preview/model';
 import { createThumbnail } from '../../../src/ui/thumbnail';
 
-let $ = jQuery,
+const $ = jQuery,
 	MSG_NO_PREVIEW = 'There was an issue displaying this preview',
 	MSG_GO_TO_PAGE = 'Go to this page',
 	MSG_DISAMBIGUATION = 'This title relates to more than one page',
@@ -66,7 +66,7 @@ QUnit.module( 'ext.popups#renderer', {
 } );
 
 QUnit.test( 'createPokeyMasks', ( assert ) => {
-	let $container = $( '<div>' ),
+	const $container = $( '<div>' ),
 		cases = [
 			[ 'clippath#mwe-popups-mask polygon', '0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000' ],
 			[ 'clippath#mwe-popups-mask-flip polygon', '0 8, 274 8, 282 0, 290 8, 1000 8, 1000 1000, 0 1000' ],
@@ -85,7 +85,7 @@ QUnit.test( 'createPokeyMasks', ( assert ) => {
 } );
 
 QUnit.test( 'createPagePreview', ( assert ) => {
-	let model = {
+	const model = {
 			title: 'Test',
 			url: 'https://en.wikipedia.org/wiki/Test',
 			languageCode: 'en',
@@ -98,9 +98,7 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 				height: 512
 			}
 		},
-		preview;
-
-	preview = renderer.createPreviewWithType( model );
+		preview = renderer.createPreviewWithType( model );
 
 	assert.equal( preview.hasThumbnail, true, 'Preview has thumbnail.' );
 	assert.deepEqual(
@@ -121,7 +119,7 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 } );
 
 QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
-	let model = {
+	const model = {
 			title: 'Test',
 			url: 'https://en.wikipedia.org/wiki/Test',
 			languageCode: 'en',
@@ -166,7 +164,7 @@ QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
 } );
 
 QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
-	let model = createNullModel( 'Test', '/wiki/Test' ),
+	const model = createNullModel( 'Test', '/wiki/Test' ),
 		emptyPreview = renderer.createPreviewWithType( model );
 
 	assert.equal(
@@ -199,7 +197,7 @@ QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
 } );
 
 QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
-	let model = {
+	const model = {
 			title: 'Barack (disambiguation)',
 			url: 'url/Barack (disambiguation)',
 			languageCode: 'en',
@@ -239,7 +237,7 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 } );
 
 QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
-	let preview = createPagePreview(),
+	const preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -253,7 +251,7 @@ QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
 } );
 
 QUnit.test( 'bindBehavior - preview abandon', function ( assert ) {
-	let preview = createPagePreview(),
+	const preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -266,7 +264,7 @@ QUnit.test( 'bindBehavior - preview abandon', function ( assert ) {
 } );
 
 QUnit.test( 'bindBehavior - preview click', function ( assert ) {
-	let preview = createPagePreview(),
+	const preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -281,7 +279,7 @@ QUnit.test( 'bindBehavior - preview click', function ( assert ) {
 } );
 
 QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
-	let preview = createPagePreview(),
+	const preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -296,7 +294,7 @@ QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
 } );
 
 QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
-	let preview = createPagePreview(),
+	const preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
@@ -309,7 +307,7 @@ QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
 } );
 
 QUnit.test( 'show', function ( assert ) {
-	let preview = createPagePreview(),
+	const preview = createPagePreview(),
 		event = {
 			pageX: 252,
 			pageY: 1146,
@@ -345,12 +343,11 @@ QUnit.test( 'show', function ( assert ) {
 		},
 		behavior = createBehavior( this.sandbox ),
 		token = 'some-token',
-		$container = $( '<div>' ),
-		showPreview;
+		$container = $( '<div>' );
 
 	preview.el.show = this.sandbox.stub();
 
-	showPreview = renderer.show(
+	const showPreview = renderer.show(
 		preview, event, link, behavior, token, $container.get( 0 ) );
 
 	assert.notEqual(
@@ -372,7 +369,7 @@ QUnit.test( 'show', function ( assert ) {
 } );
 
 QUnit.test( 'hide - fade out up', ( assert ) => {
-	let preview = {
+	const preview = {
 			el: $( '<div>', { 'class': 'mwe-popups-fade-in-down' } ),
 			hasThumbnail: false,
 			thumbnail: null,
@@ -404,7 +401,7 @@ QUnit.test( 'hide - fade out up', ( assert ) => {
 } );
 
 QUnit.test( 'hide - fade out down', ( assert ) => {
-	let preview = {
+	const preview = {
 			el: $( '<div>', { 'class': 'mwe-popups-fade-in-up' } ),
 			hasThumbnail: false,
 			thumbnail: null,
@@ -436,7 +433,7 @@ QUnit.test( 'hide - fade out down', ( assert ) => {
 } );
 
 QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top left of the page', ( assert ) => {
-	let isPreviewTall = false,
+	const isPreviewTall = false,
 		eventData = {
 			pageX: 252,
 			pageY: 1146,
@@ -482,7 +479,7 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 } );
 
 QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom center of the page', ( assert ) => {
-	let isPreviewTall = true,
+	const isPreviewTall = true,
 		eventData = {
 			pageX: 176,
 			pageY: 1252,
@@ -528,7 +525,7 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 } );
 
 QUnit.test( '#createLayout - empty preview, keyboard event, link is on the center right of the page', ( assert ) => {
-	let isPreviewTall = false,
+	const isPreviewTall = false,
 		eventData = {},
 		linkData = {
 			clientRects: [ {
@@ -570,7 +567,7 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 } );
 
 QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
-	let cases = [
+	const cases = [
 		// [ previewOptions, layoutOptions, expected, message ]
 		[
 			{
@@ -648,7 +645,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 	} );
 } );
 QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => {
-	let cases = [
+	const cases = [
 		[
 			{
 				hasThumbnail: true,
@@ -726,7 +723,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 } );
 
 QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
-	let cases = [
+	const cases = [
 		[
 			{
 				hasThumbnail: true,
@@ -804,7 +801,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 } );
 
 QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
-	let preview = createPagePreview( false, false, null ),
+	const preview = createPagePreview( false, false, null ),
 		layout = {
 			flippedX: false,
 			flippedY: false,
@@ -834,7 +831,7 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 } );
 
 QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', ( assert ) => {
-	let preview = createPagePreview( true, true, { height: 200 } ),
+	const preview = createPagePreview( true, true, { height: 200 } ),
 		layout = {
 			flippedX: true,
 			flippedY: false,
@@ -873,7 +870,7 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', ( assert 
 } );
 
 QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small height', ( assert ) => {
-	let preview = createPagePreview( false, true, { height: 199 } ),
+	const preview = createPagePreview( false, true, { height: 199 } ),
 		layout = {
 			flippedX: true,
 			flippedY: false,
@@ -913,7 +910,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 } );
 
 QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big height', ( assert ) => {
-	let preview = createPagePreview( false, true, { height: 201 } ),
+	const preview = createPagePreview( false, true, { height: 201 } ),
 		layout = {
 			flippedX: true,
 			flippedY: false,
@@ -953,7 +950,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 } );
 
 QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert ) => {
-	let preview = createPagePreview( true, true, { height: 200 } ),
+	const preview = createPagePreview( true, true, { height: 200 } ),
 		layout = {
 			flippedX: false,
 			flippedY: true,
@@ -991,7 +988,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 } );
 
 QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', ( assert ) => {
-	let preview = createPagePreview( true, true, { height: 200 } ),
+	const preview = createPagePreview( true, true, { height: 200 } ),
 		layout = {
 			flippedX: true,
 			flippedY: true,
@@ -1030,7 +1027,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', ( a
 } );
 
 QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y', ( assert ) => {
-	let preview = createPagePreview( false, true, { height: 200 } ),
+	const preview = createPagePreview( false, true, { height: 200 } ),
 		layout = {
 			flippedX: true,
 			flippedY: true,

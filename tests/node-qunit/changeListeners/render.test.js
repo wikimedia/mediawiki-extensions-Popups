@@ -16,11 +16,9 @@ QUnit.module( 'ext.popups/changeListeners/render', {
 QUnit.test(
 	'it should show the preview with the behavior',
 	function ( assert ) {
-		let previewBehavior = {},
-			changeListener,
-			state;
+		const previewBehavior = {};
 
-		state = {
+		const state = {
 			preview: {
 				shouldShow: true,
 				activeEvent: {},
@@ -28,7 +26,7 @@ QUnit.test(
 			}
 		};
 
-		changeListener = render( previewBehavior );
+		const changeListener = render( previewBehavior );
 		changeListener( undefined, state );
 
 		assert.ok( this.preview.show.calledWith(
@@ -40,17 +38,14 @@ QUnit.test(
 );
 
 QUnit.test( 'it should render the preview', ( assert ) => {
-	let state,
-		changeListener;
-
-	state = {
+	const state = {
 		preview: {
 			shouldShow: true,
 			fetchResponse: {}
 		}
 	};
 
-	changeListener = render( /* previewBehavior = undefined */ );
+	const changeListener = render( /* previewBehavior = undefined */ );
 	changeListener( undefined, state );
 
 	assert.ok(

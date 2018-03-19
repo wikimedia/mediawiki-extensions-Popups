@@ -8,7 +8,7 @@
  * @global
  */
 
-let IS_ENABLED_KEY = 'mwe-popups-enabled',
+const IS_ENABLED_KEY = 'mwe-popups-enabled',
 	PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
 
 /**
@@ -57,7 +57,7 @@ export default function createUserSettings( storage ) {
 		 * @return {Boolean}
 		 */
 		hasIsEnabled() {
-			let value = storage.get( IS_ENABLED_KEY );
+			const value = storage.get( IS_ENABLED_KEY );
 
 			return Boolean( value ) !== false;
 		},
@@ -74,14 +74,14 @@ export default function createUserSettings( storage ) {
 		 * @return {Number}
 		 */
 		getPreviewCount() {
-			let result = storage.get( PREVIEW_COUNT_KEY ), count;
+			const result = storage.get( PREVIEW_COUNT_KEY );
 
 			if ( result === false ) {
 				return -1;
 			} else if ( result === null ) {
 				return 0;
 			}
-			count = parseInt( result, 10 );
+			let count = parseInt( result, 10 );
 
 			// stored number is not a zero, override it to zero and store new value
 			if ( isNaN( count ) ) {

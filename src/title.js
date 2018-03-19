@@ -2,7 +2,7 @@
  * @module title
  */
 
-let mw = window.mediaWiki;
+const mw = window.mediaWiki;
 
 /**
  * Gets the title of a local page from an href given some configuration.
@@ -12,13 +12,11 @@ let mw = window.mediaWiki;
  * @return {String|undefined}
  */
 export function getTitle( href, config ) {
-	let linkHref,
-		matches,
-		queryLength,
-		titleRegex = new RegExp( mw.RegExp.escape( config.get( 'wgArticlePath' ) )
-			.replace( '\\$1', '(.+)' ) );
+	const titleRegex = new RegExp( mw.RegExp.escape( config.get( 'wgArticlePath' ) )
+		.replace( '\\$1', '(.+)' ) );
 
 	// Skip every URI that mw.Uri cannot parse
+	let linkHref;
 	try {
 		linkHref = new mw.Uri( href );
 	} catch ( e ) {
@@ -30,11 +28,11 @@ export function getTitle( href, config ) {
 		return undefined;
 	}
 
-	queryLength = Object.keys( linkHref.query ).length;
+	const queryLength = Object.keys( linkHref.query ).length;
 
 	// No query params (pretty URL)
 	if ( !queryLength ) {
-		matches = titleRegex.exec( linkHref.path );
+		const matches = titleRegex.exec( linkHref.path );
 		return matches ? decodeURIComponent( matches[ 1 ] ) : undefined;
 	} else if ( queryLength === 1 && linkHref.query.hasOwnProperty( 'title' ) ) {
 		// URL is not pretty, but only has a `title` parameter
@@ -54,14 +52,12 @@ export function getTitle( href, config ) {
  * @return {mw.Title|null}
  */
 export function isValid( title, contentNamespaces ) {
-	let mwTitle;
-
 	if ( !title ) {
 		return null;
 	}
 
 	// Is title in a content namespace?
-	mwTitle = mw.Title.newFromText( title );
+	const mwTitle = mw.Title.newFromText( title );
 	if ( mwTitle && ( $.inArray( mwTitle.namespace, contentNamespaces ) >= 0 ) ) {
 		return mwTitle;
 	}

@@ -4,7 +4,7 @@
 
 import { createModel, createNullModel } from '../preview/model';
 
-let RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
+const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
 	mw = window.mediaWiki,
 	$ = jQuery;
 /**
@@ -41,7 +41,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	 * @return {jQuery.Promise}
 	 */
 	function fetch( title ) {
-		let endpoint = config.endpoint;
+		const endpoint = config.endpoint;
 
 		return ajax( {
 			url: endpoint + encodeURIComponent( title ),
@@ -53,7 +53,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	}
 
 	function getPageSummary( title ) {
-		let result = $.Deferred();
+		const result = $.Deferred();
 
 		fetch( title )
 			.then(
@@ -115,19 +115,15 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
  * @return {Object}
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
-	let parts = thumbnail.source.split( '/' ),
-		lastPart = parts[ parts.length - 1 ],
-		filename,
-		filenamePxIndex,
-		width,
-		height;
+	const parts = thumbnail.source.split( '/' ),
+		lastPart = parts[ parts.length - 1 ];
 
 	// The last part, the thumbnail's full filename, is in the following form:
 	// ${width}px-${filename}.${extension}. Splitting the thumbnail's filename
 	// makes this function resilient to the thumbnail not having the same
 	// extension as the original image, which is definitely the case for SVG's
 	// where the thumbnail's extension is .svg.png.
-	filenamePxIndex = lastPart.indexOf( 'px-' );
+	const filenamePxIndex = lastPart.indexOf( 'px-' );
 	if ( filenamePxIndex === -1 ) {
 		// The thumbnail size is not customizable. Presumably, RESTBase requested a
 		// width greater than the original and so MediaWiki returned the original's
@@ -143,9 +139,10 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 		// Use the original.
 		return original;
 	}
-	filename = lastPart.substr( filenamePxIndex + 3 );
+	const filename = lastPart.substr( filenamePxIndex + 3 );
 
 	// Scale the thumbnail's largest dimension.
+	let width, height;
 	if ( thumbnail.width > thumbnail.height ) {
 		width = thumbSize;
 		height = Math.floor( ( thumbSize / thumbnail.width ) * thumbnail.height );

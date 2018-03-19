@@ -15,15 +15,13 @@ QUnit.test( '@@INIT', function ( assert ) {
 } );
 
 QUnit.test( 'FETCH_START', function ( assert ) {
-	let action, state;
-
 	assert.expect( 1 );
 
-	action = {
+	const action = {
 		type: 'FETCH_START',
 		timestamp: 123
 	};
-	state = statsv( this.initialState, action );
+	const state = statsv( this.initialState, action );
 
 	assert.deepEqual(
 		state,
@@ -34,17 +32,15 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 } );
 
 QUnit.test( 'FETCH_END', ( assert ) => {
-	let startedAt, endedAt, action, state;
-
 	assert.expect( 1 );
 
-	startedAt = 200;
-	endedAt = 500;
-	action = {
+	const startedAt = 200;
+	const endedAt = 500;
+	const action = {
 		type: 'FETCH_END',
 		timestamp: endedAt
 	};
-	state = statsv( { fetchStartedAt: startedAt }, action );
+	const state = statsv( { fetchStartedAt: startedAt }, action );
 
 	assert.deepEqual(
 		state,
@@ -57,14 +53,12 @@ QUnit.test( 'FETCH_END', ( assert ) => {
 } );
 
 QUnit.test( 'FETCH_FAILED', ( assert ) => {
-	let action, state;
-
 	assert.expect( 1 );
 
-	action = {
+	const action = {
 		type: 'FETCH_FAILED'
 	};
-	state = statsv( {}, action );
+	const state = statsv( {}, action );
 
 	assert.deepEqual(
 		state,
@@ -76,16 +70,14 @@ QUnit.test( 'FETCH_FAILED', ( assert ) => {
 } );
 
 QUnit.test( 'LINK_DWELL', ( assert ) => {
-	let timestamp, action, state;
-
 	assert.expect( 1 );
 
-	timestamp = 100;
-	action = {
+	const timestamp = 100;
+	const action = {
 		type: 'LINK_DWELL',
 		timestamp
 	};
-	state = statsv( {}, action );
+	const state = statsv( {}, action );
 
 	assert.deepEqual(
 		state,
@@ -96,17 +88,15 @@ QUnit.test( 'LINK_DWELL', ( assert ) => {
 } );
 
 QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
-	let startedAt, endedAt, action, state;
-
 	assert.expect( 1 );
 
-	startedAt = 100;
-	endedAt = 300;
-	action = {
+	const startedAt = 100;
+	const endedAt = 300;
+	const action = {
 		type: 'PREVIEW_SHOW',
 		timestamp: endedAt
 	};
-	state = statsv( { linkDwellStartedAt: startedAt }, action );
+	const state = statsv( { linkDwellStartedAt: startedAt }, action );
 
 	assert.deepEqual(
 		state,
@@ -119,14 +109,12 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 } );
 
 QUnit.test( 'STATSV_LOGGED', ( assert ) => {
-	let action, state;
-
 	assert.expect( 1 );
 
-	action = {
+	const action = {
 		type: 'STATSV_LOGGED'
 	};
-	state = statsv( { data: 123 }, action );
+	const state = statsv( { data: 123 }, action );
 
 	assert.deepEqual(
 		state,

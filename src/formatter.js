@@ -1,4 +1,4 @@
-let $ = jQuery,
+const $ = jQuery,
 	mw = window.mediaWiki;
 
 /**
@@ -37,14 +37,13 @@ export function formatPlainTextExtract( plainTextExtract, title ) {
  * @return {Array} A set of HTML Elements
  */
 function makeTitleInExtractBold( extract, title ) {
-	let regExp, escapedTitle,
-		elements = [],
+	const elements = [],
 		boldIdentifier = '<bi-' + Math.random() + '>',
 		snip = '<snip-' + Math.random() + '>';
 
 	title = title.replace( /\s+/g, ' ' ).trim(); // Remove extra white spaces
-	escapedTitle = mw.RegExp.escape( title ); // Escape RegExp elements
-	regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'i' );
+	const escapedTitle = mw.RegExp.escape( title ); // Escape RegExp elements
+	const regExp = new RegExp( '(^|\\s)(' + escapedTitle + ')(|$)', 'i' );
 
 	// Remove text in parentheses along with the parentheses
 	extract = extract.replace( /\s+/, ' ' ); // Remove extra white spaces

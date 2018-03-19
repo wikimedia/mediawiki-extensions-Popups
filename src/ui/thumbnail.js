@@ -2,7 +2,7 @@
  * @module thumbnail
  */
 
-let SIZES = {
+const SIZES = {
 		portraitImage: {
 			h: 250, // Exact height
 			w: 203 // Max width
@@ -37,17 +37,15 @@ export { SIZES };
  * @return {ext.popups.Thumbnail|null}
  */
 export function createThumbnail( rawThumbnail ) {
-	let tall, thumbWidth, thumbHeight,
-		x, y, width, height, clipPath,
-		devicePixelRatio = $.bracketedDevicePixelRatio();
+	const devicePixelRatio = $.bracketedDevicePixelRatio();
 
 	if ( !rawThumbnail ) {
 		return null;
 	}
 
-	tall = rawThumbnail.width < rawThumbnail.height;
-	thumbWidth = rawThumbnail.width / devicePixelRatio;
-	thumbHeight = rawThumbnail.height / devicePixelRatio;
+	const tall = rawThumbnail.width < rawThumbnail.height;
+	const thumbWidth = rawThumbnail.width / devicePixelRatio;
+	const thumbHeight = rawThumbnail.height / devicePixelRatio;
 
 	if (
 		// Image too small for landscape display
@@ -64,6 +62,7 @@ export function createThumbnail( rawThumbnail ) {
 		return null;
 	}
 
+	let x, y, width, height, clipPath;
 	if ( tall ) {
 		x = ( thumbWidth > SIZES.portraitImage.w ) ?
 			( ( thumbWidth - SIZES.portraitImage.w ) / -2 ) :
@@ -121,11 +120,10 @@ export function createThumbnail( rawThumbnail ) {
 export function createThumbnailElement(
 	className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath
 ) {
-	let $thumbnailSVGImage, $thumbnail,
-		nsSvg = 'http://www.w3.org/2000/svg',
+	const nsSvg = 'http://www.w3.org/2000/svg',
 		nsXlink = 'http://www.w3.org/1999/xlink';
 
-	$thumbnailSVGImage = $( document.createElementNS( nsSvg, 'image' ) );
+	const $thumbnailSVGImage = $( document.createElementNS( nsSvg, 'image' ) );
 	$thumbnailSVGImage[ 0 ].setAttributeNS( nsXlink, 'href', url );
 	$thumbnailSVGImage
 		.addClass( className )
@@ -137,7 +135,7 @@ export function createThumbnailElement(
 			'clip-path': 'url(#' + clipPath + ')'
 		} );
 
-	$thumbnail = $( document.createElementNS( nsSvg, 'svg' ) )
+	const $thumbnail = $( document.createElementNS( nsSvg, 'svg' ) )
 		.attr( {
 			xmlns: nsSvg,
 			width,

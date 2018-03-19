@@ -1,6 +1,6 @@
 import * as formatter from '../../src/formatter';
 
-let $ = jQuery;
+const $ = jQuery;
 
 QUnit.module( 'ext.popups.formatter', {
 	beforeEach() {
@@ -16,7 +16,7 @@ QUnit.module( 'ext.popups.formatter', {
 } );
 
 QUnit.test( 'Title is bold', ( assert ) => {
-	let cases = [
+	const cases = [
 		[
 			'Isaac Newton was born in', 'Isaac Newton',
 			'<b>Isaac Newton</b> was born in',
@@ -55,7 +55,7 @@ QUnit.test( 'Title is bold', ( assert ) => {
 	];
 
 	function test( extract, title, expected, msg ) {
-		let $div = $( '<div>' ).append(
+		const $div = $( '<div>' ).append(
 			formatter.formatPlainTextExtract( extract, title )
 		);
 		assert.equal( $div.html(), expected, msg );

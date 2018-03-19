@@ -1,7 +1,7 @@
 import { createModel } from '../../../src/preview/model';
 import createRESTBaseGateway from '../../../src/gateway/rest';
 
-let DEFAULT_CONSTANTS = {
+const DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 512,
 		endpoint: '/api/rest_v1/page/summary/'
 	},
@@ -165,7 +165,7 @@ QUnit.module( 'gateway/rest', {
 } );
 
 QUnit.test( 'RESTBase gateway is called with correct arguments', function ( assert ) {
-	let getSpy = this.sandbox.spy(),
+	const getSpy = this.sandbox.spy(),
 		gateway = createRESTBaseGateway( getSpy, DEFAULT_CONSTANTS ),
 		expectedOptions = {
 			url: DEFAULT_CONSTANTS.endpoint + encodeURIComponent( 'Test Title' ),
@@ -180,7 +180,7 @@ QUnit.test( 'RESTBase gateway is called with correct arguments', function ( asse
 } );
 
 QUnit.test( 'RESTBase provider uses extract parser', function ( assert ) {
-	let getSpy = this.sandbox.spy(),
+	const getSpy = this.sandbox.spy(),
 		gateway = createRESTBaseGateway();
 
 	gateway.convertPageToModel( RESTBASE_RESPONSE, 512, getSpy );
@@ -188,7 +188,7 @@ QUnit.test( 'RESTBase provider uses extract parser', function ( assert ) {
 } );
 
 QUnit.test( 'RESTBase gateway is correctly converting the page data to a model', ( assert ) => {
-	let gateway = createRESTBaseGateway();
+	const gateway = createRESTBaseGateway();
 
 	assert.deepEqual(
 		gateway.convertPageToModel( RESTBASE_RESPONSE, 512, provideParsedExtract ),
@@ -197,7 +197,7 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a model',
 } );
 
 QUnit.test( 'RESTBase gateway is correctly converting the page data to a disambiguation model', ( assert ) => {
-	let gateway = createRESTBaseGateway();
+	const gateway = createRESTBaseGateway();
 
 	assert.deepEqual(
 		gateway.convertPageToModel( RESTBASE_RESPONSE_DISAMBIGUATION,
@@ -207,10 +207,9 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a disambi
 } );
 
 QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', ( assert ) => {
-	let model,
-		gateway = createRESTBaseGateway();
+	const gateway = createRESTBaseGateway();
 
-	model = gateway.convertPageToModel(
+	let model = gateway.convertPageToModel(
 		RESTBASE_RESPONSE, 2000, provideParsedExtract );
 
 	assert.deepEqual(
@@ -258,9 +257,8 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', ( assert ) => {
 } );
 
 QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', ( assert ) => {
-	let model,
-		gateway = createRESTBaseGateway();
-	model = gateway.convertPageToModel(
+	const gateway = createRESTBaseGateway();
+	const model = gateway.convertPageToModel(
 		RESTBASE_RESPONSE_WITH_NO_PX_IMAGE, 300, provideParsedExtract );
 
 	assert.equal(
@@ -271,15 +269,14 @@ QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', (
 } );
 
 QUnit.test( 'RESTBase gateway handles awkward thumbnails', ( assert ) => {
-	let gateway = createRESTBaseGateway(),
-		response,
-		model;
+	const gateway = createRESTBaseGateway();
 
-	response = Object.assign( {}, RESTBASE_RESPONSE );
+	const response = Object.assign( {}, RESTBASE_RESPONSE );
 	response.thumbnail = Object.assign( {}, RESTBASE_RESPONSE.thumbnail );
 	response.thumbnail.source = 'http://foo.bar/baz/Qux-320px-Quux.png/800px-Qux-320px-Quux.png';
 
-	model = gateway.convertPageToModel( response, 500, provideParsedExtract );
+	const model =
+		gateway.convertPageToModel( response, 500, provideParsedExtract );
 
 	assert.deepEqual(
 		model.thumbnail.source,
@@ -289,10 +286,9 @@ QUnit.test( 'RESTBase gateway handles awkward thumbnails', ( assert ) => {
 } );
 
 QUnit.test( 'RESTBase gateway stretches SVGs', ( assert ) => {
-	let model,
-		gateway = createRESTBaseGateway();
+	const gateway = createRESTBaseGateway();
 
-	model = gateway.convertPageToModel(
+	const model = gateway.convertPageToModel(
 		SVG_RESTBASE_RESPONSE, 2000, provideParsedExtract );
 
 	assert.equal(
@@ -303,7 +299,7 @@ QUnit.test( 'RESTBase gateway stretches SVGs', ( assert ) => {
 } );
 
 QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
-	let api = this.sandbox.stub()
+	const api = this.sandbox.stub()
 			.returns( $.Deferred().reject( { status: 500 } ).promise() ),
 		gateway = createRESTBaseGateway( api, {} );
 
@@ -313,7 +309,7 @@ QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
 } );
 
 QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( assert ) {
-	let response = {
+	const response = {
 			status: 404,
 			type: 'https://mediawiki.org/wiki/HyperSwitch/errors/not_found',
 			title: 'Not found.',
@@ -336,7 +332,7 @@ QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( ass
 } );
 
 QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
-	let api = this.sandbox.stub().returns(
+	const api = this.sandbox.stub().returns(
 			$.Deferred().resolve( RESTBASE_RESPONSE ).promise()
 		),
 		gateway = createRESTBaseGateway(
@@ -348,9 +344,8 @@ QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
 } );
 
 QUnit.test( 'RESTBase gateway handles missing images ', ( assert ) => {
-	let model,
-		gateway = createRESTBaseGateway();
-	model = gateway.convertPageToModel(
+	const gateway = createRESTBaseGateway();
+	const model = gateway.convertPageToModel(
 		RESTBASE_RESPONSE_WITHOUT_IMAGE, 300, provideParsedExtract );
 
 	assert.equal(
@@ -361,7 +356,8 @@ QUnit.test( 'RESTBase gateway handles missing images ', ( assert ) => {
 } );
 
 QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
-	let api = this.sandbox.stub().returns( $.Deferred().resolve( {} ).promise() ),
+	const
+		api = this.sandbox.stub().returns( $.Deferred().resolve( {} ).promise() ),
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
@@ -373,7 +369,7 @@ QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
 } );
 
 QUnit.test( 'RESTBase gateway handles no content success responses', function ( assert ) {
-	let api = this.sandbox.stub()
+	const api = this.sandbox.stub()
 			.returns( $.Deferred().resolve( { status: 204 } ).promise() ),
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );

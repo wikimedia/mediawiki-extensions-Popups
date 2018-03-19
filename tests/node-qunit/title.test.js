@@ -25,7 +25,7 @@ QUnit.module( 'title#getTitle', {
 } );
 
 QUnit.test( 'it should return the title of a url with a title query param', function ( assert ) {
-	let href = '/w/index.php?title=Foo';
+	const href = '/w/index.php?title=Foo';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		query: {
@@ -37,7 +37,7 @@ QUnit.test( 'it should return the title of a url with a title query param', func
 } );
 
 QUnit.test( 'it should return the title of a pretty url if it conforms wgArticlePath', function ( assert ) {
-	let href = '/wiki/Foo';
+	const href = '/wiki/Foo';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: href,
@@ -48,7 +48,7 @@ QUnit.test( 'it should return the title of a pretty url if it conforms wgArticle
 } );
 
 QUnit.test( 'it should return the title of a pretty url properly decoded', function ( assert ) {
-	let href = '/wiki/%E6%B8%AC%E8%A9%A6';
+	const href = '/wiki/%E6%B8%AC%E8%A9%A6';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: href,
@@ -59,7 +59,7 @@ QUnit.test( 'it should return the title of a pretty url properly decoded', funct
 } );
 
 QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) {
-	let href = 'javascript:void(0);'; // eslint-disable-line no-script-url
+	const href = 'javascript:void(0);'; // eslint-disable-line no-script-url
 	window.mediaWiki.Uri.withArgs( href ).throws(
 		new Error( 'Cannot parse' )
 	);
@@ -68,7 +68,7 @@ QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) 
 } );
 
 QUnit.test( 'it should skip urls that are external', function ( assert ) {
-	let href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+	const href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: 'www.youtube.com',
 		path: '/watch',
@@ -137,7 +137,7 @@ QUnit.test( 'it should return null if the title is not from a content namespace'
 } );
 
 QUnit.test( 'it should return the title object if the title is from a content namespace', ( assert ) => {
-	let mwTitle = {
+	const mwTitle = {
 		namespace: 3
 	};
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( mwTitle );

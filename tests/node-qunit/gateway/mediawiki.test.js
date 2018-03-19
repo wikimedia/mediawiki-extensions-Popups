@@ -1,7 +1,7 @@
 import { createModel } from '../../../src/preview/model';
 import createMediaWikiApiGateway from '../../../src/gateway/mediawiki';
 
-let DEFAULT_CONSTANTS = {
+const DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 300,
 		EXTRACT_LENGTH: 525
 	},
@@ -64,7 +64,7 @@ QUnit.module( 'ext.popups/gateway/mediawiki', {
 } );
 
 QUnit.test( 'MediaWiki API gateway is called with correct arguments', function ( assert ) {
-	let spy = this.sandbox.spy(),
+	const spy = this.sandbox.spy(),
 		api = {
 			get: spy
 		},
@@ -100,7 +100,7 @@ QUnit.test( 'MediaWiki API gateway is called with correct arguments', function (
 } );
 
 QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from the response ', function ( assert ) {
-	let api = {
+	const api = {
 			get: this.sandbox.stub()
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS ),
@@ -145,7 +145,7 @@ QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from th
 } );
 
 QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a model', ( assert ) => {
-	let gateway = createMediaWikiApiGateway(),
+	const gateway = createMediaWikiApiGateway(),
 		page = gateway.extractPageFromResponse( MEDIAWIKI_API_RESPONSE );
 
 	assert.deepEqual(
@@ -155,7 +155,7 @@ QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a mo
 } );
 
 QUnit.test( 'MediaWiki API gateway handles API failure', function ( assert ) {
-	let api = {
+	const api = {
 			get: this.sandbox.stub()
 				.returns( $.Deferred().reject( { status: 400 } ).promise() )
 		},
@@ -167,7 +167,7 @@ QUnit.test( 'MediaWiki API gateway handles API failure', function ( assert ) {
 } );
 
 QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert ) {
-	let api = {
+	const api = {
 			get: this.sandbox.stub().returns(
 				$.Deferred().resolve( MEDIAWIKI_API_RESPONSE ).promise()
 			)
@@ -180,7 +180,7 @@ QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert
 } );
 
 QUnit.test( 'MediaWiki API gateway handles missing pages ', function ( assert ) {
-	let response = {
+	const response = {
 			query: {
 				pages: [ {
 					canonicalurl: 'http://dev.wiki.local.wmftest.net:8080/wiki/Missing_page',

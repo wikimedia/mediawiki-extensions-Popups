@@ -2,7 +2,7 @@
  * @module changeListeners/eventLogging
  */
 
-let $ = jQuery;
+const $ = jQuery;
 
 /**
  * Creates an instance of the event logging change listener.
@@ -21,8 +21,8 @@ export default function eventLogging(
 	boundActions, eventLoggingTracker, getCurrentTimestamp
 ) {
 	return ( _, state ) => {
-		let eventLogging = state.eventLogging,
-			event = eventLogging.event;
+		const eventLogging = state.eventLogging;
+		let event = eventLogging.event;
 
 		if ( !event ) {
 			return;

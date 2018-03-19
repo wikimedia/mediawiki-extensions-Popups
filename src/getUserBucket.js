@@ -10,7 +10,7 @@
  * @return {string} bucket that the user belongs to (off/control/on)
  */
 function getUserBucket( experiments, experimentGroupSize, sessionId ) {
-	let control = experimentGroupSize / 2;
+	const control = experimentGroupSize / 2;
 	if ( !experimentGroupSize ) {
 		// no users are subject to experiment
 		return 'on';

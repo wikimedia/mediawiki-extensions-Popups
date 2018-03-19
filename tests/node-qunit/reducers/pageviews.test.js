@@ -1,7 +1,7 @@
 import pageviews from '../../../src/reducers/pageviews';
 
 /* eslint-disable camelcase */
-let PAGEVIEW = {
+const PAGEVIEW = {
 		page_title: 'Bears',
 		page_id: 1,
 		page_namespace: 0
@@ -23,7 +23,7 @@ QUnit.module( 'ext.popups/reducers#pageviews', {
 } );
 
 QUnit.test( 'BOOT', function ( assert ) {
-	let action = {
+	const action = {
 		type: 'BOOT',
 		page: PAGE
 	};
@@ -39,7 +39,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 } );
 
 QUnit.test( 'PREVIEW_SEEN', ( assert ) => {
-	let action = {
+	const action = {
 		type: 'PREVIEW_SEEN',
 		title: 'Bears',
 		pageId: 1,
@@ -59,7 +59,7 @@ QUnit.test( 'PREVIEW_SEEN', ( assert ) => {
 } );
 
 QUnit.test( 'PAGEVIEW_LOGGED', ( assert ) => {
-	let action = {
+	const action = {
 		type: 'PAGEVIEW_LOGGED'
 	};
 

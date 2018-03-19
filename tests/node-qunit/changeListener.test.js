@@ -1,6 +1,6 @@
 import registerChangeListener from '../../src/changeListener';
 
-let stubStore = ( () => {
+const stubStore = ( () => {
 	let state;
 
 	return {
@@ -16,8 +16,8 @@ let stubStore = ( () => {
 QUnit.module( 'ext.popups/changeListener' );
 
 QUnit.test( 'it should only call the callback when the state has changed', function ( assert ) {
-	let spy = this.sandbox.spy(),
-		boundChangeListener;
+	const spy = this.sandbox.spy();
+	let boundChangeListener;
 
 	stubStore.subscribe = ( changeListener ) => {
 		boundChangeListener = changeListener;

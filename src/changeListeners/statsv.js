@@ -12,7 +12,7 @@
  */
 export default function statsv( boundActions, track ) {
 	return ( _, state ) => {
-		let statsv = state.statsv;
+		const statsv = state.statsv;
 
 		if ( statsv.action ) {
 			track( statsv.action, statsv.data );
