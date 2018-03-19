@@ -58,7 +58,7 @@
 
 /* slightly shrinking disambiguation icon */
 .mw-ui-icon.mw-ui-icon-element.mw-ui-icon-preview-disambiguation:before {
-	background-size: 90% auto;
+	background-size: contain;
 }
 
 .mwe-popups {
@@ -72,6 +72,12 @@
 	line-height: @lineHeight;
 	min-width: 300px;
 	border-radius: @borderRadius;
+
+	.mw-ui-icon {
+		// mw-ui-icon assumes a font size of 16px so we must declare it here
+		font-size: 16px;
+		margin: 21px 0 8px 0;
+	}
 
 	.mwe-popups-container {
 		color: @colorText;
