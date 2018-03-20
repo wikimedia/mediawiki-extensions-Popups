@@ -13,7 +13,6 @@
 	"popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
 	"popups-redirects": "Unused at this time.\n\nMessage shown when the hovercard is showing a redirected page.\n\nParameters:\n* $1 - Redirect target page",
 	"popups-settings-title": "Title used for the setting's dialog",
-	"popups-settings-description": "Description for the setting's dialog",
 	"popups-settings-option-simple": "Title for the reader hovercard option\n{{Identical|Enable}}",
 	"popups-settings-option-simple-description": "Description for the reader hovercard option",
 	"popups-settings-option-advanced": "Title for the editor or navigation popups option\n{{Identical|Advanced}}",

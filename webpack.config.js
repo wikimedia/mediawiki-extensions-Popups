@@ -20,7 +20,7 @@ conf = {
 	output: {
 		// The absolute path to the output directory.
 		path: path.resolve( __dirname, 'resources/dist' ),
-		devtoolModuleFilenameTemplate: PUBLIC_PATH + '/[resource-path]',
+		devtoolModuleFilenameTemplate: `${PUBLIC_PATH  }/[resource-path]`,
 
 		// Write each chunk (entries, here) to a file named after the entry, e.g.
 		// the "index" entry gets written to index.js.
@@ -32,8 +32,8 @@ conf = {
 	entry: { index: './src' },
 	performance: {
 		hints: isProduction ? 'error' : false,
-		maxAssetSize: 35.5 * 1024,
-		maxEntrypointSize: 35.5 * 1024,
+		maxAssetSize: 35.3 * 1024,
+		maxEntrypointSize: 35.3 * 1024,
 		assetFilter: function ( filename ) {
 			// The default filter excludes map files but we rename ours to .filename.
 			return filename.endsWith( '.js' );
