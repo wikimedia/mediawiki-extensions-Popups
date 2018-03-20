@@ -71,8 +71,8 @@ class PopupsGadgetsIntegration {
 	}
 
 	/**
-	 * Check if Page Previews conflicts with Nav Popups Gadget
-	 * If user enabled Nav Popups PagePreviews are not available
+	 * Check if Popups conflicts with Nav Popups Gadget
+	 * If user enabled Nav Popups, Popups is unavailable
 	 *
 	 * @param \User $user User whose gadget settings are checked
 	 * @return bool

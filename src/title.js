@@ -66,7 +66,7 @@ export function isValid( title, contentNamespaces ) {
 }
 
 /**
- * Return a mw.Title from a HTMLElement if valid for hovercards. Convenience
+ * Return a mw.Title from a HTMLElement if valid for page previews. Convenience
  * method
  *
  * @param {Element} el
