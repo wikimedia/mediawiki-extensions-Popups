@@ -8,7 +8,7 @@
     "test": "npm run check-built-assets && npm run test:dev && npm run doc",
     "doc": "jsdoc -c jsdoc.json",
     "doc:start": "nodemon --watch src --exec 'npm run doc'",
-    "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITED' && rm -rf test-build && mv resources/dist test-build && npm run build && diff -x '*.map' -qr test-build resources/dist && rm -rf test-build",
+    "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITTED OR STAGED' && rm -rf resources/dist/ && npm run build && git diff -q resources/dist",
     "coverage": "istanbul cover node_modules/.bin/mw-node-qunit tests/node-qunit/*.js tests/node-qunit/**/*.js",
     "precommit": "npm run test:dev && npm run build && git add resources/dist && bundlesize"
   },
