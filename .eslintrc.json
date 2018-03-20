@@ -18,6 +18,13 @@
 		"ReduxThunk": false
 	},
 	"rules": {
+		"no-restricted-properties": [2,
+			{
+				 "object": "$",
+				 "property": "each",
+				 "message": "Please use Array.forEach"
+			 }
+		],
 		"dot-notation": [ 2, { "allowKeywords": true } ],
 		"no-use-before-define": 0,
 		"no-var": 2,

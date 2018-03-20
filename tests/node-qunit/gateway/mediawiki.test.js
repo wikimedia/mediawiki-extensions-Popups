@@ -130,13 +130,13 @@ QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from th
 
 	assert.expect( errorCases.length + successCases.length );
 
-	$.each( errorCases, ( _, data ) => {
+	errorCases.forEach( data => {
 		assert.throws( () => {
 			gateway.extractPageFromResponse( data );
 		} );
 	} );
 
-	$.each( successCases, ( _, data ) => {
+	successCases.forEach( data => {
 		assert.deepEqual(
 			gateway.extractPageFromResponse( data[ 0 ] ),
 			data[ 1 ]

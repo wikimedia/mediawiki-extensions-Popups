@@ -562,7 +562,7 @@ export function layoutPreview(
 export function getClosestYPosition( y, rects, isTop ) {
 	let minY = null, result;
 
-	$.each( rects, ( i, rect ) => {
+	Array.prototype.slice.call( rects ).forEach( rect => {
 		const deltaY = Math.abs( y - rect.top + y - rect.bottom );
 
 		if ( minY === null || minY > deltaY ) {
