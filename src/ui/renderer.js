@@ -513,7 +513,7 @@ export function layoutPreview(
 
 	popup.css( {
 		top: offsetTop,
-		left: layout.offset.left + 'px'
+		left: `${ layout.offset.left }px`
 	} );
 
 	if ( flippedY && hasThumbnail ) {

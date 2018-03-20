@@ -4,7 +4,7 @@ import { createStubUser } from './stubs';
 QUnit.module( 'ext.popups.preview.settingsBehavior', {
 	beforeEach() {
 		function newFromText( title ) {
-			return { getUrl() { return 'url/' + title; } };
+			return { getUrl() { return `url/${ title }`; } };
 		}
 
 		mediaWiki.Title = { newFromText };
@@ -31,7 +31,7 @@ QUnit.test( 'it should set the settingsUrl on wgPopupsBetaFeature', function ( a
 
 		assert.deepEqual(
 			behavior.settingsUrl,
-			'url/' + testCase[ 1 ]
+			`url/${ testCase[ 1 ] }`
 		);
 	} );
 } );

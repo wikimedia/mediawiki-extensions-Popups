@@ -13,21 +13,21 @@ const mw = window.mediaWiki;
  * @return {jQuery} settings dialog
  */
 export function createSettingsDialog( navPopupsEnabled ) {
-	const path = mw.config.get( 'wgExtensionAssetsPath' ) +
-			'/Popups/resources/ext.popups.main/images/',
+	const assets = mw.config.get( 'wgExtensionAssetsPath' ),
+		path = `${ assets }/Popups/resources/ext.popups.main/images/`,
 		choices = [
 			{
 				id: 'simple',
 				name: mw.msg( 'popups-settings-option-simple' ),
 				description: mw.msg( 'popups-settings-option-simple-description' ),
-				image: path + 'hovercard.svg',
+				image: `${ path }hovercard.svg`,
 				isChecked: true
 			},
 			{
 				id: 'advanced',
 				name: mw.msg( 'popups-settings-option-advanced' ),
 				description: mw.msg( 'popups-settings-option-advanced-description' ),
-				image: path + 'navpop.svg'
+				image: `${ path }navpop.svg`
 			},
 			{
 				id: 'off',

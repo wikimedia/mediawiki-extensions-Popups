@@ -150,13 +150,13 @@ const DEFAULT_CONSTANTS = {
 	);
 
 function provideParsedExtract( page ) {
-	return '!' + page.extract + '!';
+	return `!${ page.extract }!`;
 }
 
 QUnit.module( 'gateway/rest', {
 	beforeEach() {
 		window.mediaWiki.Title = function ( title ) {
-			this.getUrl = () => 'url/' + title;
+			this.getUrl = () => `url/${ title }`;
 		};
 	},
 	afterEach() {

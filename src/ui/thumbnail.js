@@ -132,7 +132,7 @@ export function createThumbnailElement(
 			y,
 			width: thumbnailWidth,
 			height: thumbnailHeight,
-			'clip-path': 'url(#' + clipPath + ')'
+			'clip-path': `url(#${ clipPath })`
 		} );
 
 	const $thumbnail = $( document.createElementNS( nsSvg, 'svg' ) )

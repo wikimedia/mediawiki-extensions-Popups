@@ -10,7 +10,7 @@ class PopupsPage extends Page {
 	setup() {
 		browser.call( () => {
 			return new Promise( ( resolve ) => {
-				fs.readFile( `${__dirname}/../fixtures/test_page.wikitext`, 'utf-8', ( err, content ) => {
+				fs.readFile( `${ __dirname }/../fixtures/test_page.wikitext`, 'utf-8', ( err, content ) => {
 					if ( err ) {
 						throw err;
 					}

@@ -13,8 +13,8 @@ export function renderPagePreview(
 	return `
 		<div class='mwe-popups' role='tooltip' aria-hidden>
 			<div class='mwe-popups-container'>
-				${hasThumbnail ? `<a href='${url}' class='mwe-popups-discreet'></a>` : ''}
-				<a dir='${languageDirection}' lang='${languageCode}' class='mwe-popups-extract' href='${url}'></a>
+				${ hasThumbnail ? `<a href='${ url }' class='mwe-popups-discreet'></a>` : '' }
+				<a dir='${ languageDirection }' lang='${ languageCode }' class='mwe-popups-extract' href='${ url }'></a>
 				<footer>
 					<a class='mwe-popups-settings-icon mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-settings'></a>
 				</footer>

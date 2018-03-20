@@ -236,7 +236,7 @@ mw.requestIdleCallback( function () {
 
 	mw.hook( 'wikipage.content' ).add( function ( $container ) {
 		const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
-			validLinkSelector = 'a[href][title]:not(' + invalidLinksSelector + ')';
+			validLinkSelector = `a[href][title]:not(${ invalidLinksSelector })`;
 
 		rendererInit();
 

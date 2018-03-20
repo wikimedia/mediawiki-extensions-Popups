@@ -820,12 +820,12 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		layout.offset.top + 'px',
+		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
 	assert.equal(
 		preview.el.css( 'left' ),
-		layout.offset.left + 'px',
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 } );
@@ -850,12 +850,12 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', ( assert 
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		layout.offset.top + 'px',
+		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
 	assert.equal(
 		preview.el.css( 'left' ),
-		layout.offset.left + 'px',
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.notOk(
@@ -889,17 +889,17 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		layout.offset.top + 'px',
+		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
 	assert.equal(
 		preview.el.css( 'left' ),
-		layout.offset.left + 'px',
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.equal(
 		preview.el.find( '.mwe-popups-extract' ).css( 'margin-top' ),
-		( 199 - 8 ) + 'px', // thumb height - pokey size
+		`${ 199 - 8 }px`, // thumb height - pokey size
 		'Extract margin top has been set when preview height is smaller than the predefined landscape image height.'
 	);
 	assert.equal(
@@ -929,12 +929,12 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		layout.offset.top + 'px',
+		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
 	assert.equal(
 		preview.el.css( 'left' ),
-		layout.offset.left + 'px',
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.equal(
@@ -973,12 +973,12 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		( layout.offset.top - 20 ) + 'px', // - outer height
+		`${ layout.offset.top - 20 }px`, // - outer height
 		'Top is correct.'
 	);
 	assert.equal(
 		preview.el.css( 'left' ),
-		layout.offset.left + 'px',
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.notOk(
@@ -1011,12 +1011,12 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', ( a
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		( layout.offset.top - 20 ) + 'px', // - outer height
+		`${ layout.offset.top - 20 }px`, // - outer height
 		'Top is correct.'
 	);
 	assert.equal(
 		preview.el.css( 'left' ),
-		layout.offset.left + 'px',
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.equal(
@@ -1050,12 +1050,12 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 	);
 	assert.equal(
 		preview.el.css( 'top' ),
-		( layout.offset.top - 20 ) + 'px', // - outer height
+		`${ layout.offset.top - 20 }px`, // - outer height
 		'Top is correct.'
 	);
 	assert.equal(
 		preview.el.css( 'left' ),
-		layout.offset.left + 'px',
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.notOk(

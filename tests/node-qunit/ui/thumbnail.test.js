@@ -69,32 +69,32 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 		assert.equal(
 			thumbnail.el.find( 'image' ).attr( 'x' ),
 			case_.expectedX,
-			'Image element x coordinate is correct. ' + case_.message
+			`Image element x coordinate is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.find( 'image' ).attr( 'y' ),
 			case_.expectedY,
-			'Image element y coordinate is correct. ' + case_.message
+			`Image element y coordinate is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.find( 'image' ).attr( 'width' ),
 			case_.width,
-			'Image element width is correct. ' + case_.message
+			`Image element width is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.find( 'image' ).attr( 'height' ),
 			case_.height,
-			'Image element height is correct. ' + case_.message
+			`Image element height is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.attr( 'width' ),
 			case_.expectedSVGWidth,
-			'Image SVG width is correct. ' + case_.message
+			`Image SVG width is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.attr( 'height' ),
 			case_.expectedSVGHeight,
-			'Image SVG height is correct. ' + case_.message
+			`Image SVG height is correct. ${ case_.message }`
 		);
 	} );
 } );
@@ -157,32 +157,32 @@ QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 		assert.equal(
 			thumbnail.el.find( 'image' ).attr( 'x' ),
 			case_.expectedX,
-			'Image x coordinate is correct. ' + case_.message
+			`Image x coordinate is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.find( 'image' ).attr( 'y' ),
 			case_.expectedY,
-			'Image y coordinate is correct. ' + case_.message
+			`Image y coordinate is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.find( 'image' ).attr( 'width' ),
 			case_.width,
-			'Image element width is correct. ' + case_.message
+			`Image element width is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.find( 'image' ).attr( 'height' ),
 			case_.height,
-			'Image element height is correct. ' + case_.message
+			`Image element height is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.attr( 'width' ),
 			case_.expectedSVGWidth,
-			'Image SVG width is correct. ' + case_.message
+			`Image SVG width is correct. ${ case_.message }`
 		);
 		assert.equal(
 			thumbnail.el.attr( 'height' ),
 			case_.expectedSVGHeight,
-			'Image SVG height is correct. ' + case_.message
+			`Image SVG height is correct. ${ case_.message }`
 		);
 	} );
 } );

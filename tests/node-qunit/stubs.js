@@ -63,7 +63,7 @@ export function createStubTitle( namespace, prefixedDb ) {
 			return prefixedDb;
 		},
 		getUrl() {
-			return `/wiki/${prefixedDb}`;
+			return `/wiki/${ prefixedDb }`;
 		}
 	};
 }
