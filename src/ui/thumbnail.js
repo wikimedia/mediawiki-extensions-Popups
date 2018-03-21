@@ -2,7 +2,7 @@
  * @module thumbnail
  */
 
-var SIZES = {
+let SIZES = {
 		portraitImage: {
 			h: 250, // Exact height
 			w: 203 // Max width
@@ -37,7 +37,7 @@ export { SIZES };
  * @return {ext.popups.Thumbnail|null}
  */
 export function createThumbnail( rawThumbnail ) {
-	var tall, thumbWidth, thumbHeight,
+	let tall, thumbWidth, thumbHeight,
 		x, y, width, height, clipPath,
 		devicePixelRatio = $.bracketedDevicePixelRatio();
 
@@ -121,7 +121,7 @@ export function createThumbnail( rawThumbnail ) {
 export function createThumbnailElement(
 	className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath
 ) {
-	var $thumbnailSVGImage, $thumbnail,
+	let $thumbnailSVGImage, $thumbnail,
 		nsSvg = 'http://www.w3.org/2000/svg',
 		nsXlink = 'http://www.w3.org/1999/xlink';
 

@@ -9,7 +9,7 @@ QUnit.test( 'If no users are subject to experiment everyone is bucketed as on', 
 } );
 
 QUnit.test( 'Define how experiment size impacts buckets', function ( assert ) {
-	var tests = [
+	let tests = [
 		[ 1, { off: 0, control: 0.5, on: 0.5 } ],
 		[ 0.9, { off: 0.1, control: 0.45, on: 0.45 } ],
 		[ 0.3, { off: 0.7, control: 0.15, on: 0.15 } ],
@@ -19,7 +19,7 @@ QUnit.test( 'Define how experiment size impacts buckets', function ( assert ) {
 	];
 
 	tests.forEach( ( test ) => {
-		var actualBuckets,
+		let actualBuckets,
 			experiments = stubs.createStubExperiments( 'A' ),
 			spy = this.sandbox.spy( experiments, 'getBucket' ),
 			expectedBuckets = test[ 1 ];

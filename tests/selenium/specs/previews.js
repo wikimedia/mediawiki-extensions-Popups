@@ -1,7 +1,7 @@
 'use strict';
 
-const assert = require( 'assert' );
-const page = require( '../pageobjects/popups.page' );
+const assert = require( 'assert' ),
+	page = require( '../pageobjects/popups.page' );
 
 describe( 'Dwelling on a valid link', () => {
 

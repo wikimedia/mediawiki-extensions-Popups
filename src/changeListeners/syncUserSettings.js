@@ -57,7 +57,7 @@ function get( state, reducer, prop ) {
  * changed
  */
 function syncIfChanged( prevState, state, reducer, prop, sync ) {
-	var current = get( state, reducer, prop );
+	let current = get( state, reducer, prop );
 	if ( prevState && ( get( prevState, reducer, prop ) !== current ) ) {
 		sync( current );
 	}

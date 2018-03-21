@@ -8,7 +8,7 @@
  * @return {Container}
  */
 export default function createContainer() {
-	var factories = {},
+	let factories = {},
 		cache = {};
 
 	/**
@@ -72,7 +72,7 @@ export default function createContainer() {
 		 * @throws Error If the service hasn't been defined
 		 */
 		get( name ) {
-			var factory;
+			let factory;
 
 			if ( !this.has( name ) ) {
 				throw new Error( 'The service "' + name + '" hasn\'t been defined.' );

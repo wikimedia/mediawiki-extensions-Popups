@@ -15,7 +15,7 @@
  * @return {Boolean}
  */
 export function isEnabled( user, config, experiments ) {
-	var bucketingRate = config.get( 'wgPopupsStatsvSamplingRate', 0 );
+	let bucketingRate = config.get( 'wgPopupsStatsvSamplingRate', 0 );
 
 	return experiments.weightedBoolean(
 		'ext.Popups.statsv',

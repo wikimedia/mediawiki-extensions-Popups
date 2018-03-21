@@ -23,7 +23,7 @@ export function createStubUser( isAnon ) {
  * @return {mw.Map}
  */
 export function createStubMap() {
-	var m = new Map(); /* global Map */
+	let m = new Map(); /* global Map */
 	m.get = function ( key, fallback ) {
 		fallback = arguments.length > 1 ? fallback : null;
 		if ( typeof key === 'string' ) {

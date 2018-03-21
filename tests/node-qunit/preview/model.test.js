@@ -4,7 +4,7 @@ import { createModel, previewTypes }
 QUnit.module( 'ext.popups.preview#createModel' );
 
 QUnit.test( 'it should copy the basic properties', ( assert ) => {
-	var thumbnail = {},
+	let thumbnail = {},
 		model = createModel(
 			'Foo',
 			'https://en.wikipedia.org/wiki/Foo',

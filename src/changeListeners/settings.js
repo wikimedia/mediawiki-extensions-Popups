@@ -6,7 +6,7 @@
  * @return {ext.popups.ChangeListener}
  */
 export default function settings( boundActions, render ) {
-	var settings;
+	let settings;
 
 	return ( prevState, state ) => {
 		if ( !prevState ) {

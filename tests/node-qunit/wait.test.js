@@ -3,7 +3,7 @@ import wait from '../../src/wait';
 QUnit.module( 'ext.popups/wait' );
 
 QUnit.test( 'it should resolve after waiting', function ( assert ) {
-	var timeout;
+	let timeout;
 
 	assert.expect( 1 );
 

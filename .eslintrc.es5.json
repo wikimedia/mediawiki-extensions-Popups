@@ -36,6 +36,7 @@
 		"no-void": 0,
 		"no-unused-vars": 0,
 		"no-undef": 0,
+		"no-var": 0,
 		"quote-props": 0,
 		"curly": 0,
 		"one-var": 0,

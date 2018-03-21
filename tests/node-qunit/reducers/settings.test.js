@@ -3,7 +3,7 @@ import settings from '../../../src/reducers/settings';
 QUnit.module( 'reducers/settings' );
 
 QUnit.test( '@@INIT', ( assert ) => {
-	var state = settings( undefined, { type: '@@INIT' } );
+	let state = settings( undefined, { type: '@@INIT' } );
 
 	assert.deepEqual(
 		state,
@@ -16,7 +16,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 } );
 
 QUnit.test( 'BOOT', ( assert ) => {
-	var action = {
+	let action = {
 		type: 'BOOT',
 		isEnabled: false,
 		user: {
@@ -72,7 +72,7 @@ QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
-	var action = ( wasEnabled, enabled ) => {
+	let action = ( wasEnabled, enabled ) => {
 		return {
 			type: 'SETTINGS_CHANGE',
 			wasEnabled,

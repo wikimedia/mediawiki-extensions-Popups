@@ -6,7 +6,7 @@ import * as actions from '../../src/actions';
 import reducers from '../../src/reducers';
 import registerChangeListener from '../../src/changeListener';
 
-var mw = mediaWiki,
+let mw = mediaWiki,
 	$ = jQuery,
 	/**
 	* Whether Gateway#getPageSummary is resolved or rejected.
@@ -103,7 +103,7 @@ QUnit.module( 'ext.popups preview @integration', {
 			this.resetWait();
 			return this.actions.linkDwell( title, el, ev, {
 				getPageSummary() {
-					var method = resolution === FETCH_RESOLUTION.RESOLVE ?
+					let method = resolution === FETCH_RESOLUTION.RESOLVE ?
 						'resolve' : 'reject';
 					return $.Deferred()[ method ]( fetchResponse ).promise();
 				}
@@ -113,7 +113,7 @@ QUnit.module( 'ext.popups preview @integration', {
 		this.dwellAndShowPreview = (
 			title, el, ev, fetchResponse, reject = FETCH_RESOLUTION.RESOLVE
 		) => {
-			var dwelled = this.dwell( title, el, ev, fetchResponse, reject );
+			let dwelled = this.dwell( title, el, ev, fetchResponse, reject );
 			// Resolve the wait timeout for the linkDwell and the fetch action
 			this.waitDeferred.resolve();
 			return dwelled;
@@ -125,7 +125,7 @@ QUnit.module( 'ext.popups preview @integration', {
 		};
 
 		this.abandonAndWait = () => {
-			var abandoned = this.abandon();
+			let abandoned = this.abandon();
 			this.waitDeferred.resolve();
 			return abandoned;
 		};
@@ -134,7 +134,7 @@ QUnit.module( 'ext.popups preview @integration', {
 			return this.dwellAndShowPreview( title, el, ev, res ).then( () => {
 
 				// Get out of the link, and before the delay ends...
-				var abandonPromise = this.abandon(),
+				let abandonPromise = this.abandon(),
 					abandonWaitDeferred = this.waitDeferred;
 
 				// Dwell over the preview
@@ -150,14 +150,14 @@ QUnit.module( 'ext.popups preview @integration', {
 } );
 
 QUnit.test( 'it boots in INACTIVE state', function ( assert ) {
-	var state = this.store.getState();
+	let state = this.store.getState();
 
 	assert.equal( state.preview.activeLink, undefined );
 	assert.equal( state.preview.linkInteractionToken, undefined );
 } );
 
 QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( assert ) {
-	var state,
+	let state,
 		gateway = {
 			getPageSummary() {
 				$.Deferred().promise();
@@ -175,12 +175,12 @@ QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( 
 } );
 
 QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert ) {
-	var store = this.store,
+	let store = this.store,
 		el = this.el;
 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
 		.then( () => {
-			var state = store.getState();
+			let state = store.getState();
 			assert.equal( state.preview.activeLink, el );
 			assert.equal(
 				state.preview.shouldShow, true,
@@ -189,13 +189,13 @@ QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert 
 } );
 
 QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert ) {
-	var store = this.store,
+	let store = this.store,
 		el = this.el;
 
 	return this.dwellAndShowPreview(
 		this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT
 	).then( () => {
-		var state = store.getState();
+		let state = store.getState();
 		assert.equal( state.preview.activeLink, el );
 		assert.equal( state.preview.shouldShow, true,
 			'Should show when data couldn\'t be fetched' );
@@ -203,35 +203,35 @@ QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert
 } );
 
 QUnit.test( 'in ACTIVE state, abandon start, and then end, switch it to INACTIVE', function ( assert ) {
-	var el = this.el;
+	let el = this.el;
 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
 		.then( () => {
 			return this.abandonAndWait( el );
 		} ).then( () => {
-			var state = this.store.getState();
+			let state = this.store.getState();
 			assert.equal( state.preview.activeLink, undefined,
 				'After abandoning, preview is back to INACTIVE' );
 		} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, and then dwell preview, should keep it active after all delays', function ( assert ) {
-	var el = this.el;
+	let el = this.el;
 
 	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( () => {
-			var state = this.store.getState();
+			let state = this.store.getState();
 			assert.equal( state.preview.activeLink, el );
 		} );
 } );
 
 QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should keep it active after all delays', function ( assert ) {
-	var el = this.el;
+	let el = this.el;
 
 	// Dwell link, abandon it & hover preview
 	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( () => {
-			var abandonedPreview, abandonWaitDeferred, dwelled, dwellWaitDeferred;
+			let abandonedPreview, abandonWaitDeferred, dwelled, dwellWaitDeferred;
 
 			// Start abandoning the preview
 			abandonedPreview = this.abandon();
@@ -250,7 +250,7 @@ QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should 
 			return $.when( abandonedPreview, dwelled );
 		} )
 		.then( () => {
-			var state = this.store.getState();
+			let state = this.store.getState();
 			assert.equal( state.preview.activeLink, el );
 		} );
 } );

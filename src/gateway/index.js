@@ -3,7 +3,7 @@ import createMediaWikiApiGateway from './mediawiki';
 import createRESTBaseGateway from './rest';
 import * as formatters from './restFormatters';
 
-var mw = mediaWiki,
+let mw = mediaWiki,
 	$ = jQuery;
 
 // Note that this interface definition is in the global scope.
@@ -32,7 +32,7 @@ var mw = mediaWiki,
  * @return {Gateway}
  */
 export default function createGateway( config ) {
-	var restConfig = $.extend( {}, constants,
+	let restConfig = $.extend( {}, constants,
 		{
 			endpoint: config.get( 'wgPopupsRestGatewayEndpoint' )
 		}

@@ -4,7 +4,7 @@
 
 import { renderSettingsDialog } from './templates/settingsDialog';
 
-var mw = window.mediaWiki;
+let mw = window.mediaWiki;
 
 /**
  * Create the settings dialog shown to anonymous users.
@@ -13,7 +13,7 @@ var mw = window.mediaWiki;
  * @return {jQuery} settings dialog
  */
 export function createSettingsDialog( navPopupsEnabled ) {
-	var $el,
+	let $el,
 		path = mw.config.get( 'wgExtensionAssetsPath' ) +
 			'/Popups/resources/ext.popups.main/images/',
 		choices = [

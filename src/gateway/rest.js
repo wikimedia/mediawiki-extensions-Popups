@@ -4,7 +4,7 @@
 
 import { createModel, createNullModel } from '../preview/model';
 
-var RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
+let RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
 	mw = window.mediaWiki,
 	$ = jQuery;
 /**
@@ -41,7 +41,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	 * @return {jQuery.Promise}
 	 */
 	function fetch( title ) {
-		var endpoint = config.endpoint;
+		let endpoint = config.endpoint;
 
 		return ajax( {
 			url: endpoint + encodeURIComponent( title ),
@@ -53,7 +53,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	}
 
 	function getPageSummary( title ) {
-		var result = $.Deferred();
+		let result = $.Deferred();
 
 		fetch( title )
 			.then(
@@ -115,7 +115,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
  * @return {Object}
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
-	var parts = thumbnail.source.split( '/' ),
+	let parts = thumbnail.source.split( '/' ),
 		lastPart = parts[ parts.length - 1 ],
 		filename,
 		filenamePxIndex,

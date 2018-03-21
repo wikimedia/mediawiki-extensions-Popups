@@ -14,7 +14,7 @@ QUnit.test( '#has', function ( assert ) {
 } );
 
 QUnit.test( '#get', function ( assert ) {
-	var service = {};
+	let service = {};
 
 	this.factory.returns( service );
 

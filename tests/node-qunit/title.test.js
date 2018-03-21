@@ -25,7 +25,7 @@ QUnit.module( 'title#getTitle', {
 } );
 
 QUnit.test( 'it should return the title of a url with a title query param', function ( assert ) {
-	var href = '/w/index.php?title=Foo';
+	let href = '/w/index.php?title=Foo';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		query: {
@@ -37,7 +37,7 @@ QUnit.test( 'it should return the title of a url with a title query param', func
 } );
 
 QUnit.test( 'it should return the title of a pretty url if it conforms wgArticlePath', function ( assert ) {
-	var href = '/wiki/Foo';
+	let href = '/wiki/Foo';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: href,
@@ -48,7 +48,7 @@ QUnit.test( 'it should return the title of a pretty url if it conforms wgArticle
 } );
 
 QUnit.test( 'it should return the title of a pretty url properly decoded', function ( assert ) {
-	var href = '/wiki/%E6%B8%AC%E8%A9%A6';
+	let href = '/wiki/%E6%B8%AC%E8%A9%A6';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: href,
@@ -59,7 +59,7 @@ QUnit.test( 'it should return the title of a pretty url properly decoded', funct
 } );
 
 QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) {
-	var href = 'javascript:void(0);'; // eslint-disable-line no-script-url
+	let href = 'javascript:void(0);'; // eslint-disable-line no-script-url
 	window.mediaWiki.Uri.withArgs( href ).throws(
 		new Error( 'Cannot parse' )
 	);
@@ -68,7 +68,7 @@ QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) 
 } );
 
 QUnit.test( 'it should skip urls that are external', function ( assert ) {
-	var href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+	let href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: 'www.youtube.com',
 		path: '/watch',
@@ -80,7 +80,7 @@ QUnit.test( 'it should skip urls that are external', function ( assert ) {
 
 QUnit.test( 'it should skip urls not on article path without one title query param', function ( assert ) {
 	// No params
-	var href = '/Foo';
+	let href = '/Foo';
 	window.mediaWiki.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: '/Foo',
@@ -137,7 +137,7 @@ QUnit.test( 'it should return null if the title is not from a content namespace'
 } );
 
 QUnit.test( 'it should return the title object if the title is from a content namespace', ( assert ) => {
-	var mwTitle = {
+	let mwTitle = {
 		namespace: 3
 	};
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( mwTitle );

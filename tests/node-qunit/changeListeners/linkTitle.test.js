@@ -39,7 +39,7 @@ QUnit.test( 'it shouldn\'t remove the title under certain conditions', function 
 } );
 
 QUnit.test( 'it should restore the title', function ( assert ) {
-	var nextState;
+	let nextState;
 
 	this.whenTheLinkIsDwelledUpon();
 
@@ -60,7 +60,7 @@ QUnit.test( 'it should restore the title', function ( assert ) {
 } );
 
 QUnit.test( 'it should restore the title when the user dwells on another link immediately', function ( assert ) {
-	var nextState,
+	let nextState,
 		$anotherLink = $( '<a title="Bar">' );
 
 	this.whenTheLinkIsDwelledUpon();

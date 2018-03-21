@@ -2,7 +2,7 @@
  * @module changeListeners/footerLink
  */
 
-var mw = window.mediaWiki,
+let mw = window.mediaWiki,
 	$ = jQuery;
 
 /**
@@ -18,7 +18,7 @@ var mw = window.mediaWiki,
  * @return {jQuery} The link element
  */
 function createFooterLink() {
-	var $link = $( '<li>' ).append(
+	let $link = $( '<li>' ).append(
 			$( '<a>' )
 				.attr( 'href', '#' )
 				.text( mw.message( 'popups-settings-enable' ).text() )
@@ -57,7 +57,7 @@ function createFooterLink() {
  * @return {ext.popups.ChangeListener}
  */
 export default function footerLink( boundActions ) {
-	var $footerLink;
+	let $footerLink;
 
 	return ( prevState, state ) => {
 		if ( $footerLink === undefined ) {

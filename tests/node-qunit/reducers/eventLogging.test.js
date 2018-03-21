@@ -23,7 +23,7 @@ QUnit.test( '@@INIT', function ( assert ) {
 } );
 
 QUnit.test( 'BOOT', function ( assert ) {
-	var action = {
+	let action = {
 			type: 'BOOT',
 			isEnabled: true,
 			isNavPopupsEnabled: false,
@@ -89,7 +89,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 } );
 
 QUnit.test( 'EVENT_LOGGED', ( assert ) => {
-	var state,
+	let state,
 		action;
 
 	state = {
@@ -133,7 +133,7 @@ QUnit.test( 'EVENT_LOGGED', ( assert ) => {
 } );
 
 QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
-	var state,
+	let state,
 		count = 22,
 		expectedCount = count + 1,
 		token = '1234567890';
@@ -178,7 +178,7 @@ QUnit.module( 'ext.popups/reducers#eventLogging @integration', {
 } );
 
 QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
-	var state,
+	let state,
 		action;
 
 	state = {
@@ -212,7 +212,7 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 } );
 
 QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain conditions', function ( assert ) {
-	var state,
+	let state,
 		now = Date.now(),
 		action;
 
@@ -251,7 +251,7 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 } );
 
 QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" event under certain conditions', function ( assert ) {
-	var token = '0987654321',
+	let token = '0987654321',
 		now = Date.now(),
 		state;
 
@@ -324,7 +324,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 } );
 
 QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
-	var token = '0987654321',
+	let token = '0987654321',
 		state,
 		expectedState,
 		now = Date.now();
@@ -370,7 +370,7 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 } );
 
 QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interaction', function ( assert ) {
-	var state,
+	let state,
 		now = Date.now(),
 		token = '1234567890';
 
@@ -407,7 +407,7 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 } );
 
 QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been shown', function ( assert ) {
-	var token = '0987654321',
+	let token = '0987654321',
 		state,
 		now = Date.now();
 
@@ -454,7 +454,7 @@ QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been sho
 } );
 
 QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
-	var model,
+	let model,
 		token = '1234567890',
 		initialState = {
 			interaction: {
@@ -514,7 +514,7 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 } );
 
 QUnit.test( 'ABANDON_START', function ( assert ) {
-	var state = {
+	let state = {
 		interaction: {}
 	};
 
@@ -530,7 +530,7 @@ QUnit.test( 'ABANDON_START', function ( assert ) {
 } );
 
 QUnit.test( 'ABANDON_END', function ( assert ) {
-	var state,
+	let state,
 		action;
 
 	action = {
@@ -567,7 +567,7 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 } );
 
 QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
-	var state = {
+	let state = {
 		interaction: {}
 	};
 
@@ -582,7 +582,7 @@ QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', function ( assert ) {
-	var initialState = {
+	let initialState = {
 			interaction: {}
 		},
 		state,
@@ -633,7 +633,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 } );
 
 QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
-	var state = eventLogging( undefined, {
+	let state = eventLogging( undefined, {
 		type: 'SETTINGS_CHANGE',
 		wasEnabled: false,
 		enabled: false
@@ -675,7 +675,7 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 } );
 
 QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
-	var dwelledState,
+	let dwelledState,
 		token = '0987654321',
 		now = Date.now(),
 		state;
@@ -756,7 +756,7 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 } );
 
 QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', function ( assert ) {
-	var token = '0987654321',
+	let token = '0987654321',
 		now = Date.now(),
 		dwelledState,
 		state;

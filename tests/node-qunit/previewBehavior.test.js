@@ -16,7 +16,7 @@ QUnit.module( 'ext.popups.preview.settingsBehavior', {
 } );
 
 QUnit.test( 'it should set the settingsUrl on wgPopupsBetaFeature', function ( assert ) {
-	var user = createStubUser( /* isAnon = */ false ),
+	let user = createStubUser( /* isAnon = */ false ),
 		actions = {},
 		cases;
 
@@ -26,7 +26,7 @@ QUnit.test( 'it should set the settingsUrl on wgPopupsBetaFeature', function ( a
 	];
 
 	cases.forEach( ( testCase ) => {
-		var behavior;
+		let behavior;
 
 		this.config.set( 'wgPopupsBetaFeature', testCase[ 0 ] );
 
@@ -40,7 +40,7 @@ QUnit.test( 'it should set the settingsUrl on wgPopupsBetaFeature', function ( a
 } );
 
 QUnit.test( 'it shouldn\'t set the settingsUrl if the user is logged out', function ( assert ) {
-	var user = createStubUser( /* isAnon = */ true ),
+	let user = createStubUser( /* isAnon = */ true ),
 		actions = {},
 		behavior = createPreviewBehavior( this.config, user, actions );
 
@@ -48,7 +48,7 @@ QUnit.test( 'it shouldn\'t set the settingsUrl if the user is logged out', funct
 } );
 
 QUnit.test( 'it shouldn\'t set a showSettings handler if the user is logged in', function ( assert ) {
-	var user = createStubUser( /* isAnon = */ false ),
+	let user = createStubUser( /* isAnon = */ false ),
 		actions = {},
 		behavior = createPreviewBehavior( this.config, user, actions );
 
@@ -56,7 +56,7 @@ QUnit.test( 'it shouldn\'t set a showSettings handler if the user is logged in',
 } );
 
 QUnit.test( 'it should set a showSettings handler if the user is logged out', function ( assert ) {
-	var user = createStubUser( /* isAnon = */ true ),
+	let user = createStubUser( /* isAnon = */ true ),
 		event = {
 			preventDefault: this.sandbox.spy()
 		},
@@ -79,7 +79,7 @@ QUnit.test( 'it should set a showSettings handler if the user is logged out', fu
 } );
 
 QUnit.test( 'it should mix in default actions', function ( assert ) {
-	var user = createStubUser( /* isAnon = */ true ),
+	let user = createStubUser( /* isAnon = */ true ),
 		actions = {},
 		behavior;
 

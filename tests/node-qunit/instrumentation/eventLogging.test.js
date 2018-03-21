@@ -30,7 +30,7 @@ QUnit.module( 'ext.popups/instrumentation/eventLogging', {
 } );
 
 QUnit.test( 'it should return false when sendBeacon isn\'t supported', function ( assert ) {
-	var window = {};
+	let window = {};
 	assert.notOk( isEnabled( this.user, this.config, BUCKETS.on, window ),
 		'No sendBeacon. No logging.' );
 	assert.notOk( isEnabled( this.anonUser, this.config, BUCKETS.on, window ),

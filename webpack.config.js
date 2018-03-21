@@ -1,10 +1,10 @@
 /* global __dirname, process */
-
-var path = require( 'path' ),
+const path = require( 'path' ),
 	webpack = require( 'webpack' ),
 	PUBLIC_PATH = '/w/extensions/Popups',
-	isProduction = process.env.NODE_ENV === 'production',
-	reduxPath,
+	isProduction = process.env.NODE_ENV === 'production';
+
+let reduxPath,
 	reduxThunkPath,
 	conf;
 
@@ -32,8 +32,8 @@ conf = {
 	entry: { index: './src' },
 	performance: {
 		hints: isProduction ? 'error' : false,
-		maxAssetSize: 35.2 * 1024,
-		maxEntrypointSize: 35.2 * 1024,
+		maxAssetSize: 35.5 * 1024,
+		maxEntrypointSize: 35.5 * 1024,
 		assetFilter: function ( filename ) {
 			// The default filter excludes map files but we rename ours to .filename.
 			return filename.endsWith( '.js' );
