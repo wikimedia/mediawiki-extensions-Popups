@@ -7,6 +7,7 @@ import { escapeHTML } from './templateUtil';
 /**
  * @typedef {Object} SettingsModel
  * @property {string} heading
+ * @property {string} closeLabel
  * @property {string} saveLabel
  * @property {string} helpText
  * @property {string} okLabel
@@ -48,6 +49,7 @@ function escapeChoices( choices = [] ) {
 export function renderSettingsDialog( model ) {
 	const heading = escapeHTML( model.heading ),
 		saveLabel = escapeHTML( model.saveLabel ),
+		closeLabel = escapeHTML( model.closeLabel ),
 		helpText = escapeHTML( model.helpText ),
 		okLabel = escapeHTML( model.okLabel ),
 		choices = escapeChoices( model.choices );
@@ -55,7 +57,7 @@ export function renderSettingsDialog( model ) {
 		<section id='mwe-popups-settings'>
 			<header>
 				<div>
-					<div class='mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-close close'>Close</div>
+					<div class='mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-close close'>${ closeLabel }</div>
 				</div>
 				<h1>${ heading }</h1>
 				<div>
