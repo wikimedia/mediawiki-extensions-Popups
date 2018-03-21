@@ -24,11 +24,7 @@ module.exports = function ( grunt ) {
 			sources: {
 				src: [
 					'src/**/*.js',
-					'tests/node-qunit/**/*.js',
-					'!resources/dist/index.js',
-					'!docs/**',
-					'!node_modules/**',
-					'!vendor/**'
+					'tests/node-qunit/**/*.js'
 				]
 			}
 		},
