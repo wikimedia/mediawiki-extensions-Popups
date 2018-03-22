@@ -10,7 +10,6 @@
 	"popups-desc": "Mostra previsualizacións ao pasar o cursor por riba dunha ligazón.",
 	"popups-redirects": "redirixe cara a \"<h3>$1</h3>\"",
 	"popups-settings-title": "Vista previa da páxina",
-	"popups-settings-description": "Esta ferramenta permite ver unha vista previa de ligazóns a páxinas wiki e a referencias",
 	"popups-settings-option-simple": "Activar",
 	"popups-settings-option-simple-description": "Ver vistas previas rápidas dun tema mentres está a ler unha páxina.",
 	"popups-settings-option-advanced": "Avanzado",

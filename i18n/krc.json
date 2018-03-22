@@ -9,7 +9,6 @@
 	"popups-desc": "Бир бетге элтген джибериуге курсорну келтиргенде, бетни ичиндегисин суратлагъан ачылыучу терезени кёргюзтеди",
 	"popups-redirects": "Бу бетге редиректди: <h3>$1</h3>",
 	"popups-settings-title": "Бетге ал къарау",
-	"popups-settings-description": "Бу адыр, кёк джибериуле бла белги-джибериулеге алдан къараргъа амал береди.",
 	"popups-settings-option-simple": "Тюз",
 	"popups-settings-option-simple-description": "Бетде биринчи айтым бла суратны кёргюзтеди.\nБу, окъуучулагъа рекомендация этиледи.",
 	"popups-settings-option-advanced": "Кенгерген",

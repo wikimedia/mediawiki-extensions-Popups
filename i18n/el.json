@@ -5,14 +5,14 @@
 			"Glavkos",
 			"Ανώνυμος Βικιπαιδιστής",
 			"KATRINE1992",
-			"SucreRouge"
+			"SucreRouge",
+			"Nikosgranturismogt"
 		]
 	},
 	"popups-message": "Προεπισκόπηση σελίδων",
 	"popups-desc": "Εμφανίζει προεπισκοπήσεις όταν ο χρήστης αιωρεί το δείκτη πάνω από ένα σύνδεσμο σελίδας",
 	"popups-redirects": "ανακατευθύνει σε <h3>$1</h3>",
 	"popups-settings-title": "Προεπισκόπηση σελίδων",
-	"popups-settings-description": "Αυτό το εργαλείο σας επιτρέπει να κάνετε προεπισκόπηση συνδέσμων προς σελίδες wiki και υποσημειώσεις.",
 	"popups-settings-option-simple": "Ενεργοποιημένο",
 	"popups-settings-option-simple-description": "Αποκτήστε γρήγορη προεπισκόπηση ενός θέματος, ενώ διαβάζετε μια σελίδα.",
 	"popups-settings-option-advanced": "Προχωρημένη",
@@ -26,6 +26,7 @@
 	"popups-send-feedback": "Αποστολή Σχολίων (εξωτερικός σύνδεσμος)",
 	"popups-preview-no-preview": "Υπήρξε κάποιο πρόβλημα κατά την εμφάνιση αυτής της προεπισκοπήσης",
 	"popups-preview-footer-read": "Μετάβαση σε αυτή τη σελίδα",
+	"popups-preview-disambiguation-link": "Εισαγωγή παρόμοιων σελίδων",
 	"prefs-reading": "Προτιμήσεις ανάγνωσης",
 	"popups-prefs-optin-title": "Αιωρούμενες κάρτες\n\n<em>Δείτε γρήγορες προεπισκοπήσεις άλλων σελίδων ενώ διαβάζετε μια σελίδα</em>",
 	"popups-prefs-optin-enabled-label": "Ενεργοποίηση",

@@ -12,7 +12,6 @@
 	"popups-desc": "Mostra una previsualització del contingut quan l'usuari apunta a un enllaç de pàgina",
 	"popups-redirects": "redirigeix a <h3>$1</h3>",
 	"popups-settings-title": "Previsualització de pàgines",
-	"popups-settings-description": "Aquesta eina permet la visualització prèvia d'enllaços a pàgines wiki i a les referències.",
 	"popups-settings-option-simple": "Activa",
 	"popups-settings-option-simple-description": "Obté previsualització d'un tema mentre llegeixes un article.",
 	"popups-settings-option-advanced": "Avançat",

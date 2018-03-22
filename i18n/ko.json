@@ -14,7 +14,6 @@
 	"popups-desc": "사용자가 문서 링크에 마우스를 갖다대면 미리 보기를 표시합니다.",
 	"popups-redirects": "<h3>$1</h3> 문서로 넘겨주기",
 	"popups-settings-title": "문서 미리 보기",
-	"popups-settings-description": "이 도구는 위키 페이지와 참조에 대한 링크를 미리 볼 수 있게 합니다.",
 	"popups-settings-option-simple": "활성화",
 	"popups-settings-option-simple-description": "문서를 읽는 동안 주제를 빠르게 미리 봅니다.",
 	"popups-settings-option-off": "비활성화",

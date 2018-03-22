@@ -17,7 +17,6 @@
 	"popups-desc": "Mostra uma antevisão quando o utilizador passa o ponteiro do rato por cima de uma hiperligação para uma página",
 	"popups-redirects": "redireciona para <h3>$1</h3>",
 	"popups-settings-title": "Antevisão de página",
-	"popups-settings-description": "Esta ferramenta permite-lhe ver antevisões das hiperligações para páginas da wiki e para referências.",
 	"popups-settings-option-simple": "Ativar",
 	"popups-settings-option-simple-description": "Obter antevisões rápidas de assuntos durante a leitura de uma página.",
 	"popups-settings-option-advanced": "Avançado",

@@ -12,7 +12,6 @@
 	"popups-desc": "Показує попередній перегляд сторінки при наведенні вказівника миші на посилання сторінки.",
 	"popups-redirects": "перенаправляє на <h3>$1</h3>",
 	"popups-settings-title": "Попередній перегляд сторінки",
-	"popups-settings-description": "Цей інструмент дає Вам змогу попередньо переглядати посилання на вікісторінки і примітки.",
 	"popups-settings-option-simple": "Увімкнути",
 	"popups-settings-option-simple-description": "Отримувати швидкий попередній перегляд теми під час читання статті.",
 	"popups-settings-option-advanced": "Розширений",

@@ -13,7 +13,6 @@
 	"popups-desc": "Visar förhandsvisningar när användaren för muspekaren över en sidlänk.",
 	"popups-redirects": "omdirigering till <h3>$1</h3>",
 	"popups-settings-title": "Sidförhandsvisning",
-	"popups-settings-description": "Detta verktyg låter dig förhandsgranska länkar till wikisidor och till referenser",
 	"popups-settings-option-simple": "Aktivera",
 	"popups-settings-option-simple-description": "Hämta snabbförhandsvisningar för ett ämne när en sida läses.",
 	"popups-settings-option-advanced": "Avancerad",

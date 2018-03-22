@@ -18,7 +18,6 @@
 	"popups-desc": "Affiche un aperçu quand l’utilisateur survole un lien de page.",
 	"popups-redirects": "redirigé vers <h3>$1</h3>",
 	"popups-settings-title": "Aperçu de la page",
-	"popups-settings-description": "Cet outil vous donne un aperçu des liens vers les pages wiki et les références.",
 	"popups-settings-option-simple": "Activer",
 	"popups-settings-option-simple-description": "Obtenir un aperçu rapide d’un sujet en lisant une page.",
 	"popups-settings-option-advanced": "Avancé",

@@ -7,7 +7,6 @@
 	},
 	"popups-redirects": "alidirektiloj al <h3>$1</h3>",
 	"popups-settings-title": "Antaŭrigardo",
-	"popups-settings-description": "Ĉi tiu ilo ebligas al vi antaŭrigardi ligilojn al vikipaĝoj kaj al referencoj.",
 	"popups-settings-option-simple-description": "Montru la enkondukan frazon de paĝo kaj antaŭrigardan bildon. Tio estas rekomendata al legantoj.",
 	"popups-settings-option-advanced-description": "Montru ligilan antaŭrigardon kaj ricevu aliron al redaktaj funkcioj. Tio estas uzata de multaj redaktantoj.",
 	"popups-settings-option-off": "Malaktivigi antaŭrigardon",

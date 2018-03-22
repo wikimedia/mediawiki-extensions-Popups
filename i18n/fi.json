@@ -12,7 +12,6 @@
 	"popups-desc": "Näyttää esikatselut, kun käyttäjä vie hiiren sivulle osoittavan linkin päälle",
 	"popups-redirects": "ohjaa sivulle <h3>$1</h3>",
 	"popups-settings-title": "Sivun esikatselu",
-	"popups-settings-description": "Tämän työkalun avulla voit esikatsella linkkejä wikisivuihin ja viittauksiin.",
 	"popups-settings-option-simple": "Ota käyttöön",
 	"popups-settings-option-simple-description": "Näytä aiheiden pikaesikatselut lukutilassa.",
 	"popups-settings-option-advanced": "Laajennettu",

@@ -10,7 +10,6 @@
 	"popups-desc": "当用户在页面链接上悬停时显示预览。",
 	"popups-redirects": "重定向至<h3>$1</h3>",
 	"popups-settings-title": "页面预览",
-	"popups-settings-description": "此工具允许您预览至wiki页面及参考资料的链接。",
 	"popups-settings-option-simple": "启用",
 	"popups-settings-option-simple-description": "当阅读条目时，获取对应页面的快速预览。",
 	"popups-settings-option-advanced": "高级",

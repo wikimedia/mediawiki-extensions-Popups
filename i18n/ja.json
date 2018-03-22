@@ -17,7 +17,6 @@
 	"popups-desc": "ページへのリンクにホバーした際に、プレビューを表示する",
 	"popups-redirects": "<h3>$1</h3>にリダイレクト",
 	"popups-settings-title": "ページのプレビュー",
-	"popups-settings-description": "このツールによって、ウィキのページへのリンクから内容の要約をプレビューできます。",
 	"popups-settings-option-simple": "有効化",
 	"popups-settings-option-off": "無効化",
 	"popups-settings-save": "保存",

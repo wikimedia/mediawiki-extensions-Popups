@@ -9,7 +9,6 @@
 	"popups-desc": "Viser et lite forhåndsvisningsvindu når brukeren fører muspekeren over en lenke.",
 	"popups-redirects": "omdirigerer til <h3>$1</h3>",
 	"popups-settings-title": "Forhåndsvisning",
-	"popups-settings-description": "Verktøyet lar deg forhåndsvise lenker til wikisider og referanser.",
 	"popups-settings-option-simple": "Slå på",
 	"popups-settings-option-simple-description": "Få raske forhåndsvisninger av et emne mens man leser en side.",
 	"popups-settings-option-advanced": "Avansert",

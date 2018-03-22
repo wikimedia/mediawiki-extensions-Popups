@@ -14,7 +14,6 @@
 	"popups-desc": "Приказује претпрегледе када корисник држи курсор изнад везе странице",
 	"popups-redirects": "преусмерења на <h3>$1</h3>",
 	"popups-settings-title": "Преглед странице",
-	"popups-settings-description": "Овај алат омогућава преглед вики веза и референци.",
 	"popups-settings-option-simple": "Омогући",
 	"popups-settings-option-simple-description": "Брз претпреглед теме приликом читања странице.",
 	"popups-settings-option-advanced": "Напредно",

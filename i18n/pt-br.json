@@ -13,7 +13,6 @@
 	"popups-desc": "Exibe prévias quando o usuário passa o mouse sobre um link de página.",
 	"popups-redirects": "redireciona para <h3>$1</h3>",
 	"popups-settings-title": "Pré-visualização",
-	"popups-settings-description": "Esta ferramenta ajuda a pré-visualizar links de páginas wikis e referências.",
 	"popups-settings-option-simple": "Ativar",
 	"popups-settings-option-simple-description": "Obtenha previsões rápidas de um tópico durante a leitura de uma página.",
 	"popups-settings-option-advanced": "Avançado",

@@ -11,7 +11,6 @@
 	"popups-desc": "يقوم بعرض معاينات عندما يقوم المستخدم بحوم المؤشر على رابط الصفحة",
 	"popups-redirects": "إعادة توجيه إلى <h3>$1</h3>",
 	"popups-settings-title": "معاينة الصفحة",
-	"popups-settings-description": "تتيح هذه الأداة معاينة الوصلات إلى صفحات الويكي والمراجع.",
 	"popups-settings-option-simple": "تمكين",
 	"popups-settings-option-simple-description": "الحصول على معاينة سريعة للموضوع أثناء قراءة الصفحة.",
 	"popups-settings-option-advanced": "متقدمة",

@@ -12,7 +12,6 @@
 	"popups-desc": "Mostra un'anteprima quando l'utente passa il puntatore sopra al collegamento ad una pagina.",
 	"popups-redirects": "reindirizza a <h3>$1</h3>",
 	"popups-settings-title": "Anteprima della pagina",
-	"popups-settings-description": "Questo strumento ti consente di visualizzare un'anteprima dei collegamenti a pagine wiki e a riferimenti.",
 	"popups-settings-option-simple": "Attiva",
 	"popups-settings-option-simple-description": "Ottieni una veloce anteprima di un argomento, mentre stai leggendo una pagina.",
 	"popups-settings-option-advanced": "Avanzata",

@@ -9,7 +9,6 @@
 	"popups-desc": "Afișează ferestre contextuale cu un rezumat al conținutului dintr-o pagină atunci când utilizatorul deplasează mausul deasupra unei legături interne",
 	"popups-redirects": "redirecționează către <h3>$1</h3>",
 	"popups-settings-title": "Previzualizare pagină",
-	"popups-settings-description": "Acest instrument vă permite să previzualizați legăturile care trimit către pagini wiki și referințe.",
 	"popups-settings-option-simple": "Activează",
 	"popups-settings-option-simple-description": "Obțineți o previzualizare rapidă a unui subiect în timp ce lecturați un articol.",
 	"popups-settings-option-advanced": "Avansat",

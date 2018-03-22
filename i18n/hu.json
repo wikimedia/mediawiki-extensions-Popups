@@ -13,7 +13,6 @@
 	"popups-desc": "Amikor a felhasználó egy belső hivatkozás fölé viszi az egérmutatót, megjelenik az előnézete.",
 	"popups-redirects": "Átirányítás a(z) <h3>$1</h3> oldalra",
 	"popups-settings-title": "Lapok előnézete",
-	"popups-settings-description": "Ez az eszköz lehetővé teszi wikilapokra és forrásokra mutató linkek előnézetének megtekintését.",
 	"popups-settings-option-simple": "Engedélyezés",
 	"popups-settings-option-simple-description": "Gyors előnézetek megjelenítése, miközben olvasod az oldalt.",
 	"popups-settings-option-advanced": "Haladó",

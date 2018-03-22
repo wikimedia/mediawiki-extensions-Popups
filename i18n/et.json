@@ -8,7 +8,6 @@
 	"popups-desc": "Kuvab lehekülje eelvaate, kui liigutada kursor üle leheküljelingi.",
 	"popups-redirects": "suunab ümber leheküljele <h3>$1</h3>",
 	"popups-settings-title": "Lehekülgede eelvaade",
-	"popups-settings-description": "See tööriist võimaldab eelvaadelda linke, mis viitavad viki lehekülgedele ja viidetele.",
 	"popups-settings-option-simple": "Luba",
 	"popups-settings-option-simple-description": "Näita lehekülje lugemisel teemade põgusat eelvaadet.",
 	"popups-settings-option-advanced": "Laiendatud",

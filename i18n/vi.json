@@ -10,7 +10,6 @@
 	"popups-desc": "Nổi lên phiếu tóm tắt nội dung của một trang khi đặt trỏ chuột lên một liên kết đến trang đó.",
 	"popups-redirects": "đổi hướng đến <h3>$1</h3>",
 	"popups-settings-title": "Xem trước trang",
-	"popups-settings-description": "Công cụ này cho phép xem trước các liên kết đến trang wiki và các tham chiếu.",
 	"popups-settings-option-simple": "Kích hoạt",
 	"popups-settings-option-simple-description": "Xem trước một đề tài nhanh chóng trong khi đọc trang.",
 	"popups-settings-option-advanced": "Nâng cao",

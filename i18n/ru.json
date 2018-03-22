@@ -19,7 +19,6 @@
 	"popups-desc": "Показывает всплывающее окно предварительного просмотра при наведении курсора на ссылку, ведущую на страницу.",
 	"popups-redirects": "перенаправляет на <h3>$1</h3>",
 	"popups-settings-title": "Предпросмотр страницы",
-	"popups-settings-description": "Этот инструмент позволяет просматривать ссылки на вики-страницы и примечания.",
 	"popups-settings-option-simple": "Включить",
 	"popups-settings-option-simple-description": "Получите быстрый предварительный просмотр темы при страницы.",
 	"popups-settings-option-advanced": "Расширенный",
