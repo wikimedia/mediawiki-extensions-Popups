@@ -160,40 +160,39 @@ function registerChangeListeners(
 
 /*
  * Initialize the application by:
- * 1. Creating the state store
- * 2. Binding the actions to such store
- * 3. Trigger the boot action to bootstrap the system
- * 4. When the page content is ready:
- *   - Process the eligible links for page previews
- *   - Initialize the renderer
- *   - Bind hover and click events to the eligible links to trigger actions
+ * 1. Initializing side-effects and "services"
+ * 2. Creating the state store
+ * 3. Binding the actions to such store
+ * 4. Registering change listeners
+ * 5. Triggering the boot action to bootstrap the system
+ * 6. When the page content is ready:
+ *   - Initializing the renderer
+ *   - Binding hover and click events to the eligible links to trigger actions
  */
 mw.requestIdleCallback( function () {
 	let compose = Redux.compose;
 	const
 		// So-called "services".
 		generateToken = mw.user.generateRandomSessionId,
-		gateway = createGateway( mw.config );
-
-	const userBucket = getUserBucket(
-		mw.experiments,
-		mw.config.get( 'wgPopupsAnonsExperimentalGroupSize' ),
-		mw.user.sessionId() );
-	const userSettings = createUserSettings( mw.storage );
-	const settingsDialog = createSettingsDialogRenderer();
-	const experiments = createExperiments( mw.experiments );
-	const statsvTracker = getStatsvTracker( mw.user, mw.config, experiments );
-	// Virtual pageviews are always tracked.
-	const pageviewTracker = getPageViewTracker( mw.config );
-	const eventLoggingTracker = getEventLoggingTracker(
-		mw.user,
-		mw.config,
-		userBucket,
-		window
-	);
-
-	const isEnabled =
-		createIsEnabled( mw.user, userSettings, mw.config, userBucket );
+		gateway = createGateway( mw.config ),
+		userBucket = getUserBucket(
+			mw.experiments,
+			mw.config.get( 'wgPopupsAnonsExperimentalGroupSize' ),
+			mw.user.sessionId()
+		),
+		userSettings = createUserSettings( mw.storage ),
+		settingsDialog = createSettingsDialogRenderer(),
+		experiments = createExperiments( mw.experiments ),
+		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
+		// Virtual pageviews are always tracked.
+		pageviewTracker = getPageViewTracker( mw.config ),
+		eventLoggingTracker = getEventLoggingTracker(
+			mw.user,
+			mw.config,
+			userBucket,
+			window
+		),
+		isEnabled = createIsEnabled( mw.user, userSettings, mw.config, userBucket );
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) === true ) {
@@ -208,9 +207,9 @@ mw.requestIdleCallback( function () {
 		) )
 	);
 	const boundActions = Redux.bindActionCreators( actions, store.dispatch );
-
-	const previewBehavior =
-		createPreviewBehavior( mw.config, mw.user, boundActions );
+	const previewBehavior = createPreviewBehavior(
+		mw.config, mw.user, boundActions
+	);
 
 	registerChangeListeners(
 		store, boundActions, userSettings, settingsDialog,
