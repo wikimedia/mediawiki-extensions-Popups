@@ -22,7 +22,7 @@ use Popups\PopupsContext;
 use Popups\PopupsHooks;
 
 /**
- * Integration tests for Page Preview hooks
+ * Integration tests for popups hooks
  *
  * @group Popups
  * @coversDefaultClass \Popups\PopupsHooks
@@ -136,7 +136,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->assertEquals( 'notEmpty', $prefs[ 'someNotEmptyValue'] );
 		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
 		$this->assertEquals( 1, array_search( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
-			array_keys( $prefs ) ), ' PagePreviews preferences should be injected after Skin select' );
+			array_keys( $prefs ) ), ' Previews preferences should be injected after Skin select' );
 	}
 
 	/**
@@ -165,7 +165,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->assertCount( 3, $prefs );
 		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
 		$this->assertEquals( 2, array_search( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
-			array_keys( $prefs ) ), ' PagePreviews should be injected at end of array' );
+			array_keys( $prefs ) ), ' Previews should be injected at end of array' );
 	}
 
 	/**

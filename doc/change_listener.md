@@ -5,8 +5,8 @@ allows you to subscribe to updates to the state tree. These updates are
 delivered every time an action is dispatched to the store, which may or may not
 result in a change of state.
 
-In the Page Previews codebase, a **change listener** is a function that is only
-called when the state tree has changed. As such, change listeners are
+In the Extension:Popups codebase, a **change listener** is a function that is
+only called when the state tree has changed. As such, change listeners are
 predominantly responsible for updating the UI so that it matches the state in
 the store.
 

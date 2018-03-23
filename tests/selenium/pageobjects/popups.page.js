@@ -38,7 +38,7 @@ class PopupsPage extends Page {
 	}
 
 	ready() {
-		this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Page previews did not load' );
+		this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Popups did not load' );
 	}
 
 	abandonLink() {

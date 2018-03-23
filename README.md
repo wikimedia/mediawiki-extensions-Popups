@@ -48,3 +48,13 @@ Popups works with a local copy of the [Mobile Content Service] too:
 	$wgPopupsRestGatewayEndpoint = 'http://localhost:6927/en.wikipedia.org/v1/page/summary/';
 
 [Mobile Content Service]: https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/services/mobileapps/+/master
+
+## Terminology
+
+- Hovercard - Deprecated term for popup.
+- Link preview - A similar user feature in the Android native app.
+- Navpop / nav pop - A popup-like UI from the NavigationPopups gadget.
+- Popup - Generic term for a dialog that appears to float above a link that is
+	being hovered over by a cursor.
+- Page preview - A specific type of popup that shows a page summary.
+- Preview - A synonym for popup.
