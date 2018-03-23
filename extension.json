@@ -105,11 +105,6 @@
 				"resources/ext.popups.main/styles/ext.popups.animation.less",
 				"resources/ext.popups.main/styles/ext.popups.settings.less"
 			],
-			"skinStyles": {
-				"vector": [
-					"resources/ext.popups.main/styles/ext.popups.settings.vector.less"
-				]
-			},
 			"messages": [
 				"popups-settings-title",
 				"popups-settings-option-simple",
