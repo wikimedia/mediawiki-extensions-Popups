@@ -112,9 +112,7 @@
 				"resources/dist/index.js"
 			],
 			"styles": [
-				"resources/ext.popups.main/styles/ext.popups.core.less",
-				"resources/ext.popups.main/styles/ext.popups.animation.less",
-				"resources/ext.popups.main/styles/ext.popups.settings.less"
+				"src/ui/index.less"
 			],
 			"messages": [
 				"popups-settings-title",

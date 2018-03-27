@@ -6,8 +6,8 @@ import wait from '../wait';
 import pokeyMaskSVG from './pokey-mask.svg';
 import { SIZES, createThumbnail } from './thumbnail';
 import { previewTypes } from '../preview/model';
-import { renderPreview } from './templates/preview';
-import { renderPagePreview } from './templates/pagePreview';
+import { renderPreview } from './templates/preview/preview';
+import { renderPagePreview } from './templates/pagePreview/pagePreview';
 
 const mw = window.mediaWiki,
 	$ = jQuery,

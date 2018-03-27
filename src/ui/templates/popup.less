@@ -11,11 +11,6 @@
 @cogIconSize: 30px;
 @lineHeight: 20px;
 
-#mwe-popups-svg {
-	position: absolute;
-	top: -1000px;
-}
-
 .mwe-popups-border-triangle-top( @size, @left, @color, @extra ) {
 	content: '';
 	position: absolute;
@@ -36,24 +31,6 @@
 	bottom: -@size;
 	/* @noflip */
 	left: @left;
-}
-
-.mwe-popups-settings-icon {
-	// For purpose of active and hover states
-	border-radius: @borderRadius;
-	// Icon sizes are relative to font size. Override any parents.
-	font-size: 16px;
-	// position icon
-	/* stylelint-disable value-keyword-case */
-	margin-right: -@iconSize / 2;
-
-	&:hover {
-		background-color: @colorGray14;
-	}
-
-	&:active {
-		background-color: @colorGray12;
-	}
 }
 
 .mwe-popups {
@@ -88,17 +65,7 @@
 			bottom: 0;
 			/* @noflip */
 			left: 0;
-
-			.mwe-popups-settings-icon {
-				float: right;
-			}
 		}
-	}
-
-	.mwe-popups-title {
-		display: block;
-		font-weight: bold;
-		margin: 0 16px;
 	}
 
 	.mwe-popups-extract {

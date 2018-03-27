@@ -2,7 +2,7 @@
  * @module preview
  */
 
-import { escapeHTML } from './templateUtil';
+import { escapeHTML } from '../templateUtil';
 
 /**
  * @param {ext.popups.PreviewModel} model

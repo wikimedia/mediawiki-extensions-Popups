@@ -2,7 +2,7 @@
  * @module settingsDialog
  */
 
-import { escapeHTML } from './templateUtil';
+import { escapeHTML } from '../templateUtil';
 
 /**
  * @typedef {Object} SettingsModel

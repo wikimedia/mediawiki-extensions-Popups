@@ -2,7 +2,7 @@
  * @module settingsDialog
  */
 
-import { renderSettingsDialog } from './templates/settingsDialog';
+import { renderSettingsDialog } from './templates/settingsDialog/settingsDialog';
 
 const mw = window.mediaWiki;
 

@@ -1,0 +1,29 @@
+@import 'mediawiki.ui/variables';
+
+.mwe-popups-settings-icon {
+	// For purpose of active and hover states
+	border-radius: @borderRadius;
+	// Icon sizes are relative to font size. Override any parents.
+	font-size: 16px;
+	// position icon
+	/* stylelint-disable value-keyword-case */
+	margin-right: -@iconSize / 2;
+
+	&:hover {
+		background-color: @colorGray14;
+	}
+
+	&:active {
+		background-color: @colorGray12;
+	}
+}
+
+.mwe-popups {
+	.mwe-popups-container {
+		footer {
+			.mwe-popups-settings-icon {
+				float: right;
+			}
+		}
+	}
+}
