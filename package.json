@@ -3,6 +3,7 @@
   "scripts": {
     "start": "webpack -dw",
     "build": "NODE_ENV=production webpack -p",
+    "lint:fix": "grunt fix",
     "test:node": "node tests/node-qunit/run.js 'tests/node-qunit/**/*.test.js' | tap-dot",
     "test:dev": "grunt lint && npm run test:node",
     "test": "npm run check-built-assets && npm run test:dev && npm run doc",
