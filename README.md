@@ -1,3 +1,5 @@
+![Popups](images/popups-ltr.svg)
+
 # mediawiki/extensions/Popups
 
 See https://www.mediawiki.org/wiki/Extension:Popups for more information about
