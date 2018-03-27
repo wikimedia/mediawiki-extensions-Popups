@@ -22,6 +22,7 @@ import * as actions from './actions';
 import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getUserBucket from './getUserBucket';
+import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
 
 const mw = mediaWiki,
 	$ = jQuery,
@@ -64,16 +65,6 @@ const mw = mediaWiki,
  */
 function getStatsvTracker( user, config, experiments ) {
 	return isStatsvEnabled( user, config, experiments ) ? mw.track : $.noop;
-}
-
-/**
- * Gets the appropriate analytics event tracker for logging virtual pageviews.
- *
- * @param {Object} config
- * @return {EventTracker}
- */
-function getPageViewTracker( config ) {
-	return config.get( 'wgPopupsVirtualPageViews' ) ? mw.track : $.noop;
 }
 
 /**
@@ -185,7 +176,11 @@ mw.requestIdleCallback( function () {
 		experiments = createExperiments( mw.experiments ),
 		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
 		// Virtual pageviews are always tracked.
-		pageviewTracker = getPageViewTracker( mw.config ),
+		pageviewTracker = getPageviewTracker( mw.config,
+			mw.loader.using,
+			() => mw.eventLog,
+			getSendBeacon( window.navigator )
+		),
 		eventLoggingTracker = getEventLoggingTracker(
 			mw.user,
 			mw.config,
