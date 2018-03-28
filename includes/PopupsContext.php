@@ -148,8 +148,12 @@ class PopupsContext {
 	 * @return bool
 	 */
 	public function areDependenciesMet() {
-		$areMet = $this->extensionRegistry->isLoaded( 'TextExtracts' )
+		$areMet = true;
+
+		if ( $this->config->get( 'PopupsGateway' ) === 'mwApiPlain' ) {
+			$areMet = $areMet && $this->extensionRegistry->isLoaded( 'TextExtracts' )
 			&& $this->extensionRegistry->isLoaded( 'PageImages' );
+		}
 
 		if ( $this->isBetaFeatureEnabled() ) {
 			$areMet = $areMet && $this->extensionRegistry->isLoaded( 'BetaFeatures' );
