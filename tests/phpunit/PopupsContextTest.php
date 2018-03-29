@@ -203,9 +203,10 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @param bool $expected
 	 */
 	public function testAreDependenciesMet( $betaOn, $textExtracts, $pageImages,
-		$betaFeatures, $expected ) {
+		$betaFeatures, $gateway, $expected ) {
 		$this->setMwGlobals( [
-			"wgPopupsBetaFeature" => $betaOn
+			"wgPopupsBetaFeature" => $betaOn,
+			"wgPopupsGateway" => $gateway,
 		] );
 		$returnValues = [ $textExtracts, $pageImages, $betaFeatures ];
 
@@ -228,6 +229,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 				"textExtracts" => true,
 				"pageImages" => true,
 				"betaFeatures" => false,
+				"gateway" => "mwApiPlain",
 				"expected" => true
 			],
 			// textExtracts dep is missing
@@ -236,6 +238,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 				"textExtracts" => false,
 				"pageImages" => true,
 				"betaFeatures" => false,
+				"gateway" => "mwApiPlain",
 				"expected" => false
 			],
 			// PageImages dep is missing
@@ -244,6 +247,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 				"textExtracts" => true,
 				"pageImages" => false,
 				"betaFeatures" => false,
+				"gateway" => "mwApiPlain",
 				"expected" => false
 			],
 			// Beta is on but BetaFeatures dep is missing
@@ -252,6 +256,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 				"textExtracts" => true,
 				"pageImages" => true,
 				"betaFeatures" => false,
+				"gateway" => "mwApiPlain",
 				"expected" => false
 			],
 			// beta is on and all deps are available
@@ -260,8 +265,18 @@ class PopupsContextTest extends MediaWikiTestCase {
 				"textExtracts" => true,
 				"pageImages" => true,
 				"betaFeatures" => true,
+				"gateway" => "mwApiPlain",
 				"expected" => true
-			]
+			],
+			// when Popups uses gateway!=mwApiPlain we don't require PageImages nor TextExtracts
+			[
+				"betaOn" => false,
+				"textExtracts" => false,
+				"pageImages" => false,
+				"betaFeatures" => false,
+				"gateway" => "restbaseHTML",
+				"expected" => true
+			],
 		];
 	}
 
