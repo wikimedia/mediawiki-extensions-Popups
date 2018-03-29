@@ -29,6 +29,15 @@ module.exports = function ( grunt ) {
 					'src/**/*.js',
 					'tests/node-qunit/**/*.js'
 				]
+			},
+			sourcesfix: {
+				options: {
+					fix: true
+				},
+				src: [
+					'src/**/*.js',
+					'tests/node-qunit/**/*.js'
+				]
 			}
 		},
 		jsonlint: {
@@ -66,6 +75,7 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
+	grunt.registerTask( 'fix', [ 'eslint:sourcesfix' ] );
 	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'jsonlint', 'banana', 'eslint:build' ] );
 	grunt.registerTask( 'default', [ 'lint' ] );
 };
