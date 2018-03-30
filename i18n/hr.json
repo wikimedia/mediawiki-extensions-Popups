@@ -21,6 +21,8 @@
 	"popups-send-feedback": "Pošalji povratne obavijesti (vanjska poveznica)",
 	"popups-preview-no-preview": "Izgleda da ne postoji pretpregled ove stranice",
 	"popups-preview-footer-read": "Idi na ovu stranicu",
+	"popups-preview-disambiguation": "Ovaj se naslov odnosi na više stranica",
+	"popups-preview-disambiguation-link": "Vidi slične stranice",
 	"prefs-reading": "Postavke prikaza načina čitanja",
 	"popups-prefs-optin-title": "Pregled stranica\n\n<em>Brzo pregledanje bilo koje teme dok čitate stranicu</em>",
 	"popups-prefs-optin-enabled-label": "Omogući",
