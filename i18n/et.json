@@ -21,6 +21,8 @@
 	"popups-send-feedback": "Saada tagasisidet (välislink)",
 	"popups-preview-no-preview": "Selle eelvaate kuvamisel esines probleem.",
 	"popups-preview-footer-read": "Mine sellele leheküljele",
+	"popups-preview-disambiguation": "See pealkiri seondub mitme leheküljega.",
+	"popups-preview-disambiguation-link": "Vaata sarnaseid lehekülgi",
 	"prefs-reading": "Lugemiseelistused",
 	"popups-prefs-optin-title": "Lehekülgede eelvaade\n\n<em>Näita lehekülje lugemisel teemadest kiireelvaateid.</em>",
 	"popups-prefs-optin-enabled-label": "Luba",
