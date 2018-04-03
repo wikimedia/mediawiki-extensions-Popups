@@ -107,15 +107,20 @@
 	@imageWidth: 180px;
 	@imageHeight: 140px;
 
-	.background-image-svg( '../images/footer-ltr.svg', '../images/footer-ltr.png' );
-	background-position: top left;
-	background-repeat: no-repeat;
-	background-size: @imageWidth @imageHeight;
 	font-size: 13px;
 	font-weight: 800;
-	height: @imageHeight;
 	margin: 40px;
 	position: relative;
+
+	// Icon is larger than mw-ui-icon-large
+	// Thus we hack it to get it to the size we want.
+	.mw-ui-icon:before,
+	.mw-ui-icon {
+		height: @imageHeight;
+		width: @imageWidth;
+		max-width: none;
+		margin: 0;
+	}
 
 	p {
 		left: @imageWidth;

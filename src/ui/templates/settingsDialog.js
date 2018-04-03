@@ -83,6 +83,7 @@ export function renderSettingsDialog( model ) {
 				</form>
 			</main>
 			<div class='mwe-popups-settings-help' style='display:none;'>
+				<div class="mw-ui-icon mw-ui-icon-element mw-ui-icon-footer"></div>
 				<p>${ helpText }</p>
 			</div>
 		</section>

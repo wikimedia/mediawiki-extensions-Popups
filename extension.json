@@ -88,6 +88,12 @@
 				"popups-settings": "resources/ext.popups.images/cog.svg",
 				"popups-close": "resources/ext.popups.images/close.svg",
 				"preview-generic": "resources/ext.popups.images/sad-face.svg",
+				"footer": {
+					"file": {
+						"ltr": "resources/ext.popups.images/footer-ltr.svg",
+						"rtl": "resources/ext.popups.images/footer-rtl.svg"
+					}
+				},
 				"preview-disambiguation": {
 					"file": {
 						"ltr": "resources/ext.popups.images/multiple-articles-ltr.svg",
