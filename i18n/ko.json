@@ -24,6 +24,7 @@
 	"popups-settings-enable": "미리 보기 활성화",
 	"popups-preview-no-preview": "이 미리 보기를 표시하는 중 오류가 있었습니다",
 	"popups-preview-footer-read": "이 문서로 이동",
+	"popups-preview-disambiguation": "이 제목은 하나 이상의 문서와 관련이 있습니다",
 	"popups-preview-disambiguation-link": "비슷한 문서 보기",
 	"prefs-reading": "읽기 환경 설정",
 	"popups-prefs-optin-title": "문서 미리 보기\n\n<em>문서를 읽는 동안 주제를 빠르게 미리 봅니다</em>",
