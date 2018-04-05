@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aefgh39622"
+		]
+	},
+	"popups-message": "การแสดงตัวอย่างหน้า",
+	"popups-desc": "แสดงตัวอย่างหน้าเมื่อผู้ใช้วางเมาส์เหนือลิงก์หน้า",
+	"popups-redirects": "เปลี่ยนทางไป <h3>$1</h3>",
+	"popups-settings-title": "การแสดงตัวอย่างหน้า",
+	"popups-settings-option-simple": "เปิดใช้งาน",
+	"popups-settings-option-off": "ปิดใช้งาน",
+	"popups-settings-save": "บันทึก",
+	"popups-settings-help-ok": "เสร็จสิ้น",
+	"popups-settings-cancel": "ยกเลิก",
+	"popups-settings-help": "คุณสามารถกลับมาเปิดใช้การแสดงตัวอย่างได้โดยใช้ลิงก์ที่อยู่ในส่วนท้ายของหน้า",
+	"popups-settings-enable": "เปิดใช้งานการแสดงตัวอย่าง",
+	"popups-send-feedback": "ส่งคำติชม (ลิงก์ภายนอก)",
+	"popups-preview-no-preview": "มีปัญหาในการแสดงผลตัวอย่างนี้",
+	"popups-preview-footer-read": "ไปที่หน้านี้",
+	"prefs-reading": "การตั้งค่าการอ่าน",
+	"popups-prefs-optin-title": "การแสดงตัวอย่างหน้า\n\n<em>แสดงตัวอย่างหัวข้ออย่างรวดเร็วขณะอ่านหน้า</em>",
+	"popups-prefs-optin-enabled-label": "เปิดใช้งาน",
+	"popups-prefs-optin-disabled-label": "ปิดใช้งาน",
+	"popups-prefs-disable-nav-gadgets-info": "คุณต้อง[[$1 | ปิดใช้งานแกเจตป๊อปอัปการนำทาง (Navigation Popups)]] จากในแถบอุปกรณ์เสริมเพื่อเปิดใช้งานการแสดงตัวอย่างหน้า",
+	"popups-prefs-conflicting-gadgets-info": "แกเจตและการปรับแต่งอื่น ๆ บางอย่างอาจส่งผลต่อประสิทธิภาพของคุณลักษณะนี้ ถ้าคุณพบปัญหา กรุณาตรวจสอบแกเจตและสคริปต์ผู้ใช้ รวมถึง รวมถึงการตั้งค่ากลางด้วย"
+}
