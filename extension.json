@@ -54,7 +54,7 @@
 	},
 	"EventLoggingSchemas": {
 		"Popups": 17807993,
-		"VirtualPageView": 17742133
+		"VirtualPageView": 17780078
 	},
 	"config": {
 		"@PopupsVirtualPageViews": "@var bool: Whether the extension should log virtual pageviews.",
