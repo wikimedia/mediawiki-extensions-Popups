@@ -21,6 +21,8 @@
 	"popups-send-feedback": "Siųsti atsiliepimą (išorinė nuoroda)",
 	"popups-preview-no-preview": "Puslapio peržiūros klaida",
 	"popups-preview-footer-read": "Eiti į šį puslapį",
+	"popups-preview-disambiguation": "Šis pavadinimas susietas su daugiau nei vienu puslapiu",
+	"popups-preview-disambiguation-link": "Peržiūrėti panašius puslapius",
 	"prefs-reading": "Skaitymo nustatymai",
 	"popups-prefs-optin-title": "<em>Rodyti trumpas straipsnių santraukas, kai skaitote straipsnį</em>",
 	"popups-prefs-optin-enabled-label": "Įgalinti",
