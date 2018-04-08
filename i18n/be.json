@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Artsiom91"
+		]
+	},
+	"popups-message": "Папярэдні прагляд старонкі",
+	"popups-settings-title": "Перадпрагляд старонкі",
+	"popups-settings-option-simple-description": "Атрымаць хуткі папярэдні прагляд тэмы пры чытанні старонкі",
+	"prefs-reading": "Настройкі чытання",
+	"popups-prefs-optin-title": "Перадпрагляд старонак\n\n<em>Паказваць хуткі перадпрагляд тэм пры навядзенні мышы</em>",
+	"popups-prefs-optin-enabled-label": "Уключыць",
+	"popups-prefs-optin-disabled-label": "Адключыць",
+	"popups-prefs-conflicting-gadgets-info": "Некаторыя гаджэты і іншыя настройкі могуць уплываць на прадукцыйнасць гэтай функцыі. Калі Вы маеце праблемы, калі ласка, пераглядзіце свае гаджэты і карыстальніцкія скрыпты, у тым ліку глабальныя."
+}

@@ -23,7 +23,7 @@
 	"popups-settings-help": "Możesz ponownie włączyć podgląd za pomocą linku znajdującego się w stopce strony.",
 	"popups-settings-enable": "Aktywuj podgląd",
 	"popups-send-feedback": "Wyślij opinię (link zewnętrzny)",
-	"popups-preview-no-preview": "Wygląda na to, że nie ma podglądu tej strony",
+	"popups-preview-no-preview": "Wystąpił problem z wyświetlaniem podglądu strony",
 	"popups-preview-footer-read": "Przejdź do tej strony",
 	"popups-preview-disambiguation": "Ten tytuł odnosi się do więcej niż jednej strony",
 	"popups-preview-disambiguation-link": "Pokaż podobne strony",
