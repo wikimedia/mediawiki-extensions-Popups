@@ -1,7 +1,7 @@
 /**
  * @module getPageviewTracker
  */
-
+const mw = window.mediaWiki;
 /**
  * @typedef {Object} MwCodeLoader
  *
@@ -25,6 +25,22 @@ function titleCase( word ) {
 }
 
 /**
+ * Convert Title properties into mediawiki canonical form
+ * @param {Object} eventData
+ * @return {Object}
+ */
+function prepareEventData( eventData ) {
+	const data = eventData;
+	/* eslint-disable camelcase */
+	data.source_title = mw.Title.newFromText( eventData.source_title )
+		.getPrefixedDb();
+	data.page_title = mw.Title.newFromText( eventData.page_title )
+		.getPrefixedDb();
+	/* eslint-enable camelcase */
+	return data;
+}
+
+/**
  * Gets the appropriate analytics event tracker for logging virtual pageviews.
  * Note this bypasses EventLogging in order to track virtual pageviews
  * for pages where the DNT header (do not track) has been added.
@@ -45,7 +61,7 @@ function getPageviewTracker( config, loader, trackerGetter, sendBeacon ) {
 		const dependencies = [ 'ext.eventLogging', `schema.${schema}` ];
 		return loader( dependencies ).then( function () {
 			const evLog = trackerGetter();
-			const payload = evLog.prepare( schema, eventData );
+			const payload = evLog.prepare( schema, prepareEventData( eventData ) );
 			const url = evLog.makeBeaconUrl( payload );
 			sendBeacon( url );
 		} );

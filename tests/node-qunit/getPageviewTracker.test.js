@@ -8,6 +8,13 @@ QUnit.module( 'ext.popups#getPageviewTracker', {
 		this.trackerGetter = () => ( { makeBeaconUrl: this.makeBeaconUrl,
 			prepare: this.prepare } );
 		this.loader = () => Promise.resolve();
+		this.Title = {
+			newFromText: this.sandbox.stub()
+		};
+		mediaWiki.Title = this.Title;
+	},
+	afterEach() {
+		mediaWiki.Title = null;
 	}
 } );
 
@@ -18,17 +25,37 @@ const enabledConfig = {
 QUnit.test( 'getPageviewTracker', function ( assert ) {
 	const loader = this.sandbox.stub();
 	const sendBeacon = this.sandbox.stub();
-	const data = { foo: 1 };
+
+	/* eslint-disable camelcase */
+	const data = {
+		page_title: 'Test title',
+		source_title: 'Source title',
+		page_namespace: 1,
+		source_url: 'http://some/url'
+	};
+	const eventData = {
+		page_title: 'Test_title',
+		source_title: 'Source_title',
+		page_namespace: 1,
+		source_url: 'http://some/url'
+	};
+	this.Title.newFromText.withArgs( data.page_title ).returns( {
+		getPrefixedDb: () => eventData.page_title
+	} );
+	this.Title.newFromText.withArgs( data.source_title ).returns( {
+		getPrefixedDb: () => eventData.source_title
+	} );
+	/* eslint-enable camelcase */
 	const tracker = getPageviewTracker( enabledConfig,
 		loader, this.trackerGetter, sendBeacon );
 
 	loader.resolves();
-
 	return tracker( 'event.VirtualPageView', data ).then( () => {
 		assert.ok( loader.calledOnce, 'loader called once' );
 		assert.ok( loader.calledWith( [ 'ext.eventLogging', 'schema.VirtualPageView' ] ),
 			'appropriate code is loaded' );
-		assert.ok( this.prepare.calledWith( 'VirtualPageView', data ),
+		assert.ok( this.Title.newFromText.calledTwice );
+		assert.ok( this.prepare.calledWith( 'VirtualPageView', eventData ),
 			'mw.eventLog.prepare called appropriately' );
 		assert.ok( this.makeBeaconUrl.calledOnce,
 			'makeBeacon called with result of prepare' );
