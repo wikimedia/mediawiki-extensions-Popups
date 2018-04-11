@@ -62,7 +62,7 @@ export function createThumbnail( rawThumbnail ) {
 		return null;
 	}
 
-	let x, y, width, height, clipPath;
+	let x, y, width, height;
 	if ( tall ) {
 		x = ( thumbWidth > SIZES.portraitImage.w ) ?
 			( ( thumbWidth - SIZES.portraitImage.w ) / -2 ) :
@@ -78,7 +78,6 @@ export function createThumbnail( rawThumbnail ) {
 		width = SIZES.landscapeImage.w + 3;
 		height = ( thumbHeight > SIZES.landscapeImage.h ) ?
 			SIZES.landscapeImage.h : thumbHeight;
-		clipPath = 'mwe-popups-mask';
 	}
 
 	return {
@@ -90,8 +89,7 @@ export function createThumbnail( rawThumbnail ) {
 			thumbWidth,
 			thumbHeight,
 			width,
-			height,
-			clipPath
+			height
 		),
 		isTall: tall,
 		width: thumbWidth,
@@ -118,7 +116,7 @@ export function createThumbnail( rawThumbnail ) {
  * @return {jQuery}
  */
 export function createThumbnailElement(
-	className, url, x, y, thumbnailWidth, thumbnailHeight, width, height, clipPath
+	className, url, x, y, thumbnailWidth, thumbnailHeight, width, height
 ) {
 	const nsSvg = 'http://www.w3.org/2000/svg',
 		nsXlink = 'http://www.w3.org/1999/xlink';
@@ -131,8 +129,7 @@ export function createThumbnailElement(
 			x,
 			y,
 			width: thumbnailWidth,
-			height: thumbnailHeight,
-			'clip-path': `url(#${ clipPath })`
+			height: thumbnailHeight
 		} );
 
 	const $thumbnail = $( document.createElementNS( nsSvg, 'svg' ) )

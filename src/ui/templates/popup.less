@@ -1,9 +1,15 @@
 @import 'mediawiki.mixins.less';
 @import 'mediawiki.ui/variables';
 
-/* Code adapted from Yair Rand's NavPopupsRestyled.js
- * https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
- */
+// Code adapted from Yair Rand's NavPopupsRestyled.js
+// https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
+//
+// "Tall" terminology, although applied to the popup, refers only to the
+// thumbnail and not the popup itself:
+//   Class     Thumbnail  Popup
+//   Tall      Portrait   Landscape
+//   Not tall  Landscape  Portrait
+//   Not tall  Missing    Landscape
 
 @popupPadding: 16px;
 @popupWidth: 320px;

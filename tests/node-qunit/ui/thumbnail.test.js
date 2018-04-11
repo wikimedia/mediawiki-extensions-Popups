@@ -249,7 +249,7 @@ QUnit.test( 'createThumbnailElement', ( assert ) => {
 
 	assert.equal(
 		$thumbnail.html(),
-		'<image href="https://thumbnail.url" class="thumb-class" x="25" y="50" width="200" height="250" clip-path="url(#mwe-popups-mask)"></image>',
+		'<image href="https://thumbnail.url" class="thumb-class" x="25" y="50" width="200" height="250"></image>',
 		'Thumbnail HTML is correct.'
 	);
 	assert.equal(

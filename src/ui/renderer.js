@@ -336,7 +336,7 @@ export function hide( preview ) {
  */
 
 /**
- * @param {isPreviewTall} isPreviewTall
+ * @param {Boolean} isPreviewTall
  * @param {Object} eventData Data related to the event that triggered showing
  *  a popup
  * @param {number} eventData.pageX
@@ -440,13 +440,9 @@ export function getClasses( preview, layout ) {
 
 	if ( layout.flippedY && layout.flippedX ) {
 		classes.push( 'flipped_x_y' );
-	}
-
-	if ( layout.flippedY && !layout.flippedX ) {
+	} else if ( layout.flippedY ) {
 		classes.push( 'flipped_y' );
-	}
-
-	if ( layout.flippedX && !layout.flippedY ) {
+	} else if ( layout.flippedX ) {
 		classes.push( 'flipped_x' );
 	}
 
@@ -477,6 +473,9 @@ export function getClasses( preview, layout ) {
  * If the thumbnail is landscape and isn't the full height of the thumbnail
  * container, then pull the extract up to keep whitespace consistent across
  * previews.
+ *
+ * Note: SVG clip-paths are supported everywhere but clip-paths as CSS
+ * properties are not. https://caniuse.com/#feat=css-clip-path
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewLayout} layout
@@ -516,9 +515,9 @@ export function layoutPreview(
 		left: `${ layout.offset.left }px`
 	} );
 
-	if ( flippedY && hasThumbnail ) {
+	if ( !flippedY && hasThumbnail && !isTall ) {
 		popup.find( 'image' )[ 0 ]
-			.removeAttribute( 'clip-path' );
+			.setAttribute( 'clip-path', 'url(#mwe-popups-mask)' );
 	}
 
 	if ( flippedY && flippedX && hasThumbnail && isTall ) {
@@ -532,6 +531,7 @@ export function layoutPreview(
 	}
 
 	if ( flippedX && !flippedY && hasThumbnail && isTall ) {
+		// todo: removing mwe-popups-no-image-tri should only occur in getClasses().
 		popup.removeClass( 'mwe-popups-no-image-tri' )
 			.find( 'image' )[ 0 ]
 			.setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask)' );
