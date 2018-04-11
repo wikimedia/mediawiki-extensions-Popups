@@ -228,37 +228,38 @@ mw.requestIdleCallback( function () {
 	 */
 	mw.popups = createMediaWikiPopupsObject( store );
 
-	mw.hook( 'wikipage.content' ).add( function ( $container ) {
-		const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
-			validLinkSelector = `a[href][title]:not(${ invalidLinksSelector })`;
+	const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
+		validLinkSelector = `#mw-content-text a[href][title]:not(${ invalidLinksSelector })`;
 
-		rendererInit();
+	rendererInit();
 
-		$container
-			.on( 'mouseover keyup', validLinkSelector, function ( event ) {
-				const mwTitle = titleFromElement( this, mw.config );
+	/*
+	 * Binding hover and click events to the eligible links to trigger actions
+	 */
+	$( document )
+		.on( 'mouseover keyup', validLinkSelector, function ( event ) {
+			const mwTitle = titleFromElement( this, mw.config );
 
-				if ( mwTitle ) {
-					boundActions.linkDwell(
-						mwTitle, this, event, gateway, generateToken
-					);
-				}
-			} )
-			.on( 'mouseout blur', validLinkSelector, function () {
-				const mwTitle = titleFromElement( this, mw.config );
+			if ( mwTitle ) {
+				boundActions.linkDwell(
+					mwTitle, this, event, gateway, generateToken
+				);
+			}
+		} )
+		.on( 'mouseout blur', validLinkSelector, function () {
+			const mwTitle = titleFromElement( this, mw.config );
 
-				if ( mwTitle ) {
-					boundActions.abandon( this );
-				}
-			} )
-			.on( 'click', validLinkSelector, function () {
-				const mwTitle = titleFromElement( this, mw.config );
+			if ( mwTitle ) {
+				boundActions.abandon( this );
+			}
+		} )
+		.on( 'click', validLinkSelector, function () {
+			const mwTitle = titleFromElement( this, mw.config );
 
-				if ( mwTitle ) {
-					boundActions.linkClick( this );
-				}
-			} );
-	} );
+			if ( mwTitle ) {
+				boundActions.linkClick( this );
+			}
+		} );
 } );
 
 window.Redux = Redux;
