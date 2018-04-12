@@ -83,7 +83,6 @@ export function init() {
  * @return {ext.popups.Preview}
  */
 export function render( model ) {
-
 	const preview = createPreviewWithType( model );
 
 	return {
@@ -106,7 +105,7 @@ export function render( model ) {
 		show( event, boundActions, token ) {
 			return show(
 				preview, event, $( event.target ), boundActions, token,
-				document.body
+				document.body, document.documentElement.getAttribute( 'dir' )
 			);
 		},
 
@@ -231,11 +230,12 @@ export function createDisambiguationPreview( model ) {
  * @param {ext.popups.PreviewBehavior} behavior
  * @param {String} token
  * @param {Object} container DOM object to which pokey masks are appended
+ * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  * @return {jQuery.Promise} A promise that resolves when the promise has faded
  *  in
  */
-export function show( preview, event, $link, behavior,
-	token, container
+export function show(
+	preview, event, $link, behavior, token, container, dir
 ) {
 	const layout = createLayout(
 		preview.isTall,
@@ -255,7 +255,8 @@ export function show( preview, event, $link, behavior,
 			width: $window.width(),
 			height: $window.height()
 		},
-		pokeySize
+		pokeySize,
+		dir
 	);
 
 	preview.el.appendTo( container );
@@ -334,6 +335,7 @@ export function hide( preview ) {
  * @property {number} offset.left
  * @property {Boolean} flippedX
  * @property {Boolean} flippedY
+ * @property {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  */
 
 /**
@@ -355,10 +357,11 @@ export function hide( preview ) {
  * @param {number} windowData.width
  * @param {number} windowData.height
  * @param {number} pokeySize Space reserved for the pokey
+ * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  * @return {ext.popups.PreviewLayout}
  */
 export function createLayout(
-	isPreviewTall, eventData, linkData, windowData, pokeySize
+	isPreviewTall, eventData, linkData, windowData, pokeySize, dir
 ) {
 	let flippedX = false,
 		flippedY = false,
@@ -417,8 +420,9 @@ export function createLayout(
 			top: offsetTop,
 			left: offsetLeft
 		},
-		flippedX,
-		flippedY
+		flippedX: dir === 'rtl' ? !flippedX : flippedX,
+		flippedY,
+		dir
 	};
 }
 
@@ -452,7 +456,7 @@ export function getClasses( preview, layout ) {
 		classes.push( 'mwe-popups-no-image-pokey' );
 	}
 
-	if ( ( preview.hasThumbnail && !preview.isTall ) && !layout.flippedY ) {
+	if ( preview.hasThumbnail && !preview.isTall && !layout.flippedY ) {
 		classes.push( 'mwe-popups-image-pokey' );
 	}
 
@@ -523,26 +527,56 @@ export function layoutPreview(
  * removed.
  *
  * Note: SVG clip-paths are supported everywhere but clip-paths as CSS
- * properties are not. https://caniuse.com/#feat=css-clip-path
+ * properties are not (https://caniuse.com/#feat=css-clip-path). For this
+ * reason, RTL flipping is handled in JavaScript instead of CSS.
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewLayout} layout
  * @return {void}
  */
-function setThumbnailClipPath( { el, isTall }, { flippedY, flippedX } ) {
-	let mask;
-	if ( flippedX && !flippedY ) {
-		mask = isTall ? 'landscape-mask' : 'mask-flip';
-	} else if ( flippedY && flippedX && isTall ) {
-		mask = 'landscape-mask-flip';
-	} else if ( !flippedY && !isTall ) {
-		mask = 'mask';
-	}
+export function setThumbnailClipPath(
+	{ el, isTall }, { flippedY, flippedX, dir }
+) {
+	const maskID = getThumbnailClipPathID( isTall, flippedY, flippedX );
+	if ( maskID ) {
+		let entries; // = ⎡ a c tx ⎤
+		//                ⎣ b d ty ⎦
+		if ( dir === 'rtl' ) {
+			// Flip and translate.
+			const tx = isTall ? SIZES.portraitImage.w : SIZES.landscapeImage.w;
+			entries = `-1 0 0 1 ${tx} 0`;
+		} else {
+			// Identity.
+			entries = '1 0 0 1 0 0';
+		}
 
-	if ( mask ) {
+		// Transform the clip-path not the image it is applied to.
+		const mask = document.getElementById( maskID );
+		mask.setAttribute( 'transform', `matrix(${entries})` );
+
 		el.find( 'image' )[ 0 ]
-			.setAttribute( 'clip-path', `url(#mwe-popups-${mask})` );
+			.setAttribute( 'clip-path', `url(#${maskID})` );
 	}
+}
+
+/**
+ * Gets the thumbnail SVG clip-path element ID.
+ *
+ * @param {Boolean} isTall Sugar around
+ *  `preview.hasThumbnail && thumbnail.isTall`
+ * @param {Boolean} flippedY
+ * @param {Boolean} flippedX
+ * @return {string|undefined}
+ */
+export function getThumbnailClipPathID( isTall, flippedY, flippedX ) {
+	if ( flippedX && !flippedY ) {
+		return isTall ? 'mwe-popups-landscape-mask' : 'mwe-popups-mask-flip';
+	} else if ( flippedY && flippedX && isTall ) {
+		return 'mwe-popups-landscape-mask-flip';
+	} else if ( !flippedY && !isTall ) {
+		return 'mwe-popups-mask';
+	}
+	return undefined;
 }
 
 /**

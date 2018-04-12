@@ -57,8 +57,13 @@ QUnit.module( 'ext.popups#renderer', {
 		};
 
 		window.mediaWiki.html = { escape: str => str };
+
+		// Some tests below stub this function. Keep a copy so it can be restored.
+		this.getElementById = document.getElementById;
 	},
 	afterEach() {
+		// Restore getElementsById to its original state.
+		document.getElementById = this.getElementById;
 		$.bracketedDevicePixelRatio = null;
 		window.mediaWiki.msg = null;
 		window.mediaWiki.html = null;
@@ -348,7 +353,7 @@ QUnit.test( 'show', function ( assert ) {
 	preview.el.show = this.sandbox.stub();
 
 	const showPreview = renderer.show(
-		preview, event, link, behavior, token, $container.get( 0 ) );
+		preview, event, link, behavior, token, $container.get( 0 ), 'ltr' );
 
 	assert.notEqual(
 		$container.html(),
@@ -460,22 +465,28 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 			width: 1239,
 			height: 827
 		},
-		pokeySize = 8,
-		layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pokeySize );
+		pokeySize = 8;
 
-	assert.deepEqual(
-		layout,
-		{
-			offset: {
-				top: 1154,
-				left: 232
+	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
+	cases.forEach( ( { dir } ) => {
+		const layout = renderer.createLayout(
+			isPreviewTall, eventData, linkData, windowData, pokeySize, dir
+		);
+
+		assert.deepEqual(
+			layout,
+			{
+				offset: {
+					top: 1154,
+					left: 232
+				},
+				flippedX: dir !== 'ltr',
+				flippedY: false,
+				dir
 			},
-			flippedX: false,
-			flippedY: false
-		},
-		'Layout is correct.'
-	);
+			'Layout is correct.'
+		);
+	} );
 } );
 
 QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom center of the page', ( assert ) => {
@@ -506,22 +517,28 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 			width: 587,
 			height: 827
 		},
-		pokeySize = 8,
-		layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pokeySize );
+		pokeySize = 8;
 
-	assert.deepEqual(
-		layout,
-		{
-			offset: {
-				top: 1242,
-				left: 156
+	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
+	cases.forEach( ( { dir } ) => {
+		const layout = renderer.createLayout(
+			isPreviewTall, eventData, linkData, windowData, pokeySize, dir
+		);
+
+		assert.deepEqual(
+			layout,
+			{
+				offset: {
+					top: 1242,
+					left: 156
+				},
+				flippedX: dir !== 'ltr',
+				flippedY: true,
+				dir
 			},
-			flippedX: false,
-			flippedY: true
-		},
-		'Layout is correct. Y is flipped.'
-	);
+			'Layout is correct. Y is flipped.'
+		);
+	} );
 } );
 
 QUnit.test( '#createLayout - empty preview, keyboard event, link is on the center right of the page', ( assert ) => {
@@ -548,22 +565,28 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 			width: 801,
 			height: 827
 		},
-		pokeySize = 8,
-		layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pokeySize );
+		pokeySize = 8;
 
-	assert.deepEqual(
-		layout,
-		{
-			offset: {
-				top: 1110,
-				left: 372
+	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
+	cases.forEach( ( { dir } ) => {
+		const layout = renderer.createLayout(
+			isPreviewTall, eventData, linkData, windowData, pokeySize, dir
+		);
+
+		assert.deepEqual(
+			layout,
+			{
+				offset: {
+					top: 1110,
+					left: 372
+				},
+				flippedX: dir === 'ltr',
+				flippedY: true,
+				dir
 			},
-			flippedX: true,
-			flippedY: true
-		},
-		'Layout is correct. Both X and Y are flipped.'
-	);
+			'Layout is correct. Both X and Y are flipped.'
+		);
+	} );
 } );
 
 QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
@@ -807,7 +830,8 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 			offset: {
 				top: 100,
 				left: 200
-			}
+			},
+			dir: 'ltr'
 		},
 		classes = [ 'some-class', 'another-class' ];
 
@@ -829,7 +853,7 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 	);
 } );
 
-QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', ( assert ) => {
+QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function ( assert ) {
 	const preview = createPagePreview( true, true, { height: 200 } ),
 		layout = {
 			flippedX: true,
@@ -837,9 +861,14 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', ( assert 
 			offset: {
 				top: 100,
 				left: 200
-			}
+			},
+			dir: 'ltr'
 		},
 		classes = [ 'some-class', 'another-class' ];
+
+	this.sandbox
+		.stub( document, 'getElementById' )
+		.returns( document.createElement( 'div' ) );
 
 	renderer.layoutPreview( preview, layout, classes, 200, 8 );
 
@@ -868,7 +897,7 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', ( assert 
 	);
 } );
 
-QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small height', ( assert ) => {
+QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small height', function ( assert ) {
 	const preview = createPagePreview( false, true, { height: 199 } ),
 		layout = {
 			flippedX: true,
@@ -876,9 +905,14 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 			offset: {
 				top: 100,
 				left: 200
-			}
+			},
+			dir: 'ltr'
 		},
 		classes = [ 'some-class', 'another-class' ];
+
+	this.sandbox
+		.stub( document, 'getElementById' )
+		.returns( document.createElement( 'div' ) );
 
 	renderer.layoutPreview( preview, layout, classes, 200, 8 );
 
@@ -908,7 +942,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 	);
 } );
 
-QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big height', ( assert ) => {
+QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big height', function ( assert ) {
 	const preview = createPagePreview( false, true, { height: 201 } ),
 		layout = {
 			flippedX: true,
@@ -916,9 +950,14 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 			offset: {
 				top: 100,
 				left: 200
-			}
+			},
+			dir: 'ltr'
 		},
 		classes = [ 'some-class', 'another-class' ];
+
+	this.sandbox
+		.stub( document, 'getElementById' )
+		.returns( document.createElement( 'div' ) );
 
 	renderer.layoutPreview( preview, layout, classes, 200, 8 );
 
@@ -956,13 +995,12 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 			offset: {
 				top: 100,
 				left: 200
-			}
+			},
+			dir: 'ltr'
 		},
 		classes = [ 'some-class', 'another-class' ];
 
-	preview.el.outerHeight = () => {
-		return 20;
-	};
+	preview.el.outerHeight = () => 20;
 
 	renderer.layoutPreview( preview, layout, classes, 200, 8 );
 
@@ -986,7 +1024,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 	);
 } );
 
-QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', ( assert ) => {
+QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', function ( assert ) {
 	const preview = createPagePreview( true, true, { height: 200 } ),
 		layout = {
 			flippedX: true,
@@ -994,13 +1032,16 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', ( a
 			offset: {
 				top: 100,
 				left: 200
-			}
+			},
+			dir: 'ltr'
 		},
 		classes = [ 'some-class', 'another-class' ];
 
-	preview.el.outerHeight = () => {
-		return 20;
-	};
+	preview.el.outerHeight = () => 20;
+
+	this.sandbox
+		.stub( document, 'getElementById' )
+		.returns( document.createElement( 'div' ) );
 
 	renderer.layoutPreview( preview, layout, classes, 200, 8 );
 
@@ -1033,13 +1074,12 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 			offset: {
 				top: 100,
 				left: 200
-			}
+			},
+			dir: 'ltr'
 		},
 		classes = [ 'some-class', 'another-class' ];
 
-	preview.el.outerHeight = () => {
-		return 20;
-	};
+	preview.el.outerHeight = () => 20;
 
 	renderer.layoutPreview( preview, layout, classes, 200, 8 );
 
@@ -1061,6 +1101,62 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 		preview.el.find( 'image' ).attr( 'clip-path' ),
 		'Image clip path is not set.'
 	);
+} );
+
+QUnit.test( '#setThumbnailClipPath', function ( assert ) {
+	const cases = [
+		{ isTall: false, dir: 'ltr', expected: 'matrix(1 0 0 1 0 0)' },
+		{ isTall: true, dir: 'ltr', expected: 'matrix(1 0 0 1 0 0)' },
+		{ isTall: false, dir: 'rtl', expected: 'matrix(-1 0 0 1 320 0)' },
+		{ isTall: true, dir: 'rtl', expected: 'matrix(-1 0 0 1 203 0)' }
+	];
+
+	const clipPath = document.createElement( 'div' );
+	this.sandbox.stub( document, 'getElementById' ).returns( clipPath );
+
+	cases.forEach( ( { isTall, dir, expected } ) => {
+		clipPath.removeAttribute( 'transform' );
+		const preview = createPagePreview( isTall, true, { height: 200 } ),
+			layout = {
+				flippedX: true,
+				flippedY: false,
+				offset: {
+					top: 100,
+					left: 200
+				},
+				dir
+			};
+
+		// preview.el.outerHeight = () => 20;
+
+		renderer.setThumbnailClipPath( preview, layout );
+
+		assert.equal(
+			clipPath.getAttribute( 'transform' ),
+			expected,
+			`Transform is correct for: { isTall: ${isTall}, dir: ${dir} }.`
+		);
+	} );
+} );
+
+QUnit.test( '#getThumbnailClipPathID', ( assert ) => {
+	const cases = [
+		{ flippedY: false, flippedX: false, isTall: false, expected: 'mwe-popups-mask' },
+		{ flippedY: true, flippedX: false, isTall: false, expected: undefined },
+		{ flippedY: false, flippedX: true, isTall: false, expected: 'mwe-popups-mask-flip' },
+		{ flippedY: true, flippedX: true, isTall: false, expected: undefined },
+		{ flippedY: false, flippedX: false, isTall: true, expected: undefined },
+		{ flippedY: true, flippedX: false, isTall: true, expected: undefined },
+		{ flippedY: false, flippedX: true, isTall: true, expected: 'mwe-popups-landscape-mask' },
+		{ flippedY: true, flippedX: true, isTall: true, expected: 'mwe-popups-landscape-mask-flip' }
+	];
+	cases.forEach( ( { flippedY, flippedX, isTall, expected } ) => {
+		assert.equal(
+			renderer.getThumbnailClipPathID( isTall, flippedY, flippedX ),
+			expected,
+			`Correct element ID is returned for: { flippedY: ${flippedY}, flippedX: ${flippedX}, isTall: ${isTall} }.`
+		);
+	} );
 } );
 
 QUnit.test( 'getClosestYPosition', ( assert ) => {
