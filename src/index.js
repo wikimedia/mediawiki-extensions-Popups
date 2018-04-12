@@ -160,7 +160,7 @@ function registerChangeListeners(
  *   - Initializing the renderer
  *   - Binding hover and click events to the eligible links to trigger actions
  */
-mw.requestIdleCallback( function () {
+( function init() {
 	let compose = Redux.compose;
 	const
 		// So-called "services".
@@ -260,7 +260,7 @@ mw.requestIdleCallback( function () {
 				boundActions.linkClick( this );
 			}
 		} );
-} );
+}() );
 
 window.Redux = Redux;
 window.ReduxThunk = ReduxThunk;
