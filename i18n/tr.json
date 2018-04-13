@@ -11,7 +11,6 @@
 	},
 	"popups-message": "Vurgulanmış kartlar",
 	"popups-desc": "Kullanıcı bir makale bağlantısı üzerine geldiğinde, makale içeriği özetini içeren açılır pencereler görüntüler.",
-	"popups-redirects": "<h3>$1</h3> yönlendiriliyor",
 	"popups-settings-title": "Sayfa önizleme",
 	"popups-settings-option-simple": "Etkin",
 	"popups-settings-option-simple-description": "Bir sayfa okurken, ilgili bağlantının hızlı bir önizlemesini görün.",
@@ -23,7 +22,6 @@
 	"popups-settings-cancel": "Vazgeç",
 	"popups-settings-help": "Sayfanın alt kısmındaki bir bağlantıyı kullanarak önizlemeyi geri açabilirsiniz.",
 	"popups-settings-enable": "Önizlemeyi etkinleştir",
-	"popups-send-feedback": "Geri Bildirim (dış bağlantı)",
 	"popups-preview-footer-read": "Oku",
 	"popups-prefs-optin-enabled-label": "Etkinleştir",
 	"popups-prefs-optin-disabled-label": "Devre dışı bırak"

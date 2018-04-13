@@ -6,7 +6,6 @@
 	},
 	"popups-message": "Қалқып шығушы терезелер",
 	"popups-desc": "Пайдаланушы жүгіргіні бет сілтемесіне жақындатқанда бет мазмұны түйіндемесін қалқып шығушы терезелерімен көрсету",
-	"popups-redirects": "бағытталған беті <h3>$1</h3>",
 	"popups-settings-title": "Бетті қарап өту",
 	"popups-settings-option-simple": "Қарапайым",
 	"popups-settings-option-simple-description": "Беттің алғашқы сөйлемін көру және суретті қарап шығу. Бұл оқырмандар үшін ұсынылады.",
@@ -17,6 +16,5 @@
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Болдырмау",
 	"popups-settings-help": "Сіз беттің төменгі жағындағы сілтемені пайдаланып қарап шығуды қайта қоса аласыз.",
-	"popups-settings-enable": "Қалқып шығуды іске қосу",
-	"popups-send-feedback": "Пікір жіберу (сыртқы сілтеме)"
+	"popups-settings-enable": "Қалқып шығуды іске қосу"
 }

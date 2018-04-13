@@ -5,7 +5,6 @@
 			"Tlustulimu"
 		]
 	},
-	"popups-redirects": "alidirektiloj al <h3>$1</h3>",
 	"popups-settings-title": "Antaŭrigardo",
 	"popups-settings-option-simple-description": "Montru la enkondukan frazon de paĝo kaj antaŭrigardan bildon. Tio estas rekomendata al legantoj.",
 	"popups-settings-option-advanced-description": "Montru ligilan antaŭrigardon kaj ricevu aliron al redaktaj funkcioj. Tio estas uzata de multaj redaktantoj.",
@@ -13,6 +12,5 @@
 	"popups-settings-save": "Konservi",
 	"popups-settings-cancel": "Nuligi",
 	"popups-settings-help": "Vi povas reaktivigi la antaŭrigardajn bildojn uzante la ligilon je la fino de la paĝo.",
-	"popups-settings-enable": "Aktivigi antaŭrigardon",
-	"popups-send-feedback": "Sendi rimarkojn (ekstera ligilo)"
+	"popups-settings-enable": "Aktivigi antaŭrigardon"
 }

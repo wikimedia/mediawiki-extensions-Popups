@@ -6,7 +6,6 @@
 	},
 	"popups-message": "Klein Aanseeschte vöraff",
 	"popups-desc": "Zeisch klein Aanseeschte vöraff met Zersammefaßonge wann mer met de Muuß övver ene Lengk ob en Sigg jeihd.",
-	"popups-redirects": "leid_öm ob <h3>$1</h3>",
 	"popups-settings-title": "Klein Aanseeschte vöraff",
 	"popups-settings-option-simple": "Enschallde",
 	"popups-settings-option-simple-description": "Zeijsch dä eezde Saz uß dä Sigg un e Minni_Beldsche vun dä Sigg.\nDat dom_mer för der Lässer ämfähe.",
@@ -17,6 +16,5 @@
 	"popups-settings-help-ok": "Lohß Jonn!",
 	"popups-settings-cancel": "Ophüre",
 	"popups-settings-help": "Do kanns Donn de klein Aanseeschte vöraff övver ene Lengk im Sigg_Fohß wider aanschallde.",
-	"popups-settings-enable": "De klein Aanseeschte vöraff aanschallde",
-	"popups-send-feedback": "Jevv udder schegg en Rökmäldong (Lengk noh ußerhallef)"
+	"popups-settings-enable": "De klein Aanseeschte vöraff aanschallde"
 }

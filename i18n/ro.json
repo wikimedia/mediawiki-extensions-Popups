@@ -7,7 +7,6 @@
 	},
 	"popups-message": "Hovercards",
 	"popups-desc": "Afișează ferestre contextuale cu un rezumat al conținutului dintr-o pagină atunci când utilizatorul deplasează mausul deasupra unei legături interne",
-	"popups-redirects": "redirecționează către <h3>$1</h3>",
 	"popups-settings-title": "Previzualizare pagină",
 	"popups-settings-option-simple": "Activează",
 	"popups-settings-option-simple-description": "Obțineți o previzualizare rapidă a unui subiect în timp ce lecturați un articol.",
@@ -19,6 +18,5 @@
 	"popups-settings-cancel": "Revocare",
 	"popups-settings-help": "Puteți reactiva previzualizările accesând legătura din subsolul paginii.",
 	"popups-settings-enable": "Activează previzualizările",
-	"popups-send-feedback": "Trimiteți păreri (legătură externă)",
 	"prefs-reading": "Opțiuni lectură"
 }

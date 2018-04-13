@@ -6,7 +6,6 @@
 	},
 	"popups-message": "Floepviensters",
 	"popups-desc": "Laot floepviensters zien mit wat der op die zied steet a'j langes verwiezingen heer gaon.",
-	"popups-redirects": "verwis deur naor <h3>$1</h3>",
 	"popups-settings-title": "Ziedveurbeeld",
 	"popups-settings-option-simple": "Eenvoudig",
 	"popups-settings-option-simple-description": "Bekiek de inleidende zinne van n zied mit n aofbeelding derbie. Dit is anbeveulen veur lezers",
@@ -15,6 +14,5 @@
 	"popups-settings-option-off": "Veurbeeldviensters uutzetten",
 	"popups-settings-save": "Opslaon",
 	"popups-settings-cancel": "Aofbreken",
-	"popups-settings-enable": "Veurbeeldviensters anzetten",
-	"popups-send-feedback": "Troegkoppeling sturen"
+	"popups-settings-enable": "Veurbeeldviensters anzetten"
 }
