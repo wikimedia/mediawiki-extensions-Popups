@@ -20,12 +20,13 @@ const mw = window.mediaWiki,
  * Extracted from `mw.popups.createSVGMasks`. This is just an SVG mask to point
  * or "poke" at the link that's hovered over. The "pokey" appears to be cut out
  * of the image itself:
- *   _______     _______     link
- *  |       |   |_/\____|    _/\____ <-- Pokey pointing at link
- *  |       | +           = |       |
- *  |_______|               |_______|
- *  Background    Pokey     Page preview
- *    image       mask      bubble w/ pokey
+ *   _______                  link
+ *  |       |    _/\_____     _/\____ <-- Pokey pointing at link
+ *  |  :-]  | + |xxxxxxx   = |  :-]  |
+ *  |_______|   |xxxxxxx     |_______|
+ *              :
+ *  Thumbnail     Pokey     Page preview
+ *    image     clip-path   bubble w/ pokey
  *
  * SVG masks are used in place of CSS masks for browser support issues (see
  * https://caniuse.com/#feat=css-masks).
@@ -446,7 +447,8 @@ export function getClasses( preview, layout ) {
 		classes.push( 'flipped_x' );
 	}
 
-	if ( ( !preview.hasThumbnail || preview.isTall ) && !layout.flippedY ) {
+	if ( ( !preview.hasThumbnail || preview.isTall && !layout.flippedX ) &&
+		!layout.flippedY ) {
 		classes.push( 'mwe-popups-no-image-tri' );
 	}
 
@@ -466,22 +468,16 @@ export function getClasses( preview, layout ) {
 /**
  * Lays out the preview given the layout.
  *
- * If the preview should be oriented differently, then the pokey is updated,
- * e.g. if the preview should be flipped vertically, then the pokey is
- * removed.
- *
  * If the thumbnail is landscape and isn't the full height of the thumbnail
  * container, then pull the extract up to keep whitespace consistent across
  * previews.
- *
- * Note: SVG clip-paths are supported everywhere but clip-paths as CSS
- * properties are not. https://caniuse.com/#feat=css-clip-path
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewLayout} layout
  * @param {string[]} classes class names used for layout out the preview
  * @param {number} predefinedLandscapeImageHeight landscape image height
  * @param {number} pokeySize
+ * @return {void}
  */
 export function layoutPreview(
 	preview, layout, classes, predefinedLandscapeImageHeight, pokeySize
@@ -490,8 +486,7 @@ export function layoutPreview(
 		isTall = preview.isTall,
 		hasThumbnail = preview.hasThumbnail,
 		thumbnail = preview.thumbnail,
-		flippedY = layout.flippedY,
-		flippedX = layout.flippedX;
+		flippedY = layout.flippedY;
 	let offsetTop = layout.offset.top;
 
 	if (
@@ -515,26 +510,38 @@ export function layoutPreview(
 		left: `${ layout.offset.left }px`
 	} );
 
-	if ( !flippedY && hasThumbnail && !isTall ) {
-		popup.find( 'image' )[ 0 ]
-			.setAttribute( 'clip-path', 'url(#mwe-popups-mask)' );
+	if ( hasThumbnail ) {
+		setThumbnailClipPath( preview, layout );
+	}
+}
+
+/**
+ * Sets the thumbnail SVG clip-path.
+ *
+ * If the preview should be oriented differently, then the pokey is updated,
+ * e.g. if the preview should be flipped vertically, then the pokey is
+ * removed.
+ *
+ * Note: SVG clip-paths are supported everywhere but clip-paths as CSS
+ * properties are not. https://caniuse.com/#feat=css-clip-path
+ *
+ * @param {ext.popups.Preview} preview
+ * @param {ext.popups.PreviewLayout} layout
+ * @return {void}
+ */
+function setThumbnailClipPath( { el, isTall }, { flippedY, flippedX } ) {
+	let mask;
+	if ( flippedX && !flippedY ) {
+		mask = isTall ? 'landscape-mask' : 'mask-flip';
+	} else if ( flippedY && flippedX && isTall ) {
+		mask = 'landscape-mask-flip';
+	} else if ( !flippedY && !isTall ) {
+		mask = 'mask';
 	}
 
-	if ( flippedY && flippedX && hasThumbnail && isTall ) {
-		popup.find( 'image' )[ 0 ]
-			.setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask-flip)' );
-	}
-
-	if ( flippedX && !flippedY && hasThumbnail && !isTall ) {
-		popup.find( 'image' )[ 0 ]
-			.setAttribute( 'clip-path', 'url(#mwe-popups-mask-flip)' );
-	}
-
-	if ( flippedX && !flippedY && hasThumbnail && isTall ) {
-		// todo: removing mwe-popups-no-image-tri should only occur in getClasses().
-		popup.removeClass( 'mwe-popups-no-image-tri' )
-			.find( 'image' )[ 0 ]
-			.setAttribute( 'clip-path', 'url(#mwe-popups-landscape-mask)' );
+	if ( mask ) {
+		el.find( 'image' )[ 0 ]
+			.setAttribute( 'clip-path', `url(#mwe-popups-${mask})` );
 	}
 }
 

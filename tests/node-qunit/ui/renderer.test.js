@@ -768,7 +768,6 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			[
 				'mwe-popups-fade-in-up',
 				'flipped_x',
-				'mwe-popups-no-image-tri',
 				'mwe-popups-is-tall'
 			],
 			'X flipped.'
