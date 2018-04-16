@@ -132,7 +132,7 @@ QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 			height: 150,
 			expectedX: 0,
 			expectedY: 0,
-			expectedSVGWidth: 320 + 3,
+			expectedSVGWidth: 320,
 			expectedSVGHeight: 150,
 			message: 'Height smaller than the predefined height (200).'
 		},
@@ -141,7 +141,7 @@ QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 			height: 250,
 			expectedX: 0,
 			expectedY: ( 250 - 200 ) / -2,
-			expectedSVGWidth: 320 + 3,
+			expectedSVGWidth: 320,
 			expectedSVGHeight: 200,
 			message: 'Height bigger than the predefined height (200).'
 		}

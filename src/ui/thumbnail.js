@@ -75,7 +75,7 @@ export function createThumbnail( rawThumbnail ) {
 		x = 0;
 		y = ( thumbHeight > SIZES.landscapeImage.h ) ?
 			( ( thumbHeight - SIZES.landscapeImage.h ) / -2 ) : 0;
-		width = SIZES.landscapeImage.w + 3;
+		width = SIZES.landscapeImage.w;
 		height = ( thumbHeight > SIZES.landscapeImage.h ) ?
 			SIZES.landscapeImage.h : thumbHeight;
 	}
