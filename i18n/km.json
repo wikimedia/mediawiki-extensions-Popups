@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"គីមស៊្រុន"
+		]
+	},
+	"popups-message": "ការមើល​ទំព័រ​ជាមុន",
+	"popups-desc": "បង្ហាញការមើលមុខពេលដែលអ្នកប្រើប្រាស់ដាក់កណ្ដុរនៅលើតំណភ្ជាប់ទំព័រមួយ",
+	"popups-settings-title": "ការមើល​ទំព័រ​ជាមុន",
+	"popups-settings-option-simple": "បើកប្រើ",
+	"popups-settings-option-simple-description": "មើលមុនពីប្រធានបទមួយទាន់ចិត្តពេលកំពុងអានទំព័រមួយ។",
+	"popups-settings-option-advanced": "ថ្នាក់ខ្ពស់",
+	"popups-settings-option-off": "បិទមិនប្រើ",
+	"popups-settings-save": "រក្សាទុក",
+	"popups-settings-help-ok": "រួចរាល់",
+	"popups-settings-cancel": "បោះបង់",
+	"popups-settings-enable": "បើកប្រើការមើលមុន",
+	"popups-preview-no-preview": "មានបញ្ហាពេលបង្ហាញការមើលមុននេះ",
+	"popups-preview-footer-read": "ទៅកាន់ទំព័រនេះ",
+	"popups-preview-disambiguation": "ចំណងជើងនេះជាប់ទាក់ទិននឹងទំព័រលើសពីមួយ។",
+	"popups-preview-disambiguation-link": "មើលទំព័រស្រដៀង",
+	"prefs-reading": "ចំណង់ចំណូលចិត្តអំណាន",
+	"popups-prefs-optin-title": "ការមើល​ទំព័រ​ជាមុន\n\n<em>មើលមុនពីប្រធានបទមួយទាន់ចិត្តពេលកំពុងអានទំព័រមួយ</em>",
+	"popups-prefs-optin-enabled-label": "បើកប្រើ",
+	"popups-prefs-optin-disabled-label": "បិទមិនប្រើ",
+	"popups-prefs-conflicting-gadgets-info": "គ្រឿងបន្ទាប់បន្សំនិងការកំណត់តាមចិត្តមួយចំនួនអាចមានឥទ្ធិពលលើដំណើរការរបស់មុខងារពិសេសនេះ។ បើសិនជាអ្នកជួបបញ្ហា សូមត្រួតពិនិត្យគ្រឿងបន្ទាប់បន្សំនិងស្គ្រីបអ្នកប្រើប្រាស់របស់អ្នក ជាពិសេសការកំណត់ជាសាកល។"
+}
