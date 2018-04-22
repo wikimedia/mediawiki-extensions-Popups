@@ -25,6 +25,8 @@
 	"popups-settings-enable": "Укључи инфо картице",
 	"popups-preview-no-preview": "Изгледа да нема претпрегледа за ову страницу",
 	"popups-preview-footer-read": "Читај",
+	"popups-preview-disambiguation": "Овај наслов је вишезначна одредница",
+	"popups-preview-disambiguation-link": "Прикажи сличне странице",
 	"prefs-reading": "Подешавања читања",
 	"popups-prefs-optin-title": "Претпрегледи страница\n\n<em>Брз претпреглед теме при читању странице</em>",
 	"popups-prefs-optin-enabled-label": "Омогући",

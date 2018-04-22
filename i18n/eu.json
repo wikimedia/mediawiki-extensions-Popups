@@ -3,12 +3,14 @@
 		"authors": [
 			"Subi",
 			"Sator",
-			"Mikel Ibaiba"
+			"Mikel Ibaiba",
+			"Xabier Armendaritz"
 		]
 	},
 	"popups-settings-option-simple-description": "Gai baten aurreikuspena lortu orrialdea irakurtzen duzun bitartean.",
 	"popups-settings-save": "Gorde",
 	"popups-settings-help-ok": "Egina",
 	"popups-settings-cancel": "Utzi",
+	"popups-preview-disambiguation": "Izenburu hau orri bati baino gehiagori dagokie",
 	"popups-prefs-optin-title": "Orrialdearen aurreikuspenak\n\n<em>Gaiaren inguruko aurreikuespen azkarrak lortu orrialdea irakurtzen duzun bitartean</em>"
 }
