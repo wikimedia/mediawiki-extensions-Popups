@@ -596,7 +596,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-down',
-				'flipped_y',
+				'flipped-y',
 				'mwe-popups-is-not-tall'
 			],
 			'Y flipped.'
@@ -612,7 +612,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'flipped_x',
+				'flipped-x',
 				'mwe-popups-no-image-pokey',
 				'mwe-popups-is-not-tall'
 			],
@@ -629,7 +629,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-down',
-				'flipped_x_y',
+				'flipped-x-y',
 				'mwe-popups-is-not-tall'
 			],
 			'X and Y flipped.'
@@ -673,7 +673,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			},
 			[
 				'mwe-popups-fade-in-down',
-				'flipped_y',
+				'flipped-y',
 				'mwe-popups-is-not-tall'
 			],
 			'Y flipped.'
@@ -689,7 +689,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'flipped_x',
+				'flipped-x',
 				'mwe-popups-image-pokey',
 				'mwe-popups-is-not-tall'
 			],
@@ -706,7 +706,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			},
 			[
 				'mwe-popups-fade-in-down',
-				'flipped_x_y',
+				'flipped-x-y',
 				'mwe-popups-is-not-tall'
 			],
 			'X and Y flipped.'
@@ -751,7 +751,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-down',
-				'flipped_y',
+				'flipped-y',
 				'mwe-popups-is-tall'
 			],
 			'Y flipped.'
@@ -767,7 +767,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'flipped_x',
+				'flipped-x',
 				'mwe-popups-is-tall'
 			],
 			'X flipped.'
@@ -783,7 +783,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-down',
-				'flipped_x_y',
+				'flipped-x-y',
 				'mwe-popups-is-tall'
 			],
 			'X and Y flipped.'

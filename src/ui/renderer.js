@@ -440,11 +440,11 @@ export function getClasses( preview, layout ) {
 	}
 
 	if ( layout.flippedY && layout.flippedX ) {
-		classes.push( 'flipped_x_y' );
+		classes.push( 'flipped-x-y' );
 	} else if ( layout.flippedY ) {
-		classes.push( 'flipped_y' );
+		classes.push( 'flipped-y' );
 	} else if ( layout.flippedX ) {
-		classes.push( 'flipped_x' );
+		classes.push( 'flipped-x' );
 	}
 
 	if ( ( !preview.hasThumbnail || preview.isTall && !layout.flippedX ) &&
