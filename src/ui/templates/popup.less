@@ -17,6 +17,11 @@
 @cogIconSize: 30px;
 @lineHeight: 20px;
 
+@zIndexPopup: 110;
+@zIndexBackground: 111;
+@zIndexForeground: 112;
+@zIndexThumbnailMask: 113;
+
 .mwe-popups-border-pointer-top( @size, @left, @color, @extra ) {
 	content: '';
 	position: absolute;
@@ -40,7 +45,7 @@
 .mwe-popups {
 	background: #fff;
 	position: absolute;
-	z-index: 110;
+	z-index: @zIndexPopup;
 	.box-shadow( 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px @colorGray10; );
 	padding: 0;
 	display: none;
@@ -229,12 +234,12 @@
 	&.mwe-popups-image-pointer {
 		&:before {
 			.mwe-popups-border-pointer-top( 9px, 9px, @colorGray10, 0px );
-			z-index: 111;
+			z-index: @zIndexBackground;
 		}
 
 		&:after {
 			.mwe-popups-border-pointer-top( 8px, 6px, #fff, 4px );
-			z-index: 112;
+			z-index: @zIndexForeground;
 		}
 
 		&.flipped-x {
@@ -255,7 +260,7 @@
 		> div > a > svg {
 			margin-top: -8px;
 			position: absolute;
-			z-index: 113;
+			z-index: @zIndexThumbnailMask;
 			left: 0;
 		}
 	}
@@ -265,7 +270,7 @@
 
 		&:before {
 			.mwe-popups-border-pointer-top( 9px, 420px, @colorGray10, 0px );
-			z-index: 111;
+			z-index: @zIndexBackground;
 		}
 
 		> div > a > svg {
@@ -273,7 +278,7 @@
 			margin-top: -8px;
 			margin-bottom: -7px;
 			position: absolute;
-			z-index: 113;
+			z-index: @zIndexThumbnailMask;
 			right: 0;
 		}
 	}
@@ -281,12 +286,12 @@
 	&.flipped-x-y {
 		&:before {
 			.mwe-popups-border-pointer-bottom( 9px, 272px, @colorGray10, 0px );
-			z-index: 111;
+			z-index: @zIndexBackground;
 		}
 
 		&:after {
 			.mwe-popups-border-pointer-bottom( 8px, 269px, #fff, 4px );
-			z-index: 112;
+			z-index: @zIndexForeground;
 		}
 
 		&.mwe-popups-is-tall {
@@ -304,7 +309,7 @@
 				margin: 0;
 				margin-bottom: -9px;
 				position: absolute;
-				z-index: 113;
+				z-index: @zIndexThumbnailMask;
 				right: 0;
 			}
 		}
