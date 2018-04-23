@@ -5,6 +5,24 @@
 			"Papuass"
 		]
 	},
+	"popups-message": "Lapu priekšskatījumi",
+	"popups-desc": "Attēlo priekšskatījumu, kad lasītājs pārvieto kursoru virs lapas saites",
+	"popups-settings-title": "Lapas priekšskatījums",
+	"popups-settings-option-simple": "Ieslēgt",
+	"popups-settings-option-simple-description": "Iegūsti ātru priekšskatījumu par tēmu, lasot lapu.",
+	"popups-settings-option-advanced": "Papildu iespējas",
+	"popups-settings-option-off": "Atslēgt",
+	"popups-settings-save": "Saglabāt",
 	"popups-settings-help-ok": "Gatavs",
-	"popups-preview-disambiguation-link": "Skatīt līdzīgas lapas"
+	"popups-settings-cancel": "Atcelt",
+	"popups-settings-help": "Tu vari pieslēgt atpakaļ priekšskatījumus, izmantojot saiti lapas apakšā.",
+	"popups-settings-enable": "Ieslēgt priekšskatījumus",
+	"popups-preview-no-preview": "Attēlojot šo priekšskatījumu, radās problēma",
+	"popups-preview-footer-read": "Doties uz šo lapu",
+	"popups-preview-disambiguation": "Šis nosaukums atbilst vairāk kā vienai lapai",
+	"popups-preview-disambiguation-link": "Skatīt līdzīgas lapas",
+	"prefs-reading": "Lasīšanas izvēles",
+	"popups-prefs-optin-title": "Lapu priekšskatījumi\n\n<em>Iegūsti ātru priekšskatījumu par tēmu, lasot lapu</em>",
+	"popups-prefs-optin-enabled-label": "Ieslēgt",
+	"popups-prefs-optin-disabled-label": "Atslēgt"
 }
