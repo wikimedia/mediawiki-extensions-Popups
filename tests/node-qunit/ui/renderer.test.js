@@ -580,7 +580,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'mwe-popups-no-image-tri',
+				'mwe-popups-no-image-pokey',
 				'mwe-popups-is-not-tall'
 			],
 			'No flip.'
@@ -613,7 +613,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			[
 				'mwe-popups-fade-in-up',
 				'flipped_x',
-				'mwe-popups-no-image-tri',
+				'mwe-popups-no-image-pokey',
 				'mwe-popups-is-not-tall'
 			],
 			'X flipped.'
@@ -657,7 +657,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'mwe-popups-image-tri',
+				'mwe-popups-image-pokey',
 				'mwe-popups-is-not-tall'
 			],
 			'No flip.'
@@ -690,7 +690,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			[
 				'mwe-popups-fade-in-up',
 				'flipped_x',
-				'mwe-popups-image-tri',
+				'mwe-popups-image-pokey',
 				'mwe-popups-is-not-tall'
 			],
 			'X flipped.'
@@ -735,7 +735,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'mwe-popups-no-image-tri',
+				'mwe-popups-no-image-pokey',
 				'mwe-popups-is-tall'
 			],
 			'No flip.'
@@ -858,7 +858,7 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', ( assert 
 		'Left is correct.'
 	);
 	assert.notOk(
-		preview.el.hasClass( 'mwe-popups-no-image-tri' ),
+		preview.el.hasClass( 'mwe-popups-no-image-pokey' ),
 		'A class has been removed.'
 	);
 	assert.equal(

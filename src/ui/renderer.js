@@ -449,11 +449,11 @@ export function getClasses( preview, layout ) {
 
 	if ( ( !preview.hasThumbnail || preview.isTall && !layout.flippedX ) &&
 		!layout.flippedY ) {
-		classes.push( 'mwe-popups-no-image-tri' );
+		classes.push( 'mwe-popups-no-image-pokey' );
 	}
 
 	if ( ( preview.hasThumbnail && !preview.isTall ) && !layout.flippedY ) {
-		classes.push( 'mwe-popups-image-tri' );
+		classes.push( 'mwe-popups-image-pokey' );
 	}
 
 	if ( preview.isTall ) {
