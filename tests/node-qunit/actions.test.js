@@ -270,7 +270,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 
 	assert.ok( this.gateway.getPageSummary.calledWith( 'Foo' ) );
 
-	assert.ok( this.dispatch.calledOnce );
+	assert.strictEqual( this.dispatch.callCount, 1 );
 	assert.deepEqual(
 		this.dispatch.getCall( 0 ).args[ 0 ],
 		{

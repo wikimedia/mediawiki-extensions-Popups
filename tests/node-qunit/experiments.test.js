@@ -11,7 +11,7 @@ QUnit.test( 'it should call mw.experiments#getBucket', function ( assert ) {
 
 	experiments.weightedBoolean( 'foo', 0.2, 'barbaz' );
 
-	assert.ok( getBucketStub.calledOnce );
+	assert.strictEqual( getBucketStub.callCount, 1 );
 	assert.deepEqual(
 		getBucketStub.getCall( 0 ).args,
 		[

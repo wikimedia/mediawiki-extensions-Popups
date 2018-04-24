@@ -51,15 +51,15 @@ QUnit.test( 'getPageviewTracker', function ( assert ) {
 
 	loader.resolves();
 	return tracker( 'event.VirtualPageView', data ).then( () => {
-		assert.ok( loader.calledOnce, 'loader called once' );
+		assert.strictEqual( loader.callCount, 1, 'loader called once' );
 		assert.ok( loader.calledWith( [ 'ext.eventLogging', 'schema.VirtualPageView' ] ),
 			'appropriate code is loaded' );
-		assert.ok( this.Title.newFromText.calledTwice );
+		assert.strictEqual( this.Title.newFromText.callCount, 2 );
 		assert.ok( this.prepare.calledWith( 'VirtualPageView', eventData ),
 			'mw.eventLog.prepare called appropriately' );
-		assert.ok( this.makeBeaconUrl.calledOnce,
+		assert.strictEqual( this.makeBeaconUrl.callCount, 1,
 			'makeBeacon called with result of prepare' );
-		assert.ok( sendBeacon.calledOnce,
+		assert.strictEqual( sendBeacon.callCount, 1,
 			'sendBeacon called with url from makeBeaconUrl' );
 	} );
 } );
@@ -82,5 +82,5 @@ QUnit.test( 'getSendBeacon (fallback)', function ( assert ) {
 	const spy = this.sandbox.spy( document, 'createElement' );
 	const sendBeacon = getSendBeacon( {} );
 	sendBeacon();
-	assert.ok( spy.calledOnce, 'an img element is used as fallback' );
+	assert.strictEqual( spy.callCount, 1, 'an img element is used as fallback' );
 } );

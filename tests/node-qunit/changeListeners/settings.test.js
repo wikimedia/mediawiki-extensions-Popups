@@ -65,11 +65,11 @@ QUnit.test( 'it should not create settings when shouldShow keeps being true', fu
 	this.settings( this.defaultState, this.showState );
 	this.settings( this.showState, this.showState );
 
-	assert.ok( this.render.calledOnce,
+	assert.strictEqual( this.render.callCount, 1,
 		'The renderer should be called only the first time' );
-	assert.ok( this.rendered.appendTo.calledOnce,
+	assert.strictEqual( this.rendered.appendTo.callCount, 1,
 		'The rendered object should be in the DOM' );
-	assert.ok( this.rendered.show.calledOnce,
+	assert.strictEqual( this.rendered.show.callCount, 1,
 		'The rendered object should be showed just once' );
 	assert.notOk( this.rendered.hide.called,
 		'The rendered object should not be hidden' );
@@ -83,15 +83,15 @@ QUnit.test( 'it should show settings and update the form when shouldShow becomes
 		preview: { enabled: false }
 	} ) );
 
-	assert.ok( this.render.calledOnce,
+	assert.strictEqual( this.render.callCount, 1,
 		'The renderer should be called only the first time' );
-	assert.ok( this.rendered.setEnabled.calledTwice,
+	assert.strictEqual( this.rendered.setEnabled.callCount, 2,
 		'The rendered form should be up to date when shown' );
 	assert.strictEqual( this.rendered.setEnabled.firstCall.args[ 0 ], true,
 		'Set enabled should be called with the current enabled state' );
 	assert.strictEqual( this.rendered.setEnabled.secondCall.args[ 0 ], false,
 		'Set enabled should be called with the current enabled state' );
-	assert.ok( this.rendered.show.calledTwice,
+	assert.strictEqual( this.rendered.show.callCount, 2,
 		'The rendered object should be showed' );
 } );
 
@@ -100,7 +100,7 @@ QUnit.test( 'it should hide settings when shouldShow becomes false', function ( 
 	this.settings( this.defaultState, this.showState );
 	this.settings( this.showState, this.defaultState );
 
-	assert.ok( this.rendered.hide.calledOnce,
+	assert.strictEqual( this.rendered.hide.callCount, 1,
 		'The rendered object should be hidden' );
 } );
 
