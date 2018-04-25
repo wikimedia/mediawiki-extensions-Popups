@@ -1,4 +1,25 @@
 @import 'mediawiki.mixins.animation';
+@import 'mediawiki.mixins.less';
+
+.mwe-popups-border-pointer-top( @size, @left, @color, @extra ) {
+	content: '';
+	position: absolute;
+	border: ( @size + @extra ) solid transparent;
+	border-top: 0;
+	border-bottom: ( @size + @extra ) solid @color;
+	top: -@size;
+	left: @left;
+}
+
+.mwe-popups-border-pointer-bottom( @size, @left, @color, @extra ) {
+	content: '';
+	position: absolute;
+	border: ( @size + @extra ) solid transparent;
+	border-bottom: 0;
+	border-top: ( @size + @extra ) solid @color;
+	bottom: -@size;
+	left: @left;
+}
 
 .mwe-popups-translate( @x, @y ) {
 	-webkit-transform: translate( @x, @y );

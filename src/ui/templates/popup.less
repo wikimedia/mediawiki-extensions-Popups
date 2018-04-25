@@ -1,5 +1,5 @@
-@import 'mediawiki.mixins.less';
-@import 'mediawiki.ui/variables';
+@import '../variables.less';
+@import '../mixins.less';
 
 // Code adapted from Yair Rand's NavPopupsRestyled.js
 // https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
@@ -10,37 +10,6 @@
 //   Tall      Portrait   Landscape
 //   Not tall  Landscape  Portrait
 //   Not tall  Missing    Landscape
-
-@popupPadding: 16px;
-@popupWidth: 320px;
-@popupTallWidth: 215px;
-@cogIconSize: 30px;
-@lineHeight: 20px;
-
-@zIndexPopup: 110;
-@zIndexBackground: 111;
-@zIndexForeground: 112;
-@zIndexThumbnailMask: 113;
-
-.mwe-popups-border-pointer-top( @size, @left, @color, @extra ) {
-	content: '';
-	position: absolute;
-	border: ( @size + @extra ) solid transparent;
-	border-top: 0;
-	border-bottom: ( @size + @extra ) solid @color;
-	top: -@size;
-	left: @left;
-}
-
-.mwe-popups-border-pointer-bottom( @size, @left, @color, @extra ) {
-	content: '';
-	position: absolute;
-	border: ( @size + @extra ) solid transparent;
-	border-bottom: 0;
-	border-top: ( @size + @extra ) solid @color;
-	bottom: -@size;
-	left: @left;
-}
 
 .mwe-popups {
 	background: #fff;
