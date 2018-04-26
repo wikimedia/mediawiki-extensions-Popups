@@ -1,4 +1,4 @@
-![Popups](images/popups-ltr.svg)
+![Popups](images/popups.svg)
 
 # mediawiki/extensions/Popups
 

@@ -203,7 +203,7 @@ function registerChangeListeners(
 	);
 	const boundActions = Redux.bindActionCreators( actions, store.dispatch );
 	const previewBehavior = createPreviewBehavior(
-		mw.config, mw.user, boundActions
+		mw.user, boundActions
 	);
 
 	registerChangeListeners(
