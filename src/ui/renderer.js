@@ -3,7 +3,7 @@
  */
 
 import wait from '../wait';
-import pokeyMaskSVG from './pokey-mask.svg';
+import pointerMaskSVG from './pointer-mask.svg';
 import { SIZES, createThumbnail } from './thumbnail';
 import { previewTypes } from '../preview/model';
 import { renderPreview } from './templates/preview/preview';
@@ -14,30 +14,30 @@ const mw = window.mediaWiki,
 	$window = $( window ),
 	landscapePopupWidth = 450,
 	portraitPopupWidth = 320,
-	pokeySize = 8; // Height of the pokey.;
+	pointerSize = 8; // Height of the pointer.
 
 /**
  * Extracted from `mw.popups.createSVGMasks`. This is just an SVG mask to point
- * or "poke" at the link that's hovered over. The "pokey" appears to be cut out
- * of the image itself:
+ * or "point" at the link that's hovered over. The "pointer" appears to be cut
+ * out of the image itself:
  *   _______                  link
- *  |       |    _/\_____     _/\____ <-- Pokey pointing at link
+ *  |       |    _/\_____     _/\____ <-- Pointer pointing at link
  *  |  :-]  | + |xxxxxxx   = |  :-]  |
  *  |_______|   |xxxxxxx     |_______|
  *              :
- *  Thumbnail     Pokey     Page preview
- *    image     clip-path   bubble w/ pokey
+ *  Thumbnail    Pointer     Page preview
+ *    image     clip-path   bubble w/ pointer
  *
  * SVG masks are used in place of CSS masks for browser support issues (see
  * https://caniuse.com/#feat=css-masks).
  *
  * @private
- * @param {Object} container DOM object to which pokey masks are appended
+ * @param {Object} container DOM object to which pointer masks are appended
  */
-export function createPokeyMasks( container ) {
+export function createPointerMasks( container ) {
 	$( '<div>' )
 		.attr( 'id', 'mwe-popups-svg' )
-		.html( pokeyMaskSVG )
+		.html( pointerMaskSVG )
 		.appendTo( container );
 }
 
@@ -45,7 +45,7 @@ export function createPokeyMasks( container ) {
  * Initializes the renderer.
  */
 export function init() {
-	createPokeyMasks( document.body );
+	createPointerMasks( document.body );
 }
 
 /**
@@ -229,7 +229,7 @@ export function createDisambiguationPreview( model ) {
  * @param {jQuery} $link event target
  * @param {ext.popups.PreviewBehavior} behavior
  * @param {String} token
- * @param {Object} container DOM object to which pokey masks are appended
+ * @param {Object} container DOM object to which pointer masks are appended
  * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  * @return {jQuery.Promise} A promise that resolves when the promise has faded
  *  in
@@ -255,7 +255,7 @@ export function show(
 			width: $window.width(),
 			height: $window.height()
 		},
-		pokeySize,
+		pointerSize,
 		dir
 	);
 
@@ -263,7 +263,7 @@ export function show(
 
 	layoutPreview(
 		preview, layout, getClasses( preview, layout ),
-		SIZES.landscapeImage.h, pokeySize
+		SIZES.landscapeImage.h, pointerSize
 	);
 
 	preview.el.show();
@@ -356,12 +356,12 @@ export function hide( preview ) {
  * @param {number} windowData.scrollTop
  * @param {number} windowData.width
  * @param {number} windowData.height
- * @param {number} pokeySize Space reserved for the pokey
+ * @param {number} pointerSize Space reserved for the pointer
  * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  * @return {ext.popups.PreviewLayout}
  */
 export function createLayout(
-	isPreviewTall, eventData, linkData, windowData, pokeySize, dir
+	isPreviewTall, eventData, linkData, windowData, pointerSize, dir
 ) {
 	let flippedX = false,
 		flippedY = false,
@@ -373,9 +373,9 @@ export function createLayout(
 				eventData.pageY - windowData.scrollTop,
 				linkData.clientRects,
 				false
-			) + windowData.scrollTop + pokeySize :
+			) + windowData.scrollTop + pointerSize :
 			// Position according to link position or size
-			linkData.offset.top + linkData.height + pokeySize,
+			linkData.offset.top + linkData.height + pointerSize,
 		offsetLeft = eventData.pageX ? eventData.pageX : linkData.offset.left;
 	const clientTop = eventData.clientY ? eventData.clientY : offsetTop;
 
@@ -397,7 +397,7 @@ export function createLayout(
 		flippedY = true;
 
 		// Mirror the positioning of the preview when there's no "Y flip": rest
-		// the pokey on the edge of the link's bounding rectangle. In this case
+		// the pointer on the edge of the link's bounding rectangle. In this case
 		// the edge is the top-most.
 		offsetTop = linkData.offset.top;
 
@@ -412,7 +412,7 @@ export function createLayout(
 			) + windowData.scrollTop;
 		}
 
-		offsetTop -= pokeySize;
+		offsetTop -= pointerSize;
 	}
 
 	return {
@@ -453,11 +453,11 @@ export function getClasses( preview, layout ) {
 
 	if ( ( !preview.hasThumbnail || preview.isTall && !layout.flippedX ) &&
 		!layout.flippedY ) {
-		classes.push( 'mwe-popups-no-image-pokey' );
+		classes.push( 'mwe-popups-no-image-pointer' );
 	}
 
 	if ( preview.hasThumbnail && !preview.isTall && !layout.flippedY ) {
-		classes.push( 'mwe-popups-image-pokey' );
+		classes.push( 'mwe-popups-image-pointer' );
 	}
 
 	if ( preview.isTall ) {
@@ -480,11 +480,11 @@ export function getClasses( preview, layout ) {
  * @param {ext.popups.PreviewLayout} layout
  * @param {string[]} classes class names used for layout out the preview
  * @param {number} predefinedLandscapeImageHeight landscape image height
- * @param {number} pokeySize
+ * @param {number} pointerSize
  * @return {void}
  */
 export function layoutPreview(
-	preview, layout, classes, predefinedLandscapeImageHeight, pokeySize
+	preview, layout, classes, predefinedLandscapeImageHeight, pointerSize
 ) {
 	const popup = preview.el,
 		isTall = preview.isTall,
@@ -499,7 +499,7 @@ export function layoutPreview(
 	) {
 		popup.find( '.mwe-popups-extract' ).css(
 			'margin-top',
-			thumbnail.height - pokeySize
+			thumbnail.height - pointerSize
 		);
 	}
 
@@ -522,8 +522,8 @@ export function layoutPreview(
 /**
  * Sets the thumbnail SVG clip-path.
  *
- * If the preview should be oriented differently, then the pokey is updated,
- * e.g. if the preview should be flipped vertically, then the pokey is
+ * If the preview should be oriented differently, then the pointer is updated,
+ * e.g. if the preview should be flipped vertically, then the pointer is
  * removed.
  *
  * Note: SVG clip-paths are supported everywhere but clip-paths as CSS

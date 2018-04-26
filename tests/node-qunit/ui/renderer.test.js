@@ -70,7 +70,7 @@ QUnit.module( 'ext.popups#renderer', {
 	}
 } );
 
-QUnit.test( 'createPokeyMasks', ( assert ) => {
+QUnit.test( 'createPointerMasks', ( assert ) => {
 	const $container = $( '<div>' ),
 		cases = [
 			[ 'clippath#mwe-popups-mask polygon', '0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000' ],
@@ -79,7 +79,7 @@ QUnit.test( 'createPokeyMasks', ( assert ) => {
 			[ 'clippath#mwe-popups-landscape-mask-flip polygon', '0 0, 1000 0, 1000 242, 190 242, 182 250, 174 242, 0 242' ]
 		];
 
-	renderer.createPokeyMasks( $container.get( 0 ) );
+	renderer.createPointerMasks( $container.get( 0 ) );
 
 	cases.forEach( ( case_ ) => {
 		assert.equal(
@@ -465,12 +465,12 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 			width: 1239,
 			height: 827
 		},
-		pokeySize = 8;
+		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
 	cases.forEach( ( { dir } ) => {
 		const layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pokeySize, dir
+			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
 		);
 
 		assert.deepEqual(
@@ -517,12 +517,12 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 			width: 587,
 			height: 827
 		},
-		pokeySize = 8;
+		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
 	cases.forEach( ( { dir } ) => {
 		const layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pokeySize, dir
+			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
 		);
 
 		assert.deepEqual(
@@ -565,12 +565,12 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 			width: 801,
 			height: 827
 		},
-		pokeySize = 8;
+		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
 	cases.forEach( ( { dir } ) => {
 		const layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pokeySize, dir
+			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
 		);
 
 		assert.deepEqual(
@@ -603,7 +603,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'mwe-popups-no-image-pokey',
+				'mwe-popups-no-image-pointer',
 				'mwe-popups-is-not-tall'
 			],
 			'No flip.'
@@ -636,7 +636,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			[
 				'mwe-popups-fade-in-up',
 				'flipped-x',
-				'mwe-popups-no-image-pokey',
+				'mwe-popups-no-image-pointer',
 				'mwe-popups-is-not-tall'
 			],
 			'X flipped.'
@@ -680,7 +680,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'mwe-popups-image-pokey',
+				'mwe-popups-image-pointer',
 				'mwe-popups-is-not-tall'
 			],
 			'No flip.'
@@ -713,7 +713,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			[
 				'mwe-popups-fade-in-up',
 				'flipped-x',
-				'mwe-popups-image-pokey',
+				'mwe-popups-image-pointer',
 				'mwe-popups-is-not-tall'
 			],
 			'X flipped.'
@@ -758,7 +758,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			},
 			[
 				'mwe-popups-fade-in-up',
-				'mwe-popups-no-image-pokey',
+				'mwe-popups-no-image-pointer',
 				'mwe-popups-is-tall'
 			],
 			'No flip.'
@@ -887,7 +887,7 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function 
 		'Left is correct.'
 	);
 	assert.notOk(
-		preview.el.hasClass( 'mwe-popups-no-image-pokey' ),
+		preview.el.hasClass( 'mwe-popups-no-image-pointer' ),
 		'A class has been removed.'
 	);
 	assert.equal(
@@ -932,7 +932,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 	);
 	assert.equal(
 		preview.el.find( '.mwe-popups-extract' ).css( 'margin-top' ),
-		`${ 199 - 8 }px`, // thumb height - pokey size
+		`${ 199 - 8 }px`, // thumb height - pointer size
 		'Extract margin top has been set when preview height is smaller than the predefined landscape image height.'
 	);
 	assert.equal(
