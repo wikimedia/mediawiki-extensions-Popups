@@ -34,30 +34,6 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::onGetBetaPreferences
-	 */
-	public function testOnGetBetaPreferencesBetaDisabled() {
-		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
-		$this->setMwGlobals( [ 'wgPopupsBetaFeature' => false ] );
-
-		PopupsHooks::onGetBetaPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertCount( 1, $prefs );
-		$this->assertEquals( 'notEmpty', $prefs[ 'someNotEmptyValue'] );
-	}
-
-	/**
-	 * @covers ::onGetBetaPreferences
-	 */
-	public function testOnGetBetaPreferencesBetaEnabled() {
-		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
-		$this->setMwGlobals( [ 'wgPopupsBetaFeature' => true ] );
-
-		PopupsHooks::onGetBetaPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertCount( 2, $prefs );
-		$this->assertArrayHasKey( PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME, $prefs );
-	}
-
-	/**
 	 * @covers ::onGetPreferences
 	 */
 	public function testOnGetPreferencesPreviewsDisabled() {
@@ -176,7 +152,6 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$config = [
 			'wgPopupsAnonsExperimentalGroupSize' => 0.1,
 			'wgPopupsEventLogging' => false,
-			'wgPopupsBetaFeature' => true,
 			'wgPopupsRestGatewayEndpoint' => '/api',
 			'wgPopupsVirtualPageViews' => true,
 			'wgPopupsGateway' => 'mwApiPlain',
@@ -184,7 +159,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 		$this->setMwGlobals( $config );
 		PopupsHooks::onResourceLoaderGetConfigVars( $vars );
-		$this->assertCount( 8, $vars );
+		$this->assertCount( 7, $vars );
 
 		foreach ( $config as $key => $value ) {
 			$this->assertEquals(
@@ -251,15 +226,12 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 	public function providerOnBeforePageDisplay() {
 		return [
-			[ false, true, false, false ],
-			[ true, true, true, false ],
-			// if the user doesnt have the feature but the beta feature is disabled
-			// we can assume the user has it (as its rolled out to everyone)
-			[ false, false, true, false ],
-			// If the user has enabled it and the beta feature is disabled
-			// we can assume the code will be loaded.
-			[ true, false, true, false ],
-			[ false, false, false, true ]
+			[ false, false, false ],
+			[ true, true, false ],
+			// Code not sent if title blacklisted
+			[ true, false, true ],
+			// Code not sent if title blacklisted
+			[ false, false, true ]
 		];
 	}
 
@@ -268,7 +240,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	 * @dataProvider providerOnBeforePageDisplay
 	 */
 	public function testOnBeforePageDisplay( $shouldSendModuleToUser,
-			$isBetaFeatureEnabled, $isCodeLoaded, $isTitleBlacklisted ) {
+			$isCodeLoaded, $isTitleBlacklisted ) {
 		$skinMock = $this->getMock( Skin::class );
 
 		$outPageMock = $this->getMock(
@@ -284,7 +256,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->with( [ 'ext.popups' ] );
 
 		$contextMock = $this->getMockBuilder( PopupsContext::class )
-			->setMethods( [ 'areDependenciesMet', 'isBetaFeatureEnabled',
+			->setMethods( [ 'areDependenciesMet',
 				'shouldSendModuleToUser', 'isTitleBlacklisted' ] )
 			->disableOriginalConstructor()
 			->getMock();
@@ -294,10 +266,6 @@ class PopupsHooksTest extends MediaWikiTestCase {
 				->method( 'areDependenciesMet' )
 				->will( $this->returnValue( true ) );
 		}
-
-		$contextMock->expects( $this->any() )
-			->method( 'isBetaFeatureEnabled' )
-			->will( $this->returnValue( $isBetaFeatureEnabled ) );
 
 		$contextMock->expects( $this->any() )
 			->method( 'shouldSendModuleToUser' )

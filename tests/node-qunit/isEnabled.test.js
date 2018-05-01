@@ -56,28 +56,6 @@ QUnit.test( 'is should handle logged out users', ( assert ) => {
 			testCase[ 3 ]
 		);
 	}
-
-	// ---
-
-	config.set( 'wgPopupsBetaFeature', true );
-
-	assert.notOk(
-		isEnabled( user, userSettings, config, BUCKETS.on ),
-		'When Page Previews is enabled as a beta feature, then it\'s not' +
-			' enabled for logged out users when they are in the on group.'
-	);
-
-	assert.notOk(
-		isEnabled( user, userSettings, config, BUCKETS.control ),
-		'When Page Previews is enabled as a beta feature, then it\'s not' +
-			' enabled for logged out users when they are not in the control group.'
-	);
-
-	assert.notOk(
-		isEnabled( user, userSettings, config, BUCKETS.off ),
-		'When Page Previews is enabled as a beta feature, then it\'s not' +
-			' enabled for logged out users when they are in the off group.'
-	);
 } );
 
 QUnit.test( 'it should handle logged in users', ( assert ) => {

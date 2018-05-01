@@ -45,30 +45,22 @@ class PopupsContext {
 	const LOGGER_CHANNEL = 'popups';
 	/**
 	 * User preference value for enabled Page Previews
-	 * Identical to \HTMLFeatureField::OPTION_ENABLED in BetaFeatures
 	 *
 	 * @var string
 	 */
 	const PREVIEWS_ENABLED = '1';
 	/**
 	 * User preference value for disabled Page Previews
-	 * Identical to \HTMLFeatureField::OPTION_DISABLED in BetaFeatures
 	 *
 	 * @var string
 	 */
 	const PREVIEWS_DISABLED = '0';
 	/**
-	 * User preference to enable/disable Page Previews
-	 * Currently for BETA and regular opt in we use same preference name
+	 * User preference key to enable/disable Page Previews
 	 *
 	 * @var string
 	 */
 	const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups';
-	/**
-	 * User preference to enable/disable Page Preivews as a beta feature
-	 * @var string
-	 */
-	const PREVIEWS_BETA_PREFERENCE_NAME = 'popups';
 	/**
 	 * @var \Config
 	 */
@@ -102,14 +94,6 @@ class PopupsContext {
 	public function conflictsWithNavPopupsGadget( \User $user ) {
 		return $this->gadgetsIntegration->conflictsWithNavPopupsGadget( $user );
 	}
-	/**
-	 * Is Beta Feature mode enabled
-	 *
-	 * @return bool
-	 */
-	public function isBetaFeatureEnabled() {
-		return $this->config->get( 'PopupsBetaFeature' ) === true;
-	}
 
 	/**
 	 * Get default Page previews state
@@ -127,8 +111,7 @@ class PopupsContext {
 	 * @return bool
 	 */
 	public function showPreviewsOptInOnPreferencesPage() {
-		return !$this->isBetaFeatureEnabled()
-			&& $this->config->get( 'PopupsHideOptInOnPreferencesPage' ) === false;
+		return $this->config->get( 'PopupsHideOptInOnPreferencesPage' ) === false;
 	}
 
 	/**
@@ -136,10 +119,6 @@ class PopupsContext {
 	 * @return bool
 	 */
 	public function shouldSendModuleToUser( \User $user ) {
-		if ( $this->isBetaFeatureEnabled() ) {
-			return $user->isAnon() ? false :
-				\BetaFeatures::isFeatureEnabled( $user, self::PREVIEWS_BETA_PREFERENCE_NAME );
-		}
 		return $user->isAnon() ? true :
 			$user->getOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME ) === self::PREVIEWS_ENABLED;
 	}
@@ -153,10 +132,6 @@ class PopupsContext {
 		if ( $this->config->get( 'PopupsGateway' ) === 'mwApiPlain' ) {
 			$areMet = $areMet && $this->extensionRegistry->isLoaded( 'TextExtracts' )
 			&& $this->extensionRegistry->isLoaded( 'PageImages' );
-		}
-
-		if ( $this->isBetaFeatureEnabled() ) {
-			$areMet = $areMet && $this->extensionRegistry->isLoaded( 'BetaFeatures' );
 		}
 
 		return $areMet;

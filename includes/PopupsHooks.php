@@ -34,33 +34,6 @@ class PopupsHooks {
 	const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
 	/**
-	 * Hook executed on retrieving User beta preferences
-	 * @param User $user User whose beta preferences are retrieved
-	 * @param array &$prefs An associative array of all beta preferences
-	 */
-	static function onGetBetaPreferences( User $user, array &$prefs ) {
-		global $wgExtensionAssetsPath;
-		/** @var PopupsContext $context */
-		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
-		if ( $context->isBetaFeatureEnabled() !== true ) {
-			return;
-		}
-		$prefs[PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME] = [
-			'label-message' => 'popups-message',
-			'desc-message' => 'popups-desc',
-			'screenshot' => [
-				'ltr' => "$wgExtensionAssetsPath/Popups/images/popups-ltr.svg",
-				'rtl' => "$wgExtensionAssetsPath/Popups/images/popups-rtl.svg",
-			],
-			'info-link' => 'https://www.mediawiki.org/wiki/Special:MyLanguage/Beta_Features/Hovercards',
-			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Beta_Features/Hovercards',
-			'requirements' => [
-				'javascript' => true,
-			],
-		];
-	}
-
-	/**
 	 * Add Page Previews options to user Preferences page
 	 *
 	 * @param User $user User whose preferences are being modified
@@ -116,13 +89,13 @@ class PopupsHooks {
 
 		if ( !$context->areDependenciesMet() ) {
 			$logger = $context->getLogger();
-			$logger->error( 'Popups requires the PageImages and TextExtracts extensions. '
-				. 'If Beta mode is on it requires also BetaFeatures extension' );
+			$logger->error( 'Popups requires the PageImages extensions.
+				TextExtracts extension is required when using mwApiPlain gateway.' );
 			return;
 		}
 
 		$user = $out->getUser();
-		if ( !$context->isBetaFeatureEnabled() || $context->shouldSendModuleToUser( $user ) ) {
+		if ( $context->shouldSendModuleToUser( $user ) ) {
 			$out->addModules( [ 'ext.popups' ] );
 		}
 	}
@@ -132,7 +105,6 @@ class PopupsHooks {
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
 		$conf = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
-		$vars['wgPopupsBetaFeature'] = $conf->get( 'PopupsBetaFeature' );
 		$vars['wgPopupsVirtualPageViews'] = $conf->get( 'PopupsVirtualPageViews' );
 		$vars['wgPopupsGateway'] = $conf->get( 'PopupsGateway' );
 		$vars['wgPopupsEventLogging'] = $conf->get( 'PopupsEventLogging' );

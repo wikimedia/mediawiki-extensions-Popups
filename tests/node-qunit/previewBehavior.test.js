@@ -15,31 +15,22 @@ QUnit.module( 'ext.popups.preview.settingsBehavior', {
 	}
 } );
 
-QUnit.test( 'it should set the settingsUrl on wgPopupsBetaFeature', function ( assert ) {
+QUnit.test( 'it should set the settingsUrl', function ( assert ) {
 	const user = createStubUser( /* isAnon = */ false ),
 		actions = {};
 
-	const cases = [
-		[ true, 'Special:Preferences#mw-prefsection-betafeatures' ],
-		[ false, 'Special:Preferences#mw-prefsection-rendering' ]
-	];
+	const behavior = createPreviewBehavior( user, actions );
 
-	cases.forEach( ( testCase ) => {
-		this.config.set( 'wgPopupsBetaFeature', testCase[ 0 ] );
-
-		const behavior = createPreviewBehavior( this.config, user, actions );
-
-		assert.deepEqual(
-			behavior.settingsUrl,
-			`url/${ testCase[ 1 ] }`
-		);
-	} );
+	assert.deepEqual(
+		behavior.settingsUrl,
+		'url/Special:Preferences#mw-prefsection-rendering'
+	);
 } );
 
 QUnit.test( 'it shouldn\'t set the settingsUrl if the user is logged out', function ( assert ) {
 	const user = createStubUser( /* isAnon = */ true ),
 		actions = {},
-		behavior = createPreviewBehavior( this.config, user, actions );
+		behavior = createPreviewBehavior( user, actions );
 
 	assert.strictEqual( behavior.settingsUrl, undefined );
 } );
@@ -47,7 +38,7 @@ QUnit.test( 'it shouldn\'t set the settingsUrl if the user is logged out', funct
 QUnit.test( 'it shouldn\'t set a showSettings handler if the user is logged in', function ( assert ) {
 	const user = createStubUser( /* isAnon = */ false ),
 		actions = {},
-		behavior = createPreviewBehavior( this.config, user, actions );
+		behavior = createPreviewBehavior( user, actions );
 
 	assert.strictEqual( behavior.showSettings, $.noop );
 } );
@@ -60,7 +51,7 @@ QUnit.test( 'it should set a showSettings handler if the user is logged out', fu
 		actions = {
 			showSettings: this.sandbox.spy()
 		},
-		behavior = createPreviewBehavior( this.config, user, actions );
+		behavior = createPreviewBehavior( user, actions );
 
 	behavior.showSettings( event );
 
@@ -84,7 +75,7 @@ QUnit.test( 'it should mix in default actions', function ( assert ) {
 	actions.previewShow = () => {};
 	actions.linkClick = () => {};
 
-	const behavior = createPreviewBehavior( this.config, user, actions );
+	const behavior = createPreviewBehavior( user, actions );
 
 	assert.strictEqual( behavior.previewDwell, actions.previewDwell );
 	assert.strictEqual( behavior.previewAbandon, actions.abandon );

@@ -26,16 +26,13 @@ const mw = window.mediaWiki,
  * modal.
  *
  * If the user is logged in, then clicking the cog should send them to the
- * Special:Preferences page with the "Beta features" tab open if Page Previews
- * is enabled as a beta feature, or the "Appearance" tab otherwise.
+ * the "Appearance" tab otherwise.
  *
- * @param {mw.Map} config
  * @param {mw.User} user
  * @param {Object} actions The action creators bound to the Redux store
  * @return {ext.popups.PreviewBehavior}
  */
-export default function createPreviewBehavior( config, user, actions ) {
-	const isBetaFeature = config.get( 'wgPopupsBetaFeature' );
+export default function createPreviewBehavior( user, actions ) {
 	let settingsUrl, showSettings = $.noop;
 
 	if ( user.isAnon() ) {
@@ -45,8 +42,7 @@ export default function createPreviewBehavior( config, user, actions ) {
 			actions.showSettings();
 		};
 	} else {
-		let rawTitle = 'Special:Preferences#mw-prefsection-';
-		rawTitle += isBetaFeature ? 'betafeatures' : 'rendering';
+		const rawTitle = 'Special:Preferences#mw-prefsection-rendering';
 
 		settingsUrl = mw.Title.newFromText( rawTitle )
 			.getUrl();

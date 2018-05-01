@@ -76,38 +76,27 @@ class PopupsContextTest extends MediaWikiTestCase {
 	public function provideConfigForShowPreviewsInOptIn() {
 		return [
 			[
-				"options" => [
-					"wgPopupsBetaFeature" => false,
+				[
 					"wgPopupsHideOptInOnPreferencesPage" => false
 				],
-				"expected" => true
-			], [
-				"options" => [
-					"wgPopupsBetaFeature" => true,
-					"wgPopupsHideOptInOnPreferencesPage" => false
-				],
-				"expected" => false
-			], [
-				"options" => [
-					"wgPopupsBetaFeature" => false,
+				true
+			],
+			[
+				[
 					"wgPopupsHideOptInOnPreferencesPage" => true
 				],
-				"expected" => false
+				false
 			]
 		];
 	}
 
 	/**
 	 * @covers ::shouldSendModuleToUser
-	 * @covers ::isBetaFeatureEnabled
 	 * @dataProvider provideTestDataForShouldSendModuleToUser
 	 * @param bool $optIn
 	 * @param bool $expected
 	 */
 	public function testShouldSendModuleToUser( $optIn, $expected ) {
-		$this->setMwGlobals( [
-			"wgPopupsBetaFeature" => false
-		] );
 		$context = $this->getContext();
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
@@ -131,40 +120,15 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::shouldSendModuleToUser
-	 * @covers ::isBetaFeatureEnabled
-	 * @dataProvider provideTestDataForShouldSendModuleToUserWhenBetaEnabled
-	 * @param bool $optIn
-	 * @param bool $expected
-	 */
-	public function testShouldSendModuleToUserWhenBetaEnabled( $optIn, $expected ) {
-		if ( !class_exists( 'BetaFeatures' ) ) {
-			$this->markTestSkipped( 'Skipped as BetaFeatures is not available' );
-		}
-		$this->setMwGlobals( [
-			"wgPopupsBetaFeature" => true
-		] );
-
-		$context = $this->getContext();
-		$user = $this->getMutableTestUser()->getUser();
-		$user->setOption( PopupsContext::PREVIEWS_BETA_PREFERENCE_NAME, $optIn );
-		$this->assertEquals( $context->shouldSendModuleToUser( $user ), $expected );
-	}
-
-	/**
 	 * Check tst Page Previews are disabled for anonymous user
 	 * @covers ::shouldSendModuleToUser
-	 * @covers ::isBetaFeatureEnabled
 	 * @dataProvider providerAnonUserHasDisabledPagePreviews
 	 */
-	public function testAnonUserHasDisabledPagePreviews( $betaFeatureEnabled, $expected ) {
+	public function testAnonUserHasDisabledPagePreviews( $expected ) {
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setId( self::ANONYMOUS_USER );
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			PopupsContext::PREVIEWS_DISABLED );
-		$this->setMwGlobals( [
-			"wgPopupsBetaFeature" => $betaFeatureEnabled,
-		] );
 
 		$context = $this->getContext();
 		$this->assertEquals( $expected, $context->shouldSendModuleToUser( $user ) );
@@ -172,43 +136,24 @@ class PopupsContextTest extends MediaWikiTestCase {
 
 	public static function providerAnonUserHasDisabledPagePreviews() {
 		return [
-			// If beta feature is enabled we can assume it's opt in only.
-			[ true, false ],
-			// If beta feature is disabled we can assume it's rolled out to everyone.
-			[ false, true ],
-		];
-	}
-	/**
-	 * @return array/
-	 */
-	public function provideTestDataForShouldSendModuleToUserWhenBetaEnabled() {
-		return [
-			[
-				"optin" => PopupsContext::PREVIEWS_ENABLED,
-				'expected' => true
-			], [
-				"optin" => PopupsContext::PREVIEWS_DISABLED,
-				'expected' => false
-			]
+			// Anons see this by default
+			[ true ],
 		];
 	}
 
 	/**
 	 * @covers ::areDependenciesMet
 	 * @dataProvider provideTestDataForTestAreDependenciesMet
-	 * @param bool $betaOn
 	 * @param bool $textExtracts
 	 * @param bool $pageImages
-	 * @param bool $betaFeatures
 	 * @param bool $expected
 	 */
-	public function testAreDependenciesMet( $betaOn, $textExtracts, $pageImages,
-		$betaFeatures, $gateway, $expected ) {
+	public function testAreDependenciesMet( $textExtracts, $pageImages,
+		$gateway, $expected ) {
 		$this->setMwGlobals( [
-			"wgPopupsBetaFeature" => $betaOn,
 			"wgPopupsGateway" => $gateway,
 		] );
-		$returnValues = [ $textExtracts, $pageImages, $betaFeatures ];
+		$returnValues = [ $textExtracts, $pageImages ];
 
 		$mock = $this->getMock( ExtensionRegistry::class, [ 'isLoaded' ] );
 		$mock->expects( $this->any() )
@@ -223,57 +168,31 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 */
 	public function provideTestDataForTestAreDependenciesMet() {
 		return [
-			// Beta is off, dependencies are met even BetaFeatures ext is not available
+			// Dependencies are met
 			[
-				"betaOn" => false,
 				"textExtracts" => true,
 				"pageImages" => true,
-				"betaFeatures" => false,
 				"gateway" => "mwApiPlain",
 				"expected" => true
 			],
 			// textExtracts dep is missing
 			[
-				"betaOn" => false,
 				"textExtracts" => false,
 				"pageImages" => true,
-				"betaFeatures" => false,
 				"gateway" => "mwApiPlain",
 				"expected" => false
 			],
 			// PageImages dep is missing
 			[
-				"betaOn" => false,
 				"textExtracts" => true,
 				"pageImages" => false,
-				"betaFeatures" => false,
 				"gateway" => "mwApiPlain",
 				"expected" => false
-			],
-			// Beta is on but BetaFeatures dep is missing
-			[
-				"betaOn" => true,
-				"textExtracts" => true,
-				"pageImages" => true,
-				"betaFeatures" => false,
-				"gateway" => "mwApiPlain",
-				"expected" => false
-			],
-			// beta is on and all deps are available
-			[
-				"betaOn" => true,
-				"textExtracts" => true,
-				"pageImages" => true,
-				"betaFeatures" => true,
-				"gateway" => "mwApiPlain",
-				"expected" => true
 			],
 			// when Popups uses gateway!=mwApiPlain we don't require PageImages nor TextExtracts
 			[
-				"betaOn" => false,
 				"textExtracts" => false,
 				"pageImages" => false,
-				"betaFeatures" => false,
 				"gateway" => "restbaseHTML",
 				"expected" => true
 			],
@@ -285,7 +204,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @dataProvider provideTestIsTitleBLacklisted
 	 * @param array $blacklist
 	 * @param Title $title
-	 $ @param bool $expected
+	 * @param bool $expected
 	 */
 	public function testIsTitleBlacklisted( $blacklist, Title $title, $expected ) {
 		$this->setMwGlobals( [ "wgPopupsPageBlacklist" => $blacklist ] );
