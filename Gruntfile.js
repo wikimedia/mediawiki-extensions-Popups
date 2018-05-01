@@ -1,7 +1,7 @@
 /* eslint-evn node */
 
 module.exports = function ( grunt ) {
-	var conf = grunt.file.readJSON( 'extension.json' );
+	const conf = grunt.file.readJSON( 'extension.json' );
 
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
@@ -26,8 +26,9 @@ module.exports = function ( grunt ) {
 			},
 			sources: {
 				src: [
+					'*.js',
 					'src/**/*.js',
-					'tests/node-qunit/**/*.js'
+					'tests/**/*.js'
 				]
 			},
 			sourcesfix: {
@@ -35,8 +36,9 @@ module.exports = function ( grunt ) {
 					fix: true
 				},
 				src: [
+					'*.js',
 					'src/**/*.js',
-					'tests/node-qunit/**/*.js'
+					'tests/**/*.js'
 				]
 			}
 		},
