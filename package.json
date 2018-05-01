@@ -5,12 +5,11 @@
     "build": "NODE_ENV=production webpack -p",
     "lint:fix": "grunt fix",
     "test:node": "node tests/node-qunit/run.js 'tests/node-qunit/**/*.test.js' | tap-dot",
-    "test:dev": "grunt lint && npm -s run coverage && npm -s run -s doc",
-    "test": "npm -s run check-built-assets && npm -s run test:dev",
+    "test": "npm -s run check-built-assets && grunt lint && npm -s run coverage && npm -s run -s doc && bundlesize",
     "doc": "jsdoc -c jsdoc.json",
     "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITTED OR STAGED' && npm -s run build && git diff -q resources/dist",
     "coverage": "SPAWN_WRAP_SHIM_ROOT=\"$PWD/.nyc_output\" nyc npm -s run test:node",
-    "precommit": "npm -s run test:dev && npm -s run build && git add resources/dist && bundlesize"
+    "precommit": "npm -s t"
   },
   "devDependencies": {
     "babel-loader": "7.1.4",
