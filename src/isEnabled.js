@@ -1,7 +1,6 @@
 /**
  * @module isEnabled
  */
-import { BUCKETS } from './constants';
 
 /**
  * Given the global state of the application, creates a function that gets
@@ -11,18 +10,15 @@ import { BUCKETS } from './constants';
  *
  * If Page Previews is configured as a user preference, then the user must
  * either be logged in and have enabled the preference or be logged out and have
- * not disabled previews via the settings modal. Logged out users who have not
- * disabled or enabled the previews via the settings modal will be subject to
- * wgPopupsAnonsExperimentalGroupSize if defined.
+ * not disabled previews via the settings modal.
  *
  * @param {mw.user} user The `mw.user` singleton instance
  * @param {Object} userSettings An object returned by `userSettings.js`
  * @param {mw.Map} config
- * @param {String} bucket the user belongs to (off, on or control)
  *
  * @return {Boolean}
  */
-export default function isEnabled( user, userSettings, config, bucket ) {
+export default function isEnabled( user, userSettings, config ) {
 	if ( config.get( 'wgPopupsConflictsWithNavPopupGadget' ) ) {
 		return false;
 	}
@@ -32,7 +28,7 @@ export default function isEnabled( user, userSettings, config, bucket ) {
 	}
 
 	if ( !userSettings.hasIsEnabled() ) {
-		return bucket === BUCKETS.on;
+		return true;
 	}
 
 	return userSettings.getIsEnabled();
