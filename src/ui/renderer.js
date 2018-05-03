@@ -271,8 +271,6 @@ export function show(
 	return wait( 200 )
 		.then( () => {
 			bindBehavior( preview, behavior );
-		} )
-		.then( () => {
 			behavior.previewShow( token );
 		} );
 }
