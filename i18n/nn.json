@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Njardarlogar"
+			"Njardarlogar",
+			"Jeblad"
 		]
 	},
 	"popups-message": "Svevesamandrag",
@@ -14,5 +15,7 @@
 	"popups-settings-help-ok": "Greitt",
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-enable": "Slå på førehandsvising",
-	"popups-preview-no-preview": "Det ser ut som det ikkje finst noka førehandsvising av denne sida."
+	"popups-preview-no-preview": "Det ser ut som det ikkje finst noka førehandsvising av denne sida.",
+	"popups-preview-disambiguation": "Denne tittelen relaterer til fleir sider",
+	"popups-preview-disambiguation-link": "Vis liknande sider"
 }

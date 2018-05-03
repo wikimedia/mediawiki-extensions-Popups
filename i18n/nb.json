@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Danmichaelo",
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Jeblad",
+			"Orf3us"
 		]
 	},
 	"popups-message": "Sideforhåndsvisning",
-	"popups-desc": "Viser et lite forhåndsvisningsvindu når brukeren fører muspekeren over en lenke.",
+	"popups-desc": "Viser en forhåndsvisning når brukeren fører musepekeren over en lenke.",
 	"popups-settings-title": "Forhåndsvisning",
 	"popups-settings-option-simple": "Slå på",
 	"popups-settings-option-simple-description": "Få raske forhåndsvisninger av et emne mens man leser en side.",
@@ -18,12 +20,14 @@
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-help": "Du kan skru på igjen forhåndsvisning ved å bruke lenken i sidens bunntekst.",
 	"popups-settings-enable": "Skru på forhåndsvisning",
-	"popups-preview-no-preview": "Det ser ut som om det ikke er noen tilgjengelig forhåndsvisning av denne siden.",
-	"popups-preview-footer-read": "Les",
+	"popups-preview-no-preview": "Det oppstod en feil under forhåndsvisning av siden.",
+	"popups-preview-footer-read": "Gå til denne siden",
+	"popups-preview-disambiguation": "Denne tittelen relaterer til flere sider",
+	"popups-preview-disambiguation-link": "Vis lignende sider",
 	"prefs-reading": "Lesepreferanser",
-	"popups-prefs-optin-title": "Sideforhåndsvisning\n\n<em>Få en rask forhåndsvisning av et emne mens du leser en side</em>",
+	"popups-prefs-optin-title": "Sideforhåndsvisning\n\n<em>Få rask forhåndsvisning av et emne mens du leser en side</em>",
 	"popups-prefs-optin-enabled-label": "Slå på",
 	"popups-prefs-optin-disabled-label": "Slå av",
 	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideforhåndsvisning",
-	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke hvordan denne funksjonen virker. Om du opplever problemer, gå gjennom tilleggsfunksjonene og brukerskriptene dine, inkludert de globale."
+	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke denne funksjonen. Om du opplever problemer, sjekk dine tilleggsfunksjoner og brukerscript, inkludert dine globale script."
 }
