@@ -248,7 +248,7 @@ QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
 	renderer.bindBehavior( preview, behavior );
 	preview.el.mouseenter();
 
-	assert.ok( behavior.previewDwell.calledOnce, 'Preview dwell is called.' );
+	assert.strictEqual( behavior.previewDwell.callCount, 1, 'Preview dwell is called.' );
 	assert.notOk(
 		behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
 	assert.notOk( behavior.click.called, 'Click is NOT called.' );
@@ -263,7 +263,7 @@ QUnit.test( 'bindBehavior - preview abandon', function ( assert ) {
 	preview.el.mouseleave();
 
 	assert.notOk( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
-	assert.ok( behavior.previewAbandon.calledOnce, 'Preview abandon is called.' );
+	assert.strictEqual( behavior.previewAbandon.callCount, 1, 'Preview abandon is called.' );
 	assert.notOk( behavior.click.called, 'Click is NOT called.' );
 	assert.notOk( behavior.showSettings.called, 'Show settings is NOT called.' );
 } );
@@ -278,7 +278,7 @@ QUnit.test( 'bindBehavior - preview click', function ( assert ) {
 	assert.notOk( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
 	assert.notOk(
 		behavior.previewAbandon.called, 'Preview abandon is NOT called.' );
-	assert.ok( behavior.click.calledOnce, 'Click is called.' );
+	assert.strictEqual( behavior.click.callCount, 1, 'Click is called.' );
 	assert.notOk( behavior.showSettings.called,
 		'Settings link click is NOT called.' );
 } );

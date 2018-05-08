@@ -15,7 +15,7 @@ QUnit.test( '#isEnabled', function ( assert ) {
 
 	isEnabled( user, config, experiments );
 
-	assert.ok( weightedBooleanStub.calledOnce );
+	assert.strictEqual( weightedBooleanStub.callCount, 1 );
 	assert.deepEqual(
 		weightedBooleanStub.getCall( 0 ).args,
 		[
