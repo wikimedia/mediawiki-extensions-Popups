@@ -20,7 +20,7 @@
 	"popups-desc": "Показывает всплывающее окно предварительного просмотра при наведении курсора на ссылку, ведущую на страницу.",
 	"popups-settings-title": "Предпросмотр страницы",
 	"popups-settings-option-simple": "Включить",
-	"popups-settings-option-simple-description": "Получите быстрый предварительный просмотр темы при страницы.",
+	"popups-settings-option-simple-description": "Показывать быстрый предпросмотр тем при наведении мыши.",
 	"popups-settings-option-advanced": "Расширенный",
 	"popups-settings-option-advanced-description": "Показывать предпросмотр ссылок и получать меню для функций правки. Это используют многие редакторы.",
 	"popups-settings-option-off": "Отключить",

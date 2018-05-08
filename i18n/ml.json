@@ -4,9 +4,9 @@
 			"Praveenp"
 		]
 	},
-	"popups-message": "താൾ എങ്ങനെയെന്ന് കാണൽ",
+	"popups-message": "താൾ പ്രിവ്യൂ",
 	"popups-desc": "ഒരു താളിന്റെ കണ്ണിയുടെ മുകളിലൂടെ മൗസ് നീക്കുമ്പോൾ കണ്ണിയിലുള്ള താളിന്റെ ഉള്ളടക്കം കാണിക്കുക",
-	"popups-settings-title": "താൾ എങ്ങനെയെന്ന് കാണൽ",
+	"popups-settings-title": "താൾ പ്രിവ്യൂ",
 	"popups-settings-option-simple": "സജ്ജമാക്കുക",
 	"popups-settings-option-simple-description": "താൾ വായിച്ചുകൊണ്ടിരിക്കുമ്പോൾ വിഷയത്തിന്റെ പെട്ടന്നുള്ള പ്രിവ്യൂ പ്രദർശിപ്പിക്കുക.",
 	"popups-settings-option-advanced": "വിപുലം",
@@ -15,14 +15,15 @@
 	"popups-settings-save": "സേവ് ചെയ്യുക",
 	"popups-settings-help-ok": "ചെയ്തു",
 	"popups-settings-cancel": "റദ്ദാക്കുക",
-	"popups-settings-help": "താളിനടിയിൽ ഉള്ള കണ്ണി ഉപയോഗിച്ച് താങ്കൾക്ക് എങ്ങനെയുണ്ടെന്ന് കാണൽ വീണ്ടും സജ്ജമാക്കാവുന്നതാണ്.",
-	"popups-settings-enable": "എങ്ങനെയാണെന്ന് കാണൽ സജ്ജമാക്കുക",
+	"popups-settings-help": "താളിൽ താഴെ ഉള്ള കണ്ണി ഉപയോഗിച്ച് താങ്കൾക്ക് പ്രിവ്യൂ വീണ്ടും സജ്ജമാക്കാവുന്നതാണ്.",
+	"popups-settings-enable": "പ്രിവ്യൂ സജ്ജമാക്കുക",
 	"popups-preview-no-preview": "ഈ പ്രിവ്യൂ പ്രദർശിപ്പിക്കുന്നതിൽ ഒരു പ്രശ്നമുണ്ടായി",
 	"popups-preview-footer-read": "ഈ താളിലേക്ക് പോവുക",
 	"popups-preview-disambiguation": "ഈ തലക്കെട്ട് ഒന്നിലധികം താളുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു",
 	"popups-preview-disambiguation-link": "സമാന താളുകൾ കാണുക",
 	"prefs-reading": "ക്രമീകരണങ്ങൾ വായിക്കുക",
-	"popups-prefs-optin-title": "താൾ എങ്ങനെയുണ്ടെന്ന് കാണൽ (പ്രിവ്യൂ)\n\n<em>താൾ വായിച്ചുകൊണ്ടിരിക്കുമ്പോൾ പെട്ടന്നുള്ള പ്രിവ്യൂ ലഭ്യമാക്കുക</em>",
+	"popups-prefs-optin-title": "താൾ എങ്ങനെയുണ്ടെന്ന് കാണൽ (പ്രിവ്യൂ)\n\n<em>താൾ വായിച്ചുകൊണ്ടിരിക്കുമ്പോൾ പെട്ടെന്നുള്ള പ്രിവ്യൂ ലഭ്യമാക്കുക</em>",
 	"popups-prefs-optin-enabled-label": "സജ്ജമാക്കുക",
-	"popups-prefs-optin-disabled-label": "നിർജ്ജീവമാക്കുക"
+	"popups-prefs-optin-disabled-label": "നിർജ്ജീവമാക്കുക",
+	"popups-prefs-disable-nav-gadgets-info": "താളിന്റെ പ്രിവ്യൂ സജ്ജമാക്കാനായി ഗാഡ്ജറ്റ്സ് റ്റാബിൽ നിന്നും താങ്കൾ [[$1|നാവിഗേഷൻ പോപ്അപ്‌സ് ഗാഡ്ജറ്റ് പ്രവർത്തനരഹിതമാക്കേണ്ടതുണ്ട്]]"
 }

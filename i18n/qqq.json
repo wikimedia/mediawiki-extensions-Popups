@@ -6,10 +6,11 @@
 			"Robby",
 			"Nemo bis",
 			"Mateon1",
-			"Mar(c)"
+			"Mar(c)",
+			"Umherirrender"
 		]
 	},
-	"popups-message": "Name shown in user preference for this extension",
+	"popups-message": "{{name}}\nName shown in user preference for this extension",
 	"popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
 	"popups-settings-title": "Title used for the setting's dialog",
 	"popups-settings-option-simple": "Title for the reader popup option\n{{Identical|Enable}}",
