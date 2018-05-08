@@ -29,11 +29,14 @@ QUnit.test(
 		const changeListener = render( previewBehavior );
 		changeListener( undefined, state );
 
-		assert.ok( this.preview.show.calledWith(
-			state.preview.activeEvent,
-			previewBehavior,
-			state.preview.activeToken
-		) );
+		assert.ok(
+			this.preview.show.calledWith(
+				state.preview.activeEvent,
+				previewBehavior,
+				state.preview.activeToken
+			),
+			'The preview is shown with correct arguments.'
+		);
 	}
 );
 

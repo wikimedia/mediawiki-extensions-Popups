@@ -33,7 +33,11 @@ QUnit.test( 'it should return the title of a url with a title query param', func
 		}
 	} );
 
-	assert.equal( getTitle( href, this.config ), 'Foo' );
+	assert.equal(
+		getTitle( href, this.config ),
+		'Foo',
+		'The query title is returned.'
+	);
 } );
 
 QUnit.test( 'it should return the title of a pretty url if it conforms wgArticlePath', function ( assert ) {
@@ -44,7 +48,11 @@ QUnit.test( 'it should return the title of a pretty url if it conforms wgArticle
 		query: {}
 	} );
 
-	assert.equal( getTitle( href, this.config ), 'Foo' );
+	assert.equal(
+		getTitle( href, this.config ),
+		'Foo',
+		'The ASCII title is returned.'
+	);
 } );
 
 QUnit.test( 'it should return the title of a pretty url properly decoded', function ( assert ) {
@@ -55,7 +63,11 @@ QUnit.test( 'it should return the title of a pretty url properly decoded', funct
 		query: {}
 	} );
 
-	assert.equal( getTitle( href, this.config ), '測試' );
+	assert.equal(
+		getTitle( href, this.config ),
+		'測試',
+		'The UTF-8 title is returned.'
+	);
 } );
 
 QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) {
@@ -64,7 +76,11 @@ QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) 
 		new Error( 'Cannot parse' )
 	);
 
-	assert.equal( getTitle( href, this.config ), undefined );
+	assert.equal(
+		getTitle( href, this.config ),
+		undefined,
+		'No title is returned.'
+	);
 } );
 
 QUnit.test( 'it should skip urls that are external', function ( assert ) {
@@ -75,7 +91,11 @@ QUnit.test( 'it should skip urls that are external', function ( assert ) {
 		query: { v: 'dQw4w9WgXcQ' }
 	} );
 
-	assert.equal( getTitle( href, this.config ), undefined );
+	assert.equal(
+		getTitle( href, this.config ),
+		undefined,
+		'No title is returned.'
+	);
 } );
 
 QUnit.test( 'it should skip urls not on article path without one title query param', function ( assert ) {
@@ -87,7 +107,11 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 		query: {}
 	} );
 
-	assert.equal( getTitle( href, this.config ), undefined );
+	assert.equal(
+		getTitle( href, this.config ),
+		undefined,
+		'No title is returned.'
+	);
 
 	// Multiple query params
 	href = '/Foo?a=1&title=Foo';
@@ -97,7 +121,11 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 		query: { a: 1, title: 'Foo' }
 	} );
 
-	assert.equal( getTitle( href, this.config ), undefined );
+	assert.equal(
+		getTitle( href, this.config ),
+		undefined,
+		'No title is returned.'
+	);
 } );
 
 QUnit.module( 'title#isValid', {
@@ -118,12 +146,11 @@ QUnit.test( 'it should return null if the title is empty', ( assert ) => {
 
 QUnit.test( 'it should return null if the title can\'t be parsed properly', ( assert ) => {
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
-	assert.equal( isValid( 'title' ), null );
-} );
-
-QUnit.test( 'it should return null if the title can\'t be parsed properly', ( assert ) => {
-	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
-	assert.equal( isValid( 'title' ), null );
+	assert.equal(
+		isValid( 'title' ),
+		null,
+		'Doesn\'t accept unparseable titles'
+	);
 	assert.equal(
 		window.mediaWiki.Title.newFromText.callCount, 1,
 		'mediaWiki.Title.newFromText called for parsing the title' );
@@ -133,7 +160,11 @@ QUnit.test( 'it should return null if the title is not from a content namespace'
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( {
 		namespace: 1
 	} );
-	assert.equal( isValid( 'title', [ 5 ] ), null );
+	assert.equal(
+		isValid( 'title', [ 5 ] ),
+		null,
+		'Only content namespace titles are accepted'
+	);
 } );
 
 QUnit.test( 'it should return the title object if the title is from a content namespace', ( assert ) => {
@@ -141,5 +172,9 @@ QUnit.test( 'it should return the title object if the title is from a content na
 		namespace: 3
 	};
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( mwTitle );
-	assert.strictEqual( isValid( 'title', [ 1, 3, 5 ] ), mwTitle );
+	assert.strictEqual(
+		isValid( 'title', [ 1, 3, 5 ] ),
+		mwTitle,
+		'A content namespace title is accepted'
+	);
 } );

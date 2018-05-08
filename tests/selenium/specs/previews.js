@@ -10,13 +10,13 @@ describe( 'Dwelling on a valid link', () => {
 	it( 'I should see a preview', () => {
 		page.open();
 		page.dwellLink();
-		assert( page.seePreview() );
+		assert( page.seePreview(), 'Preview is shown.' );
 	} );
 
 	it( 'Abandoning link hides preview', () => {
 		page.open();
 		page.dwellLink();
 		page.abandonLink();
-		assert( page.doNotSeePreview() );
+		assert( page.doNotSeePreview(), 'Preview is kept hidden.' );
 	} );
 } );

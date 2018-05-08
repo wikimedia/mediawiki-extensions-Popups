@@ -16,6 +16,7 @@ const mw = window.mediaWiki,
  * @property {Function} showSettings
  * @property {Function} previewDwell
  * @property {Function} previewAbandon
+ * @property {Function} previewShow
  * @property {Function} click handler for the entire preview
  */
 

@@ -1,21 +1,22 @@
-import { createStubUser, createStubMap } from './stubs';
+import { createStubMap } from './stubs';
 import createUserSettings from '../../src/userSettings';
 
 QUnit.module( 'ext.popups/userSettings', {
 	beforeEach() {
-		const stubUser = createStubUser( /* isAnon = */ true );
-
 		this.storage = createStubMap();
-		this.userSettings = createUserSettings( this.storage, stubUser );
+		this.userSettings = createUserSettings( this.storage );
 	}
 } );
 
 QUnit.test( '#getIsEnabled should return false if Page Previews have been disabled', function ( assert ) {
-	assert.expect( 2 );
+	assert.expect( 2, 'All assertions are executed.' );
 
 	this.userSettings.setIsEnabled( false );
 
-	assert.notOk( this.userSettings.getIsEnabled() );
+	assert.notOk(
+		this.userSettings.getIsEnabled(),
+		'The user has disabled Page Previews.'
+	);
 
 	// ---
 
@@ -28,7 +29,7 @@ QUnit.test( '#getIsEnabled should return false if Page Previews have been disabl
 } );
 
 QUnit.test( '#hasIsEnabled', function ( assert ) {
-	assert.expect( 3 );
+	assert.expect( 3, 'All assertions are executed.' );
 
 	assert.notOk(
 		this.userSettings.hasIsEnabled(),
@@ -57,7 +58,7 @@ QUnit.test( '#hasIsEnabled', function ( assert ) {
 } );
 
 QUnit.test( '#getPreviewCount should return the count as a number', function ( assert ) {
-	assert.expect( 3 );
+	assert.expect( 3, 'All assertions are executed.' );
 
 	assert.strictEqual(
 		this.userSettings.getPreviewCount(),
@@ -81,7 +82,8 @@ QUnit.test( '#getPreviewCount should return the count as a number', function ( a
 
 	assert.strictEqual(
 		this.userSettings.getPreviewCount(),
-		111
+		111,
+		'#getPreviewCount returns the total.'
 	);
 } );
 
@@ -89,12 +91,23 @@ QUnit.test( '#setPreviewCount should store the count as a string', function ( as
 	this.userSettings.setPreviewCount( 222 );
 
 	assert.strictEqual(
-		this.storage.get( 'ext.popups.core.previewCount' ), '222' );
+		this.storage.get( 'ext.popups.core.previewCount' ),
+		'222',
+		'Storage returns the total as a string.'
+	);
 } );
 
 QUnit.test( '#getPreviewCount should override value in storage when is not a number', function ( assert ) {
 	this.storage.set( 'ext.popups.core.previewCount', 'NaN' );
 
-	assert.strictEqual( this.userSettings.getPreviewCount(), 0 );
-	assert.strictEqual( this.storage.get( 'ext.popups.core.previewCount' ), '0' );
+	assert.strictEqual(
+		this.userSettings.getPreviewCount(),
+		0,
+		'#getPreviewCount returns a sane default.'
+	);
+	assert.strictEqual(
+		this.storage.get( 'ext.popups.core.previewCount' ),
+		'0',
+		'Storage returns a sane default as a string.'
+	);
 } );

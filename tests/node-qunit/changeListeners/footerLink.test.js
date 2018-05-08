@@ -42,13 +42,13 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 } );
 
 QUnit.test( 'it should append the link to the footer menu', function ( assert ) {
-	assert.expect( 2 );
+	assert.expect( 2, 'All assertions are executed.' );
 
 	this.whenLinkPreviewsBoots();
 
 	const $link = this.getLink();
 
-	assert.strictEqual( $link.length, 1 );
+	assert.strictEqual( $link.length, 1, 'The link is singular.' );
 	assert.equal(
 		$link.css( 'display' ),
 		'list-item',
@@ -57,7 +57,7 @@ QUnit.test( 'it should append the link to the footer menu', function ( assert ) 
 } );
 
 QUnit.test( 'it should show and hide the link', function ( assert ) {
-	assert.expect( 2 );
+	assert.expect( 2, 'All assertions are executed.' );
 
 	this.whenLinkPreviewsBoots();
 
@@ -84,12 +84,12 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 } );
 
 QUnit.test( 'it should call the showSettings bound action creator', function ( assert ) {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	this.whenLinkPreviewsBoots();
 
 	const $link = this.getLink();
 	$link.click();
 
-	assert.ok( this.showSettingsSpy.called );
+	assert.ok( this.showSettingsSpy.called, 'Show settings is called.' );
 } );

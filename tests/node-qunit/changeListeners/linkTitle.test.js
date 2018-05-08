@@ -27,7 +27,7 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 QUnit.test( 'it should remove the title', function ( assert ) {
 	this.whenTheLinkIsDwelledUpon();
 
-	assert.strictEqual( this.$link.attr( 'title' ), '' );
+	assert.strictEqual( this.$link.attr( 'title' ), '', 'The title is removed.' );
 } );
 
 QUnit.test( 'it shouldn\'t remove the title under certain conditions', function ( assert ) {
@@ -35,7 +35,11 @@ QUnit.test( 'it shouldn\'t remove the title under certain conditions', function 
 
 	this.whenTheLinkIsDwelledUpon();
 
-	assert.strictEqual( this.$link.attr( 'title' ), 'Foo' );
+	assert.strictEqual(
+		this.$link.attr( 'title' ),
+		'Foo',
+		'The title is not removed.'
+	);
 } );
 
 QUnit.test( 'it should restore the title', function ( assert ) {
@@ -54,7 +58,11 @@ QUnit.test( 'it should restore the title', function ( assert ) {
 
 	this.linkTitleChangeListener( this.state, nextState );
 
-	assert.strictEqual( this.$link.attr( 'title' ), 'Foo' );
+	assert.strictEqual(
+		this.$link.attr( 'title' ),
+		'Foo',
+		'The title is restored.'
+	);
 } );
 
 QUnit.test( 'it should restore the title when the user dwells on another link immediately', function ( assert ) {
@@ -70,8 +78,12 @@ QUnit.test( 'it should restore the title when the user dwells on another link im
 
 	this.linkTitleChangeListener( this.state, nextState );
 
-	assert.strictEqual( this.$link.attr( 'title' ), 'Foo' );
-	assert.strictEqual( $anotherLink.attr( 'title' ), '' );
+	assert.strictEqual( this.$link.attr( 'title' ), 'Foo', 'The title is set.' );
+	assert.strictEqual(
+		$anotherLink.attr( 'title' ),
+		'',
+		'The title is removed.'
+	);
 
 	// ---
 

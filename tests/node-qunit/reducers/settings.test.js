@@ -11,7 +11,8 @@ QUnit.test( '@@INIT', ( assert ) => {
 			shouldShow: false,
 			showHelp: false,
 			shouldShowFooterLink: false
-		}
+		},
+		'The initial state doesn\'t show, doesn\'t show help, and doesn\'t show a footer link.'
 	);
 } );
 
@@ -28,7 +29,8 @@ QUnit.test( 'BOOT', ( assert ) => {
 		settings( {}, action ),
 		{
 			shouldShowFooterLink: true
-		}
+		},
+		'The boot state shows a footer link.'
 	);
 
 	// ---
@@ -46,7 +48,7 @@ QUnit.test( 'BOOT', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_SHOW', ( assert ) => {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
 		settings( {}, { type: 'SETTINGS_SHOW' } ),
@@ -59,7 +61,7 @@ QUnit.test( 'SETTINGS_SHOW', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
 		settings( {}, { type: 'SETTINGS_HIDE' } ),

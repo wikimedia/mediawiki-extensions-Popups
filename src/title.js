@@ -46,8 +46,8 @@ export function getTitle( href, config ) {
  * Given a page title it will return the mediawiki.Title if it is an eligible
  * link for showing page previews, null otherwise
  *
- * @param {String} title page title to check if it should show preview
- * @param {Number[]} contentNamespaces contentNamespaces as specified in
+ * @param {String} [title] page title to check if it should show preview
+ * @param {Number[]} [contentNamespaces] contentNamespaces as specified in
  * wgContentNamespaces
  * @return {mw.Title|null}
  */

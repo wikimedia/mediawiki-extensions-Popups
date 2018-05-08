@@ -32,7 +32,11 @@ QUnit.test( 'it shouldn\'t set the settingsUrl if the user is logged out', funct
 		actions = {},
 		behavior = createPreviewBehavior( user, actions );
 
-	assert.strictEqual( behavior.settingsUrl, undefined );
+	assert.strictEqual(
+		behavior.settingsUrl,
+		undefined,
+		'No settings URL is set.'
+	);
 } );
 
 QUnit.test( 'it shouldn\'t set a showSettings handler if the user is logged in', function ( assert ) {
@@ -40,7 +44,11 @@ QUnit.test( 'it shouldn\'t set a showSettings handler if the user is logged in',
 		actions = {},
 		behavior = createPreviewBehavior( user, actions );
 
-	assert.strictEqual( behavior.showSettings, $.noop );
+	assert.strictEqual(
+		behavior.showSettings,
+		$.noop,
+		'No show settings handler is set.'
+	);
 } );
 
 QUnit.test( 'it should set a showSettings handler if the user is logged out', function ( assert ) {
@@ -77,8 +85,24 @@ QUnit.test( 'it should mix in default actions', function ( assert ) {
 
 	const behavior = createPreviewBehavior( user, actions );
 
-	assert.strictEqual( behavior.previewDwell, actions.previewDwell );
-	assert.strictEqual( behavior.previewAbandon, actions.abandon );
-	assert.strictEqual( behavior.previewShow, actions.previewShow );
-	assert.strictEqual( behavior.click, actions.linkClick );
+	assert.strictEqual(
+		behavior.previewDwell,
+		actions.previewDwell,
+		'Preview dwelled action is mixed.'
+	);
+	assert.strictEqual(
+		behavior.previewAbandon,
+		actions.abandon,
+		'Preview action is mixed.'
+	);
+	assert.strictEqual(
+		behavior.previewShow,
+		actions.previewShow,
+		'Preview shown action is mixed.'
+	);
+	assert.strictEqual(
+		behavior.click,
+		actions.linkClick,
+		'Link click action is mixed.'
+	);
 } );

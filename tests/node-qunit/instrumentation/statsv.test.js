@@ -15,14 +15,19 @@ QUnit.test( '#isEnabled', function ( assert ) {
 
 	isEnabled( user, config, experiments );
 
-	assert.strictEqual( weightedBooleanStub.callCount, 1 );
+	assert.strictEqual(
+		weightedBooleanStub.callCount,
+		1,
+		'The experiments object is called.'
+	);
 	assert.deepEqual(
 		weightedBooleanStub.getCall( 0 ).args,
 		[
 			'ext.Popups.statsv',
 			config.get( 'wgPopupsStatsvSamplingRate' ),
 			user.sessionId()
-		]
+		],
+		'The experiments object is called with the correct arguments.'
 	);
 
 	// ---

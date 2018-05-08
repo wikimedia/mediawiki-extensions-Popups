@@ -9,13 +9,13 @@ QUnit.module( 'ext.popups/reducers#eventLogging', {
 } );
 
 QUnit.test( '@@INIT', function ( assert ) {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
-	assert.deepEqual( this.initialState, {} );
+	assert.deepEqual( this.initialState, {}, 'The initial state is empty.' );
 } );
 
 QUnit.test( 'FETCH_START', function ( assert ) {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const action = {
 		type: 'FETCH_START',
@@ -27,12 +27,13 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 		state,
 		{
 			fetchStartedAt: 123
-		}
+		},
+		'The fetch start time is preserved.'
 	);
 } );
 
 QUnit.test( 'FETCH_END', ( assert ) => {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const startedAt = 200;
 	const endedAt = 500;
@@ -48,12 +49,13 @@ QUnit.test( 'FETCH_END', ( assert ) => {
 			fetchStartedAt: startedAt,
 			action: 'timing.PagePreviewsApiResponse',
 			data: endedAt - startedAt
-		}
+		},
+		'The start, action, and data are preserved.'
 	);
 } );
 
 QUnit.test( 'FETCH_FAILED', ( assert ) => {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const action = {
 		type: 'FETCH_FAILED'
@@ -65,12 +67,13 @@ QUnit.test( 'FETCH_FAILED', ( assert ) => {
 		{
 			action: 'counter.PagePreviewsApiFailure',
 			data: 1
-		}
+		},
+		'The action and data are preserved.'
 	);
 } );
 
 QUnit.test( 'LINK_DWELL', ( assert ) => {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const timestamp = 100;
 	const action = {
@@ -83,12 +86,13 @@ QUnit.test( 'LINK_DWELL', ( assert ) => {
 		state,
 		{
 			linkDwellStartedAt: timestamp
-		}
+		},
+		'The link dwell start time is preserved.'
 	);
 } );
 
 QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const startedAt = 100;
 	const endedAt = 300;
@@ -104,12 +108,13 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 			linkDwellStartedAt: startedAt,
 			action: 'timing.PagePreviewsPreviewShow',
 			data: endedAt - startedAt
-		}
+		},
+		'The link dwell start time, action, and data are preserved.'
 	);
 } );
 
 QUnit.test( 'STATSV_LOGGED', ( assert ) => {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const action = {
 		type: 'STATSV_LOGGED'
@@ -121,6 +126,7 @@ QUnit.test( 'STATSV_LOGGED', ( assert ) => {
 		{
 			action: null,
 			data: null
-		}
+		},
+		'The action and data empty.'
 	);
 } );

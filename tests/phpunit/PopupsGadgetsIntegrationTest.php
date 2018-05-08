@@ -87,7 +87,9 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 		$user = $this->getTestUser()->getUser();
 		$integration = new PopupsGadgetsIntegration( $this->getConfigMock(),
 			$this->getExtensionRegistryMock( false ) );
-		$this->assertEquals( false, $integration->conflictsWithNavPopupsGadget( $user ) );
+		$this->assertEquals( false,
+			$integration->conflictsWithNavPopupsGadget( $user ),
+			'No conflict is identified.' );
 	}
 
 	/**
@@ -236,7 +238,9 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 
 		$integration = new PopupsGadgetsIntegration( $config,
 			$this->getExtensionRegistryMock( true ) );
-		$this->assertEquals( $expected, $integration->conflictsWithNavPopupsGadget( $user ) );
+		$this->assertEquals( $expected,
+			$integration->conflictsWithNavPopupsGadget( $user ),
+			( $expected ? 'A' : 'No' ) + ' conflict is identified.' );
 
 		GadgetRepo::setSingleton( $origGadgetsRepo );
 	}

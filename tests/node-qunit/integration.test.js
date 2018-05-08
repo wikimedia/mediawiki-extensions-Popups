@@ -152,8 +152,16 @@ QUnit.module( 'ext.popups preview @integration', {
 QUnit.test( 'it boots in INACTIVE state', function ( assert ) {
 	const state = this.store.getState();
 
-	assert.equal( state.preview.activeLink, undefined );
-	assert.equal( state.preview.linkInteractionToken, undefined );
+	assert.equal(
+		state.preview.activeLink,
+		undefined,
+		'The initial active link is undefined.'
+	);
+	assert.equal(
+		state.preview.linkInteractionToken,
+		undefined,
+		'The initial token is undefined.'
+	);
 } );
 
 QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( assert ) {
@@ -180,7 +188,11 @@ QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
 		.then( () => {
 			const state = store.getState();
-			assert.equal( state.preview.activeLink, el );
+			assert.equal(
+				state.preview.activeLink,
+				el,
+				'The active link is passed.'
+			);
 			assert.equal(
 				state.preview.shouldShow, true,
 				'Should show when data has been fetched' );
@@ -195,7 +207,7 @@ QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert
 		this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT
 	).then( () => {
 		const state = store.getState();
-		assert.equal( state.preview.activeLink, el );
+		assert.equal( state.preview.activeLink, el, 'The active link is passed.' );
 		assert.equal( state.preview.shouldShow, true,
 			'Should show when data couldn\'t be fetched' );
 	} );
@@ -220,7 +232,11 @@ QUnit.test( 'in ACTIVE state, abandon link, and then dwell preview, should keep 
 	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( () => {
 			const state = this.store.getState();
-			assert.equal( state.preview.activeLink, el );
+			assert.equal(
+				state.preview.activeLink,
+				el,
+				'The active link is passed.'
+			);
 		} );
 } );
 
@@ -248,6 +264,10 @@ QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should 
 		} )
 		.then( () => {
 			const state = this.store.getState();
-			assert.equal( state.preview.activeLink, el );
+			assert.equal(
+				state.preview.activeLink,
+				el,
+				'The active link is passed.'
+			);
 		} );
 } );

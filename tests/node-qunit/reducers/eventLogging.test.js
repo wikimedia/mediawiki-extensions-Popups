@@ -18,7 +18,8 @@ QUnit.test( '@@INIT', function ( assert ) {
 			baseData: {},
 			event: undefined,
 			interaction: undefined
-		}
+		},
+		'The initial state is correct.'
 	);
 } );
 
@@ -68,7 +69,8 @@ QUnit.test( 'BOOT', function ( assert ) {
 				action: 'pageLoaded'
 			},
 			interaction: undefined
-		}
+		},
+		'The boot state is correct.'
 	);
 
 	// ---
@@ -78,7 +80,11 @@ QUnit.test( 'BOOT', function ( assert ) {
 
 	state = eventLogging( this.initialState, action );
 
-	assert.strictEqual( state.baseData.isAnon, true );
+	assert.strictEqual(
+		state.baseData.isAnon,
+		true,
+		'The user is anonymous and not logged in.'
+	);
 	assert.strictEqual(
 		state.baseData.editCountBucket,
 		undefined,
@@ -198,7 +204,8 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 				isUserDwelling: true
 			},
 			event: undefined
-		}
+		},
+		'The link dwell state is correct.'
 	);
 } );
 
@@ -235,7 +242,8 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 			started: now,
 
 			isUserDwelling: true
-		}
+		},
+		'The link dwell state is correct.'
 	);
 } );
 
@@ -276,7 +284,8 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 			linkInteractionToken: '0987654321',
 			totalInteractionTime: 250, // 250 - 0
 			action: 'dwelledButAbandoned'
-		}
+		},
+		'The link dwell state is correct.'
 	);
 
 	// ---
@@ -378,17 +387,20 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 		timestamp: now + 500
 	} );
 
-	assert.deepEqual( state.interaction, {
-		link: this.link,
-		title: 'Foo',
-		namespaceId: 1,
-		token,
-		started: now,
+	assert.deepEqual(
+		state.interaction, {
+			link: this.link,
+			title: 'Foo',
+			namespaceId: 1,
+			token,
+			started: now,
 
-		isUserDwelling: true,
+			isUserDwelling: true,
 
-		timeToPreviewShow: 500
-	} );
+			timeToPreviewShow: 500
+		},
+		'The preview show state is correct.'
+	);
 } );
 
 QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been shown', function ( assert ) {
@@ -433,7 +445,7 @@ QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been sho
 			previewType: undefined,
 			perceivedWait: 750
 		},
-		'The prevewType and perceivedWait properties are set if the preview has been shown.'
+		'The previewType and perceivedWait properties are set if the preview has been shown.'
 	);
 } );
 

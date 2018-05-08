@@ -54,7 +54,7 @@ export default function linkTitle() {
 
 			// Has the user dwelled on a link immediately after abandoning another
 			// (remembering that the ABANDON_END action is delayed by
-			// ~10e2 ms).
+			// ~100 ms).
 			if ( prevState.preview.activeLink !== state.preview.activeLink ) {
 				restoreTitleAttr( prevState.preview.activeLink );
 			}

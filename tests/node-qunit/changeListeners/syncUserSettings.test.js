@@ -14,7 +14,7 @@ QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
 QUnit.test(
 	'it shouldn\'t update the storage if the preview count hasn\'t changed',
 	function ( assert ) {
-		assert.expect( 1 );
+		assert.expect( 1, 'All assertions are executed.' );
 
 		const state = {
 			eventLogging: {
@@ -30,12 +30,15 @@ QUnit.test(
 
 		this.changeListener( prevState, state );
 
-		assert.notOk( this.userSettings.setPreviewCount.called );
+		assert.notOk(
+			this.userSettings.setPreviewCount.called,
+			'The preview count is unchanged.'
+		);
 	}
 );
 
 QUnit.test( 'it should update the storage if the previewCount has changed', function ( assert ) {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const prevState = {
 		eventLogging: {
@@ -48,13 +51,16 @@ QUnit.test( 'it should update the storage if the previewCount has changed', func
 
 	this.changeListener( prevState, state );
 
-	assert.ok( this.userSettings.setPreviewCount.calledWith( 223 ) );
+	assert.ok(
+		this.userSettings.setPreviewCount.calledWith( 223 ),
+		'The preview count is updated.'
+	);
 } );
 
 QUnit.test(
 	'it shouldn\'t update the storage if the enabled state hasn\'t changed',
 	function ( assert ) {
-		assert.expect( 1 );
+		assert.expect( 1, 'All assertions are executed.' );
 
 		const state = {
 			preview: {
@@ -70,12 +76,15 @@ QUnit.test(
 
 		this.changeListener( prevState, state );
 
-		assert.notOk( this.userSettings.setIsEnabled.called );
+		assert.notOk(
+			this.userSettings.setIsEnabled.called,
+			'The user setting is unchanged.'
+		);
 	}
 );
 
 QUnit.test( 'it should update the storage if the enabled flag has changed', function ( assert ) {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const prevState = {
 		preview: {
@@ -88,5 +97,8 @@ QUnit.test( 'it should update the storage if the enabled flag has changed', func
 
 	this.changeListener( prevState, state );
 
-	assert.ok( this.userSettings.setIsEnabled.calledWith( false ) );
+	assert.ok(
+		this.userSettings.setIsEnabled.calledWith( false ),
+		'The user setting is disabled.'
+	);
 } );
