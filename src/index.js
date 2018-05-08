@@ -21,7 +21,6 @@ import changeListeners from './changeListeners';
 import * as actions from './actions';
 import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
-import getUserBucket from './getUserBucket';
 import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
 
 const mw = mediaWiki,
@@ -79,15 +78,13 @@ function getStatsvTracker( user, config, experiments ) {
  *
  * @param {Object} user
  * @param {Object} config
- * @param {String} bucket for user
  * @param {Window} window
  * @return {EventTracker}
  */
-function getEventLoggingTracker( user, config, bucket, window ) {
+function getEventLoggingTracker( user, config, window ) {
 	return isEventLoggingEnabled(
 		user,
 		config,
-		bucket,
 		window
 	) ? mw.track : $.noop;
 }
@@ -166,11 +163,6 @@ function registerChangeListeners(
 		// So-called "services".
 		generateToken = mw.user.generateRandomSessionId,
 		gateway = createGateway( mw.config ),
-		userBucket = getUserBucket(
-			mw.experiments,
-			mw.config.get( 'wgPopupsAnonsExperimentalGroupSize' ),
-			mw.user.sessionId()
-		),
 		userSettings = createUserSettings( mw.storage ),
 		settingsDialog = createSettingsDialogRenderer(),
 		experiments = createExperiments( mw.experiments ),
@@ -184,10 +176,9 @@ function registerChangeListeners(
 		eventLoggingTracker = getEventLoggingTracker(
 			mw.user,
 			mw.config,
-			userBucket,
 			window
 		),
-		isEnabled = createIsEnabled( mw.user, userSettings, mw.config, userBucket );
+		isEnabled = createIsEnabled( mw.user, userSettings, mw.config );
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) === true ) {
