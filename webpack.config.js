@@ -4,23 +4,19 @@ const path = require( 'path' ),
 	PUBLIC_PATH = '/w/extensions/Popups',
 	isProduction = process.env.NODE_ENV === 'production';
 
-let reduxPath,
-	reduxThunkPath,
-	conf;
-
-reduxPath = isProduction ?
+const reduxPath = isProduction ?
 	'node_modules/redux/dist/redux.min.js' :
 	'node_modules/redux/dist/redux.js';
 
-reduxThunkPath = isProduction ?
+const reduxThunkPath = isProduction ?
 	'node_modules/redux-thunk/dist/redux-thunk.min.js' :
 	'node_modules/redux-thunk/dist/redux-thunk.js';
 
-conf = {
+const conf = {
 	output: {
 		// The absolute path to the output directory.
 		path: path.resolve( __dirname, 'resources/dist' ),
-		devtoolModuleFilenameTemplate: `${PUBLIC_PATH  }/[resource-path]`,
+		devtoolModuleFilenameTemplate: `${PUBLIC_PATH}/[resource-path]`,
 
 		// Write each chunk (entries, here) to a file named after the entry, e.g.
 		// the "index" entry gets written to index.js.
