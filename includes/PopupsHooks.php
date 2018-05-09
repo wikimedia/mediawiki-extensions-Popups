@@ -139,9 +139,25 @@ class PopupsHooks {
 	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 */
 	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
-		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+
 		$wgDefaultUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] =
-			$context->getDefaultIsEnabledState();
+			$config->get( 'PopupsOptInDefaultState' );
 	}
 
+	/**
+	 * Change the default PagePreviews visibility state for newly created accounts
+	 *
+	 * @param User $user Newly created user object
+	 * @param bool $autocreated Is user autocreated
+	 */
+	public static function onLocalUserCreated( User $user, $autocreated ) {
+		if ( !$autocreated ) {
+			$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+
+			$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+				$config->get( 'PopupsOptInStateForNewAccounts' ) );
+			$user->saveSettings();
+		}
+	}
 }

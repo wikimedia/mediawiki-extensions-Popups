@@ -43,6 +43,9 @@
 		],
 		"MakeGlobalVariablesScript": [
 			"Popups\\PopupsHooks::onMakeGlobalVariablesScript"
+		],
+		"LocalUserCreated": [
+			"Popups\\PopupsHooks::onLocalUserCreated"
 		]
 	},
 	"MessagesDirs": {
@@ -59,8 +62,10 @@
 		"PopupsVirtualPageViews": false,
 		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to enable/disable Page Previews should be hidden on Preferences page. False by default",
 		"PopupsHideOptInOnPreferencesPage": false,
-		"@PopupsOptInDefaultState": "@var string:['1'|'0'] Default Page Previews visibility. Has to be a string as a compatibility with beta feature settings",
+		"@PopupsOptInDefaultState": "@var string:['1'|'0'] Default Page Previews visibility for old accounts. Has to be a string as a compatibility with beta feature settings. For more info see @T191888",
 		"PopupsOptInDefaultState": "0",
+		"@PopupsOptInStateForNewAccounts": "@var string:['1'|'0'] Default Page Previews visibility for newly created accounts (from Q2 2018). For more info see @T191888",
+		"PopupsOptInStateForNewAccounts": "0",
 		"@PopupsConflictingNavPopupsGadgetName": "@var string: Navigation popups gadget name",
 		"PopupsConflictingNavPopupsGadgetName": "Navigation_popups",
 		"@PopupsGateway": "Which gateway to use for fetching Popups data. Available options: [mwApiPlain|restbasePlain|restbaseHTML]. Full and always up to date list is available in src/gateway/index.js",
