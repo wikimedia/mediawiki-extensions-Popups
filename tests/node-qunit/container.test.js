@@ -10,7 +10,7 @@ QUnit.module( 'container', {
 QUnit.test( '#has', function ( assert ) {
 	this.container.set( 'foo', this.factory );
 
-	assert.ok( this.container.has( 'foo' ) );
+	assert.ok( this.container.has( 'foo' ), 'The container checks the factory.' );
 } );
 
 QUnit.test( '#get', function ( assert ) {
@@ -23,7 +23,8 @@ QUnit.test( '#get', function ( assert ) {
 	assert.strictEqual( service, this.container.get( 'foo' ) );
 	assert.strictEqual(
 		this.container,
-		this.factory.getCall( 0 ).args[ 0 ]
+		this.factory.getCall( 0 ).args[ 0 ],
+		'The container uses the factory.'
 	);
 
 	// ---
@@ -39,12 +40,17 @@ QUnit.test( '#get', function ( assert ) {
 
 	assert.throws(
 		() => { this.container.get( 'bar' ); },
-		/The service "bar" hasn't been defined./
+		/The service "bar" hasn't been defined./,
+		'The container throws an error when no factory exists.'
 	);
 } );
 
 QUnit.test( '#get should handle values, not just functions', function ( assert ) {
 	this.container.set( 'foo', 'bar' );
 
-	assert.strictEqual( 'bar', this.container.get( 'foo' ) );
+	assert.strictEqual(
+		'bar',
+		this.container.get( 'foo' ),
+		'The container understands string values.'
+	);
 } );

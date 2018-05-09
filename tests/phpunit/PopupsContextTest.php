@@ -67,7 +67,9 @@ class PopupsContextTest extends MediaWikiTestCase {
 	public function testShowPreviewsPreferencesPage( $config, $expected ) {
 		$this->setMwGlobals( $config );
 		$context = $this->getContext();
-		$this->assertEquals( $expected, $context->showPreviewsOptInOnPreferencesPage() );
+		$this->assertEquals( $expected,
+			$context->showPreviewsOptInOnPreferencesPage(),
+			'The previews opt-in is ' + ( $expected ? 'shown.' : 'hidden.' ) );
 	}
 
 	/**
@@ -100,7 +102,9 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = $this->getContext();
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
-		$this->assertEquals( $context->shouldSendModuleToUser( $user ), $expected );
+		$this->assertEquals( $expected,
+			$context->shouldSendModuleToUser( $user ),
+			( $expected ? 'A' : 'No' ) + ' module is sent to the user.' );
 	}
 
 	/**
@@ -131,7 +135,9 @@ class PopupsContextTest extends MediaWikiTestCase {
 			PopupsContext::PREVIEWS_DISABLED );
 
 		$context = $this->getContext();
-		$this->assertEquals( $expected, $context->shouldSendModuleToUser( $user ) );
+		$this->assertEquals( $expected,
+			$context->shouldSendModuleToUser( $user ),
+			( $expected ? 'A' : 'No' ) + ' module is sent to the user.' );
 	}
 
 	public static function providerAnonUserHasDisabledPagePreviews() {
@@ -160,7 +166,9 @@ class PopupsContextTest extends MediaWikiTestCase {
 			->method( 'isLoaded' )
 			->will( new PHPUnit_Framework_MockObject_Stub_ConsecutiveCalls( $returnValues ) );
 		$context = $this->getContext( $mock );
-		$this->assertEquals( $expected, $context->areDependenciesMet() );
+		$this->assertEquals( $expected,
+			$context->areDependenciesMet(),
+			'Dependencies are ' + ( $expected ? '' : 'not ' ) + 'met.' );
 	}
 
 	/**
@@ -209,7 +217,9 @@ class PopupsContextTest extends MediaWikiTestCase {
 	public function testIsTitleBlacklisted( $blacklist, Title $title, $expected ) {
 		$this->setMwGlobals( [ "wgPopupsPageBlacklist" => $blacklist ] );
 		$context = $this->getContext();
-		$this->assertEquals( $expected, $context->isTitleBlacklisted( $title ) );
+		$this->assertEquals( $expected,
+			$context->isTitleBlacklisted( $title ),
+			'The title is' + ( $expected ? ' ' : ' not ' ) + 'blacklisted.' );
 	}
 
 	/**
@@ -239,11 +249,13 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$blacklist = [ $page ];
 
 		$this->setMwGlobals( [
-			"wgPopupsPageBlacklist" => $blacklist,
-			"wgLanguageCode" => "pl"
+			'wgPopupsPageBlacklist' => $blacklist,
+			'wgLanguageCode' => 'pl'
 		] );
 		$context = $this->getContext();
-		$this->assertEquals( true, $context->isTitleBlacklisted( Title::newFromText( $page ) ) );
+		$this->assertEquals( true,
+			$context->isTitleBlacklisted( Title::newFromText( $page ) ),
+			'The title is blacklisted.' );
 	}
 
 	/**
@@ -251,10 +263,13 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 */
 	public function testGetDefaultIsEnabledState() {
 		$this->setMwGlobals( [
-			'wgPopupsOptInDefaultState' => "2"
+			// Intentionally use a reserved value to verify it's returned.
+			'wgPopupsOptInDefaultState' => '2'
 		] );
 		$context = $this->getContext();
-		$this->assertEquals( "2", $context->getDefaultIsEnabledState() );
+		$this->assertEquals( '2',
+			$context->getDefaultIsEnabledState(),
+			'The value of PopupsOptInDefaultState is returned.' );
 	}
 
 	/**
@@ -274,7 +289,9 @@ class PopupsContextTest extends MediaWikiTestCase {
 			->willReturn( true );
 
 		$context = $this->getContext( null, $integrationMock );
-		$this->assertEquals( true, $context->conflictsWithNavPopupsGadget( $user ) );
+		$this->assertEquals( true,
+			$context->conflictsWithNavPopupsGadget( $user ),
+			'A conflict is identified.' );
 	}
 
 	/**
@@ -288,5 +305,4 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = $this->getContext( null, null, $loggerMock );
 		$context->logUserDisabledPagePreviewsEvent();
 	}
-
 }

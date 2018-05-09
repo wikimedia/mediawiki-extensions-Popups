@@ -46,7 +46,7 @@ QUnit.test( 'PREVIEW_SEEN', ( assert ) => {
 		namespace: 0
 	};
 
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
 		pageviews( { page: PAGE }, action ),
@@ -63,7 +63,7 @@ QUnit.test( 'PAGEVIEW_LOGGED', ( assert ) => {
 		type: 'PAGEVIEW_LOGGED'
 	};
 
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
 		pageviews( { pageview: PAGEVIEW, page: PAGE }, action ),

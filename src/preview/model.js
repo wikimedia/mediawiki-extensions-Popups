@@ -31,7 +31,8 @@ export { previewTypes };
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed; this can be used to present default or error states
  * @property {String} type One of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION
- * @property {?Object} thumbnail
+ * @property {?Object|undefined} thumbnail
+ * @property {?Number|undefined} pageId
  *
  * @global
  */
@@ -45,8 +46,8 @@ export { previewTypes };
  * @param {String} languageDirection Either "ltr" or "rtl"
  * @param {?Array} extract
  * @param {String} type
- * @param {?Object} thumbnail
- * @param {?Number} pageId
+ * @param {?Object} [thumbnail]
+ * @param {?Number} [pageId]
  * @return {PreviewModel}
  */
 export function createModel(

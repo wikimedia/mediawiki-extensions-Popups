@@ -15,12 +15,32 @@ QUnit.test( 'it should copy the basic properties', ( assert ) => {
 			thumbnail
 		);
 
-	assert.strictEqual( model.title, 'Foo' );
-	assert.strictEqual( model.url, 'https://en.wikipedia.org/wiki/Foo' );
-	assert.strictEqual( model.languageCode, 'en' );
-	assert.strictEqual( model.languageDirection, 'ltr' );
-	assert.strictEqual( model.type, previewTypes.TYPE_PAGE );
-	assert.strictEqual( model.thumbnail, thumbnail );
+	assert.strictEqual(
+		model.title,
+		'Foo',
+		'The title is passed.'
+	);
+	assert.strictEqual(
+		model.url,
+		'https://en.wikipedia.org/wiki/Foo',
+		'The URL is generated.'
+	);
+	assert.strictEqual(
+		model.languageCode,
+		'en',
+		'The language code is passed.'
+	);
+	assert.strictEqual(
+		model.languageDirection,
+		'ltr',
+		'The language direction is passed.'
+	);
+	assert.strictEqual(
+		model.type,
+		previewTypes.TYPE_PAGE,
+		'The preview type is "page preview".'
+	);
+	assert.strictEqual( model.thumbnail, thumbnail, 'The thumbnail is passed' );
 } );
 
 QUnit.test( 'it computes the type property', ( assert ) => {

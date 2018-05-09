@@ -39,11 +39,14 @@ QUnit.test( 'it should return false when sendBeacon isn\'t supported', function 
 		sendBeacon: 'NOT A FUNCTION'
 	};
 
-	assert.notOk( isEnabled( this.user, this.config, window ) );
+	assert.notOk(
+		isEnabled( this.user, this.config, window ),
+		'EventLogging is disabled.'
+	);
 } );
 
 QUnit.test( 'it should respect PopupsEventLogging', function ( assert ) {
-	assert.ok( this.isEnabled( true ) );
+	assert.ok( this.isEnabled( true ), 'EventLogging is enabled.' );
 	assert.notOk( this.isEnabled(), 'but not for logged in users' );
 	this.config.set( 'wgPopupsEventLogging', false );
 	assert.notOk( this.isEnabled(), 'authenticated users are not logged' );
@@ -58,7 +61,7 @@ QUnit.test( 'it should respect the debug flag always', function ( assert ) {
 
 	this.config.set( 'debug', true );
 	assert.ok( this.isEnabled(), 'authenticated users are logged!' );
-	assert.ok( this.isEnabled( true ) );
+	assert.ok( this.isEnabled( true ), 'EventLogging is enabled.' );
 
 	this.config.set( 'wgPopupsEventLogging', true );
 } );

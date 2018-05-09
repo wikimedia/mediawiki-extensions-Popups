@@ -42,7 +42,9 @@ class EventLoggerFactoryTest extends MediaWikiTestCase {
 
 		$config = new HashConfig();
 		$factory = new EventLoggerFactory( $config, $mock );
-		$this->assertInstanceOf( MWEventLogger::class, $factory->get() );
+		$this->assertInstanceOf( MWEventLogger::class,
+			$factory->get(),
+			'A functional event logger is instantiated.' );
 	}
 
 	/**
@@ -57,7 +59,9 @@ class EventLoggerFactoryTest extends MediaWikiTestCase {
 
 		$config = new HashConfig();
 		$factory = new EventLoggerFactory( $config, $mock );
-		$this->assertInstanceOf( NullLogger::class, $factory->get() );
+		$this->assertInstanceOf( NullLogger::class,
+			$factory->get(),
+			'A no-op event logger is instantiated.' );
 	}
 
 }

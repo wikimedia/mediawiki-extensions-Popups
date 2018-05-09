@@ -10,8 +10,8 @@
  *
  * Extracted from `mw.popups.schemaPopups.getEditCountBucket`.
  *
- * @param {Number} count
- * @return {String}
+ * @param {number} count
+ * @return {string}
  */
 exports.getEditCountBucket = function getEditCountBucket( count ) {
 	let bucket;
@@ -42,8 +42,8 @@ exports.getEditCountBucket = function getEditCountBucket( count ) {
  *
  * Extracted from `mw.popups.getPreviewCountBucket`.
  *
- * @param {Number} count
- * @return {String}
+ * @param {number|null|string|boolean} [count]
+ * @return {string}
  */
 exports.getPreviewCountBucket = function getPreviewCountBucket( count ) {
 	let bucket;

@@ -54,7 +54,11 @@ QUnit.test( 'getPageviewTracker', function ( assert ) {
 		assert.strictEqual( loader.callCount, 1, 'loader called once' );
 		assert.ok( loader.calledWith( [ 'ext.eventLogging', 'schema.VirtualPageView' ] ),
 			'appropriate code is loaded' );
-		assert.strictEqual( this.Title.newFromText.callCount, 2 );
+		assert.strictEqual(
+			this.Title.newFromText.callCount,
+			2,
+			'The title factory was invoked twice.'
+		);
 		assert.ok( this.prepare.calledWith( 'VirtualPageView', eventData ),
 			'mw.eventLog.prepare called appropriately' );
 		assert.strictEqual( this.makeBeaconUrl.callCount, 1,

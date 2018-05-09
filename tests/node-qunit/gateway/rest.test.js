@@ -184,7 +184,11 @@ QUnit.test( 'RESTBase provider uses extract parser', function ( assert ) {
 		gateway = createRESTBaseGateway();
 
 	gateway.convertPageToModel( RESTBASE_RESPONSE, 512, getSpy );
-	assert.deepEqual( getSpy.getCall( 0 ).args[ 0 ], RESTBASE_RESPONSE );
+	assert.deepEqual(
+		getSpy.getCall( 0 ).args[ 0 ],
+		RESTBASE_RESPONSE,
+		'The gateway parser was called with the correct arguments.'
+	);
 } );
 
 QUnit.test( 'RESTBase gateway is correctly converting the page data to a model', ( assert ) => {
@@ -192,7 +196,8 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a model',
 
 	assert.deepEqual(
 		gateway.convertPageToModel( RESTBASE_RESPONSE, 512, provideParsedExtract ),
-		RESTBASE_RESPONSE_PREVIEW_MODEL
+		RESTBASE_RESPONSE_PREVIEW_MODEL,
+		'The gateway unmarshals responses.'
 	);
 } );
 
@@ -202,7 +207,8 @@ QUnit.test( 'RESTBase gateway is correctly converting the page data to a disambi
 	assert.deepEqual(
 		gateway.convertPageToModel( RESTBASE_RESPONSE_DISAMBIGUATION,
 			512, provideParsedExtract ),
-		RESTBASE_RESPONSE_DISAMBIGUATION_MODEL
+		RESTBASE_RESPONSE_DISAMBIGUATION_MODEL,
+		'The gateway unmarshals disambiguations.'
 	);
 } );
 
@@ -304,7 +310,7 @@ QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
 		gateway = createRESTBaseGateway( api, {} );
 
 	return gateway.getPageSummary( 'Test Title' ).catch( () => {
-		assert.ok( true );
+		assert.ok( true, 'The gateway threw an error.' );
 	} );
 } );
 
@@ -339,7 +345,11 @@ QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
 	return gateway.getPageSummary( 'Test Title' ).then( ( result ) => {
-		assert.deepEqual( result, RESTBASE_RESPONSE_PREVIEW_MODEL );
+		assert.deepEqual(
+			result,
+			RESTBASE_RESPONSE_PREVIEW_MODEL,
+			'The gateway returned a response.'
+		);
 	} );
 } );
 

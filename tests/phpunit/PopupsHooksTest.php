@@ -49,8 +49,10 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertCount( 1, $prefs );
-		$this->assertEquals( 'notEmpty', $prefs[ 'someNotEmptyValue'] );
+		$this->assertCount( 1, $prefs, 'No preferences are retrieved.' );
+		$this->assertEquals( 'notEmpty',
+			$prefs[ 'someNotEmptyValue'],
+			'No preferences are changed.' );
 	}
 
 	/**
@@ -76,12 +78,17 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$prefs = [];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
+		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+			$prefs,
+			'The opt-in preference is retrieved.' );
 		$this->assertArrayHasKey( 'disabled',
-			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
+			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ],
+			'The opt-in preference has a status.' );
 		$this->assertEquals( true,
-			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['disabled'] );
-		$this->assertNotEmpty( $prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['help-message'] );
+			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['disabled'],
+			"The opt-in preference's status is disabled." );
+		$this->assertNotEmpty( $prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['help-message'],
+			'The opt-in preference has a help message.' );
 	}
 
 	/**
@@ -108,11 +115,17 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertCount( 4, $prefs );
-		$this->assertEquals( 'notEmpty', $prefs[ 'someNotEmptyValue'] );
-		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
-		$this->assertEquals( 1, array_search( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
-			array_keys( $prefs ) ), ' Previews preferences should be injected after Skin select' );
+		$this->assertCount( 4, $prefs, 'A preference is retrieved.' );
+		$this->assertEquals( 'notEmpty',
+			$prefs[ 'someNotEmptyValue'],
+			'Unretrieved preferences are unchanged.' );
+		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+			$prefs,
+			'The opt-in preference is retrieved.' );
+		$this->assertEquals( 1,
+			array_search( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+				array_keys( $prefs ) ),
+			'The opt-in preference is injected after Skin select.' );
 	}
 
 	/**
@@ -138,10 +151,14 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertCount( 3, $prefs );
-		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $prefs );
-		$this->assertEquals( 2, array_search( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
-			array_keys( $prefs ) ), ' Previews should be injected at end of array' );
+		$this->assertCount( 3, $prefs, 'A preference is retrieved.' );
+		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+			$prefs,
+			'The opt-in preference is retrieved.' );
+		$this->assertEquals( 2,
+			array_search( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+				array_keys( $prefs ) ),
+			'The opt-in preference is appended.' );
 	}
 
 	/**
@@ -158,7 +175,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 		$this->setMwGlobals( $config );
 		PopupsHooks::onResourceLoaderGetConfigVars( $vars );
-		$this->assertCount( 6, $vars );
+		$this->assertCount( 6, $vars, 'A configuration is retrieved.' );
 
 		foreach ( $config as $key => $value ) {
 			$this->assertEquals(
@@ -188,9 +205,10 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->setService( 'Popups.Context', $contextMock );
 
 		PopupsHooks::onUserGetDefaultOptions( $userOptions );
-		$this->assertCount( 2, $userOptions );
+		$this->assertCount( 2, $userOptions, 'A user option is retrieved.' );
 		$this->assertEquals( true,
-			$userOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
+			$userOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ],
+			'The opt-in preference is set.' );
 	}
 
 	/**
@@ -311,8 +329,10 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
 
-		$this->assertCount( 2, $vars );
-		$this->assertFalse( $vars[ 'wgPopupsShouldSendModuleToUser' ] );
-		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ] );
+		$this->assertCount( 2, $vars, 'Two globals are are made.' );
+		$this->assertFalse( $vars[ 'wgPopupsShouldSendModuleToUser' ],
+			'The PopupsShouldSendModuleToUser global is present and false.' );
+		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ],
+			'The PopupsConflictsWithNavPopupGadget global is present and false.' );
 	}
 }

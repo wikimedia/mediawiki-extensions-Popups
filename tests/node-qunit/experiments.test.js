@@ -11,7 +11,11 @@ QUnit.test( 'it should call mw.experiments#getBucket', function ( assert ) {
 
 	experiments.weightedBoolean( 'foo', 0.2, 'barbaz' );
 
-	assert.strictEqual( getBucketStub.callCount, 1 );
+	assert.strictEqual(
+		getBucketStub.callCount,
+		1,
+		'The bucketer was invoked once.'
+	);
 	assert.deepEqual(
 		getBucketStub.getCall( 0 ).args,
 		[
@@ -25,7 +29,8 @@ QUnit.test( 'it should call mw.experiments#getBucket', function ( assert ) {
 				}
 			},
 			'barbaz'
-		]
+		],
+		'The bucketer was called with the correct arguments.'
 	);
 
 	// ---

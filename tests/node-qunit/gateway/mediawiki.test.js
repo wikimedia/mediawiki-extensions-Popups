@@ -128,18 +128,23 @@ QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from th
 			]
 		];
 
-	assert.expect( errorCases.length + successCases.length );
+	assert.expect(
+		errorCases.length + successCases.length,
+		'All assertions are executed.'
+	);
 
-	errorCases.forEach( data => {
-		assert.throws( () => {
-			gateway.extractPageFromResponse( data );
-		} );
+	errorCases.forEach( ( data, i ) => {
+		assert.throws(
+			() => { gateway.extractPageFromResponse( data ); },
+			`Case ${i}: the gateway throws an error.`
+		);
 	} );
 
-	successCases.forEach( data => {
+	successCases.forEach( ( data, i ) => {
 		assert.deepEqual(
 			gateway.extractPageFromResponse( data[ 0 ] ),
-			data[ 1 ]
+			data[ 1 ],
+			`Case ${i}: the gateway extracts the response.`
 		);
 	} );
 } );
@@ -150,7 +155,8 @@ QUnit.test( 'MediaWiki API gateway is correctly converting the page data to a mo
 
 	assert.deepEqual(
 		gateway.convertPageToModel( gateway.formatPlainTextExtract( page ) ),
-		MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL
+		MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL,
+		'The gateway converts the page preview response.'
 	);
 } );
 
@@ -162,7 +168,7 @@ QUnit.test( 'MediaWiki API gateway handles API failure', function ( assert ) {
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
 	return gateway.getPageSummary( 'Test Title' ).catch( () => {
-		assert.ok( true );
+		assert.ok( true, 'The gateway threw an error.' );
 	} );
 } );
 
@@ -175,7 +181,11 @@ QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
 	return gateway.getPageSummary( 'Test Title' ).then( ( result ) => {
-		assert.deepEqual( result, MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL );
+		assert.deepEqual(
+			result,
+			MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL,
+			'The gateway converts the page preview response.'
+		);
 	} );
 } );
 
@@ -213,6 +223,10 @@ QUnit.test( 'MediaWiki API gateway handles missing pages ', function ( assert ) 
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
 	return gateway.getPageSummary( 'Test Title' ).then( ( result ) => {
-		assert.deepEqual( result, model );
+		assert.deepEqual(
+			result,
+			model,
+			'The gateway converts the page preview response.'
+		);
 	} );
 } );

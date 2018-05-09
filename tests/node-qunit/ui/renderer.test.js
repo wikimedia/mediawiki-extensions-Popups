@@ -81,10 +81,11 @@ QUnit.test( 'createPointerMasks', ( assert ) => {
 
 	renderer.createPointerMasks( $container.get( 0 ) );
 
-	cases.forEach( ( case_ ) => {
+	cases.forEach( ( case_, i ) => {
 		assert.equal(
 			$container.find( case_[ 0 ] ).attr( 'points' ),
-			case_[ 1 ]
+			case_[ 1 ],
+			`Case ${i}: the SVG's polygons match.`
 		);
 	} );
 } );
@@ -468,7 +469,7 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
-	cases.forEach( ( { dir } ) => {
+	cases.forEach( ( { dir }, i ) => {
 		const layout = renderer.createLayout(
 			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
 		);
@@ -484,7 +485,7 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 				flippedY: false,
 				dir
 			},
-			'Layout is correct.'
+			`Case ${i}: the layout is correct.`
 		);
 	} );
 } );
@@ -520,7 +521,7 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
-	cases.forEach( ( { dir } ) => {
+	cases.forEach( ( { dir }, i ) => {
 		const layout = renderer.createLayout(
 			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
 		);
@@ -536,7 +537,7 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 				flippedY: true,
 				dir
 			},
-			'Layout is correct. Y is flipped.'
+			`Case ${i}: the layout is correct. Y is flipped.`
 		);
 	} );
 } );
@@ -568,7 +569,7 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
-	cases.forEach( ( { dir } ) => {
+	cases.forEach( ( { dir }, i ) => {
 		const layout = renderer.createLayout(
 			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
 		);
@@ -584,7 +585,7 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 				flippedY: true,
 				dir
 			},
-			'Layout is correct. Both X and Y are flipped.'
+			`Case ${i}: the layout is correct. Both X and Y are flipped.`
 		);
 	} );
 } );

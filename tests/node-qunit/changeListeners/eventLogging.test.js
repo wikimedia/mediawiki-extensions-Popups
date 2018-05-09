@@ -70,9 +70,15 @@ QUnit.test( 'it should call the eventLogged bound action creator', function ( as
 
 	this.changeListener( undefined, state );
 
-	assert.ok( this.boundActions.eventLogged.called );
-	assert.deepEqual( this.boundActions.eventLogged.getCall( 0 ).args[ 0 ], {
-		action: 'pageLoaded',
-		timestamp: 123
-	} );
+	assert.ok(
+		this.boundActions.eventLogged.called,
+		'The EventLogging action is called.'
+	);
+	assert.deepEqual(
+		this.boundActions.eventLogged.getCall( 0 ).args[ 0 ], {
+			action: 'pageLoaded',
+			timestamp: 123
+		},
+		'The EventLogging action is called with correct arguments.'
+	);
 } );

@@ -27,7 +27,7 @@ QUnit.test( '#boot', ( assert ) => {
 		}
 	};
 
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const action = actions.boot(
 		false,
@@ -104,7 +104,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 	const event = {},
 		dispatch = this.sandbox.spy();
 
-	assert.expect( 2 );
+	assert.expect( 2, 'All assertions are executed.' );
 
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
 	this.sandbox.stub( actions, 'fetch' );
@@ -121,15 +121,18 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		this.getState
 	);
 
-	assert.deepEqual( dispatch.getCall( 0 ).args[ 0 ], {
-		type: 'LINK_DWELL',
-		el: this.el,
-		event,
-		token: '9876543210',
-		timestamp: mw.now(),
-		title: 'Foo',
-		namespaceId: 1
-	} );
+	assert.deepEqual(
+		dispatch.getCall( 0 ).args[ 0 ], {
+			type: 'LINK_DWELL',
+			el: this.el,
+			event,
+			token: '9876543210',
+			timestamp: mw.now(),
+			title: 'Foo',
+			namespaceId: 1
+		},
+		'The dispatcher was called with the correct arguments.'
+	);
 
 	// Stub the state tree being updated.
 	this.state.preview = {
@@ -153,7 +156,7 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 	const event = {},
 		dispatch = this.sandbox.spy();
 
-	assert.expect( 2 );
+	assert.expect( 2, 'All assertions are executed.' );
 
 	// Stub the state tree being updated by the LINK_DWELL action.
 	this.state.preview = {
@@ -169,10 +172,18 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 		this.getState
 	);
 
-	assert.strictEqual( dispatch.callCount, 1 );
+	assert.strictEqual(
+		dispatch.callCount,
+		1,
+		'The dispatcher was called once.'
+	);
 
 	return linkDwelled.then( () => {
-		assert.strictEqual( dispatch.callCount, 1 );
+		assert.strictEqual(
+			dispatch.callCount,
+			1,
+			'The dispatcher was not called again.'
+		);
 	} );
 } );
 
@@ -180,7 +191,7 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 	const event = {},
 		dispatch = this.sandbox.spy();
 
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	// Stub the state tree being updated by a LINK_DWELL action.
 	this.state.preview = {
@@ -209,7 +220,11 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 	};
 
 	return linkDwelled.then( () => {
-		assert.strictEqual( dispatch.callCount, 1 );
+		assert.strictEqual(
+			dispatch.callCount,
+			1,
+			'The dispatcher was called once.'
+		);
 	} );
 } );
 
@@ -217,7 +232,7 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 	const event = {},
 		dispatch = this.sandbox.spy();
 
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	this.state.preview = {
 		enabled: true,
@@ -230,7 +245,11 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 		dispatch,
 		this.getState
 	).then( () => {
-		assert.strictEqual( dispatch.callCount, 2 );
+		assert.strictEqual(
+			dispatch.callCount,
+			2,
+			'The dispatcher was called twice.'
+		);
 	} );
 } );
 
@@ -264,11 +283,14 @@ QUnit.module( 'ext.popups/actions#fetch', {
 } );
 
 QUnit.test( 'it should fetch data from the gateway immediately', function ( assert ) {
-	assert.expect( 3 );
+	assert.expect( 3, 'All assertions are executed.' );
 
 	this.fetch();
 
-	assert.ok( this.gateway.getPageSummary.calledWith( 'Foo' ) );
+	assert.ok(
+		this.gateway.getPageSummary.calledWith( 'Foo' ),
+		'The gateway was called with the correct arguments.'
+	);
 
 	assert.strictEqual( this.dispatch.callCount, 1 );
 	assert.deepEqual(
@@ -285,7 +307,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 } );
 
 QUnit.test( 'it should dispatch the FETCH_END action when the API request ends', function ( assert ) {
-	assert.expect( 1 );
+	assert.expect( 1, 'All assertions are executed.' );
 
 	const fetched = this.fetch();
 
@@ -299,7 +321,8 @@ QUnit.test( 'it should dispatch the FETCH_END action when the API request ends',
 				type: 'FETCH_END',
 				el: this.el,
 				timestamp: 115
-			}
+			},
+			'The dispatcher was called with the correct arguments.'
 		);
 	} );
 } );
@@ -308,7 +331,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 	const result = {},
 		fetched = this.fetch();
 
-	assert.expect( 2 );
+	assert.expect( 2, 'All assertions are executed.' );
 
 	assert.strictEqual(
 		this.wait.getCall( 0 ).args[ 0 ],
@@ -325,7 +348,8 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 				el: this.el,
 				result,
 				token: this.token
-			}
+			},
+			'The dispatcher was called with the correct arguments.'
 		);
 	} );
 } );
@@ -333,7 +357,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails', function ( assert ) {
 	const fetched = this.fetch();
 
-	assert.expect( 2 );
+	assert.expect( 2, 'All assertions are executed.' );
 
 	this.gatewayDeferred.reject( new Error( 'API req failed' ) );
 
@@ -349,7 +373,8 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 			{
 				type: 'FETCH_FAILED',
 				el: this.el
-			}
+			},
+			'The dispatcher was called with the correct arguments.'
 		);
 	} );
 } );
@@ -357,7 +382,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails even after the wait timeout', function ( assert ) {
 	const fetched = this.fetch();
 
-	assert.expect( 2 );
+	assert.expect( 2, 'All assertions are executed.' );
 
 	// After the wait interval happens, resolve the gateway request
 	return this.waitPromise.then( () => {
@@ -373,7 +398,8 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 			{
 				type: 'FETCH_FAILED',
 				el: this.el
-			}
+			},
+			'The dispatcher was called with the correct arguments.'
 		);
 	} );
 } );
@@ -395,17 +421,20 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 				}
 			} );
 
-	assert.expect( 3 );
+	assert.expect( 3, 'All assertions are executed.' );
 
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
 
-	const abandoned = actions.abandon( this.el )( dispatch, getState );
+	const abandoned = actions.abandon()( dispatch, getState );
 
-	assert.ok( dispatch.calledWith( {
-		type: 'ABANDON_START',
-		timestamp: mw.now(),
-		token
-	} ) );
+	assert.ok(
+		dispatch.calledWith( {
+			type: 'ABANDON_START',
+			timestamp: mw.now(),
+			token
+		} ),
+		'The dispatcher was called with the correct arguments.'
+	);
 
 	// ---
 
@@ -434,9 +463,13 @@ QUnit.test( 'it shouldn\'t dispatch under certain conditions', function ( assert
 				}
 			} );
 
-	return actions.abandon( this.el )( dispatch, getState )
+	return actions.abandon()( dispatch, getState )
 		.then( () => {
-			assert.ok( dispatch.notCalled );
+			assert.strictEqual(
+				dispatch.callCount,
+				0,
+				'The dispatcher was not called.'
+			);
 		} );
 } );
 
