@@ -30,14 +30,11 @@
 		"no-var": 2,
 		"prefer-const": 1,
 		"prefer-template": 1,
-		"one-var": 0, // Interferes with prefer-const.
+		"one-var": 0,
 		"max-len": [
 				1,
 				{
 					"tabWidth": 2,
-					// Exclude by default:
-					// - `eslint-` directives. To avoid having to disable
-					//   eslint for a long eslint-disable line.
 					"ignorePattern": "^// eslint-.+",
 					"ignoreUrls": true,
 					"ignoreComments": false,
