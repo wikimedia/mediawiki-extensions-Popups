@@ -20,17 +20,17 @@ QUnit.test( 'createThumbnail - tall image', ( assert ) => {
 		},
 		thumbnail = createThumbnail( rawThumbnail );
 
-	assert.equal(
+	assert.strictEqual(
 		thumbnail.isTall,
 		true,
 		'Thumbnail is tall.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		thumbnail.width,
 		thumbnail.width / devicePixelRatio,
 		'Thumbnail width is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		thumbnail.height,
 		thumbnail.height / devicePixelRatio,
 		'Thumbnail height is correct.'
@@ -66,33 +66,33 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 			height: case_.height
 		} );
 
-		assert.equal(
-			thumbnail.el.find( 'image' ).attr( 'x' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.find( 'image' ).attr( 'x' ) ),
 			case_.expectedX,
 			`Image element x coordinate is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.find( 'image' ).attr( 'y' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.find( 'image' ).attr( 'y' ) ),
 			case_.expectedY,
 			`Image element y coordinate is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.find( 'image' ).attr( 'width' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.find( 'image' ).attr( 'width' ) ),
 			case_.width,
 			`Image element width is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.find( 'image' ).attr( 'height' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.find( 'image' ).attr( 'height' ) ),
 			case_.height,
 			`Image element height is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.attr( 'width' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.attr( 'width' ) ),
 			case_.expectedSVGWidth,
 			`Image SVG width is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.attr( 'height' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.attr( 'height' ) ),
 			case_.expectedSVGHeight,
 			`Image SVG height is correct. ${ case_.message }`
 		);
@@ -108,17 +108,17 @@ QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
 		},
 		thumbnail = createThumbnail( rawThumbnail );
 
-	assert.equal(
+	assert.strictEqual(
 		thumbnail.isTall,
 		false,
 		'Thumbnail is not tall.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		thumbnail.width,
 		thumbnail.width / devicePixelRatio,
 		'Thumbnail width is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		thumbnail.height,
 		thumbnail.height / devicePixelRatio,
 		'Thumbnail height is correct.'
@@ -154,33 +154,33 @@ QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 			height: case_.height
 		} );
 
-		assert.equal(
-			thumbnail.el.find( 'image' ).attr( 'x' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.find( 'image' ).attr( 'x' ) ),
 			case_.expectedX,
 			`Image x coordinate is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.find( 'image' ).attr( 'y' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.find( 'image' ).attr( 'y' ) ),
 			case_.expectedY,
 			`Image y coordinate is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.find( 'image' ).attr( 'width' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.find( 'image' ).attr( 'width' ) ),
 			case_.width,
 			`Image element width is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.find( 'image' ).attr( 'height' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.find( 'image' ).attr( 'height' ) ),
 			case_.height,
 			`Image element height is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.attr( 'width' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.attr( 'width' ) ),
 			case_.expectedSVGWidth,
 			`Image SVG width is correct. ${ case_.message }`
 		);
-		assert.equal(
-			thumbnail.el.attr( 'height' ),
+		assert.strictEqual(
+			Number.parseFloat( thumbnail.el.attr( 'height' ) ),
 			case_.expectedSVGHeight,
 			`Image SVG height is correct. ${ case_.message }`
 		);
@@ -190,7 +190,7 @@ QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 QUnit.test( 'createThumbnail - no raw thumbnail', ( assert ) => {
 	const thumbnail = createThumbnail( null );
 
-	assert.equal( thumbnail, null, 'No thumbnail.' );
+	assert.strictEqual( thumbnail, null, 'No thumbnail.' );
 } );
 
 QUnit.test( 'createThumbnail - small wide image', ( assert ) => {
@@ -201,7 +201,7 @@ QUnit.test( 'createThumbnail - small wide image', ( assert ) => {
 		},
 		thumbnail = createThumbnail( rawThumbnail );
 
-	assert.equal( thumbnail, null, 'No thumbnail.' );
+	assert.strictEqual( thumbnail, null, 'No thumbnail.' );
 } );
 
 QUnit.test( 'createThumbnail - small tall image', ( assert ) => {
@@ -212,7 +212,7 @@ QUnit.test( 'createThumbnail - small tall image', ( assert ) => {
 		},
 		thumbnail = createThumbnail( rawThumbnail );
 
-	assert.equal( thumbnail, null, 'No thumbnail.' );
+	assert.strictEqual( thumbnail, null, 'No thumbnail.' );
 } );
 
 QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
@@ -229,7 +229,7 @@ QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
 			height: 400
 		} );
 
-		assert.equal( thumbnail, null, 'No thumbnail.' );
+		assert.strictEqual( thumbnail, null, 'No thumbnail.' );
 	} );
 } );
 
@@ -242,21 +242,28 @@ QUnit.test( 'createThumbnailElement', ( assert ) => {
 		thumbnailHeight = 250,
 		width = 500,
 		height = 300,
-		clipPath = 'mwe-popups-mask',
 		$thumbnail = createThumbnailElement(
 			className, url, x, y, thumbnailWidth, thumbnailHeight,
-			width, height, clipPath );
+			width, height );
 
-	assert.equal(
+	assert.strictEqual(
 		$thumbnail.html(),
 		'<image href="https://thumbnail.url" class="thumb-class" x="25" y="50" width="200" height="250"></image>',
 		'Thumbnail HTML is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		$thumbnail.attr( 'xmlns' ),
 		'http://www.w3.org/2000/svg',
 		'SVG namespace is correct.'
 	);
-	assert.equal( $thumbnail.attr( 'height' ), height, 'SVG height is correct.' );
-	assert.equal( $thumbnail.attr( 'width' ), width, 'SVG width is correct.' );
+	assert.strictEqual(
+		Number.parseFloat( $thumbnail.attr( 'height' ) ),
+		height,
+		'SVG height is correct.'
+	);
+	assert.strictEqual(
+		Number.parseFloat( $thumbnail.attr( 'width' ) ),
+		width,
+		'SVG width is correct.'
+	);
 } );

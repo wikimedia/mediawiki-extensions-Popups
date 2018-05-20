@@ -119,7 +119,7 @@ QUnit.test( 'it should hide help when showHelp becomes false', function ( assert
 	this.settings( this.showState, this.showHelpState );
 	this.settings( this.showHelpState, this.hideHelpState );
 
-	assert.equal( this.rendered.toggleHelp.callCount, 2,
+	assert.strictEqual( this.rendered.toggleHelp.callCount, 2,
 		'Help should have been toggled on and off' );
 	assert.deepEqual( this.rendered.toggleHelp.secondCall.args, [ false ],
 		'Help should be hidden' );

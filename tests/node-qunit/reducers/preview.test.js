@@ -134,7 +134,7 @@ QUnit.test( 'ABANDON_END', ( assert ) => {
 		isUserDwelling: true
 	};
 
-	assert.equal(
+	assert.strictEqual(
 		preview( state, action ),
 		state,
 		'ABANDON_END should NOOP if the current interaction has changed.'
@@ -147,7 +147,7 @@ QUnit.test( 'ABANDON_END', ( assert ) => {
 		isUserDwelling: true
 	};
 
-	assert.equal(
+	assert.strictEqual(
 		preview( state, action ),
 		state,
 		'ABANDON_END should NOOP if the user is dwelling on the preview.'

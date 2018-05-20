@@ -41,7 +41,7 @@ QUnit.test( 'is should handle logged out users', ( assert ) => {
 		const testCase = cases[ i ];
 		userSettings = createStubUserSettings( testCase[ 0 ] );
 
-		assert.equal(
+		assert.strictEqual(
 			isEnabled( user, userSettings, config ),
 			testCase[ 1 ],
 			testCase[ 2 ]

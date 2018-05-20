@@ -82,7 +82,7 @@ QUnit.test( 'createPointerMasks', ( assert ) => {
 	renderer.createPointerMasks( $container.get( 0 ) );
 
 	cases.forEach( ( case_, i ) => {
-		assert.equal(
+		assert.strictEqual(
 			$container.find( case_[ 0 ] ).attr( 'points' ),
 			case_[ 1 ],
 			`Case ${i}: the SVG's polygons match.`
@@ -106,18 +106,18 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 		},
 		preview = renderer.createPreviewWithType( model );
 
-	assert.equal( preview.hasThumbnail, true, 'Preview has thumbnail.' );
+	assert.strictEqual( preview.hasThumbnail, true, 'Preview has thumbnail.' );
 	assert.deepEqual(
 		preview.thumbnail.el.html(),
 		createThumbnail( model.thumbnail ).el.html(),
 		'Preview thumbnail is the correct one.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.isTall,
 		true,
 		'Preview is tall (because the thumbnail is tall).'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).text(),
 		'This is a test page.',
 		'Preview extract is correct.'
@@ -140,29 +140,29 @@ QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
 		},
 		emptyPreview = renderer.createPreviewWithType( model );
 
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.hasThumbnail,
 		false,
 		'Empty preview doesn\'t have a thumbnail (even though one is provided).'
 	);
 
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.isTall,
 		false,
 		'Empty preview is never tall (even though the supplied thumbnail is tall).'
 	);
 
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-title' ).text().trim(),
 		'',
 		'Empty preview title is hidden.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-extract' ).text().trim(),
 		MSG_NO_PREVIEW,
 		'Empty preview extract is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-read-link' ).text().trim(),
 		MSG_GO_TO_PAGE,
 		'Empty preview link text is correct.'
@@ -173,29 +173,29 @@ QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
 	const model = createNullModel( 'Test', '/wiki/Test' ),
 		emptyPreview = renderer.createPreviewWithType( model );
 
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.hasThumbnail,
 		false,
 		'Null preview doesn\'t have a thumbnail.'
 	);
 
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.isTall,
 		false,
 		'Null preview is never tall.'
 	);
 
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-title' ).text().trim(),
 		'',
 		'Empty preview title is hidden.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-extract' ).text().trim(),
 		MSG_NO_PREVIEW,
 		'Empty preview extract is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-read-link' ).text().trim(),
 		MSG_GO_TO_PAGE,
 		'Empty preview link text is correct.'
@@ -213,29 +213,29 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 		},
 		preview = renderer.createPreviewWithType( model );
 
-	assert.equal(
+	assert.strictEqual(
 		preview.hasThumbnail,
 		false,
 		'Disambiguation preview doesn\'t have a thumbnail.'
 	);
 
-	assert.equal(
+	assert.strictEqual(
 		preview.isTall,
 		false,
 		'Disambiguation preview is never tall.'
 	);
 
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( '.mwe-popups-title' ).text().trim(),
 		'Barack (disambiguation)',
 		'Preview title is show.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).text().trim(),
 		MSG_DISAMBIGUATION,
 		'Preview extract is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( '.mwe-popups-read-link' ).text().trim(),
 		MSG_DISAMBIGUATION_LINK,
 		'Preview link text is correct.'
@@ -305,7 +305,7 @@ QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
 
 	renderer.bindBehavior( preview, behavior );
 
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( '.mwe-popups-settings-icon' ).attr( 'href' ),
 		behavior.settingsUrl,
 		'Settings link URL is correct.'
@@ -398,7 +398,7 @@ QUnit.test( 'hide - fade out up', ( assert ) => {
 		'Preview is still in the container.'
 	);
 	return hidePreview.then( () => {
-		assert.equal(
+		assert.strictEqual(
 			$container.html(),
 			'',
 			'Preview has been removed from the container.'
@@ -430,7 +430,7 @@ QUnit.test( 'hide - fade out down', ( assert ) => {
 		'Preview is still in the container.'
 	);
 	return hidePreview.then( () => {
-		assert.equal(
+		assert.strictEqual(
 			$container.html(),
 			'',
 			'Preview has been removed from the container.'
@@ -842,12 +842,12 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 		preview.el.hasClass( classes.join( ' ' ) ),
 		'Classes have been added.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'top' ),
 		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${ layout.offset.left }px`,
 		'Left is correct.'
@@ -877,12 +877,12 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function 
 		preview.el.hasClass( classes.join( ' ' ) ),
 		'Classes have been added.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'top' ),
 		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${ layout.offset.left }px`,
 		'Left is correct.'
@@ -891,7 +891,7 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function 
 		preview.el.hasClass( 'mwe-popups-no-image-pointer' ),
 		'A class has been removed.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( 'image' ).attr( 'clip-path' ),
 		'url(#mwe-popups-landscape-mask)',
 		'Image clip path is correct.'
@@ -921,22 +921,22 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 		preview.el.hasClass( classes.join( ' ' ) ),
 		'Classes have been added.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'top' ),
 		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).css( 'margin-top' ),
 		`${ 199 - 8 }px`, // thumb height - pointer size
 		'Extract margin top has been set when preview height is smaller than the predefined landscape image height.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( 'image' ).attr( 'clip-path' ),
 		'url(#mwe-popups-mask-flip)',
 		'Image clip path is correct.'
@@ -966,22 +966,22 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 		preview.el.hasClass( classes.join( ' ' ) ),
 		'Classes have been added.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'top' ),
 		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).attr( 'margin-top' ),
 		undefined,
 		'Extract margin top has NOT been set when preview height is bigger than the predefined landscape image height.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( 'image' ).attr( 'clip-path' ),
 		'url(#mwe-popups-mask-flip)',
 		'Image clip path is correct.'
@@ -1009,12 +1009,12 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 		preview.el.hasClass( classes.join( ' ' ) ),
 		'Classes have been added.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'top' ),
 		`${ layout.offset.top - 20 }px`, // - outer height
 		'Top is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${ layout.offset.left }px`,
 		'Left is correct.'
@@ -1050,17 +1050,17 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', fun
 		preview.el.hasClass( classes.join( ' ' ) ),
 		'Classes have been added.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'top' ),
 		`${ layout.offset.top - 20 }px`, // - outer height
 		'Top is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.find( 'image' ).attr( 'clip-path' ),
 		'url(#mwe-popups-landscape-mask-flip)',
 		'Image clip path is not set.'
@@ -1088,12 +1088,12 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 		preview.el.hasClass( classes.join( ' ' ) ),
 		'Classes have been added.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'top' ),
 		`${ layout.offset.top - 20 }px`, // - outer height
 		'Top is correct.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${ layout.offset.left }px`,
 		'Left is correct.'
@@ -1132,7 +1132,7 @@ QUnit.test( '#setThumbnailClipPath', function ( assert ) {
 
 		renderer.setThumbnailClipPath( preview, layout );
 
-		assert.equal(
+		assert.strictEqual(
 			clipPath.getAttribute( 'transform' ),
 			expected,
 			`Transform is correct for: { isTall: ${isTall}, dir: ${dir} }.`
@@ -1152,7 +1152,7 @@ QUnit.test( '#getThumbnailClipPathID', ( assert ) => {
 		{ flippedY: true, flippedX: true, isTall: true, expected: 'mwe-popups-landscape-mask-flip' }
 	];
 	cases.forEach( ( { flippedY, flippedX, isTall, expected } ) => {
-		assert.equal(
+		assert.strictEqual(
 			renderer.getThumbnailClipPathID( isTall, flippedY, flippedX ),
 			expected,
 			`Correct element ID is returned for: { flippedY: ${flippedY}, flippedX: ${flippedX}, isTall: ${isTall} }.`
@@ -1161,7 +1161,7 @@ QUnit.test( '#getThumbnailClipPathID', ( assert ) => {
 } );
 
 QUnit.test( 'getClosestYPosition', ( assert ) => {
-	assert.equal( renderer.getClosestYPosition( 100, [
+	assert.strictEqual( renderer.getClosestYPosition( 100, [
 		{
 			top: 99,
 			bottom: 119
@@ -1172,7 +1172,7 @@ QUnit.test( 'getClosestYPosition', ( assert ) => {
 		}
 	] ), 119, 'Correct lower Y.' );
 
-	assert.equal( renderer.getClosestYPosition( 100, [
+	assert.strictEqual( renderer.getClosestYPosition( 100, [
 		{
 			top: 99,
 			bottom: 119
@@ -1183,7 +1183,7 @@ QUnit.test( 'getClosestYPosition', ( assert ) => {
 		}
 	], true ), 99, 'Correct upper Y.' );
 
-	assert.equal( renderer.getClosestYPosition( 135, [
+	assert.strictEqual( renderer.getClosestYPosition( 135, [
 		{
 			top: 99,
 			bottom: 119

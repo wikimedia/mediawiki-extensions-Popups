@@ -49,7 +49,7 @@ QUnit.test( 'it should append the link to the footer menu', function ( assert ) 
 	const $link = this.getLink();
 
 	assert.strictEqual( $link.length, 1, 'The link is singular.' );
-	assert.equal(
+	assert.strictEqual(
 		$link.css( 'display' ),
 		'list-item',
 		'Creating the link and showing/hiding it aren\'t exclusive.'
@@ -63,7 +63,7 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 
 	const $link = this.getLink();
 
-	assert.equal(
+	assert.strictEqual(
 		$link.css( 'display' ),
 		'list-item',
 		'Link is visible'
@@ -76,7 +76,7 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 
 	this.footerLinkChangeListener( prevState, this.state );
 
-	assert.equal(
+	assert.strictEqual(
 		$link.css( 'display' ),
 		'none',
 		'Link is NOT visible'
