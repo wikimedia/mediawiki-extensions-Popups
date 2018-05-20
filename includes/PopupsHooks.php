@@ -39,7 +39,7 @@ class PopupsHooks {
 	 * @param User $user User whose preferences are being modified
 	 * @param array &$prefs Preferences description array, to be fed to a HTMLForm object
 	 */
-	static function onGetPreferences( User $user, array &$prefs ) {
+	public static function onGetPreferences( User $user, array &$prefs ) {
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 
 		if ( !$context->showPreviewsOptInOnPreferencesPage() ) {
