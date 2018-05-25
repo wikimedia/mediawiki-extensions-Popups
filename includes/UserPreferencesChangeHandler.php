@@ -22,7 +22,7 @@ namespace Popups;
 
 use MediaWiki\MediaWikiServices;
 use User;
-use PreferencesForm;
+use HTMLForm;
 
 /**
  * User Preferences save change listener
@@ -72,14 +72,14 @@ class UserPreferencesChangeHandler {
 
 	/**
 	 * @param array $formData Form data submitted by user
-	 * @param PreferencesForm $form A preferences form
+	 * @param HTMLForm $form A preferences form
 	 * @param User $user Logged-in user
 	 * @param bool &$result Variable defining is form save successful
 	 * @param array $oldUserOptions Old user options array
 	 */
 	public static function onPreferencesFormPreSave(
 		array $formData,
-		PreferencesForm $form,
+		HTMLForm $form,
 		User $user,
 		&$result,
 		$oldUserOptions ) {
