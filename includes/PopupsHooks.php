@@ -50,9 +50,9 @@ class PopupsHooks {
 			'label-message' => 'popups-prefs-optin-title',
 			'help-message' => 'popups-prefs-conflicting-gadgets-info',
 			'options' => [
-				wfMessage( 'popups-prefs-optin-enabled-label' )->text()
+				wfMessage( 'popups-prefs-optin-enabled-label' )->escaped()
 				=> PopupsContext::PREVIEWS_ENABLED,
-				wfMessage( 'popups-prefs-optin-disabled-label' )->text()
+				wfMessage( 'popups-prefs-optin-disabled-label' )->escaped()
 				=> PopupsContext::PREVIEWS_DISABLED
 			],
 			'section' => self::PREVIEWS_PREFERENCES_SECTION
