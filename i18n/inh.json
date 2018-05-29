@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adam-Yourist"
+		]
+	},
+	"popups-settings-option-simple": "Хьалотае",
+	"popups-settings-option-off": "ДӀайоае",
+	"prefs-reading": "Iодешара оттамаш",
+	"popups-prefs-optin-title": "ОагIонашка хьалххе бIаргтохар\n\n<em>Дахкилг тIахьекхача лоацца сиха хьахьокха оагIон чулоацам</em>",
+	"popups-prefs-optin-disabled-label": "ДӀайоае"
+}

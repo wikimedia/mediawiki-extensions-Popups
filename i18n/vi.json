@@ -19,12 +19,14 @@
 	"popups-settings-cancel": "Hủy bỏ",
 	"popups-settings-help": "Bạn có thể trở lại phần xem-trước về cách sử dụng một liên kết trong chân trang của trang.",
 	"popups-settings-enable": "Bật phiếu tóm tắt",
-	"popups-preview-no-preview": "Không thể tóm tắt trang này",
-	"popups-preview-footer-read": "Đọc",
+	"popups-preview-no-preview": "Đã gặp vấn đề khi tóm tắt trang này",
+	"popups-preview-footer-read": "Mở trang này",
+	"popups-preview-disambiguation": "Tên trang này ứng với nhiều trang",
+	"popups-preview-disambiguation-link": "Xem các trang có liên quan",
 	"prefs-reading": "Tùy chọn đọc",
 	"popups-prefs-optin-title": "Phiếu tóm tắt\n\n<em>Xem trước một đề tài nhanh chóng trong khi đọc trang</em>",
 	"popups-prefs-optin-enabled-label": "Bật",
 	"popups-prefs-optin-disabled-label": "Tắt",
 	"popups-prefs-disable-nav-gadgets-info": "[[$1 | Tắt tiện ích Các popup chuyển hướng]] trong thẻ Tiện ích trước khi bật Phiếu tóm tắt",
-	"popups-prefs-conflicting-gadgets-info": "Một số tiện ích và tùy chỉnh khác có thể có ảnh hưởng đến hiệu suất của tính năng này. Nếu bạn gặp phải, xin hãy xem lại các tiện ích và kịch bản cá nhân của bạn."
+	"popups-prefs-conflicting-gadgets-info": "Một số tiện ích và tùy chỉnh khác có thể có ảnh hưởng đến hiệu suất của tính năng này. Nếu bạn gặp phải, xin hãy xem lại các tiện ích và kịch bản cá nhân của bạn, kể cả các tiện ích toàn cục."
 }
