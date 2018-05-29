@@ -187,31 +187,6 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::onUserGetDefaultOptions
-	 */
-	public function testOnUserGetDefaultOptions() {
-		$userOptions = [
-			'test' => 'not_empty'
-		];
-		$contextMock = $this->getMockBuilder( PopupsContext::class )
-			->setMethods( [ 'getDefaultIsEnabledState' ] )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$contextMock->expects( $this->once() )
-			->method( 'getDefaultIsEnabledState' )
-			->willReturn( true );
-
-		$this->setService( 'Popups.Context', $contextMock );
-
-		PopupsHooks::onUserGetDefaultOptions( $userOptions );
-		$this->assertCount( 2, $userOptions, 'A user option is retrieved.' );
-		$this->assertEquals( true,
-			$userOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ],
-			'The opt-in preference is set.' );
-	}
-
-	/**
 	 * @covers ::onBeforePageDisplay
 	 */
 	public function testOnBeforePageDisplayWhenDependenciesAreNotMet() {
@@ -335,4 +310,65 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ],
 			'The PopupsConflictsWithNavPopupGadget global is present and false.' );
 	}
+
+	/**
+	 * @covers ::onUserGetDefaultOptions
+	 */
+	public function testOnUserGetDefaultOptions() {
+		$userOptions = [
+			'test' => 'not_empty'
+		];
+
+		$this->setMwGlobals( [
+			'wgPopupsOptInDefaultState' => "1"
+		] );
+
+		PopupsHooks::onUserGetDefaultOptions( $userOptions );
+		$this->assertCount( 2, $userOptions );
+		$this->assertEquals( "1",
+			$userOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
+	}
+
+	/**
+	 * @covers ::onUserGetDefaultOptions
+	 */
+	public function testOnLocalUserCreatedForAutoCreatedUser() {
+		$userMock =
+			$this->getMockBuilder( User::class )
+				->disableOriginalConstructor()
+				->setMethods( [ 'setOption', 'saveSettings' ] )
+				->getMock();
+
+		$userMock->expects( $this->never() )->method( 'setOption' );
+		$userMock->expects( $this->never() )->method( 'saveSettings' );
+
+		PopupsHooks::onLocalUserCreated( $userMock, true );
+	}
+
+	/**
+	 * @covers ::onUserGetDefaultOptions
+	 */
+	public function testOnLocalUserCreatedForNewlyCreatedUser() {
+		$expectedState = '1';
+
+		$userMock = $this->getMockBuilder( User::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'setOption', 'saveSettings' ] )
+			->getMock();
+		$userMock->expects( $this->once() )
+			->method( 'setOption' )
+			->with(
+				$this->equalTo( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ),
+				$this->equalTo( $expectedState )
+			);
+
+		$userMock->expects( $this->once() )
+			->method( 'saveSettings' );
+
+		$this->setMwGlobals( [
+			'wgPopupsOptInStateForNewAccounts' => $expectedState
+		] );
+		PopupsHooks::onLocalUserCreated( $userMock, false );
+	}
+
 }

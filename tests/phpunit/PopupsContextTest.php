@@ -259,20 +259,6 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::getDefaultIsEnabledState
-	 */
-	public function testGetDefaultIsEnabledState() {
-		$this->setMwGlobals( [
-			// Intentionally use a reserved value to verify it's returned.
-			'wgPopupsOptInDefaultState' => '2'
-		] );
-		$context = $this->getContext();
-		$this->assertEquals( '2',
-			$context->getDefaultIsEnabledState(),
-			'The value of PopupsOptInDefaultState is returned.' );
-	}
-
-	/**
 	 * @covers ::conflictsWithNavPopupsGadget
 	 */
 	public function testConflictsWithNavPopupsGadget() {
