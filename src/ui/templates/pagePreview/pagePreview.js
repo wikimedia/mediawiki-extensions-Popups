@@ -16,7 +16,9 @@ export function renderPagePreview(
 				${ hasThumbnail ? `<a href='${ url }' class='mwe-popups-discreet'></a>` : '' }
 				<a dir='${ languageDirection }' lang='${ languageCode }' class='mwe-popups-extract' href='${ url }'></a>
 				<footer>
-					<a class='mwe-popups-settings-icon mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-settings'></a>
+					<a class='mwe-popups-settings-icon'>
+						<span class="mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-settings"></span>
+					</a>
 				</footer>
 			</div>
 		</div>
