@@ -56,7 +56,7 @@ module.exports = function ( grunt ) {
 				syntax: 'less'
 			},
 			all: [
-				'resources/ext.popups.main/**/*.less'
+				'src/**/*.less'
 			]
 		},
 		watch: {
