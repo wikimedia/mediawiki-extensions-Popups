@@ -380,14 +380,12 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 } );
 
 QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails even after the wait timeout', function ( assert ) {
-	const fetched = this.fetch();
-
 	assert.expect( 2, 'All assertions are executed.' );
 
 	// After the wait interval happens, resolve the gateway request
 	return this.waitPromise.then( () => {
 		this.gatewayDeferred.reject( new Error( 'API req failed' ) );
-		return fetched;
+		return this.fetch();
 	} ).then( () => {
 		assert.equal(
 			this.dispatch.callCount, 3,

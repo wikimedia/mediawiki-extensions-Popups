@@ -71,9 +71,11 @@ export default function createMediaWikiApiGateway( api, config ) {
 
 	function getPageSummary( title ) {
 		return fetch( title )
-			.then( extractPageFromResponse )
-			.then( formatPlainTextExtract )
-			.then( convertPageToModel );
+			.then( ( data ) => {
+				const page = extractPageFromResponse( data );
+				const plainTextExtract = formatPlainTextExtract( page );
+				return convertPageToModel( plainTextExtract );
+			} );
 	}
 
 	return {
