@@ -332,28 +332,12 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	/**
 	 * @covers ::onUserGetDefaultOptions
 	 */
-	public function testOnLocalUserCreatedForAutoCreatedUser() {
-		$userMock =
-			$this->getMockBuilder( User::class )
-				->disableOriginalConstructor()
-				->setMethods( [ 'setOption', 'saveSettings' ] )
-				->getMock();
-
-		$userMock->expects( $this->never() )->method( 'setOption' );
-		$userMock->expects( $this->never() )->method( 'saveSettings' );
-
-		PopupsHooks::onLocalUserCreated( $userMock, true );
-	}
-
-	/**
-	 * @covers ::onUserGetDefaultOptions
-	 */
 	public function testOnLocalUserCreatedForNewlyCreatedUser() {
 		$expectedState = '1';
 
 		$userMock = $this->getMockBuilder( User::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'setOption', 'saveSettings' ] )
+			->setMethods( [ 'setOption' ] )
 			->getMock();
 		$userMock->expects( $this->once() )
 			->method( 'setOption' )
@@ -361,9 +345,6 @@ class PopupsHooksTest extends MediaWikiTestCase {
 				$this->equalTo( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ),
 				$this->equalTo( $expectedState )
 			);
-
-		$userMock->expects( $this->once() )
-			->method( 'saveSettings' );
 
 		$this->setMwGlobals( [
 			'wgPopupsOptInStateForNewAccounts' => $expectedState
