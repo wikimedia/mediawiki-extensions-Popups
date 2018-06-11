@@ -152,12 +152,10 @@ class PopupsHooks {
 	 * @param bool $autocreated Is user autocreated
 	 */
 	public static function onLocalUserCreated( User $user, $autocreated ) {
-		if ( !$autocreated ) {
-			$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		// ignore the $autocreated flag, we always want to set PagePreviews visibility
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 
-			$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
-				$config->get( 'PopupsOptInStateForNewAccounts' ) );
-			$user->saveSettings();
-		}
+		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+			$config->get( 'PopupsOptInStateForNewAccounts' ) );
 	}
 }
