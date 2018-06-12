@@ -300,3 +300,36 @@
 		}
 	}
 }
+
+// Position the SVG border
+.mwe-popups-is-tall {
+	polyline {
+		.mwe-popups-translate( 0, 0 );
+	}
+	&.flipped-x-y {
+		polyline {
+			.mwe-popups-translate( 0, -8px );
+		}
+	}
+	&.flipped-x {
+		polyline {
+			.mwe-popups-translate( 0, 8px );
+		}
+	}
+}
+
+.rtl .mwe-popups-is-tall {
+	polyline {
+		.mwe-popups-translate( -100%, 0 );
+	}
+	&.flipped-x-y {
+		polyline {
+			.mwe-popups-translate( -100%, -8px );
+		}
+	}
+	&.flipped-x {
+		polyline {
+			.mwe-popups-translate( -100%, 8px );
+		}
+	}
+}

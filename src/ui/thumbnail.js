@@ -120,6 +120,18 @@ export function createThumbnailElement(
 	const nsSvg = 'http://www.w3.org/2000/svg',
 		nsXlink = 'http://www.w3.org/1999/xlink';
 
+	// We want to visually separate the image from the summary
+	// Given we use an SVG mask, we cannot rely on border to do this
+	// and instead must insert a polyline element to visually separate
+	const line = document.createElementNS( nsSvg, 'polyline' );
+	const isTall = className.indexOf( 'not-tall' ) === -1;
+	const points = isTall ? [ 0, 0, 0, height ] :
+		[ 0, height - 1, width, height - 1 ];
+
+	line.setAttribute( 'stroke', 'rgba(0,0,0,0.1)' );
+	line.setAttribute( 'points', points.join( ' ' ) );
+	line.setAttribute( 'stroke-width', 1 );
+
 	const $thumbnailSVGImage = $( document.createElementNS( nsSvg, 'image' ) );
 	$thumbnailSVGImage[ 0 ].setAttributeNS( nsXlink, 'href', url );
 	$thumbnailSVGImage
@@ -139,5 +151,6 @@ export function createThumbnailElement(
 		} )
 		.append( $thumbnailSVGImage );
 
+	$thumbnail.append( line );
 	return $thumbnail;
 }
