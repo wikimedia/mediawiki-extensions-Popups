@@ -2,24 +2,24 @@
  * @module thumbnail
  */
 
-const SIZES = {
-		portraitImage: {
-			h: 250, // Exact height
-			w: 203 // Max width
-		},
-		landscapeImage: {
-			h: 200, // Max height
-			w: 320 // Exact Width
-		}
+export const SIZES = {
+	portraitImage: {
+		h: 250, // Exact height
+		w: 203 // Max width
 	},
-	$ = jQuery;
-
-export { SIZES };
+	landscapeImage: {
+		h: 200, // Max height
+		w: 320 // Exact Width
+	}
+};
+const $ = jQuery;
 
 /**
  * @typedef {Object} ext.popups.Thumbnail
  * @property {Element} el
  * @property {Boolean} isTall Whether or not the thumbnail is portrait
+ * @property {number} width
+ * @property {number} height
  */
 
 /**
@@ -112,7 +112,6 @@ export function createThumbnail( rawThumbnail ) {
  * @param {Number} thumbnailHeight
  * @param {Number} width
  * @param {Number} height
- * @param {String} clipPath
  * @return {jQuery}
  */
 export function createThumbnailElement(

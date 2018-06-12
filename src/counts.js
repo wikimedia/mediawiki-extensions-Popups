@@ -35,7 +35,7 @@ exports.getEditCountBucket = function getEditCountBucket( count ) {
  * Gets the count bucket for the number of previews a user has seen.
  *
  * If local storage isn't available - because the user has disabled it
- * or the browser doesn't support it - then then "unknown" is returned.
+ * or the browser doesn't support it - then "unknown" is returned.
  *
  * The buckets are defined as part of
  * [the Popups schema](https://meta.wikimedia.org/wiki/Schema:Popups).
