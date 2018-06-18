@@ -1,6 +1,7 @@
 /* global __dirname, process */
 const path = require( 'path' ),
 	webpack = require( 'webpack' ),
+	CleanPlugin = require( 'clean-webpack-plugin' ),
 	PUBLIC_PATH = '/w/extensions/Popups',
 	isProduction = process.env.NODE_ENV === 'production';
 
@@ -62,6 +63,8 @@ const conf = {
 		]
 	},
 	plugins: [
+		new CleanPlugin( 'resources/dist', { verbose: false } ),
+
 		// To generate identifiers that are preserved over builds, webpack supplies
 		// the NamedModulesPlugin (generates comments with file names on bundle)
 		// https://webpack.js.org/guides/caching/#deterministic-hashes
