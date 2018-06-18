@@ -26,7 +26,7 @@ QUnit.test( '#isEnabled returns correct value when disabled', function ( assert 
 
 	this.sandbox.spy( store, 'getState' );
 
-	assert.equal( popups.isEnabled(), false, 'Popups are disabled.' );
+	assert.strictEqual( popups.isEnabled(), false, 'Popups are disabled.' );
 	assert.strictEqual( store.getState.callCount, 1, 'The store was checked.' );
 } );
 
@@ -41,6 +41,6 @@ QUnit.test( '#isEnabled returns correct value when enabled', function ( assert )
 
 	this.sandbox.spy( store, 'getState' );
 
-	assert.equal( popups.isEnabled(), true, 'Popups are enabled.' );
+	assert.strictEqual( popups.isEnabled(), true, 'Popups are enabled.' );
 	assert.strictEqual( store.getState.callCount, 1, 'The store was checked.' );
 } );

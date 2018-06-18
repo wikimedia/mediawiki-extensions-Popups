@@ -58,7 +58,7 @@ QUnit.test( 'Title is bold', ( assert ) => {
 		const $div = $( '<div>' ).append(
 			formatter.formatPlainTextExtract( extract, title )
 		);
-		assert.equal( $div.html(), expected, msg );
+		assert.strictEqual( $div.html(), expected, msg );
 	}
 
 	cases.forEach( ( case_ ) => {

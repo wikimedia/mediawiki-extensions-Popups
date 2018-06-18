@@ -33,7 +33,7 @@ QUnit.test( 'it should return the title of a url with a title query param', func
 		}
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		getTitle( href, this.config ),
 		'Foo',
 		'The query title is returned.'
@@ -48,7 +48,7 @@ QUnit.test( 'it should return the title of a pretty url if it conforms wgArticle
 		query: {}
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		getTitle( href, this.config ),
 		'Foo',
 		'The ASCII title is returned.'
@@ -63,7 +63,7 @@ QUnit.test( 'it should return the title of a pretty url properly decoded', funct
 		query: {}
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		getTitle( href, this.config ),
 		'測試',
 		'The UTF-8 title is returned.'
@@ -76,7 +76,7 @@ QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) 
 		new Error( 'Cannot parse' )
 	);
 
-	assert.equal(
+	assert.strictEqual(
 		getTitle( href, this.config ),
 		undefined,
 		'No title is returned.'
@@ -91,7 +91,7 @@ QUnit.test( 'it should skip urls that are external', function ( assert ) {
 		query: { v: 'dQw4w9WgXcQ' }
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		getTitle( href, this.config ),
 		undefined,
 		'No title is returned.'
@@ -107,7 +107,7 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 		query: {}
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		getTitle( href, this.config ),
 		undefined,
 		'No title is returned.'
@@ -121,7 +121,7 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 		query: { a: 1, title: 'Foo' }
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		getTitle( href, this.config ),
 		undefined,
 		'No title is returned.'
@@ -140,18 +140,18 @@ QUnit.module( 'title#isValid', {
 } );
 
 QUnit.test( 'it should return null if the title is empty', ( assert ) => {
-	assert.equal( isValid(), null, 'Doesn\'t accept null titles' );
-	assert.equal( isValid( '' ), null, 'Doesn\'t accept empty titles' );
+	assert.strictEqual( isValid(), null, 'Doesn\'t accept null titles' );
+	assert.strictEqual( isValid( '' ), null, 'Doesn\'t accept empty titles' );
 } );
 
 QUnit.test( 'it should return null if the title can\'t be parsed properly', ( assert ) => {
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
-	assert.equal(
+	assert.strictEqual(
 		isValid( 'title' ),
 		null,
 		'Doesn\'t accept unparseable titles'
 	);
-	assert.equal(
+	assert.strictEqual(
 		window.mediaWiki.Title.newFromText.callCount, 1,
 		'mediaWiki.Title.newFromText called for parsing the title' );
 } );
@@ -160,7 +160,7 @@ QUnit.test( 'it should return null if the title is not from a content namespace'
 	window.mediaWiki.Title.newFromText.withArgs( 'title' ).returns( {
 		namespace: 1
 	} );
-	assert.equal(
+	assert.strictEqual(
 		isValid( 'title', [ 5 ] ),
 		null,
 		'Only content namespace titles are accepted'

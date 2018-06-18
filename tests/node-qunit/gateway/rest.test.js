@@ -267,7 +267,7 @@ QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', (
 	const model = gateway.convertPageToModel(
 		RESTBASE_RESPONSE_WITH_NO_PX_IMAGE, 300, provideParsedExtract );
 
-	assert.equal(
+	assert.strictEqual(
 		model.thumbnail.source,
 		'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
 		'If restbase handles missing image dimensions in thumbnail URLs'
@@ -297,7 +297,7 @@ QUnit.test( 'RESTBase gateway stretches SVGs', ( assert ) => {
 	const model = gateway.convertPageToModel(
 		SVG_RESTBASE_RESPONSE, 2000, provideParsedExtract );
 
-	assert.equal(
+	assert.strictEqual(
 		model.thumbnail.source,
 		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/1600px-President_Barack_Obama.svg.png',
 		'If the requested thumbnail is for an SVG, then it\'s always scaled.'
@@ -330,10 +330,10 @@ QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( ass
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
 	return gateway.getPageSummary( 'Missing Page' ).then( ( result ) => {
-		assert.equal( result.title, 'Missing Page', 'Title' );
+		assert.strictEqual( result.title, 'Missing Page', 'Title' );
 		// Extract is undefined since the parser is only invoked for successful
 		// responses.
-		assert.equal( result.extract, undefined, 'Extract' );
+		assert.strictEqual( result.extract, undefined, 'Extract' );
 	} );
 } );
 
@@ -358,7 +358,7 @@ QUnit.test( 'RESTBase gateway handles missing images ', ( assert ) => {
 	const model = gateway.convertPageToModel(
 		RESTBASE_RESPONSE_WITHOUT_IMAGE, 300, provideParsedExtract );
 
-	assert.equal(
+	assert.strictEqual(
 		model.originalimage,
 		undefined,
 		'If restbase handles missing image information'
@@ -373,8 +373,8 @@ QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
 
 	return gateway.getPageSummary( 'Test Title with missing extract' )
 		.then( ( result ) => {
-			assert.equal( result.title, 'Test Title with missing extract', 'Title' );
-			assert.equal( result.extract, '!!', 'Extract' );
+			assert.strictEqual( result.title, 'Test Title with missing extract', 'Title' );
+			assert.strictEqual( result.extract, '!!', 'Extract' );
 		} );
 } );
 
@@ -386,7 +386,7 @@ QUnit.test( 'RESTBase gateway handles no content success responses', function ( 
 
 	return gateway.getPageSummary( 'Test Title with empty response' )
 		.then( ( result ) => {
-			assert.equal( result.title, 'Test Title with empty response', 'Title' );
-			assert.equal( result.extract, '!!', 'Extract' );
+			assert.strictEqual( result.title, 'Test Title with empty response', 'Title' );
+			assert.strictEqual( result.extract, '!!', 'Extract' );
 		} );
 } );

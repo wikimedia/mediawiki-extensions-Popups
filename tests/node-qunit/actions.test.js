@@ -364,7 +364,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 	this.now += 115;
 
 	return fetched.then( () => {
-		assert.equal(
+		assert.strictEqual(
 			this.dispatch.callCount, 3,
 			'dispatch called thrice, START, FAILED, and COMPLETE'
 		);
@@ -387,7 +387,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 		this.gatewayDeferred.reject( new Error( 'API req failed' ) );
 		return this.fetch();
 	} ).then( () => {
-		assert.equal(
+		assert.strictEqual(
 			this.dispatch.callCount, 3,
 			'dispatch called thrice, START, FAILED, and COMPLETE'
 		);

@@ -156,7 +156,7 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 		token
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		state.previewCount,
 		expectedCount,
 		'It updates the user\'s preview count.'
@@ -627,7 +627,7 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 		enabled: false
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		state.event,
 		undefined,
 		'It shouldn\'t enqueue a "disabled" event when there is no change'
@@ -655,7 +655,7 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 		enabled: true
 	} );
 
-	assert.equal(
+	assert.strictEqual(
 		state.event,
 		undefined,
 		'It shouldn\'t enqueue a "disabled" event when page previews has been enabled'

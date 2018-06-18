@@ -152,12 +152,12 @@ QUnit.module( 'ext.popups preview @integration', {
 QUnit.test( 'it boots in INACTIVE state', function ( assert ) {
 	const state = this.store.getState();
 
-	assert.equal(
+	assert.strictEqual(
 		state.preview.activeLink,
 		undefined,
 		'The initial active link is undefined.'
 	);
-	assert.equal(
+	assert.strictEqual(
 		state.preview.linkInteractionToken,
 		undefined,
 		'The initial token is undefined.'
@@ -177,8 +177,8 @@ QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( 
 		constant( 'pagetoken' )
 	);
 	const state = this.store.getState();
-	assert.equal( state.preview.activeLink, this.el, 'It has an active link' );
-	assert.equal( state.preview.shouldShow, false, 'Initializes with NO_DATA' );
+	assert.strictEqual( state.preview.activeLink, this.el, 'It has an active link' );
+	assert.strictEqual( state.preview.shouldShow, false, 'Initializes with NO_DATA' );
 } );
 
 QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert ) {
@@ -188,12 +188,12 @@ QUnit.test( 'in ACTIVE state, fetch end switches it to DATA', function ( assert 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
 		.then( () => {
 			const state = store.getState();
-			assert.equal(
+			assert.strictEqual(
 				state.preview.activeLink,
 				el,
 				'The active link is passed.'
 			);
-			assert.equal(
+			assert.strictEqual(
 				state.preview.shouldShow, true,
 				'Should show when data has been fetched' );
 		} );
@@ -207,8 +207,8 @@ QUnit.test( 'in ACTIVE state, fetch fail switches it to DATA', function ( assert
 		this.title, el, 'event', 42, FETCH_RESOLUTION.REJECT
 	).then( () => {
 		const state = store.getState();
-		assert.equal( state.preview.activeLink, el, 'The active link is passed.' );
-		assert.equal( state.preview.shouldShow, true,
+		assert.strictEqual( state.preview.activeLink, el, 'The active link is passed.' );
+		assert.strictEqual( state.preview.shouldShow, true,
 			'Should show when data couldn\'t be fetched' );
 	} );
 } );
@@ -221,7 +221,7 @@ QUnit.test( 'in ACTIVE state, abandon start, and then end, switch it to INACTIVE
 			return this.abandonAndWait( el );
 		} ).then( () => {
 			const state = this.store.getState();
-			assert.equal( state.preview.activeLink, undefined,
+			assert.strictEqual( state.preview.activeLink, undefined,
 				'After abandoning, preview is back to INACTIVE' );
 		} );
 } );
@@ -232,7 +232,7 @@ QUnit.test( 'in ACTIVE state, abandon link, and then dwell preview, should keep 
 	return this.dwellAndPreviewDwell( this.title, el, 'event', 42 )
 		.then( () => {
 			const state = this.store.getState();
-			assert.equal(
+			assert.strictEqual(
 				state.preview.activeLink,
 				el,
 				'The active link is passed.'
@@ -264,7 +264,7 @@ QUnit.test( 'in ACTIVE state, abandon link, hover preview, back to link, should 
 		} )
 		.then( () => {
 			const state = this.store.getState();
-			assert.equal(
+			assert.strictEqual(
 				state.preview.activeLink,
 				el,
 				'The active link is passed.'

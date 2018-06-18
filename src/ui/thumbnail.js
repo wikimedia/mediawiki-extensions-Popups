@@ -16,7 +16,7 @@ const $ = jQuery;
 
 /**
  * @typedef {Object} ext.popups.Thumbnail
- * @property {Element} el
+ * @property {jQuery} el
  * @property {Boolean} isTall Whether or not the thumbnail is portrait
  * @property {number} width
  * @property {number} height

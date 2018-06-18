@@ -25,7 +25,7 @@ QUnit.test( '#getEditCountBucket', ( assert ) => {
 	for ( let i = 0; i < cases.length; i++ ) {
 		const count = cases[ i ][ 0 ];
 		const bucket = counts.getEditCountBucket( count );
-		assert.equal(
+		assert.strictEqual(
 			bucket,
 			cases[ i ][ 1 ],
 			`Edit count bucket is "${ bucket }" when edit count is ${ count }.`
@@ -58,7 +58,7 @@ QUnit.test( '#getPreviewCountBucket', ( assert ) => {
 	for ( let i = 0; i < cases.length; i++ ) {
 		const count = cases[ i ][ 0 ];
 		const bucket = counts.getPreviewCountBucket( count );
-		assert.equal(
+		assert.strictEqual(
 			bucket,
 			cases[ i ][ 1 ],
 			`Preview count bucket is "${ bucket }" when preview count is ${ count }.`
