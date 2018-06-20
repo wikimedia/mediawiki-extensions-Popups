@@ -100,6 +100,25 @@ const DEFAULT_CONSTANTS = {
 		timestamp: '2017-01-30T10:17:41Z',
 		description: '44th President of the United States of America'
 	},
+	RESTBASE_RESPONSE_NONIMAGE_ORIGINAL = {
+		type: 'standard',
+		title: 'Completing the square',
+		extract: 'Landscape',
+		thumbnail: {
+			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Completing_the_square.ogv/320px--Completing_the_square.ogv.jpg',
+			width: 320,
+			height: 240
+		},
+		originalimage: {
+			source: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/Completing_the_square.ogv',
+			width: 640,
+			height: 480
+		},
+		lang: 'en',
+		dir: 'ltr',
+		timestamp: '2018-04-14T05:31:14Z',
+		description: 'technique used to solve a quadratic equation.'
+	},
 	RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE = {
 		type: 'standard',
 		title: 'Landscape',
@@ -291,7 +310,7 @@ QUnit.test( 'RESTBase gateway handles awkward thumbnails', ( assert ) => {
 	);
 } );
 
-QUnit.test( 'RESTBase gateway stretches SVGs', ( assert ) => {
+QUnit.test( 'RESTBase gateway always scales SVGs', ( assert ) => {
 	const gateway = createRESTBaseGateway();
 
 	const model = gateway.convertPageToModel(
@@ -301,6 +320,30 @@ QUnit.test( 'RESTBase gateway stretches SVGs', ( assert ) => {
 		model.thumbnail.source,
 		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/1600px-President_Barack_Obama.svg.png',
 		'If the requested thumbnail is for an SVG, then it\'s always scaled.'
+	);
+} );
+
+QUnit.test( 'RESTBase gateway only returns safe image formats', ( assert ) => {
+	const gateway = createRESTBaseGateway();
+
+	let model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE_NONIMAGE_ORIGINAL, 640, provideParsedExtract );
+
+	assert.strictEqual(
+		model.thumbnail,
+		undefined,
+		`If the original image is a video file, and the requested thumbnail
+		is larger than the original video file, no thumbnail is returned.`
+	);
+
+	model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE_NONIMAGE_ORIGINAL, 320, provideParsedExtract );
+
+	assert.strictEqual(
+		model.thumbnail.source,
+		RESTBASE_RESPONSE_NONIMAGE_ORIGINAL.thumbnail.source,
+		`If the original image is a video file, and the requested thumbnail
+		is smaller than the original video file, the thumbnail is returned.`
 	);
 } );
 

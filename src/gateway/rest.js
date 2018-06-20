@@ -99,6 +99,20 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 }
 
 /**
+ * Checks whether the `originalImage` property contains an image
+ * format that's safe to render.
+ * https://www.mediawiki.org/wiki/Help:Images#Supported_media_types_for_images
+ *
+ * @param {String} filename
+ *
+ * @return {Boolean}
+ */
+function isSafeImgFormat( filename ) {
+	const safeImage = new RegExp( /\.(jpg|jpeg|png|gif)$/i );
+	return safeImage.test( filename );
+}
+
+/**
  * Resizes the thumbnail to the requested width, preserving its aspect ratio.
  *
  * The requested width is limited to that of the original image unless the image
@@ -111,11 +125,12 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
  * @param {Object} thumbnail The thumbnail image
  * @param {Object} original The original image
  * @param {Number} thumbSize The requested size
- * @return {Object}
+ * @return {Object|undefined}
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
 	const parts = thumbnail.source.split( '/' ),
-		lastPart = parts[ parts.length - 1 ];
+		lastPart = parts[ parts.length - 1 ],
+		originalIsSafe = isSafeImgFormat( original.source ) || undefined;
 
 	// The last part, the thumbnail's full filename, is in the following form:
 	// ${width}px-${filename}.${extension}. Splitting the thumbnail's filename
@@ -135,8 +150,8 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 		//
 		//   https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Red_Giant_Earth_warm.jpg/512px-Red_Giant_Earth_warm.jpg
 		//
-		// Use the original.
-		return original;
+		// Use the original if it's a supported image format.
+		return originalIsSafe && original;
 	}
 	const filename = lastPart.substr( filenamePxIndex + 3 );
 
@@ -153,7 +168,8 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 	// If the image isn't an SVG, then it shouldn't be scaled past its original
 	// dimensions.
 	if ( width >= original.width && filename.indexOf( '.svg' ) === -1 ) {
-		return original;
+		// if the image format is not supported, it shouldn't be rendered.
+		return originalIsSafe && original;
 	}
 
 	parts[ parts.length - 1 ] = `${ width }px-${ filename }`;
