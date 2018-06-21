@@ -9,7 +9,7 @@ import { previewTypes } from '../preview/model';
 import { renderPreview } from './templates/preview/preview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';
 
-const mw = window.mediaWiki,
+const mw = mediaWiki,
 	$ = jQuery,
 	defaultExtractWidth = 215,
 	$window = $( window ),

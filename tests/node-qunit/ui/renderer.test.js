@@ -43,7 +43,7 @@ QUnit.module( 'ext.popups#renderer', {
 	beforeEach() {
 		$.bracketedDevicePixelRatio = () => 1;
 
-		window.mediaWiki.msg = ( key ) => {
+		mediaWiki.msg = ( key ) => {
 			switch ( key ) {
 				case 'popups-preview-no-preview':
 					return MSG_NO_PREVIEW;
@@ -56,7 +56,7 @@ QUnit.module( 'ext.popups#renderer', {
 			}
 		};
 
-		window.mediaWiki.html = { escape: str => str };
+		mediaWiki.html = { escape: str => str };
 
 		// Some tests below stub this function. Keep a copy so it can be restored.
 		this.getElementById = document.getElementById;
@@ -65,8 +65,8 @@ QUnit.module( 'ext.popups#renderer', {
 		// Restore getElementsById to its original state.
 		document.getElementById = this.getElementById;
 		$.bracketedDevicePixelRatio = null;
-		window.mediaWiki.msg = null;
-		window.mediaWiki.html = null;
+		mediaWiki.msg = null;
+		mediaWiki.html = null;
 	}
 } );
 

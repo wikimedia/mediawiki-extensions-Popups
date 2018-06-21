@@ -5,7 +5,7 @@
 import { createModel, createNullModel } from '../preview/model';
 
 const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
-	mw = window.mediaWiki,
+	mw = mediaWiki,
 	$ = jQuery;
 
 /** @typedef {function(JQuery.AjaxSettings=): JQuery.jqXHR} Ajax */

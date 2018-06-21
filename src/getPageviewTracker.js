@@ -1,7 +1,7 @@
 /**
  * @module getPageviewTracker
  */
-const mw = window.mediaWiki;
+const mw = mediaWiki;
 /**
  * @typedef {Object} MwCodeLoader
  *

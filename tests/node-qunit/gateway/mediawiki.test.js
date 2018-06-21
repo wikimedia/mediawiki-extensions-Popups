@@ -52,14 +52,14 @@ const DEFAULT_CONSTANTS = {
 
 QUnit.module( 'ext.popups/gateway/mediawiki', {
 	beforeEach() {
-		window.mediaWiki.RegExp = {
+		mediaWiki.RegExp = {
 			escape: this.sandbox.spy(
 				( str ) => str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' )
 			)
 		};
 	},
 	afterEach() {
-		window.mediaWiki.RegExp = null;
+		mediaWiki.RegExp = null;
 	}
 } );
 

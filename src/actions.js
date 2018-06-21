@@ -7,7 +7,7 @@ import wait from './wait';
 import { createNullModel, previewTypes } from './preview/model';
 
 const $ = jQuery,
-	mw = window.mediaWiki,
+	mw = mediaWiki,
 
 	// See the following for context around this value.
 	//

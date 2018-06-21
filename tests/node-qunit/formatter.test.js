@@ -4,14 +4,14 @@ const $ = jQuery;
 
 QUnit.module( 'ext.popups.formatter', {
 	beforeEach() {
-		window.mediaWiki.RegExp = {
+		mediaWiki.RegExp = {
 			escape: this.sandbox.spy( ( str ) => {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 	},
 	afterEach() {
-		window.mediaWiki.RegExp = null;
+		mediaWiki.RegExp = null;
 	}
 } );
 

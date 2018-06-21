@@ -1,5 +1,5 @@
 const $ = jQuery,
-	mw = window.mediaWiki;
+	mw = mediaWiki;
 
 /**
  * Improves the plain text extracts

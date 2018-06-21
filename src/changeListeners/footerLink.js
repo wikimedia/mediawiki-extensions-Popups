@@ -2,7 +2,7 @@
  * @module changeListeners/footerLink
  */
 
-const mw = window.mediaWiki,
+const mw = mediaWiki,
 	$ = jQuery;
 
 /**

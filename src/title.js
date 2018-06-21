@@ -2,7 +2,7 @@
  * @module title
  */
 
-const mw = window.mediaWiki;
+const mw = mediaWiki;
 
 /**
  * Gets the title of a local page from an href given some configuration.

@@ -4,7 +4,7 @@
 
 import { renderSettingsDialog } from './templates/settingsDialog/settingsDialog';
 
-const mw = window.mediaWiki;
+const mw = mediaWiki;
 
 /**
  * Create the settings dialog shown to anonymous users.
