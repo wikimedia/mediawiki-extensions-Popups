@@ -105,7 +105,10 @@ QUnit.module( 'ext.popups preview @integration', {
 				getPageSummary() {
 					const method = resolution === FETCH_RESOLUTION.RESOLVE ?
 						'resolve' : 'reject';
-					return $.Deferred()[ method ]( fetchResponse ).promise();
+					const abort = {
+						abort() {}
+					};
+					return $.Deferred()[ method ]( fetchResponse ).promise( abort );
 				}
 			}, () => 'pagetoken' );
 		};

@@ -433,3 +433,31 @@ QUnit.test( 'RESTBase gateway handles no content success responses', function ( 
 			assert.strictEqual( result.extract, '!!', 'Extract' );
 		} );
 } );
+
+QUnit.test( 'RESTBase gateway is abortable', function ( assert ) {
+	assert.expect( 1, 'All assertions are executed.' );
+
+	const
+		deferred = $.Deferred(),
+		api = this.sandbox.stub().returns(
+			deferred.promise( {
+				abort() {
+					deferred.reject( 'http' );
+				}
+			} )
+		),
+		gateway = createRESTBaseGateway(
+			api, DEFAULT_CONSTANTS, provideParsedExtract );
+
+	const xhr = gateway.getPageSummary( 'Test Title' );
+
+	const chain = xhr.then( () => {
+		assert.ok( false, 'It never calls a thenable after rejection' );
+	} ).catch( data => {
+		assert.strictEqual( data, 'http' );
+	} );
+
+	xhr.abort();
+
+	return chain;
+} );

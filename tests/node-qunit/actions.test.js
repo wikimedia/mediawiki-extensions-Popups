@@ -69,7 +69,7 @@ QUnit.test( '#boot', ( assert ) => {
 	* @param {Object} module
 	*/
 function setupWait( module ) {
-	module.waitPromise = $.Deferred().resolve().promise();
+	module.waitPromise = $.Deferred().resolve().promise( { abort() {} } );
 	module.wait = module.sandbox.stub( WaitModule, 'default' ).callsFake(
 		() => module.waitPromise
 	);
@@ -121,7 +121,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		this.getState
 	);
 
-	assert.deepEqual(
+	assert.propEqual(
 		dispatch.getCall( 0 ).args[ 0 ], {
 			type: 'LINK_DWELL',
 			el: this.el,
@@ -129,7 +129,8 @@ QUnit.test( '#linkDwell', function ( assert ) {
 			token: '9876543210',
 			timestamp: mw.now(),
 			title: 'Foo',
-			namespaceId: 1
+			namespaceId: 1,
+			promise: $.Deferred().promise( { abort() {} } )
 		},
 		'The dispatcher was called with the correct arguments.'
 	);
@@ -265,7 +266,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 		this.gatewayDeferred = $.Deferred();
 		this.gateway = {
 			getPageSummary: this.sandbox.stub().returns(
-				this.gatewayDeferred.promise()
+				this.gatewayDeferred.promise( { abort() {} } )
 			)
 		};
 
@@ -293,14 +294,15 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 	);
 
 	assert.strictEqual( this.dispatch.callCount, 1 );
-	assert.deepEqual(
+	assert.propEqual(
 		this.dispatch.getCall( 0 ).args[ 0 ],
 		{
 			type: 'FETCH_START',
 			el: this.el,
 			title: 'Foo',
 			namespaceId: 1,
-			timestamp: this.now
+			timestamp: this.now,
+			promise: $.Deferred().promise( { abort() {} } )
 		},
 		'It dispatches the FETCH_START action immediately.'
 	);
@@ -415,7 +417,8 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 		getState = () =>
 			( {
 				preview: {
-					activeToken: token
+					activeToken: token,
+					promise: $.Deferred().promise( { abort() {} } )
 				}
 			} );
 

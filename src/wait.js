@@ -5,6 +5,13 @@
 const $ = jQuery;
 
 /**
+ * A Promise usually for a long running or costly request that is abortable.
+ * @template T
+ * @typedef {JQuery.Promise<T>} AbortPromise
+ * @prop {function(): void} abort
+ */
+
+/**
  * Sugar around `window.setTimeout`.
  *
  * @example
@@ -16,14 +23,19 @@ const $ = jQuery;
  *   } );
  *
  * @param {Number} delay The number of milliseconds to wait
- * @return {jQuery.Promise}
+ * @return {AbortPromise<void>}
  */
 export default function wait( delay ) {
-	const result = $.Deferred();
+	const deferred = $.Deferred();
 
-	setTimeout( () => {
-		result.resolve();
+	const timer = setTimeout( () => {
+		deferred.resolve();
 	}, delay );
+	deferred.catch( () => clearTimeout( timer ) );
 
-	return result.promise();
+	return deferred.promise( {
+		abort() {
+			deferred.reject();
+		}
+	} );
 }

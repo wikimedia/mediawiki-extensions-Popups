@@ -7,12 +7,8 @@ import { createModel, createNullModel } from '../preview/model';
 const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
 	mw = window.mediaWiki,
 	$ = jQuery;
-/**
- * @interface RESTBaseGateway
- * @extends Gateway
- *
- * @global
- */
+
+/** @typedef {function(JQuery.AjaxSettings=): JQuery.jqXHR} Ajax */
 
 /**
  * Creates an instance of the RESTBase gateway.
@@ -22,12 +18,12 @@ const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
  *
  * [0]: https://en.wikipedia.org/api/rest_v1/#!/Page_content/get_page_summary_title
  *
- * @param {Function} ajax A function with the same signature as `jQuery.ajax`
+ * @param {Ajax} ajax A function with the same signature as `jQuery.ajax`
  * @param {Object} config Configuration that affects the major behavior of the
  *  gateway.
  * @param {Function} extractParser A function that takes response and returns
  *  parsed extract
- * @return {RESTBaseGateway}
+ * @return {Gateway}
  */
 export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	/**
@@ -36,9 +32,9 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	 * [0]: https://en.wikipedia.org/api/rest_v1/#!/Page_content/get_page_summary_title
 	 *
 	 * @function
-	 * @name MediaWikiGateway#fetch
+	 * @name RESTBaseGateway#fetch
 	 * @param {String} title
-	 * @return {jQuery.Promise}
+	 * @return {JQuery.jqXHR}
 	 */
 	function fetch( title ) {
 		const endpoint = config.endpoint;
@@ -52,43 +48,34 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	}
 
 	function getPageSummary( title ) {
-		const result = $.Deferred();
-
-		fetch( title )
-			.then(
-				( page ) => {
-					// Endpoint response may be empty or simply missing a title.
-					if ( !page || !page.title ) {
-						page = $.extend( true, page || {}, { title } );
-					}
-					// And extract may be omitted if empty string
-					if ( page.extract === undefined ) {
-						page.extract = '';
-					}
-					result.resolve(
-						convertPageToModel( page, config.THUMBNAIL_SIZE, extractParser ) );
-				},
-				( jqXHR, textStatus, errorThrown ) => {
-					// Adapt the response to the ideal API.
-					// TODO: should we just let the client handle this too?
-					if ( jqXHR.status === 404 ) {
-						result.resolve(
-							createNullModel( title, new mw.Title( title ).getUrl() )
-						);
-					} else {
-						// The client will choose how to handle these errors which may
-						// include those due to HTTP 5xx status. The rejection typing
-						// matches Fetch failures.
-						result.reject( 'http', {
-							xhr: jqXHR,
-							textStatus,
-							exception: errorThrown
-						} );
-					}
-				}
+		const xhr = fetch( title );
+		return xhr.then( ( page ) => {
+			// Endpoint response may be empty or simply missing a title.
+			if ( !page || !page.title ) {
+				page = $.extend( true, page || {}, { title } );
+			}
+			// And extract may be omitted if empty string
+			if ( page.extract === undefined ) {
+				page.extract = '';
+			}
+			return convertPageToModel(
+				page, config.THUMBNAIL_SIZE, extractParser
 			);
-
-		return result.promise();
+		} ).catch( ( jqXHR, textStatus, errorThrown ) => {
+			// Adapt the response to the ideal API.
+			// TODO: should we just let the client handle this too?
+			if ( jqXHR.status === 404 ) {
+				return createNullModel( title, new mw.Title( title ).getUrl() );
+			}
+			// The client will choose how to handle these errors which may include
+			// those due to HTTP 5xx status. The rejection typing matches Fetch
+			// failures.
+			return $.Deferred().reject( 'http', {
+				xhr: jqXHR,
+				textStatus,
+				exception: errorThrown
+			} );
+		} ).promise( { abort() { xhr.abort(); } } );
 	}
 
 	return {

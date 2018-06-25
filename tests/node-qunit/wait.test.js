@@ -5,19 +5,55 @@ QUnit.module( 'ext.popups/wait' );
 QUnit.test( 'it should resolve after waiting', function ( assert ) {
 	assert.expect( 1, 'All assertions are executed.' );
 
-	const timeout = this.sandbox.stub( global, 'setTimeout' ).callsFake( ( callback ) => {
-		callback();
-	} );
-
+	const then = Date.now();
 	return wait( 150 ).then( () => {
 		assert.strictEqual(
-			timeout.getCall( 0 ).args[ 1 ],
-			150,
+			( Date.now() - then ) > 150,
+			true,
 			'It waits for the given duration'
 		);
-		timeout.restore();
-	} ).catch( ( err ) => {
-		timeout.restore();
-		throw err;
 	} );
+} );
+
+QUnit.test( 'it should not catch after resolving', function ( assert ) {
+	assert.expect( 1, 'All assertions are executed.' );
+
+	return wait( 0 ).catch( () => {
+		assert.ok( false, 'It never calls a catchable after resolution' );
+	} ).then( () => {
+		assert.ok( true, 'It resolves' );
+	} );
+} );
+
+QUnit.test( 'it should not resolve after aborting', function ( assert ) {
+	assert.expect( 1, 'All assertions are executed.' );
+
+	const deferred = wait( 0 );
+
+	const chain = deferred.then( () => {
+		assert.ok( false, 'It never calls a thenable after rejection' );
+	} ).catch( () => {
+		assert.ok( true, 'It calls the catchable' );
+	} );
+
+	deferred.abort();
+
+	return chain;
+} );
+
+QUnit.test( 'it should catch after resolving and aborting', function ( assert ) {
+	assert.expect( 2, 'All assertions are executed.' );
+
+	const deferred = wait( 0 );
+
+	const chain = deferred.catch( () => {
+		assert.ok( true, 'It calls the catchable' );
+	} );
+
+	deferred.then( () => {
+		assert.ok( true, 'It resolves' );
+		deferred.abort();
+	} );
+
+	return chain;
 } );

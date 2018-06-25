@@ -111,14 +111,17 @@ export function fetch( gateway, title, el, token ) {
 		namespaceId = title.namespace;
 
 	return ( dispatch ) => {
+		const xhr = gateway.getPageSummary( titleText );
+
 		dispatch( timedAction( {
 			type: types.FETCH_START,
 			el,
 			title: titleText,
-			namespaceId
+			namespaceId,
+			promise: xhr
 		} ) );
 
-		const request = gateway.getPageSummary( titleText )
+		const chain = xhr
 			.then( ( result ) => {
 				dispatch( timedAction( {
 					type: types.FETCH_END,
@@ -137,7 +140,7 @@ export function fetch( gateway, title, el, token ) {
 			} );
 
 		return $.when(
-			request,
+			chain,
 			wait( FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY )
 		)
 			.then( ( result ) => {
@@ -161,6 +164,8 @@ export function fetch( gateway, title, el, token ) {
 				//   exception: "Service Unavailable"}
 				// - Suppress (offline or network error): data="http"
 				//   result={xhr: {…}, textStatus: "error", exception: ""}
+				// - Abort: data="http"
+				//   result={xhr: {…}, textStatus: "abort", exception: "abort"}
 				const networkError = result && result.xhr &&
 					result.xhr.readyState === 0 && result.textStatus === 'error' &&
 					result.exception === '';
@@ -194,34 +199,35 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 		namespaceId = title.namespace;
 
 	return ( dispatch, getState ) => {
+		const promise = wait( FETCH_START_DELAY );
 		const action = timedAction( {
 			type: types.LINK_DWELL,
 			el,
 			event,
 			token,
 			title: titleText,
-			namespaceId
+			namespaceId,
+			promise
 		} );
+
+		dispatch( action );
 
 		// Has the new generated token been accepted?
 		function isNewInteraction() {
 			return getState().preview.activeToken === token;
 		}
 
-		dispatch( action );
-
 		if ( !isNewInteraction() ) {
 			return $.Deferred().resolve().promise();
 		}
 
-		return wait( FETCH_START_DELAY )
-			.then( () => {
-				const previewState = getState().preview;
+		return promise.then( () => {
+			const previewState = getState().preview;
 
-				if ( previewState.enabled && isNewInteraction() ) {
-					return dispatch( fetch( gateway, title, el, token ) );
-				}
-			} );
+			if ( previewState.enabled && isNewInteraction() ) {
+				return dispatch( fetch( gateway, title, el, token ) );
+			}
+		} );
 	};
 }
 
@@ -235,11 +241,14 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
  */
 export function abandon() {
 	return ( dispatch, getState ) => {
-		const token = getState().preview.activeToken;
+		const { activeToken: token, promise } = getState().preview;
 
 		if ( !token ) {
 			return $.Deferred().resolve().promise();
 		}
+
+		// Immediately abandon any outstanding fetch request. Do not wait.
+		promise.abort();
 
 		dispatch( timedAction( {
 			type: types.ABANDON_START,

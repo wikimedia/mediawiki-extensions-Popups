@@ -6,11 +6,20 @@ import * as formatters from './restFormatters';
 const mw = mediaWiki,
 	$ = jQuery;
 
-// Note that this interface definition is in the global scope.
 /**
  * The interface implemented by all preview gateways.
- *
- * @interface Gateway
+ * @typedef Gateway
+ * @prop {function(string): JQuery.jqXHR} fetch
+ * @prop {GetPageSummary} getPageSummary
+ * @prop {ConvertPageToModel} convertPageToModel
+ */
+
+/**
+ * A Promise, usually for a long running or costly task such as an HTTP request,
+ * that is abortable.
+ * @template T
+ * @typedef {JQuery.Promise<T>} AbortPromise
+ * @prop {function(): void} abort
  */
 
 /**
@@ -19,10 +28,13 @@ const mw = mediaWiki,
  * If the underlying request is successful and contains data about the page,
  * then the resulting promise will resolve. If not, then it will reject.
  *
- * @function
- * @name Gateway#getPageSummary
- * @param {String} title The title of the page
- * @return {jQuery.Promise<PreviewModel>}
+ * @typedef {Function(string): AbortPromise<PreviewModel>} GetPageSummary
+ */
+
+/**
+ * Converts the API response to a preview model. Exposed for testing only.
+ *
+ * @typedef {Function(object, ...any): PreviewModel} ConvertPageToModel
  */
 
 /**

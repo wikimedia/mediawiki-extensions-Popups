@@ -2,13 +2,6 @@
  * @module gateway/mediawiki
  */
 
-/**
- * @interface MediaWikiGateway
- * @extends Gateway
- *
- * @global
- */
-
 import { createModel } from '../preview/model';
 import * as formatter from '../formatter';
 
@@ -17,6 +10,12 @@ import * as formatter from '../formatter';
 // FIXME: Move this to src/constants.js.
 const CACHE_LIFETIME = 300,
 	$ = jQuery;
+
+/**
+ * @typedef {Gateway} MediaWikiGateway
+ * @prop {function(object): object} extractPageFromResponse
+ * @prop {function(object): object} formatPlainTextExtract
+ */
 
 /**
  * Creates an instance of the MediaWiki API gateway.
@@ -31,15 +30,6 @@ const CACHE_LIFETIME = 300,
  * @return {MediaWikiGateway}
  */
 export default function createMediaWikiApiGateway( api, config ) {
-
-	/**
-	 * Fetches page data from the API.
-	 *
-	 * @function
-	 * @name MediaWikiGateway#fetch
-	 * @param {String} title
-	 * @return {jQuery.Promise}
-	 */
 	function fetch( title ) {
 		return api.get( {
 			action: 'query',
@@ -70,12 +60,16 @@ export default function createMediaWikiApiGateway( api, config ) {
 	}
 
 	function getPageSummary( title ) {
-		return fetch( title )
-			.then( ( data ) => {
-				const page = extractPageFromResponse( data );
-				const plainTextExtract = formatPlainTextExtract( page );
-				return convertPageToModel( plainTextExtract );
-			} );
+		const xhr = fetch( title );
+		return xhr.then( ( data ) => {
+			const page = extractPageFromResponse( data );
+			const plainTextExtract = formatPlainTextExtract( page );
+			return convertPageToModel( plainTextExtract );
+		} ).promise( {
+			abort() {
+				xhr.abort();
+			}
+		} );
 	}
 
 	return {

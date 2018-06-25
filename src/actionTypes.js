@@ -20,8 +20,10 @@ export default {
 	PREVIEW_DWELL: 'PREVIEW_DWELL',
 	PREVIEW_SHOW: 'PREVIEW_SHOW',
 	PREVIEW_CLICK: 'PREVIEW_CLICK',
-	/* Occurs when a preview has been opened for a significant amount of
-	time and can be assumed to have been 'seen' */
+	/**
+		Occurs when a preview has been opened for a significant amount of time and
+		is assumed to have been viewed.
+	*/
 	PREVIEW_SEEN: 'PREVIEW_SEEN',
 	SETTINGS_SHOW: 'SETTINGS_SHOW',
 	SETTINGS_HIDE: 'SETTINGS_HIDE',

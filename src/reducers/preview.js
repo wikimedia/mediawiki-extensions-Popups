@@ -47,7 +47,8 @@ export default function preview( state, action ) {
 					// Ensure that all the preview is hidden.
 					shouldShow: false,
 
-					isUserDwelling: true
+					isUserDwelling: true,
+					promise: action.promise
 				} );
 			}
 			// Dwelling back into the same link
@@ -79,7 +80,8 @@ export default function preview( state, action ) {
 
 		case actionTypes.FETCH_START:
 			return nextState( state, {
-				fetchResponse: undefined
+				fetchResponse: undefined,
+				promise: action.promise
 			} );
 
 		case actionTypes.FETCH_COMPLETE:

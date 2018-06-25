@@ -101,7 +101,7 @@ export function render( model ) {
 		 *  that were (likely) created in [boot.js](./boot.js).
 		 * @param {String} token The unique token representing the link interaction
 		 *  that resulted in showing the preview
-		 * @return {jQuery.Promise}
+		 * @return {JQuery.Promise<void>}
 		 */
 		show( event, boundActions, token ) {
 			return show(
@@ -115,7 +115,7 @@ export function render( model ) {
 		 *
 		 * See `hide` for more detail.
 		 *
-		 * @return {jQuery.Promise}
+		 * @return {JQuery.Promise<void>}
 		 */
 		hide() {
 			return hide( preview );
@@ -249,8 +249,8 @@ export function createDisambiguationPreview( model ) {
  * @param {String} token
  * @param {Object} container DOM object to which pointer masks are appended
  * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
- * @return {jQuery.Promise} A promise that resolves when the promise has faded
- *  in
+ * @return {JQuery.Promise<void>} A promise that resolves when the promise has
+ *                                faded in.
  */
 export function show(
 	preview, event, $link, behavior, token, container, dir
@@ -318,8 +318,8 @@ export function bindBehavior( preview, behavior ) {
  * Extracted from `mw.popups.render.closePopup`.
  *
  * @param {ext.popups.Preview} preview
- * @return {jQuery.Promise} A promise that resolves when the preview has faded
- *  out
+ * @return {JQuery.Promise<void>} A promise that resolves when the preview has
+ *                                faded out.
  */
 export function hide( preview ) {
 	// FIXME: This method clearly needs access to the layout of the preview.

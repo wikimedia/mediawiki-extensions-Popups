@@ -62,11 +62,13 @@ QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 } );
 
 QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert ) {
+	const promise = $.Deferred().promise();
 	const action = {
 		type: 'LINK_DWELL',
 		el: this.el,
 		event: {},
-		token: '1234567890'
+		token: '1234567890',
+		promise
 	};
 
 	assert.deepEqual(
@@ -76,7 +78,8 @@ QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert
 			activeEvent: action.event,
 			activeToken: action.token,
 			shouldShow: false,
-			isUserDwelling: true
+			isUserDwelling: true,
+			promise
 		},
 		'It should set active link and event as well as interaction info and hide the preview.'
 	);

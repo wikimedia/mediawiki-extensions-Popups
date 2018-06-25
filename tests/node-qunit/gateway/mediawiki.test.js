@@ -172,7 +172,7 @@ QUnit.test( 'MediaWiki API gateway handles API failure', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert ) {
+QUnit.test( 'MediaWiki API gateway returns the correct data', function ( assert ) {
 	const api = {
 			get: this.sandbox.stub().returns(
 				$.Deferred().resolve( MEDIAWIKI_API_RESPONSE ).promise()
@@ -189,7 +189,7 @@ QUnit.test( 'MediaWiki API gateway returns the correct data ', function ( assert
 	} );
 } );
 
-QUnit.test( 'MediaWiki API gateway handles missing pages ', function ( assert ) {
+QUnit.test( 'MediaWiki API gateway handles missing pages', function ( assert ) {
 	const response = {
 			query: {
 				pages: [ {
@@ -229,4 +229,29 @@ QUnit.test( 'MediaWiki API gateway handles missing pages ', function ( assert ) 
 			'The gateway converts the page preview response.'
 		);
 	} );
+} );
+
+QUnit.test( 'MediaWiki API gateway is abortable', function ( assert ) {
+	assert.expect( 1, 'All assertions are executed.' );
+
+	const
+		deferred = $.Deferred(),
+		api = {
+			get: this.sandbox.stub().returns(
+				deferred.promise( { abort() { deferred.reject( 'http' ); } } )
+			)
+		},
+		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
+
+	const xhr = gateway.getPageSummary( 'Test Title' );
+
+	const chain = xhr.then( () => {
+		assert.ok( false, 'It never calls a thenable after rejection' );
+	} ).catch( data => {
+		assert.strictEqual( data, 'http' );
+	} );
+
+	xhr.abort();
+
+	return chain;
 } );

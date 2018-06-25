@@ -30,7 +30,7 @@ QUnit.test( 'it should only call the callback when the state has changed', funct
 	stubStore.setState( {} );
 
 	if ( !boundChangeListener ) {
-		assert.fail( 'The change listener was not bound.' );
+		assert.ok( false, 'The change listener was not bound.' );
 	}
 	boundChangeListener();
 	boundChangeListener();
