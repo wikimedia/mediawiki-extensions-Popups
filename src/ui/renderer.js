@@ -11,6 +11,7 @@ import { renderPagePreview } from './templates/pagePreview/pagePreview';
 
 const mw = window.mediaWiki,
 	$ = jQuery,
+	defaultExtractWidth = 215,
 	$window = $( window ),
 	landscapePopupWidth = 450,
 	portraitPopupWidth = 320,
@@ -139,6 +140,19 @@ export function createPreviewWithType( model ) {
 	}
 }
 
+export { defaultExtractWidth }; // for testing
+
+/**
+ * Calculates width of extract based on the associated thumbnail
+ *
+ * @param {ext.popups.Thumbnail} [thumbnail] model
+ * @return {string} representing the css width attribute to be
+ *   used for the extract
+ */
+export function getExtractWidth( thumbnail ) {
+	return thumbnail && thumbnail.isNarrow ? `${defaultExtractWidth + thumbnail.offset}px` : '';
+}
+
 /**
  * Creates an instance of the DTO backing a preview.
  *
@@ -156,7 +170,11 @@ export function createPagePreview( model ) {
 		$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
 	}
 	if ( extract ) {
-		$el.find( '.mwe-popups-extract' ).append( extract );
+		const extractWidth = getExtractWidth( thumbnail );
+		$el.find( '.mwe-popups-extract' )
+			.css( 'width', extractWidth )
+			.append( extract );
+		$el.find( 'footer' ).css( 'width', extractWidth );
 	}
 
 	return {

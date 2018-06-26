@@ -70,6 +70,30 @@ QUnit.module( 'ext.popups#renderer', {
 	}
 } );
 
+QUnit.test( 'getExtractWidth', ( assert ) => {
+	const cases = [
+		[
+			null,
+			''
+		],
+		[ {
+			isNarrow: true, offset: 10
+		}, `${renderer.defaultExtractWidth + 10}px` ],
+		[ {
+			// Fall back to css stylesheet for non-narrow thumbs.
+			isNarrow: false, offset: 100
+		}, '' ]
+	];
+
+	cases.forEach( ( case_, i ) => {
+		assert.strictEqual(
+			renderer.getExtractWidth( case_[ 0 ] ),
+			case_[ 1 ],
+			`Case ${i}: the expected extract width matches.`
+		);
+	} );
+} );
+
 QUnit.test( 'createPointerMasks', ( assert ) => {
 	const $container = $( '<div>' ),
 		cases = [

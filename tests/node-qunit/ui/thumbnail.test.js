@@ -42,15 +42,23 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 		{
 			width: 200,
 			height: 300,
-			expectedX: 203 - 200,
+			// If thumbnail is less than SIZES.portraitImage we set x to 0
+			// per https://phabricator.wikimedia.org/T192928#4312088
+			expectedIsNarrow: true,
+			expectedOffset: 3,
+			expectedX: 0,
 			expectedY: ( 300 - 250 ) / -2,
-			expectedSVGWidth: 203,
+			// If thumbnail is less than SIZES.portraitImage we shrink thumbnail
+			// per https://phabricator.wikimedia.org/T192928#4312088
+			expectedSVGWidth: 200,
 			expectedSVGHeight: 250,
 			message: 'Width smaller than the predefined width (203).'
 		},
 		{
 			width: 250,
 			height: 300,
+			expectedOffset: 0,
+			expectedIsNarrow: false,
 			expectedX: ( 250 - 203 ) / -2,
 			expectedY: ( 300 - 250 ) / -2,
 			expectedSVGWidth: 203,
@@ -95,6 +103,16 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 			Number.parseFloat( thumbnail.el.attr( 'height' ) ),
 			case_.expectedSVGHeight,
 			`Image SVG height is correct. ${ case_.message }`
+		);
+		assert.strictEqual(
+			thumbnail.isNarrow,
+			case_.expectedIsNarrow,
+			`Image isNarrow is correct. ${ case_.message }`
+		);
+		assert.strictEqual(
+			thumbnail.offset,
+			case_.expectedOffset,
+			`Image offset is correct. ${ case_.message }`
 		);
 	} );
 } );

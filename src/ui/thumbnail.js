@@ -20,6 +20,11 @@ const $ = jQuery;
  * @property {Boolean} isTall Whether or not the thumbnail is portrait
  * @property {number} width
  * @property {number} height
+ * @property {Boolean} isNarrow whether the thumbnail is portrait and also
+ *  thinner than the default portrait thumbnail width
+ *  (as defined in SIZES.portraitImage.w)
+ * @property {number} offset in pixels between the thumbnail width and the
+ *  standard portrait thumbnail width (as defined in SIZES.portraitImage.w)
  */
 
 /**
@@ -71,6 +76,13 @@ export function createThumbnail( rawThumbnail ) {
 			( ( thumbHeight - SIZES.portraitImage.h ) / -2 ) : 0;
 		width = SIZES.portraitImage.w;
 		height = SIZES.portraitImage.h;
+
+		// Special handling for thin tall images
+		// https://phabricator.wikimedia.org/T192928#4312088
+		if ( thumbWidth < width ) {
+			x = 0;
+			width = thumbWidth;
+		}
 	} else {
 		x = 0;
 		y = ( thumbHeight > SIZES.landscapeImage.h ) ?
@@ -79,6 +91,8 @@ export function createThumbnail( rawThumbnail ) {
 		height = ( thumbHeight > SIZES.landscapeImage.h ) ?
 			SIZES.landscapeImage.h : thumbHeight;
 	}
+
+	const isNarrow = tall && thumbWidth < SIZES.portraitImage.w;
 
 	return {
 		el: createThumbnailElement(
@@ -92,6 +106,8 @@ export function createThumbnail( rawThumbnail ) {
 			height
 		),
 		isTall: tall,
+		isNarrow,
+		offset: isNarrow ? SIZES.portraitImage.w - thumbWidth : 0,
 		width: thumbWidth,
 		height: thumbHeight
 	};
