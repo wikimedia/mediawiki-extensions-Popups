@@ -4,7 +4,7 @@
     "start": "webpack -dw",
     "build": "NODE_ENV=production webpack -p",
     "lint:fix": "grunt fix",
-    "test:node": "node tests/node-qunit/run.js 'tests/node-qunit/**/*.test.js' | tap-dot",
+    "test:node": "node tests/node-qunit/run.js 'tests/node-qunit/**/*.test.js' | tap-mocha-reporter dot",
     "test": "npm -s run check-built-assets && grunt lint && npm -s run coverage && npm -s run -s doc && bundlesize",
     "doc": "jsdoc -c jsdoc.json",
     "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITTED OR STAGED' && npm -s run build && git diff -q resources/dist",
@@ -33,7 +33,7 @@
     "stylelint": "9.2.0",
     "stylelint-config-wikimedia": "0.4.3",
     "svg-inline-loader": "0.8.0",
-    "tap-dot": "1.0.5",
+    "tap-mocha-reporter": "3.0.7",
     "webpack": "4.1.1",
     "webpack-cli": "2.0.12"
   },
