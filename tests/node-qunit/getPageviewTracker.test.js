@@ -1,5 +1,5 @@
 /* global Promise */
-import getPageviewTracker, { getSendBeacon } from '../../src/getPageviewTracker';
+import getPageviewTracker, { getSendBeacon, limitByEncodedURILength } from '../../src/getPageviewTracker';
 
 QUnit.module( 'ext.popups#getPageviewTracker', {
 	beforeEach: function () {
@@ -87,4 +87,32 @@ QUnit.test( 'getSendBeacon (fallback)', function ( assert ) {
 	const sendBeacon = getSendBeacon( {} );
 	sendBeacon();
 	assert.strictEqual( spy.callCount, 1, 'an img element is used as fallback' );
+} );
+
+QUnit.test( 'limitByEncodedURILength', function ( assert ) {
+	const shortUrl = 'https://en.wikipedia.org/wiki/banana',
+		longEncodedUrl = 'https://ka.wikipedia.org/wiki/%E1%83%95%E1%83%98%E1%83%99%E1%83%98%E1%83%9E%E1%83%94%E1%83%93%E1%83%98%E1%83%90:%E1%83%95%E1%83%98%E1%83%99%E1%83%98%E1%83%A1_%E1%83%A3%E1%83%A7%E1%83%95%E1%83%90%E1%83%A0%E1%83%A1_%E1%83%AB%E1%83%94%E1%83%92%E1%83%9A%E1%83%94%E1%83%91%E1%83%98/%E1%83%AB%E1%83%94%E1%83%92%E1%83%9A%E1%83%94%E1%83%91%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%90/%E1%83%99%E1%83%90%E1%83%AE%E1%83%94%E1%83%97%E1%83%98/%E1%83%A1%E1%83%90%E1%83%92%E1%83%90%E1%83%A0%E1%83%94%E1%83%AF%E1%83%9D%E1%83%A1_%E1%83%9B%E1%83%A3%E1%83%9C%E1%83%98%E1%83%AA%E1%83%98%E1%83%9E%E1%83%90%E1%83%9A%E1%83%98%E1%83%A2%E1%83%94%E1%83%A2%E1%83%98',
+		randomSequence = 'チプロ للا المتحة Добро пожаловат פעילה למען שוווв ВикипедиюA %20%F0%9F%A4%A8%20 IJ@_#*($PJOWR',
+		contentRg = new RegExp( limitByEncodedURILength( randomSequence, 326 ) );
+
+	assert.strictEqual(
+		limitByEncodedURILength( shortUrl, 1000 ), shortUrl,
+		'short url is not truncated' );
+
+	assert.strictEqual(
+		encodeURIComponent(
+			limitByEncodedURILength( longEncodedUrl, 1000 )
+		).length < 1000, true,
+		'long url is truncated to the correct length' );
+
+	assert.strictEqual(
+		encodeURIComponent(
+			limitByEncodedURILength( randomSequence, 50 )
+		).length < 50, true,
+		'Random string is truncated to the correct length' );
+
+	assert.strictEqual(
+		contentRg.test( randomSequence ), true,
+		'Truncated string contains the same content as the original'
+	);
 } );

@@ -25,7 +25,27 @@ function titleCase( word ) {
 }
 
 /**
+ * Truncates a string to a maximum length based on its URI encoded value.
+ *
+ * @param {string} sourceUrl source string
+ * @param {string} maxLength maximum length
+ * @return {string} string is returned in the same encoding as the input
+ */
+function limitByEncodedURILength( sourceUrl, maxLength ) {
+	let truncatedUrl = '';
+
+	sourceUrl.split( '' ).every( ( char ) => {
+		return ( encodeURIComponent( truncatedUrl + char ).length < maxLength ) ?
+			( truncatedUrl += char ) :
+			false;
+	} );
+	return truncatedUrl;
+}
+
+/**
  * Convert Title properties into mediawiki canonical form
+ * and limit the length of source_url.
+ *
  * @param {Object} eventData
  * @return {Object}
  */
@@ -36,6 +56,9 @@ function prepareEventData( eventData ) {
 		.getPrefixedDb();
 	data.page_title = mw.Title.newFromText( eventData.page_title )
 		.getPrefixedDb();
+	// prevent source_url from exceeding varnish max-url size - T196904
+	data.source_url = limitByEncodedURILength( eventData.source_url, 1000 );
+
 	/* eslint-enable camelcase */
 	return data;
 }
@@ -84,5 +107,5 @@ function getSendBeacon( navigatorObj ) {
 		};
 }
 
-export { getSendBeacon };
+export { getSendBeacon, limitByEncodedURILength };
 export default getPageviewTracker;
