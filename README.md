@@ -18,7 +18,8 @@ After an `npm install`:
 
 * On one terminal, kickstart the bundler process:
 	* `npm start` Will run the bundler in watch mode, re-assembling the files on
-		file change.
+		file change. Additionally, this builds debug-friendly assets and enables
+    [Redux DevTools] debugging.
 	* `npm run build` Will compile the assets just once, ready for deployment. You
 		*must* run this step before sending the patch or CI will fail (so that
 		sources and built assets are in sync).
@@ -49,14 +50,28 @@ Popups works with a local copy of the [Mobile Content Service] too:
 	$wgPopupsGateway = 'restbaseHTML';
 	$wgPopupsRestGatewayEndpoint = 'http://localhost:6927/en.wikipedia.org/v1/page/summary/';
 
+[Redux DevTools]: https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
 [Mobile Content Service]: https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/services/mobileapps/+/master
+
+## Debugging
+
+* Popups are dismissed ("abandoned") when the cursor leaves the popup
+  container. As such, it can be difficult to debug a popup of interest
+  without it popping in and out of the DOM. A useful workaround in
+  DevTools is to context click a link, select inspect, move the cursor
+  some place comfortable, and then from the console enter
+  `$($0).trigger('mouseenter')`.
+* As described in [[#Development]], `npm start` enables Redux DevTools
+  functionality. In production builds, this same functionality can be
+  enabled by setting a `debug=true` query. E.g.,
+  `https://en.wikipedia.org/wiki/Popup?debug=true`.
 
 ## Terminology
 
-- Hovercard - Deprecated term for popup.
-- Link preview - A similar user feature in the Android native app.
-- Navpop / nav pop - A popup-like UI from the NavigationPopups gadget.
-- Popup - Generic term for a dialog that appears to float above a link that is
+* Hovercard - Deprecated term for popup.
+* Link preview - A similar user feature in the Android native app.
+* Navpop / nav pop - A popup-like UI from the NavigationPopups gadget.
+* Popup - Generic term for a dialog that appears to float above a link that is
 	being hovered over by a cursor.
-- Page preview - A specific type of popup that shows a page summary.
-- Preview - A synonym for popup.
+* Page preview - A specific type of popup that shows a page summary.
+* Preview - A synonym for popup.

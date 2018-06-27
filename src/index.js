@@ -181,7 +181,8 @@ function registerChangeListeners(
 		isEnabled = createIsEnabled( mw.user, userSettings, mw.config );
 
 	// If debug mode is enabled, then enable Redux DevTools.
-	if ( mw.config.get( 'debug' ) === true ) {
+	if ( mw.config.get( 'debug' ) === true ||
+		process.env.NODE_ENV !== 'production' ) { // eslint-disable-line no-undef
 		// eslint-disable-next-line no-underscore-dangle
 		compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 	}
@@ -193,9 +194,7 @@ function registerChangeListeners(
 		) )
 	);
 	const boundActions = Redux.bindActionCreators( actions, store.dispatch );
-	const previewBehavior = createPreviewBehavior(
-		mw.user, boundActions
-	);
+	const previewBehavior = createPreviewBehavior( mw.user, boundActions );
 
 	registerChangeListeners(
 		store, boundActions, userSettings, settingsDialog,
