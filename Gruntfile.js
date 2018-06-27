@@ -13,7 +13,8 @@ module.exports = function ( grunt ) {
 		banana: conf.MessagesDirs,
 		eslint: {
 			options: {
-				maxWarnings: 0
+				maxWarnings: 0,
+				reportUnusedDisableDirectives: true
 			},
 			// Lint the built artifacts with ES5 so that no ES6 slips to production
 			build: {

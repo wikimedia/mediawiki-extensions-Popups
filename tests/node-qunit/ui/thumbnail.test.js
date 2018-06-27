@@ -265,7 +265,6 @@ QUnit.test( 'createThumbnailElement', ( assert ) => {
 		{
 			className: 'mwe-popups-is-not-tall',
 			expectedPoints: '0 299 500 299',
-			// eslint-disable-next-line max-len
 			expectedHTML: '<image href="https://thumbnail.url" class="mwe-popups-is-not-tall" x="25" y="50" width="200" height="250"></image>'
 		},
 		{
