@@ -12,6 +12,7 @@
     "precommit": "npm -s t"
   },
   "devDependencies": {
+    "@wikimedia/mw-node-qunit": "5.0.0",
     "babel-loader": "7.1.4",
     "babel-preset-env": "1.6.0",
     "babel-register": "6.24.1",
@@ -26,7 +27,6 @@
     "grunt-stylelint": "0.10.0",
     "husky": "0.13.3",
     "jsdoc": "3.5.5",
-    "mw-node-qunit": "4.0.0",
     "nyc": "12.0.2",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
