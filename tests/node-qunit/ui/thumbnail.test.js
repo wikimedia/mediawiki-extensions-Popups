@@ -234,36 +234,51 @@ QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnailElement', ( assert ) => {
-	const className = 'thumb-class',
+	const
 		url = 'https://thumbnail.url',
 		x = 25,
 		y = 50,
 		thumbnailWidth = 200,
 		thumbnailHeight = 250,
 		width = 500,
-		height = 300,
-		$thumbnail = createThumbnailElement(
+		height = 300;
+
+	[
+		{
+			className: 'mwe-popups-is-not-tall',
+			expectedPoints: '0 299 500 299',
+			// eslint-disable-next-line max-len
+			expectedHTML: '<image href="https://thumbnail.url" class="mwe-popups-is-not-tall" x="25" y="50" width="200" height="250"></image>'
+		},
+		{
+			className: 'mwe-popups-is-tall',
+			expectedPoints: '0 0 0 300'
+		}
+	].forEach( ( { className, expectedPoints, expectedHTML }, i ) => {
+		const $thumbnail = createThumbnailElement(
 			className, url, x, y, thumbnailWidth, thumbnailHeight,
 			width, height );
 
-	assert.strictEqual(
-		$thumbnail.html(),
-		'<image href="https://thumbnail.url" class="thumb-class" x="25" y="50" width="200" height="250"></image>',
-		'Thumbnail HTML is correct.'
-	);
-	assert.strictEqual(
-		$thumbnail.attr( 'xmlns' ),
-		'http://www.w3.org/2000/svg',
-		'SVG namespace is correct.'
-	);
-	assert.strictEqual(
-		Number.parseFloat( $thumbnail.attr( 'height' ) ),
-		height,
-		'SVG height is correct.'
-	);
-	assert.strictEqual(
-		Number.parseFloat( $thumbnail.attr( 'width' ) ),
-		width,
-		'SVG width is correct.'
-	);
+		// Simplify HTML image test
+		const points = $thumbnail.find( 'polyline' ).attr( 'points' );
+		$thumbnail.find( 'polyline' ).remove();
+		assert.strictEqual( points, expectedPoints, 'Points are correct.' );
+
+		if ( expectedHTML ) {
+			assert.strictEqual(
+				$thumbnail.html(),
+				expectedHTML,
+				'Thumbnail HTML is correct.'
+			);
+		}
+		if ( i === 0 ) {
+			assert.strictEqual(
+				$thumbnail.attr( 'xmlns' ),
+				'http://www.w3.org/2000/svg',
+				'SVG namespace is correct.'
+			);
+			assert.equal( $thumbnail.attr( 'height' ), height, 'SVG height is correct.' );
+			assert.equal( $thumbnail.attr( 'width' ), width, 'SVG width is correct.' );
+		}
+	} );
 } );
