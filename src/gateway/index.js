@@ -44,14 +44,15 @@ const mw = mediaWiki,
  * @return {Gateway}
  */
 export default function createGateway( config ) {
-	const restConfig = $.extend( {}, constants,
-		{
-			endpoint: config.get( 'wgPopupsRestGatewayEndpoint' )
-		}
-	);
+	const gatewayConfig = $.extend( {}, constants, {
+		acceptLanguage: config.get( 'wgPageContentLanguage' )
+	} );
+	const restConfig = $.extend( {}, gatewayConfig, {
+		endpoint: config.get( 'wgPopupsRestGatewayEndpoint' )
+	} );
 	switch ( config.get( 'wgPopupsGateway' ) ) {
 		case 'mwApiPlain':
-			return createMediaWikiApiGateway( new mw.Api(), constants );
+			return createMediaWikiApiGateway( new mw.Api(), gatewayConfig );
 		case 'restbasePlain':
 			return createRESTBaseGateway(
 				$.ajax, restConfig, formatters.parsePlainTextResponse );

@@ -27,6 +27,8 @@ const CACHE_LIFETIME = 300,
  *  the thumbnail.
  * @param {Number} config.EXTRACT_LENGTH The maximum length, in characters,
  *  of the extract.
+ * @param {String} config.acceptLanguage The accepted language sent in the
+ *  header
  * @return {MediaWikiGateway}
  */
 export default function createMediaWikiApiGateway( api, config ) {
@@ -54,7 +56,8 @@ export default function createMediaWikiApiGateway( api, config ) {
 			uselang: 'content'
 		}, {
 			headers: {
-				'X-Analytics': 'preview=1'
+				'X-Analytics': 'preview=1',
+				'Accept-Language': config.acceptLanguage
 			}
 		} );
 	}

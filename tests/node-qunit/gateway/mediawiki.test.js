@@ -64,11 +64,14 @@ QUnit.module( 'ext.popups/gateway/mediawiki', {
 } );
 
 QUnit.test( 'MediaWiki API gateway is called with correct arguments', function ( assert ) {
+	const config = $.extend( {}, DEFAULT_CONSTANTS, {
+		acceptLanguage: 'pl'
+	} );
 	const spy = this.sandbox.spy(),
 		api = {
 			get: spy
 		},
-		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS ),
+		gateway = createMediaWikiApiGateway( api, config ),
 		expectedOptions = {
 			action: 'query',
 			prop: 'info|extracts|pageimages|revisions|info',
@@ -89,7 +92,8 @@ QUnit.test( 'MediaWiki API gateway is called with correct arguments', function (
 		},
 		expectedHeaders = {
 			headers: {
-				'X-Analytics': 'preview=1'
+				'X-Analytics': 'preview=1',
+				'Accept-Language': 'pl'
 			}
 		};
 

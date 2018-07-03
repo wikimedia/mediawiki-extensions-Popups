@@ -184,13 +184,18 @@ QUnit.module( 'gateway/rest', {
 } );
 
 QUnit.test( 'RESTBase gateway is called with correct arguments', function ( assert ) {
+	const config = $.extend( {}, DEFAULT_CONSTANTS, {
+		acceptLanguage: 'pl'
+	} );
+
 	const getSpy = this.sandbox.spy(),
-		gateway = createRESTBaseGateway( getSpy, DEFAULT_CONSTANTS ),
+		gateway = createRESTBaseGateway( getSpy, config ),
 		expectedOptions = {
 			url: DEFAULT_CONSTANTS.endpoint + encodeURIComponent( 'Test Title' ),
 			headers: {
 				Accept: 'application/json; charset=utf-8; ' +
-					'profile="https://www.mediawiki.org/wiki/Specs/Summary/1.2.0"'
+					'profile="https://www.mediawiki.org/wiki/Specs/Summary/1.2.0"',
+				'Accept-Language': 'pl'
 			}
 		};
 
