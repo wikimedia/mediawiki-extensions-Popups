@@ -56,7 +56,7 @@ QUnit.module( 'ext.popups#renderer', {
 			}
 		};
 
-		mediaWiki.html = { escape: str => str };
+		mediaWiki.html = { escape: ( str ) => str };
 
 		// Some tests below stub this function. Keep a copy so it can be restored.
 		this.getElementById = document.getElementById;

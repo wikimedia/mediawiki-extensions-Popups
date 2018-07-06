@@ -445,7 +445,7 @@ QUnit.test( 'RESTBase gateway is abortable', function ( assert ) {
 
 	const chain = xhr.then( () => {
 		assert.ok( false, 'It never calls a thenable after rejection' );
-	} ).catch( data => {
+	} ).catch( ( data ) => {
 		assert.strictEqual( data, 'http' );
 	} );
 

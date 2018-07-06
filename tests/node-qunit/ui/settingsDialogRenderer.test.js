@@ -5,7 +5,7 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 		function render() { return $( '<div>' ); }
 		function getTemplate() { return { render }; }
 
-		mediaWiki.html = { escape: str => str };
+		mediaWiki.html = { escape: ( str ) => str };
 		mediaWiki.template = { get: getTemplate };
 		mediaWiki.config = { get() {} };
 		mediaWiki.msg = () => {};

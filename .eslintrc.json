@@ -18,6 +18,7 @@
 		"ReduxThunk": false
 	},
 	"rules": {
+		"no-prototype-builtins": 0,
 		"no-restricted-properties": [2,
 			{
 				 "object": "$",
@@ -30,18 +31,6 @@
 		"no-var": 2,
 		"prefer-const": 1,
 		"prefer-template": 1,
-		"one-var": 0,
-		"max-len": [
-				1,
-				{
-					"tabWidth": 2,
-					"ignorePattern": "^// eslint-.+",
-					"ignoreUrls": true,
-					"ignoreComments": false,
-					"ignoreRegExpLiterals": true,
-					"ignoreStrings": true,
-					"ignoreTemplateLiterals": true
-				}
-		]
+		"one-var": 0
 	}
 }

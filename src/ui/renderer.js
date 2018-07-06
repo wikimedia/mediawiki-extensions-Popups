@@ -619,7 +619,7 @@ export function getThumbnailClipPathID( isTall, flippedY, flippedX ) {
 export function getClosestYPosition( y, rects, isTop ) {
 	let minY = null, result;
 
-	Array.prototype.slice.call( rects ).forEach( rect => {
+	Array.prototype.slice.call( rects ).forEach( ( rect ) => {
 		const deltaY = Math.abs( y - rect.top + y - rect.bottom );
 
 		if ( minY === null || minY > deltaY ) {
