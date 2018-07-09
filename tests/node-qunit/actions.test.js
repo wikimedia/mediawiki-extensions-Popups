@@ -64,11 +64,12 @@ QUnit.test( '#boot', ( assert ) => {
 } );
 
 /**
-	* Stubs `wait.js` and adds the deferred and its promise as properties
-	* of the module.
-	*
-	* @param {Object} module
-	*/
+ * Stubs `wait.js` and adds the deferred and its promise as properties
+ * of the module.
+ *
+ * @param {Object} module
+ * @return {void}
+ */
 function setupWait( module ) {
 	module.waitPromise = $.Deferred().resolve().promise( { abort() {} } );
 	module.wait = module.sandbox.stub( WaitModule, 'default' ).callsFake(
@@ -77,11 +78,12 @@ function setupWait( module ) {
 }
 
 /**
-	* Sets up a link/mw.Title stub pair that can be passed to the linkDwell action
-	* creator.
-	*
-	* @param {Object} module
-	*/
+ * Sets up a link/mw.Title stub pair that can be passed to the linkDwell action
+ * creator.
+ *
+ * @param {Object} module
+ * @return {void}
+ */
 function setupEl( module ) {
 	module.title = createStubTitle( 1, 'Foo' );
 	module.el = $( '<a>' ).eq( 0 );

@@ -122,6 +122,7 @@ function getCurrentTimestamp() {
  * @param {EventTracker} eventLoggingTracker
  * @param {EventTracker} pageviewTracker
  * @param {Function} getCurrentTimestamp
+ * @return {void}
  */
 function registerChangeListeners(
 	store, actions, userSettings, settingsDialog, previewBehavior,

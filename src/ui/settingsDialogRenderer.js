@@ -55,6 +55,7 @@ export default function createSettingsDialogRenderer() {
 			/**
 			 * Append the dialog and overlay to a DOM element
 			 * @param {HTMLElement} el
+			 * @return {void}
 			 */
 			appendTo( el ) {
 				$overlay.appendTo( el );
@@ -63,6 +64,7 @@ export default function createSettingsDialogRenderer() {
 
 			/**
 			 * Show the settings element and position it correctly
+			 * @return {void}
 			 */
 			show() {
 				$overlay.show();
@@ -70,6 +72,7 @@ export default function createSettingsDialogRenderer() {
 
 			/**
 			 * Hide the settings dialog.
+			 * @return {void}
 			 */
 			hide() {
 				$overlay.hide();
@@ -78,6 +81,7 @@ export default function createSettingsDialogRenderer() {
 			/**
 			 * Toggle the help dialog on or off
 			 * @param {boolean} visible if you want to show or hide the help dialog
+			 * @return {void}
 			 */
 			toggleHelp( visible ) {
 				toggleHelp( $dialog, visible );
@@ -91,6 +95,7 @@ export default function createSettingsDialogRenderer() {
 			 * If false, and there are navpops, then checks 'advanced'
 			 *
 			 * @param {boolean} enabled if page previews are enabled
+			 * @return {void}
 			 */
 			setEnabled( enabled ) {
 				let name = 'off';
@@ -124,6 +129,7 @@ function getSelectedSetting( $el ) {
  * Toggles the visibility between a form and the help
  * @param {JQuery.Object} $el element that contains form and help
  * @param {boolean} visible if the help should be visible, or the form
+ * @return {void}
  */
 function toggleHelp( $el, visible ) {
 	const $dialog = $( '#mwe-popups-settings' ),

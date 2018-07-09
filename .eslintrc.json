@@ -26,6 +26,16 @@
 				 "message": "Please use Array.forEach"
 			 }
 		],
+		"valid-jsdoc": ["error", {
+			"requireParamDescription": false,
+			"requireReturnDescription": false,
+			"preferType": {
+				"Boolean": "boolean",
+				"Number": "number",
+				"object": "Object",
+				"String": "string"
+			}
+		}],
 		"dot-notation": [ 2, { "allowKeywords": true } ],
 		"no-use-before-define": 0,
 		"no-var": 2,

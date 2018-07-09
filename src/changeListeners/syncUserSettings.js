@@ -55,6 +55,7 @@ function get( state, reducer, prop ) {
  * @param {string} prop key to access on the reducer key of the state tree
  * @param {Function} sync function to be called with the newest value if
  * changed
+ * @return {void}
  */
 function syncIfChanged( prevState, state, reducer, prop, sync ) {
 	const current = get( state, reducer, prop );

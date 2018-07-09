@@ -34,6 +34,7 @@ const mw = mediaWiki,
  *
  * @private
  * @param {Object} container DOM object to which pointer masks are appended
+ * @return {void}
  */
 export function createPointerMasks( container ) {
 	$( '<div>' )
@@ -44,6 +45,7 @@ export function createPointerMasks( container ) {
 
 /**
  * Initializes the renderer.
+ * @return {void}
  */
 export function init() {
 	createPointerMasks( document.body );
@@ -298,6 +300,7 @@ export function show(
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewBehavior} behavior
+ * @return {void}
  */
 export function bindBehavior( preview, behavior ) {
 	preview.el.on( 'mouseenter', behavior.previewDwell )

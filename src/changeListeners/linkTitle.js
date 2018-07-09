@@ -17,6 +17,7 @@ export default function linkTitle() {
 	 * state so that it can be restored later (see `restoreTitleAttr`).
 	 *
 	 * @param {Element} el
+	 * @return {void}
 	 */
 	function destroyTitleAttr( el ) {
 		const $el = $( el );
@@ -36,6 +37,7 @@ export default function linkTitle() {
 	 * Restores the title attribute of the element.
 	 *
 	 * @param {Element} el
+	 * @return {void}
 	 */
 	function restoreTitleAttr( el ) {
 		$( el ).attr( 'title', title );
