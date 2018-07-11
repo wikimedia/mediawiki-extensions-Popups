@@ -13,7 +13,8 @@
 			"Jack who built the house",
 			"Gehhrr",
 			"Mouse21",
-			"Iluvatar"
+			"Iluvatar",
+			"Movses"
 		]
 	},
 	"popups-message": "Предварительный просмотр страницы",
@@ -32,6 +33,7 @@
 	"popups-preview-no-preview": "Предварительный просмотр страницы недоступен",
 	"popups-preview-footer-read": "Перейти на страницу",
 	"popups-preview-disambiguation": "У этого слова есть несколько значений",
+	"popups-preview-disambiguation-link": "Просмотр схожих страниц",
 	"prefs-reading": "Настройки чтения",
 	"popups-prefs-optin-title": "Предпросмотр страниц\n\n<em>Показывать быстрый предпросмотр тем при наведении мыши</em>",
 	"popups-prefs-optin-enabled-label": "Включить",
