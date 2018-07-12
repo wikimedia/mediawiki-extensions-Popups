@@ -362,26 +362,13 @@ QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'RESTBase gateway does not treat a 404 as a failure', function ( assert ) {
-	const response = {
-			status: 404,
-			type: 'https://mediawiki.org/wiki/HyperSwitch/errors/not_found',
-			title: 'Not found.',
-			method: 'get',
-			detail: 'Page or revision not found.',
-			uri: '/en.wikipedia.org/v1/page/summary/Missing_page'
-		},
-		api = this.sandbox.stub().returns(
-			$.Deferred().reject( response ).promise()
-		),
-		gateway = createRESTBaseGateway(
-			api, DEFAULT_CONSTANTS, provideParsedExtract );
+QUnit.test( 'RESTBase gateway handles 404 as a failure', function ( assert ) {
+	const api = this.sandbox.stub()
+			.returns( $.Deferred().reject( { status: 404 } ).promise() ),
+		gateway = createRESTBaseGateway( api, {} );
 
-	return gateway.getPageSummary( 'Missing Page' ).then( ( result ) => {
-		assert.strictEqual( result.title, 'Missing Page', 'Title' );
-		// Extract is undefined since the parser is only invoked for successful
-		// responses.
-		assert.strictEqual( result.extract, undefined, 'Extract' );
+	return gateway.getPageSummary( 'Test Title' ).catch( () => {
+		assert.ok( true, 'The gateway threw an error.' );
 	} );
 } );
 
