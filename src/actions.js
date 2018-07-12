@@ -130,13 +130,16 @@ export function fetch( gateway, title, el, token ) {
 
 				return result;
 			} )
-			.catch( ( err ) => {
+			.catch( ( err, data ) => {
+				const exception = new Error( err );
+
+				exception.data = data;
 				dispatch( {
 					type: types.FETCH_FAILED,
 					el
 				} );
 				// Keep the request promise in a rejected status since it failed.
-				throw err;
+				throw exception;
 			} );
 
 		return $.when(
@@ -151,7 +154,9 @@ export function fetch( gateway, title, el, token ) {
 					token
 				} );
 			} )
-			.catch( ( data, result ) => {
+			.catch( ( ex ) => {
+				const result = ex.data;
+				let showNullPreview = true;
 				// All failures, except those due to being offline or network error,
 				// should present "There was an issue displaying this preview".
 				// e.g.:
@@ -166,12 +171,14 @@ export function fetch( gateway, title, el, token ) {
 				//   result={xhr: {…}, textStatus: "error", exception: ""}
 				// - Abort: data="http"
 				//   result={xhr: {…}, textStatus: "abort", exception: "abort"}
-				const networkError = result && result.xhr &&
-					result.xhr.readyState === 0 && result.textStatus === 'error' &&
-					result.exception === '';
-				if ( !networkError ) {
+
+				if ( result && result.xhr && result.xhr.readyState === 0 ) {
+					const isNetworkError = result.textStatus === 'error' && result.exception === '';
+					showNullPreview = !( isNetworkError || result.textStatus === 'abort' );
+				}
+
+				if ( showNullPreview ) {
 					dispatch( {
-						// Both FETCH_FAILED and FETCH_END conclude with FETCH_COMPLETE.
 						type: types.FETCH_COMPLETE,
 						el,
 						result: createNullModel( titleText, title.getUrl() ),

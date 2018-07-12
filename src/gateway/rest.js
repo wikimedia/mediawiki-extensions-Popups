@@ -2,7 +2,7 @@
  * @module gateway/rest
  */
 
-import { createModel, createNullModel } from '../preview/model';
+import { createModel } from '../preview/model';
 
 const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
 	mw = mediaWiki,
@@ -63,14 +63,9 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 				page, config.THUMBNAIL_SIZE, extractParser
 			);
 		} ).catch( ( jqXHR, textStatus, errorThrown ) => {
-			// Adapt the response to the ideal API.
-			// TODO: should we just let the client handle this too?
-			if ( jqXHR.status === 404 ) {
-				return createNullModel( title, new mw.Title( title ).getUrl() );
-			}
 			// The client will choose how to handle these errors which may include
-			// those due to HTTP 5xx status. The rejection typing matches Fetch
-			// failures.
+			// those due to HTTP 4xx and 5xx status. The rejection typing matches
+			// fetch failures.
 			return $.Deferred().reject( 'http', {
 				xhr: jqXHR,
 				textStatus,
