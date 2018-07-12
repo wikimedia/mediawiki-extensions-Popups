@@ -16,6 +16,8 @@ export default {
 	FETCH_COMPLETE: 'FETCH_COMPLETE',
 	/** Follows an unsuccessful fetch. */
 	FETCH_FAILED: 'FETCH_FAILED',
+	/** Follows an aborted fetch */
+	FETCH_ABORTED: 'FETCH_ABORTED',
 	PAGEVIEW_LOGGED: 'PAGEVIEW_LOGGED',
 	PREVIEW_DWELL: 'PREVIEW_DWELL',
 	PREVIEW_SHOW: 'PREVIEW_SHOW',

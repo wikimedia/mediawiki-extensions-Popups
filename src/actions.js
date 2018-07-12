@@ -132,10 +132,12 @@ export function fetch( gateway, title, el, token ) {
 			} )
 			.catch( ( err, data ) => {
 				const exception = new Error( err );
+				const type = data && data.textStatus && data.textStatus === 'abort' ?
+					types.FETCH_ABORTED : types.FETCH_FAILED;
 
 				exception.data = data;
 				dispatch( {
-					type: types.FETCH_FAILED,
+					type,
 					el
 				} );
 				// Keep the request promise in a rejected status since it failed.
