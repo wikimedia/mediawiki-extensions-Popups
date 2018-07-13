@@ -41,7 +41,7 @@ const mw = mediaWiki,
  *
  * An analytics event tracker, i.e. `mw.track`.
  *
- * @param {String} topic
+ * @param {string} topic
  * @param {Object} data
  *
  * @global

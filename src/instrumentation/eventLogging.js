@@ -15,7 +15,7 @@
  * @param {mw.user} user The `mw.user` singleton instance
  * @param {mw.Map} config The `mw.config` singleton instance
  * @param {Window} window
- * @return {Boolean}
+ * @return {boolean}
  */
 export function isEnabled( user, config, window ) {
 	// if debug mode is on, always enable event logging. @see T168847

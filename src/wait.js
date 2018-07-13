@@ -8,7 +8,7 @@ const $ = jQuery;
  * A Promise usually for a long running or costly request that is abortable.
  * @template T
  * @typedef {JQuery.Promise<T>} AbortPromise
- * @prop {function(): void} abort
+ * @prop {Function(): void} abort
  */
 
 /**
@@ -22,7 +22,7 @@ const $ = jQuery;
  *     // Continue processing...
  *   } );
  *
- * @param {Number} delay The number of milliseconds to wait
+ * @param {number} delay The number of milliseconds to wait
  * @return {AbortPromise<void>}
  */
 export default function wait( delay ) {

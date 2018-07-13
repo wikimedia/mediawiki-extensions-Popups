@@ -7,9 +7,9 @@ const mw = mediaWiki;
 /**
  * Gets the title of a local page from an href given some configuration.
  *
- * @param {String} href
+ * @param {string} href
  * @param {mw.Map} config
- * @return {String|undefined}
+ * @return {string|undefined}
  */
 export function getTitle( href, config ) {
 	const titleRegex = new RegExp( mw.RegExp.escape( config.get( 'wgArticlePath' ) )
@@ -46,8 +46,8 @@ export function getTitle( href, config ) {
  * Given a page title it will return the mediawiki.Title if it is an eligible
  * link for showing page previews, null otherwise
  *
- * @param {String} [title] page title to check if it should show preview
- * @param {Number[]} [contentNamespaces] contentNamespaces as specified in
+ * @param {string} [title] page title to check if it should show preview
+ * @param {number[]} [contentNamespaces] contentNamespaces as specified in
  * wgContentNamespaces
  * @return {mw.Title|null}
  */

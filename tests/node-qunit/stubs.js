@@ -38,7 +38,7 @@ export function createStubMap() {
 /**
  * Creates a stub that can be used as a replacement to mw.experiements
  * @param {string} bucket getBucket will respond with this bucket.
- * @return {object}
+ * @return {Object}
  */
 export function createStubExperiments( bucket ) {
 	return {
@@ -52,8 +52,8 @@ export function createStubExperiments( bucket ) {
  * Creates a **minimal** stub that can be used in place of an instance of
  * `mw.Title`.
  *
- * @param {!Number} namespace
- * @param {!String} prefixedDb, e.g. Foo, or File:Bar.jpg
+ * @param {!number} namespace
+ * @param {!string} prefixedDb, e.g. Foo, or File:Bar.jpg
  * @return {!Object}
  */
 export function createStubTitle( namespace, prefixedDb ) {

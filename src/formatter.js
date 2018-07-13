@@ -3,8 +3,8 @@ const $ = jQuery,
 
 /**
  * Improves the plain text extracts
- * @param {String} plainTextExtract
- * @param {String} title
+ * @param {string} plainTextExtract
+ * @param {string} title
  * @return {Array}
  */
 export function formatPlainTextExtract( plainTextExtract, title ) {
@@ -32,8 +32,8 @@ export function formatPlainTextExtract( plainTextExtract, title ) {
  *
  * Extracted from `mw.popups.renderer.article.getProcessedElements`.
  *
- * @param {String} extract
- * @param {String} title
+ * @param {string} extract
+ * @param {string} title
  * @return {Array} A set of HTML Elements
  */
 function makeTitleInExtractBold( extract, title ) {

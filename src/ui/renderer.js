@@ -56,10 +56,10 @@ export function init() {
  * TODO: Rename `isTall` to `isPortrait`.
  *
  * @typedef {Object} ext.popups.Preview
- * @property {jQuery} el
- * @property {Boolean} hasThumbnail
+ * @property {JQuery} el
+ * @property {boolean} hasThumbnail
  * @property {Object} thumbnail
- * @property {Boolean} isTall Sugar around
+ * @property {boolean} isTall Sugar around
  *  `preview.hasThumbnail && thumbnail.isTall`
  */
 
@@ -99,7 +99,7 @@ export function render( model ) {
 		 * @param {Object} boundActions The
 		 *  [bound action creators](http://redux.js.org/docs/api/bindActionCreators.html)
 		 *  that were (likely) created in [boot.js](./boot.js).
-		 * @param {String} token The unique token representing the link interaction
+		 * @param {string} token The unique token representing the link interaction
 		 *  that resulted in showing the preview
 		 * @return {JQuery.Promise<void>}
 		 */
@@ -244,9 +244,9 @@ export function createDisambiguationPreview( model ) {
  *
  * @param {ext.popups.Preview} preview
  * @param {Event} event
- * @param {jQuery} $link event target
+ * @param {JQuery} $link event target
  * @param {ext.popups.PreviewBehavior} behavior
- * @param {String} token
+ * @param {string} token
  * @param {Object} container DOM object to which pointer masks are appended
  * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  * @return {JQuery.Promise<void>} A promise that resolves when the promise has
@@ -349,13 +349,13 @@ export function hide( preview ) {
  * @property {Object} offset
  * @property {number} offset.top
  * @property {number} offset.left
- * @property {Boolean} flippedX
- * @property {Boolean} flippedY
+ * @property {boolean} flippedX
+ * @property {boolean} flippedY
  * @property {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  */
 
 /**
- * @param {Boolean} isPreviewTall
+ * @param {boolean} isPreviewTall
  * @param {Object} eventData Data related to the event that triggered showing
  *  a popup
  * @param {number} eventData.pageX
@@ -448,7 +448,7 @@ export function createLayout(
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewLayout} layout
- * @return {String[]}
+ * @return {string[]}
  */
 export function getClasses( preview, layout ) {
 	const classes = [];
@@ -578,10 +578,10 @@ export function setThumbnailClipPath(
 /**
  * Gets the thumbnail SVG clip-path element ID.
  *
- * @param {Boolean} isTall Sugar around
+ * @param {boolean} isTall Sugar around
  *  `preview.hasThumbnail && thumbnail.isTall`
- * @param {Boolean} flippedY
- * @param {Boolean} flippedX
+ * @param {boolean} flippedY
+ * @param {boolean} flippedX
  * @return {string|undefined}
  */
 export function getThumbnailClipPathID( isTall, flippedY, flippedX ) {
@@ -609,12 +609,12 @@ export function getThumbnailClipPathID( isTall, flippedY, flippedX ) {
  * encloses the point.
  *
  * @private
- * @param {Number} y the point for which the closest location is being
+ * @param {number} y the point for which the closest location is being
  *  looked for
  * @param {ClientRectList} rects list of rectangles defined by four edges
- * @param {Boolean} [isTop] should the resulting rectangle's top 'y'
+ * @param {boolean} [isTop] should the resulting rectangle's top 'y'
  *  boundary be returned. By default the bottom 'y' value is returned.
- * @return {Number}
+ * @return {number}
  */
 export function getClosestYPosition( y, rects, isTop ) {
 	let minY = null, result;

@@ -8,7 +8,7 @@ const mw = mediaWiki;
  * Loads code from the server to the client on demand.
  *
  * @param {array} dependencies to load
- * @return {jQuery.Deferred} resolving when the code is loaded and
+ * @return {JQuery.Deferred} resolving when the code is loaded and
  *   can be used by the client.
  *
  * @global

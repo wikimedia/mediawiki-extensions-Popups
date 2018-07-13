@@ -9,7 +9,7 @@ const mw = mediaWiki,
 /**
  * The interface implemented by all preview gateways.
  * @typedef Gateway
- * @prop {function(string): JQuery.jqXHR} fetch
+ * @prop {Function(string): JQuery.jqXHR} fetch
  * @prop {GetPageSummary} getPageSummary
  * @prop {ConvertPageToModel} convertPageToModel
  */
@@ -19,7 +19,7 @@ const mw = mediaWiki,
  * that is abortable.
  * @template T
  * @typedef {JQuery.Promise<T>} AbortPromise
- * @prop {function(): void} abort
+ * @prop {Function(): void} abort
  */
 
 /**

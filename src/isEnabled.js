@@ -16,7 +16,7 @@
  * @param {Object} userSettings An object returned by `userSettings.js`
  * @param {mw.Map} config
  *
- * @return {Boolean}
+ * @return {boolean}
  */
 export default function isEnabled( user, userSettings, config ) {
 	if ( config.get( 'wgPopupsConflictsWithNavPopupGadget' ) ) {

@@ -8,7 +8,7 @@ const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0',
 	mw = mediaWiki,
 	$ = jQuery;
 
-/** @typedef {function(JQuery.AjaxSettings=): JQuery.jqXHR} Ajax */
+/** @typedef {Function(JQuery.AjaxSettings=): JQuery.jqXHR} Ajax */
 
 /**
  * Creates an instance of the RESTBase gateway.
@@ -33,7 +33,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	 *
 	 * @function
 	 * @name RESTBaseGateway#fetch
-	 * @param {String} title
+	 * @param {string} title
 	 * @return {JQuery.jqXHR}
 	 */
 	function fetch( title ) {
@@ -86,9 +86,9 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
  * format that's safe to render.
  * https://www.mediawiki.org/wiki/Help:Images#Supported_media_types_for_images
  *
- * @param {String} filename
+ * @param {string} filename
  *
- * @return {Boolean}
+ * @return {boolean}
  */
 function isSafeImgFormat( filename ) {
 	const safeImage = new RegExp( /\.(jpg|jpeg|png|gif)$/i );
@@ -107,7 +107,7 @@ function isSafeImgFormat( filename ) {
  *
  * @param {Object} thumbnail The thumbnail image
  * @param {Object} original The original image
- * @param {Number} thumbSize The requested size
+ * @param {number} thumbSize The requested size
  * @return {Object|undefined}
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
@@ -170,7 +170,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
  * @function
  * @name RESTBaseGateway#convertPageToModel
  * @param {Object} page
- * @param {Number} thumbSize
+ * @param {number} thumbSize
  * @param {Function} extractParser
  * @return {PreviewModel}
  */

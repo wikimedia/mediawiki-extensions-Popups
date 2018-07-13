@@ -31,7 +31,7 @@ export default function createUserSettings( storage ) {
 		 *
 		 * @function
 		 * @name UserSettings#getIsEnabled
-		 * @return {Boolean}
+		 * @return {boolean}
 		 */
 		getIsEnabled() {
 			return storage.get( IS_ENABLED_KEY ) !== '0';
@@ -42,7 +42,7 @@ export default function createUserSettings( storage ) {
 		 *
 		 * @function
 		 * @name UserSettings#setIsEnabled
-		 * @param {Boolean} isEnabled
+		 * @param {boolean} isEnabled
 		 */
 		setIsEnabled( isEnabled ) {
 			storage.set( IS_ENABLED_KEY, isEnabled ? '1' : '0' );
@@ -54,7 +54,7 @@ export default function createUserSettings( storage ) {
 		 *
 		 * @function
 		 * @name UserSettings#hasIsEnabled
-		 * @return {Boolean}
+		 * @return {boolean}
 		 */
 		hasIsEnabled() {
 			const value = storage.get( IS_ENABLED_KEY );
@@ -71,7 +71,7 @@ export default function createUserSettings( storage ) {
 		 *
 		 * @function
 		 * @name UserSettings#getPreviewCount
-		 * @return {Number}
+		 * @return {number}
 		 */
 		getPreviewCount() {
 			const result = storage.get( PREVIEW_COUNT_KEY );
@@ -96,7 +96,7 @@ export default function createUserSettings( storage ) {
 		 *
 		 * @function
 		 * @name UserSettings#setPreviewCount
-		 * @param {Number} count
+		 * @param {number} count
 		 */
 		setPreviewCount( count ) {
 			storage.set( PREVIEW_COUNT_KEY, count.toString() );

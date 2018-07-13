@@ -12,7 +12,7 @@ const mw = mediaWiki,
  * written to be bound to either an `<a>` or `<button>` element.
  *
  * @typedef {Object} ext.popups.PreviewBehavior
- * @property {String} settingsUrl
+ * @property {string} settingsUrl
  * @property {Function} showSettings
  * @property {Function} previewDwell
  * @property {Function} previewAbandon

@@ -32,14 +32,14 @@ export default function createExperiments( mwExperiments ) {
 		 *
 		 * @function
 		 * @name Experiments#weightedBoolean
-		 * @param {String} name The name of the thing. Since this is used as the
+		 * @param {string} name The name of the thing. Since this is used as the
 		 *  name of the underlying experiment it should be unique to reduce the
 		 *  likelihood of collisions with other enabled experiments
-		 * @param {Number} trueWeight A number between 0 and 1, representing the
+		 * @param {number} trueWeight A number between 0 and 1, representing the
 		 *  probability of the thing being true
-		 * @param {String} token A token associated with the user for the duration
+		 * @param {string} token A token associated with the user for the duration
 		 *  of the experiment
-		 * @return {Boolean}
+		 * @return {boolean}
 		 */
 		weightedBoolean( name, trueWeight, token ) {
 			return mwExperiments.getBucket( {

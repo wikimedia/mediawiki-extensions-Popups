@@ -12,7 +12,7 @@
  * @param {mw.user} user The `mw.user` singleton instance
  * @param {mw.Map} config The `mw.config` singleton instance
  * @param {Experiments} experiments
- * @return {Boolean}
+ * @return {boolean}
  */
 export function isEnabled( user, config, experiments ) {
 	const bucketingRate = config.get( 'wgPopupsStatsvSamplingRate', 0 );

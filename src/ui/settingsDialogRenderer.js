@@ -16,13 +16,13 @@ export default function createSettingsDialogRenderer() {
 	/**
 	 * Cached settings dialog
 	 *
-	 * @type {jQuery}
+	 * @type {JQuery}
 	 */
 	let $dialog,
 		/**
 		 * Cached settings overlay
 		 *
-		 * @type {jQuery}
+		 * @type {JQuery}
 		 */
 		$overlay;
 
@@ -77,7 +77,7 @@ export default function createSettingsDialogRenderer() {
 
 			/**
 			 * Toggle the help dialog on or off
-			 * @param {Boolean} visible if you want to show or hide the help dialog
+			 * @param {boolean} visible if you want to show or hide the help dialog
 			 */
 			toggleHelp( visible ) {
 				toggleHelp( $dialog, visible );
@@ -90,7 +90,7 @@ export default function createSettingsDialogRenderer() {
 			 * If true, then checks 'on'
 			 * If false, and there are navpops, then checks 'advanced'
 			 *
-			 * @param {Boolean} enabled if page previews are enabled
+			 * @param {boolean} enabled if page previews are enabled
 			 */
 			setEnabled( enabled ) {
 				let name = 'off';
@@ -111,8 +111,8 @@ export default function createSettingsDialogRenderer() {
 /**
  * Get the selected value on the radio button
  *
- * @param {jQuery.Object} $el the element to extract the setting from
- * @return {String} Which should be (simple|advanced|off)
+ * @param {JQuery.Object} $el the element to extract the setting from
+ * @return {string} Which should be (simple|advanced|off)
  */
 function getSelectedSetting( $el ) {
 	return $el.find(
@@ -122,8 +122,8 @@ function getSelectedSetting( $el ) {
 
 /**
  * Toggles the visibility between a form and the help
- * @param {jQuery.Object} $el element that contains form and help
- * @param {Boolean} visible if the help should be visible, or the form
+ * @param {JQuery.Object} $el element that contains form and help
+ * @param {boolean} visible if the help should be visible, or the form
  */
 function toggleHelp( $el, visible ) {
 	const $dialog = $( '#mwe-popups-settings' ),
@@ -142,7 +142,7 @@ function toggleHelp( $el, visible ) {
 /**
  * Checks if the NavigationPopups gadget is enabled by looking at the global
  * variables
- * @return {Boolean} if navpops was found to be enabled
+ * @return {boolean} if navpops was found to be enabled
  */
 function isNavPopupsEnabled() {
 	/* global pg: false*/

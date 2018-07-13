@@ -16,11 +16,11 @@ const $ = jQuery;
 
 /**
  * @typedef {Object} ext.popups.Thumbnail
- * @property {jQuery} el
- * @property {Boolean} isTall Whether or not the thumbnail is portrait
+ * @property {JQuery} el
+ * @property {boolean} isTall Whether or not the thumbnail is portrait
  * @property {number} width
  * @property {number} height
- * @property {Boolean} isNarrow whether the thumbnail is portrait and also
+ * @property {boolean} isNarrow whether the thumbnail is portrait and also
  *  thinner than the default portrait thumbnail width
  *  (as defined in SIZES.portraitImage.w)
  * @property {number} offset in pixels between the thumbnail width and the
@@ -120,15 +120,15 @@ export function createThumbnail( rawThumbnail ) {
  * browser issues that are uncovered when manipulating elements across
  * namespaces.
  *
- * @param {String} className
- * @param {String} url
- * @param {Number} x
- * @param {Number} y
- * @param {Number} thumbnailWidth
- * @param {Number} thumbnailHeight
- * @param {Number} width
- * @param {Number} height
- * @return {jQuery}
+ * @param {string} className
+ * @param {string} url
+ * @param {number} x
+ * @param {number} y
+ * @param {number} thumbnailWidth
+ * @param {number} thumbnailHeight
+ * @param {number} width
+ * @param {number} height
+ * @return {JQuery}
  */
 export function createThumbnailElement(
 	className, url, x, y, thumbnailWidth, thumbnailHeight, width, height

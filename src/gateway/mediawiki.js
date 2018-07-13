@@ -13,8 +13,8 @@ const CACHE_LIFETIME = 300,
 
 /**
  * @typedef {Gateway} MediaWikiGateway
- * @prop {function(object): object} extractPageFromResponse
- * @prop {function(object): object} formatPlainTextExtract
+ * @prop {Function(object): object} extractPageFromResponse
+ * @prop {Function(object): object} formatPlainTextExtract
  */
 
 /**
@@ -23,11 +23,11 @@ const CACHE_LIFETIME = 300,
  * @param {mw.Api} api
  * @param {Object} config Configuration that affects the major behavior of the
  *  gateway.
- * @param {Number} config.THUMBNAIL_SIZE The length of the major dimension of
+ * @param {number} config.THUMBNAIL_SIZE The length of the major dimension of
  *  the thumbnail.
- * @param {Number} config.EXTRACT_LENGTH The maximum length, in characters,
+ * @param {number} config.EXTRACT_LENGTH The maximum length, in characters,
  *  of the extract.
- * @param {String} config.acceptLanguage The accepted language sent in the
+ * @param {string} config.acceptLanguage The accepted language sent in the
  *  header
  * @return {MediaWikiGateway}
  */

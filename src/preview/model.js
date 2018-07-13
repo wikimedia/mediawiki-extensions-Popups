@@ -23,16 +23,16 @@ export { previewTypes };
  * Preview Model
  *
  * @typedef {Object} PreviewModel
- * @property {String} title
- * @property {String} url The canonical URL of the page being previewed
- * @property {String} languageCode
- * @property {String} languageDirection Either "ltr" or "rtl"
+ * @property {string} title
+ * @property {string} url The canonical URL of the page being previewed
+ * @property {string} languageCode
+ * @property {string} languageDirection Either "ltr" or "rtl"
  * @property {?Array} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed; this can be used to present default or error states
- * @property {String} type One of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION
+ * @property {string} type One of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION
  * @property {?Object|undefined} thumbnail
- * @property {?Number|undefined} pageId
+ * @property {?number|undefined} pageId
  *
  * @global
  */
@@ -40,14 +40,14 @@ export { previewTypes };
 /**
  * Creates a preview model.
  *
- * @param {String} title
- * @param {String} url The canonical URL of the page being previewed
- * @param {String} languageCode
- * @param {String} languageDirection Either "ltr" or "rtl"
+ * @param {string} title
+ * @param {string} url The canonical URL of the page being previewed
+ * @param {string} languageCode
+ * @param {string} languageDirection Either "ltr" or "rtl"
  * @param {?Array} extract
- * @param {String} type
+ * @param {string} type
  * @param {?Object} [thumbnail]
- * @param {?Number} [pageId]
+ * @param {?number} [pageId]
  * @return {PreviewModel}
  */
 export function createModel(
@@ -78,8 +78,8 @@ export function createModel(
 /**
  * Creates an empty preview model.
  *
- * @param {!String} title
- * @param {!String} url
+ * @param {!string} title
+ * @param {!string} url
  * @return {!PreviewModel}
  */
 export function createNullModel( title, url ) {
@@ -110,9 +110,9 @@ function processExtract( extract ) {
  * b. The preview type matches one of previewTypes.
  * c. Assume standard page preview if both above are false
  *
- * @param {String} type
+ * @param {string} type
  * @param {string} [processedExtract]
- * @return {String} one of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION.
+ * @return {string} one of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION.
  */
 
 function getPreviewType( type, processedExtract ) {

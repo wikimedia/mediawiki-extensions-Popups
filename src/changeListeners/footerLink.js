@@ -15,7 +15,7 @@ const mw = mediaWiki,
  * # `#f-list`
  * # The parent element of `#footer li`, which is either an `ol` or `ul`.
  *
- * @return {jQuery} The link element
+ * @return {JQuery} The link element
  */
 function createFooterLink() {
 	const $link = $( '<li>' ).append(

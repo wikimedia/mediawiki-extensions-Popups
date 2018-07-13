@@ -10,7 +10,7 @@ const mw = mediaWiki;
  * Create the settings dialog shown to anonymous users.
  *
  * @param {boolean} navPopupsEnabled
- * @return {jQuery} settings dialog
+ * @return {JQuery} settings dialog
  */
 export function createSettingsDialog( navPopupsEnabled ) {
 	const choices = [

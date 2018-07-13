@@ -56,13 +56,13 @@ function timedAction( baseAction ) {
  * [`mw.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
  * so as not to impact latency-critical events.
  *
- * @param {Boolean} isEnabled See `isEnabled.js`
+ * @param {boolean} isEnabled See `isEnabled.js`
  * @param {mw.user} user
  * @param {ext.popups.UserSettings} userSettings
  * @param {Function} generateToken
  * @param {mw.Map} config The config of the MediaWiki client-side application,
  *  i.e. `mw.config`
- * @param {String} url url
+ * @param {string} url url
  * @return {Object}
  */
 export function boot(
@@ -102,7 +102,7 @@ export function boot(
  * @param {Gateway} gateway
  * @param {mw.Title} title
  * @param {Element} el
- * @param {String} token The unique token representing the link interaction that
+ * @param {string} token The unique token representing the link interaction that
  *  triggered the fetch
  * @return {Redux.Thunk}
  */
@@ -315,7 +315,7 @@ export function previewDwell() {
  * This action is dispatched by the `./changeListeners/render.js` change
  * listener.
  *
- * @param {String} token
+ * @param {string} token
  * @return {Object}
  */
 export function previewShow( token ) {
@@ -406,7 +406,7 @@ export function hideSettings() {
  * See doc/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
  * details.
  *
- * @param {Boolean} enabled if previews are enabled or not
+ * @param {boolean} enabled if previews are enabled or not
  * @return {Redux.Thunk}
  */
 export function saveSettings( enabled ) {
