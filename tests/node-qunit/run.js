@@ -18,4 +18,4 @@ require.extensions[ '.svg' ] = ( module, filename ) => {
 	module._compile( svgInlineLoader( svg ), filename );
 };
 
-require( 'mw-node-qunit' );
+require( '@wikimedia/mw-node-qunit' );
