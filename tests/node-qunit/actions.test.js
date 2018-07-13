@@ -1,6 +1,7 @@
 import { createStubUser, createStubTitle } from './stubs';
 import * as actions from '../../src/actions';
 import * as WaitModule from '../../src/wait';
+import actionTypes from '../../src/actionTypes';
 
 const mw = mediaWiki,
 	REFERRER = 'https://en.wikipedia.org/wiki/Kitten';
@@ -41,7 +42,7 @@ QUnit.test( '#boot', ( assert ) => {
 	assert.deepEqual(
 		action,
 		{
-			type: 'BOOT',
+			type: actionTypes.BOOT,
 			isEnabled: false,
 			isNavPopupsEnabled: true,
 			sessionToken: '0123456789',
@@ -123,7 +124,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 
 	assert.propEqual(
 		dispatch.getCall( 0 ).args[ 0 ], {
-			type: 'LINK_DWELL',
+			type: actionTypes.LINK_DWELL,
 			el: this.el,
 			event,
 			token: '9876543210',
@@ -297,7 +298,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 	assert.propEqual(
 		this.dispatch.getCall( 0 ).args[ 0 ],
 		{
-			type: 'FETCH_START',
+			type: actionTypes.FETCH_START,
 			el: this.el,
 			title: 'Foo',
 			namespaceId: 1,
@@ -320,7 +321,7 @@ QUnit.test( 'it should dispatch the FETCH_END action when the API request ends',
 		assert.deepEqual(
 			this.dispatch.getCall( 1 ).args[ 0 ],
 			{
-				type: 'FETCH_END',
+				type: actionTypes.FETCH_END,
 				el: this.el,
 				timestamp: 115
 			},
@@ -346,7 +347,7 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 		assert.deepEqual(
 			this.dispatch.getCall( 2 ).args[ 0 ],
 			{
-				type: 'FETCH_COMPLETE',
+				type: actionTypes.FETCH_COMPLETE,
 				el: this.el,
 				result,
 				token: this.token
@@ -373,7 +374,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 		assert.deepEqual(
 			this.dispatch.getCall( 1 ).args[ 0 ],
 			{
-				type: 'FETCH_FAILED',
+				type: actionTypes.FETCH_FAILED,
 				el: this.el
 			},
 			'The dispatcher was called with the correct arguments.'
@@ -396,7 +397,7 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 		assert.deepEqual(
 			this.dispatch.getCall( 1 ).args[ 0 ],
 			{
-				type: 'FETCH_FAILED',
+				type: actionTypes.FETCH_FAILED,
 				el: this.el
 			},
 			'The dispatcher was called with the correct arguments.'
@@ -424,7 +425,7 @@ QUnit.test( 'it should dispatch the FETCH_ABORTED action when the request is abo
 		assert.deepEqual(
 			this.dispatch.getCall( 1 ).args[ 0 ],
 			{
-				type: 'FETCH_ABORTED',
+				type: actionTypes.FETCH_ABORTED,
 				el: this.el
 			},
 			'The dispatcher was called with the correct arguments.'
@@ -458,7 +459,7 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 
 	assert.ok(
 		dispatch.calledWith( {
-			type: 'ABANDON_START',
+			type: actionTypes.ABANDON_START,
 			timestamp: mw.now(),
 			token
 		} ),
@@ -475,7 +476,7 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 	return abandoned.then( () => {
 		assert.ok(
 			dispatch.calledWith( {
-				type: 'ABANDON_END',
+				type: actionTypes.ABANDON_END,
 				token
 			} ),
 			'ABANDON_* share the same token.'
@@ -520,7 +521,7 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 	);
 	assert.ok(
 		dispatch.calledWith( {
-			type: 'SETTINGS_CHANGE',
+			type: actionTypes.SETTINGS_CHANGE,
 			wasEnabled: false,
 			enabled: true
 		} ),
@@ -554,7 +555,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 
 	assert.ok(
 		dispatch.calledWith( {
-			type: 'PREVIEW_SHOW',
+			type: actionTypes.PREVIEW_SHOW,
 			token,
 			timestamp: mw.now()
 		} ),
@@ -573,7 +574,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 		);
 		assert.ok(
 			dispatch.calledWith( {
-				type: 'PREVIEW_SEEN',
+				type: actionTypes.PREVIEW_SEEN,
 				namespace: 0,
 				pageId: 42,
 				title: 'A'

@@ -1,4 +1,5 @@
 import settings from '../../../src/reducers/settings';
+import actionTypes from '../../../src/actionTypes';
 
 QUnit.module( 'reducers/settings' );
 
@@ -18,7 +19,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 
 QUnit.test( 'BOOT', ( assert ) => {
 	const action = {
-		type: 'BOOT',
+		type: actionTypes.BOOT,
 		isEnabled: false,
 		user: {
 			isAnon: true
@@ -51,7 +52,7 @@ QUnit.test( 'SETTINGS_SHOW', ( assert ) => {
 	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
-		settings( {}, { type: 'SETTINGS_SHOW' } ),
+		settings( {}, { type: actionTypes.SETTINGS_SHOW } ),
 		{
 			shouldShow: true,
 			showHelp: false
@@ -64,7 +65,7 @@ QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
 	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
-		settings( {}, { type: 'SETTINGS_HIDE' } ),
+		settings( {}, { type: actionTypes.SETTINGS_HIDE } ),
 		{
 			shouldShow: false,
 			showHelp: false
@@ -76,7 +77,7 @@ QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 	const action = ( wasEnabled, enabled ) => {
 		return {
-			type: 'SETTINGS_CHANGE',
+			type: actionTypes.SETTINGS_CHANGE,
 			wasEnabled,
 			enabled
 		};

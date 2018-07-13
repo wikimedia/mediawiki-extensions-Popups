@@ -29,7 +29,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 
 QUnit.test( 'BOOT', ( assert ) => {
 	const action = {
-		type: 'BOOT',
+		type: actionTypes.BOOT,
 		isEnabled: true
 	};
 
@@ -46,7 +46,7 @@ QUnit.test( 'BOOT', ( assert ) => {
 
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 	const action = {
-		type: 'SETTINGS_CHANGE',
+		type: actionTypes.SETTINGS_CHANGE,
 		enabled: true
 	};
 
@@ -64,7 +64,7 @@ QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert ) {
 	const promise = $.Deferred().promise();
 	const action = {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.el,
 		event: {},
 		token: '1234567890',
@@ -87,7 +87,7 @@ QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert
 
 QUnit.test( 'LINK_DWELL on an active link only updates dwell state', function ( assert ) {
 	const action = {
-			type: 'LINK_DWELL',
+			type: actionTypes.LINK_DWELL,
 			el: this.el,
 			event: {},
 			token: '1234567890'
@@ -109,7 +109,7 @@ QUnit.test( 'LINK_DWELL on an active link only updates dwell state', function ( 
 
 QUnit.test( 'ABANDON_END', ( assert ) => {
 	const action = {
-		type: 'ABANDON_END',
+		type: actionTypes.ABANDON_END,
 		token: 'bananas'
 	};
 	let state = {
@@ -164,7 +164,7 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 			isUserDwelling: true
 		},
 		action = {
-			type: 'FETCH_COMPLETE',
+			type: actionTypes.FETCH_COMPLETE,
 			token,
 			result: {}
 		};
@@ -187,7 +187,7 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 	// ---
 
 	state = preview( state, {
-		type: 'ABANDON_START',
+		type: actionTypes.ABANDON_START,
 		token
 	} );
 
@@ -206,7 +206,7 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 	// ---
 
 	action = {
-		type: 'FETCH_COMPLETE',
+		type: actionTypes.FETCH_COMPLETE,
 		token: 'banana',
 		result: {}
 	};
@@ -264,7 +264,7 @@ QUnit.test( actionTypes.FETCH_FAILED, ( assert ) => {
 
 QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 	const action = {
-		type: 'PREVIEW_DWELL'
+		type: actionTypes.PREVIEW_DWELL
 	};
 
 	assert.expect( 1, 'All assertions are executed.' );
@@ -280,7 +280,7 @@ QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 
 QUnit.test( 'ABANDON_START', ( assert ) => {
 	const action = {
-		type: 'ABANDON_START'
+		type: actionTypes.ABANDON_START
 	};
 
 	assert.deepEqual(

@@ -1,4 +1,5 @@
 import pageviews from '../../../src/reducers/pageviews';
+import actionTypes from '../../../src/actionTypes';
 
 /* eslint-disable camelcase */
 const PAGEVIEW = {
@@ -24,7 +25,7 @@ QUnit.module( 'ext.popups/reducers#pageviews', {
 
 QUnit.test( 'BOOT', function ( assert ) {
 	const action = {
-		type: 'BOOT',
+		type: actionTypes.BOOT,
 		page: PAGE
 	};
 
@@ -40,7 +41,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 
 QUnit.test( 'PREVIEW_SEEN', ( assert ) => {
 	const action = {
-		type: 'PREVIEW_SEEN',
+		type: actionTypes.PREVIEW_SEEN,
 		title: 'Bears',
 		pageId: 1,
 		namespace: 0
@@ -60,7 +61,7 @@ QUnit.test( 'PREVIEW_SEEN', ( assert ) => {
 
 QUnit.test( 'PAGEVIEW_LOGGED', ( assert ) => {
 	const action = {
-		type: 'PAGEVIEW_LOGGED'
+		type: actionTypes.PAGEVIEW_LOGGED
 	};
 
 	assert.expect( 1, 'All assertions are executed.' );

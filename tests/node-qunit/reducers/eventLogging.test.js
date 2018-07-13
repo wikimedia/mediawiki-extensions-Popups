@@ -1,6 +1,7 @@
 import * as counts from '../../../src/counts';
 import { createModel } from '../../../src/preview/model';
 import eventLogging from '../../../src/reducers/eventLogging';
+import actionTypes from '../../../src/actionTypes';
 
 QUnit.module( 'ext.popups/reducers#eventLogging', {
 	beforeEach() {
@@ -25,7 +26,7 @@ QUnit.test( '@@INIT', function ( assert ) {
 
 QUnit.test( 'BOOT', function ( assert ) {
 	const action = {
-		type: 'BOOT',
+		type: actionTypes.BOOT,
 		isEnabled: true,
 		isNavPopupsEnabled: false,
 		sessionToken: '0123456789',
@@ -98,7 +99,7 @@ QUnit.test( 'EVENT_LOGGED', ( assert ) => {
 	};
 
 	let action = {
-		type: 'EVENT_LOGGED',
+		type: actionTypes.EVENT_LOGGED,
 		event: {}
 	};
 
@@ -118,7 +119,7 @@ QUnit.test( 'EVENT_LOGGED', ( assert ) => {
 	};
 
 	action = {
-		type: 'EVENT_LOGGED',
+		type: actionTypes.EVENT_LOGGED,
 		event: state.event
 	};
 
@@ -152,7 +153,7 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 	};
 
 	state = eventLogging( state, {
-		type: 'PREVIEW_SHOW',
+		type: actionTypes.PREVIEW_SHOW,
 		token
 	} );
 
@@ -183,7 +184,7 @@ QUnit.test( 'LINK_DWELL starts an interaction', function ( assert ) {
 	};
 
 	const action = {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -217,7 +218,7 @@ QUnit.test( 'LINK_DWELL doesn\'t start a new interaction under certain condition
 	};
 
 	const action = {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -254,7 +255,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 	// Read: The user dwells on link A, abandons it, and dwells on link B fewer
 	// than 300 ms after (before the ABANDON_END action is reduced).
 	let state = eventLogging( undefined, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -263,12 +264,12 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 	} );
 
 	state = eventLogging( state, {
-		type: 'ABANDON_START',
+		type: actionTypes.ABANDON_START,
 		timestamp: now + 250
 	} );
 
 	state = eventLogging( state, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: $( '<a>' ),
 		title: 'Bar',
 		namespaceId: 1,
@@ -291,7 +292,7 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 	// ---
 
 	state = eventLogging( undefined, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -300,12 +301,12 @@ QUnit.test( 'LINK_DWELL should enqueue a "dismissed" or "dwelledButAbandoned" ev
 	} );
 
 	state = eventLogging( state, {
-		type: 'LINK_CLICK',
+		type: actionTypes.LINK_CLICK,
 		el: this.link
 	} );
 
 	state = eventLogging( state, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: $( '<a>' ),
 		title: 'Bar',
 		namespaceId: 1,
@@ -329,7 +330,7 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 	};
 
 	const expectedState = state = eventLogging( state, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -338,7 +339,7 @@ QUnit.test( 'LINK_CLICK should enqueue an "opened" event', function ( assert ) {
 	} );
 
 	state = eventLogging( state, {
-		type: 'LINK_CLICK',
+		type: actionTypes.LINK_CLICK,
 		el: this.link,
 		timestamp: now + 250
 	} );
@@ -373,7 +374,7 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 	};
 
 	state = eventLogging( state, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -382,7 +383,7 @@ QUnit.test( 'PREVIEW_SHOW should update the perceived wait time of the interacti
 	} );
 
 	state = eventLogging( state, {
-		type: 'PREVIEW_SHOW',
+		type: actionTypes.PREVIEW_SHOW,
 		token,
 		timestamp: now + 500
 	} );
@@ -412,7 +413,7 @@ QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been sho
 	};
 
 	state = eventLogging( state, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -421,13 +422,13 @@ QUnit.test( 'LINK_CLICK should include perceivedWait if the preview has been sho
 	} );
 
 	state = eventLogging( state, {
-		type: 'PREVIEW_SHOW',
+		type: actionTypes.PREVIEW_SHOW,
 		token,
 		timestamp: now + 750
 	} );
 
 	state = eventLogging( state, {
-		type: 'LINK_CLICK',
+		type: actionTypes.LINK_CLICK,
 		el: this.link,
 		timestamp: now + 1050
 	} );
@@ -465,7 +466,7 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 			{}
 		);
 	let state = eventLogging( initialState, {
-		type: 'FETCH_COMPLETE',
+		type: actionTypes.FETCH_COMPLETE,
 		result: model,
 		token
 	} );
@@ -478,7 +479,7 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 
 	// ---
 	state = eventLogging( initialState, {
-		type: 'FETCH_COMPLETE',
+		type: actionTypes.FETCH_COMPLETE,
 		result: model,
 		token: 'banana'
 	} );
@@ -493,7 +494,7 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 	delete initialState.interaction;
 
 	state = eventLogging( initialState, {
-		type: 'FETCH_COMPLETE',
+		type: actionTypes.FETCH_COMPLETE,
 		result: model,
 		token: '0123456789'
 	} );
@@ -511,7 +512,7 @@ QUnit.test( 'ABANDON_START', function ( assert ) {
 	};
 
 	state = eventLogging( state, {
-		type: 'ABANDON_START',
+		type: actionTypes.ABANDON_START,
 		timestamp: Date.now()
 	} );
 
@@ -523,7 +524,7 @@ QUnit.test( 'ABANDON_START', function ( assert ) {
 
 QUnit.test( 'ABANDON_END', function ( assert ) {
 	let action = {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -534,7 +535,7 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 	const state = eventLogging( state, action );
 
 	action = {
-		type: 'ABANDON_END',
+		type: actionTypes.ABANDON_END,
 		token: '1234567890'
 	};
 
@@ -561,7 +562,7 @@ QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 	};
 
 	state = eventLogging( state, {
-		type: 'PREVIEW_DWELL'
+		type: actionTypes.PREVIEW_DWELL
 	} );
 
 	assert.ok(
@@ -577,7 +578,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 		token = '0123456789';
 
 	let state = eventLogging( initialState, {
-		type: 'SETTINGS_SHOW'
+		type: actionTypes.SETTINGS_SHOW
 	} );
 
 	// Note well that this is a valid event. The "tapped settings cog" event is
@@ -596,7 +597,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 	// ---
 
 	state = eventLogging( initialState, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -605,7 +606,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 	} );
 
 	state = eventLogging( state, {
-		type: 'SETTINGS_SHOW'
+		type: actionTypes.SETTINGS_SHOW
 	} );
 
 	assert.deepEqual(
@@ -622,7 +623,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 
 QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 	let state = eventLogging( undefined, {
-		type: 'SETTINGS_CHANGE',
+		type: actionTypes.SETTINGS_CHANGE,
 		wasEnabled: false,
 		enabled: false
 	} );
@@ -634,7 +635,7 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 	);
 
 	state = eventLogging( state, {
-		type: 'SETTINGS_CHANGE',
+		type: actionTypes.SETTINGS_CHANGE,
 		wasEnabled: true,
 		enabled: false
 	} );
@@ -650,7 +651,7 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 
 	delete state.event;
 	state = eventLogging( state, {
-		type: 'SETTINGS_CHANGE',
+		type: actionTypes.SETTINGS_CHANGE,
 		wasEnabled: false,
 		enabled: true
 	} );
@@ -667,7 +668,7 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 		now = Date.now();
 
 	const dwelledState = eventLogging( undefined, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -676,13 +677,13 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 	} );
 
 	let state = eventLogging( dwelledState, {
-		type: 'ABANDON_START',
+		type: actionTypes.ABANDON_START,
 		token,
 		timestamp: now + 500
 	} );
 
 	state = eventLogging( state, {
-		type: 'ABANDON_END',
+		type: actionTypes.ABANDON_END,
 		token
 	} );
 
@@ -707,19 +708,19 @@ QUnit.test( 'ABANDON_END should enqueue an event', function ( assert ) {
 	// ---
 
 	state = eventLogging( dwelledState, {
-		type: 'PREVIEW_SHOW',
+		type: actionTypes.PREVIEW_SHOW,
 		token,
 		timestamp: now + 700
 	} );
 
 	state = eventLogging( state, {
-		type: 'ABANDON_START',
+		type: actionTypes.ABANDON_START,
 		token,
 		timestamp: now + 850
 	} );
 
 	state = eventLogging( state, {
-		type: 'ABANDON_END',
+		type: actionTypes.ABANDON_END,
 		token
 	} );
 
@@ -746,7 +747,7 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 		now = Date.now();
 
 	const dwelledState = eventLogging( undefined, {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		el: this.link,
 		title: 'Foo',
 		namespaceId: 1,
@@ -755,7 +756,7 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 	} );
 
 	let state = eventLogging( dwelledState, {
-		type: 'ABANDON_END',
+		type: actionTypes.ABANDON_END,
 		token: '1234567890'
 	} );
 
@@ -768,7 +769,7 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 	// ---
 
 	state = eventLogging( dwelledState, {
-		type: 'ABANDON_END',
+		type: actionTypes.ABANDON_END,
 		token
 	} );
 
@@ -781,23 +782,23 @@ QUnit.test( 'ABANDON_END doesn\'t enqueue an event under certain conditions', fu
 	// ---
 
 	state = eventLogging( dwelledState, {
-		type: 'LINK_CLICK',
+		type: actionTypes.LINK_CLICK,
 		timestamp: now + 500
 	} );
 
 	state = eventLogging( state, {
-		type: 'EVENT_LOGGED',
+		type: actionTypes.EVENT_LOGGED,
 		event: {}
 	} );
 
 	state = eventLogging( state, {
-		type: 'ABANDON_START',
+		type: actionTypes.ABANDON_START,
 		token,
 		timestamp: now + 700
 	} );
 
 	state = eventLogging( state, {
-		type: 'ABANDON_END',
+		type: actionTypes.ABANDON_END,
 		token,
 		timestamp: now + 1000 // ABANDON_END_DELAY is 300 ms.
 	} );

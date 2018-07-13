@@ -1,4 +1,5 @@
 import statsv from '../../../src/reducers/statsv';
+import actionTypes from '../../../src/actionTypes';
 
 QUnit.module( 'ext.popups/reducers#eventLogging', {
 	beforeEach() {
@@ -18,7 +19,7 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 	assert.expect( 1, 'All assertions are executed.' );
 
 	const action = {
-		type: 'FETCH_START',
+		type: actionTypes.FETCH_START,
 		timestamp: 123
 	};
 	const state = statsv( this.initialState, action );
@@ -38,7 +39,7 @@ QUnit.test( 'FETCH_END', ( assert ) => {
 	const startedAt = 200;
 	const endedAt = 500;
 	const action = {
-		type: 'FETCH_END',
+		type: actionTypes.FETCH_END,
 		timestamp: endedAt
 	};
 	const state = statsv( { fetchStartedAt: startedAt }, action );
@@ -58,7 +59,7 @@ QUnit.test( 'FETCH_FAILED', ( assert ) => {
 	assert.expect( 1, 'All assertions are executed.' );
 
 	const action = {
-		type: 'FETCH_FAILED'
+		type: actionTypes.FETCH_FAILED
 	};
 	const state = statsv( {}, action );
 
@@ -77,7 +78,7 @@ QUnit.test( 'LINK_DWELL', ( assert ) => {
 
 	const timestamp = 100;
 	const action = {
-		type: 'LINK_DWELL',
+		type: actionTypes.LINK_DWELL,
 		timestamp
 	};
 	const state = statsv( {}, action );
@@ -97,7 +98,7 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 	const startedAt = 100;
 	const endedAt = 300;
 	const action = {
-		type: 'PREVIEW_SHOW',
+		type: actionTypes.PREVIEW_SHOW,
 		timestamp: endedAt
 	};
 	const state = statsv( { linkDwellStartedAt: startedAt }, action );
@@ -117,7 +118,7 @@ QUnit.test( 'STATSV_LOGGED', ( assert ) => {
 	assert.expect( 1, 'All assertions are executed.' );
 
 	const action = {
-		type: 'STATSV_LOGGED'
+		type: actionTypes.STATSV_LOGGED
 	};
 	const state = statsv( { data: 123 }, action );
 
