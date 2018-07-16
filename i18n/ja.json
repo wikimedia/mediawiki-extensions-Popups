@@ -25,6 +25,7 @@
 	"popups-settings-enable": "プレビューを有効にする",
 	"popups-preview-no-preview": "このプレビューを表示する際に問題が発生しました",
 	"popups-preview-footer-read": "このページへ移動する",
+	"popups-preview-disambiguation": "この記事名は複数のページと関係があります",
 	"prefs-reading": "閲覧設定",
 	"popups-prefs-optin-title": "ページのプレビュー\n\n<em>ページを読みながら題目をプレビュー</em>",
 	"popups-prefs-optin-enabled-label": "有効",
