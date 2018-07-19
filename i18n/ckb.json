@@ -23,5 +23,6 @@
 	"prefs-reading": "ھەڵبژاردەکانی خوێندنەوە",
 	"popups-prefs-optin-title": "بینینەکانی پەڕە\n\n<em>بەدەستھێنانی بینینەکانی بابەت لەکاتی خوێندنەوەی پەڕەیەک</em>",
 	"popups-prefs-optin-enabled-label": "کاراکردن",
-	"popups-prefs-optin-disabled-label": "لەکارخستن"
+	"popups-prefs-optin-disabled-label": "لەکارخستن",
+	"popups-prefs-conflicting-gadgets-info": "ھەندێک ئامراز لەوانەیە کار بکەنە سەر ئەم تایبەتمەندییە. ئەگەر کێشەت ھەیە تکایە بەسەر دەقی ئامراز و ژێرپەڕەکانی خۆت بچۆرەوە."
 }
