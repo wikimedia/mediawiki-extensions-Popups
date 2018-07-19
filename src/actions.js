@@ -403,7 +403,7 @@ export function hideSettings() {
  * place (the preview reducer), we query it and dispatch it as `wasEnabled`
  * so that other reducers (like settings) can act on it without having to
  * duplicate the `enabled` state locally.
- * See doc/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
+ * See docs/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
  * details.
  *
  * @param {boolean} enabled if previews are enabled or not

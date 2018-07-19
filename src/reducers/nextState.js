@@ -8,7 +8,7 @@
  * the state we need to manually iterate over updates and check with
  * hasOwnProperty to copy over to the new state.
  *
- * In [change listeners](/doc/change_listeners.md), for example, we talk about
+ * In [change listeners](/docs/change_listener.md), for example, we talk about
  * the previous state and the current state (the `prevState` and `state`
  * parameters, respectively). Since
  * [reducers](http://redux.js.org/docs/basics/Reducers.html) take the current
