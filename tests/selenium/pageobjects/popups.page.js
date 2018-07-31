@@ -1,7 +1,7 @@
 const
 	fs = require( 'fs' ),
-	EditPage = require( '../../../../../tests/selenium/pageobjects/edit.page' ),
-	Page = require( '../../../../../tests/selenium/pageobjects/page' ),
+	Api = require( 'wdio-mediawiki/Api' ),
+	Page = require( 'wdio-mediawiki/Page' ),
 	TEST_PAGE_TITLE = 'Popups test page',
 	POPUPS_SELECTOR = '.mwe-popups',
 	POPUPS_MODULE_NAME = 'ext.popups.main';
@@ -17,7 +17,7 @@ class PopupsPage extends Page {
 					resolve( content );
 				} );
 			} ).then( ( content ) => {
-				return EditPage.apiEdit( TEST_PAGE_TITLE, content );
+				return Api.edit( TEST_PAGE_TITLE, content );
 			} );
 		} );
 	}
@@ -64,7 +64,7 @@ class PopupsPage extends Page {
 	}
 
 	open() {
-		super.open( TEST_PAGE_TITLE );
+		super.openTitle( TEST_PAGE_TITLE );
 	}
 
 }
