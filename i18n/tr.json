@@ -6,7 +6,8 @@
 			"Incelemeelemani",
 			"Meelo",
 			"McAang",
-			"Katpatuka"
+			"Katpatuka",
+			"Rapsar"
 		]
 	},
 	"popups-message": "Vurgulanmış kartlar",
@@ -23,6 +24,7 @@
 	"popups-settings-help": "Sayfanın alt kısmındaki bir bağlantıyı kullanarak önizlemeyi geri açabilirsiniz.",
 	"popups-settings-enable": "Önizlemeyi etkinleştir",
 	"popups-preview-footer-read": "Oku",
+	"popups-prefs-optin-title": "Sayfa önizlemeleri\n\n<em>Bir sayfayı okurken, konuyla ilgili hızlı önizlemeler al</em>",
 	"popups-prefs-optin-enabled-label": "Etkinleştir",
 	"popups-prefs-optin-disabled-label": "Devre dışı bırak"
 }
