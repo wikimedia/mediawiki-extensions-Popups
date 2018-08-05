@@ -1,3 +1,5 @@
+import constants from '../constants';
+
 /**
  * @module thumbnail
  */
@@ -42,7 +44,7 @@ const $ = jQuery;
  * @return {ext.popups.Thumbnail|null}
  */
 export function createThumbnail( rawThumbnail ) {
-	const devicePixelRatio = $.bracketedDevicePixelRatio();
+	const devicePixelRatio = constants.BRACKETED_DEVICE_PIXEL_RATIO;
 
 	if ( !rawThumbnail ) {
 		return null;

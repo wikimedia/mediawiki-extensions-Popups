@@ -1,4 +1,5 @@
 import * as renderer from '../../../src/ui/renderer';
+import * as constants from '../../../src/constants';
 import { createNullModel, previewTypes } from '../../../src/preview/model';
 import { createThumbnail } from '../../../src/ui/thumbnail';
 
@@ -41,7 +42,7 @@ function createBehavior( sandbox ) {
 
 QUnit.module( 'ext.popups#renderer', {
 	beforeEach() {
-		$.bracketedDevicePixelRatio = () => 1;
+		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 
 		mediaWiki.msg = ( key ) => {
 			switch ( key ) {
@@ -64,7 +65,6 @@ QUnit.module( 'ext.popups#renderer', {
 	afterEach() {
 		// Restore getElementsById to its original state.
 		document.getElementById = this.getElementById;
-		$.bracketedDevicePixelRatio = null;
 		mediaWiki.msg = null;
 		mediaWiki.html = null;
 	}

@@ -1,18 +1,14 @@
 import { createThumbnail, createThumbnailElement } from '../../../src/ui/thumbnail';
-
-const $ = jQuery;
+import * as constants from '../../../src/constants';
 
 QUnit.module( 'ext.popups#thumbnail', {
 	beforeEach() {
-		$.bracketedDevicePixelRatio = () => 1;
-	},
-	afterEach() {
-		$.bracketedDevicePixelRatio = null;
+		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 	}
 } );
 
 QUnit.test( 'createThumbnail - tall image', ( assert ) => {
-	const devicePixelRatio = $.bracketedDevicePixelRatio(),
+	const devicePixelRatio = constants.default.BRACKETED_DEVICE_PIXEL_RATIO,
 		rawThumbnail = {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
 			width: 409,
@@ -118,7 +114,7 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
-	const devicePixelRatio = $.bracketedDevicePixelRatio(),
+	const devicePixelRatio = constants.default.BRACKETED_DEVICE_PIXEL_RATIO,
 		rawThumbnail = {
 			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg',
 			width: 500,

@@ -1,13 +1,9 @@
-/**
- * @module constants
- */
-const $ = jQuery,
-	// If bracketedDevicePixelRatio is not available default to 1 (in tests for
-	// example)
-	pixelRatio = $.bracketedDevicePixelRatio &&
-		$.bracketedDevicePixelRatio() || 1;
+import bracketedPixelRatio from './bracketedPixelRatio';
+
+const bpr = bracketedPixelRatio();
 
 export default {
-	THUMBNAIL_SIZE: 320 * pixelRatio,
+	BRACKETED_DEVICE_PIXEL_RATIO: bpr,
+	THUMBNAIL_SIZE: 320 * bpr,
 	EXTRACT_LENGTH: 525
 };
