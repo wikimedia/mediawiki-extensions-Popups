@@ -70,6 +70,22 @@ class PopupsContext {
 	 * @var PopupsContext
 	 */
 	protected static $instance;
+
+	/**
+	 * @var ExtensionRegistry
+	 */
+	private $extensionRegistry;
+
+	/**
+	 * @var PopupsGadgetsIntegration
+	 */
+	private $gadgetsIntegration;
+
+	/**
+	 * @var EventLogger
+	 */
+	private $eventLogger;
+
 	/**
 	 * Module constructor.
 	 * @param Config $config Mediawiki configuration
