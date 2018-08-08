@@ -282,16 +282,6 @@ export function abandon() {
  * @return {Object}
  */
 export function linkClick( el ) {
-	// the whole preview should be clickable per T192773
-	// reach into the popup and find the href and navigate there
-	// regardless of where's clicked.
-	// Note: the settings cog prevents propagation so no need to worry
-	// about settings cog clicks here.
-	const url = $( el )
-		.find( 'a:not(.mwe-popups-settings-icon)' ).attr( 'href' );
-	if ( url ) {
-		window.location = url;
-	}
 	return timedAction( {
 		type: types.LINK_CLICK,
 		el

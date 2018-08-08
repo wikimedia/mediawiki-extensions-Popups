@@ -306,7 +306,7 @@ export function bindBehavior( preview, behavior ) {
 	preview.el.on( 'mouseenter', behavior.previewDwell )
 		.on( 'mouseleave', behavior.previewAbandon );
 
-	preview.el.click( () => behavior.click( preview.el ) );
+	preview.el.click( behavior.click );
 
 	preview.el.find( '.mwe-popups-settings-icon' )
 		.attr( 'href', behavior.settingsUrl )
