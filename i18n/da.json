@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"popups-settings-option-simple": "Aktiver",
+	"popups-settings-option-advanced": "Avanceret",
+	"popups-settings-option-off": "Deaktiver",
+	"popups-settings-save": "Gem",
+	"popups-prefs-optin-enabled-label": "Aktiver",
+	"popups-prefs-optin-disabled-label": "Deaktiver"
+}
