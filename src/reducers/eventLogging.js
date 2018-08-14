@@ -143,7 +143,7 @@ export default function eventLogging( state, action ) {
 	}
 
 	// Was the action delayed? Then it requires a token to be reduced. Enforce
-	// this here to avoid repetion and reduce nesting below.
+	// this here to avoid repetition and reduce nesting below.
 	if (
 		actionTypesWithTokens.indexOf( action.type ) !== -1 &&
 		( !state.interaction || action.token !== state.interaction.token )
