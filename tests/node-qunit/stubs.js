@@ -7,6 +7,9 @@
  */
 export function createStubUser( isAnon ) {
 	return {
+		getPageviewToken() {
+			return '9876543210';
+		},
 		isAnon() {
 			return isAnon;
 		},

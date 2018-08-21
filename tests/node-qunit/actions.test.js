@@ -7,7 +7,7 @@ const mw = mediaWiki,
 	REFERRER = 'https://en.wikipedia.org/wiki/Kitten';
 
 function generateToken() {
-	return '9876543210';
+	return 'ABC';
 }
 
 QUnit.module( 'ext.popups/actions' );
@@ -34,7 +34,6 @@ QUnit.test( '#boot', ( assert ) => {
 		false,
 		stubUser,
 		stubUserSettings,
-		generateToken,
 		config,
 		REFERRER
 	);
@@ -129,7 +128,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 			type: actionTypes.LINK_DWELL,
 			el: this.el,
 			event,
-			token: '9876543210',
+			token: 'ABC',
 			timestamp: mw.now(),
 			title: 'Foo',
 			namespaceId: 1,

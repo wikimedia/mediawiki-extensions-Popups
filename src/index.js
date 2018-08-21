@@ -208,7 +208,6 @@ function registerChangeListeners(
 		isEnabled,
 		mw.user,
 		userSettings,
-		generateToken,
 		mw.config,
 		window.location.href
 	);

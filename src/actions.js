@@ -59,7 +59,6 @@ function timedAction( baseAction ) {
  * @param {boolean} isEnabled See `isEnabled.js`
  * @param {mw.user} user
  * @param {ext.popups.UserSettings} userSettings
- * @param {Function} generateToken
  * @param {mw.Map} config The config of the MediaWiki client-side application,
  *  i.e. `mw.config`
  * @param {string} url url
@@ -69,7 +68,6 @@ export function boot(
 	isEnabled,
 	user,
 	userSettings,
-	generateToken,
 	config,
 	url
 ) {
@@ -81,7 +79,7 @@ export function boot(
 		isEnabled,
 		isNavPopupsEnabled: config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
 		sessionToken: user.sessionId(),
-		pageToken: generateToken(),
+		pageToken: user.getPageviewToken(),
 		page: {
 			url,
 			title: config.get( 'wgTitle' ),

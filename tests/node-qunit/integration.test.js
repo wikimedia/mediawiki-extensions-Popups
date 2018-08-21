@@ -87,12 +87,9 @@ QUnit.module( 'ext.popups preview @integration', {
 			/* isEnabled: */
 			constant( true ),
 			/* user */
-			{ sessionId: constant( 'sessiontoken' ),
-				isAnon: constant( true ) },
+			stubs.createStubUser( true ),
 			/* userSettings: */
 			{ getPreviewCount: constant( 1 ) },
-			/* generateToken: */
-			constant( 'pagetoken' ),
 			/* config: */
 			{ get: identity }
 		);
