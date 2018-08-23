@@ -5,6 +5,10 @@
 		]
 	},
 	"popups-message": "Калкма тәрәзәләр",
+	"popups-settings-option-simple": "Кабызу",
+	"popups-settings-option-off": "Сүндерү",
 	"prefs-reading": "Уку көйләүләре",
-	"popups-prefs-optin-title": "Битләрне алдан карау\n<em>Күрсәткечне куйганда мәкаләләрне тиз карау кулланырга</em>"
+	"popups-prefs-optin-title": "Битләрне алдан карау\n<em>Күрсәткечне куйганда мәкаләләрне тиз карау кулланырга</em>",
+	"popups-prefs-optin-enabled-label": "Кабызу",
+	"popups-prefs-optin-disabled-label": "Сүндерү"
 }
