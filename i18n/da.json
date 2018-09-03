@@ -8,6 +8,8 @@
 	"popups-settings-option-advanced": "Avanceret",
 	"popups-settings-option-off": "Deaktiver",
 	"popups-settings-save": "Gem",
+	"popups-settings-help-ok": "Færdig",
+	"popups-settings-cancel": "Annullér",
 	"popups-prefs-optin-enabled-label": "Aktiver",
 	"popups-prefs-optin-disabled-label": "Deaktiver"
 }
