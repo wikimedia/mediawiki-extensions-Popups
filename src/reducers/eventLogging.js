@@ -42,6 +42,10 @@ function getBaseData( bootAction ) {
  * * `pageTitleHover` and `namespaceIdHover`; and
  * * `previewType` and `perceivedWait`, if a preview has been shown.
  *
+ * The linkInteractionToken is renewed on each new preview dwelling unlike the pageToken which has a
+ * lifespan tied to the pageview. It is erroneous to use the same linkInteractionToken across
+ * multiple previews even if the previews are for the same link.
+ *
  * @param {Object} interaction
  * @param {Object} actionData Data specific to the action, e.g. see
  *  {@link module:reducers/eventLogging~createClosingEvent `createClosingEvent`}
