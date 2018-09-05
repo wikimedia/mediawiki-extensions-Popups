@@ -246,7 +246,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 */
 	public function testIsTranslatedTitleBlacklisted() {
 		$page = 'Specjalna:Preferencje';
-		$blacklist = [ $page ];
+		$blacklist = [ 'Special:Preferences' ];
 
 		$this->setMwGlobals( [
 			'wgPopupsPageBlacklist' => $blacklist,
