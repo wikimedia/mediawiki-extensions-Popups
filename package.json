@@ -10,7 +10,9 @@
     "node-debug": "node -v && npm -v && echo 'Please ensure you are running the correct version of nvm before running this command.'",
     "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITTED OR STAGED' && npm -s run build && git diff --exit-code resources/dist || { npm run node-debug; false; }",
     "coverage": "SPAWN_WRAP_SHIM_ROOT=\"$PWD/.nyc_output\" nyc npm -s run test:node",
-    "precommit": "npm -s t"
+    "precommit": "npm -s t",
+    "selenium-daily": "npm run selenium-test",
+    "selenium-test": "wdio tests/selenium/wdio.conf.js"
   },
   "engines": {
     "node": "6.11.0"
@@ -39,6 +41,10 @@
     "stylelint-config-wikimedia": "0.4.3",
     "svg-inline-loader": "0.8.0",
     "tap-mocha-reporter": "3.0.7",
+    "wdio-mediawiki": "0.2.0",
+    "wdio-mocha-framework": "0.6.1",
+    "wdio-spec-reporter": "0.1.4",
+    "webdriverio": "4.13.1",
     "webpack": "4.1.1",
     "webpack-cli": "2.0.12"
   },
