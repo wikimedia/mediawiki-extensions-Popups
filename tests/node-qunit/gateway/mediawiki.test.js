@@ -132,11 +132,6 @@ QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from th
 			]
 		];
 
-	assert.expect(
-		errorCases.length + successCases.length,
-		'All assertions are executed.'
-	);
-
 	errorCases.forEach( ( data, i ) => {
 		assert.throws(
 			() => { gateway.extractPageFromResponse( data ); },
@@ -236,8 +231,6 @@ QUnit.test( 'MediaWiki API gateway handles missing pages', function ( assert ) {
 } );
 
 QUnit.test( 'MediaWiki API gateway is abortable', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const
 		deferred = $.Deferred(),
 		api = {

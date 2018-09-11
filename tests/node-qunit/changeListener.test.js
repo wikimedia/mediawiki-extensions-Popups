@@ -25,8 +25,6 @@ QUnit.test( 'it should only call the callback when the state has changed', funct
 
 	registerChangeListener( stubStore, spy );
 
-	assert.expect( 4, 'All assertions are executed.' );
-
 	stubStore.setState( {} );
 
 	if ( !boundChangeListener ) {

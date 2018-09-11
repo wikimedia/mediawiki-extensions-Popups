@@ -11,8 +11,6 @@ QUnit.module( 'ext.popups/changeListeners/statsv', {
 } );
 
 QUnit.test( 'it should log the queued event', function ( assert ) {
-	assert.expect( 2, 'All assertions are executed.' );
-
 	const state = {
 		statsv: {
 			action: 'myAction',
@@ -34,8 +32,6 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 } );
 
 QUnit.test( 'it should not log when no action is given', function ( assert ) {
-	assert.expect( 2, 'All assertions are executed.' );
-
 	const state = {
 		statsv: {
 			data: 123

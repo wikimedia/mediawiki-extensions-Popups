@@ -3,8 +3,6 @@ import wait from '../../src/wait';
 QUnit.module( 'ext.popups/wait' );
 
 QUnit.test( 'it should resolve after waiting', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const then = Date.now();
 	return wait( 150 ).then( () => {
 		assert.strictEqual(
@@ -16,8 +14,6 @@ QUnit.test( 'it should resolve after waiting', function ( assert ) {
 } );
 
 QUnit.test( 'it should not catch after resolving', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	return wait( 0 ).catch( () => {
 		assert.ok( false, 'It never calls a catchable after resolution' );
 	} ).then( () => {
@@ -26,8 +22,6 @@ QUnit.test( 'it should not catch after resolving', function ( assert ) {
 } );
 
 QUnit.test( 'it should not resolve after aborting', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const deferred = wait( 0 );
 
 	const chain = deferred.then( () => {
@@ -42,8 +36,6 @@ QUnit.test( 'it should not resolve after aborting', function ( assert ) {
 } );
 
 QUnit.test( 'it should catch after resolving and aborting', function ( assert ) {
-	assert.expect( 2, 'All assertions are executed.' );
-
 	const deferred = wait( 0 );
 
 	const chain = deferred.catch( () => {

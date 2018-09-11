@@ -7,8 +7,7 @@
 	"env": {
 		"browser": true,
 		"jquery": true,
-		"commonjs": true,
-		"qunit": true
+		"commonjs": true
 	},
 	"globals": {
 		"mediaWiki": false,

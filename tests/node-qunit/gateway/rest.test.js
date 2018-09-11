@@ -427,8 +427,6 @@ QUnit.test( 'RESTBase gateway handles no content success responses', function ( 
 } );
 
 QUnit.test( 'RESTBase gateway is abortable', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const
 		deferred = $.Deferred(),
 		api = this.sandbox.stub().returns(

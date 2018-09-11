@@ -10,14 +10,10 @@ QUnit.module( 'ext.popups/reducers#eventLogging', {
 } );
 
 QUnit.test( '@@INIT', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	assert.deepEqual( this.initialState, {}, 'The initial state is empty.' );
 } );
 
 QUnit.test( 'FETCH_START', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const action = {
 		type: actionTypes.FETCH_START,
 		timestamp: 123
@@ -34,8 +30,6 @@ QUnit.test( 'FETCH_START', function ( assert ) {
 } );
 
 QUnit.test( 'FETCH_END', ( assert ) => {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const startedAt = 200;
 	const endedAt = 500;
 	const action = {
@@ -56,8 +50,6 @@ QUnit.test( 'FETCH_END', ( assert ) => {
 } );
 
 QUnit.test( 'FETCH_FAILED', ( assert ) => {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const action = {
 		type: actionTypes.FETCH_FAILED
 	};
@@ -74,8 +66,6 @@ QUnit.test( 'FETCH_FAILED', ( assert ) => {
 } );
 
 QUnit.test( 'LINK_DWELL', ( assert ) => {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const timestamp = 100;
 	const action = {
 		type: actionTypes.LINK_DWELL,
@@ -93,8 +83,6 @@ QUnit.test( 'LINK_DWELL', ( assert ) => {
 } );
 
 QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const startedAt = 100;
 	const endedAt = 300;
 	const action = {
@@ -115,8 +103,6 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 } );
 
 QUnit.test( 'STATSV_LOGGED', ( assert ) => {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const action = {
 		type: actionTypes.STATSV_LOGGED
 	};

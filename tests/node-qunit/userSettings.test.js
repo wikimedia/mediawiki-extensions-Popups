@@ -9,8 +9,6 @@ QUnit.module( 'ext.popups/userSettings', {
 } );
 
 QUnit.test( '#getIsEnabled should return false if Page Previews have been disabled', function ( assert ) {
-	assert.expect( 2, 'All assertions are executed.' );
-
 	this.userSettings.setIsEnabled( false );
 
 	assert.notOk(
@@ -29,8 +27,6 @@ QUnit.test( '#getIsEnabled should return false if Page Previews have been disabl
 } );
 
 QUnit.test( '#hasIsEnabled', function ( assert ) {
-	assert.expect( 3, 'All assertions are executed.' );
-
 	assert.notOk(
 		this.userSettings.hasIsEnabled(),
 		'#hasIsEnabled should return false if the storage is empty.'
@@ -58,8 +54,6 @@ QUnit.test( '#hasIsEnabled', function ( assert ) {
 } );
 
 QUnit.test( '#getPreviewCount should return the count as a number', function ( assert ) {
-	assert.expect( 3, 'All assertions are executed.' );
-
 	assert.strictEqual(
 		this.userSettings.getPreviewCount(),
 		0,

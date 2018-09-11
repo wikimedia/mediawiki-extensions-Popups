@@ -28,8 +28,6 @@ QUnit.test( '#boot', ( assert ) => {
 		}
 	};
 
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const action = actions.boot(
 		false,
 		stubUser,
@@ -106,8 +104,6 @@ QUnit.test( '#linkDwell', function ( assert ) {
 	const event = {},
 		dispatch = this.sandbox.spy();
 
-	assert.expect( 2, 'All assertions are executed.' );
-
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
 	this.sandbox.stub( actions, 'fetch' );
 
@@ -159,8 +155,6 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 	const event = {},
 		dispatch = this.sandbox.spy();
 
-	assert.expect( 2, 'All assertions are executed.' );
-
 	// Stub the state tree being updated by the LINK_DWELL action.
 	this.state.preview = {
 		enabled: false,
@@ -193,8 +187,6 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( assert ) {
 	const event = {},
 		dispatch = this.sandbox.spy();
-
-	assert.expect( 1, 'All assertions are executed.' );
 
 	// Stub the state tree being updated by a LINK_DWELL action.
 	this.state.preview = {
@@ -234,8 +226,6 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 	const event = {},
 		dispatch = this.sandbox.spy();
-
-	assert.expect( 1, 'All assertions are executed.' );
 
 	this.state.preview = {
 		enabled: true,
@@ -286,8 +276,6 @@ QUnit.module( 'ext.popups/actions#fetch', {
 } );
 
 QUnit.test( 'it should fetch data from the gateway immediately', function ( assert ) {
-	assert.expect( 3, 'All assertions are executed.' );
-
 	this.fetch();
 
 	assert.ok(
@@ -311,8 +299,6 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 } );
 
 QUnit.test( 'it should dispatch the FETCH_END action when the API request ends', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	const fetched = this.fetch();
 
 	this.now += 115;
@@ -334,8 +320,6 @@ QUnit.test( 'it should dispatch the FETCH_END action when the API request ends',
 QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( assert ) {
 	const result = {},
 		fetched = this.fetch();
-
-	assert.expect( 2, 'All assertions are executed.' );
 
 	assert.strictEqual(
 		this.wait.getCall( 0 ).args[ 0 ],
@@ -361,8 +345,6 @@ QUnit.test( 'it should delay dispatching the FETCH_COMPLETE action', function ( 
 QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails', function ( assert ) {
 	const fetched = this.fetch();
 
-	assert.expect( 2, 'All assertions are executed.' );
-
 	this.gatewayDeferred.reject( new Error( 'API req failed' ) );
 
 	this.now += 115;
@@ -384,8 +366,6 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 } );
 
 QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails even after the wait timeout', function ( assert ) {
-	assert.expect( 2, 'All assertions are executed.' );
-
 	// After the wait interval happens, resolve the gateway request
 	return this.waitPromise.then( () => {
 		this.gatewayDeferred.reject( new Error( 'API req failed' ) );
@@ -451,8 +431,6 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 					promise: $.Deferred().promise( { abort() {} } )
 				}
 			} );
-
-	assert.expect( 3, 'All assertions are executed.' );
 
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
 

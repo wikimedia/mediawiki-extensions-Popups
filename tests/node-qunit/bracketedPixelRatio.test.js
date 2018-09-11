@@ -17,11 +17,11 @@ QUnit.test( 'returns a bracketed pixel ratio', ( assert ) => {
 		[ 3, 2, 'when 3 returns 2' ]
 	];
 
-	function test( given, expected, msg ) {
+	function runTest( given, expected, msg ) {
 		assert.strictEqual( bracketedPixelRatio( given ), expected, msg );
 	}
 
 	cases.forEach( ( case_ ) => {
-		test( case_[ 0 ], case_[ 1 ], case_[ 2 ] );
+		runTest( case_[ 0 ], case_[ 1 ], case_[ 2 ] );
 	} );
 } );

@@ -42,8 +42,6 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 } );
 
 QUnit.test( 'it should append the link to the footer menu', function ( assert ) {
-	assert.expect( 2, 'All assertions are executed.' );
-
 	this.whenLinkPreviewsBoots();
 
 	const $link = this.getLink();
@@ -57,8 +55,6 @@ QUnit.test( 'it should append the link to the footer menu', function ( assert ) 
 } );
 
 QUnit.test( 'it should show and hide the link', function ( assert ) {
-	assert.expect( 2, 'All assertions are executed.' );
-
 	this.whenLinkPreviewsBoots();
 
 	const $link = this.getLink();
@@ -84,8 +80,6 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 } );
 
 QUnit.test( 'it should call the showSettings bound action creator', function ( assert ) {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	this.whenLinkPreviewsBoots();
 
 	const $link = this.getLink();

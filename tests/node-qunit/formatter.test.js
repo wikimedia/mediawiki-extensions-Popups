@@ -54,7 +54,7 @@ QUnit.test( 'Title is bold', ( assert ) => {
 		]
 	];
 
-	function test( extract, title, expected, msg ) {
+	function runTest( extract, title, expected, msg ) {
 		const $div = $( '<div>' ).append(
 			formatter.formatPlainTextExtract( extract, title )
 		);
@@ -62,6 +62,6 @@ QUnit.test( 'Title is bold', ( assert ) => {
 	}
 
 	cases.forEach( ( case_ ) => {
-		test( case_[ 0 ], case_[ 1 ], case_[ 2 ], case_[ 3 ] );
+		runTest( case_[ 0 ], case_[ 1 ], case_[ 2 ], case_[ 3 ] );
 	} );
 } );

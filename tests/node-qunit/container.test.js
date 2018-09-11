@@ -49,8 +49,8 @@ QUnit.test( '#get should handle values, not just functions', function ( assert )
 	this.container.set( 'foo', 'bar' );
 
 	assert.strictEqual(
-		'bar',
 		this.container.get( 'foo' ),
+		'bar',
 		'The container understands string values.'
 	);
 } );
