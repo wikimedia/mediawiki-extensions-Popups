@@ -20,7 +20,7 @@
 	"popups-preview-disambiguation": "This title relates to more than one page",
 	"popups-preview-disambiguation-link": "View similar pages",
 	"prefs-reading": "Reading preferences",
-	"popups-prefs-optin-title": "Page previews\n\n<em>Get quick previews of a topic while reading a page</em>",
+	"popups-prefs-optin-title": "Page previews\n\nGet quick previews of a topic while reading a page",
 	"popups-prefs-optin-enabled-label": "Enable",
 	"popups-prefs-optin-disabled-label": "Disable",
 	"popups-prefs-disable-nav-gadgets-info": "You have to [[$1 | disable Navigation Popups Gadget]] from Gadgets tab to enable Page Previews",
