@@ -26,7 +26,7 @@
 	"popups-preview-disambiguation": "Dieser Titel bezieht sich auf mehr als eine Seite",
 	"popups-preview-disambiguation-link": "Ähnliche Seiten ansehen",
 	"prefs-reading": "Leseeinstellungen",
-	"popups-prefs-optin-title": "Seitenvorschaubilder\n\n<em>Ruft schnelle Vorschaubilder zu einem Thema ab, während du eine Seite liest.</em>",
+	"popups-prefs-optin-title": "Seitenvorschaubilder\n\nRuft schnelle Vorschaubilder zu einem Thema ab, während du eine Seite liest.",
 	"popups-prefs-optin-enabled-label": "Aktivieren",
 	"popups-prefs-optin-disabled-label": "Deaktivieren",
 	"popups-prefs-disable-nav-gadgets-info": "Du musst [[$1 |das Helferlein „Navigations-Popups“]] in der Registerkarte „Helferlein“ deaktivieren, um Seitenvorschaubilder zu aktivieren.",

@@ -2,13 +2,26 @@
 	"@metadata": {
 		"authors": [
 			"Mehtab ahmed",
-			"Indus Asia"
+			"Indus Asia",
+			"Tweety"
 		]
 	},
 	"popups-message": "صحفي جي نمائش",
+	"popups-desc": "ڳنڍڻي جي مٿان مائوس رکڻ سان عنوان جو پيش نگاهه ڏسو",
+	"popups-settings-title": "صحفي جي نمائش",
 	"popups-settings-option-simple": "قابل-بڻايو",
+	"popups-settings-option-simple-description": "پڙهڻ دوران عنوانن بابت پيش نگاهه ڏسو",
 	"popups-settings-option-advanced": "متقدم",
+	"popups-settings-option-off": "غيرفعال",
 	"popups-settings-save": "سانڍيو",
+	"popups-settings-help-ok": "ٿي ويو",
+	"popups-settings-cancel": "رد",
+	"popups-settings-enable": "پيش نگاهه فعال",
+	"popups-preview-no-preview": "پيش نگاهه ڏيکارڻ ۾ ڪو مسئلو آهي",
 	"popups-preview-footer-read": "ھن صفحي تي وڃو",
-	"popups-prefs-optin-enabled-label": "قابل-بڻايو"
+	"popups-preview-disambiguation": "ھي عنوان ھڪ کان وڌيڪ صفحن سان تعلق رکي ٿو",
+	"popups-preview-disambiguation-link": "ھڪجڙا صفحا ڏيکاريو",
+	"prefs-reading": "پڙھڻ جون ترجيحون",
+	"popups-prefs-optin-enabled-label": "قابل-بڻايو",
+	"popups-prefs-optin-disabled-label": "غيرفعال"
 }
