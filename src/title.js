@@ -46,8 +46,8 @@ export function getTitle( href, config ) {
  * Given a page title it will return the mediawiki.Title if it is an eligible
  * link for showing page previews, null otherwise
  *
- * @param {string} [title] page title to check if it should show preview
- * @param {number[]} [contentNamespaces] contentNamespaces as specified in
+ * @param {string} title page title to check if it should show preview
+ * @param {number[]} contentNamespaces contentNamespaces as specified in
  * wgContentNamespaces
  * @return {mw.Title|null}
  */
@@ -58,7 +58,7 @@ export function isValid( title, contentNamespaces ) {
 
 	// Is title in a content namespace?
 	const mwTitle = mw.Title.newFromText( title );
-	if ( mwTitle && ( $.inArray( mwTitle.namespace, contentNamespaces ) >= 0 ) ) {
+	if ( mwTitle && contentNamespaces.indexOf( mwTitle.namespace ) >= 0 ) {
 		return mwTitle;
 	}
 

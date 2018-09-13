@@ -29,7 +29,7 @@ export function isEnabled( user, config, window ) {
 
 	if (
 		!window.navigator ||
-		!$.isFunction( window.navigator.sendBeacon )
+		!window.navigator.sendBeacon
 	) {
 		return false;
 	}
