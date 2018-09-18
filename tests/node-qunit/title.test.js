@@ -140,14 +140,13 @@ QUnit.module( 'title#isValid', {
 } );
 
 QUnit.test( 'it should return null if the title is empty', ( assert ) => {
-	assert.strictEqual( isValid(), null, 'Doesn\'t accept null titles' );
-	assert.strictEqual( isValid( '' ), null, 'Doesn\'t accept empty titles' );
+	assert.strictEqual( isValid( '', [] ), null, 'Doesn\'t accept empty titles' );
 } );
 
 QUnit.test( 'it should return null if the title can\'t be parsed properly', ( assert ) => {
 	mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
 	assert.strictEqual(
-		isValid( 'title' ),
+		isValid( 'title', [] ),
 		null,
 		'Doesn\'t accept unparseable titles'
 	);
