@@ -24,5 +24,7 @@
 	"prefs-reading": "Preferenze de letture",
 	"popups-prefs-optin-title": "Andeprime d'a pàgene\n\n'Ndruche 'n'andeprime veloce veloce de 'n'argomende quanne ste lìgge 'a vôsce",
 	"popups-prefs-optin-enabled-label": "Abbilite",
-	"popups-prefs-optin-disabled-label": "Disabbilite"
+	"popups-prefs-optin-disabled-label": "Disabbilite",
+	"popups-prefs-disable-nav-gadgets-info": "Tu ha [[$1 |disabbilità 'u gadget Popup de navigazzione]] da 'a schede Accessore pe abbilità le andeprime de le pàggene",
+	"popups-prefs-conflicting-gadgets-info": "Certe accessore e otre personalizzazziune ponne avè conzeguenze sus a le prestaziune de sta funzione. Ce tìne quacche probbleme 'ndruche arrete le accessore tue e le script utende, 'ngluse chidde globbale."
 }
