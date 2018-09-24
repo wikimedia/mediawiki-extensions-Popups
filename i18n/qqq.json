@@ -28,7 +28,7 @@
 	"popups-preview-disambiguation": "The description shown on a preview for a disambiguation page",
 	"popups-preview-disambiguation-link": "The link shown on a preview for a disambiguation page",
 	"prefs-reading": "Title for 'Reading preferences' section on preferences page; it's a magic message derived from PREVIEWS_PREFERENCES_SECTION (see commit f597e34)",
-	"popups-prefs-optin-title": "Title for Page Previews option\n\nDescription for Page Previews option",
+	"popups-prefs-optin-title": "Title for Page Previews option (description for Page Previews option)",
 	"popups-prefs-optin-enabled-label": "Label for Page Previews opt in\n{{Identical|Enable}}",
 	"popups-prefs-optin-disabled-label": "Label for Page Previews opt out\n{{Identical|Disable}}",
 	"popups-prefs-disable-nav-gadgets-info": "Help message telling to disable Navigation Popups gadget in order to enable page previews.\n\nParameters:\n* $1 – Link to the Gadgets tab of Preferences",
