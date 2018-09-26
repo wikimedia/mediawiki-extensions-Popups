@@ -3,7 +3,8 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Xiaomingyan",
-			"Yfdyh000"
+			"Yfdyh000",
+			"Phenolla"
 		]
 	},
 	"popups-message": "页面预览",
@@ -24,7 +25,7 @@
 	"popups-preview-disambiguation": "此条目与多于一个页面相关",
 	"popups-preview-disambiguation-link": "查看相似页面",
 	"prefs-reading": "阅读参数设置",
-	"popups-prefs-optin-title": "页面预览\n\n<em>当阅读条目时，获取对应页面的快速预览</em>",
+	"popups-prefs-optin-title": "页面预览（当阅读条目时，获取对应页面的快捷预览）",
 	"popups-prefs-optin-enabled-label": "启用",
 	"popups-prefs-optin-disabled-label": "禁用",
 	"popups-prefs-disable-nav-gadgets-info": "您需要[[$1 |事先禁用导航Popups小工具]]才能启用页面预览",

@@ -4,7 +4,8 @@
 			"Asaifm",
 			"محمد أحمد عبد الفتاح",
 			"ديفيد",
-			"علاء"
+			"علاء",
+			"Meno25"
 		]
 	},
 	"popups-message": "معاينات الصفحة",
@@ -25,7 +26,7 @@
 	"popups-preview-disambiguation": "يرتبط هذا العنوان بأكثر من صفحة واحدة",
 	"popups-preview-disambiguation-link": "عرض صفحات مماثلة",
 	"prefs-reading": "تفضيلات القراءة",
-	"popups-prefs-optin-title": "معاينة الصفحة\n\nالحصول على معاينة سريعة للموضوع أثناء قراءة الصفحة",
+	"popups-prefs-optin-title": "معاينة الصفحة (الحصول على معاينة سريعة للموضوع أثناء قراءة الصفحة):",
 	"popups-prefs-optin-enabled-label": "تفعيل",
 	"popups-prefs-optin-disabled-label": "تعطيل",
 	"popups-prefs-disable-nav-gadgets-info": "يجب عليك [[$1 |تعطيل أداة التنقل بالنوافذ المنبثقة]] من علامة تبويب الأدوات لتمكين معاينات الصفحة",

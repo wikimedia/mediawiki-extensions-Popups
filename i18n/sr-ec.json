@@ -29,7 +29,7 @@
 	"popups-preview-disambiguation": "Овај наслов је вишезначна одредница",
 	"popups-preview-disambiguation-link": "Прикажи сличне странице",
 	"prefs-reading": "Подешавања читања",
-	"popups-prefs-optin-title": "Претпрегледи страница\n\nБрз претпреглед теме при читању странице",
+	"popups-prefs-optin-title": "Претпрегледи страница (брз претпреглед теме при читању странице):",
 	"popups-prefs-optin-enabled-label": "Омогући",
 	"popups-prefs-optin-disabled-label": "Онемогући",
 	"popups-prefs-disable-nav-gadgets-info": "Морате [[$1 | онемогућити Навигацијски прозорчић]] из таба Справице да бисте омогућили справицу Претпрегледи страница",

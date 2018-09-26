@@ -26,7 +26,7 @@
 	"popups-preview-disambiguation": "Questo titolo si riferisce a più di una pagina",
 	"popups-preview-disambiguation-link": "Vedi pagine simili",
 	"prefs-reading": "Preferenze di lettura",
-	"popups-prefs-optin-title": "Anteprima delle pagine\n\nVedi una veloce anteprima di un argomento mentre leggi una pagina",
+	"popups-prefs-optin-title": "Anteprima delle pagine (vedi una veloce anteprima di un argomento mentre leggi una pagina):",
 	"popups-prefs-optin-enabled-label": "Attiva",
 	"popups-prefs-optin-disabled-label": "Disattiva",
 	"popups-prefs-disable-nav-gadgets-info": "Devi [[$1 |disabilitare il gadget Popup di navigazione]] dalla scheda Accessori per abilitare le anteprime delle pagine",
