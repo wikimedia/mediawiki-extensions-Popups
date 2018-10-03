@@ -22,7 +22,7 @@
 	"popups-preview-disambiguation": "See pealkiri seondub mitme leheküljega.",
 	"popups-preview-disambiguation-link": "Vaata sarnaseid lehekülgi",
 	"prefs-reading": "Lugemiseelistused",
-	"popups-prefs-optin-title": "Lehekülgede eelvaade\n\n<em>Näita lehekülje lugemisel teemadest kiireelvaateid.</em>",
+	"popups-prefs-optin-title": "Lehekülgede eelvaade (näita lehekülje lugemisel teemadest kiireelvaateid):",
 	"popups-prefs-optin-enabled-label": "Luba",
 	"popups-prefs-optin-disabled-label": "Keela",
 	"popups-prefs-conflicting-gadgets-info": "Teatud tööriistad ja muud kohandused võivad selle funktsiooni toimimist mõjutada. Kui koged probleeme, siis vaata palun üle oma tööriistad ja kasutajaskriptid, ka globaalsed skriptid."

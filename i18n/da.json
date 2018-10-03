@@ -10,6 +10,8 @@
 	"popups-settings-save": "Gem",
 	"popups-settings-help-ok": "Færdig",
 	"popups-settings-cancel": "Annullér",
+	"popups-preview-footer-read": "Gå til denne side",
+	"popups-preview-disambiguation-link": "Vis lignende sider",
 	"popups-prefs-optin-enabled-label": "Aktiver",
 	"popups-prefs-optin-disabled-label": "Deaktiver"
 }
