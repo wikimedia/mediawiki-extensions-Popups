@@ -29,5 +29,6 @@
 	"popups-prefs-optin-title": "Podgląd stron\n\nPodczas czytania strony zapewni szybki podgląd tematu",
 	"popups-prefs-optin-enabled-label": "Włącz",
 	"popups-prefs-optin-disabled-label": "Wyłącz",
+	"popups-prefs-disable-nav-gadgets-info": "Musisz [[$1 |wyłączyć gadżet „NavigationPopus”]] w zakładce gadżetów, w celu włączenia podglądu stron",
 	"popups-prefs-conflicting-gadgets-info": "Niektóre gadżety i inne ustawienia mogą wpływać na wydajność tej funkcji. Jeśli wystąpią problemy, przejrzyj swoje gadżety i skrypty, w tym globalne."
 }
