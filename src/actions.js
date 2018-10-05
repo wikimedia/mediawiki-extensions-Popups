@@ -22,10 +22,11 @@ const $ = jQuery,
 
 	// The delay after which a FETCH_COMPLETE action should be dispatched.
 	//
-	// If the API endpoint responds faster than 500 ms (or, say, the API
+	// If the API endpoint responds faster than 350 ms (or, say, the API
 	// response is served from the UA's cache), then we introduce a delay of
-	// 500 - t to make the preview delay consistent to the user.
-	FETCH_COMPLETE_TARGET_DELAY = 500, // ms.
+	// 350 ms - t to make the preview delay consistent to the user. The total
+	// delay from start to finish is 500 ms.
+	FETCH_COMPLETE_TARGET_DELAY = 350 + FETCH_START_DELAY, // ms.
 
 	ABANDON_END_DELAY = 300; // ms.
 
