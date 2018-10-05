@@ -13,36 +13,84 @@ const reduxThunkPath = isProduction ?
 	'node_modules/redux-thunk/dist/redux-thunk.min.js' :
 	'node_modules/redux-thunk/dist/redux-thunk.js';
 
+const distDir = path.resolve( __dirname, 'resources/dist' );
+
+// The extension used for source map files.
+const srcMapExt = '.map.json';
+
 const conf = {
+	// Apply the rule of silence: https://wikipedia.org/wiki/Unix_philosophy.
+	stats: {
+		all: false,
+		errors: true,
+		warnings: true
+	},
+
+	// Fail on the first build error instead of tolerating it for prod builds. This seems to
+	// correspond to optimization.noEmitOnErrors.
+	bail: isProduction,
+
+	// Specify that all paths are relative the Webpack configuration directory not the current
+	// working directory.
+	context: __dirname,
+
+	entry: { index: './src' },
+
+	optimization: {
+		// Don't produce production output when a build error occurs.
+		noEmitOnErrors: isProduction
+	},
+
 	output: {
 		// The absolute path to the output directory.
-		path: path.resolve( __dirname, 'resources/dist' ),
+		path: distDir,
 		devtoolModuleFilenameTemplate: `${PUBLIC_PATH}/[resource-path]`,
 
 		// Write each chunk (entries, here) to a file named after the entry, e.g.
 		// the "index" entry gets written to index.js.
 		filename: '[name].js',
-		// as we cannot serve .map files from production servers store map files
-		// with .json extension
-		sourceMapFilename: '[file].json'
+
+		// Rename source map extensions. Per T173491 files with a .map extension cannot be served
+		// from prod.
+		sourceMapFilename: `[file]${srcMapExt}`
 	},
-	entry: { index: './src' },
+
+	// Accurate source maps at the expense of build time. The source map is intentionally exposed
+	// to users via sourceMapFilename for prod debugging. This goes against convention as source
+	// code is publicly distributed.
+	devtool: 'source-map',
+
+	plugins: [
+		new CleanPlugin( distDir, { verbose: false } ),
+
+		// To generate identifiers that are preserved over builds, webpack supplies
+		// the NamedModulesPlugin (generates comments with file names on bundle)
+		// https://webpack.js.org/guides/caching/#deterministic-hashes
+		new webpack.NamedModulesPlugin()
+	],
+
 	performance: {
+		// Size violations for prod builds fail; development builds are unchecked.
 		hints: isProduction ? 'error' : false,
+
+		// Minified uncompressed size limits for chunks / assets and entrypoints. Keep these numbers
+		// up-to-date and rounded to the nearest 10th of a kibibyte so that code sizing costs are
+		// well understood. Related to bundlesize minified, gzipped compressed file size tests.
+		// Note: entrypoint size implicitly includes the mobile.startup.runtime entry.
 		maxAssetSize: 40 * 1024,
 		maxEntrypointSize: 40 * 1024,
-		assetFilter: function ( filename ) {
-			// The default filter excludes map files but we rename ours to .filename.
-			return filename.endsWith( '.js' );
-		}
+
+		// The default filter excludes map files but we rename ours.
+		assetFilter: ( filename ) => !filename.endsWith( srcMapExt )
 	},
-	devtool: 'source-map',
+
 	resolve: {
 		alias: {
 			redux: path.resolve( __dirname, reduxPath ),
 			'redux-thunk': path.resolve( __dirname, reduxThunkPath )
 		}
 	},
+
 	module: {
 		rules: [
 			{
@@ -63,15 +111,7 @@ const conf = {
 				}
 			}
 		]
-	},
-	plugins: [
-		new CleanPlugin( 'resources/dist', { verbose: false } ),
-
-		// To generate identifiers that are preserved over builds, webpack supplies
-		// the NamedModulesPlugin (generates comments with file names on bundle)
-		// https://webpack.js.org/guides/caching/#deterministic-hashes
-		new webpack.NamedModulesPlugin()
-	]
+	}
 };
 
 // Production settings.
