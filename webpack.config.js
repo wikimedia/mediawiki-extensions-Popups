@@ -114,22 +114,4 @@ const conf = {
 	}
 };
 
-// Production settings.
-// Define the global process.env.NODE_ENV so that libraries like redux and
-// redux-thunk get development code trimmed.
-// Enable minimize flags for webpack loaders and disable debug.
-if ( isProduction ) {
-	conf.plugins = conf.plugins.concat( [
-		new webpack.LoaderOptionsPlugin( {
-			minimize: true,
-			debug: false
-		} ),
-		new webpack.DefinePlugin( {
-			'process.env': {
-				NODE_ENV: JSON.stringify( 'production' )
-			}
-		} )
-	] );
-}
-
 module.exports = conf;
