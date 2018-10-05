@@ -240,7 +240,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 			$this->getExtensionRegistryMock( true ) );
 		$this->assertEquals( $expected,
 			$integration->conflictsWithNavPopupsGadget( $user ),
-			( $expected ? 'A' : 'No' ) + ' conflict is identified.' );
+			( $expected ? 'A' : 'No' ) . ' conflict is identified.' );
 
 		GadgetRepo::setSingleton( $origGadgetsRepo );
 	}

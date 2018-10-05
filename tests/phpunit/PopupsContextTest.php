@@ -69,7 +69,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = $this->getContext();
 		$this->assertEquals( $expected,
 			$context->showPreviewsOptInOnPreferencesPage(),
-			'The previews opt-in is ' + ( $expected ? 'shown.' : 'hidden.' ) );
+			'The previews opt-in is ' . ( $expected ? 'shown.' : 'hidden.' ) );
 	}
 
 	/**
@@ -104,7 +104,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
 		$this->assertEquals( $expected,
 			$context->shouldSendModuleToUser( $user ),
-			( $expected ? 'A' : 'No' ) + ' module is sent to the user.' );
+			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
 	}
 
 	/**
@@ -137,7 +137,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = $this->getContext();
 		$this->assertEquals( $expected,
 			$context->shouldSendModuleToUser( $user ),
-			( $expected ? 'A' : 'No' ) + ' module is sent to the user.' );
+			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
 	}
 
 	public static function providerAnonUserHasDisabledPagePreviews() {
@@ -168,7 +168,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = $this->getContext( $mock );
 		$this->assertEquals( $expected,
 			$context->areDependenciesMet(),
-			'Dependencies are ' + ( $expected ? '' : 'not ' ) + 'met.' );
+			'Dependencies are ' . ( $expected ? '' : 'not ' ) . 'met.' );
 	}
 
 	/**
@@ -219,7 +219,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = $this->getContext();
 		$this->assertEquals( $expected,
 			$context->isTitleBlacklisted( $title ),
-			'The title is' + ( $expected ? ' ' : ' not ' ) + 'blacklisted.' );
+			'The title is' . ( $expected ? ' ' : ' not ' ) . 'blacklisted.' );
 	}
 
 	/**
