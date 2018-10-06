@@ -29,7 +29,7 @@
 	"popups-preview-disambiguation": "Tento název má více než jedna stránka",
 	"popups-preview-disambiguation-link": "Zobrazit podobné stránky",
 	"prefs-reading": "Nastavení čtení",
-	"popups-prefs-optin-title": "Náhledy stránek\n\nPři čtení stránky poskytne rychlé náhledy tématu",
+	"popups-prefs-optin-title": "Náhledy stránek (při čtení stránky poskytne rychlé náhledy tématu):",
 	"popups-prefs-optin-enabled-label": "Zapnout",
 	"popups-prefs-optin-disabled-label": "Vypnout",
 	"popups-prefs-disable-nav-gadgets-info": "Abyste {{GENDER:|mohl|mohla|mohli}} zapnout Náhledy stránek, musíte [[$1 | vypnout udělátko Navigation Popups]] na záložce Udělátka",
