@@ -33,7 +33,7 @@
 	"popups-preview-disambiguation": "此標題與多於一個以上頁面相關。",
 	"popups-preview-disambiguation-link": "顯示類似的頁面",
 	"prefs-reading": "閱讀偏好設定",
-	"popups-prefs-optin-title": "頁面預覽\n\n當閱讀條目時，取得對應頁面的快速預覽",
+	"popups-prefs-optin-title": "頁面預覽（當閱讀條目時，取得對應頁面的快速預覽）：",
 	"popups-prefs-optin-enabled-label": "啟用",
 	"popups-prefs-optin-disabled-label": "關閉",
 	"popups-prefs-disable-nav-gadgets-info": "您需要[[$1 |事先禁用導航Popups小工具]]才能啟用頁面預覽",
