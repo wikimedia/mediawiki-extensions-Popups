@@ -28,7 +28,7 @@ function titleCase( word ) {
  * Truncates a string to a maximum length based on its URI encoded value.
  *
  * @param {string} sourceUrl source string
- * @param {string} maxLength maximum length
+ * @param {number} maxLength maximum length
  * @return {string} string is returned in the same encoding as the input
  */
 function limitByEncodedURILength( sourceUrl, maxLength ) {
