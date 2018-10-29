@@ -42,15 +42,18 @@ QUnit.test( 'it shouldn\'t set the settingsUrl if the user is logged out', funct
 } );
 
 QUnit.test( 'it shouldn\'t set a showSettings handler if the user is logged in', function ( assert ) {
-	const user = createStubUser( /* isAnon = */ false ),
-		actions = {},
+	const
+		user = createStubUser( /* isAnon = */ false ),
+		event = {
+			preventDefault: this.sandbox.spy()
+		},
+		actions = {
+			showSettings: () => assert.ok( false, 'No show settings handler is set.' )
+		},
 		behavior = createPreviewBehavior( user, actions );
 
-	assert.strictEqual(
-		behavior.showSettings,
-		$.noop,
-		'No show settings handler is set.'
-	);
+	behavior.showSettings( event );
+	assert.ok( true );
 } );
 
 QUnit.test( 'it should set a showSettings handler if the user is logged out', function ( assert ) {

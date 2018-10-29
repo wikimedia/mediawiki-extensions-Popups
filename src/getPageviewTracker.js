@@ -89,7 +89,7 @@ function getPageviewTracker( config, loader, trackerGetter, sendBeacon ) {
 			sendBeacon( url );
 		} );
 	};
-	return config.get( 'wgPopupsVirtualPageViews' ) ? pageviewTracker : $.noop;
+	return config.get( 'wgPopupsVirtualPageViews' ) ? pageviewTracker : () => {};
 }
 
 /**

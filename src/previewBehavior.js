@@ -2,8 +2,7 @@
  * @module previewBehaviour
  */
 
-const mw = mediaWiki,
-	$ = jQuery;
+const mw = mediaWiki;
 
 /**
  * A collection of event handlers specific to how the user interacts with all
@@ -34,7 +33,7 @@ const mw = mediaWiki,
  * @return {ext.popups.PreviewBehavior}
  */
 export default function createPreviewBehavior( user, actions ) {
-	let settingsUrl, showSettings = $.noop;
+	let settingsUrl, showSettings = () => {};
 
 	if ( user.isAnon() ) {
 		showSettings = ( event ) => {

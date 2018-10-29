@@ -53,7 +53,7 @@ const mw = mediaWiki,
  *
  * If logging metrics to StatsD is enabled for the duration of the user's
  * session, then the appriopriate function is `mw.track`; otherwise it's
- * `$.noop`.
+ * `() => {}`.
  *
  * [0]: https://github.com/wikimedia/mediawiki-extensions-WikimediaEvents/blob/29c864a0/modules/ext.wikimediaEvents.statsd.js
  *
@@ -63,7 +63,7 @@ const mw = mediaWiki,
  * @return {EventTracker}
  */
 function getStatsvTracker( user, config, experiments ) {
-	return isStatsvEnabled( user, config, experiments ) ? mw.track : $.noop;
+	return isStatsvEnabled( user, config, experiments ) ? mw.track : () => {};
 }
 
 /**
@@ -72,7 +72,7 @@ function getStatsvTracker( user, config, experiments ) {
  *
  * If logging EventLogging events is enabled for the duration of the user's
  * session, then the appriopriate function is `mw.track`; otherwise it's
- * `$.noop`.
+ * `() => {}`.
  *
  * [0]: https://github.com/wikimedia/mediawiki-extensions-EventLogging/blob/d1409759/modules/ext.eventLogging.subscriber.js
  *
@@ -86,7 +86,7 @@ function getEventLoggingTracker( user, config, window ) {
 		user,
 		config,
 		window
-	) ? mw.track : $.noop;
+	) ? mw.track : () => {};
 }
 
 /**
