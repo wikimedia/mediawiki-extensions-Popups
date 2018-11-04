@@ -23,7 +23,7 @@
 	"popups-preview-disambiguation": "Насловот се однесува на повеќе од една страница",
 	"popups-preview-disambiguation-link": "Погл. слични страници",
 	"prefs-reading": "Нагодувања за читање",
-	"popups-prefs-optin-title": "Преглед на страници\n\nБрз преглед на тема додека читате страница",
+	"popups-prefs-optin-title": "Преглед на страници (дава брзи тематски прегледи додека се читата страницата):",
 	"popups-prefs-optin-enabled-label": "Овозможи",
 	"popups-prefs-optin-disabled-label": "Оневозможи",
 	"popups-prefs-disable-nav-gadgets-info": "Ќе мора да ја [[$1 | оневозможите алатката „Прегледнички отскочници“]] во јазичето Алатки за да го овозможите „Прегледи на страници“",
