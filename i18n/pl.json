@@ -26,7 +26,7 @@
 	"popups-preview-disambiguation": "Ten tytuł odnosi się do więcej niż jednej strony",
 	"popups-preview-disambiguation-link": "Pokaż podobne strony",
 	"prefs-reading": "Preferencje czytania",
-	"popups-prefs-optin-title": "Podgląd stron\n\nPodczas czytania strony zapewni szybki podgląd tematu",
+	"popups-prefs-optin-title": "Podgląd stron (podczas czytania strony zapewni szybki podgląd tematu):",
 	"popups-prefs-optin-enabled-label": "Włącz",
 	"popups-prefs-optin-disabled-label": "Wyłącz",
 	"popups-prefs-disable-nav-gadgets-info": "Musisz [[$1 |wyłączyć gadżet „NavigationPopus”]] w zakładce gadżetów, w celu włączenia podglądu stron",
