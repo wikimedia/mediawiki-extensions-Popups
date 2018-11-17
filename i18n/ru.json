@@ -33,7 +33,7 @@
 	"popups-settings-enable": "Включить предпросмотр",
 	"popups-preview-no-preview": "Предварительный просмотр страницы недоступен",
 	"popups-preview-footer-read": "Перейти на страницу",
-	"popups-preview-disambiguation": "У этого слова есть несколько значений",
+	"popups-preview-disambiguation": "Это название относится более чем к одной странице",
 	"popups-preview-disambiguation-link": "Просмотр схожих страниц",
 	"prefs-reading": "Настройки чтения",
 	"popups-prefs-optin-title": "Предпросмотр страниц\n\nПоказывать быстрый предпросмотр тем при чтении страницы",

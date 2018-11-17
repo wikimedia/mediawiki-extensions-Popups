@@ -11,7 +11,8 @@
 			"Wladek92",
 			"C13m3n7",
 			"The RedBurn",
-			"Trizek (WMF)"
+			"Trizek (WMF)",
+			"Od1n"
 		]
 	},
 	"popups-message": "Aperçus de page",
@@ -32,7 +33,7 @@
 	"popups-preview-disambiguation": "Ce titre est relatif à plusieurs pages",
 	"popups-preview-disambiguation-link": "Afficher des pages similaires",
 	"prefs-reading": "Préférences de lecture",
-	"popups-prefs-optin-title": "Aperçus de page (obtenir l'aperçu rapide d’un sujet pendant la lecture d'une page)",
+	"popups-prefs-optin-title": "Aperçus de page (obtenir l’aperçu rapide d’un sujet pendant la lecture d’une page) :",
 	"popups-prefs-optin-enabled-label": "Activer",
 	"popups-prefs-optin-disabled-label": "Désactiver",
 	"popups-prefs-disable-nav-gadgets-info": "Vous devez [[$1 |désactiver le Gadget Navigation Popups]] dans l’onglet des Gadgets pour activer les Aperçus de page",
