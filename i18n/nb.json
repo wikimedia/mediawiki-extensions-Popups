@@ -25,7 +25,7 @@
 	"popups-preview-disambiguation": "Denne tittelen relaterer til flere sider",
 	"popups-preview-disambiguation-link": "Vis lignende sider",
 	"prefs-reading": "Lesepreferanser",
-	"popups-prefs-optin-title": "Sideforhåndsvisning\n\n<em>Få rask forhåndsvisning av et emne mens du leser en side</em>",
+	"popups-prefs-optin-title": "Sideforhåndsvisning (få rask forhåndsvisning av et emne mens du leser en side):",
 	"popups-prefs-optin-enabled-label": "Slå på",
 	"popups-prefs-optin-disabled-label": "Slå av",
 	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideforhåndsvisning",
