@@ -2,9 +2,9 @@
 const fs = require( 'fs' ),
 	svgInlineLoader = require( 'svg-inline-loader' );
 
-require( 'babel-register' )( {
+require( '@babel/register' )( {
 	presets: [
-		[ 'env', {
+		[ '@babel/preset-env', {
 			targets: {
 				node: 6
 			}

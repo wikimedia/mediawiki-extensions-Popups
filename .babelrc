@@ -1,10 +1,8 @@
 {
 	"presets": [
 		[
-			"env",
+			"@babel/preset-env",
 			{
-				// Do not transform modules to CommonJS.
-				"modules": false,
 				// See modern tier: https://www.mediawiki.org/wiki/Compatibility#Browser_support_matrix
 				"targets": {
 					// https://en.wikipedia.org/wiki/Google_Chrome_version_history
