@@ -523,6 +523,10 @@ QUnit.test( 'ABANDON_START', function ( assert ) {
 } );
 
 QUnit.test( 'ABANDON_END', function ( assert ) {
+	let state = {
+		interaction: {}
+	};
+
 	let action = {
 		type: actionTypes.LINK_DWELL,
 		el: this.link,
@@ -532,7 +536,7 @@ QUnit.test( 'ABANDON_END', function ( assert ) {
 		timestamp: Date.now()
 	};
 
-	const state = eventLogging( state, action );
+	state = eventLogging( state, action );
 
 	action = {
 		type: actionTypes.ABANDON_END,
