@@ -17,7 +17,7 @@ Since the event data varies with the value of the `action` property, events are 
 
 When enqueuing and logging an event, data flows between the reducer and the change listener as follows:
 
-1. The state is initialized to `null`..
+1. The state is initialized to `null`.
 2. An event is enqueued by the reducer as a result of an action.
 3. The change listener sees that the state tree has changed and logs the queued event via `mw.eventLog.Schema#log`.
 4. The change listener dispatches the `EVENT_LOGGED` action.

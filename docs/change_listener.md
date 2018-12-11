@@ -21,7 +21,7 @@ creators](http://redux.js.org/docs/api/bindActionCreators.html), i.e.
 ```javascript
 mw.popups.changeListeners.foo = function ( boundActions ) {
   var $link = $( '<a>' )
-    .attr( 'href': '#' )
+    .attr( 'href', '#' )
     .click( boundActions.showSettings );
 
   return function ( prevState, state ) {

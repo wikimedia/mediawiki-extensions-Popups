@@ -19,7 +19,7 @@ experience slowdown when loading many files.
 
 There are many tools that bundle JavaScript out there that can do this for us.
 
-** Pros **
+**Pros**
 * mw.popups no longer needs to be exposed as a global object
 * Dependency management is no longer a manual process but automated by webpack
 * Would allow us to explore template pre-compiling
