@@ -6,6 +6,7 @@ import * as Redux from 'redux';
 import * as ReduxThunk from 'redux-thunk';
 
 import createPagePreviewGateway from './gateway';
+import createReferenceGateway from './gateway/reference';
 import createUserSettings from './userSettings';
 import createPreviewBehavior from './previewBehavior';
 import createSettingsDialogRenderer from './ui/settingsDialogRenderer';
@@ -165,6 +166,7 @@ function registerChangeListeners(
 		// So-called "services".
 		generateToken = mw.user.generateRandomSessionId,
 		pagePreviewGateway = createPagePreviewGateway( mw.config ),
+		referenceGateway = createReferenceGateway(),
 		userSettings = createUserSettings( mw.storage ),
 		settingsDialog = createSettingsDialogRenderer(),
 		experiments = createExperiments( mw.experiments ),
@@ -219,8 +221,11 @@ function registerChangeListeners(
 	 */
 	mw.popups = createMediaWikiPopupsObject( store );
 
-	const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' ),
-		validLinkSelector = `#mw-content-text a[href][title]:not(${ invalidLinksSelector })`;
+	const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' );
+	let validLinkSelector = `#mw-content-text a[href][title]:not(${ invalidLinksSelector })`;
+	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
+		validLinkSelector += ', .reference > a[href]';
+	}
 
 	rendererInit();
 
@@ -230,10 +235,25 @@ function registerChangeListeners(
 	$( document )
 		.on( 'mouseover keyup', validLinkSelector, function ( event ) {
 			const mwTitle = titleFromElement( this, mw.config );
+			let gateway = pagePreviewGateway;
+
+			if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
+				// TODO: Can this condition be true for non-reference links?
+				if ( $( event.target ).parent().hasClass( 'reference' ) ) {
+					try {
+						// TODO: Possibly refactor titleFromElement() to avoid duplicate Uri() call
+						mwTitle.fragment = new mw.Uri( event.target.href ).fragment;
+					} catch ( e ) {
+						// Skip links with broken encoding
+						return;
+					}
+					gateway = referenceGateway;
+				}
+			}
 
 			if ( mwTitle ) {
 				boundActions.linkDwell(
-					mwTitle, this, event, pagePreviewGateway, generateToken
+					mwTitle, this, event, gateway, generateToken
 				);
 			}
 		} )

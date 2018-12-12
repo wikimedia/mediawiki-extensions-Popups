@@ -130,7 +130,9 @@
 				"popups-preview-no-preview",
 				"popups-preview-footer-read",
 				"popups-preview-disambiguation",
-				"popups-preview-disambiguation-link"
+				"popups-preview-disambiguation-link",
+				"popups-refpreview-footnote",
+				"popups-refpreview-jump-to-reference"
 			],
 			"dependencies": [
 				"ext.popups.images",
