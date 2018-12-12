@@ -8,6 +8,7 @@
 	},
 	"popups-message": "Преглед на страница",
 	"popups-desc": "Показва предварителен преглед на дадена страница, когато потребителят задържи курсора върху дадена връзка.",
+	"popups-settings-option-simple": "Включване",
 	"popups-settings-option-simple-description": "Показване на бърз преглед на тема, при четене на страница.",
 	"popups-settings-save": "Съхраняване",
 	"popups-settings-help-ok": "Готово",
