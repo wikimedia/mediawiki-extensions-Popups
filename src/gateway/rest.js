@@ -174,7 +174,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
  * @param {Function} extractParser
  * @return {PreviewModel}
  */
-function convertPageToModel( page, thumbSize, extractParser ) {
+export function convertPageToModel( page, thumbSize, extractParser ) {
 	return createModel(
 		page.title,
 		new mw.Title( page.title ).getUrl(),

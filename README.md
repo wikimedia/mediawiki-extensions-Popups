@@ -66,6 +66,18 @@ Popups works with a local copy of the [Mobile Content Service] too:
   enabled by setting a `debug=true` query. E.g.,
   `https://en.wikipedia.org/wiki/Popup?debug=true`.
 
+## Storybook.js Component Library
+
+The root of the repository contains a .storybook directory. This folder contains
+a separate NPM project using the [Storybook.js](https://storybook.js.org/) UI framework.
+This framework provides an environment that showcases all possible permutations of popups,
+without the state-management constraints of having only one popup per page.
+
+This framework requires Node v8 (because of the spread `...` operator) and is therefore
+separated from the main package.json until CI upgrades from Node v6. NVM can be used to
+manage multiple Node versions to run the Storybook app (`cd .storybook && nvm use`).
+See the .storybook/README.md for details.
+
 ## Terminology
 
 * Hovercard - Deprecated term for popup.
