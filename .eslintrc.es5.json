@@ -49,6 +49,7 @@
 		"new-parens": 0,
 		"no-fallthrough": 0,
 		"no-implicit-coercion": 0,
-		"no-catch-shadow": 0
+		"no-catch-shadow": 0,
+		"max-statements-per-line": 0
 	}
 }

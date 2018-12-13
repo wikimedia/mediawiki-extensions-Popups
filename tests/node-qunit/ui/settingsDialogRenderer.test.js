@@ -2,8 +2,12 @@ import createSettingsDialogRenderer from '../../../src/ui/settingsDialogRenderer
 
 QUnit.module( 'ext.popups/settingsDialogRenderer', {
 	beforeEach() {
-		function render() { return $( '<div>' ); }
-		function getTemplate() { return { render }; }
+		function render() {
+			return $( '<div>' );
+		}
+		function getTemplate() {
+			return { render };
+		}
 
 		mediaWiki.html = { escape: ( str ) => str };
 		mediaWiki.template = { get: getTemplate };

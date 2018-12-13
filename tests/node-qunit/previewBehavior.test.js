@@ -4,7 +4,9 @@ import { createStubUser } from './stubs';
 QUnit.module( 'ext.popups.preview.settingsBehavior', {
 	beforeEach() {
 		function newFromText( title ) {
-			return { getUrl() { return `url/${ title }`; } };
+			return {
+				getUrl() { return `url/${ title }`; }
+			};
 		}
 
 		mediaWiki.Title = { newFromText };

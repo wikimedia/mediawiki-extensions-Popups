@@ -14,8 +14,12 @@ const mw = mediaWiki,
 	*/
 	FETCH_RESOLUTION = { RESOLVE: 0, REJECT: 1 };
 
-function identity( x ) { return x; }
-function constant( x ) { return () => x; }
+function identity( x ) {
+	return x;
+}
+function constant( x ) {
+	return () => x;
+}
 
 /*
 	* Integration tests for actions and state of the preview part of the system.

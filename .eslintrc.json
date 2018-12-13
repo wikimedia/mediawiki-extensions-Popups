@@ -1,6 +1,6 @@
 {
 	"root": true,
-	"extends": "wikimedia",
+	"extends": "wikimedia/client",
 	"parserOptions": {
 		"sourceType": "module",
 		"ecmaVersion": "6"
