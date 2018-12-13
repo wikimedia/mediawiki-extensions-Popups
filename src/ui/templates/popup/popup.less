@@ -30,8 +30,7 @@
 
 	// icons positioned at the top of the popup
 	.mw-ui-icon-preview-disambiguation,
-	.mw-ui-icon-preview-generic
-	 {
+	.mw-ui-icon-preview-generic {
 		margin: 21px 0 8px 0;
 	}
 
@@ -56,7 +55,6 @@
 		// SVG element is forced not to occlude the truncating pseudo-element and
 		// the settings cog in IE9-11.
 		margin: @popupPadding;
-
 		display: block;
 		color: @colorText;
 		text-decoration: none;
@@ -108,6 +106,7 @@
 		p {
 			margin: 0;
 		}
+
 		ul,
 		ol,
 		li,
@@ -307,11 +306,13 @@
 	polyline {
 		.mwe-popups-translate( 0, 0 );
 	}
+
 	&.flipped-x-y {
 		polyline {
 			.mwe-popups-translate( 0, -8px );
 		}
 	}
+
 	&.flipped-x {
 		polyline {
 			.mwe-popups-translate( 0, 8px );
@@ -323,11 +324,13 @@
 	polyline {
 		.mwe-popups-translate( -100%, 0 );
 	}
+
 	&.flipped-x-y {
 		polyline {
 			.mwe-popups-translate( -100%, -8px );
 		}
 	}
+
 	&.flipped-x {
 		polyline {
 			.mwe-popups-translate( -100%, 8px );
