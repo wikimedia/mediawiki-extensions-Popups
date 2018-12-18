@@ -80,6 +80,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	 * @covers ::conflictsWithNavPopupsGadget
 	 * @covers ::isGadgetExtensionEnabled
 	 * @covers ::__construct
+	 * @covers ::sanitizeGadgetName
 	 */
 	public function testConflictsWithNavPopupsGadgetIfGadgetsExtensionIsNotLoaded() {
 		$user = $this->getTestUser()->getUser();

@@ -147,6 +147,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers ::areDependenciesMet
+	 * @covers ::__construct
 	 * @dataProvider provideTestDataForTestAreDependenciesMet
 	 * @param bool $textExtracts
 	 * @param bool $pageImages
