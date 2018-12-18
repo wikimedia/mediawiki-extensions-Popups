@@ -21,8 +21,6 @@
 use Popups\PopupsGadgetsIntegration;
 
 /**
-* Popups module tests
-*
 * @group Popups
 * @coversDefaultClass Popups\PopupsGadgetsIntegration
 */

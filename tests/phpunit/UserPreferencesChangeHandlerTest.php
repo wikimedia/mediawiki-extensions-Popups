@@ -22,8 +22,6 @@ use Popups\PopupsContext;
 use Popups\UserPreferencesChangeHandler;
 
 /**
- * Integration tests for Page Preview hooks
- *
  * @group Popups
  * @coversDefaultClass \Popups\UserPreferencesChangeHandler
  */
