@@ -22,8 +22,6 @@
 use Popups\PopupsContext;
 
 /**
- * Popups module tests
- *
  * @group Popups
  * @coversDefaultClass Popups\PopupsContext
  */

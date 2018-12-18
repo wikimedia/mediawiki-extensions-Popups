@@ -23,8 +23,6 @@ use Popups\EventLogging\NullLogger;
 use Popups\EventLogging\EventLoggerFactory;
 
 /**
- * Integration tests for Page Preview hooks
- *
  * @group Popups
  * @coversDefaultClass \Popups\EventLogging\EventLoggerFactory
  */
