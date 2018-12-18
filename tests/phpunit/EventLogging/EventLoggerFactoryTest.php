@@ -31,7 +31,9 @@ use Popups\EventLogging\EventLoggerFactory;
 class EventLoggerFactoryTest extends MediaWikiTestCase {
 
 	/**
+	 * @covers ::__construct
 	 * @covers ::get
+	 * @covers \Popups\EventLogging\MWEventLogger::__construct
 	 */
 	public function testReturnsMWEventWhenEventLoggingIsAvailable() {
 		$mock = $this->getMock( ExtensionRegistry::class, [ 'isLoaded' ] );
@@ -48,6 +50,7 @@ class EventLoggerFactoryTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers ::__construct
 	 * @covers ::get
 	 */
 	public function testReturnsMWEventWhenEventLoggingIsNotAvailable() {
