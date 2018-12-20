@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wertuose"
+			"Wertuose",
+			"Toghrul Rahimli"
 		]
 	},
 	"popups-message": "Uçan pəncərələr",
@@ -10,5 +11,10 @@
 	"popups-settings-option-simple": "Yandır",
 	"popups-settings-option-simple-description": "Bir məqalə oxuyarkən daxili keçidlərə cəld baxış.",
 	"popups-settings-option-off": "Söndür",
-	"popups-settings-save": "Qeyd et"
+	"popups-settings-save": "Qeyd et",
+	"prefs-reading": "Oxu seçimləri",
+	"popups-prefs-optin-title": "Səhifə ön görünüşü (səhifə oxuyarkən məqaləyə cəld ilkin baxış):",
+	"popups-prefs-optin-enabled-label": "Açıq",
+	"popups-prefs-optin-disabled-label": "Qapalı",
+	"popups-prefs-conflicting-gadgets-info": "Bəzi qədcetlər və digər uyğunlaşdırmalar bu funksiyanın performansına təsir edə bilər. Əgər problemlərlə qarşılarşırsınızsa, qloballar da daxil olmaqla qədcetlərinizi, istifadəçi skriptlərini nəzərdən keçirin."
 }
