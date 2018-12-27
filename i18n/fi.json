@@ -20,9 +20,9 @@
 	"popups-settings-cancel": "Peruuta",
 	"popups-settings-enable": "Ota esikatselu käyttöön",
 	"popups-preview-no-preview": "Virheen vuoksi esikatselua ei voida näyttää",
-	"popups-preview-footer-read": "Lue",
+	"popups-preview-footer-read": "Mene tälle sivulle",
 	"prefs-reading": "Lukemisen asetukset",
-	"popups-prefs-optin-title": "Sivun esikatselut\n\n<em>Näe nopeasti aiheen esikatselut sivua lukiessasi</em>",
+	"popups-prefs-optin-title": "Sivun esikatselut (näe nopeasti aiheen esikatselut sivua lukiessasi):",
 	"popups-prefs-optin-enabled-label": "Ota käyttöön",
 	"popups-prefs-optin-disabled-label": "Poista käytöstä",
 	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset."
