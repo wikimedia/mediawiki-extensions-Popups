@@ -4,8 +4,24 @@
 			"פוילישער"
 		]
 	},
-	"popups-settings-help-ok": "ערליידיקט",
+	"popups-message": "בלטעטר־פֿאראויסשטעלונגען",
+	"popups-desc": "ווייזט פֿאראויסשטעלונגען ווען דער באניצער פֿירט דס מייזל איבער א בלאטלינק",
+	"popups-settings-title": "בלאַט פאראויסשטעלונג",
+	"popups-settings-option-simple": "אַקטיווירן",
+	"popups-settings-option-simple-description": "באקומען גיכע פֿאראויסשטעלונגען פֿון א טעמע ביים לייענען א בלאט.",
+	"popups-settings-option-advanced": "פֿארגעשריטן",
+	"popups-settings-option-off": "אָפאַקטיוויזירן",
+	"popups-settings-save": "אויפֿהיטן",
+	"popups-settings-help-ok": "פארטיג",
+	"popups-settings-cancel": "אַנולירן",
+	"popups-settings-help": "איר קענט אקטיווירן פֿאראויסשטעלונגען ווידעראמאל מיט א לינק אין בלאט־פיסל.",
+	"popups-settings-enable": "אנשטעלן פֿאראויסשטעלונגען",
+	"popups-preview-no-preview": "האט זיך געמאכט א פראבלעם מיט ווייזן די אנשטעלונג",
 	"popups-preview-footer-read": "גיין צו דעם בלאט",
+	"popups-preview-disambiguation": "דער דאזיקער טיטל באציט אויף מער ווי איין בלאט",
+	"popups-preview-disambiguation-link": "באקוקן ענלעכע בלעטער",
+	"prefs-reading": "ליין־פרעפֿערענצן",
 	"popups-prefs-optin-enabled-label": "אַקטיווירן",
-	"popups-prefs-optin-disabled-label": "אָפאַקטיוויזירן"
+	"popups-prefs-optin-disabled-label": "אָפאַקטיוויזירן",
+	"popups-prefs-disable-nav-gadgets-info": "איר דארפֿט [[$1 | אפשטעלן דעם נאוויגאציע־פֿענצטערס דזשימדשיק]] פון דעם דזשימזשיקעס צונגל כדי אנצושטען בלעטער־פֿאראויסשטעלונגען"
 }
