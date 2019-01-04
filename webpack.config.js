@@ -1,6 +1,6 @@
 /* global __dirname, process */
-const path = require( 'path' ),
-	webpack = require( 'webpack' ),
+const
+	path = require( 'path' ),
 	CleanPlugin = require( 'clean-webpack-plugin' ),
 	PUBLIC_PATH = '/w/extensions/Popups',
 	isProduction = process.env.NODE_ENV === 'production';
@@ -38,7 +38,14 @@ const conf = {
 
 	optimization: {
 		// Don't produce production output when a build error occurs.
-		noEmitOnErrors: isProduction
+		noEmitOnErrors: isProduction,
+
+		// Use filenames instead of unstable numerical identifiers for file references. This
+		// increases the gzipped bundle size some but makes the build products easier to debug and
+		// appear deterministic. I.e., code changes will only alter the bundle they're packed in
+		// instead of shifting the identifiers in other bundles.
+		// https://webpack.js.org/guides/caching/#deterministic-hashes (namedModules replaces NamedModulesPlugin.)
+		namedModules: true
 	},
 
 	output: {
@@ -61,12 +68,7 @@ const conf = {
 	devtool: 'source-map',
 
 	plugins: [
-		new CleanPlugin( distDir, { verbose: false } ),
-
-		// To generate identifiers that are preserved over builds, webpack supplies
-		// the NamedModulesPlugin (generates comments with file names on bundle)
-		// https://webpack.js.org/guides/caching/#deterministic-hashes
-		new webpack.NamedModulesPlugin()
+		new CleanPlugin( distDir, { verbose: false } )
 	],
 
 	performance: {
