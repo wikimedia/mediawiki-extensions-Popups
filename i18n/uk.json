@@ -27,7 +27,7 @@
 	"popups-preview-disambiguation": "Ця назва стосується більше ніж однієї сторінки",
 	"popups-preview-disambiguation-link": "Див. подібні сторінки",
 	"prefs-reading": "Параметри читання",
-	"popups-prefs-optin-title": "Попередні перегляди сторінок\n\n<em>Отримуйте швидкі попередні перегляди тем при читанні сторінки</em>",
+	"popups-prefs-optin-title": "Попередні перегляди сторінок (отримуйте швидкі попередні перегляди тем при читанні сторінки):",
 	"popups-prefs-optin-enabled-label": "Увімкнути",
 	"popups-prefs-optin-disabled-label": "Вимкнути",
 	"popups-prefs-disable-nav-gadgets-info": "Щоб увімкнути Попередні перегляди сторінок Вам треба [[$1 | Вимкнути додаток навігаційних спливних вікон]] у вкладці «Додатки»",
