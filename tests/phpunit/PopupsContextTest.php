@@ -56,6 +56,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		}
 		return new PopupsContext( $config, $registry, $integration, $eventLogger );
 	}
+
 	/**
 	 * @covers ::showPreviewsOptInOnPreferencesPage
 	 * @dataProvider provideConfigForShowPreviewsInOptIn

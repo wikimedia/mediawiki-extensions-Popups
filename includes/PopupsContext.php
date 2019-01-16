@@ -87,7 +87,6 @@ class PopupsContext {
 	private $eventLogger;
 
 	/**
-	 * Module constructor.
 	 * @param Config $config Mediawiki configuration
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 * @param PopupsGadgetsIntegration $gadgetsIntegration Gadgets integration helper
@@ -183,6 +182,7 @@ class PopupsContext {
 		}
 		return false;
 	}
+
 	/**
 	 * Get module logger
 	 *

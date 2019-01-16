@@ -36,7 +36,6 @@ class MWEventLogger implements EventLogger {
 	private $registry;
 
 	/**
-	 * Module constructor.
 	 * @param Config $config MediaWiki configuration
 	 * @param ExtensionRegistry $registry MediaWiki extension registry
 	 */

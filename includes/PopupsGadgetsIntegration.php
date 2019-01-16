@@ -43,8 +43,6 @@ class PopupsGadgetsIntegration {
 	private $navPopupsGadgetName;
 
 	/**
-	 * PopupsGadgetsIntegration constructor.
-	 *
 	 * @param Config $config MediaWiki configuration
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 */
@@ -63,6 +61,7 @@ class PopupsGadgetsIntegration {
 	private function sanitizeGadgetName( $gadgetName ) {
 		return str_replace( ' ', '_', trim( $gadgetName ) );
 	}
+
 	/**
 	 * @return bool
 	 */

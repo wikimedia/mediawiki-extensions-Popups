@@ -36,8 +36,6 @@ class EventLoggerFactory {
 	private $config;
 
 	/**
-	 * EventLoggerFactory constructor
-	 *
 	 * @param Config $config MediaWiki config
 	 * @param ExtensionRegistry $registry MediaWiki extension registry
 	 */

@@ -36,7 +36,6 @@ class UserPreferencesChangeHandler {
 	private $popupsContext;
 
 	/**
-	 * UserPreferencesChangeHandler constructor.
 	 * @param PopupsContext $context Popups context instance
 	 */
 	public function __construct( $context ) {
