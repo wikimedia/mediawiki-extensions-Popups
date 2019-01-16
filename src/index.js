@@ -32,6 +32,7 @@ const mw = mediaWiki,
 		'.new',
 		'.internal',
 		'.external',
+		'.mw-cite-backlink a',
 		'.oo-ui-buttonedElement-button',
 		'.cancelLink a'
 	];
