@@ -48,9 +48,9 @@ class PopupsContextTestWrapper extends PopupsContext {
 	public function __construct( Config $config, ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration = null,
 		EventLogger $eventLogger = null ) {
-		$gadgetsIntegration = $gadgetsIntegration ? $gadgetsIntegration :
+		$gadgetsIntegration = $gadgetsIntegration ?:
 			new PopupsGadgetsIntegration( $config, $extensionRegistry );
-		$eventLogger = $eventLogger ? $eventLogger : new NullLogger();
+		$eventLogger = $eventLogger ?: new NullLogger();
 
 		parent::__construct( $config, $extensionRegistry, $gadgetsIntegration, $eventLogger );
 	}
