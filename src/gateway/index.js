@@ -28,7 +28,7 @@ const mw = mediaWiki,
  * If the underlying request is successful and contains data about the page,
  * then the resulting promise will resolve. If not, then it will reject.
  *
- * @typedef {Function(string): AbortPromise<PreviewModel>} GetPageSummary
+ * @typedef {Function(mw.Title): AbortPromise<PreviewModel>} GetPageSummary
  */
 
 /**

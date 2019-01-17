@@ -62,8 +62,12 @@ export default function createMediaWikiApiGateway( api, config ) {
 		} );
 	}
 
+	/**
+	 * @param {mw.Title} title
+	 * @returns {AbortPromise<PreviewModel>}
+	 */
 	function getPageSummary( title ) {
-		const xhr = fetch( title );
+		const xhr = fetch( title.getPrefixedDb() );
 		return xhr.then( ( data ) => {
 			const page = extractPageFromResponse( data );
 			const plainTextExtract = formatPlainTextExtract( page );

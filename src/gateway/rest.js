@@ -48,12 +48,17 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 		} );
 	}
 
+	/**
+	 * @param {mw.Title} title
+	 * @returns {AbortPromise<PreviewModel>}
+	 */
 	function getPageSummary( title ) {
-		const xhr = fetch( title );
+		const titleText = title.getPrefixedDb(),
+			xhr = fetch( titleText );
 		return xhr.then( ( page ) => {
 			// Endpoint response may be empty or simply missing a title.
 			if ( !page || !page.title ) {
-				page = $.extend( true, page || {}, { title } );
+				page = $.extend( true, page || {}, { title: titleText } );
 			}
 			// And extract may be omitted if empty string
 			if ( page.extract === undefined ) {

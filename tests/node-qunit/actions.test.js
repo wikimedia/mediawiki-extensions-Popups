@@ -4,7 +4,8 @@ import * as WaitModule from '../../src/wait';
 import actionTypes from '../../src/actionTypes';
 
 const mw = mediaWiki,
-	REFERRER = 'https://en.wikipedia.org/wiki/Kitten';
+	REFERRER = 'https://en.wikipedia.org/wiki/Kitten',
+	TEST_TITLE = createStubTitle( 1, 'Foo' );
 
 function generateToken() {
 	return 'ABC';
@@ -82,7 +83,7 @@ function setupWait( module ) {
  * @return {void}
  */
 function setupEl( module ) {
-	module.title = createStubTitle( 1, 'Foo' );
+	module.title = TEST_TITLE;
 	module.el = $( '<a>' ).eq( 0 );
 }
 
@@ -279,7 +280,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 	this.fetch();
 
 	assert.ok(
-		this.gateway.getPageSummary.calledWith( 'Foo' ),
+		this.gateway.getPageSummary.calledWith( TEST_TITLE ),
 		'The gateway was called with the correct arguments.'
 	);
 
