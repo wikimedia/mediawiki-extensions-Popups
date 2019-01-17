@@ -6,8 +6,8 @@ QUnit.module( 'ext.popups/gateway/reference', {
 		mediaWiki.msg = ( key ) => `<${key}>`;
 
 		this.$references = $( '<ul>' ).append(
-			$( '<li id="cite_note--1">' ).append(
-				$( '<span class="reference-text">' ).text( 'Footnote' )
+			$( '<li>' ).attr( 'id', 'cite_note--1' ).append(
+				$( '<span>' ).addClass( 'reference-text' ).text( 'Footnote' )
 			)
 		).appendTo( document.body );
 	},

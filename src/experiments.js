@@ -47,8 +47,8 @@ export default function createExperiments( mwExperiments ) {
 
 				name,
 				buckets: {
-					'true': trueWeight,
-					'false': 1 - trueWeight
+					true: trueWeight,
+					false: 1 - trueWeight
 				}
 			}, token ) === 'true';
 		}

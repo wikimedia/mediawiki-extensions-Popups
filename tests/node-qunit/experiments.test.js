@@ -24,8 +24,8 @@ QUnit.test( 'it should call mw.experiments#getBucket', function ( assert ) {
 
 				name: 'foo',
 				buckets: {
-					'true': 0.2,
-					'false': 0.8 // 1 - 0.2
+					true: 0.2,
+					false: 0.8 // 1 - 0.2
 				}
 			},
 			'barbaz'

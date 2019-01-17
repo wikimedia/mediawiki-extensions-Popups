@@ -64,7 +64,7 @@ QUnit.test( 'it should restore the title', function ( assert ) {
 } );
 
 QUnit.test( 'it should restore the title when the user dwells on another link immediately', function ( assert ) {
-	const $anotherLink = $( '<a title="Bar">' );
+	const $anotherLink = $( '<a>' ).attr( 'title', 'Bar' );
 
 	this.whenTheLinkIsDwelledUpon();
 

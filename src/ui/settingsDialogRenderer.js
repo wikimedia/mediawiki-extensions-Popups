@@ -39,7 +39,7 @@ export default function createSettingsDialogRenderer() {
 
 			// Setup event bindings
 
-			$dialog.find( '.save' ).click( () => {
+			$dialog.find( '.save' ).on( 'click', () => {
 				// Find the selected value (simple|advanced|off)
 				const selected = getSelectedSetting( $dialog ),
 					// Only simple means enabled, advanced is disabled in favor of
@@ -48,7 +48,7 @@ export default function createSettingsDialogRenderer() {
 
 				boundActions.saveSettings( enabled );
 			} );
-			$dialog.find( '.close, .okay' ).click( boundActions.hideSettings );
+			$dialog.find( '.close, .okay' ).on( 'click', boundActions.hideSettings );
 		}
 
 		return {
@@ -132,6 +132,7 @@ function getSelectedSetting( $el ) {
  * @return {void}
  */
 function toggleHelp( $el, visible ) {
+	// eslint-disable-next-line jquery/no-global-selector
 	const $dialog = $( '#mwe-popups-settings' ),
 		formSelectors = 'main, .save, .close',
 		helpSelectors = '.mwe-popups-settings-help, .okay';

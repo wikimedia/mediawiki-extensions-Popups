@@ -83,7 +83,7 @@ QUnit.test( 'it should call the showSettings bound action creator', function ( a
 	this.whenLinkPreviewsBoots();
 
 	const $link = this.getLink();
-	$link.click();
+	$link.trigger( 'click' );
 
 	assert.ok( this.showSettingsSpy.called, 'Show settings is called.' );
 } );

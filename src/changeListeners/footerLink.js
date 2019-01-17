@@ -29,9 +29,11 @@ function createFooterLink() {
 
 	// From https://en.wikipedia.org/wiki/MediaWiki:Gadget-ReferenceTooltips.js,
 	// which was written by Yair rand <https://en.wikipedia.org/wiki/User:Yair_rand>.
+	// eslint-disable-next-line jquery/no-global-selector
 	let $footer = $( '#footer-places, #f-list' );
 
 	if ( $footer.length === 0 ) {
+		// eslint-disable-next-line jquery/no-global-selector
 		$footer = $( '#footer li' ).parent();
 	}
 
@@ -61,7 +63,7 @@ export default function footerLink( boundActions ) {
 	return ( prevState, state ) => {
 		if ( $footerLink === undefined ) {
 			$footerLink = createFooterLink();
-			$footerLink.click( ( e ) => {
+			$footerLink.on( 'click', ( e ) => {
 				e.preventDefault();
 				boundActions.showSettings();
 			} );
