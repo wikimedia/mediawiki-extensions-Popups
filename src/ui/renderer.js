@@ -137,6 +137,9 @@ export function createPreviewWithType( model ) {
 			return createPagePreview( model );
 		case previewTypes.TYPE_DISAMBIGUATION:
 			return createDisambiguationPreview( model );
+		case previewTypes.TYPE_REFERENCE:
+			// TODO: Added in preparation for T213415
+			return createEmptyPreview( model );
 		default:
 			return createEmptyPreview( model );
 	}

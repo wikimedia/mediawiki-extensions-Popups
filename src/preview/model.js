@@ -14,7 +14,9 @@ const previewTypes = {
 	/** standard preview */
 	TYPE_PAGE: 'page',
 	/** disambiguation preview */
-	TYPE_DISAMBIGUATION: 'disambiguation'
+	TYPE_DISAMBIGUATION: 'disambiguation',
+	/** reference preview **/
+	TYPE_REFERENCE: 'reference'
 };
 
 export { previewTypes };
@@ -30,7 +32,7 @@ export { previewTypes };
  * @property {?Array} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed; this can be used to present default or error states
- * @property {string} type One of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION
+ * @property {string} type One of the previewTypes.TYPE_… constants.
  * @property {?Object|undefined} thumbnail
  * @property {?number|undefined} pageId
  *
@@ -112,7 +114,7 @@ function processExtract( extract ) {
  *
  * @param {string} type
  * @param {string} [processedExtract]
- * @return {string} one of TYPE_GENERIC, TYPE_PAGE, TYPE_DISAMBIGUATION.
+ * @return {string} One of the previewTypes.TYPE_… constants.
  */
 
 function getPreviewType( type, processedExtract ) {
@@ -125,6 +127,7 @@ function getPreviewType( type, processedExtract ) {
 		case previewTypes.TYPE_GENERIC:
 		case previewTypes.TYPE_DISAMBIGUATION:
 		case previewTypes.TYPE_PAGE:
+		case previewTypes.TYPE_REFERENCE:
 			return type;
 		default:
 			/**
