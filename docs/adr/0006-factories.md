@@ -1,6 +1,6 @@
 # 6. Factories
 
-Date: 08/11/2016
+Date: 2016-11-08
 
 ## Status
 

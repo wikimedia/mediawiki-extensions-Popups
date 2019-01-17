@@ -1,6 +1,6 @@
 # 7. Prefer running QUnit tests in node.js
 
-Date: 08/03/2017
+Date: 2017-03-08
 
 ## Status
 

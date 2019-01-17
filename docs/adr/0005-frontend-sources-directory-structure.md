@@ -1,6 +1,6 @@
 # 1. Frontend sources directory structure
 
-Date: 14/02/2017
+Date: 2017-02-14
 
 ## Status
 

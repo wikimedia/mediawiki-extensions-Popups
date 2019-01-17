@@ -1,6 +1,6 @@
 # 9. Utilize browser caching
 
-Date: 24/05/2017
+Date: 2017-05-24
 
 ## Status
 

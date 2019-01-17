@@ -1,6 +1,6 @@
 # 10. Replace Mustache.js with Template Literals
 
-Date: 22/03/2018
+Date: 2018-03-22
 
 ## Status
 
@@ -38,7 +38,7 @@ JSX. We also anticipate that the template literal syntax would transition neatly
 to JSX. We don't know that Extension:Popups will ever want to use a UI library
 and accept these shortcomings may always exist.
 
-*As reported by [mw.loader.inspect()] on 22/03/2018.
+*As reported by [mw.loader.inspect()] on 2018-03-22.
 
 [mustache.js]: https://github.com/janl/mustache.js
 [Babel transpiler]: https://babeljs.io
