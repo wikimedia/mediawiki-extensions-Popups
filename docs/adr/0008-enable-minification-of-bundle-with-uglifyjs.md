@@ -1,6 +1,6 @@
 # 8. Enable minification of bundle with UglifyJS
 
-Date: 12/05/2017
+Date: 2017-05-12
 
 ## Status
 

@@ -1,6 +1,6 @@
 # 4. Use webpack
 
-Date: 02/02/2017
+Date: 2017-02-02
 
 ## Status
 

@@ -1,6 +1,6 @@
 # 3. Keep enabled state only in preview reducer
 
-Date: 14/12/2016
+Date: 2016-12-14
 
 ## Status
 
