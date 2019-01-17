@@ -43,7 +43,7 @@ const mw = mediaWiki,
  * @param {mw.Map} config
  * @return {Gateway}
  */
-export default function createGateway( config ) {
+export default function createPagePreviewGateway( config ) {
 	const gatewayConfig = $.extend( {}, constants, {
 		acceptLanguage: config.get( 'wgPageContentLanguage' )
 	} );

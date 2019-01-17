@@ -1,4 +1,4 @@
-import createGateway from '../../../src/gateway';
+import createPagePreviewGateway from '../../../src/gateway';
 import * as RestModule from '../../../src/gateway/rest';
 import * as MediawikiModule from '../../../src/gateway/mediawiki';
 
@@ -17,7 +17,7 @@ QUnit.module( 'gateway/index.js', {
 QUnit.test( 'it uses mediawiki plain text gateway with wgPopupsGateway == "mwApiPlain"', function ( assert ) {
 	this.config.set( 'wgPopupsGateway', 'mwApiPlain' );
 
-	createGateway( this.config );
+	createPagePreviewGateway( this.config );
 
 	assert.ok( this.createMediaWikiApiGateway.called,
 		'MW plain text gateway called' );
@@ -26,7 +26,7 @@ QUnit.test( 'it uses mediawiki plain text gateway with wgPopupsGateway == "mwApi
 QUnit.test( 'it uses rest plain text gateway with wgPopupsGateway == "restbasePlain"', function ( assert ) {
 	this.config.set( 'wgPopupsGateway', 'restbasePlain' );
 
-	createGateway( this.config );
+	createPagePreviewGateway( this.config );
 
 	assert.ok( this.createRESTBaseGateway.called,
 		'REST plain text gateway called' );
@@ -35,7 +35,7 @@ QUnit.test( 'it uses rest plain text gateway with wgPopupsGateway == "restbasePl
 QUnit.test( 'it uses rest HTML gateway with wgPopupsGateway == "restbaseHTML"', function ( assert ) {
 	this.config.set( 'wgPopupsGateway', 'restbaseHTML' );
 
-	createGateway( this.config );
+	createPagePreviewGateway( this.config );
 
 	assert.ok( this.createRESTBaseGateway.called, 'REST HTML gateway called' );
 } );

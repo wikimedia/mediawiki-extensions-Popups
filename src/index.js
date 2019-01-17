@@ -5,7 +5,7 @@
 import * as Redux from 'redux';
 import * as ReduxThunk from 'redux-thunk';
 
-import createGateway from './gateway';
+import createPagePreviewGateway from './gateway';
 import createUserSettings from './userSettings';
 import createPreviewBehavior from './previewBehavior';
 import createSettingsDialogRenderer from './ui/settingsDialogRenderer';
@@ -164,7 +164,7 @@ function registerChangeListeners(
 	const
 		// So-called "services".
 		generateToken = mw.user.generateRandomSessionId,
-		gateway = createGateway( mw.config ),
+		pagePreviewGateway = createPagePreviewGateway( mw.config ),
 		userSettings = createUserSettings( mw.storage ),
 		settingsDialog = createSettingsDialogRenderer(),
 		experiments = createExperiments( mw.experiments ),
@@ -233,7 +233,7 @@ function registerChangeListeners(
 
 			if ( mwTitle ) {
 				boundActions.linkDwell(
-					mwTitle, this, event, gateway, generateToken
+					mwTitle, this, event, pagePreviewGateway, generateToken
 				);
 			}
 		} )
