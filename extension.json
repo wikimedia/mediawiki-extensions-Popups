@@ -72,6 +72,8 @@
 		"PopupsGateway": "mwApiPlain",
 		"@PopupsRestGatewayEndpoint": "Specify a REST endpoint where summaries should be sourced from. Endpoint must meet the spec at https://www.mediawiki.org/wiki/Specs/Summary/1.2.0",
 		"PopupsRestGatewayEndpoint": "/api/rest_v1/page/summary/",
+		"@PopupsReferencePreviews": "Temporary feature flag to disable reference previews during developement.",
+		"PopupsReferencePreviews": false,
 		"@PopupsEventLogging": "Whether we should log events. Note if this is enabled without using that variable events will be logged for all users without any sampling! Be careful!",
 		"PopupsEventLogging": false,
 		"@PopupsStatsvSamplingRate": "Sampling rate for logging performance data to statsv.",
