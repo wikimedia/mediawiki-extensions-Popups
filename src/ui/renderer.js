@@ -164,7 +164,7 @@ export function getExtractWidth( thumbnail ) {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function createPagePreview( model ) {
+function createPagePreview( model ) {
 	const thumbnail = createThumbnail( model.thumbnail ),
 		hasThumbnail = thumbnail !== null,
 		extract = model.extract;
@@ -201,7 +201,7 @@ export function createPagePreview( model ) {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function createEmptyPreview( model ) {
+function createEmptyPreview( model ) {
 	const showTitle = false,
 		extractMsg = mw.msg( 'popups-preview-no-preview' ),
 		linkMsg = mw.msg( 'popups-preview-footer-read' );
@@ -223,7 +223,7 @@ export function createEmptyPreview( model ) {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function createDisambiguationPreview( model ) {
+function createDisambiguationPreview( model ) {
 	const showTitle = true,
 		extractMsg = mw.msg( 'popups-preview-disambiguation' ),
 		linkMsg = mw.msg( 'popups-preview-disambiguation-link' );
