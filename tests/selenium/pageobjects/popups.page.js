@@ -4,6 +4,8 @@ const
 	Page = require( 'wdio-mediawiki/Page' ),
 	TEST_PAGE_TITLE = 'Popups test page',
 	POPUPS_SELECTOR = '.mwe-popups',
+	PAGE_POPUPS_SELECTOR = '.mwe-popups-type-page',
+	REFERENCE_POPUPS_SELECTOR = '.mwe-popups-type-reference',
 	POPUPS_MODULE_NAME = 'ext.popups.main';
 
 class PopupsPage extends Page {
@@ -41,26 +43,57 @@ class PopupsPage extends Page {
 		this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Popups did not load' );
 	}
 
+	hasReferencePopupsEnabled() {
+		this.open();
+		return browser.execute( function () {
+			return mediaWiki.config.get( 'wgPopupsReferencePreviews' );
+		} ).value;
+	}
+
 	abandonLink() {
 		browser.moveToObject( '#content h1' );
 	}
 
-	dwellLink() {
+	dwellLink( selector ) {
 		const PAUSE = 1000;
 		this.ready();
 		browser.pause( PAUSE );
 		this.abandonLink();
 		browser.pause( PAUSE );
-		browser.moveToObject( '#content ul a' );
+		browser.moveToObject( selector );
 		browser.waitForExist( POPUPS_SELECTOR );
 	}
 
-	doNotSeePreview() {
-		return browser.waitUntil( () => !browser.isVisible( POPUPS_SELECTOR ) );
+	dwellPageLink() {
+		this.dwellLink( '#content ul a' );
 	}
 
-	seePreview() {
-		return browser.isVisible( POPUPS_SELECTOR );
+	dwellReferenceLink() {
+		this.dwellLink( '.reference a' );
+	}
+
+	doNotSeePreview( selector ) {
+		return browser.waitUntil( () => !browser.isVisible( selector ) );
+	}
+
+	doNotSeePagePreview() {
+		return this.doNotSeePreview( PAGE_POPUPS_SELECTOR );
+	}
+
+	doNotSeeReferencePreview() {
+		return this.doNotSeePreview( REFERENCE_POPUPS_SELECTOR );
+	}
+
+	seePreview( selector ) {
+		return browser.isVisible( selector );
+	}
+
+	seePagePreview() {
+		return this.seePreview( PAGE_POPUPS_SELECTOR );
+	}
+
+	seeReferencePreview() {
+		return this.seePreview( REFERENCE_POPUPS_SELECTOR );
 	}
 
 	open() {
