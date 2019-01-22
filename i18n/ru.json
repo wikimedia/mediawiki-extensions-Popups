@@ -36,7 +36,7 @@
 	"popups-preview-disambiguation": "Это название относится более чем к одной странице",
 	"popups-preview-disambiguation-link": "Просмотр схожих страниц",
 	"prefs-reading": "Настройки чтения",
-	"popups-prefs-optin-title": "Предпросмотр страниц\n\nПоказывать быстрый предпросмотр тем при чтении страницы",
+	"popups-prefs-optin-title": "Предпросмотр страниц (показывать быстрый предпросмотр тем при чтении страницы):",
 	"popups-prefs-optin-enabled-label": "Включить",
 	"popups-prefs-optin-disabled-label": "Отключить",
 	"popups-prefs-disable-nav-gadgets-info": "Вы должны [[$1 | отключить гаджет «Навигационные окошки»]] во вкладке «Гаджеты» для активации предпросмотра страниц",
