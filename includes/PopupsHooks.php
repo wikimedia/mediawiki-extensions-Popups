@@ -112,6 +112,7 @@ class PopupsHooks {
 		$vars['wgPopupsGateway'] = $conf->get( 'PopupsGateway' );
 		$vars['wgPopupsEventLogging'] = $conf->get( 'PopupsEventLogging' );
 		$vars['wgPopupsRestGatewayEndpoint'] = $conf->get( 'PopupsRestGatewayEndpoint' );
+		$vars['wgPopupsReferencePreviews'] = $conf->get( 'PopupsReferencePreviews' );
 		$vars['wgPopupsStatsvSamplingRate'] = $conf->get( 'PopupsStatsvSamplingRate' );
 	}
 

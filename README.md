@@ -80,6 +80,7 @@ See the .storybook/README.md for details.
 
 ## Terminology
 
+* Footnote - What the Cite extension shows at the bottom of the page.
 * Hovercard - Deprecated term for popup.
 * Link preview - A similar user feature in the Android native app.
 * Navpop / nav pop - A popup-like UI from the NavigationPopups gadget.
@@ -87,3 +88,6 @@ See the .storybook/README.md for details.
 	being hovered over by a cursor.
 * Page preview - A specific type of popup that shows a page summary.
 * Preview - A synonym for popup.
+* Reference - A specific type of popup that previews the Cite extension's
+  footnotes. Since footnotes are typically used for references, and the tag's
+  name is `<ref>`, the terms are used synonymously.
