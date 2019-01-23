@@ -57,9 +57,10 @@ export function createStubExperiments( bucket ) {
  *
  * @param {!number} namespace
  * @param {!string} prefixedDb, e.g. Foo, or File:Bar.jpg
+ * @param {string|null} [fragment]
  * @return {!Object}
  */
-export function createStubTitle( namespace, prefixedDb ) {
+export function createStubTitle( namespace, prefixedDb, fragment = null ) {
 	return {
 		namespace,
 		getPrefixedDb() {
@@ -67,6 +68,9 @@ export function createStubTitle( namespace, prefixedDb ) {
 		},
 		getUrl() {
 			return `/wiki/${ prefixedDb }`;
+		},
+		getFragment() {
+			return fragment;
 		}
 	};
 }

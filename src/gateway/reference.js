@@ -19,7 +19,7 @@ export default function createReferenceGateway() {
 		const id = title.getFragment();
 
 		return $.Deferred().resolve( {
-			title: mw.message( 'popups-refpreview-footnote' ).text(),
+			title: mw.msg( 'popups-refpreview-footnote' ),
 			url: `#${id}`,
 			// TODO: Can probably be removed
 			// languageCode: 'en',
