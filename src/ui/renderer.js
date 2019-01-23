@@ -7,6 +7,7 @@ import pointerMaskSVG from './pointer-mask.svg';
 import { SIZES, createThumbnail } from './thumbnail';
 import { previewTypes } from '../preview/model';
 import { renderPreview } from './templates/preview/preview';
+import { renderReferencePreview } from './templates/referencePreview/referencePreview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';
 
 const mw = mediaWiki,
@@ -138,8 +139,7 @@ export function createPreviewWithType( model ) {
 		case previewTypes.TYPE_DISAMBIGUATION:
 			return createDisambiguationPreview( model );
 		case previewTypes.TYPE_REFERENCE:
-			// TODO: Added in preparation for T213415
-			return createEmptyPreview( model );
+			return createReferencePreview( model );
 		default:
 			return createEmptyPreview( model );
 	}
@@ -230,6 +230,22 @@ function createDisambiguationPreview( model ) {
 
 	const $el = $(
 		$.parseHTML( renderPreview( model, showTitle, extractMsg, linkMsg ) )
+	);
+
+	return {
+		el: $el,
+		hasThumbnail: false,
+		isTall: false
+	};
+}
+
+/**
+ * @param {ext.popups.PreviewModel} model
+ * @return {ext.popups.Preview}
+ */
+function createReferencePreview( model ) {
+	const $el = $(
+		$.parseHTML( renderReferencePreview( model ) )
 	);
 
 	return {

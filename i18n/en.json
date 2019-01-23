@@ -24,5 +24,7 @@
 	"popups-prefs-optin-enabled-label": "Enable",
 	"popups-prefs-optin-disabled-label": "Disable",
 	"popups-prefs-disable-nav-gadgets-info": "You have to [[$1 | disable Navigation Popups Gadget]] from Gadgets tab to enable Page Previews",
-	"popups-prefs-conflicting-gadgets-info": "Certain gadgets and other customizations may affect the performance of this feature. If you experience problems please review your gadgets and user scripts, including global ones."
+	"popups-prefs-conflicting-gadgets-info": "Certain gadgets and other customizations may affect the performance of this feature. If you experience problems please review your gadgets and user scripts, including global ones.",
+	"popups-refpreview-footnote": "Footnote",
+	"popups-refpreview-jump-to-reference": "Jump to reference"
 }
