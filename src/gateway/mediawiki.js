@@ -66,7 +66,7 @@ export default function createMediaWikiApiGateway( api, config ) {
 	 * @param {mw.Title} title
 	 * @returns {AbortPromise<PreviewModel>}
 	 */
-	function getPageSummary( title ) {
+	function fetchPreviewForTitle( title ) {
 		const xhr = fetch( title.getPrefixedDb() );
 		return xhr.then( ( data ) => {
 			const page = extractPageFromResponse( data );
@@ -83,7 +83,7 @@ export default function createMediaWikiApiGateway( api, config ) {
 		fetch,
 		extractPageFromResponse,
 		convertPageToModel,
-		getPageSummary,
+		fetchPreviewForTitle,
 		formatPlainTextExtract
 	};
 }

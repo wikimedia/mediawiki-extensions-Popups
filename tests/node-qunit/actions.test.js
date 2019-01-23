@@ -258,7 +258,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 
 		this.gatewayDeferred = $.Deferred();
 		this.gateway = {
-			getPageSummary: this.sandbox.stub().returns(
+			fetchPreviewForTitle: this.sandbox.stub().returns(
 				this.gatewayDeferred.promise( { abort() {} } )
 			)
 		};
@@ -280,7 +280,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 	this.fetch();
 
 	assert.ok(
-		this.gateway.getPageSummary.calledWith( TEST_TITLE ),
+		this.gateway.fetchPreviewForTitle.calledWith( TEST_TITLE ),
 		'The gateway was called with the correct arguments.'
 	);
 

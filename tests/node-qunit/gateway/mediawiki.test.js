@@ -167,7 +167,7 @@ QUnit.test( 'MediaWiki API gateway handles API failure', function ( assert ) {
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	return gateway.getPageSummary( createStubTitle( 1, 'Test Title' ) ).catch( () => {
+	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) ).catch( () => {
 		assert.ok( true, 'The gateway threw an error.' );
 	} );
 } );
@@ -180,7 +180,7 @@ QUnit.test( 'MediaWiki API gateway returns the correct data', function ( assert 
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	return gateway.getPageSummary( createStubTitle( 1, 'Test Title' ) ).then( ( result ) => {
+	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) ).then( ( result ) => {
 		assert.deepEqual(
 			result,
 			MEDIAWIKI_API_RESPONSE_PREVIEW_MODEL,
@@ -222,7 +222,7 @@ QUnit.test( 'MediaWiki API gateway handles missing pages', function ( assert ) {
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	return gateway.getPageSummary( createStubTitle( 1, 'Test Title' ) ).then( ( result ) => {
+	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) ).then( ( result ) => {
 		assert.deepEqual(
 			result,
 			model,
@@ -241,7 +241,7 @@ QUnit.test( 'MediaWiki API gateway is abortable', function ( assert ) {
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );
 
-	const xhr = gateway.getPageSummary( createStubTitle( 1, 'Test Title' ) );
+	const xhr = gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) );
 
 	const chain = xhr.then( () => {
 		assert.ok( false, 'It never calls a thenable after rejection' );

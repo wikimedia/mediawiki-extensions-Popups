@@ -10,7 +10,7 @@ const mw = mediaWiki,
  * The interface implemented by all preview gateways.
  * @typedef Gateway
  * @prop {Function(string): JQuery.jqXHR} fetch
- * @prop {GetPageSummary} getPageSummary
+ * @prop {FetchPreviewForTitle} fetchPreviewForTitle
  * @prop {ConvertPageToModel} convertPageToModel
  */
 
@@ -23,12 +23,12 @@ const mw = mediaWiki,
  */
 
 /**
- * Fetches a preview for a page.
+ * Fetches a preview for a page or reference.
  *
- * If the underlying request is successful and contains data about the page,
+ * If the underlying request is successful and contains data for the requested title,
  * then the resulting promise will resolve. If not, then it will reject.
  *
- * @typedef {Function(mw.Title): AbortPromise<PreviewModel>} GetPageSummary
+ * @typedef {Function(mw.Title): AbortPromise<PreviewModel>} FetchPreviewForTitle
  */
 
 /**
