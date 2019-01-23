@@ -9,7 +9,7 @@ import registerChangeListener from '../../src/changeListener';
 const mw = mediaWiki,
 	$ = jQuery,
 	/**
-	* Whether Gateway#getPageSummary is resolved or rejected.
+	* Whether Gateway#fetchPreviewForTitle is resolved or rejected.
 	* @enum {number}
 	*/
 	FETCH_RESOLUTION = { RESOLVE: 0, REJECT: 1 };
@@ -103,7 +103,7 @@ QUnit.module( 'ext.popups preview @integration', {
 		) => {
 			this.resetWait();
 			return this.actions.linkDwell( title, el, ev, {
-				getPageSummary() {
+				fetchPreviewForTitle() {
 					const method = resolution === FETCH_RESOLUTION.RESOLVE ?
 						'resolve' : 'reject';
 					const abort = {
@@ -170,7 +170,7 @@ QUnit.test( 'it boots in INACTIVE state', function ( assert ) {
 
 QUnit.test( 'in INACTIVE state, a link dwell switches it to ACTIVE', function ( assert ) {
 	const gateway = {
-		getPageSummary() {
+		fetchPreviewForTitle() {
 			$.Deferred().promise();
 		}
 	};

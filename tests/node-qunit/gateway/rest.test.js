@@ -358,7 +358,7 @@ QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
 			.returns( $.Deferred().reject( { status: 500 } ).promise() ),
 		gateway = createRESTBaseGateway( api, {} );
 
-	return gateway.getPageSummary( createStubTitle( 1, 'Test Title' ) ).catch( () => {
+	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) ).catch( () => {
 		assert.ok( true, 'The gateway threw an error.' );
 	} );
 } );
@@ -368,7 +368,7 @@ QUnit.test( 'RESTBase gateway handles 404 as a failure', function ( assert ) {
 			.returns( $.Deferred().reject( { status: 404 } ).promise() ),
 		gateway = createRESTBaseGateway( api, {} );
 
-	return gateway.getPageSummary( createStubTitle( 1, 'Test Title' ) ).catch( () => {
+	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) ).catch( () => {
 		assert.ok( true, 'The gateway threw an error.' );
 	} );
 } );
@@ -380,7 +380,7 @@ QUnit.test( 'RESTBase gateway returns the correct data ', function ( assert ) {
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( createStubTitle( 1, 'Test Title' ) ).then( ( result ) => {
+	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) ).then( ( result ) => {
 		assert.deepEqual(
 			result,
 			RESTBASE_RESPONSE_PREVIEW_MODEL,
@@ -407,7 +407,7 @@ QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( createStubTitle( 1, 'Test Title with missing extract' ) )
+	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title with missing extract' ) )
 		.then( ( result ) => {
 			assert.strictEqual( result.title, 'Test Title with missing extract', 'Title' );
 			assert.strictEqual( result.extract, '!!', 'Extract' );
@@ -420,7 +420,7 @@ QUnit.test( 'RESTBase gateway handles no content success responses', function ( 
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.getPageSummary( createStubTitle( 1, 'Test Title with empty response' ) )
+	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title with empty response' ) )
 		.then( ( result ) => {
 			assert.strictEqual( result.title, 'Test Title with empty response', 'Title' );
 			assert.strictEqual( result.extract, '!!', 'Extract' );
@@ -440,7 +440,7 @@ QUnit.test( 'RESTBase gateway is abortable', function ( assert ) {
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	const xhr = gateway.getPageSummary( createStubTitle( 1, 'Test Title' ) );
+	const xhr = gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) );
 
 	const chain = xhr.then( () => {
 		assert.ok( false, 'It never calls a thenable after rejection' );

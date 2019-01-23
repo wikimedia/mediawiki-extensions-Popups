@@ -15,7 +15,7 @@ export default function createReferenceGateway() {
 	 * @param {mw.Title} title
 	 * @returns {AbortPromise<PreviewModel>}
 	 */
-	function getPageSummary( title ) {
+	function fetchPreviewForTitle( title ) {
 		const id = title.getFragment();
 
 		return $.Deferred().resolve( {
@@ -33,6 +33,6 @@ export default function createReferenceGateway() {
 	}
 
 	return {
-		getPageSummary
+		fetchPreviewForTitle
 	};
 }

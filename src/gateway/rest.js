@@ -52,7 +52,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	 * @param {mw.Title} title
 	 * @returns {AbortPromise<PreviewModel>}
 	 */
-	function getPageSummary( title ) {
+	function fetchPreviewForTitle( title ) {
 		const titleText = title.getPrefixedDb(),
 			xhr = fetch( titleText );
 		return xhr.then( ( page ) => {
@@ -82,7 +82,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	return {
 		fetch,
 		convertPageToModel,
-		getPageSummary
+		fetchPreviewForTitle
 	};
 }
 
