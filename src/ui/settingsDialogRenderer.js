@@ -1,8 +1,8 @@
-import { createSettingsDialog } from './settingsDialog';
-
 /**
  * @module settingsDialogRenderer
  */
+
+import { createSettingsDialog } from './settingsDialog';
 
 const $ = jQuery;
 

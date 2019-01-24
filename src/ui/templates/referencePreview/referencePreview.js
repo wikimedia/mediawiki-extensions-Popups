@@ -2,10 +2,10 @@
  * @module referencePreview
  */
 
-const mw = mediaWiki;
-
 import { renderPopup } from '../popup/popup';
 import { escapeHTML } from '../templateUtil';
+
+const mw = mediaWiki;
 
 /**
  * @param {ext.popups.PreviewModel} model

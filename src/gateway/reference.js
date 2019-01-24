@@ -2,10 +2,10 @@
  * @module gateway/reference
  */
 
+import { previewTypes } from '../preview/model';
+
 const mw = mediaWiki,
 	$ = jQuery;
-
-import { previewTypes } from '../preview/model';
 
 /**
  * @return {Gateway}
