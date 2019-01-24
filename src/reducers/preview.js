@@ -4,10 +4,10 @@ import nextState from './nextState';
 /**
  * Reducer for actions that modify the state of the preview model
  *
- * @param {?Object} state before action
- * @param {!Object} action Redux action that modified state.
+ * @param {Object|undefined} state before action
+ * @param {Object} action Redux action that modified state.
  *  Must have `type` property.
- * @return {!Object} state after action
+ * @return {Object} state after action
  */
 export default function preview( state, action ) {
 	if ( state === undefined ) {
