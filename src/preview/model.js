@@ -29,12 +29,12 @@ export { previewTypes };
  * @property {string} url The canonical URL of the page being previewed
  * @property {string} languageCode
  * @property {string} languageDirection Either "ltr" or "rtl"
- * @property {?Array} extract `undefined` if the extract isn't
+ * @property {Array|undefined} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed; this can be used to present default or error states
  * @property {string} type One of the previewTypes.TYPE_… constants.
- * @property {?Object|undefined} thumbnail
- * @property {?number|undefined} pageId
+ * @property {Object|undefined} thumbnail
+ * @property {number|undefined} pageId
  *
  * @global
  */
@@ -46,10 +46,10 @@ export { previewTypes };
  * @param {string} url The canonical URL of the page being previewed
  * @param {string} languageCode
  * @param {string} languageDirection Either "ltr" or "rtl"
- * @param {?Array} extract
+ * @param {Array|undefined|null} extract
  * @param {string} type
- * @param {?Object} [thumbnail]
- * @param {?number} [pageId]
+ * @param {Object} [thumbnail]
+ * @param {number} [pageId]
  * @return {PreviewModel}
  */
 export function createModel(
@@ -80,9 +80,9 @@ export function createModel(
 /**
  * Creates an empty preview model.
  *
- * @param {!string} title
- * @param {!string} url
- * @return {!PreviewModel}
+ * @param {string} title
+ * @param {string} url
+ * @return {PreviewModel}
  */
 export function createNullModel( title, url ) {
 	return createModel( title, url, '', '', [], '' );

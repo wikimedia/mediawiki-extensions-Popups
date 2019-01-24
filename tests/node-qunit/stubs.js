@@ -55,10 +55,10 @@ export function createStubExperiments( bucket ) {
  * Creates a **minimal** stub that can be used in place of an instance of
  * `mw.Title`.
  *
- * @param {!number} namespace
- * @param {!string} prefixedDb, e.g. Foo, or File:Bar.jpg
+ * @param {number} namespace
+ * @param {string} prefixedDb, e.g. Foo, or File:Bar.jpg
  * @param {string|null} [fragment]
- * @return {!Object}
+ * @return {Object}
  */
 export function createStubTitle( namespace, prefixedDb, fragment = null ) {
 	return {
