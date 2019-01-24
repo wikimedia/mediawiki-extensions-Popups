@@ -14,16 +14,13 @@ const mw = mediaWiki;
 export function renderReferencePreview(
 	model
 ) {
-	// TODO: Possibly remove this unused boolean flag.
-	const showTitle = true,
-		// TODO: Implement a fallback to the default localized title "Footnote".
-		title = escapeHTML( model.title ),
+	const title = escapeHTML( model.title || mw.msg( 'popups-refpreview-footnote' ) ),
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
 
 	return renderPopup( model.type,
 		`
-			${ showTitle ? `<strong class='mwe-popups-title'>${ title }</strong>` : '' }
+			<strong class='mwe-popups-title'>${ title }</strong>
 			<div class='mwe-popups-extract'>
 				<span class='mwe-popups-message'>${ model.extract }</span>
 			</div>

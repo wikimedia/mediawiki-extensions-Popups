@@ -17,7 +17,6 @@ QUnit.test( 'Reference preview gateway returns the correct data', function ( ass
 		assert.propEqual(
 			result,
 			{
-				title: '<popups-refpreview-footnote>',
 				url: '#cite_note--1',
 				// FIXME: The test should be set up in a way so this contains something.
 				extract: undefined,

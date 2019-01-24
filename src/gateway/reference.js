@@ -4,8 +4,7 @@
 
 import { previewTypes } from '../preview/model';
 
-const mw = mediaWiki,
-	$ = jQuery;
+const $ = jQuery;
 
 /**
  * @return {Gateway}
@@ -19,7 +18,8 @@ export default function createReferenceGateway() {
 		const id = title.getFragment();
 
 		return $.Deferred().resolve( {
-			title: mw.msg( 'popups-refpreview-footnote' ),
+			// TODO: Provide different titles depending on the type of reference (e.g. "Book")
+			// title: '',
 			url: `#${ id }`,
 			// TODO: Can probably be removed
 			// languageCode: 'en',

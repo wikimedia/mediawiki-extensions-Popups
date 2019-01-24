@@ -7,7 +7,8 @@ const $ = jQuery,
 	MSG_NO_PREVIEW = 'There was an issue displaying this preview',
 	MSG_GO_TO_PAGE = 'Go to this page',
 	MSG_DISAMBIGUATION = 'This title relates to more than one page',
-	MSG_DISAMBIGUATION_LINK = 'View similar pages';
+	MSG_DISAMBIGUATION_LINK = 'View similar pages',
+	MSG_REFERENCE_TITLE = 'Footnote';
 
 /**
  * A utility function that creates a bare bones preview
@@ -54,6 +55,8 @@ QUnit.module( 'ext.popups#renderer', {
 					return MSG_DISAMBIGUATION;
 				case 'popups-preview-disambiguation-link':
 					return MSG_DISAMBIGUATION_LINK;
+				case 'popups-refpreview-footnote':
+					return MSG_REFERENCE_TITLE;
 			}
 		};
 
@@ -296,6 +299,20 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
 		'#custom_id <"\'>'
+	);
+} );
+
+QUnit.test( 'createReferencePreview default title', ( assert ) => {
+	const model = {
+			url: '',
+			extract: '',
+			type: previewTypes.TYPE_REFERENCE
+		},
+		preview = renderer.createPreviewWithType( model );
+
+	assert.strictEqual(
+		preview.el.find( '.mwe-popups-title' ).text().trim(),
+		MSG_REFERENCE_TITLE
 	);
 } );
 
