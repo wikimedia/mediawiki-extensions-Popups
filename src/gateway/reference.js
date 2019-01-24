@@ -15,7 +15,8 @@ export default function createReferenceGateway() {
 	 * @returns {AbortPromise<PreviewModel>}
 	 */
 	function fetchPreviewForTitle( title ) {
-		const id = title.getFragment();
+		// Need to encode the fragment again as mw.Title returns it as decoded text
+		const id = title.getFragment().replace( / /g, '_' );
 
 		return $.Deferred().resolve( {
 			// TODO: Provide different titles depending on the type of reference (e.g. "Book")

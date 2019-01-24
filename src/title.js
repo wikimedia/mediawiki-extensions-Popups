@@ -13,7 +13,7 @@ const mw = mediaWiki;
  */
 export function getTitle( href, config ) {
 	const titleRegex = new RegExp( mw.RegExp.escape( config.get( 'wgArticlePath' ) )
-		.replace( '\\$1', '(.+)' ) );
+		.replace( '\\$1', '([^?#]+)' ) );
 
 	// Skip every URI that mw.Uri cannot parse
 	let linkHref;
@@ -29,24 +29,30 @@ export function getTitle( href, config ) {
 	}
 
 	const queryLength = Object.keys( linkHref.query ).length;
+	let title;
 
 	// No query params (pretty URL)
 	if ( !queryLength ) {
 		const matches = titleRegex.exec( linkHref.path );
-		return matches ? decodeURIComponent( matches[ 1 ] ) : undefined;
+		// We can't be sure decodeURIComponent() is able to parse every possible match
+		try {
+			title = matches && decodeURIComponent( matches[ 1 ] );
+		} catch ( e ) {
+			// Will return undefined below
+		}
 	} else if ( queryLength === 1 && linkHref.query.hasOwnProperty( 'title' ) ) {
 		// URL is not pretty, but only has a `title` parameter
-		return linkHref.query.title;
+		title = linkHref.query.title;
 	}
 
-	return undefined;
+	return title ? `${title}${linkHref.fragment ? `#${linkHref.fragment}` : ''}` : undefined;
 }
 
 /**
  * Given a page title it will return the mediawiki.Title if it is an eligible
  * link for showing page previews, null otherwise
  *
- * @param {string} title page title to check if it should show preview
+ * @param {string|undefined} title page title to check if it should show preview
  * @param {number[]} contentNamespaces contentNamespaces as specified in
  * wgContentNamespaces
  * @return {mw.Title|null}

@@ -70,6 +70,46 @@ QUnit.test( 'it should return the title of a pretty url properly decoded', funct
 	);
 } );
 
+QUnit.test( 'it should accept urls with fragments', function ( assert ) {
+	let href = '/wiki/Example_1#footnote_1';
+	mediaWiki.Uri.withArgs( href ).returns( {
+		host: this.location.hostname,
+		path: href,
+		query: {},
+		fragment: 'footnote_1'
+	} );
+
+	assert.strictEqual(
+		getTitle( href, this.config ),
+		'Example_1#footnote_1',
+		'It accepts pretty urls with fragments.'
+	);
+
+	href = '/w/index.php?title=Example_2#footnote_2';
+	mediaWiki.Uri.withArgs( href ).returns( {
+		host: this.location.hostname,
+		query: { title: 'Example_2' },
+		fragment: 'footnote_2'
+	} );
+
+	assert.strictEqual(
+		getTitle( href, this.config ),
+		'Example_2#footnote_2',
+		'It accepts title parameter urls with fragments.'
+	);
+} );
+
+QUnit.test( 'it should skip pretty urls with invalid % encoded characters', function ( assert ) {
+	const href = '/wiki/100%';
+	mediaWiki.Uri.withArgs( href ).returns( {
+		host: this.location.hostname,
+		path: href,
+		query: {}
+	} );
+
+	assert.strictEqual( getTitle( href, this.config ), undefined );
+} );
+
 QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) {
 	const href = 'javascript:void(0);'; // eslint-disable-line no-script-url
 	mediaWiki.Uri.withArgs( href ).throws(
