@@ -63,7 +63,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @param array $config
 	 * @param bool $expected
 	 */
-	public function testShowPreviewsPreferencesPage( $config, $expected ) {
+	public function testShowPreviewsPreferencesPage( array $config, $expected ) {
 		$this->setMwGlobals( $config );
 		$context = $this->getContext();
 		$this->assertEquals( $expected,
@@ -71,9 +71,6 @@ class PopupsContextTest extends MediaWikiTestCase {
 			'The previews opt-in is ' . ( $expected ? 'shown.' : 'hidden.' ) );
 	}
 
-	/**
-	 * @return array
-	 */
 	public function provideConfigForShowPreviewsInOptIn() {
 		return [
 			[
@@ -106,9 +103,6 @@ class PopupsContextTest extends MediaWikiTestCase {
 			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
 	}
 
-	/**
-	 * @return array/
-	 */
 	public function provideTestDataForShouldSendModuleToUser() {
 		return [
 			[
@@ -171,9 +165,6 @@ class PopupsContextTest extends MediaWikiTestCase {
 			'Dependencies are ' . ( $expected ? '' : 'not ' ) . 'met.' );
 	}
 
-	/**
-	 * @return array
-	 */
 	public function provideTestDataForTestAreDependenciesMet() {
 		return [
 			// Dependencies are met
@@ -210,11 +201,11 @@ class PopupsContextTest extends MediaWikiTestCase {
 	/**
 	 * @covers ::isTitleBlacklisted
 	 * @dataProvider provideTestIsTitleBLacklisted
-	 * @param array $blacklist
+	 * @param string[] $blacklist
 	 * @param Title $title
 	 * @param bool $expected
 	 */
-	public function testIsTitleBlacklisted( $blacklist, Title $title, $expected ) {
+	public function testIsTitleBlacklisted( array $blacklist, Title $title, $expected ) {
 		$this->setMwGlobals( [ "wgPopupsPageBlacklist" => $blacklist ] );
 		$context = $this->getContext();
 		$this->assertEquals( $expected,
@@ -222,9 +213,6 @@ class PopupsContextTest extends MediaWikiTestCase {
 			'The title is' . ( $expected ? ' ' : ' not ' ) . 'blacklisted.' );
 	}
 
-	/**
-	 * @return array
-	 */
 	public function provideTestIsTitleBlacklisted() {
 		$blacklist = [ 'Special:Userlogin', 'Special:CreateAccount', 'User:A' ];
 		return [

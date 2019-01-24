@@ -81,7 +81,8 @@ class UserPreferencesChangeHandler {
 		HTMLForm $form,
 		User $user,
 		&$result,
-		$oldUserOptions ) {
+		$oldUserOptions
+	) {
 		self::newFromGlobalState()->doPreferencesFormPreSave( $user, $oldUserOptions );
 	}
 }

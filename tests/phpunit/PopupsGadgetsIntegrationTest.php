@@ -211,9 +211,6 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 			self::GADGET_ENABLED );
 	}
 
-	/**
-	 * @return array
-	 */
 	public function provideGadgetNamesWithSanitizedVersion() {
 		return [
 			[ ' Popups ', 'Popups' ],

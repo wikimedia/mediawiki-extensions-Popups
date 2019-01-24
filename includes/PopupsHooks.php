@@ -37,7 +37,7 @@ class PopupsHooks {
 	 * Add Page Previews options to user Preferences page
 	 *
 	 * @param User $user User whose preferences are being modified
-	 * @param array &$prefs Preferences description array, to be fed to a HTMLForm object
+	 * @param array[] &$prefs Preferences description array, to be fed to a HTMLForm object
 	 */
 	public static function onGetPreferences( User $user, array &$prefs ) {
 		/** @var PopupsContext $context */
