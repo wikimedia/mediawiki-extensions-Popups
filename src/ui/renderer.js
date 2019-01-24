@@ -248,6 +248,10 @@ function createReferencePreview( model ) {
 		$.parseHTML( renderReferencePreview( model ) )
 	);
 
+	$el.find( '.mwe-popups-extract a[href]' ).each( ( i, a ) => {
+		a.target = '_blank';
+	} );
+
 	return {
 		el: $el,
 		hasThumbnail: false,

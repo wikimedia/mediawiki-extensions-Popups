@@ -290,8 +290,7 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	);
 	assert.strictEqual(
 		preview.el.find( 'a[target="_blank"]' ).length,
-		// TODO: T213908
-		0,
+		1,
 		'links in (and only in) the content open in new tabs'
 	);
 	assert.strictEqual(
