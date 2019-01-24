@@ -172,7 +172,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @return array/
+	 * @return array
 	 */
 	public function provideTestDataForTestAreDependenciesMet() {
 		return [
