@@ -100,7 +100,8 @@
 						"ltr": "resources/ext.popups.images/multiple-articles-ltr.svg",
 						"rtl": "resources/ext.popups.images/multiple-articles-rtl.svg"
 					}
-				}
+				},
+				"preview-reference": "resources/ext.popups.images/reference.svg"
 			}
 		},
 		"ext.popups": {

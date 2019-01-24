@@ -20,7 +20,10 @@ export function renderReferencePreview(
 
 	return renderPopup( model.type,
 		`
-			<strong class='mwe-popups-title'>${ title }</strong>
+			<strong class='mwe-popups-title'>
+				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-reference'></span>
+				${ title }
+			</strong>
 			<div class='mwe-popups-extract'>
 				<span class='mwe-popups-message'>${ model.extract }</span>
 			</div>
