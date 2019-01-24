@@ -272,7 +272,7 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	const model = {
 			title: 'Custom <title>',
 			url: '#custom_id',
-			extract: 'Custom <i>extract</i>',
+			extract: 'Custom <i>extract</i> with a <a href="//wikipedia.de">link</a>',
 			type: previewTypes.TYPE_REFERENCE
 		},
 		preview = renderer.createPreviewWithType( model );
@@ -286,7 +286,13 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).text().trim(),
-		'Custom extract'
+		'Custom extract with a link'
+	);
+	assert.strictEqual(
+		preview.el.find( 'a[target="_blank"]' ).length,
+		// TODO: T213908
+		0,
+		'links in (and only in) the content open in new tabs'
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
