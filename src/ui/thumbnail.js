@@ -1,8 +1,8 @@
-import constants from '../constants';
-
 /**
  * @module thumbnail
  */
+
+import constants from '../constants';
 
 export const SIZES = {
 	portraitImage: {
