@@ -21,7 +21,7 @@ We want to:
 ## Decision
 
 QUnit tests will be migrated from `tests/qunit/ext.popups/` to
-`tests/node-qunit/` and will be run by the script `npm run test:node` in a node
+`tests/node-qunit/` and will be run by the script `npm run test:unit` in a node
 environment with access to QUnit, a fake jsdom, and jQuery. Powered by the node
 package `mw-node-qunit`.
 
