@@ -4,9 +4,17 @@ import createReferenceGateway from '../../../src/gateway/reference';
 QUnit.module( 'ext.popups/gateway/reference', {
 	beforeEach() {
 		mediaWiki.msg = ( key ) => `<${key}>`;
+
+		this.$references = $( '<ul>' ).append(
+			$( '<li id="cite_note--1">' ).append(
+				$( '<span class="reference-text">' ).text( 'Footnote' )
+			)
+		).appendTo( document.body );
 	},
 	afterEach() {
 		mediaWiki.msg = null;
+
+		this.$references.remove();
 	}
 } );
 
@@ -19,11 +27,21 @@ QUnit.test( 'Reference preview gateway returns the correct data', function ( ass
 			result,
 			{
 				url: '#cite_note--1',
-				// FIXME: The test should be set up in a way so this contains something.
-				extract: undefined,
+				extract: 'Footnote',
 				type: 'reference'
 			}
 		);
+	} );
+} );
+
+QUnit.test( 'Reference preview gateway rejects non-existing references', function ( assert ) {
+	const gateway = createReferenceGateway(),
+		title = createStubTitle( 1, 'Foo', 'undefined' );
+
+	return gateway.fetchPreviewForTitle( title ).then( () => {
+		assert.ok( false, 'It should not resolve' );
+	} ).catch( ( reason, result ) => {
+		assert.propEqual( result, { textStatus: 'abort', xhr: { readyState: 0 } } );
 	} );
 } );
 

@@ -224,7 +224,7 @@ function registerChangeListeners(
 	const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' );
 	let validLinkSelector = `#mw-content-text a[href][title]:not(${ invalidLinksSelector })`;
 	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
-		validLinkSelector += ', .reference > a[href]';
+		validLinkSelector += ', .reference > a[href*="#"]';
 	}
 
 	rendererInit();
@@ -235,20 +235,23 @@ function registerChangeListeners(
 	$( document )
 		.on( 'mouseover keyup', validLinkSelector, function ( event ) {
 			const mwTitle = titleFromElement( this, mw.config );
+			if ( !mwTitle ) {
+				return;
+			}
+
 			let gateway = pagePreviewGateway;
 
 			if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
-				// TODO: Can this condition be true for non-reference links?
-				if ( $( event.target ).parent().hasClass( 'reference' ) ) {
+				// The other selector can potentially pick up links with a class="reference" parent,
+				// but no fragment
+				if ( mwTitle.getFragment() &&
+					$( event.target ).parent().hasClass( 'reference' )
+				) {
 					gateway = referenceGateway;
 				}
 			}
 
-			if ( mwTitle ) {
-				boundActions.linkDwell(
-					mwTitle, this, event, gateway, generateToken
-				);
-			}
+			boundActions.linkDwell( mwTitle, this, event, gateway, generateToken );
 		} )
 		.on( 'mouseout blur', validLinkSelector, function () {
 			const mwTitle = titleFromElement( this, mw.config );
