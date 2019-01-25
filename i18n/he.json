@@ -28,5 +28,7 @@
 	"popups-prefs-optin-enabled-label": "הפעלה",
 	"popups-prefs-optin-disabled-label": "כיבוי",
 	"popups-prefs-disable-nav-gadgets-info": "יש [[$1 | לכבות את החלונות הקופצים]] בלשונית גאדג'טים כדי להפעיל את התצוגות המקדימות",
-	"popups-prefs-conflicting-gadgets-info": "גאדג'טים מסוימים והתאמות אישיות אחרות יכולים להשפיע על הביצועים של התכונה הזאת. אם קורות לך בעיות, נא לבדוק את הגאדג'טים והתסריטים שלך, כולל גלובליים."
+	"popups-prefs-conflicting-gadgets-info": "גאדג'טים מסוימים והתאמות אישיות אחרות יכולים להשפיע על הביצועים של התכונה הזאת. אם קורות לך בעיות, נא לבדוק את הגאדג'טים והתסריטים שלך, כולל גלובליים.",
+	"popups-refpreview-footnote": "הערת שוליים",
+	"popups-refpreview-jump-to-reference": "מעבר להערת שוליים"
 }

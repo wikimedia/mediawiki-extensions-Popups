@@ -30,5 +30,7 @@
 	"popups-prefs-optin-enabled-label": "تفعيل",
 	"popups-prefs-optin-disabled-label": "تعطيل",
 	"popups-prefs-disable-nav-gadgets-info": "يجب عليك [[$1 |تعطيل أداة التنقل بالنوافذ المنبثقة]] من علامة تبويب الأدوات لتمكين معاينات الصفحة",
-	"popups-prefs-conflicting-gadgets-info": "قد تؤثر بعض الأدوات والتخصيصات الأخرى على أداء هذه الميزة، إذا واجهت أية مُشكلات تُرجَى مراجعة أدواتك والنصوص البرمجية للمستخدم الخاصة بك، بما في ذلك العالمية."
+	"popups-prefs-conflicting-gadgets-info": "قد تؤثر بعض الأدوات والتخصيصات الأخرى على أداء هذه الميزة، إذا واجهت أية مُشكلات تُرجَى مراجعة أدواتك والنصوص البرمجية للمستخدم الخاصة بك، بما في ذلك العالمية.",
+	"popups-refpreview-footnote": "حاشية",
+	"popups-refpreview-jump-to-reference": "اذهب الى المرجع"
 }
