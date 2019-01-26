@@ -9,7 +9,7 @@ const mw = mediaWiki;
 
 /**
  * @param {ext.popups.PreviewModel} model
- * @return {string} HTML string.
+ * @return {jQuery}
  */
 export function renderReferencePreview(
 	model
@@ -18,7 +18,7 @@ export function renderReferencePreview(
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
 
-	return renderPopup( model.type,
+	const $el = $( $.parseHTML( renderPopup( model.type,
 		`
 			<strong class='mwe-popups-title'>
 				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-reference'></span>
@@ -31,5 +31,14 @@ export function renderReferencePreview(
 				<a href='${ url }' class='mwe-popups-read-link'>${ linkMsg }</a>
 			</footer>
 		`
-	);
+	) ) );
+
+	// Make sure to not destroy existing targets, if any
+	$el.find( '.mwe-popups-extract a[href]:not([target])' ).each( ( i, a ) => {
+		a.target = '_blank';
+		// Don't let the external site access and possibly manipulate window.opener.location
+		a.rel = `${ a.rel ? `${ a.rel } ` : '' }noopener`;
+	} );
+
+	return $el;
 }

@@ -244,19 +244,8 @@ function createDisambiguationPreview( model ) {
  * @return {ext.popups.Preview}
  */
 function createReferencePreview( model ) {
-	const $el = $(
-		$.parseHTML( renderReferencePreview( model ) )
-	);
-
-	// Make sure to not destroy existing targets, if any
-	$el.find( '.mwe-popups-extract a[href]:not([target])' ).each( ( i, a ) => {
-		a.target = '_blank';
-		// Don't let the external site access and possibly manipulate window.opener.location
-		a.rel = `${ a.rel ? `${ a.rel } ` : '' }noopener`;
-	} );
-
 	return {
-		el: $el,
+		el: renderReferencePreview( model ),
 		hasThumbnail: false,
 		isTall: false
 	};
