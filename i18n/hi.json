@@ -4,10 +4,12 @@
 			"Wikiuser13",
 			"Phoenix303",
 			"Sfic",
-			"Nitin1485"
+			"Nitin1485",
+			"Prong$31"
 		]
 	},
 	"popups-message": "पृष्ठ की झलक",
 	"popups-desc": "जब एक उपयोगकर्ता पृष्ठ लिंक पर हूवर करता है तब हूवरकार्ड पृष्ठ सारांश की सामग्री प्रदर्शित करता है।",
-	"popups-preview-footer-read": "इस पृष्ठ पर जाएं"
+	"popups-preview-footer-read": "इस पृष्ठ पर जाएं",
+	"popups-refpreview-footnote": "पादटिप्पणी"
 }

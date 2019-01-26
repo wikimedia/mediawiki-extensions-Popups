@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Obonggi"
+			"Obonggi",
+			"Hello903hello"
 		]
 	},
-	"popups-settings-help-ok": "搞掂"
+	"popups-settings-help-ok": "搞掂",
+	"popups-refpreview-jump-to-reference": "跳去參考"
 }
