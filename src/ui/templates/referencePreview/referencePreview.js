@@ -18,6 +18,7 @@ export function renderReferencePreview(
 	const showTitle = true,
 		// TODO: Implement a fallback to the default localized title "Footnote".
 		title = escapeHTML( model.title ),
+		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
 
 	return renderPopup( model.type,
@@ -27,7 +28,7 @@ export function renderReferencePreview(
 				<span class='mwe-popups-message'>${ model.extract }</span>
 			</div>
 			<footer>
-				<a href='${ model.url }' class='mwe-popups-read-link'>${ linkMsg }</a>
+				<a href='${ url }' class='mwe-popups-read-link'>${ linkMsg }</a>
 			</footer>
 		`
 	);

@@ -57,9 +57,9 @@ QUnit.module( 'ext.popups#renderer', {
 			}
 		};
 
-		mediaWiki.html = { escape: ( str ) => {
-			return str && str.replace( /</g, '&lt;' );
-		} };
+		mediaWiki.html = {
+			escape: ( str ) => str && str.replace( /'/g, '&apos;' ).replace( /</g, '&lt;' )
+		};
 
 		// Some tests below stub this function. Keep a copy so it can be restored.
 		this.getElementById = document.getElementById;
@@ -270,8 +270,8 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 
 QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	const model = {
-			title: 'Custom <title>',
-			url: '#custom_id',
+			title: 'Custom title <"\'>',
+			url: '#custom_id <"\'>',
 			extract: 'Custom <i>extract</i> with a <a href="//wikipedia.de">link</a>',
 			type: previewTypes.TYPE_REFERENCE
 		},
@@ -282,7 +282,7 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-title' ).text().trim(),
-		'Custom <title>'
+		'Custom title <"\'>'
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).text().trim(),
@@ -295,7 +295,7 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
-		'#custom_id'
+		'#custom_id <"\'>'
 	);
 } );
 
