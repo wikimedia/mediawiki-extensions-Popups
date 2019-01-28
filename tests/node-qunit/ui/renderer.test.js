@@ -173,15 +173,7 @@ QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
 	const model = {
 			title: 'Test',
 			url: 'https://en.wikipedia.org/wiki/Test <"\'>',
-			languageCode: 'en',
-			languageDirection: 'ltr',
-			extract: 'This is a test page.',
-			type: previewTypes.TYPE_GENERIC,
-			thumbnail: {
-				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
-				width: 409,
-				height: 512
-			}
+			type: previewTypes.TYPE_GENERIC
 		},
 		emptyPreview = renderer.createPreviewWithType( model );
 
@@ -280,9 +272,6 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 	const model = {
 			title: 'Barack (disambiguation)',
 			url: 'url/Barack (disambiguation) <"\'>',
-			languageCode: 'en',
-			languageDirection: 'ltr',
-			extract: 'Barack Hussein Obama II born August 4, 1961) ...',
 			type: previewTypes.TYPE_DISAMBIGUATION
 		},
 		preview = renderer.createPreviewWithType( model );
