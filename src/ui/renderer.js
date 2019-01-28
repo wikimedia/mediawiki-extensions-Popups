@@ -248,8 +248,11 @@ function createReferencePreview( model ) {
 		$.parseHTML( renderReferencePreview( model ) )
 	);
 
-	$el.find( '.mwe-popups-extract a[href]' ).each( ( i, a ) => {
+	// Make sure to not destroy existing targets, if any
+	$el.find( '.mwe-popups-extract a[href]:not([target])' ).each( ( i, a ) => {
 		a.target = '_blank';
+		// Don't let the external site access and possibly manipulate window.opener.location
+		a.rel = `${ a.rel ? `${ a.rel } ` : '' }noopener`;
 	} );
 
 	return {
