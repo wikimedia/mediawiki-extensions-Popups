@@ -122,9 +122,9 @@ QUnit.test( 'createPointerMasks', ( assert ) => {
 QUnit.test( 'createPagePreview', ( assert ) => {
 	const model = {
 			title: 'Test',
-			url: 'https://en.wikipedia.org/wiki/Test',
-			languageCode: 'en',
-			languageDirection: 'ltr',
+			url: 'https://en.wikipedia.org/wiki/Test <"\'>',
+			languageCode: 'en <"\'>',
+			languageDirection: 'ltr <"\'>',
 			extract: 'This is a test page.',
 			type: previewTypes.TYPE_PAGE,
 			thumbnail: {
@@ -151,12 +151,28 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 		'This is a test page.',
 		'Preview extract is correct.'
 	);
+
+	assert.strictEqual(
+		preview.el.find( '.mwe-popups-extract' ).attr( 'href' ),
+		'https://en.wikipedia.org/wiki/Test <"\'>',
+		'URL is safely espaced'
+	);
+	assert.strictEqual(
+		preview.el.find( '.mwe-popups-extract' ).attr( 'lang' ),
+		'en <"\'>',
+		'Language code is safely espaced'
+	);
+	assert.strictEqual(
+		preview.el.find( '.mwe-popups-extract' ).attr( 'dir' ),
+		'ltr <"\'>',
+		'Language direction is safely espaced'
+	);
 } );
 
 QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
 	const model = {
 			title: 'Test',
-			url: 'https://en.wikipedia.org/wiki/Test',
+			url: 'https://en.wikipedia.org/wiki/Test <"\'>',
 			languageCode: 'en',
 			languageDirection: 'ltr',
 			extract: 'This is a test page.',
@@ -196,6 +212,11 @@ QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
 		MSG_GO_TO_PAGE,
 		'Empty preview link text is correct.'
 	);
+	assert.strictEqual(
+		emptyPreview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
+		'https://en.wikipedia.org/wiki/Test <"\'>',
+		'URL is safely espaced'
+	);
 } );
 
 QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
@@ -231,10 +252,34 @@ QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
 	);
 } );
 
+QUnit.test( 'createPreviewWithType(model with unknown type)', ( assert ) => {
+	const model = {
+			url: '/wiki/Unknown <"\'>',
+			type: 'unknown <"\'>'
+		},
+		emptyPreview = renderer.createPreviewWithType( model );
+
+	assert.strictEqual(
+		emptyPreview.el.find( '.mwe-popups-extract' ).attr( 'href' ),
+		'/wiki/Unknown <"\'>',
+		'URL is safely espaced'
+	);
+	assert.strictEqual(
+		emptyPreview.el.attr( 'class' ),
+		'mwe-popups mwe-popups-type-unknown <"\'>',
+		'Popup type is safely espaced'
+	);
+	assert.strictEqual(
+		emptyPreview.el.find( '.mw-ui-icon' ).attr( 'class' ),
+		'mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-unknown <"\'>',
+		'Icon type is safely espaced'
+	);
+} );
+
 QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 	const model = {
 			title: 'Barack (disambiguation)',
-			url: 'url/Barack (disambiguation)',
+			url: 'url/Barack (disambiguation) <"\'>',
 			languageCode: 'en',
 			languageDirection: 'ltr',
 			extract: 'Barack Hussein Obama II born August 4, 1961) ...',
@@ -269,6 +314,11 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 		MSG_DISAMBIGUATION_LINK,
 		'Preview link text is correct.'
 	);
+	assert.strictEqual(
+		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
+		'url/Barack (disambiguation) <"\'>',
+		'URL is safely espaced'
+	);
 } );
 
 QUnit.test( 'createReferencePreview(model)', ( assert ) => {
@@ -298,7 +348,8 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
-		'#custom_id <"\'>'
+		'#custom_id <"\'>',
+		'URL is safely espaced'
 	);
 } );
 

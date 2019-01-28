@@ -3,6 +3,7 @@
  */
 
 import { renderPopup } from '../popup/popup';
+import { escapeHTML } from '../templateUtil';
 
 /**
  * @param {ext.popups.PreviewModel} model
@@ -10,9 +11,13 @@ import { renderPopup } from '../popup/popup';
  * @return {string} HTML string.
  */
 export function renderPagePreview(
-	{ url, type, languageCode, languageDirection }, hasThumbnail
+	model, hasThumbnail
 ) {
-	return renderPopup( type,
+	const url = escapeHTML( model.url ),
+		languageCode = escapeHTML( model.languageCode ),
+		languageDirection = escapeHTML( model.languageDirection );
+
+	return renderPopup( model.type,
 		`
 			${ hasThumbnail ? `<a href='${ url }' class='mwe-popups-discreet'></a>` : '' }
 			<a dir='${ languageDirection }' lang='${ languageCode }' class='mwe-popups-extract' href='${ url }'></a>

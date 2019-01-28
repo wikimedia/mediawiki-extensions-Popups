@@ -13,12 +13,15 @@ import { escapeHTML } from '../templateUtil';
  * @return {string} HTML string.
  */
 export function renderPreview(
-	{ title, url, type }, showTitle, extractMsg, linkMsg
+	model, showTitle, extractMsg, linkMsg
 ) {
-	title = escapeHTML( title );
+	const title = escapeHTML( model.title ),
+		url = escapeHTML( model.url ),
+		type = escapeHTML( model.type );
 	extractMsg = escapeHTML( extractMsg );
 	linkMsg = escapeHTML( linkMsg );
-	return renderPopup( type,
+
+	return renderPopup( model.type,
 		`
 			<div class='mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-${ type }'></div>
 			${ showTitle ? `<strong class='mwe-popups-title'>${ title }</strong>` : '' }
