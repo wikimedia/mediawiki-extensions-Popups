@@ -29,16 +29,9 @@ export default function createReferenceGateway() {
 
 		return $.Deferred().resolve( {
 			// TODO: Provide different titles depending on the type of reference (e.g. "Book")
-			// title: '',
 			url: `#${ id }`,
-			// TODO: Can probably be removed
-			// languageCode: 'en',
-			// languageDirection: 'ltr',
 			extract: $referenceText.html(),
 			type: previewTypes.TYPE_REFERENCE
-			// TODO: Can probably be removed
-			// thumbnail: '',
-			// pageId: '0'
 		} ).promise( { abort() {} } );
 	}
 

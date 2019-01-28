@@ -113,7 +113,7 @@ function isSafeImgFormat( filename ) {
  * @param {Object} thumbnail The thumbnail image
  * @param {Object} original The original image
  * @param {number} thumbSize The requested size
- * @return {Object|undefined}
+ * @return {{source: string, width: number, height: number}|undefined}
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
 	const parts = thumbnail.source.split( '/' ),

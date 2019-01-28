@@ -27,14 +27,14 @@ export { previewTypes };
  * @typedef {Object} PreviewModel
  * @property {string} title
  * @property {string} url The canonical URL of the page being previewed
- * @property {string} languageCode
- * @property {string} languageDirection Either "ltr" or "rtl"
+ * @property {string} [languageCode] Only used by popup types that accept an extract.
+ * @property {string} [languageDirection] Either "ltr" or "rtl"
  * @property {Array|undefined} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
  *  removed; this can be used to present default or error states
  * @property {string} type One of the previewTypes.TYPE_… constants.
- * @property {Object|undefined} thumbnail
- * @property {number|undefined} pageId
+ * @property {{source: string, width: number, height: number}} [thumbnail]
+ * @property {number} [pageId] Currently not used by any known popup type.
  *
  * @global
  */
