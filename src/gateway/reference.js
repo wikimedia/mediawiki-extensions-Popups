@@ -20,11 +20,11 @@ export default function createReferenceGateway() {
 
 		return $.Deferred().resolve( {
 			title: mw.msg( 'popups-refpreview-footnote' ),
-			url: `#${id}`,
+			url: `#${ id }`,
 			// TODO: Can probably be removed
 			// languageCode: 'en',
 			// languageDirection: 'ltr',
-			extract: $( `#${id} .reference-text` ).html(),
+			extract: $( `#${ $.escapeSelector( id ) } .reference-text` ).html(),
 			type: previewTypes.TYPE_REFERENCE
 			// TODO: Can probably be removed
 			// thumbnail: '',
