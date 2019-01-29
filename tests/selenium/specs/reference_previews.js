@@ -1,9 +1,9 @@
 const assert = require( 'assert' ),
 	page = require( '../pageobjects/popups.page' );
 
-describe( 'Dwelling on a valid reference link', () => {
+describe( 'Dwelling on a valid reference link', function () {
 
-	before( () => {
+	before( function () {
 		page.setup();
 	} );
 

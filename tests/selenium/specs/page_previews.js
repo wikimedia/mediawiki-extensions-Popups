@@ -1,19 +1,19 @@
 const assert = require( 'assert' ),
 	page = require( '../pageobjects/popups.page' );
 
-describe( 'Dwelling on a valid page link', () => {
+describe( 'Dwelling on a valid page link', function () {
 
-	before( () => {
+	before( function () {
 		page.setup();
 	} );
 
-	it( 'I should see a page preview', () => {
+	it( 'I should see a page preview', function () {
 		page.open();
 		page.dwellPageLink();
 		assert( page.seePagePreview(), 'Page preview is shown.' );
 	} );
 
-	it( 'Abandoning link hides page preview', () => {
+	it( 'Abandoning link hides page preview', function () {
 		page.open();
 		page.dwellPageLink();
 		page.abandonLink();
