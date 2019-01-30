@@ -28,12 +28,12 @@ After an `npm install`:
 		* You can find the QUnit tests that depend on running MediaWiki under
 			`tests/qunit/`
 		* You can find the isolated QUnit tests under `tests/node-qunit/`, which you
-			can run with `npm run test:node`
+			can run with `npm run test:unit`
 	* We recommend you install a file watcher like `nodemon` to watch sources and
 		auto run linting and tests.
 		* `npm install -g nodemon`
 		* Example running linting and node unit tests:
-			* `nodemon -w src/ --exec "grunt lint:all && npm run test:node"`
+			* `nodemon -w src/ --exec "grunt lint:all && npm run test:unit"`
 	* Get code coverage report with `npm run coverage`
 		* Reports printed in the `coverage/` folder
 
