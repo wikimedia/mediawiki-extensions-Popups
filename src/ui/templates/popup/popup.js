@@ -7,14 +7,14 @@ import { escapeHTML } from '../templateUtil';
 /**
  * @param {ext.popups.previewTypes} type
  * @param {string} html HTML string.
- * @return {string} HTML string.
+ * @return {jQuery}
  */
 export function renderPopup( type, html ) {
 	type = escapeHTML( type );
 
-	return `
+	return $( $.parseHTML( `
 	<div class='mwe-popups mwe-popups-type-${ type }' role='tooltip' aria-hidden>
 		<div class='mwe-popups-container'>${ html }</div>
 	</div>
-	`.trim();
+	`.trim() ) );
 }
