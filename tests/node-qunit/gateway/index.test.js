@@ -6,6 +6,7 @@ QUnit.module( 'gateway/index.js', {
 	beforeEach() {
 		this.config = new Map(); /* global Map */
 		this.config.set( 'wgPopupsReferencePreviews', true );
+		this.config.set( 'wgPageName', 'Foo' );
 		this.fragmentLink = createStubTitle( 1, 'Foo', 'Bar' );
 		this.validEl = $( '<a>' );
 		$( '<span>' ).addClass( 'reference' ).append( this.validEl );
@@ -21,6 +22,15 @@ QUnit.test( 'it uses the reference gateway with wgPopupsReferencePreviews == tru
 
 QUnit.test( 'it uses the page gateway with wgPopupsReferencePreviews == false', function ( assert ) {
 	this.config.set( 'wgPopupsReferencePreviews', false );
+
+	assert.strictEqual(
+		selectInitialGateway( this.validEl, this.config, this.fragmentLink ),
+		previewTypes.TYPE_PAGE
+	);
+} );
+
+QUnit.test( 'it uses the page gateway when on links to a different page', function ( assert ) {
+	this.config.set( 'wgPageName', 'NotFoo' );
 
 	assert.strictEqual(
 		selectInitialGateway( this.validEl, this.config, this.fragmentLink ),
