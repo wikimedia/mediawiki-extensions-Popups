@@ -11,9 +11,10 @@ QUnit.module( 'ext.popups/gateway/reference', {
 } );
 
 QUnit.test( 'Reference preview gateway returns the correct data', function ( assert ) {
-	const gateway = createReferenceGateway();
+	const gateway = createReferenceGateway(),
+		title = createStubTitle( 1, 'Foo', 'cite note--1' );
 
-	return gateway.fetchPreviewForTitle( createStubTitle( 1, '', 'cite_note--1' ) ).then( ( result ) => {
+	return gateway.fetchPreviewForTitle( title ).then( ( result ) => {
 		assert.propEqual(
 			result,
 			{
@@ -28,7 +29,8 @@ QUnit.test( 'Reference preview gateway returns the correct data', function ( ass
 
 QUnit.test( 'Reference preview gateway is abortable', function ( assert ) {
 	const gateway = createReferenceGateway(),
-		promise = gateway.fetchPreviewForTitle( createStubTitle( 1, '' ) );
+		title = createStubTitle( 1, 'Foo', 'cite note--1' ),
+		promise = gateway.fetchPreviewForTitle( title );
 
 	assert.strictEqual( typeof promise.abort, 'function' );
 } );

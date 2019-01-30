@@ -240,13 +240,6 @@ function registerChangeListeners(
 			if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
 				// TODO: Can this condition be true for non-reference links?
 				if ( $( event.target ).parent().hasClass( 'reference' ) ) {
-					try {
-						// TODO: Possibly refactor titleFromElement() to avoid duplicate Uri() call
-						mwTitle.fragment = new mw.Uri( event.target.href ).fragment;
-					} catch ( e ) {
-						// Skip links with broken encoding
-						return;
-					}
 					gateway = referenceGateway;
 				}
 			}
