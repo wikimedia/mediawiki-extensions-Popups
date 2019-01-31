@@ -1,21 +1,28 @@
-.mwe-popups-type-reference .mwe-popups-title {
-	margin-top: @popupPadding;
+.mwe-popups-type-reference {
+	.mwe-popups-title {
+		margin-top: @popupPadding;
 
-	.mw-ui-icon {
-		vertical-align: middle;
+		.mw-ui-icon {
+			vertical-align: middle;
 
-		&.mw-ui-icon-element {
-			min-width: @iconSize;
-			width: @iconSize;
+			&.mw-ui-icon-element {
+				min-width: @iconSize;
+				width: @iconSize;
 
-			&:before {
-				margin: 0;
+				&:before {
+					margin: 0;
+				}
+			}
+
+			&.mw-ui-icon-preview-reference {
+				/* align narrow icon with the text */
+				margin-left: -2px;
 			}
 		}
+	}
 
-		&.mw-ui-icon-preview-reference {
-			/* align narrow icon with the text */
-			margin-left: -2px;
-		}
+	.mwe-popups-read-link {
+		// Same font size as the read link in disambiguation popups
+		font-size: 12px;
 	}
 }
