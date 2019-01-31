@@ -2,7 +2,7 @@ import createPagePreviewGateway from '../../../src/gateway/page';
 import * as RestModule from '../../../src/gateway/rest';
 import * as MediawikiModule from '../../../src/gateway/mediawiki';
 
-QUnit.module( 'gateway/index.js', {
+QUnit.module( 'gateway/page.js', {
 	beforeEach() {
 		mediaWiki.Api = function () {};
 

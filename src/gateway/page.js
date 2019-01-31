@@ -1,3 +1,7 @@
+/**
+ * @module gateway/page
+ */
+
 import constants from '../constants';
 import createMediaWikiApiGateway from './mediawiki';
 import createRESTBaseGateway from './rest';
