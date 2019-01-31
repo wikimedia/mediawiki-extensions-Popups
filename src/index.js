@@ -5,7 +5,7 @@
 import * as Redux from 'redux';
 import * as ReduxThunk from 'redux-thunk';
 
-import createPagePreviewGateway from './gateway';
+import createPagePreviewGateway from './gateway/page';
 import createReferenceGateway from './gateway/reference';
 import createUserSettings from './userSettings';
 import createPreviewBehavior from './previewBehavior';

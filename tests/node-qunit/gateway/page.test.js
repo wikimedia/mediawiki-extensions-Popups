@@ -1,4 +1,4 @@
-import createPagePreviewGateway from '../../../src/gateway';
+import createPagePreviewGateway from '../../../src/gateway/page';
 import * as RestModule from '../../../src/gateway/rest';
 import * as MediawikiModule from '../../../src/gateway/mediawiki';
 
