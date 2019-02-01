@@ -3,12 +3,7 @@ import * as constants from '../../../src/constants';
 import { createNullModel, previewTypes } from '../../../src/preview/model';
 import { createThumbnail } from '../../../src/ui/thumbnail';
 
-const $ = jQuery,
-	MSG_NO_PREVIEW = 'There was an issue displaying this preview',
-	MSG_GO_TO_PAGE = 'Go to this page',
-	MSG_DISAMBIGUATION = 'This title relates to more than one page',
-	MSG_DISAMBIGUATION_LINK = 'View similar pages',
-	MSG_REFERENCE_TITLE = 'Footnote';
+const $ = jQuery;
 
 /**
  * A utility function that creates a bare bones preview
@@ -45,20 +40,7 @@ QUnit.module( 'ext.popups#renderer', {
 	beforeEach() {
 		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 
-		mediaWiki.msg = ( key ) => {
-			switch ( key ) {
-				case 'popups-preview-no-preview':
-					return MSG_NO_PREVIEW;
-				case 'popups-preview-footer-read':
-					return MSG_GO_TO_PAGE;
-				case 'popups-preview-disambiguation':
-					return MSG_DISAMBIGUATION;
-				case 'popups-preview-disambiguation-link':
-					return MSG_DISAMBIGUATION_LINK;
-				case 'popups-refpreview-footnote':
-					return MSG_REFERENCE_TITLE;
-			}
-		};
+		mediaWiki.msg = ( key ) => `<${key}>`;
 
 		mediaWiki.html = {
 			escape: ( str ) => str && str.replace( /'/g, '&apos;' ).replace( /</g, '&lt;' )
@@ -196,12 +178,12 @@ QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
 	);
 	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-extract' ).text().trim(),
-		MSG_NO_PREVIEW,
+		'<popups-preview-no-preview>',
 		'Empty preview extract is correct.'
 	);
 	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-read-link' ).text().trim(),
-		MSG_GO_TO_PAGE,
+		'<popups-preview-footer-read>',
 		'Empty preview link text is correct.'
 	);
 	assert.strictEqual(
@@ -234,12 +216,12 @@ QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
 	);
 	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-extract' ).text().trim(),
-		MSG_NO_PREVIEW,
+		'<popups-preview-no-preview>',
 		'Empty preview extract is correct.'
 	);
 	assert.strictEqual(
 		emptyPreview.el.find( '.mwe-popups-read-link' ).text().trim(),
-		MSG_GO_TO_PAGE,
+		'<popups-preview-footer-read>',
 		'Empty preview link text is correct.'
 	);
 } );
@@ -295,12 +277,12 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).text().trim(),
-		MSG_DISAMBIGUATION,
+		'<popups-preview-disambiguation>',
 		'Preview extract is correct.'
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-read-link' ).text().trim(),
-		MSG_DISAMBIGUATION_LINK,
+		'<popups-preview-disambiguation-link>',
 		'Preview link text is correct.'
 	);
 	assert.strictEqual(
@@ -352,7 +334,7 @@ QUnit.test( 'createReferencePreview default title', ( assert ) => {
 
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-title' ).text().trim(),
-		MSG_REFERENCE_TITLE
+		'<popups-refpreview-footnote>'
 	);
 } );
 
