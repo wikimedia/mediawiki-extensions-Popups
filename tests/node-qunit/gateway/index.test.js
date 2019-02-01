@@ -8,8 +8,7 @@ QUnit.module( 'gateway/index.js', {
 		this.config.set( 'wgPopupsReferencePreviews', true );
 		this.config.set( 'wgPageName', 'Foo' );
 		this.fragmentLink = createStubTitle( 1, 'Foo', 'Bar' );
-		this.validEl = $( '<a>' );
-		$( '<span>' ).addClass( 'reference' ).append( this.validEl );
+		this.validEl = $( '<a>' ).appendTo( $( '<span>' ).addClass( 'reference' ) );
 	}
 } );
 
@@ -50,9 +49,7 @@ QUnit.test( 'it uses the page gateway when there is no fragment', function ( ass
 } );
 
 QUnit.test( 'it uses the page gateway for links not having a parent with reference class', function ( assert ) {
-	const el = $( '<a>' );
-
-	$( '<span>' ).append( el );
+	const el = $( '<a>' ).appendTo( $( '<span>' ) );
 
 	assert.strictEqual(
 		selectInitialGateway( el, this.config, this.fragmentLink ),

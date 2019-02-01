@@ -15,10 +15,11 @@ const $ = jQuery;
  */
 function createPagePreview( isTall, hasThumbnail, thumbnail ) {
 	return {
-		el: $( '<div>' )
-			.append( hasThumbnail ? $( '<image>' ) : '' )
-			.append( $( '<a>', { class: 'mwe-popups-extract', text: 'extract' } ) )
-			.append( $( '<a>', { class: 'mwe-popups-settings-icon' } ) ),
+		el: $( '<div>' ).append(
+			hasThumbnail ? $( '<image>' ) : '',
+			$( '<a>' ).addClass( 'mwe-popups-extract' ).text( 'extract' ),
+			$( '<a>' ).addClass( 'mwe-popups-settings-icon' )
+		),
 		isTall,
 		hasThumbnail,
 		thumbnail
@@ -472,7 +473,7 @@ QUnit.test( 'show', function ( assert ) {
 
 QUnit.test( 'hide - fade out up', ( assert ) => {
 	const preview = {
-			el: $( '<div>', { class: 'mwe-popups-fade-in-down' } ),
+			el: $( '<div>' ).addClass( 'mwe-popups-fade-in-down' ),
 			hasThumbnail: false,
 			thumbnail: null,
 			isTall: false
@@ -504,7 +505,7 @@ QUnit.test( 'hide - fade out up', ( assert ) => {
 
 QUnit.test( 'hide - fade out down', ( assert ) => {
 	const preview = {
-			el: $( '<div>', { class: 'mwe-popups-fade-in-up' } ),
+			el: $( '<div>' ).addClass( 'mwe-popups-fade-in-up' ),
 			hasThumbnail: false,
 			thumbnail: null,
 			isTall: false
