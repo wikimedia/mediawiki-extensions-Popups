@@ -23,7 +23,7 @@ use Popups\PopupsContext;
 
 /**
  * @group Popups
- * @coversDefaultClass Popups\PopupsContext
+ * @coversDefaultClass \Popups\PopupsContext
  */
 class PopupsContextTest extends MediaWikiTestCase {
 	/**

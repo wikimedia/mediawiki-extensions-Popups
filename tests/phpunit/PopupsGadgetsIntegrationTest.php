@@ -21,9 +21,9 @@
 use Popups\PopupsGadgetsIntegration;
 
 /**
-* @group Popups
-* @coversDefaultClass Popups\PopupsGadgetsIntegration
-*/
+ * @group Popups
+ * @coversDefaultClass \Popups\PopupsGadgetsIntegration
+ */
 class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	/**
 	 * Gadget name for testing
@@ -222,13 +222,17 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	/**
 	 * Execute test and restore GadgetRepo
 	 *
-	 * @param $user
-	 * @param $config
-	 * @param $repoMock
-	 * @param $expected
+	 * @param User $user
+	 * @param Config $config
+	 * @param GadgetRepo $repoMock
+	 * @param bool $expected
 	 */
-	private function executeConflictsWithNavPopupsGadgetSafeCheck( $user, $config, $repoMock,
-		$expected ) {
+	private function executeConflictsWithNavPopupsGadgetSafeCheck(
+		User $user,
+		Config $config,
+		GadgetRepo $repoMock,
+		$expected
+	) {
 		$origGadgetsRepo = GadgetRepo::singleton();
 		GadgetRepo::setSingleton( $repoMock );
 

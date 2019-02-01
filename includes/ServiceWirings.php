@@ -1,12 +1,15 @@
 <?php
 
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use Popups\EventLogging\EventLoggerFactory;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
-use Popups\EventLogging\EventLoggerFactory;
 use Popups\UserPreferencesChangeHandler;
-use \MediaWiki\Logger\LoggerFactory;
 
+/**
+ * @codeCoverageIgnore
+ */
 return [
 	'Popups.Config' => function ( MediaWikiServices $services ) {
 		return $services->getService( 'ConfigFactory' )

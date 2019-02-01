@@ -23,10 +23,10 @@ use Config;
 use ExtensionRegistry;
 
 /**
-* Gadgets integration
-*
-* @package Popups
-*/
+ * Gadgets integration
+ *
+ * @package Popups
+ */
 class PopupsGadgetsIntegration {
 	/**
 	 * @var string
@@ -53,9 +53,7 @@ class PopupsGadgetsIntegration {
 	}
 
 	/**
-	 * Sanitize gadget name
-	 *
-	 * @param $gadgetName
+	 * @param string $gadgetName
 	 * @return string
 	 */
 	private function sanitizeGadgetName( $gadgetName ) {
