@@ -1,7 +1,7 @@
 =Popups test page=
 
 ==Valid links==
-* [[Main Page]]
+* [[Popups test page 2]]
 
 ==Invalid links==
 # blah

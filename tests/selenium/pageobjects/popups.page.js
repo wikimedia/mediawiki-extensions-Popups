@@ -6,18 +6,26 @@ const
 	POPUPS_SELECTOR = '.mwe-popups',
 	POPUPS_MODULE_NAME = 'ext.popups.main';
 
+function makePage( title, path ) {
+	return new Promise( ( resolve ) => {
+		fs.readFile( path, 'utf-8', ( err, content ) => {
+			if ( err ) {
+				throw err;
+			}
+			resolve( content );
+		} );
+	} ).then( ( content ) => {
+		return Api.edit( title, content );
+	} );
+}
 class PopupsPage extends Page {
 	setup() {
 		browser.call( () => {
-			return new Promise( ( resolve ) => {
-				fs.readFile( `${ __dirname }/../fixtures/test_page.wikitext`, 'utf-8', ( err, content ) => {
-					if ( err ) {
-						throw err;
-					}
-					resolve( content );
-				} );
-			} ).then( ( content ) => {
-				return Api.edit( TEST_PAGE_TITLE, content );
+			const path = `${ __dirname }/../fixtures/`;
+			// FIXME: Cannot use Promise.all as wdio-mediawiki/Api will trigger a bad
+			// token error.
+			return makePage( `${TEST_PAGE_TITLE} 2`, `${path}/test_page_2.wikitext` ).then( () => {
+				return makePage( TEST_PAGE_TITLE, `${path}test_page.wikitext` );
 			} );
 		} );
 	}
