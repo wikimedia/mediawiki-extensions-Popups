@@ -5,6 +5,7 @@
 import * as Redux from 'redux';
 import * as ReduxThunk from 'redux-thunk';
 
+import selectGatewayType from './gateway';
 import createPagePreviewGateway from './gateway/page';
 import createReferenceGateway from './gateway/reference';
 import createUserSettings from './userSettings';
@@ -23,6 +24,7 @@ import * as actions from './actions';
 import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
+import { previewTypes } from './preview/model';
 
 const mw = mediaWiki,
 	$ = jQuery,
@@ -238,17 +240,17 @@ function registerChangeListeners(
 			if ( !mwTitle ) {
 				return;
 			}
+			let gateway;
 
-			let gateway = pagePreviewGateway;
-
-			if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
-				// The other selector can potentially pick up links with a class="reference" parent,
-				// but no fragment
-				if ( mwTitle.getFragment() &&
-					$( event.target ).parent().hasClass( 'reference' )
-				) {
+			switch ( selectGatewayType( this, mw.config, mwTitle ) ) {
+				case previewTypes.TYPE_PAGE:
+					gateway = pagePreviewGateway;
+					break;
+				case previewTypes.TYPE_REFERENCE:
 					gateway = referenceGateway;
-				}
+					break;
+				default:
+					return;
 			}
 
 			boundActions.linkDwell( mwTitle, this, event, gateway, generateToken );
