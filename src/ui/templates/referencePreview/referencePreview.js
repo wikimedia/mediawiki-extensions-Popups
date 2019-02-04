@@ -38,5 +38,12 @@ export function renderReferencePreview(
 		a.rel = `${ a.rel ? `${ a.rel } ` : '' }noopener`;
 	} );
 
+	if ( model.sourceElementId ) {
+		$el.find( '.mwe-popups-read-link' ).on( 'click', ( event ) => {
+			event.stopPropagation();
+			$( `#${ model.sourceElementId } > a` ).trigger( 'click' );
+		} );
+	}
+
 	return $el;
 }

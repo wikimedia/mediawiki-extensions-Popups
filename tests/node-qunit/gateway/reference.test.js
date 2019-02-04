@@ -28,7 +28,8 @@ QUnit.test( 'Reference preview gateway returns the correct data', function ( ass
 			{
 				url: '#cite_note--1',
 				extract: 'Footnote',
-				type: 'reference'
+				type: 'reference',
+				sourceElementId: undefined
 			}
 		);
 	} );

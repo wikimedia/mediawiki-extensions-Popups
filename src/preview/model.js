@@ -35,6 +35,7 @@ export { previewTypes };
  * @property {string} type One of the previewTypes.TYPE_… constants.
  * @property {{source: string, width: number, height: number}} [thumbnail]
  * @property {number} [pageId] Currently not used by any known popup type.
+ * @property {string} [sourceElementId] ID of the parent element that triggered the preview.
  *
  * @global
  */

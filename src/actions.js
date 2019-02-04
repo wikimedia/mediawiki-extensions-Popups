@@ -110,7 +110,7 @@ export function fetch( gateway, title, el, token ) {
 		namespaceId = title.namespace;
 
 	return ( dispatch ) => {
-		const xhr = gateway.fetchPreviewForTitle( title );
+		const xhr = gateway.fetchPreviewForTitle( title, el );
 
 		dispatch( timedAction( {
 			type: types.FETCH_START,

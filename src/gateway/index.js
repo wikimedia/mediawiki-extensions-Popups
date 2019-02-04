@@ -28,7 +28,7 @@ const $ = jQuery;
  * If the underlying request is successful and contains data for the requested title,
  * then the resulting promise will resolve. If not, then it will reject.
  *
- * @typedef {Function(mw.Title): AbortPromise<PreviewModel>} FetchPreviewForTitle
+ * @typedef {Function(mw.Title, Element): AbortPromise<PreviewModel>} FetchPreviewForTitle
  */
 
 /**

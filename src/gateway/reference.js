@@ -12,9 +12,10 @@ const $ = jQuery;
 export default function createReferenceGateway() {
 	/**
 	 * @param {mw.Title} title
+	 * @param {Element} el
 	 * @returns {AbortPromise<PreviewModel>}
 	 */
-	function fetchPreviewForTitle( title ) {
+	function fetchPreviewForTitle( title, el ) {
 		// Need to encode the fragment again as mw.Title returns it as decoded text
 		const id = title.getFragment().replace( / /g, '_' ),
 			$referenceText = $( `#${ $.escapeSelector( id ) } .reference-text` );
@@ -31,7 +32,8 @@ export default function createReferenceGateway() {
 			// TODO: Provide different titles depending on the type of reference (e.g. "Book")
 			url: `#${ id }`,
 			extract: $referenceText.html(),
-			type: previewTypes.TYPE_REFERENCE
+			type: previewTypes.TYPE_REFERENCE,
+			sourceElementId: el && el.parentNode && el.parentNode.id
 		} ).promise( { abort() {} } );
 	}
 
