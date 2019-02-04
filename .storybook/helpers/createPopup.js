@@ -5,7 +5,7 @@ import scaleDownThumbnail from './scaleDownThumbnail';
 const POINTER_SIZE = 8;
 
 /**
- * Creates a static/stateless Popup adn returns its HTML as DOM.
+ * Creates a static/stateless Popup and returns its HTML as DOM.
  *
  * @param {ext.popups.PreviewModel} model
  * @param {object} layout
