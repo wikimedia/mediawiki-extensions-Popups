@@ -1,3 +1,5 @@
+This page has a lead section.
+
 =Popups test page 2=
 
 ==Valid links==
