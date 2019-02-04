@@ -5,6 +5,9 @@ QUnit.module( 'ext.popups/gateway/reference', {
 	beforeEach() {
 		mediaWiki.msg = ( key ) => `<${key}>`;
 
+		this.$sourceElement = $( '<a>' ).appendTo(
+			$( '<sup>' ).attr( 'id', 'cite_ref-1' ).appendTo( document.body )
+		);
 		this.$references = $( '<ul>' ).append(
 			$( '<li>' ).attr( 'id', 'cite_note--1' ).append(
 				$( '<span>' ).addClass( 'reference-text' ).text( 'Footnote' )
@@ -30,6 +33,23 @@ QUnit.test( 'Reference preview gateway returns the correct data', function ( ass
 				extract: 'Footnote',
 				type: 'reference',
 				sourceElementId: undefined
+			}
+		);
+	} );
+} );
+
+QUnit.test( 'Reference preview gateway returns source element id', function ( assert ) {
+	const gateway = createReferenceGateway(),
+		title = createStubTitle( 1, 'Foo', 'cite note--1' );
+
+	return gateway.fetchPreviewForTitle( title, this.$sourceElement[ 0 ] ).then( ( result ) => {
+		assert.propEqual(
+			result,
+			{
+				url: '#cite_note--1',
+				extract: 'Footnote',
+				type: 'reference',
+				sourceElementId: 'cite_ref-1'
 			}
 		);
 	} );
