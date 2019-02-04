@@ -8,7 +8,7 @@ import { escapeHTML } from '../templateUtil';
 /**
  * @param {ext.popups.PreviewModel} model
  * @param {boolean} hasThumbnail
- * @return {string} HTML string.
+ * @return {jQuery}
  */
 export function renderPagePreview(
 	model, hasThumbnail

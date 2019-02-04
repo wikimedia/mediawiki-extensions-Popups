@@ -169,7 +169,7 @@ function createPagePreview( model ) {
 		hasThumbnail = thumbnail !== null,
 		extract = model.extract;
 
-	const $el = $( $.parseHTML( renderPagePreview( model, hasThumbnail ) ) );
+	const $el = renderPagePreview( model, hasThumbnail );
 
 	if ( hasThumbnail ) {
 		$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
@@ -206,12 +206,8 @@ function createEmptyPreview( model ) {
 		extractMsg = mw.msg( 'popups-preview-no-preview' ),
 		linkMsg = mw.msg( 'popups-preview-footer-read' );
 
-	const $el = $(
-		$.parseHTML( renderPreview( model, showTitle, extractMsg, linkMsg ) )
-	);
-
 	return {
-		el: $el,
+		el: renderPreview( model, showTitle, extractMsg, linkMsg ),
 		hasThumbnail: false,
 		isTall: false
 	};
@@ -228,12 +224,8 @@ function createDisambiguationPreview( model ) {
 		extractMsg = mw.msg( 'popups-preview-disambiguation' ),
 		linkMsg = mw.msg( 'popups-preview-disambiguation-link' );
 
-	const $el = $(
-		$.parseHTML( renderPreview( model, showTitle, extractMsg, linkMsg ) )
-	);
-
 	return {
-		el: $el,
+		el: renderPreview( model, showTitle, extractMsg, linkMsg ),
 		hasThumbnail: false,
 		isTall: false
 	};

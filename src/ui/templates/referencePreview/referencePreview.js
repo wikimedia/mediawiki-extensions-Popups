@@ -18,7 +18,7 @@ export function renderReferencePreview(
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
 
-	const $el = $( $.parseHTML( renderPopup( model.type,
+	const $el = renderPopup( model.type,
 		`
 			<strong class='mwe-popups-title'>
 				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-reference'></span>
@@ -31,7 +31,7 @@ export function renderReferencePreview(
 				<a href='${ url }' class='mwe-popups-read-link'>${ linkMsg }</a>
 			</footer>
 		`
-	) ) );
+	);
 
 	// Make sure to not destroy existing targets, if any
 	$el.find( '.mwe-popups-extract a[href]:not([target])' ).each( ( i, a ) => {
