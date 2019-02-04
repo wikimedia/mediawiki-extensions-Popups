@@ -24,9 +24,7 @@ export function renderReferencePreview(
 				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-reference'></span>
 				${ title }
 			</strong>
-			<div class='mwe-popups-extract'>
-				<span class='mwe-popups-message'>${ model.extract }</span>
-			</div>
+			<div class='mwe-popups-extract mw-parser-output'>${ model.extract }</div>
 			<footer>
 				<a href='${ url }' class='mwe-popups-read-link'>${ linkMsg }</a>
 			</footer>
