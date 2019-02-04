@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"NehalDaveND"
+			"NehalDaveND",
+			"पर्वत सुबेदी"
 		]
 	},
-	"popups-settings-save": "संग्रह गर्ने",
+	"popups-settings-save": "सङ्ग्रह गर्ने",
 	"popups-settings-help-ok": "ठीक",
 	"popups-settings-cancel": "रद्द गर्ने"
 }
