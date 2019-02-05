@@ -157,7 +157,8 @@ export function fetch( gateway, title, el, token, type ) {
 				exception.data = data;
 				dispatch( {
 					type,
-					el
+					el,
+					token
 				} );
 				// Keep the request promise in a rejected status since it failed.
 				throw exception;
@@ -276,13 +277,15 @@ export function abandon() {
 			return $.Deferred().resolve().promise();
 		}
 
-		// Immediately abandon any outstanding fetch request. Do not wait.
-		promise.abort();
-
 		dispatch( timedAction( {
 			type: types.ABANDON_START,
 			token
 		} ) );
+
+		if ( 'abort' in promise ) {
+			// Immediately request that any outstanding fetch request be abandoned. Do not wait.
+			promise.abort();
+		}
 
 		return wait( ABANDON_END_DELAY )
 			.then( () => {

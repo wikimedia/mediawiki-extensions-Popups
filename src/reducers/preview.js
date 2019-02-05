@@ -34,8 +34,8 @@ export default function preview( state, action ) {
 			} );
 
 		case actionTypes.LINK_DWELL:
-			// New interaction
 			if ( action.el !== state.activeLink ) {
+				// New interaction
 				return nextState( state, {
 					activeLink: action.el,
 					activeEvent: action.event,
@@ -52,7 +52,7 @@ export default function preview( state, action ) {
 					promise: action.promise
 				} );
 			}
-			// Dwelling back into the same link
+			// Dwelling back into the same link.
 			return nextState( state, {
 				isUserDwelling: true
 			} );
@@ -65,6 +65,7 @@ export default function preview( state, action ) {
 				wasClicked: true
 			} );
 
+		case actionTypes.FETCH_ABORTED:
 		case actionTypes.ABANDON_END:
 			if ( action.token === state.activeToken && !state.isUserDwelling ) {
 				return nextState( state, {

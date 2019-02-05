@@ -130,7 +130,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 			timestamp: mw.now(),
 			title: 'Foo',
 			namespaceId: 0,
-			promise: $.Deferred().promise( { abort() {} } )
+			promise: $.Deferred().promise()
 		},
 		'The dispatcher was called with the correct arguments.'
 	);
@@ -360,7 +360,8 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails',
 			this.dispatch.getCall( 1 ).args[ 0 ],
 			{
 				type: actionTypes.FETCH_FAILED,
-				el: this.el
+				el: this.el,
+				token: this.token
 			},
 			'The dispatcher was called with the correct arguments.'
 		);
@@ -381,7 +382,8 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 			this.dispatch.getCall( 1 ).args[ 0 ],
 			{
 				type: actionTypes.FETCH_FAILED,
-				el: this.el
+				el: this.el,
+				token: this.token
 			},
 			'The dispatcher was called with the correct arguments.'
 		);
@@ -408,7 +410,8 @@ QUnit.test( 'it should dispatch the FETCH_ABORTED action when the request is abo
 			this.dispatch.getCall( 1 ).args[ 0 ],
 			{
 				type: actionTypes.FETCH_ABORTED,
-				el: this.el
+				el: this.el,
+				token: this.token
 			},
 			'The dispatcher was called with the correct arguments.'
 		);
