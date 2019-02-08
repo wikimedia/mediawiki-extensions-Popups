@@ -558,7 +558,7 @@ export function setThumbnailClipPath(
 }
 
 /**
- * Gets the thumbnail SVG clip-path element ID.
+ * Gets the thumbnail SVG clip-path element ID as specified in pointer-mask.svg.
  *
  * @param {boolean} isTall Sugar around
  *  `preview.hasThumbnail && thumbnail.isTall`
@@ -567,13 +567,19 @@ export function setThumbnailClipPath(
  * @return {string|undefined}
  */
 export function getThumbnailClipPathID( isTall, flippedY, flippedX ) {
-	if ( flippedX && !flippedY ) {
-		return isTall ? 'mwe-popups-landscape-mask' : 'mwe-popups-mask-flip';
-	} else if ( flippedY && flippedX && isTall ) {
-		return 'mwe-popups-landscape-mask-flip';
-	} else if ( !flippedY && !isTall ) {
-		return 'mwe-popups-mask';
+	// Clip-paths are only needed when the pointer is in a corner that is covered by the thumbnail.
+	// This is only the case in 4 of 8 situations:
+	if ( !isTall && !flippedY ) {
+		// 1. Landscape thumbnails cover the upper half of the popup. This is only the case when the
+		// pointer is not flipped to the bottom.
+		return flippedX ? 'mwe-popups-mask-flip' : 'mwe-popups-mask';
+	} else if ( isTall && flippedX ) {
+		// 2. Tall thumbnails cover the right half of the popup. This is only the case when the
+		// pointer is flipped to the right.
+		return flippedY ? 'mwe-popups-landscape-mask-flip' : 'mwe-popups-landscape-mask';
 	}
+
+	// The 4 combinations not covered above don't need a clip-path.
 	return undefined;
 }
 

@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is put into the current documents body via renderer.createPointerMasks(). The IDs are referenced from the code in renderer.getThumbnailClipPathID() -->
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
   <defs>
+		<!-- This mask's pointer is left-aligned and points to the top. -->
     <clippath id="mwe-popups-mask">
       <polygon points="0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000"/>
     </clippath>
+		<!-- This mask's pointer is right-aligned (relative to a 320 wide rectangle) and points to the top. "flip" means horizontally flipped here! -->
     <clippath id="mwe-popups-mask-flip">
-      <polygon points="0 8, 274 8, 282 0, 290 8, 1000 8, 1000 1000, 0 1000"/>
+      <polygon points="0 8, 294 8, 302 0, 310 8, 1000 8, 1000 1000, 0 1000"/>
     </clippath>
+		<!-- This mask's pointer is right-aligned (relative to a 200 wide rectangle) and points to the top. -->
     <clippath id="mwe-popups-landscape-mask">
       <polygon points="0 8, 174 8, 182 0, 190 8, 1000 8, 1000 1000, 0 1000"/>
     </clippath>
+		<!-- This mask's pointer is right-aligned (relative to a 200 x 250 rectangle) and points to the bottom. "flip" means vertically flipped here! -->
     <clippath id="mwe-popups-landscape-mask-flip">
       <polygon points="0 0, 1000 0, 1000 242, 190 242, 182 250, 174 242, 0 242"/>
     </clippath>

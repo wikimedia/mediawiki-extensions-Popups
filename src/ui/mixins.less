@@ -1,6 +1,20 @@
 @import 'mediawiki.mixins.animation';
 @import 'mediawiki.mixins.less';
 
+/*
+ * These two mixins create pointer triangles via cleverly placed borders, without any image.
+ *   _____________
+ *  |\           /|
+ *  | \_________/ |
+ *  | |         | |      ____
+ *  | | Content | |     |\  /|
+ *  | |_________| |     | \/ |        ____
+ *  | /         \ |  >  | /\ |   >   | /\ |     >     /\
+ *  |/___________\|     |/__\|       |/__\|          /__\
+ *
+ *   Element with    Set content     Remove     Make left+right
+ *     4 borders       to 0x0      top border    transparent
+ */
 .mwe-popups-border-pointer-top( @size, @left, @color, @extra ) {
 	content: '';
 	position: absolute;
