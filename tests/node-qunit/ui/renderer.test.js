@@ -1,4 +1,5 @@
 import * as renderer from '../../../src/ui/renderer';
+import * as pagePreview from '../../../src/ui/templates/pagePreview/pagePreview';
 import * as constants from '../../../src/constants';
 import { createNullModel, previewTypes } from '../../../src/preview/model';
 import { createThumbnail } from '../../../src/ui/thumbnail';
@@ -66,7 +67,7 @@ QUnit.test( 'getExtractWidth', ( assert ) => {
 		],
 		[ {
 			isNarrow: true, offset: 10
-		}, `${renderer.defaultExtractWidth + 10}px` ],
+		}, `${ pagePreview.defaultExtractWidth + 10 }px` ],
 		[ {
 			// Fall back to css stylesheet for non-narrow thumbs.
 			isNarrow: false, offset: 100
@@ -75,7 +76,7 @@ QUnit.test( 'getExtractWidth', ( assert ) => {
 
 	cases.forEach( ( case_, i ) => {
 		assert.strictEqual(
-			renderer.getExtractWidth( case_[ 0 ] ),
+			pagePreview.getExtractWidth( case_[ 0 ] ),
 			case_[ 1 ],
 			`Case ${i}: the expected extract width matches.`
 		);
