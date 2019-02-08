@@ -4,6 +4,8 @@
 
 import { escapeHTML } from '../templateUtil';
 
+const $ = jQuery;
+
 /**
  * @typedef {Object} SettingsModel
  * @property {string} heading
@@ -44,7 +46,7 @@ function escapeChoices( choices = [] ) {
 
 /**
  * @param {SettingsModel} model
- * @return {string} HTML string.
+ * @return {jQuery}
  */
 export function renderSettingsDialog( model ) {
 	const heading = escapeHTML( model.heading ),
@@ -53,7 +55,7 @@ export function renderSettingsDialog( model ) {
 		helpText = escapeHTML( model.helpText ),
 		okLabel = escapeHTML( model.okLabel ),
 		choices = escapeChoices( model.choices );
-	return `
+	return $( $.parseHTML( `
 		<section id='mwe-popups-settings'>
 			<header>
 				<div>
@@ -87,5 +89,5 @@ export function renderSettingsDialog( model ) {
 				<p>${ helpText }</p>
 			</div>
 		</section>
-	`.trim();
+	`.trim() ) );
 }
