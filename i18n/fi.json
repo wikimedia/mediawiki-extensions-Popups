@@ -21,7 +21,7 @@
 	"popups-settings-enable": "Ota esikatselu käyttöön",
 	"popups-preview-no-preview": "Virheen vuoksi esikatselua ei voida näyttää",
 	"popups-preview-footer-read": "Mene tälle sivulle",
-	"popups-preview-disambiguation": "Tämä otsikko koskee useampaa kuin yhtä sivua",
+	"popups-preview-disambiguation": "Tämä sivun nimi liittyy useampaan kuin yhteen sivuun",
 	"popups-preview-disambiguation-link": "Katso samankaltaisia sivuja",
 	"prefs-reading": "Lukemisen asetukset",
 	"popups-prefs-optin-title": "Sivun esikatselut (näe nopeasti aiheen esikatselut sivua lukiessasi):",
