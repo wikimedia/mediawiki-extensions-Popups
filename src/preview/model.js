@@ -9,13 +9,13 @@
  * @constant {Object}
  */
 const previewTypes = {
-	/** empty preview */
+	/** Empty preview used in error situations */
 	TYPE_GENERIC: 'generic',
-	/** standard preview */
+	/** Standard page preview with or without thumbnail */
 	TYPE_PAGE: 'page',
-	/** disambiguation preview */
+	/** Disambiguation page preview */
 	TYPE_DISAMBIGUATION: 'disambiguation',
-	/** reference preview **/
+	/** Reference preview **/
 	TYPE_REFERENCE: 'reference'
 };
 

@@ -29,7 +29,6 @@ export default function createReferenceGateway() {
 		}
 
 		return $.Deferred().resolve( {
-			// TODO: Provide different titles depending on the type of reference (e.g. "Book")
 			url: `#${ id }`,
 			extract: $referenceText.html(),
 			type: previewTypes.TYPE_REFERENCE,
