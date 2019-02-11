@@ -12,9 +12,6 @@ const mw = mediaWiki;
  * @return {string|undefined}
  */
 export function getTitle( href, config ) {
-	const titleRegex = new RegExp( mw.RegExp.escape( config.get( 'wgArticlePath' ) )
-		.replace( '\\$1', '([^?#]+)' ) );
-
 	// Skip every URI that mw.Uri cannot parse
 	let linkHref;
 	try {
@@ -33,7 +30,9 @@ export function getTitle( href, config ) {
 
 	// No query params (pretty URL)
 	if ( !queryLength ) {
-		const matches = titleRegex.exec( linkHref.path );
+		const pattern = mw.RegExp.escape( config.get( 'wgArticlePath' ) ).replace( '\\$1', '([^?#]+)' ),
+			matches = new RegExp( pattern ).exec( linkHref.path );
+
 		// We can't be sure decodeURIComponent() is able to parse every possible match
 		try {
 			title = matches && decodeURIComponent( matches[ 1 ] );
