@@ -133,7 +133,7 @@
 				"popups-preview-disambiguation",
 				"popups-preview-disambiguation-link",
 				"popups-refpreview-footnote",
-				"popups-refpreview-jump-to-reference"
+				"popups-refpreview-jump-to-footnote"
 			],
 			"dependencies": [
 				"ext.popups.images",

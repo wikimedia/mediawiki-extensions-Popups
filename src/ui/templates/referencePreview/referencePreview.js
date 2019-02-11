@@ -16,7 +16,7 @@ export function renderReferencePreview(
 ) {
 	const title = escapeHTML( model.title || mw.msg( 'popups-refpreview-footnote' ) ),
 		url = escapeHTML( model.url ),
-		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
+		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-footnote' ) );
 
 	const $el = renderPopup( model.type,
 		`
