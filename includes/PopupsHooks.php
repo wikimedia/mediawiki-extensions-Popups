@@ -106,14 +106,14 @@ class PopupsHooks {
 	 * @param array &$vars Array of variables to be added into the output of the startup module
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars ) {
-		/** @var \Config $conf */
-		$conf = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
-		$vars['wgPopupsVirtualPageViews'] = $conf->get( 'PopupsVirtualPageViews' );
-		$vars['wgPopupsGateway'] = $conf->get( 'PopupsGateway' );
-		$vars['wgPopupsEventLogging'] = $conf->get( 'PopupsEventLogging' );
-		$vars['wgPopupsRestGatewayEndpoint'] = $conf->get( 'PopupsRestGatewayEndpoint' );
-		$vars['wgPopupsReferencePreviews'] = $conf->get( 'PopupsReferencePreviews' );
-		$vars['wgPopupsStatsvSamplingRate'] = $conf->get( 'PopupsStatsvSamplingRate' );
+		/** @var \Config $config */
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		$vars['wgPopupsVirtualPageViews'] = $config->get( 'PopupsVirtualPageViews' );
+		$vars['wgPopupsGateway'] = $config->get( 'PopupsGateway' );
+		$vars['wgPopupsEventLogging'] = $config->get( 'PopupsEventLogging' );
+		$vars['wgPopupsRestGatewayEndpoint'] = $config->get( 'PopupsRestGatewayEndpoint' );
+		$vars['wgPopupsReferencePreviews'] = $config->get( 'PopupsReferencePreviews' );
+		$vars['wgPopupsStatsvSamplingRate'] = $config->get( 'PopupsStatsvSamplingRate' );
 	}
 
 	/**
