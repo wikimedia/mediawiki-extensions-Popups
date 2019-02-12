@@ -1,4 +1,4 @@
-.mwe-popups-type-reference {
+.mwe-popups.mwe-popups-type-reference {
 	.mwe-popups-title {
 		margin-top: @popupPadding;
 
@@ -18,6 +18,17 @@
 				/* align narrow icon with the text */
 				margin-left: -2px;
 			}
+		}
+	}
+
+	.mwe-popups-extract {
+		// Reference previews can be smaller than page preview, where the minimum is two lines.
+		min-height: @lineHeight;
+		overflow: auto;
+
+		// We don't want footnotes to have a fade-out effect (introduced with T150814).
+		&:after {
+			display: none;
 		}
 	}
 
