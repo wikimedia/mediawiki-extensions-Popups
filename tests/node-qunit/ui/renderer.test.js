@@ -86,17 +86,17 @@ QUnit.test( 'getExtractWidth', ( assert ) => {
 QUnit.test( 'createPointerMasks', ( assert ) => {
 	const $container = $( '<div>' ),
 		cases = [
-			[ 'clippath#mwe-popups-mask polygon', '0 8, 10 8, 18 0, 26 8, 1000 8, 1000 1000, 0 1000' ],
-			[ 'clippath#mwe-popups-mask-flip polygon', '0 8, 294 8, 302 0, 310 8, 1000 8, 1000 1000, 0 1000' ],
-			[ 'clippath#mwe-popups-landscape-mask polygon', '0 8, 174 8, 182 0, 190 8, 1000 8, 1000 1000, 0 1000' ],
-			[ 'clippath#mwe-popups-landscape-mask-flip polygon', '0 0, 1000 0, 1000 242, 190 242, 182 250, 174 242, 0 242' ]
+			[ 'clippath#mwe-popups-mask', 'M0 8h10l8-8 8 8h974v992H0z' ],
+			[ 'clippath#mwe-popups-mask-flip', 'M0 8h294l8-8 8 8h690v992H0z' ],
+			[ 'clippath#mwe-popups-landscape-mask', 'M0 8h174l8-8 8 8h810v992H0z' ],
+			[ 'clippath#mwe-popups-landscape-mask-flip', 'M0 0h1000v242H190l-8 8-8-8H0z' ]
 		];
 
 	renderer.createPointerMasks( $container.get( 0 ) );
 
 	cases.forEach( ( case_, i ) => {
 		assert.strictEqual(
-			$container.find( case_[ 0 ] ).attr( 'points' ),
+			$container.find( `${ case_[ 0 ] } path` ).attr( 'd' ),
 			case_[ 1 ],
 			`Case ${i}: the SVG's polygons match.`
 		);
