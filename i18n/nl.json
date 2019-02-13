@@ -39,5 +39,5 @@
 	"popups-prefs-disable-nav-gadgets-info": "Om paginavoorvertoningen te kunnen inschakelen, moet u eerst Navigatiepop-ups uitschakelen [[$1 | op het Uitbreidingen-tabblad]]",
 	"popups-prefs-conflicting-gadgets-info": "Bepaalde uitbreidingen en andere aanpassingen kunnen de prestaties van deze functie beïnvloeden. Als u problemen ondervindt, controleer dan uw gadgets en gebruikersscripts, inclusief de globale.",
 	"popups-refpreview-footnote": "Voetnoot",
-	"popups-refpreview-jump-to-reference": "Naar verwijzing"
+	"popups-refpreview-jump-to-footnote": "Naar verwijzing"
 }
