@@ -86,10 +86,10 @@ QUnit.test( 'getExtractWidth', ( assert ) => {
 QUnit.test( 'createPointerMasks', ( assert ) => {
 	const $container = $( '<div>' ),
 		cases = [
-			[ 'clippath#mwe-popups-mask', 'M0 8h10l8-8 8 8h974v992H0z' ],
-			[ 'clippath#mwe-popups-mask-flip', 'M0 8h294l8-8 8 8h690v992H0z' ],
-			[ 'clippath#mwe-popups-landscape-mask', 'M0 8h174l8-8 8 8h810v992H0z' ],
-			[ 'clippath#mwe-popups-landscape-mask-flip', 'M0 0h1000v242H190l-8 8-8-8H0z' ]
+			[ '#mwe-popups-mask', 'M0 8h10l8-8 8 8h974v992H0z' ],
+			[ '#mwe-popups-mask-flip', 'M0 8h294l8-8 8 8h690v992H0z' ],
+			[ '#mwe-popups-landscape-mask', 'M0 8h174l8-8 8 8h810v992H0z' ],
+			[ '#mwe-popups-landscape-mask-flip', 'M0 0h1000v242H190l-8 8-8-8H0z' ]
 		];
 
 	renderer.createPointerMasks( $container.get( 0 ) );
