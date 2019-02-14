@@ -32,5 +32,5 @@
 	"popups-prefs-disable-nav-gadgets-info": "يجب عليك [[$1 |تعطيل أداة التنقل بالنوافذ المنبثقة]] من علامة تبويب الأدوات لتمكين معاينات الصفحة",
 	"popups-prefs-conflicting-gadgets-info": "قد تؤثر بعض الأدوات والتخصيصات الأخرى على أداء هذه الميزة، إذا واجهت أية مُشكلات تُرجَى مراجعة أدواتك والنصوص البرمجية للمستخدم الخاصة بك، بما في ذلك العالمية.",
 	"popups-refpreview-footnote": "حاشية",
-	"popups-refpreview-jump-to-footnote": "اذهب الى المرجع"
+	"popups-refpreview-jump-to-footnote": "اذهب الى الحاشية"
 }

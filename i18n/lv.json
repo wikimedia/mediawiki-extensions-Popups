@@ -24,5 +24,6 @@
 	"prefs-reading": "Lasīšanas izvēles",
 	"popups-prefs-optin-title": "Lapu priekšskatījumi\n\n<em>Iegūsti ātru priekšskatījumu par tēmu, lasot lapu</em>",
 	"popups-prefs-optin-enabled-label": "Ieslēgt",
-	"popups-prefs-optin-disabled-label": "Atslēgt"
+	"popups-prefs-optin-disabled-label": "Atslēgt",
+	"popups-refpreview-jump-to-footnote": "Pārlēkt uz piezīmi"
 }
