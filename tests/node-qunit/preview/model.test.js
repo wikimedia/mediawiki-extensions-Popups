@@ -44,7 +44,6 @@ QUnit.test( 'it should copy the basic properties', ( assert ) => {
 } );
 
 QUnit.test( 'it computes the type property', ( assert ) => {
-
 	function createModelWith( { extract, type } ) {
 		return createModel(
 			'Foo',

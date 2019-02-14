@@ -232,7 +232,6 @@ export default function eventLogging( state, action ) {
 			}
 
 			return nextState( state, {
-
 				// TODO: Extract this object into a module that can be shared between
 				// this and the preview reducer.
 				interaction: {

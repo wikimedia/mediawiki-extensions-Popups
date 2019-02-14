@@ -136,7 +136,6 @@ QUnit.module( 'ext.popups preview @integration', {
 
 		this.dwellAndPreviewDwell = ( title, el, ev, res ) => {
 			return this.dwellAndShowPreview( title, el, ev, res ).then( () => {
-
 				// Get out of the link, and before the delay ends...
 				const abandonPromise = this.abandon(),
 					abandonWaitDeferred = this.waitDeferred;

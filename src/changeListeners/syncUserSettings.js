@@ -19,9 +19,7 @@
  * @return {ext.popups.ChangeListener}
  */
 export default function syncUserSettings( userSettings ) {
-
 	return ( prevState, state ) => {
-
 		syncIfChanged(
 			prevState, state, 'eventLogging', 'previewCount',
 			userSettings.setPreviewCount

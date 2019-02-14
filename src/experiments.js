@@ -17,7 +17,6 @@
  */
 export default function createExperiments( mwExperiments ) {
 	return {
-
 		/**
 		 * Gets whether something is true given a name and a token.
 		 *

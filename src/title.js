@@ -71,10 +71,10 @@ export function isValid( title, contentNamespaces ) {
 }
 
 /**
- * Return a mw.Title from a HTMLElement if valid for page previews. Convenience
+ * Return an mw.Title from an HTMLAnchorElement if valid for page previews. Convenience
  * method
  *
- * @param {Element} el
+ * @param {HTMLAnchorElement} el
  * @param {mw.Map} config
  * @return {mw.Title|null}
  */

@@ -21,7 +21,6 @@ const IS_ENABLED_KEY = 'mwe-popups-enabled',
  */
 export default function createUserSettings( storage ) {
 	return {
-
 		/**
 		 * Gets whether the user has previously enabled Page Previews.
 		 *

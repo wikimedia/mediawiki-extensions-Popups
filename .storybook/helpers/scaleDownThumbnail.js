@@ -21,7 +21,6 @@ import { default as CONSTANTS } from '../../src/constants';
  * @returns {Object} PreviewModel.thumbnail property
  */
 export default function scaleDownThumbnail( thumbnail ) {
-
 	const
 		x = thumbnail.width,
 		y = thumbnail.height,

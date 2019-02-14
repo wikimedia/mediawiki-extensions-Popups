@@ -18,7 +18,6 @@ export default function createContainer() {
 	 * @global
 	 */
 	return {
-
 		/**
 		 * Defines a service.
 		 *

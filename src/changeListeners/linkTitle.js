@@ -53,7 +53,6 @@ export default function linkTitle() {
 		}
 
 		if ( hasPrevActiveLink ) {
-
 			// Has the user dwelled on a link immediately after abandoning another
 			// (remembering that the ABANDON_END action is delayed by
 			// ~100 ms).

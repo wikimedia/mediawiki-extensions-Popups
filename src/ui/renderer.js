@@ -89,7 +89,6 @@ export function render( model ) {
 	const preview = createPreviewWithType( model );
 
 	return {
-
 		/**
 		 * Shows the preview given an event representing the user's interaction
 		 * with the active link, e.g. an instance of

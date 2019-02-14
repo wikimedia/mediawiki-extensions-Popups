@@ -388,7 +388,6 @@ QUnit.test( 'it should dispatch the FETCH_FAILED action when the request fails e
 } );
 
 QUnit.test( 'it should dispatch the FETCH_ABORTED action when the request is aborted', function ( assert ) {
-
 	const fetched = this.fetch();
 	this.now += 115;
 	this.gatewayDeferred.reject( 'http', {

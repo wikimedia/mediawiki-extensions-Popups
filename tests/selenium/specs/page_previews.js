@@ -2,7 +2,6 @@ const assert = require( 'assert' ),
 	page = require( '../pageobjects/popups.page' );
 
 describe( 'Dwelling on a valid page link', function () {
-
 	before( function () {
 		page.setup();
 	} );

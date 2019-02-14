@@ -119,7 +119,6 @@ function processExtract( extract ) {
  */
 
 function getPreviewType( type, processedExtract ) {
-
 	if ( processedExtract === undefined ) {
 		return previewTypes.TYPE_GENERIC;
 	}

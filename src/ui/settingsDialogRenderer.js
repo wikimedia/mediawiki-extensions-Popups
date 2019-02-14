@@ -12,7 +12,6 @@ const $ = jQuery;
  * @return {Function} render function
  */
 export default function createSettingsDialogRenderer() {
-
 	/**
 	 * Cached settings dialog
 	 *
@@ -32,7 +31,6 @@ export default function createSettingsDialogRenderer() {
 	 * @return {Object} object with methods to affect the rendered UI
 	 */
 	return ( boundActions ) => {
-
 		if ( !$dialog ) {
 			$dialog = createSettingsDialog( isNavPopupsEnabled() );
 			$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
