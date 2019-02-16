@@ -28,12 +28,14 @@ export default function createReferenceGateway() {
 			).promise( { abort() {} } );
 		}
 
-		return $.Deferred().resolve( {
+		const model = {
 			url: `#${ id }`,
 			extract: $referenceText.html(),
 			type: previewTypes.TYPE_REFERENCE,
 			sourceElementId: el && el.parentNode && el.parentNode.id
-		} ).promise( { abort() {} } );
+		};
+
+		return $.Deferred().resolve( model ).promise( { abort() {} } );
 	}
 
 	return {

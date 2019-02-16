@@ -296,10 +296,10 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 
 QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	const model = {
-			title: 'Custom title <"\'>',
 			url: '#custom_id <"\'>',
 			extract: 'Custom <i>extract</i> with a <a href="//wikipedia.de">link</a>',
-			type: previewTypes.TYPE_REFERENCE
+			type: previewTypes.TYPE_REFERENCE,
+			referenceType: 'web'
 		},
 		preview = renderer.createPreviewWithType( model );
 
@@ -308,7 +308,7 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-title' ).text().trim(),
-		'Custom title <"\'>'
+		'<popups-refpreview-web>'
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).text().trim(),

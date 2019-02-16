@@ -5,7 +5,9 @@
 import { renderPopup } from '../popup/popup';
 import { escapeHTML } from '../templateUtil';
 
-const mw = mediaWiki;
+// Known citation type strings currently supported with icons and messages.
+const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ],
+	mw = mediaWiki;
 
 /**
  * @param {ext.popups.PreviewModel} model
@@ -14,14 +16,16 @@ const mw = mediaWiki;
 export function renderReferencePreview(
 	model
 ) {
-	const title = escapeHTML( model.title || mw.msg( 'popups-refpreview-footnote' ) ),
+	const type = KNOWN_TYPES.indexOf( model.referenceType ) < 0 ? 'generic' : model.referenceType,
+		titleMsg = `popups-refpreview-${ type === 'generic' ? 'footnote' : type }`,
+		title = escapeHTML( mw.msg( titleMsg ) ),
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-footnote' ) );
 
 	const $el = renderPopup( model.type,
 		`
 			<strong class='mwe-popups-title'>
-				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-reference'></span>
+				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-reference-${ type }'></span>
 				${ title }
 			</strong>
 			<div class='mwe-popups-extract mw-parser-output'>${ model.extract }</div>

@@ -101,7 +101,26 @@
 						"rtl": "resources/ext.popups.images/multiple-articles-rtl.svg"
 					}
 				},
-				"preview-reference": "resources/ext.popups.images/reference.svg"
+				"reference-generic": "resources/ext.popups.images/reference.svg",
+				"reference-book": {
+					"file": {
+						"ltr": "resources/ext.popups.images/book-ltr.svg",
+						"rtl": "resources/ext.popups.images/book-rtl.svg"
+					}
+				},
+				"reference-journal": {
+					"file": {
+						"ltr": "resources/ext.popups.images/journal-ltr.svg",
+						"rtl": "resources/ext.popups.images/journal-rtl.svg"
+					}
+				},
+				"reference-news": {
+					"file": {
+						"ltr": "resources/ext.popups.images/newspaper-ltr.svg",
+						"rtl": "resources/ext.popups.images/newspaper-rtl.svg"
+					}
+				},
+				"reference-web": "resources/ext.popups.images/web.svg"
 			}
 		},
 		"ext.popups": {
@@ -133,6 +152,10 @@
 				"popups-preview-disambiguation",
 				"popups-preview-disambiguation-link",
 				"popups-refpreview-footnote",
+				"popups-refpreview-book",
+				"popups-refpreview-journal",
+				"popups-refpreview-news",
+				"popups-refpreview-web",
 				"popups-refpreview-jump-to-footnote"
 			],
 			"dependencies": [
