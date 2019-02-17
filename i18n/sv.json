@@ -31,5 +31,6 @@
 	"popups-prefs-optin-enabled-label": "Aktivera",
 	"popups-prefs-optin-disabled-label": "Inaktivera",
 	"popups-prefs-disable-nav-gadgets-info": "Du måste [[$1 | avaktivera Navigation Popups Gadget]] från Finesser-fliken för att aktivera sidförhandsvisningar",
-	"popups-prefs-conflicting-gadgets-info": "Vissa finesser och andra anpassningar kan påverka den här funktionens prestanda. Om du upplever problem, vänligen granska dina finesser och användarskript, medräknat globala sådana."
+	"popups-prefs-conflicting-gadgets-info": "Vissa finesser och andra anpassningar kan påverka den här funktionens prestanda. Om du upplever problem, vänligen granska dina finesser och användarskript, medräknat globala sådana.",
+	"popups-refpreview-jump-to-footnote": "Hoppa till fotnot"
 }

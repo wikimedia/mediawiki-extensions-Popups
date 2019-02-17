@@ -4,7 +4,8 @@
 			"Danmichaelo",
 			"Jon Harald Søby",
 			"Jeblad",
-			"Orf3us"
+			"Orf3us",
+			"AnB"
 		]
 	},
 	"popups-message": "Sideforhåndsvisning",
@@ -29,5 +30,6 @@
 	"popups-prefs-optin-enabled-label": "Slå på",
 	"popups-prefs-optin-disabled-label": "Slå av",
 	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideforhåndsvisning",
-	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke denne funksjonen. Om du opplever problemer, sjekk dine tilleggsfunksjoner og brukerscript, inkludert dine globale script."
+	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke denne funksjonen. Om du opplever problemer, sjekk dine tilleggsfunksjoner og brukerscript, inkludert dine globale script.",
+	"popups-refpreview-jump-to-footnote": "Hopp til fotnote"
 }
