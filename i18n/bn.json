@@ -21,13 +21,14 @@
 	"popups-settings-enable": "প্রাকদর্শন সক্রিয় করুন",
 	"popups-preview-no-preview": "এই প্রাকদর্শন প্রদর্শনের সময় একটি সমস্যা হয়েছে",
 	"popups-preview-footer-read": "এই পাতায় যান",
+	"popups-preview-disambiguation": "এই শিরোনাম একাধিক পাতাকে নির্দেশ করে",
 	"popups-preview-disambiguation-link": "অনুরূপ পাতা দেখুন",
 	"prefs-reading": "পড়ার পছন্দ",
-	"popups-prefs-optin-title": "পাতা প্রাকদর্শন\n\n<em>একটি নিবন্ধ পড়ার সময় একটি প্রসঙ্গের দ্রুত প্রাকদর্শন দেখুন</em>",
+	"popups-prefs-optin-title": "পাতা প্রাকদর্শন (একটি নিবন্ধ পড়ার সময় একটি প্রসঙ্গের দ্রুত প্রাকদর্শন দেখুন):",
 	"popups-prefs-optin-enabled-label": "সক্রিয়",
 	"popups-prefs-optin-disabled-label": "নিস্ক্রিয়",
 	"popups-prefs-disable-nav-gadgets-info": "পাতা প্রাকদর্শন সক্রিয় করতে হলে আপনাকে গ্যাজেট থেকে [[$1 |ন্যাভিগেশন পপআপ গ্যাজেটটি নিষ্ক্রিয়]] করতে হবে",
-	"popups-prefs-conflicting-gadgets-info": "কিছু গ্যাজেট এবং অন্যান্য স্বনির্ধারন এই বৈশিষ্ট্যের কর্মক্ষমতাকে প্রভাবিত করতে পারে। আপনি যদি সমস্যার সম্মুখীন হলে তাহলে দয়া করে আপনার আপনার গ্যাজেট এবং ব্যবহারকারী স্ক্রিপ্ট পর্যালোচনা করুন।",
+	"popups-prefs-conflicting-gadgets-info": "কিছু গ্যাজেট এবং অন্যান্য স্বনির্ধারন এই বৈশিষ্ট্যের কর্মক্ষমতাকে প্রভাবিত করতে পারে। আপনি যদি সমস্যার সম্মুখীন হলে তাহলে দয়া করে আপনার আপনার গ্যাজেট এবং ব্যবহারকারী স্ক্রিপ্ট (বৈশ্বিকটি সহ) পর্যালোচনা করুন।",
 	"popups-refpreview-footnote": "পাদটীকা",
-	"popups-refpreview-jump-to-footnote": "তথ্যসূত্রের ঝাঁপ দিন"
+	"popups-refpreview-jump-to-footnote": "পাদটীকায় ঝাঁপ দিন"
 }
