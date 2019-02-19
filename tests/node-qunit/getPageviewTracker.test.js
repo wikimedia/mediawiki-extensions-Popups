@@ -1,4 +1,3 @@
-/* global Promise */
 import getPageviewTracker, { getSendBeacon, limitByEncodedURILength } from '../../src/getPageviewTracker';
 
 QUnit.module( 'ext.popups#getPageviewTracker', {
@@ -7,7 +6,10 @@ QUnit.module( 'ext.popups#getPageviewTracker', {
 		this.prepare = this.sandbox.stub();
 		this.trackerGetter = () => ( { makeBeaconUrl: this.makeBeaconUrl,
 			prepare: this.prepare } );
+
+		/* global Promise */
 		this.loader = () => Promise.resolve();
+
 		this.Title = {
 			newFromText: this.sandbox.stub()
 		};

@@ -150,6 +150,6 @@ function toggleHelp( $el, visible ) {
  * @return {boolean} if navpops was found to be enabled
  */
 function isNavPopupsEnabled() {
-	/* global pg: false*/
+	/* global pg */
 	return typeof pg !== 'undefined' && pg.fn.disablePopups !== undefined;
 }

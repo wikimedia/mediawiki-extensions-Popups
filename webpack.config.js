@@ -1,4 +1,5 @@
 /* global __dirname, process */
+
 const
 	path = require( 'path' ),
 	CleanPlugin = require( 'clean-webpack-plugin' ),
