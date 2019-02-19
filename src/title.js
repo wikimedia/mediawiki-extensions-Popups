@@ -5,6 +5,21 @@
 const mw = mediaWiki;
 
 /**
+ * Fast, native check if we are parsing a self-link, with the only difference beeing the hash.
+ *
+ * @param {HTMLAnchorElement} el
+ * @returns {boolean}
+ */
+function isOwnPageAnchorLink( el ) {
+	return el.hash &&
+		// Note: The protocol is ignored for the sake of simplicity.
+		// Can't compare username and password because they aren't readable from `location`.
+		el.host === location.host &&
+		el.pathname === location.pathname &&
+		el.search === location.search;
+}
+
+/**
  * Gets the title of a local page from an href given some configuration.
  *
  * @param {string} href
@@ -79,6 +94,11 @@ export function isValid( title, contentNamespaces ) {
  * @return {mw.Title|null}
  */
 export function fromElement( el, config ) {
+	if ( isOwnPageAnchorLink( el ) ) {
+		// No need to check the namespace. A self-link can't point to different one.
+		return mw.Title.newFromText( config.get( 'wgPageName' ) + el.hash );
+	}
+
 	return isValid(
 		getTitle( el.href, config ),
 		config.get( 'wgContentNamespaces' )

@@ -1,4 +1,4 @@
-import { getTitle, isValid } from '../../src/title';
+import { fromElement, getTitle, isValid } from '../../src/title';
 
 /* global Map */
 
@@ -216,4 +216,48 @@ QUnit.test( 'it should return the title object if the title is from a content na
 		mwTitle,
 		'A content namespace title is accepted'
 	);
+} );
+
+QUnit.module( 'title#fromElement', {
+	beforeEach() {
+		global.location = {
+			host: 'own.host',
+			pathname: '/w/index.php',
+			search: '?oldid=1&extra=1'
+		};
+		mediaWiki.Title = {
+			newFromText: this.sandbox.stub().throws( 'UNIMPLEMENTED' )
+		};
+	},
+	afterEach() {
+		global.location = null;
+		mediaWiki.Title = null;
+	}
+} );
+
+QUnit.test( 'it should accept anchor links that point to the own page', function ( assert ) {
+	const el = document.createElement( 'a' );
+	el.href = 'http://own.host/w/index.php?oldid=1&extra=1#example';
+
+	const config = new Map();
+	config.set( 'wgPageName', 'Talk:Page' );
+
+	const mwTitle = {
+		namespace: 1,
+		title: 'Page',
+		fragment: 'example'
+	};
+	mediaWiki.Title.newFromText.withArgs( 'Talk:Page#example' ).returns( mwTitle );
+
+	assert.propEqual( fromElement( el, config ), mwTitle );
+} );
+
+QUnit.test( 'it should ignore anchor links that are not identical', function ( assert ) {
+	const el = document.createElement( 'a' );
+	el.href = 'http://own.host/w/index.php?oldid=1#example';
+
+	const config = new Map();
+	config.set( 'wgPageName', 'Talk:Page' );
+
+	assert.strictEqual( fromElement( el, config ), null );
 } );
