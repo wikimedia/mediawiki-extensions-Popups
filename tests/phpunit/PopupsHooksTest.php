@@ -171,12 +171,11 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			'wgPopupsRestGatewayEndpoint' => '/api',
 			'wgPopupsVirtualPageViews' => true,
 			'wgPopupsGateway' => 'mwApiPlain',
-			'wgPopupsReferencePreviews' => false,
 			'wgPopupsStatsvSamplingRate' => 0
 		];
 		$this->setMwGlobals( $config );
 		PopupsHooks::onResourceLoaderGetConfigVars( $vars );
-		$this->assertCount( 7, $vars, 'A configuration is retrieved.' );
+		$this->assertCount( 6, $vars, 'A configuration is retrieved.' );
 
 		foreach ( $config as $key => $value ) {
 			$this->assertEquals(
@@ -305,7 +304,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
 
-		$this->assertCount( 2, $vars, 'Two globals are are made.' );
+		$this->assertCount( 3, $vars, 'Three globals are are made.' );
 		$this->assertFalse( $vars[ 'wgPopupsShouldSendModuleToUser' ],
 			'The PopupsShouldSendModuleToUser global is present and false.' );
 		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ],

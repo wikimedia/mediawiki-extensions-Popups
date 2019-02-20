@@ -24,6 +24,7 @@ use MediaWiki\MediaWikiServices;
 use User;
 use OutputPage;
 use Skin;
+use BetaFeatures;
 
 /**
  * Hooks definitions for Popups extension
@@ -112,7 +113,6 @@ class PopupsHooks {
 		$vars['wgPopupsGateway'] = $config->get( 'PopupsGateway' );
 		$vars['wgPopupsEventLogging'] = $config->get( 'PopupsEventLogging' );
 		$vars['wgPopupsRestGatewayEndpoint'] = $config->get( 'PopupsRestGatewayEndpoint' );
-		$vars['wgPopupsReferencePreviews'] = $config->get( 'PopupsReferencePreviews' );
 		$vars['wgPopupsStatsvSamplingRate'] = $config->get( 'PopupsStatsvSamplingRate' );
 	}
 
@@ -120,6 +120,10 @@ class PopupsHooks {
 	 * MakeGlobalVariablesScript hook handler.
 	 *
 	 * Variables added:
+	 * * `wgPopupsReferencePreviews' - The server's notion of whether or not the reference
+	 *   previews should be enabled. Depending on the general setting done on the wiki and
+	 *   - in cases where the feature is used as BetaFeature - of the user's BetaFeature
+	 *   setting.
 	 * * `wgPopupsShouldSendModuleToUser' - The server's notion of whether or not the
 	 *   user has enabled Page Previews (see `\Popups\PopupsContext#shouldSendModuleToUser`).
 	 * * `wgPopupsConflictsWithNavPopupGadget' - The server's notion of whether or not the
@@ -131,11 +135,30 @@ class PopupsHooks {
 	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $out ) {
 		/** @var PopupsContext $context */
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
+		/** @var \Config $config */
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 		$user = $out->getUser();
 
+		$vars['wgPopupsReferencePreviews'] = self::isReferencePreviewsEnabled( $user, $config );
 		$vars['wgPopupsShouldSendModuleToUser'] = $context->shouldSendModuleToUser( $user );
 		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget(
 			$user );
+	}
+
+	/**
+	 * @param User $user User whose preferences are checked
+	 * @param \Config $config Popups config
+	 * @return bool whether or not to show reference previews
+	 */
+	private static function isReferencePreviewsEnabled( User $user, \Config $config ) {
+		return $config->get( 'PopupsReferencePreviews' ) &&
+			( !$config->get( 'PopupsReferencePreviewsBetaFeature' ) ||
+				!\ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' ) ||
+				BetaFeatures::isFeatureEnabled(
+					$user,
+					PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME
+				)
+			);
 	}
 
 	/**
@@ -164,5 +187,32 @@ class PopupsHooks {
 
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			$config->get( 'PopupsOptInStateForNewAccounts' ) );
+	}
+
+	/**
+	 * Register preferences that enable experimental features.
+	 *
+	 * @param User $user User whose preferences are being modified
+	 * @param array[] &$prefs Array of beta features
+	 */
+	public static function onGetBetaFeaturePreferences( User $user, array &$prefs ) {
+		/** @var \Config $config */
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		$extensionAssetsPath = $config->get( 'ExtensionAssetsPath' );
+
+		if ( $config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
+			$config->get( 'PopupsReferencePreviews' )
+		) {
+			$prefs[ PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME ] = [
+				'label-message' => 'popups-refpreview-beta-feature-message',
+				'desc-message' => 'popups-refpreview-beta-feature-description',
+				'screenshot' => [
+					'ltr' => "$extensionAssetsPath/Popups/resources/ext.popups.images/refpreview-beta-ltr.svg",
+					'rtl' => "$extensionAssetsPath/Popups/resources/ext.popups.images/refpreview-beta-rtl.svg",
+				],
+				'info-link' => 'http://mediawiki.org/wiki/Help:Reference_Previews',
+				'discussion-link' => 'http://mediawiki.org/wiki/Help_Talk:Reference_Previews',
+			];
+		}
 	}
 }
