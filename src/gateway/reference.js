@@ -10,6 +10,17 @@ const $ = jQuery;
  * @return {Gateway}
  */
 export default function createReferenceGateway() {
+
+	function scrapeReferenceText( id ) {
+		const idSelector = `#${ $.escapeSelector( id ) }`;
+
+		/**
+		 * Same alternative selectors with and without mw-… as in the RESTbased endpoint.
+		 * @see https://phabricator.wikimedia.org/diffusion/GMOA/browse/master/lib/transformations/references/structureReferenceListContent.js$138
+		 */
+		return $( `${ idSelector } .mw-reference-text, ${ idSelector } .reference-text` );
+	}
+
 	/**
 	 * @param {mw.Title} title
 	 * @param {Element} el
@@ -18,7 +29,7 @@ export default function createReferenceGateway() {
 	function fetchPreviewForTitle( title, el ) {
 		// Need to encode the fragment again as mw.Title returns it as decoded text
 		const id = title.getFragment().replace( / /g, '_' ),
-			$referenceText = $( `#${ $.escapeSelector( id ) } .reference-text` );
+			$referenceText = scrapeReferenceText( id );
 
 		if ( !$referenceText.length ) {
 			return $.Deferred().reject(

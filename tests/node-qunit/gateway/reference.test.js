@@ -8,9 +8,13 @@ QUnit.module( 'ext.popups/gateway/reference', {
 		this.$sourceElement = $( '<a>' ).appendTo(
 			$( '<sup>' ).attr( 'id', 'cite_ref-1' ).appendTo( document.body )
 		);
+
 		this.$references = $( '<ul>' ).append(
 			$( '<li>' ).attr( 'id', 'cite_note--1' ).append(
-				$( '<span>' ).addClass( 'reference-text' ).text( 'Footnote' )
+				$( '<span>' ).addClass( 'mw-reference-text' ).text( 'Footnote 1' )
+			),
+			$( '<li>' ).attr( 'id', 'cite_note--2' ).append(
+				$( '<span>' ).addClass( 'reference-text' ).text( 'Footnote 2' )
 			)
 		).appendTo( document.body );
 	},
@@ -30,7 +34,24 @@ QUnit.test( 'Reference preview gateway returns the correct data', function ( ass
 			result,
 			{
 				url: '#cite_note--1',
-				extract: 'Footnote',
+				extract: 'Footnote 1',
+				type: 'reference',
+				sourceElementId: undefined
+			}
+		);
+	} );
+} );
+
+QUnit.test( 'Reference preview gateway accepts alternative text node class name', function ( assert ) {
+	const gateway = createReferenceGateway(),
+		title = createStubTitle( 1, 'Foo', 'cite note--2' );
+
+	return gateway.fetchPreviewForTitle( title ).then( ( result ) => {
+		assert.propEqual(
+			result,
+			{
+				url: '#cite_note--2',
+				extract: 'Footnote 2',
 				type: 'reference',
 				sourceElementId: undefined
 			}
@@ -47,7 +68,7 @@ QUnit.test( 'Reference preview gateway returns source element id', function ( as
 			result,
 			{
 				url: '#cite_note--1',
-				extract: 'Footnote',
+				extract: 'Footnote 1',
 				type: 'reference',
 				sourceElementId: 'cite_ref-1'
 			}
