@@ -17,6 +17,19 @@ QUnit.module( 'ext.popups/gateway/reference', {
 				$( '<span>' ).addClass( 'reference-text' ).append(
 					$( '<cite>' ).addClass( 'citation web unknown' ).text( 'Footnote 2' )
 				)
+			),
+			$( '<li>' ).attr( 'id', 'cite_note--3' ).append(
+				$( '<span>' ).addClass( 'reference-text' ).append(
+					$( '<cite>' ).addClass( 'news' ).text( 'Footnote 3' ),
+					$( '<cite>' ).addClass( 'news citation' ),
+					$( '<cite>' ).addClass( 'citation' )
+				)
+			),
+			$( '<li>' ).attr( 'id', 'cite_note--4' ).append(
+				$( '<span>' ).addClass( 'reference-text' ).append(
+					$( '<cite>' ).addClass( 'news' ).text( 'Footnote 4' ),
+					$( '<cite>' ).addClass( 'web' )
+				)
 			)
 		).appendTo( document.body );
 	},
@@ -57,6 +70,42 @@ QUnit.test( 'Reference preview gateway accepts alternative text node class name'
 				extract: '<cite class="citation web unknown">Footnote 2</cite>',
 				type: 'reference',
 				referenceType: 'web unknown',
+				sourceElementId: undefined
+			}
+		);
+	} );
+} );
+
+QUnit.test( 'Reference preview gateway accepts duplicated types', function ( assert ) {
+	const gateway = createReferenceGateway(),
+		title = createStubTitle( 1, 'Foo', 'cite note--3' );
+
+	return gateway.fetchPreviewForTitle( title ).then( ( result ) => {
+		assert.propEqual(
+			result,
+			{
+				url: '#cite_note--3',
+				extract: '<cite class="news">Footnote 3</cite><cite class="news citation"></cite><cite class="citation"></cite>',
+				type: 'reference',
+				referenceType: 'news',
+				sourceElementId: undefined
+			}
+		);
+	} );
+} );
+
+QUnit.test( 'Reference preview gateway rejects conflicting types', function ( assert ) {
+	const gateway = createReferenceGateway(),
+		title = createStubTitle( 1, 'Foo', 'cite note--4' );
+
+	return gateway.fetchPreviewForTitle( title ).then( ( result ) => {
+		assert.propEqual(
+			result,
+			{
+				url: '#cite_note--4',
+				extract: '<cite class="news">Footnote 4</cite><cite class="web"></cite>',
+				type: 'reference',
+				referenceType: null,
 				sourceElementId: undefined
 			}
 		);
