@@ -22,7 +22,10 @@
 	}
 
 	.mwe-popups-extract {
-		// Reference previews can be smaller than page preview, where the minimum is two lines.
+		// Reference previews should have a "lighter" appearence than page previews, where the
+		// maximum is 7 lines.
+		max-height: 5 * @lineHeight;
+		// Reference previews can be smaller than page previews, where the minimum is 2 lines.
 		min-height: @lineHeight;
 		overflow: auto;
 
