@@ -1,4 +1,4 @@
-import selectInitialGateway from '../../../src/gateway/index';
+import selectGatewayType from '../../../src/gateway/index';
 import { createStubTitle } from '../stubs';
 import { previewTypes } from '../../../src/preview/model';
 
@@ -14,7 +14,7 @@ QUnit.module( 'gateway/index.js', {
 
 QUnit.test( 'it uses the reference gateway with wgPopupsReferencePreviews == true and valid element', function ( assert ) {
 	assert.strictEqual(
-		selectInitialGateway( this.validEl, this.config, this.referenceLink ),
+		selectGatewayType( this.validEl, this.config, this.referenceLink ),
 		previewTypes.TYPE_REFERENCE
 	);
 } );
@@ -23,14 +23,14 @@ QUnit.test( 'it does not suggest page previews on reference links when reference
 	this.config.set( 'wgPopupsReferencePreviews', false );
 
 	assert.strictEqual(
-		selectInitialGateway( this.validEl, this.config, this.referenceLink ),
+		selectGatewayType( this.validEl, this.config, this.referenceLink ),
 		null
 	);
 } );
 
 QUnit.test( 'it uses the page gateway when on links to a different page', function ( assert ) {
 	assert.strictEqual(
-		selectInitialGateway(
+		selectGatewayType(
 			this.validEl,
 			this.config,
 			createStubTitle( 1, 'NotFoo' )
@@ -39,7 +39,7 @@ QUnit.test( 'it uses the page gateway when on links to a different page', functi
 	);
 
 	assert.strictEqual(
-		selectInitialGateway(
+		selectGatewayType(
 			this.validEl,
 			this.config,
 			createStubTitle( 1, 'NotFoo', 'fragment' )
@@ -50,7 +50,7 @@ QUnit.test( 'it uses the page gateway when on links to a different page', functi
 
 QUnit.test( 'it does not use the reference gateway when there is no fragment', function ( assert ) {
 	assert.strictEqual(
-		selectInitialGateway(
+		selectGatewayType(
 			this.validEl,
 			this.config,
 			createStubTitle( 1, 'Foo' )
@@ -63,7 +63,7 @@ QUnit.test( 'it does not suggest page previews on reference links not having a p
 	const el = $( '<a>' ).appendTo( $( '<span>' ) );
 
 	assert.strictEqual(
-		selectInitialGateway( el, this.config, this.referenceLink ),
+		selectGatewayType( el, this.config, this.referenceLink ),
 		null
 	);
 } );
