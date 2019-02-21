@@ -33,5 +33,9 @@
 	"popups-prefs-disable-nav-gadgets-info": "Você precisa [[$1 | desativar o Gadget de Popups de Navegação]] na aba Gadgets para ativar a pré-visualização de páginas",
 	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais.",
 	"popups-refpreview-footnote": "Nota de rodapé",
+	"popups-refpreview-book": "Livro",
+	"popups-refpreview-journal": "Revista",
+	"popups-refpreview-news": "Notícias",
+	"popups-refpreview-web": "Site",
 	"popups-refpreview-jump-to-footnote": "Ir para nota de rodapé"
 }

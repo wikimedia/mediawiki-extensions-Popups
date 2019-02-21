@@ -39,5 +39,9 @@
 	"popups-prefs-disable-nav-gadgets-info": "Vous devez [[$1 |désactiver le Gadget Navigation Popups]] dans l’onglet des Gadgets pour activer les Aperçus de page",
 	"popups-prefs-conflicting-gadgets-info": "Certains gadgets et autres personnalisations peuvent affecter la performance de cette fonctionnalité. Si vous rencontrez des problèmes, veuillez vérifier vos gadgets et scripts utilisateur, y compris au niveau global.",
 	"popups-refpreview-footnote": "Note de bas de page",
+	"popups-refpreview-book": "Livre",
+	"popups-refpreview-journal": "Journal",
+	"popups-refpreview-news": "Actualités",
+	"popups-refpreview-web": "Site web",
 	"popups-refpreview-jump-to-footnote": "Aller à la note de bas de page"
 }

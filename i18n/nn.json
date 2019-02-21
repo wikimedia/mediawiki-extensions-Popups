@@ -15,7 +15,7 @@
 	"popups-settings-help-ok": "Greitt",
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-enable": "Slå på førehandsvising",
-	"popups-preview-no-preview": "Det ser ut som det ikkje finst noka førehandsvising av denne sida.",
+	"popups-preview-no-preview": "Det oppstod ein feil under framvisinga av førehandsvisinga",
 	"popups-preview-footer-read": "Gå til sida",
 	"popups-preview-disambiguation": "Denne tittelen kan visa til meir enn éi side",
 	"popups-preview-disambiguation-link": "Vis liknande sider"

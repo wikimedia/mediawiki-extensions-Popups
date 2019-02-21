@@ -39,5 +39,9 @@
 	"popups-prefs-disable-nav-gadgets-info": "您需要[[$1 |事先禁用導航Popups小工具]]才能啟用頁面預覽",
 	"popups-prefs-conflicting-gadgets-info": "個別小工具和其他自定義功能可能會影響該功能的性能。如果您遇到了問題，請檢查您的小工具和用戶腳本，包括全域的。",
 	"popups-refpreview-footnote": "腳註",
+	"popups-refpreview-book": "書籍",
+	"popups-refpreview-journal": "期刊",
+	"popups-refpreview-news": "新聞",
+	"popups-refpreview-web": "網站",
 	"popups-refpreview-jump-to-footnote": "跳至腳註"
 }

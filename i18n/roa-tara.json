@@ -28,5 +28,9 @@
 	"popups-prefs-disable-nav-gadgets-info": "Tu ha [[$1 |disabbilità 'u gadget Popup de navigazzione]] da 'a schede Accessore pe abbilità le andeprime de le pàggene",
 	"popups-prefs-conflicting-gadgets-info": "Certe accessore e otre personalizzazziune ponne avè conzeguenze sus a le prestaziune de sta funzione. Ce tìne quacche probbleme 'ndruche arrete le accessore tue e le script utende, 'ngluse chidde globbale.",
 	"popups-refpreview-footnote": "Note de fine",
+	"popups-refpreview-book": "Libbre",
+	"popups-refpreview-journal": "Sciurnale",
+	"popups-refpreview-news": "Nuvetà",
+	"popups-refpreview-web": "Site web",
 	"popups-refpreview-jump-to-footnote": "Zumbe a 'a note de fine pàgene"
 }

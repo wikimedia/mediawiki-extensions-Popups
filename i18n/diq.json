@@ -8,5 +8,9 @@
 	"popups-settings-save": "Qeyd ke",
 	"popups-settings-help-ok": "Temam",
 	"popups-settings-cancel": "Bıtexelne",
-	"popups-refpreview-footnote": "Bınnot"
+	"popups-refpreview-footnote": "Bınnot",
+	"popups-refpreview-book": "Kıtab",
+	"popups-refpreview-journal": "Pêseroke",
+	"popups-refpreview-news": "Xeberi",
+	"popups-refpreview-web": "Websita"
 }
