@@ -7,52 +7,63 @@ QUnit.module( 'gateway/index.js', {
 		this.config = new Map(); /* global Map */
 		this.config.set( 'wgPopupsReferencePreviews', true );
 		this.config.set( 'wgPageName', 'Foo' );
-		this.fragmentLink = createStubTitle( 1, 'Foo', 'Bar' );
+		this.referenceLink = createStubTitle( 1, 'Foo', 'ref-fragment' );
 		this.validEl = $( '<a>' ).appendTo( $( '<span>' ).addClass( 'reference' ) );
 	}
 } );
 
 QUnit.test( 'it uses the reference gateway with wgPopupsReferencePreviews == true and valid element', function ( assert ) {
 	assert.strictEqual(
-		selectInitialGateway( this.validEl, this.config, this.fragmentLink ),
+		selectInitialGateway( this.validEl, this.config, this.referenceLink ),
 		previewTypes.TYPE_REFERENCE
 	);
 } );
 
-QUnit.test( 'it uses the page gateway with wgPopupsReferencePreviews == false', function ( assert ) {
+QUnit.test( 'it does not suggest page previews on reference links when reference previews are disabled', function ( assert ) {
 	this.config.set( 'wgPopupsReferencePreviews', false );
 
 	assert.strictEqual(
-		selectInitialGateway( this.validEl, this.config, this.fragmentLink ),
-		previewTypes.TYPE_PAGE
+		selectInitialGateway( this.validEl, this.config, this.referenceLink ),
+		null
 	);
 } );
 
 QUnit.test( 'it uses the page gateway when on links to a different page', function ( assert ) {
-	this.config.set( 'wgPageName', 'NotFoo' );
+	assert.strictEqual(
+		selectInitialGateway(
+			this.validEl,
+			this.config,
+			createStubTitle( 1, 'NotFoo' )
+		),
+		previewTypes.TYPE_PAGE
+	);
 
 	assert.strictEqual(
-		selectInitialGateway( this.validEl, this.config, this.fragmentLink ),
+		selectInitialGateway(
+			this.validEl,
+			this.config,
+			createStubTitle( 1, 'NotFoo', 'fragment' )
+		),
 		previewTypes.TYPE_PAGE
 	);
 } );
 
-QUnit.test( 'it uses the page gateway when there is no fragment', function ( assert ) {
+QUnit.test( 'it does not use the reference gateway when there is no fragment', function ( assert ) {
 	assert.strictEqual(
 		selectInitialGateway(
 			this.validEl,
 			this.config,
 			createStubTitle( 1, 'Foo' )
 		),
-		previewTypes.TYPE_PAGE
+		null
 	);
 } );
 
-QUnit.test( 'it uses the page gateway for links not having a parent with reference class', function ( assert ) {
+QUnit.test( 'it does not suggest page previews on reference links not having a parent with reference class', function ( assert ) {
 	const el = $( '<a>' ).appendTo( $( '<span>' ) );
 
 	assert.strictEqual(
-		selectInitialGateway( el, this.config, this.fragmentLink ),
-		previewTypes.TYPE_PAGE
+		selectInitialGateway( el, this.config, this.referenceLink ),
+		null
 	);
 } );

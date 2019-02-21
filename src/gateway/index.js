@@ -43,19 +43,21 @@ const $ = jQuery;
  * @param {Element} el
  * @param {mw.Map} config
  * @param {mw.Title} title
- * @return {string}
+ * @return {string|null}
  */
 export default function selectGatewayType( el, config, title ) {
-	if ( config.get( 'wgPopupsReferencePreviews' ) ) {
-		// The other selector can potentially pick up self-links with a class="reference"
-		// parent, but no fragment
-		if ( title.getFragment() &&
-			title.getPrefixedDb() === config.get( 'wgPageName' ) &&
-			$( el ).parent().hasClass( 'reference' )
-		) {
-			return previewTypes.TYPE_REFERENCE;
-		}
+	if ( title.getPrefixedDb() !== config.get( 'wgPageName' ) ) {
+		return previewTypes.TYPE_PAGE;
 	}
 
-	return previewTypes.TYPE_PAGE;
+	// The other selector can potentially pick up self-links with a class="reference"
+	// parent, but no fragment
+	if ( title.getFragment() &&
+		config.get( 'wgPopupsReferencePreviews' ) &&
+		$( el ).parent().hasClass( 'reference' )
+	) {
+		return previewTypes.TYPE_REFERENCE;
+	}
+
+	return null;
 }
