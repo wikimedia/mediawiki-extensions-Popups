@@ -11,7 +11,7 @@ const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ],
 
 /**
  * @param {ext.popups.PreviewModel} model
- * @return {jQuery}
+ * @return {JQuery}
  */
 export function renderReferencePreview(
 	model

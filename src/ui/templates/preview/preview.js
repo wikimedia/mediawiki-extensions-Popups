@@ -10,7 +10,7 @@ import { escapeHTML } from '../templateUtil';
  * @param {boolean} showTitle
  * @param {string} extractMsg
  * @param {string} linkMsg
- * @return {jQuery}
+ * @return {JQuery}
  */
 export function renderPreview(
 	model, showTitle, extractMsg, linkMsg

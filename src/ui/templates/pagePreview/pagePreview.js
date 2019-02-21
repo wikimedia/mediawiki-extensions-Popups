@@ -10,7 +10,7 @@ const defaultExtractWidth = 215;
 /**
  * @param {ext.popups.PreviewModel} model
  * @param {ext.popups.Thumbnail|null} thumbnail
- * @return {jQuery}
+ * @return {JQuery}
  */
 export function renderPagePreview(
 	model, thumbnail

@@ -7,7 +7,7 @@ import { escapeHTML } from '../templateUtil';
 /**
  * @param {ext.popups.previewTypes} type
  * @param {string} html HTML string.
- * @return {jQuery}
+ * @return {JQuery}
  */
 export function renderPopup( type, html ) {
 	type = escapeHTML( type );
