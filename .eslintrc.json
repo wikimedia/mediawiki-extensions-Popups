@@ -14,11 +14,8 @@
 		"commonjs": true
 	},
 	"globals": {
-		"mediaWiki": false,
-		"OO": false,
-		"moment": false,
-		"Redux": false,
-		"ReduxThunk": false
+		"mediaWiki": "readonly",
+		"OO": "readonly"
 	},
 	"rules": {
 		"no-prototype-builtins": 0,
