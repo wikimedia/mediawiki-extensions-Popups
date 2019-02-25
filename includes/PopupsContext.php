@@ -61,6 +61,12 @@ class PopupsContext {
 	 * @var string
 	 */
 	const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups';
+
+	/**
+	 * User preference to enable/disable Reference Previews as a Beta feature
+	 */
+	const REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME = 'popupsreferencepreviews';
+
 	/**
 	 * @var \Config
 	 */

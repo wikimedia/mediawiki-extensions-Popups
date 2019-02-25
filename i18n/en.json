@@ -30,5 +30,7 @@
 	"popups-refpreview-journal": "Journal",
 	"popups-refpreview-news": "News",
 	"popups-refpreview-web": "Website",
-	"popups-refpreview-jump-to-footnote": "Jump to footnote"
+	"popups-refpreview-jump-to-footnote": "Jump to footnote",
+	"popups-refpreview-beta-feature-message": "Reference Previews",
+	"popups-refpreview-beta-feature-description": "Show a preview of a footnote by hovering over its footnote marker.\n\nPlease note: In order to use this beta feature, you have to [[#mw-prefsection-rendering|enable]] [https://www.mediawiki.org/wiki/Page_Previews Page Previews].\n\nPlease also note: If you’re using [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] gadget, you won’t see Reference Previews. If you’re using the [[mw:Reference Tooltips|Reference Tooltips]] gadget, both pop-ups from Reference Tooltips and from Reference Previews will appear."
 }
