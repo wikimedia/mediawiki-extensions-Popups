@@ -75,13 +75,13 @@ class PopupsContextTest extends MediaWikiTestCase {
 		return [
 			[
 				[
-					"wgPopupsHideOptInOnPreferencesPage" => false
+					'wgPopupsHideOptInOnPreferencesPage' => false
 				],
 				true
 			],
 			[
 				[
-					"wgPopupsHideOptInOnPreferencesPage" => true
+					'wgPopupsHideOptInOnPreferencesPage' => true
 				],
 				false
 			]
@@ -106,11 +106,11 @@ class PopupsContextTest extends MediaWikiTestCase {
 	public function provideTestDataForShouldSendModuleToUser() {
 		return [
 			[
-				"optin" => PopupsContext::PREVIEWS_ENABLED,
+				'optin' => PopupsContext::PREVIEWS_ENABLED,
 				'expected' => true
 			],
 			[
-				"optin" => PopupsContext::PREVIEWS_DISABLED,
+				'optin' => PopupsContext::PREVIEWS_DISABLED,
 				'expected' => false
 			]
 		];
@@ -146,12 +146,13 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @dataProvider provideTestDataForTestAreDependenciesMet
 	 * @param bool $textExtracts
 	 * @param bool $pageImages
+	 * @param string $gateway
 	 * @param bool $expected
 	 */
 	public function testAreDependenciesMet( $textExtracts, $pageImages,
 		$gateway, $expected ) {
 		$this->setMwGlobals( [
-			"wgPopupsGateway" => $gateway,
+			'wgPopupsGateway' => $gateway,
 		] );
 		$returnValues = [ $textExtracts, $pageImages ];
 
@@ -169,31 +170,31 @@ class PopupsContextTest extends MediaWikiTestCase {
 		return [
 			// Dependencies are met
 			[
-				"textExtracts" => true,
-				"pageImages" => true,
-				"gateway" => "mwApiPlain",
-				"expected" => true
+				'textExtracts' => true,
+				'pageImages' => true,
+				'gateway' => 'mwApiPlain',
+				'expected' => true
 			],
 			// textExtracts dep is missing
 			[
-				"textExtracts" => false,
-				"pageImages" => true,
-				"gateway" => "mwApiPlain",
-				"expected" => false
+				'textExtracts' => false,
+				'pageImages' => true,
+				'gateway' => 'mwApiPlain',
+				'expected' => false
 			],
 			// PageImages dep is missing
 			[
-				"textExtracts" => true,
-				"pageImages" => false,
-				"gateway" => "mwApiPlain",
-				"expected" => false
+				'textExtracts' => true,
+				'pageImages' => false,
+				'gateway' => 'mwApiPlain',
+				'expected' => false
 			],
 			// when Popups uses gateway!=mwApiPlain we don't require PageImages nor TextExtracts
 			[
-				"textExtracts" => false,
-				"pageImages" => false,
-				"gateway" => "restbaseHTML",
-				"expected" => true
+				'textExtracts' => false,
+				'pageImages' => false,
+				'gateway' => 'restbaseHTML',
+				'expected' => true
 			],
 		];
 	}
@@ -206,7 +207,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @param bool $expected
 	 */
 	public function testIsTitleBlacklisted( array $blacklist, Title $title, $expected ) {
-		$this->setMwGlobals( [ "wgPopupsPageBlacklist" => $blacklist ] );
+		$this->setMwGlobals( [ 'wgPopupsPageBlacklist' => $blacklist ] );
 		$context = $this->getContext();
 		$this->assertEquals( $expected,
 			$context->isTitleBlacklisted( $title ),
