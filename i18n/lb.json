@@ -23,5 +23,9 @@
 	"popups-prefs-optin-enabled-label": "Aschalten",
 	"popups-prefs-optin-disabled-label": "Ausschalten",
 	"popups-refpreview-footnote": "Foussnotte",
+	"popups-refpreview-book": "Buch",
+	"popups-refpreview-journal": "Zeitung",
+	"popups-refpreview-news": "Neiegkeeten",
+	"popups-refpreview-web": "Internetsite",
 	"popups-refpreview-jump-to-footnote": "Op d'Referenz sprangen"
 }

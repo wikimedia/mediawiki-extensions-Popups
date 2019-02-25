@@ -33,5 +33,9 @@
 	"popups-prefs-disable-nav-gadgets-info": "문서 미리보기를 활성화하려면 소도구 탭에서 [[$1 | 내비게이션 팝업 소도구를 비활성화]]해야 합니다",
 	"popups-prefs-conflicting-gadgets-info": "일부 소도구와 기타 사용자 지정 기능으로 인해 이 기능의 성능에 영향을 미칠 수 있습니다. 문제가 있으면 소도구와 사용자 스크립트를 확인해 보십시오.",
 	"popups-refpreview-footnote": "각주",
+	"popups-refpreview-book": "책",
+	"popups-refpreview-journal": "저널",
+	"popups-refpreview-news": "뉴스",
+	"popups-refpreview-web": "웹사이트",
 	"popups-refpreview-jump-to-footnote": "각주로 건너뛰기"
 }
