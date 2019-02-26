@@ -80,10 +80,10 @@ class PopupsHooks {
 	/**
 	 * Allows last minute changes to the output page, e.g. adding of CSS or JavaScript by extensions.
 	 *
-	 * @param OutputPage &$out The Output page object
-	 * @param Skin &$skin &Skin object that will be used to generate the page
+	 * @param OutputPage $out The Output page object
+	 * @param Skin $skin Skin object that will be used to generate the page
 	 */
-	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		/** @var PopupsContext $context */
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		if ( $context->isTitleBlacklisted( $out->getTitle() ) ) {
@@ -104,11 +104,20 @@ class PopupsHooks {
 	}
 
 	/**
+	 * Hook handler for the ResourceLoaderStartUpModule that makes static configuration visible to
+	 * the frontend. These variables end in the only "startup" ResourceLoader module that is loaded
+	 * before all others.
+	 *
+	 * Dynamic configuration that depends on the context needs to be published via the
+	 * MakeGlobalVariablesScript hook.
+	 *
 	 * @param array &$vars Array of variables to be added into the output of the startup module
+	 * @param string $skin
 	 */
-	public static function onResourceLoaderGetConfigVars( array &$vars ) {
+	public static function onResourceLoaderGetConfigVars( array &$vars, $skin ) {
 		/** @var \Config $config */
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+
 		$vars['wgPopupsVirtualPageViews'] = $config->get( 'PopupsVirtualPageViews' );
 		$vars['wgPopupsGateway'] = $config->get( 'PopupsGateway' );
 		$vars['wgPopupsEventLogging'] = $config->get( 'PopupsEventLogging' );
@@ -117,7 +126,8 @@ class PopupsHooks {
 	}
 
 	/**
-	 * MakeGlobalVariablesScript hook handler.
+	 * Hook handler publishing dynamic configuration that depends on the context, e.g. the page or
+	 * the users settings. These variables end in an inline <script> in the documents head.
 	 *
 	 * Variables added:
 	 * * `wgPopupsReferencePreviews' - The server's notion of whether or not the reference
@@ -130,9 +140,9 @@ class PopupsHooks {
 	 *   user has enabled conflicting Navigational Popups Gadget.
 	 *
 	 * @param array &$vars variables to be added into the output of OutputPage::headElement
-	 * @param OutputPage $out OutputPage instance calling the hook
+	 * @param \IContextSource $out OutputPage instance calling the hook
 	 */
-	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $out ) {
+	public static function onMakeGlobalVariablesScript( array &$vars, \IContextSource $out ) {
 		/** @var PopupsContext $context */
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		/** @var \Config $config */
@@ -142,7 +152,8 @@ class PopupsHooks {
 		$vars['wgPopupsReferencePreviews'] = self::isReferencePreviewsEnabled( $user, $config );
 		$vars['wgPopupsShouldSendModuleToUser'] = $context->shouldSendModuleToUser( $user );
 		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget(
-			$user );
+			$user
+		);
 	}
 
 	/**
@@ -166,7 +177,7 @@ class PopupsHooks {
 	 *
 	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 */
-	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
+	public static function onUserGetDefaultOptions( array &$wgDefaultUserOptions ) {
 		/** @var \Config $config */
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 
