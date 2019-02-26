@@ -23,7 +23,6 @@ return [
 	},
 	'Popups.EventLogger' => function ( MediaWikiServices $serivces ) {
 		$factory = new EventLoggerFactory(
-			$serivces->getService( 'Popups.Config' ),
 			ExtensionRegistry::getInstance()
 		);
 		return $factory->get();

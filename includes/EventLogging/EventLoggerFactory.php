@@ -20,7 +20,6 @@
  */
 namespace Popups\EventLogging;
 
-use Config;
 use ExtensionRegistry;
 
 class EventLoggerFactory {
@@ -31,17 +30,10 @@ class EventLoggerFactory {
 	private $registry;
 
 	/**
-	 * @var Config
-	 */
-	private $config;
-
-	/**
-	 * @param Config $config MediaWiki config
 	 * @param ExtensionRegistry $registry MediaWiki extension registry
 	 */
-	public function __construct( Config $config, ExtensionRegistry $registry ) {
+	public function __construct( ExtensionRegistry $registry ) {
 		$this->registry = $registry;
-		$this->config = $config;
 	}
 
 	/**
@@ -51,7 +43,7 @@ class EventLoggerFactory {
 	 */
 	public function get() {
 		if ( $this->registry->isLoaded( 'EventLogging' ) ) {
-			return new MWEventLogger( $this->config, $this->registry );
+			return new MWEventLogger( $this->registry );
 		}
 		return new NullLogger();
 	}
