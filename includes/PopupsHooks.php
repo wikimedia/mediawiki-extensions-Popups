@@ -80,10 +80,10 @@ class PopupsHooks {
 	/**
 	 * Allows last minute changes to the output page, e.g. adding of CSS or JavaScript by extensions.
 	 *
-	 * @param OutputPage &$out The Output page object
-	 * @param Skin &$skin &Skin object that will be used to generate the page
+	 * @param OutputPage $out The Output page object
+	 * @param Skin $skin Skin object that will be used to generate the page
 	 */
-	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		/** @var PopupsContext $context */
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		if ( $context->isTitleBlacklisted( $out->getTitle() ) ) {
