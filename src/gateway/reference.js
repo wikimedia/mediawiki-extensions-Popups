@@ -22,6 +22,13 @@ export default function createReferenceGateway() {
 	}
 
 	/**
+	 * This extracts the type (e.g. "web") from one or more <cite> elements class name lists, as
+	 * long as these don't conflict. A "citation" class is always ignored. <cite> elements without
+	 * another class (other than "citation") are ignored as well.
+	 *
+	 * Note this might return multiple types, e.g. <cite class="web citation paywalled"> will be
+	 * returned as "web paywalled". Validation must be done in the code consuming this.
+	 *
 	 * This duplicates the strict type detection from
 	 * @see https://phabricator.wikimedia.org/diffusion/GMOA/browse/master/lib/transformations/references/structureReferenceListContent.js$93
 	 *
@@ -29,12 +36,20 @@ export default function createReferenceGateway() {
 	 * @returns {string|null}
 	 */
 	function scrapeReferenceType( $referenceText ) {
-		const $cite = $referenceText.find( 'cite[class]' );
-		if ( $cite.length === 1 ) {
-			return $cite.attr( 'class' ).replace( /\bcitation\b/g, '' ).trim();
-		}
+		let type = null;
 
-		return null;
+		$referenceText.find( 'cite[class]' ).each( function ( index, el ) {
+			const nextType = el.className.replace( /\bcitation\b\s*/g, '' ).trim();
+
+			if ( !type ) {
+				type = nextType;
+			} else if ( nextType && nextType !== type ) {
+				type = null;
+				return false;
+			}
+		} );
+
+		return type;
 	}
 
 	/**
