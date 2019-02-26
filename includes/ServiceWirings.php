@@ -21,7 +21,7 @@ return [
 			ExtensionRegistry::getInstance()
 		);
 	},
-	'Popups.EventLogger' => function ( MediaWikiServices $serivces ) {
+	'Popups.EventLogger' => function ( MediaWikiServices $services ) {
 		$factory = new EventLoggerFactory(
 			ExtensionRegistry::getInstance()
 		);
