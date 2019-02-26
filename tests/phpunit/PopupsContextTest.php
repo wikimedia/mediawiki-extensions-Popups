@@ -26,6 +26,7 @@ use Popups\PopupsContext;
  * @coversDefaultClass \Popups\PopupsContext
  */
 class PopupsContextTest extends MediaWikiTestCase {
+
 	/**
 	 * Anonymous user id
 	 * @see MediaWikiTestCase::addCoreDBData()
@@ -280,4 +281,5 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = $this->getContext( null, null, $loggerMock );
 		$context->logUserDisabledPagePreviewsEvent();
 	}
+
 }

@@ -25,14 +25,17 @@ use Popups\PopupsGadgetsIntegration;
  * @coversDefaultClass \Popups\PopupsGadgetsIntegration
  */
 class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
+
 	/**
 	 * Gadget name for testing
 	 */
 	const NAV_POPUPS_GADGET_NAME = 'navigation-test';
+
 	/**
 	 * Helper constants for easier reading
 	 */
 	const GADGET_ENABLED = true;
+
 	/**
 	 * Helper constants for easier reading
 	 */

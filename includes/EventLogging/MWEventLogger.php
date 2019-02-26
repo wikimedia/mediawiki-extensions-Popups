@@ -50,4 +50,5 @@ class MWEventLogger implements EventLogger {
 			$event
 		);
 	}
+
 }

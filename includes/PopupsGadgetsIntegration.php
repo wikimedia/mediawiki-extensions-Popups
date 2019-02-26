@@ -88,4 +88,5 @@ class PopupsGadgetsIntegration {
 		}
 		return false;
 	}
+
 }

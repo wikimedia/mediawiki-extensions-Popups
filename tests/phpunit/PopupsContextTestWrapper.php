@@ -70,4 +70,5 @@ class PopupsContextTestWrapper extends PopupsContext {
 	public static function injectTestInstance( PopupsContext $testInstance ) {
 		self::$instance = $testInstance;
 	}
+
 }

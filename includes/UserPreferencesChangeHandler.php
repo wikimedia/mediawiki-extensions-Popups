@@ -30,6 +30,7 @@ use HTMLForm;
  * @package Popups
  */
 class UserPreferencesChangeHandler {
+
 	/**
 	 * @var PopupsContext
 	 */
@@ -85,4 +86,5 @@ class UserPreferencesChangeHandler {
 	) {
 		self::newFromGlobalState()->doPreferencesFormPreSave( $user, $oldUserOptions );
 	}
+
 }

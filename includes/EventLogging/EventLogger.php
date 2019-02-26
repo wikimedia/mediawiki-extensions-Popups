@@ -21,6 +21,7 @@
 namespace Popups\EventLogging;
 
 interface EventLogger {
+
 	/**
 	 * Page Previews Event logging schema name
 	 */

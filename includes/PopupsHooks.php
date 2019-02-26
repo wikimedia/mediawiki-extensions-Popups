@@ -32,6 +32,7 @@ use BetaFeatures;
  * @package Popups
  */
 class PopupsHooks {
+
 	const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
 	/**
@@ -226,4 +227,5 @@ class PopupsHooks {
 			];
 		}
 	}
+
 }
