@@ -174,7 +174,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			'wgPopupsStatsvSamplingRate' => 0
 		];
 		$this->setMwGlobals( $config );
-		PopupsHooks::onResourceLoaderGetConfigVars( $vars );
+		PopupsHooks::onResourceLoaderGetConfigVars( $vars, '' );
 		$this->assertCount( 6, $vars, 'A configuration is retrieved.' );
 
 		foreach ( $config as $key => $value ) {
