@@ -20,15 +20,9 @@
  */
 namespace Popups\EventLogging;
 
-use Config;
 use ExtensionRegistry;
 
 class MWEventLogger implements EventLogger {
-
-	/**
-	 * @var Config
-	 */
-	private $config;
 
 	/**
 	 * @var ExtensionRegistry
@@ -36,11 +30,9 @@ class MWEventLogger implements EventLogger {
 	private $registry;
 
 	/**
-	 * @param Config $config MediaWiki configuration
 	 * @param ExtensionRegistry $registry MediaWiki extension registry
 	 */
-	public function __construct( Config $config, ExtensionRegistry $registry ) {
-		$this->config = $config;
+	public function __construct( ExtensionRegistry $registry ) {
 		$this->registry = $registry;
 	}
 

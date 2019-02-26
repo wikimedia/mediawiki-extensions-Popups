@@ -40,8 +40,7 @@ class EventLoggerFactoryTest extends MediaWikiTestCase {
 			->with( 'EventLogging' )
 			->willReturn( true );
 
-		$config = new HashConfig();
-		$factory = new EventLoggerFactory( $config, $mock );
+		$factory = new EventLoggerFactory( $mock );
 		$this->assertInstanceOf( MWEventLogger::class,
 			$factory->get(),
 			'A functional event logger is instantiated.' );
@@ -58,8 +57,7 @@ class EventLoggerFactoryTest extends MediaWikiTestCase {
 			->with( 'EventLogging' )
 			->willReturn( false );
 
-		$config = new HashConfig();
-		$factory = new EventLoggerFactory( $config, $mock );
+		$factory = new EventLoggerFactory( $mock );
 		$this->assertInstanceOf( NullLogger::class,
 			$factory->get(),
 			'A no-op event logger is instantiated.' );
