@@ -28,10 +28,9 @@ use ExtensionRegistry;
  * @package Popups
  */
 class PopupsGadgetsIntegration {
-	/**
-	 * @var string
-	 */
+
 	const CONFIG_NAVIGATION_POPUPS_NAME = 'PopupsConflictingNavPopupsGadgetName';
+
 	/**
 	 * @var \ExtensionRegistry
 	 */
