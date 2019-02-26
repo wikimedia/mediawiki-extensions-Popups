@@ -22,6 +22,22 @@ export default function createReferenceGateway() {
 	}
 
 	/**
+	 * This duplicates the strict type detection from
+	 * @see https://phabricator.wikimedia.org/diffusion/GMOA/browse/master/lib/transformations/references/structureReferenceListContent.js$93
+	 *
+	 * @param {JQuery} $referenceText
+	 * @returns {string|null}
+	 */
+	function scrapeReferenceType( $referenceText ) {
+		const $cite = $referenceText.find( 'cite[class]' );
+		if ( $cite.length === 1 ) {
+			return $cite.attr( 'class' ).replace( /\bcitation\b/g, '' ).trim();
+		}
+
+		return null;
+	}
+
+	/**
 	 * @param {mw.Title} title
 	 * @param {Element} el
 	 * @returns {AbortPromise<PreviewModel>}
@@ -43,6 +59,7 @@ export default function createReferenceGateway() {
 			url: `#${ id }`,
 			extract: $referenceText.html(),
 			type: previewTypes.TYPE_REFERENCE,
+			referenceType: scrapeReferenceType( $referenceText ),
 			sourceElementId: el && el.parentNode && el.parentNode.id
 		};
 

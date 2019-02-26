@@ -14,7 +14,9 @@ QUnit.module( 'ext.popups/gateway/reference', {
 				$( '<span>' ).addClass( 'mw-reference-text' ).text( 'Footnote 1' )
 			),
 			$( '<li>' ).attr( 'id', 'cite_note--2' ).append(
-				$( '<span>' ).addClass( 'reference-text' ).text( 'Footnote 2' )
+				$( '<span>' ).addClass( 'reference-text' ).append(
+					$( '<cite>' ).addClass( 'citation web unknown' ).text( 'Footnote 2' )
+				)
 			)
 		).appendTo( document.body );
 	},
@@ -36,6 +38,7 @@ QUnit.test( 'Reference preview gateway returns the correct data', function ( ass
 				url: '#cite_note--1',
 				extract: 'Footnote 1',
 				type: 'reference',
+				referenceType: null,
 				sourceElementId: undefined
 			}
 		);
@@ -51,8 +54,9 @@ QUnit.test( 'Reference preview gateway accepts alternative text node class name'
 			result,
 			{
 				url: '#cite_note--2',
-				extract: 'Footnote 2',
+				extract: '<cite class="citation web unknown">Footnote 2</cite>',
 				type: 'reference',
+				referenceType: 'web unknown',
 				sourceElementId: undefined
 			}
 		);
@@ -70,6 +74,7 @@ QUnit.test( 'Reference preview gateway returns source element id', function ( as
 				url: '#cite_note--1',
 				extract: 'Footnote 1',
 				type: 'reference',
+				referenceType: null,
 				sourceElementId: 'cite_ref-1'
 			}
 		);
