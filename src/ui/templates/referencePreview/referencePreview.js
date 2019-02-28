@@ -35,7 +35,9 @@ export function renderReferencePreview(
 				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-reference-${ type }'></span>
 				${ title }
 			</strong>
-			<div class='mwe-popups-extract mw-parser-output'>${ model.extract }</div>
+			<div class='mwe-popups-extract'>
+				<div class='mw-parser-output'>${ model.extract }</div>
+			</div>
 			<footer>
 				<a href='${ url }' class='mwe-popups-read-link'>${ linkMsg }</a>
 			</footer>
@@ -55,6 +57,18 @@ export function renderReferencePreview(
 			$( `#${ $.escapeSelector( model.sourceElementId ) } > a` ).trigger( 'click' );
 		} );
 	}
+
+	$el.find( '.mw-parser-output' ).on( 'scroll', function ( e ) {
+		const element = e.target,
+			scrolledToBottom = element.scrollHeight === element.scrollTop + element.clientHeight;
+
+		if ( !scrolledToBottom && element.isScrolling ) {
+			return;
+		}
+
+		element.isScrolling = !scrolledToBottom;
+		$( element ).parent().toggleClass( 'mwe-popups-fade-out', element.isScrolling );
+	} );
 
 	return $el;
 }

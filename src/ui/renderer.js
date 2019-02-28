@@ -267,6 +267,11 @@ export function show(
 
 	preview.el.show();
 
+	// Trigger fading effect for reference previews after the popup has been rendered
+	if ( preview.el.hasClass( 'mwe-popups-type-reference' ) ) {
+		preview.el.find( '.mw-parser-output' ).first().trigger( 'scroll' );
+	}
+
 	return wait( 200 )
 		.then( () => {
 			bindBehavior( preview, behavior );
