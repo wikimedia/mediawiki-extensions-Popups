@@ -2,10 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"ElangoRamanujam",
-			"கலைவாணன்"
+			"கலைவாணன்",
+			"Nisha"
 		]
 	},
 	"popups-settings-save": "சேமிக்கவும்",
 	"popups-settings-help-ok": "முடிந்தது",
-	"popups-settings-cancel": "விட்டுவிடு"
+	"popups-settings-cancel": "விட்டுவிடு",
+	"popups-refpreview-book": "புத்தக குறிப்பரை/சான்றாதாரம்/மேற்கோள்",
+	"popups-refpreview-journal": "தாளிகை மேற்கோள்/குறிப்பரை",
+	"popups-refpreview-news": "செய்தி குறிப்பரை/சான்றாதாரம்/மேற்கோள்",
+	"popups-refpreview-web": "இணையதள குறிப்பரை/சான்றாதாரம்/மேற்கோள்",
+	"popups-refpreview-beta-feature-message": "குறிப்பு முன்னோட்டங்கள்"
 }

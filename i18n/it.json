@@ -31,7 +31,7 @@
 	"popups-prefs-optin-disabled-label": "Disattiva",
 	"popups-prefs-disable-nav-gadgets-info": "Devi [[$1 |disabilitare il gadget Popup di navigazione]] dalla scheda Accessori per abilitare le anteprime delle pagine",
 	"popups-prefs-conflicting-gadgets-info": "Alcuni accessori e altre personalizzazioni potrebbero influire sulle prestazioni di questa funzionalità. Se hai qualche problema rivedi i tuoi accessori e gli script utente, inclusi quelli globali.",
-	"popups-refpreview-book": "Libro",
-	"popups-refpreview-news": "Notizie",
-	"popups-refpreview-web": "Sito web"
+	"popups-refpreview-book": "Riferimento a libro",
+	"popups-refpreview-news": "Riferimento a notizie",
+	"popups-refpreview-web": "Riferimento a sito web"
 }
