@@ -86,7 +86,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			'The opt-in preference has a status.' );
 		$this->assertEquals( true,
 			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['disabled'],
-			"The opt-in preference's status is disabled." );
+			'The opt-in preference\'s status is disabled.' );
 		$this->assertNotEmpty( $prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['help-message'],
 			'The opt-in preference has a help message.' );
 	}
@@ -320,12 +320,12 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 
 		$this->setMwGlobals( [
-			'wgPopupsOptInDefaultState' => "1"
+			'wgPopupsOptInDefaultState' => '1'
 		] );
 
 		PopupsHooks::onUserGetDefaultOptions( $userOptions );
 		$this->assertCount( 2, $userOptions );
-		$this->assertEquals( "1",
+		$this->assertEquals( '1',
 			$userOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 	}
 
