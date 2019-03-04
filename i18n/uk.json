@@ -37,5 +37,6 @@
 	"popups-refpreview-journal": "Журнал",
 	"popups-refpreview-news": "Новини",
 	"popups-refpreview-web": "Веб-сайт",
-	"popups-refpreview-jump-to-footnote": "Перейти до посилання на джерело"
+	"popups-refpreview-jump-to-footnote": "Перейти до посилання на джерело",
+	"popups-refpreview-beta-feature-message": "Огляд джерел"
 }

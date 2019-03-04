@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mogoeilor"
+		]
+	},
+	"popups-settings-option-advanced": "پیشکردٱ",
+	"popups-settings-option-off": "ناکونشتگٱر کردن",
+	"popups-settings-save": "کۊ کردن",
+	"popups-settings-help-ok": "ٱنجوم ڤابی",
+	"popups-settings-cancel": "ٱنجومشیڤ کردن",
+	"popups-prefs-optin-enabled-label": "کونشتگٱر کردن",
+	"popups-prefs-optin-disabled-label": "ناکونشتگٱر کردن",
+	"popups-refpreview-book": "سرچشماْ کتاوی",
+	"popups-refpreview-journal": "سرچشماْ جۊرنالی",
+	"popups-refpreview-news": "سرچشماْ هٱڤالی",
+	"popups-refpreview-web": "سرچشماْ دیارگاْ"
+}
