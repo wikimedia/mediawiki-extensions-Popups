@@ -18,12 +18,12 @@
 		</g>
 		<path fill="#EAECF0" d="M2067 281h387v1290h-387V281zm-1602 0h1516v1344H465V281z" mask="url(#b)"/>
 		<path fill="#C8CCD1" d="M614 416h1105v78.774H614V416zm0 377.613h1105v78.774H614v-78.774zm0-188.806h1240v78.773H614v-78.773zm0 566.42h1240V1250H614v-78.774zm0-188.807h553v78.773H614V982.42zm651 0h504v78.773h-504V982.42z" mask="url(#b)"/>
-		<path fill="#3366CC" d="M1190 982h50v47h-50z" mask="url(#b)"/>
+		<path fill="#36C" d="M1190 982h50v47h-50z" mask="url(#b)"/>
 		<g mask="url(#b)">
 			<g transform="translate(1173.13 580.297)">
 				<path fill="#FFF" d="M0 0h684v368.861H0z"/>
-				<ellipse cx="97.477" cy="79.511" fill="#3366CC" rx="37.5"/>
-				<path fill="#3366CC" d="M60 161h441.92v25.007H60zm0 48h560v25.007H60zm0 81h245.164v25.007H60z"/>
+				<ellipse cx="97.477" cy="79.511" fill="#36C" rx="37.5"/>
+				<path fill="#36C" d="M60 161h441.92v25.007H60zm0 48h560v25.007H60zm0 81h245.164v25.007H60z"/>
 			</g>
 		</g>
 	</g>
