@@ -1,25 +1,15 @@
-/* global __dirname, process */
+/* eslint-env node */
+const CleanPlugin = require( 'clean-webpack-plugin' );
+const path = require( 'path' );
 
-const
-	path = require( 'path' ),
-	CleanPlugin = require( 'clean-webpack-plugin' ),
-	PUBLIC_PATH = '/w/extensions/Popups',
-	isProduction = process.env.NODE_ENV === 'production';
-
-const reduxPath = isProduction ?
-	'node_modules/redux/dist/redux.min.js' :
-	'node_modules/redux/dist/redux.js';
-
-const reduxThunkPath = isProduction ?
-	'node_modules/redux-thunk/dist/redux-thunk.min.js' :
-	'node_modules/redux-thunk/dist/redux-thunk.js';
+const PUBLIC_PATH = '/w/extensions/Popups';
 
 const distDir = path.resolve( __dirname, 'resources/dist' );
 
 // The extension used for source map files.
 const srcMapExt = '.map.json';
 
-const conf = {
+module.exports = ( env, argv ) => ( {
 	// Apply the rule of silence: https://wikipedia.org/wiki/Unix_philosophy.
 	stats: {
 		all: false,
@@ -31,7 +21,7 @@ const conf = {
 
 	// Fail on the first build error instead of tolerating it for prod builds. This seems to
 	// correspond to optimization.noEmitOnErrors.
-	bail: isProduction,
+	bail: argv.mode === 'production',
 
 	// Specify that all paths are relative the Webpack configuration directory not the current
 	// working directory.
@@ -39,9 +29,45 @@ const conf = {
 
 	entry: { index: './src' },
 
+	resolve: {
+		alias: {
+			redux: path.resolve(
+				__dirname,
+				argv.mode === 'production' ?
+					'node_modules/redux/dist/redux.min.js' :
+					'node_modules/redux/dist/redux.js'
+			),
+			'redux-thunk': path.resolve(
+				__dirname,
+				argv.mode === 'production' ?
+					'node_modules/redux-thunk/dist/redux-thunk.min.js' :
+					'node_modules/redux-thunk/dist/redux-thunk.js'
+			)
+		}
+	},
+	module: {
+		rules: [ {
+			test: /\.js$/,
+			exclude: /node_modules/,
+			use: {
+				loader: 'babel-loader',
+				options: {
+					// Beware of https://github.com/babel/babel-loader/issues/690. Changes to browsers require
+					// manual invalidation.
+					cacheDirectory: true
+				}
+			}
+		}, {
+			test: /\.svg$/,
+			loader: 'svg-inline-loader',
+			options: {
+				removeSVGTagAttrs: false // Keep width and height attributes.
+			}
+		} ]
+	},
 	optimization: {
 		// Don't produce production output when a build error occurs.
-		noEmitOnErrors: isProduction,
+		noEmitOnErrors: argv.mode === 'production',
 
 		// Use filenames instead of unstable numerical identifiers for file references. This
 		// increases the gzipped bundle size some but makes the build products easier to debug and
@@ -52,17 +78,19 @@ const conf = {
 	},
 
 	output: {
-		// The absolute path to the output directory.
+		// Specify the destination of all build products.
 		path: distDir,
-		devtoolModuleFilenameTemplate: `${PUBLIC_PATH}/[resource-path]`,
 
-		// Write each chunk (entries, here) to a file named after the entry, e.g.
-		// the "index" entry gets written to index.js.
+		// Store outputs per module in files named after the modules. For the JavaScript entry
+		// itself, append .js to each ResourceLoader module entry name. This value is tightly
+		// coupled to sourceMapFilename.
 		filename: '[name].js',
 
 		// Rename source map extensions. Per T173491 files with a .map extension cannot be served
 		// from prod.
-		sourceMapFilename: `[file]${srcMapExt}`
+		sourceMapFilename: `[file]${srcMapExt}`,
+
+		devtoolModuleFilenameTemplate: `${PUBLIC_PATH}/[resource-path]`
 	},
 
 	// Accurate source maps at the expense of build time. The source map is intentionally exposed
@@ -71,52 +99,21 @@ const conf = {
 	devtool: 'source-map',
 
 	plugins: [
+		// Delete the output directory on each build.
 		new CleanPlugin( distDir, { verbose: false } )
 	],
 
 	performance: {
 		// Size violations for prod builds fail; development builds are unchecked.
-		hints: isProduction ? 'error' : false,
+		hints: argv.mode === 'production' ? 'error' : false,
 
 		// Minified uncompressed size limits for chunks / assets and entrypoints. Keep these numbers
 		// up-to-date and rounded to the nearest 10th of a kibibyte so that code sizing costs are
 		// well understood. Related to bundlesize minified, gzipped compressed file size tests.
-		// Note: entrypoint size implicitly includes the mobile.startup.runtime entry.
-		maxAssetSize: 40 * 1024,
-		maxEntrypointSize: 40 * 1024,
+		maxAssetSize: 40.0 * 1024,
+		maxEntrypointSize: 40.0 * 1024,
 
 		// The default filter excludes map files but we rename ours.
 		assetFilter: ( filename ) => !filename.endsWith( srcMapExt )
-	},
-
-	resolve: {
-		alias: {
-			redux: path.resolve( __dirname, reduxPath ),
-			'redux-thunk': path.resolve( __dirname, reduxThunkPath )
-		}
-	},
-
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						cacheDirectory: true
-					}
-				}
-			},
-			{
-				test: /\.svg$/,
-				loader: 'svg-inline-loader',
-				options: {
-					removeSVGTagAttrs: false // Keep width and height attributes.
-				}
-			}
-		]
 	}
-};
-
-module.exports = conf;
+} );
