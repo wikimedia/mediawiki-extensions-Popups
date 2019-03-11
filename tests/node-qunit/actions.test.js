@@ -2,6 +2,7 @@ import { createStubUser, createStubTitle } from './stubs';
 import * as actions from '../../src/actions';
 import * as WaitModule from '../../src/wait';
 import actionTypes from '../../src/actionTypes';
+import { previewTypes } from '../../src/preview/model';
 
 const mw = mediaWiki,
 	REFERRER = 'https://en.wikipedia.org/wiki/Kitten',
@@ -114,7 +115,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 	};
 
 	const linkDwelled = actions.linkDwell(
-		this.title, this.el, event, /* gateway = */ null, generateToken
+		this.title, this.el, event, /* gateway = */ null, generateToken, previewTypes.TYPE_PAGE
 	)(
 		dispatch,
 		this.getState
@@ -164,7 +165,7 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 	};
 
 	const linkDwelled = actions.linkDwell(
-		this.title, this.el, event, /* gateway = */ null, generateToken
+		this.title, this.el, event, /* gateway = */ null, generateToken, previewTypes.TYPE_PAGE
 	)(
 		dispatch,
 		this.getState
@@ -197,7 +198,7 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 	};
 
 	const linkDwelled = actions.linkDwell(
-		this.title, this.el, event, /* gateway = */ null, generateToken
+		this.title, this.el, event, /* gateway = */ null, generateToken, previewTypes.TYPE_PAGE
 	)(
 		dispatch,
 		this.getState
@@ -234,7 +235,7 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 	};
 
 	return actions.linkDwell(
-		this.title, this.el, event, /* gateway = */ null, generateToken
+		this.title, this.el, event, /* gateway = */ null, generateToken, previewTypes.TYPE_PAGE
 	)(
 		dispatch,
 		this.getState
@@ -270,7 +271,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 		// Sugar.
 		this.fetch = () => {
 			return actions.fetch(
-				this.gateway, this.title, this.el, this.token
+				this.gateway, this.title, this.el, this.token, previewTypes.TYPE_PAGE
 			)( this.dispatch );
 		};
 	}

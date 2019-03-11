@@ -240,9 +240,10 @@ function registerChangeListeners(
 			if ( !mwTitle ) {
 				return;
 			}
+			const type = selectGatewayType( this, mw.config, mwTitle );
 			let gateway;
 
-			switch ( selectGatewayType( this, mw.config, mwTitle ) ) {
+			switch ( type ) {
 				case previewTypes.TYPE_PAGE:
 					gateway = pagePreviewGateway;
 					break;
@@ -253,7 +254,7 @@ function registerChangeListeners(
 					return;
 			}
 
-			boundActions.linkDwell( mwTitle, this, event, gateway, generateToken );
+			boundActions.linkDwell( mwTitle, this, event, gateway, generateToken, type );
 		} )
 		.on( 'mouseout blur', validLinkSelector, function () {
 			const mwTitle = titleFromElement( this, mw.config );

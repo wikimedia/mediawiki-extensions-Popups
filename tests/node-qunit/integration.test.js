@@ -5,6 +5,7 @@ import * as stubs from './stubs';
 import * as actions from '../../src/actions';
 import reducers from '../../src/reducers';
 import registerChangeListener from '../../src/changeListener';
+import { previewTypes } from '../../src/preview/model';
 
 const mw = mediaWiki,
 	$ = jQuery,
@@ -111,7 +112,7 @@ QUnit.module( 'ext.popups preview @integration', {
 					};
 					return $.Deferred()[ method ]( fetchResponse ).promise( abort );
 				}
-			}, () => 'pagetoken' );
+			}, () => 'pagetoken', previewTypes.TYPE_PAGE );
 		};
 
 		this.dwellAndShowPreview = (
