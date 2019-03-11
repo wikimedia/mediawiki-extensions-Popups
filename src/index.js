@@ -260,7 +260,7 @@ function registerChangeListeners(
 			const mwTitle = titleFromElement( this, mw.config );
 
 			if ( mwTitle ) {
-				boundActions.abandon( this );
+				boundActions.abandon();
 			}
 		} )
 		.on( 'click', validLinkSelector, function () {
