@@ -5,7 +5,6 @@
 import * as Redux from 'redux';
 import * as ReduxThunk from 'redux-thunk';
 
-import selectGatewayType from './gateway';
 import createPagePreviewGateway from './gateway/page';
 import createReferenceGateway from './gateway/reference';
 import createUserSettings from './userSettings';
@@ -24,7 +23,7 @@ import * as actions from './actions';
 import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
-import { previewTypes } from './preview/model';
+import { previewTypes, getPreviewType } from './preview/model';
 
 const mw = mediaWiki,
 	$ = jQuery,
@@ -240,7 +239,7 @@ function registerChangeListeners(
 			if ( !mwTitle ) {
 				return;
 			}
-			const type = selectGatewayType( this, mw.config, mwTitle );
+			const type = getPreviewType( this, mw.config, mwTitle );
 			let gateway;
 
 			switch ( type ) {

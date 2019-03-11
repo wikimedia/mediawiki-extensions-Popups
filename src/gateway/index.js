@@ -2,10 +2,6 @@
  * @module gateway
  */
 
-import { previewTypes } from '../preview/model';
-
-const $ = jQuery;
-
 /**
  * The interface implemented by all preview gateways.
  * @typedef Gateway
@@ -36,28 +32,3 @@ const $ = jQuery;
  *
  * @typedef {Function(object, ...any): PreviewModel} ConvertPageToModel
  */
-
-/**
- * Select the general gateway type depending on the applicable popup type.
- *
- * @param {Element} el
- * @param {mw.Map} config
- * @param {mw.Title} title
- * @return {string|null}
- */
-export default function selectGatewayType( el, config, title ) {
-	if ( title.getPrefixedDb() !== config.get( 'wgPageName' ) ) {
-		return previewTypes.TYPE_PAGE;
-	}
-
-	// The other selector can potentially pick up self-links with a class="reference"
-	// parent, but no fragment
-	if ( title.getFragment() &&
-		config.get( 'wgPopupsReferencePreviews' ) &&
-		$( el ).parent().hasClass( 'reference' )
-	) {
-		return previewTypes.TYPE_REFERENCE;
-	}
-
-	return null;
-}

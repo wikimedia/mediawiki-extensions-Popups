@@ -64,7 +64,7 @@ export function createModel(
 	pageId
 ) {
 	const processedExtract = processExtract( extract ),
-		previewType = getPreviewType( type, processedExtract );
+		previewType = getPagePreviewType( type, processedExtract );
 
 	return {
 		title,
@@ -90,6 +90,31 @@ export function createNullModel( title, url ) {
 }
 
 /**
+ * Determines the applicable popup type based on title and link element.
+ *
+ * @param {Element} el
+ * @param {mw.Map} config
+ * @param {mw.Title} title
+ * @return {string|null}
+ */
+export function getPreviewType( el, config, title ) {
+	if ( title.getPrefixedDb() !== config.get( 'wgPageName' ) ) {
+		return previewTypes.TYPE_PAGE;
+	}
+
+	// The other selector can potentially pick up self-links with a class="reference"
+	// parent, but no fragment
+	if ( title.getFragment() &&
+		config.get( 'wgPopupsReferencePreviews' ) &&
+		$( el ).parent().hasClass( 'reference' )
+	) {
+		return previewTypes.TYPE_REFERENCE;
+	}
+
+	return null;
+}
+
+/**
  * Processes the extract returned by the TextExtracts MediaWiki API query
  * module.
  *
@@ -108,7 +133,7 @@ function processExtract( extract ) {
 }
 
 /**
- * Determines the preview type based on whether or not:
+ * Determines the page preview type based on whether or not:
  * a. Is the preview empty.
  * b. The preview type matches one of previewTypes.
  * c. Assume standard page preview if both above are false
@@ -118,7 +143,7 @@ function processExtract( extract ) {
  * @return {string} One of the previewTypes.TYPE_… constants.
  */
 
-function getPreviewType( type, processedExtract ) {
+function getPagePreviewType( type, processedExtract ) {
 	if ( processedExtract === undefined ) {
 		return previewTypes.TYPE_GENERIC;
 	}
@@ -127,7 +152,6 @@ function getPreviewType( type, processedExtract ) {
 		case previewTypes.TYPE_GENERIC:
 		case previewTypes.TYPE_DISAMBIGUATION:
 		case previewTypes.TYPE_PAGE:
-		case previewTypes.TYPE_REFERENCE:
 			return type;
 		default:
 			/**

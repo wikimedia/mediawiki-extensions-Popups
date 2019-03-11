@@ -1,5 +1,6 @@
-import { createModel, previewTypes }
+import { createModel, getPreviewType, previewTypes }
 	from '../../../src/preview/model';
+import { createStubTitle } from '../stubs';
 
 QUnit.module( 'ext.popups.preview#createModel' );
 
@@ -83,5 +84,71 @@ QUnit.test( 'it computes the type property', ( assert ) => {
 		createModelWith( { extract: 'Foo', type: 'disambiguation' } ).type,
 		previewTypes.TYPE_DISAMBIGUATION,
 		'A disambiguation preview has an extract and type ("disambiguation") property.'
+	);
+} );
+
+QUnit.module( 'ext.popups.preview#getPreviewType', {
+	beforeEach() {
+		this.config = new Map(); /* global Map */
+		this.config.set( 'wgPopupsReferencePreviews', true );
+		this.config.set( 'wgPageName', 'Foo' );
+		this.referenceLink = createStubTitle( 1, 'Foo', 'ref-fragment' );
+		this.validEl = $( '<a>' ).appendTo( $( '<span>' ).addClass( 'reference' ) );
+	}
+} );
+
+QUnit.test( 'it uses the reference gateway with wgPopupsReferencePreviews == true and valid element', function ( assert ) {
+	assert.strictEqual(
+		getPreviewType( this.validEl, this.config, this.referenceLink ),
+		previewTypes.TYPE_REFERENCE
+	);
+} );
+
+QUnit.test( 'it does not suggest page previews on reference links when reference previews are disabled', function ( assert ) {
+	this.config.set( 'wgPopupsReferencePreviews', false );
+
+	assert.strictEqual(
+		getPreviewType( this.validEl, this.config, this.referenceLink ),
+		null
+	);
+} );
+
+QUnit.test( 'it uses the page gateway when on links to a different page', function ( assert ) {
+	assert.strictEqual(
+		getPreviewType(
+			this.validEl,
+			this.config,
+			createStubTitle( 1, 'NotFoo' )
+		),
+		previewTypes.TYPE_PAGE
+	);
+
+	assert.strictEqual(
+		getPreviewType(
+			this.validEl,
+			this.config,
+			createStubTitle( 1, 'NotFoo', 'fragment' )
+		),
+		previewTypes.TYPE_PAGE
+	);
+} );
+
+QUnit.test( 'it does not use the reference gateway when there is no fragment', function ( assert ) {
+	assert.strictEqual(
+		getPreviewType(
+			this.validEl,
+			this.config,
+			createStubTitle( 1, 'Foo' )
+		),
+		null
+	);
+} );
+
+QUnit.test( 'it does not suggest page previews on reference links not having a parent with reference class', function ( assert ) {
+	const el = $( '<a>' ).appendTo( $( '<span>' ) );
+
+	assert.strictEqual(
+		getPreviewType( el, this.config, this.referenceLink ),
+		null
 	);
 } );
