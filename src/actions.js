@@ -28,6 +28,8 @@ const $ = jQuery,
 	// delay from start to finish is 500 ms.
 	FETCH_COMPLETE_TARGET_DELAY = 350 + FETCH_START_DELAY, // ms.
 
+	FETCH_DELAY_REFERENCE_TYPE = 150, // ms.
+
 	ABANDON_END_DELAY = 300; // ms.
 
 /**
@@ -96,6 +98,23 @@ export function boot(
 }
 
 /**
+ * Determines the delay before showing the preview when dwelling a link.
+ *
+ * @param {string} type
+ * @return {number}
+ */
+function getDwellDelay( type ) {
+	switch ( type ) {
+		case previewTypes.TYPE_PAGE:
+			return FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY;
+		case previewTypes.TYPE_REFERENCE:
+			return FETCH_DELAY_REFERENCE_TYPE;
+		default:
+			return 0;
+	}
+}
+
+/**
  * Represents Page Previews fetching data via the gateway.
  *
  * @param {Gateway} gateway
@@ -103,9 +122,10 @@ export function boot(
  * @param {Element} el
  * @param {string} token The unique token representing the link interaction that
  *  triggered the fetch
+ * @param {string} type
  * @return {Redux.Thunk}
  */
-export function fetch( gateway, title, el, token ) {
+export function fetch( gateway, title, el, token, type ) {
 	const titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
 
@@ -145,7 +165,7 @@ export function fetch( gateway, title, el, token ) {
 
 		return $.when(
 			chain,
-			wait( FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY )
+			wait( getDwellDelay( type ) )
 		)
 			.then( ( result ) => {
 				dispatch( {
@@ -199,9 +219,10 @@ export function fetch( gateway, title, el, token ) {
  * @param {Event} event
  * @param {Gateway} gateway
  * @param {Function} generateToken
+ * @param {string} type
  * @return {Redux.Thunk}
  */
-export function linkDwell( title, el, event, gateway, generateToken ) {
+export function linkDwell( title, el, event, gateway, generateToken, type ) {
 	const token = generateToken(),
 		titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
@@ -233,7 +254,7 @@ export function linkDwell( title, el, event, gateway, generateToken ) {
 			const previewState = getState().preview;
 
 			if ( previewState.enabled && isNewInteraction() ) {
-				return dispatch( fetch( gateway, title, el, token ) );
+				return dispatch( fetch( gateway, title, el, token, type ) );
 			}
 		} );
 	};
