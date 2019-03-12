@@ -32,6 +32,11 @@ import MODELS from '../mocks/models';
 import grid from '../helpers/grid';
 import createPopup from '../helpers/createPopup';
 
+/**
+ * SVG Assets
+ */
+import pointerMaskSVG from '../../src/ui/pointer-mask.svg';
+
 createPointerMasks( document.body );
 
 const KNOBS_PARAM = { knobs: {
@@ -93,8 +98,7 @@ storiesOf( 'Thumbnails', module )
 	const
 		initModel = extendModelWithKnobs( MODELS.THUMBNAIL_PORTRAIT ),
 		apiResponse = object('API Response', {} ),
-		model = useApiOrInitModel( apiResponse, initModel, CONSTANTS.THUMBNAIL_SIZE, parseHTMLResponse ),
-		model2 =  extendModelWithKnobs( model, { extract: model.extract.slice(0, 80)} );
+		model = useApiOrInitModel( apiResponse, initModel, CONSTANTS.THUMBNAIL_SIZE, parseHTMLResponse );
 
 	object('Effective model', Object.assign( {}, model, { extract: model.extract[0].outerHTML } ) );
 
@@ -102,13 +106,8 @@ storiesOf( 'Thumbnails', module )
 		<div>
 			${createPopup( model, { offset: { top: grid.portrait.row(1), left: grid.portrait.col( 1 ) }, flippedX: false, flippedY: false } )}
 			${createPopup( model, { offset: { top: grid.portrait.row(1), left: grid.portrait.col( 2 ) }, flippedX: true, flippedY: false } )}
-			${createPopup( model, { offset: { top: grid.portrait.row(1), left: grid.portrait.col( 3 ) }, flippedX: false, flippedY: true } )}
-			${createPopup( model, { offset: { top: grid.portrait.row(1), left: grid.portrait.col( 4 ) }, flippedX: true, flippedY: true } )}
-
-			${createPopup( model2, { offset: { top: grid.portrait.row(2.1), left: grid.portrait.col( 1 ) }, flippedX: false, flippedY: false } )}
-			${createPopup( model2, { offset: { top: grid.portrait.row(2.1), left: grid.portrait.col( 2 ) }, flippedX: true, flippedY: false } )}
-			${createPopup( model2, { offset: { top: grid.portrait.row(2.1), left: grid.portrait.col( 3 ) }, flippedX: false, flippedY: true } )}
-			${createPopup( model2, { offset: { top: grid.portrait.row(2.1), left: grid.portrait.col( 4 ) }, flippedX: true, flippedY: true } )}
+			${createPopup( model, { offset: { top: grid.portrait.row(2), left: grid.portrait.col( 1 ) }, flippedX: false, flippedY: true } )}
+			${createPopup( model, { offset: { top: grid.portrait.row(2), left: grid.portrait.col( 2 ) }, flippedX: true, flippedY: true } )}
 		</div>
 	`);
 
@@ -118,8 +117,7 @@ storiesOf( 'Thumbnails', module )
 	const
 		initModel = extendModelWithKnobs( MODELS.THUMBNAIL_LANDSCAPE ),
 		apiResponse = object('API Response', {} ),
-		model = useApiOrInitModel( apiResponse, initModel, CONSTANTS.THUMBNAIL_SIZE, parseHTMLResponse ),
-		model2 =  extendModelWithKnobs( model, { extract: model.extract.slice(0, 80)} );
+		model = useApiOrInitModel( apiResponse, initModel, CONSTANTS.THUMBNAIL_SIZE, parseHTMLResponse );
 
 	object('Effective model', Object.assign( {}, model, { extract: model.extract[0].outerHTML } ) );
 
@@ -127,13 +125,8 @@ storiesOf( 'Thumbnails', module )
 		<div>
 			${createPopup( model, { offset: { top: grid.landscape.row(1), left: grid.landscape.col( 1 ) }, flippedX: false, flippedY: false } )}
 			${createPopup( model, { offset: { top: grid.landscape.row(1), left: grid.landscape.col( 2 ) }, flippedX: true, flippedY: false } )}
-			${createPopup( model, { offset: { top: grid.landscape.row(1), left: grid.landscape.col( 3 ) }, flippedX: false, flippedY: true } )}
-			${createPopup( model, { offset: { top: grid.landscape.row(1), left: grid.landscape.col( 4 ) }, flippedX: true, flippedY: true } )}
-
-			${createPopup( model2, { offset: { top: grid.landscape.row(2), left: grid.landscape.col( 1 ) }, flippedX: false, flippedY: false } )}
-			${createPopup( model2, { offset: { top: grid.landscape.row(2), left: grid.landscape.col( 2 ) }, flippedX: true, flippedY: false } )}
-			${createPopup( model2, { offset: { top: grid.landscape.row(2), left: grid.landscape.col( 3 ) }, flippedX: false, flippedY: true } )}
-			${createPopup( model2, { offset: { top: grid.landscape.row(2), left: grid.landscape.col( 4 ) }, flippedX: true, flippedY: true } )}
+			${createPopup( model, { offset: { top: grid.landscape.row(2), left: grid.landscape.col( 1 ) }, flippedX: false, flippedY: true } )}
+			${createPopup( model, { offset: { top: grid.landscape.row(2), left: grid.landscape.col( 2 ) }, flippedX: true, flippedY: true } )}
 		</div>
 	`);
 
@@ -242,4 +235,28 @@ storiesOf( 'Non-latin', module )
 			${createPopup( MODELS.TH_WIKI, { offset: { top: grid.portrait.row( 2 ), left: grid.portrait.col( 3 ) }, flippedX: false, flippedY: false } )}
 		</div>
 	` );
+} )
+
+storiesOf( 'assets', module )
+.add( 'SVG Masks', () => {
+	const parser = new DOMParser(),
+		svgDoc = parser.parseFromString(pointerMaskSVG, "image/svg+xml"),
+		clipPaths = svgDoc.querySelectorAll('clipPath'),
+		domString = Array.prototype.reduce.call( clipPaths, ( v, clipPath ) => {
+			return v += `
+			<div>
+			<hr>
+			<pre>#${clipPath.id}</pre>
+				<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 1000 1000">
+				${clipPath.innerHTML}
+				</svg>
+			</div>
+			`;
+
+		}, '' )
+	return `
+	<div>
+	<p>SVG masks are rendered in at a width/height of 500px in a viewbox of 1000px, so half size.</p>
+		${domString}
+	</div>`;
 } )
