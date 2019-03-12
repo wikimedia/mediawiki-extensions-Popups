@@ -25,12 +25,12 @@
 	"popups-prefs-optin-disabled-label": "Disable",
 	"popups-prefs-disable-nav-gadgets-info": "You have to [[$1 | disable Navigation Popups Gadget]] from Gadgets tab to enable Page Previews",
 	"popups-prefs-conflicting-gadgets-info": "Certain gadgets and other customizations may affect the performance of this feature. If you experience problems please review your gadgets and user scripts, including global ones.",
-	"popups-refpreview-footnote": "Footnote",
+	"popups-refpreview-reference": "Reference",
 	"popups-refpreview-book": "Book reference",
 	"popups-refpreview-journal": "Journal reference",
 	"popups-refpreview-news": "News reference",
 	"popups-refpreview-web": "Web reference",
-	"popups-refpreview-jump-to-footnote": "Jump to footnote",
+	"popups-refpreview-jump-to-reference": "Jump to reference",
 	"popups-refpreview-beta-feature-message": "Reference Previews",
-	"popups-refpreview-beta-feature-description": "Show a preview of a footnote by hovering over its footnote marker.\n\nPlease note: In order to use this beta feature, you have to [[#mw-prefsection-rendering|enable]] [https://www.mediawiki.org/wiki/Page_Previews Page Previews].\n\nPlease also note: If you’re using the [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] gadget, you won’t see Reference Previews. If you’re using the [[mw:Reference Tooltips|Reference Tooltips]] gadget, both pop-ups from Reference Tooltips and from Reference Previews will appear."
+	"popups-refpreview-beta-feature-description": "Show a preview of a reference by hovering over its footnote marker.\n\nPlease note: In order to use this beta feature, you have to [[#mw-prefsection-rendering|enable]] [https://www.mediawiki.org/wiki/Page_Previews Page Previews].\n\nPlease also note: If you’re using the [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] gadget, you won’t see Reference Previews. If you’re using the [[mw:Reference Tooltips|Reference Tooltips]] gadget, both pop-ups from Reference Tooltips and from Reference Previews will appear."
 }

@@ -336,7 +336,7 @@ QUnit.test( 'createReferencePreview default title', ( assert ) => {
 
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-title' ).text().trim(),
-		'<popups-refpreview-footnote>'
+		'<popups-refpreview-reference>'
 	);
 } );
 

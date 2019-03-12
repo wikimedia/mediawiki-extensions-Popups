@@ -156,12 +156,12 @@
 				"popups-preview-footer-read",
 				"popups-preview-disambiguation",
 				"popups-preview-disambiguation-link",
-				"popups-refpreview-footnote",
+				"popups-refpreview-reference",
 				"popups-refpreview-book",
 				"popups-refpreview-journal",
 				"popups-refpreview-news",
 				"popups-refpreview-web",
-				"popups-refpreview-jump-to-footnote"
+				"popups-refpreview-jump-to-reference"
 			],
 			"dependencies": [
 				"ext.popups.images",
