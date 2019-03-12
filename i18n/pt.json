@@ -35,5 +35,13 @@
 	"popups-prefs-optin-enabled-label": "Ativar",
 	"popups-prefs-optin-disabled-label": "Desativar",
 	"popups-prefs-disable-nav-gadgets-info": "Tem de [[$1 | desativar os Popups de Navegação]] no separador Gadgets para ativar a Antevisão de Páginas",
-	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais."
+	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais.",
+	"popups-refpreview-footnote": "Nota de rodapé",
+	"popups-refpreview-book": "Referência de livro",
+	"popups-refpreview-journal": "Referência de revista",
+	"popups-refpreview-news": "Referência de notícias",
+	"popups-refpreview-web": "Referência da Internet",
+	"popups-refpreview-jump-to-footnote": "Saltar para nota de rodapé",
+	"popups-refpreview-beta-feature-message": "Antevisões de referências",
+	"popups-refpreview-beta-feature-description": "Mostrar a antevisão de uma nota de rodapé quando o ponteiro do rato é colocado sobre o marcador dessa nota de rodapé.\n\nNote, por favor: para usar esta funcionalidade beta, tem de [[#mw-prefsection-rendering|ativar]] as [https://www.mediawiki.org/wiki/Page_Previews Antevisões de páginas].\n\nNote também, por favor: se está a usar o ''gadget'' da [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navegação flutuante], não verá antevisões de referências. Se está a usar o ''gadget'' das [[mw:Reference Tooltips|Reference Dicas de ferramentas]] irão aparecer as duas janelas flutuantes das dicas de referências e das antevisões de referências."
 }
