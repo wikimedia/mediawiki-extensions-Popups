@@ -17,6 +17,12 @@ export function renderReferencePreview(
 	model
 ) {
 	const type = KNOWN_TYPES.indexOf( model.referenceType ) < 0 ? 'generic' : model.referenceType,
+		// Messages:
+		// popups-refpreview-book
+		// popups-refpreview-journal
+		// popups-refpreview-news
+		// popups-refpreview-reference
+		// popups-refpreview-web
 		titleMsg = `popups-refpreview-${ type === 'generic' ? 'reference' : type }`,
 		title = escapeHTML( mw.msg( titleMsg ) ),
 		url = escapeHTML( model.url ),
