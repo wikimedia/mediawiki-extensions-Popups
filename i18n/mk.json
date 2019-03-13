@@ -28,12 +28,12 @@
 	"popups-prefs-optin-disabled-label": "Оневозможи",
 	"popups-prefs-disable-nav-gadgets-info": "Ќе мора да ја [[$1 | оневозможите алатката „Прегледнички отскочници“]] во јазичето Алатки за да го овозможите „Прегледи на страници“",
 	"popups-prefs-conflicting-gadgets-info": "Извесни алатки и други прилагодувања може да ја засегнат работата на оваа можност. Ако се соочите со проблеми, прегледајте ги алатките и корисничките скрипти, вклучувајќи ги глобалните.",
-	"popups-refpreview-footnote": "Фуснота",
+	"popups-refpreview-reference": "Фуснота",
 	"popups-refpreview-book": "Наведена книга",
 	"popups-refpreview-journal": "Наведено списание",
 	"popups-refpreview-news": "Наведени вести",
 	"popups-refpreview-web": "Наведено мрежно место",
-	"popups-refpreview-jump-to-footnote": "Прејди на подножјето",
+	"popups-refpreview-jump-to-reference": "Прејди на подножјето",
 	"popups-refpreview-beta-feature-message": "Брз преглед на подножни наводи",
 	"popups-refpreview-beta-feature-description": "Го прикажува наводот кога кога стрелката е над неговото бројче.\n\nИмајте на ум: За да ја користите оваа бета-можност, ќе треба да го [[#mw-prefsection-rendering|овозможите]] [https://www.mediawiki.org/wiki/Page_Previews Преглед на страници].\n\nИсто така: Оваа можност не работи ако истовремено ја користите алатката [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Прегледнички прозорчиња]. Ако ја користите алатката [[mw:Reference Tooltips|Прозорчиња за наводи]], ќе ви се прикажуваат и тие отскочници и отскочниците за преглед на наводи."
 }

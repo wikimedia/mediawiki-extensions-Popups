@@ -31,12 +31,12 @@
 	"popups-prefs-optin-disabled-label": "تعطيل",
 	"popups-prefs-disable-nav-gadgets-info": "يجب عليك [[$1 |تعطيل أداة التنقل بالنوافذ المنبثقة]] من علامة تبويب الأدوات لتمكين معاينات الصفحة",
 	"popups-prefs-conflicting-gadgets-info": "قد تؤثر بعض الأدوات والتخصيصات الأخرى على أداء هذه الميزة، إذا واجهت أية مُشكلات تُرجَى مراجعة أدواتك والنصوص البرمجية للمستخدم الخاصة بك، بما في ذلك العالمية.",
-	"popups-refpreview-footnote": "حاشية",
+	"popups-refpreview-reference": "حاشية",
 	"popups-refpreview-book": "مرجع كتاب",
 	"popups-refpreview-journal": "مرجع دورية",
 	"popups-refpreview-news": "مرجع أخبار",
 	"popups-refpreview-web": "مرجع على الويب",
-	"popups-refpreview-jump-to-footnote": "اذهب الى الحاشية",
+	"popups-refpreview-jump-to-reference": "اذهب الى الحاشية",
 	"popups-refpreview-beta-feature-message": "معاينات المراجع",
 	"popups-refpreview-beta-feature-description": "عرض معاينة لمرجع عند الوقوف فوق علامته.\n\nمن فضلك لاحظ: من أجل استخدام خاصية البيتا هذه، فعليك [[#mw-prefsection-rendering|تفعيل]] [https://www.mediawiki.org/wiki/Page_Previews معاينات الصفحة].\n\nمن فضلك أيضا لاحظ: لو أنك تستخدم إضافة [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups منبثقات التصفح]، فلن ترى معاينات المراجع. لو أنك تستخدم إضافة [[mw:Reference Tooltips|تلميحات المراجع]]، فكلا المنبثقين من تلميحات المراجع ومن معاينات المراجع سيظهران."
 }

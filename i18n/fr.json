@@ -38,12 +38,12 @@
 	"popups-prefs-optin-disabled-label": "Désactiver",
 	"popups-prefs-disable-nav-gadgets-info": "Vous devez [[$1 |désactiver le Gadget Navigation Popups]] dans l’onglet des Gadgets pour activer les Aperçus de page",
 	"popups-prefs-conflicting-gadgets-info": "Certains gadgets et autres personnalisations peuvent affecter la performance de cette fonctionnalité. Si vous rencontrez des problèmes, veuillez vérifier vos gadgets et scripts utilisateur, y compris au niveau global.",
-	"popups-refpreview-footnote": "Note de bas de page",
+	"popups-refpreview-reference": "Note de bas de page",
 	"popups-refpreview-book": "Référence du livre",
 	"popups-refpreview-journal": "Référence du journal",
 	"popups-refpreview-news": "Référence des actualités",
 	"popups-refpreview-web": "Référence du web",
-	"popups-refpreview-jump-to-footnote": "Aller à la note de bas de page",
+	"popups-refpreview-jump-to-reference": "Aller à la note de bas de page",
 	"popups-refpreview-beta-feature-message": "Aperçus de référence",
 	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la note de bas de page lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : Afin d’utiliser cette fonctionnalité en phase bêta, vous devez [[#mw-prefsection-rendering|activer]] [https://www.mediawiki.org/wiki/Page_Previews Page Previews].\n\nVeuillez aussi prendre note : Si vous utilisez le gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], vous ne verrez pas les aperçus de référence. Si vous utilisez le gadget [[mw:Reference Tooltips|Reference Tooltips]], les deux fenêtres de Reference Tooltips et de Reference Previews apparaîtront."
 }

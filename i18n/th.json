@@ -23,5 +23,5 @@
 	"popups-prefs-optin-disabled-label": "ปิดใช้งาน",
 	"popups-prefs-disable-nav-gadgets-info": "คุณต้อง[[$1 | ปิดใช้งานแกเจตป๊อปอัปการนำทาง (Navigation Popups)]] จากในแถบอุปกรณ์เสริมเพื่อเปิดใช้งานการแสดงตัวอย่างหน้า",
 	"popups-prefs-conflicting-gadgets-info": "แกเจตและการปรับแต่งอื่น ๆ บางอย่างอาจส่งผลต่อประสิทธิภาพของคุณลักษณะนี้ ถ้าคุณพบปัญหา กรุณาตรวจสอบแกเจตและสคริปต์ผู้ใช้ รวมถึง รวมถึงการตั้งค่ากลางด้วย",
-	"popups-refpreview-jump-to-footnote": "ข้ามไปที่เชิงอรรถ"
+	"popups-refpreview-jump-to-reference": "ข้ามไปที่เชิงอรรถ"
 }
