@@ -130,7 +130,7 @@ function getSelectedSetting( $el ) {
  * @return {void}
  */
 function toggleHelp( $el, visible ) {
-	// eslint-disable-next-line jquery/no-global-selector
+	// eslint-disable-next-line no-jquery/no-global-selector
 	const $dialog = $( '#mwe-popups-settings' ),
 		formSelectors = 'main, .save, .close',
 		helpSelectors = '.mwe-popups-settings-help, .okay';
