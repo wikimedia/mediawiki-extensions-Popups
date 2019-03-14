@@ -532,24 +532,32 @@ export function layoutPreview(
  * @return {void}
  */
 export function setThumbnailClipPath(
-	{ el, isTall }, { flippedY, flippedX, dir }
+	{ el, isTall, thumbnail }, { flippedY, flippedX, dir }
 ) {
 	const maskID = getThumbnailClipPathID( isTall, flippedY, flippedX );
 	if ( maskID ) {
-		let entries; // = ⎡ a c tx ⎤
-		//                ⎣ b d ty ⎦
+		// CSS matrix transform entries:
+		// ⎡ sx c tx ⎤
+		// ⎣ sy d ty ⎦
+		const matrix = {
+			scaleX: 1,
+			// moving the mask horizontally if the image is less than the maximum width
+			translateX: isTall ? Math.min( thumbnail.width - SIZES.portraitImage.w, 0 ) : 0
+		};
+
 		if ( dir === 'rtl' ) {
-			// Flip and translate.
-			const tx = isTall ? SIZES.portraitImage.w : SIZES.landscapeImage.w;
-			entries = `-1 0 0 1 ${tx} 0`;
-		} else {
-			// Identity.
-			entries = '1 0 0 1 0 0';
+			// flipping the mask horizontally
+			matrix.scaleX = -1;
+			// moving the mask horizontally to the max width of the thumbnail
+			matrix.translateX = isTall ? SIZES.portraitImage.w : SIZES.landscapeImage.w;
 		}
 
 		// Transform the clip-path not the image it is applied to.
 		const mask = document.getElementById( maskID );
-		mask.setAttribute( 'transform', `matrix(${entries})` );
+		mask.setAttribute(
+			'transform',
+			`matrix(${matrix.scaleX} 0 0 1 ${matrix.translateX} 0)`
+		);
 
 		el.find( 'image' )[ 0 ]
 			.setAttribute( 'clip-path', `url(#${maskID})` );

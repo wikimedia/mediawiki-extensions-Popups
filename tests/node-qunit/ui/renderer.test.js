@@ -1218,18 +1218,26 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 
 QUnit.test( '#setThumbnailClipPath', function ( assert ) {
 	const cases = [
-		{ isTall: false, dir: 'ltr', expected: 'matrix(1 0 0 1 0 0)' },
-		{ isTall: true, dir: 'ltr', expected: 'matrix(1 0 0 1 0 0)' },
-		{ isTall: false, dir: 'rtl', expected: 'matrix(-1 0 0 1 320 0)' },
-		{ isTall: true, dir: 'rtl', expected: 'matrix(-1 0 0 1 203 0)' }
+		// standard thumbnail sizes
+		{ isTall: false, dir: 'ltr', thumbnail: { height: 200, width: 320 }, expected: 'matrix(1 0 0 1 0 0)' },
+		{ isTall: true, dir: 'ltr', thumbnail: { height: 200, width: 320 }, expected: 'matrix(1 0 0 1 0 0)' },
+		{ isTall: false, dir: 'rtl', thumbnail: { height: 200, width: 320 }, expected: 'matrix(-1 0 0 1 320 0)' },
+		{ isTall: true, dir: 'rtl', thumbnail: { height: 200, width: 302 }, expected: 'matrix(-1 0 0 1 203 0)' },
+		// portrait-mode thumbnail, wider than max width - mask should not shift
+		{ isTall: true, dir: 'ltr', thumbnail: { height: 200, width: 400 }, expected: 'matrix(1 0 0 1 0 0)' },
+		// portrait-mode thumbnail, narrower than max width - mask x-offset should shift
+		{ isTall: true, dir: 'ltr', thumbnail: { height: 200, width: 100 }, expected: 'matrix(1 0 0 1 -103 0)' },
+		// in RTL-mode, wide/narrow thumbnails - mask should not shift
+		{ isTall: true, dir: 'rtl', thumbnail: { height: 200, width: 400 }, expected: 'matrix(-1 0 0 1 203 0)' },
+		{ isTall: true, dir: 'rtl', thumbnail: { height: 200, width: 100 }, expected: 'matrix(-1 0 0 1 203 0)' }
 	];
 
 	const clipPath = document.createElement( 'div' );
 	this.sandbox.stub( document, 'getElementById' ).returns( clipPath );
 
-	cases.forEach( ( { isTall, dir, expected } ) => {
+	cases.forEach( ( { isTall, dir, thumbnail, expected } ) => {
 		clipPath.removeAttribute( 'transform' );
-		const preview = createPagePreview( isTall, true, { height: 200 } ),
+		const preview = createPagePreview( isTall, true, thumbnail ),
 			layout = {
 				flippedX: true,
 				flippedY: false,
