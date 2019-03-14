@@ -32,12 +32,12 @@
 	"popups-prefs-optin-disabled-label": "Desativar",
 	"popups-prefs-disable-nav-gadgets-info": "Você precisa [[$1 | desativar o Gadget de Popups de Navegação]] na aba Gadgets para ativar a pré-visualização de páginas",
 	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais.",
-	"popups-refpreview-reference": "Nota de rodapé",
+	"popups-refpreview-reference": "Referencia",
 	"popups-refpreview-book": "Referência de livro",
 	"popups-refpreview-journal": "Referência de revista",
 	"popups-refpreview-news": "Referência de notícias",
 	"popups-refpreview-web": "Referência de site",
-	"popups-refpreview-jump-to-reference": "Ir para nota de rodapé",
+	"popups-refpreview-jump-to-reference": "Ir para referência",
 	"popups-refpreview-beta-feature-message": "Referência de pré-visualização",
-	"popups-refpreview-beta-feature-description": "Mostre uma pré-visualização de uma nota de rodapé pairando sobre seu marcador de nota de rodapé.\n\nPor favor, note: Para usar este recurso beta, você tem que [[#mw-prefsection-rendering|ativar]] [https://www.mediawiki.org/wiki/Page_Previews Pré-visualizações de página].\n\nObserve também: se você estiver usando o gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Pop-ups de navegação], você não verá as pré-visualizações de referência. Se você estiver usando o gadget [[mw:Reference Tooltips|Dicas de referência]], os pop-ups das dicas de ferramentas de referência e das pré-visualizações de referência serão exibidos."
+	"popups-refpreview-beta-feature-description": "Mostre uma pré-visualização de uma referência pairando sobre seu marcador de nota de rodapé.\n\nPor favor, note: Para usar este recurso beta, você tem que [[#mw-prefsection-rendering|ativar]] [https://www.mediawiki.org/wiki/Page_Previews Pré-visualizações de página].\n\nObserve também: se você estiver usando o gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Pop-ups de navegação], você não verá as pré-visualizações de referência. Se você estiver usando o gadget [[mw:Reference Tooltips|Dicas de referência]], os pop-ups das dicas de ferramentas de referência e das pré-visualizações de referência serão exibidos."
 }

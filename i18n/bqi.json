@@ -17,10 +17,11 @@
 	"popups-preview-disambiguation-link": "دیڌن بٱلگاْیٱل چی یٱک",
 	"popups-prefs-optin-enabled-label": "کونشتگٱر کردن",
 	"popups-prefs-optin-disabled-label": "ناکونشتگٱر کردن",
-	"popups-refpreview-reference": "پانڤیس",
+	"popups-refpreview-reference": "سرچشمٱ",
 	"popups-refpreview-book": "سرچشماْ کتاوی",
 	"popups-refpreview-journal": "سرچشماْ جۊرنالی",
 	"popups-refpreview-news": "سرچشماْ هٱڤالی",
 	"popups-refpreview-web": "سرچشماْ دیارگاْ",
-	"popups-refpreview-jump-to-reference": "رٱهڌن سی پانڤیس"
+	"popups-refpreview-jump-to-reference": "رٱهڌن سی سرچشمٱ",
+	"popups-refpreview-beta-feature-message": "پیش ساٛیل سرچشمٱ"
 }
