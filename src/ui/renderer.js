@@ -15,7 +15,8 @@ const mw = mediaWiki,
 	$window = $( window ),
 	landscapePopupWidth = 450,
 	portraitPopupWidth = 320,
-	pointerSize = 8; // Height of the pointer.
+	pointerSize = 8, // Height of the pointer.
+	maxLinkWidthForCenteredPointer = 28; // Link with roughly < 4 chars.
 
 /**
  * Extracted from `mw.popups.createSVGMasks`. This is just an SVG mask to point
@@ -373,8 +374,22 @@ export function createLayout(
 			) + windowData.scrollTop + pointerSize :
 			// Position according to link position or size
 			linkData.offset.top + linkData.height + pointerSize,
-		offsetLeft = eventData.pageX ? eventData.pageX : linkData.offset.left;
+		offsetLeft;
 	const clientTop = eventData.clientY ? eventData.clientY : offsetTop;
+
+	if ( eventData.pageX ) {
+		if ( linkData.width > maxLinkWidthForCenteredPointer ) {
+			// For wider links, position the popup's pointer at the
+			// mouse pointer's location. (x-axis)
+			offsetLeft = eventData.pageX;
+		} else {
+			// For smaller links, position the popup's pointer at
+			// the link's center. (x-axis)
+			offsetLeft = linkData.offset.left + linkData.width / 2;
+		}
+	} else {
+		offsetLeft = linkData.offset.left;
+	}
 
 	// X Flip
 	if ( offsetLeft > ( windowData.width / 2 ) ) {
@@ -386,7 +401,7 @@ export function createLayout(
 	}
 
 	if ( eventData.pageX ) {
-		offsetLeft += ( flippedX ) ? 20 : -20;
+		offsetLeft += ( flippedX ) ? 18 : -18;
 	}
 
 	// Y Flip

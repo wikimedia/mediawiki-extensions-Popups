@@ -577,7 +577,7 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 			{
 				offset: {
 					top: 1154,
-					left: 232
+					left: 234
 				},
 				flippedX: dir !== 'ltr',
 				flippedY: false,
@@ -629,7 +629,7 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 			{
 				offset: {
 					top: 1242,
-					left: 156
+					left: 158
 				},
 				flippedX: dir !== 'ltr',
 				flippedY: true,
@@ -684,6 +684,58 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 				dir
 			},
 			`Case ${i}: the layout is correct. Both X and Y are flipped.`
+		);
+	} );
+} );
+
+QUnit.test( '#createLayout - empty preview, mouse event, popup pointer is in the correct position', ( assert ) => {
+	const isPreviewTall = false,
+		eventData = {
+			pageX: 205,
+			pageY: 1146,
+			clientY: 36
+		},
+		linkData = {
+			clientRects: [ {
+				bottom: 37,
+				height: 13,
+				left: 201,
+				right: 227,
+				top: 24,
+				width: 26
+			} ],
+			offset: {
+				top: 1134,
+				left: 201
+			},
+			width: 26,
+			height: 13
+		},
+		windowData = {
+			scrollTop: 1109,
+			width: 1239,
+			height: 827
+		},
+		pointerSize = 8;
+
+	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
+	cases.forEach( ( { dir }, i ) => {
+		const layout = renderer.createLayout(
+			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
+		);
+
+		assert.deepEqual(
+			layout,
+			{
+				offset: {
+					top: 1154,
+					left: 196
+				},
+				flippedX: dir !== 'ltr',
+				flippedY: false,
+				dir
+			},
+			`Case ${i}: the layout is correct.`
 		);
 	} );
 } );
