@@ -8,7 +8,8 @@
 			"Marek Pavlica",
 			"Walter Klosse",
 			"Ilimanaq29",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Michaelbrabec"
 		]
 	},
 	"popups-message": "Náhledy stránek",
@@ -33,5 +34,6 @@
 	"popups-prefs-optin-enabled-label": "Zapnout",
 	"popups-prefs-optin-disabled-label": "Vypnout",
 	"popups-prefs-disable-nav-gadgets-info": "Abyste {{GENDER:|mohl|mohla|mohli}} zapnout Náhledy stránek, musíte [[$1 | vypnout udělátko Navigation Popups]] na záložce Udělátka",
-	"popups-prefs-conflicting-gadgets-info": "Některá udělátka a další přizpůsobení mohou ovlivnit činnost této funkce. Pokud narazíte na problémy, zkontrolujte si prosím svá lokální i globální udělátka a uživatelské skripty."
+	"popups-prefs-conflicting-gadgets-info": "Některá udělátka a další přizpůsobení mohou ovlivnit činnost této funkce. Pokud narazíte na problémy, zkontrolujte si prosím svá lokální i globální udělátka a uživatelské skripty.",
+	"popups-refpreview-reference": "Reference"
 }
