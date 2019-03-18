@@ -187,7 +187,8 @@ function registerChangeListeners(
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) === true ||
-		process.env.NODE_ENV !== 'production' ) { // eslint-disable-line no-undef
+		/* global process */
+		process.env.NODE_ENV !== 'production' ) {
 		// eslint-disable-next-line no-underscore-dangle
 		compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 	}
