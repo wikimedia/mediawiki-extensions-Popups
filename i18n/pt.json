@@ -11,7 +11,8 @@
 			"Fúlvio",
 			"MokaAkashiyaPT",
 			"Athena in Wonderland",
-			"CaiusSPQR"
+			"CaiusSPQR",
+			"Fitoschido"
 		]
 	},
 	"popups-message": "Antevisões de páginas",
@@ -37,7 +38,7 @@
 	"popups-prefs-optin-disabled-label": "Desativar",
 	"popups-prefs-disable-nav-gadgets-info": "Tem de [[$1 | desativar os Popups de Navegação]] no separador Gadgets para ativar a Antevisão de Páginas",
 	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais.",
-	"popups-refpreview-reference": "Nota de rodapé",
+	"popups-refpreview-reference": "Referência",
 	"popups-refpreview-book": "Referência de livro",
 	"popups-refpreview-journal": "Referência de revista",
 	"popups-refpreview-news": "Referência de notícias",

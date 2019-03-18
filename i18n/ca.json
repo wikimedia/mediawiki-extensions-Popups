@@ -30,6 +30,6 @@
 	"popups-prefs-optin-disabled-label": "Desactiva",
 	"popups-prefs-disable-nav-gadgets-info": "Has de [[$1 | desactivar \"Navegació mitjançant menús emergents\"]] des de la pestanya Ginys per a activar vistes prèvies",
 	"popups-prefs-conflicting-gadgets-info": "Certs ginys i altres personalitzacions poden afectar l'acompliment d'aquesta funció. Si té problemes si us plau revisi els seus ginys i scripts d'usuari.",
-	"popups-refpreview-reference": "Nota al peu",
+	"popups-refpreview-reference": "Referència",
 	"popups-refpreview-jump-to-reference": "Vés a la referència"
 }

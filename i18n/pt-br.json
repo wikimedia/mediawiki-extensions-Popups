@@ -6,7 +6,8 @@
 			"He7d3r",
 			"Peter Fernando",
 			"Felipe L. Ewald",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Fitoschido"
 		]
 	},
 	"popups-message": "Pré-visualizações de página",
@@ -32,7 +33,7 @@
 	"popups-prefs-optin-disabled-label": "Desativar",
 	"popups-prefs-disable-nav-gadgets-info": "Você precisa [[$1 | desativar o Gadget de Popups de Navegação]] na aba Gadgets para ativar a pré-visualização de páginas",
 	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais.",
-	"popups-refpreview-reference": "Referencia",
+	"popups-refpreview-reference": "Referência",
 	"popups-refpreview-book": "Referência de livro",
 	"popups-refpreview-journal": "Referência de revista",
 	"popups-refpreview-news": "Referência de notícias",
