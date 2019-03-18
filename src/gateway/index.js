@@ -30,5 +30,5 @@
 /**
  * Converts the API response to a preview model. Exposed for testing only.
  *
- * @typedef {Function(object, ...any): PreviewModel} ConvertPageToModel
+ * @typedef {Function(object, ...any): PagePreviewModel} ConvertPageToModel
  */

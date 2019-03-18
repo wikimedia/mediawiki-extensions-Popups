@@ -25,23 +25,39 @@ export { previewTypes };
  * Preview Model
  *
  * @typedef {Object} PreviewModel
- * @property {string} title
  * @property {string} url The canonical URL of the page being previewed
- * @property {string} [languageCode] Only used by popup types that accept an extract.
- * @property {string} [languageDirection] Either "ltr" or "rtl"
- * @property {Array|undefined} extract `undefined` if the extract isn't
- *  viable, e.g. if it's empty after having ellipsis and parentheticals
- *  removed; this can be used to present default or error states
  * @property {string} type One of the previewTypes.TYPE_… constants.
- * @property {{source: string, width: number, height: number}} [thumbnail]
- * @property {number} [pageId] Currently not used by any known popup type.
- * @property {string} [sourceElementId] ID of the parent element that triggered the preview.
  *
  * @global
  */
 
 /**
- * Creates a preview model.
+ * @typedef {Object} PagePreviewModel
+ * @extends {PreviewModel}
+ * @property {string} title
+ * @property {Array|undefined} extract `undefined` if the extract isn't
+ *  viable, e.g. if it's empty after having ellipsis and parentheticals
+ *  removed; this can be used to present default or error states
+ * @property {string} languageCode
+ * @property {string} languageDirection Either "ltr" or "rtl", or an empty string if undefined.
+ * @property {{source: string, width: number, height: number}|undefined} thumbnail
+ * @property {number} pageId Currently not used by any known popup type.
+ *
+ * @global
+ */
+
+/**
+ * @typedef {Object} ReferencePreviewModel
+ * @extends {PreviewModel}
+ * @property {string} extract An HTML snippet, not necessarily with a single top-level node
+ * @property {string} referenceType A type identifier, e.g. "web"
+ * @property {string} sourceElementId ID of the parent element that triggered the preview
+ *
+ * @global
+ */
+
+/**
+ * Creates a page preview model.
  *
  * @param {string} title
  * @param {string} url The canonical URL of the page being previewed
@@ -49,9 +65,9 @@ export { previewTypes };
  * @param {string} languageDirection Either "ltr" or "rtl"
  * @param {Array|undefined|null} extract
  * @param {string} type
- * @param {Object} [thumbnail]
+ * @param {{source: string, width: number, height: number}|undefined} [thumbnail]
  * @param {number} [pageId]
- * @return {PreviewModel}
+ * @return {PagePreviewModel}
  */
 export function createModel(
 	title,
@@ -79,11 +95,11 @@ export function createModel(
 }
 
 /**
- * Creates an empty preview model.
+ * Creates an empty page preview model.
  *
  * @param {string} title
  * @param {string} url
- * @return {PreviewModel}
+ * @return {PagePreviewModel}
  */
 export function createNullModel( title, url ) {
 	return createModel( title, url, '', '', [], '' );
@@ -139,7 +155,7 @@ function processExtract( extract ) {
  * c. Assume standard page preview if both above are false
  *
  * @param {string} type
- * @param {string} [processedExtract]
+ * @param {Array|undefined} [processedExtract]
  * @return {string} One of the previewTypes.TYPE_… constants.
  */
 

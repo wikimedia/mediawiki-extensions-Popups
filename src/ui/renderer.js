@@ -146,7 +146,7 @@ export function createPreviewWithType( model ) {
 /**
  * Creates an instance of the DTO backing a preview.
  *
- * @param {ext.popups.PreviewModel} model
+ * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
 function createPagePreview( model ) {
@@ -169,7 +169,7 @@ function createPagePreview( model ) {
  *   redirect to a page that doesn't exist.
  * * The page doesn't have a viable extract.
  *
- * @param {ext.popups.PreviewModel} model
+ * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
 function createEmptyPreview( model ) {
@@ -187,7 +187,7 @@ function createEmptyPreview( model ) {
 /**
  * Creates an instance of the disambiguation preview.
  *
- * @param {ext.popups.PreviewModel} model
+ * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
 function createDisambiguationPreview( model ) {
@@ -203,7 +203,7 @@ function createDisambiguationPreview( model ) {
 }
 
 /**
- * @param {ext.popups.PreviewModel} model
+ * @param {ext.popups.ReferencePreviewModel} model
  * @return {ext.popups.Preview}
  */
 function createReferencePreview( model ) {

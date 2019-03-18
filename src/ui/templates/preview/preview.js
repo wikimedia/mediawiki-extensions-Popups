@@ -6,7 +6,7 @@ import { renderPopup } from '../popup/popup';
 import { escapeHTML } from '../templateUtil';
 
 /**
- * @param {ext.popups.PreviewModel} model
+ * @param {ext.popups.PagePreviewModel} model
  * @param {boolean} showTitle
  * @param {string} extractMsg
  * @param {string} linkMsg

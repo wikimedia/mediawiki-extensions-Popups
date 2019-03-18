@@ -55,7 +55,7 @@ export default function createReferenceGateway() {
 	/**
 	 * @param {mw.Title} title
 	 * @param {Element} el
-	 * @returns {AbortPromise<PreviewModel>}
+	 * @returns {AbortPromise<ReferencePreviewModel>}
 	 */
 	function fetchPreviewForTitle( title, el ) {
 		// Need to encode the fragment again as mw.Title returns it as decoded text

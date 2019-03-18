@@ -50,7 +50,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 
 	/**
 	 * @param {mw.Title} title
-	 * @returns {AbortPromise<PreviewModel>}
+	 * @returns {AbortPromise<PagePreviewModel>}
 	 */
 	function fetchPreviewForTitle( title ) {
 		const titleText = title.getPrefixedDb(),
@@ -177,7 +177,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
  * @param {Object} page
  * @param {number} thumbSize
  * @param {Function} extractParser
- * @return {PreviewModel}
+ * @return {PagePreviewModel}
  */
 export function convertPageToModel( page, thumbSize, extractParser ) {
 	return createModel(
