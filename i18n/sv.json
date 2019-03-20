@@ -32,9 +32,10 @@
 	"popups-prefs-optin-disabled-label": "Inaktivera",
 	"popups-prefs-disable-nav-gadgets-info": "Du måste [[$1 | avaktivera Navigation Popups Gadget]] från Finesser-fliken för att aktivera sidförhandsvisningar",
 	"popups-prefs-conflicting-gadgets-info": "Vissa finesser och andra anpassningar kan påverka den här funktionens prestanda. Om du upplever problem, vänligen granska dina finesser och användarskript, medräknat globala sådana.",
+	"popups-refpreview-reference": "Referens",
 	"popups-refpreview-book": "Bokreferens",
 	"popups-refpreview-journal": "Journalreferens",
 	"popups-refpreview-news": "Nyhetsreferens",
 	"popups-refpreview-web": "Webbreferens",
-	"popups-refpreview-jump-to-reference": "Hoppa till fotnot"
+	"popups-refpreview-jump-to-reference": "Hoppa till referens"
 }

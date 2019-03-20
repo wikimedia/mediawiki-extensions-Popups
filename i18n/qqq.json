@@ -8,10 +8,11 @@
 			"Mateon1",
 			"Mar(c)",
 			"Umherirrender",
-			"Raymond"
+			"Raymond",
+			"Amire80"
 		]
 	},
-	"popups-message": "{{name}}\nName shown in user preference for this extension",
+	"popups-message": "Name shown in user preference for this extension",
 	"popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
 	"popups-settings-title": "Title used for the setting's dialog",
 	"popups-settings-option-simple": "Title for the reader popup option\n{{Identical|Enable}}",
@@ -41,5 +42,5 @@
 	"popups-refpreview-web": "Heading for a popup previewing a citation from a website.\n{{Identical|Website}}",
 	"popups-refpreview-jump-to-reference": "Label for a link at the bottom of a reference popup that makes the focus jump down to the original footnote on the page.",
 	"popups-refpreview-beta-feature-message": "Label for the Reference Previews Beta feature.",
-	"popups-refpreview-beta-feature-description": "Description for the Reference Previews Beta feature, describing the feature that will be enabled."
+	"popups-refpreview-beta-feature-description": "Description for the Reference Previews Beta feature, describing the feature that will be enabled.\n\nThe name \"Page Previews\" is supposed to be the same as in {{msg-mw|Popups-message}}."
 }
