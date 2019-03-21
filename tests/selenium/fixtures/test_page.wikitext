@@ -7,9 +7,7 @@
 # blah
 
 ==Reference links==
-Lorem ipsum dolor<ref name="a">ref1</ref> sit amet, consectetur adipiscing elit<ref>ref2</ref>.
-
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua<ref name="a" />.
+Lorem ipsum dolor.<ref>small reference</ref>
 
 ==References==
 <references />
