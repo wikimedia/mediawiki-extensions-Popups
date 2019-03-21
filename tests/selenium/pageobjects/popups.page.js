@@ -76,8 +76,8 @@ class PopupsPage extends Page {
 		this.dwellLink( '#content ul a' );
 	}
 
-	dwellReferenceLink() {
-		this.dwellLink( '.reference a' );
+	dwellReferenceLink( num ) {
+		this.dwellLink( `.reference:nth-of-type(${ num }) a` );
 	}
 
 	doNotSeePreview( selector ) {
@@ -102,6 +102,17 @@ class PopupsPage extends Page {
 
 	seeReferencePreview() {
 		return this.seePreview( REFERENCE_POPUPS_SELECTOR );
+	}
+
+	seeScrollableReferencePreview() {
+		return browser.execute( () => {
+			const el = document.querySelector( '.mwe-popups-extract .mw-parser-output' );
+			return el.scrollHeight > el.offsetHeight;
+		} ).value;
+	}
+
+	seeFadeoutOnReferenceText() {
+		return browser.isExisting( '.mwe-popups-fade-out' );
 	}
 
 	open() {
