@@ -296,7 +296,7 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 
 QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	const model = {
-			url: '#custom_id <"\'>',
+			url: '#custom_id',
 			extract: 'Custom <i>extract</i> with a <a href="//wikipedia.de">link</a>',
 			type: previewTypes.TYPE_REFERENCE,
 			referenceType: 'web'
@@ -319,6 +319,21 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 		1,
 		'links in (and only in) the content open in new tabs'
 	);
+	assert.strictEqual(
+		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
+		'#custom_id',
+		'readlink is correctly linked'
+	);
+} );
+
+QUnit.test( 'createReferencePreview escapes URLs safely', ( assert ) => {
+	const model = {
+			url: '#custom_id <"\'>',
+			extract: '',
+			type: previewTypes.TYPE_REFERENCE
+		},
+		preview = renderer.createPreviewWithType( model );
+
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
 		'#custom_id <"\'>',
