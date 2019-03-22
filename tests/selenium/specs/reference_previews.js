@@ -36,4 +36,14 @@ describe( 'Dwelling on a valid reference link', function () {
 		assert( page.seeScrollableReferencePreview(), 'Reference preview has a fading effect' );
 		assert( page.seeFadeoutOnReferenceText(), 'Reference preview has a fading effect' );
 	} );
+
+	it( 'Dwelling references links inside reference previews does not close the popup ', function () {
+		if ( !page.hasReferencePopupsEnabled() ) {
+			this.skip();
+		}
+		page.open();
+		page.dwellReferenceLink( 3 );
+		page.dwellReferenceInceptionLink();
+		assert( page.seeReferenceInceptionPreview(), 'The reference preview is still showing.' );
+	} );
 } );

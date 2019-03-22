@@ -6,6 +6,7 @@ const
 	POPUPS_SELECTOR = '.mwe-popups',
 	PAGE_POPUPS_SELECTOR = '.mwe-popups-type-page',
 	REFERENCE_POPUPS_SELECTOR = '.mwe-popups-type-reference',
+	REFERENCE_INCEPTION_LINK_SELECTOR = '.mwe-popups-type-reference .reference a',
 	POPUPS_MODULE_NAME = 'ext.popups.main';
 
 function makePage( title, path ) {
@@ -80,6 +81,11 @@ class PopupsPage extends Page {
 		this.dwellLink( `.reference:nth-of-type(${ num }) a` );
 	}
 
+	dwellReferenceInceptionLink() {
+		browser.moveToObject( REFERENCE_INCEPTION_LINK_SELECTOR );
+		browser.pause( 1000 );
+	}
+
 	doNotSeePreview( selector ) {
 		return browser.waitUntil( () => !browser.isVisible( selector ) );
 	}
@@ -102,6 +108,10 @@ class PopupsPage extends Page {
 
 	seeReferencePreview() {
 		return this.seePreview( REFERENCE_POPUPS_SELECTOR );
+	}
+
+	seeReferenceInceptionPreview() {
+		return this.seePreview( REFERENCE_INCEPTION_LINK_SELECTOR );
 	}
 
 	seeScrollableReferencePreview() {
