@@ -18,10 +18,10 @@
 	"popups-prefs-optin-enabled-label": "Aktiver",
 	"popups-prefs-optin-disabled-label": "Deaktiver",
 	"popups-prefs-conflicting-gadgets-info": "Visse gadgets og andre personlige indstillinger kan påvirke denne funktion negativt. Hvis du oplever problemer, så check dine gadgets og brugerscripts, inklusiv dine globale scripts.",
-	"popups-refpreview-reference": "Fodnote",
+	"popups-refpreview-reference": "Reference",
 	"popups-refpreview-book": "Bogreference",
 	"popups-refpreview-journal": "Journalreference",
 	"popups-refpreview-news": "Nyhedsreference",
 	"popups-refpreview-web": "Websidereference",
-	"popups-refpreview-jump-to-reference": "Spring til fodnote"
+	"popups-refpreview-jump-to-reference": "Spring til reference"
 }
