@@ -33,7 +33,7 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 		};
 
 		this.getLink = function () {
-			return this.$footer.find( 'li' );
+			return this.$footer.find( 'li:last-child' );
 		};
 	},
 	afterEach() {

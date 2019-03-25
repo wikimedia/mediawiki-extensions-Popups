@@ -54,7 +54,7 @@ export function renderReferencePreview(
 	if ( model.sourceElementId ) {
 		$el.find( '.mwe-popups-read-link' ).on( 'click', ( event ) => {
 			event.stopPropagation();
-			$( `#${ $.escapeSelector( model.sourceElementId ) } > a` ).trigger( 'click' );
+			$( `#${ $.escapeSelector( model.sourceElementId ) } > a:first-child` ).trigger( 'click' );
 		} );
 	}
 
