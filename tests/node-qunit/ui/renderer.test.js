@@ -355,6 +355,40 @@ QUnit.test( 'createReferencePreview default title', ( assert ) => {
 	);
 } );
 
+QUnit.test( 'createReferencePreview propagates clicks to source element', ( assert ) => {
+	const model = {
+			url: '',
+			extract: '',
+			type: previewTypes.TYPE_REFERENCE,
+			sourceElementId: 'source-element'
+		},
+		preview = renderer.createPreviewWithType( model ),
+		$sourceElement = $( '<div>' ).attr( 'id', model.sourceElementId ).append(
+			$( '<a>' ).on( 'click', () => {
+				assert.ok( true, 'click event is triggered' );
+			} )
+		).appendTo( document.body );
+
+	preview.el.find( '.mwe-popups-read-link' ).trigger( 'click' );
+
+	$sourceElement.remove();
+} );
+
+QUnit.test( 'createReferencePreview updates fade-out effect on scroll', ( assert ) => {
+	const model = {
+			url: '',
+			extract: '',
+			type: previewTypes.TYPE_REFERENCE
+		},
+		preview = renderer.createPreviewWithType( model ),
+		$extract = preview.el.find( '.mwe-popups-extract' );
+
+	$extract.children().trigger( 'scroll' );
+
+	assert.strictEqual( false, $extract.children()[ 0 ].isScrolling );
+	assert.ok( !$extract.hasClass( 'mwe-popups-fade-out' ) );
+} );
+
 QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
 	const preview = createPagePreview(),
 		behavior = createBehavior( this.sandbox );
