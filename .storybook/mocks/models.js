@@ -256,6 +256,21 @@ MODELS.HE_WIKI = {
 	pageId: 502723
 };
 
+MODELS.HE_WIKI2 = {
+	title: "לונדון",
+	url: "לונדון",
+	languageCode: "he",
+	languageDirection: "rtl",
+	extract: "<p><b>לונדון</b> היא עיר הבירה של אנגליה ושל הממלכה המאוחדת, והעיר והמטרופולין הגדולה ביותר בממלכה. העיר שוכנת על גדות נהר התמזה, והיוותה מקום התיישבות מרכזי במשך יותר מאלפיים שנים. הרומאים התיישבו בה לראשונה, וכינו אותה לונדיניום. גרעינה ההיסטורי של העיר הוא הסיטי של לונדון, ששומר עד היום על גבולותיו מימי הביניים. לונדון המודרנית מורכבת מצירוף של ערים, עיירות, רבעים, שכונות ופרברים, אשר נסתפחו לאורך השנים לשטחה האדמיניסטרטיבי של \"לונדון רבתי\", וכולם יחד נקראים \"לונדון\".</p>",
+	type: "page",
+	thumbnail: {
+		source: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/London_Montage_L.jpg/424px-London_Montage_L.jpg",
+		width: 424,
+		height: 640
+	},
+	"pageId": 2955
+}
+
 MODELS.AR_WIKI = {
 	title: "سلسلة جبلية",
 	url: "سلسلة جبلية",
@@ -269,6 +284,23 @@ MODELS.AR_WIKI = {
 		"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Satellitenaufnahme_der_Alpen.jpg/640px-Satellitenaufnahme_der_Alpen.jpg",
 		width: 640,
 		height: 494
+	},
+	pageId: 32340
+};
+
+MODELS.AR_WIKI2 = {
+	title: "سلسلة جبلية",
+	url: "سلسلة جبلية",
+	languageCode: "ar",
+	languageDirection: "rtl",
+	extract:
+	"<p><b>الجبال</b> هي سلسلة متتالية من الارتفاعات تفتقر إلى التجانس، بحيث تكون ارتفاعات القمم شديدة التباين(مثل 1000 متر، 2500 متر أو 700 متر...)، وهي مجموعة من الجبال تحدها السهول أو يفصلها عن غيرها ممرات أو أنهار ولكن الأودية تكون متعمقة، و<b>السفوح</b> شديدة التجزئة وقوية الانحدار.\nوتتميز الجبال بعدة أشكال بالنسبة للقمم&nbsp;:</p>",
+	type: "page",
+	thumbnail: {
+		source:
+		"https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Barker_poster.jpg/258px-Barker_poster.jpg",
+		width: 258,
+		height: 640
 	},
 	pageId: 32340
 };
