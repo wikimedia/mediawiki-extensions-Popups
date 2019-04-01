@@ -5,7 +5,8 @@
 			"CennoxX",
 			"Peter Bowman",
 			"Andreasburmeister",
-			"Kghbln"
+			"Kghbln",
+			"Johanna Strodt (WMDE)"
 		]
 	},
 	"popups-message": "Seitenvorschaubilder",
@@ -32,11 +33,11 @@
 	"popups-prefs-disable-nav-gadgets-info": "Du musst [[$1 |das Helferlein „Navigations-Popups“]] in der Registerkarte „Helferlein“ deaktivieren, um Seitenvorschaubilder zu aktivieren.",
 	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls du Probleme entdeckst, überprüfe bitte deine Helferlein und Benutzerskripte, inklusive globaler.",
 	"popups-refpreview-reference": "Einzelnachweis",
-	"popups-refpreview-book": "Buch-Einzelnachweis",
-	"popups-refpreview-journal": "Zeitschrift-Einzelnachweis",
-	"popups-refpreview-news": "Nachrichten-Einzelnachweis",
-	"popups-refpreview-web": "Web-Einzelnachweis",
-	"popups-refpreview-jump-to-reference": "Zu Einzelnachweis springen",
-	"popups-refpreview-beta-feature-message": "Vorschaubilder von Einzelnachweisen",
+	"popups-refpreview-book": "Literaturquelle",
+	"popups-refpreview-journal": "Zeitschriftenquelle",
+	"popups-refpreview-news": "Nachrichtenquelle",
+	"popups-refpreview-web": "Internetquelle",
+	"popups-refpreview-jump-to-reference": "Zum Einzelnachweis springen",
+	"popups-refpreview-beta-feature-message": "Vorschau von Einzelnachweisen",
 	"popups-refpreview-beta-feature-description": "Zeigt eine Vorschau eines Einzelnachweises durch das Überfahren mit der Maus über ihren Fußnotenmarker an.\n\nBeachte bitte: Um diese Beta-Funktion zu nutzen, musst du auch [https://www.mediawiki.org/wiki/Page_Previews Seitenvorschaubilder] [[#mw-prefsection-rendering|aktivieren]].\n\nBeachte bitte auch: Falls du das Helferlein [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups „Navigations-Popups“] benutzt, wirst du keine Einzelnachweis-Vorschaubilder sehen. Falls du das Helferlein [[mw:Reference Tooltips|„Einzelnachweis-Tooltipps“]] benutzt, werden sowohl die Popups von den Einzelnachweis-Tooltipps als auch von den Einzelnachweis-Vorschaubildern angezeigt."
 }
