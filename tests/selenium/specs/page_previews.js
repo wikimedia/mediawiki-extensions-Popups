@@ -6,14 +6,17 @@ describe( 'Dwelling on a valid page link', function () {
 		page.setup();
 	} );
 
-	it( 'I should see a page preview', function () {
+	beforeEach( function () {
 		page.open();
+		page.ready();
+	} );
+
+	it( 'I should see a page preview', function () {
 		page.dwellPageLink();
 		assert( page.seePagePreview(), 'Page preview is shown.' );
 	} );
 
 	it( 'Abandoning link hides page preview', function () {
-		page.open();
 		page.dwellPageLink();
 		page.abandonLink();
 		assert( page.doNotSeePagePreview(), 'Page preview is kept hidden.' );

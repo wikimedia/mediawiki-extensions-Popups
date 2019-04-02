@@ -50,10 +50,10 @@ class PopupsPage extends Page {
 
 	ready() {
 		this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Popups did not load' );
+		browser.pause( 1000 );
 	}
 
 	hasReferencePopupsEnabled() {
-		this.open();
 		return browser.execute( function () {
 			return mediaWiki.config.get( 'wgPopupsReferencePreviews' );
 		} ).value;
@@ -64,11 +64,6 @@ class PopupsPage extends Page {
 	}
 
 	dwellLink( selector ) {
-		const PAUSE = 1000;
-		this.ready();
-		browser.pause( PAUSE );
-		this.abandonLink();
-		browser.pause( PAUSE );
 		browser.moveToObject( selector );
 		browser.waitForExist( POPUPS_SELECTOR );
 	}

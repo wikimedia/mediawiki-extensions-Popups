@@ -6,11 +6,15 @@ describe( 'Dwelling on a valid reference link', function () {
 		page.setup();
 	} );
 
+	beforeEach( function () {
+		page.open();
+		page.ready();
+	} );
+
 	it( 'I should see a reference preview', function () {
 		if ( !page.hasReferencePopupsEnabled() ) {
 			this.skip();
 		}
-		page.open();
 		page.dwellReferenceLink( 1 );
 		assert( page.seeReferencePreview(), 'Reference preview is shown.' );
 		assert( !page.seeScrollableReferencePreview(), 'Reference preview is not scrollable.' );
@@ -21,7 +25,6 @@ describe( 'Dwelling on a valid reference link', function () {
 		if ( !page.hasReferencePopupsEnabled() ) {
 			this.skip();
 		}
-		page.open();
 		page.dwellReferenceLink( 1 );
 		page.abandonLink();
 		assert( page.doNotSeeReferencePreview(), 'Reference preview is kept hidden.' );
@@ -31,7 +34,6 @@ describe( 'Dwelling on a valid reference link', function () {
 		if ( !page.hasReferencePopupsEnabled() ) {
 			this.skip();
 		}
-		page.open();
 		page.dwellReferenceLink( 2 );
 		assert( page.seeScrollableReferencePreview(), 'Reference preview has a fading effect' );
 		assert( page.seeFadeoutOnReferenceText(), 'Reference preview has a fading effect' );
@@ -41,7 +43,6 @@ describe( 'Dwelling on a valid reference link', function () {
 		if ( !page.hasReferencePopupsEnabled() ) {
 			this.skip();
 		}
-		page.open();
 		page.dwellReferenceLink( 3 );
 		page.dwellReferenceInceptionLink();
 		assert( page.seeReferenceInceptionPreview(), 'The reference preview is still showing.' );
