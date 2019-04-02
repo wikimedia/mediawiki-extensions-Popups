@@ -21,4 +21,11 @@ describe( 'Dwelling on a valid page link', function () {
 		page.abandonLink();
 		assert( page.doNotSeePagePreview(), 'Page preview is kept hidden.' );
 	} );
+
+	it( 'Quickly hovering, abandoning and re-hovering a link shows page preview', function () {
+		page.hoverPageLink();
+		page.abandonLink();
+		page.dwellPageLink();
+		assert( page.seePagePreview(), 'Page preview is shown.' );
+	} );
 } );

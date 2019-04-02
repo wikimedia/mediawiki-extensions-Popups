@@ -5,6 +5,7 @@ const
 	TEST_PAGE_TITLE = 'Popups test page',
 	POPUPS_SELECTOR = '.mwe-popups',
 	PAGE_POPUPS_SELECTOR = '.mwe-popups-type-page',
+	PAGE_POPUPS_LINK_SELECTOR = '#content ul a',
 	REFERENCE_POPUPS_SELECTOR = '.mwe-popups-type-reference',
 	REFERENCE_INCEPTION_LINK_SELECTOR = '.mwe-popups-type-reference .reference a',
 	POPUPS_MODULE_NAME = 'ext.popups.main';
@@ -68,7 +69,11 @@ class PopupsPage extends Page {
 	}
 
 	dwellPageLink() {
-		this.dwellLink( '#content ul a' );
+		this.dwellLink( PAGE_POPUPS_LINK_SELECTOR );
+	}
+
+	hoverPageLink() {
+		browser.moveToObject( PAGE_POPUPS_LINK_SELECTOR );
 	}
 
 	dwellReferenceLink( num ) {
