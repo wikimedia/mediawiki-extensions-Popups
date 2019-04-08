@@ -6,7 +6,8 @@
 		"node": true
 	},
 	"globals": {
-		"browser": "readonly"
+		"browser": "readonly",
+		"mw": "readonly"
 	},
 	"rules": {
 		"no-console": 0

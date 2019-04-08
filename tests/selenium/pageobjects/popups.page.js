@@ -41,9 +41,8 @@ class PopupsPage extends Page {
 		// https://github.com/webdriverio/webdriverio/blob/master/lib/utils/Timer.js
 		browser.waitUntil( () => {
 			return browser.execute( ( module ) => {
-				return mediaWiki &&
-					mediaWiki.loader &&
-					mediaWiki.loader.getState( module.name ) === module.status;
+				return typeof mw !== 'undefined' &&
+					mw.loader.getState( module.name ) === module.status;
 			}, { status: moduleStatus, name: moduleName } );
 		}, 10000, errMsg );
 	}
