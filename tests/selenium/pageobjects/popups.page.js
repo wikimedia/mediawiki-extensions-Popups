@@ -40,16 +40,16 @@ class PopupsPage extends Page {
 		// http://webdriver.io/api/utility/waitUntil.html
 		// https://github.com/webdriverio/webdriverio/blob/master/lib/utils/Timer.js
 		browser.waitUntil( () => {
-			return browser.execute( ( module ) => {
+			const result = browser.execute( ( module ) => {
 				return typeof mw !== 'undefined' &&
 					mw.loader.getState( module.name ) === module.status;
 			}, { status: moduleStatus, name: moduleName } );
+			return result.value;
 		}, 10000, errMsg );
 	}
 
 	ready() {
 		this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Popups did not load' );
-		browser.pause( 1000 );
 	}
 
 	hasReferencePopupsEnabled() {
