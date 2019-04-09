@@ -54,8 +54,6 @@ QUnit.test( 'it should handle logged in users', ( assert ) => {
 		userSettings = createStubUserSettings( false ),
 		config = new Map();
 
-	config.set( 'wgPopupsShouldSendModuleToUser', true );
-
 	assert.ok(
 		isEnabled( user, userSettings, config ),
 		'If the user is logged in and the user is in the on group, then it\'s enabled.'

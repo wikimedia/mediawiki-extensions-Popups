@@ -24,12 +24,17 @@ export default function isEnabled( user, userSettings, config ) {
 	}
 
 	if ( !user.isAnon() ) {
-		return config.get( 'wgPopupsShouldSendModuleToUser' );
-	}
-
-	if ( !userSettings.hasIsEnabled() ) {
+		// For logged-in users, enablement is equal to the
+		// loading of this very code.
 		return true;
+	} else {
+		// For anonymous users, the code loads always, but the feature
+		// can be toggled at run-time via local storage.
+		if ( !userSettings.hasIsEnabled() ) {
+			// Default when no setting is stored.
+			return true;
+		} else {
+			return userSettings.getIsEnabled();
+		}
 	}
-
-	return userSettings.getIsEnabled();
 }

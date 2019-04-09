@@ -281,7 +281,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$outputPage->expects( $this->once() )
+		$outputPage->expects( $this->any() )
 			->method( 'getUser' )
 			->willReturn( $user );
 
@@ -289,11 +289,11 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->setMethods( [ 'shouldSendModuleToUser', 'conflictsWithNavPopupsGadget' ] )
 			->disableOriginalConstructor()
 			->getMock();
-		$contextMock->expects( $this->once() )
+		$contextMock->expects( $this->any() )
 			->method( 'shouldSendModuleToUser' )
 			->with( $user )
 			->willReturn( false );
-		$contextMock->expects( $this->once() )
+		$contextMock->expects( $this->any() )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->with( $user )
 			->willReturn( false );
@@ -301,12 +301,9 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->setService( 'Popups.Context', $contextMock );
 
 		$vars = [];
-
 		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
 
-		$this->assertCount( 3, $vars, 'Three globals are are made.' );
-		$this->assertFalse( $vars[ 'wgPopupsShouldSendModuleToUser' ],
-			'The PopupsShouldSendModuleToUser global is present and false.' );
+		$this->assertCount( 2, $vars, 'Number of added variables.' );
 		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ],
 			'The PopupsConflictsWithNavPopupGadget global is present and false.' );
 	}
