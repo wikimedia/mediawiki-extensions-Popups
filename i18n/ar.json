@@ -5,7 +5,8 @@
 			"محمد أحمد عبد الفتاح",
 			"ديفيد",
 			"علاء",
-			"Meno25"
+			"Meno25",
+			"زكريا"
 		]
 	},
 	"popups-message": "معاينات الصفحة",
@@ -24,7 +25,7 @@
 	"popups-preview-no-preview": "كانت هناك مشكلة في عرض هذه المعاينة",
 	"popups-preview-footer-read": "اذهب إلى هذه الصفحة",
 	"popups-preview-disambiguation": "يرتبط هذا العنوان بأكثر من صفحة واحدة",
-	"popups-preview-disambiguation-link": "عرض صفحات مماثلة",
+	"popups-preview-disambiguation-link": "عرض الصفحات المماثلة",
 	"prefs-reading": "تفضيلات القراءة",
 	"popups-prefs-optin-title": "معاينة الصفحة (الحصول على معاينة سريعة للموضوع أثناء قراءة الصفحة):",
 	"popups-prefs-optin-enabled-label": "تفعيل",
@@ -36,7 +37,7 @@
 	"popups-refpreview-journal": "مرجع دورية",
 	"popups-refpreview-news": "مرجع أخبار",
 	"popups-refpreview-web": "مرجع على الويب",
-	"popups-refpreview-jump-to-reference": "القفز إلى المرجع",
-	"popups-refpreview-beta-feature-message": "معاينات المراجع",
-	"popups-refpreview-beta-feature-description": "عرض معاينة مرجع عند الوقوف فوق علامته.\n\nمن فضلك لاحظ: من أجل استخدام خاصية البيتا هذه، فعليك [[#mw-prefsection-rendering|تفعيل]] [https://www.mediawiki.org/wiki/Page_Previews معاينات الصفحة].\n\nمن فضلك أيضا لاحظ: لو أنك تستخدم إضافة [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups منبثقات التصفح]، فلن ترى معاينات المراجع. لو أنك تستخدم إضافة [[mw:Reference Tooltips|تلميحات المراجع]]، فكلا المنبثقين من تلميحات المراجع ومن معاينات المراجع سيظهران."
+	"popups-refpreview-jump-to-reference": "انتقل إلى المرجع",
+	"popups-refpreview-beta-feature-message": "بيان المراجع",
+	"popups-refpreview-beta-feature-description": "عرض بيانات المراجع عند الوقوف فوق علامته.\n\nمن فضلك لاحظ: من أجل استخدام خاصية البيتا هذه، فعليك [[#mw-prefsection-rendering|تفعيل]] [https://www.mediawiki.org/wiki/Page_Previews معاينات الصفحة].\n\nمن فضلك أيضا لاحظ: لو أنك تستخدم إضافة [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups منبثقات التصفح]، فلن ترى معاينات المراجع. لو أنك تستخدم إضافة [[mw:Reference Tooltips|تلميحات المراجع]]، فكلا المنبثقين من تلميحات المراجع ومن معاينات المراجع سيظهران."
 }

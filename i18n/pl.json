@@ -6,7 +6,8 @@
 			"Rezonansowy",
 			"WTM",
 			"Ty221",
-			"Railfail536"
+			"Railfail536",
+			"Woytecr"
 		]
 	},
 	"popups-message": "Podglądy strony",
@@ -30,5 +31,13 @@
 	"popups-prefs-optin-enabled-label": "Włącz",
 	"popups-prefs-optin-disabled-label": "Wyłącz",
 	"popups-prefs-disable-nav-gadgets-info": "Musisz [[$1 |wyłączyć gadżet „NavigationPopus”]] w zakładce gadżetów, w celu włączenia podglądu stron",
-	"popups-prefs-conflicting-gadgets-info": "Niektóre gadżety i inne ustawienia mogą wpływać na wydajność tej funkcji. Jeśli wystąpią problemy, przejrzyj swoje gadżety i skrypty, w tym globalne."
+	"popups-prefs-conflicting-gadgets-info": "Niektóre gadżety i inne ustawienia mogą wpływać na wydajność tej funkcji. Jeśli wystąpią problemy, przejrzyj swoje gadżety i skrypty, w tym globalne.",
+	"popups-refpreview-reference": "Przypis",
+	"popups-refpreview-book": "Przypis do książki",
+	"popups-refpreview-journal": "Przypis do pisma",
+	"popups-refpreview-news": "Przypis do artykułu w wiadomościach",
+	"popups-refpreview-web": "Przypis do strony internetowej",
+	"popups-refpreview-jump-to-reference": "Skocz do przypisu",
+	"popups-refpreview-beta-feature-message": "Podgląd przypisów",
+	"popups-refpreview-beta-feature-description": "Pokaż podgląd przypisu po najechaniu na jego oznaczenie (numer).\n\nUwaga: Aby móc używać tej funkcji należy [[#mw-prefsection-rendering|włączyć]] [https://www.mediawiki.org/wiki/Page_Previews Page Previews].\n\nJeżeli korzystasz z gadżetu [https://pl.wikipedia.org/wiki/Wikipedia:Narzędzia/Navigation popups Navigation popups], podglądy przypisów nie będą pokazywane. Jeżeli korzystasz z gadżetu [[mw:Reference Tooltips|Reference Tooltips]], okna podglądu przypisów będą pokazywane zarówno z gadżetu Reference Tooltips jak i tej funkcji - Podgląd Przypisów."
 }
