@@ -135,8 +135,6 @@ class PopupsHooks {
 	 *   previews should be enabled. Depending on the general setting done on the wiki and
 	 *   - in cases where the feature is used as BetaFeature - of the user's BetaFeature
 	 *   setting.
-	 * * `wgPopupsShouldSendModuleToUser' - The server's notion of whether or not the
-	 *   user has enabled Page Previews (see `\Popups\PopupsContext#shouldSendModuleToUser`).
 	 * * `wgPopupsConflictsWithNavPopupGadget' - The server's notion of whether or not the
 	 *   user has enabled conflicting Navigational Popups Gadget.
 	 *
@@ -151,7 +149,6 @@ class PopupsHooks {
 		$user = $out->getUser();
 
 		$vars['wgPopupsReferencePreviews'] = self::isReferencePreviewsEnabled( $user, $config );
-		$vars['wgPopupsShouldSendModuleToUser'] = $context->shouldSendModuleToUser( $user );
 		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget(
 			$user
 		);
