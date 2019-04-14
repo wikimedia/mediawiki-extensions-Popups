@@ -32,8 +32,12 @@
 	"popups-prefs-optin-disabled-label": "Slå av",
 	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideforhåndsvisning",
 	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke denne funksjonen. Om du opplever problemer, sjekk dine tilleggsfunksjoner og brukerscript, inkludert dine globale script.",
-	"popups-refpreview-book": "Bok",
-	"popups-refpreview-news": "Nyheter",
-	"popups-refpreview-web": "Nettside",
-	"popups-refpreview-jump-to-reference": "Hopp til fotnote"
+	"popups-refpreview-reference": "Referanse",
+	"popups-refpreview-book": "Bokreferanse",
+	"popups-refpreview-journal": "Tidsskriftreferanse",
+	"popups-refpreview-news": "Nyhetsreferanse",
+	"popups-refpreview-web": "Nettsidereferanse",
+	"popups-refpreview-jump-to-reference": "Hopp til referanse",
+	"popups-refpreview-beta-feature-message": "Referanseforhåndsvisning",
+	"popups-refpreview-beta-feature-description": "Vis en forhåndsvisning av en referanse når du peker på den.\n\nMerk: For å kunne bruke denne betafunksjonen må du også [[#mw-prefsection-rendering|aktivere]] [https://www.mediawiki.org/wiki/Page_Previews SIdeforhåndsvisning].\n\nMerk også: Funksjonen virker ikke sammen med tilleggsfunksjonene [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] og [[mw:Reference Tooltips|Reference Tooltips]]."
 }
