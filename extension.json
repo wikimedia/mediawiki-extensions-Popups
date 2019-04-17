@@ -93,7 +93,12 @@
 			"images": {
 				"popups-settings": "resources/ext.popups.images/cog.svg",
 				"popups-close": "resources/ext.popups.images/close.svg",
-				"preview-generic": "resources/ext.popups.images/sad-face.svg",
+				"preview-generic": {
+					"file": {
+						"ltr": "resources/ext.popups.images/sad-face-ltr.svg",
+						"rtl": "resources/ext.popups.images/sad-face-rtl.svg"
+					}
+				},
 				"footer": {
 					"file": {
 						"ltr": "resources/ext.popups.images/footer-ltr.svg",
@@ -102,8 +107,8 @@
 				},
 				"preview-disambiguation": {
 					"file": {
-						"ltr": "resources/ext.popups.images/multiple-articles-ltr.svg",
-						"rtl": "resources/ext.popups.images/multiple-articles-rtl.svg"
+						"ltr": "resources/ext.popups.images/articles-ltr.svg",
+						"rtl": "resources/ext.popups.images/articles-rtl.svg"
 					}
 				},
 				"reference-generic": "resources/ext.popups.images/reference.svg",
@@ -125,7 +130,12 @@
 						"rtl": "resources/ext.popups.images/newspaper-rtl.svg"
 					}
 				},
-				"reference-web": "resources/ext.popups.images/web.svg"
+				"reference-web": {
+					"file": {
+						"ltr": "resources/ext.popups.images/browser-ltr.svg",
+						"rtl": "resources/ext.popups.images/browser-rtl.svg"
+					}
+				}
 			}
 		},
 		"ext.popups": {
