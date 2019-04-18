@@ -114,7 +114,7 @@ export function createNullModel( title, url ) {
  * @return {string|null}
  */
 export function getPreviewType( el, config, title ) {
-	if ( title.getPrefixedDb() !== config.get( 'wgPageName' ) ) {
+	if ( !isSelfLink( config, title ) ) {
 		return previewTypes.TYPE_PAGE;
 	}
 
@@ -128,6 +128,18 @@ export function getPreviewType( el, config, title ) {
 	}
 
 	return null;
+}
+
+/**
+ * Check if a link is pointing to the current page
+ *
+ * @param {mw.Map} config
+ * @param {mw.Title} title
+ * @return {boolean}
+ */
+function isSelfLink( config, title ) {
+	return title.getNamespaceId() === config.get( 'wgNamespaceNumber' ) &&
+		title.getName() === config.get( 'wgTitle' );
 }
 
 /**

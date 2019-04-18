@@ -91,8 +91,9 @@ QUnit.module( 'ext.popups.preview#getPreviewType', {
 	beforeEach() {
 		this.config = new Map(); /* global Map */
 		this.config.set( 'wgPopupsReferencePreviews', true );
-		this.config.set( 'wgPageName', 'Foo' );
-		this.referenceLink = createStubTitle( 1, 'Foo', 'ref-fragment' );
+		this.config.set( 'wgTitle', 'Foo' );
+		this.config.set( 'wgNamespaceNumber', 1 );
+		this.referenceLink = createStubTitle( 1, 'Benutzerin:Foo', 'ref-fragment', 'Foo' );
 		this.validEl = $( '<a>' ).appendTo( $( '<span>' ).addClass( 'reference' ) );
 	}
 } );
@@ -128,6 +129,15 @@ QUnit.test( 'it uses the page gateway when on links to a different page', functi
 			this.validEl,
 			this.config,
 			createStubTitle( 1, 'NotFoo', 'fragment' )
+		),
+		previewTypes.TYPE_PAGE
+	);
+
+	assert.strictEqual(
+		getPreviewType(
+			this.validEl,
+			this.config,
+			createStubTitle( 2, 'Foo', 'fragment' )
 		),
 		previewTypes.TYPE_PAGE
 	);
