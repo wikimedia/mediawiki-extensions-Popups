@@ -219,8 +219,8 @@ class PopupsHooks {
 					'ltr' => "$extensionAssetsPath/Popups/resources/ext.popups.images/refpreview-beta-ltr.svg",
 					'rtl' => "$extensionAssetsPath/Popups/resources/ext.popups.images/refpreview-beta-rtl.svg",
 				],
-				'info-link' => 'http://mediawiki.org/wiki/Help:Reference_Previews',
-				'discussion-link' => 'http://mediawiki.org/wiki/Help_Talk:Reference_Previews',
+				'info-link' => 'https://mediawiki.org/wiki/Help:Reference_Previews',
+				'discussion-link' => 'https://mediawiki.org/wiki/Help_Talk:Reference_Previews',
 			];
 		}
 	}
