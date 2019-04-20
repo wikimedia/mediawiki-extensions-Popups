@@ -96,7 +96,11 @@ export function isValid( title, contentNamespaces ) {
 export function fromElement( el, config ) {
 	if ( isOwnPageAnchorLink( el ) ) {
 		// No need to check the namespace. A self-link can't point to different one.
-		return mw.Title.newFromText( config.get( 'wgPageName' ) + el.hash );
+		try {
+			return mw.Title.newFromText( config.get( 'wgPageName' ) + decodeURIComponent( el.hash ) );
+		} catch ( e ) {
+			return null;
+		}
 	}
 
 	return isValid(

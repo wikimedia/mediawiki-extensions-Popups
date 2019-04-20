@@ -261,3 +261,47 @@ QUnit.test( 'it should ignore anchor links that are not identical', function ( a
 
 	assert.strictEqual( fromElement( el, config ), null );
 } );
+
+QUnit.test( 'it should pass through anchor links with non-ASCII characters', function ( assert ) {
+	const el = document.createElement( 'a' );
+	el.href = 'http://own.host/w/index.php?oldid=1&extra=1#Fläche';
+
+	const config = new Map();
+	config.set( 'wgPageName', 'Talk:Page' );
+
+	const mwTitle = {
+		namespace: 1,
+		title: 'Page',
+		fragment: 'Fläche'
+	};
+	mediaWiki.Title.newFromText.withArgs( 'Talk:Page#Fläche' ).returns( mwTitle );
+
+	assert.propEqual( fromElement( el, config ), mwTitle );
+} );
+
+QUnit.test( 'it should decode anchor links with encoded characters', function ( assert ) {
+	const el = document.createElement( 'a' );
+	el.href = 'http://own.host/w/index.php?oldid=1&extra=1#Fl%C3%A4che';
+
+	const config = new Map();
+	config.set( 'wgPageName', 'Talk:Page' );
+
+	const mwTitle = {
+		namespace: 1,
+		title: 'Page',
+		fragment: 'Fläche'
+	};
+	mediaWiki.Title.newFromText.withArgs( 'Talk:Page#Fläche' ).returns( mwTitle );
+
+	assert.propEqual( fromElement( el, config ), mwTitle );
+} );
+
+QUnit.test( 'it should fail gracefully on anchor links with broken encoding', function ( assert ) {
+	const el = document.createElement( 'a' );
+	el.href = 'http://own.host/w/index.php?oldid=1&extra=1#malformed%A';
+
+	const config = new Map();
+	config.set( 'wgPageName', 'Talk:Page' );
+
+	assert.propEqual( fromElement( el, config ), null );
+} );
