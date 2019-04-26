@@ -56,15 +56,22 @@ export function createStubExperiments( bucket ) {
  * `mw.Title`.
  *
  * @param {number} namespace
- * @param {string} prefixedDb, e.g. Foo, or File:Bar.jpg
+ * @param {string} prefixedDb, e.g. Foo, or User:Foo
  * @param {string|null} [fragment]
+ * @param {string|null} name, the page name without extension or namespace prefix
  * @return {Object}
  */
-export function createStubTitle( namespace, prefixedDb, fragment = null ) {
+export function createStubTitle( namespace, prefixedDb, fragment = null, name = null ) {
 	return {
 		namespace,
 		getPrefixedDb() {
 			return prefixedDb;
+		},
+		getName() {
+			return name || prefixedDb;
+		},
+		getNamespaceId() {
+			return namespace;
 		},
 		getUrl() {
 			return `/wiki/${ prefixedDb }`;
