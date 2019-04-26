@@ -67,20 +67,13 @@ export function renderReferencePreview(
 			return;
 		}
 
-		const $extract = $( element ).parent();
-
-		if ( typeof element.hasHorizontalScroll === 'undefined' ) {
-			element.hasHorizontalScroll = element.scrollWidth !==
-				element.scrollLeft + element.clientWidth;
-
-			if ( element.hasHorizontalScroll ) {
-				// set bottom offset to scrollbar size
-				$extract.find( '.mwe-popups-fade' ).css(
-					'bottom',
-					`${ element.offsetHeight - element.clientHeight }px`
-				);
-			}
-		}
+		const $extract = $( element ).parent(),
+			hasHorizontalScroll = element.scrollWidth !== element.scrollLeft + element.clientWidth,
+			scrollbarHeight = element.offsetHeight - element.clientHeight;
+		$extract.find( '.mwe-popups-fade' ).css(
+			'bottom',
+			hasHorizontalScroll ? `${ scrollbarHeight }px` : 0
+		);
 
 		element.isScrolling = !scrolledToBottom;
 		$extract.toggleClass( 'mwe-popups-fade-out', element.isScrolling );
