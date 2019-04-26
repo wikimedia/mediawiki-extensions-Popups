@@ -30,19 +30,24 @@
 		min-height: @lineHeight;
 
 		&:after {
+			width: 0;
+		}
+
+		.mwe-popups-fade {
+			position: absolute;
 			width: 100%;
-			bottom: -@lineHeight;
+			height: @lineHeight;
 			background-color: transparent;
 			background-image: -webkit-linear-gradient( top, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) );
 			background-image: -moz-linear-gradient( top, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) );
 			background-image: linear-gradient( rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) );
-			.transition( bottom 250ms ease );
+			opacity: 0;
+			pointer-events: none; // Allows clicking "through" the element
+			.transition( opacity 250ms ease );
 		}
 
-		&.mwe-popups-fade-out {
-			&:after {
-				bottom: 0;
-			}
+		&.mwe-popups-fade-out .mwe-popups-fade {
+			opacity: 1;
 		}
 
 		.mw-parser-output {

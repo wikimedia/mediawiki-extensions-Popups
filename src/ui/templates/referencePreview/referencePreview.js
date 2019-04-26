@@ -37,6 +37,7 @@ export function renderReferencePreview(
 			</strong>
 			<div class='mwe-popups-extract'>
 				<div class='mw-parser-output'>${ model.extract }</div>
+				<div class='mwe-popups-fade' />
 			</div>
 			<footer>
 				<a href='${ url }' class='mwe-popups-read-link'>${ linkMsg }</a>
@@ -66,8 +67,23 @@ export function renderReferencePreview(
 			return;
 		}
 
+		const $extract = $( element ).parent();
+
+		if ( typeof element.hasHorizontalScroll === 'undefined' ) {
+			element.hasHorizontalScroll = element.scrollWidth !==
+				element.scrollLeft + element.clientWidth;
+
+			if ( element.hasHorizontalScroll ) {
+				// set bottom offset to scrollbar size
+				$extract.find( '.mwe-popups-fade' ).css(
+					'bottom',
+					`${ element.offsetHeight - element.clientHeight }px`
+				);
+			}
+		}
+
 		element.isScrolling = !scrolledToBottom;
-		$( element ).parent().toggleClass( 'mwe-popups-fade-out', element.isScrolling );
+		$extract.toggleClass( 'mwe-popups-fade-out', element.isScrolling );
 	} );
 
 	return $el;
