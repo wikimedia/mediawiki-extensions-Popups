@@ -407,7 +407,7 @@ QUnit.test( 'RESTBase gateway handles missing extracts', function ( assert ) {
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title with missing extract' ) )
+	return gateway.fetchPreviewForTitle( createStubTitle( 0, 'Test Title with missing extract' ) )
 		.then( ( result ) => {
 			assert.strictEqual( result.title, 'Test Title with missing extract', 'Title' );
 			assert.strictEqual( result.extract, '!!', 'Extract' );
@@ -420,7 +420,7 @@ QUnit.test( 'RESTBase gateway handles no content success responses', function ( 
 		gateway = createRESTBaseGateway(
 			api, DEFAULT_CONSTANTS, provideParsedExtract );
 
-	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title with empty response' ) )
+	return gateway.fetchPreviewForTitle( createStubTitle( 0, 'Test Title with empty response' ) )
 		.then( ( result ) => {
 			assert.strictEqual( result.title, 'Test Title with empty response', 'Title' );
 			assert.strictEqual( result.extract, '!!', 'Extract' );

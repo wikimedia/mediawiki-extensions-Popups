@@ -93,7 +93,7 @@ QUnit.module( 'ext.popups.preview#getPreviewType', {
 		this.config.set( 'wgPopupsReferencePreviews', true );
 		this.config.set( 'wgTitle', 'Foo' );
 		this.config.set( 'wgNamespaceNumber', 1 );
-		this.referenceLink = createStubTitle( 1, 'Benutzerin:Foo', 'ref-fragment', 'Foo' );
+		this.referenceLink = createStubTitle( 1, 'Foo', 'ref-fragment' );
 		this.validEl = $( '<a>' ).appendTo( $( '<span>' ).addClass( 'reference' ) );
 	}
 } );

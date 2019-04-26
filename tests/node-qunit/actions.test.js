@@ -6,7 +6,7 @@ import { previewTypes } from '../../src/preview/model';
 
 const mw = mediaWiki,
 	REFERRER = 'https://en.wikipedia.org/wiki/Kitten',
-	TEST_TITLE = createStubTitle( 1, 'Foo' );
+	TEST_TITLE = createStubTitle( 0, 'Foo' );
 
 function generateToken() {
 	return 'ABC';
@@ -19,7 +19,7 @@ QUnit.test( '#boot', ( assert ) => {
 		stubUser = createStubUser( /* isAnon = */ true );
 
 	config.set( 'wgTitle', 'Foo' );
-	config.set( 'wgNamespaceNumber', 1 );
+	config.set( 'wgNamespaceNumber', 0 );
 	config.set( 'wgArticleId', 2 );
 	config.set( 'wgUserEditCount', 3 );
 	config.set( 'wgPopupsConflictsWithNavPopupGadget', true );
@@ -49,7 +49,7 @@ QUnit.test( '#boot', ( assert ) => {
 			page: {
 				url: REFERRER,
 				title: 'Foo',
-				namespaceId: 1,
+				namespaceId: 0,
 				id: 2
 			},
 			user: {
@@ -129,7 +129,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 			token: 'ABC',
 			timestamp: mw.now(),
 			title: 'Foo',
-			namespaceId: 1,
+			namespaceId: 0,
 			promise: $.Deferred().promise( { abort() {} } )
 		},
 		'The dispatcher was called with the correct arguments.'
@@ -292,7 +292,7 @@ QUnit.test( 'it should fetch data from the gateway immediately', function ( asse
 			type: actionTypes.FETCH_START,
 			el: this.el,
 			title: 'Foo',
-			namespaceId: 1,
+			namespaceId: 0,
 			timestamp: this.now,
 			promise: $.Deferred().promise( { abort() {} } )
 		},

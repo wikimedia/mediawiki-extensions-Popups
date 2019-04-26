@@ -56,25 +56,24 @@ export function createStubExperiments( bucket ) {
  * `mw.Title`.
  *
  * @param {number} namespace
- * @param {string} prefixedDb, e.g. Foo, or User:Foo
+ * @param {string} name Page name without namespace prefix
  * @param {string|null} [fragment]
- * @param {string|null} name, the page name without extension or namespace prefix
  * @return {Object}
  */
-export function createStubTitle( namespace, prefixedDb, fragment = null, name = null ) {
+export function createStubTitle( namespace, name, fragment = null ) {
 	return {
 		namespace,
 		getPrefixedDb() {
-			return prefixedDb;
+			return ( namespace ? `Namespace ${ namespace }:` : '' ) + name;
 		},
 		getNameText() {
-			return name || prefixedDb;
+			return name;
 		},
 		getNamespaceId() {
 			return namespace;
 		},
 		getUrl() {
-			return `/wiki/${ prefixedDb }`;
+			return `/wiki/${ this.getPrefixedDb() }`;
 		},
 		getFragment() {
 			return fragment;

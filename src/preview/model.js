@@ -114,7 +114,7 @@ export function createNullModel( title, url ) {
  * @return {string|null}
  */
 export function getPreviewType( el, config, title ) {
-	if ( !isSelfLink( config, title ) ) {
+	if ( !isSelfLink( title, config ) ) {
 		return previewTypes.TYPE_PAGE;
 	}
 
@@ -131,13 +131,11 @@ export function getPreviewType( el, config, title ) {
 }
 
 /**
- * Check if a link is pointing to the current page
- *
- * @param {mw.Map} config
  * @param {mw.Title} title
- * @return {boolean}
+ * @param {mw.Map} config
+ * @return {boolean} True when the link points to the current page.
  */
-function isSelfLink( config, title ) {
+function isSelfLink( title, config ) {
 	return title.getNamespaceId() === config.get( 'wgNamespaceNumber' ) &&
 		title.getNameText() === config.get( 'wgTitle' );
 }
