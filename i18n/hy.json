@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Դավիթ Սարոյան"
+			"Դավիթ Սարոյան",
+			"Kareyac"
 		]
 	},
 	"popups-message": "Նախադիտման քարտեր",
@@ -13,5 +14,7 @@
 	"popups-settings-save": "Պահպանել",
 	"popups-settings-help-ok": "Արված է",
 	"popups-settings-cancel": "Չեղարկել",
-	"popups-settings-enable": "Միացնել նախադիտումը"
+	"popups-settings-enable": "Միացնել նախադիտումը",
+	"popups-prefs-optin-enabled-label": "Միացնել",
+	"popups-prefs-optin-disabled-label": "Անջատել"
 }
