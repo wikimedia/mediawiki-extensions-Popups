@@ -309,6 +309,59 @@ export function linkClick( el ) {
 }
 
 /**
+ * Represents the user clicking on a reference preview link with their mouse, keyboard, or an
+ * assistive device.
+ *
+ * @param {mw.Title} title
+ * @param {Element} el
+ * @param {Gateway} gateway
+ * @param {Function} generateToken
+ * @return {Redux.Thunk}
+ */
+export function referenceClick( title, el, gateway, generateToken ) {
+	return ( dispatch, getState ) => {
+		const {
+			activeLink,
+			activeToken: dwellToken,
+			promise: dwellPromise,
+			wasClicked
+		} = getState().preview;
+
+		if ( wasClicked ) {
+			return $.Deferred().resolve().promise();
+		}
+
+		const xhr = gateway.fetchPreviewForTitle( title, el );
+
+		function clickFollowsDwellEvent() {
+			return activeLink === el && dwellToken !== '';
+		}
+
+		let token = dwellToken;
+		if ( !clickFollowsDwellEvent() ) {
+			token = generateToken();
+		} else {
+			dwellPromise.abort();
+		}
+
+		dispatch( timedAction( {
+			type: types.REFERENCE_CLICK,
+			el,
+			token
+		} ) );
+
+		return xhr.then( ( result ) => {
+			dispatch( {
+				type: types.FETCH_COMPLETE,
+				el,
+				result,
+				token
+			} );
+		} );
+	};
+}
+
+/**
  * Represents the user dwelling on a preview with their mouse.
  *
  * @return {Object}

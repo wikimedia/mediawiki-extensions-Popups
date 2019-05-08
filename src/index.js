@@ -263,11 +263,25 @@ function registerChangeListeners(
 				boundActions.abandon();
 			}
 		} )
-		.on( 'click', validLinkSelector, function () {
+		.on( 'click', validLinkSelector, function ( event ) {
 			const mwTitle = titleFromElement( this, mw.config );
-
 			if ( mwTitle ) {
-				boundActions.linkClick( this );
+				const type = getPreviewType( this, mw.config, mwTitle );
+
+				switch ( type ) {
+					case previewTypes.TYPE_PAGE:
+						boundActions.linkClick( this );
+						break;
+					case previewTypes.TYPE_REFERENCE:
+						event.preventDefault();
+						boundActions.referenceClick(
+							mwTitle,
+							this,
+							referenceGateway,
+							generateToken
+						);
+						break;
+				}
 			}
 		} );
 }() );

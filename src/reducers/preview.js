@@ -17,7 +17,8 @@ export default function preview( state, action ) {
 			activeEvent: undefined,
 			activeToken: '',
 			shouldShow: false,
-			isUserDwelling: false
+			isUserDwelling: false,
+			wasClicked: false
 		};
 	}
 
@@ -56,6 +57,14 @@ export default function preview( state, action ) {
 				isUserDwelling: true
 			} );
 
+		case actionTypes.REFERENCE_CLICK:
+			return nextState( state, {
+				activeLink: action.el,
+				activeToken: action.token,
+				isUserDwelling: true,
+				wasClicked: true
+			} );
+
 		case actionTypes.ABANDON_END:
 			if ( action.token === state.activeToken && !state.isUserDwelling ) {
 				return nextState( state, {
@@ -75,7 +84,8 @@ export default function preview( state, action ) {
 
 		case actionTypes.ABANDON_START:
 			return nextState( state, {
-				isUserDwelling: false
+				isUserDwelling: false,
+				wasClicked: false
 			} );
 
 		case actionTypes.FETCH_START:
