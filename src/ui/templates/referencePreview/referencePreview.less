@@ -29,8 +29,9 @@
 		// Reference previews can be smaller than page previews, where the minimum is 2 lines.
 		min-height: @lineHeight;
 
+		// Remove the default fade-out effect set by popup.less
 		&:after {
-			width: 0;
+			display: none;
 		}
 
 		.mwe-popups-fade {
