@@ -33,10 +33,10 @@
 	"popups-prefs-disable-nav-gadgets-info": "Щоб увімкнути Попередні перегляди сторінок Вам треба [[$1 | Вимкнути додаток навігаційних спливних вікон]] у вкладці «Додатки»",
 	"popups-prefs-conflicting-gadgets-info": "Деякі додатки та інші персональні налаштування можуть вплинути на продуктивність цієї функції. Якщо у Вас виникають якісь проблеми, будь ласка, перевірте свої додатки та користувацькі скрипти, включно з глобальними.",
 	"popups-refpreview-reference": "Виноска",
-	"popups-refpreview-book": "Книга",
-	"popups-refpreview-journal": "Журнал",
-	"popups-refpreview-news": "Новини",
-	"popups-refpreview-web": "Веб-сайт",
+	"popups-refpreview-book": "Зноска на книгу",
+	"popups-refpreview-journal": "Зноска на журнал",
+	"popups-refpreview-news": "Зноска на новини",
+	"popups-refpreview-web": "Зноска на веб-сайт",
 	"popups-refpreview-jump-to-reference": "Перейти до посилання на джерело",
 	"popups-refpreview-beta-feature-message": "Огляд джерел"
 }
