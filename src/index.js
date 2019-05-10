@@ -226,7 +226,7 @@ function registerChangeListeners(
 	const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' );
 	let validLinkSelector = `#mw-content-text a[href][title]:not(${ invalidLinksSelector })`;
 	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
-		validLinkSelector += ', #mw-content-text .reference > a[href*="#"]';
+		validLinkSelector += ', #mw-content-text .reference a[ href*="#" ]';
 	}
 
 	rendererInit();
