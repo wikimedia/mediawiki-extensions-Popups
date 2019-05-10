@@ -66,7 +66,7 @@ export function createStubTitle( namespace, name, fragment = null ) {
 		getPrefixedDb() {
 			return ( namespace ? `Namespace ${ namespace }:` : '' ) + name;
 		},
-		getNameText() {
+		getMainText() {
 			return name;
 		},
 		getNamespaceId() {

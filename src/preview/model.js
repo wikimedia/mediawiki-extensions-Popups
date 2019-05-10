@@ -137,7 +137,7 @@ export function getPreviewType( el, config, title ) {
  */
 function isSelfLink( title, config ) {
 	return title.getNamespaceId() === config.get( 'wgNamespaceNumber' ) &&
-		title.getNameText() === config.get( 'wgTitle' );
+		title.getMainText() === config.get( 'wgTitle' );
 }
 
 /**
