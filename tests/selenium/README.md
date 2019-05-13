@@ -12,7 +12,6 @@ Set up MediaWiki-Vagrant:
     vagrant provision
     cd mediawiki
     npm install
-    echo 'include_once "$IP/extensions/Popups/tests/selenium/LocalSettings.php";' >> LocalSettings.php
 
 ## Start Chromedriver and run all tests
 
