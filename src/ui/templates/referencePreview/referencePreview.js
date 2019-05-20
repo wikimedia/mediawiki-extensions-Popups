@@ -61,7 +61,8 @@ export function renderReferencePreview(
 
 	$el.find( '.mw-parser-output' ).on( 'scroll', function ( e ) {
 		const element = e.target,
-			scrolledToBottom = element.scrollHeight === element.scrollTop + element.clientHeight;
+			// We are dealing with floating point numbers here when the page is zoomed!
+			scrolledToBottom = element.scrollTop >= element.scrollHeight - element.clientHeight - 1;
 
 		if ( !scrolledToBottom && element.isScrolling ) {
 			return;
