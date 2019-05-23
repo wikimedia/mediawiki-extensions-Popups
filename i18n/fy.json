@@ -2,10 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Robin0van0der0vliet",
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"PiefPafPier"
 		]
 	},
+	"popups-message": "Proefbylden fan siden",
+	"popups-settings-option-simple-description": "Jout flugge foarfertoanings fan ûnderwerpen ûnder it lêzen.",
 	"popups-settings-save": "Bewarje",
 	"popups-settings-help-ok": "OK",
-	"popups-settings-cancel": "Annulearje"
+	"popups-settings-cancel": "Annulearje",
+	"prefs-reading": "Lêsfoarkarren",
+	"popups-prefs-optin-title": "Proefbylden fan siden (jout flugge foarfertoanings fan ûnderwerpen ûnder it lêzen):",
+	"popups-prefs-optin-enabled-label": "Ynskeakelje",
+	"popups-prefs-optin-disabled-label": "Utskeakelje"
 }
