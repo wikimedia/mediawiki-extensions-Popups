@@ -14,5 +14,6 @@
 	"prefs-reading": "Lêsfoarkarren",
 	"popups-prefs-optin-title": "Proefbylden fan siden (jout flugge foarfertoanings fan ûnderwerpen ûnder it lêzen):",
 	"popups-prefs-optin-enabled-label": "Ynskeakelje",
-	"popups-prefs-optin-disabled-label": "Utskeakelje"
+	"popups-prefs-optin-disabled-label": "Utskeakelje",
+	"popups-prefs-conflicting-gadgets-info": "Beskate útwreidings en oare oanpassings kinne de prestaasjes fan dizze funksje beynfloedzje. Besjoch jo 'gadgets' en meidoggerskripts, ek de globale, at jo problemen ûnderfine."
 }
