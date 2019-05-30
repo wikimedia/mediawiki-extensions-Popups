@@ -10,7 +10,7 @@
 		]
 	},
 	"popups-message": "Sideforhåndsvisning",
-	"popups-desc": "Viser en forhåndsvisning når brukeren fører musepekeren over en lenke.",
+	"popups-desc": "Vis forhåndsvisning når brukeren fører musepekeren over en lenke.",
 	"popups-settings-title": "Forhåndsvisning",
 	"popups-settings-option-simple": "Slå på",
 	"popups-settings-option-simple-description": "Få raske forhåndsvisninger av et emne mens man leser en side.",
@@ -22,9 +22,9 @@
 	"popups-settings-cancel": "Avbryt",
 	"popups-settings-help": "Du kan skru på igjen forhåndsvisning ved å bruke lenken i sidens bunntekst.",
 	"popups-settings-enable": "Skru på forhåndsvisning",
-	"popups-preview-no-preview": "Det oppstod en feil under forhåndsvisning av siden.",
+	"popups-preview-no-preview": "Det oppstod en feil under fremvisning av forhåndsvisningen.",
 	"popups-preview-footer-read": "Gå til denne siden",
-	"popups-preview-disambiguation": "Denne tittelen relaterer til flere sider",
+	"popups-preview-disambiguation": "Denne tittelen relaterer til mer enn én side",
 	"popups-preview-disambiguation-link": "Vis lignende sider",
 	"prefs-reading": "Lesepreferanser",
 	"popups-prefs-optin-title": "Sideforhåndsvisning (få rask forhåndsvisning av et emne mens du leser en side):",
@@ -39,5 +39,5 @@
 	"popups-refpreview-web": "Nettsidereferanse",
 	"popups-refpreview-jump-to-reference": "Hopp til referanse",
 	"popups-refpreview-beta-feature-message": "Referanseforhåndsvisning",
-	"popups-refpreview-beta-feature-description": "Vis en forhåndsvisning av en referanse når du peker på den.\n\nMerk: For å kunne bruke denne betafunksjonen må du også [[#mw-prefsection-rendering|aktivere]] [https://www.mediawiki.org/wiki/Page_Previews SIdeforhåndsvisning].\n\nMerk også: Funksjonen virker ikke sammen med tilleggsfunksjonene [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] og [[mw:Reference Tooltips|Reference Tooltips]]."
+	"popups-refpreview-beta-feature-description": "Vis en forhåndsvisning av en referanse når du peker på notemerket.\n\nMerk: For å kunne bruke denne betafunksjonen så må du også [[#mw-prefsection-rendering|aktivere]] [https://www.mediawiki.org/wiki/Page_Previews Sideforhåndsvisning].\n\nMerk også: Funksjonen virker ikke sammen med tilleggsfunksjonene [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] og [[mw:Reference Tooltips|Reference Tooltips]]."
 }
