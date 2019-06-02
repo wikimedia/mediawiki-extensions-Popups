@@ -2,15 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"KuboF",
-			"Tlustulimu"
+			"Tlustulimu",
+			"Mirin"
 		]
 	},
 	"popups-settings-title": "Antaŭrigardo",
+	"popups-settings-option-simple": "Ŝalti",
 	"popups-settings-option-simple-description": "Montru la enkondukan frazon de paĝo kaj antaŭrigardan bildon. Tio estas rekomendata al legantoj.",
+	"popups-settings-option-advanced": "Altnivela",
 	"popups-settings-option-advanced-description": "Montru ligilan antaŭrigardon kaj ricevu aliron al redaktaj funkcioj. Tio estas uzata de multaj redaktantoj.",
-	"popups-settings-option-off": "Malaktivigi antaŭrigardon",
+	"popups-settings-option-off": "Malŝalti",
 	"popups-settings-save": "Konservi",
+	"popups-settings-help-ok": "Farite",
 	"popups-settings-cancel": "Nuligi",
 	"popups-settings-help": "Vi povas reaktivigi la antaŭrigardajn bildojn uzante la ligilon je la fino de la paĝo.",
-	"popups-settings-enable": "Aktivigi antaŭrigardon"
+	"popups-settings-enable": "Aktivigi antaŭrigardon",
+	"popups-preview-footer-read": "Iri al ĉi tiu paĝo"
 }
