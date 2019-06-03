@@ -15,7 +15,7 @@
     "selenium-test": "wdio tests/selenium/wdio.conf.js"
   },
   "engines": {
-    "node": "6.11.0"
+    "node": "10.15.2"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",
@@ -44,7 +44,7 @@
     "tap-mocha-reporter": "3.0.7",
     "wdio-junit-reporter": "0.4.4",
     "wdio-mediawiki": "0.2.0",
-    "wdio-mocha-framework": "0.6.3",
+    "wdio-mocha-framework": "0.6.4",
     "wdio-spec-reporter": "0.1.5",
     "webdriverio": "4.14.1",
     "webpack": "4.27.1",
