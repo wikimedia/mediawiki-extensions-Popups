@@ -33,5 +33,11 @@
 	"popups-prefs-optin-enabled-label": "فعال",
 	"popups-prefs-optin-disabled-label": "غیرفعال سازی",
 	"popups-prefs-conflicting-gadgets-info": "برخی ابزارهای خاص و تنظیمات دیگر ممکن است کارایی این ویژگی را تحت‌تأثیر قرار دهند. اگر به مشکلی برخوردید لطفاً ابزارها و اسکریپت‌های کاربردی خود (منجلمه ابزارهای سراسری‌تان) را بررسی کنید.",
-	"popups-refpreview-jump-to-reference": "پرش به پانویس"
+	"popups-refpreview-reference": "منبع",
+	"popups-refpreview-book": "منبع کتاب",
+	"popups-refpreview-journal": "منبع ژورنال",
+	"popups-refpreview-news": "منبع خبری",
+	"popups-refpreview-web": "منبع وب",
+	"popups-refpreview-jump-to-reference": "پرش به منبع",
+	"popups-refpreview-beta-feature-message": "پیش‌نمایش منابع"
 }
