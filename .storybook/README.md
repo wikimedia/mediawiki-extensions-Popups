@@ -10,7 +10,7 @@ NOTE: This project requires a different version of Node then the main Popups pro
 (`cd .storybook && nvm use`)
 
 This project is configured to run separately from the main Popups project
-because it requires at least Node v8.4, whereas Popups (currently)
+because it requires at least Node 8.4, whereas Popups (currently)
 runs Node 6 for consistency with C.I.
 
 When the Popups Node version is upgraded, the Storybook dependencies

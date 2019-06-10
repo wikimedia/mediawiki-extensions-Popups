@@ -73,8 +73,8 @@ a separate NPM project using the [Storybook.js](https://storybook.js.org/) UI fr
 This framework provides an environment that showcases all possible permutations of popups,
 without the state-management constraints of having only one popup per page.
 
-This framework requires Node v8 (because of the spread `...` operator) and is therefore
-separated from the main package.json until CI upgrades from Node v6. NVM can be used to
+This framework requires Node 8 (because of the spread `...` operator) and is therefore
+separated from the main package.json until CI upgrades from Node 6. NVM can be used to
 manage multiple Node versions to run the Storybook app (`cd .storybook && nvm use`).
 See the .storybook/README.md for details.
 
