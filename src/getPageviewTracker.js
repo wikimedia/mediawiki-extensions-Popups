@@ -81,7 +81,7 @@ function prepareEventData( eventData ) {
 function getPageviewTracker( config, loader, trackerGetter, sendBeacon ) {
 	const pageviewTracker = function ( topic, eventData ) {
 		const schema = titleCase( topic.slice( topic.indexOf( '.' ) + 1 ) );
-		const dependencies = [ 'ext.eventLogging', `schema.${schema}` ];
+		const dependencies = [ 'ext.eventLogging' ];
 		return loader( dependencies ).then( function () {
 			const evLog = trackerGetter();
 			const payload = evLog.prepare( schema, prepareEventData( eventData ) );

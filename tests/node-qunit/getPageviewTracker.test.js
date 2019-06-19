@@ -54,7 +54,7 @@ QUnit.test( 'getPageviewTracker', function ( assert ) {
 	loader.resolves();
 	return tracker( 'event.VirtualPageView', data ).then( () => {
 		assert.strictEqual( loader.callCount, 1, 'loader called once' );
-		assert.ok( loader.calledWith( [ 'ext.eventLogging', 'schema.VirtualPageView' ] ),
+		assert.ok( loader.calledWith( [ 'ext.eventLogging' ] ),
 			'appropriate code is loaded' );
 		assert.strictEqual(
 			this.Title.newFromText.callCount,
