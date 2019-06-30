@@ -5,7 +5,8 @@
 			"Xiaomingyan",
 			"Yfdyh000",
 			"Phenolla",
-			"A Chinese Wikipedian"
+			"A Chinese Wikipedian",
+			"神樂坂秀吉"
 		]
 	},
 	"popups-message": "页面预览",
@@ -31,5 +32,11 @@
 	"popups-prefs-optin-disabled-label": "禁用",
 	"popups-prefs-disable-nav-gadgets-info": "您需要[[$1 |事先禁用导航Popups小工具]]才能启用页面预览",
 	"popups-prefs-conflicting-gadgets-info": "个别小工具和其他自定义功能可能会影响该功能的性能。如果您遇到了问题，请检查您的小工具和用户脚本，包括全域。",
-	"popups-refpreview-reference": "脚注"
+	"popups-refpreview-reference": "参考文献",
+	"popups-refpreview-book": "书籍参考文献",
+	"popups-refpreview-journal": "期刊参考文献",
+	"popups-refpreview-news": "新闻参考文献",
+	"popups-refpreview-web": "网络参考文献",
+	"popups-refpreview-jump-to-reference": "跳转至参考文献",
+	"popups-refpreview-beta-feature-message": "参考文献预览"
 }
