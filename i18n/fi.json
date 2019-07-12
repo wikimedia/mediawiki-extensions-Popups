@@ -6,7 +6,8 @@
 			"Nike",
 			"Pyscowicz",
 			"Pxos",
-			"Majavah"
+			"Majavah",
+			"Kyykaarme"
 		]
 	},
 	"popups-message": "Sivun esikatselut",
@@ -28,6 +29,6 @@
 	"popups-prefs-optin-title": "Sivun esikatselut (näe nopeasti aiheen esikatselut sivua lukiessasi):",
 	"popups-prefs-optin-enabled-label": "Ota käyttöön",
 	"popups-prefs-optin-disabled-label": "Poista käytöstä",
-	"popups-prefs-disable-nav-gadgets-info": "Sinun tulee [[$1 | sammuttaa Navigation popups -pienoisohjelma ]] ottaaksesi sivujen esikatselut käyttöön.",
+	"popups-prefs-disable-nav-gadgets-info": "Sinun täytyy ottaa pois käytöstä [[$1 | Navigation popups -pienoisohjelma]] ottaaksesi sivujen esikatselut käyttöön.",
 	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset."
 }
