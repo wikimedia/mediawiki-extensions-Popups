@@ -32,7 +32,7 @@
 	"popups-preview-disambiguation": "Este título hace referencia a más de una página",
 	"popups-preview-disambiguation-link": "Ver páginas similares",
 	"prefs-reading": "Preferencias de lectura",
-	"popups-prefs-optin-title": "Vistas previas de páginas\n\n<em>Obtén vistas previas de un tema mientras lees una página</em>",
+	"popups-prefs-optin-title": "Vistas previas de páginas (obtén vistas previas de un tema mientras lees una página):",
 	"popups-prefs-optin-enabled-label": "Activar",
 	"popups-prefs-optin-disabled-label": "Desactivar",
 	"popups-prefs-disable-nav-gadgets-info": "Debes [[$1 | desactivar el accesorio de ventanas emergentes de navegación]] en la pestaña Accesorios para habilitar vistas previas de página",
