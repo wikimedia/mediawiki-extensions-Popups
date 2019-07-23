@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ильнар"
+			"Ильнар",
+			"Ерней"
 		]
 	},
-	"popups-message": "Калкма тәрәзәләр",
+	"popups-message": "Бит алдан карау",
 	"popups-settings-option-simple": "Кабызу",
 	"popups-settings-option-off": "Сүндерү",
 	"prefs-reading": "Уку көйләүләре",
