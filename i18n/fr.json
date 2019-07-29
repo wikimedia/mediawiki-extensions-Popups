@@ -12,7 +12,8 @@
 			"C13m3n7",
 			"The RedBurn",
 			"Trizek (WMF)",
-			"Od1n"
+			"Od1n",
+			"Niridya"
 		]
 	},
 	"popups-message": "Aperçus de page",
@@ -28,7 +29,7 @@
 	"popups-settings-cancel": "Annuler",
 	"popups-settings-help": "Vous pouvez activer des aperçus sur l'utilisation d'un lien dans le pied de page.",
 	"popups-settings-enable": "Activer les aperçus",
-	"popups-preview-no-preview": "Il y a eu un problème pour afficher cet aperçu",
+	"popups-preview-no-preview": "Il y a eu un problème pour afficher cet aperçu.",
 	"popups-preview-footer-read": "Aller à cette page",
 	"popups-preview-disambiguation": "Ce titre est relatif à plusieurs pages",
 	"popups-preview-disambiguation-link": "Afficher des pages similaires",
