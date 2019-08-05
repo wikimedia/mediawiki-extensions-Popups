@@ -24,7 +24,7 @@ export function renderReferencePreview(
 		// popups-refpreview-news
 		// popups-refpreview-reference
 		// popups-refpreview-web
-		titleMsg = `popups-refpreview-${ type === 'generic' ? 'reference' : type }`,
+		titleMsg = `popups-refpreview-${type === 'generic' ? 'reference' : type}`,
 		title = escapeHTML( mw.msg( titleMsg ) ),
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
@@ -32,15 +32,15 @@ export function renderReferencePreview(
 	const $el = renderPopup( model.type,
 		`
 			<strong class='mwe-popups-title'>
-				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-reference-${ type }'></span>
-				${ title }
+				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-reference-${type}'></span>
+				${title}
 			</strong>
 			<div class='mwe-popups-extract'>
-				<div class='mw-parser-output'>${ model.extract }</div>
+				<div class='mw-parser-output'>${model.extract}</div>
 				<div class='mwe-popups-fade' />
 			</div>
 			<footer>
-				<a href='${ url }' class='mwe-popups-read-link'>${ linkMsg }</a>
+				<a href='${url}' class='mwe-popups-read-link'>${linkMsg}</a>
 			</footer>
 		`
 	);
@@ -49,13 +49,13 @@ export function renderReferencePreview(
 	$el.find( '.mwe-popups-extract a[href]:not([target])' ).each( ( i, a ) => {
 		a.target = '_blank';
 		// Don't let the external site access and possibly manipulate window.opener.location
-		a.rel = `${ a.rel ? `${ a.rel } ` : '' }noopener`;
+		a.rel = `${a.rel ? `${a.rel} ` : ''}noopener`;
 	} );
 
 	if ( model.sourceElementId ) {
 		$el.find( '.mwe-popups-read-link' ).on( 'click', ( event ) => {
 			event.stopPropagation();
-			$( `#${ $.escapeSelector( model.sourceElementId ) } > a:first-child` ).trigger( 'click' );
+			$( `#${$.escapeSelector( model.sourceElementId )} > a:first-child` ).trigger( 'click' );
 		} );
 	}
 
@@ -73,7 +73,7 @@ export function renderReferencePreview(
 			scrollbarHeight = element.offsetHeight - element.clientHeight;
 		$extract.find( '.mwe-popups-fade' ).css(
 			'bottom',
-			hasHorizontalScroll ? `${ scrollbarHeight }px` : 0
+			hasHorizontalScroll ? `${scrollbarHeight}px` : 0
 		);
 
 		element.isScrolling = !scrolledToBottom;

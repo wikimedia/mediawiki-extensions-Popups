@@ -73,7 +73,7 @@ export default function createContainer() {
 		 */
 		get( name ) {
 			if ( !this.has( name ) ) {
-				throw new Error( `The service "${ name }" hasn't been defined.` );
+				throw new Error( `The service "${name}" hasn't been defined.` );
 			}
 
 			const factory = factories[ name ];

@@ -42,7 +42,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 		return ajax( {
 			url: endpoint + encodeURIComponent( title ),
 			headers: {
-				Accept: `application/json; charset=utf-8; profile="${ RESTBASE_PROFILE }"`,
+				Accept: `application/json; charset=utf-8; profile="${RESTBASE_PROFILE}"`,
 				'Accept-Language': config.acceptLanguage
 			}
 		} );
@@ -160,7 +160,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 		return originalIsSafe && original;
 	}
 
-	parts[ parts.length - 1 ] = `${ width }px-${ filename }`;
+	parts[ parts.length - 1 ] = `${width}px-${filename}`;
 
 	return {
 		source: parts.join( '/' ),
