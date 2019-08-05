@@ -122,6 +122,7 @@ export function getPreviewType( el, config, title ) {
 	// parent, but no fragment
 	if ( title.getFragment() &&
 		config.get( 'wgPopupsReferencePreviews' ) &&
+		// eslint-disable-next-line no-jquery/no-class-state
 		$( el ).parent().hasClass( 'reference' )
 	) {
 		return previewTypes.TYPE_REFERENCE;
