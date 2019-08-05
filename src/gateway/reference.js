@@ -33,7 +33,7 @@ export default function createReferenceGateway() {
 	 * @see https://phabricator.wikimedia.org/diffusion/GMOA/browse/master/lib/transformations/references/structureReferenceListContent.js$93
 	 *
 	 * @param {JQuery} $referenceText
-	 * @returns {string|null}
+	 * @return {string|null}
 	 */
 	function scrapeReferenceType( $referenceText ) {
 		let type = null;
@@ -55,7 +55,7 @@ export default function createReferenceGateway() {
 	/**
 	 * @param {mw.Title} title
 	 * @param {Element} el
-	 * @returns {AbortPromise<ReferencePreviewModel>}
+	 * @return {AbortPromise<ReferencePreviewModel>}
 	 */
 	function fetchPreviewForTitle( title, el ) {
 		// Need to encode the fragment again as mw.Title returns it as decoded text

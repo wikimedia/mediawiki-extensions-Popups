@@ -110,7 +110,7 @@ exports.config = {
 	 * Save a screenshot when test fails.
 	 *
 	 * @param {Object} test Mocha Test object
-	 * @returns {void}
+	 * @return {void}
 	 *
 	 */
 	afterTest: function ( test ) {

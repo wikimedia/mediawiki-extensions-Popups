@@ -29,7 +29,7 @@ export default function createExperiments( mwExperiments ) {
 		 *   token
 		 * );
 		 *
-		 * @function
+		 * @method
 		 * @name Experiments#weightedBoolean
 		 * @param {string} name The name of the thing. Since this is used as the
 		 *  name of the underlying experiment it should be unique to reduce the

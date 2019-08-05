@@ -19,16 +19,6 @@
 	},
 	"rules": {
 		"no-prototype-builtins": "off",
-		"valid-jsdoc": ["error", {
-			"requireParamDescription": false,
-			"requireReturnDescription": false,
-			"preferType": {
-				"Boolean": "boolean",
-				"Number": "number",
-				"object": "Object",
-				"String": "string"
-			}
-		}],
 		"no-use-before-define": "off",
 		"template-curly-spacing": "off"
 	}

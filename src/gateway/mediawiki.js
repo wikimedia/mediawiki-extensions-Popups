@@ -64,7 +64,7 @@ export default function createMediaWikiApiGateway( api, config ) {
 
 	/**
 	 * @param {mw.Title} title
-	 * @returns {AbortPromise<PagePreviewModel>}
+	 * @return {AbortPromise<PagePreviewModel>}
 	 */
 	function fetchPreviewForTitle( title ) {
 		const xhr = fetch( title.getPrefixedDb() );
@@ -91,7 +91,7 @@ export default function createMediaWikiApiGateway( api, config ) {
 /**
  * Extracts page data from the API response.
  *
- * @function
+ * @method
  * @name MediaWikiGateway#extractPageFromResponse
  * @param {Object} data The response
  * @throws {Error} If the response is empty or doesn't contain data about the
@@ -113,7 +113,7 @@ function extractPageFromResponse( data ) {
 /**
  * Make plain text nicer by applying formatter.
  *
- * @function
+ * @method
  * @name MediaWikiGateway#formatPlainTextExtract
  * @param {Object} data The response
  * @return {Object}
@@ -127,7 +127,7 @@ function formatPlainTextExtract( data ) {
 /**
  * Converts the API response to a preview model.
  *
- * @function
+ * @method
  * @name MediaWikiGateway#convertPageToModel
  * @param {Object} page
  * @return {PagePreviewModel}

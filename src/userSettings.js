@@ -28,7 +28,7 @@ export default function createUserSettings( storage ) {
 		 * Previews, i.e. userSettings.setIsEnabled(true), then they are treated as
 		 * if they have enabled them.
 		 *
-		 * @function
+		 * @method
 		 * @name UserSettings#getIsEnabled
 		 * @return {boolean}
 		 */
@@ -39,7 +39,7 @@ export default function createUserSettings( storage ) {
 		/**
 		 * Sets whether the user has enabled Page Previews.
 		 *
-		 * @function
+		 * @method
 		 * @name UserSettings#setIsEnabled
 		 * @param {boolean} isEnabled
 		 * @return {void}
@@ -52,7 +52,7 @@ export default function createUserSettings( storage ) {
 		 * Gets whether the user has previously enabled **or disabled** Page
 		 * Previews.
 		 *
-		 * @function
+		 * @method
 		 * @name UserSettings#hasIsEnabled
 		 * @return {boolean}
 		 */
@@ -69,7 +69,7 @@ export default function createUserSettings( storage ) {
 		 * - If the value in storage is not a number it will override stored value
 		 *   to 0
 		 *
-		 * @function
+		 * @method
 		 * @name UserSettings#getPreviewCount
 		 * @return {number}
 		 */
@@ -94,7 +94,7 @@ export default function createUserSettings( storage ) {
 		/**
 		 * Sets the number of previews that the user has seen.
 		 *
-		 * @function
+		 * @method
 		 * @name UserSettings#setPreviewCount
 		 * @param {number} count
 		 * @return {void}

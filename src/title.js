@@ -8,7 +8,7 @@ const mw = mediaWiki;
  * Fast, native check if we are parsing a self-link, with the only difference beeing the hash.
  *
  * @param {HTMLAnchorElement} el
- * @returns {boolean}
+ * @return {boolean}
  */
 function isOwnPageAnchorLink( el ) {
 	return el.hash &&

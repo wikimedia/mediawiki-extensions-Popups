@@ -10,7 +10,7 @@ const POINTER_SIZE = 8;
  * @param {ext.popups.PreviewModel} model
  * @param {object} layout
  *
- * @returns {string} HTML
+ * @return {string} HTML
  */
 function createPopup( model, layout ) {
 	if ( model.thumbnail ) {

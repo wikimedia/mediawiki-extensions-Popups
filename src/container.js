@@ -21,7 +21,7 @@ export default function createContainer() {
 		/**
 		 * Defines a service.
 		 *
-		 * @function
+		 * @method
 		 * @name Container#set
 		 * @param {string} name
 		 * @param {*} factory
@@ -34,7 +34,7 @@ export default function createContainer() {
 		/**
 		 * Gets whether a service has been defined.
 		 *
-		 * @function
+		 * @method
 		 * @name Container#has
 		 * @param {string} name
 		 * @return {boolean} `true` if the service has been defined; otherwise,
@@ -65,7 +65,7 @@ export default function createContainer() {
 		 *   return 'quux';
 		 * } );
 		 *
-		 * @function
+		 * @method
 		 * @name Container#get
 		 * @param {string} name
 		 * @return {*}
