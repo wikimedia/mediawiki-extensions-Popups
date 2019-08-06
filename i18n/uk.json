@@ -38,5 +38,6 @@
 	"popups-refpreview-news": "Зноска на новини",
 	"popups-refpreview-web": "Зноска на веб-сайт",
 	"popups-refpreview-jump-to-reference": "Перейти до посилання на джерело",
-	"popups-refpreview-beta-feature-message": "Огляд джерел"
+	"popups-refpreview-beta-feature-message": "Огляд джерел",
+	"popups-refpreview-beta-feature-description": "Показування попереднього перегляду примітки при наведенні вказівника миші на її номер у тексті.\n\nБудь ласка, зверніть увагу: Щоб використовувати цю бета-функцію, вам треба [[#mw-prefsection-rendering|увімкнути]] [https://www.mediawiki.org/wiki/Page_Previews Попередній перегляд сторінок].\n\nБудь ласка, також зверніть увагу: Якщо ви використовуєте додаток [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навігаційні спливні вікна], то не побачите Попередній перегляд приміток. Якщо ви використовуєте додаток [[mw:Reference Tooltips|Спливні підказки]], то з'являтимуться і спливні підказки, і попередній перегляд приміток."
 }

@@ -17,5 +17,15 @@
 	"popups-settings-cancel": "Nuligi",
 	"popups-settings-help": "Vi povas reaktivigi la antaŭrigardajn bildojn uzante la ligilon je la fino de la paĝo.",
 	"popups-settings-enable": "Aktivigi antaŭrigardon",
-	"popups-preview-footer-read": "Iri al ĉi tiu paĝo"
+	"popups-preview-footer-read": "Iri al ĉi tiu paĝo",
+	"popups-preview-disambiguation-link": "Vidi similajn paĝojn",
+	"prefs-reading": "Legopreferoj",
+	"popups-prefs-optin-enabled-label": "Ŝalti",
+	"popups-prefs-optin-disabled-label": "Malŝalti",
+	"popups-refpreview-reference": "Referenco",
+	"popups-refpreview-book": "Referenco al libro",
+	"popups-refpreview-journal": "Referenco al artikolo",
+	"popups-refpreview-news": "Referenco al novaĵo",
+	"popups-refpreview-web": "Referenco al retpaĝo",
+	"popups-refpreview-jump-to-reference": "Salti al referenco"
 }
