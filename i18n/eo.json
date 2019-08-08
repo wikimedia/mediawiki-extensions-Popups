@@ -6,6 +6,7 @@
 			"Mirin"
 		]
 	},
+	"popups-message": "Antaŭrigardo de paĝo",
 	"popups-settings-title": "Antaŭrigardo",
 	"popups-settings-option-simple": "Ŝalti",
 	"popups-settings-option-simple-description": "Montru la enkondukan frazon de paĝo kaj antaŭrigardan bildon. Tio estas rekomendata al legantoj.",
@@ -27,5 +28,6 @@
 	"popups-refpreview-journal": "Referenco al artikolo",
 	"popups-refpreview-news": "Referenco al novaĵo",
 	"popups-refpreview-web": "Referenco al retpaĝo",
-	"popups-refpreview-jump-to-reference": "Salti al referenco"
+	"popups-refpreview-jump-to-reference": "Salti al referenco",
+	"popups-refpreview-beta-feature-message": "Antaŭrigardo de Referenco"
 }
