@@ -32,7 +32,7 @@
 	"popups-settings-cancel": "Отмена",
 	"popups-settings-help": "Вы можете включить предпросмотр обратно, используя ссылку внизу страницы.",
 	"popups-settings-enable": "Включить предпросмотр",
-	"popups-preview-no-preview": "Предварительный просмотр страницы недоступен",
+	"popups-preview-no-preview": "Возникла проблема при отображении этого предпросмотра",
 	"popups-preview-footer-read": "Перейти на страницу",
 	"popups-preview-disambiguation": "Это название относится более чем к одной странице",
 	"popups-preview-disambiguation-link": "Просмотр схожих страниц",
