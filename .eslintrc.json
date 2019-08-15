@@ -18,7 +18,6 @@
 		"OO": "readonly"
 	},
 	"rules": {
-		"no-prototype-builtins": "off",
 		"no-use-before-define": "off",
 		"template-curly-spacing": "off"
 	}

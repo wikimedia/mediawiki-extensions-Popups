@@ -54,7 +54,7 @@ export function getTitle( href, config ) {
 		} catch ( e ) {
 			// Will return undefined below
 		}
-	} else if ( queryLength === 1 && linkHref.query.hasOwnProperty( 'title' ) ) {
+	} else if ( queryLength === 1 && 'title' in linkHref.query ) {
 		// URL is not pretty, but only has a `title` parameter
 		title = linkHref.query.title;
 	}

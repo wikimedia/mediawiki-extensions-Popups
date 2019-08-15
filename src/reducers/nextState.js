@@ -20,15 +20,16 @@
  */
 export default function nextState( state, updates ) {
 	const result = {};
+	const hasOwn = Object.prototype.hasOwnProperty;
 
 	for ( const key in state ) {
-		if ( state.hasOwnProperty( key ) && !updates.hasOwnProperty( key ) ) {
+		if ( hasOwn.call( state, key ) && !hasOwn.call( updates, key ) ) {
 			result[ key ] = state[ key ];
 		}
 	}
 
 	for ( const key in updates ) {
-		if ( updates.hasOwnProperty( key ) ) {
+		if ( hasOwn.call( updates, key ) ) {
 			result[ key ] = updates[ key ];
 		}
 	}

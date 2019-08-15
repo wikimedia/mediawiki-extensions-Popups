@@ -41,7 +41,7 @@ export default function createContainer() {
 		 *  `false`
 		 */
 		has( name ) {
-			return factories.hasOwnProperty( name );
+			return Object.prototype.hasOwnProperty.call( factories, name );
 		},
 
 		/**
@@ -82,7 +82,7 @@ export default function createContainer() {
 				return factory;
 			}
 
-			if ( !cache.hasOwnProperty( name ) ) {
+			if ( !Object.prototype.hasOwnProperty.call( cache, name ) ) {
 				cache[ name ] = factories[ name ]( this );
 			}
 
