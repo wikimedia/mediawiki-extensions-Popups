@@ -7,6 +7,7 @@
 		]
 	},
 	"popups-message": "Antaŭrigardo de paĝo",
+	"popups-desc": "Antaŭrigardi kiam la uzanto musumas sur paĝa ligilo",
 	"popups-settings-title": "Antaŭrigardo",
 	"popups-settings-option-simple": "Ŝalti",
 	"popups-settings-option-simple-description": "Montru la enkondukan frazon de paĝo kaj antaŭrigardan bildon. Tio estas rekomendata al legantoj.",
@@ -23,6 +24,7 @@
 	"popups-preview-disambiguation": "Ĉi tiu titolo rilatas al pli ol unu paĝo",
 	"popups-preview-disambiguation-link": "Vidi similajn paĝojn",
 	"prefs-reading": "Legopreferoj",
+	"popups-prefs-optin-title": "Paĝaj antaŭrigardoj (rapide antaŭrigardi temon dum legado de paĝo):",
 	"popups-prefs-optin-enabled-label": "Ŝalti",
 	"popups-prefs-optin-disabled-label": "Malŝalti",
 	"popups-refpreview-reference": "Referenco",
