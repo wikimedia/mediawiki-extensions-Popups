@@ -93,7 +93,7 @@ function modifyStorybookHead( lang, dir ) {
  * @param {object} model
  * @param {object} extendedModel
  *
- * @returns {object}
+ * @return {object}
  */
 function extendModelWithKnobs( DEFAULT_MODEL, extendedModel ) {
 	var  extendedModel = extendedModel || {},

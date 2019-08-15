@@ -18,7 +18,7 @@ import { default as CONSTANTS } from '../../src/constants';
 /**
  * Scaled down thumbnails for low-dpi displays.
  * @param {Object} thumbnail - PagePreviewModel.thumbnail property
- * @returns {Object} PagePreviewModel.thumbnail property
+ * @return {Object} PagePreviewModel.thumbnail property
  */
 export default function scaleDownThumbnail( thumbnail ) {
 	const

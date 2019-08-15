@@ -31,7 +31,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	 *
 	 * [0]: https://en.wikipedia.org/api/rest_v1/#!/Page_content/get_page_summary_title
 	 *
-	 * @function
+	 * @method
 	 * @name RESTBaseGateway#fetch
 	 * @param {string} title
 	 * @return {JQuery.jqXHR}
@@ -50,7 +50,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 
 	/**
 	 * @param {mw.Title} title
-	 * @returns {AbortPromise<PagePreviewModel>}
+	 * @return {AbortPromise<PagePreviewModel>}
 	 */
 	function fetchPreviewForTitle( title ) {
 		const titleText = title.getPrefixedDb(),
@@ -172,7 +172,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 /**
  * Converts the API response to a preview model.
  *
- * @function
+ * @method
  * @name RESTBaseGateway#convertPageToModel
  * @param {Object} page
  * @param {number} thumbSize
