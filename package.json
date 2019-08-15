@@ -1,59 +1,59 @@
 {
-  "private": true,
-  "scripts": {
-    "start": "webpack -w --mode=development",
-    "build": "webpack --mode=production",
-    "lint:fix": "grunt fix",
-    "test:unit": "node tests/node-qunit/run.js 'tests/node-qunit/**/*.test.js' | tap-mocha-reporter dot",
-    "test": "npm -s run check-built-assets && grunt lint && npm -s run coverage && npm -s run -s doc && bundlesize",
-    "doc": "jsdoc -c jsdoc.json",
-    "node-debug": "node -v && npm -v && echo 'Please ensure you are running the correct version of nvm before running this command.'",
-    "check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITTED OR STAGED' && npm -s run build && git diff --exit-code resources/dist || { npm run node-debug; false; }",
-    "coverage": "SPAWN_WRAP_SHIM_ROOT=\"$PWD/.nyc_output\" nyc npm -s run test:unit",
-    "precommit": "npm -s t",
-    "selenium-daily": "npm run selenium-test",
-    "selenium-test": "wdio tests/selenium/wdio.conf.js"
-  },
-  "engines": {
-    "node": "10.15.2"
-  },
-  "devDependencies": {
-    "@babel/core": "7.2.0",
-    "@babel/preset-env": "7.2.0",
-    "@babel/register": "7.0.0",
-    "@types/jquery": "3.3.29",
-    "@wikimedia/mw-node-qunit": "5.0.0",
-    "babel-loader": "8.0.4",
-    "bundlesize": "0.18.0",
-    "clean-webpack-plugin": "1.0.0",
-    "eslint-config-wikimedia": "0.13.1",
-    "grunt": "1.0.4",
-    "grunt-banana-checker": "0.7.1",
-    "grunt-contrib-watch": "1.1.0",
-    "grunt-eslint": "21.0.0",
-    "grunt-jsonlint": "1.1.0",
-    "grunt-stylelint": "0.11.1",
-    "grunt-svgmin": "5.0.0",
-    "jsdoc": "3.5.5",
-    "nyc": "13.1.0",
-    "pre-commit": "1.2.2",
-    "redux": "4.0.1",
-    "redux-thunk": "2.3.0",
-    "stylelint-config-wikimedia": "0.6.0",
-    "svg-inline-loader": "0.8.0",
-    "tap-mocha-reporter": "3.0.7",
-    "wdio-junit-reporter": "0.4.4",
-    "wdio-mediawiki": "0.2.0",
-    "wdio-mocha-framework": "0.6.4",
-    "wdio-spec-reporter": "0.1.5",
-    "webdriverio": "4.14.1",
-    "webpack": "4.27.1",
-    "webpack-cli": "3.1.2"
-  },
-  "bundlesize": [
-    {
-      "path": "resources/dist/index.js",
-      "maxSize": "13.6KB"
-    }
-  ]
+	"private": true,
+	"scripts": {
+		"start": "webpack -w --mode=development",
+		"build": "webpack --mode=production",
+		"lint:fix": "grunt fix",
+		"test:unit": "node tests/node-qunit/run.js 'tests/node-qunit/**/*.test.js' | tap-mocha-reporter dot",
+		"test": "npm -s run check-built-assets && grunt lint && npm -s run coverage && npm -s run -s doc && bundlesize",
+		"doc": "jsdoc -c jsdoc.json",
+		"node-debug": "node -v && npm -v && echo 'Please ensure you are running the correct version of nvm before running this command.'",
+		"check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITTED OR STAGED' && npm -s run build && git diff --exit-code resources/dist || { npm run node-debug; false; }",
+		"coverage": "SPAWN_WRAP_SHIM_ROOT=\"$PWD/.nyc_output\" nyc npm -s run test:unit",
+		"precommit": "npm -s t",
+		"selenium-daily": "npm run selenium-test",
+		"selenium-test": "wdio tests/selenium/wdio.conf.js"
+	},
+	"engines": {
+		"node": "10.15.2"
+	},
+	"devDependencies": {
+		"@babel/core": "7.2.0",
+		"@babel/preset-env": "7.2.0",
+		"@babel/register": "7.0.0",
+		"@types/jquery": "3.3.29",
+		"@wikimedia/mw-node-qunit": "5.0.0",
+		"babel-loader": "8.0.4",
+		"bundlesize": "0.18.0",
+		"clean-webpack-plugin": "1.0.0",
+		"eslint-config-wikimedia": "0.13.1",
+		"grunt": "1.0.4",
+		"grunt-banana-checker": "0.7.1",
+		"grunt-contrib-watch": "1.1.0",
+		"grunt-eslint": "21.0.0",
+		"grunt-jsonlint": "1.1.0",
+		"grunt-stylelint": "0.11.1",
+		"grunt-svgmin": "5.0.0",
+		"jsdoc": "3.6.3",
+		"nyc": "13.1.0",
+		"pre-commit": "1.2.2",
+		"redux": "4.0.1",
+		"redux-thunk": "2.3.0",
+		"stylelint-config-wikimedia": "0.6.0",
+		"svg-inline-loader": "0.8.0",
+		"tap-mocha-reporter": "3.0.7",
+		"wdio-junit-reporter": "0.4.4",
+		"wdio-mediawiki": "0.4.0",
+		"wdio-mocha-framework": "0.6.4",
+		"wdio-spec-reporter": "0.1.5",
+		"webdriverio": "4.14.1",
+		"webpack": "4.27.1",
+		"webpack-cli": "3.1.2"
+	},
+	"bundlesize": [
+		{
+			"path": "resources/dist/index.js",
+			"maxSize": "13.6KB"
+		}
+	]
 }
