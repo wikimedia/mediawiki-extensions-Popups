@@ -23,13 +23,13 @@ export function renderPreview(
 
 	return renderPopup( model.type,
 		`
-			<div class='mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-${ type }'></div>
-			${ showTitle ? `<strong class='mwe-popups-title'>${ title }</strong>` : '' }
-			<a href='${ url }' class='mwe-popups-extract'>
-				<span class='mwe-popups-message'>${ extractMsg }</span>
+			<div class='mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-${type}'></div>
+			${showTitle ? `<strong class='mwe-popups-title'>${title}</strong>` : ''}
+			<a href='${url}' class='mwe-popups-extract'>
+				<span class='mwe-popups-message'>${extractMsg}</span>
 			</a>
 			<footer>
-				<a href='${ url }' class='mwe-popups-read-link'>${ linkMsg }</a>
+				<a href='${url}' class='mwe-popups-read-link'>${linkMsg}</a>
 			</footer>
 		`
 	);

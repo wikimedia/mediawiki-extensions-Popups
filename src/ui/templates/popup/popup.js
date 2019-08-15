@@ -13,8 +13,8 @@ export function renderPopup( type, html ) {
 	type = escapeHTML( type );
 
 	return $( $.parseHTML( `
-	<div class='mwe-popups mwe-popups-type-${ type }' aria-hidden>
-		<div class='mwe-popups-container'>${ html }</div>
+	<div class='mwe-popups mwe-popups-type-${type}' aria-hidden>
+		<div class='mwe-popups-container'>${html}</div>
 	</div>
 	`.trim() ) );
 }

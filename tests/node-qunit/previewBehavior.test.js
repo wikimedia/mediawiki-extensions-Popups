@@ -5,7 +5,7 @@ QUnit.module( 'ext.popups.preview.settingsBehavior', {
 	beforeEach() {
 		function newFromText( title ) {
 			return {
-				getUrl() { return `url/${ title }`; }
+				getUrl() { return `url/${title}`; }
 			};
 		}
 

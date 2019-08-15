@@ -1,6 +1,6 @@
 const fs = require( 'fs' ),
 	saveScreenshot = require( 'wdio-mediawiki' ).saveScreenshot,
-	logPath = process.env.LOG_DIR || `${__dirname }/log`;
+	logPath = process.env.LOG_DIR || `${__dirname}/log`;
 
 exports.config = {
 	// ======
@@ -22,7 +22,7 @@ exports.config = {
 	// Test Files
 	// ==================
 	specs: [
-		`${__dirname }/specs/*.js`
+		`${__dirname}/specs/*.js`
 	],
 
 	// ============
@@ -117,7 +117,7 @@ exports.config = {
 		let filePath;
 		if ( !test.passed ) {
 			filePath = saveScreenshot( test.title );
-			console.log( `\n\tScreenshot: ${ filePath }\n` );
+			console.log( `\n\tScreenshot: ${filePath}\n` );
 		}
 	}
 };

@@ -59,7 +59,7 @@ export function getTitle( href, config ) {
 		title = linkHref.query.title;
 	}
 
-	return title ? `${ title }${ linkHref.fragment ? `#${ linkHref.fragment }` : '' }` : undefined;
+	return title ? `${title}${linkHref.fragment ? `#${linkHref.fragment}` : ''}` : undefined;
 }
 
 /**

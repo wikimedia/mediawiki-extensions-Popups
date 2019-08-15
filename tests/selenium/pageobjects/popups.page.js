@@ -24,7 +24,7 @@ function makePage( title, path ) {
 class PopupsPage extends Page {
 	setup() {
 		browser.call( () => {
-			const path = `${ __dirname }/../fixtures/`;
+			const path = `${__dirname}/../fixtures/`;
 			// FIXME: Cannot use Promise.all as wdio-mediawiki/Api will trigger a bad
 			// token error.
 			return makePage( `${TEST_PAGE_TITLE} 2`, `${path}/test_page_2.wikitext` ).then( () => {
@@ -72,7 +72,7 @@ class PopupsPage extends Page {
 	}
 
 	dwellReferenceLink( num ) {
-		this.dwellLink( `.reference:nth-of-type(${ num }) a` );
+		this.dwellLink( `.reference:nth-of-type(${num}) a` );
 	}
 
 	dwellReferenceInceptionLink() {

@@ -64,7 +64,7 @@ export function createStubTitle( namespace, name, fragment = null ) {
 	return {
 		namespace,
 		getPrefixedDb() {
-			return ( namespace ? `Namespace ${ namespace }:` : '' ) + name;
+			return ( namespace ? `Namespace ${namespace}:` : '' ) + name;
 		},
 		getMainText() {
 			return name;
@@ -73,7 +73,7 @@ export function createStubTitle( namespace, name, fragment = null ) {
 			return namespace;
 		},
 		getUrl() {
-			return `/wiki/${ this.getPrefixedDb() }`;
+			return `/wiki/${this.getPrefixedDb()}`;
 		},
 		getFragment() {
 			return fragment;

@@ -104,7 +104,7 @@ export default function createSettingsDialogRenderer() {
 				}
 
 				// Check the appropriate radio button
-				$dialog.find( `#mwe-popups-settings-${ name }` )
+				$dialog.find( `#mwe-popups-settings-${name}` )
 					.prop( 'checked', true );
 			}
 		};

@@ -12,13 +12,13 @@ const $ = jQuery;
 export default function createReferenceGateway() {
 
 	function scrapeReferenceText( id ) {
-		const idSelector = `#${ $.escapeSelector( id ) }`;
+		const idSelector = `#${$.escapeSelector( id )}`;
 
 		/**
 		 * Same alternative selectors with and without mw-… as in the RESTbased endpoint.
 		 * @see https://phabricator.wikimedia.org/diffusion/GMOA/browse/master/lib/transformations/references/structureReferenceListContent.js$138
 		 */
-		return $( `${ idSelector } .mw-reference-text, ${ idSelector } .reference-text` );
+		return $( `${idSelector} .mw-reference-text, ${idSelector} .reference-text` );
 	}
 
 	/**
@@ -71,7 +71,7 @@ export default function createReferenceGateway() {
 		}
 
 		const model = {
-			url: `#${ id }`,
+			url: `#${id}`,
 			extract: $referenceText.html(),
 			type: previewTypes.TYPE_REFERENCE,
 			referenceType: scrapeReferenceType( $referenceText ),

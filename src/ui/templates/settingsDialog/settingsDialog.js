@@ -59,34 +59,34 @@ export function renderSettingsDialog( model ) {
 		<section id='mwe-popups-settings'>
 			<header>
 				<div>
-					<div class='mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-close close'>${ closeLabel }</div>
+					<div class='mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-close close'>${closeLabel}</div>
 				</div>
-				<h1>${ heading }</h1>
+				<h1>${heading}</h1>
 				<div>
-					<button class='save mw-ui-button mw-ui-progressive'>${ saveLabel }</button>
-					<button class='okay mw-ui-button mw-ui-progressive' style='display:none;'>${ okLabel }</button>
+					<button class='save mw-ui-button mw-ui-progressive'>${saveLabel}</button>
+					<button class='okay mw-ui-button mw-ui-progressive' style='display:none;'>${okLabel}</button>
 				</div>
 			</header>
 			<main id='mwe-popups-settings-form'>
 				<form>
-					${ choices.map( ( { id, name, description, isChecked } ) => `
+					${choices.map( ( { id, name, description, isChecked } ) => `
 					<p>
 						<input
 							name='mwe-popups-setting'
-							${ isChecked ? 'checked' : '' }
-							value='${ id }'
+							${isChecked ? 'checked' : ''}
+							value='${id}'
 							type='radio'
-							id='mwe-popups-settings-${ id }'>
-						<label for='mwe-popups-settings-${ id }'>
-							<span>${ name }</span>
-							${ description }
+							id='mwe-popups-settings-${id}'>
+						<label for='mwe-popups-settings-${id}'>
+							<span>${name}</span>
+							${description}
 						</label>
-					</p>` ).join( '' ) }
+					</p>` ).join( '' )}
 				</form>
 			</main>
 			<div class='mwe-popups-settings-help' style='display:none;'>
 				<div class="mw-ui-icon mw-ui-icon-element mw-ui-icon-footer"></div>
-				<p>${ helpText }</p>
+				<p>${helpText}</p>
 			</div>
 		</section>
 	`.trim() ) );

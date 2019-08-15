@@ -21,8 +21,8 @@ export function renderPagePreview(
 
 	const $el = renderPopup( model.type,
 		`
-			${ thumbnail ? `<a href='${ url }' class='mwe-popups-discreet'></a>` : '' }
-			<a dir='${ languageDirection }' lang='${ languageCode }' class='mwe-popups-extract' href='${ url }'></a>
+			${thumbnail ? `<a href='${url}' class='mwe-popups-discreet'></a>` : ''}
+			<a dir='${languageDirection}' lang='${languageCode}' class='mwe-popups-extract' href='${url}'></a>
 			<footer>
 				<a class='mwe-popups-settings-icon'>
 					<span class="mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-settings"></span>
@@ -56,5 +56,5 @@ export { defaultExtractWidth }; // for testing
  *   used for the extract
  */
 export function getExtractWidth( thumbnail ) {
-	return thumbnail && thumbnail.isNarrow ? `${ defaultExtractWidth + thumbnail.offset }px` : '';
+	return thumbnail && thumbnail.isNarrow ? `${defaultExtractWidth + thumbnail.offset}px` : '';
 }
