@@ -2,11 +2,11 @@
 	"root": true,
 	"extends": [
 		"wikimedia/client",
-		"wikimedia/jquery"
+		"wikimedia/jquery",
+		"wikimedia/language/es6"
 	],
 	"parserOptions": {
-		"sourceType": "module",
-		"ecmaVersion": "6"
+		"sourceType": "module"
 	},
 	"env": {
 		"browser": true,
@@ -18,14 +18,7 @@
 		"OO": "readonly"
 	},
 	"rules": {
-		"no-prototype-builtins": 0,
-		"no-restricted-properties": [2,
-			{
-				 "object": "$",
-				 "property": "each",
-				 "message": "Please use Array.forEach"
-			 }
-		],
+		"no-prototype-builtins": "off",
 		"valid-jsdoc": ["error", {
 			"requireParamDescription": false,
 			"requireReturnDescription": false,
@@ -36,11 +29,7 @@
 				"String": "string"
 			}
 		}],
-		"dot-notation": [ 2, { "allowKeywords": true } ],
-		"no-use-before-define": 0,
-		"no-var": 2,
-		"prefer-const": 1,
-		"prefer-template": 1,
-		"one-var": 0
+		"no-use-before-define": "off",
+		"template-curly-spacing": "off"
 	}
 }
