@@ -16,7 +16,8 @@ module.exports = function ( grunt ) {
 			options: {
 				cache: true,
 				maxWarnings: 0,
-				reportUnusedDisableDirectives: true
+				reportUnusedDisableDirectives: true,
+				extensions: [ '.js', '.json' ]
 			},
 			// Lint the built artifacts with ES5 so that no ES6 slips to production
 			build: {
@@ -29,9 +30,9 @@ module.exports = function ( grunt ) {
 			},
 			sources: {
 				src: [
-					'*.js',
-					'src/**/*.js',
-					'tests/**/*.js'
+					'*.{js,json}',
+					'src/**/*.{js,json}',
+					'tests/**/*.{js,json}'
 				]
 			},
 			sourcesfix: {
@@ -39,9 +40,9 @@ module.exports = function ( grunt ) {
 					fix: true
 				},
 				src: [
-					'*.js',
-					'src/**/*.js',
-					'tests/**/*.js'
+					'*.{js,json}',
+					'src/**/*.{js,json}',
+					'tests/**/*.{js,json}'
 				]
 			}
 		},

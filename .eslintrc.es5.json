@@ -53,6 +53,7 @@
 		"max-statements-per-line": 0,
 		"no-bitwise": 0,
 		"no-loop-func": 0,
-		"no-new-func": 0
+		"no-new-func": 0,
+		"no-jquery/no-class-state": 0
 	}
 }
