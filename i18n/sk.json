@@ -2,11 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Sudo77(new)",
-			"Teslaton"
+			"Teslaton",
+			"Luky001"
 		]
 	},
 	"popups-message": "Vyskakovacie kartičky",
 	"popups-desc": "Keď používateľ podrží kurzor nad odkazom, zobrazí sa vyskakovacia kartička so zhrnutím obsahu stránky.",
+	"popups-settings-title": "Náhľad stránky",
+	"popups-settings-option-simple": "Zapnúť",
+	"popups-settings-option-simple-description": "Ukázať rýchle náhľady hesla počas čítania stránky.",
+	"popups-settings-option-off": "Vypnúť",
+	"popups-settings-save": "Uložiť",
+	"popups-settings-help": "Náhľady môžete znovu zapnúť pomocou odkazu v päte stránky.",
+	"popups-settings-enable": "Zapnúť náhľady",
 	"prefs-reading": "Nastavenia čítania",
 	"popups-prefs-optin-title": "Náhľady stránok\n\n<em>Pri čítaní stránky poskytne rýchle náhľady tém</em>",
 	"popups-prefs-optin-enabled-label": "Zapnúť",
