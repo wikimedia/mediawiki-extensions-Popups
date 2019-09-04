@@ -1,9 +1,29 @@
 const path = require("path");
-const webpack = require('webpack');
 
 module.exports = {
 	module: {
-		rules: 	[ {
+		rules: 	[
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+						loader: 'babel-loader',
+						options: {
+								// Beware of https://github.com/babel/babel-loader/issues/690. Changes to browsers require
+								// manual invalidation.
+								cacheDirectory: true
+						}
+				}
+			},
+			{
+				test: /\.css$/,
+				use: [ {
+						loader: 'style-loader'
+				}, {
+						loader: 'css-loader'
+				} ]
+			},
+			{
 				test: /\.less$/,
 				use: [{
 					loader: 'style-loader'
@@ -13,15 +33,7 @@ module.exports = {
 					loader: 'less-loader',
 					options: {
 						paths: [
-							/**
-							 * Less files are resolved to this path,
-							 * which contain less files that essentially
-							 * just reach into mediawiki core fo the
-							 * appropriate files.
-							 * This path is also specified in stories/index.stories.less
-							 * when importing '../../src/ui/index.less'.
-							 */
-							path.resolve(__dirname, './mocks/less')
+							path.resolve( __dirname, 'mocks' )
 						]
 					}
 				}],
@@ -38,32 +50,10 @@ module.exports = {
 				options: {
 					removeSVGTagAttrs: false // Keep width and height attributes.
 				}
-			},
-			{
-				test: require.resolve('jquery'),
-				use: [{
-					loader: 'expose-loader',
-					options: '$'
-				}]
-			},
-			{
-				test: require.resolve('./mocks/js/mockMediaWiki.js'),
-				use: [{
-					loader: 'expose-loader',
-					options: 'mw'
-				}]
 			}
 		]
 	},
 	resolve: {
-		alias: {
-			'mw': require.resolve('./mocks/js/mockMediaWiki.js')
-		},
 		extensions: [ '.js' ]
-	},
-	plugins: [
-		new webpack.ProvidePlugin({
-			mw: 'mw'
-		} )
-	]
+	}
 };

@@ -1,20 +1,14 @@
 /**
- * Browser globals
- */
-import jquery from 'jquery';
-import '../mocks/js/mockMediaWiki.js';
-
-/**
  * CSS
  * Custom CSS is inserted into the <head> via webpack.
  * However, the Popups-specific CSS is imported as a string and inserted into the <head> manually
  * in order to change it later for RTL transformations with CSSJanus.
  */
-import '../mocks/less/custom.less';
 // NOTE: The following import overrides the webpack config for this specific LESS file in order to
 // omit the 'style-loader' and import the content as a string.
 // The "./mocks/less" path is hard-coded and should be kept in sync with the path in webpack.config.js
-import PopupsCSSString from '!css-loader!less-loader?{"paths":"./mocks/less"}!../../src/ui/index.less';
+import PopupsCSSString from '../../src/ui/index.less';
+import '../mocks/custom.less';
 // The CSSJanus library is used to transform CSS for RTL languages.
 import * as cssjanus from 'cssjanus';
 
@@ -23,7 +17,7 @@ import * as cssjanus from 'cssjanus';
  */
 import { document } from 'global';
 import { storiesOf } from '@storybook/html';
-import { withKnobs, text, select, number, object } from '@storybook/addon-knobs';
+import { text, select, number, object } from '@storybook/addon-knobs';
 
 /**
  * Popups dependencies
@@ -143,12 +137,11 @@ function useApiOrInitModel( ApiValue, initModel, thumbnailSize, ApiParser ) {
 createPointerMasks( document.body );
 insertPopupsStyleElement();
 modifyStorybookHead( 'en', 'ltr' );
-
 /**
  * Stories
  */
+
 storiesOf( 'Thumbnails', module )
-.addDecorator(withKnobs)
 .add( 'portrait', () => {
 	const
 		initModel = extendModelWithKnobs( MODELS.THUMBNAIL_PORTRAIT ),
@@ -165,7 +158,6 @@ storiesOf( 'Thumbnails', module )
 	`;
 
 }, KNOBS_PARAM )
-.addDecorator(withKnobs)
 .add( 'landscape', () => {
 	const
 		initModel = extendModelWithKnobs( MODELS.THUMBNAIL_LANDSCAPE ),

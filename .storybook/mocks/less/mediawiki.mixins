@@ -1,6 +1,0 @@
-/**
- * This file reaches into mediawiki-core and imports a LESS file
- * in order to resolve `@import "mediawiki.mixins"` statements in Popups LESS files.
- */
-
-@import '../../../../../resources/src/mediawiki.less/mediawiki.mixins.less';

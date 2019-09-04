@@ -1,6 +1,10 @@
-import { configure, addDecorator } from '@storybook/html';
-import {  withOptions } from '@storybook/addon-options';
+import { configure, addDecorator, addParameters } from '@storybook/html';
 import { withCssResources } from '@storybook/addon-cssresources';
+import jquery from 'jquery';
+import mockMediaWiki from '../node_modules/@wikimedia/mw-node-qunit/src/mockMediaWiki.js';
+
+global.mw = mockMediaWiki();
+global.$ = jquery;
 
 /**
  * Storybook global configuration
@@ -21,43 +25,17 @@ addDecorator(
 );
 
 // Option defaults:
-addDecorator(
-  withOptions({
-    /**
-     * name to display in the top left corner
-     * @type {String}
-     */
-    name: 'Popups',
-    /**
-     * URL for name in top left corner to link to
-     * @type {String}
-     */
-    url: '#',
-    /**
-     * show story component as full screen
-     * @type {Boolean}
-     */
-    goFullScreen: false,
-    /**
-     * display panel that shows a list of stories
-     * @type {Boolean}
-     */
-    showStoriesPanel: true,
-    /**
-     * display panel that shows addon configurations
-     * @type {Boolean}
-     */
-    showAddonPanel: true,
+addParameters( {
+  options: {
+    isFullScreen: false,
+    showNav: true,
     /**
      * display floating search box to search through stories
      * @type {Boolean}
      */
     showSearchBox: false,
-    /**
-     * show addon panel as a vertical panel on the right
-     * @type {Boolean}
-     */
-    addonPanelInRight: true,
+    panelPosition: 'right',
+    isToolshown: true,
     /**
      * sorts stories
      * @type {Boolean}
@@ -96,8 +74,8 @@ addDecorator(
      * @type {Boolean}
      */
     enableShortcuts: true, // true by default
-  })
-);
+  }
+} );
 
 
 // automatically import all files ending in *.stories.js
