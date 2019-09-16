@@ -25,7 +25,7 @@
 	"popups-prefs-optin-disabled-label": "Изключено",
 	"popups-prefs-conflicting-gadgets-info": "Някои джаджи и други персонализации могат да повлияят на работата на тази функция. Ако имате проблеми, моля, прегледайте вашите джаджи и потребителски скриптове, включително глобалните.",
 	"popups-refpreview-book": "Цитирана книга",
-	"popups-refpreview-news": "Цитирани вести",
+	"popups-refpreview-news": "Цитирани новини",
 	"popups-refpreview-web": "Цитиран уеб сайт",
 	"popups-refpreview-beta-feature-message": "Бърз преглед на източниците",
 	"popups-refpreview-beta-feature-description": "Показва източника, когато стрелката е над нейния маркер.\n\nЗабележка: За да използвате тази бета-функция, ще ви е необходимо [[#mw-prefsection-rendering|включване]] на [https://www.mediawiki.org/wiki/Page_Previews Преглед на страници].\n\nСъщо така: Тази функция не работи, ако едновременно използвате инструмента [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигационни прозорци]. Ако използвате инструмента [[mw:Reference Tooltips|Прозорци за източници]], ще видите и тези отскочници и отскочниците за преглед на източници."
