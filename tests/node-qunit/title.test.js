@@ -1,5 +1,3 @@
-/* global Map */
-
 import { fromElement, getTitle, isValid } from '../../src/title';
 
 QUnit.module( 'title#getTitle', {

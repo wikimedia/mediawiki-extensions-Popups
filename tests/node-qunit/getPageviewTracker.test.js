@@ -7,7 +7,6 @@ QUnit.module( 'ext.popups#getPageviewTracker', {
 		this.trackerGetter = () => ( { makeBeaconUrl: this.makeBeaconUrl,
 			prepare: this.prepare } );
 
-		/* global Promise */
 		this.loader = () => Promise.resolve();
 
 		this.Title = {

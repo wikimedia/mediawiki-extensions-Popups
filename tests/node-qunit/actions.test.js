@@ -15,7 +15,7 @@ function generateToken() {
 QUnit.module( 'ext.popups/actions' );
 
 QUnit.test( '#boot', ( assert ) => {
-	const config = new Map(), /* global Map */
+	const config = new Map(),
 		stubUser = createStubUser( /* isAnon = */ true );
 
 	config.set( 'wgTitle', 'Foo' );

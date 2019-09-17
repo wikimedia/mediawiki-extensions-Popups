@@ -6,7 +6,6 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-eslint' );
-	grunt.loadNpmTasks( 'grunt-jsonlint' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 	grunt.loadNpmTasks( 'grunt-svgmin' );
 
@@ -45,15 +44,6 @@ module.exports = function ( grunt ) {
 					'tests/**/*.{js,json}'
 				]
 			}
-		},
-		jsonlint: {
-			all: [
-				'*.json',
-				'**/*.json',
-				'!docs/**',
-				'!node_modules/**',
-				'!vendor/**'
-			]
 		},
 		stylelint: {
 			options: {
@@ -97,6 +87,6 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'fix', [ 'eslint:sourcesfix' ] );
-	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'jsonlint', 'banana', 'eslint:build', 'svgmin' ] );
+	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'banana', 'eslint:build', 'svgmin' ] );
 	grunt.registerTask( 'default', [ 'lint' ] );
 };

@@ -10,7 +10,7 @@ QUnit.module( 'gateway/page.js', {
 			this.sandbox.stub( MediawikiModule, 'default' );
 		this.createRESTBaseGateway = this.sandbox.stub( RestModule, 'default' );
 
-		this.config = new Map(); /* global Map */
+		this.config = new Map();
 	}
 } );
 

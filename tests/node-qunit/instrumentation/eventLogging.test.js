@@ -3,7 +3,7 @@ import * as stubs from '../stubs';
 
 QUnit.module( 'ext.popups/instrumentation/eventLogging', {
 	beforeEach() {
-		this.config = new Map(); /* global Map */
+		this.config = new Map();
 		this.config.set( 'wgPopupsEventLogging', true );
 
 		this.window = {

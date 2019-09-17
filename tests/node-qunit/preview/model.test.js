@@ -89,7 +89,7 @@ QUnit.test( 'it computes the type property', ( assert ) => {
 
 QUnit.module( 'ext.popups.preview#getPreviewType', {
 	beforeEach() {
-		this.config = new Map(); /* global Map */
+		this.config = new Map();
 		this.config.set( 'wgPopupsReferencePreviews', true );
 		this.config.set( 'wgTitle', 'Foo' );
 		this.config.set( 'wgNamespaceNumber', 1 );

@@ -1,5 +1,3 @@
-/* global Map */
-
 import * as stubs from './stubs';
 import isEnabled from '../../src/isEnabled';
 
