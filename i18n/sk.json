@@ -17,6 +17,8 @@
 	"popups-settings-enable": "Zapnúť náhľady",
 	"popups-preview-no-preview": "Pri zobrazovaní tohto náhľadu sa objavil problém",
 	"popups-preview-footer-read": "Prejsť na túto stránku",
+	"popups-preview-disambiguation": "Tento názov má viac ako len jedna stránka",
+	"popups-preview-disambiguation-link": "Zobraziť podobné stránky",
 	"prefs-reading": "Nastavenia čítania",
 	"popups-prefs-optin-title": "Náhľady stránok\n\n<em>Pri čítaní stránky poskytne rýchle náhľady tém</em>",
 	"popups-prefs-optin-enabled-label": "Zapnúť",
