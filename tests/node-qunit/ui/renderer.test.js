@@ -48,6 +48,12 @@ QUnit.module( 'ext.popups#renderer', {
 			escape: ( str ) => str && str.replace( /'/g, '&apos;' ).replace( /</g, '&lt;' )
 		};
 
+		mediaWiki.track = () => {};
+
+		global.navigator = {
+			sendBeacon() {}
+		};
+
 		// Some tests below stub this function. Keep a copy so it can be restored.
 		this.getElementById = document.getElementById;
 	},

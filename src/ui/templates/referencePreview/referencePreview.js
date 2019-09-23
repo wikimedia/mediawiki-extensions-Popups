@@ -11,6 +11,23 @@ const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ],
 	$ = jQuery;
 
 /**
+ * Send eventlogging directly, circumventing nice Redux stuff
+ *
+ * The reference previews integration makes it extremely difficult to
+ * route our events through the existing code.  For example, the "go
+ * to references" link is passed through to another element, above.
+ * Another sticky point was that clicks inside the preview are wired
+ * to the `linkClick` action, which clears the interaction queue and
+ * would require deep changes to allow us to distinguish a reference
+ * content link.
+ *
+ * @param {Object} event
+ */
+function refPreviewsTracking( event ) {
+	mw.track( 'event.ReferencePreviewsPopups', event );
+}
+
+/**
  * @param {ext.popups.ReferencePreviewModel} model
  * @return {JQuery}
  */
@@ -28,6 +45,8 @@ export function renderReferencePreview(
 		title = escapeHTML( mw.msg( titleMsg ) ),
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
+
+	const isTracking = navigator.sendBeacon && mw.eventLog && mw.eventLog.eventInSample( 1000 );
 
 	const $el = renderPopup( model.type,
 		`
@@ -53,9 +72,24 @@ export function renderReferencePreview(
 	} );
 
 	if ( model.sourceElementId ) {
-		$el.find( '.mwe-popups-read-link' ).on( 'click', ( event ) => {
+		$el.find( 'a.mwe-popups-read-link' ).on( 'click', ( event ) => {
 			event.stopPropagation();
+
+			if ( isTracking ) {
+				refPreviewsTracking( {
+					action: 'clickedGoToReferences'
+				} );
+			}
+
 			$( `#${$.escapeSelector( model.sourceElementId )} > a:first-child` ).trigger( 'click' );
+		} );
+	}
+
+	if ( isTracking ) {
+		$el.find( '.mw-parser-output' ).on( 'click', 'a', () => {
+			refPreviewsTracking( {
+				action: 'clickedReferencePreviewsContentLink'
+			} );
 		} );
 	}
 
@@ -63,6 +97,26 @@ export function renderReferencePreview(
 		const element = e.target,
 			// We are dealing with floating point numbers here when the page is zoomed!
 			scrolledToBottom = element.scrollTop >= element.scrollHeight - element.clientHeight - 1;
+
+		if ( isTracking ) {
+			if ( !element.isOpenRecorded ) {
+				refPreviewsTracking( {
+					action: 'poppedOpen',
+					scrollbarsPresent: element.scrollHeight > element.clientHeight
+				} );
+				element.isOpenRecorded = true;
+			}
+
+			if (
+				element.scrollTop > 0 &&
+				!element.isScrollRecorded
+			) {
+				refPreviewsTracking( {
+					action: 'scrolled'
+				} );
+				element.isScrollRecorded = true;
+			}
+		}
 
 		if ( !scrolledToBottom && element.isScrolling ) {
 			return;
