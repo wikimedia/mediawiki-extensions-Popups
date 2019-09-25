@@ -29,10 +29,10 @@ export function isEnabled( user, config, window ) {
 
 	if (
 		!window.navigator ||
-		!window.navigator.sendBeacon
+		typeof window.navigator.sendBeacon !== 'function'
 	) {
 		return false;
 	}
 
-	return user.isAnon();
+	return true;
 }
