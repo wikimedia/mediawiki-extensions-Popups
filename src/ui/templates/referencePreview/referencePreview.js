@@ -123,12 +123,14 @@ export function renderReferencePreview(
 		}
 
 		const $extract = $( element ).parent(),
-			hasHorizontalScroll = element.scrollWidth !== element.scrollLeft + element.clientWidth,
-			scrollbarHeight = element.offsetHeight - element.clientHeight;
-		$extract.find( '.mwe-popups-fade' ).css(
-			'bottom',
-			hasHorizontalScroll ? `${scrollbarHeight}px` : 0
-		);
+			hasHorizontalScroll = element.scrollWidth > element.clientWidth,
+			scrollbarHeight = element.offsetHeight - element.clientHeight,
+			hasVerticalScroll = element.scrollHeight > element.clientHeight,
+			scrollbarWidth = element.offsetWidth - element.clientWidth;
+		$extract.find( '.mwe-popups-fade' ).css( {
+			bottom: hasHorizontalScroll ? `${scrollbarHeight}px` : 0,
+			right: hasVerticalScroll ? `${scrollbarWidth}px` : 0
+		} );
 
 		element.isScrolling = !scrolledToBottom;
 		$extract.toggleClass( 'mwe-popups-fade-out', element.isScrolling );
