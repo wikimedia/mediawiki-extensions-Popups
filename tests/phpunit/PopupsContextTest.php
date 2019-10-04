@@ -67,7 +67,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	public function testShowPreviewsPreferencesPage( array $config, $expected ) {
 		$this->setMwGlobals( $config );
 		$context = $this->getContext();
-		$this->assertEquals( $expected,
+		$this->assertSame( $expected,
 			$context->showPreviewsOptInOnPreferencesPage(),
 			'The previews opt-in is ' . ( $expected ? 'shown.' : 'hidden.' ) );
 	}
@@ -99,7 +99,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$context = $this->getContext();
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
-		$this->assertEquals( $expected,
+		$this->assertSame( $expected,
 			$context->shouldSendModuleToUser( $user ),
 			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
 	}
@@ -129,7 +129,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 			PopupsContext::PREVIEWS_DISABLED );
 
 		$context = $this->getContext();
-		$this->assertEquals( $expected,
+		$this->assertSame( $expected,
 			$context->shouldSendModuleToUser( $user ),
 			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
 	}
@@ -162,7 +162,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 			->method( 'isLoaded' )
 			->will( new PHPUnit_Framework_MockObject_Stub_ConsecutiveCalls( $returnValues ) );
 		$context = $this->getContext( $mock );
-		$this->assertEquals( $expected,
+		$this->assertSame( $expected,
 			$context->areDependenciesMet(),
 			'Dependencies are ' . ( $expected ? '' : 'not ' ) . 'met.' );
 	}
@@ -210,7 +210,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	public function testIsTitleBlacklisted( array $blacklist, Title $title, $expected ) {
 		$this->setMwGlobals( [ 'wgPopupsPageBlacklist' => $blacklist ] );
 		$context = $this->getContext();
-		$this->assertEquals( $expected,
+		$this->assertSame( $expected,
 			$context->isTitleBlacklisted( $title ),
 			'The title is' . ( $expected ? ' ' : ' not ' ) . 'blacklisted.' );
 	}
@@ -243,7 +243,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 			'wgLanguageCode' => 'pl'
 		] );
 		$context = $this->getContext();
-		$this->assertEquals( true,
+		$this->assertTrue(
 			$context->isTitleBlacklisted( Title::newFromText( $page ) ),
 			'The title is blacklisted.' );
 	}
@@ -265,7 +265,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 			->willReturn( true );
 
 		$context = $this->getContext( null, $integrationMock );
-		$this->assertEquals( true,
+		$this->assertTrue(
 			$context->conflictsWithNavPopupsGadget( $user ),
 			'A conflict is identified.' );
 	}

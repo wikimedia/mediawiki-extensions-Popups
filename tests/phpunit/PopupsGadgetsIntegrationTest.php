@@ -89,7 +89,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 		$user = $this->getTestUser()->getUser();
 		$integration = new PopupsGadgetsIntegration( $this->getConfigMock(),
 			$this->getExtensionRegistryMock( false ) );
-		$this->assertEquals( false,
+		$this->assertFalse(
 			$integration->conflictsWithNavPopupsGadget( $user ),
 			'No conflict is identified.' );
 	}
@@ -241,7 +241,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 
 		$integration = new PopupsGadgetsIntegration( $config,
 			$this->getExtensionRegistryMock( true ) );
-		$this->assertEquals( $expected,
+		$this->assertSame( $expected,
 			$integration->conflictsWithNavPopupsGadget( $user ),
 			( $expected ? 'A' : 'No' ) . ' conflict is identified.' );
 

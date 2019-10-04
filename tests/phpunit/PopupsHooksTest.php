@@ -50,7 +50,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
 		$this->assertCount( 1, $prefs, 'No preferences are retrieved.' );
-		$this->assertEquals( 'notEmpty',
+		$this->assertSame( 'notEmpty',
 			$prefs[ 'someNotEmptyValue'],
 			'No preferences are changed.' );
 	}
@@ -84,7 +84,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->assertArrayHasKey( 'disabled',
 			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ],
 			'The opt-in preference has a status.' );
-		$this->assertEquals( true,
+		$this->assertTrue(
 			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['disabled'],
 			'The opt-in preference\'s status is disabled.' );
 		$this->assertNotEmpty( $prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME]['help-message'],
@@ -116,13 +116,13 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
 		$this->assertCount( 4, $prefs, 'A preference is retrieved.' );
-		$this->assertEquals( 'notEmpty',
+		$this->assertSame( 'notEmpty',
 			$prefs[ 'someNotEmptyValue'],
 			'Unretrieved preferences are unchanged.' );
 		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			$prefs,
 			'The opt-in preference is retrieved.' );
-		$this->assertEquals( 1,
+		$this->assertSame( 1,
 			array_search( \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 				array_keys( $prefs ) ),
 			'The opt-in preference is injected after Skin select.' );
@@ -155,7 +155,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			$prefs,
 			'The opt-in preference is retrieved.' );
-		$this->assertEquals( 2,
+		$this->assertSame( 2,
 			array_search( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 				array_keys( $prefs ) ),
 			'The opt-in preference is appended.' );
@@ -178,7 +178,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->assertCount( 6, $vars, 'A configuration is retrieved.' );
 
 		foreach ( $config as $key => $value ) {
-			$this->assertEquals(
+			$this->assertSame(
 				$value,
 				$vars[ $key ],
 				"It forwards the \"{$key}\" config variable to the client."
@@ -322,7 +322,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		PopupsHooks::onUserGetDefaultOptions( $userOptions );
 		$this->assertCount( 2, $userOptions );
-		$this->assertEquals( '1',
+		$this->assertSame( '1',
 			$userOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 	}
 
