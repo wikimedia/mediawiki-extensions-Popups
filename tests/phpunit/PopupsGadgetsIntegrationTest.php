@@ -18,6 +18,7 @@
 * @ingroup extensions
 */
 
+use PHPUnit\Framework\MockObject\MockObject;
 use Popups\PopupsGadgetsIntegration;
 
 /**
@@ -52,10 +53,12 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 
 	/**
 	 * @param bool $gadgetsEnabled
-	 * @return PHPUnit_Framework_MockObject_MockObject|ExtensionRegistry
+	 * @return MockObject|ExtensionRegistry
 	 */
 	private function getExtensionRegistryMock( $gadgetsEnabled ) {
-		$mock = $this->getMock( ExtensionRegistry::class, [ 'isLoaded' ] );
+		$mock = $this->getMockBuilder( ExtensionRegistry::class )
+			->setMethods( [ 'isLoaded' ] )
+			->getMock();
 		$mock->expects( $this->any() )
 			->method( 'isLoaded' )
 			->with( 'Gadgets' )
@@ -64,7 +67,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @return PHPUnit_Framework_MockObject_MockObject|Config
+	 * @return MockObject|Config
 	 */
 	private function getConfigMock() {
 		$mock = $this->getMockBuilder( 'Config' )
@@ -102,7 +105,9 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 
 		$user = $this->getTestUser()->getUser();
 
-		$gadgetRepoMock = $this->getMock( GadgetRepo::class, [ 'getGadgetIds', 'getGadget' ] );
+		$gadgetRepoMock = $this->getMockBuilder( GadgetRepo::class )
+			->setMethods( [ 'getGadgetIds', 'getGadget' ] )
+			->getMock();
 
 		$gadgetRepoMock->expects( $this->once() )
 			->method( 'getGadgetIds' )
@@ -130,8 +135,9 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 			->with( $user )
 			->willReturn( self::GADGET_ENABLED );
 
-		$gadgetRepoMock = $this->getMock( GadgetRepo::class,
-			[ 'getGadgetIds', 'getGadget' ] );
+		$gadgetRepoMock = $this->getMockBuilder( GadgetRepo::class )
+			->setMethods( [ 'getGadgetIds', 'getGadget' ] )
+			->getMock();
 
 		$gadgetRepoMock->expects( $this->once() )
 			->method( 'getGadgetIds' )
@@ -155,8 +161,9 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 
 			$user = $this->getTestUser()->getUser();
 
-			$gadgetRepoMock = $this->getMock( GadgetRepo::class,
-				[ 'getGadgetIds', 'getGadget' ] );
+			$gadgetRepoMock = $this->getMockBuilder( GadgetRepo::class )
+				->setMethods( [ 'getGadgetIds', 'getGadget' ] )
+				->getMock();
 
 			$gadgetRepoMock->expects( $this->once() )
 				->method( 'getGadgetIds' )
@@ -198,8 +205,9 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 			->method( 'isEnabled' )
 			->willReturn( self::GADGET_ENABLED );
 
-		$gadgetRepoMock = $this->getMock( GadgetRepo::class,
-			[ 'getGadgetIds', 'getGadget' ] );
+		$gadgetRepoMock = $this->getMockBuilder( GadgetRepo::class )
+			->setMethods( [ 'getGadgetIds', 'getGadget' ] )
+			->getMock();
 
 		$gadgetRepoMock->expects( $this->once() )
 			->method( 'getGadgetIds' )

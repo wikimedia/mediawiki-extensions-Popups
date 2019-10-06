@@ -190,11 +190,14 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	 * @covers ::onBeforePageDisplay
 	 */
 	public function testOnBeforePageDisplayWhenDependenciesAreNotMet() {
-		$skinMock = $this->getMock( Skin::class );
-		$outPageMock = $this->getMock( OutputPage::class, [ 'addModules' ], [], '', false );
+		$skinMock = $this->createMock( Skin::class );
+		$outPageMock = $this->getMockBuilder( OutputPage::class )
+			->setMethods( [ 'addModules' ] )
+			->disableOriginalConstructor()
+			->getMock();
 		$outPageMock->expects( $this->never() )
 			->method( 'addModules' );
-		$loggerMock = $this->getMock( \Psr\Log\LoggerInterface::class );
+		$loggerMock = $this->createMock( \Psr\Log\LoggerInterface::class );
 		$loggerMock->expects( $this->once() )
 			->method( 'error' );
 
@@ -233,15 +236,12 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	 */
 	public function testOnBeforePageDisplay( $shouldSendModuleToUser,
 			$isCodeLoaded, $isTitleBlacklisted ) {
-		$skinMock = $this->getMock( Skin::class );
+		$skinMock = $this->createMock( Skin::class );
 
-		$outPageMock = $this->getMock(
-			OutputPage::class,
-			[ 'addModules' ],
-			[],
-			'',
-			false
-		);
+		$outPageMock = $this->getMockBuilder( OutputPage::class )
+			->setMethods( [ 'addModules' ] )
+			->disableOriginalConstructor()
+			->getMock();
 
 		$outPageMock->expects( $isCodeLoaded ? $this->once() : $this->never() )
 			->method( 'addModules' )

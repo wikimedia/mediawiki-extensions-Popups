@@ -19,6 +19,7 @@
  * @ingroup extensions
  */
 
+use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use Popups\PopupsContext;
 
 /**
@@ -157,10 +158,12 @@ class PopupsContextTest extends MediaWikiTestCase {
 		] );
 		$returnValues = [ $textExtracts, $pageImages ];
 
-		$mock = $this->getMock( ExtensionRegistry::class, [ 'isLoaded' ] );
+		$mock = $this->getMockBuilder( ExtensionRegistry::class )
+			->setMethods( [ 'isLoaded' ] )
+			->getMock();
 		$mock->expects( $this->any() )
 			->method( 'isLoaded' )
-			->will( new PHPUnit_Framework_MockObject_Stub_ConsecutiveCalls( $returnValues ) );
+			->will( new ConsecutiveCalls( $returnValues ) );
 		$context = $this->getContext( $mock );
 		$this->assertSame( $expected,
 			$context->areDependenciesMet(),
@@ -274,7 +277,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @covers ::logUserDisabledPagePreviewsEvent
 	 */
 	public function testLogsEvent() {
-		$loggerMock = $this->getMock( \Popups\EventLogging\EventLogger::class );
+		$loggerMock = $this->createMock( \Popups\EventLogging\EventLogger::class );
 		$loggerMock->expects( $this->once() )
 			->method( 'log' );
 
