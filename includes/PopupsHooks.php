@@ -24,7 +24,6 @@ use MediaWiki\MediaWikiServices;
 use User;
 use OutputPage;
 use Skin;
-use BetaFeatures;
 
 /**
  * Hooks definitions for Popups extension
@@ -71,6 +70,18 @@ class PopupsHooks {
 		$readingOptions = [
 			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME => $option,
 		];
+
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		if ( $config->get( 'PopupsReferencePreviews' ) &&
+			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
+		) {
+			$readingOptions[PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME] = [
+				'type' => 'toggle',
+				'label-message' => 'popups-refpreview-user-preference-label',
+				'section' => self::PREVIEWS_PREFERENCES_SECTION,
+				'disabled' => $option['disabled'] ?? false,
+			];
+		};
 
 		if ( $skinPosition !== false ) {
 			$injectIntoIndex = $skinPosition + 1;
@@ -149,38 +160,14 @@ class PopupsHooks {
 		$services = MediaWikiServices::getInstance();
 		/** @var PopupsContext $context */
 		$context = $services->getService( 'Popups.Context' );
-		/** @var \Config $config */
-		$config = $services->getService( 'Popups.Config' );
 		$user = $out->getUser();
 
-		$vars['wgPopupsReferencePreviews'] = self::isReferencePreviewsEnabled( $user, $config );
+		// TODO: Remove all references to wgPopupsReferencePreviews when not in Beta any more, and
+		// the temporary feature flag is not needed any more.
+		$vars['wgPopupsReferencePreviews'] = $context->isReferencePreviewsEnabled( $user );
 		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget(
 			$user
 		);
-	}
-
-	/**
-	 * @param User $user User whose preferences are checked
-	 * @param \Config $config Popups config
-	 * @return bool whether or not to show reference previews
-	 */
-	private static function isReferencePreviewsEnabled( User $user, \Config $config ) {
-		// TODO: Remove when the feature flag is ot needed any more
-		if ( !$config->get( 'PopupsReferencePreviews' ) ) {
-			return false;
-		}
-
-		// TODO: Remove when not in Beta any more
-		if ( $config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
-			\ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
-		) {
-			return BetaFeatures::isFeatureEnabled(
-				$user,
-				PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME
-			);
-		}
-
-		return true;
 	}
 
 	/**
@@ -192,7 +179,8 @@ class PopupsHooks {
 		$default = MediaWikiServices::getInstance()->getService( 'Popups.Config' )
 			->get( 'PopupsOptInDefaultState' );
 
-		$wgDefaultUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] = $default;
+		$wgDefaultUserOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
+		$wgDefaultUserOptions[PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME] = $default;
 	}
 
 	/**
@@ -207,6 +195,7 @@ class PopupsHooks {
 			->get( 'PopupsOptInStateForNewAccounts' );
 
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $default );
+		$user->setOption( PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME, $default );
 	}
 
 	/**
