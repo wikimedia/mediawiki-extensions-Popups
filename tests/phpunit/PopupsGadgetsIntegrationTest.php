@@ -30,17 +30,17 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	/**
 	 * Gadget name for testing
 	 */
-	const NAV_POPUPS_GADGET_NAME = 'navigation-test';
+	private const NAV_POPUPS_GADGET_NAME = 'navigation-test';
 
 	/**
 	 * Helper constants for easier reading
 	 */
-	const GADGET_ENABLED = true;
+	private const GADGET_ENABLED = true;
 
 	/**
 	 * Helper constants for easier reading
 	 */
-	const GADGET_DISABLED = false;
+	private const GADGET_DISABLED = false;
 
 	/**
 	 * Checks if Gadgets extension is available

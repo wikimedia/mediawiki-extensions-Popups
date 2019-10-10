@@ -34,32 +34,32 @@ use Title;
  */
 class PopupsContext {
 
-	const EXTENSION_NAME = 'popups';
+	public const EXTENSION_NAME = 'popups';
 
 	/**
 	 * Logger channel name
 	 */
-	const LOGGER_CHANNEL = 'popups';
+	public const LOGGER_CHANNEL = 'popups';
 
 	/**
 	 * User preference value for enabled Page Previews
 	 */
-	const PREVIEWS_ENABLED = '1';
+	public const PREVIEWS_ENABLED = '1';
 
 	/**
 	 * User preference value for disabled Page Previews
 	 */
-	const PREVIEWS_DISABLED = '0';
+	public const PREVIEWS_DISABLED = '0';
 
 	/**
 	 * User preference key to enable/disable Page Previews
 	 */
-	const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups';
+	public const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups';
 
 	/**
 	 * User preference key to enable/disable Reference Previews as a Beta feature
 	 */
-	const REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME = 'popupsreferencepreviews';
+	public const REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME = 'popupsreferencepreviews';
 
 	/**
 	 * @var \Config

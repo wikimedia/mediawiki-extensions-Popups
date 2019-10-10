@@ -32,7 +32,7 @@ use Skin;
  */
 class PopupsHooks {
 
-	const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
+	private const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
 	/**
 	 * Add Page Previews options to user Preferences page

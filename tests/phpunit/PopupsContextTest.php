@@ -34,7 +34,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * Anonymous user id
 	 * @see MediaWikiTestCase::addCoreDBData()
 	 */
-	const ANONYMOUS_USER = 0;
+	private const ANONYMOUS_USER = 0;
 
 	/**
 	 * Helper method to quickly build Popups Context
