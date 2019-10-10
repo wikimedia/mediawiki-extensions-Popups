@@ -75,7 +75,7 @@ class PopupsHooks {
 		if ( $config->get( 'PopupsReferencePreviews' ) &&
 			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
 		) {
-			$readingOptions[PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME] = [
+			$readingOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = [
 				'type' => 'toggle',
 				'label-message' => 'popups-refpreview-user-preference-label',
 				'section' => self::PREVIEWS_PREFERENCES_SECTION,
@@ -180,7 +180,7 @@ class PopupsHooks {
 			->get( 'PopupsOptInDefaultState' );
 
 		$wgDefaultUserOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
-		$wgDefaultUserOptions[PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME] = $default;
+		$wgDefaultUserOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = $default;
 	}
 
 	/**
@@ -195,7 +195,7 @@ class PopupsHooks {
 			->get( 'PopupsOptInStateForNewAccounts' );
 
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $default );
-		$user->setOption( PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME, $default );
+		$user->setOption( PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME, $default );
 	}
 
 	/**
@@ -212,7 +212,7 @@ class PopupsHooks {
 		if ( $config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
 			$config->get( 'PopupsReferencePreviews' )
 		) {
-			$prefs[ PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME ] = [
+			$prefs[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = [
 				'label-message' => 'popups-refpreview-beta-feature-message',
 				'desc-message' => 'popups-refpreview-beta-feature-description',
 				'screenshot' => [
