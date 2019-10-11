@@ -46,7 +46,7 @@ export function renderReferencePreview(
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
 
-	const isTracking = navigator.sendBeacon && mw.eventLog && mw.eventLog.eventInSample( 1000 );
+	const isTracking = navigator.sendBeacon && mw.eventLog && mw.eventLog.eventInSample( 10 );
 
 	const $el = renderPopup( model.type,
 		`
