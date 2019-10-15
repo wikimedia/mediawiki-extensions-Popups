@@ -29,7 +29,7 @@ use Popups\PopupsHooks;
  */
 class PopupsHooksTest extends MediaWikiTestCase {
 
-	protected function tearDown() {
+	protected function tearDown() : void {
 		parent::tearDown();
 	}
 
