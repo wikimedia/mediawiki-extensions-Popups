@@ -24,10 +24,20 @@
 	"popups-settings-enable": "Ενεργοποίηση προεπισκοπήσεων",
 	"popups-preview-no-preview": "Υπήρξε κάποιο πρόβλημα κατά την εμφάνιση αυτής της προεπισκοπήσης",
 	"popups-preview-footer-read": "Μετάβαση σε αυτή τη σελίδα",
+	"popups-preview-disambiguation": "Ο τίτλος σχετίζεται με πάνω από μία σελίδα",
 	"popups-preview-disambiguation-link": "Εισαγωγή παρόμοιων σελίδων",
 	"prefs-reading": "Προτιμήσεις ανάγνωσης",
-	"popups-prefs-optin-title": "Αιωρούμενες κάρτες\n\n<em>Δείτε γρήγορες προεπισκοπήσεις άλλων σελίδων ενώ διαβάζετε μια σελίδα</em>",
+	"popups-prefs-optin-title": "Προεπισκοπήσεις σελίδων (δείτε γρήγορες προεπισκοπήσεις ενός θέματος ενώ διαβάζετε μια σελίδα)",
 	"popups-prefs-optin-enabled-label": "Ενεργοποίηση",
 	"popups-prefs-optin-disabled-label": "Απενεργοποίηση",
-	"popups-prefs-conflicting-gadgets-info": "Μερικές συσκευές και άλλες προσαρμογές μπορούν να επηρεάσουν την απόδοση αυτού του χαρακτηριστικού. Αν έχετε προβλήματα παρακαλώ δέστε τις συσκευές σας και τα έγγραφα του χρήστη,συμπεριλαμβάνοντας και τα γενικά."
+	"popups-prefs-disable-nav-gadgets-info": "Θα πρέπει να έχετε [[$1|απενεργοποιημένο το εργαλείο Navigation Popups]] από την καρτέλα Πρόσθετων για να ενεργοποιήσετε τις Προεπισκοπήσεις Σελίδων",
+	"popups-prefs-conflicting-gadgets-info": "Μερικές συσκευές και άλλες προσαρμογές μπορούν να επηρεάσουν την απόδοση αυτού του χαρακτηριστικού. Αν έχετε προβλήματα παρακαλώ δέστε τις συσκευές σας και τα έγγραφα του χρήστη,συμπεριλαμβάνοντας και τα γενικά.",
+	"popups-refpreview-reference": "Παραπομπή",
+	"popups-refpreview-book": "Παραπομπή σε βιβλίο",
+	"popups-refpreview-journal": "Παραπομπή σε περιοδικό",
+	"popups-refpreview-news": "Παραπομπή σε είδηση",
+	"popups-refpreview-web": "Παραπομπή σε ιστοσελίδα",
+	"popups-refpreview-jump-to-reference": "Μετάβαση σε παραπομπή",
+	"popups-refpreview-beta-feature-message": "Προεπισκόπηση Παραπομπών",
+	"popups-refpreview-beta-feature-description": "Εμφανίστε μια προεπισκόπηση μιας παραπομπής τοποθετώντας το δείκτη του ποντικιού πάνω από το δείκτη υποσημείωσης.\n\nΣημείωση: Για να χρησιμοποιήσετε αυτήν τη δυνατότητα beta, πρέπει να [[#mw-prefsection-rendering|ενεργοποιήσετε]] την [https://www.mediawiki.org/wiki/Page_Previews Προεπισκόπηση Σελίδας].\n\nΣημειώστε επίσης ότι: Εάν χρησιμοποιείτε το εργαλείο [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], δεν θα δείτε Προεπισκοπήσεις Παραπομπών. Εάν χρησιμοποιείτε το εργαλείο [[mw:Reference Tooltips|Reference Tooltips]], εμφανίζονται και τα δύο αναδυόμενα παράθυρα Reference Tooltips και Προεπισκόπηση Παραπομπών."
 }
