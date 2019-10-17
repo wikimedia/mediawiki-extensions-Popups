@@ -7,24 +7,24 @@ QUnit.module( 'title#getTitle', {
 
 		this.location = global.location = { hostname: 'en.wikipedia.org' };
 
-		mediaWiki.util = {
+		mw.util = {
 			escapeRegExp: this.sandbox.spy( ( str ) => {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 
-		mediaWiki.Uri = this.sandbox.stub().throws( 'UNIMPLEMENTED' );
+		mw.Uri = this.sandbox.stub().throws( 'UNIMPLEMENTED' );
 	},
 	afterEach() {
 		global.location = null;
-		mediaWiki.util = null;
-		mediaWiki.Uri = null;
+		mw.util = null;
+		mw.Uri = null;
 	}
 } );
 
 QUnit.test( 'it should return the title of a url with a title query param', function ( assert ) {
 	const href = '/w/index.php?title=Foo';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		query: {
 			title: 'Foo'
@@ -40,7 +40,7 @@ QUnit.test( 'it should return the title of a url with a title query param', func
 
 QUnit.test( 'it should return the title of a pretty url if it conforms wgArticlePath', function ( assert ) {
 	const href = '/wiki/Foo';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: href,
 		query: {}
@@ -55,7 +55,7 @@ QUnit.test( 'it should return the title of a pretty url if it conforms wgArticle
 
 QUnit.test( 'it should return the title of a pretty url properly decoded', function ( assert ) {
 	const href = '/wiki/%E6%B8%AC%E8%A9%A6';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: href,
 		query: {}
@@ -70,7 +70,7 @@ QUnit.test( 'it should return the title of a pretty url properly decoded', funct
 
 QUnit.test( 'it should accept urls with fragments', function ( assert ) {
 	let href = '/wiki/Example_1#footnote_1';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: href,
 		query: {},
@@ -84,7 +84,7 @@ QUnit.test( 'it should accept urls with fragments', function ( assert ) {
 	);
 
 	href = '/w/index.php?title=Example_2#footnote_2';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		query: { title: 'Example_2' },
 		fragment: 'footnote_2'
@@ -99,7 +99,7 @@ QUnit.test( 'it should accept urls with fragments', function ( assert ) {
 
 QUnit.test( 'it should skip pretty urls with invalid % encoded characters', function ( assert ) {
 	const href = '/wiki/100%';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: href,
 		query: {}
@@ -110,7 +110,7 @@ QUnit.test( 'it should skip pretty urls with invalid % encoded characters', func
 
 QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) {
 	const href = 'javascript:void(0);'; // eslint-disable-line no-script-url
-	mediaWiki.Uri.withArgs( href ).throws(
+	mw.Uri.withArgs( href ).throws(
 		new Error( 'Cannot parse' )
 	);
 
@@ -123,7 +123,7 @@ QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) 
 
 QUnit.test( 'it should skip urls that are external', function ( assert ) {
 	const href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: 'www.youtube.com',
 		path: '/watch',
 		query: { v: 'dQw4w9WgXcQ' }
@@ -139,7 +139,7 @@ QUnit.test( 'it should skip urls that are external', function ( assert ) {
 QUnit.test( 'it should skip urls not on article path without one title query param', function ( assert ) {
 	// No params
 	let href = '/Foo';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: '/Foo',
 		query: {}
@@ -153,7 +153,7 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 
 	// Multiple query params
 	href = '/Foo?a=1&title=Foo';
-	mediaWiki.Uri.withArgs( href ).returns( {
+	mw.Uri.withArgs( href ).returns( {
 		host: this.location.hostname,
 		path: '/Foo',
 		query: { a: 1, title: 'Foo' }
@@ -168,12 +168,12 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 
 QUnit.module( 'title#isValid', {
 	beforeEach() {
-		mediaWiki.Title = {
+		mw.Title = {
 			newFromText: this.sandbox.stub().throws( 'UNIMPLEMENTED' )
 		};
 	},
 	afterEach() {
-		mediaWiki.Title = null;
+		mw.Title = null;
 	}
 } );
 
@@ -182,19 +182,19 @@ QUnit.test( 'it should return null if the title is empty', ( assert ) => {
 } );
 
 QUnit.test( 'it should return null if the title can\'t be parsed properly', ( assert ) => {
-	mediaWiki.Title.newFromText.withArgs( 'title' ).returns( null );
+	mw.Title.newFromText.withArgs( 'title' ).returns( null );
 	assert.strictEqual(
 		isValid( 'title', [] ),
 		null,
 		'Doesn\'t accept unparseable titles'
 	);
 	assert.strictEqual(
-		mediaWiki.Title.newFromText.callCount, 1,
-		'mediaWiki.Title.newFromText called for parsing the title' );
+		mw.Title.newFromText.callCount, 1,
+		'mw.Title.newFromText called for parsing the title' );
 } );
 
 QUnit.test( 'it should return null if the title is not from a content namespace', ( assert ) => {
-	mediaWiki.Title.newFromText.withArgs( 'title' ).returns( {
+	mw.Title.newFromText.withArgs( 'title' ).returns( {
 		namespace: 1
 	} );
 	assert.strictEqual(
@@ -208,7 +208,7 @@ QUnit.test( 'it should return the title object if the title is from a content na
 	const mwTitle = {
 		namespace: 3
 	};
-	mediaWiki.Title.newFromText.withArgs( 'title' ).returns( mwTitle );
+	mw.Title.newFromText.withArgs( 'title' ).returns( mwTitle );
 	assert.strictEqual(
 		isValid( 'title', [ 1, 3, 5 ] ),
 		mwTitle,
@@ -223,13 +223,13 @@ QUnit.module( 'title#fromElement', {
 			pathname: '/w/index.php',
 			search: '?oldid=1&extra=1'
 		};
-		mediaWiki.Title = {
+		mw.Title = {
 			newFromText: this.sandbox.stub().throws( 'UNIMPLEMENTED' )
 		};
 	},
 	afterEach() {
 		global.location = null;
-		mediaWiki.Title = null;
+		mw.Title = null;
 	}
 } );
 
@@ -245,7 +245,7 @@ QUnit.test( 'it should accept anchor links that point to the own page', function
 		title: 'Page',
 		fragment: 'example'
 	};
-	mediaWiki.Title.newFromText.withArgs( 'Talk:Page#example' ).returns( mwTitle );
+	mw.Title.newFromText.withArgs( 'Talk:Page#example' ).returns( mwTitle );
 
 	assert.propEqual( fromElement( el, config ), mwTitle );
 } );
@@ -272,7 +272,7 @@ QUnit.test( 'it should pass through anchor links with non-ASCII characters', fun
 		title: 'Page',
 		fragment: 'Fläche'
 	};
-	mediaWiki.Title.newFromText.withArgs( 'Talk:Page#Fläche' ).returns( mwTitle );
+	mw.Title.newFromText.withArgs( 'Talk:Page#Fläche' ).returns( mwTitle );
 
 	assert.propEqual( fromElement( el, config ), mwTitle );
 } );
@@ -289,7 +289,7 @@ QUnit.test( 'it should decode anchor links with encoded characters', function ( 
 		title: 'Page',
 		fragment: 'Fläche'
 	};
-	mediaWiki.Title.newFromText.withArgs( 'Talk:Page#Fläche' ).returns( mwTitle );
+	mw.Title.newFromText.withArgs( 'Talk:Page#Fläche' ).returns( mwTitle );
 
 	assert.propEqual( fromElement( el, config ), mwTitle );
 } );

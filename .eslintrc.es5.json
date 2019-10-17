@@ -29,6 +29,7 @@
 		"no-floating-decimal": 0,
 		"no-implicit-coercion": 0,
 		"no-jquery/no-class-state": 0,
+		"no-jquery/no-global-selector": 0,
 		"no-loop-func": 0,
 		"no-new-func": 0,
 		"no-prototype-builtins": 0,

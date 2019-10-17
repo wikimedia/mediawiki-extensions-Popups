@@ -12,10 +12,10 @@ QUnit.module( 'ext.popups#getPageviewTracker', {
 		this.Title = {
 			newFromText: this.sandbox.stub()
 		};
-		mediaWiki.Title = this.Title;
+		mw.Title = this.Title;
 	},
 	afterEach() {
-		mediaWiki.Title = null;
+		mw.Title = null;
 	}
 } );
 

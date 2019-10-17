@@ -2,9 +2,6 @@
  * @module changeListeners/footerLink
  */
 
-const mw = mediaWiki,
-	$ = jQuery;
-
 /**
  * Creates the link element and appends it to the footer element.
  *

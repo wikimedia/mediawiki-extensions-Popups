@@ -7,7 +7,7 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 		const boundActions = {};
 
 		// Stub internal usage of mw.message
-		mediaWiki.message = ( str ) =>
+		mw.message = ( str ) =>
 			( {
 				text() { return str; }
 			} );

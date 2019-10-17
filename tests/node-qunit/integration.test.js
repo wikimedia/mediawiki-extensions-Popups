@@ -7,13 +7,11 @@ import reducers from '../../src/reducers';
 import registerChangeListener from '../../src/changeListener';
 import { previewTypes } from '../../src/preview/model';
 
-const mw = mediaWiki,
-	$ = jQuery,
-	/**
-	* Whether Gateway#fetchPreviewForTitle is resolved or rejected.
-	* @enum {number}
-	*/
-	FETCH_RESOLUTION = { RESOLVE: 0, REJECT: 1 };
+/**
+ * Whether Gateway#fetchPreviewForTitle is resolved or rejected.
+ * @enum {number}
+ */
+const FETCH_RESOLUTION = { RESOLVE: 0, REJECT: 1 };
 
 function identity( x ) {
 	return x;

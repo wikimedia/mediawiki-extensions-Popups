@@ -6,9 +6,7 @@ import { renderPopup } from '../popup/popup';
 import { escapeHTML } from '../templateUtil';
 
 // Known citation type strings currently supported with icons and messages.
-const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ],
-	mw = mediaWiki,
-	$ = jQuery;
+const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ];
 
 /**
  * Send eventlogging directly, circumventing nice Redux stuff

@@ -6,9 +6,7 @@ import types from './actionTypes';
 import wait from './wait';
 import { createNullModel, previewTypes } from './preview/model';
 
-const $ = jQuery,
-	mw = mediaWiki,
-
+const
 	// See the following for context around this value.
 	//
 	// * https://phabricator.wikimedia.org/T161284

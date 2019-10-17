@@ -4,8 +4,6 @@
 
 import { previewTypes } from '../preview/model';
 
-const $ = jQuery;
-
 /**
  * @return {Gateway}
  */

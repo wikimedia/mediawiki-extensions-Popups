@@ -2,8 +2,6 @@
  * @module wait
  */
 
-const $ = jQuery;
-
 /**
  * Sugar around `window.setTimeout`.
  *

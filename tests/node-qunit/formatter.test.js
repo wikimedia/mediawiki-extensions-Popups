@@ -1,17 +1,15 @@
 import * as formatter from '../../src/formatter';
 
-const $ = jQuery;
-
 QUnit.module( 'ext.popups.formatter', {
 	beforeEach() {
-		mediaWiki.util = {
+		mw.util = {
 			escapeRegExp: this.sandbox.spy( ( str ) => {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
 	},
 	afterEach() {
-		mediaWiki.util = null;
+		mw.util = null;
 	}
 } );
 

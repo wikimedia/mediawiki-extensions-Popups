@@ -2,8 +2,6 @@
  * @module previewBehaviour
  */
 
-const mw = mediaWiki;
-
 /**
  * A collection of event handlers specific to how the user interacts with all
  * previews. The event handlers  are are agnostic to how/when they are bound

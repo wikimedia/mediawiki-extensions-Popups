@@ -3,7 +3,7 @@ import createReferenceGateway from '../../../src/gateway/reference';
 
 QUnit.module( 'ext.popups/gateway/reference', {
 	beforeEach() {
-		mediaWiki.msg = ( key ) => `<${key}>`;
+		mw.msg = ( key ) => `<${key}>`;
 
 		this.$sourceElement = $( '<a>' ).appendTo(
 			$( '<sup>' ).attr( 'id', 'cite_ref-1' ).appendTo( document.body )
@@ -34,7 +34,7 @@ QUnit.module( 'ext.popups/gateway/reference', {
 		).appendTo( document.body );
 	},
 	afterEach() {
-		mediaWiki.msg = null;
+		mw.msg = null;
 
 		this.$references.remove();
 	}

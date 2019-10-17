@@ -1,6 +1,3 @@
-const $ = jQuery,
-	mw = mediaWiki;
-
 /**
  * Improves the plain text extracts
  * @param {string} plainTextExtract

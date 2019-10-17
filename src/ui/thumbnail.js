@@ -14,7 +14,6 @@ export const SIZES = {
 		w: 320 // Exact Width
 	}
 };
-const $ = jQuery;
 
 /**
  * @typedef {Object} ext.popups.Thumbnail

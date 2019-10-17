@@ -4,8 +4,6 @@ import * as constants from '../../../src/constants';
 import { createNullModel, previewTypes } from '../../../src/preview/model';
 import { createThumbnail } from '../../../src/ui/thumbnail';
 
-const $ = jQuery;
-
 /**
  * A utility function that creates a bare bones preview
  *
@@ -42,13 +40,13 @@ QUnit.module( 'ext.popups#renderer', {
 	beforeEach() {
 		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 
-		mediaWiki.msg = ( key ) => `<${key}>`;
+		mw.msg = ( key ) => `<${key}>`;
 
-		mediaWiki.html = {
+		mw.html = {
 			escape: ( str ) => str && str.replace( /'/g, '&apos;' ).replace( /</g, '&lt;' )
 		};
 
-		mediaWiki.track = () => {};
+		mw.track = () => {};
 
 		global.navigator = {
 			sendBeacon() {}
@@ -60,8 +58,8 @@ QUnit.module( 'ext.popups#renderer', {
 	afterEach() {
 		// Restore getElementsById to its original state.
 		document.getElementById = this.getElementById;
-		mediaWiki.msg = null;
-		mediaWiki.html = null;
+		mw.msg = null;
+		mw.html = null;
 	}
 } );
 

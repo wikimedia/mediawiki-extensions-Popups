@@ -4,8 +4,6 @@
 
 import { createSettingsDialog } from './settingsDialog';
 
-const $ = jQuery;
-
 /**
  * Creates a render function that will create the settings dialog and return
  * a set of methods to operate on it

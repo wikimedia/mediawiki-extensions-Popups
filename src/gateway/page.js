@@ -7,9 +7,6 @@ import createMediaWikiApiGateway from './mediawiki';
 import createRESTBaseGateway from './rest';
 import * as formatters from './restFormatters';
 
-const mw = mediaWiki,
-	$ = jQuery;
-
 /**
  * Creates a page preview gateway with sensible values for the dependencies.
  *
