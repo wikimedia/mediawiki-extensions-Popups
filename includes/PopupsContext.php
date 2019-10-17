@@ -20,6 +20,7 @@
  */
 namespace Popups;
 
+use BetaFeatures;
 use MediaWiki\MediaWikiServices;
 use ExtensionRegistry;
 use Config;
@@ -120,11 +121,35 @@ class PopupsContext {
 
 	/**
 	 * @param \User $user User whose preferences are checked
+	 * @return bool whether or not to show reference previews
+	 */
+	public function isReferencePreviewsEnabled( \User $user ) {
+		// TODO: Remove when the feature flag is ot needed any more
+		if ( !$this->config->get( 'PopupsReferencePreviews' ) ) {
+			return false;
+		}
+
+		// TODO: Remove when not in Beta any more
+		if ( $this->config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
+			\ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
+		) {
+			return BetaFeatures::isFeatureEnabled(
+				$user,
+				self::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME
+			);
+		}
+
+		return $user->getBoolOption( self::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME );
+	}
+
+	/**
+	 * @param \User $user User whose preferences are checked
 	 * @return bool
 	 */
 	public function shouldSendModuleToUser( \User $user ) {
-		return $user->isAnon() ? true :
-			$user->getOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME ) === self::PREVIEWS_ENABLED;
+		return $user->isAnon() ||
+			$user->getBoolOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME ) ||
+			$this->isReferencePreviewsEnabled( $user );
 	}
 
 	/**

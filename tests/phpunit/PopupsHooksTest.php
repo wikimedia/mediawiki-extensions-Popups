@@ -115,7 +115,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertCount( 4, $prefs, 'A preference is retrieved.' );
+		$this->assertGreaterThan( 3, count( $prefs ), 'A preference is retrieved.' );
 		$this->assertSame( 'notEmpty',
 			$prefs[ 'someNotEmptyValue'],
 			'Unretrieved preferences are unchanged.' );
@@ -151,7 +151,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 
 		PopupsHooks::onGetPreferences( $this->getTestUser()->getUser(), $prefs );
-		$this->assertCount( 3, $prefs, 'A preference is retrieved.' );
+		$this->assertGreaterThan( 2, count( $prefs ), 'A preference is retrieved.' );
 		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			$prefs,
 			'The opt-in preference is retrieved.' );
@@ -286,17 +286,16 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->willReturn( $user );
 
 		$contextMock = $this->getMockBuilder( PopupsContext::class )
-			->setMethods( [ 'shouldSendModuleToUser', 'conflictsWithNavPopupsGadget' ] )
+			->setMethods( [ 'conflictsWithNavPopupsGadget', 'isReferencePreviewsEnabled' ] )
 			->disableOriginalConstructor()
 			->getMock();
-		$contextMock->expects( $this->any() )
-			->method( 'shouldSendModuleToUser' )
-			->with( $user )
-			->willReturn( false );
 		$contextMock->expects( $this->any() )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->with( $user )
 			->willReturn( false );
+		$contextMock->method( 'isReferencePreviewsEnabled' )
+			->with( $user )
+			->willReturn( true );
 
 		$this->setService( 'Popups.Context', $contextMock );
 
@@ -321,7 +320,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		] );
 
 		PopupsHooks::onUserGetDefaultOptions( $userOptions );
-		$this->assertCount( 2, $userOptions );
+		$this->assertCount( 3, $userOptions );
 		$this->assertSame( '1',
 			$userOptions[ \Popups\PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 	}
@@ -336,12 +335,9 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->disableOriginalConstructor()
 			->setMethods( [ 'setOption' ] )
 			->getMock();
-		$userMock->expects( $this->once() )
+		$userMock->expects( $this->exactly( 2 ) )
 			->method( 'setOption' )
-			->with(
-				$this->equalTo( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ),
-				$this->equalTo( $expectedState )
-			);
+			->with( $this->stringStartsWith( 'popups' ), $expectedState );
 
 		$this->setMwGlobals( [
 			'wgPopupsOptInStateForNewAccounts' => $expectedState

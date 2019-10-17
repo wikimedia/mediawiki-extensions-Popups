@@ -223,11 +223,21 @@ function registerChangeListeners(
 	 */
 	mw.popups = createMediaWikiPopupsObject( store );
 
-	const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' );
-	let validLinkSelector = `#mw-content-text a[href][title]:not(${invalidLinksSelector})`;
-	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
-		validLinkSelector += ', #mw-content-text .reference a[ href*="#" ]';
+	const selectors = [];
+	if ( mw.user.isAnon() || mw.user.options.get( 'popups' ) === '1' ) {
+		const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' );
+		selectors.push( `#mw-content-text a[href][title]:not(${invalidLinksSelector})` );
 	}
+	// TODO: Replace with mw.user.options.get( 'popupsreferencepreviews' ) === '1' when not in Beta
+	// any more, and the temporary feature flag is not needed any more.
+	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
+		selectors.push( '#mw-content-text .reference a[ href*="#" ]' );
+	}
+	if ( !selectors.length ) {
+		mw.log.error( 'ext.popups should not even be loaded!' );
+		return;
+	}
+	const validLinkSelector = selectors.join( ', ' );
 
 	rendererInit();
 
