@@ -177,13 +177,14 @@
 			"dependencies": [
 				"ext.popups.images",
 				"mediawiki.experiments",
+				"mediawiki.jqueryMsg",
 				"mediawiki.storage",
 				"mediawiki.Title",
-				"mediawiki.jqueryMsg",
 				"mediawiki.ui.button",
 				"mediawiki.ui.icon",
 				"mediawiki.Uri",
-				"mediawiki.user"
+				"mediawiki.user",
+				"mediawiki.util"
 			]
 		}
 	},

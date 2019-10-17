@@ -45,7 +45,7 @@ export function getTitle( href, config ) {
 
 	// No query params (pretty URL)
 	if ( !queryLength ) {
-		const pattern = mw.RegExp.escape( config.get( 'wgArticlePath' ) ).replace( '\\$1', '([^?#]+)' ),
+		const pattern = mw.util.escapeRegExp( config.get( 'wgArticlePath' ) ).replace( '\\$1', '([^?#]+)' ),
 			matches = new RegExp( pattern ).exec( linkHref.path );
 
 		// We can't be sure decodeURIComponent() is able to parse every possible match

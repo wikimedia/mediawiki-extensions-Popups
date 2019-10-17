@@ -7,8 +7,8 @@ QUnit.module( 'title#getTitle', {
 
 		this.location = global.location = { hostname: 'en.wikipedia.org' };
 
-		mediaWiki.RegExp = {
-			escape: this.sandbox.spy( ( str ) => {
+		mediaWiki.util = {
+			escapeRegExp: this.sandbox.spy( ( str ) => {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
@@ -17,7 +17,7 @@ QUnit.module( 'title#getTitle', {
 	},
 	afterEach() {
 		global.location = null;
-		mediaWiki.RegExp = null;
+		mediaWiki.util = null;
 		mediaWiki.Uri = null;
 	}
 } );

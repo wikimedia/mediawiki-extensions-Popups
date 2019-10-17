@@ -42,7 +42,7 @@ function makeTitleInExtractBold( extract, title ) {
 		snip = `<snip-${Math.random()}>`;
 
 	title = title.replace( /\s+/g, ' ' ).trim(); // Remove extra white spaces
-	const escapedTitle = mw.RegExp.escape( title ); // Escape RegExp elements
+	const escapedTitle = mw.util.escapeRegExp( title );
 	const regExp = new RegExp( `(^|\\s)(${escapedTitle})(|$)`, 'i' );
 
 	// Remove text in parentheses along with the parentheses
