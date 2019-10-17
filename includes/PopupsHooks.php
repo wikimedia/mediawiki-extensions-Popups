@@ -48,6 +48,7 @@ class PopupsHooks {
 		if ( !$context->showPreviewsOptInOnPreferencesPage() ) {
 			return;
 		}
+
 		$option = [
 			'type' => 'radio',
 			'label-message' => 'popups-prefs-optin-title',
@@ -67,14 +68,17 @@ class PopupsHooks {
 		}
 
 		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
+		$readingOptions = [
+			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME => $option,
+		];
 
 		if ( $skinPosition !== false ) {
 			$injectIntoIndex = $skinPosition + 1;
 			$prefs = array_slice( $prefs, 0, $injectIntoIndex, true )
-				+ [ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME => $option ]
-				+ array_slice( $prefs, $injectIntoIndex, count( $prefs ) - 1, true );
+				+ $readingOptions
+				+ array_slice( $prefs, $injectIntoIndex, null, true );
 		} else {
-			$prefs[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] = $option;
+			$prefs += $readingOptions;
 		}
 	}
 
@@ -142,10 +146,11 @@ class PopupsHooks {
 	 * @param \IContextSource $out OutputPage instance calling the hook
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars, \IContextSource $out ) {
+		$services = MediaWikiServices::getInstance();
 		/** @var PopupsContext $context */
-		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
+		$context = $services->getService( 'Popups.Context' );
 		/** @var \Config $config */
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		$config = $services->getService( 'Popups.Config' );
 		$user = $out->getUser();
 
 		$vars['wgPopupsReferencePreviews'] = self::isReferencePreviewsEnabled( $user, $config );
@@ -160,14 +165,22 @@ class PopupsHooks {
 	 * @return bool whether or not to show reference previews
 	 */
 	private static function isReferencePreviewsEnabled( User $user, \Config $config ) {
-		return $config->get( 'PopupsReferencePreviews' ) &&
-			( !$config->get( 'PopupsReferencePreviewsBetaFeature' ) ||
-				!\ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' ) ||
-				BetaFeatures::isFeatureEnabled(
-					$user,
-					PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME
-				)
+		// TODO: Remove when the feature flag is ot needed any more
+		if ( !$config->get( 'PopupsReferencePreviews' ) ) {
+			return false;
+		}
+
+		// TODO: Remove when not in Beta any more
+		if ( $config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
+			\ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
+		) {
+			return BetaFeatures::isFeatureEnabled(
+				$user,
+				PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME
 			);
+		}
+
+		return true;
 	}
 
 	/**
@@ -176,11 +189,10 @@ class PopupsHooks {
 	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 */
 	public static function onUserGetDefaultOptions( array &$wgDefaultUserOptions ) {
-		/** @var \Config $config */
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		$default = MediaWikiServices::getInstance()->getService( 'Popups.Config' )
+			->get( 'PopupsOptInDefaultState' );
 
-		$wgDefaultUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] =
-			$config->get( 'PopupsOptInDefaultState' );
+		$wgDefaultUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] = $default;
 	}
 
 	/**
@@ -191,11 +203,10 @@ class PopupsHooks {
 	 */
 	public static function onLocalUserCreated( User $user, $autocreated ) {
 		// ignore the $autocreated flag, we always want to set PagePreviews visibility
-		/** @var \Config $config */
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		$default = MediaWikiServices::getInstance()->getService( 'Popups.Config' )
+			->get( 'PopupsOptInStateForNewAccounts' );
 
-		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
-			$config->get( 'PopupsOptInStateForNewAccounts' ) );
+		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $default );
 	}
 
 	/**
