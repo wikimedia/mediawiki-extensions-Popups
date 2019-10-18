@@ -28,5 +28,5 @@
 	"popups-refpreview-news": "Цитирани новини",
 	"popups-refpreview-web": "Цитиран уеб сайт",
 	"popups-refpreview-beta-feature-message": "Бърз преглед на източниците",
-	"popups-refpreview-beta-feature-description": "Показва бележката, когато стрелката е над нейния маркер.\n\nЗабележка: За да използвате тази бета-функция, ще ви е необходимо [[#mw-prefsection-rendering|включване]] на [https://www.mediawiki.org/wiki/Page_Previews Преглед на страници].\n\nСъщо така: Тази функция не работи, ако едновременно използвате инструмента [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигационни прозорци]. Ако използвате инструмента [[mw:Reference Tooltips|Прозорци за източници]], ще видите и тези отскочници и отскочниците за преглед на източници."
+	"popups-refpreview-beta-feature-description": "Показва предварителен преглед на бележка, чрез посочване на отбелязката ѝ.\n\nЗабележка: Ако използвате джаджата [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], няма да можете да виждате предварителен преглед на бележките. Ако използвате джаджата [[mw:Reference Tooltips|Reference Tooltips]], ще се появят изскачащите подсказки и на двете джаджи."
 }

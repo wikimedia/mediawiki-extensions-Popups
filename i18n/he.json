@@ -35,6 +35,7 @@
 	"popups-refpreview-news": "מראה מקום לחדשות",
 	"popups-refpreview-web": "מראה מקום לאתר",
 	"popups-refpreview-jump-to-reference": "מעבר להערת שוליים",
+	"popups-refpreview-user-preference-label": "תצוגה מקדימה של הערות שוליים",
 	"popups-refpreview-beta-feature-message": "תצוגה מקדימה של מראה מקום",
-	"popups-refpreview-beta-feature-description": "תצוגה מקדימה של הערת שוליים באמצעות העברת סמן מעל מספר ההערה.\n\nלתשומת לבך: כדי להשתמש באפשרות הבטא הזאת, יש [[#mw-prefsection-rendering|להפעיל]] את [https://www.mediawiki.org/wiki/Page_Previews תצוגה מקדימה של דפים].\n\nלתשומת לבך בנוסף: המשתמשים בגאדג'ט [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] לא יראו את התצוגה מקדימה של הערות שוליים. למשתמשים בגאדג'ט [[mw:Reference Tooltips|Reference Tooltips]] יופיעו גם הגאדג'טים Reference Tooltips ו־Reference Previews."
+	"popups-refpreview-beta-feature-description": "תצוגה מקדימה של הערת שוליים באמצעות העברת סמן מעל מספר ההערה.\n\nלתשומת לבך: המשתמשים בגאדג'ט [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] לא יראו את התצוגה מקדימה של הערות שוליים. למשתמשים בגאדג'ט [[mw:Reference Tooltips|Reference Tooltips]] יופיעו גם הגאדג'טים Reference Tooltips ו־Reference Previews."
 }
