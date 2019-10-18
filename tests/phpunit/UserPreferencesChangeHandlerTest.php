@@ -33,11 +33,7 @@ class UserPreferencesChangeHandlerTest extends MediaWikiTestCase {
 	 * @dataProvider provideDataForEventHandling
 	 */
 	public function testEventHandling( $oldOption, $newOption, $expectedMethodCallsCount ) {
-		$contextMock = $this->getMockBuilder( PopupsContexts::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'logUserDisabledPagePreviewsEvent' ] )
-			->getMock();
-
+		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $expectedMethodCallsCount )
 			->method( 'logUserDisabledPagePreviewsEvent' );
 

@@ -34,9 +34,7 @@ class EventLoggerFactoryTest extends MediaWikiTestCase {
 	 * @covers \Popups\EventLogging\MWEventLogger::__construct
 	 */
 	public function testReturnsMWEventWhenEventLoggingIsAvailable() {
-		$mock = $this->getMockBuilder( ExtensionRegistry::class )
-			->setMethods( [ 'isLoaded' ] )
-			->getMock();
+		$mock = $this->createMock( ExtensionRegistry::class );
 		$mock->expects( $this->once() )
 			->method( 'isLoaded' )
 			->with( 'EventLogging' )
@@ -53,9 +51,7 @@ class EventLoggerFactoryTest extends MediaWikiTestCase {
 	 * @covers ::get
 	 */
 	public function testReturnsMWEventWhenEventLoggingIsNotAvailable() {
-		$mock = $this->getMockBuilder( ExtensionRegistry::class )
-			->setMethods( [ 'isLoaded' ] )
-			->getMock();
+		$mock = $this->createMock( ExtensionRegistry::class );
 		$mock->expects( $this->once() )
 			->method( 'isLoaded' )
 			->with( 'EventLogging' )

@@ -20,7 +20,9 @@
  */
 
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
+use Popups\EventLogging\EventLogger;
 use Popups\PopupsContext;
+use Popups\PopupsGadgetsIntegration;
 
 /**
  * @group Popups
@@ -37,22 +39,18 @@ class PopupsContextTest extends MediaWikiTestCase {
 	/**
 	 * Helper method to quickly build Popups Context
 	 * @param ExtensionRegistry|null $registry
-	 * @param \Popups\PopupsGadgetsIntegration|null $integration
-	 * @param \Popups\EventLogging\EventLogger $eventLogger
+	 * @param PopupsGadgetsIntegration|null $integration
+	 * @param EventLogger $eventLogger
 	 * @return PopupsContext
 	 */
 	protected function getContext( $registry = null, $integration = null, $eventLogger = null ) {
 		$config = new GlobalVarConfig();
 		$registry = $registry ?: ExtensionRegistry::getInstance();
 		if ( $eventLogger === null ) {
-			$eventLogger = $this->getMockBuilder( \Popups\EventLogging\EventLogger::class )
-			->getMock();
+			$eventLogger = $this->createMock( EventLogger::class );
 		}
 		if ( $integration === null ) {
-			$integration = $this->getMockBuilder( \Popups\PopupsGadgetsIntegration::class )
-				->disableOriginalConstructor()
-				->setMethods( [ 'conflictsWithNavPopupsGadget' ] )
-				->getMock();
+			$integration = $this->createMock( PopupsGadgetsIntegration::class );
 			$integration->method( 'conflictsWithNavPopupsGadget' )
 				->willReturn( false );
 		}
@@ -158,9 +156,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		] );
 		$returnValues = [ $textExtracts, $pageImages ];
 
-		$mock = $this->getMockBuilder( ExtensionRegistry::class )
-			->setMethods( [ 'isLoaded' ] )
-			->getMock();
+		$mock = $this->createMock( ExtensionRegistry::class );
 		$mock->expects( $this->any() )
 			->method( 'isLoaded' )
 			->will( new ConsecutiveCalls( $returnValues ) );
@@ -255,10 +251,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @covers ::conflictsWithNavPopupsGadget
 	 */
 	public function testConflictsWithNavPopupsGadget() {
-		$integrationMock = $this->getMockBuilder( \Popups\PopupsGadgetsIntegration::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'conflictsWithNavPopupsGadget' ] )
-			->getMock();
+		$integrationMock = $this->createMock( PopupsGadgetsIntegration::class );
 
 		$user = $this->getTestUser()->getUser();
 
@@ -277,7 +270,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @covers ::logUserDisabledPagePreviewsEvent
 	 */
 	public function testLogsEvent() {
-		$loggerMock = $this->createMock( \Popups\EventLogging\EventLogger::class );
+		$loggerMock = $this->createMock( EventLogger::class );
 		$loggerMock->expects( $this->once() )
 			->method( 'log' );
 

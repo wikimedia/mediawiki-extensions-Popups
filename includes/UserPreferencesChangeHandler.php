@@ -37,9 +37,9 @@ class UserPreferencesChangeHandler {
 	private $popupsContext;
 
 	/**
-	 * @param PopupsContext $context Popups context instance
+	 * @param PopupsContext $context
 	 */
-	public function __construct( $context ) {
+	public function __construct( PopupsContext $context ) {
 		$this->popupsContext = $context;
 	}
 
@@ -54,6 +54,7 @@ class UserPreferencesChangeHandler {
 		if ( !array_key_exists( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $oldUserOptions ) ) {
 			return;
 		}
+
 		$oldSetting = $oldUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ];
 		$newSetting = $user->getOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME );
 
