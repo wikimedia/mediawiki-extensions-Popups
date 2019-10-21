@@ -2,7 +2,6 @@
 const fs = require( 'fs' ),
 	mwNodeQunit = require( '@wikimedia/mw-node-qunit' ),
 	sinon = mwNodeQunit.sinon,
-	sandbox = sinon.sandbox.create(),
 	QUnitModule = QUnit.module,
 	svgInlineLoader = require( 'svg-inline-loader' );
 
@@ -30,11 +29,7 @@ sinon.config = {
 	properties: [ 'spy', 'stub', 'mock', 'sandbox' ]
 };
 
-mwNodeQunit.dom.setUp( sandbox, global );
-mwNodeQunit.jQuery.setUp( sandbox, global );
-mwNodeQunit.mw.setUp( sandbox, global );
-global.mediaWiki = global.mw;
-global.jQuery = global.$;
+mwNodeQunit.setUp();
 
 // Override Qunit.module to set up a sinon sandbox automatically
 QUnit.module = function ( name, localEnv ) {
