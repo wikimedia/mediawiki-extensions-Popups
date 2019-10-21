@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 const fs = require( 'fs' ),
+	mwNodeQunit = require( '@wikimedia/mw-node-qunit' ),
+	sinon = mwNodeQunit.sinon,
+	sandbox = sinon.sandbox.create(),
+	QUnitModule = QUnit.module,
 	svgInlineLoader = require( 'svg-inline-loader' );
 
 require( '@babel/register' )( {
@@ -18,4 +22,41 @@ require.extensions[ '.svg' ] = ( module, filename ) => {
 	module._compile( svgInlineLoader( svg ), filename );
 };
 
-require( '@wikimedia/mw-node-qunit' );
+sinon.config = {
+	injectIntoThis: true,
+	injectInto: null,
+	useFakeTimers: false,
+	useFakeServer: false,
+	properties: [ 'spy', 'stub', 'mock', 'sandbox' ]
+};
+
+mwNodeQunit.dom.setUp( sandbox, global );
+mwNodeQunit.jQuery.setUp( sandbox, global );
+mwNodeQunit.mw.setUp( sandbox, global );
+global.mediaWiki = global.mw;
+global.jQuery = global.$;
+
+// Override Qunit.module to set up a sinon sandbox automatically
+QUnit.module = function ( name, localEnv ) {
+	localEnv = localEnv || {};
+	QUnitModule( name, {
+		beforeEach: function () {
+			const config = Object.assign( {}, sinon.config, {
+				injectInto: this
+			} );
+			sinon.sandbox.create( config );
+
+			if ( localEnv.beforeEach ) {
+				localEnv.beforeEach.call( this );
+			}
+		},
+		afterEach: function () {
+			// Interop with old teardown config on mediawiki codebases
+
+			this.sandbox.restore();
+			if ( localEnv.afterEach ) {
+				localEnv.afterEach.call( this );
+			}
+		}
+	} );
+};
