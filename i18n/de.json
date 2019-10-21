@@ -6,7 +6,8 @@
 			"Peter Bowman",
 			"Andreasburmeister",
 			"Kghbln",
-			"Johanna Strodt (WMDE)"
+			"Johanna Strodt (WMDE)",
+			"PerfektesChaos"
 		]
 	},
 	"popups-message": "Seitenvorschaubilder",
@@ -38,6 +39,7 @@
 	"popups-refpreview-news": "Nachrichtenquelle",
 	"popups-refpreview-web": "Internetquelle",
 	"popups-refpreview-jump-to-reference": "Zum Einzelnachweis springen",
+	"popups-refpreview-user-preference-label": "Vorschaufunktion für Einzelnachweise aktivieren",
 	"popups-refpreview-beta-feature-message": "Vorschau von Einzelnachweisen",
 	"popups-refpreview-beta-feature-description": "Zeigt eine Vorschau eines Einzelnachweises an, wenn man mit dem Mauszeiger über den Fußnotenmarker fährt oder darauf klickt.\n\nBeachte bitte: Um diese Beta-Funktion zu nutzen, musst du auch [[#mw-prefsection-rendering|Seitenvorschaubilder aktivieren (im Abschnitt ''Leseeinstellungen'')]]. (Mehr Infos: [https://www.mediawiki.org/wiki/Page_Previews/de Was sind Seitenvorschaubilder?]) \n\nBeachte bitte auch: Falls du das Helferlein [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups „Navigations-Popups“] benutzt, wirst du keine Einzelnachweis-Vorschaubilder sehen. Falls du das Helferlein [[mw:Reference Tooltips|„Einzelnachweis-Tooltipps“]] benutzt, werden sowohl die Popups von den Einzelnachweis-Tooltipps als auch von den Einzelnachweis-Vorschaubildern angezeigt."
 }
