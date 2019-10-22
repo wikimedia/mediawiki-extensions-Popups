@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Njardarlogar",
-			"Jeblad"
+			"Jeblad",
+			"Johanna Strodt (WMDE)"
 		]
 	},
 	"popups-message": "Sideførehandvising",
@@ -35,5 +36,5 @@
 	"popups-refpreview-web": "Nettreferanse",
 	"popups-refpreview-jump-to-reference": "Gå til referanse",
 	"popups-refpreview-beta-feature-message": "Referanseførehandvising",
-	"popups-refpreview-beta-feature-description": "Vis ei førehandvising av ein referanse når du peikar på notemerket.\n\nMerk: For å kunne bruke denne betafunksjonen så må du òg [[#mw-prefsection-rendering|slå på]] [https://www.mediawiki.org/wiki/Page_Previews Sideførehandvising].\n\nMerk òg: Funksjonen verkar ikkje saman med tilleggsfunksjonane [https://ein.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] og [[mw:Reference Tooltips|Reference Tooltips]]."
+	"popups-refpreview-beta-feature-description": "Vis ei førehandvising av ein referanse når du peikar på notemerket.\n\nMerk: Funksjonen verkar ikkje saman med tilleggsfunksjonane [https://ein.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] og [[mw:Reference Tooltips|Reference Tooltips]]."
 }

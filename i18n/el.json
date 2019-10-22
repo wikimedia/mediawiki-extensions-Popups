@@ -6,7 +6,8 @@
 			"Ανώνυμος Βικιπαιδιστής",
 			"KATRINE1992",
 			"SucreRouge",
-			"Nikosgranturismogt"
+			"Nikosgranturismogt",
+			"Johanna Strodt (WMDE)"
 		]
 	},
 	"popups-message": "Προεπισκόπηση σελίδων",
@@ -39,5 +40,5 @@
 	"popups-refpreview-web": "Παραπομπή σε ιστοσελίδα",
 	"popups-refpreview-jump-to-reference": "Μετάβαση σε παραπομπή",
 	"popups-refpreview-beta-feature-message": "Προεπισκόπηση Παραπομπών",
-	"popups-refpreview-beta-feature-description": "Εμφανίστε μια προεπισκόπηση μιας παραπομπής τοποθετώντας το δείκτη του ποντικιού πάνω από το δείκτη υποσημείωσης.\n\nΣημείωση: Για να χρησιμοποιήσετε αυτήν τη δυνατότητα beta, πρέπει να [[#mw-prefsection-rendering|ενεργοποιήσετε]] την [https://www.mediawiki.org/wiki/Page_Previews Προεπισκόπηση Σελίδας].\n\nΣημειώστε επίσης ότι: Εάν χρησιμοποιείτε το εργαλείο [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], δεν θα δείτε Προεπισκοπήσεις Παραπομπών. Εάν χρησιμοποιείτε το εργαλείο [[mw:Reference Tooltips|Reference Tooltips]], εμφανίζονται και τα δύο αναδυόμενα παράθυρα Reference Tooltips και Προεπισκόπηση Παραπομπών."
+	"popups-refpreview-beta-feature-description": "Εμφανίστε μια προεπισκόπηση μιας παραπομπής τοποθετώντας το δείκτη του ποντικιού πάνω από το δείκτη υποσημείωσης.\n\nΣημειώστε: Εάν χρησιμοποιείτε το εργαλείο [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], δεν θα δείτε Προεπισκοπήσεις Παραπομπών. Εάν χρησιμοποιείτε το εργαλείο [[mw:Reference Tooltips|Reference Tooltips]], εμφανίζονται και τα δύο αναδυόμενα παράθυρα Reference Tooltips και Προεπισκόπηση Παραπομπών."
 }
