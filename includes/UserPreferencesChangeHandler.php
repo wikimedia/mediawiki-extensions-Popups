@@ -55,11 +55,10 @@ class UserPreferencesChangeHandler {
 			return;
 		}
 
-		$oldSetting = $oldUserOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ];
-		$newSetting = $user->getOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME );
+		$oldSetting = (bool)$oldUserOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME];
+		$newSetting = $user->getBoolOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME );
 
-		if ( $oldSetting == PopupsContext::PREVIEWS_ENABLED
-			&& $newSetting == PopupsContext::PREVIEWS_DISABLED ) {
+		if ( $oldSetting && !$newSetting ) {
 			$this->popupsContext->logUserDisabledPagePreviewsEvent();
 		}
 	}
