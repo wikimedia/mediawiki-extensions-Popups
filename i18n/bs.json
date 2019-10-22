@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Srdjan m",
-			"Obsuser"
+			"Obsuser",
+			"Semina x"
 		]
 	},
 	"popups-message": "Info kartice",
@@ -26,5 +27,6 @@
 	"popups-prefs-optin-enabled-label": "Uključi",
 	"popups-prefs-optin-disabled-label": "Isključi",
 	"popups-prefs-disable-nav-gadgets-info": "Morate [[$1 | isključiti dodatak \"Navigation Popups\"]] iz kartice \"Dodaci\" u Postavkama da biste uključili Pregled stranica",
-	"popups-prefs-conflicting-gadgets-info": "Određeni dodaci i druga prilagođavanja mogu utjecati na rad ove opcije. Ako naiđete na probleme, provjerite svoje dodatke i korisničke skripte."
+	"popups-prefs-conflicting-gadgets-info": "Određeni dodaci i druga prilagođavanja mogu utjecati na rad ove opcije. Ako naiđete na probleme, provjerite svoje dodatke i korisničke skripte.",
+	"popups-refpreview-user-preference-label": "Pregled reference (brzi pregled futnota)"
 }

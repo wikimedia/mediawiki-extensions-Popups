@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pikne"
+			"Pikne",
+			"Johanna Strodt (WMDE)"
 		]
 	},
 	"popups-message": "Lehekülgede eelvaade",
@@ -33,5 +34,5 @@
 	"popups-refpreview-web": "Veebiviide",
 	"popups-refpreview-jump-to-reference": "Viite juurde",
 	"popups-refpreview-beta-feature-message": "Viidete eelvaade",
-	"popups-refpreview-beta-feature-description": "Näita viite eelvaadet, kui libistad kursoriga üle viitetähise.\n\nPalun pane tähele, et selle beetafunktsiooni kasutamiseks peab olema [[#mw-prefsection-rendering|lubatud]] [https://www.mediawiki.org/wiki/Page_Previews lehekülgede eelvaade].\n\nSamuti pea silmas, et kui kasutad tööriista [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], siis sa viidete eelvaateid ei näe. Kui kasutad tööriista [[mw:Reference Tooltips|Reference Tooltips]], siis näidatakse korraga selle tööriista ja  viidete eelvaate hüpikkaste."
+	"popups-refpreview-beta-feature-description": "Näita viite eelvaadet, kui libistad kursoriga üle viitetähise.\n\nPalun pane tähele, et kui kasutad tööriista [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], siis sa viidete eelvaateid ei näe. Kui kasutad tööriista [[mw:Reference Tooltips|Reference Tooltips]], siis näidatakse korraga selle tööriista ja  viidete eelvaate hüpikkaste."
 }
