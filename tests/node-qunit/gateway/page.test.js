@@ -4,7 +4,7 @@ import * as MediawikiModule from '../../../src/gateway/mediawiki';
 
 QUnit.module( 'gateway/page.js', {
 	beforeEach() {
-		mediaWiki.Api = function () {};
+		mw.Api = function () {};
 
 		this.createMediaWikiApiGateway =
 			this.sandbox.stub( MediawikiModule, 'default' );

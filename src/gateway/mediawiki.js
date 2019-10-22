@@ -8,8 +8,7 @@ import * as formatter from '../formatter';
 // Public and private cache lifetime (5 minutes)
 //
 // FIXME: Move this to src/constants.js.
-const CACHE_LIFETIME = 300,
-	$ = jQuery;
+const CACHE_LIFETIME = 300;
 
 /**
  * @typedef {Gateway} MediaWikiGateway

@@ -4,8 +4,6 @@
 
 import { escapeHTML } from '../templateUtil';
 
-const $ = jQuery;
-
 /**
  * @typedef {Object} SettingsModel
  * @property {string} heading

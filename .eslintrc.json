@@ -14,7 +14,7 @@
 		"commonjs": true
 	},
 	"globals": {
-		"mediaWiki": "readonly",
+		"mw": "readonly",
 		"OO": "readonly"
 	},
 	"rules": {

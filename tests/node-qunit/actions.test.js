@@ -4,8 +4,7 @@ import * as WaitModule from '../../src/wait';
 import actionTypes from '../../src/actionTypes';
 import { previewTypes } from '../../src/preview/model';
 
-const mw = mediaWiki,
-	REFERRER = 'https://en.wikipedia.org/wiki/Kitten',
+const REFERRER = 'https://en.wikipedia.org/wiki/Kitten',
 	TEST_TITLE = createStubTitle( 0, 'Foo' );
 
 function generateToken() {

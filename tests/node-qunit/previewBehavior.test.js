@@ -9,10 +9,10 @@ QUnit.module( 'ext.popups.preview.settingsBehavior', {
 			};
 		}
 
-		mediaWiki.Title = { newFromText };
+		mw.Title = { newFromText };
 	},
 	afterEach() {
-		mediaWiki.Title = null;
+		mw.Title = null;
 	}
 } );
 

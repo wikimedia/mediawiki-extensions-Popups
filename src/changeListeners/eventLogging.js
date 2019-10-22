@@ -2,8 +2,6 @@
  * @module changeListeners/eventLogging
  */
 
-const $ = jQuery;
-
 /**
  * Creates an instance of the event logging change listener.
  *

@@ -43,9 +43,6 @@ module.exports = {
 				test: require.resolve('jquery'),
 				use: [{
 					loader: 'expose-loader',
-					options: 'jQuery'
-				}, {
-					loader: 'expose-loader',
 					options: '$'
 				}]
 			},
@@ -54,24 +51,19 @@ module.exports = {
 				use: [{
 					loader: 'expose-loader',
 					options: 'mw'
-				}, {
-					loader: 'expose-loader',
-					options: 'mediaWiki'
 				}]
 			}
 		]
 	},
 	resolve: {
 		alias: {
-			'mediaWiki': require.resolve('./mocks/js/mockMediaWiki.js'),
 			'mw': require.resolve('./mocks/js/mockMediaWiki.js')
 		},
 		extensions: [ '.js' ]
 	},
 	plugins: [
 		new webpack.ProvidePlugin({
-			mw: 'mw',
-			mediaWiki: 'mediaWiki'
+			mw: 'mw'
 		} )
 	]
 };

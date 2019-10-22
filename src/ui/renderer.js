@@ -10,9 +10,7 @@ import { renderPreview } from './templates/preview/preview';
 import { renderReferencePreview } from './templates/referencePreview/referencePreview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';
 
-const mw = mediaWiki,
-	$ = jQuery,
-	$window = $( window ),
+const $window = $( window ),
 	landscapePopupWidth = 450,
 	portraitPopupWidth = 320,
 	pointerSize = 8, // Height of the pointer.

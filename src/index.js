@@ -25,19 +25,16 @@ import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
 import { previewTypes, getPreviewType } from './preview/model';
 
-const mw = mediaWiki,
-	$ = jQuery,
-
-	BLACKLISTED_LINKS = [
-		'.extiw',
-		'.image',
-		'.new',
-		'.internal',
-		'.external',
-		'.mw-cite-backlink a',
-		'.oo-ui-buttonedElement-button',
-		'.cancelLink a'
-	];
+const BLACKLISTED_LINKS = [
+	'.extiw',
+	'.image',
+	'.new',
+	'.internal',
+	'.external',
+	'.mw-cite-backlink a',
+	'.oo-ui-buttonedElement-button',
+	'.cancelLink a'
+];
 
 /**
  * @typedef {Function} EventTracker

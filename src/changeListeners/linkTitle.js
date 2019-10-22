@@ -1,5 +1,3 @@
-const $ = jQuery;
-
 /**
  * Creates an instance of the link title change listener.
  *

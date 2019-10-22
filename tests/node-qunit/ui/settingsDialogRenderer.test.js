@@ -9,16 +9,16 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 			return { render };
 		}
 
-		mediaWiki.html = { escape: ( str ) => str };
-		mediaWiki.template = { get: getTemplate };
-		mediaWiki.config = { get() {} };
-		mediaWiki.msg = () => {};
+		mw.html = { escape: ( str ) => str };
+		mw.template = { get: getTemplate };
+		mw.config = { get() {} };
+		mw.msg = () => {};
 	},
 	afterEach() {
-		mediaWiki.msg = null;
-		mediaWiki.config = null;
-		mediaWiki.template = null;
-		mediaWiki.html = null;
+		mw.msg = null;
+		mw.config = null;
+		mw.template = null;
+		mw.html = null;
 	}
 } );
 

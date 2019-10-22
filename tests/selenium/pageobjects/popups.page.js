@@ -55,7 +55,7 @@ class PopupsPage extends Page {
 
 	hasReferencePopupsEnabled() {
 		return browser.execute( function () {
-			return mediaWiki.config.get( 'wgPopupsReferencePreviews' );
+			return mw.config.get( 'wgPopupsReferencePreviews' );
 		} ).value;
 	}
 
