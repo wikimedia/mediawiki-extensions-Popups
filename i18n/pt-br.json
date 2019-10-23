@@ -10,8 +10,8 @@
 			"Fitoschido"
 		]
 	},
-	"popups-message": "Pré-visualizações de página",
-	"popups-desc": "Exibe prévias quando o usuário passa o mouse sobre um link de página.",
+	"popups-message": "Pré-visualizações",
+	"popups-desc": "Exibe visualizações quando o usuário passa o mouse sobre um link",
 	"popups-settings-title": "Pré-visualização",
 	"popups-settings-option-simple": "Ativar",
 	"popups-settings-option-simple-description": "Obtenha previsões rápidas de um tópico durante a leitura de uma página.",

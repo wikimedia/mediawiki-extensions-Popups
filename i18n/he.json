@@ -6,8 +6,8 @@
 			"Uziel302"
 		]
 	},
-	"popups-message": "תצוגה מקדימה של דפים",
-	"popups-desc": "הצגת תצוגה מקדימה עם סיכומים של תוכן הדף בעת העברת העכבר מעל קישור לדף.",
+	"popups-message": "תצוגה מקדימה",
+	"popups-desc": "הצגת תצוגה מקדימה עם סיכומים של תוכן הדף בעת העברת העכבר מעל קישור.",
 	"popups-settings-title": "תצוגה מקדימה של דפים",
 	"popups-settings-option-simple": "מופעל",
 	"popups-settings-option-simple-description": "קבלת תצוגות מקדימות של הנושא בעת קריאת דף.",

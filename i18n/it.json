@@ -8,8 +8,8 @@
 			"Redredsonia"
 		]
 	},
-	"popups-message": "Anteprime delle pagine",
-	"popups-desc": "Mostra un'anteprima quando l'utente passa il puntatore sopra al collegamento ad una pagina.",
+	"popups-message": "Anteprime",
+	"popups-desc": "Mostra un'anteprima quando l'utente passa il puntatore sopra ad un collegamento",
 	"popups-settings-title": "Anteprima della pagina",
 	"popups-settings-option-simple": "Attiva",
 	"popups-settings-option-simple-description": "Ottieni una veloce anteprima di un argomento, mentre stai leggendo una pagina.",

@@ -13,11 +13,12 @@
 			"The RedBurn",
 			"Trizek (WMF)",
 			"Od1n",
-			"Niridya"
+			"Niridya",
+			"Verdy p"
 		]
 	},
-	"popups-message": "Aperçus de page",
-	"popups-desc": "Affiche un aperçu quand l’utilisateur survole un lien de page.",
+	"popups-message": "Aperçus",
+	"popups-desc": "Affiche un aperçu quand l’utilisateur survole un lien",
 	"popups-settings-title": "Aperçu de la page",
 	"popups-settings-option-simple": "Activer",
 	"popups-settings-option-simple-description": "Obtenir un aperçu rapide d’un sujet en lisant une page.",
@@ -47,5 +48,5 @@
 	"popups-refpreview-jump-to-reference": "Aller à la référence",
 	"popups-refpreview-user-preference-label": "Aperçus des références (obtenir des aperçus rapides des notes de pied de page)",
 	"popups-refpreview-beta-feature-message": "Aperçus de référence",
-	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la référence lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : Si vous utilisez le gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], vous ne verrez pas les aperçus de référence. Si vous utilisez le gadget [[mw:Reference Tooltips|Reference Tooltips]], les deux fenêtres de Reference Tooltips et de Reference Previews apparaîtront."
+	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la référence lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : si vous utilisez le gadget <em>[https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups]</em>, vous ne verrez pas les aperçus de référence. Si vous utilisez le gadget <em>[[mw:Reference Tooltips|Reference Tooltips]]</em>, les deux fenêtres pour <em>Reference Tooltips</em> et de <em>Aperçus des références</em> apparaîtront simultanément."
 }
