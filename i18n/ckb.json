@@ -2,27 +2,40 @@
 	"@metadata": {
 		"authors": [
 			"Lost Whispers",
-			"Épine"
+			"Épine",
+			"ئارام بکر"
 		]
 	},
-	"popups-message": "بینینەکانی پەڕە",
-	"popups-desc": "پێشبینی نیشان بدە کاتێک بەکارھێنەر بەسەر بەستەرێکدا دەڕوات",
+	"popups-message": "پێشبینین",
+	"popups-desc": "کاتێک بەکارھێنەر بەسەر بەستەرێکدا دەڕوات پێشبینی نیشان بدە",
 	"popups-settings-title": "پێشبینی پەڕە",
 	"popups-settings-option-simple": "کاراکردن",
 	"popups-settings-option-simple-description": "بەدەستھێنانی پێشبینیی خێرای بابەتێک لەکاتی خوێندنەوەی پەڕەیەکدا.",
 	"popups-settings-option-advanced": "پێشکەوتوو",
+	"popups-settings-option-advanced-description": "بڕوانە بەستەری پێشبینینەکان و دەستت بگەیەنە بە مێنیووی فرمانەکانی دەستکاریکردن. ئەمە لەلایەن زۆرینەی دەستکاریکەران بەکاربراوە.",
 	"popups-settings-option-off": "لەکارخستن",
 	"popups-settings-save": "پاشەکەوت",
 	"popups-settings-help-ok": "کرا",
 	"popups-settings-cancel": "ھەڵوەشاندنەوە",
+	"popups-settings-help": "دەتوانیت بە بەکارھێنانی بەستەرێک لە پێپەڕەی پەڕەکە پشبینینەکان دابگیرسێنیتەوە.",
 	"popups-settings-enable": "چالاککردنی پێشبینینەکان",
 	"popups-preview-no-preview": "کێشەیەک ھەبوو لە پیشاندانی ئەم پێشبینییەدا",
 	"popups-preview-footer-read": "بینینی پەڕە",
 	"popups-preview-disambiguation": "ئەمە بە زیاتر لە پەڕەیەکەوە پەیوەستە",
 	"popups-preview-disambiguation-link": "پیشاندانی پەڕە پەیوەندیدارەکان",
 	"prefs-reading": "ھەڵبژاردەکانی خوێندنەوە",
-	"popups-prefs-optin-title": "بینینەکانی پەڕە\n\n<em>بەدەستھێنانی بینینەکانی بابەت لەکاتی خوێندنەوەی پەڕەیەک</em>",
+	"popups-prefs-optin-title": "پێشبینینەکانی پەڕە (لەکاتی خوێندنەوەی پەڕەیەک پێشبینینی خێرای بابەتێک بەدەست بھێنە):",
 	"popups-prefs-optin-enabled-label": "کاراکردن",
 	"popups-prefs-optin-disabled-label": "لەکارخستن",
-	"popups-prefs-conflicting-gadgets-info": "ھەندێک ئامراز لەوانەیە کار بکەنە سەر ئەم تایبەتمەندییە. ئەگەر کێشەت ھەیە تکایە بەسەر دەقی ئامراز و ژێرپەڕەکانی خۆت بچۆرەوە."
+	"popups-prefs-disable-nav-gadgets-info": "بۆ چالاککردنی پێشبینینەکانی پەڕە، پێویستە لە تابی ئامرازەکان [[$1 | ئامرازی پەنجەرەکانی ڕێدۆزی ناچالاک بکەیت]]",
+	"popups-prefs-conflicting-gadgets-info": "ھەندێک ئامراز لەوانەیە کار بکەنە سەر ئەم تایبەتمەندییە. ئەگەر کێشەت ھەیە تکایە بەسەر دەقی ئامراز و ژێرپەڕەکانی خۆت بچۆرەوە.",
+	"popups-refpreview-reference": "سەرچاوە",
+	"popups-refpreview-book": "سەرچاوەی کتێب",
+	"popups-refpreview-journal": "سەرچاوەی گۆڤار",
+	"popups-refpreview-news": "سەرچاوەی ھەواڵ",
+	"popups-refpreview-web": "سەرچاوەی وێب",
+	"popups-refpreview-jump-to-reference": "باز بدە بۆ سەرچاوەکە",
+	"popups-refpreview-user-preference-label": "پێشبینینی سەرچاوەکان (پێشبینینی خێرای پەراوێزەکان بەدەست بھێنە)",
+	"popups-refpreview-beta-feature-message": "پێشبینینی سەرچاوەکان",
+	"popups-refpreview-beta-feature-description": "بە هۆڤەرکردن لەسەر نیشانەی پەراوێزەکان، پێشبینینی سەرچاوەکە پیشان بدە.\n\nتکایە تێبینی بکە: ئەگەر ئامرازی [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups پەنجەرەکانی ڕێدۆزی] بەکاردەھێنیت، ئەوا پێشبینینی سەرچاوەکان نابینیت. ئەگەر ئامرازی [[mw:Reference Tooltips|ڕێنماییامرازی سەرچاوەکان]] بەکاردەھێنیت، ئەوا هەردوو پەنجەرەی ڕێنماییامرازی سەرچاوەکان و پێشبینینی سەرچاوەکان دەردەکەون."
 }

@@ -11,7 +11,7 @@
 			"Maoue"
 		]
 	},
-	"popups-message": "문서 미리 보기",
+	"popups-message": "미리 보기",
 	"popups-desc": "사용자가 문서 링크에 마우스를 갖다대면 미리 보기를 표시합니다.",
 	"popups-settings-title": "문서 미리 보기",
 	"popups-settings-option-simple": "활성화",

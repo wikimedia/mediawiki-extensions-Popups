@@ -7,11 +7,12 @@
 			"Andreasburmeister",
 			"Kghbln",
 			"Johanna Strodt (WMDE)",
-			"PerfektesChaos"
+			"PerfektesChaos",
+			"TMg"
 		]
 	},
-	"popups-message": "Seitenvorschaubilder",
-	"popups-desc": "Zeigt Vorschaubilder an, wenn der Benutzer die Maus über einen Seitenlink führt.",
+	"popups-message": "Vorschaubilder",
+	"popups-desc": "Zeigt Vorschaubilder an, wenn der Benutzer die Maus über einen Link führt.",
 	"popups-settings-title": "Seitenvorschau",
 	"popups-settings-option-simple": "Aktivieren",
 	"popups-settings-option-simple-description": "Erhalte eine schnelle Vorschau zu einem Thema, während du eine Seite liest.",

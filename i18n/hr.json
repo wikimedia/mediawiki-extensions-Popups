@@ -6,8 +6,8 @@
 			"Johanna Strodt (WMDE)"
 		]
 	},
-	"popups-message": "Pregledi stranica",
-	"popups-desc": "Prikazuje pregled stranice kad suradnik/ca prelazi pokazivačem miša preko poveznice na stranici.",
+	"popups-message": "Pregledi",
+	"popups-desc": "Prikazuje pregled kad suradnik/ca prelazi pokazivačem miša preko poveznice",
 	"popups-settings-title": "Pregled stranice",
 	"popups-settings-option-simple": "Omogući",
 	"popups-settings-option-simple-description": "Dohvaća brzo pregledanje teme pri čitanju stranice.",

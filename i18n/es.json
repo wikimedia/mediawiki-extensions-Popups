@@ -14,8 +14,8 @@
 			"MarcoAurelio"
 		]
 	},
-	"popups-message": "Vistas previas de páginas",
-	"popups-desc": "Muestra una previsualización cuando el usuario posa el ratón sobre un enlace.",
+	"popups-message": "Previsualizaciones",
+	"popups-desc": "Muestra previsualizaciones cuando el usuario posa el ratón sobre un enlace",
 	"popups-settings-title": "Previsualización de página",
 	"popups-settings-option-simple": "Activar",
 	"popups-settings-option-simple-description": "Obtener resúmenes rápidos de un tema durante la lectura de una página.",
