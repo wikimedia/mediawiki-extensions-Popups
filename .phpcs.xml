@@ -7,11 +7,6 @@
 	<rule ref="Squiz.Strings.DoubleQuoteUsage">
 		<exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar" />
 	</rule>
-	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
-		<properties>
-			<property name="spacing" value="1" />
-		</properties>
-	</rule>
 
 	<file>.</file>
 	<arg name="extensions" value="php,php5,inc" />
