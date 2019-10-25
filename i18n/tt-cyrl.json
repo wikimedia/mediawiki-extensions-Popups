@@ -5,10 +5,15 @@
 			"Ерней"
 		]
 	},
-	"popups-message": "Бит алдан карау",
+	"popups-message": "Алдан карау",
+	"popups-settings-title": "Битне алдан карау",
 	"popups-settings-option-simple": "Кабызу",
+	"popups-settings-option-advanced": "Киңәйтелгән",
 	"popups-settings-option-off": "Сүндерү",
-	"prefs-reading": "Уку көйләүләре",
+	"popups-settings-save": "Саклау",
+	"popups-settings-help-ok": "Тәмам",
+	"popups-settings-cancel": "Кире алу",
+	"prefs-reading": "Уку көйләнмәләре",
 	"popups-prefs-optin-title": "Битләрне алдан карау\n<em>Күрсәткечне куйганда мәкаләләрне тиз карау кулланырга</em>",
 	"popups-prefs-optin-enabled-label": "Кабызу",
 	"popups-prefs-optin-disabled-label": "Сүндерү"
