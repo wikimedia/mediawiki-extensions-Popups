@@ -8,22 +8,7 @@ import { escapeHTML } from '../templateUtil';
 // Known citation type strings currently supported with icons and messages.
 const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ];
 
-/**
- * Send eventlogging directly, circumventing nice Redux stuff
- *
- * The reference previews integration makes it extremely difficult to
- * route our events through the existing code.  For example, the "go
- * to references" link is passed through to another element, above.
- * Another sticky point was that clicks inside the preview are wired
- * to the `linkClick` action, which clears the interaction queue and
- * would require deep changes to allow us to distinguish a reference
- * content link.
- *
- * @param {Object} event
- */
-function refPreviewsTracking( event ) {
-	mw.track( 'event.ReferencePreviewsPopups', event );
-}
+const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
 
 /**
  * @param {ext.popups.ReferencePreviewModel} model
@@ -74,7 +59,7 @@ export function renderReferencePreview(
 			event.stopPropagation();
 
 			if ( isTracking ) {
-				refPreviewsTracking( {
+				mw.track( LOGGING_SCHEMA, {
 					action: 'clickedGoToReferences'
 				} );
 			}
@@ -85,7 +70,7 @@ export function renderReferencePreview(
 
 	if ( isTracking ) {
 		$el.find( '.mw-parser-output' ).on( 'click', 'a', () => {
-			refPreviewsTracking( {
+			mw.track( LOGGING_SCHEMA, {
 				action: 'clickedReferencePreviewsContentLink'
 			} );
 		} );
@@ -98,7 +83,7 @@ export function renderReferencePreview(
 
 		if ( isTracking ) {
 			if ( !element.isOpenRecorded ) {
-				refPreviewsTracking( {
+				mw.track( LOGGING_SCHEMA, {
 					action: 'poppedOpen',
 					scrollbarsPresent: element.scrollHeight > element.clientHeight
 				} );
@@ -109,7 +94,7 @@ export function renderReferencePreview(
 				element.scrollTop > 0 &&
 				!element.isScrollRecorded
 			) {
-				refPreviewsTracking( {
+				mw.track( LOGGING_SCHEMA, {
 					action: 'scrolled'
 				} );
 				element.isScrollRecorded = true;
