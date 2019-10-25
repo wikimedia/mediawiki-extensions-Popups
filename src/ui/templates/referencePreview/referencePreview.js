@@ -10,6 +10,12 @@ const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ];
 
 const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
 
+$( function () {
+	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
+		mw.track( LOGGING_SCHEMA, { action: 'pageview' } );
+	}
+} );
+
 /**
  * @param {ext.popups.ReferencePreviewModel} model
  * @return {JQuery}
