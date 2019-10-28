@@ -5,11 +5,12 @@
 			"Fitoschido",
 			"Pginer",
 			"Macofe",
-			"Joaquin Oltra"
+			"Joaquin Oltra",
+			"Jlrb+"
 		]
 	},
-	"popups-message": "Previsualització de pàgines",
-	"popups-desc": "Mostra una previsualització del contingut quan l'usuari apunta a un enllaç de pàgina",
+	"popups-message": "Previsualització",
+	"popups-desc": "Mostra una previsualització del contingut quan l'usuari apunta a un enllaç",
 	"popups-settings-title": "Previsualització de pàgines",
 	"popups-settings-option-simple": "Activa",
 	"popups-settings-option-simple-description": "Obté previsualització d'un tema mentre llegeixes un article.",

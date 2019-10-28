@@ -10,8 +10,8 @@
 			"Kyykaarme"
 		]
 	},
-	"popups-message": "Sivun esikatselut",
-	"popups-desc": "Näyttää esikatselut, kun käyttäjä vie hiiren sivulle osoittavan linkin päälle",
+	"popups-message": "Esikatselut",
+	"popups-desc": "Näyttää esikatselut, kun käyttäjä vie hiiren linkin päälle",
 	"popups-settings-title": "Sivun esikatselu",
 	"popups-settings-option-simple": "Ota käyttöön",
 	"popups-settings-option-simple-description": "Näytä aiheiden pikaesikatselut lukutilassa.",
