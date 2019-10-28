@@ -30,11 +30,13 @@
 
 	.mw-ui-icon {
 		// mw-ui-icon assumes a font size of 16px so we must declare it here
+		// FIXME: This should be in `em` for user scalability and skin specific or with overrides.
 		font-size: 16px;
 
 		&:before {
 			// Use fixed size to prevent icon blur.
 			background-size: 20px;
+			min-height: 20px;
 		}
 	}
 
