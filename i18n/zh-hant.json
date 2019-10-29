@@ -16,8 +16,8 @@
 			"Xiplus"
 		]
 	},
-	"popups-message": "頁面預覽",
-	"popups-desc": "在游標停駐於頁面連結上方時，顯示頁面預覽。",
+	"popups-message": "預覽",
+	"popups-desc": "在游標停駐於連結上方時顯示預覽。",
 	"popups-settings-title": "頁面預覽",
 	"popups-settings-option-simple": "啟用",
 	"popups-settings-option-simple-description": "取得頁面的的快速預覽",
@@ -47,5 +47,5 @@
 	"popups-refpreview-jump-to-reference": "跳至參考文獻",
 	"popups-refpreview-user-preference-label": "參考文獻預覽（取得腳註的快速預覽）",
 	"popups-refpreview-beta-feature-message": "參考預覽",
-	"popups-refpreview-beta-feature-description": "透過游標覆蓋在腳註標記上來顯示參考文獻預覽。\n\n請注意：如果您使用[https://zh.wikipedia.org/wiki/Wikipedia:%E7%B6%AD%E5%9F%BA%E7%99%BE%E7%A7%91%E5%B7%A5%E5%85%B7/%E5%B0%8E%E8%88%AAPopup 導航 Popup]小工具，您會看不到參照預覽。若您使用 [[mw:Reference Tooltips|Reference Tooltips]] 小工具，會顯示來自於 Reference Tooltips 和參考預覽的彈跳內容。"
+	"popups-refpreview-beta-feature-description": "透過游標覆蓋在腳註標記上來顯示參考文獻預覽。\n\n請注意：如果您使用[https://zh.wikipedia.org/wiki/Wikipedia:维基百科工具/导航Popup 導航Popup]小工具，您會看不到參照預覽。若您使用[[mw:Reference Tooltips|Reference Tooltips]]小工具，會顯示來自於Reference Tooltips和參考預覽的彈跳內容。"
 }

@@ -12,8 +12,8 @@
 			"Zoranzoki21"
 		]
 	},
-	"popups-message": "Претпрегледи страница",
-	"popups-desc": "Приказује претпрегледе када корисник држи курсор изнад везе странице",
+	"popups-message": "Претпрегледи",
+	"popups-desc": "Приказује претпрегледе када корисник држи курсор изнад везе",
 	"popups-settings-title": "Преглед странице",
 	"popups-settings-option-simple": "Омогући",
 	"popups-settings-option-simple-description": "Брз претпреглед теме приликом читања странице.",
