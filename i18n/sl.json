@@ -6,8 +6,8 @@
 			"Dbc334"
 		]
 	},
-	"popups-message": "Povzetki strani",
-	"popups-desc": "Prikaži povzetke, ko z miško obstaneš na notranji povezavi",
+	"popups-message": "Povzetki",
+	"popups-desc": "Prikaži povzetke, ko z miško obstaneš na povezavi",
 	"popups-settings-title": "Povzetek strani",
 	"popups-settings-option-simple": "Vključi",
 	"popups-settings-option-simple-description": "Oglej si kratke povzetke teme, medtem ko bereš članek.",
