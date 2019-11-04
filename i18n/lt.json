@@ -4,11 +4,12 @@
 			"Zygimantus",
 			"Eitvys200",
 			"Nersip",
-			"Manvydasz"
+			"Manvydasz",
+			"Tomasdd"
 		]
 	},
-	"popups-message": "Puslapio peržiūra",
-	"popups-desc": "Rodo puslapio peržiūrą, kai naudotojas užveda pelę ant puslapio nuorodos",
+	"popups-message": "Peržiūros",
+	"popups-desc": "Rodo puslapio peržiūrą, kai naudotojas užveda pelę ant nuorodos",
 	"popups-settings-title": "Puslapio peržiūra",
 	"popups-settings-option-simple": "Įgalinti",
 	"popups-settings-option-advanced": "Išplėstinis",
