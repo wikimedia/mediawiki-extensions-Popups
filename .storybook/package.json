@@ -14,7 +14,7 @@
     "@storybook/react": "4.0.12",
     "babel-loader": "8.0.4",
     "expose-loader": "0.7.5",
-    "jquery": "3.3.1",
+    "jquery": "3.4.0",
     "less": "3.8.1",
     "less-loader": "4.1.0",
     "svg-inline-loader": "0.8.0",
