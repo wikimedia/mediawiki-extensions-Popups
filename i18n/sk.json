@@ -23,7 +23,7 @@
 	"popups-prefs-optin-title": "Náhľady stránok\n\n<em>Pri čítaní stránky poskytne rýchle náhľady tém</em>",
 	"popups-prefs-optin-enabled-label": "Zapnúť",
 	"popups-prefs-optin-disabled-label": "Vypnúť",
-	"popups-prefs-conflicting-gadgets-info": "Niektoré nástroje a ďalšie prispôsobenia môžu mať vplyv na činnosť tejto funkcie. Ak natrafíte na problémy, skontrolujte si prosím aktívne nástroje a používateľské skripty.",
+	"popups-prefs-conflicting-gadgets-info": "Niektoré nástroje a ďalšie prispôsobenia môžu ovplyvniť činnosť tejto funkcie. Ak natrafíte na problémy, skontrolujte si, prosím, svoje lokálne aj globálne nástroje a používateľské skripty.",
 	"popups-refpreview-beta-feature-message": "Náhľady referencií",
 	"popups-refpreview-beta-feature-description": "Zobraziť náhľad referencie pri umiestnení kurzora myši nad značku referencie (číslo referencie v hornom indexe).\n\nMajte na pamäti: Pokiaľ používate gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], Náhľady referencií neuvidíte. Pokiaľ používate gadget [[mw:Reference Tooltips|Reference Tooltips]], zobrazia sa vyskakovacie okná aj z Reference Tooltips, aj z Náhľadov referencií."
 }
