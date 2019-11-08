@@ -10,9 +10,12 @@ const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ];
 
 const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
 
+let pageviewIsRecorded = false;
+
 $( function () {
-	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
+	if ( !pageviewIsRecorded && mw.config.get( 'wgPopupsReferencePreviews' ) ) {
 		mw.track( LOGGING_SCHEMA, { action: 'pageview' } );
+		pageviewIsRecorded = true;
 	}
 } );
 
