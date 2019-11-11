@@ -8,7 +8,7 @@
 		]
 	},
 	"popups-message": "ڏيک",
-	"popups-desc": "ڳنڍڻي جي مٿان مائوس رکڻ سان عنوان جو پيش-نگاھ ڏيکاري ٿو",
+	"popups-desc": "جڏھن ڪو واپرائيندڙ ڳنڍڻي جي مٿان مائوس رکي تہ پيش-نگاھ ڏيکاري ٿو",
 	"popups-settings-title": "صحفي جي نمائش",
 	"popups-settings-option-simple": "قابل-بڻايو",
 	"popups-settings-option-simple-description": "پڙهڻ دوران عنوانن بابت پيش-نگاھ ڏسو",
@@ -24,5 +24,13 @@
 	"popups-preview-disambiguation-link": "ھڪجڙا صفحا ڏيکاريو",
 	"prefs-reading": "پڙھڻ جون ترجيحون",
 	"popups-prefs-optin-enabled-label": "قابل-بڻايو",
-	"popups-prefs-optin-disabled-label": "غيرفعال"
+	"popups-prefs-optin-disabled-label": "غيرفعال",
+	"popups-refpreview-reference": "حوالو",
+	"popups-refpreview-book": "ڪتابي حوالو",
+	"popups-refpreview-journal": "جرنل جو حوالو",
+	"popups-refpreview-news": "خبر جو حوالو",
+	"popups-refpreview-web": "ويب حوالو",
+	"popups-refpreview-jump-to-reference": "حوالي ڏانھن ٽپ ڏيو",
+	"popups-refpreview-user-preference-label": "حوالو پيش-نگاھون (فٽ-نوٽن جون تڪڙيون پيش-نگاھون وٺو)",
+	"popups-refpreview-beta-feature-message": "حوالو پيش-نگاھون"
 }
