@@ -9,9 +9,14 @@ import { escapeHTML } from '../templateUtil';
 const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ];
 
 const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
-
-$( function () {
-	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
+let isTracking = false;
+$( () => {
+	if ( mw.config.get( 'wgPopupsReferencePreviews' ) &&
+		navigator.sendBeacon &&
+		mw.config.get( 'wgIsArticle' ) &&
+		!isTracking
+	) {
+		isTracking = true;
 		mw.track( LOGGING_SCHEMA, { action: 'pageview' } );
 	}
 } );
@@ -34,8 +39,6 @@ export function renderReferencePreview(
 		title = escapeHTML( mw.msg( titleMsg ) ),
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
-
-	const isTracking = navigator.sendBeacon && mw.eventLog;
 
 	const $el = renderPopup( model.type,
 		`
