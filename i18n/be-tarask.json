@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Red Winged Duck"
+			"Red Winged Duck",
+			"Renessaince"
 		]
 	},
-	"popups-message": "Папярэдні прагляд старонак",
+	"popups-message": "Папярэдні прагляд",
 	"popups-desc": "Паказвае папярэдні прагляд старонкі, калі карыстальнік наводзіць курсор на спасылку."
 }
