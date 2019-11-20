@@ -4,8 +4,8 @@
 			"Praveenp"
 		]
 	},
-	"popups-message": "താൾ പ്രിവ്യൂ",
-	"popups-desc": "ഒരു താളിന്റെ കണ്ണിയുടെ മുകളിലൂടെ മൗസ് നീക്കുമ്പോൾ കണ്ണിയിലുള്ള താളിന്റെ ഉള്ളടക്കം കാണിക്കുക",
+	"popups-message": "എങ്ങനെയുണ്ടെന്ന് കാണലുകൾ",
+	"popups-desc": "ഒരു കണ്ണിയുടെ മുകളിലൂടെ മൗസ് നീക്കുമ്പോൾ കണ്ണിയിലുള്ള താളിന്റെ ഉള്ളടക്കം കാണിക്കുക",
 	"popups-settings-title": "താൾ പ്രിവ്യൂ",
 	"popups-settings-option-simple": "സജ്ജമാക്കുക",
 	"popups-settings-option-simple-description": "താൾ വായിച്ചുകൊണ്ടിരിക്കുമ്പോൾ വിഷയത്തിന്റെ പെട്ടന്നുള്ള പ്രിവ്യൂ പ്രദർശിപ്പിക്കുക.",
@@ -33,5 +33,6 @@
 	"popups-refpreview-news": "വാർത്താ അവലംബം",
 	"popups-refpreview-web": "വെബ് അവലംബം",
 	"popups-refpreview-jump-to-reference": "അവലംബങ്ങളിലേക്ക് പോവുക",
+	"popups-refpreview-user-preference-label": "അവലംബ പ്രിവ്യൂകൾ (കുറിപ്പുകളുടെ പ്രിവ്യൂകൾ എടുക്കുക)",
 	"popups-refpreview-beta-feature-message": "അവലംബങ്ങൾ എങ്ങനെയുണ്ടെന്ന് കാണൽ"
 }
