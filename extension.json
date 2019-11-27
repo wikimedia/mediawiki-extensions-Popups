@@ -26,66 +26,81 @@
 		"popups": "GlobalVarConfig::newInstance"
 	},
 	"Hooks": {
-		"BeforePageDisplay": [
-			"Popups\\PopupsHooks::onBeforePageDisplay"
-		],
-		"ResourceLoaderGetConfigVars": [
-			"Popups\\PopupsHooks::onResourceLoaderGetConfigVars"
-		],
-		"GetPreferences": [
-			"Popups\\PopupsHooks::onGetPreferences"
-		],
-		"PreferencesFormPreSave": [
-			"Popups\\UserPreferencesChangeHandler::onPreferencesFormPreSave"
-		],
-		"UserGetDefaultOptions": [
-			"Popups\\PopupsHooks::onUserGetDefaultOptions"
-		],
-		"MakeGlobalVariablesScript": [
-			"Popups\\PopupsHooks::onMakeGlobalVariablesScript"
-		],
-		"LocalUserCreated": [
-			"Popups\\PopupsHooks::onLocalUserCreated"
-		],
-		"GetBetaFeaturePreferences": [
-			"Popups\\PopupsHooks::onGetBetaFeaturePreferences"
-		]
+		"BeforePageDisplay": "Popups\\PopupsHooks::onBeforePageDisplay",
+		"ResourceLoaderGetConfigVars": "Popups\\PopupsHooks::onResourceLoaderGetConfigVars",
+		"GetPreferences": "Popups\\PopupsHooks::onGetPreferences",
+		"PreferencesFormPreSave": "Popups\\UserPreferencesChangeHandler::onPreferencesFormPreSave",
+		"UserGetDefaultOptions": "Popups\\PopupsHooks::onUserGetDefaultOptions",
+		"MakeGlobalVariablesScript": "Popups\\PopupsHooks::onMakeGlobalVariablesScript",
+		"LocalUserCreated": "Popups\\PopupsHooks::onLocalUserCreated",
+		"GetBetaFeaturePreferences": "Popups\\PopupsHooks::onGetBetaFeaturePreferences"
 	},
 	"MessagesDirs": {
 		"Popups": [
 			"i18n"
 		]
 	},
-	"EventLoggingSchemas": {
-		"Popups": 18904225,
-		"ReferencePreviewsPopups": 19489344,
-		"VirtualPageView": 17780078
+	"attributes": {
+		"EventLogging": {
+			"Schemas": {
+				"Popups": 18904225,
+				"ReferencePreviewsPopups": 19489344,
+				"VirtualPageView": 17780078
+			}
+		}
 	},
 	"config": {
-		"@PopupsVirtualPageViews": "@var bool: Whether the extension should log virtual pageviews.",
-		"PopupsVirtualPageViews": false,
-		"@PopupsHideOptInOnPreferencesPage": "@var bool: Whether the option to enable/disable Page Previews should be hidden on Preferences page. False by default",
-		"PopupsHideOptInOnPreferencesPage": false,
-		"@PopupsOptInDefaultState": "@var string:['1'|'0'] Default Page Previews visibility for old accounts. Has to be a string as a compatibility with beta feature settings. For more info see @T191888",
-		"PopupsOptInDefaultState": "0",
-		"@PopupsOptInStateForNewAccounts": "@var string:['1'|'0'] Default Page Previews visibility for newly created accounts (from Q2 2018). For more info see @T191888",
-		"PopupsOptInStateForNewAccounts": "0",
-		"@PopupsConflictingNavPopupsGadgetName": "@var string: Navigation popups gadget name",
-		"PopupsConflictingNavPopupsGadgetName": "Navigation_popups",
-		"@PopupsGateway": "Which gateway to use for fetching Popups data. Available options: [mwApiPlain|restbasePlain|restbaseHTML]. Full and always up to date list is available in src/gateway/index.js",
-		"PopupsGateway": "mwApiPlain",
-		"@PopupsRestGatewayEndpoint": "Specify a REST endpoint where summaries should be sourced from. Endpoint must meet the spec at https://www.mediawiki.org/wiki/Specs/Summary/1.2.0",
-		"PopupsRestGatewayEndpoint": "/api/rest_v1/page/summary/",
-		"@PopupsReferencePreviews": "Temporary feature flag to disable reference previews during developement.",
-		"PopupsReferencePreviews": true,
-		"@PopupsReferencePreviewsBetaFeature": "Make Reference Previews a Beta feature.",
-		"PopupsReferencePreviewsBetaFeature": true,
-		"@PopupsEventLogging": "Whether we should log events. Note if this is enabled without using that variable events will be logged for all users without any sampling! Be careful!",
-		"PopupsEventLogging": false,
-		"@PopupsStatsvSamplingRate": "Sampling rate for logging performance data to statsv.",
-		"PopupsStatsvSamplingRate": 0,
-		"@PopupsPageBlacklist": "Blacklisted pages are subject to the HTML cache policy of the wiki. A purge on a blacklisted page maybe needed to see the effect of this configuration variable. Every blacklisted page should be defined by a canonical name, eg: Special:Userlogin",
-		"PopupsPageBlacklist": [ "Special:Userlogin", "Special:CreateAccount" ]
+		"PopupsVirtualPageViews": {
+			"description": "@var bool: Whether the extension should log virtual pageviews.",
+			"value": false
+		},
+		"PopupsHideOptInOnPreferencesPage": {
+			"description": "@var bool: Whether the option to enable/disable Page Previews should be hidden on Preferences page. False by default",
+			"value": false
+		},
+		"PopupsOptInDefaultState": {
+			"description": "@var string:['1'|'0'] Default Page Previews visibility for old accounts. Has to be a string as a compatibility with beta feature settings. For more info see @T191888",
+			"value": "0"
+		},
+		"PopupsOptInStateForNewAccounts": {
+			"description": "@var string:['1'|'0'] Default Page Previews visibility for newly created accounts (from Q2 2018). For more info see @T191888",
+			"value": "0"
+		},
+		"PopupsConflictingNavPopupsGadgetName": {
+			"description": "@var string: Navigation popups gadget name",
+			"value": "Navigation_popups"
+		},
+		"PopupsGateway": {
+			"description": "Which gateway to use for fetching Popups data. Available options: [mwApiPlain|restbasePlain|restbaseHTML]. Full and always up to date list is available in src/gateway/index.js",
+			"value": "mwApiPlain"
+		},
+		"PopupsRestGatewayEndpoint": {
+			"description": "Specify a REST endpoint where summaries should be sourced from. Endpoint must meet the spec at https://www.mediawiki.org/wiki/Specs/Summary/1.2.0",
+			"value": "/api/rest_v1/page/summary/"
+		},
+		"PopupsReferencePreviews": {
+			"description": "Temporary feature flag to disable reference previews during developement.",
+			"value": true
+		},
+		"PopupsReferencePreviewsBetaFeature": {
+			"description": "Make Reference Previews a Beta feature.",
+			"value": true
+		},
+		"PopupsEventLogging": {
+			"description": "Whether we should log events. Note if this is enabled without using that variable events will be logged for all users without any sampling! Be careful!",
+			"value": false
+		},
+		"PopupsStatsvSamplingRate": {
+			"description": "Sampling rate for logging performance data to statsv.",
+			"value": 0
+		},
+		"PopupsPageBlacklist": {
+			"description": "Blacklisted pages are subject to the HTML cache policy of the wiki. A purge on a blacklisted page maybe needed to see the effect of this configuration variable. Every blacklisted page should be defined by a canonical name, eg: Special:Userlogin",
+			"value": [
+				"Special:Userlogin",
+				"Special:CreateAccount"
+			]
+		}
 	},
 	"ResourceModules": {
 		"ext.popups.images": {
@@ -195,5 +210,5 @@
 	"ServiceWiringFiles": [
 		"includes/ServiceWirings.php"
 	],
-	"manifest_version": 1
+	"manifest_version": 2
 }
