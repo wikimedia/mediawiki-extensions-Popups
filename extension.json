@@ -12,15 +12,8 @@
 	"requires": {
 		"MediaWiki": ">= 1.30.0"
 	},
-	"AutoloadClasses": {
-		"Popups\\PopupsHooks": "includes/PopupsHooks.php",
-		"Popups\\PopupsContext": "includes/PopupsContext.php",
-		"Popups\\PopupsGadgetsIntegration": "includes/PopupsGadgetsIntegration.php",
-		"Popups\\UserPreferencesChangeHandler": "includes/UserPreferencesChangeHandler.php",
-		"Popups\\EventLogging\\EventLogger": "includes/EventLogging/EventLogger.php",
-		"Popups\\EventLogging\\NullLogger": "includes/EventLogging/NullLogger.php",
-		"Popups\\EventLogging\\MWEventLogger": "includes/EventLogging/MWEventLogger.php",
-		"Popups\\EventLogging\\EventLoggerFactory": "includes/EventLogging/EventLoggerFactory.php"
+	"AutoloadNamespaces": {
+		"Popups\\": "includes/"
 	},
 	"ConfigRegistry": {
 		"popups": "GlobalVarConfig::newInstance"
