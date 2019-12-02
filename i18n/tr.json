@@ -7,7 +7,8 @@
 			"Meelo",
 			"McAang",
 			"Katpatuka",
-			"Rapsar"
+			"Rapsar",
+			"BaRaN6161 TURK"
 		]
 	},
 	"popups-message": "Vurgulanmış kartlar",
@@ -23,8 +24,12 @@
 	"popups-settings-cancel": "Vazgeç",
 	"popups-settings-help": "Sayfanın alt kısmındaki bir bağlantıyı kullanarak önizlemeyi geri açabilirsiniz.",
 	"popups-settings-enable": "Önizlemeyi etkinleştir",
+	"popups-preview-no-preview": "Bu önizlemeyi görüntülemeye bir sorun oluştu",
 	"popups-preview-footer-read": "Oku",
 	"popups-prefs-optin-title": "Sayfa önizlemeleri\n\n<em>Bir sayfayı okurken, konuyla ilgili hızlı önizlemeler al</em>",
 	"popups-prefs-optin-enabled-label": "Etkinleştir",
-	"popups-prefs-optin-disabled-label": "Devre dışı bırak"
+	"popups-prefs-optin-disabled-label": "Devre dışı bırak",
+	"popups-prefs-conflicting-gadgets-info": "Bazı araçlar ve diğer özelleştirmeler bu özelliğin performansını etkileyebilir. Sorun yaşarsanız, genel olanlar da dahil olmak üzere gadgetlarınızı ve kullanıcı betiklerinizi inceleyin.",
+	"popups-refpreview-beta-feature-message": "Referans Önizlemeleri",
+	"popups-refpreview-beta-feature-description": "Dipnot işaretçisinin üzerinde gezdirerek referansın önizlemesini gösterin.\n\nLütfen dikkat: [https://tr.wikipedia.org/wiki/Vikipedi:Ara%C3%A7lar/Gezinti_pencereleri Gezinme açılır pencereleri] gadgetını kullanıyorsanız Referans Önizlemeleri görmezsiniz. [[w:Reference Tooltips|Referans İpuçları]] gadgetını kullanıyorsanız, hem Referans Araç İpuçları’ndan hem de Referans Önizlemeden açılan pencereler görünecektir."
 }
