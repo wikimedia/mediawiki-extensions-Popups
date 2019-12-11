@@ -53,11 +53,11 @@
 		},
 		"PopupsOptInDefaultState": {
 			"description": "@var string:['1'|'0'] Default Page Previews visibility for old accounts. Has to be a string as a compatibility with beta feature settings. For more info see @T191888",
-			"value": "0"
+			"value": "1"
 		},
 		"PopupsOptInStateForNewAccounts": {
 			"description": "@var string:['1'|'0'] Default Page Previews visibility for newly created accounts (from Q2 2018). For more info see @T191888",
-			"value": "0"
+			"value": "1"
 		},
 		"PopupsConflictingNavPopupsGadgetName": {
 			"description": "@var string: Navigation popups gadget name",

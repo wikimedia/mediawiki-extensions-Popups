@@ -90,11 +90,33 @@ class PopupsContextTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers ::shouldSendModuleToUser
+	 */
+	public function testShouldSendToAnonUser() {
+		$user = $this->getMutableTestUser()->getUser();
+		$user->setId( self::ANONYMOUS_USER );
+
+		$context = $this->getContext();
+		$this->assertSame(
+			true,
+			$context->shouldSendModuleToUser( $user ),
+			'The module is always sent to anonymous users.'
+		);
+	}
+
+	/**
+	 * Tests #shouldSendModuleToUser when the user is logged in and the reference previews feature
+	 * is disabled.
+	 *
+	 * @covers ::shouldSendModuleToUser
 	 * @dataProvider provideTestDataForShouldSendModuleToUser
 	 * @param bool $optIn
 	 * @param bool $expected
 	 */
 	public function testShouldSendModuleToUser( $optIn, $expected ) {
+		$this->setMwGlobals( [
+			'wgPopupsReferencePreviews' => false,
+		] );
+
 		$context = $this->getContext();
 		$user = $this->getMutableTestUser()->getUser();
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
@@ -113,30 +135,6 @@ class PopupsContextTest extends MediaWikiTestCase {
 				'optin' => PopupsContext::PREVIEWS_DISABLED,
 				'expected' => false
 			]
-		];
-	}
-
-	/**
-	 * Check tst Page Previews are disabled for anonymous user
-	 * @covers ::shouldSendModuleToUser
-	 * @dataProvider providerAnonUserHasDisabledPagePreviews
-	 */
-	public function testAnonUserHasDisabledPagePreviews( $expected ) {
-		$user = $this->getMutableTestUser()->getUser();
-		$user->setId( self::ANONYMOUS_USER );
-		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
-			PopupsContext::PREVIEWS_DISABLED );
-
-		$context = $this->getContext();
-		$this->assertSame( $expected,
-			$context->shouldSendModuleToUser( $user ),
-			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
-	}
-
-	public static function providerAnonUserHasDisabledPagePreviews() {
-		return [
-			// Anons see this by default
-			[ true ],
 		];
 	}
 
