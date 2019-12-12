@@ -30,6 +30,9 @@ QUnit.module( 'ext.popups/gateway/reference', {
 					$( '<cite>' ).addClass( 'news' ).text( 'Footnote 4' ),
 					$( '<cite>' ).addClass( 'web' )
 				)
+			),
+			$( '<li>' ).attr( 'id', 'cite_note-5' ).append(
+				$( '<span>' ).addClass( 'mw-reference-text' ).html( '&nbsp;' )
 			)
 		).appendTo( document.body );
 	},
@@ -133,6 +136,17 @@ QUnit.test( 'Reference preview gateway returns source element id', function ( as
 QUnit.test( 'Reference preview gateway rejects non-existing references', function ( assert ) {
 	const gateway = createReferenceGateway(),
 		title = createStubTitle( 1, 'Foo', 'undefined' );
+
+	return gateway.fetchPreviewForTitle( title ).then( () => {
+		assert.ok( false, 'It should not resolve' );
+	} ).catch( ( reason, result ) => {
+		assert.propEqual( result, { textStatus: 'abort', xhr: { readyState: 0 } } );
+	} );
+} );
+
+QUnit.test( 'Reference preview gateway rejects all-whitespace references', function ( assert ) {
+	const gateway = createReferenceGateway(),
+		title = createStubTitle( 1, 'Foo', 'cite note-5' );
 
 	return gateway.fetchPreviewForTitle( title ).then( () => {
 		assert.ok( false, 'It should not resolve' );

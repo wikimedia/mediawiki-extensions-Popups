@@ -62,7 +62,10 @@ export default function createReferenceGateway() {
 		const id = title.getFragment().replace( / /g, '_' ),
 			$referenceText = scrapeReferenceText( id );
 
-		if ( !$referenceText.length ) {
+		if ( !$referenceText.length ||
+			// Skip references that don't contain anything but whitespace, e.g. a single &nbsp;
+			( !$referenceText.text().trim() && !$referenceText.children().length )
+		) {
 			return $.Deferred().reject(
 				'Footnote not found',
 				// Required to set `showNullPreview` to false and not open an error popup
