@@ -25,7 +25,7 @@ MODELS.THUMBNAIL_PORTRAIT = {
 	"<p><b>South Georgia</b> is an island in the southern Atlantic Ocean that is part of the British Overseas territory of South Georgia and the South Sandwich Islands. The main settlement is Grytviken. South Georgia is 167.4 kilometres (104&nbsp;mi) long and 1.4 to 37&nbsp;km wide. It is about 830&nbsp;km (520&nbsp;mi) northeast of Coronation Island and 550&nbsp;km (340&nbsp;mi) northwest from Zavodovski Island, the nearest South Sandwich island.</p>",
 	type: "page",
 	thumbnail: {
-		source: '/img/640px-Thatcher-Peninsula.jpg',
+		source: 'img/640px-Thatcher-Peninsula.jpg',
 		width: 640,
 		height: 480
 	},
@@ -42,7 +42,7 @@ MODELS.THUMBNAIL_LANDSCAPE = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/542px-Atlantic_Ocean_location_map.svg.png",
+		"img/542px-Atlantic_Ocean_location_map.svg.png",
 		width: 542,
 		height: 640
 	},
@@ -59,7 +59,7 @@ MODELS.SVG_PORTRAIT = {
 	"<strong>South Georgia and the South Sandwich Islands (SGSSI)</strong> is a British Overseas Territory in the southern Atlantic Ocean. It is a remote and inhospitable collection of islands, consisting of South Georgia and a chain of smaller islands known as the South Sandwich Islands. South Georgia is 165 km (103 mi) long and 1 to 35 km (1 to 22 mi) wide and is by far the largest island in the territory. The South Sandwich Islands lie about 700 km (430 mi) southeast of South Georgia. The territory's total land area is 3,903 km2 (1,507 sq...",
 	thumbnail: {
 		source:
-		"/img/640px-Flag_of_South_Georgia_and_the_South_Sandwich_Islands.svg.png",
+		"img/640px-Flag_of_South_Georgia_and_the_South_Sandwich_Islands.svg.png",
 		width: 640,
 		height: 320
 	},
@@ -77,7 +77,7 @@ MODELS.SVG_LANDSCAPE = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/594px-Coat_of_arms_of_Transnistria.svg.png",
+		"img/594px-Coat_of_arms_of_Transnistria.svg.png",
 		width: 594,
 		height: 640
 	},
@@ -94,7 +94,7 @@ MODELS.THIN_THUMBNAIL = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/Barker_poster.jpg/258px-Barker_poster.jpg",
+		"img/Barker_poster.jpg/258px-Barker_poster.jpg",
 		width: 258,
 		height: 640
 	},
@@ -110,7 +110,7 @@ MODELS.THUMBNAIL_DIVIDER = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Flag_of_Japan.svg.png",
+		"img/640px-Flag_of_Japan.svg.png",
 		width: 640,
 		height: 426
 	},
@@ -149,7 +149,7 @@ MODELS.LONG_WORD_THUMB = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/Llanfair_Pwllgwyngyll_roofscape_%281%29_-_geograph.org.uk_-_1058331.jpg",
+		"img/Llanfair_Pwllgwyngyll_roofscape_%281%29_-_geograph.org.uk_-_1058331.jpg",
 		width: 640,
 		height: 480
 	},
@@ -166,7 +166,7 @@ MODELS.MATH_1 = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Secretsharing_3-point.svg.png",
+		"img/640px-Secretsharing_3-point.svg.png",
 		width: 640,
 		height: 640
 	},
@@ -179,7 +179,7 @@ MODELS.MATH_2 = {
 	languageCode: "en",
 	languageDirection: "ltr",
 	extract:
-	'<p>The <b>history of Lorentz transformations</b> comprises the development of linear transformations forming the Lorentz group or Poincaré group preserving the Lorentz interval <span class="mwe-math-element"><img src="/img/aeaaf19e649447ee32f924033e4c859955174c81.svg" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align:-1.005ex;width:15.144ex;height:3.176ex;"></span>\n and the Minkowski inner product <span class="mwe-math-element"><img src="/img/43fcbe32f1674bd50b4621db988d3de905a8f269.svg" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align:-0.671ex;width:19.695ex;height:2.343ex;"></span>\n.</p>',
+	'<p>The <b>history of Lorentz transformations</b> comprises the development of linear transformations forming the Lorentz group or Poincaré group preserving the Lorentz interval <span class="mwe-math-element"><img src="img/aeaaf19e649447ee32f924033e4c859955174c81.svg" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align:-1.005ex;width:15.144ex;height:3.176ex;"></span>\n and the Minkowski inner product <span class="mwe-math-element"><img src="img/43fcbe32f1674bd50b4621db988d3de905a8f269.svg" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align:-0.671ex;width:19.695ex;height:2.343ex;"></span>\n.</p>',
 	type: "page",
 	pageId: 7058047
 };
@@ -194,7 +194,7 @@ MODELS.CHEM_1 = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Lactose.svg.png",
+		"img/640px-Lactose.svg.png",
 		width: 640,
 		height: 266
 	},
@@ -221,7 +221,7 @@ MODELS.CHEM_3 = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/576px-PVA.svg.png",
+		"img/576px-PVA.svg.png",
 		width: 576,
 		height: 640
 	},
@@ -248,7 +248,7 @@ MODELS.HE_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Stonehenge2007_07_30.jpg",
+		"img/640px-Stonehenge2007_07_30.jpg",
 		width: 640,
 		height: 480
 	},
@@ -263,7 +263,7 @@ MODELS.HE_WIKI2 = {
 	extract: "<p><b>לונדון</b> היא עיר הבירה של אנגליה ושל הממלכה המאוחדת, והעיר והמטרופולין הגדולה ביותר בממלכה. העיר שוכנת על גדות נהר התמזה, והיוותה מקום התיישבות מרכזי במשך יותר מאלפיים שנים. הרומאים התיישבו בה לראשונה, וכינו אותה לונדיניום. גרעינה ההיסטורי של העיר הוא הסיטי של לונדון, ששומר עד היום על גבולותיו מימי הביניים. לונדון המודרנית מורכבת מצירוף של ערים, עיירות, רבעים, שכונות ופרברים, אשר נסתפחו לאורך השנים לשטחה האדמיניסטרטיבי של \"לונדון רבתי\", וכולם יחד נקראים \"לונדון\".</p>",
 	type: "page",
 	thumbnail: {
-		source: "/img/424px-London_Montage_L.jpg",
+		source: "img/424px-London_Montage_L.jpg",
 		width: 424,
 		height: 640
 	},
@@ -280,7 +280,7 @@ MODELS.AR_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Satellitenaufnahme_der_Alpen.jpg",
+		"img/640px-Satellitenaufnahme_der_Alpen.jpg",
 		width: 640,
 		height: 494
 	},
@@ -297,7 +297,7 @@ MODELS.AR_WIKI2 = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/Barker_poster.jpg/258px-Barker_poster.jpg",
+		"img/Barker_poster.jpg/258px-Barker_poster.jpg",
 		width: 258,
 		height: 640
 	},
@@ -314,7 +314,7 @@ MODELS.JA_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Kuroishi_Yakisoba01.JPG",
+		"img/640px-Kuroishi_Yakisoba01.JPG",
 		width: 640,
 		height: 480
 	},
@@ -331,7 +331,7 @@ MODELS.KO_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Nintendo_DS_Trans.png",
+		"img/640px-Nintendo_DS_Trans.png",
 		width: 640,
 		height: 584
 	},
@@ -348,7 +348,7 @@ MODELS.HZ_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-USA_National_Forests_Map.jpg",
+		"img/640px-USA_National_Forests_Map.jpg",
 		width: 640,
 		height: 416
 	},
@@ -365,7 +365,7 @@ MODELS.EL_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Knossos_-_North_Portico_02.jpg",
+		"img/640px-Knossos_-_North_Portico_02.jpg",
 		width: 640,
 		height: 480
 	},
@@ -382,7 +382,7 @@ MODELS.HI_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/554px-Baghdad_collage.png",
+		"img/554px-Baghdad_collage.png",
 		width: 554,
 		height: 640
 	},
@@ -399,7 +399,7 @@ MODELS.RU_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/640px-Bristol.zoo.greater.flamingo.arp.jpg",
+		"img/640px-Bristol.zoo.greater.flamingo.arp.jpg",
 		width: 640,
 		height: 444
 	},
@@ -416,7 +416,7 @@ MODELS.TH_WIKI = {
 	type: "page",
 	thumbnail: {
 		source:
-		"/img/426px-NASA-CarolineAtoll.jpg",
+		"img/426px-NASA-CarolineAtoll.jpg",
 		width: 426,
 		height: 640
 	},

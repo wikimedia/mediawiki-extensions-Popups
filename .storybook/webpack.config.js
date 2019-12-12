@@ -44,6 +44,10 @@ module.exports = {
 				loader: 'url-loader'
 			},
 			{
+				test: /\.jpg$/,
+				loader: 'url-loader'
+			},
+			{
 				test: /\.svg$/,
 				loader: 'svg-inline-loader',
 				issuer: /\.js$/,
