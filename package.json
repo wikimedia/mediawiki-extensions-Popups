@@ -1,8 +1,8 @@
 {
 	"private": true,
 	"scripts": {
-		"storybook": "./.storybook/storybook-resources.sh && start-storybook --config-dir=.storybook -p 6006",
-		"build-storybook": "./.storybook/storybook-resources.sh && build-storybook --config-dir=.storybook -o docs/ui",
+		"storybook": "./.storybook/storybook-resources.sh && start-storybook --config-dir=.storybook -p 6006 -s .storybook/static",
+		"build-storybook": "./.storybook/storybook-resources.sh && build-storybook --config-dir=.storybook -o docs/ui -s .storybook/static",
 		"start": "webpack -w --mode=development",
 		"build": "webpack --mode=production",
 		"lint:fix": "grunt fix",
