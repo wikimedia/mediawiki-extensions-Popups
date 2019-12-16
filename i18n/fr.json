@@ -14,7 +14,8 @@
 			"Trizek (WMF)",
 			"Od1n",
 			"Niridya",
-			"Verdy p"
+			"Verdy p",
+			"Thibaut120094"
 		]
 	},
 	"popups-message": "Aperçus",
@@ -48,5 +49,5 @@
 	"popups-refpreview-jump-to-reference": "Aller à la référence",
 	"popups-refpreview-user-preference-label": "Aperçus des références (obtenir des aperçus rapides des notes de pied de page)",
 	"popups-refpreview-beta-feature-message": "Aperçus de référence",
-	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la référence lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : si vous utilisez le gadget <em>[https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups]</em>, vous ne verrez pas les aperçus de référence. Si vous utilisez le gadget <em>[[mw:Reference Tooltips|Reference Tooltips]]</em>, les deux fenêtres pour <em>Reference Tooltips</em> et de <em>Aperçus des références</em> apparaîtront simultanément."
+	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la référence lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : si vous utilisez le gadget <em>[https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups]</em>, vous ne verrez pas les aperçus de référence. Si vous utilisez le gadget <em>[[mw:Reference Tooltips|Reference Tooltips]]</em>, les deux fenêtres pour <em>Reference Tooltips</em> et de <em>Aperçus des références</em> apparaîtront simultanément."
 }
