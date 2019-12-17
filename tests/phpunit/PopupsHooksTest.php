@@ -284,7 +284,9 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 
 		$this->setMwGlobals( [
-			'wgPopupsOptInDefaultState' => '1'
+			'wgPopupsOptInDefaultState' => '1',
+			'wgPopupsReferencePreviews' => true,
+			'wgPopupsReferencePreviewsBetaFeature' => false,
 		] );
 
 		PopupsHooks::onUserGetDefaultOptions( $userOptions );
@@ -301,10 +303,15 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$userMock = $this->createMock( User::class );
 		$userMock->expects( $this->exactly( 2 ) )
 			->method( 'setOption' )
-			->with( $this->stringStartsWith( 'popups' ), $expectedState );
+			->withConsecutive(
+				[ 'popups', $expectedState ],
+				[ 'popupsreferencepreviews', $expectedState ]
+			);
 
 		$this->setMwGlobals( [
-			'wgPopupsOptInStateForNewAccounts' => $expectedState
+			'wgPopupsOptInStateForNewAccounts' => $expectedState,
+			'wgPopupsReferencePreviews' => true,
+			'wgPopupsReferencePreviewsBetaFeature' => false,
 		] );
 		PopupsHooks::onLocalUserCreated( $userMock, false );
 	}
