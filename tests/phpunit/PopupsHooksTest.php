@@ -277,8 +277,9 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers ::onUserGetDefaultOptions
+	 * @dataProvider provideReferencePreviewsBetaFlag
 	 */
-	public function testOnUserGetDefaultOptions() {
+	public function testOnUserGetDefaultOptions( $beta ) {
 		$userOptions = [
 			'test' => 'not_empty'
 		];
@@ -286,22 +287,23 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->setMwGlobals( [
 			'wgPopupsOptInDefaultState' => '1',
 			'wgPopupsReferencePreviews' => true,
-			'wgPopupsReferencePreviewsBetaFeature' => false,
+			'wgPopupsReferencePreviewsBetaFeature' => $beta,
 		] );
 
 		PopupsHooks::onUserGetDefaultOptions( $userOptions );
-		$this->assertCount( 3, $userOptions );
+		$this->assertCount( 3 - $beta, $userOptions );
 		$this->assertSame( '1', $userOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 	}
 
 	/**
 	 * @covers ::onUserGetDefaultOptions
+	 * @dataProvider provideReferencePreviewsBetaFlag
 	 */
-	public function testOnLocalUserCreatedForNewlyCreatedUser() {
+	public function testOnLocalUserCreatedForNewlyCreatedUser( $beta ) {
 		$expectedState = '1';
 
 		$userMock = $this->createMock( User::class );
-		$userMock->expects( $this->exactly( 2 ) )
+		$userMock->expects( $this->exactly( 2 - $beta ) )
 			->method( 'setOption' )
 			->withConsecutive(
 				[ 'popups', $expectedState ],
@@ -311,9 +313,16 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->setMwGlobals( [
 			'wgPopupsOptInStateForNewAccounts' => $expectedState,
 			'wgPopupsReferencePreviews' => true,
-			'wgPopupsReferencePreviewsBetaFeature' => false,
+			'wgPopupsReferencePreviewsBetaFeature' => $beta,
 		] );
 		PopupsHooks::onLocalUserCreated( $userMock, false );
+	}
+
+	public function provideReferencePreviewsBetaFlag() {
+		return [
+			[ false ],
+			[ true ],
+		];
 	}
 
 }
