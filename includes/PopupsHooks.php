@@ -20,10 +20,11 @@
  */
 namespace Popups;
 
+use Config;
 use MediaWiki\MediaWikiServices;
-use User;
 use OutputPage;
 use Skin;
+use User;
 
 /**
  * Hooks definitions for Popups extension
@@ -81,7 +82,7 @@ class PopupsHooks {
 				'section' => self::PREVIEWS_PREFERENCES_SECTION,
 				'disabled' => $option['disabled'] ?? false,
 			];
-		};
+		}
 
 		if ( $skinPosition !== false ) {
 			$injectIntoIndex = $skinPosition + 1;
@@ -131,7 +132,7 @@ class PopupsHooks {
 	 * @param string $skin
 	 */
 	public static function onResourceLoaderGetConfigVars( array &$vars, $skin ) {
-		/** @var \Config $config */
+		/** @var Config $config */
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 
 		$vars['wgPopupsVirtualPageViews'] = $config->get( 'PopupsVirtualPageViews' );
@@ -171,31 +172,40 @@ class PopupsHooks {
 	}
 
 	/**
-	 * Register default preferences for popups
+	 * Called whenever a user wants to reset their preferences.
 	 *
-	 * @param array &$wgDefaultUserOptions Reference to default options array
+	 * @param array &$defaultOptions
 	 */
-	public static function onUserGetDefaultOptions( array &$wgDefaultUserOptions ) {
-		$default = MediaWikiServices::getInstance()->getService( 'Popups.Config' )
-			->get( 'PopupsOptInDefaultState' );
+	public static function onUserGetDefaultOptions( array &$defaultOptions ) {
+		/** @var Config $config */
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		$default = $config->get( 'PopupsOptInDefaultState' );
+		$defaultOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
 
-		$wgDefaultUserOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
-		$wgDefaultUserOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = $default;
+		if ( $config->get( 'PopupsReferencePreviews' ) &&
+			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
+		) {
+			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = $default;
+		}
 	}
 
 	/**
-	 * Change the default PagePreviews visibility state for newly created accounts
+	 * Called one time when initializing a users preferences for a newly created account.
 	 *
 	 * @param User $user Newly created user object
-	 * @param bool $autocreated Is user autocreated
+	 * @param bool $isAutoCreated
 	 */
-	public static function onLocalUserCreated( User $user, $autocreated ) {
-		// ignore the $autocreated flag, we always want to set PagePreviews visibility
-		$default = MediaWikiServices::getInstance()->getService( 'Popups.Config' )
-			->get( 'PopupsOptInStateForNewAccounts' );
-
+	public static function onLocalUserCreated( User $user, $isAutoCreated ) {
+		/** @var Config $config */
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		$default = $config->get( 'PopupsOptInStateForNewAccounts' );
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $default );
-		$user->setOption( PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME, $default );
+
+		if ( $config->get( 'PopupsReferencePreviews' ) &&
+			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
+		) {
+			$user->setOption( PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME, $default );
+		}
 	}
 
 	/**
@@ -205,7 +215,7 @@ class PopupsHooks {
 	 * @param array[] &$prefs Array of beta features
 	 */
 	public static function onGetBetaFeaturePreferences( User $user, array &$prefs ) {
-		/** @var \Config $config */
+		/** @var Config $config */
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 		$extensionAssetsPath = $config->get( 'ExtensionAssetsPath' );
 
