@@ -26,7 +26,7 @@ use Popups\EventLogging\EventLoggerFactory;
  * @group Popups
  * @coversDefaultClass \Popups\EventLogging\EventLoggerFactory
  */
-class EventLoggerFactoryTest extends MediaWikiTestCase {
+class EventLoggerFactoryTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::__construct

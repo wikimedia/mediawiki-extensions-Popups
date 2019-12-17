@@ -25,7 +25,7 @@ use Popups\PopupsGadgetsIntegration;
  * @group Popups
  * @coversDefaultClass \Popups\PopupsGadgetsIntegration
  */
-class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
+class PopupsGadgetsIntegrationTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * Gadget name for testing
@@ -83,7 +83,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	 * @covers ::sanitizeGadgetName
 	 */
 	public function testConflictsWithNavPopupsGadgetIfGadgetsExtensionIsNotLoaded() {
-		$user = $this->getTestUser()->getUser();
+		$user = $this->createMock( User::class );
 		$integration = new PopupsGadgetsIntegration( $this->getConfigMock(),
 			$this->getExtensionRegistryMock( false ) );
 		$this->assertFalse(
@@ -97,7 +97,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	public function testConflictsWithNavPopupsGadgetIfGadgetNotExists() {
 		$this->checkRequiredDependencies();
 
-		$user = $this->getTestUser()->getUser();
+		$user = $this->createMock( User::class );
 
 		$gadgetRepoMock = $this->createMock( GadgetRepo::class );
 		$gadgetRepoMock->expects( $this->once() )
@@ -114,7 +114,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	public function testConflictsWithNavPopupsGadgetIfGadgetExists() {
 		$this->checkRequiredDependencies();
 
-		$user = $this->getTestUser()->getUser();
+		$user = $this->createMock( User::class );
 
 		$gadgetMock = $this->createMock( Gadget::class );
 		$gadgetMock->expects( $this->once() )
@@ -140,21 +140,21 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	 * @covers ::conflictsWithNavPopupsGadget
 	 */
 	public function testConflictsWithNavPopupsGadgetWhenGadgetNotExists() {
-			$this->checkRequiredDependencies();
+		$this->checkRequiredDependencies();
 
-			$user = $this->getTestUser()->getUser();
+		$user = $this->createMock( User::class );
 
-			$gadgetRepoMock = $this->createMock( GadgetRepo::class );
-			$gadgetRepoMock->expects( $this->once() )
-				->method( 'getGadgetIds' )
-				->willReturn( [ self::NAV_POPUPS_GADGET_NAME ] );
-			$gadgetRepoMock->expects( $this->once() )
-				->method( 'getGadget' )
-				->with( self::NAV_POPUPS_GADGET_NAME )
-				->willThrowException( new InvalidArgumentException() );
+		$gadgetRepoMock = $this->createMock( GadgetRepo::class );
+		$gadgetRepoMock->expects( $this->once() )
+			->method( 'getGadgetIds' )
+			->willReturn( [ self::NAV_POPUPS_GADGET_NAME ] );
+		$gadgetRepoMock->expects( $this->once() )
+			->method( 'getGadget' )
+			->with( self::NAV_POPUPS_GADGET_NAME )
+			->willThrowException( new InvalidArgumentException() );
 
-			$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $this->getConfigMock(),
-				$gadgetRepoMock, self::GADGET_DISABLED );
+		$this->executeConflictsWithNavPopupsGadgetSafeCheck( $user, $this->getConfigMock(),
+			$gadgetRepoMock, self::GADGET_DISABLED );
 	}
 
 	/**
@@ -164,7 +164,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiTestCase {
 	public function testConflictsWithNavPopupsGadgetNameSanitization( $name, $sanitized ) {
 		$this->checkRequiredDependencies();
 
-		$user = $this->getTestUser()->getUser();
+		$user = $this->createMock( User::class );
 
 		$configMock = $this->createMock( Config::class );
 		$configMock->expects( $this->once() )

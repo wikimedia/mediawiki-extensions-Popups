@@ -25,7 +25,7 @@ use Popups\UserPreferencesChangeHandler;
  * @group Popups
  * @coversDefaultClass \Popups\UserPreferencesChangeHandler
  */
-class UserPreferencesChangeHandlerTest extends MediaWikiTestCase {
+class UserPreferencesChangeHandlerTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::doPreferencesFormPreSave
@@ -37,8 +37,11 @@ class UserPreferencesChangeHandlerTest extends MediaWikiTestCase {
 		$contextMock->expects( $expectedMethodCallsCount )
 			->method( 'logUserDisabledPagePreviewsEvent' );
 
-		$user = $this->getMutableTestUser()->getUser();
-		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $newOption );
+		$user = $this->createMock( User::class );
+		$user->method( 'getBoolOption' )
+			->willReturn( $newOption );
+		/** @var User $user */
+
 		$oldOptions = [
 			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME => $oldOption
 		];
