@@ -26,30 +26,14 @@
 		"popups": "GlobalVarConfig::newInstance"
 	},
 	"Hooks": {
-		"BeforePageDisplay": [
-			"Popups\\PopupsHooks::onBeforePageDisplay"
-		],
-		"ResourceLoaderGetConfigVars": [
-			"Popups\\PopupsHooks::onResourceLoaderGetConfigVars"
-		],
-		"GetPreferences": [
-			"Popups\\PopupsHooks::onGetPreferences"
-		],
-		"PreferencesFormPreSave": [
-			"Popups\\UserPreferencesChangeHandler::onPreferencesFormPreSave"
-		],
-		"UserGetDefaultOptions": [
-			"Popups\\PopupsHooks::onUserGetDefaultOptions"
-		],
-		"MakeGlobalVariablesScript": [
-			"Popups\\PopupsHooks::onMakeGlobalVariablesScript"
-		],
-		"LocalUserCreated": [
-			"Popups\\PopupsHooks::onLocalUserCreated"
-		],
-		"GetBetaFeaturePreferences": [
-			"Popups\\PopupsHooks::onGetBetaFeaturePreferences"
-		]
+		"BeforePageDisplay": "Popups\\PopupsHooks::onBeforePageDisplay",
+		"ResourceLoaderGetConfigVars": "Popups\\PopupsHooks::onResourceLoaderGetConfigVars",
+		"GetPreferences": "Popups\\PopupsHooks::onGetPreferences",
+		"PreferencesFormPreSave": "Popups\\UserPreferencesChangeHandler::onPreferencesFormPreSave",
+		"UserGetDefaultOptions": "Popups\\PopupsHooks::onUserGetDefaultOptions",
+		"MakeGlobalVariablesScript": "Popups\\PopupsHooks::onMakeGlobalVariablesScript",
+		"LocalUserCreated": "Popups\\PopupsHooks::onLocalUserCreated",
+		"GetBetaFeaturePreferences": "Popups\\PopupsHooks::onGetBetaFeaturePreferences"
 	},
 	"MessagesDirs": {
 		"Popups": [
