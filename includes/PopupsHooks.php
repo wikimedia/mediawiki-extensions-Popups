@@ -182,6 +182,8 @@ class PopupsHooks {
 		$default = $config->get( 'PopupsOptInDefaultState' );
 		$defaultOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
 
+		// As long as in Beta, don't set a default for Reference Previews. Rely on it either being
+		// null (= disabled), or follow what the "betafeatures-auto-enroll" flag says.
 		if ( $config->get( 'PopupsReferencePreviews' ) &&
 			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
 		) {
@@ -201,6 +203,8 @@ class PopupsHooks {
 		$default = $config->get( 'PopupsOptInStateForNewAccounts' );
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $default );
 
+		// As long as in Beta, don't set a default for Reference Previews. Rely on it either being
+		// null (= disabled), or follow what the "betafeatures-auto-enroll" flag says.
 		if ( $config->get( 'PopupsReferencePreviews' ) &&
 			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
 		) {
