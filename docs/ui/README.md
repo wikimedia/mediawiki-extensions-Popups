@@ -1,2 +1,2 @@
-Run `npm run docs`!
+Run `npm run doc`!
 
