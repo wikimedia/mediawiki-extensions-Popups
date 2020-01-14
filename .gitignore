@@ -7,4 +7,4 @@
 /.eslintcache
 /.storybook/node_modules
 /.storybook/dist
-.storybook/mocks/**/*.less
+/.storybook/mocks/**/*.less
