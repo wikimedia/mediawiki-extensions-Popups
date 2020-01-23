@@ -10,22 +10,22 @@ QUnit.module( 'ext.popups/gateway/reference', {
 		);
 
 		this.$references = $( '<ul>' ).append(
-			$( '<li>' ).attr( 'id', 'cite_note--1' ).append(
+			$( '<li>' ).attr( 'id', 'cite_note-1' ).append(
 				$( '<span>' ).addClass( 'mw-reference-text' ).text( 'Footnote 1' )
 			),
-			$( '<li>' ).attr( 'id', 'cite_note--2' ).append(
+			$( '<li>' ).attr( 'id', 'cite_note-2' ).append(
 				$( '<span>' ).addClass( 'reference-text' ).append(
 					$( '<cite>' ).addClass( 'citation web unknown' ).text( 'Footnote 2' )
 				)
 			),
-			$( '<li>' ).attr( 'id', 'cite_note--3' ).append(
+			$( '<li>' ).attr( 'id', 'cite_note-3' ).append(
 				$( '<span>' ).addClass( 'reference-text' ).append(
 					$( '<cite>' ).addClass( 'news' ).text( 'Footnote 3' ),
 					$( '<cite>' ).addClass( 'news citation' ),
 					$( '<cite>' ).addClass( 'citation' )
 				)
 			),
-			$( '<li>' ).attr( 'id', 'cite_note--4' ).append(
+			$( '<li>' ).attr( 'id', 'cite_note-4' ).append(
 				$( '<span>' ).addClass( 'reference-text' ).append(
 					$( '<cite>' ).addClass( 'news' ).text( 'Footnote 4' ),
 					$( '<cite>' ).addClass( 'web' )
@@ -42,13 +42,13 @@ QUnit.module( 'ext.popups/gateway/reference', {
 
 QUnit.test( 'Reference preview gateway returns the correct data', function ( assert ) {
 	const gateway = createReferenceGateway(),
-		title = createStubTitle( 1, 'Foo', 'cite note--1' );
+		title = createStubTitle( 1, 'Foo', 'cite note-1' );
 
 	return gateway.fetchPreviewForTitle( title ).then( ( result ) => {
 		assert.propEqual(
 			result,
 			{
-				url: '#cite_note--1',
+				url: '#cite_note-1',
 				extract: 'Footnote 1',
 				type: 'reference',
 				referenceType: null,
@@ -60,13 +60,13 @@ QUnit.test( 'Reference preview gateway returns the correct data', function ( ass
 
 QUnit.test( 'Reference preview gateway accepts alternative text node class name', function ( assert ) {
 	const gateway = createReferenceGateway(),
-		title = createStubTitle( 1, 'Foo', 'cite note--2' );
+		title = createStubTitle( 1, 'Foo', 'cite note-2' );
 
 	return gateway.fetchPreviewForTitle( title ).then( ( result ) => {
 		assert.propEqual(
 			result,
 			{
-				url: '#cite_note--2',
+				url: '#cite_note-2',
 				extract: '<cite class="citation web unknown">Footnote 2</cite>',
 				type: 'reference',
 				referenceType: 'web unknown',
@@ -78,13 +78,13 @@ QUnit.test( 'Reference preview gateway accepts alternative text node class name'
 
 QUnit.test( 'Reference preview gateway accepts duplicated types', function ( assert ) {
 	const gateway = createReferenceGateway(),
-		title = createStubTitle( 1, 'Foo', 'cite note--3' );
+		title = createStubTitle( 1, 'Foo', 'cite note-3' );
 
 	return gateway.fetchPreviewForTitle( title ).then( ( result ) => {
 		assert.propEqual(
 			result,
 			{
-				url: '#cite_note--3',
+				url: '#cite_note-3',
 				extract: '<cite class="news">Footnote 3</cite><cite class="news citation"></cite><cite class="citation"></cite>',
 				type: 'reference',
 				referenceType: 'news',
@@ -96,13 +96,13 @@ QUnit.test( 'Reference preview gateway accepts duplicated types', function ( ass
 
 QUnit.test( 'Reference preview gateway rejects conflicting types', function ( assert ) {
 	const gateway = createReferenceGateway(),
-		title = createStubTitle( 1, 'Foo', 'cite note--4' );
+		title = createStubTitle( 1, 'Foo', 'cite note-4' );
 
 	return gateway.fetchPreviewForTitle( title ).then( ( result ) => {
 		assert.propEqual(
 			result,
 			{
-				url: '#cite_note--4',
+				url: '#cite_note-4',
 				extract: '<cite class="news">Footnote 4</cite><cite class="web"></cite>',
 				type: 'reference',
 				referenceType: null,
@@ -114,13 +114,13 @@ QUnit.test( 'Reference preview gateway rejects conflicting types', function ( as
 
 QUnit.test( 'Reference preview gateway returns source element id', function ( assert ) {
 	const gateway = createReferenceGateway(),
-		title = createStubTitle( 1, 'Foo', 'cite note--1' );
+		title = createStubTitle( 1, 'Foo', 'cite note-1' );
 
 	return gateway.fetchPreviewForTitle( title, this.$sourceElement[ 0 ] ).then( ( result ) => {
 		assert.propEqual(
 			result,
 			{
-				url: '#cite_note--1',
+				url: '#cite_note-1',
 				extract: 'Footnote 1',
 				type: 'reference',
 				referenceType: null,
@@ -143,7 +143,7 @@ QUnit.test( 'Reference preview gateway rejects non-existing references', functio
 
 QUnit.test( 'Reference preview gateway is abortable', function ( assert ) {
 	const gateway = createReferenceGateway(),
-		title = createStubTitle( 1, 'Foo', 'cite note--1' ),
+		title = createStubTitle( 1, 'Foo', 'cite note-1' ),
 		promise = gateway.fetchPreviewForTitle( title );
 
 	assert.strictEqual( typeof promise.abort, 'function' );
