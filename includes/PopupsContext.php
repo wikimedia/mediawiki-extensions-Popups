@@ -21,9 +21,9 @@
 namespace Popups;
 
 use BetaFeatures;
-use MediaWiki\MediaWikiServices;
-use ExtensionRegistry;
 use Config;
+use ExtensionRegistry;
+use MediaWiki\MediaWikiServices;
 use Popups\EventLogging\EventLogger;
 use Title;
 

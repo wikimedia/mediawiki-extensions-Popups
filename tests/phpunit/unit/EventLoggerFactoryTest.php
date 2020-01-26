@@ -18,9 +18,9 @@
  * @file
  * @ingroup extensions
  */
+use Popups\EventLogging\EventLoggerFactory;
 use Popups\EventLogging\MWEventLogger;
 use Popups\EventLogging\NullLogger;
-use Popups\EventLogging\EventLoggerFactory;
 
 /**
  * @group Popups

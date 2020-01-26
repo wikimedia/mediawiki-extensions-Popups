@@ -19,10 +19,10 @@
  * @ingroup extensions
  */
 
-use Popups\PopupsContext;
-use Popups\PopupsGadgetsIntegration;
 use Popups\EventLogging\EventLogger;
 use Popups\EventLogging\NullLogger;
+use Popups\PopupsContext;
+use Popups\PopupsGadgetsIntegration;
 
 /**
  * Create an initializable Popups context.

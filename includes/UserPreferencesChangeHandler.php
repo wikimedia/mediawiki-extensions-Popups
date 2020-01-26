@@ -20,9 +20,9 @@
  */
 namespace Popups;
 
+use HTMLForm;
 use MediaWiki\MediaWikiServices;
 use User;
-use HTMLForm;
 
 /**
  * User Preferences save change listener
