@@ -1,2 +1,0 @@
-Run `npm run doc`!
-

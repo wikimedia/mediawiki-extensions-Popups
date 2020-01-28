@@ -78,6 +78,10 @@ separated from the main package.json until CI upgrades from Node 6. NVM can be u
 manage multiple Node versions to run the Storybook app (`cd .storybook && nvm use`).
 See the .storybook/README.md for details.
 
+## Building the documentation
+
+Execute `npm -s run doc`.
+
 ## Terminology
 
 * Footnote - What the Cite extension shows at the bottom of the page.
