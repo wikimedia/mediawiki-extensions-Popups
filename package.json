@@ -45,7 +45,7 @@
 		"jsdoc": "3.6.3",
 		"less": "3.8.1",
 		"less-loader": "4.1.0",
-		"nyc": "13.1.0",
+		"nyc": "15.0.0",
 		"pre-commit": "1.2.2",
 		"redux": "4.0.1",
 		"redux-thunk": "2.3.0",
