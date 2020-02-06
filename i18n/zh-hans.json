@@ -9,10 +9,11 @@
 			"神樂坂秀吉",
 			"予弦",
 			"A Retired User",
-			"VulpesVulpes825"
+			"VulpesVulpes825",
+			"铁桶"
 		]
 	},
-	"popups-message": "页面预览",
+	"popups-message": "预览",
 	"popups-desc": "当用户在页面链接上悬停时显示预览。",
 	"popups-settings-title": "页面预览",
 	"popups-settings-option-simple": "启用",
