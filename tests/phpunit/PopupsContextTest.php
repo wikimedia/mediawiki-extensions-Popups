@@ -96,8 +96,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$user->setId( self::ANONYMOUS_USER );
 
 		$context = $this->getContext();
-		$this->assertSame(
-			true,
+		$this->assertTrue(
 			$context->shouldSendModuleToUser( $user ),
 			'The module is always sent to anonymous users.'
 		);
