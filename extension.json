@@ -148,11 +148,13 @@
 			}
 		},
 		"ext.popups": {
+			"targets": [ "desktop", "mobile" ],
 			"scripts": [
 				"resources/ext.popups/index.js"
 			]
 		},
 		"ext.popups.main": {
+			"targets": [ "desktop", "mobile" ],
 			"scripts": [
 				"resources/dist/index.js"
 			],
