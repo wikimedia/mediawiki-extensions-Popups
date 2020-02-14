@@ -3,11 +3,37 @@
 		"authors": [
 			"Kenrick95",
 			"Iwan Novirion",
-			"Davis Hardiansyah"
+			"Davis Hardiansyah",
+			"Bagas Chrisara"
 		]
 	},
-	"popups-desc": "Menampilkan jendela pop-up dengan ringkasan isi halaman bila pengguna melakukan hover dengan mouse di atas sebuah pranala wiki",
+	"popups-message": "Pratayang",
+	"popups-desc": "Tampilkan pratayang isi halaman apabila pengguna melakukan hover dengan mouse di atas sebuah pranala",
 	"popups-settings-title": "Pratayang halaman",
+	"popups-settings-option-simple": "Aktifkan",
+	"popups-settings-option-advanced": "Lanjutan",
+	"popups-settings-option-advanced-description": "Lihat pranala pratayang dan akses menu fungsi penyuntingan. Cara ini digunakan oleh banyak kontributor",
+	"popups-settings-option-off": "Matikan",
+	"popups-settings-save": "Simpan",
+	"popups-settings-help-ok": "Selesai",
+	"popups-settings-cancel": "Batalkan",
+	"popups-settings-help": "Anda dapat kembali mengaktifkan pratayang dengan menggunakan pranala pada bagian bawah dari halaman ini.",
+	"popups-settings-enable": "Aktifkan pratayang",
+	"popups-preview-no-preview": "Ada masalah ketika menampilkan pratayang ini",
+	"popups-preview-footer-read": "Pergi ke halaman ini",
+	"popups-preview-disambiguation": "Judul ini berkaitan dengan lebih dari satu halaman",
 	"popups-preview-disambiguation-link": "View similar pages",
-	"prefs-reading": "Preferensi baca"
+	"prefs-reading": "Preferensi baca",
+	"popups-prefs-optin-title": "Pratayang halaman (dapatkan pratayang cepat dari sebuah topik ketika sedang membaca suatu halaman):",
+	"popups-prefs-optin-enabled-label": "Aktifkan",
+	"popups-prefs-optin-disabled-label": "Matikan",
+	"popups-prefs-disable-nav-gadgets-info": "Anda harus [[$1 | menonaktifkan Navigation Popups Gadget]] dari tab Gadgets untuk mengaktikan Page Previews",
+	"popups-refpreview-reference": "Referensi",
+	"popups-refpreview-book": "Referensi buku",
+	"popups-refpreview-journal": "Referensi jurnal",
+	"popups-refpreview-news": "Referensi berita",
+	"popups-refpreview-web": "Referensi web",
+	"popups-refpreview-jump-to-reference": "Lompat ke bagian referensi",
+	"popups-refpreview-user-preference-label": "Pratayang referensi (dapatkan pratayang cepat dari bagian catatan kaki)",
+	"popups-refpreview-beta-feature-message": "Pratayang Referensi"
 }
