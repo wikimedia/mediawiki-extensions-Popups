@@ -42,5 +42,5 @@
 	"popups-refpreview-jump-to-reference": "Referansa atla",
 	"popups-refpreview-user-preference-label": "Referans önizlemeleri (dipnotların hızlı önizlemelerini alın)",
 	"popups-refpreview-beta-feature-message": "Referans Önizlemeleri",
-	"popups-refpreview-beta-feature-description": "Dipnot işaretçisinin üzerinde gezdirerek referansın önizlemesini gösterin.\n\nLütfen dikkat: [https://tr.wikipedia.org/wiki/Vikipedi:Ara%C3%A7lar/Gezinti_pencereleri Gezinme açılır pencereleri] gadgetını kullanıyorsanız Referans Önizlemeleri görmezsiniz. [[mw:Reference Tooltips|Referans İpuçları]] gadgetını kullanıyorsanız, hem Referans Araç İpuçları’ndan hem de Referans Önizlemeden açılan pencereler görünecektir."
+	"popups-refpreview-beta-feature-description": "Dipnot işaretçisinin üzerinde gezdirerek referansın önizlemesini gösterin.\n\nLütfen dikkat: [https://tr.wikipedia.org/wiki/Vikipedi:Araçlar/Gezinti_pencereleri Gezinme açılır pencereleri] küçük aracını kullanıyorsanız Referans Önizlemeleri görmezsiniz. [[mw:Reference Tooltips|Kaynakça İpuçları]] küçü aracı kullanıyorsanız, hem Kaynakça Araç İpuçları’ndan hem de Kaynakça Önizlemeden açılan pencereler görünecektir."
 }
