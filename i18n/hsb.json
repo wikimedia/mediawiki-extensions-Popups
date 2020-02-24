@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"J budissin"
+		]
+	},
+	"popups-message": "Přehlady",
+	"popups-settings-title": "Přehlad strony",
+	"popups-settings-option-simple": "Zmóžnić",
+	"popups-settings-option-advanced": "Rozšěrjene",
+	"popups-settings-option-off": "Znjemóžnić",
+	"popups-settings-save": "Składować",
+	"popups-settings-help-ok": "Hotowo",
+	"popups-settings-cancel": "Přetorhnyć",
+	"popups-settings-enable": "Přehlady zmóžnić",
+	"popups-preview-footer-read": "K tutej stronje hić",
+	"popups-preview-disambiguation": "Tutón titul poćahuje so na wjacore strony",
+	"popups-preview-disambiguation-link": "Podobne strony wobhladać",
+	"prefs-reading": "Čitanske nastajenja",
+	"popups-prefs-optin-enabled-label": "Zmóžnić",
+	"popups-prefs-optin-disabled-label": "Znjemóžnić",
+	"popups-refpreview-book": "Literarne žórło",
+	"popups-refpreview-journal": "Nowinske žórło",
+	"popups-refpreview-news": "Powěsćowe žórło",
+	"popups-refpreview-web": "Internetne žórło",
+	"popups-refpreview-jump-to-reference": "K nóžce skočić",
+	"popups-refpreview-beta-feature-message": "Přehlad nóžkow"
+}
