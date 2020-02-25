@@ -3,7 +3,7 @@
 		"authors": []
 	},
 	"popups-message": "Previews",
-	"popups-desc": "Displays previews when the user hovers over a link",
+	"popups-desc": "Displays preview popups when the user hovers over a link",
 	"popups-settings-title": "Page preview",
 	"popups-settings-option-simple": "Enable",
 	"popups-settings-option-simple-description": "Get quick previews of a topic while reading a page.",
