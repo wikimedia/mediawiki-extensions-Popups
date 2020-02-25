@@ -28,15 +28,8 @@ module.exports = function ( grunt ) {
 				]
 			},
 			sources: {
-				src: [
-					'*.{js,json}',
-					'src/**/*.{js,json}',
-					'tests/**/*.{js,json}'
-				]
-			},
-			sourcesfix: {
 				options: {
-					fix: true
+					fix: grunt.option( 'fix' )
 				},
 				src: [
 					'*.{js,json}',
@@ -47,7 +40,8 @@ module.exports = function ( grunt ) {
 		},
 		stylelint: {
 			options: {
-				syntax: 'less'
+				syntax: 'less',
+				fix: grunt.option( 'fix' )
 			},
 			all: [
 				'src/**/*.less'
@@ -86,7 +80,6 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'fix', [ 'eslint:sourcesfix' ] );
 	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'banana', 'eslint:build', 'svgmin' ] );
 	grunt.registerTask( 'default', [ 'lint' ] );
 };
