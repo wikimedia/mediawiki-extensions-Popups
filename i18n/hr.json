@@ -3,11 +3,12 @@
 		"authors": [
 			"MaGa",
 			"Bugoslav",
-			"Johanna Strodt (WMDE)"
+			"Johanna Strodt (WMDE)",
+			"Neptune, the Mystic"
 		]
 	},
 	"popups-message": "Pregledi",
-	"popups-desc": "Prikazuje pregled kad suradnik/ca prelazi pokazivačem miša preko poveznice",
+	"popups-desc": "Prikazuje iskočni pregled kad suradnik/ca prelazi pokazivačem miša preko poveznice",
 	"popups-settings-title": "Pregled stranice",
 	"popups-settings-option-simple": "Omogući",
 	"popups-settings-option-simple-description": "Dohvaća brzo pregledanje teme pri čitanju stranice.",

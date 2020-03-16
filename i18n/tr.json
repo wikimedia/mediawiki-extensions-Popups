@@ -13,7 +13,7 @@
 		]
 	},
 	"popups-message": "Önizlemeler",
-	"popups-desc": "Kullanıcı imleci bir bağlantının üzerinde getirdiğinde önizlemeyi görüntüler.",
+	"popups-desc": "Kullanıcı bir bağlantının üzerine geldiğinde önizleme açılır pencerelerini görüntüler",
 	"popups-settings-title": "Sayfa önizleme",
 	"popups-settings-option-simple": "Etkin",
 	"popups-settings-option-simple-description": "Sayfa okurken bir konunun hızlı önizlemesini alın.",

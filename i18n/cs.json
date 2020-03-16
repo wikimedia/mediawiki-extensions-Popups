@@ -9,11 +9,12 @@
 			"Walter Klosse",
 			"Ilimanaq29",
 			"Matěj Suchánek",
-			"Michaelbrabec"
+			"Michaelbrabec",
+			"Patriccck"
 		]
 	},
 	"popups-message": "Náhledy",
-	"popups-desc": "Zobrazuje náhledy, když uživatel umístí kurzor myši na odkaz",
+	"popups-desc": "Zobrazuje okénka náhledů, když uživatel umístí kurzor myši na odkaz",
 	"popups-settings-title": "Náhled stránky",
 	"popups-settings-option-simple": "Zapnout",
 	"popups-settings-option-simple-description": "Získat rychlé náhledy tématu během čtení stránky.",
@@ -35,5 +36,13 @@
 	"popups-prefs-optin-disabled-label": "Vypnout",
 	"popups-prefs-disable-nav-gadgets-info": "Abyste {{GENDER:|mohl|mohla|mohli}} zapnout Náhledy stránek, musíte [[$1 | vypnout udělátko Navigation Popups]] na záložce Udělátka",
 	"popups-prefs-conflicting-gadgets-info": "Některá udělátka a další přizpůsobení mohou ovlivnit činnost této funkce. Pokud narazíte na problémy, zkontrolujte si prosím svá lokální i globální udělátka a uživatelské skripty.",
-	"popups-refpreview-reference": "Reference"
+	"popups-refpreview-reference": "Reference",
+	"popups-refpreview-book": "Knižní reference",
+	"popups-refpreview-journal": "Časopisová reference",
+	"popups-refpreview-news": "Zpravodajská reference",
+	"popups-refpreview-web": "Webová reference",
+	"popups-refpreview-jump-to-reference": "Skočit na referenci",
+	"popups-refpreview-user-preference-label": "Náhledy referencí (získejte rychlé náhledy poznámek pod čarou)",
+	"popups-refpreview-beta-feature-message": "Náhledy referencí",
+	"popups-refpreview-beta-feature-description": "Zobrazit náhled reference při umístění kurzoru myši nad značku reference (číslo reference v horním indexu).\n\nUpozornění: Pokud používate udělátko [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], tak Náhledy referencí neuvidíte. Pokud používáte udělátko [[mw:Reference Tooltips|Vyskakovací reference]], tak se zobrazí vyskakovací okna z Vyskakovacích referencí i z Náhledu referencí."
 }

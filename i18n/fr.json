@@ -19,7 +19,7 @@
 		]
 	},
 	"popups-message": "Aperçus",
-	"popups-desc": "Affiche un aperçu quand l’utilisateur survole un lien",
+	"popups-desc": "Affiche les fenêtres d’aperçu quand l’utilisateur survole un lien",
 	"popups-settings-title": "Aperçu de la page",
 	"popups-settings-option-simple": "Activer",
 	"popups-settings-option-simple-description": "Obtenir un aperçu rapide d’un sujet en lisant une page.",
