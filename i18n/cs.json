@@ -44,5 +44,5 @@
 	"popups-refpreview-jump-to-reference": "Skočit na referenci",
 	"popups-refpreview-user-preference-label": "Náhledy referencí (získejte rychlé náhledy poznámek pod čarou)",
 	"popups-refpreview-beta-feature-message": "Náhledy referencí",
-	"popups-refpreview-beta-feature-description": "Zobrazit náhled reference při umístění kurzoru myši nad značku reference (číslo reference v horním indexu).\n\nUpozornění: Pokud používate udělátko [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], tak Náhledy referencí neuvidíte. Pokud používáte udělátko [[mw:Reference Tooltips|Vyskakovací reference]], tak se zobrazí vyskakovací okna z Vyskakovacích referencí i z Náhledu referencí."
+	"popups-refpreview-beta-feature-description": "Zobrazit náhled reference při umístění kurzoru myši nad značku reference (číslo reference v horním indexu).\n\nUpozornění: Pokud používáte udělátko [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], tak Náhledy referencí neuvidíte. Pokud používáte udělátko [[mw:Reference Tooltips|Vyskakovací reference]], tak se zobrazí vyskakovací okna z Vyskakovacích referencí i z Náhledu referencí."
 }
