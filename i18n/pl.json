@@ -12,7 +12,7 @@
 		]
 	},
 	"popups-message": "Podgląd",
-	"popups-desc": "Wyświetla podgląd po umieszczeniu wskaźnika myszy na odnośniku",
+	"popups-desc": "Wyświetla wyskakujące okna podglądu po umieszczeniu wskaźnika myszy na odnośniku",
 	"popups-settings-title": "Podgląd strony",
 	"popups-settings-option-simple": "Włącz",
 	"popups-settings-option-simple-description": "Uzyskaj szybkie podglądy tematu podczas czytania strony.",

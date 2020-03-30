@@ -4,11 +4,14 @@
 			"Adam-Yourist"
 		]
 	},
-	"popups-settings-option-simple": "Хьалотае",
+	"popups-settings-option-simple": "Хьалсага",
 	"popups-settings-option-off": "ДӀайоае",
+	"popups-preview-no-preview": "Хьалххе хьажар хьагойташ цхьа гIалат нийсделар.",
+	"popups-preview-footer-read": "Дехьавáла оагIонгахьа",
 	"popups-preview-disambiguation": "Укх тайпара цIи йолаш массехк оагIув я",
 	"popups-preview-disambiguation-link": "ЦIераш вIаший тара йолча оагIонашка хьажар",
 	"prefs-reading": "Iодешара оттамаш",
 	"popups-prefs-optin-title": "ОагIонашка хьалххе бIаргтохар\n\n<em>Дахкилг тIахьекхача лоацца сиха хьахьокха оагIон чулоацам</em>",
+	"popups-prefs-optin-enabled-label": "Хьалсага",
 	"popups-prefs-optin-disabled-label": "ДӀайоае"
 }

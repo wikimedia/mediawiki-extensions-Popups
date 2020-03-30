@@ -10,7 +10,7 @@
 		]
 	},
 	"popups-message": "معاينات الصفحة",
-	"popups-desc": "يقوم بعرض معاينات عندما يقوم المستخدم بحوم المؤشر على رابط.",
+	"popups-desc": "يقوم بعرض منبثقات المعاينة عندما يقوم المستخدم بحوم المؤشر على وصلة.",
 	"popups-settings-title": "معاينة الصفحة",
 	"popups-settings-option-simple": "تمكين",
 	"popups-settings-option-simple-description": "الحصول على معاينة سريعة للموضوع أثناء قراءة الصفحة.",
