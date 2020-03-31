@@ -4,11 +4,12 @@
 			"StanProg",
 			"Termininja",
 			"ShockD",
-			"Vlad5250"
+			"Vlad5250",
+			"Ted Masters"
 		]
 	},
 	"popups-message": "Прегледи",
-	"popups-desc": "Показва предварителен преглед, когато потребителят задържи курсора върху дадена връзка.",
+	"popups-desc": "Показва преглед чрез изскачащите прозорци, когато потребителят задържи курсора върху препратка.",
 	"popups-settings-title": "Преглед на страница",
 	"popups-settings-option-simple": "Включване",
 	"popups-settings-option-simple-description": "Показване на бърз преглед на тема, при четене на страница.",
