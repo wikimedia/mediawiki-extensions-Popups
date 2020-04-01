@@ -6,7 +6,7 @@
 		]
 	},
 	"popups-message": "Eelvaade",
-	"popups-desc": "Kuvab lehekülje eelvaate, kui liigutada kursor üle lingi.",
+	"popups-desc": "Kuvab hüpikkaardil lehekülje eelvaate, kui liigutada kursor üle lingi.",
 	"popups-settings-title": "Lehekülgede eelvaade",
 	"popups-settings-option-simple": "Luba",
 	"popups-settings-option-simple-description": "Näita lehekülje lugemisel teemade põgusat eelvaadet.",
