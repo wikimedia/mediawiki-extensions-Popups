@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Njardarlogar",
 			"Jeblad",
-			"Johanna Strodt (WMDE)"
+			"Johanna Strodt (WMDE)",
+			"Njardarlogar"
 		]
 	},
 	"popups-message": "Sideførehandvising",

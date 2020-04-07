@@ -1,18 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido",
-			"Macofe",
-			"Jduranboger",
-			"Tusca",
-			"Peter Bowman",
-			"Dgstranz",
-			"Joaquin Oltra",
-			"Yllelder",
-			"Jelou",
 			"Carlosmg.dg",
+			"Dgstranz",
+			"Fitoschido",
+			"Jduranboger",
+			"Jelou",
+			"Joaquin Oltra",
+			"Macofe",
 			"MarcoAurelio",
-			"PoLuX124"
+			"Peter Bowman",
+			"PoLuX124",
+			"Tusca",
+			"Yllelder"
 		]
 	},
 	"popups-message": "Previsualizaciones",

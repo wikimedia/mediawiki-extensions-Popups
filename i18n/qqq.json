@@ -1,15 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki",
+			"Amire80",
 			"Liuxinyu970226",
-			"Robby",
-			"Nemo bis",
-			"Mateon1",
 			"Mar(c)",
-			"Umherirrender",
+			"Mateon1",
+			"Nemo bis",
 			"Raymond",
-			"Amire80"
+			"Robby",
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
 	"popups-message": "Name shown in user preference for this extension\n{{name}}",

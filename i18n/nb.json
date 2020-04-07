@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Danmichaelo",
-			"Jon Harald Søby",
-			"Jeblad",
-			"Orf3us",
 			"AnB",
+			"Danmichaelo",
+			"Jeblad",
+			"Johanna Strodt (WMDE)",
+			"Jon Harald Søby",
 			"Kingu",
-			"Johanna Strodt (WMDE)"
+			"Orf3us"
 		]
 	},
 	"popups-message": "Forhåndsvisninger",

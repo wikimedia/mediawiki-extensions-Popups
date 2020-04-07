@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"StanProg",
-			"Termininja",
 			"ShockD",
-			"Vlad5250",
-			"Ted Masters"
+			"StanProg",
+			"Ted Masters",
+			"Termininja",
+			"Vlad5250"
 		]
 	},
 	"popups-message": "Прегледи",
