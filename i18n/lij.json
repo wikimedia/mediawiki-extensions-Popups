@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Giromin Cangiaxo"
+		]
+	},
+	"popups-message": "Anteprimme",
+	"popups-desc": "A mostra 'n barconetto d'anteprimma quande l'utente o passa o puntatô de d'ato a 'n ingancio",
+	"popups-settings-title": "Anteprimma da paggina",
+	"popups-settings-option-simple": "Abillita",
+	"popups-settings-option-simple-description": "Otegni 'na rappida anteprimma de 'n argomento mentre ti lezi 'na paggina.",
+	"popups-settings-option-advanced": "Avansâ",
+	"popups-settings-option-advanced-description": "Ti veddi 'n'anteprimma di inganci e ti accedi a-o menù de fonsioin de modiffica. St'angæzo chie o l'è doeuviou da tanti contributoî.",
+	"popups-settings-option-off": "Dizabillita",
+	"popups-settings-save": "Sarva",
+	"popups-settings-help-ok": "Fæto",
+	"popups-settings-cancel": "Anulla",
+	"popups-settings-help": "Ti poeu riattivâ e anteprimme doeuviando 'n ingancio into pê de paggina.",
+	"popups-settings-enable": "Abillita e anteprimme",
+	"popups-preview-no-preview": "Gh'è stæt'in problema inta vixoalizassion de quest'anteprimma",
+	"popups-preview-footer-read": "Vanni a sta paggina",
+	"popups-preview-disambiguation": "Sto tittolo o se riferisce a ciù de 'na paggina",
+	"popups-preview-disambiguation-link": "Amia paggine scimmile",
+	"prefs-reading": "Preferense de lettua",
+	"popups-prefs-optin-title": "Anteprimma de paggine (otegni 'na rappida anteprimma de 'n argomento mentre ti lezi 'na paggina):",
+	"popups-prefs-optin-enabled-label": "Abillita",
+	"popups-prefs-optin-disabled-label": "Dizabillita",
+	"popups-prefs-disable-nav-gadgets-info": "Ti devi [[$1 |dizabilitâ o Navigation Popups Gadget]] da-a scheda Angæxi pe abilitâ e Anteprimme de paggine",
+	"popups-prefs-conflicting-gadgets-info": "Serti angæxi e di atre personalizassioin porieivan intacâ e prestassioin de questa fonsionalitæ. Se ti g'hæ di problemi controlla i to angæxi e i script utente, compreixi quelli globæ.",
+	"popups-refpreview-reference": "Referensa",
+	"popups-refpreview-book": "Rifeimento a libbro",
+	"popups-refpreview-journal": "Rifeimento da revista"
+}
