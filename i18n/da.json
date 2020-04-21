@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jhertel",
 			"Saederup92",
 			"Weblars"
 		]
@@ -12,6 +13,7 @@
 	"popups-settings-help-ok": "Færdig",
 	"popups-settings-cancel": "Annullér",
 	"popups-preview-footer-read": "Gå til denne side",
+	"popups-preview-disambiguation": "Denne titel relaterer til mere end en side",
 	"popups-preview-disambiguation-link": "Vis lignende sider",
 	"prefs-reading": "Læsepræferencer",
 	"popups-prefs-optin-title": "Forhåndsvisninger (få hurtig forhåndsvisning af et emne mens du læser en side):",
