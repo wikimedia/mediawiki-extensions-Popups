@@ -9,8 +9,8 @@
 			"Tgr"
 		]
 	},
-	"popups-message": "Lapelőnézetek",
-	"popups-desc": "Amikor a felhasználó egy belső hivatkozás fölé viszi az egérmutatót, megjelenik az előnézete.",
+	"popups-message": "Előnézetek",
+	"popups-desc": "Amikor a felhasználó egy hivatkozás fölé viszi az egérmutatót, megjelenik az előnézete egy buborékban",
 	"popups-settings-title": "Lapok előnézete",
 	"popups-settings-option-simple": "Engedélyezés",
 	"popups-settings-option-simple-description": "Gyors előnézetek megjelenítése, miközben olvasod az oldalt.",
@@ -38,5 +38,7 @@
 	"popups-refpreview-news": "Hírhivatkozás",
 	"popups-refpreview-web": "Webes forráshivatkozás",
 	"popups-refpreview-jump-to-reference": "Ugrás a forráshivatkozásra",
-	"popups-refpreview-beta-feature-message": "Forráshivatkozás-előnézetek"
+	"popups-refpreview-user-preference-label": "Forráshivatkozás-előnézetek (lábjegyzetek gyors előnézete)",
+	"popups-refpreview-beta-feature-message": "Forráshivatkozás-előnézetek",
+	"popups-refpreview-beta-feature-description": "Egy forráshivatkozás előnézetének megjelenítése, amikor a lábjegyzet jelzése fölé viszed az egeret.\n\nMegjegyzés: Ha be van kapcsolva a [https://hu.wikipedia.org/wiki/Wikip%C3%A9dia:L%C3%A1tszer Látszer] segédeszköz, nem fogod látni a Forráshivatkozás-előnézeteket. Ha be van kapcsolva a [[mw:Reference Tooltips|Hivatkozások előnézete]] segédeszköz, mind annak, mind ennek az eszköznek a buborékjai meg fognak jelenni."
 }
