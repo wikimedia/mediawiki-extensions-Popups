@@ -94,7 +94,7 @@ QUnit.module( 'ext.popups.preview#getPreviewType', {
 		this.config.set( 'wgTitle', 'Foo' );
 		this.config.set( 'wgNamespaceNumber', 1 );
 		this.referenceLink = createStubTitle( 1, 'Foo', 'ref-fragment' );
-		this.validEl = $( '<a>' ).appendTo( $( '<span>' ).addClass( 'reference' ) );
+		this.validEl = $( '<a>' ).appendTo( $( '<span>' ).addClass( 'reference' ) ).get( 0 );
 	}
 } );
 
@@ -155,7 +155,7 @@ QUnit.test( 'it does not use the reference gateway when there is no fragment', f
 } );
 
 QUnit.test( 'it does not suggest page previews on reference links not having a parent with reference class', function ( assert ) {
-	const el = $( '<a>' ).appendTo( $( '<span>' ) );
+	const el = $( '<a>' ).appendTo( $( '<span>' ) ).get( 0 );
 
 	assert.strictEqual(
 		getPreviewType( el, this.config, this.referenceLink ),

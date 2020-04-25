@@ -84,7 +84,7 @@ QUnit.module( 'ext.popups preview @integration', {
 
 		this.title = stubs.createStubTitle( 1, 'Foo' );
 
-		this.el = $( '<a>' ).attr( 'href', '/wiki/Foo' );
+		this.el = $( '<a>' ).attr( 'href', '/wiki/Foo' ).get( 0 );
 
 		this.actions.boot(
 			/* isEnabled: */

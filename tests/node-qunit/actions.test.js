@@ -84,7 +84,7 @@ function setupWait( module ) {
  */
 function setupEl( module ) {
 	module.title = TEST_TITLE;
-	module.el = $( '<a>' ).eq( 0 );
+	module.el = $( '<a>' ).get( 0 );
 }
 
 QUnit.module( 'ext.popups/actions#linkDwell @integration', {

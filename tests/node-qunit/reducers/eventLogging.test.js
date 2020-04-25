@@ -174,7 +174,7 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 
 QUnit.module( 'ext.popups/reducers#eventLogging @integration', {
 	beforeEach() {
-		this.link = $( '<a>' );
+		this.link = $( '<a>' ).get( 0 );
 	}
 } );
 
