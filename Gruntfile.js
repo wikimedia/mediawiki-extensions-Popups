@@ -15,26 +15,16 @@ module.exports = function ( grunt ) {
 			options: {
 				cache: true,
 				maxWarnings: 0,
-				reportUnusedDisableDirectives: true,
-				extensions: [ '.js', '.json' ]
+				extensions: [ '.js', '.json' ],
+				fix: grunt.option( 'fix' )
 			},
-			// Lint the built artifacts with ES5 so that no ES6 slips to production
-			build: {
-				options: {
-					configFile: '.eslintrc.es5.json'
-				},
-				src: [
-					'resources/dist/*.js'
-				]
-			},
-			sources: {
-				options: {
-					fix: grunt.option( 'fix' )
-				},
+			all: {
 				src: [
 					'*.{js,json}',
 					'src/**/*.{js,json}',
-					'tests/**/*.{js,json}'
+					'tests/**/*.{js,json}',
+					// Lint the built artifacts with ES5 so that no ES6 slips to production
+					'resources/dist/*.js'
 				]
 			}
 		},
@@ -80,6 +70,6 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'banana', 'eslint:build', 'svgmin' ] );
+	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'banana', 'svgmin' ] );
 	grunt.registerTask( 'default', [ 'lint' ] );
 };

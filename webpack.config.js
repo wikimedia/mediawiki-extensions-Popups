@@ -1,5 +1,5 @@
 /* eslint-env node */
-const CleanPlugin = require( 'clean-webpack-plugin' );
+const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const path = require( 'path' );
 
 const PUBLIC_PATH = '/w/extensions/Popups';
@@ -100,7 +100,9 @@ module.exports = ( env, argv ) => ( {
 
 	plugins: [
 		// Delete the output directory on each build.
-		new CleanPlugin( distDir, { verbose: false } )
+		new CleanWebpackPlugin( {
+			cleanOnceBeforeBuildPatterns: [ '**/*', '!.eslintrc.js' ]
+		} )
 	],
 
 	performance: {
