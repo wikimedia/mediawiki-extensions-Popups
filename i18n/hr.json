@@ -36,6 +36,7 @@
 	"popups-refpreview-news": "Novinski izvor",
 	"popups-refpreview-web": "Mrežni izvor",
 	"popups-refpreview-jump-to-reference": "Pođi na izvor",
+	"popups-refpreview-user-preference-label": "Pretpregled referenci (brzi pregled fusnota)",
 	"popups-refpreview-beta-feature-message": "Razglednik izvora",
 	"popups-refpreview-beta-feature-description": "Prikaz pregleda izvora uz pomoć prelaženja pokazivačem miša preko njihovih brojčica s poveznicom na odgovarajuću stavku u popisu svih izvora upotrebljenih u članku.\n\nMolimo Vas, uzmite u obzir sljedeće: Ako koristite dodatak [https://hr.wikipedia.org/wiki/Wikipedija:Navigacijski_prozor%C4%8Di%C4%87i Navigacijski prozorčići,] nećete moći rabiti Razglednik izvora (''Reference Previews''). Ako koristite dodatak [[mw:Reference Tooltips|Prikaz izvora u članku u skočnom prozoru kod prelaska mišem iznad broja izvora (''Reference Tooltips'')]], prikazivat će Vam se i \"balončić\" s tekstom izvora iz Reference Tooltipsa i Razglednik izvora."
 }
