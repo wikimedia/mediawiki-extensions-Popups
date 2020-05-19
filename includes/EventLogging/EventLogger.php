@@ -25,7 +25,7 @@ interface EventLogger {
 	/**
 	 * Page Previews Event logging schema name
 	 */
-	const PREVIEWS_SCHEMA_NAME = 'Popups';
+	public const PREVIEWS_SCHEMA_NAME = 'Popups';
 
 	/**
 	 * Log event

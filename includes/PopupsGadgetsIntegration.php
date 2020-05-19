@@ -29,7 +29,7 @@ use ExtensionRegistry;
  */
 class PopupsGadgetsIntegration {
 
-	const CONFIG_NAVIGATION_POPUPS_NAME = 'PopupsConflictingNavPopupsGadgetName';
+	public const CONFIG_NAVIGATION_POPUPS_NAME = 'PopupsConflictingNavPopupsGadgetName';
 
 	/**
 	 * @var \ExtensionRegistry
