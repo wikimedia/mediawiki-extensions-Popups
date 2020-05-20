@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saimawnkham"
+		]
+	},
+	"popups-settings-option-simple": "ပိုတ်ႇၸႂ်ႉ",
+	"popups-settings-enable": "ပိုတ်ႇၸႂ်ႉ တူၺ်းလူင်ႈၼႃႈ",
+	"prefs-reading": "ငဝ်ႈၵုမ်းပိူင် လွင်ႈလူ",
+	"popups-prefs-optin-title": "တူၺ်းလူင်ႈၼႃႈ ၼႃႈလိၵ်ႈ (ၽွင်းတိုၵ်ႉလူ ၼႃႈလိၵ်ႈ ဢဝ် လွင်ႈတူၺ်းလူင်ႈၼႃႈၽႂ်း ႁင်း ႁူဝ်ၶေႃႈ)",
+	"popups-prefs-optin-enabled-label": "ပိုတ်ႇၸႂ်ႉ"
+}
