@@ -30,5 +30,5 @@
 	"popups-prefs-conflicting-gadgets-info": "Određeni dodaci i druga prilagođavanja mogu utjecati na rad ove opcije. Ako naiđete na probleme, provjerite svoje dodatke i korisničke skripte.",
 	"popups-refpreview-user-preference-label": "Pregled reference (brzi pregled futnota)",
 	"popups-refpreview-beta-feature-message": "Brzi pregled referenci",
-	"popups-refpreview-beta-feature-description": "Prikazuje pregled reference kada mišem pređete preko njene oznake.\n\nNapomena: Ova mogućnost ne radi ako koristite dodatak [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigacijski prozorčići]. Ako koristite dodatak [[mw:Reference Tooltips|Oblačići za reference]], prikazivat će Vam se oba oblačića."
+	"popups-refpreview-beta-feature-description": "Prikazuje pregled reference kada mišem pređete preko njene oznake.\n\nNapomena: Ova mogućnost ne radi ako koristite dodatak [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigacijski prozorčići]. Ako koristite dodatak [[mw:Special:MyLanguage/Reference Tooltips|Oblačići za reference]], prikazivat će Vam se oba oblačića."
 }

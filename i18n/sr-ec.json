@@ -31,8 +31,8 @@
 	"popups-preview-disambiguation-link": "Прикажи сличне странице",
 	"prefs-reading": "Подешавања читања",
 	"popups-prefs-optin-title": "Прегледи страница (брзи прегледи теме при читању странице):",
-	"popups-prefs-optin-enabled-label": "Омогући",
-	"popups-prefs-optin-disabled-label": "Онемогући",
+	"popups-prefs-optin-enabled-label": "омогући",
+	"popups-prefs-optin-disabled-label": "онемогући",
 	"popups-prefs-disable-nav-gadgets-info": "Морате [[$1 | онемогућити Навигацијске искачуће прозоре]] из картице Справице да бисте омогућили справицу Прегледи страница",
 	"popups-prefs-conflicting-gadgets-info": "Одређене справице и друга прилагођавања могу да утичу на рад ове функције. Ако наиђете на проблеме, прегледајте справице и корисничке скрипте, укључујући глобалне.",
 	"popups-refpreview-reference": "Референца",
@@ -43,5 +43,5 @@
 	"popups-refpreview-jump-to-reference": "Пређи на референцу",
 	"popups-refpreview-user-preference-label": "Прегледи референци (брзи прегледи фуснота)",
 	"popups-refpreview-beta-feature-message": "Прегледи референци",
-	"popups-refpreview-beta-feature-description": "Приказује преглед референце када курсором задржите изнад њеног означивача.\n\nИмајте у виду следеће: Ова функција не ради ако користите [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигацијске искачуће прозоре]. Ако користите справицу [[mw:Reference Tooltips|Облачићи за референце]], приказаће вам се оба искачућа прозора."
+	"popups-refpreview-beta-feature-description": "Приказује преглед референце када курсором задржите изнад њеног означивача.\n\nИмајте у виду следеће: Ова функција не ради ако користите [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигацијске искачуће прозоре]. Ако користите справицу [[mw:Special:MyLanguage/Reference Tooltips|Облачићи за референце]], приказаће вам се оба искачућа прозора."
 }

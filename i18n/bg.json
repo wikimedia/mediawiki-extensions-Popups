@@ -39,5 +39,5 @@
 	"popups-refpreview-jump-to-reference": "Към източника",
 	"popups-refpreview-user-preference-label": "Преглед на източници (бърз преглед на бележките под линия)",
 	"popups-refpreview-beta-feature-message": "Бърз преглед на източниците",
-	"popups-refpreview-beta-feature-description": "Показва предварителен преглед на източник, чрез посочване на отбелязката.\n\nЗабележка: Ако използвате джаджата [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигационни прозорци], няма да можете да виждате предварителен преглед на бележките. Ако използвате джаджата [[mw:Reference Tooltips|Изскачащи прозорци за бележките]], ще се появят изскачащите подсказки и на двете джаджи."
+	"popups-refpreview-beta-feature-description": "Показва предварителен преглед на източник, чрез посочване на отбелязката.\n\nЗабележка: Ако използвате джаджата [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигационни прозорци], няма да можете да виждате предварителен преглед на бележките. Ако използвате джаджата [[mw:Special:MyLanguage/Reference Tooltips|Изскачащи прозорци за бележките]], ще се появят изскачащите подсказки и на двете джаджи."
 }

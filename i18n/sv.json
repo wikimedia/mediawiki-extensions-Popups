@@ -40,5 +40,5 @@
 	"popups-refpreview-jump-to-reference": "Hoppa till referens",
 	"popups-refpreview-user-preference-label": "Referensförhandsvisningar (få kortfattade förhandsvisningar av fotnoter)",
 	"popups-refpreview-beta-feature-message": "Referensförhandsvisningar",
-	"popups-refpreview-beta-feature-description": "Visa en förhandsvisningar av en referens genom att lägga muspekaren över fotnotsmarkören.\n\nOBS: Om du använder finessen [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] kommer du inte kunna se några referensförhandsvisningar. Om du använder finessen [[mw:Reference Tooltips|Reference Tooltips]] kommer textrutor från båda två dyka upp."
+	"popups-refpreview-beta-feature-description": "Visa en förhandsvisningar av en referens genom att lägga muspekaren över fotnotsmarkören.\n\nOBS: Om du använder finessen [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] kommer du inte kunna se några referensförhandsvisningar. Om du använder finessen [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] kommer textrutor från båda två dyka upp."
 }

@@ -42,5 +42,5 @@
 	"popups-refpreview-jump-to-reference": "Skocz do przypisu",
 	"popups-refpreview-user-preference-label": "Podgląd przypisów",
 	"popups-refpreview-beta-feature-message": "Podgląd przypisów",
-	"popups-refpreview-beta-feature-description": "Pokaż podgląd przypisu po najechaniu na jego oznaczenie (numer).\n\nUwaga: Jeżeli korzystasz z gadżetu [https://pl.wikipedia.org/wiki/Wikipedia:Narzędzia/Navigation popups Navigation popups], podglądy przypisów nie będą pokazywane. Jeżeli korzystasz z gadżetu [[mw:Reference Tooltips|Reference Tooltips]], okna podglądu przypisów będą pokazywane zarówno z gadżetu Reference Tooltips jak i tej funkcji - Podgląd Przypisów."
+	"popups-refpreview-beta-feature-description": "Pokaż podgląd przypisu po najechaniu na jego oznaczenie (numer).\n\nUwaga: Jeżeli korzystasz z gadżetu [https://pl.wikipedia.org/wiki/Wikipedia:Narzędzia/Navigation popups Navigation popups], podglądy przypisów nie będą pokazywane. Jeżeli korzystasz z gadżetu [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], okna podglądu przypisów będą pokazywane zarówno z gadżetu Reference Tooltips jak i tej funkcji - Podgląd Przypisów."
 }

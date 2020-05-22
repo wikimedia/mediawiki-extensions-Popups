@@ -37,5 +37,5 @@
 	"popups-refpreview-web": "Riferimento a sito web",
 	"popups-refpreview-jump-to-reference": "Vai alla nota",
 	"popups-refpreview-beta-feature-message": "Anteprima note",
-	"popups-refpreview-beta-feature-description": "Mostra l'anteprima di una nota quando si posiziona il mouse sul suo marcatore.\n\nAttenzione: le anteprime delle note non appaiono se si tiene attivo l'accessorio dei [https://it.wikipedia.org/wiki/Aiuto:Accessori/Popup_di_navigazione popup]. Se invece si ha attivo l'accessorio [[mw:Reference Tooltips|Reference Tooltips]], appariranno due anteprime, una per Reference Tooltips e una per questa funzionalità."
+	"popups-refpreview-beta-feature-description": "Mostra l'anteprima di una nota quando si posiziona il mouse sul suo marcatore.\n\nAttenzione: le anteprime delle note non appaiono se si tiene attivo l'accessorio dei [https://it.wikipedia.org/wiki/Aiuto:Accessori/Popup_di_navigazione popup]. Se invece si ha attivo l'accessorio [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], appariranno due anteprime, una per Reference Tooltips e una per questa funzionalità."
 }
