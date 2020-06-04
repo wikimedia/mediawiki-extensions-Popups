@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dianakc",
+			"Dr03ramos",
 			"Eduardo Addad de Oliveira",
 			"Felipe L. Ewald",
 			"Fitoschido",
@@ -12,7 +13,7 @@
 	},
 	"popups-message": "Pré-visualizações",
 	"popups-desc": "Exibe pop-ups de visualização quando o usuário passa o mouse sobre um link",
-	"popups-settings-title": "Pré-visualização",
+	"popups-settings-title": "Pré-visualização da página",
 	"popups-settings-option-simple": "Ativar",
 	"popups-settings-option-simple-description": "Obtenha previsões rápidas de um tópico durante a leitura de uma página.",
 	"popups-settings-option-advanced": "Avançado",
@@ -40,6 +41,6 @@
 	"popups-refpreview-web": "Referência de site",
 	"popups-refpreview-jump-to-reference": "Ir para referência",
 	"popups-refpreview-user-preference-label": "Pré-visualizações de referência (obtenha pré-visualizações rápidas de notas de rodapé)",
-	"popups-refpreview-beta-feature-message": "Referência de pré-visualização",
+	"popups-refpreview-beta-feature-message": "Pré-visualização de referências",
 	"popups-refpreview-beta-feature-description": "Mostre uma pré-visualização de uma referência pairando sobre seu marcador de nota de rodapé.\n\nPor favor note: se você estiver usando o gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Pop-ups de navegação], você não verá as pré-visualizações de referência. Se você estiver usando o gadget [[mw:Special:MyLanguage/Reference Tooltips|Dicas de referência]], os pop-ups das dicas de ferramentas de referência e das pré-visualizações de referência serão exibidos."
 }
