@@ -30,10 +30,6 @@ use Psr\Log\LoggerInterface;
  */
 class PopupsHooksTest extends MediaWikiTestCase {
 
-	protected function tearDown() : void {
-		parent::tearDown();
-	}
-
 	/**
 	 * @covers ::onGetPreferences
 	 */
