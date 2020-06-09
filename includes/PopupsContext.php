@@ -167,22 +167,21 @@ class PopupsContext {
 	/**
 	 * Whether popups code should be shipped to $title
 	 *
-	 * For example, if 'Special:UserLogin' is blacklisted, and the user is on 'Special:UserLogin',
-	 * then the title is considered blacklisted.
+	 * For example, if 'Special:UserLogin' is excluded, and the user is on 'Special:UserLogin',
+	 * then the title is considered excluded.
 	 *
-	 * A title is also considered blacklisted if its root matches one of the page names
-	 * from the config variable. For example, if 'User:A' is blacklisted, and the
-	 * title is 'User:A/b', then this title is considered blacklisted.
+	 * A title is also considered excluded if its root matches one of the page names
+	 * from the config variable. For example, if 'User:A' is excluded, and the
+	 * title is 'User:A/b', then this title is considered excluded.
 	 *
-	 * Language specific blacklisted titles affect all languages. For example, if "Main_Page" is
-	 * blacklisted, "Bosh_Sahifa" (which is "Main_Page" in Uzbek) is considered blacklisted
-	 * too.
+	 * Language specific excluded titles affect all languages. For example, if "Main_Page" is
+	 * excluded, "Bosh_Sahifa" (which is "Main_Page" in Uzbek) is considered excluded too.
 	 *
 	 * @param Title $title title being tested
 	 * @return bool
 	 */
-	public function isTitleBlacklisted( $title ) {
-		$blacklistedPages = $this->config->get( 'PopupsPageBlacklist' );
+	public function isTitleExcluded( $title ) {
+		$excludedPages = $this->config->get( 'PopupsPageBlacklist' );
 		$canonicalTitle = $title->getRootTitle();
 
 		if ( $title->isSpecialPage() ) {
@@ -195,10 +194,10 @@ class PopupsContext {
 			}
 		}
 
-		foreach ( $blacklistedPages as $page ) {
-			$blacklistedTitle = Title::newFromText( $page );
+		foreach ( $excludedPages as $page ) {
+			$excludedTitle = Title::newFromText( $page );
 
-			if ( $canonicalTitle->equals( $blacklistedTitle ) ) {
+			if ( $canonicalTitle->equals( $excludedTitle ) ) {
 				return true;
 			}
 		}

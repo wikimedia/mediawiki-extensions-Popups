@@ -197,51 +197,51 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::isTitleBlacklisted
-	 * @dataProvider provideTestIsTitleBLacklisted
-	 * @param string[] $blacklist
+	 * @covers ::isTitleExcluded
+	 * @dataProvider provideTestIsTitleExcluded
+	 * @param string[] $excludedPages
 	 * @param Title $title
 	 * @param bool $expected
 	 */
-	public function testIsTitleBlacklisted( array $blacklist, Title $title, $expected ) {
-		$this->setMwGlobals( [ 'wgPopupsPageBlacklist' => $blacklist ] );
+	public function testIsTitleExcluded( array $excludedPages, Title $title, $expected ) {
+		$this->setMwGlobals( [ 'wgPopupsPageBlacklist' => $excludedPages ] );
 		$context = $this->getContext();
 		$this->assertSame( $expected,
-			$context->isTitleBlacklisted( $title ),
-			'The title is' . ( $expected ? ' ' : ' not ' ) . 'blacklisted.' );
+			$context->isTitleExcluded( $title ),
+			'The title is' . ( $expected ? ' ' : ' not ' ) . 'excluded.' );
 	}
 
-	public function provideTestIsTitleBlacklisted() {
-		$blacklist = [ 'Special:Userlogin', 'Special:CreateAccount', 'User:A' ];
+	public function provideTestIsTitleExcluded() {
+		$excludedPages = [ 'Special:Userlogin', 'Special:CreateAccount', 'User:A' ];
 		return [
-			[ $blacklist, Title::newFromText( 'Main_Page' ), false ],
-			[ $blacklist, Title::newFromText( 'Special:CreateAccount' ), true ],
-			[ $blacklist, Title::newFromText( 'User:A' ), true ],
-			[ $blacklist, Title::newFromText( 'User:A/B' ), true ],
-			[ $blacklist, Title::newFromText( 'User:B' ), false ],
-			[ $blacklist, Title::newFromText( 'User:B/A' ), false ],
+			[ $excludedPages, Title::newFromText( 'Main_Page' ), false ],
+			[ $excludedPages, Title::newFromText( 'Special:CreateAccount' ), true ],
+			[ $excludedPages, Title::newFromText( 'User:A' ), true ],
+			[ $excludedPages, Title::newFromText( 'User:A/B' ), true ],
+			[ $excludedPages, Title::newFromText( 'User:B' ), false ],
+			[ $excludedPages, Title::newFromText( 'User:B/A' ), false ],
 			// test canonical name handling
-			[ $blacklist, Title::newFromText( 'Special:UserLogin' ), true ],
+			[ $excludedPages, Title::newFromText( 'Special:UserLogin' ), true ],
 		];
 	}
 
 	/**
-	 * Test if special page in different language is blacklisted
+	 * Test if special page in different language is excluded
 	 *
-	 * @covers ::isTitleBlacklisted
+	 * @covers ::isTitleExcluded
 	 */
-	public function testIsTranslatedTitleBlacklisted() {
+	public function testIsTranslatedTitleExcluded() {
 		$page = 'Specjalna:Preferencje';
-		$blacklist = [ 'Special:Preferences' ];
+		$excludedPages = [ 'Special:Preferences' ];
 
 		$this->setMwGlobals( [
-			'wgPopupsPageBlacklist' => $blacklist,
+			'wgPopupsPageBlacklist' => $excludedPages,
 			'wgLanguageCode' => 'pl'
 		] );
 		$context = $this->getContext();
 		$this->assertTrue(
-			$context->isTitleBlacklisted( Title::newFromText( $page ) ),
-			'The title is blacklisted.' );
+			$context->isTitleExcluded( Title::newFromText( $page ) ),
+			'The title is excluded.' );
 	}
 
 	/**

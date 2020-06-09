@@ -25,7 +25,7 @@ import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
 import { previewTypes, getPreviewType } from './preview/model';
 
-const BLACKLISTED_LINKS = [
+const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
 	'.image',
 	'.new',
@@ -222,8 +222,8 @@ function registerChangeListeners(
 
 	const selectors = [];
 	if ( mw.user.isAnon() || mw.user.options.get( 'popups' ) === '1' ) {
-		const invalidLinksSelector = BLACKLISTED_LINKS.join( ', ' );
-		selectors.push( `#mw-content-text a[href][title]:not(${invalidLinksSelector})` );
+		const excludedLinksSelector = EXCLUDED_LINK_SELECTORS.join( ', ' );
+		selectors.push( `#mw-content-text a[href][title]:not(${excludedLinksSelector})` );
 	}
 	// TODO: Replace with mw.user.options.get( 'popupsreferencepreviews' ) === '1' when not in Beta
 	// any more, and the temporary feature flag is not needed any more.

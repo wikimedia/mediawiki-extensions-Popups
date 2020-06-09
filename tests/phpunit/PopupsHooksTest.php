@@ -185,7 +185,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->method( 'areDependenciesMet' )
 			->will( $this->returnValue( false ) );
 		$contextMock->expects( $this->once() )
-			->method( 'isTitleBlacklisted' )
+			->method( 'isTitleExcluded' )
 			->will( $this->returnValue( false ) );
 		$contextMock->expects( $this->once() )
 			->method( 'getLogger' )
@@ -199,9 +199,9 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		return [
 			[ false, false, false ],
 			[ true, true, false ],
-			// Code not sent if title blacklisted
+			// Code not sent if title is excluded
 			[ true, false, true ],
-			// Code not sent if title blacklisted
+			// Code not sent if title is excluded
 			[ false, false, true ]
 		];
 	}
@@ -211,7 +211,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 	 * @dataProvider providerOnBeforePageDisplay
 	 */
 	public function testOnBeforePageDisplay( $shouldSendModuleToUser,
-			$isCodeLoaded, $isTitleBlacklisted ) {
+			$isCodeLoaded, $isTitleExcluded ) {
 		$skinMock = $this->createMock( Skin::class );
 
 		$outPageMock = $this->createMock( OutputPage::class );
@@ -223,7 +223,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		$contextMock = $this->createMock( PopupsContext::class );
 
-		if ( !$isTitleBlacklisted ) {
+		if ( !$isTitleExcluded ) {
 			$contextMock->expects( $this->once() )
 				->method( 'areDependenciesMet' )
 				->will( $this->returnValue( true ) );
@@ -234,8 +234,8 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->will( $this->returnValue( $shouldSendModuleToUser ) );
 
 		$contextMock->expects( $this->once() )
-			->method( 'isTitleBlacklisted' )
-			->will( $this->returnValue( $isTitleBlacklisted ) );
+			->method( 'isTitleExcluded' )
+			->will( $this->returnValue( $isTitleExcluded ) );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		PopupsHooks::onBeforePageDisplay( $outPageMock, $skinMock );

@@ -88,7 +88,7 @@
 			"value": 0
 		},
 		"PopupsPageBlacklist": {
-			"description": "Blacklisted pages are subject to the HTML cache policy of the wiki. A purge on a blacklisted page maybe needed to see the effect of this configuration variable. Every blacklisted page should be defined by a canonical name, eg: Special:Userlogin",
+			"description": "List of pages that should not show Popups. Includes subpages. These pages are subject to the HTML cache policy of the wiki. A purge on these pages maybe needed to see the effect of this configuration variable. Every excluded page should be defined by a canonical name, eg: Special:Userlogin",
 			"value": [
 				"Special:Userlogin",
 				"Special:CreateAccount"

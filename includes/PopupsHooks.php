@@ -103,7 +103,7 @@ class PopupsHooks {
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		/** @var PopupsContext $context */
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
-		if ( $context->isTitleBlacklisted( $out->getTitle() ) ) {
+		if ( $context->isTitleExcluded( $out->getTitle() ) ) {
 			return;
 		}
 
