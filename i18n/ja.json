@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kkairri",
+			"Linuxmetel",
 			"Omotecho",
 			"Otokoume",
 			"S2KTS",
@@ -13,7 +14,7 @@
 			"赤城。"
 		]
 	},
-	"popups-message": "ページのプレビュー",
+	"popups-message": "プレビュー",
 	"popups-desc": "ページへのリンクにホバーした際に、プレビューを表示する",
 	"popups-settings-title": "ページのプレビュー",
 	"popups-settings-option-simple": "有効化",
