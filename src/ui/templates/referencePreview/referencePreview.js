@@ -29,13 +29,13 @@ export function renderReferencePreview(
 	model
 ) {
 	const type = KNOWN_TYPES.indexOf( model.referenceType ) < 0 ? 'generic' : model.referenceType,
-		// Messages:
-		// popups-refpreview-book
-		// popups-refpreview-journal
-		// popups-refpreview-news
-		// popups-refpreview-reference
-		// popups-refpreview-web
 		titleMsg = `popups-refpreview-${type === 'generic' ? 'reference' : type}`,
+		// The following messages are used here:
+		// * popups-refpreview-book
+		// * popups-refpreview-journal
+		// * popups-refpreview-news
+		// * popups-refpreview-reference
+		// * popups-refpreview-web
 		title = escapeHTML( mw.msg( titleMsg ) ),
 		url = escapeHTML( model.url ),
 		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );

@@ -15,7 +15,6 @@ module.exports = function ( grunt ) {
 			options: {
 				cache: true,
 				maxWarnings: 0,
-				extensions: [ '.js', '.json' ],
 				fix: grunt.option( 'fix' )
 			},
 			all: {

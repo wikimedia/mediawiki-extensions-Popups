@@ -6,7 +6,7 @@ import { createModel } from '../preview/model';
 
 const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0';
 
-/** @typedef {Function(JQuery.AjaxSettings=): JQuery.jqXHR} Ajax */
+/** @typedef {function(JQuery.AjaxSettings=): JQuery.jqXHR} Ajax */
 
 /**
  * Creates an instance of the RESTBase gateway.

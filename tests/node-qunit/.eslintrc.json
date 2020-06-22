@@ -1,7 +1,6 @@
 {
 	"extends": [
-		"wikimedia/qunit",
-		"../../.eslintrc.json"
+		"wikimedia/qunit"
 	],
 	"rules": {
 		"no-jquery/no-class-state": "off"

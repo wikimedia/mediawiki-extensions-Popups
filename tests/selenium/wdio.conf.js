@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require( 'fs' ),
 	saveScreenshot = require( 'wdio-mediawiki' ).saveScreenshot,
 	logPath = process.env.LOG_DIR || `${__dirname}/log`;
@@ -114,9 +116,8 @@ exports.config = {
 	 *
 	 */
 	afterTest: function ( test ) {
-		let filePath;
 		if ( !test.passed ) {
-			filePath = saveScreenshot( test.title );
+			const filePath = saveScreenshot( test.title );
 			console.log( `\n\tScreenshot: ${filePath}\n` );
 		}
 	}

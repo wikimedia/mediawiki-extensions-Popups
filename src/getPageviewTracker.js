@@ -7,7 +7,7 @@
  *
  * Loads code from the server to the client on demand.
  *
- * @param {array} dependencies to load
+ * @param {Array} dependencies to load
  * @return {JQuery.Deferred} resolving when the code is loaded and
  *   can be used by the client.
  *

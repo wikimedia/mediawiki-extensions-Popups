@@ -40,6 +40,7 @@ export function createStubMap() {
 
 /**
  * Creates a stub that can be used as a replacement to mw.experiements
+ *
  * @param {string} bucket getBucket will respond with this bucket.
  * @return {Object}
  */

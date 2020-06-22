@@ -35,6 +35,7 @@ export default function syncUserSettings( userSettings ) {
 /**
  * Given a state tree, reducer and property, safely return the value of the
  * property if the reducer and property exist
+ *
  * @param {Object} state tree
  * @param {string} reducer key to access on the state tree
  * @param {string} prop key to access on the reducer key of the state tree
@@ -47,6 +48,7 @@ function get( state, reducer, prop ) {
 /**
  * Calls a sync function if the property prop on the property reducer on
  * the state trees has changed value.
+ *
  * @param {Object} prevState
  * @param {Object} state
  * @param {string} reducer key to access on the state tree

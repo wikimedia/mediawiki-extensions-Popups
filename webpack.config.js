@@ -101,7 +101,7 @@ module.exports = ( env, argv ) => ( {
 	plugins: [
 		// Delete the output directory on each build.
 		new CleanWebpackPlugin( {
-			cleanOnceBeforeBuildPatterns: [ '**/*', '!.eslintrc.js' ]
+			cleanOnceBeforeBuildPatterns: [ '**/*', '!.eslintrc.json' ]
 		} )
 	],
 

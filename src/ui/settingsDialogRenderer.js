@@ -7,6 +7,7 @@ import { createSettingsDialog } from './settingsDialog';
 /**
  * Creates a render function that will create the settings dialog and return
  * a set of methods to operate on it
+ *
  * @return {Function} render function
  */
 export default function createSettingsDialogRenderer() {
@@ -25,6 +26,7 @@ export default function createSettingsDialogRenderer() {
 
 	/**
 	 * Renders the relevant form and labels in the settings dialog
+	 *
 	 * @param {Object} boundActions
 	 * @return {Object} object with methods to affect the rendered UI
 	 */
@@ -50,6 +52,7 @@ export default function createSettingsDialogRenderer() {
 		return {
 			/**
 			 * Append the dialog and overlay to a DOM element
+			 *
 			 * @param {HTMLElement} el
 			 * @return {void}
 			 */
@@ -60,6 +63,7 @@ export default function createSettingsDialogRenderer() {
 
 			/**
 			 * Show the settings element and position it correctly
+			 *
 			 * @return {void}
 			 */
 			show() {
@@ -68,6 +72,7 @@ export default function createSettingsDialogRenderer() {
 
 			/**
 			 * Hide the settings dialog.
+			 *
 			 * @return {void}
 			 */
 			hide() {
@@ -76,6 +81,7 @@ export default function createSettingsDialogRenderer() {
 
 			/**
 			 * Toggle the help dialog on or off
+			 *
 			 * @param {boolean} visible if you want to show or hide the help dialog
 			 * @return {void}
 			 */
@@ -123,6 +129,7 @@ function getSelectedSetting( $el ) {
 
 /**
  * Toggles the visibility between a form and the help
+ *
  * @param {JQuery.Object} $el element that contains form and help
  * @param {boolean} visible if the help should be visible, or the form
  * @return {void}
@@ -145,6 +152,7 @@ function toggleHelp( $el, visible ) {
 /**
  * Checks if the NavigationPopups gadget is enabled by looking at the global
  * variables
+ *
  * @return {boolean} if navpops was found to be enabled
  */
 function isNavPopupsEnabled() {

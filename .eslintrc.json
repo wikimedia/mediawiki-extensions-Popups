@@ -1,23 +1,25 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client",
+		"wikimedia/common",
+		"wikimedia/language/es6",
 		"wikimedia/jquery",
-		"wikimedia/language/es6"
+		"wikimedia/mediawiki"
 	],
 	"parserOptions": {
 		"sourceType": "module"
 	},
 	"env": {
 		"browser": true,
-		"jquery": true,
 		"commonjs": true
 	},
-	"globals": {
-		"mw": "readonly",
-		"OO": "readonly"
-	},
 	"rules": {
-		"no-use-before-define": "off"
+		"no-use-before-define": "off",
+		"jsdoc/no-undefined-types": "off"
+	},
+	"settings": {
+		"jsdoc": {
+			"mode": "typescript"
+		}
 	}
 }

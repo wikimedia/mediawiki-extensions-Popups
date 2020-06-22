@@ -1,5 +1,6 @@
 /**
  * Improves the plain text extracts
+ *
  * @param {string} plainTextExtract
  * @param {string} title
  * @return {Array}

@@ -1,3 +1,5 @@
+'use strict';
+
 const assert = require( 'assert' ),
 	page = require( '../pageobjects/popups.page' );
 

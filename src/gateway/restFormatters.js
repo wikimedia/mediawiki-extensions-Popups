@@ -2,6 +2,7 @@ import * as formatter from '../formatter';
 
 /**
  * Prepare extract
+ *
  * @param {Object} page Rest response
  * @return {Array} An array of DOM Elements
  */
@@ -13,6 +14,7 @@ export function parseHTMLResponse( page ) {
 
 /**
  * Prepare extract
+ *
  * @param {Object} page Rest response
  * @return {Array} An array of DOM Elements
  */

@@ -1,3 +1,7 @@
+'use strict';
+
+/* global document */
+
 const
 	fs = require( 'fs' ),
 	Api = require( 'wdio-mediawiki/Api' ),

@@ -6,7 +6,7 @@
  * Page Preview types as defined in Schema:Popups
  * https://meta.wikimedia.org/wiki/Schema:Popups
  *
- * @constant {Object}
+ * @const {Object}
  */
 const previewTypes = {
 	/** Empty preview used in error situations */

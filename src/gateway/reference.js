@@ -14,6 +14,7 @@ export default function createReferenceGateway() {
 
 		/**
 		 * Same alternative selectors with and without mw-… as in the RESTbased endpoint.
+		 *
 		 * @see https://phabricator.wikimedia.org/diffusion/GMOA/browse/master/lib/transformations/references/structureReferenceListContent.js$138
 		 */
 		return $( `${idSelector} .mw-reference-text, ${idSelector} .reference-text` );
@@ -28,6 +29,7 @@ export default function createReferenceGateway() {
 	 * returned as "web paywalled". Validation must be done in the code consuming this.
 	 *
 	 * This duplicates the strict type detection from
+	 *
 	 * @see https://phabricator.wikimedia.org/diffusion/GMOA/browse/master/lib/transformations/references/structureReferenceListContent.js$93
 	 *
 	 * @param {JQuery} $referenceText

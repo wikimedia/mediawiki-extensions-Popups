@@ -9,6 +9,7 @@ import { previewTypes } from '../../src/preview/model';
 
 /**
  * Whether Gateway#fetchPreviewForTitle is resolved or rejected.
+ *
  * @enum {number}
  */
 const FETCH_RESOLUTION = { RESOLVE: 0, REJECT: 1 };

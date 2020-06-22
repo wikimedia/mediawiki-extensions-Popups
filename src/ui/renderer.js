@@ -44,6 +44,7 @@ export function createPointerMasks( container ) {
 
 /**
  * Initializes the renderer.
+ *
  * @return {void}
  */
 export function init() {
@@ -316,6 +317,8 @@ export function hide( preview ) {
 		'mwe-popups-fade-out-down' :
 		'mwe-popups-fade-out-up';
 
+	// Classes documented above
+	// eslint-disable-next-line mediawiki/class-doc
 	preview.el
 		.removeClass( fadeInClass )
 		.addClass( fadeOutClass );
@@ -518,6 +521,7 @@ export function layoutPreview(
 		);
 	}
 
+	// eslint-disable-next-line mediawiki/class-doc
 	popup.addClass( classes.join( ' ' ) );
 
 	if ( flippedY ) {

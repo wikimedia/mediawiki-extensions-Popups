@@ -151,6 +151,7 @@ export function createThumbnailElement(
 
 	const $thumbnailSVGImage = $( document.createElementNS( nsSvg, 'image' ) );
 	$thumbnailSVGImage[ 0 ].setAttributeNS( nsXlink, 'href', url );
+	// eslint-disable-next-line mediawiki/class-doc
 	$thumbnailSVGImage
 		.addClass( className )
 		.attr( {

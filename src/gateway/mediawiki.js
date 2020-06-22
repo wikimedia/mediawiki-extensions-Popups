@@ -12,8 +12,8 @@ const CACHE_LIFETIME = 300;
 
 /**
  * @typedef {Gateway} MediaWikiGateway
- * @prop {Function(object): object} extractPageFromResponse
- * @prop {Function(object): object} formatPlainTextExtract
+ * @property {function(Object): Object} extractPageFromResponse
+ * @property {function(Object): Object} formatPlainTextExtract
  */
 
 /**
