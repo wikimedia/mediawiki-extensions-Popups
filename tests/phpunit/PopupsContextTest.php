@@ -204,7 +204,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * @param bool $expected
 	 */
 	public function testIsTitleExcluded( array $excludedPages, Title $title, $expected ) {
-		$this->setMwGlobals( [ 'wgPopupsPageBlacklist' => $excludedPages ] );
+		$this->setMwGlobals( [ 'wgPopupsPageDisabled' => $excludedPages ] );
 		$context = $this->getContext();
 		$this->assertSame( $expected,
 			$context->isTitleExcluded( $title ),
@@ -235,7 +235,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 		$excludedPages = [ 'Special:Preferences' ];
 
 		$this->setMwGlobals( [
-			'wgPopupsPageBlacklist' => $excludedPages,
+			'wgPopupsPageDisabled' => $excludedPages,
 			'wgLanguageCode' => 'pl'
 		] );
 		$context = $this->getContext();

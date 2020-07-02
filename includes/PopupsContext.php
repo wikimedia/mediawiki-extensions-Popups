@@ -181,7 +181,8 @@ class PopupsContext {
 	 * @return bool
 	 */
 	public function isTitleExcluded( $title ) {
-		$excludedPages = $this->config->get( 'PopupsPageBlacklist' );
+		$excludedPages = $this->config->get( 'PopupsPageDisabled' );
+
 		$canonicalTitle = $title->getRootTitle();
 
 		if ( $title->isSpecialPage() ) {
