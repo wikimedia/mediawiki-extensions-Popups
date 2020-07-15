@@ -18,7 +18,7 @@
 		]
 	},
 	"popups-message": "Antevisões",
-	"popups-desc": "Mostra antevisões quando o utilizador passa o ponteiro do rato por cima de uma hiperligação",
+	"popups-desc": "Mostra janelas de antevisão quando o utilizador passa o ponteiro do rato por cima de uma hiperligação",
 	"popups-settings-title": "Antevisão de página",
 	"popups-settings-option-simple": "Ativar",
 	"popups-settings-option-simple-description": "Obter antevisões rápidas de assuntos durante a leitura de uma página.",
