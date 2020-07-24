@@ -22,8 +22,9 @@ function makePage( title, path ) {
 			}
 			resolve( content );
 		} );
-	} ).then( ( content ) => {
-		return Api.edit( title, content );
+	} ).then( async ( content ) => {
+		const bot = await Api.bot();
+		await bot.edit( title, content );
 	} );
 }
 class PopupsPage extends Page {
@@ -49,7 +50,7 @@ class PopupsPage extends Page {
 				return typeof mw !== 'undefined' &&
 					mw.loader.getState( module.name ) === module.status;
 			}, { status: moduleStatus, name: moduleName } );
-			return result.value;
+			return result;
 		}, 10000, errMsg );
 	}
 
@@ -60,16 +61,16 @@ class PopupsPage extends Page {
 	hasReferencePopupsEnabled() {
 		return browser.execute( function () {
 			return mw.config.get( 'wgPopupsReferencePreviews' );
-		} ).value;
+		} );
 	}
 
 	abandonLink() {
-		browser.moveToObject( '#content h1' );
+		$( '#content h1' ).moveTo();
 	}
 
 	dwellLink( selector ) {
-		browser.moveToObject( selector );
-		browser.waitForExist( POPUPS_SELECTOR );
+		$( selector ).moveTo();
+		$( POPUPS_SELECTOR ).waitForExist();
 	}
 
 	dwellPageLink() {
@@ -77,7 +78,7 @@ class PopupsPage extends Page {
 	}
 
 	hoverPageLink() {
-		browser.moveToObject( PAGE_POPUPS_LINK_SELECTOR );
+		$( PAGE_POPUPS_LINK_SELECTOR ).moveTo();
 	}
 
 	dwellReferenceLink( num ) {
@@ -85,12 +86,12 @@ class PopupsPage extends Page {
 	}
 
 	dwellReferenceInceptionLink() {
-		browser.moveToObject( REFERENCE_INCEPTION_LINK_SELECTOR );
+		$( REFERENCE_INCEPTION_LINK_SELECTOR ).moveTo();
 		browser.pause( 1000 );
 	}
 
 	doNotSeePreview( selector ) {
-		return browser.waitUntil( () => !browser.isVisible( selector ) );
+		return browser.waitUntil( () => !$( selector ).isDisplayed() );
 	}
 
 	doNotSeePagePreview() {
@@ -102,7 +103,7 @@ class PopupsPage extends Page {
 	}
 
 	seePreview( selector ) {
-		return browser.isVisible( selector );
+		return $( selector ).isDisplayed();
 	}
 
 	seePagePreview() {
@@ -121,11 +122,11 @@ class PopupsPage extends Page {
 		return browser.execute( () => {
 			const el = document.querySelector( '.mwe-popups-extract .mw-parser-output' );
 			return el.scrollHeight > el.offsetHeight;
-		} ).value;
+		} );
 	}
 
 	seeFadeoutOnReferenceText() {
-		return browser.isExisting( '.mwe-popups-fade-out' );
+		return $( '.mwe-popups-fade-out' ).isExisting();
 	}
 
 	open() {
