@@ -227,7 +227,10 @@ function registerChangeListeners(
 	}
 	// TODO: Replace with mw.user.options.get( 'popupsreferencepreviews' ) === '1' when not in Beta
 	// any more, and the temporary feature flag is not needed any more.
-	if ( mw.config.get( 'wgPopupsReferencePreviews' ) ) {
+	if ( mw.config.get( 'wgPopupsReferencePreviews' ) &&
+		// T243822: Temporarily disabled in the mobile skin
+		mw.config.get( 'skin' ) !== 'minerva'
+	) {
 		selectors.push( '#mw-content-text .reference a[ href*="#" ]' );
 	}
 	if ( !selectors.length ) {
