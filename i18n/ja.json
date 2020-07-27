@@ -9,13 +9,14 @@
 			"Shirayuki",
 			"Sujiniku",
 			"Suzukaze-c",
+			"Tmv",
 			"Whym",
 			"Yusuke1109",
 			"赤城。"
 		]
 	},
 	"popups-message": "プレビュー",
-	"popups-desc": "ページへのリンクにホバーした際に、プレビューを表示する",
+	"popups-desc": "リンク上にポインターを持って行くとプレビューのポップアップを表示する",
 	"popups-settings-title": "ページのプレビュー",
 	"popups-settings-option-simple": "有効化",
 	"popups-settings-option-simple-description": "ページの閲覧中に、サッとトピックをチラ見できます。",
