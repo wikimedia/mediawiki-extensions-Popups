@@ -12,6 +12,8 @@
 	"popups-settings-option-simple-description": "Bir məqalə oxuyarkən daxili keçidlərə cəld baxış.",
 	"popups-settings-option-off": "Söndür",
 	"popups-settings-save": "Qeyd et",
+	"popups-preview-no-preview": "Səhifəyə ilkin baxış göstərilə bilmədi",
+	"popups-preview-footer-read": "Bu səhifəyə keç",
 	"prefs-reading": "Oxu seçimləri",
 	"popups-prefs-optin-title": "Səhifə ön görünüşü (səhifə oxuyarkən məqaləyə cəld ilkin baxış):",
 	"popups-prefs-optin-enabled-label": "Açıq",
