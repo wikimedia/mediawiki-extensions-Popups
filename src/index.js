@@ -33,6 +33,7 @@ const EXCLUDED_LINK_SELECTORS = [
 	'.external',
 	'.mw-cite-backlink a',
 	'.oo-ui-buttonedElement-button',
+	'.ve-ce-surface a', // T259889
 	'.cancelLink a'
 ];
 
