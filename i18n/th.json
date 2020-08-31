@@ -2,14 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Aefgh39622",
-			"B20180"
+			"B20180",
+			"Patsagorn Y."
 		]
 	},
 	"popups-message": "การแสดงตัวอย่างหน้า",
-	"popups-desc": "แสดงตัวอย่างหน้าเมื่อผู้ใช้วางเมาส์เหนือลิงก์หน้า",
+	"popups-desc": "แสดงปอปอัพตัวอย่างเมื่อผู้ใช้วางเมาส์เหนือลิงก์หน้า",
 	"popups-settings-title": "การแสดงตัวอย่างหน้า",
 	"popups-settings-option-simple": "เปิดใช้งาน",
+	"popups-settings-option-simple-description": "รับตัวอย่างของหัวข้อนั้น ๆ อย่างรวดเร็วขณะอ่านหน้า",
 	"popups-settings-option-advanced": "ขั้นสูง",
+	"popups-settings-option-advanced-description": "ดูตัวอย่างลิงก์และเข้าถึงเมนูแก้ไข นี่ถูกใช้โดยผู้แก้ไขหลายคน",
 	"popups-settings-option-off": "ปิดใช้งาน",
 	"popups-settings-save": "บันทึก",
 	"popups-settings-help-ok": "เสร็จสิ้น",
@@ -18,11 +21,20 @@
 	"popups-settings-enable": "เปิดใช้งานการแสดงตัวอย่าง",
 	"popups-preview-no-preview": "มีปัญหาในการแสดงผลตัวอย่างนี้",
 	"popups-preview-footer-read": "ไปที่หน้านี้",
+	"popups-preview-disambiguation": "หัวข้อนี้เกี่ยวข้องกับหน้ามากกว่าหนึ่งหน้า",
+	"popups-preview-disambiguation-link": "ดูหน้าที่คล้ายกัน",
 	"prefs-reading": "การตั้งค่าการอ่าน",
-	"popups-prefs-optin-title": "การแสดงตัวอย่างหน้า\n\n<em>แสดงตัวอย่างหัวข้ออย่างรวดเร็วขณะอ่านหน้า</em>",
+	"popups-prefs-optin-title": "แสดงตัวอย่างหน้า (รับการแสดงตัวอย่างของหัวข้อขณะอ่านหน้า):",
 	"popups-prefs-optin-enabled-label": "เปิดใช้งาน",
 	"popups-prefs-optin-disabled-label": "ปิดใช้งาน",
 	"popups-prefs-disable-nav-gadgets-info": "คุณต้อง[[$1 | ปิดใช้งานแกเจตป๊อปอัปการนำทาง (Navigation Popups)]] จากในแถบอุปกรณ์เสริมเพื่อเปิดใช้งานการแสดงตัวอย่างหน้า",
 	"popups-prefs-conflicting-gadgets-info": "แกเจตและการปรับแต่งอื่น ๆ บางอย่างอาจส่งผลต่อประสิทธิภาพของคุณลักษณะนี้ ถ้าคุณพบปัญหา กรุณาตรวจสอบแกเจตและสคริปต์ผู้ใช้ รวมถึง รวมถึงการตั้งค่ากลางด้วย",
-	"popups-refpreview-jump-to-reference": "ข้ามไปที่เชิงอรรถ"
+	"popups-refpreview-reference": "อ้างอิง",
+	"popups-refpreview-book": "หนังสืออ้างอิง",
+	"popups-refpreview-journal": "วารสารอ้างอิง",
+	"popups-refpreview-news": "ข่าวอ้างอิง",
+	"popups-refpreview-web": "เว็บอ้างอิง",
+	"popups-refpreview-jump-to-reference": "ไปยังรายการอ้างอิง",
+	"popups-refpreview-user-preference-label": "ตัวอย่างอ้างอิง (รับการแสดงตัวอย่างอย่างรวดเร็ว)",
+	"popups-refpreview-beta-feature-message": "ตัวอย่างอ้างอิง"
 }
