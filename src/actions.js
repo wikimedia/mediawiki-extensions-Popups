@@ -342,7 +342,9 @@ export function referenceClick( title, el, gateway, generateToken ) {
 		if ( !clickFollowsDwellEvent() ) {
 			token = generateToken();
 		} else {
-			dwellPromise.abort();
+			if ( 'abort' in dwellPromise ) {
+				dwellPromise.abort();
+			}
 		}
 
 		dispatch( timedAction( {
