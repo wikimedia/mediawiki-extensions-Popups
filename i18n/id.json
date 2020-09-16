@@ -4,7 +4,8 @@
 			"Bagas Chrisara",
 			"Davis Hardiansyah",
 			"Iwan Novirion",
-			"Kenrick95"
+			"Kenrick95",
+			"RXerself"
 		]
 	},
 	"popups-message": "Pratayang",
@@ -27,7 +28,7 @@
 	"popups-prefs-optin-title": "Pratayang halaman (dapatkan pratayang cepat dari sebuah topik ketika sedang membaca suatu halaman):",
 	"popups-prefs-optin-enabled-label": "Aktifkan",
 	"popups-prefs-optin-disabled-label": "Matikan",
-	"popups-prefs-disable-nav-gadgets-info": "Anda harus [[$1 | menonaktifkan Navigation Popups Gadget]] dari tab Gadgets untuk mengaktikan Page Previews",
+	"popups-prefs-disable-nav-gadgets-info": "Anda harus [[$1 | menonaktifkan Navigation Popups Gadget]] dari tab Gadgets untuk mengaktifkan Page Previews",
 	"popups-refpreview-reference": "Referensi",
 	"popups-refpreview-book": "Referensi buku",
 	"popups-refpreview-journal": "Referensi jurnal",
