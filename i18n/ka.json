@@ -19,6 +19,8 @@
 	"popups-settings-cancel": "გაუქმება",
 	"popups-preview-no-preview": "გვერდის წინასწარი გადახედვა მიუწვდომელია",
 	"popups-preview-footer-read": "გვერდზე გადასვლა",
+	"popups-preview-disambiguation": "ეს სათაური დაკავშირებულია ერთზე მეტ გვერდთან",
+	"popups-preview-disambiguation-link": "მსგავსი გვერდების ხილვა",
 	"prefs-reading": "წაკითხვის დაყენება",
 	"popups-prefs-optin-title": "გვერდის წინასწარი გადახედვა\n\n<em>თემის სწრაფი წინასწარი ჩვენება გვერდის კითვისას</em>",
 	"popups-prefs-optin-enabled-label": "ჩართვა",
