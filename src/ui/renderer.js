@@ -360,12 +360,12 @@ export function hide( preview ) {
  * @param {number} windowData.scrollTop
  * @param {number} windowData.width
  * @param {number} windowData.height
- * @param {number} pointerSize Space reserved for the pointer
+ * @param {number} pointerSpaceSize Space reserved for the pointer
  * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  * @return {ext.popups.PreviewLayout}
  */
 export function createLayout(
-	isPreviewTall, eventData, linkData, windowData, pointerSize, dir
+	isPreviewTall, eventData, linkData, windowData, pointerSpaceSize, dir
 ) {
 	let flippedX = false,
 		flippedY = false,
@@ -377,7 +377,7 @@ export function createLayout(
 				eventData.pageY - windowData.scrollTop,
 				linkData.clientRects,
 				false
-			) + windowData.scrollTop + pointerSize :
+			) + windowData.scrollTop + pointerSpaceSize :
 			// Position according to link position or size
 			linkData.offset.top + linkData.height + pointerSize,
 		offsetLeft;
@@ -430,7 +430,7 @@ export function createLayout(
 			) + windowData.scrollTop;
 		}
 
-		offsetTop -= pointerSize;
+		offsetTop -= pointerSpaceSize;
 	}
 
 	return {
@@ -498,11 +498,11 @@ export function getClasses( preview, layout ) {
  * @param {ext.popups.PreviewLayout} layout
  * @param {string[]} classes class names used for layout out the preview
  * @param {number} predefinedLandscapeImageHeight landscape image height
- * @param {number} pointerSize
+ * @param {number} pointerSpaceSize
  * @return {void}
  */
 export function layoutPreview(
-	preview, layout, classes, predefinedLandscapeImageHeight, pointerSize
+	preview, layout, classes, predefinedLandscapeImageHeight, pointerSpaceSize
 ) {
 	const popup = preview.el,
 		isTall = preview.isTall,
@@ -517,7 +517,7 @@ export function layoutPreview(
 	) {
 		popup.find( '.mwe-popups-extract' ).css(
 			'margin-top',
-			thumbnail.height - pointerSize
+			thumbnail.height - pointerSpaceSize
 		);
 	}
 

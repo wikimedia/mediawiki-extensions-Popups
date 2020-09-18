@@ -12,10 +12,10 @@
  */
 export default function statsv( boundActions, track ) {
 	return ( _, state ) => {
-		const statsv = state.statsv;
+		const statsvObj = state.statsv;
 
-		if ( statsv.action ) {
-			track( statsv.action, statsv.data );
+		if ( statsvObj.action ) {
+			track( statsvObj.action, statsvObj.data );
 
 			boundActions.statsvLogged();
 		}

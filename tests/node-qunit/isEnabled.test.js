@@ -1,13 +1,13 @@
 import * as stubs from './stubs';
 import isEnabled from '../../src/isEnabled';
 
-function createStubUserSettings( isEnabled ) {
+function createStubUserSettings( expectEnabled ) {
 	return {
 		hasIsEnabled() {
-			return isEnabled !== undefined;
+			return expectEnabled !== undefined;
 		},
 		getIsEnabled() {
-			return Boolean( isEnabled );
+			return Boolean( expectEnabled );
 		}
 	};
 }

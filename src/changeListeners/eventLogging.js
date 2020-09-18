@@ -19,8 +19,8 @@ export default function eventLogging(
 	boundActions, eventLoggingTracker, getCurrentTimestamp
 ) {
 	return ( _, state ) => {
-		const eventLogging = state.eventLogging;
-		let event = eventLogging.event;
+		const eventLoggingObj = state.eventLogging;
+		let event = eventLoggingObj.event;
 
 		if ( !event ) {
 			return;
@@ -33,7 +33,7 @@ export default function eventLogging(
 		// Rightly or wrongly, it's left as an exercise for the analyst to
 		// calculate the time at which the interaction started as part of their
 		// analyses, e.g. https://phabricator.wikimedia.org/T186016#4002923.
-		event = $.extend( true, {}, eventLogging.baseData, event, {
+		event = $.extend( true, {}, eventLoggingObj.baseData, event, {
 			timestamp: getCurrentTimestamp()
 		} );
 

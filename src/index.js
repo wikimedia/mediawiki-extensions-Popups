@@ -115,36 +115,36 @@ function getCurrentTimestamp() {
  * [store](http://redux.js.org/docs/api/Store.html#store).
  *
  * @param {Redux.Store} store
- * @param {Object} actions
+ * @param {Object} registerActions
  * @param {UserSettings} userSettings
  * @param {Function} settingsDialog
  * @param {PreviewBehavior} previewBehavior
  * @param {EventTracker} statsvTracker
  * @param {EventTracker} eventLoggingTracker
  * @param {EventTracker} pageviewTracker
- * @param {Function} getCurrentTimestamp
+ * @param {Function} callbackCurrentTimestamp
  * @return {void}
  */
 function registerChangeListeners(
-	store, actions, userSettings, settingsDialog, previewBehavior,
-	statsvTracker, eventLoggingTracker, pageviewTracker, getCurrentTimestamp
+	store, registerActions, userSettings, settingsDialog, previewBehavior,
+	statsvTracker, eventLoggingTracker, pageviewTracker, callbackCurrentTimestamp
 ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
 	registerChangeListener(
-		store, changeListeners.statsv( actions, statsvTracker ) );
+		store, changeListeners.statsv( registerActions, statsvTracker ) );
 	registerChangeListener(
 		store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener(
-		store, changeListeners.settings( actions, settingsDialog ) );
+		store, changeListeners.settings( registerActions, settingsDialog ) );
 	registerChangeListener(
 		store,
 		changeListeners.eventLogging(
-			actions, eventLoggingTracker, getCurrentTimestamp
+			registerActions, eventLoggingTracker, callbackCurrentTimestamp
 		) );
 	registerChangeListener( store,
-		changeListeners.pageviews( actions, pageviewTracker )
+		changeListeners.pageviews( registerActions, pageviewTracker )
 	);
 }
 
