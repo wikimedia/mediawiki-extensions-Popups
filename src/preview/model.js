@@ -6,7 +6,7 @@
  * Page Preview types as defined in Schema:Popups
  * https://meta.wikimedia.org/wiki/Schema:Popups
  *
- * @const {Object}
+ * @constant {Object}
  */
 const previewTypes = {
 	/** Empty preview used in error situations */
@@ -33,7 +33,7 @@ export { previewTypes };
 
 /**
  * @typedef {Object} PagePreviewModel
- * @extends {PreviewModel}
+ * @extends PreviewModel
  * @property {string} title
  * @property {Array|undefined} extract `undefined` if the extract isn't
  *  viable, e.g. if it's empty after having ellipsis and parentheticals
@@ -48,7 +48,7 @@ export { previewTypes };
 
 /**
  * @typedef {Object} ReferencePreviewModel
- * @extends {PreviewModel}
+ * @extends PreviewModel
  * @property {string} extract An HTML snippet, not necessarily with a single top-level node
  * @property {string} referenceType A type identifier, e.g. "web"
  * @property {string} sourceElementId ID of the parent element that triggered the preview
