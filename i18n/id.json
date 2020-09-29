@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bagas Chrisara",
+			"Daud I.F. Argana",
 			"Davis Hardiansyah",
 			"Iwan Novirion",
 			"Kenrick95",
@@ -9,9 +10,10 @@
 		]
 	},
 	"popups-message": "Pratayang",
-	"popups-desc": "Tampilkan pratayang isi halaman apabila pengguna melakukan hover dengan mouse di atas sebuah pranala",
+	"popups-desc": "Tampilkan ''popup'' pratayang isi halaman apabila pengguna melakukan hover dengan mouse di atas sebuah pranala",
 	"popups-settings-title": "Pratayang halaman",
 	"popups-settings-option-simple": "Aktifkan",
+	"popups-settings-option-simple-description": "Menampilkan pratayang singkat dari suatu topik ketika membaca sebuah halaman.",
 	"popups-settings-option-advanced": "Lanjutan",
 	"popups-settings-option-advanced-description": "Lihat pranala pratayang dan akses menu fungsi penyuntingan. Cara ini digunakan oleh banyak kontributor",
 	"popups-settings-option-off": "Matikan",
@@ -29,6 +31,7 @@
 	"popups-prefs-optin-enabled-label": "Aktifkan",
 	"popups-prefs-optin-disabled-label": "Matikan",
 	"popups-prefs-disable-nav-gadgets-info": "Anda harus [[$1 | menonaktifkan Navigation Popups Gadget]] dari tab Gadgets untuk mengaktifkan Page Previews",
+	"popups-prefs-conflicting-gadgets-info": "Gawai tertentu dan pengubahsuaian lainnnya dapat mempengaruhi performa fitur ini. Jika Anda mengalami masalah tolong tinjau gawai dan skrip pengguna Anda, termasuk yang bersifat global.",
 	"popups-refpreview-reference": "Referensi",
 	"popups-refpreview-book": "Referensi buku",
 	"popups-refpreview-journal": "Referensi jurnal",
@@ -36,5 +39,6 @@
 	"popups-refpreview-web": "Referensi web",
 	"popups-refpreview-jump-to-reference": "Lompat ke bagian referensi",
 	"popups-refpreview-user-preference-label": "Pratayang referensi (dapatkan pratayang cepat dari bagian catatan kaki)",
-	"popups-refpreview-beta-feature-message": "Pratayang Referensi"
+	"popups-refpreview-beta-feature-message": "Pratayang Referensi",
+	"popups-refpreview-beta-feature-description": "Menampilkan pratayang suatu referensi dengan mengatahkan kursor ke penanda catat kakinya.\n\nTolong perhatikan: Jika Anda menggunakan gawai [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Popup navigasi], Anda tidak akan melihat Pratayang Referensi. Jika Anda menggunakan gawai [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], ''pop-up'' dari Reference Tooltips\" dan dari Pratayang Referensi keduanya ditampilkan."
 }
