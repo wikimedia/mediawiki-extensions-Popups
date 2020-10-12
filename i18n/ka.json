@@ -7,12 +7,13 @@
 			"Გიო ოქრო"
 		]
 	},
-	"popups-message": "კონტექსტური სარკმელი",
-	"popups-desc": "ასახავს კონტექსტურ სარკმელს, სადაც ჩანს არსებული გვერდის შემცვლელობა; ვლინდება კურსორის მიტანისას სტატიათა ბმულზე.",
+	"popups-message": "წინასწარი გადახედვა",
+	"popups-desc": "აჩვენებს წინასწარი გადახედვის სარკმელს, სადაც ჩანს არსებული გვერდის შემცვლელობა; ვლინდება კურსორის მიტანისას ბმულზე.",
 	"popups-settings-title": "გვერდის წინასწარი გადახედვა",
 	"popups-settings-option-simple": "ჩართვა",
-	"popups-settings-option-simple-description": "გვერდზე აჩვენებს პირველ წინადადებასა და ილუსტრაციას. რეკომენდებულ­ია მკითხველთათვის.",
+	"popups-settings-option-simple-description": "თემის წინასწარი გადახედვა გვერდის კითხვის დროს.",
 	"popups-settings-option-advanced": "გაფართოებული",
+	"popups-settings-option-advanced-description": "ბმულების წინასწარი გადახედვის ჩვენება და რედაქტირების ფუნქციების მენიუს მიღება. ამას ბევრი რედაქტორი იყენებს.",
 	"popups-settings-option-off": "გამორთვა",
 	"popups-settings-save": "შენახვა",
 	"popups-settings-help-ok": "გაკეთდა",
@@ -26,5 +27,10 @@
 	"popups-prefs-optin-enabled-label": "ჩართვა",
 	"popups-prefs-optin-disabled-label": "გამორთვა",
 	"popups-prefs-conflicting-gadgets-info": "ზოგიერთმა გაჯეტმა და სხვა მომართვებმა შეიძლება გავლენა იქონიონ ამ ფუნქციის წარმოებაზე. თუკი შეგექმნათ პრობლემები, გთხოვთ, გადახედეთ თქვენ გაჯეტებსა და სამომხმარებლო სკრიპტებს, გლობალურის ჩათვლით.",
+	"popups-refpreview-reference": "სქოლიო",
+	"popups-refpreview-book": "სქოლიო წიგნიდან",
+	"popups-refpreview-journal": "სქოლიო ჟურნალ-გაზეთიდან",
+	"popups-refpreview-news": "ახალი ამბების სქოლიო",
+	"popups-refpreview-web": "ინტერნეტსქოლიო",
 	"popups-refpreview-jump-to-reference": "სქოლიოზე გადასვლა"
 }
