@@ -9,3 +9,5 @@
 /.storybook/node_modules
 /.storybook/dist
 /.storybook/mocks/**/*.less
+/tests/selenium/log
+
