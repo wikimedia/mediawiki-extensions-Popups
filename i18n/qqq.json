@@ -40,6 +40,7 @@
 	"popups-refpreview-journal": "Heading for a popup previewing a citation from a journal.\n{{Identical|Journal}}",
 	"popups-refpreview-news": "Heading for a popup previewing a citation from the news.\n{{Identical|News}}",
 	"popups-refpreview-web": "Heading for a popup previewing a citation from a website.\n{{Identical|Website}}",
+	"popups-refpreview-collapsible-placeholder": "Placeholder text for collapsible tables, templates, or other large elements inside of a reference.",
 	"popups-refpreview-jump-to-reference": "Label for a link at the bottom of a reference popup that makes the focus jump down to the original footnote on the page.",
 	"popups-refpreview-user-preference-label": "Label for the user option to enable or disable reference preview popups",
 	"popups-refpreview-beta-feature-message": "Label for the Reference Previews Beta feature.",

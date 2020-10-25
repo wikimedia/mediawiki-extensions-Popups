@@ -65,6 +65,15 @@ export function renderReferencePreview(
 		a.rel = `${a.rel ? `${a.rel} ` : ''}noopener`;
 	} );
 
+	// We assume elements that benefit from being collapsible are to large for the popup
+	$el.find( '.mw-collapsible' ).replaceWith( () => $( '<div>' )
+		.text( mw.msg( 'popups-refpreview-collapsible-placeholder' ) )
+		.addClass( 'mwe-collapsible-placeholder' ) );
+
+	// Undo remaining effects from the jquery.tablesorter.js plugin
+	$el.find( 'table.sortable' ).removeClass( 'sortable jquery-tablesorter' )
+		.find( '.headerSort' ).removeClass( 'headerSort' ).attr( { tabindex: null, title: null } );
+
 	if ( model.sourceElementId ) {
 		$el.find( 'a.mwe-popups-read-link' ).on( 'click', ( event ) => {
 			event.stopPropagation();

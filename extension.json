@@ -198,6 +198,7 @@
 				"popups-refpreview-journal",
 				"popups-refpreview-news",
 				"popups-refpreview-web",
+				"popups-refpreview-collapsible-placeholder",
 				"popups-refpreview-jump-to-reference"
 			],
 			"dependencies": [

@@ -330,6 +330,24 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	);
 } );
 
+QUnit.test( 'createReferencePreview collapsible/sortable handling', ( assert ) => {
+	const model = {
+			url: '',
+			extract: '<table class="mw-collapsible"></table>' +
+				'<table class="sortable"><th class="headerSort" tabindex="1" title="Click here"></th></table>',
+			type: previewTypes.TYPE_REFERENCE
+		},
+		preview = renderer.createPreviewWithType( model );
+
+	assert.notOk( preview.el.find( '.mw-collapsible, .sortable, .headerSort' ).length );
+	assert.notOk( preview.el.find( 'th' ).attr( 'tabindex' ) );
+	assert.notOk( preview.el.find( 'th' ).attr( 'title' ) );
+	assert.strictEqual(
+		preview.el.find( '.mwe-collapsible-placeholder' ).text(),
+		'<popups-refpreview-collapsible-placeholder>'
+	);
+} );
+
 QUnit.test( 'createReferencePreview escapes URLs safely', ( assert ) => {
 	const model = {
 			url: '#custom_id <"\'>',
