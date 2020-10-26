@@ -274,24 +274,11 @@ function registerChangeListeners(
 				boundActions.abandon();
 			}
 		} )
-		.on( 'click', validLinkSelector, function ( event ) {
+		.on( 'click', validLinkSelector, function () {
 			const mwTitle = titleFromElement( this, mw.config );
 			if ( mwTitle ) {
-				const type = getPreviewType( this, mw.config, mwTitle );
-
-				switch ( type ) {
-					case previewTypes.TYPE_PAGE:
-						boundActions.linkClick( this );
-						break;
-					case previewTypes.TYPE_REFERENCE:
-						event.preventDefault();
-						boundActions.referenceClick(
-							mwTitle,
-							this,
-							referenceGateway,
-							generateToken
-						);
-						break;
+				if ( previewTypes.TYPE_PAGE === getPreviewType( this, mw.config, mwTitle ) ) {
+					boundActions.linkClick( this );
 				}
 			}
 		} );

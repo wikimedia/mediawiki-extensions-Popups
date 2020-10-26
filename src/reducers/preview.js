@@ -57,14 +57,6 @@ export default function preview( state, action ) {
 				isUserDwelling: true
 			} );
 
-		case actionTypes.REFERENCE_CLICK:
-			return nextState( state, {
-				activeLink: action.el,
-				activeToken: action.token,
-				isUserDwelling: true,
-				wasClicked: true
-			} );
-
 		case actionTypes.FETCH_ABORTED:
 		case actionTypes.ABANDON_END:
 			if ( action.token === state.activeToken && !state.isUserDwelling ) {

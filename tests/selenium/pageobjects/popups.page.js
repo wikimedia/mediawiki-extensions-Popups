@@ -81,6 +81,10 @@ class PopupsPage extends Page {
 		$( PAGE_POPUPS_LINK_SELECTOR ).moveTo();
 	}
 
+	clickReferenceLink( num ) {
+		this.click( `.reference:nth-of-type(${num}) a` );
+	}
+
 	dwellReferenceLink( num ) {
 		this.dwellLink( `.reference:nth-of-type(${num}) a` );
 	}

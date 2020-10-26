@@ -294,22 +294,3 @@ QUnit.test( 'ABANDON_START', ( assert ) => {
 		'ABANDON_START should mark the preview having been abandoned.'
 	);
 } );
-
-QUnit.test( 'REFERENCE_CLICK updates the state for a click', function ( assert ) {
-	const action = {
-		type: actionTypes.REFERENCE_CLICK,
-		el: this.el,
-		token: '1234567890'
-	};
-
-	assert.deepEqual(
-		preview( {}, action ),
-		{
-			activeLink: action.el,
-			activeToken: action.token,
-			isUserDwelling: true,
-			wasClicked: true
-		},
-		'It should set active link and token as well as dwelling and click status.'
-	);
-} );

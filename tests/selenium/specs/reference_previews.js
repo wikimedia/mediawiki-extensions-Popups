@@ -49,4 +49,12 @@ describe( 'Dwelling on a valid reference link', function () {
 		page.dwellReferenceInceptionLink();
 		assert( page.seeReferenceInceptionPreview(), 'The reference preview is still showing.' );
 	} );
+
+	it( 'Clicking on a referenceLink scrolls to the references section', function () {
+		if ( !page.hasReferencePopupsEnabled() ) {
+			this.skip();
+		}
+		page.clickReferenceLink( 3 );
+		assert( browser.getUrl().match( /#/ ) );
+	} );
 } );

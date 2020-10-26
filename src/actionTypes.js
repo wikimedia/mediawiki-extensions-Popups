@@ -8,7 +8,6 @@ export default {
 	ABANDON_START: 'ABANDON_START',
 	ABANDON_END: 'ABANDON_END',
 	LINK_CLICK: 'LINK_CLICK',
-	REFERENCE_CLICK: 'REFERENCE_CLICK',
 	/** Precedes a fetch. */
 	FETCH_START: 'FETCH_START',
 	/** Follows a successful fetch. */
