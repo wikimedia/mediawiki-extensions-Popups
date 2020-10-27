@@ -115,14 +115,14 @@
 		"ext.popups.icons": {
 			"class": "ResourceLoaderOOUIIconPackModule",
 			"icons": [
-				"infoFilled"
+				"infoFilled",
+				"settings"
 			]
 		},
 		"ext.popups.images": {
 			"selector": ".mw-ui-icon-{name}:before",
 			"class": "ResourceLoaderImageModule",
 			"images": {
-				"popups-settings": "resources/ext.popups.images/cog.svg",
 				"popups-close": "resources/ext.popups.images/close.svg",
 				"preview-generic": {
 					"file": {

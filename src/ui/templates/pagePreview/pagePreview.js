@@ -25,7 +25,7 @@ export function renderPagePreview(
 			<a dir='${languageDirection}' lang='${languageCode}' class='mwe-popups-extract' href='${url}'></a>
 			<footer>
 				<a class='mwe-popups-settings-icon'>
-					<span class="mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-settings"></span>
+					<span class="mw-ui-icon mw-ui-icon-element mw-ui-icon-small mw-ui-icon-settings"></span>
 				</a>
 			</footer>
 		`
