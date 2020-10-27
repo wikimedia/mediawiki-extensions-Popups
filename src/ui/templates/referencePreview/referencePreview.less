@@ -32,9 +32,8 @@
 		max-height: inherit;
 
 		.mwe-popups-scroll {
-			// Reference previews should have a "lighter" appearence than page previews, where the
-			// maximum is 7 lines.
-			max-height: 24px + @popupPadding + 5 * @lineHeight;
+			// 8px caused by different margin-bottom, 55px here vs. 47px upstream
+			max-height: 200px - 8px + 7 * @lineHeight;
 			overflow: auto;
 			padding-right: @popupPadding;
 		}
