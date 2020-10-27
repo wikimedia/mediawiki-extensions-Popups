@@ -5,7 +5,7 @@
 
 .mwe-popups.mwe-popups-type-reference {
 	.mwe-popups-title {
-		margin-top: @popupPadding;
+		margin: 0 0 @popupPadding;
 
 		.mw-ui-icon {
 			vertical-align: middle;
@@ -29,11 +29,15 @@
 	.mwe-popups-extract {
 		margin-right: 0;
 		margin-bottom: 2.75 * @lineHeight;
-		// Reference previews should have a "lighter" appearence than page previews, where the
-		// maximum is 7 lines.
-		max-height: 5 * @lineHeight;
-		// Reference previews can be smaller than page previews, where the minimum is 2 lines.
-		min-height: @lineHeight;
+		max-height: inherit;
+
+		.mwe-popups-scroll {
+			// Reference previews should have a "lighter" appearence than page previews, where the
+			// maximum is 7 lines.
+			max-height: 24px + @popupPadding + 5 * @lineHeight;
+			overflow: auto;
+			padding-right: @popupPadding;
+		}
 
 		// Remove the default fade-out effect set by popup.less
 		&:after {
@@ -55,12 +59,6 @@
 
 		&.mwe-popups-fade-out .mwe-popups-fade {
 			opacity: 1;
-		}
-
-		.mw-parser-output {
-			max-height: inherit;
-			overflow: auto;
-			padding-right: @popupPadding;
 		}
 	}
 

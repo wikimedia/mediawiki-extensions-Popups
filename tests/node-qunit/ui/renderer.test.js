@@ -315,7 +315,7 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 		'<popups-refpreview-web>'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-extract' ).text().trim(),
+		preview.el.find( '.mw-parser-output' ).text().trim(),
 		'Custom extract with an internal and an external link'
 	);
 	assert.strictEqual(

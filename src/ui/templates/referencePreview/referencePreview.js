@@ -42,12 +42,14 @@ export function renderReferencePreview(
 
 	const $el = renderPopup( model.type,
 		`
-			<strong class='mwe-popups-title'>
-				<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-reference-${type}'></span>
-				${title}
-			</strong>
 			<div class='mwe-popups-extract'>
-				<div class='mw-parser-output'>${model.extract}</div>
+				<div class='mwe-popups-scroll'>
+					<strong class='mwe-popups-title'>
+						<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-reference-${type}'></span>
+						${title}
+					</strong>
+					<div class='mw-parser-output'>${model.extract}</div>
+				</div>
 				<div class='mwe-popups-fade' />
 			</div>
 			<footer>
@@ -85,7 +87,7 @@ export function renderReferencePreview(
 		} );
 	}
 
-	$el.find( '.mw-parser-output' ).on( 'scroll', function ( e ) {
+	$el.find( '.mwe-popups-scroll' ).on( 'scroll', function ( e ) {
 		const element = e.target,
 			// We are dealing with floating point numbers here when the page is zoomed!
 			scrolledToBottom = element.scrollTop >= element.scrollHeight - element.clientHeight - 1;
