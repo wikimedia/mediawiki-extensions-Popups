@@ -50,15 +50,9 @@ class PopupsHooks {
 		}
 
 		$option = [
-			'type' => 'radio',
-			'label-message' => 'popups-prefs-optin-title',
+			'type' => 'toggle',
+			'label-message' => 'popups-prefs-optin',
 			'help-message' => 'popups-prefs-conflicting-gadgets-info',
-			'options' => [
-				wfMessage( 'popups-prefs-optin-enabled-label' )->escaped()
-				=> PopupsContext::PREVIEWS_ENABLED,
-				wfMessage( 'popups-prefs-optin-disabled-label' )->escaped()
-				=> PopupsContext::PREVIEWS_DISABLED
-			],
 			'section' => self::PREVIEWS_PREFERENCES_SECTION
 		];
 		if ( $context->conflictsWithNavPopupsGadget( $user ) ) {
