@@ -301,7 +301,7 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	const model = {
 			url: '#custom_id',
-			extract: 'Custom <i>extract</i> with a <a href="//wikipedia.de">link</a>',
+			extract: 'Custom <i>extract</i> with an <a href="/wiki/Internal">internal</a> and an <a href="//wikipedia.de" class="external">external</a> link',
 			type: previewTypes.TYPE_REFERENCE,
 			referenceType: 'web'
 		},
@@ -316,12 +316,12 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-extract' ).text().trim(),
-		'Custom extract with a link'
+		'Custom extract with an internal and an external link'
 	);
 	assert.strictEqual(
 		preview.el.find( 'a[target="_blank"]' ).length,
 		1,
-		'links in (and only in) the content open in new tabs'
+		'only external links open in new tabs'
 	);
 	assert.strictEqual(
 		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),

@@ -57,7 +57,7 @@ export function renderReferencePreview(
 	);
 
 	// Make sure to not destroy existing targets, if any
-	$el.find( '.mwe-popups-extract a[href]:not([target])' ).each( ( i, a ) => {
+	$el.find( '.mwe-popups-extract a[href][class~="external"]:not([target])' ).each( ( i, a ) => {
 		a.target = '_blank';
 		// Don't let the external site access and possibly manipulate window.opener.location
 		a.rel = `${a.rel ? `${a.rel} ` : ''}noopener`;
