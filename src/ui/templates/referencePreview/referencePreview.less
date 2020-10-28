@@ -6,23 +6,23 @@
 .mwe-popups.mwe-popups-type-reference {
 	.mwe-popups-title {
 		margin: 0 0 @popupPadding;
+	}
 
-		.mw-ui-icon {
-			vertical-align: middle;
+	.mw-ui-icon {
+		vertical-align: middle;
 
-			&.mw-ui-icon-element {
-				min-width: @iconSize;
-				width: @iconSize;
+		&.mw-ui-icon-element {
+			min-width: @iconSize;
+			width: @iconSize;
 
-				&:before {
-					margin: 0;
-				}
+			&:before {
+				margin: 0;
 			}
+		}
 
-			&.mw-ui-icon-reference-generic {
-				/* align narrow icon with the text */
-				margin-left: -2px;
-			}
+		&.mw-ui-icon-reference-generic {
+			/* align narrow icon with the text */
+			margin-left: -2px;
 		}
 	}
 
@@ -63,6 +63,17 @@
 		.mwe-collapsible-placeholder {
 			font-weight: bold;
 			margin: 1em 0;
+			position: relative;
+
+			// This mirrors .oo-ui-iconElement-icon
+			.mw-ui-icon {
+				position: absolute;
+			}
+
+			// This mirrors .oo-ui-messageWidget > .oo-ui-labelElement-label
+			.mwe-collapsible-placeholder-label {
+				margin-left: 2em;
+			}
 		}
 	}
 

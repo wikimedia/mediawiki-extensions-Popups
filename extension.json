@@ -112,6 +112,12 @@
 		}
 	},
 	"ResourceModules": {
+		"ext.popups.icons": {
+			"class": "ResourceLoaderOOUIIconPackModule",
+			"icons": [
+				"infoFilled"
+			]
+		},
 		"ext.popups.images": {
 			"selector": ".mw-ui-icon-{name}:before",
 			"class": "ResourceLoaderImageModule",
@@ -202,6 +208,7 @@
 				"popups-refpreview-jump-to-reference"
 			],
 			"dependencies": [
+				"ext.popups.icons",
 				"ext.popups.images",
 				"mediawiki.experiments",
 				"mediawiki.jqueryMsg",

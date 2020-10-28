@@ -67,8 +67,15 @@ export function renderReferencePreview(
 
 	// We assume elements that benefit from being collapsible are to large for the popup
 	$el.find( '.mw-collapsible' ).replaceWith( () => $( '<div>' )
-		.text( mw.msg( 'popups-refpreview-collapsible-placeholder' ) )
-		.addClass( 'mwe-collapsible-placeholder' ) );
+		.addClass( 'mwe-collapsible-placeholder' )
+		.append(
+			$( '<span>' )
+				.addClass( 'mw-ui-icon mw-ui-icon-element mw-ui-icon-infoFilled' ),
+			$( '<div>' )
+				.addClass( 'mwe-collapsible-placeholder-label' )
+				.text( mw.msg( 'popups-refpreview-collapsible-placeholder' ) )
+		)
+	);
 
 	// Undo remaining effects from the jquery.tablesorter.js plugin
 	$el.find( 'table.sortable' ).removeClass( 'sortable jquery-tablesorter' )
