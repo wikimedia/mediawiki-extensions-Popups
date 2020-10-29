@@ -36,9 +36,7 @@ export function renderReferencePreview(
 		// * popups-refpreview-news
 		// * popups-refpreview-reference
 		// * popups-refpreview-web
-		title = escapeHTML( mw.msg( titleMsg ) ),
-		url = escapeHTML( model.url ),
-		linkMsg = escapeHTML( mw.msg( 'popups-refpreview-jump-to-reference' ) );
+		title = escapeHTML( mw.msg( titleMsg ) );
 
 	const $el = renderPopup( model.type,
 		`
@@ -52,9 +50,6 @@ export function renderReferencePreview(
 				</div>
 				<div class='mwe-popups-fade' />
 			</div>
-			<footer>
-				<a href='${url}' class='mwe-popups-read-link'>${linkMsg}</a>
-			</footer>
 		`
 	);
 
@@ -80,20 +75,6 @@ export function renderReferencePreview(
 	// Undo remaining effects from the jquery.tablesorter.js plugin
 	$el.find( 'table.sortable' ).removeClass( 'sortable jquery-tablesorter' )
 		.find( '.headerSort' ).removeClass( 'headerSort' ).attr( { tabindex: null, title: null } );
-
-	if ( model.sourceElementId ) {
-		$el.find( 'a.mwe-popups-read-link' ).on( 'click', ( event ) => {
-			event.stopPropagation();
-
-			if ( isTracking ) {
-				mw.track( LOGGING_SCHEMA, {
-					action: 'clickedGoToReferences'
-				} );
-			}
-
-			$( `#${$.escapeSelector( model.sourceElementId )} > a:first-child` ).trigger( 'click' );
-		} );
-	}
 
 	if ( isTracking ) {
 		$el.find( '.mw-parser-output' ).on( 'click', 'a', () => {

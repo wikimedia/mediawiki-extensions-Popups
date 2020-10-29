@@ -323,11 +323,6 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 		1,
 		'only external links open in new tabs'
 	);
-	assert.strictEqual(
-		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
-		'#custom_id',
-		'readlink is correctly linked'
-	);
 } );
 
 QUnit.test( 'createReferencePreview collapsible/sortable handling', ( assert ) => {
@@ -348,21 +343,6 @@ QUnit.test( 'createReferencePreview collapsible/sortable handling', ( assert ) =
 	);
 } );
 
-QUnit.test( 'createReferencePreview escapes URLs safely', ( assert ) => {
-	const model = {
-			url: '#custom_id <"\'>',
-			extract: '',
-			type: previewTypes.TYPE_REFERENCE
-		},
-		preview = renderer.createPreviewWithType( model );
-
-	assert.strictEqual(
-		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
-		'#custom_id <"\'>',
-		'URL is safely espaced'
-	);
-} );
-
 QUnit.test( 'createReferencePreview default title', ( assert ) => {
 	const model = {
 			url: '',
@@ -375,25 +355,6 @@ QUnit.test( 'createReferencePreview default title', ( assert ) => {
 		preview.el.find( '.mwe-popups-title' ).text().trim(),
 		'<popups-refpreview-reference>'
 	);
-} );
-
-QUnit.test( 'createReferencePreview propagates clicks to source element', ( assert ) => {
-	const model = {
-			url: '',
-			extract: '',
-			type: previewTypes.TYPE_REFERENCE,
-			sourceElementId: 'source-element'
-		},
-		preview = renderer.createPreviewWithType( model ),
-		$sourceElement = $( '<div>' ).attr( 'id', model.sourceElementId ).append(
-			$( '<a>' ).on( 'click', () => {
-				assert.ok( true, 'click event is triggered' );
-			} )
-		).appendTo( document.body );
-
-	preview.el.find( '.mwe-popups-read-link' ).trigger( 'click' );
-
-	$sourceElement.remove();
 } );
 
 QUnit.test( 'createReferencePreview updates fade-out effect on scroll', ( assert ) => {
