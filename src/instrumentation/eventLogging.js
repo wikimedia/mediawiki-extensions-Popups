@@ -23,16 +23,7 @@ export function isEnabled( user, config, window ) {
 		return true;
 	}
 
-	if ( !config.get( 'wgPopupsEventLogging' ) ) {
-		return false;
-	}
-
-	if (
-		!window.navigator ||
-		typeof window.navigator.sendBeacon !== 'function'
-	) {
-		return false;
-	}
-
-	return true;
+	return config.get( 'wgPopupsEventLogging' ) &&
+		window.navigator &&
+		typeof window.navigator.sendBeacon === 'function';
 }

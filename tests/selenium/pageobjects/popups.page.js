@@ -59,9 +59,7 @@ class PopupsPage extends Page {
 	}
 
 	hasReferencePopupsEnabled() {
-		return browser.execute( function () {
-			return mw.config.get( 'wgPopupsReferencePreviews' );
-		} );
+		return browser.execute( () => mw.config.get( 'wgPopupsReferencePreviews' ) );
 	}
 
 	abandonLink() {

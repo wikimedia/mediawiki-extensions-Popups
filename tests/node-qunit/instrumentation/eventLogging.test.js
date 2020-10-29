@@ -15,13 +15,7 @@ QUnit.module( 'ext.popups/instrumentation/eventLogging', {
 		this.user = stubs.createStubUser();
 
 		// Helper function that DRYs up the tests below.
-		this.isEnabled = function () {
-			return isEnabled(
-				this.user,
-				this.config,
-				this.window
-			);
-		};
+		this.isEnabled = () => isEnabled( this.user, this.config, this.window );
 	}
 } );
 

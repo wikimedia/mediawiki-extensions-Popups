@@ -66,7 +66,7 @@ export function renderReferencePreview(
 	} );
 
 	// We assume elements that benefit from being collapsible are to large for the popup
-	$el.find( '.mw-collapsible' ).replaceWith( () => $( '<div>' )
+	$el.find( '.mw-collapsible' ).replaceWith( $( '<div>' )
 		.addClass( 'mwe-collapsible-placeholder' )
 		.append(
 			$( '<span>' )

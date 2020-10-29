@@ -32,9 +32,7 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 			this.footerLinkChangeListener( undefined, this.state );
 		};
 
-		this.getLink = function () {
-			return this.$footer.find( 'li:last-child' );
-		};
+		this.getLink = () => this.$footer.find( 'li:last-child' );
 	},
 	afterEach() {
 		this.$footer.remove();

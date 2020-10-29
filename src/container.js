@@ -83,7 +83,7 @@ export default function createContainer() {
 			}
 
 			if ( !Object.prototype.hasOwnProperty.call( cache, name ) ) {
-				cache[ name ] = factories[ name ]( this );
+				cache[ name ] = factory( this );
 			}
 
 			return cache[ name ];
