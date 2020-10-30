@@ -39,6 +39,7 @@
 	"popups-refpreview-journal": "Zeitschriftenquelle",
 	"popups-refpreview-news": "Nachrichtenquelle",
 	"popups-refpreview-web": "Internetquelle",
+	"popups-refpreview-collapsible-placeholder": "Dieser Einzelnachweis enthält eine Grafik, die nicht in die Vorschau passt.",
 	"popups-refpreview-jump-to-reference": "Zum Einzelnachweis springen",
 	"popups-refpreview-user-preference-label": "Vorschaufunktion für Einzelnachweise aktivieren",
 	"popups-refpreview-beta-feature-message": "Vorschau von Einzelnachweisen",

@@ -8,7 +8,8 @@
 			"Fitoschido",
 			"He7d3r",
 			"Peter Fernando",
-			"Rodrigo codignoli"
+			"Rodrigo codignoli",
+			"Tks4Fish"
 		]
 	},
 	"popups-message": "Pré-visualizações",
@@ -39,6 +40,7 @@
 	"popups-refpreview-journal": "Referência de revista",
 	"popups-refpreview-news": "Referência de notícias",
 	"popups-refpreview-web": "Referência de site",
+	"popups-refpreview-collapsible-placeholder": "Esta referência inclui um gráfico que não cabe na previsão.",
 	"popups-refpreview-jump-to-reference": "Ir para referência",
 	"popups-refpreview-user-preference-label": "Pré-visualizações de referência (obtenha pré-visualizações rápidas de notas de rodapé)",
 	"popups-refpreview-beta-feature-message": "Pré-visualização de referências",

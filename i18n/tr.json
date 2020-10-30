@@ -8,6 +8,7 @@
 			"Katpatuka",
 			"McAang",
 			"Meelo",
+			"MuratTheTurkish",
 			"Rapsar",
 			"Sayginer",
 			"Sezgin İbiş"
@@ -41,6 +42,7 @@
 	"popups-refpreview-journal": "Dergi kaynağı",
 	"popups-refpreview-news": "Haber kaynağı",
 	"popups-refpreview-web": "Web kaynağı",
+	"popups-refpreview-collapsible-placeholder": "Bu kaynak, önizlemeye sığmayan bir grafik içerir.",
 	"popups-refpreview-jump-to-reference": "Kaynağa atla",
 	"popups-refpreview-user-preference-label": "Kaynak önizlemeleri (dipnotların hızlı önizlemelerini alın)",
 	"popups-refpreview-beta-feature-message": "Kaynak Önizlemeleri",
