@@ -37,7 +37,6 @@
 	"popups-refpreview-journal": "مرجع دورية",
 	"popups-refpreview-news": "مرجع أخبار",
 	"popups-refpreview-web": "مرجع على الويب",
-	"popups-refpreview-jump-to-reference": "انتقل إلى المرجع",
 	"popups-refpreview-user-preference-label": "معاينات المرجع (احصل على معاينات سريعة من الحواشي السفلية)",
 	"popups-refpreview-beta-feature-message": "بيان المراجع",
 	"popups-refpreview-beta-feature-description": "إظهار معاينة لمرجع بالمرور فوق علامة حاشيته السفلية.\n\nالرجاء الملاحظة: إذا كنت تستخدم أداة [https://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D8%A7%D9%84%D9%85%D9%86%D8%A8%D8%AB%D9%82%D8%A7%D8%AA المنبثقات]، فلن ترى معاينات المراجع، إذا كنت تستخدم الأداة [[mw:Special:MyLanguage/Reference Tooltips|تلميحات المراجع]]، فستظهر كل منبثقات من كل من المنبثقات وتلميحات المراجع."

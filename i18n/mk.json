@@ -33,7 +33,6 @@
 	"popups-refpreview-journal": "Наведено списание",
 	"popups-refpreview-news": "Наведени вести",
 	"popups-refpreview-web": "Наведено мрежно место",
-	"popups-refpreview-jump-to-reference": "Прејди на наводот",
 	"popups-refpreview-user-preference-label": "Преглед на наводи (брз преглед на подножните белешки)",
 	"popups-refpreview-beta-feature-message": "Брз преглед на подножни наводи",
 	"popups-refpreview-beta-feature-description": "Го прикажува наводот кога кога стрелката е над неговото бројче.\n\n\nИсто така: Оваа можност не работи ако истовремено ја користите алатката [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Прегледнички прозорчиња]. Ако ја користите алатката [[mw:Special:MyLanguage/Reference Tooltips|Прозорчиња за наводи]], ќе ви се прикажуваат и тие отскочници и отскочниците за преглед на наводи."

@@ -40,7 +40,6 @@
 	"popups-refpreview-news": "Nachrichtenquelle",
 	"popups-refpreview-web": "Internetquelle",
 	"popups-refpreview-collapsible-placeholder": "Dieser Einzelnachweis enthält eine Grafik, die nicht in die Vorschau passt.",
-	"popups-refpreview-jump-to-reference": "Zum Einzelnachweis springen",
 	"popups-refpreview-user-preference-label": "Vorschaufunktion für Einzelnachweise aktivieren",
 	"popups-refpreview-beta-feature-message": "Vorschau von Einzelnachweisen",
 	"popups-refpreview-beta-feature-description": "Zeigt eine Vorschau eines Einzelnachweises an, wenn man mit dem Mauszeiger über den Fußnotenmarker fährt oder darauf klickt.\n\nBeachte bitte: Falls du das Helferlein [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups „Navigations-Popups“] benutzt, wirst du keine Einzelnachweis-Vorschaubilder sehen. Falls du das Helferlein [[mw:Special:MyLanguage/Reference Tooltips|„Einzelnachweis-Tooltipps“]] benutzt, werden sowohl die Popups von den Einzelnachweis-Tooltipps als auch von den Einzelnachweis-Vorschaubildern angezeigt."

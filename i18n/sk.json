@@ -32,7 +32,6 @@
 	"popups-refpreview-journal": "Časopisová referencia",
 	"popups-refpreview-news": "Spravodajská referencia",
 	"popups-refpreview-web": "Webová referencia",
-	"popups-refpreview-jump-to-reference": "Skočiť na referenciu",
 	"popups-refpreview-beta-feature-message": "Náhľady referencií",
 	"popups-refpreview-beta-feature-description": "Zobraziť náhľad referencie pri umiestnení kurzora myši nad značku referencie (číslo referencie v hornom indexe).\n\nMajte na pamäti: Pokiaľ používate gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups], Náhľady referencií neuvidíte. Pokiaľ používate gadget [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], zobrazia sa vyskakovacie okná aj z Reference Tooltips, aj z Náhľadov referencií."
 }

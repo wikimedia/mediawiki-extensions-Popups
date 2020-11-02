@@ -41,7 +41,6 @@
 	"popups-refpreview-journal": "期刊参考文献",
 	"popups-refpreview-news": "新闻参考文献",
 	"popups-refpreview-web": "网络参考文献",
-	"popups-refpreview-jump-to-reference": "跳转至参考文献",
 	"popups-refpreview-beta-feature-message": "参考文献预览",
 	"popups-refpreview-beta-feature-description": "在鼠标悬浮于一个脚注标签时可弹出该参考文献预览。\n\n请注意：如果您在使用[https://zh.wikipedia.org/wiki/Wikipedia:维基百科工具/导航Popup 导航Popup]小工具，您将不会看到参考文献预览。如果您在使用[[mw:Special:MyLanguage/Reference Tooltips|参考文献提示]]小工具，将会同时显示参考文献提示和参考文献预览弹窗。"
 }

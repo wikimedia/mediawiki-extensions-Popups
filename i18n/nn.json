@@ -34,7 +34,6 @@
 	"popups-refpreview-journal": "Journalreferanse",
 	"popups-refpreview-news": "Nyhendereferanse",
 	"popups-refpreview-web": "Nettreferanse",
-	"popups-refpreview-jump-to-reference": "Gå til referanse",
 	"popups-refpreview-beta-feature-message": "Referanseførehandvising",
 	"popups-refpreview-beta-feature-description": "Vis ei førehandvising av ein referanse når du peikar på notemerket.\n\nMerk: Funksjonen verkar ikkje saman med tilleggsfunksjonane [https://ein.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] og [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]."
 }
