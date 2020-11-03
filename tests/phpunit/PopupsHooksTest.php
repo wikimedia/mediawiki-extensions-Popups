@@ -266,7 +266,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$vars = [];
 		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
 
-		$this->assertCount( 2, $vars, 'Number of added variables.' );
+		$this->assertCount( 3, $vars, 'Number of added variables.' );
 		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ],
 			'The PopupsConflictsWithNavPopupGadget global is present and false.' );
 	}

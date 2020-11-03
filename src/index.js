@@ -229,6 +229,8 @@ function registerChangeListeners(
 	// TODO: Replace with mw.user.options.get( 'popupsreferencepreviews' ) === '1' when not in Beta
 	// any more, and the temporary feature flag is not needed any more.
 	if ( mw.config.get( 'wgPopupsReferencePreviews' ) &&
+		// T265872: Show popup if there is no conflict with the reference tooltips gadget
+		!mw.config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ) &&
 		// T243822: Temporarily disabled in the mobile skin
 		mw.config.get( 'skin' ) !== 'minerva'
 	) {

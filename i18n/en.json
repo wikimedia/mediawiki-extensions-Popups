@@ -33,5 +33,5 @@
 	"popups-refpreview-collapsible-placeholder": "This reference includes a graphic which does not fit in the preview.",
 	"popups-refpreview-user-preference-label": "Reference previews (get quick previews of footnotes)",
 	"popups-refpreview-beta-feature-message": "Reference Previews",
-	"popups-refpreview-beta-feature-description": "Show a preview of a reference by hovering over its footnote marker.\n\nPlease note: If you’re using the [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] gadget, you won’t see Reference Previews. If you’re using the [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] gadget, both pop-ups from Reference Tooltips and from Reference Previews will appear."
+	"popups-refpreview-beta-feature-description": "Show a preview of a reference by hovering over its footnote marker.\n\nPlease note: If you’re using the [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] gadget or the [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] gadget, you won’t see Reference Previews."
 }

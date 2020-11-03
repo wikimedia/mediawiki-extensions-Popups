@@ -63,6 +63,10 @@
 			"description": "@var string: Navigation popups gadget name",
 			"value": "Navigation_popups"
 		},
+		"PopupsConflictingRefTooltipsGadgetName": {
+			"description": "@var string: Reference tooltips gadget name",
+			"value": "ReferenceTooltips"
+		},
 		"PopupsGateway": {
 			"description": "Which gateway to use for fetching Popups data. Available options: [mwApiPlain|restbasePlain|restbaseHTML]. Full and always up to date list is available in src/gateway/index.js",
 			"value": "mwApiPlain"

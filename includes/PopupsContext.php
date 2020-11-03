@@ -111,6 +111,14 @@ class PopupsContext {
 	}
 
 	/**
+	 * @param \User $user User whose gadgets settings are being checked
+	 * @return bool
+	 */
+	public function conflictsWithRefTooltipsGadget( \User $user ) {
+		return $this->gadgetsIntegration->conflictsWithRefTooltipsGadget( $user );
+	}
+
+	/**
 	 * Are Page previews visible on User Preferences Page
 	 *
 	 * @return bool
