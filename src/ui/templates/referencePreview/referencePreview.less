@@ -28,12 +28,11 @@
 
 	.mwe-popups-extract {
 		margin-right: 0;
-		margin-bottom: @lineHeight;
+		margin-bottom: @popupPadding;
 		max-height: inherit;
 
 		.mwe-popups-scroll {
-			// 8px caused by different margin-bottom, 55px here vs. 47px upstream
-			max-height: 200px - 8px + 7 * @lineHeight;
+			max-height: 403px - 2 * @popupPadding;
 			overflow: auto;
 			padding-right: @popupPadding;
 		}
