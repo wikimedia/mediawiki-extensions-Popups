@@ -1,12 +1,42 @@
 {
 	"@metadata": {
 		"authors": [
+			"Arjunaraoc",
 			"Chaduvari",
 			"Ravichandra",
 			"Veeven"
 		]
 	},
 	"popups-message": "మునుజూపులు",
+	"popups-desc": "వాడుకరి లింకుపై కర్సర్ కదిపినపపడు కనబడు పాపప్ మునుజూపు",
+	"popups-settings-title": "పేజీ మునుజూపు",
+	"popups-settings-option-simple": "సచేతనం",
+	"popups-settings-option-simple-description": "పేజీ చదువుతున్నప్పుడు అంశానికి సంబంధించిన త్వరిత మునుజూపులు పొందు",
+	"popups-settings-option-advanced": "ఉన్నత",
+	"popups-settings-option-advanced-description": "లింకు మునుజూపులు, సవరణ క్రియల ఆదేశాలు చూడు. దీనిని చాలా వాడుకరులు వాడుతారు.",
+	"popups-settings-option-off": "అచేతనం",
+	"popups-settings-save": "భద్రపరచు",
+	"popups-settings-help-ok": "పూర్తయ్యింది",
+	"popups-settings-cancel": "రద్దు",
+	"popups-settings-help": "పేజీ పాదసూచిక లోని లింకు ద్వారా మునుజూపులు మరల చేతనం చేయవచ్చు.",
+	"popups-settings-enable": "మునుజూపులు చేతనం",
+	"popups-preview-no-preview": "ఈ మునుజూపు చూపుటలో సమస్య వుంది",
+	"popups-preview-footer-read": "ఈ పేజీకి వెళ్లు",
+	"popups-preview-disambiguation": "ఈ శీర్షిక ఒకటి కంటే ఎక్కువ పేజీలకు సంబంధించినది",
+	"popups-preview-disambiguation-link": "పోలికగల పేజీలను చూడు",
+	"prefs-reading": "చదువుటకు అమరికలు",
+	"popups-prefs-optin-title": "పేజీ మునుజూపులు(పేజీ చదువుతున్నప్పుడు అంశానికి సంబంధించిన త్వరిత మునుజూపులు పొందు):",
 	"popups-prefs-optin-enabled-label": "సచేతనం",
-	"popups-prefs-optin-disabled-label": "అచేతనం"
+	"popups-prefs-optin-disabled-label": "అచేతనం",
+	"popups-prefs-disable-nav-gadgets-info": "పేజీ మునుజూపులు చేతనం చేయటానికి ఉపకరణాలలో  [[$1 | నేవిగేషన్ పాపప్స్ ఉపకరణం అచేతనం]]  చేయాలి",
+	"popups-prefs-conflicting-gadgets-info": "కొన్ని ఉపకరణాలు, ఇతర వ్యక్తిగత సవరింపులు ఈ సౌకర్య పనితీరుపై ప్రభావం చూపించవచ్చు. సమస్యలు ఎదురైతే, మీ ఉపకరణాలు, స్థానికి మరియు వికీవ్యాప్త వాడుకరి స్క్రిప్టులు సమీక్షించండి.",
+	"popups-refpreview-reference": "మూలం",
+	"popups-refpreview-book": "పుస్తక మూలం",
+	"popups-refpreview-journal": "పత్రిక మూలం",
+	"popups-refpreview-news": "వార్త మూలం",
+	"popups-refpreview-web": "అంతర్జాల మూలం",
+	"popups-refpreview-collapsible-placeholder": "ఈ మూలంలో వున్న చిత్రం మునుజూపు పరిధి దాటుతుంది.",
+	"popups-refpreview-user-preference-label": "మూలాల మునుజూపులు(పాదసూచికల త్వరిత మునుజూపులు పొందు)",
+	"popups-refpreview-beta-feature-message": "మూలాల మునుజూపులు",
+	"popups-refpreview-beta-feature-description": "పాదసూచిక పై కర్సర్ కదిపినపుడు మూలం మునుజూపు  చూపుతుంది.\n\nదయచేసి గమనించండి: [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups నేవిగేషన్ పాపప్స్] ఉపకరణం,  వాడుతున్నట్లైతే  మూల మునుజూపులు చూడలేరు.  [[mw:Special:MyLanguage/Reference Tooltips|మూలాల టూల్టిప్స్]] ఉపకరణం వాడుతున్నట్లైతే మూలాల టూల్టిప్స్,  మూలాల మునుజూపులు రెండూ కనబడతాయి."
 }
