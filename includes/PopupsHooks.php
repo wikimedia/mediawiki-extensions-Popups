@@ -154,6 +154,9 @@ class PopupsHooks {
 	 * * `wgPopupsConflictsWithNavPopupGadget' - The server's notion of whether or not the
 	 *   user has enabled conflicting Navigational Popups Gadget.
 	 *
+	 * * `wgPopupsConflictsWithRefTooltipsGadget' - The server's notion of whether or not the
+	 *   user has enabled conflicting Reference Tooltips Gadget.
+	 *
 	 * @param array &$vars variables to be added into the output of OutputPage::headElement
 	 * @param \IContextSource $out OutputPage instance calling the hook
 	 */
@@ -166,9 +169,9 @@ class PopupsHooks {
 		// TODO: Remove all references to wgPopupsReferencePreviews when not in Beta any more, and
 		// the temporary feature flag is not needed any more.
 		$vars['wgPopupsReferencePreviews'] = $context->isReferencePreviewsEnabled( $user );
-		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget(
-			$user
-		);
+
+		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget( $user );
+		$vars['wgPopupsConflictsWithRefTooltipsGadget'] = $context->conflictsWithRefTooltipsGadget( $user );
 	}
 
 	/**
