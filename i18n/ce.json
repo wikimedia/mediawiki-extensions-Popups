@@ -17,8 +17,6 @@
 	"popups-settings-enable": "Латтаде хьалххе хьажар",
 	"popups-preview-footer-read": "Ешар",
 	"prefs-reading": "Ешаран гӀирс",
-	"popups-prefs-optin-title": "АгӀонашка хьалххе хьажар (агӀонаш йоьшушехь гойту хьалххе хьажар):",
-	"popups-prefs-optin-enabled-label": "Латае",
-	"popups-prefs-optin-disabled-label": "ДӀаяйа",
+	"popups-prefs-optin": "АгӀонашка хьалххе хьажар (агӀонаш йоьшушехь гойту хьалххе хьажар):",
 	"popups-prefs-conflicting-gadgets-info": "Цхьайолу гаджеташ а, нисдаран гӀирсаш а хӀокху функцин халонаш ян мега. Хьайна халонаш хиллехь дехар до гаджеташка а, долара скрипташка а хьажа."
 }

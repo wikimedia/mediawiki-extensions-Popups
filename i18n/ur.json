@@ -20,8 +20,6 @@
 	"popups-preview-no-preview": "ایسا معلوم ہوتا ہے کہ اس صفحہ کی نمائش موجود نہیں ہے",
 	"popups-preview-footer-read": "پڑھیں",
 	"prefs-reading": "مطالعے کی ترجیحات",
-	"popups-prefs-optin-title": "<em>دوران مطالعہ میں موضوع کی فوری نمائش ملاحظہ فرمائیں</em>",
-	"popups-prefs-optin-enabled-label": "فعال کریں",
-	"popups-prefs-optin-disabled-label": "غیر فعال کریں",
+	"popups-prefs-optin": "<em>دوران مطالعہ میں موضوع کی فوری نمائش ملاحظہ فرمائیں</em>",
 	"popups-prefs-conflicting-gadgets-info": "شاید کچھ آلات اور شخصی ترتیبات کی وجہ سے یہ سہولت درست کام نہ کرے۔ اگر آپ کو مشکل پیش آرہی ہو تو براہ کرم اپنے آلات اور صارف اسکرپٹ کو ایک بار جانچ لیں۔"
 }

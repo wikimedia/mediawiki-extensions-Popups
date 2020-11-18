@@ -20,7 +20,5 @@
 	"popups-preview-no-preview": "Dit blyk daar is geen voorskou vir hierdie blad nie",
 	"popups-preview-footer-read": "Lees",
 	"prefs-reading": "Leesvoorkeure",
-	"popups-prefs-optin-title": "Bladsyvoorskoue\n\n<em>Bekom 'n kitsvoorskou van 'n onderwerp terwyl u die blad lees</em>",
-	"popups-prefs-optin-enabled-label": "Aktiveer",
-	"popups-prefs-optin-disabled-label": "Deaktiveer"
+	"popups-prefs-optin": "Bladsyvoorskoue\n\n<em>Bekom 'n kitsvoorskou van 'n onderwerp terwyl u die blad lees</em>"
 }

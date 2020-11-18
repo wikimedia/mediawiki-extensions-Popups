@@ -29,9 +29,7 @@
 	"popups-preview-disambiguation": "Dieser Titel bezieht sich auf mehr als eine Seite",
 	"popups-preview-disambiguation-link": "Ähnliche Seiten ansehen",
 	"prefs-reading": "Leseeinstellungen",
-	"popups-prefs-optin-title": "Seitenvorschaubilder (ruft schnelle Vorschaubilder zu einem Thema ab, während du eine Seite liest):",
-	"popups-prefs-optin-enabled-label": "Aktivieren",
-	"popups-prefs-optin-disabled-label": "Deaktivieren",
+	"popups-prefs-optin": "Aktivieren von Seitenvorschaubilder (ruft schnelle Vorschaubilder zu einem Thema ab, während du eine Seite liest):",
 	"popups-prefs-disable-nav-gadgets-info": "Du musst [[$1 |das Helferlein „Navigations-Popups“]] in der Registerkarte „Helferlein“ deaktivieren, um Seitenvorschaubilder zu aktivieren.",
 	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls du Probleme entdeckst, überprüfe bitte deine Helferlein und Benutzerskripte, inklusive globaler.",
 	"popups-refpreview-reference": "Einzelnachweis",
@@ -42,5 +40,5 @@
 	"popups-refpreview-collapsible-placeholder": "Dieser Einzelnachweis enthält eine Grafik, die nicht in die Vorschau passt.",
 	"popups-refpreview-user-preference-label": "Vorschaufunktion für Einzelnachweise aktivieren",
 	"popups-refpreview-beta-feature-message": "Vorschau von Einzelnachweisen",
-	"popups-refpreview-beta-feature-description": "Zeigt eine Vorschau eines Einzelnachweises an, wenn man mit dem Mauszeiger über den Fußnotenmarker fährt oder darauf klickt.\n\nBeachte bitte: Falls du das Helferlein [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups „Navigations-Popups“] benutzt, wirst du keine Einzelnachweis-Vorschaubilder sehen. Falls du das Helferlein [[mw:Special:MyLanguage/Reference Tooltips|„Einzelnachweis-Tooltipps“]] benutzt, werden sowohl die Popups von den Einzelnachweis-Tooltipps als auch von den Einzelnachweis-Vorschaubildern angezeigt."
+	"popups-refpreview-beta-feature-description": "Zeigt eine Vorschau eines Einzelnachweises an, wenn man mit dem Mauszeiger über den Fußnotenmarker fährt oder darauf klickt.\n\nBeachte bitte: Falls du das Helferlein [https://de.wikipedia.org/wiki/Wikipedia:Technik/Skin/Gadgets/navigation-popups „Navigations-Popups“] oder das Helferlein [[mw:Special:MyLanguage/Reference Tooltips|„Einzelnachweis-Tooltipps“]] benutzt, wirst du keine Einzelnachweis-Vorschau sehen."
 }

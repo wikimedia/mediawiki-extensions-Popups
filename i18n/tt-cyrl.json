@@ -14,7 +14,5 @@
 	"popups-settings-help-ok": "Тәмам",
 	"popups-settings-cancel": "Кире алу",
 	"prefs-reading": "Уку көйләнмәләре",
-	"popups-prefs-optin-title": "Битләрне алдан карау\n<em>Күрсәткечне куйганда мәкаләләрне тиз карау кулланырга</em>",
-	"popups-prefs-optin-enabled-label": "Кабызу",
-	"popups-prefs-optin-disabled-label": "Сүндерү"
+	"popups-prefs-optin": "Битләрне алдан карау\n<em>Күрсәткечне куйганда мәкаләләрне тиз карау кулланырга</em>"
 }

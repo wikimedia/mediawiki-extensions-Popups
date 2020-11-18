@@ -30,9 +30,7 @@
 	"popups-preview-disambiguation": "Este título está relacionado com mais do que uma página",
 	"popups-preview-disambiguation-link": "Ver páginas semelhantes",
 	"prefs-reading": "Preferências de leitura",
-	"popups-prefs-optin-title": "Pré-visualizações de página (obtenha pré-visualizações rápidas de um tópico durante a leitura de uma página):",
-	"popups-prefs-optin-enabled-label": "Ativar",
-	"popups-prefs-optin-disabled-label": "Desativar",
+	"popups-prefs-optin": "Ativar a pré-visualizações de página (obtenha pré-visualizações rápidas de um tópico durante a leitura de uma página):",
 	"popups-prefs-disable-nav-gadgets-info": "Você precisa [[$1 | desativar o Gadget de Popups de Navegação]] na aba Gadgets para ativar a pré-visualização de páginas",
 	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais.",
 	"popups-refpreview-reference": "Referência",
@@ -43,5 +41,5 @@
 	"popups-refpreview-collapsible-placeholder": "Esta referência inclui um gráfico que não cabe na previsão.",
 	"popups-refpreview-user-preference-label": "Pré-visualizações de referência (obtenha pré-visualizações rápidas de notas de rodapé)",
 	"popups-refpreview-beta-feature-message": "Pré-visualização de referências",
-	"popups-refpreview-beta-feature-description": "Mostre uma pré-visualização de uma referência pairando sobre seu marcador de nota de rodapé.\n\nPor favor note: se você estiver usando o gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Pop-ups de navegação], você não verá as pré-visualizações de referência. Se você estiver usando o gadget [[mw:Special:MyLanguage/Reference Tooltips|Dicas de referência]], os pop-ups das dicas de ferramentas de referência e das pré-visualizações de referência serão exibidos."
+	"popups-refpreview-beta-feature-description": "Mostre uma pré-visualização de uma referência pairando sobre seu marcador de nota de rodapé.\n\nPor favor note: se você estiver usando o gadget ou [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Pop-ups de navegação],. Se você estiver usando o gadget [[mw:Special:MyLanguage/Reference Tooltips|Dicas de referência]], você não verá pré-visualizações de referência."
 }

@@ -32,9 +32,7 @@
 	"popups-preview-disambiguation": "Bu başlık birden fazla sayfa ile ilgilidir",
 	"popups-preview-disambiguation-link": "Benzer sayfaları görüntüle",
 	"prefs-reading": "Okuma tercihleri",
-	"popups-prefs-optin-title": "Sayfa önizlemeleri (sayfa okurken konunun hızlı önizlemelerini alın):",
-	"popups-prefs-optin-enabled-label": "Etkinleştir",
-	"popups-prefs-optin-disabled-label": "Devre dışı bırak",
+	"popups-prefs-optin": "Sayfa önizlemelerini etkinleştirin (bir sayfayı okurken bir konunun hızlı önizlemeleri)",
 	"popups-prefs-disable-nav-gadgets-info": "Sayfa Önizlemelerini etkinleştirmek için [[$1 | Gezinme Açılır Pencereleri Küçük Aracı]] sekmesinden devre dışı bırakmalısınız",
 	"popups-prefs-conflicting-gadgets-info": "Bazı küçük araçlar ve diğer özelleştirmeler bu özelliğin çalışmasını etkileyebilir. Sorun yaşarsanız, genel olanlar da dahil olmak üzere küçük araçlarınızı ve kullanıcı betiklerinizi gözden geçirin.",
 	"popups-refpreview-reference": "Kaynak",
@@ -45,5 +43,5 @@
 	"popups-refpreview-collapsible-placeholder": "Bu kaynak, önizlemeye sığmayan bir grafik içerir.",
 	"popups-refpreview-user-preference-label": "Kaynak önizlemeleri (dipnotların hızlı önizlemelerini alın)",
 	"popups-refpreview-beta-feature-message": "Kaynak Önizlemeleri",
-	"popups-refpreview-beta-feature-description": "İmleci dipnot işaretçisinin üzerinde gezdirerek kaynağın önizlemesini göster.\n\nLütfen dikkat: [https://tr.wikipedia.org/wiki/Vikipedi:Araçlar/Gezinti_pencereleri Gezinti pencereleri] küçük aracını kullanıyorsanız Kaynak Önizlemesini görmezsiniz. [[mw:Special:MyLanguage/Reference Tooltips|Kaynak araç ipuçları]] küçük aracını kullanıyorsanız hem kaynak araç ipuçlarından hem de Kaynak Önizlemeden açılan pencereler görünecektir."
+	"popups-refpreview-beta-feature-description": "İmleci dipnot işaretçisinin üzerinde gezdirerek kaynağın önizlemesini göster.\n\nLütfen dikkat: [https://tr.wikipedia.org/wiki/Vikipedi:Araçlar/Gezinti_pencereleri Gezinti pencereleri] veya [[mw:Special:MyLanguage/Reference Tooltips|kaynak araç ipuçları]] küçük aracını kullanıyorsanız Kaynak Önizlemelerini görmezsiniz."
 }

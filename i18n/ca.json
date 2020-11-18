@@ -26,9 +26,7 @@
 	"popups-preview-footer-read": "Vés a aquesta pàgina",
 	"popups-preview-disambiguation-link": "Mostra pàgines semblants",
 	"prefs-reading": "Preferències de lectura",
-	"popups-prefs-optin-title": "Previsualització de pàgines\n\n<em>Obté previsualització d'un tema mentre llegeixes un article.</em>",
-	"popups-prefs-optin-enabled-label": "Activa",
-	"popups-prefs-optin-disabled-label": "Desactiva",
+	"popups-prefs-optin": "Previsualització de pàgines\n\n<em>Obté previsualització d'un tema mentre llegeixes un article.</em>",
 	"popups-prefs-disable-nav-gadgets-info": "Has de [[$1 | desactivar \"Navegació mitjançant menús emergents\"]] des de la pestanya Ginys per a activar vistes prèvies",
 	"popups-prefs-conflicting-gadgets-info": "Certs ginys i altres personalitzacions poden afectar l'acompliment d'aquesta funció. Si té problemes si us plau revisi els seus ginys i scripts d'usuari.",
 	"popups-refpreview-reference": "Referència"

@@ -22,9 +22,7 @@
 	"popups-preview-disambiguation": "Daytoy a titulo ket mainaig iti ad-adu ngem maysa a panid",
 	"popups-preview-disambiguation-link": "Kitaen dagiti kapada a panid",
 	"prefs-reading": "Dagiti kakaykayatan ti panagbasa",
-	"popups-prefs-optin-title": "Dagiti panangipadas ti panid\n\n<em>Agala kadagiti nadaras a panangipadas iti topiko bayat nga agbasbasa iti maysa a panid</em>",
-	"popups-prefs-optin-enabled-label": "Pakabaelan",
-	"popups-prefs-optin-disabled-label": "Ibaldado",
+	"popups-prefs-optin": "Dagiti panangipadas ti panid\n\n<em>Agala kadagiti nadaras a panangipadas iti topiko bayat nga agbasbasa iti maysa a panid</em>",
 	"popups-prefs-disable-nav-gadgets-info": "Nasken nga [[$1 | ibaldadom ti Navigation Popups Gadget]] manipud iti etiketa dagiti Gadget tapno mapakabaelan ti Page Previews",
 	"popups-prefs-conflicting-gadgets-info": "Adda dagiti dadduma a gadget ken dagiti sabali a panangiduma a mabalin a makaapekto iti panagpataray daytoy a langa. No makasanayka kadagiti problema pangngaasi nga irepasom dagiti gadgetmo ken dagiti script ti agar-aramat, ken mairaman dagiti global."
 }

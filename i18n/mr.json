@@ -24,9 +24,7 @@
 	"popups-preview-disambiguation": "हे शीर्षक एकाधिक पानांशी संबंधीत आहे",
 	"popups-preview-disambiguation-link": "यासम पाने बघा",
 	"prefs-reading": "वाचन पसंतीक्रम",
-	"popups-prefs-optin-title": "पानाची झलक(पान वाचत असतांना एखाद्या विषयाबाबत त्वरीत झलक प्राप्त करा):",
-	"popups-prefs-optin-enabled-label": "सक्षम करा",
-	"popups-prefs-optin-disabled-label": "अक्षम करा",
+	"popups-prefs-optin": "पानाची झलक(पान वाचत असतांना एखाद्या विषयाबाबत त्वरीत झलक प्राप्त करा):",
 	"popups-prefs-disable-nav-gadgets-info": "आपणास, पानाची झलक पाहण्यास, गॅजेट कळीमधून [[$1 |नॅव्हीगेशन पॉप-अप गॅजेट अक्षम]] करावे लागेल",
 	"popups-prefs-conflicting-gadgets-info": "काही साधने/उपकरणे व इतर अनुकुलीकरण या प्रारूपाच्या कार्यक्षमतेवर परिणाम करू शकतात. जर आपणांस समस्या येत असेल तर कृपया आपली उपकरणे व सदस्य-लेखन (वैश्विक स्तरासह) पुन्हा एकदा तपासा."
 }

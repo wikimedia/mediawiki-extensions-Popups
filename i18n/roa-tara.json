@@ -22,9 +22,7 @@
 	"popups-preview-disambiguation": "Stu titole se referisce a cchiù de 'na pàgene",
 	"popups-preview-disambiguation-link": "'Ndruche le pàggene ca s'assemegghiane",
 	"prefs-reading": "Preferenze de letture",
-	"popups-prefs-optin-title": "Andeprime d'a pàgene ('ndruche 'n'andeprime veloce veloce de 'n'argomende quanne ste lìgge 'a vôsce):",
-	"popups-prefs-optin-enabled-label": "Abbilite",
-	"popups-prefs-optin-disabled-label": "Disabbilite",
+	"popups-prefs-optin": "Abbilite l'andeprime d'a pàgene ('ndruche 'n'andeprime de 'n'argomende quanne ste lìgge 'a vôsce):",
 	"popups-prefs-disable-nav-gadgets-info": "Tu ha [[$1 |disabbilità 'u gadget Popup de navigazzione]] da 'a schede Accessore pe abbilità le andeprime de le pàggene",
 	"popups-prefs-conflicting-gadgets-info": "Certe accessore e otre personalizzazziune ponne avè conzeguenze sus a le prestaziune de sta funzione. Ce tìne quacche probbleme 'ndruche arrete le accessore tue e le script utende, 'ngluse chidde globbale.",
 	"popups-refpreview-reference": "Riferimende",
@@ -32,7 +30,8 @@
 	"popups-refpreview-journal": "Referimende a 'nu sciurnale",
 	"popups-refpreview-news": "Referimende a 'na nuvetà",
 	"popups-refpreview-web": "Referimende a 'nu site web",
+	"popups-refpreview-collapsible-placeholder": "Stu referimende 'nglude 'nu grafeche 'u quale non ge se 'ndruche bbuène jndr'à l'andeprime.",
 	"popups-refpreview-user-preference-label": "Andeprime d'u referimende (pigghie le andeprime veloce senze piè de pàgene)",
 	"popups-refpreview-beta-feature-message": "Andeprime de le refereminde",
-	"popups-refpreview-beta-feature-description": "Face 'ndrucà 'n'andeprime de 'nu referimende passanne cu 'u mouse sus a l'indicatore sue de note a piè de pàgene.\n\n'Ndruche: ce tu ste ause 'u gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups popup de navigazzione], puè nò 'ndrucà le Andeprime d'u Referimende. Ce ste ause 'u gadget [[mw:Special:MyLanguage/Reference Tooltips|Tooltip d'u referimende]], iessene tutte e doje le popup d'u tooltip e de l'andeprime."
+	"popups-refpreview-beta-feature-description": "Face 'ndrucà 'n'andeprime de 'nu referimende passanne cu 'u mouse sus a l'indicatore sue de note a piè de pàgene.\n\n'Ndruche: ce tu ste ause 'u gadget [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups popup de navigazzione] o [[mw:Special:MyLanguage/Reference Tooltips|Tooltip d'u referimende]], tutte e doje le popup da le tooltip de referimende e da le andeprime de referimende iessene fore."
 }

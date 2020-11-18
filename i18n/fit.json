@@ -14,7 +14,7 @@
 	"popups-preview-no-preview": "Virheen vuoksi esikattelua ei voia näythää",
 	"popups-preview-footer-read": "Mene tälle sivule",
 	"prefs-reading": "Lukemisen inställninkit",
-	"popups-prefs-optin-title": "Sivun esikattelut (näe nopeasti aiheen esikattelut sivua lukiessasi):",
+	"popups-prefs-optin": "Sivun esikattelut (näe nopeasti aiheen esikattelut sivua lukiessasi):",
 	"popups-prefs-disable-nav-gadgets-info": "Sinun häätyy ottaa poies käytöstä [[$1 | Navigation popups -pienoisohjelma]] ottaaksesi sivujen esikattelut käythöön.",
 	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien inställninkien muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset."
 }
