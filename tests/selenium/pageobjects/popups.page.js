@@ -6,6 +6,7 @@ const
 	fs = require( 'fs' ),
 	Api = require( 'wdio-mediawiki/Api' ),
 	Page = require( 'wdio-mediawiki/Page' ),
+	Util = require( 'wdio-mediawiki/Util' ),
 	TEST_PAGE_TITLE = 'Popups test page',
 	POPUPS_SELECTOR = '.mwe-popups',
 	PAGE_POPUPS_SELECTOR = '.mwe-popups-type-page',
@@ -58,7 +59,20 @@ class PopupsPage extends Page {
 		this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Popups did not load' );
 	}
 
+	shouldUseReferencePopupsBetaFeature( shouldUse ) {
+		Util.waitForModuleState( 'mediawiki.base' );
+		return browser.execute( function ( use ) {
+			return mw.loader.using( 'mediawiki.api' ).then( function () {
+				return new mw.Api().saveOption(
+					'popupsreferencepreviews',
+					use ? '1' : '0'
+				);
+			} );
+		}, shouldUse );
+	}
+
 	hasReferencePopupsEnabled() {
+		// TODO Remove or adjust when not in Beta any more
 		return browser.execute( () => mw.config.get( 'wgPopupsReferencePreviews' ) );
 	}
 
@@ -77,10 +91,6 @@ class PopupsPage extends Page {
 
 	hoverPageLink() {
 		$( PAGE_POPUPS_LINK_SELECTOR ).moveTo();
-	}
-
-	clickReferenceLink( num ) {
-		this.click( `.reference:nth-of-type(${num}) a` );
 	}
 
 	dwellReferenceLink( num ) {
@@ -122,7 +132,7 @@ class PopupsPage extends Page {
 
 	seeScrollableReferencePreview() {
 		return browser.execute( () => {
-			const el = document.querySelector( '.mwe-popups-extract .mw-parser-output' );
+			const el = document.querySelector( '.mwe-popups-extract .mwe-popups-scroll' );
 			return el.scrollHeight > el.offsetHeight;
 		} );
 	}
