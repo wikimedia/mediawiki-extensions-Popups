@@ -28,12 +28,12 @@
 	"popups-preview-disambiguation": "Questo titolo si riferisce a più di una pagina",
 	"popups-preview-disambiguation-link": "Vedi pagine simili",
 	"prefs-reading": "Preferenze di lettura",
-	"popups-prefs-optin": "Anteprima delle pagine (vedi una veloce anteprima di un argomento mentre leggi una pagina):",
+	"popups-prefs-optin": "Abilita l'anteprima delle pagine (anteprima veloce di un argomento mentre leggi una pagina)",
 	"popups-prefs-disable-nav-gadgets-info": "Devi [[$1 |disabilitare il gadget Popup di navigazione]] dalla scheda Accessori per abilitare le anteprime delle pagine",
 	"popups-prefs-conflicting-gadgets-info": "Alcuni accessori e altre personalizzazioni potrebbero influire sulle prestazioni di questa funzionalità. Se hai qualche problema rivedi i tuoi accessori e gli script utente, inclusi quelli globali.",
 	"popups-refpreview-book": "Riferimento a libro",
 	"popups-refpreview-news": "Riferimento a notizie",
 	"popups-refpreview-web": "Riferimento a sito web",
 	"popups-refpreview-beta-feature-message": "Anteprima note",
-	"popups-refpreview-beta-feature-description": "Mostra l'anteprima di una nota quando si posiziona il mouse sul suo marcatore.\n\nAttenzione: le anteprime delle note non appaiono se si tiene attivo l'accessorio dei [https://it.wikipedia.org/wiki/Aiuto:Accessori/Popup_di_navigazione popup]. Se invece si ha attivo l'accessorio [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], appariranno due anteprime, una per Reference Tooltips e una per questa funzionalità."
+	"popups-refpreview-beta-feature-description": "Mostra l'anteprima di una nota quando si posiziona il mouse sul suo marcatore.\n\nAttenzione: le anteprime delle note non appaiono se si tiene attivo l'accessorio dei [https://it.wikipedia.org/wiki/Aiuto:Accessori/Popup_di_navigazione popup] o se si ha attivo l'accessorio [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]."
 }
