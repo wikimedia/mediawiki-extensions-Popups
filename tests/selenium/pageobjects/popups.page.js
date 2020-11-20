@@ -40,23 +40,8 @@ class PopupsPage extends Page {
 		} );
 	}
 
-	resourceLoaderModuleStatus( moduleName, moduleStatus, errMsg ) {
-		// Word of caution: browser.waitUntil returns a Timer class NOT a Promise.
-		// Webdriver IO will run waitUntil synchronously so not returning it will
-		// block JavaScript execution while returning it will not.
-		// http://webdriver.io/api/utility/waitUntil.html
-		// https://github.com/webdriverio/webdriverio/blob/master/lib/utils/Timer.js
-		browser.waitUntil( () => {
-			const result = browser.execute( ( module ) => {
-				return typeof mw !== 'undefined' &&
-					mw.loader.getState( module.name ) === module.status;
-			}, { status: moduleStatus, name: moduleName } );
-			return result;
-		}, 10000, errMsg );
-	}
-
 	ready() {
-		this.resourceLoaderModuleStatus( POPUPS_MODULE_NAME, 'ready', 'Popups did not load' );
+		Util.waitForModuleState( POPUPS_MODULE_NAME );
 	}
 
 	shouldUseReferencePopupsBetaFeature( shouldUse ) {
