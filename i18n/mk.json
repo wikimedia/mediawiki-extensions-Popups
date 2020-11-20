@@ -23,7 +23,7 @@
 	"popups-preview-disambiguation": "Насловот се однесува на повеќе од една страница",
 	"popups-preview-disambiguation-link": "Погл. слични страници",
 	"prefs-reading": "Нагодувања за читање",
-	"popups-prefs-optin": "Преглед на страници (дава брзи тематски прегледи додека се читата страницата):",
+	"popups-prefs-optin": "Овозможи брз преглед на страници (брзи тематски прегледи додека се читата страницата):",
 	"popups-prefs-disable-nav-gadgets-info": "Ќе мора да ја [[$1 | оневозможите алатката „Прегледнички отскочници“]] во јазичето Алатки за да го овозможите „Прегледи на страници“",
 	"popups-prefs-conflicting-gadgets-info": "Извесни алатки и други прилагодувања може да ја засегнат работата на оваа можност. Ако се соочите со проблеми, прегледајте ги алатките и корисничките скрипти, вклучувајќи ги глобалните.",
 	"popups-refpreview-reference": "Навод",
@@ -34,5 +34,5 @@
 	"popups-refpreview-collapsible-placeholder": "Овој навод содржи графика која за чиј приказ нема место во прегледот.",
 	"popups-refpreview-user-preference-label": "Преглед на наводи (брз преглед на подножните белешки)",
 	"popups-refpreview-beta-feature-message": "Брз преглед на подножни наводи",
-	"popups-refpreview-beta-feature-description": "Го прикажува наводот кога кога стрелката е над неговото бројче.\n\n\nИсто така: Оваа можност не работи ако истовремено ја користите алатката [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Прегледнички прозорчиња]. Ако ја користите алатката [[mw:Special:MyLanguage/Reference Tooltips|Прозорчиња за наводи]], ќе ви се прикажуваат и тие отскочници и отскочниците за преглед на наводи."
+	"popups-refpreview-beta-feature-description": "Го прикажува наводот кога кога стрелката е над неговото бројче.\n\n\nНапомена: Оваа можност не работи ако истовремено ја користите алатката [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Прегледнички прозорчиња] или [[mw:Special:MyLanguage/Reference Tooltips|Прозорчиња за наводи]]."
 }

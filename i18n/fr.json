@@ -47,5 +47,5 @@
 	"popups-refpreview-collapsible-placeholder": "Cette référence inclut un graphique qui ne rentre pas dans l’aperçu.",
 	"popups-refpreview-user-preference-label": "Aperçus des références (obtenir des aperçus rapides des notes de pied de page)",
 	"popups-refpreview-beta-feature-message": "Aperçus de référence",
-	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la référence lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : si vous utilisez le gadget <em>[https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups]</em>, vous ne verrez pas les aperçus de référence. Si vous utilisez le gadget <em>[[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]</em>, les deux fenêtres pour <em>Reference Tooltips</em> et de <em>Aperçus des références</em> apparaîtront simultanément."
+	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la référence lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : si vous utilisez le gadget <em>[https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups]</em> ou le gadget <em>[[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]</em>, vous ne verrez pas l’aperçu des références."
 }
