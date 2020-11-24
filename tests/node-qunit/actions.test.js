@@ -102,7 +102,7 @@ QUnit.module( 'ext.popups/actions#linkDwell @integration', {
 } );
 
 QUnit.test( '#linkDwell', function ( assert ) {
-	const event = {},
+	const measures = {},
 		dispatch = this.sandbox.spy();
 
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
@@ -114,7 +114,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 	};
 
 	const linkDwelled = actions.linkDwell(
-		this.title, this.el, event, /* gateway = */ null, generateToken, previewTypes.TYPE_PAGE
+		this.title, this.el, measures, null, generateToken, previewTypes.TYPE_PAGE
 	)(
 		dispatch,
 		this.getState
@@ -124,7 +124,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		dispatch.getCall( 0 ).args[ 0 ], {
 			type: actionTypes.LINK_DWELL,
 			el: this.el,
-			event,
+			measures,
 			token: 'ABC',
 			timestamp: mw.now(),
 			title: 'Foo',

@@ -4,11 +4,13 @@
 const grid = {
 	landscape: {
 		row: ( x ) => 50 + ( ( x - 1 ) * 300 ),
-		col: ( x ) => 50 + ( ( x - 1 ) * 500 )
+		col: ( x ) => 50 + ( ( x - 1 ) * 500 ),
+		flipOffset: 250
 	},
 	portrait: {
 		row: ( x ) => 50 + ( ( x - 1 ) * 450 ),
-		col: ( x ) => 50 + ( ( x - 1 ) * 400 )
+		col: ( x ) => 50 + ( ( x - 1 ) * 400 ),
+		flipOffset: 400
 	},
 }
 

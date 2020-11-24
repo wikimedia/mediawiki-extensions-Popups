@@ -17,7 +17,7 @@ export default function render( previewBehavior ) {
 		if ( state.preview.shouldShow && !preview ) {
 			preview = renderer.render( state.preview.fetchResponse );
 			preview.show(
-				state.preview.activeEvent,
+				state.preview.measures,
 				previewBehavior,
 				state.preview.activeToken
 			);

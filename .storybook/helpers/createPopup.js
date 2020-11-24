@@ -20,6 +20,11 @@ function createPopup( model, layout ) {
 	const preview = createPreviewWithType( model );
 
 	Object.assign( layout, { dir: model.languageDirection } );
+	layout.offset = layout.flippedY ? {
+		left: layout.offset.left,
+		top: layout.offset.top + layout.flipOffset
+	} : layout.offset;
+
 	layoutPreview(
 		preview,
 		layout,
@@ -28,7 +33,8 @@ function createPopup( model, layout ) {
 			flippedY: layout.flippedY
 		} ),
 		SIZES.landscapeImage.h,
-		POINTER_SIZE
+		POINTER_SIZE,
+		window.innerHeight
 	);
 	return preview.el[ 0 ].outerHTML;
 }

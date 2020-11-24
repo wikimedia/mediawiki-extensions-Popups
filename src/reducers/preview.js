@@ -14,7 +14,7 @@ export default function preview( state, action ) {
 		state = {
 			enabled: undefined,
 			activeLink: undefined,
-			activeEvent: undefined,
+			measures: undefined,
 			activeToken: '',
 			shouldShow: false,
 			isUserDwelling: false,
@@ -38,7 +38,7 @@ export default function preview( state, action ) {
 				// New interaction
 				return nextState( state, {
 					activeLink: action.el,
-					activeEvent: action.event,
+					measures: action.measures,
 					activeToken: action.token,
 
 					// When the user dwells on a link with their keyboard, a preview is
@@ -63,7 +63,7 @@ export default function preview( state, action ) {
 				return nextState( state, {
 					activeLink: undefined,
 					activeToken: undefined,
-					activeEvent: undefined,
+					measures: undefined,
 					fetchResponse: undefined,
 					shouldShow: false
 				} );

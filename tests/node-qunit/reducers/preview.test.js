@@ -18,7 +18,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 		{
 			enabled: undefined,
 			activeLink: undefined,
-			activeEvent: undefined,
+			measures: undefined,
 			activeToken: '',
 			shouldShow: false,
 			isUserDwelling: false,
@@ -76,7 +76,7 @@ QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert
 		preview( {}, action ),
 		{
 			activeLink: action.el,
-			activeEvent: action.event,
+			measures: action.measures,
 			activeToken: action.token,
 			shouldShow: false,
 			isUserDwelling: true,
@@ -123,7 +123,7 @@ QUnit.test( 'ABANDON_END', ( assert ) => {
 		{
 			activeLink: undefined,
 			activeToken: undefined,
-			activeEvent: undefined,
+			measures: undefined,
 			fetchResponse: undefined,
 			isUserDwelling: false,
 			shouldShow: false

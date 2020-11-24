@@ -215,13 +215,13 @@ export function fetch( gateway, title, el, token, type ) {
  *
  * @param {mw.Title} title
  * @param {Element} el
- * @param {Event} event
+ * @param {ext.popups.Measures} measures
  * @param {Gateway} gateway
  * @param {Function} generateToken
  * @param {string} type
  * @return {Redux.Thunk}
  */
-export function linkDwell( title, el, event, gateway, generateToken, type ) {
+export function linkDwell( title, el, measures, gateway, generateToken, type ) {
 	const token = generateToken(),
 		titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
@@ -231,7 +231,7 @@ export function linkDwell( title, el, event, gateway, generateToken, type ) {
 		const action = timedAction( {
 			type: types.LINK_DWELL,
 			el,
-			event,
+			measures,
 			token,
 			title: titleText,
 			namespaceId,

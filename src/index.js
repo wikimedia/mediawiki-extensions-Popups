@@ -268,7 +268,23 @@ function registerChangeListeners(
 					return;
 			}
 
-			boundActions.linkDwell( mwTitle, this, event, gateway, generateToken, type );
+			const $target = $( this );
+			const $window = $( window );
+
+			const measures = {
+				pageX: event.pageX,
+				pageY: event.pageY,
+				clientY: event.clientY,
+				width: $target.width(),
+				height: $target.height(),
+				offset: $target.offset(),
+				clientRects: this.getClientRects(),
+				windowWidth: $window.width(),
+				windowHeight: $window.height(),
+				scrollTop: $window.scrollTop()
+			};
+
+			boundActions.linkDwell( mwTitle, this, measures, gateway, generateToken, type );
 		} )
 		.on( 'mouseout blur', function () {
 			const mwTitle = titleFromElement( this, mw.config );

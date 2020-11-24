@@ -4,6 +4,7 @@ import * as constants from '../../../src/constants';
 import { createNullModel, previewTypes } from '../../../src/preview/model';
 import { createThumbnail } from '../../../src/ui/thumbnail';
 
+const windowHeight = 400;
 /**
  * A utility function that creates a bare bones preview
  *
@@ -444,38 +445,24 @@ QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
 
 QUnit.test( 'show', function ( assert ) {
 	const preview = createPagePreview(),
-		event = {
+		measures = {
 			pageX: 252,
 			pageY: 1146,
-			clientY: 36
-		},
-		link = {
-			get() {
-				return {
-					getClientRects() {
-						return [ {
-							bottom: 37,
-							height: 13,
-							left: 201,
-							right: 357,
-							top: 24,
-							width: 156
-						} ];
-					}
-				};
-			},
-			offset() {
-				return {
-					top: 1134,
-					left: 201
-				};
-			},
-			width() {
-				return 156;
-			},
-			height() {
-				return 13;
-			}
+			clientY: 36,
+			clientRects: [ {
+				bottom: 37,
+				height: 13,
+				left: 201,
+				right: 357,
+				top: 24,
+				width: 156
+			} ],
+			offset: { top: 1134, left: 201 },
+			width: 156,
+			height: 13,
+			scrollTop: 0,
+			windowWidth: 800,
+			windowHeight: 600
 		},
 		behavior = createBehavior( this.sandbox ),
 		token = 'some-token',
@@ -484,7 +471,7 @@ QUnit.test( 'show', function ( assert ) {
 	preview.el.show = this.sandbox.stub();
 
 	const showPreview = renderer.show(
-		preview, event, link, behavior, token, $container.get( 0 ), 'ltr' );
+		preview, measures, {}, behavior, token, $container.get( 0 ), 'ltr' );
 
 	assert.notEqual(
 		$container.html(),
@@ -570,12 +557,10 @@ QUnit.test( 'hide - fade out down', ( assert ) => {
 
 QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top left of the page', ( assert ) => {
 	const isPreviewTall = false,
-		eventData = {
+		measures = {
 			pageX: 252,
 			pageY: 1146,
-			clientY: 36
-		},
-		linkData = {
+			clientY: 36,
 			clientRects: [ {
 				bottom: 37,
 				height: 13,
@@ -589,19 +574,17 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 				left: 201
 			},
 			width: 156,
-			height: 13
-		},
-		windowData = {
+			height: 13,
 			scrollTop: 1109,
-			width: 1239,
-			height: 827
+			windowWidth: 1239,
+			windowHeight: 827
 		},
 		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
 	cases.forEach( ( { dir }, i ) => {
 		const layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
+			isPreviewTall, measures, pointerSize, dir
 		);
 
 		assert.deepEqual(
@@ -622,12 +605,10 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 
 QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom center of the page', ( assert ) => {
 	const isPreviewTall = true,
-		eventData = {
+		measures = {
 			pageX: 176,
 			pageY: 1252,
-			clientY: 628
-		},
-		linkData = {
+			clientY: 628,
 			clientRects: [ {
 				bottom: 640,
 				height: 13,
@@ -641,19 +622,17 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 				left: 177
 			},
 			width: 32,
-			height: 13
-		},
-		windowData = {
+			height: 13,
 			scrollTop: 623,
-			width: 587,
-			height: 827
+			windowWidth: 587,
+			windowHeight: 827
 		},
 		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
 	cases.forEach( ( { dir }, i ) => {
 		const layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
+			isPreviewTall, measures, pointerSize, dir
 		);
 
 		assert.deepEqual(
@@ -674,8 +653,7 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 
 QUnit.test( '#createLayout - empty preview, keyboard event, link is on the center right of the page', ( assert ) => {
 	const isPreviewTall = false,
-		eventData = {},
-		linkData = {
+		measures = {
 			clientRects: [ {
 				bottom: 442,
 				height: 13,
@@ -689,19 +667,17 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 				left: 654
 			},
 			width: 38,
-			height: 13
-		},
-		windowData = {
+			height: 13,
 			scrollTop: 689,
-			width: 801,
-			height: 827
+			windowWidth: 801,
+			windowHeight: 827
 		},
 		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
 	cases.forEach( ( { dir }, i ) => {
 		const layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
+			isPreviewTall, measures, pointerSize, dir
 		);
 
 		assert.deepEqual(
@@ -722,12 +698,10 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 
 QUnit.test( '#createLayout - empty preview, mouse event, popup pointer is in the correct position', ( assert ) => {
 	const isPreviewTall = false,
-		eventData = {
+		measures = {
 			pageX: 205,
 			pageY: 1146,
-			clientY: 36
-		},
-		linkData = {
+			clientY: 36,
 			clientRects: [ {
 				bottom: 37,
 				height: 13,
@@ -741,19 +715,17 @@ QUnit.test( '#createLayout - empty preview, mouse event, popup pointer is in the
 				left: 201
 			},
 			width: 26,
-			height: 13
-		},
-		windowData = {
+			height: 13,
 			scrollTop: 1109,
-			width: 1239,
-			height: 827
+			windowWidth: 1239,
+			windowHeight: 827
 		},
 		pointerSize = 8;
 
 	const cases = [ { dir: 'ltr' }, { dir: 'rtl' } ];
 	cases.forEach( ( { dir }, i ) => {
 		const layout = renderer.createLayout(
-			isPreviewTall, eventData, linkData, windowData, pointerSize, dir
+			isPreviewTall, measures, pointerSize, dir
 		);
 
 		assert.deepEqual(
@@ -1018,7 +990,7 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 		},
 		classes = [ 'some-class', 'another-class' ];
 
-	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
 		classes.every( function ( c ) {
@@ -1055,7 +1027,7 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function 
 		.stub( document, 'getElementById' )
 		.returns( document.createElement( 'div' ) );
 
-	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
 		classes.every( function ( c ) {
@@ -1101,7 +1073,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 		.stub( document, 'getElementById' )
 		.returns( document.createElement( 'div' ) );
 
-	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
 		classes.every( function ( c ) {
@@ -1148,7 +1120,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 		.stub( document, 'getElementById' )
 		.returns( document.createElement( 'div' ) );
 
-	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
 		classes.every( function ( c ) {
@@ -1191,9 +1163,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 		},
 		classes = [ 'some-class', 'another-class' ];
 
-	preview.el.outerHeight = () => 20;
-
-	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
 		classes.every( function ( c ) {
@@ -1201,11 +1171,13 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 		} ),
 		'Classes have been added.'
 	);
+
 	assert.strictEqual(
-		preview.el.css( 'top' ),
-		`${layout.offset.top - 20}px`, // - outer height
-		'Top is correct.'
+		preview.el.css( 'bottom' ),
+		`${windowHeight - layout.offset.top}px`,
+		'Bottom is correct.'
 	);
+
 	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${layout.offset.left}px`,
@@ -1230,13 +1202,11 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', fun
 		},
 		classes = [ 'some-class', 'another-class' ];
 
-	preview.el.outerHeight = () => 20;
-
 	this.sandbox
 		.stub( document, 'getElementById' )
 		.returns( document.createElement( 'div' ) );
 
-	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
 		classes.every( function ( c ) {
@@ -1245,14 +1215,14 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', fun
 		'Classes have been added.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'top' ),
-		`${layout.offset.top - 20}px`, // - outer height
-		'Top is correct.'
-	);
-	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
+	);
+	assert.strictEqual(
+		preview.el.css( 'bottom' ),
+		`${windowHeight - layout.offset.top}px`,
+		'Bottom is correct.'
 	);
 	assert.strictEqual(
 		preview.el.find( 'image' ).attr( 'clip-path' ),
@@ -1274,9 +1244,7 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 		},
 		classes = [ 'some-class', 'another-class' ];
 
-	preview.el.outerHeight = () => 20;
-
-	renderer.layoutPreview( preview, layout, classes, 200, 8 );
+	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
 		classes.every( function ( c ) {
@@ -1285,14 +1253,14 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 		'Classes have been added.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'top' ),
-		`${layout.offset.top - 20}px`, // - outer height
-		'Top is correct.'
-	);
-	assert.strictEqual(
 		preview.el.css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
+	);
+	assert.strictEqual(
+		preview.el.css( 'bottom' ),
+		`${windowHeight - layout.offset.top}px`,
+		'Bottom is correct.'
 	);
 	assert.notOk(
 		preview.el.find( 'image' ).attr( 'clip-path' ),
@@ -1331,8 +1299,6 @@ QUnit.test( '#setThumbnailClipPath', function ( assert ) {
 				},
 				dir
 			};
-
-		// preview.el.outerHeight = () => 20;
 
 		renderer.setThumbnailClipPath( preview, layout );
 

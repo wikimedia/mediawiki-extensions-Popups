@@ -10,11 +10,25 @@ import { renderPreview } from './templates/preview/preview';
 import { renderReferencePreview } from './templates/referencePreview/referencePreview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';
 
-const $window = $( window ),
-	landscapePopupWidth = 450,
+const landscapePopupWidth = 450,
 	portraitPopupWidth = 320,
 	pointerSize = 8, // Height of the pointer.
 	maxLinkWidthForCenteredPointer = 28; // Link with roughly < 4 chars.
+
+/**
+ * @typedef {Object} ext.popups.Measures
+ * @property {number} pageX
+ * @property {number} pageY
+ * @property {number} clientY
+ * @property {ClientRectList} clientRects list of rectangles defined by
+ *  four edges
+ * @property {Object} offset
+ * @property {number} width
+ * @property {number} height
+ * @property {number} scrollTop
+ * @property {number} windowWidth
+ * @property {number} windowHeight
+ */
 
 /**
  * Extracted from `mw.popups.createSVGMasks`. This is just an SVG mask to point
@@ -223,7 +237,7 @@ function createReferencePreview( model ) {
  * between rendering and showing a preview. Merge #render and Preview#show.
  *
  * @param {ext.popups.Preview} preview
- * @param {Event} event
+ * @param {ext.popups.Measures} measures
  * @param {JQuery} $link event target
  * @param {ext.popups.PreviewBehavior} behavior
  * @param {string} token
@@ -233,26 +247,11 @@ function createReferencePreview( model ) {
  *                                faded in.
  */
 export function show(
-	preview, event, $link, behavior, token, container, dir
+	preview, measures, $link, behavior, token, container, dir
 ) {
 	const layout = createLayout(
 		preview.isTall,
-		{
-			pageX: event.pageX,
-			pageY: event.pageY,
-			clientY: event.clientY
-		},
-		{
-			clientRects: $link.get( 0 ).getClientRects(),
-			offset: $link.offset(),
-			width: $link.width(),
-			height: $link.height()
-		},
-		{
-			scrollTop: $window.scrollTop(),
-			width: $window.width(),
-			height: $window.height()
-		},
+		measures,
 		pointerSize,
 		dir
 	);
@@ -261,7 +260,7 @@ export function show(
 
 	layoutPreview(
 		preview, layout, getClasses( preview, layout ),
-		SIZES.landscapeImage.h, pointerSize
+		SIZES.landscapeImage.h, pointerSize, measures.windowHeight
 	);
 
 	preview.el.show();
@@ -344,90 +343,75 @@ export function hide( preview ) {
 
 /**
  * @param {boolean} isPreviewTall
- * @param {Object} eventData Data related to the event that triggered showing
- *  a popup
- * @param {number} eventData.pageX
- * @param {number} eventData.pageY
- * @param {number} eventData.clientY
- * @param {Object} linkData Data related to the link that’s used for showing
- *  a popup
- * @param {ClientRectList} linkData.clientRects list of rectangles defined by
- *  four edges
- * @param {Object} linkData.offset
- * @param {number} linkData.width
- * @param {number} linkData.height
- * @param {Object} windowData Data related to the window
- * @param {number} windowData.scrollTop
- * @param {number} windowData.width
- * @param {number} windowData.height
+ * @param {ext.popups.Measures} measures
  * @param {number} pointerSpaceSize Space reserved for the pointer
  * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  * @return {ext.popups.PreviewLayout}
  */
 export function createLayout(
-	isPreviewTall, eventData, linkData, windowData, pointerSpaceSize, dir
+	isPreviewTall, measures, pointerSpaceSize, dir
 ) {
 	let flippedX = false,
 		flippedY = false,
-		offsetTop = eventData.pageY ?
+		offsetTop = measures.pageY ?
 			// If it was a mouse event, position according to mouse
 			// Since client rectangles are relative to the viewport,
 			// take scroll position into account.
 			getClosestYPosition(
-				eventData.pageY - windowData.scrollTop,
-				linkData.clientRects,
+				measures.pageY - measures.scrollTop,
+				measures.clientRects,
 				false
-			) + windowData.scrollTop + pointerSpaceSize :
+			) + measures.scrollTop + pointerSpaceSize :
 			// Position according to link position or size
-			linkData.offset.top + linkData.height + pointerSize,
+			measures.offset.top + measures.height + pointerSize,
 		offsetLeft;
-	const clientTop = eventData.clientY ? eventData.clientY : offsetTop;
+	const clientTop = measures.clientY ? measures.clientY : offsetTop;
 
-	if ( eventData.pageX ) {
-		if ( linkData.width > maxLinkWidthForCenteredPointer ) {
+	if ( measures.pageX ) {
+		if ( measures.width > maxLinkWidthForCenteredPointer ) {
 			// For wider links, position the popup's pointer at the
 			// mouse pointer's location. (x-axis)
-			offsetLeft = eventData.pageX;
+			offsetLeft = measures.pageX;
 		} else {
 			// For smaller links, position the popup's pointer at
 			// the link's center. (x-axis)
-			offsetLeft = linkData.offset.left + linkData.width / 2;
+			offsetLeft = measures.offset.left + measures.width / 2;
 		}
 	} else {
-		offsetLeft = linkData.offset.left;
+		offsetLeft = measures.offset.left;
 	}
 
 	// X Flip
-	if ( offsetLeft > ( windowData.width / 2 ) ) {
-		offsetLeft += ( !eventData.pageX ) ? linkData.width : 0;
+	if ( offsetLeft > ( measures.windowWidth / 2 ) ) {
+		offsetLeft += ( !measures.pageX ) ? measures.width : 0;
 		offsetLeft -= !isPreviewTall ?
 			portraitPopupWidth :
 			landscapePopupWidth;
 		flippedX = true;
 	}
 
-	if ( eventData.pageX ) {
+	if ( measures.pageX ) {
 		offsetLeft += ( flippedX ) ? 18 : -18;
 	}
 
 	// Y Flip
-	if ( clientTop > ( windowData.height / 2 ) ) {
+	if ( clientTop > ( measures.windowHeight / 2 ) ) {
 		flippedY = true;
 
 		// Mirror the positioning of the preview when there's no "Y flip": rest
 		// the pointer on the edge of the link's bounding rectangle. In this case
 		// the edge is the top-most.
-		offsetTop = linkData.offset.top;
+		offsetTop = measures.offset.top;
 
 		// Change the Y position to the top of the link
-		if ( eventData.pageY ) {
+		if ( measures.pageY ) {
 			// Since client rectangles are relative to the viewport,
 			// take scroll position into account.
 			offsetTop = getClosestYPosition(
-				eventData.pageY - windowData.scrollTop,
-				linkData.clientRects,
+				measures.pageY - measures.scrollTop,
+				measures.clientRects,
 				true
-			) + windowData.scrollTop;
+			) + measures.scrollTop;
 		}
 
 		offsetTop -= pointerSpaceSize;
@@ -499,17 +483,17 @@ export function getClasses( preview, layout ) {
  * @param {string[]} classes class names used for layout out the preview
  * @param {number} predefinedLandscapeImageHeight landscape image height
  * @param {number} pointerSpaceSize
+ * @param {number} windowHeight
  * @return {void}
  */
 export function layoutPreview(
-	preview, layout, classes, predefinedLandscapeImageHeight, pointerSpaceSize
+	preview, layout, classes, predefinedLandscapeImageHeight, pointerSpaceSize, windowHeight
 ) {
 	const popup = preview.el,
 		isTall = preview.isTall,
 		hasThumbnail = preview.hasThumbnail,
 		thumbnail = preview.thumbnail,
 		flippedY = layout.flippedY;
-	let offsetTop = layout.offset.top;
 
 	if (
 		!flippedY && !isTall && hasThumbnail &&
@@ -524,13 +508,10 @@ export function layoutPreview(
 	// eslint-disable-next-line mediawiki/class-doc
 	popup.addClass( classes.join( ' ' ) );
 
-	if ( flippedY ) {
-		offsetTop -= popup.outerHeight();
-	}
-
 	popup.css( {
-		top: offsetTop,
-		left: `${layout.offset.left}px`
+		left: `${layout.offset.left}px`,
+		top: flippedY ? 'auto' : layout.offset.top,
+		bottom: flippedY ? `${windowHeight - layout.offset.top}px` : 'auto'
 	} );
 
 	if ( hasThumbnail ) {
