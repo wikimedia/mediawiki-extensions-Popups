@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"01miki10",
 			"Kyykaarme",
 			"Majavah",
 			"Mikahama",
@@ -26,7 +27,7 @@
 	"popups-preview-disambiguation": "Tämä sivun nimi liittyy useampaan kuin yhteen sivuun",
 	"popups-preview-disambiguation-link": "Katso samankaltaisia sivuja",
 	"prefs-reading": "Lukemisen asetukset",
-	"popups-prefs-optin": "Sivun esikatselut (näe nopeasti aiheen esikatselut sivua lukiessasi):",
+	"popups-prefs-optin": "Ota käyttöön sivun esikatselut (näe nopeasti aiheen esikatselut sivua lukiessasi)",
 	"popups-prefs-disable-nav-gadgets-info": "Sinun täytyy ottaa pois käytöstä [[$1 | Navigation popups -pienoisohjelma]] ottaaksesi sivujen esikatselut käyttöön.",
 	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset."
 }

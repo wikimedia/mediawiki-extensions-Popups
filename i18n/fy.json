@@ -24,7 +24,7 @@
 	"popups-preview-disambiguation": "Dizze titel is besibbe oan ferskate siden",
 	"popups-preview-disambiguation-link": "Besibbe siden besjen",
 	"prefs-reading": "Lêsfoarkarren",
-	"popups-prefs-optin": "Proefbylden fan siden (jout flugge foarfertoanings fan ûnderwerpen ûnder it lêzen):",
+	"popups-prefs-optin": "Proefbylden fan siden ynskeakelje (flugge foarfertoanings fan ûnderwerpen ûnder it lêzen)",
 	"popups-prefs-disable-nav-gadgets-info": "Jo moatte de [[$1 | 'gadget' Navigation Popups útskeakelje]] yn it tabblêd Gadgets, om sideproefbylden ynskeakelje te kinnen",
 	"popups-prefs-conflicting-gadgets-info": "Beskate útwreidings en oare oanpassings kinne de prestaasjes fan dizze funksje beynfloedzje. Besjoch jo 'gadgets' en meidoggerskripts, ek de globale, at jo problemen ûnderfine.",
 	"popups-refpreview-reference": "Referinsje",
@@ -35,5 +35,5 @@
 	"popups-refpreview-collapsible-placeholder": "Dizze referinsje befettet in byldobjekt dat net yn it proefbyld past.",
 	"popups-refpreview-user-preference-label": "Proefbylden fan referinsjes (jout flugge foarfertoanings fan fuotnoaten)",
 	"popups-refpreview-beta-feature-message": "Proefbylden fan referinsjes",
-	"popups-refpreview-beta-feature-description": "It proefbyld fan in referinsje werjaan troch oer syn fuotnoatmarkearder hinne te mûzen.\n\nTink derom: At jo de 'gadget' [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] brûke, sille jo gjin referinsjeproefbylden sjen. At jo de gadget [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] brûke, sille beide finsterkes fan Reference Tooltips en Proefbylden fan referinsjes opdûke."
+	"popups-refpreview-beta-feature-description": "It proefbyld fan in referinsje werjaan troch oer syn fuotnoatmarkearder hinne te mûzen.\n\nTink derom: At jo de 'gadgets' [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] of [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] brûke, sille jo gjin referinsjeproefbylden sjen."
 }
