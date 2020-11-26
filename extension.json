@@ -113,6 +113,10 @@
 				"Special:MostLinkedFiles",
 				"Special:Book"
 			]
+		},
+		"PopupsTextExtractsIntroOnly": {
+			"description": "Whether we should extract intro text only or full page text. This is only applicable when using PopupsGateway=mwApiPlain.",
+			"value": true
 		}
 	},
 	"ResourceModules": {

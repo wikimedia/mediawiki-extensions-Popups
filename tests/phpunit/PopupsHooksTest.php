@@ -153,11 +153,12 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			'wgPopupsRestGatewayEndpoint' => '/api',
 			'wgPopupsVirtualPageViews' => true,
 			'wgPopupsGateway' => 'mwApiPlain',
-			'wgPopupsStatsvSamplingRate' => 0
+			'wgPopupsStatsvSamplingRate' => 0,
+			'wgPopupsTextExtractsIntroOnly' => true,
 		];
 		$this->setMwGlobals( $config );
 		PopupsHooks::onResourceLoaderGetConfigVars( $vars, '' );
-		$this->assertCount( 6, $vars, 'A configuration is retrieved.' );
+		$this->assertCount( 7, $vars, 'A configuration is retrieved.' );
 
 		foreach ( $config as $key => $value ) {
 			$this->assertSame(
