@@ -9,9 +9,10 @@
 		]
 	},
 	"popups-message": "Peržiūros",
-	"popups-desc": "Rodo puslapio peržiūrą, kai naudotojas užveda pelę ant nuorodos",
+	"popups-desc": "Rodo puslapio peržiūros korteles, kai naudotojas užveda pelę ant nuorodos",
 	"popups-settings-title": "Puslapio peržiūra",
 	"popups-settings-option-simple": "Įgalinti",
+	"popups-settings-option-simple-description": "Rodyti trumpas puslapių nuorodų santraukas, kai skaitote straipsnį.",
 	"popups-settings-option-advanced": "Išplėstinis",
 	"popups-settings-option-off": "Išjungti",
 	"popups-settings-save": "Išsaugoti",
@@ -23,5 +24,14 @@
 	"popups-preview-disambiguation": "Šis pavadinimas susietas su daugiau nei vienu puslapiu",
 	"popups-preview-disambiguation-link": "Peržiūrėti panašius puslapius",
 	"prefs-reading": "Skaitymo nustatymai",
-	"popups-prefs-optin": "<em>Rodyti trumpas straipsnių santraukas, kai skaitote straipsnį</em>"
+	"popups-prefs-optin": "Įjungti puslapių peržiūras (trumpas puslapių nuorodų santraukas, kai skaitote straipsnį)",
+	"popups-prefs-disable-nav-gadgets-info": "Jūs turite [[$1 | išjungti Peržiūros išlendančius langus]] Priemonių skirtuke (nustatymuose), jei norite įjungti Puslapių peržiūras",
+	"popups-refpreview-reference": "Išnaša",
+	"popups-refpreview-book": "Knygos išnaša",
+	"popups-refpreview-journal": "Žurnalo išnaša",
+	"popups-refpreview-news": "Naujienų išnaša",
+	"popups-refpreview-web": "Internetinė išnaša",
+	"popups-refpreview-collapsible-placeholder": "Šioje išnašoje per daug elementų, kurie netelpa į peržiūrą.",
+	"popups-refpreview-user-preference-label": "Išnašų peržiūros (rodyti trumpas išnašų santraukų peržiūras)",
+	"popups-refpreview-beta-feature-message": "Išnašų peržiūra"
 }
