@@ -2,19 +2,26 @@
  * @module popup
  */
 
-import { escapeHTML } from '../templateUtil';
+import { createNodeFromTemplate } from '../templateUtil';
 
+const templateHTML = `
+	<div class="mwe-popups" aria-hidden></div>
+`;
 /**
  * @param {ext.popups.previewTypes} type
- * @param {string} html HTML string.
+ * @param {Element} element The contents of the popup.
  * @return {JQuery}
  */
-export function renderPopup( type, html ) {
-	type = escapeHTML( type );
 
-	return $( $.parseHTML( `
-	<div class='mwe-popups mwe-popups-type-${type}' aria-hidden>
-		<div class='mwe-popups-container'>${html}</div>
-	</div>
-	`.trim() ) );
+export function renderPopup( type, container ) {
+	const element = createNodeFromTemplate( templateHTML );
+	// The following classes are used here:
+	// * mwe-popups-type-reference
+	// * mwe-popups-type-unknown
+	// * mwe-popups-type-generic
+	// * mwe-popups-type-disambiguation
+	element.className = `mwe-popups mwe-popups-type-${type}`;
+	container.className = 'mwe-popups-container';
+	element.appendChild( container );
+	return $( element );
 }

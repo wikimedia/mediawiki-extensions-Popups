@@ -4,6 +4,21 @@
 
 import { renderPopup } from '../popup/popup';
 import { escapeHTML } from '../templateUtil';
+import { createNodeFromTemplate } from '../templateUtil';
+
+const templateHTML = `
+<div class="mwe-popups-container">
+    <div class="mwe-popups-extract">
+        <div class="mwe-popups-scroll">
+            <strong class="mwe-popups-title">
+                <span class="mw-ui-icon mw-ui-icon-element"></span>
+                <span class="mwe-popups-title-placeholder"></span>
+            </strong>
+            <div class="mw-parser-output"></div>
+        </div>
+        <div class="mwe-popups-fade" />
+    </div>
+</div>`;
 
 // Known citation type strings currently supported with icons and messages.
 const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ];
@@ -37,21 +52,18 @@ export function renderReferencePreview(
 		// * popups-refpreview-reference
 		// * popups-refpreview-web
 		title = escapeHTML( mw.msg( titleMsg ) );
-
-	const $el = renderPopup( model.type,
-		`
-			<div class='mwe-popups-extract'>
-				<div class='mwe-popups-scroll'>
-					<strong class='mwe-popups-title'>
-						<span class='mw-ui-icon mw-ui-icon-element mw-ui-icon-reference-${type}'></span>
-						${title}
-					</strong>
-					<div class='mw-parser-output'>${model.extract}</div>
-				</div>
-				<div class='mwe-popups-fade' />
-			</div>
-		`
-	);
+	const $el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
+	$el.find( '.mwe-popups-title-placeholder' )
+		.replaceWith( title );
+	// The following classes are used here:
+	// * mw-icon-reference-reference
+	// * mw-icon-reference-unknown
+	// * mw-icon-reference-generic
+	// * mw-icon-reference-disambiguation
+	$el.find( '.mw-ui-icon' )
+		.addClass( `mw-ui-icon-reference-${type}` );
+	$el.find( '.mw-parser-output' )
+		.html( model.extract );
 
 	// Make sure to not destroy existing targets, if any
 	$el.find( '.mwe-popups-extract a[href][class~="external"]:not([target])' ).each( ( i, a ) => {
