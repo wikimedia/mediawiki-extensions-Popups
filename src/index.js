@@ -24,6 +24,7 @@ import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
 import { previewTypes, getPreviewType } from './preview/model';
+import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
 
 const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
@@ -225,14 +226,7 @@ function registerChangeListeners(
 		const excludedLinksSelector = EXCLUDED_LINK_SELECTORS.join( ', ' );
 		selectors.push( `#mw-content-text a[href][title]:not(${excludedLinksSelector})` );
 	}
-	// TODO: Replace with mw.user.options.get( 'popupsreferencepreviews' ) === '1' when not in Beta
-	// any more, and the temporary feature flag is not needed any more.
-	if ( mw.config.get( 'wgPopupsReferencePreviews' ) &&
-		// T265872: Show popup if there is no conflict with the reference tooltips gadget
-		!mw.config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ) &&
-		// T243822: Temporarily disabled in the mobile skin
-		mw.config.get( 'skin' ) !== 'minerva'
-	) {
+	if ( isReferencePreviewsEnabled( mw.config ) ) {
 		selectors.push( '#mw-content-text .reference a[ href*="#" ]' );
 	}
 	if ( !selectors.length ) {
