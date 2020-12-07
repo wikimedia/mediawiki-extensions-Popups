@@ -35,7 +35,7 @@
 	"popups-preview-disambiguation": "Este título está relacionado com mais do que uma página",
 	"popups-preview-disambiguation-link": "Ver páginas semelhantes",
 	"prefs-reading": "Preferências de leitura",
-	"popups-prefs-optin": "Antevisões de páginas (obtenha antevisões rápidas de um assunto durante a leitura de uma página):",
+	"popups-prefs-optin": "Ativar as antevisões de páginas (antevisões rápidas de um assunto durante a leitura de uma página)",
 	"popups-prefs-disable-nav-gadgets-info": "Tem de [[$1 | desativar os Popups de Navegação]] no separador Gadgets para ativar a Antevisão de Páginas",
 	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e ficheiros de comandos (''scripts'') de utilizador, incluindo os globais.",
 	"popups-refpreview-reference": "Referência",
@@ -46,5 +46,5 @@
 	"popups-refpreview-collapsible-placeholder": "Esta referência inclui um gráfico que não cabe na antevisão.",
 	"popups-refpreview-user-preference-label": "Antevisão de referências (obter antevisões rápidas das notas de rodapé)",
 	"popups-refpreview-beta-feature-message": "Antevisões de referências",
-	"popups-refpreview-beta-feature-description": "Mostrar a antevisão de uma referência quando o ponteiro do rato é colocado sobre o marcador da sua nota de rodapé.\n\nNote, por favor: se está a usar o ''gadget'' da [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navegação flutuante], não verá antevisões de referências. Se está a usar o ''gadget'' das [[mw:Special:MyLanguage/Reference Tooltips|Reference Dicas de referências]] irão aparecer as duas janelas flutuantes das dicas de referências e das antevisões de referências."
+	"popups-refpreview-beta-feature-description": "Mostrar a antevisão de uma referência quando o ponteiro do rato é colocado sobre o marcador da sua nota de rodapé.\n\nNote, por favor: se estiver a usar o ''gadget'' da [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navegação flutuante] ou o ''gadget'' das [[mw:Special:MyLanguage/Reference Tooltips|Reference Dicas de referências]] não verá antevisões de referências."
 }
