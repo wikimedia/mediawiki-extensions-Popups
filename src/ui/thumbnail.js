@@ -40,9 +40,10 @@ export const SIZES = {
  * Extracted from `mw.popups.renderer.article.createThumbnail`.
  *
  * @param {Object} rawThumbnail
+ * @param {boolean} useCSSClipPath
  * @return {ext.popups.Thumbnail|null}
  */
-export function createThumbnail( rawThumbnail ) {
+export function createThumbnail( rawThumbnail, useCSSClipPath ) {
 	const devicePixelRatio = constants.BRACKETED_DEVICE_PIXEL_RATIO;
 
 	if ( !rawThumbnail ) {
@@ -94,24 +95,32 @@ export function createThumbnail( rawThumbnail ) {
 	}
 
 	const isNarrow = tall && thumbWidth < SIZES.portraitImage.w;
+	const el = useCSSClipPath ? createThumbnailImg( rawThumbnail.source ) : createThumbnailSVG(
+		tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall',
+		rawThumbnail.source,
+		x,
+		y,
+		thumbWidth,
+		thumbHeight,
+		width,
+		height
+	);
 
 	return {
-		el: createThumbnailElement(
-			tall ? 'mwe-popups-is-tall' : 'mwe-popups-is-not-tall',
-			rawThumbnail.source,
-			x,
-			y,
-			thumbWidth,
-			thumbHeight,
-			width,
-			height
-		),
+		el,
 		isTall: tall,
 		isNarrow,
 		offset: isNarrow ? SIZES.portraitImage.w - thumbWidth : 0,
 		width: thumbWidth,
 		height: thumbHeight
 	};
+}
+
+function createThumbnailImg( url ) {
+	const img = document.createElement( 'img' );
+	img.className = 'mwe-popups-thumbnail';
+	img.src = url;
+	return img;
 }
 
 /**
@@ -131,7 +140,8 @@ export function createThumbnail( rawThumbnail ) {
  * @param {number} height
  * @return {JQuery}
  */
-export function createThumbnailElement(
+
+export function createThumbnailSVG(
 	className, url, x, y, thumbnailWidth, thumbnailHeight, width, height
 ) {
 	const nsSvg = 'http://www.w3.org/2000/svg',

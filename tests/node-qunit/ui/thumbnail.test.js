@@ -1,4 +1,4 @@
-import { createThumbnail, createThumbnailElement } from '../../../src/ui/thumbnail';
+import { createThumbnail, createThumbnailSVG } from '../../../src/ui/thumbnail';
 import * as constants from '../../../src/constants';
 
 QUnit.module( 'ext.popups#thumbnail', {
@@ -139,6 +139,15 @@ QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
 	);
 } );
 
+QUnit.test( 'createThumbnail - clip-path is supported', ( assert ) => {
+	const thumbnail = createThumbnail( {
+		source: 'http://image.url',
+		width: 320, height: 200
+	}, true );
+
+	assert.strictEqual( thumbnail.el.tagName, 'IMG', 'Using a raw img element' );
+} );
+
 QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 	const cases = [
 		{
@@ -247,7 +256,7 @@ QUnit.test( 'createThumbnail - insecure URL', ( assert ) => {
 	} );
 } );
 
-QUnit.test( 'createThumbnailElement', ( assert ) => {
+QUnit.test( 'createThumbnailSVG', ( assert ) => {
 	const
 		url = 'https://thumbnail.url',
 		x = 25,
@@ -268,7 +277,7 @@ QUnit.test( 'createThumbnailElement', ( assert ) => {
 			expectedPoints: '0 0 0 300'
 		}
 	].forEach( ( { className, expectedPoints, expectedHTML }, i ) => {
-		const $thumbnail = createThumbnailElement(
+		const $thumbnail = createThumbnailSVG(
 			className, url, x, y, thumbnailWidth, thumbnailHeight,
 			width, height );
 

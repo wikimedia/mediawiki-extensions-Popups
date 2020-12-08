@@ -4,7 +4,7 @@
 // Code adapted from Yair Rand's NavPopupsRestyled.js
 // https://en.wikipedia.org/wiki/User:Yair_rand/NavPopupsRestyled.js
 //
-// "Tall" terminology, although applied to the popup, refers only to the
+// 'Tall' terminology, although applied to the popup, refers only to the
 // thumbnail and not the popup itself:
 //   Class     Thumbnail  Popup
 //   Tall      Portrait   Landscape
@@ -58,7 +58,7 @@
 	}
 
 	.mwe-popups-extract {
-		// T156800, T139297: "Pad" the extract horizontally using a margin so the
+		// T156800, T139297: 'Pad' the extract horizontally using a margin so the
 		// SVG element is forced not to occlude the truncating pseudo-element and
 		// the settings cog in IE9-11.
 		margin: @popupPadding;
@@ -78,7 +78,7 @@
 			width: 25%;
 			height: @lineHeight;
 			background-color: transparent;
-			pointer-events: none; // Allows clicking "through" the element
+			pointer-events: none; // Allows clicking 'through' the element
 		}
 
 		/* Stylelint rule broken for vendor prefixes: https://github.com/stylelint/stylelint/issues/1939 */
@@ -178,8 +178,8 @@
 			font-size: 12px;
 		}
 
-		// When the user dwells on the "There was an issue displaying this preview"
-		// text, which is a link to the page, then highlight the "Go to this page"
+		// When the user dwells on the 'There was an issue displaying this preview'
+		// text, which is a link to the page, then highlight the 'Go to this page'
 		// link too.
 		.mwe-popups-extract:hover + footer .mwe-popups-read-link {
 			text-decoration: underline;
@@ -338,6 +338,102 @@
 	&.flipped-x {
 		polyline {
 			.mwe-popups-translate( -100%, 8px );
+		}
+	}
+}
+
+@supports ( clip-path: polygon( 1px 1px ) ) {
+	.mwe-popups {
+		&.flipped-x,
+		&.flipped-x-y {
+			.mwe-popups-container {
+				--x2: var( --pseudo-radius );
+				--x3: ~'calc(100% - var(--pointer-offset) - (var(--pointer-width) / 2))';
+				--x4: ~'calc(100% - var(--pointer-offset))';
+				--x5: ~'calc(100% - var(--pointer-offset) + (var(--pointer-width) / 2))';
+				--x6: ~'calc(100% - var(--pseudo-radius))';
+			}
+		}
+
+		&.flipped-y,
+		&.flipped-x-y {
+			.mwe-popups-container {
+				--y1: 100%;
+				--y2: ~'calc(100% - var(--pointer-height))';
+				--y3: ~'calc(100% - var(--pointer-height) - var(--pseudo-radius))';
+				--y4: ~'var(--pseudo-radius)';
+				--y5: 0;
+				margin-bottom: -9px;
+				margin-top: 0;
+			}
+		}
+
+		.mwe-popups-container {
+			--x1: 0;
+			--x2: var( --pseudo-radius );
+			--x3: ~'calc( var(--pointer-offset) - ( var( --pointer-width ) / 2 ) )';
+			--x4: var( --pointer-offset );
+			--x5: ~'calc( var(--pointer-offset) + ( var( --pointer-width ) / 2 ) )';
+			--x6: ~'calc( 100% - var( --pseudo-radius ) )';
+			--x7: 100%;
+			--y1: 0;
+			--y2: var( --pointer-height );
+			--y3: ~'calc(var(--pointer-height) + var(--pseudo-radius))';
+			--y4: ~'calc(100% - var(--pseudo-radius))';
+			--y5: 100%;
+			padding-top: 0;
+			display: flex;
+			background: #fff;
+			--pseudo-radius: 2px;
+			--pointer-height: 8px;
+			--pointer-width: 16px;
+			--pointer-offset: 26px;
+
+			// Using straight-lines instead of rounded corners,
+			// until shape() syntax (https://github.com/w3c/csswg-drafts/pull/5711) is resolved
+			//
+			clip-path: ~'polygon( var( --x2 ) var( --y2 ), var( --x3) var(--y2), var(--x4) var(--y1), var(--x5) var(--y2), var(--x6) var(--y2), var(--x7) var(--y3), var(--x7) var(--y4), var(--x6) var(--y5), var(--x2) var(--y5), var(--x1) var(--y4), var(--x1) var(--y3) )';
+		}
+
+		.mwe-popups-thumbnail {
+			object-fit: cover;
+			outline: 1px solid rgba( 0, 0, 0, 0.1 );
+		}
+
+		&.mwe-popups-is-tall {
+			.mwe-popups-discreet {
+				.mwe-popups-thumbnail {
+					min-width: @popupTallWidth;
+					height: 250px;
+				}
+				order: 1;
+			}
+			flex-direction: row;
+		}
+
+		&.mwe-popups-is-not-tall {
+			.mwe-popups-thumbnail {
+				width: @popupWidth;
+				min-height: 200px;
+			}
+
+			.mwe-popups-container {
+				flex-direction: column;
+			}
+		}
+
+		&:before {
+			display: none;
+		}
+
+		&:after {
+			display: none;
+		}
+
+		&.mwe-popups-image-pointer {
+			.mwe-popups-extract {
+				margin-top: 0;
+			}
 		}
 	}
 }

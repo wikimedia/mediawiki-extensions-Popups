@@ -62,7 +62,9 @@ export function createPointerMasks( container ) {
  * @return {void}
  */
 export function init() {
-	createPointerMasks( document.body );
+	if ( !supportsCSSClipPath() ) {
+		createPointerMasks( document.body );
+	}
 }
 
 /**
@@ -157,6 +159,10 @@ export function createPreviewWithType( model ) {
 	}
 }
 
+function supportsCSSClipPath() {
+	return window.CSS && CSS.supports( 'clip-path', 'polygon(1px 1px)' );
+}
+
 /**
  * Creates an instance of the DTO backing a preview.
  *
@@ -164,7 +170,7 @@ export function createPreviewWithType( model ) {
  * @return {ext.popups.Preview}
  */
 function createPagePreview( model ) {
-	const thumbnail = createThumbnail( model.thumbnail ),
+	const thumbnail = createThumbnail( model.thumbnail, supportsCSSClipPath() ),
 		hasThumbnail = thumbnail !== null;
 
 	return {
@@ -497,7 +503,7 @@ export function layoutPreview(
 
 	if (
 		!flippedY && !isTall && hasThumbnail &&
-			thumbnail.height < predefinedLandscapeImageHeight
+			thumbnail.height < predefinedLandscapeImageHeight && !supportsCSSClipPath()
 	) {
 		popup.find( '.mwe-popups-extract' ).css(
 			'margin-top',
@@ -514,7 +520,7 @@ export function layoutPreview(
 		bottom: flippedY ? `${windowHeight - layout.offset.top}px` : 'auto'
 	} );
 
-	if ( hasThumbnail ) {
+	if ( hasThumbnail && !supportsCSSClipPath() ) {
 		setThumbnailClipPath( preview, layout );
 	}
 }
