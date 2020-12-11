@@ -131,6 +131,7 @@ function registerChangeListeners(
 	statsvTracker, eventLoggingTracker, pageviewTracker, callbackCurrentTimestamp
 ) {
 	registerChangeListener( store, changeListeners.footerLink( actions ) );
+	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
 	registerChangeListener(
 		store, changeListeners.statsv( registerActions, statsvTracker ) );
@@ -237,13 +238,11 @@ function registerChangeListeners(
 
 	rendererInit();
 
-	$( validLinkSelector )
-		.removeAttr( 'title' )
-
 	/*
 	 * Binding hover and click events to the eligible links to trigger actions
 	 */
-		.on( 'mouseover keyup', function ( event ) {
+	$( document )
+		.on( 'mouseover keyup', validLinkSelector, function ( event ) {
 			const mwTitle = titleFromElement( this, mw.config );
 			if ( !mwTitle ) {
 				return;
@@ -280,14 +279,14 @@ function registerChangeListeners(
 
 			boundActions.linkDwell( mwTitle, this, measures, gateway, generateToken, type );
 		} )
-		.on( 'mouseout blur', function () {
+		.on( 'mouseout blur', validLinkSelector, function () {
 			const mwTitle = titleFromElement( this, mw.config );
 
 			if ( mwTitle ) {
 				boundActions.abandon();
 			}
 		} )
-		.on( 'click', function () {
+		.on( 'click', validLinkSelector, function () {
 			const mwTitle = titleFromElement( this, mw.config );
 			if ( mwTitle ) {
 				if ( previewTypes.TYPE_PAGE === getPreviewType( this, mw.config, mwTitle ) ) {
