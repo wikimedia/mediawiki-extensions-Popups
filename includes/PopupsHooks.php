@@ -161,8 +161,7 @@ class PopupsHooks {
 		$context = $services->getService( 'Popups.Context' );
 		$user = $out->getUser();
 
-		// TODO: Remove all references to wgPopupsReferencePreviews when not in Beta any more, and
-		// the temporary feature flag is not needed any more.
+		// TODO: Move checks and tests from isReferencePreviewsEnabled.js here
 		$vars['wgPopupsReferencePreviews'] = $context->isReferencePreviewsEnabled( $user );
 
 		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget( $user );
