@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Andriykopanytsia",
+			"Base",
 			"Movses",
 			"Olion",
 			"Piramidion",
@@ -37,6 +38,7 @@
 	"popups-refpreview-journal": "Виноска на журнал",
 	"popups-refpreview-news": "Зноска на новини",
 	"popups-refpreview-web": "Виноска на веб-сайт",
+	"popups-refpreview-collapsible-placeholder": "Ця примітка включає зображення, яке не вміщається до попереднього перегляду.",
 	"popups-refpreview-user-preference-label": "Попередній перегляд виносок (швидкий перегляд)",
 	"popups-refpreview-beta-feature-message": "Огляд джерел",
 	"popups-refpreview-beta-feature-description": "Показування попереднього перегляду примітки при наведенні вказівника миші на її номер у тексті.\n\nБудь ласка, зверніть увагу: Якщо ви використовуєте додаток [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навігаційні спливні вікна] або додаток [[mw:Special:MyLanguage/Reference Tooltips|Спливні підказки]], то ви не побачите Попередній перегляд приміток."
