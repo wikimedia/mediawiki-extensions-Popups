@@ -14,7 +14,6 @@ module.exports = function ( grunt ) {
 		eslint: {
 			options: {
 				cache: true,
-				maxWarnings: 0,
 				fix: grunt.option( 'fix' )
 			},
 			all: {
