@@ -26,7 +26,7 @@
 	"prefs-reading": "Leseinnstillingar",
 	"popups-prefs-optin": "Førhandsvisningar (få kjapp førhandsvisning av eit emne medan du les ei side):",
 	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideførehandvising",
-	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre personlege innstillinger kan påverka denne funksjonen negativt. Viss du opplever problem, så sjekk dine tilleggsfunksjoner og brukarscript, inklusiv dine globale script.",
+	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjonar og andre tilpassingar kan påverka ytinga til denne funksjonen. Ved problem bør du sjekka tilleggsfunksjonane og brukarskripta dine, inkludert globale skript.",
 	"popups-refpreview-reference": "Referanse",
 	"popups-refpreview-book": "Bokreferanse",
 	"popups-refpreview-journal": "Journalreferanse",
