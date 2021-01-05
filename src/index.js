@@ -130,7 +130,7 @@ function registerChangeListeners(
 	store, registerActions, userSettings, settingsDialog, previewBehavior,
 	statsvTracker, eventLoggingTracker, pageviewTracker, callbackCurrentTimestamp
 ) {
-	registerChangeListener( store, changeListeners.footerLink( actions ) );
+	registerChangeListener( store, changeListeners.footerLink( registerActions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
 	registerChangeListener( store, changeListeners.render( previewBehavior ) );
 	registerChangeListener(
