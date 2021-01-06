@@ -160,7 +160,9 @@ export function createPreviewWithType( model ) {
 }
 
 function supportsCSSClipPath() {
-	return window.CSS && CSS.supports( 'clip-path', 'polygon(1px 1px)' );
+	return window.CSS &&
+		typeof CSS.supports === 'function' &&
+		CSS.supports( 'clip-path', 'polygon(1px 1px)' );
 }
 
 /**
