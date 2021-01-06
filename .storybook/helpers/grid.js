@@ -3,9 +3,9 @@
  */
 const grid = {
 	landscape: {
-		row: ( x ) => 50 + ( ( x - 1 ) * 300 ),
+		row: ( x ) => 50 + ( ( x - 1 ) * 460 ),
 		col: ( x ) => 50 + ( ( x - 1 ) * 500 ),
-		flipOffset: 250
+		flipOffset: 400
 	},
 	portrait: {
 		row: ( x ) => 50 + ( ( x - 1 ) * 450 ),
