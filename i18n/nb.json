@@ -28,7 +28,7 @@
 	"popups-preview-disambiguation": "Denne tittelen relaterer til mer enn én side",
 	"popups-preview-disambiguation-link": "Vis lignende sider",
 	"prefs-reading": "Lesepreferanser",
-	"popups-prefs-optin": "Sideforhåndsvisning (få rask forhåndsvisning av et emne mens du leser en side):",
+	"popups-prefs-optin": "Slå på sideforhåndsvisning (få rask forhåndsvisning av et emne mens du leser en side):",
 	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideforhåndsvisning",
 	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke denne funksjonen. Om du opplever problemer, sjekk dine tilleggsfunksjoner og brukerscript, inkludert dine globale script.",
 	"popups-refpreview-reference": "Referanse",
