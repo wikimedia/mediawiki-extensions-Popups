@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Salvemm el lombard"
+		]
+	},
+	"popups-desc": "El mostra un popap de veduda antecipada quand che l'utent el passa el pontador sora un conligament",
+	"popups-settings-title": "Veduda antecipada de la pagina",
+	"popups-settings-option-simple": "Ativa",
+	"popups-settings-option-simple-description": "Oten una veduda antecipada de d'un argoment intanta che te seet adree a lensger una pagina.",
+	"popups-settings-option-advanced": "Vanzade",
+	"popups-settings-option-advanced-description": "Varda una pagina de veduda anticipada di collegamenti e va dent in del menu di fonzion de modifega. Chesschì l'è drovà de tanti utent.",
+	"popups-settings-option-off": "Disativa",
+	"popups-settings-save": "Salva",
+	"popups-settings-help-ok": "Fad",
+	"popups-settings-cancel": "Anula",
+	"popups-settings-help": "Te podet ativà anmò i pagine de veduda anticipada cont el drovà el conligament in fond a la pagina.",
+	"popups-settings-enable": "Ativa i pagine de veduda anticipada",
+	"popups-preview-no-preview": "A l'è capitad un problema in del cors de la visualizzazion de questa pagina de veduda anticipada",
+	"popups-preview-footer-read": "Và a questa pagina chì",
+	"popups-preview-disambiguation": "Quel titol chì l'è riferid a pussee d'una pagina",
+	"popups-preview-disambiguation-link": "Varda di pagine compagne",
+	"prefs-reading": "Preferenze de letura"
+}
