@@ -81,6 +81,7 @@ QUnit.test( 'MediaWiki API gateway is called with correct arguments', function (
 			exintro: true,
 			exchars: 525,
 			explaintext: true,
+			exsectionformat: 'plain',
 			piprop: 'thumbnail',
 			pithumbsize: DEFAULT_CONSTANTS.THUMBNAIL_SIZE,
 			pilicense: 'any',
