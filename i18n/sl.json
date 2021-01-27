@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dbc334",
+			"Eleassar",
 			"HairyFotr",
 			"Janezdrilc"
 		]
@@ -12,7 +13,7 @@
 	"popups-settings-option-simple": "Vključi",
 	"popups-settings-option-simple-description": "Oglej si kratke povzetke teme, medtem ko bereš članek.",
 	"popups-settings-option-advanced": "Napredno",
-	"popups-settings-option-advanced-description": "Poglej si povzetke povezav in dostopaj do urejevalskih funkcij. Uporabljeno pri mnogih uporabnikih.",
+	"popups-settings-option-advanced-description": "Prikaz povzetkov povezav in menijev s funkcijami za urejanje. To uporabljajo številni urejevalci.",
 	"popups-settings-option-off": "Izključi",
 	"popups-settings-save": "Shrani",
 	"popups-settings-help-ok": "Končano",
