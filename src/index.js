@@ -168,7 +168,7 @@ function registerChangeListeners(
 		pagePreviewGateway = createPagePreviewGateway( mw.config ),
 		referenceGateway = createReferenceGateway(),
 		userSettings = createUserSettings( mw.storage ),
-		settingsDialog = createSettingsDialogRenderer(),
+		settingsDialog = createSettingsDialogRenderer( mw.config ),
 		experiments = createExperiments( mw.experiments ),
 		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
 		// Virtual pageviews are always tracked.

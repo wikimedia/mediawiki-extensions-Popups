@@ -51,32 +51,42 @@ class PopupsHooks {
 
 		$option = [
 			'type' => 'toggle',
-			'label-message' => 'popups-prefs-optin',
+			'label-message' => 'popups-prefs-optin-all',
 			'help-message' => 'popups-prefs-conflicting-gadgets-info',
 			'section' => self::PREVIEWS_PREFERENCES_SECTION
 		];
-		if ( $context->conflictsWithNavPopupsGadget( $user ) ) {
-			$option[ 'disabled' ] = true;
-			$option[ 'help-message' ] = [ 'popups-prefs-disable-nav-gadgets-info',
-				'Special:Preferences#mw-prefsection-gadgets' ];
+
+		// TODO: Remove when not in Beta any more
+		if ( $context->isReferencePreviewsInBeta() ) {
+			$option[ 'label-message' ] = 'popups-prefs-optin';
+
+			if ( $context->conflictsWithNavPopupsGadget( $user ) ) {
+				$option[ 'disabled' ] = true;
+				$option[ 'help-message' ] = [ 'popups-prefs-disable-nav-gadgets-info',
+					'Special:Preferences#mw-prefsection-gadgets' ];
+			}
+		} else {
+			$isNavPopupsGadgetEnabled = $context->conflictsWithNavPopupsGadget( $user );
+			$isRefTooltipsGadgetEnabled = $context->conflictsWithRefTooltipsGadget( $user );
+
+			if ( $isNavPopupsGadgetEnabled && $isRefTooltipsGadgetEnabled ) {
+				$option[ 'disabled' ] = true;
+				$option[ 'help-message' ] = [ 'popups-prefs-reftooltips-and-navpopups-gadget-conflict-info',
+					'Special:Preferences#mw-prefsection-gadgets' ];
+			} elseif ( $isNavPopupsGadgetEnabled ) {
+				$option[ 'disabled' ] = true;
+				$option[ 'help-message' ] = [ 'popups-prefs-navpopups-gadget-conflict-info',
+					'Special:Preferences#mw-prefsection-gadgets' ];
+			} elseif ( $isRefTooltipsGadgetEnabled ) {
+				$option[ 'help-message' ] = [ 'popups-prefs-reftooltips-gadget-conflict-info',
+					'Special:Preferences#mw-prefsection-gadgets' ];
+			}
 		}
 
 		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
 		$readingOptions = [
 			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME => $option,
 		];
-
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
-		if ( $config->get( 'PopupsReferencePreviews' ) &&
-			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
-		) {
-			$readingOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = [
-				'type' => 'toggle',
-				'label-message' => 'popups-refpreview-user-preference-label',
-				'section' => self::PREVIEWS_PREFERENCES_SECTION,
-				'disabled' => $option['disabled'] ?? false,
-			];
-		}
 
 		if ( $skinPosition !== false ) {
 			$injectIntoIndex = $skinPosition + 1;
@@ -165,6 +175,9 @@ class PopupsHooks {
 		// TODO: Move checks and tests from isReferencePreviewsEnabled.js here
 		$vars['wgPopupsReferencePreviews'] = $context->isReferencePreviewsEnabled( $user );
 
+		// TODO: Remove when not in Beta any more
+		$vars['wgPopupsReferencePreviewsBeta'] = $context->isReferencePreviewsInBeta( $user );
+
 		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget( $user );
 		$vars['wgPopupsConflictsWithRefTooltipsGadget'] = $context->conflictsWithRefTooltipsGadget( $user );
 	}
@@ -179,14 +192,6 @@ class PopupsHooks {
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 		$default = $config->get( 'PopupsOptInDefaultState' );
 		$defaultOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
-
-		// As long as in Beta, don't set a default for Reference Previews. Rely on it either being
-		// null (= disabled), or follow what the "betafeatures-auto-enroll" flag says.
-		if ( $config->get( 'PopupsReferencePreviews' ) &&
-			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
-		) {
-			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = $default;
-		}
 	}
 
 	/**
@@ -200,14 +205,6 @@ class PopupsHooks {
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 		$default = $config->get( 'PopupsOptInStateForNewAccounts' );
 		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $default );
-
-		// As long as in Beta, don't set a default for Reference Previews. Rely on it either being
-		// null (= disabled), or follow what the "betafeatures-auto-enroll" flag says.
-		if ( $config->get( 'PopupsReferencePreviews' ) &&
-			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
-		) {
-			$user->setOption( PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME, $default );
-		}
 	}
 
 	/**
@@ -224,7 +221,7 @@ class PopupsHooks {
 		if ( $config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
 			$config->get( 'PopupsReferencePreviews' )
 		) {
-			$prefs[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = [
+			$prefs[PopupsContext::REFERENCE_PREVIEWS_BETA_FEATURE_KEY] = [
 				'label-message' => 'popups-refpreview-beta-feature-message',
 				'desc-message' => 'popups-refpreview-beta-feature-description',
 				'screenshot' => [
