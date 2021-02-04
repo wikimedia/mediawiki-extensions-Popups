@@ -6,7 +6,8 @@
 			"Davis Hardiansyah",
 			"Iwan Novirion",
 			"Kenrick95",
-			"RXerself"
+			"RXerself",
+			"Sumbukompor"
 		]
 	},
 	"popups-message": "Pratayang",
@@ -25,9 +26,9 @@
 	"popups-preview-no-preview": "Ada masalah ketika menampilkan pratayang ini",
 	"popups-preview-footer-read": "Pergi ke halaman ini",
 	"popups-preview-disambiguation": "Judul ini berkaitan dengan lebih dari satu halaman",
-	"popups-preview-disambiguation-link": "View similar pages",
+	"popups-preview-disambiguation-link": "Lihat halaman-halaman yang serupa",
 	"prefs-reading": "Preferensi baca",
-	"popups-prefs-optin": "Pratayang halaman (dapatkan pratayang cepat dari sebuah topik ketika sedang membaca suatu halaman):",
+	"popups-prefs-optin": "Aktifkan pratayang halaman (pratayang cepat dari sebuah topik ketika sedang membaca suatu halaman):",
 	"popups-prefs-disable-nav-gadgets-info": "Anda harus [[$1 | menonaktifkan Navigation Popups Gadget]] dari tab Gadgets untuk mengaktifkan Page Previews",
 	"popups-prefs-conflicting-gadgets-info": "Gawai tertentu dan pengubahsuaian lainnnya dapat mempengaruhi performa fitur ini. Jika Anda mengalami masalah tolong tinjau gawai dan skrip pengguna Anda, termasuk yang bersifat global.",
 	"popups-refpreview-reference": "Referensi",
