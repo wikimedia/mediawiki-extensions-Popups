@@ -16,8 +16,11 @@ const templateHTML = `
             </strong>
             <div class="mw-parser-output"></div>
         </div>
-        <div class="mwe-popups-fade" />
+        <div class="mwe-popups-fade"></div>
     </div>
+	<footer>
+		<div class="mwe-popups-settings"></div>
+	</footer>
 </div>`;
 
 // Known citation type strings currently supported with icons and messages.
@@ -63,7 +66,7 @@ export function renderReferencePreview(
 	// * mw-ui-icon-reference-news
 	// * mw-ui-icon-reference-note
 	// * mw-ui-icon-reference-web
-	$el.find( '.mw-ui-icon' )
+	$el.find( '.mwe-popups-title .mw-ui-icon' )
 		.addClass( `mw-ui-icon-reference-${type}` );
 	$el.find( '.mw-parser-output' )
 		.html( model.extract );
@@ -90,6 +93,19 @@ export function renderReferencePreview(
 	// Undo remaining effects from the jquery.tablesorter.js plugin
 	$el.find( 'table.sortable' ).removeClass( 'sortable jquery-tablesorter' )
 		.find( '.headerSort' ).removeClass( 'headerSort' ).attr( { tabindex: null, title: null } );
+
+	// TODO: Remove when not in Beta any more
+	if ( mw.config.get( 'wgPopupsReferencePreviewsBetaFeature' ) !== true ) {
+		// TODO: Do not remove this but move it up into the templateHTML constant!
+		$el.find( '.mwe-popups-settings' ).append(
+			$( '<a>' )
+				.addClass( 'mwe-popups-settings-icon' )
+				.append(
+					$( '<span>' )
+						.addClass( 'mw-ui-icon mw-ui-icon-element mw-ui-icon-small mw-ui-icon-settings' )
+				)
+		);
+	}
 
 	if ( isTracking ) {
 		$el.find( '.mw-parser-output' ).on( 'click', 'a', () => {

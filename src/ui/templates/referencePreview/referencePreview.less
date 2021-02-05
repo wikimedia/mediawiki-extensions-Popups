@@ -6,35 +6,35 @@
 .mwe-popups.mwe-popups-type-reference {
 	.mwe-popups-title {
 		margin: 0 0 @popupPadding;
-	}
 
-	.mw-ui-icon {
-		vertical-align: middle;
-
-		&.mw-ui-icon-element {
-			min-width: @iconSize;
-			width: @iconSize;
-
-			&:before {
-				margin: 0;
-			}
-		}
-
-		&.mw-ui-icon-reference-generic {
+		.mw-ui-icon-reference-generic {
 			/* align narrow icon with the text */
 			margin-left: -2px;
 		}
 
 		// There is currently no "reference-note" icon specified in extension.json
-		&.mw-ui-icon-reference-note {
+		.mw-ui-icon-reference-note {
 			display: none;
 		}
 	}
 
 	.mwe-popups-extract {
 		margin-right: 0;
-		margin-bottom: @popupPadding;
 		max-height: inherit;
+
+		// Note: This also affects the icon in .mwe-popups-title
+		.mw-ui-icon {
+			vertical-align: middle;
+
+			&.mw-ui-icon-element {
+				min-width: @iconSize;
+				width: @iconSize;
+
+				&:before {
+					margin: 0;
+				}
+			}
+		}
 
 		.mwe-popups-scroll {
 			max-height: 403px - 2 * @popupPadding;
