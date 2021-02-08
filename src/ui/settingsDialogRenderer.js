@@ -34,18 +34,13 @@ export default function createSettingsDialogRenderer( config ) {
 	 */
 	return ( boundActions ) => {
 		if ( !$dialog ) {
-			$dialog = createSettingsDialog( isNavPopupsEnabled(), config.get( 'wgPopupsReferencePreviewsBeta' ) );
+			$dialog = createSettingsDialog( config.get( 'wgPopupsReferencePreviewsBeta' ) );
 			$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
 
 			// Setup event bindings
 
 			$dialog.find( '.save' ).on( 'click', () => {
-				// Find the selected value (simple|advanced|off)
-				const selected = getSelectedSetting( $dialog ),
-					// Only simple means enabled, advanced is disabled in favor of
-					// NavPops and off means disabled.
-					enabled = selected === 'simple';
-
+				const enabled = $dialog.find( '#mwe-popups-settings-simple' ).is( ':checked' );
 				// TODO: Make this work for other popup types
 				boundActions.saveSettings( previewTypes.TYPE_PAGE, enabled );
 			} );
@@ -95,39 +90,16 @@ export default function createSettingsDialogRenderer( config ) {
 			/**
 			 * Update the form depending on the enabled flag
 			 *
-			 * If false and no navpops, then checks 'off'
-			 * If true, then checks 'on'
-			 * If false, and there are navpops, then checks 'advanced'
-			 *
 			 * @param {boolean} enabled if page previews are enabled
 			 * @return {void}
 			 */
 			setEnabled( enabled ) {
-				let name = 'off';
-				if ( enabled ) {
-					name = 'simple';
-				} else if ( isNavPopupsEnabled() ) {
-					name = 'advanced';
-				}
-
 				// Check the appropriate radio button
-				$dialog.find( `#mwe-popups-settings-${name}` )
+				$dialog.find( enabled ? '#mwe-popups-settings-simple' : '#mwe-popups-settings-off' )
 					.prop( 'checked', true );
 			}
 		};
 	};
-}
-
-/**
- * Get the selected value on the radio button
- *
- * @param {JQuery.Object} $el the element to extract the setting from
- * @return {string} Which should be (simple|advanced|off)
- */
-function getSelectedSetting( $el ) {
-	return $el.find(
-		'input[name=mwe-popups-setting]:checked, #mwe-popups-settings'
-	).val();
 }
 
 /**
@@ -150,15 +122,4 @@ function toggleHelp( $el, visible ) {
 		$dialog.find( formSelectors ).show();
 		$dialog.find( helpSelectors ).hide();
 	}
-}
-
-/**
- * Checks if the NavigationPopups gadget is enabled by looking at the global
- * variables
- *
- * @return {boolean} if navpops was found to be enabled
- */
-function isNavPopupsEnabled() {
-	/* global pg */
-	return typeof pg !== 'undefined' && pg.fn.disablePopups !== undefined;
 }
