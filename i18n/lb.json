@@ -5,11 +5,12 @@
 		]
 	},
 	"popups-message": "Biller wéi Säiten ausgesinn",
-	"popups-desc": "Weist Biller wéi et ausgesäit wann de Benotzer mat der Maus iwwer e Säitelink fiert.",
+	"popups-desc": "Weist e Popup wéi et ausgesäit, wann de Benotzer mat der Maus iwwer e Säitelink fiert.",
 	"popups-settings-title": "Säit kucken ouni ofzespäicheren",
 	"popups-settings-option-simple": "Aschalten",
 	"popups-settings-option-simple-description": "Et séieren Iwwerbléck iwwer en Thema kréien iwwer dem Liese vun enger Säit.",
 	"popups-settings-option-advanced": "Erweidert",
+	"popups-settings-option-advanced-description": "Weist wéi de Link ausgesäit an d'Ännerungsfunktioun an de Menüe. Dëst gëtt vu villen Auteure benotzt.",
 	"popups-settings-option-off": "Ausschalten",
 	"popups-settings-save": "Späicheren",
 	"popups-settings-help-ok": "Fäerdeg",
@@ -25,5 +26,8 @@
 	"popups-refpreview-book": "Buch-Referenz",
 	"popups-refpreview-journal": "Zeitungs-Referenz",
 	"popups-refpreview-news": "Neiegkeeten-Referenz",
-	"popups-refpreview-web": "Internet-Referenz"
+	"popups-refpreview-web": "Internet-Referenz",
+	"popups-refpreview-collapsible-placeholder": "An dëser Referenz ass e Grafik deen net an dës Fënster passt.",
+	"popups-refpreview-user-preference-label": "Ausgesinn vun de Referenzen (séier gesinn wéi d'Foussnouten ausgesinn)",
+	"popups-refpreview-beta-feature-message": "Ausgesinn vun de Referenzen"
 }
