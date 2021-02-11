@@ -37,6 +37,7 @@
 	"popups-refpreview-book": "Heading for a popup previewing a citation from a book.\n{{Identical|Book}}",
 	"popups-refpreview-journal": "Heading for a popup previewing a citation from a journal.\n{{Identical|Journal}}",
 	"popups-refpreview-news": "Heading for a popup previewing a citation from the news.\n{{Identical|News}}",
+	"popups-refpreview-note": "Heading for a popup previewing a footnote.\n{{Identical|Note}}",
 	"popups-refpreview-web": "Heading for a popup previewing a citation from a website.\n{{Identical|Website}}",
 	"popups-refpreview-collapsible-placeholder": "Placeholder text for collapsible tables, templates, or other large elements inside of a reference.",
 	"popups-refpreview-user-preference-label": "Label for the user option to enable or disable reference preview popups",
