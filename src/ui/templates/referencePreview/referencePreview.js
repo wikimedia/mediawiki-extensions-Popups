@@ -21,7 +21,7 @@ const templateHTML = `
 </div>`;
 
 // Known citation type strings currently supported with icons and messages.
-const KNOWN_TYPES = [ 'book', 'journal', 'news', 'web' ];
+const KNOWN_TYPES = [ 'book', 'journal', 'news', 'note', 'web' ];
 
 const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
 let isTracking = false;
@@ -49,6 +49,7 @@ export function renderReferencePreview(
 		// * popups-refpreview-book
 		// * popups-refpreview-journal
 		// * popups-refpreview-news
+		// * popups-refpreview-note
 		// * popups-refpreview-reference
 		// * popups-refpreview-web
 		title = escapeHTML( mw.msg( titleMsg ) );
@@ -56,10 +57,12 @@ export function renderReferencePreview(
 	$el.find( '.mwe-popups-title-placeholder' )
 		.replaceWith( title );
 	// The following classes are used here:
-	// * mw-icon-reference-reference
-	// * mw-icon-reference-unknown
-	// * mw-icon-reference-generic
-	// * mw-icon-reference-disambiguation
+	// * mw-ui-icon-reference-generic
+	// * mw-ui-icon-reference-book
+	// * mw-ui-icon-reference-journal
+	// * mw-ui-icon-reference-news
+	// * mw-ui-icon-reference-note
+	// * mw-ui-icon-reference-web
 	$el.find( '.mw-ui-icon' )
 		.addClass( `mw-ui-icon-reference-${type}` );
 	$el.find( '.mw-parser-output' )
