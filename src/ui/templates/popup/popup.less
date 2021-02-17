@@ -57,6 +57,30 @@
 		}
 	}
 
+	.mwe-popups-settings-icon {
+		display: block;
+		overflow: hidden;
+		font-size: 16px; // should be equal to .mwe-popups .mw-ui-icon { font-size: 16px; }
+		width: @iconSize;
+		height: @iconSize;
+		padding: 3px; // enlarges icon box (visible on hover)
+		float: right; // positions icon near bottom right corner
+		margin: 4px 4px 2px 4px; // adjusts position
+		text-indent: -1em; // offsets .mw-ui-icon-element:before { margin: 0 1em; }
+		border-radius: @borderRadius;
+		opacity: 0.67;
+		.transition( ~'background-color 100ms, opacity 100ms' );
+
+		&:hover {
+			background-color: @colorGray14;
+		}
+
+		&:active {
+			background-color: @colorGray12;
+			opacity: 1;
+		}
+	}
+
 	.mwe-popups-extract {
 		// T156800, T139297: 'Pad' the extract horizontally using a margin so the
 		// SVG element is forced not to occlude the truncating pseudo-element and

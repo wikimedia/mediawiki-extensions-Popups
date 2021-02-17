@@ -135,6 +135,7 @@ class PopupsHooks {
 		$vars['wgPopupsRestGatewayEndpoint'] = $config->get( 'PopupsRestGatewayEndpoint' );
 		$vars['wgPopupsStatsvSamplingRate'] = $config->get( 'PopupsStatsvSamplingRate' );
 		$vars['wgPopupsTextExtractsIntroOnly'] = $config->get( 'PopupsTextExtractsIntroOnly' );
+		$vars['wgPopupsReferencePreviewsBetaFeature'] = $config->get( 'PopupsReferencePreviewsBetaFeature' );
 	}
 
 	/**

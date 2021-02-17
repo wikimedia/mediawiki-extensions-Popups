@@ -158,7 +158,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		];
 		$this->setMwGlobals( $config );
 		PopupsHooks::onResourceLoaderGetConfigVars( $vars, '' );
-		$this->assertCount( 7, $vars, 'A configuration is retrieved.' );
+		$this->assertCount( 8, $vars, 'A configuration is retrieved.' );
 
 		foreach ( $config as $key => $value ) {
 			$this->assertSame(
