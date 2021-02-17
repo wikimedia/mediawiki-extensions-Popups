@@ -7,22 +7,6 @@
 	.mwe-popups-title {
 		margin: 0 0 @popupPadding;
 
-		.mw-ui-icon-reference-generic {
-			/* align narrow icon with the text */
-			margin-left: -2px;
-		}
-
-		// There is currently no "reference-note" icon specified in extension.json
-		.mw-ui-icon-reference-note {
-			display: none;
-		}
-	}
-
-	.mwe-popups-extract {
-		margin-right: 0;
-		max-height: inherit;
-
-		// Note: This also affects the icon in .mwe-popups-title
 		.mw-ui-icon {
 			// Since 6bc3aada (T277663) this is @min-size-icon = 20px upstream in
 			// …/mediawiki.ui/components/icons.less, too small for us
@@ -40,6 +24,21 @@
 				}
 			}
 		}
+
+		.mw-ui-icon-reference-generic {
+			/* align narrow icon with the text */
+			margin-left: -2px;
+		}
+
+		// There is currently no "reference-note" icon specified in extension.json
+		.mw-ui-icon-reference-note {
+			display: none;
+		}
+	}
+
+	.mwe-popups-extract {
+		margin-right: 0;
+		max-height: inherit;
 
 		.mwe-popups-scroll {
 			// This is how the `margin-bottom: 47px` in popup.less is calculated
@@ -75,21 +74,23 @@
 		&.mwe-popups-fade-out .mwe-popups-fade {
 			opacity: 1;
 		}
+	}
 
-		.mwe-collapsible-placeholder {
-			font-weight: bold;
-			margin: 1em 0;
-			position: relative;
+	.mwe-collapsible-placeholder {
+		font-weight: bold;
+		margin: 1em 0;
+		position: relative;
 
-			// This mirrors .oo-ui-iconElement-icon
-			.mw-ui-icon {
-				position: absolute;
-			}
+		// This mirrors .oo-ui-iconElement-icon
+		.mw-ui-icon {
+			margin-left: -@width-icon-gutter;
+			min-height: @size-icon;
+			position: absolute;
+		}
 
-			// This mirrors .oo-ui-messageWidget > .oo-ui-labelElement-label
-			.mwe-collapsible-placeholder-label {
-				margin-left: 2em;
-			}
+		// This mirrors .oo-ui-messageWidget > .oo-ui-labelElement-label
+		.mwe-collapsible-placeholder-label {
+			margin-left: @size-icon + 0.5em;
 		}
 	}
 }
