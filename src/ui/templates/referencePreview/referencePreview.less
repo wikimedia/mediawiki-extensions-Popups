@@ -37,7 +37,11 @@
 		}
 
 		.mwe-popups-scroll {
-			max-height: 403px - 2 * @popupPadding;
+			// This is how the `margin-bottom: 47px` in popup.less is calculated
+			@marginBottom: 2 * @lineHeight + 7px;
+			// Same as the --pointer-height in popup.less
+			@pointerHeight: 8px;
+			max-height: 403px - @popupPadding - @marginBottom + @pointerHeight;
 			overflow: auto;
 			padding-right: @popupPadding;
 		}
