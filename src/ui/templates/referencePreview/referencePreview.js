@@ -3,8 +3,7 @@
  */
 
 import { renderPopup } from '../popup/popup';
-import { escapeHTML } from '../templateUtil';
-import { createNodeFromTemplate } from '../templateUtil';
+import { createNodeFromTemplate, escapeHTML } from '../templateUtil';
 
 const templateHTML = `
 <div class="mwe-popups-container">
@@ -22,9 +21,6 @@ const templateHTML = `
 		<div class="mwe-popups-settings"></div>
 	</footer>
 </div>`;
-
-// Known citation type strings currently supported with icons and messages.
-const KNOWN_TYPES = [ 'book', 'journal', 'news', 'note', 'web' ];
 
 const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
 let isTracking = false;
@@ -46,19 +42,21 @@ $( () => {
 export function renderReferencePreview(
 	model
 ) {
-	const type = KNOWN_TYPES.indexOf( model.referenceType ) < 0 ? 'generic' : model.referenceType,
-		titleMsg = `popups-refpreview-${type === 'generic' ? 'reference' : type}`,
-		// The following messages are used here:
-		// * popups-refpreview-book
-		// * popups-refpreview-journal
-		// * popups-refpreview-news
-		// * popups-refpreview-note
-		// * popups-refpreview-reference
-		// * popups-refpreview-web
-		title = escapeHTML( mw.msg( titleMsg ) );
+	const type = model.referenceType || 'generic';
+	// The following messages are used here:
+	// * popups-refpreview-book
+	// * popups-refpreview-journal
+	// * popups-refpreview-news
+	// * popups-refpreview-note
+	// * popups-refpreview-web
+	let titleMsg = mw.message( `popups-refpreview-${type}` );
+	if ( !titleMsg.exists() ) {
+		titleMsg = mw.message( 'popups-refpreview-reference' );
+	}
+
 	const $el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
 	$el.find( '.mwe-popups-title-placeholder' )
-		.replaceWith( title );
+		.replaceWith( escapeHTML( titleMsg.text() ) );
 	// The following classes are used here:
 	// * mw-ui-icon-reference-generic
 	// * mw-ui-icon-reference-book

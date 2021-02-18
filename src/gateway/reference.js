@@ -21,34 +21,26 @@ export default function createReferenceGateway() {
 	}
 
 	/**
-	 * This extracts the type (e.g. "web") from one or more <cite> elements class name lists, as
-	 * long as these don't conflict. A "citation" class is always ignored. <cite> elements without
-	 * another class (other than "citation") are ignored as well.
-	 *
-	 * Note this might return multiple types, e.g. <cite class="web citation paywalled"> will be
-	 * returned as "web paywalled". Validation must be done in the code consuming this.
-	 *
-	 * This duplicates the strict type detection from
-	 *
-	 * @see https://phabricator.wikimedia.org/diffusion/GMOA/browse/master/lib/transformations/references/structureReferenceListContent.js$93
+	 * Attempts to find a single reference type identifier, limited to a list of known types.
+	 * - When a `class="…"` attribute mentions multiple known types, the last one is used, following
+	 *   CSS semantics.
+	 * - When there are multiple <cite> tags, the first with a known type is used.
 	 *
 	 * @param {JQuery} $referenceText
 	 * @return {string|null}
 	 */
 	function scrapeReferenceType( $referenceText ) {
+		const KNOWN_TYPES = [ 'book', 'journal', 'news', 'note', 'web' ];
 		let type = null;
-
-		$referenceText.find( 'cite[class]' ).each( function ( index, el ) {
-			const nextType = el.className.replace( /\bcitation\b\s*/g, '' ).trim();
-
-			if ( !type ) {
-				type = nextType;
-			} else if ( nextType && nextType !== type ) {
-				type = null;
-				return false;
+		$referenceText.find( 'cite[class]' ).each( ( index, element ) => {
+			const classNames = element.className.split( /\s+/ );
+			for ( let i = classNames.length; i--; ) {
+				if ( KNOWN_TYPES.indexOf( classNames[ i ] ) !== -1 ) {
+					type = classNames[ i ];
+					return false;
+				}
 			}
 		} );
-
 		return type;
 	}
 

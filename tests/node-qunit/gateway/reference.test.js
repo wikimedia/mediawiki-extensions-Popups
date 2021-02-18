@@ -4,6 +4,9 @@ import createReferenceGateway from '../../../src/gateway/reference';
 QUnit.module( 'ext.popups/gateway/reference', {
 	beforeEach() {
 		mw.msg = ( key ) => `<${key}>`;
+		mw.message = ( key ) => {
+			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${key}>` };
+		};
 
 		this.$sourceElement = $( '<a>' ).appendTo(
 			$( '<sup>' ).attr( 'id', 'cite_ref-1' ).appendTo( document.body )
@@ -15,7 +18,7 @@ QUnit.module( 'ext.popups/gateway/reference', {
 			),
 			$( '<li>' ).attr( 'id', 'cite_note-2' ).append(
 				$( '<span>' ).addClass( 'reference-text' ).append(
-					$( '<cite>' ).addClass( 'citation web unknown' ).text( 'Footnote 2' )
+					$( '<cite>' ).addClass( 'journal web unknown' ).text( 'Footnote 2' )
 				)
 			),
 			$( '<li>' ).attr( 'id', 'cite_note-3' ).append(
@@ -70,9 +73,9 @@ QUnit.test( 'Reference preview gateway accepts alternative text node class name'
 			result,
 			{
 				url: '#cite_note-2',
-				extract: '<cite class="citation web unknown">Footnote 2</cite>',
+				extract: '<cite class="journal web unknown">Footnote 2</cite>',
 				type: 'reference',
-				referenceType: 'web unknown',
+				referenceType: 'web',
 				sourceElementId: undefined
 			}
 		);
@@ -97,7 +100,7 @@ QUnit.test( 'Reference preview gateway accepts duplicated types', function ( ass
 	} );
 } );
 
-QUnit.test( 'Reference preview gateway rejects conflicting types', function ( assert ) {
+QUnit.test( 'Reference preview gateway ignores conflicting types', function ( assert ) {
 	const gateway = createReferenceGateway(),
 		title = createStubTitle( 1, 'Foo', 'cite note-4' );
 
@@ -108,7 +111,7 @@ QUnit.test( 'Reference preview gateway rejects conflicting types', function ( as
 				url: '#cite_note-4',
 				extract: '<cite class="news">Footnote 4</cite><cite class="web"></cite>',
 				type: 'reference',
-				referenceType: null,
+				referenceType: 'news',
 				sourceElementId: undefined
 			}
 		);
