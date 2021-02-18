@@ -3,6 +3,7 @@
 		"authors": [
 			"Aftab1995",
 			"Aftabuzzaman",
+			"Yahya",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -31,6 +32,7 @@
 	"popups-refpreview-book": "বইয়ের তথ্যসূত্র",
 	"popups-refpreview-journal": "সাময়িকীর তথ্যসূত্র",
 	"popups-refpreview-news": "সংবাদের তথ্যসূত্র",
+	"popups-refpreview-note": "টীকা",
 	"popups-refpreview-web": "ওয়েব তথ্যসূত্র",
 	"popups-refpreview-collapsible-placeholder": "এই তথ্যসূত্রে একটি লেখচিত্র অন্তর্ভুক্ত রয়েছে যা প্রাকদর্শনে মানানসই নয়।",
 	"popups-refpreview-user-preference-label": "তথ্যসূত্র প্রাকদর্শন (পাদটীকাগুলির দ্রুত প্রাকদর্শন দেখুন)",

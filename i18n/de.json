@@ -8,7 +8,8 @@
 			"Metalhead64",
 			"PerfektesChaos",
 			"Peter Bowman",
-			"TMg"
+			"TMg",
+			"ThePiscin"
 		]
 	},
 	"popups-message": "Vorschaubilder",
@@ -36,7 +37,7 @@
 	"popups-refpreview-book": "Literaturquelle",
 	"popups-refpreview-journal": "Zeitschriftenquelle",
 	"popups-refpreview-news": "Nachrichtenquelle",
-	"popups-refpreview-note": "Notiz",
+	"popups-refpreview-note": "Fußnote",
 	"popups-refpreview-web": "Internetquelle",
 	"popups-refpreview-collapsible-placeholder": "Dieser Einzelnachweis enthält eine Grafik, die nicht in die Vorschau passt.",
 	"popups-refpreview-user-preference-label": "Vorschaufunktion für Einzelnachweise aktivieren",
