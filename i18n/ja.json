@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"A2y4",
 			"Kkairri",
 			"Linuxmetel",
 			"Omotecho",
@@ -40,6 +41,7 @@
 	"popups-refpreview-book": "書籍の出典",
 	"popups-refpreview-journal": "定期刊行物の出典",
 	"popups-refpreview-news": "新聞の出典",
+	"popups-refpreview-note": "注記",
 	"popups-refpreview-web": "ウェブサイトの出典",
 	"popups-refpreview-user-preference-label": "参考資料プレビュー (脚注をサッとチラ見)",
 	"popups-refpreview-beta-feature-message": "参考資料プレビュー",
