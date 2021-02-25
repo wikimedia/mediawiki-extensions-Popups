@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Neriman2003",
 			"Toghrul Rahimli",
 			"Wertuose"
 		]
@@ -14,6 +15,8 @@
 	"popups-settings-save": "Qeyd et",
 	"popups-preview-no-preview": "Səhifəyə ilkin baxış göstərilə bilmədi",
 	"popups-preview-footer-read": "Bu səhifəyə keç",
+	"popups-preview-disambiguation": "Bu başlıq birdən çox səhifəyə aiddir",
+	"popups-preview-disambiguation-link": "Oxşar səhifələrə baxın",
 	"prefs-reading": "Oxu seçimləri",
 	"popups-prefs-optin": "Səhifə ön görünüşü (səhifə oxuyarkən məqaləyə cəld ilkin baxış):",
 	"popups-prefs-conflicting-gadgets-info": "Bəzi qədcetlər və digər uyğunlaşdırmalar bu funksiyanın performansına təsir edə bilər. Əgər problemlərlə qarşılarşırsınızsa, qloballar da daxil olmaqla qədcetlərinizi, istifadəçi skriptlərini nəzərdən keçirin."
