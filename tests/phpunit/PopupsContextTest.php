@@ -40,7 +40,7 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * Helper method to quickly build Popups Context
 	 * @param ExtensionRegistry|null $registry
 	 * @param PopupsGadgetsIntegration|null $integration
-	 * @param EventLogger $eventLogger
+	 * @param EventLogger|null $eventLogger
 	 * @return PopupsContext
 	 */
 	protected function getContext( $registry = null, $integration = null, $eventLogger = null ) {
