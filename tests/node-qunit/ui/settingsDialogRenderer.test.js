@@ -34,7 +34,7 @@ QUnit.test( '#render', ( assert ) => {
 			toggleHelp() {},
 			setEnabled() {}
 		},
-		result = createSettingsDialogRenderer()( boundActions );
+		result = createSettingsDialogRenderer( mw.config )( boundActions );
 
 	// Specifically NOT a deep equal. Only structure.
 	assert.propEqual(

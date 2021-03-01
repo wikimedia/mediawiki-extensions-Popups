@@ -267,16 +267,15 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$vars = [];
 		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
 
-		$this->assertCount( 3, $vars, 'Number of added variables.' );
+		$this->assertCount( 4, $vars, 'Number of added variables.' );
 		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ],
 			'The PopupsConflictsWithNavPopupGadget global is present and false.' );
 	}
 
 	/**
 	 * @covers ::onUserGetDefaultOptions
-	 * @dataProvider provideReferencePreviewsBetaFlag
 	 */
-	public function testOnUserGetDefaultOptions( $beta ) {
+	public function testOnUserGetDefaultOptions() {
 		$userOptions = [
 			'test' => 'not_empty'
 		];
@@ -284,23 +283,20 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->setMwGlobals( [
 			'wgPopupsOptInDefaultState' => '1',
 			'wgPopupsReferencePreviews' => true,
-			'wgPopupsReferencePreviewsBetaFeature' => $beta,
 		] );
 
 		PopupsHooks::onUserGetDefaultOptions( $userOptions );
-		$this->assertCount( 3 - $beta, $userOptions );
-		$this->assertSame( '1', $userOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
+		$this->assertCount( 2, $userOptions );
 	}
 
 	/**
 	 * @covers ::onUserGetDefaultOptions
-	 * @dataProvider provideReferencePreviewsBetaFlag
 	 */
-	public function testOnLocalUserCreatedForNewlyCreatedUser( $beta ) {
+	public function testOnLocalUserCreatedForNewlyCreatedUser() {
 		$expectedState = '1';
 
 		$userMock = $this->createMock( User::class );
-		$userMock->expects( $this->exactly( 2 - $beta ) )
+		$userMock->expects( $this->exactly( 1 ) )
 			->method( 'setOption' )
 			->withConsecutive(
 				[ 'popups', $expectedState ],
@@ -310,16 +306,8 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->setMwGlobals( [
 			'wgPopupsOptInStateForNewAccounts' => $expectedState,
 			'wgPopupsReferencePreviews' => true,
-			'wgPopupsReferencePreviewsBetaFeature' => $beta,
 		] );
 		PopupsHooks::onLocalUserCreated( $userMock, false );
-	}
-
-	public function provideReferencePreviewsBetaFlag() {
-		return [
-			[ false ],
-			[ true ],
-		];
 	}
 
 }

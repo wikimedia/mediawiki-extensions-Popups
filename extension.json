@@ -193,10 +193,12 @@
 			],
 			"messages": [
 				"popups-settings-title",
+				"popups-settings-unified-title",
 				"popups-settings-option-simple",
 				"popups-settings-option-simple-description",
 				"popups-settings-option-advanced",
 				"popups-settings-option-advanced-description",
+				"popups-settings-option-unified-description",
 				"popups-settings-option-off",
 				"popups-settings-save",
 				"popups-settings-cancel",
