@@ -17,10 +17,12 @@
 	"popups-message": "Önizlemeler",
 	"popups-desc": "Kullanıcı bir bağlantının üzerine geldiğinde önizleme açılır pencerelerini görüntüler",
 	"popups-settings-title": "Sayfa önizleme",
+	"popups-settings-unified-title": "Önizlemeler",
 	"popups-settings-option-simple": "Etkin",
 	"popups-settings-option-simple-description": "Sayfa okurken bir konunun hızlı önizlemesini alın.",
 	"popups-settings-option-advanced": "Gelişmiş",
 	"popups-settings-option-advanced-description": "Bağlantı önizleme ve erişim düzenleme işlevi menülerine bakın. Bu, birçok düzenleyici tarafından kullanılır.",
+	"popups-settings-option-unified-description": "Okurken bir konu ya da kaynağın hızlı önizlemelerini alın.",
 	"popups-settings-option-off": "Devre dışı",
 	"popups-settings-save": "Kaydet",
 	"popups-settings-help-ok": "Yapıldı",
@@ -35,6 +37,7 @@
 	"popups-prefs-optin": "Sayfa önizlemelerini etkinleştirin (bir sayfayı okurken bir konunun hızlı önizlemeleri)",
 	"popups-prefs-disable-nav-gadgets-info": "Sayfa Önizlemelerini etkinleştirmek için [[$1 | Gezinme Açılır Pencereleri Küçük Aracı]] sekmesinden devre dışı bırakmalısınız",
 	"popups-prefs-conflicting-gadgets-info": "Bazı küçük araçlar ve diğer özelleştirmeler bu özelliğin çalışmasını etkileyebilir. Sorun yaşarsanız, genel olanlar da dahil olmak üzere küçük araçlarınızı ve kullanıcı betiklerinizi gözden geçirin.",
+	"popups-prefs-optin-all": "Önizlemeleri etkinleştirin (bir sayfayı okurken bir konu ya da kaynağın hızlı önizlemelerini alın)",
 	"popups-refpreview-reference": "Kaynak",
 	"popups-refpreview-book": "Kitap kaynağı",
 	"popups-refpreview-journal": "Dergi kaynağı",
@@ -42,7 +45,6 @@
 	"popups-refpreview-note": "Not",
 	"popups-refpreview-web": "Web kaynağı",
 	"popups-refpreview-collapsible-placeholder": "Bu kaynak, önizlemeye sığmayan bir grafik içerir.",
-	"popups-refpreview-user-preference-label": "Kaynak önizlemeleri (dipnotların hızlı önizlemelerini alın)",
 	"popups-refpreview-beta-feature-message": "Kaynak Önizlemeleri",
 	"popups-refpreview-beta-feature-description": "İmleci dipnot işaretçisinin üzerinde gezdirerek kaynağın önizlemesini göster.\n\nLütfen dikkat: [https://tr.wikipedia.org/wiki/Vikipedi:Araçlar/Gezinti_pencereleri Gezinti pencereleri] veya [[mw:Special:MyLanguage/Reference Tooltips|kaynak araç ipuçları]] küçük aracını kullanıyorsanız Kaynak Önizlemelerini görmezsiniz."
 }

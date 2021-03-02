@@ -42,7 +42,6 @@
 	"popups-refpreview-note": "Nota",
 	"popups-refpreview-web": "Referência de site",
 	"popups-refpreview-collapsible-placeholder": "Esta referência inclui um gráfico que não cabe na previsão.",
-	"popups-refpreview-user-preference-label": "Pré-visualizações de referência (obtenha pré-visualizações rápidas de notas de rodapé)",
 	"popups-refpreview-beta-feature-message": "Pré-visualização de referências",
 	"popups-refpreview-beta-feature-description": "Mostre uma pré-visualização de uma referência pairando sobre seu marcador de nota de rodapé.\n\nPor favor note: se você estiver usando o gadget ou [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Pop-ups de navegação],. Se você estiver usando o gadget [[mw:Special:MyLanguage/Reference Tooltips|Dicas de referência]], você não verá pré-visualizações de referência."
 }

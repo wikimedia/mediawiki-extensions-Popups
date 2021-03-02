@@ -3,6 +3,7 @@
 		"authors": [
 			"Aftab1995",
 			"Aftabuzzaman",
+			"Greatder",
 			"Yahya",
 			"আফতাবুজ্জামান"
 		]
@@ -10,6 +11,7 @@
 	"popups-message": "প্রাকদর্শন",
 	"popups-desc": "যখন একটি সংযোগের উপর মাউস নেয়া হয় তখন পাতার বিষয়বস্তুর প্রদর্শন করে",
 	"popups-settings-title": "পাতা প্রাকদর্শন",
+	"popups-settings-unified-title": "প্রাকদর্শন",
 	"popups-settings-option-simple": "সক্রিয়",
 	"popups-settings-option-simple-description": "একটি নিবন্ধ পড়ার সময় একটি প্রসঙ্গের দ্রুত প্রাকদর্শন দেখুন।",
 	"popups-settings-option-advanced": "উচ্চতর",
@@ -35,7 +37,6 @@
 	"popups-refpreview-note": "টীকা",
 	"popups-refpreview-web": "ওয়েব তথ্যসূত্র",
 	"popups-refpreview-collapsible-placeholder": "এই তথ্যসূত্রে একটি লেখচিত্র অন্তর্ভুক্ত রয়েছে যা প্রাকদর্শনে মানানসই নয়।",
-	"popups-refpreview-user-preference-label": "তথ্যসূত্র প্রাকদর্শন (পাদটীকাগুলির দ্রুত প্রাকদর্শন দেখুন)",
 	"popups-refpreview-beta-feature-message": "তথ্যসূত্রের প্রাকদর্শন",
 	"popups-refpreview-beta-feature-description": "তথ্যসূত্রের পাদটীকার মার্কারের উপর মাউস নিলে সেটির প্রাকদর্শন দেখাবে।\n\nঅনুগ্রহ করে লক্ষ্য করুন: আপনি যদি নেভিগেশন পপ-আপ গ্যাজেট বা [[mw:Special:MyLanguage/Reference Tooltips|তথ্যসূত্রের টুলটিপ]] গ্যাজেটটি ব্যবহার করেন, তবে আপনি তথ্যসূত্রের প্রাকদর্শন দেখতে পাবেন না।"
 }
