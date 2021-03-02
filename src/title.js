@@ -9,15 +9,12 @@
  * @return {boolean}
  */
 function isOwnPageAnchorLink( el ) {
-	// Probably a false positive. MediaWiki 1.36 dropped Firefox 4 support anyway.
-	/* eslint-disable compat/compat */
 	return el.hash &&
 		// Note: The protocol is ignored for the sake of simplicity.
 		// Can't compare username and password because they aren't readable from `location`.
 		el.host === location.host &&
 		el.pathname === location.pathname &&
 		el.search === location.search;
-	/* eslint-enable compat/compat */
 }
 
 /**

@@ -25,7 +25,6 @@ use Config;
 use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserOptionsLookup;
-use Popups\EventLogging\EventLogger;
 use Title;
 
 /**
@@ -97,11 +96,6 @@ class PopupsContext {
 	private $gadgetsIntegration;
 
 	/**
-	 * @var EventLogger
-	 */
-	private $eventLogger;
-
-	/**
 	 * @var UserOptionsLookup
 	 */
 	private $userOptionsLookup;
@@ -110,7 +104,6 @@ class PopupsContext {
 	 * @param Config $config Mediawiki configuration
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 * @param PopupsGadgetsIntegration $gadgetsIntegration Gadgets integration helper
-	 * @param EventLogger $eventLogger A logger capable of logging EventLogging
 	 * @param UserOptionsLookup $userOptionsLookup
 	 *  events
 	 */
@@ -118,12 +111,10 @@ class PopupsContext {
 		Config $config,
 		ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration,
-		EventLogger $eventLogger,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->extensionRegistry = $extensionRegistry;
 		$this->gadgetsIntegration = $gadgetsIntegration;
-		$this->eventLogger = $eventLogger;
 		$this->userOptionsLookup = $userOptionsLookup;
 
 		$this->config = $config;
@@ -276,25 +267,4 @@ class PopupsContext {
 	public function getLogger() {
 		return MediaWikiServices::getInstance()->getService( 'Popups.Logger' );
 	}
-
-	/**
-	 * Log disabled event
-	 */
-	public function logUserDisabledPagePreviewsEvent() {
-		// @see https://phabricator.wikimedia.org/T167365
-		$this->eventLogger->log( [
-			'pageTitleSource' => 'Special:Preferences',
-			'namespaceIdSource' => NS_SPECIAL,
-			'pageIdSource' => -1,
-			'hovercardsSuppressedByGadget' => false,
-			'pageToken' => wfRandomString(),
-			// we don't have access to mw.user.sessionId()
-			'sessionToken' => wfRandomString(),
-			'action' => 'disabled',
-			'isAnon' => false,
-			'popupEnabled' => false,
-			'previewCountBucket' => 'unknown'
-		] );
-	}
-
 }

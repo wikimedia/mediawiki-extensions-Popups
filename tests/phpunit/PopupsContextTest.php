@@ -21,7 +21,6 @@
 
 use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
-use Popups\EventLogging\EventLogger;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
 
@@ -41,15 +40,11 @@ class PopupsContextTest extends MediaWikiTestCase {
 	 * Helper method to quickly build Popups Context
 	 * @param ExtensionRegistry|null $registry
 	 * @param PopupsGadgetsIntegration|null $integration
-	 * @param EventLogger|null $eventLogger
 	 * @return PopupsContext
 	 */
-	protected function getContext( $registry = null, $integration = null, $eventLogger = null ) {
+	protected function getContext( $registry = null, $integration = null ) {
 		$config = new GlobalVarConfig();
 		$registry = $registry ?: ExtensionRegistry::getInstance();
-		if ( $eventLogger === null ) {
-			$eventLogger = $this->createMock( EventLogger::class );
-		}
 		if ( $integration === null ) {
 			$integration = $this->createMock( PopupsGadgetsIntegration::class );
 			$integration->method( 'conflictsWithNavPopupsGadget' )
@@ -60,7 +55,6 @@ class PopupsContextTest extends MediaWikiTestCase {
 			$config,
 			$registry,
 			$integration,
-			$eventLogger,
 			$userOptionsLookup
 		);
 	}
@@ -344,17 +338,4 @@ class PopupsContextTest extends MediaWikiTestCase {
 			],
 		];
 	}
-
-	/**
-	 * @covers ::logUserDisabledPagePreviewsEvent
-	 */
-	public function testLogsEvent() {
-		$loggerMock = $this->createMock( EventLogger::class );
-		$loggerMock->expects( $this->once() )
-			->method( 'log' );
-
-		$context = $this->getContext( null, null, $loggerMock );
-		$context->logUserDisabledPagePreviewsEvent();
-	}
-
 }

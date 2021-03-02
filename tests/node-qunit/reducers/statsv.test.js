@@ -1,7 +1,7 @@
 import statsv from '../../../src/reducers/statsv';
 import actionTypes from '../../../src/actionTypes';
 
-QUnit.module( 'ext.popups/reducers#eventLogging', {
+QUnit.module( 'ext.popups/reducers#statsv', {
 	beforeEach() {
 		this.initialState = statsv( undefined, {
 			type: '@@INIT'

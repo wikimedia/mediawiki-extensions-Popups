@@ -22,7 +22,6 @@
 		"BeforePageDisplay": "Popups\\PopupsHooks::onBeforePageDisplay",
 		"ResourceLoaderGetConfigVars": "Popups\\PopupsHooks::onResourceLoaderGetConfigVars",
 		"GetPreferences": "Popups\\PopupsHooks::onGetPreferences",
-		"PreferencesFormPreSave": "Popups\\UserPreferencesChangeHandler::onPreferencesFormPreSave",
 		"UserGetDefaultOptions": "Popups\\PopupsHooks::onUserGetDefaultOptions",
 		"MakeGlobalVariablesScript": "Popups\\PopupsHooks::onMakeGlobalVariablesScript",
 		"LocalUserCreated": "Popups\\PopupsHooks::onLocalUserCreated",
@@ -36,9 +35,8 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"Popups": 18904225,
-				"ReferencePreviewsPopups": "/analytics/legacy/referencepreviewspopups/1.1.0",
-				"VirtualPageView": "/analytics/legacy/virtualpageview/1.0.0"
+				"ReferencePreviewsPopups": "/analytics/legacy/referencepreviewspopups/1.0.0",
+				"VirtualPageView": 17780078
 			}
 		}
 	},
@@ -82,10 +80,6 @@
 		"PopupsReferencePreviewsBetaFeature": {
 			"description": "Make Reference Previews a Beta feature.",
 			"value": true
-		},
-		"PopupsEventLogging": {
-			"description": "Whether we should log events. Note if this is enabled without using that variable events will be logged for all users without any sampling! Be careful!",
-			"value": false
 		},
 		"PopupsStatsvSamplingRate": {
 			"description": "Sampling rate for logging performance data to statsv.",

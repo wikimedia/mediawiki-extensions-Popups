@@ -73,8 +73,7 @@ export function boot(
 	config,
 	url
 ) {
-	const editCount = config.get( 'wgUserEditCount' ),
-		previewCount = userSettings.getPreviewCount();
+	const editCount = config.get( 'wgUserEditCount' );
 
 	return {
 		type: types.BOOT,
@@ -91,8 +90,7 @@ export function boot(
 		},
 		user: {
 			isAnon: user.isAnon(),
-			editCount,
-			previewCount
+			editCount
 		}
 	};
 }
@@ -433,20 +431,6 @@ export function saveSettings( enabled ) {
 			oldValue: getState().preview.enabled,
 			newValue: enabled
 		} );
-	};
-}
-
-/**
- * Represents the queued event being logged `changeListeners/eventLogging.js`
- * change listener.
- *
- * @param {Object} event
- * @return {Object}
- */
-export function eventLogged( event ) {
-	return {
-		type: types.EVENT_LOGGED,
-		event
 	};
 }
 

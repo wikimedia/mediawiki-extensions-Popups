@@ -19,8 +19,6 @@
  * @ingroup extensions
  */
 
-use Popups\EventLogging\EventLogger;
-use Popups\EventLogging\NullLogger;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
 
@@ -43,25 +41,21 @@ class PopupsContextTestWrapper extends PopupsContext {
 	 * @param Config $config MediaWiki config
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 * @param PopupsGadgetsIntegration|null $gadgetsIntegration Gadgets integration helper
-	 * @param EventLogger|null $eventLogger EventLogger
 	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
 		Config $config,
 		ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration,
-		EventLogger $eventLogger,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$gadgetsIntegration = $gadgetsIntegration ?:
 			new PopupsGadgetsIntegration( $config, $extensionRegistry );
-		$eventLogger = $eventLogger ?: new NullLogger();
 
 		parent::__construct(
 			$config,
 			$extensionRegistry,
 			$gadgetsIntegration,
-			$eventLogger,
 			$userOptionsLookup
 		);
 	}

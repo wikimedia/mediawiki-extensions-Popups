@@ -14,8 +14,8 @@
 
 	"//": "Set the coverage percentage by category thresholds.",
 	"statements": 85,
-	"branches": 74,
-	"functions": 85,
+	"branches": 72,
+	"functions": 84,
 	"lines": 90,
 
 	"//": "Fail if the coverage is below threshold.",

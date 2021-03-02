@@ -53,8 +53,7 @@ QUnit.test( '#boot', ( assert ) => {
 			},
 			user: {
 				isAnon: true,
-				editCount: 3,
-				previewCount: 22
+				editCount: 3
 			}
 		},
 		'boots with the initial state'

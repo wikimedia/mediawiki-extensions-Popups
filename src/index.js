@@ -16,7 +16,6 @@ import { fromElement as titleFromElement } from './title';
 import { init as rendererInit } from './ui/renderer';
 import createExperiments from './experiments';
 import { isEnabled as isStatsvEnabled } from './instrumentation/statsv';
-import { isEnabled as isEventLoggingEnabled } from './instrumentation/eventLogging';
 import changeListeners from './changeListeners';
 import * as actions from './actions';
 import reducers from './reducers';
@@ -80,49 +79,6 @@ function getPageviewTracker( config ) {
 }
 
 /**
- * Gets the appropriate analytics event tracker for logging EventLogging events
- * via [the "EventLogging subscriber" analytics event protocol][0].
- *
- * If logging EventLogging events is enabled for the duration of the user's
- * session, then the appriopriate function is `mw.track`; otherwise it's
- * `() => {}`.
- *
- * [0]: https://github.com/wikimedia/mediawiki-extensions-EventLogging/blob/d1409759/modules/ext.eventLogging.subscriber.js
- *
- * @param {Object} user
- * @param {Object} config
- * @param {Window} window
- * @return {EventTracker}
- */
-function getEventLoggingTracker( user, config, window ) {
-	return isEventLoggingEnabled(
-		user,
-		config,
-		window
-	) ? mw.track : () => {};
-}
-
-/**
- * Returns timestamp since the beginning of the current document's origin
- * as reported by `window.performance.now()`. See
- * https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp#The_time_origin
- * for a detailed explanation of the time origin.
- *
- * The value returned by this function is used for [the `timestamp` property
- * of the Schema:Popups events sent by the EventLogging
- * instrumentation](./src/changeListeners/eventLogging.js).
- *
- * @return {number|null}
- */
-function getCurrentTimestamp() {
-	if ( window.performance && window.performance.now ) {
-		// return an integer; see T182000
-		return Math.round( window.performance.now() );
-	}
-	return null;
-}
-
-/**
  * Subscribes the registered change listeners to the
  * [store](http://redux.js.org/docs/api/Store.html#store).
  *
@@ -132,14 +88,12 @@ function getCurrentTimestamp() {
  * @param {Function} settingsDialog
  * @param {PreviewBehavior} previewBehavior
  * @param {EventTracker} statsvTracker
- * @param {EventTracker} eventLoggingTracker
  * @param {EventTracker} pageviewTracker
- * @param {Function} callbackCurrentTimestamp
  * @return {void}
  */
 function registerChangeListeners(
 	store, registerActions, userSettings, settingsDialog, previewBehavior,
-	statsvTracker, eventLoggingTracker, pageviewTracker, callbackCurrentTimestamp
+	statsvTracker, pageviewTracker
 ) {
 	registerChangeListener( store, changeListeners.footerLink( registerActions ) );
 	registerChangeListener( store, changeListeners.linkTitle() );
@@ -150,11 +104,6 @@ function registerChangeListeners(
 		store, changeListeners.syncUserSettings( userSettings ) );
 	registerChangeListener(
 		store, changeListeners.settings( registerActions, settingsDialog ) );
-	registerChangeListener(
-		store,
-		changeListeners.eventLogging(
-			registerActions, eventLoggingTracker, callbackCurrentTimestamp
-		) );
 	registerChangeListener( store,
 		changeListeners.pageviews( registerActions, pageviewTracker )
 	);
@@ -186,11 +135,6 @@ function registerChangeListeners(
 		experiments = createExperiments( mw.experiments ),
 		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
 		pageviewTracker = getPageviewTracker( mw.config ),
-		eventLoggingTracker = getEventLoggingTracker(
-			mw.user,
-			mw.config,
-			window
-		),
 		initiallyEnabled = {
 			[ previewTypes.TYPE_PAGE ]:
 				createIsPagePreviewsEnabled( mw.user, userSettings, mw.config ),
@@ -216,9 +160,7 @@ function registerChangeListeners(
 
 	registerChangeListeners(
 		store, boundActions, userSettings, settingsDialog,
-		previewBehavior, statsvTracker, eventLoggingTracker,
-		pageviewTracker,
-		getCurrentTimestamp
+		previewBehavior, statsvTracker, pageviewTracker
 	);
 
 	boundActions.boot(
@@ -226,8 +168,6 @@ function registerChangeListeners(
 		mw.user,
 		userSettings,
 		mw.config,
-		// Probably a false positive. MediaWiki 1.36 dropped Firefox 4 support anyway.
-		// eslint-disable-next-line compat/compat
 		window.location.href
 	);
 

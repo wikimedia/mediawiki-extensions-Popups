@@ -2,10 +2,8 @@
 
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use Popups\EventLogging\EventLoggerFactory;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
-use Popups\UserPreferencesChangeHandler;
 
 /**
  * @codeCoverageIgnore
@@ -21,18 +19,6 @@ return [
 			ExtensionRegistry::getInstance()
 		);
 	},
-	'Popups.EventLogger' => static function ( MediaWikiServices $services ) {
-		$factory = new EventLoggerFactory(
-			ExtensionRegistry::getInstance()
-		);
-		return $factory->get();
-	},
-	'Popups.UserPreferencesChangeHandler' => static function ( MediaWikiServices $services ) {
-		return new UserPreferencesChangeHandler(
-			$services->getService( 'Popups.Context' ),
-			$services->getUserOptionsLookup()
-		);
-	},
 	'Popups.Logger' => static function ( MediaWikiServices $services ) {
 		return LoggerFactory::getInstance( PopupsContext::LOGGER_CHANNEL );
 	},
@@ -41,7 +27,6 @@ return [
 			$services->getService( 'Popups.Config' ),
 			ExtensionRegistry::getInstance(),
 			$services->getService( 'Popups.GadgetsIntegration' ),
-			$services->getService( 'Popups.EventLogger' ),
 			$services->getUserOptionsLookup()
 		);
 	}
