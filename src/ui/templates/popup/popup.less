@@ -368,17 +368,6 @@
 
 @supports ( clip-path: polygon( 1px 1px ) ) {
 	.mwe-popups {
-		&.flipped-x,
-		&.flipped-x-y {
-			.mwe-popups-container {
-				--x2: var( --pseudo-radius );
-				--x3: ~'calc(100% - var(--pointer-offset) - (var(--pointer-width) / 2))';
-				--x4: ~'calc(100% - var(--pointer-offset))';
-				--x5: ~'calc(100% - var(--pointer-offset) + (var(--pointer-width) / 2))';
-				--x6: ~'calc(100% - var(--pseudo-radius))';
-			}
-		}
-
 		&.flipped-y,
 		&.flipped-x-y {
 			.mwe-popups-container {
@@ -457,6 +446,18 @@
 		&.mwe-popups-image-pointer {
 			.mwe-popups-extract {
 				margin-top: 0;
+			}
+		}
+	}
+
+	body {
+		&.ltr .mwe-popups.flipped-x,
+		&.ltr .mwe-popups.flipped-x-y,
+		&.rtl .mwe-popups:not( .flipped-x ):not( .flipped-x-y ) {
+			.mwe-popups-container {
+				--x3: ~'calc(100% - var(--pointer-offset) - (var(--pointer-width) / 2))';
+				--x4: ~'calc(100% - var(--pointer-offset))';
+				--x5: ~'calc(100% - var(--pointer-offset) + (var(--pointer-width) / 2))';
 			}
 		}
 	}
