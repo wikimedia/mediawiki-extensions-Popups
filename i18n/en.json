@@ -23,12 +23,12 @@
 	"popups-preview-disambiguation-link": "View similar pages",
 	"prefs-reading": "Reading preferences",
 	"popups-prefs-optin": "Enable page previews (quick previews of a topic while reading a page)",
-	"popups-prefs-disable-nav-gadgets-info": "You have to [[$1|disable Navigation Popups Gadget]] from Gadgets tab to enable Page Previews",
+	"popups-prefs-disable-nav-gadgets-info": "You have to [[$1|disable the Navigation popups gadget]] in your {{int:prefs-gadgets}} preferences to enable Page Previews",
 	"popups-prefs-conflicting-gadgets-info": "Certain gadgets and other customizations may affect the performance of this feature. If you experience problems please review your gadgets and user scripts, including global ones.",
 	"popups-prefs-optin-all": "Enable previews (get quick previews of a topic or a reference while reading a page)",
-	"popups-prefs-navpopups-gadget-conflict-info": "You have the [[$1|Navigation popups]] gadget enabled, so you won't see previews provided by this feature. Depending on your wiki, the gadget may have a slightly different name. If you continue to experience issues, please review your gadgets and user scripts, including global ones.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "You have the [[$1|Reference Tooltips]] gadget enabled, so you won’t see reference previews but will still see page previews. Depending on your wiki, the gadget may have a slightly different name. If you continue to experience issues, please review your gadgets and user scripts, including global ones.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "You have the [[$1|Navigation popups]] and [[$1|Reference Tooltips]] gadgets enabled, so you won't see previews provided by this feature. Depending on your wiki, the gadget may have a slightly different name. If you continue to experience issues, please review your gadgets and user scripts, including global ones.",
+	"popups-prefs-navpopups-gadget-conflict-info": "You have the [[$1|Navigation popups]] gadget enabled, so you won't see previews provided by this feature. Depending on your wiki, the gadget may have a slightly different name. If you continue to experience issues, please review your {{int:prefs-gadgets}} preferences and user scripts, including global ones.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "You have the [[$1|Reference Tooltips]] gadget enabled, so you won't see reference previews but will still see page previews. Depending on your wiki, the gadget may have a slightly different name. If you continue to experience issues, please review your {{int:prefs-gadgets}} preferences and user scripts, including global ones.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "You have the [[$1|Navigation popups]] and [[$1|Reference Tooltips]] gadgets enabled, so you won't see previews provided by this feature. Depending on your wiki, the gadgets may have slightly different names. If you continue to experience issues, please review your {{int:prefs-gadgets}} preferences and user scripts, including global ones.",
 	"popups-refpreview-reference": "Reference",
 	"popups-refpreview-book": "Book reference",
 	"popups-refpreview-journal": "Journal reference",
@@ -37,5 +37,5 @@
 	"popups-refpreview-web": "Web reference",
 	"popups-refpreview-collapsible-placeholder": "This reference includes a graphic which does not fit in the preview.",
 	"popups-refpreview-beta-feature-message": "Reference Previews",
-	"popups-refpreview-beta-feature-description": "Show a preview of a reference by hovering over its footnote marker.\n\nPlease note: If you’re using the [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] gadget or the [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] gadget, you won’t see Reference Previews."
+	"popups-refpreview-beta-feature-description": "Show a preview of a reference by hovering over its footnote marker.\n\nPlease note: If you're using the [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] gadget or the [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] gadget, you won't see reference previews."
 }

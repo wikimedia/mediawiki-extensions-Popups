@@ -64,7 +64,7 @@
 			"value": "Navigation_popups"
 		},
 		"PopupsConflictingRefTooltipsGadgetName": {
-			"description": "@var string: Reference tooltips gadget name",
+			"description": "@var string: Name of a gadget that would cause duplicate reference preview popups. Known conflicting gadgets include \"ReferenceTooltips\", \"CiteTooltip\" alias \"RefTooltip\", \"ReferencePopups\", and \"tooltipRef\" (see T274353).",
 			"value": "ReferenceTooltips"
 		},
 		"PopupsGateway": {
