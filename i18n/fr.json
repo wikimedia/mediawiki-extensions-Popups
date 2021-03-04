@@ -43,6 +43,8 @@
 	"popups-prefs-conflicting-gadgets-info": "Certains gadgets et autres personnalisations peuvent affecter la performance de cette fonctionnalité. Si vous rencontrez des problèmes, veuillez vérifier vos gadgets et scripts utilisateur, y compris au niveau global.",
 	"popups-prefs-optin-all": "Activer les aperçus (obtenir un aperçu rapide d’un sujet ou d’une référence en lisant une page)",
 	"popups-prefs-navpopups-gadget-conflict-info": "Vous avez activé le gadget [[$1 | Fenêtres de navigation]], donc vous ne verrez pas les aperçus fournis par cette fonctionnalité. Selon votre wiki, le gadget peut avoir un nom quelque peu différent. Si vous continuez à rencontrer des problèmes, veuillez revoir votre paramétrage global du gadget et des scripts utilisateur.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Vous avez activé le gadget [[$1 | Vignettes de référence]], donc vous ne verrez pas les aperçus de référence, mais vous verrez toujours les aperçus de page. Selon votre wiki, le gadget peut avoir un nom quelque peu différent. Si vous continuez à rencontrer des problèmes, veuillez revoir le paramétrage global de votre gadget et des scripts utilisateur.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Vous avez activé les gadgets [[$1 | Fenêtres de navigation]] et [[$1 | Vignettes de référence]], donc vous ne verrez pas les aperçus fournis par cette fonctionnalité. Selon votre wiki, ces gadgets peuvent avoir des noms quelque peu différents. Si vous continuez à rencontrer des problèmes, veuillez revoir votre paramétrage global du gadget et des scripts utilisateur.",
 	"popups-refpreview-reference": "Référence",
 	"popups-refpreview-book": "Référence du livre",
 	"popups-refpreview-journal": "Référence du journal",
