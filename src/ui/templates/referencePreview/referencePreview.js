@@ -103,6 +103,9 @@ export function renderReferencePreview(
 						.addClass( 'mw-ui-icon mw-ui-icon-element mw-ui-icon-small mw-ui-icon-settings' )
 				)
 		);
+	} else {
+		// Change the styling when there is no content in the footer (to prevent empty space)
+		$el.find( '.mwe-popups-extract' ).addClass( 'footer-empty' );
 	}
 
 	if ( isTracking ) {
