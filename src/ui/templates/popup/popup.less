@@ -189,8 +189,16 @@
 	}
 
 	// T276200
-	.mwe-popups-extract.footer-empty {
-		margin-bottom: @popupPadding;
+	.mwe-popups-container.footer-empty {
+		.mwe-popups-extract {
+			margin-bottom: @popupPadding;
+
+			.mwe-popups-scroll {
+				// Same as the --pointer-height in popup.less
+				@pointerHeight: 8px;
+				max-height: 403px - 2 * @popupPadding + @pointerHeight;
+			}
+		}
 	}
 
 	&.mwe-popups-type-generic,

@@ -105,7 +105,7 @@ export function renderReferencePreview(
 		);
 	} else {
 		// Change the styling when there is no content in the footer (to prevent empty space)
-		$el.find( '.mwe-popups-extract' ).addClass( 'footer-empty' );
+		$el.find( '.mwe-popups-container' ).addClass( 'footer-empty' );
 	}
 
 	if ( isTracking ) {
