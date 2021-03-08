@@ -1,15 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
+			"El Bux Del Cu",
 			"Salvemm el lombard"
 		]
 	},
 	"popups-desc": "El mostra un popap de veduda antecipada quand che l'utent el passa el pontador sora un conligament",
 	"popups-settings-title": "Veduda antecipada de la pagina",
+	"popups-settings-unified-title": "Vedude antecipade",
 	"popups-settings-option-simple": "Ativa",
 	"popups-settings-option-simple-description": "Oten una veduda antecipada de d'un argoment intanta che te seet adree a lensger una pagina.",
 	"popups-settings-option-advanced": "Vanzade",
 	"popups-settings-option-advanced-description": "Varda una pagina de veduda antecipada di collegamenti e va dent in del menu di fonzion de modifega. Chesschì l'è drovà de tanti utent.",
+	"popups-settings-option-unified-description": "Oten di vedude antecipade rapide d'un argoment o d'un riferiment intanta che te see 'dree a leger",
 	"popups-settings-option-off": "Disativa",
 	"popups-settings-save": "Salva",
 	"popups-settings-help-ok": "Fad",
@@ -22,8 +25,12 @@
 	"popups-preview-disambiguation-link": "Varda di pagine compagne",
 	"prefs-reading": "Preferenze de letura",
 	"popups-prefs-optin": "Ativa la veduda antecipada di pagine (veduda antecipada svelta d'un argoment intanta che te leget una pagina)",
-	"popups-prefs-disable-nav-gadgets-info": "Te gh'hee de [[$1 |disativà l'acesori Popap de navigazzion]] de la scheda acesori per ativà i vedude anticipade di pagine.",
+	"popups-prefs-disable-nav-gadgets-info": "Te g'heet de [[$1|disativar l'acesori Popap de navigazzion]] de la sqeda acesori per ativar i vedude anticipade di pajine.",
 	"popups-prefs-conflicting-gadgets-info": "Un quai acessori e di alter personalizazzion a poden influì sora i prestazzion de quella fonzion chì. Se te gh'hee un quai problema varda anmò i to acessori e i script d'utent, compres quei globai.",
+	"popups-prefs-optin-all": "Ativa i vedude antecipade (oten di vedude antecipade rapide d'un argoment o d'un riferiment intanta che te see 'dree a leger)",
+	"popups-prefs-navpopups-gadget-conflict-info": "Te gh'heet el dispositiv [[$1|popap de navigazzion]] ativad, donca te vedaret no i vedude antecipade fornide de questa fonzion chì. A segonda del wiki, el dispositiv el podariss ciamass in d'una manera on zich diversa. Se te sutet a havegh di problema, controla i to preferenze sora i dispositiv e i script utent, compres quei globai.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Te gh'heet el dispositiv [[$1|sugeriment de navigazzion]] ativad, donca te vedaret no i vedude antecipade di riferiment ma te vedareet anmò i vedude antecipade di pagine. A segonda del wiki, el dispositiv el podariss ciamass in d'una manera on zich diversa. Se te sutet a havegh di problema, controla i to preferenze sora i dispositiv e i script utent, compres quei globai.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Te gh'heet el dispositiv [[$1| sugeriment de navigazzion]] ativad, donca te vedaret no i vedude antecipade fornide de quella fonzion chì. A segonda del wiki, el dispositiv el podariss ciamass in d'una manera on zich diversa. Se te sutet a havegh di problema, controla i to preferenze sora i dispositiv e i script utent, compres quei globai.",
 	"popups-refpreview-reference": "Riferiment",
 	"popups-refpreview-book": "Riferiment a un liber",
 	"popups-refpreview-journal": "Riferiment a una rivista",
@@ -32,5 +39,5 @@
 	"popups-refpreview-web": "Riferiment a un sit de la red",
 	"popups-refpreview-collapsible-placeholder": "Quel riferment chì el gh'hà dent una imagin che l'è minga adatta per la pagina de veduda antecipada",
 	"popups-refpreview-beta-feature-message": "Veduda antecipada di riferiment",
-	"popups-refpreview-beta-feature-description": "El mostra la veduda antecipada d'un riferiment quand che se passa con la maneta in sul so marcador. \n\nTen in cunt: Se te see 'dree a drovà i acessori [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] o i acessori [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] te vedaret minga i vedude antecipade di riferiment."
+	"popups-refpreview-beta-feature-description": "El mostra la veduda antecipada d'un riferiment quand che se passa con la maneta in sul so marcador. \n\nTen in cunt: Se te see 'dree a drovà i acessori [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] o i acessori [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] te vedaret minga i vedude antecipade di riferiment."
 }

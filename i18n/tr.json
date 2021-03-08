@@ -10,6 +10,7 @@
 			"Meelo",
 			"MuratTheTurkish",
 			"Rapsar",
+			"SaldırganSincap",
 			"Sayginer",
 			"Sezgin İbiş"
 		]
@@ -35,9 +36,12 @@
 	"popups-preview-disambiguation-link": "Benzer sayfaları görüntüle",
 	"prefs-reading": "Okuma tercihleri",
 	"popups-prefs-optin": "Sayfa önizlemelerini etkinleştirin (bir sayfayı okurken bir konunun hızlı önizlemeleri)",
-	"popups-prefs-disable-nav-gadgets-info": "Sayfa Önizlemelerini etkinleştirmek için [[$1 | Gezinme Açılır Pencereleri Küçük Aracı]] sekmesinden devre dışı bırakmalısınız",
+	"popups-prefs-disable-nav-gadgets-info": "Sayfa önizlemelerini etkinleştirmek için {{int:prefs-gadgets}} tercihlerinizde [[$1|Gezinti pencereleri küçük aracını devre dışı bırakmanız]] gerekir.",
 	"popups-prefs-conflicting-gadgets-info": "Bazı küçük araçlar ve diğer özelleştirmeler bu özelliğin çalışmasını etkileyebilir. Sorun yaşarsanız, genel olanlar da dahil olmak üzere küçük araçlarınızı ve kullanıcı betiklerinizi gözden geçirin.",
 	"popups-prefs-optin-all": "Önizlemeleri etkinleştirin (bir sayfayı okurken bir konu ya da kaynağın hızlı önizlemelerini alın)",
+	"popups-prefs-navpopups-gadget-conflict-info": "[[$1|Dolaşım pencereleri]] aracını etkinleştirdiniz, bu özellikle sağlanan önizlemeleri göremeyeceksiniz. Vikinize bağlı olarak, küçük aracın adı biraz farklı olabilir. Sorun yaşamaya devam ederseniz, küçük araç tercihlerini ve kullanıcı betiklerini, küresel olanlar da dahil, gözden geçirin.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "[[$1|Kaynak İpuçları]] aracını etkinleştirdiniz, kaynak önizlemelerini göremeyeceksiniz, ancak sayfa önizlemelerini hala görebileceksiniz. Vikinize bağlı olarak, küçük aracın adı biraz farklı olabilir. Sorun yaşamaya devam ederseniz, küçük araç tercihlerini ve kullanıcı betiklerini, küresel olanlar da dahil, gözden geçirin.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "[[$1|Dolaşım pencereleri]] ve [[$1|Kaynak İpuçları]] araçlarını etkinleştirdiniz, bu özellikle sağlanan önizlemeleri göremeyeceksiniz. Vikinize bağlı olarak, küçük araçların adı biraz farklı olabilir. Sorun yaşamaya devam ederseniz, küçük araç tercihlerini ve kullanıcı betiklerini, küresel olanlar da dahil, gözden geçirin.",
 	"popups-refpreview-reference": "Kaynak",
 	"popups-refpreview-book": "Kitap kaynağı",
 	"popups-refpreview-journal": "Dergi kaynağı",
@@ -46,5 +50,5 @@
 	"popups-refpreview-web": "Web kaynağı",
 	"popups-refpreview-collapsible-placeholder": "Bu kaynak, önizlemeye sığmayan bir grafik içerir.",
 	"popups-refpreview-beta-feature-message": "Kaynak Önizlemeleri",
-	"popups-refpreview-beta-feature-description": "İmleci dipnot işaretçisinin üzerinde gezdirerek kaynağın önizlemesini göster.\n\nLütfen dikkat: [https://tr.wikipedia.org/wiki/Vikipedi:Araçlar/Gezinti_pencereleri Gezinti pencereleri] veya [[mw:Special:MyLanguage/Reference Tooltips|kaynak araç ipuçları]] küçük aracını kullanıyorsanız Kaynak Önizlemelerini görmezsiniz."
+	"popups-refpreview-beta-feature-description": "İmleci dipnot işaretçisinin üzerinde gezdirerek kaynağın önizlemesini göster.\n\nLütfen dikkat: [//tr.wikipedia.org/wiki/Vikipedi:Araçlar/Gezinti_pencereleri Gezinti pencereleri] veya [[mw:Special:MyLanguage/Reference Tooltips|kaynak araç ipuçları]] küçük aracını kullanıyorsanız kaynak önizlemelerini görmezsiniz."
 }

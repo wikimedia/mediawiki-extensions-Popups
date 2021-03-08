@@ -33,7 +33,7 @@
 	"popups-preview-disambiguation-link": "Zobrazit podobné stránky",
 	"prefs-reading": "Nastavení čtení",
 	"popups-prefs-optin": "Zapnout náhledy stránek (při čtení stránky poskytne rychlé náhledy tématu)",
-	"popups-prefs-disable-nav-gadgets-info": "Abyste {{GENDER:|mohl|mohla|mohli}} zapnout Náhledy stránek, musíte [[$1 | vypnout udělátko Navigation Popups]] na záložce Udělátka",
+	"popups-prefs-disable-nav-gadgets-info": "Abyste si {{GENDER:|mohl|mohla|mohli}} zapnout náhledy stránek, musíte [[$1|vypnout udělátko Navigation Popups]] na záložce Udělátka v nastavení.",
 	"popups-prefs-conflicting-gadgets-info": "Některá udělátka a další přizpůsobení mohou ovlivnit činnost této funkce. Pokud narazíte na problémy, zkontrolujte si prosím svá lokální i globální udělátka a uživatelské skripty.",
 	"popups-refpreview-reference": "Reference",
 	"popups-refpreview-book": "Knižní reference",
@@ -42,5 +42,5 @@
 	"popups-refpreview-web": "Webová reference",
 	"popups-refpreview-collapsible-placeholder": "Tato reference obsahuje grafický prvek, který nelze v náhledu zobrazit.",
 	"popups-refpreview-beta-feature-message": "Náhledy referencí",
-	"popups-refpreview-beta-feature-description": "Zobrazit náhled reference při umístění kurzoru myši nad značku reference (číslo reference v horním indexu).\n\nUpozornění: Pokud používáte udělátko [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] nebo [[mw:Special:MyLanguage/Reference Tooltips|Vyskakovací reference]], tak Náhledy referencí neuvidíte."
+	"popups-refpreview-beta-feature-description": "Zobrazit náhled reference při umístění kurzoru myši nad značku reference (číslo reference v horním indexu).\n\nUpozornění: Pokud používáte udělátko [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] nebo [[mw:Special:MyLanguage/Reference Tooltips|Vyskakovací reference]], tak náhledy referencí neuvidíte."
 }
