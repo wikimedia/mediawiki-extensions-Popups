@@ -21,10 +21,11 @@ const templateHTML = `
 /**
  * @param {ext.popups.PagePreviewModel} model
  * @param {ext.popups.Thumbnail|null} thumbnail
+ * @param {boolean} withCSSClipPath
  * @return {JQuery}
  */
 export function renderPagePreview(
-	model, thumbnail
+	model, thumbnail, withCSSClipPath
 ) {
 	const $el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
 
@@ -41,12 +42,14 @@ export function renderPagePreview(
 		$el.find( '.mwe-popups-discreet' ).remove();
 	}
 
+	const $extract = $el.find( '.mwe-popups-extract' );
 	if ( model.extract ) {
+		$extract.append( model.extract );
 		const extractWidth = getExtractWidth( thumbnail );
-		$el.find( '.mwe-popups-extract' )
-			.css( 'width', extractWidth )
-			.append( model.extract );
-		$el.find( 'footer' ).css( 'width', extractWidth );
+		if ( !withCSSClipPath ) {
+			$extract.css( 'width', extractWidth );
+			$el.find( 'footer' ).css( 'width', extractWidth );
+		}
 	}
 
 	return $el;

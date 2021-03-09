@@ -381,8 +381,30 @@
 
 @supports ( clip-path: polygon( 1px 1px ) ) {
 	.mwe-popups {
+		.mwe-popups-thumbnail {
+			object-fit: cover;
+			outline: 1px solid rgba( 0, 0, 0, 0.1 );
+		}
+
+		.mwe-popups-discreet {
+			margin-bottom: -9px;
+		}
+
+		.mwe-popups-extract[ dir='rtl' ] + footer {
+			left: unset;
+			right: 0;
+
+			.mwe-popups-settings-icon {
+				float: left;
+			}
+		}
+
 		&.flipped-y,
 		&.flipped-x-y {
+			.mwe-popups-discreet {
+				margin-bottom: 0;
+			}
+
 			.mwe-popups-container {
 				--y1: 100%;
 				--y2: ~'calc(100% - var(--pointer-height))';
@@ -421,15 +443,10 @@
 			clip-path: ~'polygon( var( --x2 ) var( --y2 ), var( --x3) var(--y2), var(--x4) var(--y1), var(--x5) var(--y2), var(--x6) var(--y2), var(--x7) var(--y3), var(--x7) var(--y4), var(--x6) var(--y5), var(--x2) var(--y5), var(--x1) var(--y4), var(--x1) var(--y3) )';
 		}
 
-		.mwe-popups-thumbnail {
-			object-fit: cover;
-			outline: 1px solid rgba( 0, 0, 0, 0.1 );
-		}
-
 		&.mwe-popups-is-tall {
 			.mwe-popups-discreet {
 				.mwe-popups-thumbnail {
-					min-width: @popupTallWidth;
+					width: @popupTallWidth;
 					height: 250px;
 				}
 				order: 1;

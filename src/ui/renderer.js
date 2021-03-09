@@ -173,10 +173,11 @@ function supportsCSSClipPath() {
  */
 function createPagePreview( model ) {
 	const thumbnail = createThumbnail( model.thumbnail, supportsCSSClipPath() ),
-		hasThumbnail = thumbnail !== null;
+		hasThumbnail = thumbnail !== null,
+		withCSSClipPath = supportsCSSClipPath();
 
 	return {
-		el: renderPagePreview( model, thumbnail ),
+		el: renderPagePreview( model, thumbnail, withCSSClipPath ),
 		hasThumbnail,
 		thumbnail,
 		isTall: hasThumbnail && thumbnail.isTall
