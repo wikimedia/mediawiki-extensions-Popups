@@ -170,16 +170,7 @@ class PopupsHooks {
 		$services = MediaWikiServices::getInstance();
 		/** @var PopupsContext $context */
 		$context = $services->getService( 'Popups.Context' );
-		$user = $out->getUser();
-
-		// TODO: Move checks and tests from isReferencePreviewsEnabled.js here
-		$vars['wgPopupsReferencePreviews'] = $context->isReferencePreviewsEnabled( $user );
-
-		// TODO: Remove when not in Beta any more
-		$vars['wgPopupsReferencePreviewsBeta'] = $context->isReferencePreviewsInBeta( $user );
-
-		$vars['wgPopupsConflictsWithNavPopupGadget'] = $context->conflictsWithNavPopupsGadget( $user );
-		$vars['wgPopupsConflictsWithRefTooltipsGadget'] = $context->conflictsWithRefTooltipsGadget( $user );
+		$vars['wgPopupsFlags'] = $context->getConfigBitmaskFromUser( $out->getUser() );
 	}
 
 	/**

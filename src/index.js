@@ -25,6 +25,7 @@ import createMediaWikiPopupsObject from './integrations/mwpopups';
 import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
 import { previewTypes, getPreviewType } from './preview/model';
 import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
+import setUserConfigFlags from './setUserConfigFlags';
 
 const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
@@ -161,6 +162,8 @@ function registerChangeListeners(
  *   - Binding hover and click events to the eligible links to trigger actions
  */
 ( function init() {
+	setUserConfigFlags( mw.config );
+
 	let compose = Redux.compose;
 	const
 		// So-called "services".

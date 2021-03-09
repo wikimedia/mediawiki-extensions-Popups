@@ -62,6 +62,14 @@ class PopupsContext {
 	public const REFERENCE_PREVIEWS_BETA_FEATURE_KEY = 'popupsreferencepreviews';
 
 	/**
+	 * Flags passed on to JS representing preferences
+	 */
+	private const NAV_POPUPS_ENABLED = 1;
+	private const REF_TOOLTIPS_ENABLED = 2;
+	private const REFERENCE_PREVIEWS_ENABLED = 4;
+	private const REFERENCE_PREVIEWS_BETA = 8;
+
+	/**
 	 * @var \Config
 	 */
 	private $config;
@@ -131,7 +139,7 @@ class PopupsContext {
 	 * @param \User $user User whose preferences are checked
 	 * @return bool whether or not to show reference previews
 	 */
-	public function isReferencePreviewsEnabled( \User $user ) {
+	private function isReferencePreviewsEnabled( \User $user ) {
 		// TODO: Remove when the feature flag is ot needed any more
 		if ( !$this->config->get( 'PopupsReferencePreviews' ) ) {
 			return false;
@@ -154,6 +162,17 @@ class PopupsContext {
 		// TODO: Remove when not in Beta any more
 		return $this->config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
 			\ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' );
+	}
+
+	/**
+	 * @param \User $user User whose preferences are checked
+	 * @return int
+	 */
+	public function getConfigBitmaskFromUser( \User $user ) {
+		return ( $this->conflictsWithNavPopupsGadget( $user ) ? self::NAV_POPUPS_ENABLED : 0 ) |
+			( $this->conflictsWithRefTooltipsGadget( $user ) ? self::REF_TOOLTIPS_ENABLED : 0 ) |
+			( $this->isReferencePreviewsEnabled( $user ) ? self::REFERENCE_PREVIEWS_ENABLED : 0 ) |
+			( $this->isReferencePreviewsInBeta() ? self::REFERENCE_PREVIEWS_BETA : 0 );
 	}
 
 	/**
