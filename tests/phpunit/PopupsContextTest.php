@@ -264,6 +264,79 @@ class PopupsContextTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers ::getConfigBitmaskFromUser
+	 * @dataProvider provideTestGetConfigBitmaskFromUser
+	 * @param bool $navPops
+	 * @param bool $refTooltips
+	 * @param bool $refEnabled
+	 * @param bool $refInBeta
+	 * @param int $expected
+	 */
+	public function testGetConfigBitmaskFromUser(
+		$navPops,
+		$refTooltips,
+		$refEnabled,
+		$refInBeta,
+		$expected
+	) {
+		$contextMock = $this->createPartialMock(
+			PopupsContext::class,
+			[
+				'conflictsWithNavPopupsGadget',
+				'conflictsWithRefTooltipsGadget',
+				'isReferencePreviewsEnabled',
+				'isReferencePreviewsInBeta',
+			]
+		);
+		$contextMock->method( 'conflictsWithNavPopupsGadget' )
+			->willReturn( $navPops );
+		$contextMock->method( 'conflictsWithRefTooltipsGadget' )
+			->willReturn( $refTooltips );
+		$contextMock->method( 'isReferencePreviewsEnabled' )
+			->willReturn( $refEnabled );
+		$contextMock->method( 'isReferencePreviewsInBeta' )
+			->willReturn( $refInBeta );
+
+		$this->assertSame(
+			$expected,
+			$contextMock->getConfigBitmaskFromUser( $this->getTestUser()->getUser() )
+		);
+	}
+
+	public function provideTestGetConfigBitmaskFromUser() {
+		return [
+			[
+				true,
+				true,
+				true,
+				true,
+				15,
+			],
+			[
+				false,
+				true,
+				false,
+				true,
+				10,
+			],
+			[
+				true,
+				false,
+				true,
+				false,
+				5,
+			],
+			[
+				false,
+				false,
+				false,
+				false,
+				0,
+			],
+		];
+	}
+
+	/**
 	 * @covers ::logUserDisabledPagePreviewsEvent
 	 */
 	public function testLogsEvent() {

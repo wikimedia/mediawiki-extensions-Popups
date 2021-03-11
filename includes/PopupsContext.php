@@ -139,7 +139,7 @@ class PopupsContext {
 	 * @param \User $user User whose preferences are checked
 	 * @return bool whether or not to show reference previews
 	 */
-	private function isReferencePreviewsEnabled( \User $user ) {
+	public function isReferencePreviewsEnabled( \User $user ) {
 		// TODO: Remove when the feature flag is ot needed any more
 		if ( !$this->config->get( 'PopupsReferencePreviews' ) ) {
 			return false;
