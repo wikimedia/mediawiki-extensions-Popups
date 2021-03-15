@@ -8,10 +8,11 @@
 		]
 	},
 	"popups-message": "Info kartice",
-	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko linka stranice.",
+	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko linka stranice",
 	"popups-settings-title": "Pregled stranice",
+	"popups-settings-unified-title": "Info kartice",
 	"popups-settings-option-simple": "Uključi",
-	"popups-settings-option-simple-description": "Brz pregled bilo koje teme dok čitate članak.",
+	"popups-settings-option-simple-description": "Brz pregled bilo koje teme dok čitate stranicu.",
 	"popups-settings-option-advanced": "Napredno",
 	"popups-settings-option-off": "Isključi",
 	"popups-settings-save": "Sačuvaj",
@@ -27,6 +28,13 @@
 	"popups-prefs-optin": "Pregled stranica\n\n<em>Brz pregled bilo koje teme dok čitate članak</em>",
 	"popups-prefs-disable-nav-gadgets-info": "Morate [[$1 | isključiti dodatak \"Navigation Popups\"]] iz kartice \"Dodaci\" u Postavkama da biste uključili Pregled stranica",
 	"popups-prefs-conflicting-gadgets-info": "Određeni dodaci i druga prilagođavanja mogu utjecati na rad ove opcije. Ako naiđete na probleme, provjerite svoje dodatke i korisničke skripte.",
+	"popups-refpreview-reference": "Referenca",
+	"popups-refpreview-book": "Navedena knjiga",
+	"popups-refpreview-journal": "Naveden časopis",
+	"popups-refpreview-news": "Navedene vijesti",
+	"popups-refpreview-note": "Napomena",
+	"popups-refpreview-web": "Naveden sajt",
+	"popups-refpreview-collapsible-placeholder": "Reference sadrži grafiku koja ne može stati u ovaj pregled.",
 	"popups-refpreview-beta-feature-message": "Brzi pregled referenci",
 	"popups-refpreview-beta-feature-description": "Prikazuje pregled reference kada mišem pređete preko njene oznake.\n\nNapomena: Ova mogućnost ne radi ako koristite dodatak [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigacijski prozorčići]. Ako koristite dodatak [[mw:Special:MyLanguage/Reference Tooltips|Oblačići za reference]], prikazivat će Vam se oba oblačića."
 }

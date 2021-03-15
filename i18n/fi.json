@@ -14,6 +14,7 @@
 	"popups-message": "Esikatselut",
 	"popups-desc": "Näyttää esikatselut, kun käyttäjä vie hiiren linkin päälle",
 	"popups-settings-title": "Sivun esikatselu",
+	"popups-settings-unified-title": "Esikatselut",
 	"popups-settings-option-simple": "Ota käyttöön",
 	"popups-settings-option-simple-description": "Näytä aiheiden pikaesikatselut lukutilassa.",
 	"popups-settings-option-advanced": "Laajennettu",
