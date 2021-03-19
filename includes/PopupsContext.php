@@ -57,9 +57,9 @@ class PopupsContext {
 	public const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups';
 
 	/**
-	 * Beta feature key to enable/disable Reference Previews
+	 * User preference key to enable/disable Reference Previews
 	 */
-	public const REFERENCE_PREVIEWS_BETA_FEATURE_KEY = 'popupsreferencepreviews';
+	public const REFERENCE_PREVIEWS_PREFERENCE_NAME = 'popupsreferencepreviews';
 
 	/**
 	 * Flags passed on to JS representing preferences
@@ -149,10 +149,10 @@ class PopupsContext {
 		if ( $this->isReferencePreviewsInBeta() ) {
 			return BetaFeatures::isFeatureEnabled(
 				$user,
-				self::REFERENCE_PREVIEWS_BETA_FEATURE_KEY
+				self::REFERENCE_PREVIEWS_PREFERENCE_NAME
 			);
 		}
-		return $user->getBoolOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME );
+		return $user->getBoolOption( self::REFERENCE_PREVIEWS_PREFERENCE_NAME );
 	}
 
 	/**
