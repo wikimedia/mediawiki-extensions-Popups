@@ -48,7 +48,9 @@
 		text-decoration: none;
 
 		footer {
-			padding: @popupPadding;
+			// T277364: The top padding doesn't have a visible effect anyway; this reduces the risk
+			// of the footer covering content
+			padding: 0 @popupPadding @popupPadding;
 			margin: 0;
 			font-size: 10px;
 			position: absolute;
