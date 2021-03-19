@@ -255,21 +255,18 @@ class PopupsHooksTest extends MediaWikiTestCase {
 
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->any() )
-			->method( 'conflictsWithNavPopupsGadget' )
+			->method( 'getConfigBitmaskFromUser' )
 			->with( $user )
-			->willReturn( false );
-		$contextMock->method( 'isReferencePreviewsEnabled' )
-			->with( $user )
-			->willReturn( true );
+			->willReturn( 0 );
 
 		$this->setService( 'Popups.Context', $contextMock );
 
 		$vars = [];
 		PopupsHooks::onMakeGlobalVariablesScript( $vars, $outputPage );
 
-		$this->assertCount( 4, $vars, 'Number of added variables.' );
-		$this->assertFalse( $vars[ 'wgPopupsConflictsWithNavPopupGadget' ],
-			'The PopupsConflictsWithNavPopupGadget global is present and false.' );
+		$this->assertCount( 1, $vars, 'Number of added variables.' );
+		$this->assertSame( 0, $vars[ 'wgPopupsFlags' ],
+			'The wgPopupsFlags global is present and 0.' );
 	}
 
 	/**
