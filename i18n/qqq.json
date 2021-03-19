@@ -46,6 +46,7 @@
 	"popups-refpreview-note": "Heading for a popup previewing a footnote.\n{{Identical|Note}}",
 	"popups-refpreview-web": "Heading for a popup previewing a citation from a website.\n{{Identical|Website}}",
 	"popups-refpreview-collapsible-placeholder": "Placeholder text for collapsible tables, templates, or other large elements inside of a reference.",
+	"popups-refpreview-user-preference-label": "Label for the user option to enable or disable reference preview popups",
 	"popups-refpreview-beta-feature-message": "Label for the Reference Previews Beta feature.",
 	"popups-refpreview-beta-feature-description": "Description for the Reference Previews Beta feature, describing the feature that will be enabled."
 }
