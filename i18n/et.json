@@ -31,6 +31,7 @@
 	"popups-refpreview-journal": "Ajakirjaviide",
 	"popups-refpreview-news": "Uudiseviide",
 	"popups-refpreview-web": "Veebiviide",
+	"popups-refpreview-user-preference-label": "Viidete eelvaade (viited kiires eelvaates)",
 	"popups-refpreview-beta-feature-message": "Viidete eelvaade",
 	"popups-refpreview-beta-feature-description": "Näita viite eelvaadet, kui libistad kursoriga üle viitetähise.\n\nPalun pane tähele, et kui kasutad tööriistu [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] või [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], siis sa viidete eelvaateid ei näe."
 }

@@ -44,6 +44,7 @@
 	"popups-refpreview-news": "Referência de notícias",
 	"popups-refpreview-web": "Referência da Internet",
 	"popups-refpreview-collapsible-placeholder": "Esta referência inclui um gráfico que não cabe na antevisão.",
+	"popups-refpreview-user-preference-label": "Antevisão de referências (obter antevisões rápidas das notas de rodapé)",
 	"popups-refpreview-beta-feature-message": "Antevisões de referências",
 	"popups-refpreview-beta-feature-description": "Mostrar a antevisão de uma referência quando o ponteiro do rato é colocado sobre o marcador da sua nota de rodapé.\n\nNote, por favor: se estiver a usar o ''gadget'' da [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navegação flutuante] ou o ''gadget'' das [[mw:Special:MyLanguage/Reference Tooltips|Reference Dicas de referências]] não verá antevisões de referências."
 }

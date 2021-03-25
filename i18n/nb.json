@@ -37,6 +37,7 @@
 	"popups-refpreview-news": "Nyhetsreferanse",
 	"popups-refpreview-web": "Nettsidereferanse",
 	"popups-refpreview-collapsible-placeholder": "Denne referanse inkluderer grafikk som ikke får plass i forhåndsvisningen.",
+	"popups-refpreview-user-preference-label": "Referanseforhåndsvisninger (få raske forhåndsvisninger av fotnoter)",
 	"popups-refpreview-beta-feature-message": "Referanseforhåndsvisning",
 	"popups-refpreview-beta-feature-description": "Vis en forhåndsvisning av en referanse når du peker på notemerket.\n\nMerk: Funksjonen virker ikke sammen med tilleggsfunksjonene [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] og [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]."
 }

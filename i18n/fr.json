@@ -38,11 +38,11 @@
 	"popups-preview-disambiguation": "Ce titre fait référence à plus d’une page",
 	"popups-preview-disambiguation-link": "Afficher des pages similaires",
 	"prefs-reading": "Préférences de lecture",
-	"popups-prefs-optin": "Aperçus de page activés (aperçus rapides d’un sujet pendant la lecture d’une page)",
+	"popups-prefs-optin": "Active la prévisualisation des pages (aperçus rapides d’un sujet pendant la lecture d’une page)",
 	"popups-prefs-disable-nav-gadgets-info": "Vous devez [[$1|désactiver le gadget Popups de navigation]] dans vos préférences de gadgets pour activer les aperçus de page.",
 	"popups-prefs-conflicting-gadgets-info": "Certains gadgets et autres personnalisations peuvent affecter la performance de cette fonctionnalité. Si vous rencontrez des problèmes, veuillez vérifier vos gadgets et scripts utilisateur, y compris au niveau global.",
 	"popups-prefs-optin-all": "Activer les aperçus (obtenir un aperçu rapide d’un sujet ou d’une référence en lisant une page)",
-	"popups-prefs-navpopups-gadget-conflict-info": "Vous avez activé le gadget [[$1|Popups de navigation]], donc vous ne verrez pas les aperçus fournis par cette fonctionnalité. Selon votre wiki, le gadget peut avoir un nom quelque peu différent. Si vous continuez à rencontrer des problèmes, veuillez revoir vos préférences pour les gadgets et vos scripts utilisateur, y compris les préférences globales.",
+	"popups-prefs-navpopups-gadget-conflict-info": "Vous avez activé le gadget [[$1|Popups de navigation]], donc vous ne verrez pas les aperçus fournis par cette fonctionnalité. Selon votre wiki, le gadget peut avoir un nom quelque peu différent. Si vous continuez à rencontrer des problèmes, veuillez revoir vos scripts utilisateur ainsi que ceux de vos gadgets, y compris les scripts globaux.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Vous avez activé le gadget [[$1|Infobulles de référence]], donc vous ne verrez pas les aperçus de référence, mais vous verrez toujours les aperçus de page. Selon votre wiki, le gadget peut avoir un nom quelque peu différent. Si vous continuez à rencontrer des problèmes, veuillez revoir vos préférences pour les gadgets et vos scripts utilisateur, y compris les préférences globales.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Vous avez activé les gadgets [[$1|Popups de navigation]] et [[$1|Infobulles de référence]], donc vous ne verrez pas les aperçus fournis par cette fonctionnalité. Selon votre wiki, ces gadgets peuvent avoir des noms quelque peu différents. Si vous continuez à rencontrer des problèmes, veuillez revoir vos préférences pour les gadgets et vos scripts utilisateur, y compris les préférences globales.",
 	"popups-refpreview-reference": "Référence",
@@ -52,6 +52,7 @@
 	"popups-refpreview-note": "Note",
 	"popups-refpreview-web": "Référence du web",
 	"popups-refpreview-collapsible-placeholder": "Cette référence inclut un graphique qui ne rentre pas dans l’aperçu.",
+	"popups-refpreview-user-preference-label": "Activer les aperçus des références (obtenir des aperçus rapides d’une référence lors de la lecture d’une page)",
 	"popups-refpreview-beta-feature-message": "Aperçus de référence",
 	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la référence lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : si vous utilisez le gadget <em>[//fr.wikipedia.org/wiki/Utilisateur:Leag/Navigation_popups Navigation popups]</em> ou le gadget <em>[[mw:Special:MyLanguage/Reference Tooltips|Infobulles de référence]]</em>, vous ne verrez pas l’aperçu des références."
 }

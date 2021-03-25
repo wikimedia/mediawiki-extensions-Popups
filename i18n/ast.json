@@ -30,6 +30,7 @@
 	"popups-refpreview-journal": "Referencia a revista",
 	"popups-refpreview-news": "Referencia a noticies",
 	"popups-refpreview-web": "Referencia web",
+	"popups-refpreview-user-preference-label": "Vistes previes de referencia (recibir vistes previes rápides de notes al pie)",
 	"popups-refpreview-beta-feature-message": "Vistes previes de referencies",
 	"popups-refpreview-beta-feature-description": "Amuesa una vista previa d'una referencia al pasar el mur sobro'l marcador de nota al pie.\n\nNota: Si tas usando l'accesoriu  [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Popups de navegación], nun vas ver les Vistes Previes de referencies. Si tas usando l'accesoriu [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], van apaecer tanto los mensaxes emerxentes de Reference Tooltips como los de les Vistes Previes de referencies."
 }

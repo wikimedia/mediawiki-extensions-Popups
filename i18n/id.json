@@ -36,6 +36,7 @@
 	"popups-refpreview-journal": "Referensi jurnal",
 	"popups-refpreview-news": "Referensi berita",
 	"popups-refpreview-web": "Referensi web",
+	"popups-refpreview-user-preference-label": "Pratayang referensi (dapatkan pratayang cepat dari bagian catatan kaki)",
 	"popups-refpreview-beta-feature-message": "Pratayang Referensi",
 	"popups-refpreview-beta-feature-description": "Menampilkan pratayang suatu referensi dengan mengatahkan kursor ke penanda catat kakinya.\n\nTolong perhatikan: Jika Anda menggunakan gawai [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Popup navigasi], Anda tidak akan melihat Pratayang Referensi. Jika Anda menggunakan gawai [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], ''pop-up'' dari Reference Tooltips\" dan dari Pratayang Referensi keduanya ditampilkan."
 }

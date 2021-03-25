@@ -34,6 +34,7 @@
 	"popups-refpreview-news": "వార్త మూలం",
 	"popups-refpreview-web": "అంతర్జాల మూలం",
 	"popups-refpreview-collapsible-placeholder": "ఈ మూలంలో వున్న చిత్రం మునుజూపు పరిధి దాటుతుంది.",
+	"popups-refpreview-user-preference-label": "మూలాల మునుజూపులు(పాదసూచికల త్వరిత మునుజూపులు పొందు)",
 	"popups-refpreview-beta-feature-message": "మూలాల మునుజూపులు",
 	"popups-refpreview-beta-feature-description": "మూలపు గుర్తు పై కర్సర్ కదిపినపుడు మూలం మునుజూపు  చూపుతుంది.\n\nదయచేసి గమనించండి: [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups నేవిగేషన్ పాపప్స్] ఉపకరణం,  వాడుతున్నట్లైతే  మూల మునుజూపులు చూడలేరు.  [[mw:Special:MyLanguage/Reference Tooltips|మూలాల టూల్టిప్స్]] ఉపకరణం వాడుతున్నట్లైతే మూలాల టూల్టిప్స్,  మూలాల మునుజూపులు రెండూ కనబడతాయి."
 }

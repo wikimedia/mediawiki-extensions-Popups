@@ -32,6 +32,7 @@
 	"popups-refpreview-journal": "سەرچاوەی گۆڤار",
 	"popups-refpreview-news": "سەرچاوەی ھەواڵ",
 	"popups-refpreview-web": "سەرچاوەی وێب",
+	"popups-refpreview-user-preference-label": "پێشبینینی سەرچاوەکان (پێشبینینی خێرای پەراوێزەکان بەدەست بھێنە)",
 	"popups-refpreview-beta-feature-message": "پێشبینینی سەرچاوەکان",
 	"popups-refpreview-beta-feature-description": "بە هۆڤەرکردن لەسەر نیشانەی پەراوێزەکان، پێشبینینی سەرچاوەکە پیشان بدە.\n\nتکایە تێبینی بکە: ئەگەر ئامرازی [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups پەنجەرەکانی ڕێدۆزی] بەکاردەھێنیت، ئەوا پێشبینینی سەرچاوەکان نابینیت. ئەگەر ئامرازی [[mw:Special:MyLanguage/Reference Tooltips|ڕێنماییامرازی سەرچاوەکان]] بەکاردەھێنیت، ئەوا هەردوو پەنجەرەی ڕێنماییامرازی سەرچاوەکان و پێشبینینی سەرچاوەکان دەردەکەون."
 }

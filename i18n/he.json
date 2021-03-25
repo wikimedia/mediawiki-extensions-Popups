@@ -25,7 +25,7 @@
 	"popups-preview-disambiguation": "הכותרת הזאת מתייחסת ליותר מדף אחד",
 	"popups-preview-disambiguation-link": "הצגת דפים דומים",
 	"prefs-reading": "העדפות קריאה",
-	"popups-prefs-optin": "הפעלת תצוגה מקדימה של דפים (תצוגה מקדימה מהירה של נושא בזמן קריאת דף):",
+	"popups-prefs-optin": "הפעלת תצוגה מקדימה של דפים (קבלת תצוגה מקדימה מהירה של נושא בזמן קריאת דף):",
 	"popups-prefs-disable-nav-gadgets-info": "יש לכבות את [[$1|גאדג'ט החלונות הקופצים]] בהעדפות הגאדג'טים שלכם כדי להפעיל את התצוגות המקדימות של דפים.",
 	"popups-prefs-conflicting-gadgets-info": "גאדג'טים מסוימים והתאמות אישיות אחרות יכולים להשפיע על הביצועים של התכונה הזאת. אם קורות לך בעיות, נא לבדוק את הגאדג'טים והתסריטים שלך, כולל גלובליים.",
 	"popups-prefs-optin-all": "הפעלת תצוגה מקדימה (קבלת תצוגה מקדימה מהירה של נושא או הערת שוליים בזמן קריאת דף)",
@@ -39,6 +39,7 @@
 	"popups-refpreview-note": "לתשומת ליבך",
 	"popups-refpreview-web": "הפניה לאתר",
 	"popups-refpreview-collapsible-placeholder": "הערת השוליים הזאת מכילה תמונה שגודלה אינו מתאים לתצוגה מקדימה.",
+	"popups-refpreview-user-preference-label": "הפעלת תצוגה מקדימה של הערות שוליים (קבלת תצוגה מקדימה מהירה של הערת שוליים בזמן קריאת דף):",
 	"popups-refpreview-beta-feature-message": "תצוגה מקדימה של הערות שוליים",
 	"popups-refpreview-beta-feature-description": "תצוגה מקדימה של הערת שוליים באמצעות העברת סמן מעל מספר ההערה.\n\nלתשומת לבך: המשתמשים בגאדג'ט [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] או בגאדג'ט [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] לא יראו את התצוגה מקדימה של הערות שוליים."
 }

@@ -35,6 +35,7 @@
 	"popups-refpreview-journal": "Folyóirat-hivatkozás",
 	"popups-refpreview-news": "Hírhivatkozás",
 	"popups-refpreview-web": "Webes forráshivatkozás",
+	"popups-refpreview-user-preference-label": "Forráshivatkozás-előnézetek (lábjegyzetek gyors előnézete)",
 	"popups-refpreview-beta-feature-message": "Forráshivatkozás-előnézetek",
 	"popups-refpreview-beta-feature-description": "Egy forráshivatkozás előnézetének megjelenítése, amikor a lábjegyzet jelzése fölé viszed az egeret.\n\nMegjegyzés: Ha be van kapcsolva a [https://hu.wikipedia.org/wiki/Wikip%C3%A9dia:L%C3%A1tszer Látszer] segédeszköz, nem fogod látni a Forráshivatkozás-előnézeteket. Ha be van kapcsolva a [[mw:Special:MyLanguage/Reference Tooltips|Hivatkozások előnézete]] segédeszköz, mind annak, mind ennek az eszköznek a buborékjai meg fognak jelenni."
 }

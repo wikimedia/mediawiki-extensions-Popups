@@ -44,6 +44,7 @@
 	"popups-refpreview-note": "備註",
 	"popups-refpreview-web": "網站參考",
 	"popups-refpreview-collapsible-placeholder": "此參考包含的圖片不適合用在預覽。",
+	"popups-refpreview-user-preference-label": "參考文獻預覽（取得腳註的快速預覽）",
 	"popups-refpreview-beta-feature-message": "參考預覽",
 	"popups-refpreview-beta-feature-description": "透過游標覆蓋在腳註標記上來顯示參考文獻預覽。\n\n請注意：如果您使用[https://zh.wikipedia.org/wiki/Wikipedia:维基百科工具/导航Popup 導航Popup]小工具或是[[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]小工具，您不會看到參考預覽。"
 }
