@@ -174,10 +174,11 @@ function supportsCSSClipPath() {
 function createPagePreview( model ) {
 	const thumbnail = createThumbnail( model.thumbnail, supportsCSSClipPath() ),
 		hasThumbnail = thumbnail !== null,
-		withCSSClipPath = supportsCSSClipPath();
+		withCSSClipPath = supportsCSSClipPath(),
+		linkTitle = mw.msg( 'popups-settings-icon-gear-title' );
 
 	return {
-		el: renderPagePreview( model, thumbnail, withCSSClipPath ),
+		el: renderPagePreview( model, thumbnail, withCSSClipPath, linkTitle ),
 		hasThumbnail,
 		thumbnail,
 		isTall: hasThumbnail && thumbnail.isTall

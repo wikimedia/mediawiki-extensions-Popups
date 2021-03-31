@@ -156,6 +156,11 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 		'ltr <"\'>',
 		'Language direction is safely espaced'
 	);
+	assert.strictEqual(
+		preview.el.find( '.mwe-popups-settings-icon' ).attr( 'title' ),
+		'<popups-settings-icon-gear-title>',
+		'Title attribute is correct.'
+	);
 } );
 
 QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
