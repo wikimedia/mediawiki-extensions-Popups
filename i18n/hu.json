@@ -4,6 +4,7 @@
 			"Bencemac",
 			"Csega",
 			"Dorgan",
+			"Hanna Tardos",
 			"Tacsipacsi",
 			"Teemeah",
 			"Tgr"
@@ -27,7 +28,7 @@
 	"popups-preview-disambiguation": "Ez a cím több mint egy lapra utal",
 	"popups-preview-disambiguation-link": "Hasonló lapok megtekintése",
 	"prefs-reading": "Olvasási preferenciák",
-	"popups-prefs-optin": "Lapelőnézet (az egeret egy belső hivatkozás fölött tartva gyors összefoglalót kapsz a cikkről anélkül, hogy elnavigálnál az oldalról):",
+	"popups-prefs-optin": "Lapelőnézet engedélyezése (gyors összefoglalók megtekintése egyes témákról az oldal olvasása közben)",
 	"popups-prefs-disable-nav-gadgets-info": "Le kell tiltanod a [[$1 |Látszer segédeszközt]] a Segédeszközök fülön a Lapelőnézet engedélyezéséhez",
 	"popups-prefs-conflicting-gadgets-info": "Bizonyos segédeszközök és egyéb testreszabások befolyásolhatják ennek a funkciónak a teljesítményét. Ha problémákat tapasztalsz, nézd át a segédeszközeidet és felhasználói parancsfájljaidat, beleértve a globálisakat is.",
 	"popups-refpreview-reference": "Forráshivatkozás",
@@ -35,7 +36,7 @@
 	"popups-refpreview-journal": "Folyóirat-hivatkozás",
 	"popups-refpreview-news": "Hírhivatkozás",
 	"popups-refpreview-web": "Webes forráshivatkozás",
-	"popups-refpreview-user-preference-label": "Forráshivatkozás-előnézetek (lábjegyzetek gyors előnézete)",
+	"popups-refpreview-user-preference-label": "Forráshivatkozás előnézetek bekapcsolása (forráshivatkozások gyors előnézete az oldal olvasása közben)",
 	"popups-refpreview-beta-feature-message": "Forráshivatkozás-előnézetek",
 	"popups-refpreview-beta-feature-description": "Egy forráshivatkozás előnézetének megjelenítése, amikor a lábjegyzet jelzése fölé viszed az egeret.\n\nMegjegyzés: Ha be van kapcsolva a [https://hu.wikipedia.org/wiki/Wikip%C3%A9dia:L%C3%A1tszer Látszer] segédeszköz, nem fogod látni a Forráshivatkozás-előnézeteket. Ha be van kapcsolva a [[mw:Special:MyLanguage/Reference Tooltips|Hivatkozások előnézete]] segédeszköz, mind annak, mind ennek az eszköznek a buborékjai meg fognak jelenni."
 }
