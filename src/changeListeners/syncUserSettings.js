@@ -22,13 +22,12 @@ export default function syncUserSettings( userSettings ) {
 	return ( prevState, state ) => {
 		syncIfChanged(
 			prevState, state, 'eventLogging.previewCount',
-			userSettings.setPreviewCount
+			userSettings.storePreviewCount
 		);
 		syncIfChanged(
 			prevState, state, 'preview.enabled',
-			userSettings.setIsEnabled
+			userSettings.storePagePreviewsEnabled
 		);
-
 	};
 }
 

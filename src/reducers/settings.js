@@ -29,7 +29,7 @@ export default function settings( state, action ) {
 				showHelp: false
 			} );
 		case actionTypes.SETTINGS_CHANGE:
-			return action.wasEnabled === action.enabled ?
+			return action.oldValue === action.newValue ?
 				// If the setting is the same, just hide the dialogs
 				nextState( state, {
 					shouldShow: false
@@ -38,17 +38,17 @@ export default function settings( state, action ) {
 				nextState( state, {
 					// If we enabled, we just hide directly, no help
 					// If we disabled, keep it showing and let the ui show the help.
-					shouldShow: !action.enabled,
-					showHelp: !action.enabled,
+					shouldShow: !action.newValue,
+					showHelp: !action.newValue,
 
 					// Since the footer link is only ever shown to anonymous users (see
 					// the BOOT case below), state.userIsAnon is always truthy here.
-					shouldShowFooterLink: !action.enabled
+					shouldShowFooterLink: !action.newValue
 				} );
 
 		case actionTypes.BOOT:
 			return nextState( state, {
-				shouldShowFooterLink: action.user.isAnon && !action.isEnabled
+				shouldShowFooterLink: action.user.isAnon && !action.initiallyEnabled
 			} );
 		default:
 			return state;

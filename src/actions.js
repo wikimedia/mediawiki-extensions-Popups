@@ -57,16 +57,16 @@ function timedAction( baseAction ) {
  * [`mw.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
  * so as not to impact latency-critical events.
  *
- * @param {boolean} isEnabled See `isEnabled.js`
+ * @param {boolean} initiallyEnabled Disables all popup types while still showing the footer link
  * @param {mw.user} user
  * @param {ext.popups.UserSettings} userSettings
  * @param {mw.Map} config The config of the MediaWiki client-side application,
  *  i.e. `mw.config`
- * @param {string} url url
+ * @param {string} url
  * @return {Object}
  */
 export function boot(
-	isEnabled,
+	initiallyEnabled,
 	user,
 	userSettings,
 	config,
@@ -77,7 +77,8 @@ export function boot(
 
 	return {
 		type: types.BOOT,
-		isEnabled,
+		initiallyEnabled,
+		// This is only used for logging
 		isNavPopupsEnabled: config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
 		sessionToken: user.sessionId(),
 		pageToken: user.getPageviewToken(),
@@ -252,6 +253,9 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
 		return promise.then( () => {
 			const previewState = getState().preview;
 
+			// The `enabled` flag allows to disable all popup types while still showing the footer
+			// link. This comes from the boot() action (called `initiallyEnabled` there) and the
+			// preview() reducer.
 			if ( previewState.enabled && isNewInteraction() ) {
 				return dispatch( fetch( gateway, title, el, token, type ) );
 			}
@@ -411,7 +415,7 @@ export function hideSettings() {
  * N.B. This action returns a Redux.Thunk not because it needs to perform
  * asynchronous work, but because it needs to query the global state for the
  * current enabled state. In order to keep the enabled state in a single
- * place (the preview reducer), we query it and dispatch it as `wasEnabled`
+ * place (the preview reducer), we query it and dispatch it as `oldValue`
  * so that other reducers (like settings) can act on it without having to
  * duplicate the `enabled` state locally.
  * See docs/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
@@ -424,8 +428,8 @@ export function saveSettings( enabled ) {
 	return ( dispatch, getState ) => {
 		dispatch( {
 			type: types.SETTINGS_CHANGE,
-			wasEnabled: getState().preview.enabled,
-			enabled
+			oldValue: getState().preview.enabled,
+			newValue: enabled
 		} );
 	};
 }

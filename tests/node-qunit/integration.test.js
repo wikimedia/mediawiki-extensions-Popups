@@ -88,7 +88,7 @@ QUnit.module( 'ext.popups preview @integration', {
 		this.el = $( '<a>' ).attr( 'href', '/wiki/Foo' ).get( 0 );
 
 		this.actions.boot(
-			/* isEnabled: */
+			/* initiallyEnabled: */
 			constant( true ),
 			/* user */
 			stubs.createStubUser( true ),

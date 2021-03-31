@@ -3,8 +3,8 @@ import syncUserSettings from '../../../src/changeListeners/syncUserSettings';
 QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
 	beforeEach() {
 		this.userSettings = {
-			setPreviewCount: this.sandbox.spy(),
-			setIsEnabled: this.sandbox.spy()
+			storePreviewCount: this.sandbox.spy(),
+			storePagePreviewsEnabled: this.sandbox.spy()
 		};
 
 		this.changeListener = syncUserSettings( this.userSettings );
@@ -29,7 +29,7 @@ QUnit.test(
 		this.changeListener( prevState, state );
 
 		assert.notOk(
-			this.userSettings.setPreviewCount.called,
+			this.userSettings.storePreviewCount.called,
 			'The preview count is unchanged.'
 		);
 	}
@@ -48,7 +48,7 @@ QUnit.test( 'it should update the storage if the previewCount has changed', func
 	this.changeListener( prevState, state );
 
 	assert.ok(
-		this.userSettings.setPreviewCount.calledWith( 223 ),
+		this.userSettings.storePreviewCount.calledWith( 223 ),
 		'The preview count is updated.'
 	);
 } );
@@ -71,7 +71,7 @@ QUnit.test(
 		this.changeListener( prevState, state );
 
 		assert.notOk(
-			this.userSettings.setIsEnabled.called,
+			this.userSettings.storePagePreviewsEnabled.called,
 			'The user setting is unchanged.'
 		);
 	}
@@ -90,7 +90,7 @@ QUnit.test( 'it should update the storage if the enabled flag has changed', func
 	this.changeListener( prevState, state );
 
 	assert.ok(
-		this.userSettings.setIsEnabled.calledWith( false ),
+		this.userSettings.storePagePreviewsEnabled.calledWith( false ),
 		'The user setting is disabled.'
 	);
 } );

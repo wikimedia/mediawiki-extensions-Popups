@@ -41,7 +41,7 @@ QUnit.test( '#boot', ( assert ) => {
 		action,
 		{
 			type: actionTypes.BOOT,
-			isEnabled: false,
+			initiallyEnabled: false,
 			isNavPopupsEnabled: true,
 			sessionToken: '0123456789',
 			pageToken: '9876543210',
@@ -504,8 +504,8 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 	assert.ok(
 		dispatch.calledWith( {
 			type: actionTypes.SETTINGS_CHANGE,
-			wasEnabled: false,
-			enabled: true
+			oldValue: false,
+			newValue: true
 		} ),
 		'it should dispatch the action with the previous and next enabled state'
 	);

@@ -27,7 +27,7 @@ QUnit.test( '@@INIT', function ( assert ) {
 QUnit.test( 'BOOT', function ( assert ) {
 	const action = {
 		type: actionTypes.BOOT,
-		isEnabled: true,
+		initiallyEnabled: true,
 		isNavPopupsEnabled: false,
 		sessionToken: '0123456789',
 		pageToken: '9876543210',
@@ -59,7 +59,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 				namespaceIdSource: action.page.namespaceId,
 				pageIdSource: action.page.id,
 				isAnon: action.user.isAnon,
-				popupEnabled: action.isEnabled,
+				popupEnabled: action.initiallyEnabled,
 				pageToken: action.pageToken,
 				sessionToken: action.sessionToken,
 				editCountBucket: expectedEditCountBucket,
@@ -628,8 +628,8 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 	let state = eventLogging( undefined, {
 		type: actionTypes.SETTINGS_CHANGE,
-		wasEnabled: false,
-		enabled: false
+		oldValue: false,
+		newValue: false
 	} );
 
 	assert.strictEqual(
@@ -640,8 +640,8 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 
 	state = eventLogging( state, {
 		type: actionTypes.SETTINGS_CHANGE,
-		wasEnabled: true,
-		enabled: false
+		oldValue: true,
+		newValue: false
 	} );
 
 	assert.deepEqual(
@@ -656,8 +656,8 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 	delete state.event;
 	state = eventLogging( state, {
 		type: actionTypes.SETTINGS_CHANGE,
-		wasEnabled: false,
-		enabled: true
+		oldValue: false,
+		newValue: true
 	} );
 
 	assert.strictEqual(

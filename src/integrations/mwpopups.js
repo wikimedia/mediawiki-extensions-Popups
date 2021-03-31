@@ -11,6 +11,8 @@
  */
 export default function createMwPopups( store ) {
 	return {
+		// FIXME: This is underspecified. It's meant to be for PagePreviews, but might be false when
+		// another or all popup types are disabled.
 		isEnabled: function isEnabled() {
 			return store.getState().preview.enabled;
 		}

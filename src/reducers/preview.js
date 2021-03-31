@@ -25,12 +25,12 @@ export default function preview( state, action ) {
 	switch ( action.type ) {
 		case actionTypes.BOOT:
 			return nextState( state, {
-				enabled: action.isEnabled
+				enabled: action.initiallyEnabled
 			} );
 
 		case actionTypes.SETTINGS_CHANGE:
 			return nextState( state, {
-				enabled: action.enabled
+				enabled: action.newValue
 			} );
 
 		case actionTypes.LINK_DWELL:

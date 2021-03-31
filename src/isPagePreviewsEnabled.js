@@ -1,5 +1,5 @@
 /**
- * @module isEnabled
+ * @module isPagePreviewsEnabled
  */
 
 /**
@@ -18,23 +18,23 @@
  *
  * @return {boolean}
  */
-export default function isEnabled( user, userSettings, config ) {
+export default function isPagePreviewsEnabled( user, userSettings, config ) {
 	if ( config.get( 'wgPopupsConflictsWithNavPopupGadget' ) ) {
 		return false;
 	}
 
-	if ( !user.isAnon() ) {
-		// For logged-in users, enablement is equal to the
-		// loading of this very code.
-		return true;
-	} else {
+	if ( user.isAnon() ) {
 		// For anonymous users, the code loads always, but the feature
 		// can be toggled at run-time via local storage.
 		if ( !userSettings.hasIsEnabled() ) {
 			// Default when no setting is stored.
 			return true;
 		} else {
-			return userSettings.getIsEnabled();
+			return userSettings.isPagePreviewsEnabled();
 		}
 	}
+
+	// For logged-in users, this very code loads only when PagePreviews are enabled.
+	// FIXME: This changes when there are more popup types.
+	return true;
 }

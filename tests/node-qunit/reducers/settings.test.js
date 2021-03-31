@@ -20,7 +20,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 QUnit.test( 'BOOT', ( assert ) => {
 	const action = {
 		type: actionTypes.BOOT,
-		isEnabled: false,
+		initiallyEnabled: false,
 		user: {
 			isAnon: true
 		}
@@ -75,11 +75,11 @@ QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
-	const action = ( wasEnabled, enabled ) => {
+	const action = ( oldValue, newValue ) => {
 		return {
 			type: actionTypes.SETTINGS_CHANGE,
-			wasEnabled,
-			enabled
+			oldValue,
+			newValue
 		};
 	};
 

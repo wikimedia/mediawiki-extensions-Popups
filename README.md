@@ -65,6 +65,8 @@ Popups works with a local copy of the [Mobile Content Service] too:
   functionality. In production builds, this same functionality can be
   enabled by setting a `debug=true` query. E.g.,
   `https://en.wikipedia.org/wiki/Popup?debug=true`.
+* When a QUnit test fails but you can't see why, open package.json and
+  temporarily remove the snippet `| tap-mocha-reporter dot`.
 
 ## Storybook.js Component Library
 

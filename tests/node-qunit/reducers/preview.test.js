@@ -31,7 +31,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 QUnit.test( 'BOOT', ( assert ) => {
 	const action = {
 		type: actionTypes.BOOT,
-		isEnabled: true
+		initiallyEnabled: true
 	};
 
 	assert.expect( 1, 'All assertions are executed.' );
@@ -48,7 +48,7 @@ QUnit.test( 'BOOT', ( assert ) => {
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 	const action = {
 		type: actionTypes.SETTINGS_CHANGE,
-		enabled: true
+		newValue: true
 	};
 
 	assert.expect( 1, 'All assertions are executed.' );

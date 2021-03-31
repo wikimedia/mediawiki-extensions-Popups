@@ -8,14 +8,14 @@
  * @global
  */
 
-const IS_ENABLED_KEY = 'mwe-popups-enabled',
+const PAGE_PREVIEWS_ENABLED_KEY = 'mwe-popups-enabled',
 	PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
 
 /**
  * Creates an object whose methods encapsulate all interactions with the UA's
  * storage.
  *
- * @param {Object} storage The `mw.storage` singleton instance
+ * @param {mw.storage} storage The `mw.storage` singleton instance
  *
  * @return {UserSettings}
  */
@@ -25,27 +25,27 @@ export default function createUserSettings( storage ) {
 		 * Gets whether the user has previously enabled Page Previews.
 		 *
 		 * N.B. that if the user hasn't previously enabled or disabled Page
-		 * Previews, i.e. userSettings.setIsEnabled(true), then they are treated as
+		 * Previews, i.e. userSettings.storePagePreviewsEnabled(true), then they are treated as
 		 * if they have enabled them.
 		 *
 		 * @method
-		 * @name UserSettings#getIsEnabled
+		 * @name UserSettings#isPagePreviewsEnabled
 		 * @return {boolean}
 		 */
-		getIsEnabled() {
-			return storage.get( IS_ENABLED_KEY ) !== '0';
+		isPagePreviewsEnabled() {
+			return storage.get( PAGE_PREVIEWS_ENABLED_KEY ) !== '0';
 		},
 
 		/**
-		 * Sets whether the user has enabled Page Previews.
+		 * Permanently persists (typically in localStorage) whether the user has enabled Page
+		 * Previews.
 		 *
 		 * @method
-		 * @name UserSettings#setIsEnabled
-		 * @param {boolean} isEnabled
-		 * @return {void}
+		 * @name UserSettings#storePagePreviewsEnabled
+		 * @param {boolean} enabled
 		 */
-		setIsEnabled( isEnabled ) {
-			storage.set( IS_ENABLED_KEY, isEnabled ? '1' : '0' );
+		storePagePreviewsEnabled( enabled ) {
+			storage.set( PAGE_PREVIEWS_ENABLED_KEY, enabled ? '1' : '0' );
 		},
 
 		/**
@@ -57,7 +57,7 @@ export default function createUserSettings( storage ) {
 		 * @return {boolean}
 		 */
 		hasIsEnabled() {
-			const value = storage.get( IS_ENABLED_KEY );
+			const value = storage.get( PAGE_PREVIEWS_ENABLED_KEY );
 
 			return Boolean( value ) !== false;
 		},
@@ -86,7 +86,7 @@ export default function createUserSettings( storage ) {
 			// stored number is not a zero, override it to zero and store new value
 			if ( isNaN( count ) ) {
 				count = 0;
-				this.setPreviewCount( count );
+				this.storePreviewCount( count );
 			}
 			return count;
 		},
@@ -95,11 +95,10 @@ export default function createUserSettings( storage ) {
 		 * Sets the number of previews that the user has seen.
 		 *
 		 * @method
-		 * @name UserSettings#setPreviewCount
+		 * @name UserSettings#storePreviewCount
 		 * @param {number} count
-		 * @return {void}
 		 */
-		setPreviewCount( count ) {
+		storePreviewCount( count ) {
 			storage.set( PREVIEW_COUNT_KEY, count.toString() );
 		}
 	};

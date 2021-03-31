@@ -18,7 +18,7 @@ function getBaseData( bootAction ) {
 		namespaceIdSource: bootAction.page.namespaceId,
 		pageIdSource: bootAction.page.id,
 		isAnon: bootAction.user.isAnon,
-		popupEnabled: bootAction.isEnabled,
+		popupEnabled: bootAction.initiallyEnabled,
 		pageToken: bootAction.pageToken,
 		sessionToken: bootAction.sessionToken,
 		previewCountBucket: counts.getPreviewCountBucket(
@@ -296,7 +296,7 @@ export default function eventLogging( state, action ) {
 			} );
 
 		case actionTypes.SETTINGS_CHANGE:
-			if ( action.wasEnabled && !action.enabled ) {
+			if ( action.oldValue && !action.newValue ) {
 				return nextState( state, {
 					event: {
 						action: 'disabled',

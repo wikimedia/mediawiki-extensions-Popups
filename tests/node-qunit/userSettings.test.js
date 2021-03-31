@@ -8,21 +8,21 @@ QUnit.module( 'ext.popups/userSettings', {
 	}
 } );
 
-QUnit.test( '#getIsEnabled should return false if Page Previews have been disabled', function ( assert ) {
-	this.userSettings.setIsEnabled( false );
+QUnit.test( '#isPagePreviewsEnabled should return false if Page Previews have been disabled', function ( assert ) {
+	this.userSettings.storePagePreviewsEnabled( false );
 
 	assert.notOk(
-		this.userSettings.getIsEnabled(),
+		this.userSettings.isPagePreviewsEnabled(),
 		'The user has disabled Page Previews.'
 	);
 
 	// ---
 
-	this.userSettings.setIsEnabled( true );
+	this.userSettings.storePagePreviewsEnabled( true );
 
 	assert.ok(
-		this.userSettings.getIsEnabled(),
-		'#getIsEnabled should return true if Page Previews have been enabled'
+		this.userSettings.isPagePreviewsEnabled(),
+		'#isPagePreviewsEnabled should return true if Page Previews have been enabled'
 	);
 } );
 
@@ -34,7 +34,7 @@ QUnit.test( '#hasIsEnabled', function ( assert ) {
 
 	// ---
 
-	this.userSettings.setIsEnabled( false );
+	this.userSettings.storePagePreviewsEnabled( false );
 
 	assert.ok(
 		this.userSettings.hasIsEnabled(),
@@ -81,8 +81,8 @@ QUnit.test( '#getPreviewCount should return the count as a number', function ( a
 	);
 } );
 
-QUnit.test( '#setPreviewCount should store the count as a string', function ( assert ) {
-	this.userSettings.setPreviewCount( 222 );
+QUnit.test( '#storePreviewCount should store the count as a string', function ( assert ) {
+	this.userSettings.storePreviewCount( 222 );
 
 	assert.strictEqual(
 		this.storage.get( 'ext.popups.core.previewCount' ),

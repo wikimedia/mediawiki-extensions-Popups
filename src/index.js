@@ -11,13 +11,12 @@ import createUserSettings from './userSettings';
 import createPreviewBehavior from './previewBehavior';
 import createSettingsDialogRenderer from './ui/settingsDialogRenderer';
 import registerChangeListener from './changeListener';
-import createIsEnabled from './isEnabled';
+import createIsPagePreviewsEnabled from './isPagePreviewsEnabled';
 import { fromElement as titleFromElement } from './title';
 import { init as rendererInit } from './ui/renderer';
 import createExperiments from './experiments';
 import { isEnabled as isStatsvEnabled } from './instrumentation/statsv';
-import { isEnabled as isEventLoggingEnabled }
-	from './instrumentation/eventLogging';
+import { isEnabled as isEventLoggingEnabled } from './instrumentation/eventLogging';
 import changeListeners from './changeListeners';
 import * as actions from './actions';
 import reducers from './reducers';
@@ -185,7 +184,7 @@ function registerChangeListeners(
 			mw.config,
 			window
 		),
-		isEnabled = createIsEnabled( mw.user, userSettings, mw.config );
+		isPagePreviewsEnabled = createIsPagePreviewsEnabled( mw.user, userSettings, mw.config );
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) === true ||
@@ -212,7 +211,8 @@ function registerChangeListeners(
 	);
 
 	boundActions.boot(
-		isEnabled,
+		// FIXME: Currently this disables all popup types (for anonymous users).
+		isPagePreviewsEnabled,
 		mw.user,
 		userSettings,
 		mw.config,

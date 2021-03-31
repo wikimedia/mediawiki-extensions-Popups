@@ -1,18 +1,18 @@
 import * as stubs from './stubs';
-import isEnabled from '../../src/isEnabled';
+import isPagePreviewsEnabled from '../../src/isPagePreviewsEnabled';
 
 function createStubUserSettings( expectEnabled ) {
 	return {
 		hasIsEnabled() {
 			return expectEnabled !== undefined;
 		},
-		getIsEnabled() {
+		isPagePreviewsEnabled() {
 			return Boolean( expectEnabled );
 		}
 	};
 }
 
-QUnit.module( 'ext.popups#isEnabled (logged out)', {
+QUnit.module( 'ext.popups#isPagePreviewsEnabled (logged out)', {
 	beforeEach() {
 		this.user = stubs.createStubUser( /* isAnon = */ true );
 	}
@@ -25,7 +25,7 @@ QUnit.test( 'is should handle logged out users', ( assert ) => {
 	const cases = [
 		/*
 		[
-			<isAnon>, <expected value of isEnabled>, <test description>
+			<isAnon>, <expected value of isPagePreviewsEnabled>, <test description>
 		]
 		*/
 		[ undefined, true, 'When the user hasn\'t enabled or disabled' +
@@ -40,7 +40,7 @@ QUnit.test( 'is should handle logged out users', ( assert ) => {
 		userSettings = createStubUserSettings( testCase[ 0 ] );
 
 		assert.strictEqual(
-			isEnabled( user, userSettings, config ),
+			isPagePreviewsEnabled( user, userSettings, config ),
 			testCase[ 1 ],
 			testCase[ 2 ]
 		);
@@ -53,7 +53,7 @@ QUnit.test( 'it should handle logged in users', ( assert ) => {
 		config = new Map();
 
 	assert.ok(
-		isEnabled( user, userSettings, config ),
+		isPagePreviewsEnabled( user, userSettings, config ),
 		'If the user is logged in and the user is in the on group, then it\'s enabled.'
 	);
 } );
@@ -66,7 +66,7 @@ QUnit.test( 'it should handle the conflict with the Navigation Popups Gadget', (
 	config.set( 'wgPopupsConflictsWithNavPopupGadget', true );
 
 	assert.notOk(
-		isEnabled( user, userSettings, config ),
+		isPagePreviewsEnabled( user, userSettings, config ),
 		'Page Previews is disabled when it conflicts with the Navigation Popups Gadget.'
 	);
 
