@@ -2,6 +2,8 @@
  * @module changeListeners/syncUserSettings
  */
 
+import { previewTypes } from '../preview/model';
+
 /**
  * Creates an instance of the user settings sync change listener.
  *
@@ -27,6 +29,12 @@ export default function syncUserSettings( userSettings ) {
 		syncIfChanged(
 			prevState, state, 'preview.enabled',
 			userSettings.storePagePreviewsEnabled
+		);
+		syncIfChanged(
+			// TODO: This property currently doesn't exist in the state, see reducers/preview.js
+			// TODO: This is currently not covered by a test case, see syncUserSettings.test.js
+			prevState, state, 'preview.enabled.' + previewTypes.TYPE_REFERENCE,
+			userSettings.storeReferencePreviewsEnabled
 		);
 	};
 }

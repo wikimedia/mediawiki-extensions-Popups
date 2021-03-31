@@ -26,6 +26,30 @@ QUnit.test( '#isPagePreviewsEnabled should return false if Page Previews have be
 	);
 } );
 
+QUnit.test( '#isReferencePreviewsEnabled', function ( assert ) {
+	assert.strictEqual(
+		this.storage.get( 'mwe-popups-referencePreviews-enabled' ),
+		null,
+		'Precondition: storage is empty.'
+	);
+	assert.ok(
+		this.userSettings.isReferencePreviewsEnabled(),
+		'#isReferencePreviewsEnabled should default to true.'
+	);
+
+	this.userSettings.storeReferencePreviewsEnabled( false );
+
+	assert.strictEqual(
+		this.storage.get( 'mwe-popups-referencePreviews-enabled' ),
+		'0',
+		'#storeReferencePreviewsEnabled changes the storage.'
+	);
+	assert.notOk(
+		this.userSettings.isReferencePreviewsEnabled(),
+		'#isReferencePreviewsEnabled is now false.'
+	);
+} );
+
 QUnit.test( '#getPreviewCount should return the count as a number', function ( assert ) {
 	assert.strictEqual(
 		this.userSettings.getPreviewCount(),

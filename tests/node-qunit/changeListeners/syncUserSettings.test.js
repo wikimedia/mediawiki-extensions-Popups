@@ -4,7 +4,8 @@ QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
 	beforeEach() {
 		this.userSettings = {
 			storePreviewCount: this.sandbox.spy(),
-			storePagePreviewsEnabled: this.sandbox.spy()
+			storePagePreviewsEnabled: this.sandbox.spy(),
+			storeReferencePreviewsEnabled: this.sandbox.spy()
 		};
 
 		this.changeListener = syncUserSettings( this.userSettings );

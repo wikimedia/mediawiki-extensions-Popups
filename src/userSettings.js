@@ -9,6 +9,7 @@
  */
 
 const PAGE_PREVIEWS_ENABLED_KEY = 'mwe-popups-enabled',
+	REFERENCE_PREVIEWS_ENABLED_KEY = 'mwe-popups-referencePreviews-enabled',
 	PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
 
 /**
@@ -49,6 +50,28 @@ export default function createUserSettings( storage ) {
 				storage.remove( PAGE_PREVIEWS_ENABLED_KEY );
 			} else {
 				storage.set( PAGE_PREVIEWS_ENABLED_KEY, '0' );
+			}
+		},
+
+		/**
+		 * @method
+		 * @name UserSettings#isReferencePreviewsEnabled
+		 * @return {boolean}
+		 */
+		isReferencePreviewsEnabled() {
+			return storage.get( REFERENCE_PREVIEWS_ENABLED_KEY ) !== '0';
+		},
+
+		/**
+		 * @method
+		 * @name UserSettings#storeReferencePreviewsEnabled
+		 * @param {boolean} enabled
+		 */
+		storeReferencePreviewsEnabled( enabled ) {
+			if ( enabled ) {
+				storage.remove( REFERENCE_PREVIEWS_ENABLED_KEY );
+			} else {
+				storage.set( REFERENCE_PREVIEWS_ENABLED_KEY, '0' );
 			}
 		},
 
