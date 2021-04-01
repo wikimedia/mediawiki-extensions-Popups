@@ -37,7 +37,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"Popups": 18904225,
-				"ReferencePreviewsPopups": "/analytics/legacy/referencepreviewspopups/1.0.0",
+				"ReferencePreviewsPopups": "/analytics/legacy/referencepreviewspopups/1.1.0",
 				"VirtualPageView": 17780078
 			}
 		}

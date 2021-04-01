@@ -10,6 +10,7 @@
 
 const PAGE_PREVIEWS_ENABLED_KEY = 'mwe-popups-enabled',
 	REFERENCE_PREVIEWS_ENABLED_KEY = 'mwe-popups-referencePreviews-enabled',
+	REFERENCE_PREVIEWS_LOGGING_SCHEMA = 'event.ReferencePreviewsPopups',
 	PREVIEW_COUNT_KEY = 'ext.popups.core.previewCount';
 
 /**
@@ -73,6 +74,10 @@ export default function createUserSettings( storage ) {
 			} else {
 				storage.set( REFERENCE_PREVIEWS_ENABLED_KEY, '0' );
 			}
+
+			mw.track( REFERENCE_PREVIEWS_LOGGING_SCHEMA, {
+				action: enabled ? 'anonymousEnabled' : 'anonymousDisabled'
+			} );
 		},
 
 		/**
