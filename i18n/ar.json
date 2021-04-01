@@ -9,8 +9,8 @@
 			"محمد أحمد عبد الفتاح"
 		]
 	},
-	"popups-message": "معاينات الصفحة",
-	"popups-desc": "يقوم بعرض منبثقات المعاينة عندما يقوم المستخدم بحوم المؤشر على وصلة.",
+	"popups-message": "المعاينات",
+	"popups-desc": "عرض منبثقات المعاينة عند وضع المستخدم المؤشر على وصلة.",
 	"popups-settings-title": "معاينة الصفحة",
 	"popups-settings-unified-title": "المعاينات",
 	"popups-settings-option-simple": "تمكين",
@@ -30,15 +30,19 @@
 	"popups-preview-disambiguation-link": "عرض الصفحات المماثلة",
 	"prefs-reading": "تفضيلات القراءة",
 	"popups-prefs-optin": "تشغيل معاينة الصفحة (معاينة سريعة للموضوع أثناء قراءة الصفحة)",
-	"popups-prefs-disable-nav-gadgets-info": "عليك [[$1 |تعطيل إضافة  المنبثقات]] في خيارات الإضافات لتمكين معاينات الصفحات",
+	"popups-prefs-disable-nav-gadgets-info": "عليك [[$1|تعطيل إضافة المنبثقات]] في خيارات الإضافات لتمكين معاينات الصفحات",
 	"popups-prefs-conflicting-gadgets-info": "قد تؤثر بعض الأدوات والتخصيصات الأخرى على أداء هذه الميزة، إذا واجهت أية مُشكلات تُرجَى مراجعة أدواتك والنصوص البرمجية للمستخدم الخاصة بك، بما في ذلك العالمية.",
+	"popups-prefs-navpopups-gadget-conflict-info": "[[$1|إضافة المنبثقات]] مفعلة، لذلك لن ترى المعاينات التي توفرها هذه الخاصية. قد يختلف اسم الإضافة من موقع ويكي لآخر. إذا وجدت مشاكل، قد يكون سبب الخلل أحد الإضافات أو السكربتات التي تستعملها وحتى تلك المفعلة انطلاقا من ميتا.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "[[$1|بيان المراجع مفعل]] لذلك لن ترى معاينات المراجع ولكن ستظل ترى معاينات الصفحات. قد يختلف اسم الإضافة من موقع ويكي لآخر. إذا وجدت مشاكل، قد يكون سبب الخلل أحد الإضافات أو السكربتات التي تستعملها وحتى تلك المفعلة انطلاقا من ميتا.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "[[$1|إضافة المنبثقات وبيان المراجع]] مفعلان، لذلك لن ترى المعاينات التي توفرها هذه الخاصية. قد يختلف اسم الإضافة من موقع ويكي لآخر. إذا وجدت مشاكل، قد يكون سبب الخلل أحد الإضافات أو السكربتات التي تستعملها وحتى تلك المفعلة انطلاقا من ميتا.",
 	"popups-refpreview-reference": "مرجع",
 	"popups-refpreview-book": "مرجع كتاب",
 	"popups-refpreview-journal": "مرجع دورية",
 	"popups-refpreview-news": "مرجع أخبار",
 	"popups-refpreview-note": "ملاحظة",
 	"popups-refpreview-web": "مرجع على الويب",
-	"popups-refpreview-user-preference-label": "معاينات المرجع (احصل على معاينات سريعة من الحواشي السفلية)",
+	"popups-refpreview-collapsible-placeholder": "يتضمن هذا المرجع رسما لا يتناسب مع المعاينة.",
+	"popups-refpreview-user-preference-label": "تشغيل معاينة الصفحة (معاينة سريعة للموضوع أثناء قراءة الصفحة)",
 	"popups-refpreview-beta-feature-message": "بيان المراجع",
-	"popups-refpreview-beta-feature-description": "إظهار معاينة لمرجع بالمرور فوق علامة حاشيته السفلية.\n\nالرجاء الملاحظة: إذا كنت تستخدم أداة [https://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D8%A7%D9%84%D9%85%D9%86%D8%A8%D8%AB%D9%82%D8%A7%D8%AA المنبثقات]، فلن ترى معاينات المراجع، إذا كنت تستخدم الأداة [[mw:Special:MyLanguage/Reference Tooltips|تلميحات المراجع]]، فستظهر كل منبثقات من كل من المنبثقات وتلميحات المراجع."
+	"popups-refpreview-beta-feature-description": "إظهار معاينة لمرجع بوضع المؤشر فوق علامة حاشيته السفلية.\n\nإذا كنت تستخدم أداة [https://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D8%A7%D9%84%D9%85%D9%86%D8%A8%D8%AB%D9%82%D8%A7%D8%AA المنبثقات] أو [[mw:Special:MyLanguage/Reference Tooltips|بيان المراجع]]، لا تظهر لك معاينات المراجع."
 }
