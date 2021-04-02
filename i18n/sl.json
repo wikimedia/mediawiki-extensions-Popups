@@ -23,10 +23,10 @@
 	"popups-preview-no-preview": "Pri prikazu predogleda je prišlo do težave",
 	"popups-preview-footer-read": "Pojdi na stran",
 	"prefs-reading": "Nastavitve za branje",
-	"popups-prefs-optin": "Omogoči povzetke strani (hitri predogledi teme med prebiranjem članka)",
+	"popups-prefs-optin": "Omogoči povzetke strani (prikaže hitre predoglede teme med prebiranjem članka)",
 	"popups-prefs-disable-nav-gadgets-info": "Če želiš vključiti povzetke strani, moraš [[$1|izključiti Navigacijske izskokce]] na nastavitvah svojih Vtičnikov",
 	"popups-prefs-conflicting-gadgets-info": "Nekateri vtičniki in druge nastavitve lahko vplivajo na delovanje te funkcije. Če naletiš na težavo, prosimo, da preveriš vtičnike in uporabniške skripte, vključno z globalnimi.",
-	"popups-refpreview-user-preference-label": "Predogledi sklicev (prikaže hitre predoglede sprotnih opomb)",
+	"popups-refpreview-user-preference-label": "Omogoči predoglede sklicev (prikaže hitre predoglede sklicev med branjem strani)",
 	"popups-refpreview-beta-feature-message": "Predogledi sklicev",
 	"popups-refpreview-beta-feature-description": "Ob postavitvi kazalca nad oznako sprotne opombe prikaže predogled sklica.\n\nOpomba: Če uporabljate vtičnik [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigacijski izskokci] (Navigation Popups) ali vtičnik [[mw:Special:MyLanguage/Reference Tooltips|Zaslonski namigi za sklice]] (Reference Tooltips), Predogledov sklicev ne boste videli."
 }
