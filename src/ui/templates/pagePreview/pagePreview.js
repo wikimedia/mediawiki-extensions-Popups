@@ -22,10 +22,11 @@ const templateHTML = `
  * @param {ext.popups.PagePreviewModel} model
  * @param {ext.popups.Thumbnail|null} thumbnail
  * @param {boolean} withCSSClipPath
+ * @param {string} linkTitle
  * @return {JQuery}
  */
 export function renderPagePreview(
-	model, thumbnail, withCSSClipPath
+	model, thumbnail, withCSSClipPath, linkTitle
 ) {
 	const $el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
 
@@ -35,6 +36,9 @@ export function renderPagePreview(
 	$el.find( '.mwe-popups-extract' )
 		.attr( 'dir', model.languageDirection )
 		.attr( 'lang', model.languageCode );
+
+	$el.find( '.mwe-popups-settings-icon' )
+		.attr( 'title', linkTitle );
 
 	if ( thumbnail ) {
 		$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
