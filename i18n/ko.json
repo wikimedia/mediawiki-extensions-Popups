@@ -25,6 +25,7 @@
 	"popups-settings-cancel": "취소",
 	"popups-settings-help": "문서 꼬릿말에 있는 링크를 사용하여 미리 보기를 다시 켤 수 있습니다.",
 	"popups-settings-enable": "미리 보기 활성화",
+	"popups-settings-icon-gear-title": "문서 미리 보기 설정 변경",
 	"popups-preview-no-preview": "이 미리 보기를 표시하는 중 오류가 있었습니다",
 	"popups-preview-footer-read": "이 문서로 이동",
 	"popups-preview-disambiguation": "이 제목은 하나 이상의 문서와 관련이 있습니다",
