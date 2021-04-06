@@ -21,11 +21,11 @@
 export default function syncUserSettings( userSettings ) {
 	return ( prevState, state ) => {
 		syncIfChanged(
-			prevState, state, 'eventLogging', 'previewCount',
+			prevState, state, 'eventLogging.previewCount',
 			userSettings.setPreviewCount
 		);
 		syncIfChanged(
-			prevState, state, 'preview', 'enabled',
+			prevState, state, 'preview.enabled',
 			userSettings.setIsEnabled
 		);
 
@@ -37,12 +37,13 @@ export default function syncUserSettings( userSettings ) {
  * property if the reducer and property exist
  *
  * @param {Object} state tree
- * @param {string} reducer key to access on the state tree
- * @param {string} prop key to access on the reducer key of the state tree
+ * @param {string} path dot-separated path in the state tree
  * @return {*}
  */
-function get( state, reducer, prop ) {
-	return state[ reducer ] && state[ reducer ][ prop ];
+function get( state, path ) {
+	return path.split( '.' ).reduce( function ( element, key ) {
+		return element && element[ key ];
+	}, state );
 }
 
 /**
@@ -51,15 +52,14 @@ function get( state, reducer, prop ) {
  *
  * @param {Object} prevState
  * @param {Object} state
- * @param {string} reducer key to access on the state tree
- * @param {string} prop key to access on the reducer key of the state tree
+ * @param {string} path dot-separated path in the state tree
  * @param {Function} sync function to be called with the newest value if
  * changed
  * @return {void}
  */
-function syncIfChanged( prevState, state, reducer, prop, sync ) {
-	const current = get( state, reducer, prop );
-	if ( prevState && ( get( prevState, reducer, prop ) !== current ) ) {
+function syncIfChanged( prevState, state, path, sync ) {
+	const current = get( state, path );
+	if ( prevState && ( get( prevState, path ) !== current ) ) {
 		sync( current );
 	}
 }
