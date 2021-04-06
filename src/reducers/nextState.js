@@ -22,6 +22,7 @@ export default function nextState( state, updates ) {
 	const result = {};
 	const hasOwn = Object.prototype.hasOwnProperty;
 
+	// Flat clone of everything that's not updated
 	for ( const key in state ) {
 		if ( hasOwn.call( state, key ) && !hasOwn.call( updates, key ) ) {
 			result[ key ] = state[ key ];
@@ -29,10 +30,28 @@ export default function nextState( state, updates ) {
 	}
 
 	for ( const key in updates ) {
-		if ( hasOwn.call( updates, key ) ) {
+		if ( !hasOwn.call( updates, key ) ) {
+			continue;
+		}
+
+		// Deep clone only if there is an update
+		if ( isObject( updates[ key ] ) ) {
+			const clone = state[ key ] ? nextState( {}, state[ key ] ) : {};
+			// Recursion
+			result[ key ] = nextState( clone, updates[ key ] );
+		} else {
 			result[ key ] = updates[ key ];
 		}
 	}
 
 	return result;
+}
+
+/**
+ * @param {*} obj
+ * @return {boolean}
+ */
+function isObject( obj ) {
+	// https://javascript.plainenglish.io/javascript-check-if-a-variable-is-an-object-and-nothing-else-not-an-array-a-set-etc-a3987ea08fd7
+	return obj && obj.constructor === Object;
 }

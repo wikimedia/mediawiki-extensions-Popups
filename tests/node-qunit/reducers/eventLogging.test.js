@@ -577,7 +577,7 @@ QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 
 QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', function ( assert ) {
 	const initialState = {
-			interaction: {}
+			interaction: { started: 0, finished: 0 }
 		},
 		token = '0123456789';
 
@@ -618,6 +618,7 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 		{
 			action: 'tapped settings cog',
 			linkInteractionToken: token,
+			totalInteractionTime: 0,
 			namespaceIdHover: 1,
 			pageTitleHover: 'Foo'
 		},

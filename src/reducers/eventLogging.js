@@ -201,9 +201,9 @@ export default function eventLogging( state, action ) {
 
 		case actionTypes.FETCH_COMPLETE:
 			return nextState( state, {
-				interaction: nextState( state.interaction, {
+				interaction: {
 					previewType: action.result.type
-				} )
+				}
 			} );
 
 		case actionTypes.PREVIEW_SHOW:
@@ -211,13 +211,13 @@ export default function eventLogging( state, action ) {
 
 			return nextState( state, {
 				previewCount: nextCount,
-				baseData: nextState( state.baseData, {
+				baseData: {
 					previewCountBucket: counts.getPreviewCountBucket( nextCount )
-				} ),
-				interaction: nextState( state.interaction, {
+				},
+				interaction: {
 					timeToPreviewShow:
 						Math.round( action.timestamp - state.interaction.started )
-				} )
+				}
 			} );
 
 		case actionTypes.LINK_DWELL:
@@ -225,9 +225,9 @@ export default function eventLogging( state, action ) {
 			// Not a new interaction?
 			if ( state.interaction && action.el === state.interaction.link ) {
 				return nextState( state, {
-					interaction: nextState( state.interaction, {
+					interaction: {
 						isUserDwelling: true
-					} )
+					}
 				} );
 			}
 
@@ -252,16 +252,16 @@ export default function eventLogging( state, action ) {
 
 		case actionTypes.PREVIEW_DWELL:
 			return nextState( state, {
-				interaction: nextState( state.interaction, {
+				interaction: {
 					isUserDwelling: true
-				} )
+				}
 			} );
 
 		case actionTypes.LINK_CLICK:
 			return nextState( state, {
-				interaction: nextState( state.interaction, {
+				interaction: {
 					finalized: true
-				} ),
+				},
 				event: createEvent( state.interaction, {
 					action: 'opened',
 					totalInteractionTime:
@@ -271,11 +271,10 @@ export default function eventLogging( state, action ) {
 
 		case actionTypes.ABANDON_START:
 			return nextState( state, {
-				interaction: nextState( state.interaction, {
+				interaction: {
 					finished: action.timestamp,
-
 					isUserDwelling: false
-				} )
+				}
 			} );
 
 		case actionTypes.ABANDON_END:
