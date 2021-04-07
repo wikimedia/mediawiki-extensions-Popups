@@ -30,7 +30,7 @@ QUnit.test( '#boot', ( assert ) => {
 	};
 
 	const action = actions.boot(
-		false,
+		{ page: false },
 		stubUser,
 		stubUserSettings,
 		config,
@@ -41,7 +41,7 @@ QUnit.test( '#boot', ( assert ) => {
 		action,
 		{
 			type: actionTypes.BOOT,
-			initiallyEnabled: false,
+			initiallyEnabled: { page: false },
 			isNavPopupsEnabled: true,
 			sessionToken: '0123456789',
 			pageToken: '9876543210',
@@ -124,6 +124,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 		dispatch.getCall( 0 ).args[ 0 ], {
 			type: actionTypes.LINK_DWELL,
 			el: this.el,
+			previewType: 'page',
 			measures,
 			token: 'ABC',
 			timestamp: mw.now(),
@@ -136,7 +137,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 
 	// Stub the state tree being updated.
 	this.state.preview = {
-		enabled: true,
+		enabled: { page: true },
 		activeLink: this.el,
 		activeToken: generateToken()
 	};
@@ -158,7 +159,7 @@ QUnit.test( '#linkDwell doesn\'t continue when previews are disabled', function 
 
 	// Stub the state tree being updated by the LINK_DWELL action.
 	this.state.preview = {
-		enabled: false,
+		enabled: { page: false },
 		activeLink: this.el,
 		activeToken: generateToken()
 	};
@@ -191,7 +192,7 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 
 	// Stub the state tree being updated by a LINK_DWELL action.
 	this.state.preview = {
-		enabled: true,
+		enabled: { page: true },
 		activeLink: this.el,
 		activeToken: generateToken()
 	};
@@ -205,7 +206,7 @@ QUnit.test( '#linkDwell doesn\'t continue if the token has changed', function ( 
 
 	// Stub the state tree being updated by another LINK_DWELL action.
 	this.state.preview = {
-		enabled: true,
+		enabled: { page: true },
 
 		// Consider the user tabbing back and forth between two links in the time
 		// it takes to start fetching data via the gateway: the active link hasn't
@@ -229,7 +230,7 @@ QUnit.test( '#linkDwell dispatches the fetch action', function ( assert ) {
 		dispatch = this.sandbox.spy();
 
 	this.state.preview = {
-		enabled: true,
+		enabled: { page: true },
 		activeToken: generateToken()
 	};
 
@@ -491,11 +492,11 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 	const dispatch = this.sandbox.spy(),
 		getState = this.sandbox.stub().returns( {
 			preview: {
-				enabled: false
+				enabled: { page: false }
 			}
 		} );
 
-	actions.saveSettings( /* enabled = */ true )( dispatch, getState );
+	actions.saveSettings( 'page', true )( dispatch, getState );
 
 	assert.ok(
 		getState.calledOnce,
@@ -504,6 +505,7 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 	assert.ok(
 		dispatch.calledWith( {
 			type: actionTypes.SETTINGS_CHANGE,
+			previewType: 'page',
 			oldValue: false,
 			newValue: true
 		} ),

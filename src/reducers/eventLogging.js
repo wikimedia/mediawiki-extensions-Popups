@@ -5,6 +5,7 @@
 import actionTypes from '../actionTypes';
 import nextState from './nextState';
 import * as counts from '../counts';
+import { previewTypes } from '../preview/model';
 
 /**
  * Initialize the data that's shared between all events.
@@ -18,7 +19,7 @@ function getBaseData( bootAction ) {
 		namespaceIdSource: bootAction.page.namespaceId,
 		pageIdSource: bootAction.page.id,
 		isAnon: bootAction.user.isAnon,
-		popupEnabled: bootAction.initiallyEnabled,
+		popupEnabled: bootAction.initiallyEnabled[ previewTypes.TYPE_PAGE ],
 		pageToken: bootAction.pageToken,
 		sessionToken: bootAction.sessionToken,
 		previewCountBucket: counts.getPreviewCountBucket(
@@ -295,7 +296,11 @@ export default function eventLogging( state, action ) {
 			} );
 
 		case actionTypes.SETTINGS_CHANGE:
-			if ( action.oldValue && !action.newValue ) {
+			// TODO: Support other popup types
+			if ( action.previewType === previewTypes.TYPE_PAGE &&
+				action.oldValue &&
+				!action.newValue
+			) {
 				return nextState( state, {
 					event: {
 						action: 'disabled',

@@ -211,8 +211,10 @@ function registerChangeListeners(
 	);
 
 	boundActions.boot(
-		// FIXME: Currently this disables all popup types (for anonymous users).
-		isPagePreviewsEnabled,
+		{
+			[ previewTypes.TYPE_PAGE ]: isPagePreviewsEnabled,
+			[ previewTypes.TYPE_REFERENCE ]: isReferencePreviewsEnabled( mw.config )
+		},
 		mw.user,
 		userSettings,
 		mw.config,

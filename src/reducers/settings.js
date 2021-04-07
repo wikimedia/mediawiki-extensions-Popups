@@ -46,10 +46,14 @@ export default function settings( state, action ) {
 					shouldShowFooterLink: !action.newValue
 				} );
 
-		case actionTypes.BOOT:
-			return nextState( state, {
-				shouldShowFooterLink: action.user.isAnon && !action.initiallyEnabled
+		case actionTypes.BOOT: {
+			const allEnabled = Object.keys( action.initiallyEnabled ).every( function ( type ) {
+				return action.initiallyEnabled[ type ];
 			} );
+			return nextState( state, {
+				shouldShowFooterLink: action.user.isAnon && !allEnabled
+			} );
+		}
 		default:
 			return state;
 	}

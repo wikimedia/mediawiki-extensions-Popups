@@ -3,6 +3,7 @@
  */
 
 import { createSettingsDialog } from './settingsDialog';
+import { previewTypes } from '../preview/model';
 
 /**
  * Creates a render function that will create the settings dialog and return
@@ -45,7 +46,8 @@ export default function createSettingsDialogRenderer( config ) {
 					// NavPops and off means disabled.
 					enabled = selected === 'simple';
 
-				boundActions.saveSettings( enabled );
+				// TODO: Make this work for other popup types
+				boundActions.saveSettings( previewTypes.TYPE_PAGE, enabled );
 			} );
 			$dialog.find( '.close, .okay' ).on( 'click', boundActions.hideSettings );
 		}

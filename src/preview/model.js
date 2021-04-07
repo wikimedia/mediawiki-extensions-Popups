@@ -111,7 +111,7 @@ export function createNullModel( title, url ) {
  * @param {Element} el
  * @param {mw.Map} config
  * @param {mw.Title} title
- * @return {string|null}
+ * @return {string|null} One of the previewTypes.TYPE_… constants
  */
 export function getPreviewType( el, config, title ) {
 	if ( !isSelfLink( title, config ) ) {

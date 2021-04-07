@@ -27,7 +27,7 @@ QUnit.test( '@@INIT', function ( assert ) {
 QUnit.test( 'BOOT', function ( assert ) {
 	const action = {
 		type: actionTypes.BOOT,
-		initiallyEnabled: true,
+		initiallyEnabled: { page: true },
 		isNavPopupsEnabled: false,
 		sessionToken: '0123456789',
 		pageToken: '9876543210',
@@ -59,7 +59,7 @@ QUnit.test( 'BOOT', function ( assert ) {
 				namespaceIdSource: action.page.namespaceId,
 				pageIdSource: action.page.id,
 				isAnon: action.user.isAnon,
-				popupEnabled: action.initiallyEnabled,
+				popupEnabled: action.initiallyEnabled.page,
 				pageToken: action.pageToken,
 				sessionToken: action.sessionToken,
 				editCountBucket: expectedEditCountBucket,
@@ -641,6 +641,7 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 
 	state = eventLogging( state, {
 		type: actionTypes.SETTINGS_CHANGE,
+		previewType: 'page',
 		oldValue: true,
 		newValue: false
 	} );

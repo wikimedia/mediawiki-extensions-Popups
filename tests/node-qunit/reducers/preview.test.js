@@ -16,8 +16,9 @@ QUnit.test( '@@INIT', ( assert ) => {
 	assert.deepEqual(
 		state,
 		{
-			enabled: undefined,
+			enabled: {},
 			activeLink: undefined,
+			previewType: undefined,
 			measures: undefined,
 			activeToken: '',
 			shouldShow: false,
@@ -31,7 +32,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 QUnit.test( 'BOOT', ( assert ) => {
 	const action = {
 		type: actionTypes.BOOT,
-		initiallyEnabled: true
+		initiallyEnabled: { page: true }
 	};
 
 	assert.expect( 1, 'All assertions are executed.' );
@@ -39,7 +40,7 @@ QUnit.test( 'BOOT', ( assert ) => {
 	assert.deepEqual(
 		preview( {}, action ),
 		{
-			enabled: true
+			enabled: { page: true }
 		},
 		'It should set whether or not previews are enabled.'
 	);
@@ -48,15 +49,16 @@ QUnit.test( 'BOOT', ( assert ) => {
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 	const action = {
 		type: actionTypes.SETTINGS_CHANGE,
+		previewType: 'page',
 		newValue: true
 	};
 
 	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
-		preview( {}, action ),
+		preview( { enabled: {} }, action ),
 		{
-			enabled: true
+			enabled: { page: true }
 		},
 		'It should set whether or not previews are enabled when settings change.'
 	);
@@ -67,6 +69,7 @@ QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert
 	const action = {
 		type: actionTypes.LINK_DWELL,
 		el: this.el,
+		previewType: 'page',
 		event: {},
 		token: '1234567890',
 		promise
@@ -76,6 +79,7 @@ QUnit.test( 'LINK_DWELL initializes the state for a new link', function ( assert
 		preview( {}, action ),
 		{
 			activeLink: action.el,
+			previewType: 'page',
 			measures: action.measures,
 			activeToken: action.token,
 			shouldShow: false,
@@ -122,6 +126,7 @@ QUnit.test( 'ABANDON_END', ( assert ) => {
 		preview( state, action ),
 		{
 			activeLink: undefined,
+			previewType: undefined,
 			activeToken: undefined,
 			measures: undefined,
 			fetchResponse: undefined,

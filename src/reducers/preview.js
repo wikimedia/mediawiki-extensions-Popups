@@ -12,8 +12,9 @@ import nextState from './nextState';
 export default function preview( state, action ) {
 	if ( state === undefined ) {
 		state = {
-			enabled: undefined,
+			enabled: {},
 			activeLink: undefined,
+			previewType: undefined,
 			measures: undefined,
 			activeToken: '',
 			shouldShow: false,
@@ -28,16 +29,18 @@ export default function preview( state, action ) {
 				enabled: action.initiallyEnabled
 			} );
 
-		case actionTypes.SETTINGS_CHANGE:
+		case actionTypes.SETTINGS_CHANGE: {
 			return nextState( state, {
-				enabled: action.newValue
+				enabled: { [ action.previewType ]: action.newValue }
 			} );
+		}
 
 		case actionTypes.LINK_DWELL:
 			if ( action.el !== state.activeLink ) {
 				// New interaction
 				return nextState( state, {
 					activeLink: action.el,
+					previewType: action.previewType,
 					measures: action.measures,
 					activeToken: action.token,
 
@@ -62,6 +65,7 @@ export default function preview( state, action ) {
 			if ( action.token === state.activeToken && !state.isUserDwelling ) {
 				return nextState( state, {
 					activeLink: undefined,
+					previewType: undefined,
 					activeToken: undefined,
 					measures: undefined,
 					fetchResponse: undefined,

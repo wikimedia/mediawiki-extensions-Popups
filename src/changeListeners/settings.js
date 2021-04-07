@@ -1,3 +1,5 @@
+import { previewTypes } from '../preview/model';
+
 /**
  * Creates an instance of the settings change listener.
  *
@@ -26,7 +28,8 @@ export default function settings( boundActions, render ) {
 			}
 
 			// Update the UI settings with the current settings
-			settingsObj.setEnabled( newState.preview.enabled );
+			// TODO: Support other popup types
+			settingsObj.setEnabled( newState.preview.enabled[ previewTypes.TYPE_PAGE ] );
 
 			settingsObj.show();
 		} else if (

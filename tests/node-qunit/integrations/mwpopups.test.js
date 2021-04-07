@@ -18,7 +18,7 @@ QUnit.module( 'ext.popups/integrations' );
 QUnit.test( '#isEnabled returns correct value when disabled', function ( assert ) {
 	const state = {
 			preview: {
-				enabled: false
+				enabled: { page: false }
 			}
 		},
 		store = mockStore( state ),
@@ -33,7 +33,7 @@ QUnit.test( '#isEnabled returns correct value when disabled', function ( assert 
 QUnit.test( '#isEnabled returns correct value when enabled', function ( assert ) {
 	const state = {
 			preview: {
-				enabled: true
+				enabled: { page: true }
 			}
 		},
 		store = mockStore( state ),

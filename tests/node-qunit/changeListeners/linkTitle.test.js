@@ -9,8 +9,9 @@ QUnit.module( 'ext.popups/changeListeners/linkTitle', {
 
 		this.state = {
 			preview: {
-				enabled: true,
-				activeLink: this.$link
+				enabled: { page: true },
+				activeLink: this.$link,
+				previewType: 'page'
 			}
 		};
 
@@ -29,7 +30,7 @@ QUnit.test( 'it should remove the title', function ( assert ) {
 } );
 
 QUnit.test( 'it shouldn\'t remove the title under certain conditions', function ( assert ) {
-	this.state.preview.enabled = false;
+	this.state.preview.enabled = { page: false };
 
 	this.whenTheLinkIsDwelledUpon();
 

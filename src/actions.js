@@ -57,7 +57,8 @@ function timedAction( baseAction ) {
  * [`mw.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
  * so as not to impact latency-critical events.
  *
- * @param {boolean} initiallyEnabled Disables all popup types while still showing the footer link
+ * @param {Object} initiallyEnabled Allows to disable individual popup types while still showing the
+ *  footer link
  * @param {mw.user} user
  * @param {ext.popups.UserSettings} userSettings
  * @param {mw.Map} config The config of the MediaWiki client-side application,
@@ -121,7 +122,7 @@ function getDwellDelay( type ) {
  * @param {Element} el
  * @param {string} token The unique token representing the link interaction that
  *  triggered the fetch
- * @param {string} type
+ * @param {string} type One of the previewTypes.TYPE_… constants
  * @return {Redux.Thunk}
  */
 export function fetch( gateway, title, el, token, type ) {
@@ -219,7 +220,7 @@ export function fetch( gateway, title, el, token, type ) {
  * @param {ext.popups.Measures} measures
  * @param {Gateway} gateway
  * @param {Function} generateToken
- * @param {string} type
+ * @param {string} type One of the previewTypes.TYPE_… constants
  * @return {Redux.Thunk}
  */
 export function linkDwell( title, el, measures, gateway, generateToken, type ) {
@@ -232,6 +233,7 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
 		const action = timedAction( {
 			type: types.LINK_DWELL,
 			el,
+			previewType: type,
 			measures,
 			token,
 			title: titleText,
@@ -253,10 +255,10 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
 		return promise.then( () => {
 			const previewState = getState().preview;
 
-			// The `enabled` flag allows to disable all popup types while still showing the footer
-			// link. This comes from the boot() action (called `initiallyEnabled` there) and the
-			// preview() reducer.
-			if ( previewState.enabled && isNewInteraction() ) {
+			// The `enabled` flags allow to disable individual popup types while still showing the
+			// footer link. This comes from the boot() action (called `initiallyEnabled` there) and
+			// the preview() reducer.
+			if ( previewState.enabled[ type ] && isNewInteraction() ) {
 				return dispatch( fetch( gateway, title, el, token, type ) );
 			}
 		} );
@@ -421,14 +423,16 @@ export function hideSettings() {
  * See docs/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
  * details.
  *
+ * @param {string} previewType
  * @param {boolean} enabled if previews are enabled or not
  * @return {Redux.Thunk}
  */
-export function saveSettings( enabled ) {
+export function saveSettings( previewType, enabled ) {
 	return ( dispatch, getState ) => {
 		dispatch( {
 			type: types.SETTINGS_CHANGE,
-			oldValue: getState().preview.enabled,
+			previewType,
+			oldValue: getState().preview.enabled[ previewType ],
 			newValue: enabled
 		} );
 	};

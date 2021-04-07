@@ -43,8 +43,8 @@ QUnit.test( 'it should update the storage if the previewCount has changed', func
 QUnit.test(
 	'it shouldn\'t update the storage if the enabled state hasn\'t changed',
 	function ( assert ) {
-		const oldState = { preview: { enabled: true } },
-			newState = { preview: { enabled: true } };
+		const oldState = { preview: { enabled: { page: true } } },
+			newState = { preview: { enabled: { page: true } } };
 
 		this.changeListener( undefined, newState );
 		this.changeListener( oldState, newState );
@@ -57,8 +57,8 @@ QUnit.test(
 );
 
 QUnit.test( 'it should update the storage if the enabled flag has changed', function ( assert ) {
-	const oldState = { preview: { enabled: true } },
-		newState = { preview: { enabled: false } };
+	const oldState = { preview: { enabled: { page: true } } },
+		newState = { preview: { enabled: { page: false } } };
 
 	this.changeListener( oldState, newState );
 

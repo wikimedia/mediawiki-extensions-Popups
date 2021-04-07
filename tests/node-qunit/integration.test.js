@@ -89,7 +89,7 @@ QUnit.module( 'ext.popups preview @integration', {
 
 		this.actions.boot(
 			/* initiallyEnabled: */
-			constant( true ),
+			{ page: constant( true ) },
 			/* user */
 			stubs.createStubUser( true ),
 			/* userSettings: */

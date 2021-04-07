@@ -46,7 +46,7 @@ export default function linkTitle() {
 	return ( oldState, newState ) => {
 		const hasPrevActiveLink = oldState && oldState.preview.activeLink;
 
-		if ( !newState.preview.enabled ) {
+		if ( !newState.preview.enabled[ newState.preview.previewType ] ) {
 			return;
 		}
 

@@ -20,7 +20,7 @@ QUnit.test( '@@INIT', ( assert ) => {
 QUnit.test( 'BOOT', ( assert ) => {
 	const action = {
 		type: actionTypes.BOOT,
-		initiallyEnabled: false,
+		initiallyEnabled: { page: false },
 		user: {
 			isAnon: true
 		}

@@ -27,7 +27,7 @@ export default function syncUserSettings( userSettings ) {
 			userSettings.storePreviewCount
 		);
 		syncIfChanged(
-			oldState, newState, 'preview.enabled',
+			oldState, newState, 'preview.enabled.' + previewTypes.TYPE_PAGE,
 			userSettings.storePagePreviewsEnabled
 		);
 		syncIfChanged(

@@ -15,7 +15,7 @@ QUnit.module( 'ext.popups/changeListeners/settings', {
 		this.defaultState = { settings: { shouldShow: false } };
 		this.showState = {
 			settings: { shouldShow: true },
-			preview: { enabled: true }
+			preview: { enabled: { page: true } }
 		};
 		this.showHelpState = {
 			settings: {
@@ -80,7 +80,7 @@ QUnit.test( 'it should show settings and update the form when shouldShow becomes
 	this.settings( this.defaultState, this.showState );
 	this.settings( this.showState, this.defaultState );
 	this.settings( this.defaultState, $.extend( true, {}, this.showState, {
-		preview: { enabled: false }
+		preview: { enabled: { page: false } }
 	} ) );
 
 	assert.strictEqual( this.render.callCount, 1,
