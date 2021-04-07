@@ -35,6 +35,7 @@ export function createStubMap() {
 		// Invalid selection key
 		return null;
 	};
+	m.remove = m.delete;
 	return m;
 }
 

@@ -3,11 +3,8 @@ import isPagePreviewsEnabled from '../../src/isPagePreviewsEnabled';
 
 function createStubUserSettings( expectEnabled ) {
 	return {
-		hasIsEnabled() {
-			return expectEnabled !== undefined;
-		},
 		isPagePreviewsEnabled() {
-			return Boolean( expectEnabled );
+			return expectEnabled !== false;
 		}
 	};
 }
@@ -18,7 +15,7 @@ QUnit.module( 'ext.popups#isPagePreviewsEnabled (logged out)', {
 	}
 } );
 
-QUnit.test( 'is should handle logged out users', ( assert ) => {
+QUnit.test( 'it should handle logged out users', ( assert ) => {
 	const user = stubs.createStubUser( /* isAnon = */ true ),
 		config = new Map();
 

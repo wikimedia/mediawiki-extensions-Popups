@@ -26,33 +26,6 @@ QUnit.test( '#isPagePreviewsEnabled should return false if Page Previews have be
 	);
 } );
 
-QUnit.test( '#hasIsEnabled', function ( assert ) {
-	assert.notOk(
-		this.userSettings.hasIsEnabled(),
-		'#hasIsEnabled should return false if the storage is empty.'
-	);
-
-	// ---
-
-	this.userSettings.storePagePreviewsEnabled( false );
-
-	assert.ok(
-		this.userSettings.hasIsEnabled(),
-		'#hasIsEnabled should return true even if "isEnabled" has been set to falsy.'
-	);
-
-	// ---
-
-	const getStub = this.sandbox.stub( this.storage, 'get' ).returns( false );
-
-	assert.notOk(
-		this.userSettings.hasIsEnabled(),
-		'#hasIsEnabled should return false if the storage is disabled.'
-	);
-
-	getStub.restore();
-} );
-
 QUnit.test( '#getPreviewCount should return the count as a number', function ( assert ) {
 	assert.strictEqual(
 		this.userSettings.getPreviewCount(),

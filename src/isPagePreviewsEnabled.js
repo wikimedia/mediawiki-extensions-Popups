@@ -26,12 +26,7 @@ export default function isPagePreviewsEnabled( user, userSettings, config ) {
 	if ( user.isAnon() ) {
 		// For anonymous users, the code loads always, but the feature
 		// can be toggled at run-time via local storage.
-		if ( !userSettings.hasIsEnabled() ) {
-			// Default when no setting is stored.
-			return true;
-		} else {
-			return userSettings.isPagePreviewsEnabled();
-		}
+		return userSettings.isPagePreviewsEnabled();
 	}
 
 	// For logged-in users, this very code loads only when PagePreviews are enabled.

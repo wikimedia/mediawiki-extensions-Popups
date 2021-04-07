@@ -45,21 +45,11 @@ export default function createUserSettings( storage ) {
 		 * @param {boolean} enabled
 		 */
 		storePagePreviewsEnabled( enabled ) {
-			storage.set( PAGE_PREVIEWS_ENABLED_KEY, enabled ? '1' : '0' );
-		},
-
-		/**
-		 * Gets whether the user has previously enabled **or disabled** Page
-		 * Previews.
-		 *
-		 * @method
-		 * @name UserSettings#hasIsEnabled
-		 * @return {boolean}
-		 */
-		hasIsEnabled() {
-			const value = storage.get( PAGE_PREVIEWS_ENABLED_KEY );
-
-			return Boolean( value ) !== false;
+			if ( enabled ) {
+				storage.remove( PAGE_PREVIEWS_ENABLED_KEY );
+			} else {
+				storage.set( PAGE_PREVIEWS_ENABLED_KEY, '0' );
+			}
 		},
 
 		/**
