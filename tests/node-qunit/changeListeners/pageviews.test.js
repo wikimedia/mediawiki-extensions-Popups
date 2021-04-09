@@ -38,9 +38,9 @@ function createState( title ) {
 }
 
 QUnit.test( 'it should log the queued event', function ( assert ) {
-	const state = createState( 'Rainbows' );
+	const newState = createState( 'Rainbows' );
 
-	this.changeListener( undefined, state );
+	this.changeListener( undefined, newState );
 
 	assert.ok(
 		this.pageviewTracker.calledWith(
@@ -64,9 +64,9 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 } );
 
 QUnit.test( 'it should not log something that is not a pageview', function ( assert ) {
-	const state = createState();
+	const newState = createState();
 
-	this.changeListener( undefined, state );
+	this.changeListener( undefined, newState );
 
 	assert.notOk(
 		this.pageviewTracker.called,

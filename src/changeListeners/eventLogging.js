@@ -18,8 +18,8 @@
 export default function eventLogging(
 	boundActions, eventLoggingTracker, getCurrentTimestamp
 ) {
-	return ( _, state ) => {
-		const eventLoggingObj = state.eventLogging;
+	return ( oldState, newState ) => {
+		const eventLoggingObj = newState.eventLogging;
 		let event = eventLoggingObj.event;
 
 		if ( !event ) {

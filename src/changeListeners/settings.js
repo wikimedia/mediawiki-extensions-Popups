@@ -8,16 +8,16 @@
 export default function settings( boundActions, render ) {
 	let settingsObj;
 
-	return ( prevState, state ) => {
-		if ( !prevState ) {
+	return ( oldState, newState ) => {
+		if ( !oldState ) {
 			// Nothing to do on initialization
 			return;
 		}
 
 		// Update global modal visibility
 		if (
-			prevState.settings.shouldShow === false &&
-			state.settings.shouldShow === true
+			oldState.settings.shouldShow === false &&
+			newState.settings.shouldShow === true
 		) {
 			// Lazily instantiate the settings UI
 			if ( !settingsObj ) {
@@ -26,19 +26,19 @@ export default function settings( boundActions, render ) {
 			}
 
 			// Update the UI settings with the current settings
-			settingsObj.setEnabled( state.preview.enabled );
+			settingsObj.setEnabled( newState.preview.enabled );
 
 			settingsObj.show();
 		} else if (
-			prevState.settings.shouldShow === true &&
-			state.settings.shouldShow === false
+			oldState.settings.shouldShow === true &&
+			newState.settings.shouldShow === false
 		) {
 			settingsObj.hide();
 		}
 
 		// Update help visibility
-		if ( prevState.settings.showHelp !== state.settings.showHelp ) {
-			settingsObj.toggleHelp( state.settings.showHelp );
+		if ( oldState.settings.showHelp !== newState.settings.showHelp ) {
+			settingsObj.toggleHelp( newState.settings.showHelp );
 		}
 	};
 }

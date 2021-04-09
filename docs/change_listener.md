@@ -24,7 +24,7 @@ mw.popups.changeListeners.foo = function ( boundActions ) {
     .attr( 'href', '#' )
     .click( boundActions.showSettings );
 
-  return function ( prevState, state ) {
+  return function ( oldState, newState ) {
     // ...
   }
 };

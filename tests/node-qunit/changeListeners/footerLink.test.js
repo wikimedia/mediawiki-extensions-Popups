@@ -65,10 +65,10 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 
 	// ---
 
-	const prevState = $.extend( true, {}, this.state );
+	const oldState = $.extend( true, {}, this.state );
 	this.state.settings.shouldShowFooterLink = false;
 
-	this.footerLinkChangeListener( prevState, this.state );
+	this.footerLinkChangeListener( oldState, this.state );
 
 	assert.strictEqual(
 		$link.css( 'display' ),

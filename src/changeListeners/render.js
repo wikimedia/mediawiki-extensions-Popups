@@ -13,15 +13,15 @@ import * as renderer from '../ui/renderer';
 export default function render( previewBehavior ) {
 	let preview;
 
-	return ( prevState, state ) => {
-		if ( state.preview.shouldShow && !preview ) {
-			preview = renderer.render( state.preview.fetchResponse );
+	return ( oldState, newState ) => {
+		if ( newState.preview.shouldShow && !preview ) {
+			preview = renderer.render( newState.preview.fetchResponse );
 			preview.show(
-				state.preview.measures,
+				newState.preview.measures,
 				previewBehavior,
-				state.preview.activeToken
+				newState.preview.activeToken
 			);
-		} else if ( !state.preview.shouldShow && preview ) {
+		} else if ( !newState.preview.shouldShow && preview ) {
 			preview.hide();
 			preview = undefined;
 		}

@@ -43,10 +43,10 @@ export default function linkTitle() {
 		title = undefined;
 	}
 
-	return ( prevState, state ) => {
-		const hasPrevActiveLink = prevState && prevState.preview.activeLink;
+	return ( oldState, newState ) => {
+		const hasPrevActiveLink = oldState && oldState.preview.activeLink;
 
-		if ( !state.preview.enabled ) {
+		if ( !newState.preview.enabled ) {
 			return;
 		}
 
@@ -54,13 +54,13 @@ export default function linkTitle() {
 			// Has the user dwelled on a link immediately after abandoning another
 			// (remembering that the ABANDON_END action is delayed by
 			// ~100 ms).
-			if ( prevState.preview.activeLink !== state.preview.activeLink ) {
-				restoreTitleAttr( prevState.preview.activeLink );
+			if ( oldState.preview.activeLink !== newState.preview.activeLink ) {
+				restoreTitleAttr( oldState.preview.activeLink );
 			}
 		}
 
-		if ( state.preview.activeLink ) {
-			destroyTitleAttr( state.preview.activeLink );
+		if ( newState.preview.activeLink ) {
+			destroyTitleAttr( newState.preview.activeLink );
 		}
 	};
 }

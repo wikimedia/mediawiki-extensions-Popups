@@ -34,11 +34,11 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 		baz: 'qux'
 	};
 
-	const state = createState( baseData, {
+	const newState = createState( baseData, {
 		action: 'pageLoaded'
 	} );
 
-	this.changeListener( undefined, state );
+	this.changeListener( undefined, newState );
 
 	assert.ok(
 		this.eventLoggingTracker.calledWith(
@@ -55,20 +55,20 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 } );
 
 QUnit.test( 'it should call the eventLogged bound action creator', function ( assert ) {
-	const state = createState( {}, undefined );
+	const newState = createState( {}, undefined );
 
-	this.changeListener( undefined, state );
+	this.changeListener( undefined, newState );
 
 	assert.notOk(
 		this.boundActions.eventLogged.called,
 		'It shouldn\'t call the eventLogged bound action creator if there\'s no queued event.'
 	);
 
-	state.eventLogging.event = {
+	newState.eventLogging.event = {
 		action: 'pageLoaded'
 	};
 
-	this.changeListener( undefined, state );
+	this.changeListener( undefined, newState );
 
 	assert.ok(
 		this.boundActions.eventLogged.called,

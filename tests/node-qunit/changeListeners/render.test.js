@@ -18,7 +18,7 @@ QUnit.test(
 	function ( assert ) {
 		const previewBehavior = {};
 
-		const state = {
+		const newState = {
 			preview: {
 				shouldShow: true,
 				measures: {},
@@ -27,13 +27,13 @@ QUnit.test(
 		};
 
 		const changeListener = render( previewBehavior );
-		changeListener( undefined, state );
+		changeListener( undefined, newState );
 
 		assert.ok(
 			this.preview.show.calledWith(
-				state.preview.measures,
+				newState.preview.measures,
 				previewBehavior,
-				state.preview.activeToken
+				newState.preview.activeToken
 			),
 			'The preview is shown with correct arguments.'
 		);
@@ -41,7 +41,7 @@ QUnit.test(
 );
 
 QUnit.test( 'it should render the preview', ( assert ) => {
-	const state = {
+	const newState = {
 		preview: {
 			shouldShow: true,
 			fetchResponse: {}
@@ -49,10 +49,10 @@ QUnit.test( 'it should render the preview', ( assert ) => {
 	};
 
 	const changeListener = render( /* previewBehavior = undefined */ );
-	changeListener( undefined, state );
+	changeListener( undefined, newState );
 
 	assert.ok(
-		RendererModule.render.calledWith( state.preview.fetchResponse ),
+		RendererModule.render.calledWith( newState.preview.fetchResponse ),
 		'It should use the data from the gateway.'
 	);
 } );

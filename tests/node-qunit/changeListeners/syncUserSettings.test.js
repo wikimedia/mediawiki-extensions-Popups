@@ -15,19 +15,19 @@ QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
 QUnit.test(
 	'it shouldn\'t update the storage if the preview count hasn\'t changed',
 	function ( assert ) {
-		const state = {
+		const newState = {
 			eventLogging: {
 				previewCount: 222
 			}
 		};
 
-		this.changeListener( undefined, state );
+		this.changeListener( undefined, newState );
 
 		// ---
 
-		const prevState = $.extend( true, {}, state );
+		const oldState = $.extend( true, {}, newState );
 
-		this.changeListener( prevState, state );
+		this.changeListener( oldState, newState );
 
 		assert.notOk(
 			this.userSettings.storePreviewCount.called,
@@ -37,16 +37,16 @@ QUnit.test(
 );
 
 QUnit.test( 'it should update the storage if the previewCount has changed', function ( assert ) {
-	const prevState = {
+	const oldState = {
 		eventLogging: {
 			previewCount: 222
 		}
 	};
 
-	const state = $.extend( true, {}, prevState );
-	++state.eventLogging.previewCount;
+	const newState = $.extend( true, {}, oldState );
+	++newState.eventLogging.previewCount;
 
-	this.changeListener( prevState, state );
+	this.changeListener( oldState, newState );
 
 	assert.ok(
 		this.userSettings.storePreviewCount.calledWith( 223 ),
@@ -57,19 +57,19 @@ QUnit.test( 'it should update the storage if the previewCount has changed', func
 QUnit.test(
 	'it shouldn\'t update the storage if the enabled state hasn\'t changed',
 	function ( assert ) {
-		const state = {
+		const newState = {
 			preview: {
 				enabled: true
 			}
 		};
 
-		this.changeListener( undefined, state );
+		this.changeListener( undefined, newState );
 
 		// ---
 
-		const prevState = $.extend( true, {}, state );
+		const oldState = $.extend( true, {}, newState );
 
-		this.changeListener( prevState, state );
+		this.changeListener( oldState, newState );
 
 		assert.notOk(
 			this.userSettings.storePagePreviewsEnabled.called,
@@ -79,16 +79,16 @@ QUnit.test(
 );
 
 QUnit.test( 'it should update the storage if the enabled flag has changed', function ( assert ) {
-	const prevState = {
+	const oldState = {
 		preview: {
 			enabled: true
 		}
 	};
 
-	const state = $.extend( true, {}, prevState );
-	state.preview.enabled = false;
+	const newState = $.extend( true, {}, oldState );
+	newState.preview.enabled = false;
 
-	this.changeListener( prevState, state );
+	this.changeListener( oldState, newState );
 
 	assert.ok(
 		this.userSettings.storePagePreviewsEnabled.calledWith( false ),

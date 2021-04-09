@@ -4,8 +4,8 @@
 
 /**
  * @typedef {Function} ext.popups.ChangeListener
- * @param {Object} prevState The previous state
- * @param {Object} state The current state
+ * @param {Object} oldState The previous state
+ * @param {Object} newState The current state
  */
 
 /**
@@ -29,15 +29,14 @@ export default function registerChangeListener( store, callback ) {
 	// Store#subscribe](http://redux.js.org/docs/api/Store.html#subscribe),
 	// which was written by Dan Abramov.
 
-	let state;
+	let previousState;
 
 	store.subscribe( () => {
-		const prevState = state;
+		const state = store.getState();
 
-		state = store.getState();
-
-		if ( prevState !== state ) {
-			callback( prevState, state );
+		if ( previousState !== state ) {
+			callback( previousState, state );
+			previousState = state;
 		}
 	} );
 }

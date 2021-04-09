@@ -57,7 +57,7 @@ function createFooterLink() {
 export default function footerLink( boundActions ) {
 	let $footerLink;
 
-	return ( prevState, state ) => {
+	return ( oldState, newState ) => {
 		if ( $footerLink === undefined ) {
 			$footerLink = createFooterLink();
 			$footerLink.on( 'click', ( e ) => {
@@ -66,7 +66,7 @@ export default function footerLink( boundActions ) {
 			} );
 		}
 
-		if ( state.settings.shouldShowFooterLink ) {
+		if ( newState.settings.shouldShowFooterLink ) {
 			$footerLink.show();
 		} else {
 			$footerLink.hide();

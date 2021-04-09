@@ -16,10 +16,10 @@
 export default function pageviews(
 	boundActions, pageviewTracker
 ) {
-	return ( _, state ) => {
+	return ( oldState, newState ) => {
 		let page;
-		if ( state.pageviews && state.pageviews.pageview && state.pageviews.page ) {
-			page = state.pageviews.page;
+		if ( newState.pageviews && newState.pageviews.pageview && newState.pageviews.page ) {
+			page = newState.pageviews.page;
 			pageviewTracker( 'event.VirtualPageView', $.extend( {},
 				{
 					/* eslint-disable camelcase */
@@ -29,7 +29,7 @@ export default function pageviews(
 					source_url: page.url
 					/* eslint-enable camelcase */
 				},
-				state.pageviews.pageview )
+				newState.pageviews.pageview )
 			);
 			// Clear the pageview now its been logged.
 			boundActions.pageviewLogged();

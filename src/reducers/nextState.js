@@ -9,7 +9,7 @@
  * hasOwnProperty to copy over to the new state.
  *
  * In [change listeners](/docs/change_listener.md), for example, we talk about
- * the previous state and the current state (the `prevState` and `state`
+ * the previous state and the current state (the `oldState` and `newState`
  * parameters, respectively). Since
  * [reducers](http://redux.js.org/docs/basics/Reducers.html) take the current
  * state and an action and make updates, "next state" seems appropriate.
