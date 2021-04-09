@@ -20,16 +20,11 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 
 		this.footerLinkChangeListener = footerLink( boundActions );
 
-		this.state = {
-			settings: {
-				shouldShowFooterLink: true
-			}
-		};
-
 		// A helper method, which should make the following tests more easily
 		// readable.
 		this.whenLinkPreviewsBoots = function () {
-			this.footerLinkChangeListener( undefined, this.state );
+			const newState = { settings: { shouldShowFooterLink: true } };
+			this.footerLinkChangeListener( undefined, newState );
 		};
 
 		this.getLink = () => this.$footer.find( 'li:last-child' );
@@ -63,12 +58,9 @@ QUnit.test( 'it should show and hide the link', function ( assert ) {
 		'Link is visible'
 	);
 
-	// ---
-
-	const oldState = $.extend( true, {}, this.state );
-	this.state.settings.shouldShowFooterLink = false;
-
-	this.footerLinkChangeListener( oldState, this.state );
+	const oldState = { settings: { shouldShowFooterLink: true } },
+		newState = { settings: { shouldShowFooterLink: false } };
+	this.footerLinkChangeListener( oldState, newState );
 
 	assert.strictEqual(
 		$link.css( 'display' ),

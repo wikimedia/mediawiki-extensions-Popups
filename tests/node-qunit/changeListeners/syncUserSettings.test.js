@@ -15,18 +15,10 @@ QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
 QUnit.test(
 	'it shouldn\'t update the storage if the preview count hasn\'t changed',
 	function ( assert ) {
-		const newState = {
-			eventLogging: {
-				previewCount: 222
-			}
-		};
+		const oldState = { eventLogging: { previewCount: 222 } },
+			newState = { eventLogging: { previewCount: 222 } };
 
 		this.changeListener( undefined, newState );
-
-		// ---
-
-		const oldState = $.extend( true, {}, newState );
-
 		this.changeListener( oldState, newState );
 
 		assert.notOk(
@@ -37,14 +29,8 @@ QUnit.test(
 );
 
 QUnit.test( 'it should update the storage if the previewCount has changed', function ( assert ) {
-	const oldState = {
-		eventLogging: {
-			previewCount: 222
-		}
-	};
-
-	const newState = $.extend( true, {}, oldState );
-	++newState.eventLogging.previewCount;
+	const oldState = { eventLogging: { previewCount: 222 } },
+		newState = { eventLogging: { previewCount: 223 } };
 
 	this.changeListener( oldState, newState );
 
@@ -57,18 +43,10 @@ QUnit.test( 'it should update the storage if the previewCount has changed', func
 QUnit.test(
 	'it shouldn\'t update the storage if the enabled state hasn\'t changed',
 	function ( assert ) {
-		const newState = {
-			preview: {
-				enabled: true
-			}
-		};
+		const oldState = { preview: { enabled: true } },
+			newState = { preview: { enabled: true } };
 
 		this.changeListener( undefined, newState );
-
-		// ---
-
-		const oldState = $.extend( true, {}, newState );
-
 		this.changeListener( oldState, newState );
 
 		assert.notOk(
@@ -79,14 +57,8 @@ QUnit.test(
 );
 
 QUnit.test( 'it should update the storage if the enabled flag has changed', function ( assert ) {
-	const oldState = {
-		preview: {
-			enabled: true
-		}
-	};
-
-	const newState = $.extend( true, {}, oldState );
-	newState.preview.enabled = false;
+	const oldState = { preview: { enabled: true } },
+		newState = { preview: { enabled: false } };
 
 	this.changeListener( oldState, newState );
 

@@ -55,13 +55,10 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 			xhr = fetch( titleText );
 		return xhr.then( ( page ) => {
 			// Endpoint response may be empty or simply missing a title.
-			if ( !page || !page.title ) {
-				page = $.extend( true, page || {}, { title: titleText } );
-			}
+			page = page || {};
+			page.title = page.title || titleText;
 			// And extract may be omitted if empty string
-			if ( page.extract === undefined ) {
-				page.extract = '';
-			}
+			page.extract = page.extract || '';
 			return convertPageToModel(
 				page, config.THUMBNAIL_SIZE, extractParser
 			);
