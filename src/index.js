@@ -142,7 +142,7 @@ function registerChangeListeners(
 		};
 
 	// If debug mode is enabled, then enable Redux DevTools.
-	if ( mw.config.get( 'debug' ) === true ||
+	if ( mw.config.get( 'debug' ) ||
 		/* global process */
 		process.env.NODE_ENV !== 'production' ) {
 		// eslint-disable-next-line no-underscore-dangle

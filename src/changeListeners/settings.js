@@ -15,10 +15,7 @@ export default function settings( boundActions, render ) {
 		}
 
 		// Update global modal visibility
-		if (
-			oldState.settings.shouldShow === false &&
-			newState.settings.shouldShow === true
-		) {
+		if ( oldState.settings.shouldShow === false && newState.settings.shouldShow ) {
 			// Lazily instantiate the settings UI
 			if ( !settingsObj ) {
 				settingsObj = render( boundActions );
@@ -28,10 +25,7 @@ export default function settings( boundActions, render ) {
 			// Update the UI settings with the current settings
 			settingsObj.setEnabled( newState.preview.enabled );
 			settingsObj.show();
-		} else if (
-			oldState.settings.shouldShow === true &&
-			newState.settings.shouldShow === false
-		) {
+		} else if ( oldState.settings.shouldShow && newState.settings.shouldShow === false ) {
 			settingsObj.hide();
 		}
 

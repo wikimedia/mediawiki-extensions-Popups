@@ -93,7 +93,7 @@ export function renderReferencePreview(
 		.find( '.headerSort' ).removeClass( 'headerSort' ).attr( { tabindex: null, title: null } );
 
 	// TODO: Remove when not in Beta any more
-	if ( mw.config.get( 'wgPopupsReferencePreviewsBetaFeature' ) !== true ) {
+	if ( !mw.config.get( 'wgPopupsReferencePreviewsBetaFeature' ) ) {
 		// TODO: Do not remove this but move it up into the templateHTML constant!
 		$el.find( '.mwe-popups-settings' ).append(
 			$( '<a>' )

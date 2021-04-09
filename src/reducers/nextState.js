@@ -19,8 +19,8 @@
  * @return {Object}
  */
 export default function nextState( state, updates ) {
-	const result = {};
-	const hasOwn = Object.prototype.hasOwnProperty;
+	const hasOwn = Object.prototype.hasOwnProperty,
+		result = {};
 
 	// Flat clone of everything that's not updated
 	for ( const key in state ) {
