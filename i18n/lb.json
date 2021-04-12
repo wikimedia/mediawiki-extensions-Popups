@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Les Meloures",
 			"Robby"
 		]
 	},
@@ -16,7 +17,7 @@
 	"popups-settings-help-ok": "Fäerdeg",
 	"popups-settings-cancel": "Ofbriechen",
 	"popups-settings-enable": "Kucken ouni ze späicheren aktivéieren",
-	"popups-preview-no-preview": "Et gouf e Problem fir dëst ze weisen",
+	"popups-preview-no-preview": "Et gouf e Probleem fir dëst ze weisen",
 	"popups-preview-footer-read": "Op dës Säit goen",
 	"popups-preview-disambiguation": "Dësen Titel bezitt sech op méi wéi eng Säit",
 	"popups-preview-disambiguation-link": "Änlech Säite weisen",
