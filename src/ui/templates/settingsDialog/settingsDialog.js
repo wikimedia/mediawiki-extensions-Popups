@@ -70,10 +70,9 @@ export function renderSettingsDialog( model ) {
 					${choices.map( ( { id, name, description, isChecked } ) => `
 					<p>
 						<input
-							name='mwe-popups-setting'
 							${isChecked ? 'checked' : ''}
 							value='${id}'
-							type='radio'
+							type='checkbox'
 							id='mwe-popups-settings-${id}'>
 						<label for='mwe-popups-settings-${id}'>
 							<span>${name}</span>

@@ -9,10 +9,9 @@ import { previewTypes } from '../preview/model';
  * Creates a render function that will create the settings dialog and return
  * a set of methods to operate on it
  *
- * @param {mw.Map} config
  * @return {Function} render function
  */
-export default function createSettingsDialogRenderer( config ) {
+export default function createSettingsDialogRenderer() {
 	/**
 	 * Cached settings dialog
 	 *
@@ -34,7 +33,7 @@ export default function createSettingsDialogRenderer( config ) {
 	 */
 	return ( boundActions ) => {
 		if ( !$dialog ) {
-			$dialog = createSettingsDialog( config.get( 'wgPopupsReferencePreviewsBetaFeature' ) );
+			$dialog = createSettingsDialog();
 			$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
 
 			// Setup event bindings
@@ -52,7 +51,6 @@ export default function createSettingsDialogRenderer( config ) {
 			 * Append the dialog and overlay to a DOM element
 			 *
 			 * @param {HTMLElement} el
-			 * @return {void}
 			 */
 			appendTo( el ) {
 				$overlay.appendTo( el );
@@ -61,8 +59,6 @@ export default function createSettingsDialogRenderer( config ) {
 
 			/**
 			 * Show the settings element and position it correctly
-			 *
-			 * @return {void}
 			 */
 			show() {
 				$overlay.show();
@@ -70,8 +66,6 @@ export default function createSettingsDialogRenderer( config ) {
 
 			/**
 			 * Hide the settings dialog.
-			 *
-			 * @return {void}
 			 */
 			hide() {
 				$overlay.hide();
@@ -81,7 +75,6 @@ export default function createSettingsDialogRenderer( config ) {
 			 * Toggle the help dialog on or off
 			 *
 			 * @param {boolean} visible if you want to show or hide the help dialog
-			 * @return {void}
 			 */
 			toggleHelp( visible ) {
 				toggleHelp( $dialog, visible );
@@ -91,12 +84,10 @@ export default function createSettingsDialogRenderer( config ) {
 			 * Update the form depending on the enabled flag
 			 *
 			 * @param {boolean} enabled if page previews are enabled
-			 * @return {void}
 			 */
 			setEnabled( enabled ) {
-				// Check the appropriate radio button
-				$dialog.find( enabled ? '#mwe-popups-settings-simple' : '#mwe-popups-settings-off' )
-					.prop( 'checked', true );
+				// TODO: Make this work for other popup types
+				$dialog.find( '#mwe-popups-settings-simple' ).prop( 'checked', enabled );
 			}
 		};
 	};
@@ -107,7 +98,6 @@ export default function createSettingsDialogRenderer( config ) {
  *
  * @param {JQuery.Object} $el element that contains form and help
  * @param {boolean} visible if the help should be visible, or the form
- * @return {void}
  */
 function toggleHelp( $el, visible ) {
 	// eslint-disable-next-line no-jquery/no-global-selector

@@ -11,12 +11,10 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 
 		mw.html = { escape: ( str ) => str };
 		mw.template = { get: getTemplate };
-		mw.config = { get() {} };
 		mw.msg = () => {};
 	},
 	afterEach() {
 		mw.msg = null;
-		mw.config = null;
 		mw.template = null;
 		mw.html = null;
 	}
@@ -34,7 +32,7 @@ QUnit.test( '#render', ( assert ) => {
 			toggleHelp() {},
 			setEnabled() {}
 		},
-		result = createSettingsDialogRenderer( mw.config )( boundActions );
+		result = createSettingsDialogRenderer()( boundActions );
 
 	// Specifically NOT a deep equal. Only structure.
 	assert.propEqual(
