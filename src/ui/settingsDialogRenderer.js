@@ -9,9 +9,10 @@ import { previewTypes } from '../preview/model';
  * Creates a render function that will create the settings dialog and return
  * a set of methods to operate on it
  *
+ * @param {mw.Map} config
  * @return {Function} render function
  */
-export default function createSettingsDialogRenderer() {
+export default function createSettingsDialogRenderer( config ) {
 	/**
 	 * Cached settings dialog
 	 *
@@ -33,15 +34,22 @@ export default function createSettingsDialogRenderer() {
 	 */
 	return ( boundActions ) => {
 		if ( !$dialog ) {
-			$dialog = createSettingsDialog();
+			$dialog = createSettingsDialog( config.get( 'wgPopupsReferencePreviewsBetaFeature' ) );
 			$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
 
 			// Setup event bindings
 
 			$dialog.find( '.save' ).on( 'click', () => {
-				const enabled = $dialog.find( '#mwe-popups-settings-simple' ).is( ':checked' );
-				// TODO: Make this work for other popup types
-				boundActions.saveSettings( previewTypes.TYPE_PAGE, enabled );
+				const $page = $dialog.find( '#mwe-popups-settings-' + previewTypes.TYPE_PAGE ),
+					$ref = $dialog.find( '#mwe-popups-settings-' + previewTypes.TYPE_REFERENCE );
+				boundActions.saveSettings( {
+					[ previewTypes.TYPE_PAGE ]: $page.is( ':checked' ),
+					[ previewTypes.TYPE_REFERENCE ]:
+						// TODO: Remove when not in Beta any more
+						config.get( 'wgPopupsReferencePreviewsBetaFeature' ) ?
+							null :
+							$ref.is( ':checked' )
+				} );
 			} );
 			$dialog.find( '.close, .okay' ).on( 'click', boundActions.hideSettings );
 		}
@@ -83,11 +91,11 @@ export default function createSettingsDialogRenderer() {
 			/**
 			 * Update the form depending on the enabled flag
 			 *
-			 * @param {boolean} enabled if page previews are enabled
+			 * @param {string} type
+			 * @param {boolean} enabled
 			 */
-			setEnabled( enabled ) {
-				// TODO: Make this work for other popup types
-				$dialog.find( '#mwe-popups-settings-simple' ).prop( 'checked', enabled );
+			setEnabled( type, enabled ) {
+				$dialog.find( '#mwe-popups-settings-' + type ).prop( 'checked', enabled );
 			}
 		};
 	};

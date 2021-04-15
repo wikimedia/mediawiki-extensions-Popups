@@ -7,6 +7,8 @@
 	"popups-settings-title": "Previews",
 	"popups-settings-option-simple": "Page previews",
 	"popups-settings-option-simple-description": "Get quick previews of a topic while reading a page.",
+	"popups-settings-option-reference": "Reference previews",
+	"popups-settings-option-reference-description": "Get quick previews of a reference while reading a page.",
 	"popups-settings-save": "Save",
 	"popups-settings-help-ok": "Done",
 	"popups-settings-cancel": "Cancel",

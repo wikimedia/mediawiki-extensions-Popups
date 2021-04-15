@@ -296,10 +296,8 @@ export default function eventLogging( state, action ) {
 			} );
 
 		case actionTypes.SETTINGS_CHANGE:
-			// TODO: Support other popup types
-			if ( action.previewType === previewTypes.TYPE_PAGE &&
-				action.oldValue &&
-				!action.newValue
+			if ( action.oldValue[ previewTypes.TYPE_PAGE ] &&
+				!action.newValue[ previewTypes.TYPE_PAGE ]
 			) {
 				return nextState( state, {
 					event: {

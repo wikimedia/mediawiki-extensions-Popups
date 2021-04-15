@@ -78,8 +78,8 @@ QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 	const action = ( oldValue, newValue ) => {
 		return {
 			type: actionTypes.SETTINGS_CHANGE,
-			oldValue,
-			newValue
+			oldValue: { page: oldValue },
+			newValue: { page: newValue }
 		};
 	};
 

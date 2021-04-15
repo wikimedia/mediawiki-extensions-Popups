@@ -629,8 +629,8 @@ QUnit.test( 'SETTINGS_SHOW should enqueue a "tapped settings cog" event', functi
 QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 	let state = eventLogging( undefined, {
 		type: actionTypes.SETTINGS_CHANGE,
-		oldValue: false,
-		newValue: false
+		oldValue: { page: false },
+		newValue: { page: false }
 	} );
 
 	assert.strictEqual(
@@ -641,9 +641,8 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 
 	state = eventLogging( state, {
 		type: actionTypes.SETTINGS_CHANGE,
-		previewType: 'page',
-		oldValue: true,
-		newValue: false
+		oldValue: { page: true },
+		newValue: { page: false }
 	} );
 
 	assert.deepEqual(
@@ -658,8 +657,8 @@ QUnit.test( 'SETTINGS_CHANGE should enqueue disabled event', ( assert ) => {
 	delete state.event;
 	state = eventLogging( state, {
 		type: actionTypes.SETTINGS_CHANGE,
-		oldValue: false,
-		newValue: true
+		oldValue: { page: false },
+		newValue: { page: true }
 	} );
 
 	assert.strictEqual(

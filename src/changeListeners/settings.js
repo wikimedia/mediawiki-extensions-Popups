@@ -28,8 +28,10 @@ export default function settings( boundActions, render ) {
 			}
 
 			// Update the UI settings with the current settings
-			// TODO: Support other popup types
-			settingsObj.setEnabled( newState.preview.enabled[ previewTypes.TYPE_PAGE ] );
+			settingsObj.setEnabled( previewTypes.TYPE_PAGE,
+				newState.preview.enabled[ previewTypes.TYPE_PAGE ] );
+			settingsObj.setEnabled( previewTypes.TYPE_REFERENCE,
+				newState.preview.enabled[ previewTypes.TYPE_REFERENCE ] );
 
 			settingsObj.show();
 		} else if (

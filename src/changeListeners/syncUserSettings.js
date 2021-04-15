@@ -31,7 +31,6 @@ export default function syncUserSettings( userSettings ) {
 			userSettings.storePagePreviewsEnabled
 		);
 		syncIfChanged(
-			// TODO: This property currently doesn't exist in the state, see reducers/preview.js
 			// TODO: This is currently not covered by a test case, see syncUserSettings.test.js
 			oldState, newState, 'preview.enabled.' + previewTypes.TYPE_REFERENCE,
 			userSettings.storeReferencePreviewsEnabled

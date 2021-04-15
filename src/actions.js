@@ -423,16 +423,14 @@ export function hideSettings() {
  * See docs/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
  * details.
  *
- * @param {string} previewType
- * @param {boolean} enabled if previews are enabled or not
+ * @param {Object} enabled
  * @return {Redux.Thunk}
  */
-export function saveSettings( previewType, enabled ) {
+export function saveSettings( enabled ) {
 	return ( dispatch, getState ) => {
 		dispatch( {
 			type: types.SETTINGS_CHANGE,
-			previewType,
-			oldValue: getState().preview.enabled[ previewType ],
+			oldValue: getState().preview.enabled,
 			newValue: enabled
 		} );
 	};

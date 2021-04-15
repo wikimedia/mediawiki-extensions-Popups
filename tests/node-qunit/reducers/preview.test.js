@@ -49,8 +49,7 @@ QUnit.test( 'BOOT', ( assert ) => {
 QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 	const action = {
 		type: actionTypes.SETTINGS_CHANGE,
-		previewType: 'page',
-		newValue: true
+		newValue: { page: true }
 	};
 
 	assert.expect( 1, 'All assertions are executed.' );

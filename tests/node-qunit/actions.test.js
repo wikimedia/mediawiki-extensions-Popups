@@ -496,7 +496,7 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 			}
 		} );
 
-	actions.saveSettings( 'page', true )( dispatch, getState );
+	actions.saveSettings( { page: true } )( dispatch, getState );
 
 	assert.ok(
 		getState.calledOnce,
@@ -505,9 +505,8 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 	assert.ok(
 		dispatch.calledWith( {
 			type: actionTypes.SETTINGS_CHANGE,
-			previewType: 'page',
-			oldValue: false,
-			newValue: true
+			oldValue: { page: false },
+			newValue: { page: true }
 		} ),
 		'it should dispatch the action with the previous and next enabled state'
 	);

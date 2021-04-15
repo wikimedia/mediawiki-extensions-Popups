@@ -31,7 +31,7 @@ export default function preview( state, action ) {
 
 		case actionTypes.SETTINGS_CHANGE: {
 			return nextState( state, {
-				enabled: { [ action.previewType ]: action.newValue }
+				enabled: action.newValue
 			} );
 		}
 
