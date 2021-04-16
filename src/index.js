@@ -184,7 +184,12 @@ function registerChangeListeners(
 			mw.config,
 			window
 		),
-		isPagePreviewsEnabled = createIsPagePreviewsEnabled( mw.user, userSettings, mw.config );
+		initiallyEnabled = {
+			[ previewTypes.TYPE_PAGE ]:
+				createIsPagePreviewsEnabled( mw.user, userSettings, mw.config ),
+			[ previewTypes.TYPE_REFERENCE ]:
+				isReferencePreviewsEnabled( mw.user, userSettings, mw.config )
+		};
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) === true ||
@@ -211,10 +216,7 @@ function registerChangeListeners(
 	);
 
 	boundActions.boot(
-		{
-			[ previewTypes.TYPE_PAGE ]: isPagePreviewsEnabled,
-			[ previewTypes.TYPE_REFERENCE ]: isReferencePreviewsEnabled( mw.config )
-		},
+		initiallyEnabled,
 		mw.user,
 		userSettings,
 		mw.config,
@@ -228,11 +230,11 @@ function registerChangeListeners(
 	mw.popups = createMediaWikiPopupsObject( store );
 
 	const selectors = [];
-	if ( mw.user.isAnon() || mw.user.options.get( 'popups' ) === '1' ) {
+	if ( initiallyEnabled[ previewTypes.TYPE_PAGE ] !== null ) {
 		const excludedLinksSelector = EXCLUDED_LINK_SELECTORS.join( ', ' );
 		selectors.push( `#mw-content-text a[href][title]:not(${excludedLinksSelector})` );
 	}
-	if ( isReferencePreviewsEnabled( mw.config ) ) {
+	if ( initiallyEnabled[ previewTypes.TYPE_REFERENCE ] !== null ) {
 		selectors.push( '#mw-content-text .reference a[ href*="#" ]' );
 	}
 	if ( !selectors.length ) {
