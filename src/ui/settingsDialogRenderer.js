@@ -34,7 +34,7 @@ export default function createSettingsDialogRenderer( config ) {
 	 */
 	return ( boundActions ) => {
 		if ( !$dialog ) {
-			$dialog = createSettingsDialog( config.get( 'wgPopupsReferencePreviewsBeta' ) );
+			$dialog = createSettingsDialog( config.get( 'wgPopupsReferencePreviewsBetaFeature' ) );
 			$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
 
 			// Setup event bindings

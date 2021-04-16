@@ -13,7 +13,7 @@ QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 			config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
 			config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ),
 			config.get( 'wgPopupsReferencePreviews' ),
-			config.get( 'wgPopupsReferencePreviewsBeta' )
+			config.get( 'wgPopupsReferencePreviewsBetaFeature' )
 		],
 		[ true, true, true, true ]
 	);
@@ -26,7 +26,7 @@ QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 			config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
 			config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ),
 			config.get( 'wgPopupsReferencePreviews' ),
-			config.get( 'wgPopupsReferencePreviewsBeta' )
+			config.get( 'wgPopupsReferencePreviewsBetaFeature' )
 		],
 		[ false, true, false, true ]
 	);
@@ -39,7 +39,7 @@ QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 			config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
 			config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ),
 			config.get( 'wgPopupsReferencePreviews' ),
-			config.get( 'wgPopupsReferencePreviewsBeta' )
+			config.get( 'wgPopupsReferencePreviewsBetaFeature' )
 		],
 		[ true, false, true, false ]
 	);
@@ -52,7 +52,7 @@ QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 			config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
 			config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ),
 			config.get( 'wgPopupsReferencePreviews' ),
-			config.get( 'wgPopupsReferencePreviewsBeta' )
+			config.get( 'wgPopupsReferencePreviewsBetaFeature' )
 		],
 		[ false, false, false, false ]
 	);

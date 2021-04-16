@@ -32,7 +32,7 @@ export default function setUserConfigFlags( config ) {
 		!!( popupsFlags & REFERENCE_PREVIEWS_ENABLED )
 	);
 	config.set(
-		'wgPopupsReferencePreviewsBeta',
+		'wgPopupsReferencePreviewsBetaFeature',
 		!!( popupsFlags & REFERENCE_PREVIEWS_BETA )
 	);
 	/* eslint-enable no-bitwise */

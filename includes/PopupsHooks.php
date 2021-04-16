@@ -182,7 +182,6 @@ class PopupsHooks {
 		$vars['wgPopupsRestGatewayEndpoint'] = $config->get( 'PopupsRestGatewayEndpoint' );
 		$vars['wgPopupsStatsvSamplingRate'] = $config->get( 'PopupsStatsvSamplingRate' );
 		$vars['wgPopupsTextExtractsIntroOnly'] = $config->get( 'PopupsTextExtractsIntroOnly' );
-		$vars['wgPopupsReferencePreviewsBetaFeature'] = $config->get( 'PopupsReferencePreviewsBetaFeature' );
 	}
 
 	/**
@@ -196,7 +195,6 @@ class PopupsHooks {
 	 *   setting.
 	 * * `wgPopupsConflictsWithNavPopupGadget' - The server's notion of whether or not the
 	 *   user has enabled conflicting Navigational Popups Gadget.
-	 *
 	 * * `wgPopupsConflictsWithRefTooltipsGadget' - The server's notion of whether or not the
 	 *   user has enabled conflicting Reference Tooltips Gadget.
 	 *
