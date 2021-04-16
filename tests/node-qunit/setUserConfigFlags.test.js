@@ -1,5 +1,7 @@
 import setUserConfigFlags from '../../src/setUserConfigFlags';
 
+QUnit.module( 'ext.popups#setUserConfigFlags' );
+
 QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 	const config = new Map();
 

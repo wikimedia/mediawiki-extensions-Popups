@@ -9,11 +9,7 @@ function createStubUserSettings( expectEnabled ) {
 	};
 }
 
-QUnit.module( 'ext.popups#isPagePreviewsEnabled (logged out)', {
-	beforeEach() {
-		this.user = stubs.createStubUser( /* isAnon = */ true );
-	}
-} );
+QUnit.module( 'ext.popups#isPagePreviewsEnabled' );
 
 QUnit.test( 'it should handle logged out users', ( assert ) => {
 	const user = stubs.createStubUser( /* isAnon = */ true ),

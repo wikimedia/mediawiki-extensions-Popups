@@ -1,5 +1,7 @@
 import isReferencePreviewsEnabled from '../../src/isReferencePreviewsEnabled';
 
+QUnit.module( 'ext.popups#isReferencePreviewsEnabled' );
+
 QUnit.test( 'it should display reference previews when conditions are fulfilled', ( assert ) => {
 	const config = new Map();
 
