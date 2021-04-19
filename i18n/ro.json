@@ -25,8 +25,8 @@
 	"popups-preview-disambiguation": "Acest titlu se referă la mai mult de o pagină",
 	"popups-preview-disambiguation-link": "Vezi pagini similare",
 	"prefs-reading": "Preferințe de lectură",
-	"popups-prefs-optin": "Activare previzualizări de pagini (previzualizări rapide ale unui subiect în timp ce citiți o pagină)",
-	"popups-prefs-disable-nav-gadgets-info": "Trebuie să [[$1 | dezactivați gadgetul Navigation Popups]] din fila Gadgeturi pentru a activa Previzualizări de pagini",
+	"popups-prefs-optin": "Activare previzualizări de pagini (primiți previzualizări rapide ale unui subiect în timp ce citiți o pagină)",
+	"popups-prefs-disable-nav-gadgets-info": "Trebuie să [[$1|dezactivați gadgetul Navigation Popups]] din preferințele dvs. pentru Gadgeturi pentru a activa Previzualizări de pagini",
 	"popups-prefs-conflicting-gadgets-info": "Anumite gadgeturi și alte personalizări pot afecta performanța acestei funcții. Dacă întâmpinați probleme vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, inclusiv cele globale.",
 	"popups-refpreview-reference": "Referință",
 	"popups-refpreview-book": "Referință de carte",
@@ -34,7 +34,7 @@
 	"popups-refpreview-news": "Referință de știri",
 	"popups-refpreview-web": "Referință web",
 	"popups-refpreview-collapsible-placeholder": "Această referință include un grafic care nu se potrivește în previzualizare.",
-	"popups-refpreview-user-preference-label": "Previzualizări de referințe (primiți previzualizări rapide ale notelor de subsol)",
+	"popups-refpreview-user-preference-label": "Activați previzualizări de referințe (primiți previzualizări rapide ale notelor de subsol)",
 	"popups-refpreview-beta-feature-message": "Previzualizări de referințe",
-	"popups-refpreview-beta-feature-description": "Afișează o previzualizare a unei referințe prin trecerea peste marcatorului său de notă de subsol.\n\nVă rugăm să luați în considerare: Dacă utilizați gadgetul [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] sau gadgetul [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], nu veți vedea Previzualizări de referințe."
+	"popups-refpreview-beta-feature-description": "Afișează o previzualizare a unei referințe prin trecerea peste marcatorului său de notă de subsol.\n\nVă rugăm să luați în considerare: Dacă utilizați gadgetul [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] sau gadgetul [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], nu veți vedea previzualizări de referințe."
 }
