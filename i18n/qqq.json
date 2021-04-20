@@ -18,8 +18,6 @@
 	"popups-settings-unified-title": "Title used for the setting's dialog enabling page and reference previews. It's a name of a feature and doesn't necessarily have to be plural.",
 	"popups-settings-option-simple": "Title for the reader popup option\n{{Identical|Enable}}",
 	"popups-settings-option-simple-description": "Description for the reader popup option",
-	"popups-settings-option-advanced": "Title for the editor or Navigation popups gadget option\n{{Identical|Advanced}}",
-	"popups-settings-option-advanced-description": "Description for the editor or Navigation popups gadget option",
 	"popups-settings-option-unified-description": "Description for the reader popup option for page and reference previews",
 	"popups-settings-option-off": "Title to turn off popups option.\n\nSee also:\n* {{msg-mw|Popups-settings-enable}}\n{{Identical|Disable}}",
 	"popups-settings-save": "Save button for the setting's dialog\n{{Identical|Save}}",
