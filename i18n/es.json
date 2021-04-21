@@ -20,8 +20,6 @@
 	"popups-settings-title": "Previsualización de página",
 	"popups-settings-option-simple": "Activar",
 	"popups-settings-option-simple-description": "Obtener resúmenes rápidos de un tema durante la lectura de una página.",
-	"popups-settings-option-advanced": "Avanzado",
-	"popups-settings-option-advanced-description": "Ver vistas previas de enlace y acceso a los menús de la función de edición. Esta opción es recomendada para editores.",
 	"popups-settings-option-off": "Desactivar",
 	"popups-settings-save": "Guardar",
 	"popups-settings-help-ok": "Hecho",

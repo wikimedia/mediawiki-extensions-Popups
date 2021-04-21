@@ -18,8 +18,6 @@
 	"popups-settings-title": "صفحه پیش‌نمایش",
 	"popups-settings-option-simple": "فعال",
 	"popups-settings-option-simple-description": "پیش‌نمایشی سریع از یک موضوع را هنگام خواندن یک صفحه ببینید",
-	"popups-settings-option-advanced": "پیشرفته",
-	"popups-settings-option-advanced-description": "دیدن پیش‌نمایش پیوندها و دسترسی برای ویرایش منوهای تابعی. این توسط بسیاری از ویراستاران استفاده می‌شود.",
 	"popups-settings-option-off": "غیرفعال",
 	"popups-settings-save": "ذخیره",
 	"popups-settings-help-ok": "انجام شد",

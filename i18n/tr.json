@@ -21,8 +21,6 @@
 	"popups-settings-unified-title": "Önizlemeler",
 	"popups-settings-option-simple": "Etkin",
 	"popups-settings-option-simple-description": "Sayfa okurken bir konunun hızlı önizlemesini alın.",
-	"popups-settings-option-advanced": "Gelişmiş",
-	"popups-settings-option-advanced-description": "Bağlantı önizleme ve erişim düzenleme işlevi menülerine bakın. Bu, birçok düzenleyici tarafından kullanılır.",
 	"popups-settings-option-unified-description": "Okurken bir konu ya da kaynağın hızlı önizlemelerini alın.",
 	"popups-settings-option-off": "Devre dışı",
 	"popups-settings-save": "Kaydet",

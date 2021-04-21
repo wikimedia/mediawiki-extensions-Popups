@@ -13,8 +13,6 @@
 	"popups-settings-title": "Преглед на страница",
 	"popups-settings-option-simple": "Включване",
 	"popups-settings-option-simple-description": "Показване на бърз преглед на тема, при четене на страница.",
-	"popups-settings-option-advanced": "Разширени",
-	"popups-settings-option-advanced-description": "Предоставя предварителен преглед на препратки и достъп до менюта с функции за редактиране. Това се използва от много редактори.",
 	"popups-settings-option-off": "Изключване",
 	"popups-settings-save": "Съхраняване",
 	"popups-settings-help-ok": "Готово",

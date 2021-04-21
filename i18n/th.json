@@ -11,8 +11,6 @@
 	"popups-settings-title": "การแสดงตัวอย่างหน้า",
 	"popups-settings-option-simple": "เปิดใช้งาน",
 	"popups-settings-option-simple-description": "รับตัวอย่างของหัวข้อนั้น ๆ อย่างรวดเร็วขณะอ่านหน้า",
-	"popups-settings-option-advanced": "ขั้นสูง",
-	"popups-settings-option-advanced-description": "ดูตัวอย่างลิงก์และเข้าถึงเมนูแก้ไข นี่ถูกใช้โดยผู้แก้ไขหลายคน",
 	"popups-settings-option-off": "ปิดใช้งาน",
 	"popups-settings-save": "บันทึก",
 	"popups-settings-help-ok": "เสร็จสิ้น",

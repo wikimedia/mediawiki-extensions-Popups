@@ -30,8 +30,6 @@
 	"popups-settings-unified-title": "Предпросмотр",
 	"popups-settings-option-simple": "Включить",
 	"popups-settings-option-simple-description": "Показывать быстрый предпросмотр тем при наведении мыши.",
-	"popups-settings-option-advanced": "Расширенный",
-	"popups-settings-option-advanced-description": "Показывать предпросмотр ссылок и получать меню для функций правки. Это используют многие редакторы.",
 	"popups-settings-option-unified-description": "Получите быстрый предпросмотр темы или текста сноски во время чтения.",
 	"popups-settings-option-off": "Отключить",
 	"popups-settings-save": "Сохранить",

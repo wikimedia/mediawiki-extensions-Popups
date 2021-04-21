@@ -17,8 +17,6 @@
 	"popups-settings-unified-title": "Esikatselut",
 	"popups-settings-option-simple": "Ota käyttöön",
 	"popups-settings-option-simple-description": "Näytä aiheiden pikaesikatselut lukutilassa.",
-	"popups-settings-option-advanced": "Laajennettu",
-	"popups-settings-option-advanced-description": "Näe linkkien esikatselut ja pääse käsiksi muokkaustoimintojen menuihin. Monet muokkaajat käyttävät tätä.",
 	"popups-settings-option-unified-description": "Näe aiheiden tai viitteiden pikaesikatselut lukutilassa.",
 	"popups-settings-option-off": "Poista käytöstä",
 	"popups-settings-save": "Tallenna",

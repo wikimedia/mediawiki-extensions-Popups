@@ -22,8 +22,6 @@
 	"popups-settings-title": "ページのプレビュー",
 	"popups-settings-option-simple": "有効化",
 	"popups-settings-option-simple-description": "ページの閲覧中に、サッとトピックをチラ見できます。",
-	"popups-settings-option-advanced": "高度",
-	"popups-settings-option-advanced-description": "リンクをプレビューしたり編集機能のメニューをサッと開いたりできます。多くの利用者が使っています。",
 	"popups-settings-option-off": "無効化",
 	"popups-settings-save": "保存",
 	"popups-settings-help-ok": "完了",

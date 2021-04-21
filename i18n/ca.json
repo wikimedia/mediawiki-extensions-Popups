@@ -15,8 +15,6 @@
 	"popups-settings-title": "Previsualització de pàgines",
 	"popups-settings-option-simple": "Activa",
 	"popups-settings-option-simple-description": "Obté previsualització d'un tema mentre llegeixes un article.",
-	"popups-settings-option-advanced": "Avançat",
-	"popups-settings-option-advanced-description": "Mostra vistes prèvies d'enllaç i dóna accés a menús de funcions d'edició. Això és la recomanació per a editors.",
 	"popups-settings-option-off": "Desactiva",
 	"popups-settings-save": "Desa",
 	"popups-settings-help-ok": "Fet",

@@ -17,8 +17,6 @@
 	"popups-settings-title": "Попередній перегляд сторінки",
 	"popups-settings-option-simple": "Увімкнути",
 	"popups-settings-option-simple-description": "Отримувати швидкий попередній перегляд теми під час читання сторінки.",
-	"popups-settings-option-advanced": "Розширений",
-	"popups-settings-option-advanced-description": "Показувати активні посилання та доступ до функцій редагування. Використовується багатьма редакторами.",
 	"popups-settings-option-off": "Вимкнути",
 	"popups-settings-save": "Зберегти",
 	"popups-settings-help-ok": "Готово",
