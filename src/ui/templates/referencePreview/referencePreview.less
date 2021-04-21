@@ -24,11 +24,16 @@
 
 		// Note: This also affects the icon in .mwe-popups-title
 		.mw-ui-icon {
+			// Since 6bc3aada (T277663) this is @min-size-icon = 20px upstream in
+			// …/mediawiki.ui/components/icons.less, too small for us
+			min-height: @size-icon;
 			vertical-align: middle;
 
 			&.mw-ui-icon-element {
-				min-width: @iconSize;
-				width: @iconSize;
+				// This is @width-icon--legacy = 3.5em upstream in
+				// …/mediawiki.ui/components/icons.less, way to wide for us
+				min-width: @size-icon;
+				width: @size-icon;
 
 				&:before {
 					margin: 0;
