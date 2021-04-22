@@ -47,11 +47,11 @@ export default function settings( state, action ) {
 				} );
 
 		case actionTypes.BOOT: {
-			const allEnabled = Object.keys( action.initiallyEnabled ).every( function ( type ) {
-				return action.initiallyEnabled[ type ];
+			const anyDisabled = Object.keys( action.initiallyEnabled ).some( function ( type ) {
+				return action.initiallyEnabled[ type ] === false;
 			} );
 			return nextState( state, {
-				shouldShowFooterLink: action.user.isAnon && !allEnabled
+				shouldShowFooterLink: action.user.isAnon && anyDisabled
 			} );
 		}
 		default:
