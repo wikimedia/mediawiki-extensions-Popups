@@ -31,7 +31,6 @@ export default function syncUserSettings( userSettings ) {
 			userSettings.storePagePreviewsEnabled
 		);
 		syncIfChanged(
-			// TODO: This is currently not covered by a test case, see syncUserSettings.test.js
 			oldState, newState, 'preview.enabled.' + previewTypes.TYPE_REFERENCE,
 			userSettings.storeReferencePreviewsEnabled
 		);
