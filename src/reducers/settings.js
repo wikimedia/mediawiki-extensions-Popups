@@ -29,17 +29,15 @@ export default function settings( state, action ) {
 				showHelp: false
 			} );
 		case actionTypes.SETTINGS_CHANGE: {
-			const nothingChanged = Object.keys( action.newValue ).every( function ( type ) {
-					return action.oldValue[ type ] === action.newValue[ type ];
-				} ),
-				userOptedOut = Object.keys( action.newValue ).some( function ( type ) {
-					// Check if at least one setting has been deactivated that was active before
-					return action.oldValue[ type ] && !action.newValue[ type ];
-				} ),
-				anyDisabled = Object.keys( action.newValue ).some( function ( type ) {
-					// Warning, when the state is null the user can't re-enable this popup type!
-					return action.newValue[ type ] === false;
-				} );
+			const types = Object.keys( action.newValue ),
+				nothingChanged = types
+					.every( ( type ) => action.oldValue[ type ] === action.newValue[ type ] ),
+				// Check if at least one setting has been deactivated that was active before
+				userOptedOut = types
+					.some( ( type ) => action.oldValue[ type ] && !action.newValue[ type ] ),
+				// Warning, when the state is null the user can't re-enable this popup type!
+				anyDisabled = types
+					.some( ( type ) => action.newValue[ type ] === false );
 
 			if ( nothingChanged ) {
 				// If the setting is the same, just hide the dialogs
@@ -60,10 +58,10 @@ export default function settings( state, action ) {
 			} );
 		}
 		case actionTypes.BOOT: {
-			const anyDisabled = Object.keys( action.initiallyEnabled ).some( function ( type ) {
-				// Warning, when the state is null the user can't re-enable this popup type!
-				return action.initiallyEnabled[ type ] === false;
-			} );
+			// Warning, when the state is null the user can't re-enable this popup type!
+			const anyDisabled = Object.keys( action.initiallyEnabled )
+				.some( ( type ) => action.initiallyEnabled[ type ] === false );
+
 			return nextState( state, {
 				shouldShowFooterLink: action.user.isAnon && anyDisabled
 			} );
