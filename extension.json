@@ -193,8 +193,8 @@
 			],
 			"messages": [
 				"popups-settings-title",
-				"popups-settings-option-simple",
-				"popups-settings-option-simple-description",
+				"popups-settings-option-page",
+				"popups-settings-option-page-description",
 				"popups-settings-option-reference",
 				"popups-settings-option-reference-description",
 				"popups-settings-save",
