@@ -74,7 +74,7 @@ QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
 	);
 } );
 
-QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
+QUnit.test( 'SETTINGS_CHANGE with page previews only', ( assert ) => {
 	const action = ( oldValue, newValue ) => {
 		return {
 			type: actionTypes.SETTINGS_CHANGE,
@@ -113,5 +113,54 @@ QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 		},
 		'It should keep the settings showing and show the help when we disable.'
 	);
+} );
 
+QUnit.test( 'SETTINGS_CHANGE with two preview types', ( assert ) => {
+	[
+		[
+			'All are disabled but nothing changed',
+			false, false, false, false,
+			{ shouldShow: false }
+		],
+		[
+			'All are enabled but nothing changed',
+			true, true, true, true,
+			{ shouldShow: false }
+		],
+		[
+			'One is enabled but nothing changed',
+			false, false, true, true,
+			{ shouldShow: false }
+		],
+		[
+			'Only one got disabled',
+			true, true, true, false,
+			{ shouldShow: true, showHelp: true, shouldShowFooterLink: true }
+		],
+		[
+			'Both got disabled',
+			true, false, true, false,
+			{ shouldShow: true, showHelp: true, shouldShowFooterLink: true }
+		],
+		[
+			'Only one got enabled',
+			false, false, false, true,
+			{ shouldShow: false, showHelp: false, shouldShowFooterLink: true }
+		],
+		[
+			'Both got enabled',
+			false, true, false, true,
+			{ shouldShow: false, showHelp: false, shouldShowFooterLink: false }
+		]
+	].forEach( ( testCase, index ) => {
+		assert.deepEqual(
+			settings( {}, {
+				type: actionTypes.SETTINGS_CHANGE,
+				oldValue: { page: testCase[ 1 ], reference: testCase[ 3 ] },
+				newValue: { page: testCase[ 2 ], reference: testCase[ 4 ] }
+			} ),
+			testCase[ 5 ],
+			testCase[ 0 ] || 'Test case #' + index
+		);
+	} );
 } );
