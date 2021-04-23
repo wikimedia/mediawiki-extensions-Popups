@@ -46,9 +46,10 @@ export default function syncUserSettings( userSettings ) {
  * @return {*}
  */
 function get( state, path ) {
-	return path.split( '.' ).reduce( function ( element, key ) {
-		return element && element[ key ];
-	}, state );
+	return path.split( '.' ).reduce(
+		( element, key ) => element && element[ key ],
+		state
+	);
 }
 
 /**

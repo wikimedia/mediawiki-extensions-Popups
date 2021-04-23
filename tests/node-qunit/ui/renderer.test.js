@@ -998,9 +998,7 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
-		classes.every( function ( c ) {
-			return preview.el.hasClass( c );
-		} ),
+		classes.every( ( c ) => preview.el.hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
@@ -1035,9 +1033,7 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function 
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
-		classes.every( function ( c ) {
-			return preview.el.hasClass( c );
-		} ),
+		classes.every( ( c ) => preview.el.hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
@@ -1081,9 +1077,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
-		classes.every( function ( c ) {
-			return preview.el.hasClass( c );
-		} ),
+		classes.every( ( c ) => preview.el.hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
@@ -1128,9 +1122,7 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
-		classes.every( function ( c ) {
-			return preview.el.hasClass( c );
-		} ),
+		classes.every( ( c ) => preview.el.hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
@@ -1171,9 +1163,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
-		classes.every( function ( c ) {
-			return preview.el.hasClass( c );
-		} ),
+		classes.every( ( c ) => preview.el.hasClass( c ) ),
 		'Classes have been added.'
 	);
 
@@ -1214,9 +1204,7 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', fun
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
-		classes.every( function ( c ) {
-			return preview.el.hasClass( c );
-		} ),
+		classes.every( ( c ) => preview.el.hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
@@ -1252,9 +1240,7 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.ok(
-		classes.every( function ( c ) {
-			return preview.el.hasClass( c );
-		} ),
+		classes.every( ( c ) => preview.el.hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(

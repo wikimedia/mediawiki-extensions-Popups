@@ -85,11 +85,13 @@ QUnit.test( 'it should show settings and update the form when shouldShow becomes
 
 	assert.strictEqual( this.render.callCount, 1,
 		'The renderer should be called only the first time' );
-	assert.strictEqual( this.rendered.setEnabled.callCount, 4,
+	assert.strictEqual( this.rendered.setEnabled.callCount, 2,
 		'The rendered form should be up to date when shown' );
-	assert.strictEqual( this.rendered.setEnabled.firstCall.args[ 1 ], true,
+	assert.deepEqual( this.rendered.setEnabled.firstCall.args[ 0 ],
+		{ page: true, reference: true },
 		'Set enabled should be called with the current enabled state' );
-	assert.strictEqual( this.rendered.setEnabled.thirdCall.args[ 1 ], false,
+	assert.deepEqual( this.rendered.setEnabled.secondCall.args[ 0 ],
+		{ page: false, reference: true },
 		'Set enabled should be called with the current enabled state' );
 	assert.strictEqual( this.rendered.show.callCount, 2,
 		'The rendered object should be showed' );

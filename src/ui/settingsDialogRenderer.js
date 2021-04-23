@@ -3,7 +3,6 @@
  */
 
 import { createSettingsDialog } from './settingsDialog';
-import { previewTypes } from '../preview/model';
 
 /**
  * Creates a render function that will create the settings dialog and return
@@ -40,16 +39,11 @@ export default function createSettingsDialogRenderer( config ) {
 			// Setup event bindings
 
 			$dialog.find( '.save' ).on( 'click', () => {
-				const $page = $dialog.find( '#mwe-popups-settings-' + previewTypes.TYPE_PAGE ),
-					$ref = $dialog.find( '#mwe-popups-settings-' + previewTypes.TYPE_REFERENCE );
-				boundActions.saveSettings( {
-					[ previewTypes.TYPE_PAGE ]: $page.is( ':checked' ),
-					[ previewTypes.TYPE_REFERENCE ]:
-						// TODO: Remove when not in Beta any more
-						config.get( 'wgPopupsReferencePreviewsBetaFeature' ) ?
-							null :
-							$ref.is( ':checked' )
+				const enabled = {};
+				$dialog.find( 'input' ).each( ( index, el ) => {
+					enabled[ el.value ] = $( el ).is( ':checked' );
 				} );
+				boundActions.saveSettings( enabled );
 			} );
 			$dialog.find( '.close, .okay' ).on( 'click', boundActions.hideSettings );
 		}
@@ -91,11 +85,13 @@ export default function createSettingsDialogRenderer( config ) {
 			/**
 			 * Update the form depending on the enabled flag
 			 *
-			 * @param {string} type
-			 * @param {boolean} enabled
+			 * @param {Object} enabled Mapping preview type identifiers to boolean flags
 			 */
-			setEnabled( type, enabled ) {
-				$dialog.find( '#mwe-popups-settings-' + type ).prop( 'checked', enabled );
+			setEnabled( enabled ) {
+				Object.keys( enabled ).forEach( ( type ) => {
+					$dialog.find( '#mwe-popups-settings-' + type )
+						.prop( 'checked', enabled[ type ] );
+				} );
 			}
 		};
 	};

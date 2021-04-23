@@ -1,7 +1,7 @@
 import getPageviewTracker, { getSendBeacon, limitByEncodedURILength } from '../../src/getPageviewTracker';
 
 QUnit.module( 'ext.popups#getPageviewTracker', {
-	beforeEach: function () {
+	beforeEach() {
 		this.makeBeaconUrl = this.sandbox.stub();
 		this.prepare = this.sandbox.stub();
 		this.trackerGetter = () => ( { makeBeaconUrl: this.makeBeaconUrl,

@@ -423,7 +423,7 @@ export function hideSettings() {
  * See docs/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
  * details.
  *
- * @param {Object} enabled
+ * @param {Object} enabled Mapping preview type identifiers to boolean flags
  * @return {Redux.Thunk}
  */
 export function saveSettings( enabled ) {

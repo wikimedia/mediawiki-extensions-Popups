@@ -1,5 +1,3 @@
-import { previewTypes } from '../preview/model';
-
 /**
  * Creates an instance of the settings change listener.
  *
@@ -28,11 +26,7 @@ export default function settings( boundActions, render ) {
 			}
 
 			// Update the UI settings with the current settings
-			settingsObj.setEnabled( previewTypes.TYPE_PAGE,
-				newState.preview.enabled[ previewTypes.TYPE_PAGE ] );
-			settingsObj.setEnabled( previewTypes.TYPE_REFERENCE,
-				newState.preview.enabled[ previewTypes.TYPE_REFERENCE ] );
-
+			settingsObj.setEnabled( newState.preview.enabled );
 			settingsObj.show();
 		} else if (
 			oldState.settings.shouldShow === true &&
