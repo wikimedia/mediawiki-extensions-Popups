@@ -15,8 +15,8 @@ export function createSettingsDialog( isReferencePreviewsInBeta ) {
 	const choices = [
 		{
 			id: previewTypes.TYPE_PAGE,
-			name: mw.msg( 'popups-settings-option-simple' ),
-			description: mw.msg( 'popups-settings-option-simple-description' )
+			name: mw.msg( 'popups-settings-option-page' ),
+			description: mw.msg( 'popups-settings-option-page-description' )
 		},
 		{
 			id: previewTypes.TYPE_REFERENCE,
