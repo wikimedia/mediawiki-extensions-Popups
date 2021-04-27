@@ -57,6 +57,12 @@ class PopupsContext {
 	public const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups';
 
 	/**
+	 * User preference key to enable/disable Reference Previews. Named
+	 * "mwe-popups-referencePreviews-enabled" in localStorage for anonymous users.
+	 */
+	public const REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA = 'popups-reference-previews';
+
+	/**
 	 * User preference key to enable/disable Reference Previews
 	 */
 	public const REFERENCE_PREVIEWS_PREFERENCE_NAME = 'popupsreferencepreviews';
@@ -152,7 +158,7 @@ class PopupsContext {
 				self::REFERENCE_PREVIEWS_PREFERENCE_NAME
 			);
 		}
-		return $user->getBoolOption( self::REFERENCE_PREVIEWS_PREFERENCE_NAME );
+		return $user->getBoolOption( self::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA );
 	}
 
 	/**

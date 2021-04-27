@@ -288,7 +288,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$this->assertCount( 3 - $beta, $userOptions );
 		$this->assertSame( '1', $userOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 		if ( $beta === false ) {
-			$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME ] );
+			$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA ] );
 		}
 	}
 
@@ -304,7 +304,7 @@ class PopupsHooksTest extends MediaWikiTestCase {
 			->method( 'setOption' )
 			->withConsecutive(
 				[ 'popups', $expectedState ],
-				[ 'popupsreferencepreviews', $expectedState ]
+				[ 'popups-reference-previews', $expectedState ]
 			);
 
 		$this->setMwGlobals( [
