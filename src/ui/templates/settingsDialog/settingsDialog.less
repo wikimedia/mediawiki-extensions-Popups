@@ -50,7 +50,7 @@
 		}
 	}
 
-	main {
+	main#mwe-popups-settings-form {
 		display: block;
 		width: 350px;
 		padding: 32px 0 24px;
@@ -58,7 +58,7 @@
 
 		p {
 			color: #54595d;
-			font-size: 17px;
+			font-size: 14px;
 			margin: 16px 0 0;
 
 			&:first-child {
@@ -67,35 +67,30 @@
 		}
 
 		form {
-			img,
-			input,
-			label {
-				vertical-align: top;
-			}
-
 			img {
 				margin-right: 60px;
 			}
 
 			input {
-				display: inline-block;
-				margin: 0 10px 0 0;
-				padding: 0;
+				margin-right: 10px;
 			}
 
 			label {
 				font-size: 13px;
-				display: inline-block;
 				line-height: 16px;
 				width: 300px;
 
 				> span {
 					color: #000;
-					font-size: 18px;
+					font-size: 14px;
 					font-weight: bold;
 					display: block;
 					margin-bottom: 5px;
-					line-height: 18px;
+				}
+
+				&:before {
+					// stylelint-disable-next-line declaration-no-important
+					top: @size-input-binary / 2 !important;
 				}
 			}
 		}
