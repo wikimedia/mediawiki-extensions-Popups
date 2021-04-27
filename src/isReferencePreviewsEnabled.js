@@ -33,6 +33,11 @@ export default function isReferencePreviewsEnabled( user, userSettings, config )
 		return userSettings.isReferencePreviewsEnabled();
 	}
 
+	// TODO: Remove when not in Beta any more
+	if ( config.get( 'wgPopupsReferencePreviews' ) ) {
+		return true;
+	}
+
 	// Registered users never can enable popup types at run-time.
-	return mw.user.options.get( 'popupsreferencepreviews' ) === '1' ? true : null;
+	return mw.user.options.get( 'popups-reference-previews' ) === '1' ? true : null;
 }

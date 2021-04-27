@@ -131,7 +131,7 @@ class PopupsHooks {
 		}
 
 		return [
-			PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME => $option
+			PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA => $option
 		];
 	}
 
@@ -224,7 +224,7 @@ class PopupsHooks {
 		if ( $config->get( 'PopupsReferencePreviews' ) &&
 			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
 		) {
-			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = $default;
+			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA] = $default;
 		}
 	}
 
@@ -245,7 +245,7 @@ class PopupsHooks {
 		if ( $config->get( 'PopupsReferencePreviews' ) &&
 			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
 		) {
-			$user->setOption( PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME, $default );
+			$user->setOption( PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA, $default );
 		}
 	}
 
