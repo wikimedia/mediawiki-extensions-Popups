@@ -8,7 +8,7 @@
 	"popups-message": "Pregledi stranica",
 	"popups-desc": "Prikazuje sažetak prikaza sadržaja stranice kada idete sa strelicom na datoj vezi.",
 	"popups-settings-title": "Pregled stranice",
-	"popups-settings-option-simple": "Omogući",
-	"popups-settings-option-simple-description": "Brzi pregled neke teme prilikom čitanja stranice.",
+	"popups-settings-option-page": "Omogući",
+	"popups-settings-option-page-description": "Brzi pregled neke teme prilikom čitanja stranice.",
 	"popups-settings-cancel": "Otkaži"
 }

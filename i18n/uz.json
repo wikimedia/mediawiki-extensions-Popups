@@ -6,8 +6,8 @@
 		]
 	},
 	"popups-settings-title": "Qisqa tanishuv",
-	"popups-settings-option-simple": "Oddiy",
-	"popups-settings-option-simple-description": "Sahifadagi birinchi gap va rasm koʻrsatiladi. Mutolaa etuvchilar uchun tavsiya etiladi.",
+	"popups-settings-option-page": "Oddiy",
+	"popups-settings-option-page-description": "Sahifadagi birinchi gap va rasm koʻrsatiladi. Mutolaa etuvchilar uchun tavsiya etiladi.",
 	"popups-settings-save": "Saqlash",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Bekor qilish",
