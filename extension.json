@@ -223,6 +223,7 @@
 				"mediawiki.storage",
 				"mediawiki.Title",
 				"mediawiki.ui.button",
+				"mediawiki.ui.checkbox",
 				"mediawiki.ui.icon",
 				"mediawiki.Uri",
 				"mediawiki.user",
