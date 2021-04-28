@@ -17,20 +17,21 @@ export default function pageviews(
 	boundActions, pageviewTracker
 ) {
 	return ( oldState, newState ) => {
-		let page;
+		let page, pageview;
 		if ( newState.pageviews && newState.pageviews.pageview && newState.pageviews.page ) {
 			page = newState.pageviews.page;
-			pageviewTracker( 'event.VirtualPageView', $.extend( {},
-				{
-					/* eslint-disable camelcase */
-					source_page_id: page.id,
-					source_namespace: page.namespaceId,
-					source_title: page.title,
-					source_url: page.url
-					/* eslint-enable camelcase */
-				},
-				newState.pageviews.pageview )
-			);
+			pageview = newState.pageviews.pageview;
+			pageviewTracker( 'event.VirtualPageView', {
+				/* eslint-disable camelcase */
+				source_page_id: page.id,
+				source_namespace: page.namespaceId,
+				source_title: mw.Title.newFromText( page.title ).getPrefixedDb(),
+				source_url: page.url,
+				page_id: pageview.page_id,
+				page_namespace: pageview.page_namespace,
+				page_title: mw.Title.newFromText( pageview.page_title ).getPrefixedDb()
+				/* eslint-enable camelcase */
+			} );
 			// Clear the pageview now its been logged.
 			boundActions.pageviewLogged();
 		}
