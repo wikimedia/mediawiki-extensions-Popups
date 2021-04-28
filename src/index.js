@@ -170,7 +170,8 @@ function registerChangeListeners(
 		pagePreviewGateway = createPagePreviewGateway( mw.config ),
 		referenceGateway = createReferenceGateway(),
 		userSettings = createUserSettings( mw.storage ),
-		settingsDialog = createSettingsDialogRenderer( mw.config ),
+		referencePreviewsState = isReferencePreviewsEnabled( mw.user, userSettings, mw.config ),
+		settingsDialog = createSettingsDialogRenderer( referencePreviewsState !== null ),
 		experiments = createExperiments( mw.experiments ),
 		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
 		// Virtual pageviews are always tracked.
@@ -187,8 +188,7 @@ function registerChangeListeners(
 		initiallyEnabled = {
 			[ previewTypes.TYPE_PAGE ]:
 				createIsPagePreviewsEnabled( mw.user, userSettings, mw.config ),
-			[ previewTypes.TYPE_REFERENCE ]:
-				isReferencePreviewsEnabled( mw.user, userSettings, mw.config )
+			[ previewTypes.TYPE_REFERENCE ]: referencePreviewsState
 		};
 
 	// If debug mode is enabled, then enable Redux DevTools.
