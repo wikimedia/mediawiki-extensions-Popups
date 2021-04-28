@@ -12,7 +12,7 @@
 		</g>
 		<use fill="#fff" xlink:href="#b"/>
 		<rect width="199" height="167" x="1" y="11" stroke="#a2a9b1" stroke-width="2" rx="2"/>
-		<g opacity=".4" fill="#72777d" transform="translate(67 35)">
+		<g fill="#72777d" opacity=".4" transform="translate(67 35)">
 			<rect width="73" height="2" y="7" fill="#c8ccd1" rx="1"/>
 			<rect width="81" height="2" y="31" rx="1"/>
 			<rect width="32" height="2" y="85" rx="1"/>
@@ -44,6 +44,6 @@
 			<circle cx="6" cy="1.5" r="1.5"/>
 			<circle cx="10.5" cy="1.5" r="1.5"/>
 		</g>
-		<path stroke="#ff00af" d="M174.5 159.5h54.01" stroke-linecap="square"/>
+		<path stroke="#ff00af" stroke-linecap="square" d="M174.5 159.5h54.01"/>
 	</g>
 </svg>
