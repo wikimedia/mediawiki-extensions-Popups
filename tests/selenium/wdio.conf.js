@@ -89,12 +89,16 @@ exports.config = {
 
 	// Test reporter for stdout.
 	// See also: http://webdriver.io/guide/testrunner/reporters.html
-	reporters: [ 'spec', 'junit' ],
-	reporterOptions: {
-		junit: {
-			outputDir: logPath
-		}
-	},
+	reporters: [
+		'spec',
+		[ 'junit', {
+			outputDir: logPath,
+			outputFileFormat: function () {
+				const ISOString = new Date().toISOString().replace( /[:.]/g, '-' );
+				return `WDIO.xunit-${ISOString}.xml`;
+			}
+		} ]
+	],
 
 	// Options to be passed to Mocha.
 	// See the full list at http://mochajs.org/
