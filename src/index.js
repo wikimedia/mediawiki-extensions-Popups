@@ -21,7 +21,6 @@ import changeListeners from './changeListeners';
 import * as actions from './actions';
 import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
-import getPageviewTracker, { getSendBeacon } from './getPageviewTracker';
 import { previewTypes, getPreviewType } from './preview/model';
 import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
 import setUserConfigFlags from './setUserConfigFlags';
@@ -66,6 +65,18 @@ const EXCLUDED_LINK_SELECTORS = [
  */
 function getStatsvTracker( user, config, experiments ) {
 	return isStatsvEnabled( user, config, experiments ) ? mw.track : () => {};
+}
+
+/**
+ * Gets the appropriate analytics event tracker for logging virtual pageviews.
+ *
+ * @param {Object} config
+ * @return {EventTracker}
+ */
+function getPageviewTracker( config ) {
+	return config.get( 'wgPopupsVirtualPageViews' ) ? mw.track : () => {
+		// NOP
+	};
 }
 
 /**
@@ -173,12 +184,7 @@ function registerChangeListeners(
 		settingsDialog = createSettingsDialogRenderer( mw.config ),
 		experiments = createExperiments( mw.experiments ),
 		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
-		// Virtual pageviews are always tracked.
-		pageviewTracker = getPageviewTracker( mw.config,
-			mw.loader.using,
-			() => mw.eventLog,
-			getSendBeacon( window.navigator )
-		),
+		pageviewTracker = getPageviewTracker( mw.config ),
 		eventLoggingTracker = getEventLoggingTracker(
 			mw.user,
 			mw.config,
