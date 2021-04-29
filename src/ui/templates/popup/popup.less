@@ -73,6 +73,13 @@
 		opacity: 0.67;
 		.transition( ~'background-color 100ms, opacity 100ms' );
 
+		// Reset properties modified by MinervaNeue
+		.mw-ui-icon-element {
+			padding: 0;
+			// Same as @width-icon--legacy
+			width: @size-icon + 2 * @width-icon-gutter;
+		}
+
 		&:hover {
 			background-color: @colorGray14;
 		}
