@@ -226,6 +226,8 @@ function registerChangeListeners(
 		mw.user,
 		userSettings,
 		mw.config,
+		// TODO: Is this incompatibility with Firefox 4 intentional?
+		// eslint-disable-next-line compat/compat
 		window.location.href
 	);
 
