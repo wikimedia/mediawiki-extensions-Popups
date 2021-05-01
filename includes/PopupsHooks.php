@@ -236,16 +236,26 @@ class PopupsHooks {
 	 */
 	public static function onLocalUserCreated( User $user, $isAutoCreated ) {
 		/** @var Config $config */
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getService( 'Popups.Config' );
 		$default = $config->get( 'PopupsOptInStateForNewAccounts' );
-		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $default );
+		$userOptionsManager = $services->getUserOptionsManager();
+		$userOptionsManager->setOption(
+			$user,
+			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+			$default
+		);
 
 		// As long as in Beta, don't set a default for Reference Previews. Rely on it either being
 		// null (= disabled), or follow what the "betafeatures-auto-enroll" flag says.
 		if ( $config->get( 'PopupsReferencePreviews' ) &&
 			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
 		) {
-			$user->setOption( PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA, $default );
+			$userOptionsManager->setOption(
+				$user,
+				PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA,
+				$default
+			);
 		}
 	}
 

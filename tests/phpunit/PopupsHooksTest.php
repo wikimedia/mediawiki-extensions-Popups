@@ -18,6 +18,8 @@
  * @file
  * @ingroup extensions
  */
+
+use MediaWiki\User\UserOptionsManager;
 use Popups\PopupsContext;
 use Popups\PopupsHooks;
 use Psr\Log\LoggerInterface;
@@ -300,12 +302,15 @@ class PopupsHooksTest extends MediaWikiTestCase {
 		$expectedState = '1';
 
 		$userMock = $this->createMock( User::class );
-		$userMock->expects( $this->exactly( 2 - $beta ) )
+
+		$userOptionsManagerMock = $this->createMock( UserOptionsManager::class );
+		$userOptionsManagerMock->expects( $this->exactly( 2 - $beta ) )
 			->method( 'setOption' )
 			->withConsecutive(
-				[ 'popups', $expectedState ],
-				[ 'popups-reference-previews', $expectedState ]
+				[ $userMock, 'popups', $expectedState ],
+				[ $userMock, 'popups-reference-previews', $expectedState ]
 			);
+		$this->setService( 'UserOptionsManager', $userOptionsManagerMock );
 
 		$this->setMwGlobals( [
 			'wgPopupsOptInStateForNewAccounts' => $expectedState,
