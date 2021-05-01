@@ -1,3 +1,2 @@
 resources/dist/** -diff -whitespace
 resources/dist/.eslintrc.json diff whitespace
-package-lock.json -diff -whitespace
