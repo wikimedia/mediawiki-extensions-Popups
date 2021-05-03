@@ -8,10 +8,10 @@ import { previewTypes } from '../preview/model';
 /**
  * Create the settings dialog shown to anonymous users.
  *
- * @param {boolean} isReferencePreviewsInBeta
+ * @param {boolean} referencePreviewsAvaliable
  * @return {JQuery} settings dialog
  */
-export function createSettingsDialog( isReferencePreviewsInBeta ) {
+export function createSettingsDialog( referencePreviewsAvaliable ) {
 	const choices = [
 		{
 			id: previewTypes.TYPE_PAGE,
@@ -26,7 +26,7 @@ export function createSettingsDialog( isReferencePreviewsInBeta ) {
 	];
 
 	// TODO: Remove when not in Beta any more
-	if ( isReferencePreviewsInBeta ) {
+	if ( !referencePreviewsAvaliable ) {
 		// Anonymous users can't access reference previews as long as they are in beta
 		choices.splice( 1, 1 );
 	}

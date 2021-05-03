@@ -8,10 +8,10 @@ import { createSettingsDialog } from './settingsDialog';
  * Creates a render function that will create the settings dialog and return
  * a set of methods to operate on it
  *
- * @param {mw.Map} config
+ * @param {boolean} referencePreviewsAvaliable
  * @return {Function} render function
  */
-export default function createSettingsDialogRenderer( config ) {
+export default function createSettingsDialogRenderer( referencePreviewsAvaliable ) {
 	/**
 	 * Cached settings dialog
 	 *
@@ -33,7 +33,7 @@ export default function createSettingsDialogRenderer( config ) {
 	 */
 	return ( boundActions ) => {
 		if ( !$dialog ) {
-			$dialog = createSettingsDialog( config.get( 'wgPopupsReferencePreviewsBetaFeature' ) );
+			$dialog = createSettingsDialog( referencePreviewsAvaliable );
 			$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
 
 			// Setup event bindings
