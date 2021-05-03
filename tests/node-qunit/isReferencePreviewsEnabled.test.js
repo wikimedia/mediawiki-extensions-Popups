@@ -18,6 +18,135 @@ QUnit.module( 'ext.popups#isReferencePreviewsEnabled', {
 	}
 } );
 
+QUnit.test( 'all relevant combinations of flags', ( assert ) => {
+	[
+		{
+			testCase: 'enabled for an anonymous user',
+			wgPopupsReferencePreviews: true,
+			wgPopupsConflictsWithRefTooltipsGadget: false,
+			isMobile: false,
+			isAnon: true,
+			enabledByAnon: true,
+			enabledByRegistered: false,
+			expected: true
+		},
+		{
+			testCase: 'turned off via the feature flag (anonymous user)',
+			wgPopupsReferencePreviews: false,
+			wgPopupsConflictsWithRefTooltipsGadget: false,
+			isMobile: false,
+			isAnon: true,
+			enabledByAnon: true,
+			enabledByRegistered: true,
+			expected: null
+		},
+		{
+			testCase: 'not available because of a conflicting gadget (anonymous user)',
+			wgPopupsReferencePreviews: true,
+			wgPopupsConflictsWithRefTooltipsGadget: true,
+			isMobile: false,
+			isAnon: true,
+			enabledByAnon: true,
+			enabledByRegistered: true,
+			expected: null
+		},
+		{
+			testCase: 'not available in the mobile skin (anonymous user)',
+			wgPopupsReferencePreviews: true,
+			wgPopupsConflictsWithRefTooltipsGadget: false,
+			isMobile: true,
+			isAnon: true,
+			enabledByAnon: true,
+			enabledByRegistered: true,
+			expected: null
+		},
+		{
+			testCase: 'manually disabled by the anonymous user',
+			wgPopupsReferencePreviews: true,
+			wgPopupsConflictsWithRefTooltipsGadget: false,
+			isMobile: false,
+			isAnon: true,
+			enabledByAnon: false,
+			enabledByRegistered: true,
+			expected: false
+		},
+		{
+			testCase: 'enabled for a registered user',
+			wgPopupsReferencePreviews: true,
+			wgPopupsConflictsWithRefTooltipsGadget: false,
+			isMobile: false,
+			isAnon: false,
+			enabledByAnon: false,
+			enabledByRegistered: true,
+			expected: true
+		},
+		{
+			testCase: 'turned off via the feature flag (registered user)',
+			wgPopupsReferencePreviews: false,
+			wgPopupsConflictsWithRefTooltipsGadget: false,
+			isMobile: false,
+			isAnon: false,
+			enabledByAnon: true,
+			enabledByRegistered: true,
+			expected: null
+		},
+		{
+			testCase: 'not available because of a conflicting gadget (registered user)',
+			wgPopupsReferencePreviews: true,
+			wgPopupsConflictsWithRefTooltipsGadget: true,
+			isMobile: false,
+			isAnon: false,
+			enabledByAnon: true,
+			enabledByRegistered: true,
+			expected: null
+		},
+		{
+			testCase: 'not available in the mobile skin (registered user)',
+			wgPopupsReferencePreviews: true,
+			wgPopupsConflictsWithRefTooltipsGadget: false,
+			isMobile: true,
+			isAnon: false,
+			enabledByAnon: true,
+			enabledByRegistered: true,
+			expected: null
+		},
+		{
+			// TODO: This combination will make much more sense when the server-side
+			// wgPopupsReferencePreviews flag doesn't include the user's setting any more
+			testCase: 'manually disabled by the registered user',
+			wgPopupsReferencePreviews: false,
+			wgPopupsConflictsWithRefTooltipsGadget: false,
+			isMobile: false,
+			isAnon: false,
+			enabledByAnon: true,
+			enabledByRegistered: false,
+			expected: null
+		}
+	].forEach( ( data ) => {
+		const user = { isAnon: () => data.isAnon },
+			userSettings = {
+				isReferencePreviewsEnabled: () => data.isAnon ?
+					data.enabledByAnon :
+					assert.ok( false, 'not expected to be called' )
+			},
+			config = {
+				get: ( key ) => key === 'skin' && data.isMobile ? 'minerva' : data[ key ]
+			};
+
+		if ( data.isAnon ) {
+			mw.user.options.get = () => assert.ok( false, 'not expected to be called' );
+		} else {
+			mw.user.options.get = () => data.enabledByRegistered ? '1' : '0';
+		}
+
+		assert.strictEqual(
+			isReferencePreviewsEnabled( user, userSettings, config ),
+			data.expected,
+			data.testCase
+		);
+	} );
+} );
+
 QUnit.test( 'it should display reference previews when conditions are fulfilled', ( assert ) => {
 	const user = stubs.createStubUser( false ),
 		userSettings = createStubUserSettings( false ),
