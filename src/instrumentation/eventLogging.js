@@ -25,5 +25,6 @@ export function isEnabled( user, config, window ) {
 
 	return config.get( 'wgPopupsEventLogging' ) &&
 		window.navigator &&
+		// eslint-disable-next-line compat/compat
 		typeof window.navigator.sendBeacon === 'function';
 }

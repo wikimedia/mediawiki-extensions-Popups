@@ -9,12 +9,15 @@
  * @return {boolean}
  */
 function isOwnPageAnchorLink( el ) {
+	// TODO: Is this incompatibility with Firefox 4 intentional?
+	/* eslint-disable compat/compat */
 	return el.hash &&
 		// Note: The protocol is ignored for the sake of simplicity.
 		// Can't compare username and password because they aren't readable from `location`.
 		el.host === location.host &&
 		el.pathname === location.pathname &&
 		el.search === location.search;
+	/* eslint-enable compat/compat */
 }
 
 /**

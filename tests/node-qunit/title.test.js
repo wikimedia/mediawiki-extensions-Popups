@@ -301,5 +301,5 @@ QUnit.test( 'it should fail gracefully on anchor links with broken encoding', fu
 	const config = new Map();
 	config.set( 'wgPageName', 'Talk:Page' );
 
-	assert.propEqual( fromElement( el, config ), null );
+	assert.strictEqual( fromElement( el, config ), null );
 } );
