@@ -48,10 +48,11 @@ class PopupsPage extends Page {
 		Util.waitForModuleState( 'mediawiki.base' );
 		return browser.execute( function ( use ) {
 			return mw.loader.using( 'mediawiki.api' ).then( function () {
-				return new mw.Api().saveOption(
-					'popupsreferencepreviews',
-					use ? '1' : '0'
-				);
+				return new mw.Api().saveOptions( {
+					// TODO: Remove the first option when all Beta code is gone
+					popupsreferencepreviews: use ? '1' : '0',
+					'popups-reference-previews': use ? '1' : '0'
+				} );
 			} );
 		}, shouldUse );
 	}
