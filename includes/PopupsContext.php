@@ -158,6 +158,12 @@ class PopupsContext {
 				self::REFERENCE_PREVIEWS_PREFERENCE_NAME
 			);
 		}
+
+		// if not in Beta then enable for anonymous users
+		if ( $user->isAnon() ) {
+			return true;
+		}
+
 		return $user->getBoolOption( self::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA );
 	}
 
