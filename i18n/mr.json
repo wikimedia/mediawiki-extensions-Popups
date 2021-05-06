@@ -1,27 +1,38 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tiven2240",
 			"V.narsikar",
 			"अभय नातू",
 			"संतोष दहिवळ"
 		]
 	},
-	"popups-message": "पानाची झलक",
+	"popups-message": "पूर्वावलोकन",
 	"popups-desc": "जेंव्हा सदस्य एखाद्या पानदुव्यावर घुटमळतो तेंव्हा, झलक दर्शविते",
-	"popups-settings-title": "पानाची झलक",
-	"popups-settings-option-page": "सक्षम करा",
+	"popups-settings-title": "पूर्वावलोकन",
+	"popups-settings-option-page": "पानाची पूर्वावलोकन",
 	"popups-settings-option-page-description": "पान वाचत असतांनाच,एखाद्या विषयाबाबतची त्वरीत-झलक प्राप्त करा.",
+	"popups-settings-option-reference": "स्रोत पूर्वावलोकन",
+	"popups-settings-option-reference-description": "पृष्ठ वाचताना संदर्भाचे द्रुत पूर्वावलोकन मिळवा",
 	"popups-settings-save": "जतन करा",
 	"popups-settings-help-ok": "झाले",
 	"popups-settings-cancel": "रद्द करा",
 	"popups-settings-help": "आपण पानाच्या तळाशी असलेला दुवा वापरुन,झलक दिसणे परत सुरु करु शकता.",
-	"popups-settings-enable": "झलक पाहण्याची सोय करा",
-	"popups-preview-no-preview": "ही झलक दाखवितांना एक मुद्दा उद्भवला",
+	"popups-settings-enable": "पूर्वावलोकन सेटिंग्ज संपादित करा",
+	"popups-settings-icon-gear-title": "पूर्वावलोकन सेटिंग्ज बदला",
+	"popups-preview-no-preview": "हे पूर्वावलोकन प्रदर्शित करताना एक समस्या आली",
 	"popups-preview-footer-read": "या पानावर जा",
 	"popups-preview-disambiguation": "हे शीर्षक एकाधिक पानांशी संबंधीत आहे",
 	"popups-preview-disambiguation-link": "यासम पाने बघा",
 	"prefs-reading": "वाचन पसंतीक्रम",
 	"popups-prefs-optin": "पानाची झलक(पान वाचत असतांना एखाद्या विषयाबाबत त्वरीत झलक प्राप्त करा):",
 	"popups-prefs-disable-nav-gadgets-info": "आपणास, पानाची झलक पाहण्यास, गॅजेट कळीमधून [[$1 |नॅव्हीगेशन पॉप-अप गॅजेट अक्षम]] करावे लागेल",
-	"popups-prefs-conflicting-gadgets-info": "काही साधने/उपकरणे व इतर अनुकुलीकरण या प्रारूपाच्या कार्यक्षमतेवर परिणाम करू शकतात. जर आपणांस समस्या येत असेल तर कृपया आपली उपकरणे व सदस्य-लेखन (वैश्विक स्तरासह) पुन्हा एकदा तपासा."
+	"popups-prefs-conflicting-gadgets-info": "काही साधने/उपकरणे व इतर अनुकुलीकरण या प्रारूपाच्या कार्यक्षमतेवर परिणाम करू शकतात. जर आपणांस समस्या येत असेल तर कृपया आपली उपकरणे व सदस्य-लेखन (वैश्विक स्तरासह) पुन्हा एकदा तपासा.",
+	"popups-refpreview-reference": "स्रोत",
+	"popups-refpreview-book": "पुस्तक स्रोत",
+	"popups-refpreview-journal": "जर्नल स्रोत",
+	"popups-refpreview-news": "बातमी स्रोत",
+	"popups-refpreview-note": "नोंद",
+	"popups-refpreview-web": "संकेतस्थळ स्रोत",
+	"popups-refpreview-beta-feature-message": "संदर्भ पूर्वावलोकन"
 }

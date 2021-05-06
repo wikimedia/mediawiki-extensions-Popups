@@ -41,5 +41,5 @@
 	"popups-refpreview-collapsible-placeholder": "Erreferentzia honek aurrebistan sartzen ez den grafiko bat du.",
 	"popups-refpreview-user-preference-label": "Gaitu erreferentzien aurrebistak (aurrebistak berehala ikusiko dituzu orri bat irakurtzean)",
 	"popups-refpreview-beta-feature-message": "Erreferentzien aurrebistak",
-	"popups-refpreview-beta-feature-description": "Erakutsi erreferentzia baten aurrebista oin-oharraren dei adierazlearen gainean jarriz.\n\nMesedez gogoan izan: If you're using the [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] gadget or the [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] gadget, ez dituzu ikusiko erreferentzien aurrebistak."
+	"popups-refpreview-beta-feature-description": "Erakutsi erreferentzia baten aurrebista oin-oharraren dei adierazlearen gainean jarriz."
 }
