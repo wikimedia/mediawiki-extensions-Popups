@@ -159,12 +159,8 @@ class PopupsContext {
 			);
 		}
 
-		// if not in Beta then enable for anonymous users
-		if ( $user->isAnon() ) {
-			return true;
-		}
-
-		return $user->getBoolOption( self::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA );
+		return !$user->isRegistered() ||
+			$user->getBoolOption( self::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA );
 	}
 
 	/**
@@ -192,9 +188,14 @@ class PopupsContext {
 	 * @return bool
 	 */
 	public function shouldSendModuleToUser( \User $user ) {
-		return $user->isAnon() ||
-			$user->getBoolOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME ) ||
-			$this->isReferencePreviewsEnabled( $user );
+		if ( !$user->isRegistered() ) {
+			return true;
+		}
+
+		$shouldLoadPagePreviews = $user->getBoolOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME );
+		$shouldLoadReferencePreviews = $this->isReferencePreviewsEnabled( $user );
+
+		return $shouldLoadPagePreviews || $shouldLoadReferencePreviews;
 	}
 
 	/**
