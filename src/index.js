@@ -246,7 +246,7 @@ function registerChangeListeners(
 		selectors.push( '#mw-content-text .reference a[ href*="#" ]' );
 	}
 	if ( !selectors.length ) {
-		mw.log.error( 'ext.popups should not even be loaded!' );
+		mw.log.warn( 'ext.popups was loaded but everything is disabled' );
 		return;
 	}
 	const validLinkSelector = selectors.join( ', ' );
