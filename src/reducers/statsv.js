@@ -4,7 +4,7 @@ import nextState from './nextState';
 /**
  * Reducer for actions that may result in an event being logged via statsv.
  *
- * @param {Object} state
+ * @param {Object|undefined} state
  * @param {Object} action
  * @return {Object} state after action
  */
