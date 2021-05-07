@@ -70,7 +70,8 @@ export default function createReferenceGateway() {
 			extract: $referenceText.html(),
 			type: previewTypes.TYPE_REFERENCE,
 			referenceType: scrapeReferenceType( $referenceText ),
-			sourceElementId: el && el.parentNode && el.parentNode.id
+			// Note: Even the top-most HTMLHtmlElement is guaranteed to have a parent.
+			sourceElementId: el.parentNode.id
 		};
 
 		return $.Deferred().resolve( model ).promise( { abort() {} } );

@@ -42,6 +42,9 @@ QUnit.module( 'ext.popups#renderer', {
 		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 
 		mw.msg = ( key ) => `<${key}>`;
+		mw.message = ( key ) => {
+			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${key}>` };
+		};
 
 		mw.html = {
 			escape: ( str ) => str && str.replace( /'/g, '&apos;' ).replace( /</g, '&lt;' )
@@ -60,6 +63,7 @@ QUnit.module( 'ext.popups#renderer', {
 		// Restore getElementsById to its original state.
 		document.getElementById = this.getElementById;
 		mw.msg = null;
+		mw.message = null;
 		mw.html = null;
 	}
 } );
