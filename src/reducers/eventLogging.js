@@ -125,7 +125,7 @@ function createClosingEvent( interaction ) {
  *
  * [0]: https://meta.wikimedia.org/wiki/Schema:Popups
  *
- * @param {Object} state
+ * @param {Object|undefined} state
  * @param {Object} action
  * @return {Object} The state resulting from reducing the action with the
  *  current state

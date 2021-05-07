@@ -4,7 +4,7 @@ import nextState from './nextState';
 /**
  * Reducer for actions that modify the state of the settings
  *
- * @param {Object} state
+ * @param {Object|undefined} state
  * @param {Object} action
  * @return {Object} state after action
  */

@@ -119,7 +119,7 @@ function getDwellDelay( type ) {
  *
  * @param {Gateway} gateway
  * @param {mw.Title} title
- * @param {Element} el
+ * @param {HTMLAnchorElement} el
  * @param {string} token The unique token representing the link interaction that
  *  triggered the fetch
  * @param {string} type One of the previewTypes.TYPE_… constants
@@ -216,7 +216,7 @@ export function fetch( gateway, title, el, token, type ) {
  * their mouse or by focussing it using their keyboard or an assistive device.
  *
  * @param {mw.Title} title
- * @param {Element} el
+ * @param {HTMLAnchorElement} el
  * @param {ext.popups.Measures} measures
  * @param {Gateway} gateway
  * @param {Function} generateToken
@@ -305,7 +305,7 @@ export function abandon() {
  * Represents the user clicking on a link with their mouse, keyboard, or an
  * assistive device.
  *
- * @param {Element} el
+ * @param {HTMLAnchorElement} el
  * @return {Object}
  */
 export function linkClick( el ) {
