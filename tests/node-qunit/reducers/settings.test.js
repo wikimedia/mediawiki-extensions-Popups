@@ -17,34 +17,50 @@ QUnit.test( '@@INIT', ( assert ) => {
 	);
 } );
 
-QUnit.test( 'BOOT', ( assert ) => {
+QUnit.test( 'BOOT with a single disabled popup type', ( assert ) => {
 	const action = {
 		type: actionTypes.BOOT,
 		initiallyEnabled: { page: false },
-		user: {
-			isAnon: true
-		}
+		user: { isAnon: true }
 	};
-
 	assert.deepEqual(
 		settings( {}, action ),
-		{
-			shouldShowFooterLink: true
-		},
+		{ shouldShowFooterLink: true },
 		'The boot state shows a footer link.'
 	);
 
-	// ---
-
-	// And when the user is logged out...
 	action.user.isAnon = false;
-
 	assert.deepEqual(
 		settings( {}, action ),
-		{
-			shouldShowFooterLink: false
-		},
+		{ shouldShowFooterLink: false },
 		'If the user is logged in, then it doesn\'t signal that the footer link should be shown.'
+	);
+} );
+
+QUnit.test( 'BOOT with multiple popup types', ( assert ) => {
+	const action = {
+		type: actionTypes.BOOT,
+		initiallyEnabled: { page: true, reference: null },
+		user: { isAnon: true }
+	};
+	assert.deepEqual(
+		settings( {}, action ),
+		{ shouldShowFooterLink: false },
+		'Footer link ignores unavailable popup types.'
+	);
+
+	action.initiallyEnabled.reference = true;
+	assert.deepEqual(
+		settings( {}, action ),
+		{ shouldShowFooterLink: false },
+		'Footer link is pointless when there is nothing to enable.'
+	);
+
+	action.initiallyEnabled.reference = false;
+	assert.deepEqual(
+		settings( {}, action ),
+		{ shouldShowFooterLink: true },
+		'Footer link appears when at least one popup type is disabled.'
 	);
 } );
 
@@ -138,6 +154,11 @@ QUnit.test( 'SETTINGS_CHANGE with two preview types', ( assert ) => {
 			{ shouldShow: true, showHelp: true, shouldShowFooterLink: true }
 		],
 		[
+			'One got disabled, the other enabled',
+			false, true, true, false,
+			{ shouldShow: true, showHelp: true, shouldShowFooterLink: true }
+		],
+		[
 			'Both got disabled',
 			true, false, true, false,
 			{ shouldShow: true, showHelp: true, shouldShowFooterLink: true }
@@ -152,15 +173,22 @@ QUnit.test( 'SETTINGS_CHANGE with two preview types', ( assert ) => {
 			false, true, false, true,
 			{ shouldShow: false, showHelp: false, shouldShowFooterLink: false }
 		]
-	].forEach( ( testCase, index ) => {
+	].forEach( ( [
+		message,
+		pageBefore,
+		pageAfter,
+		referenceBefore,
+		referenceAfter,
+		expected
+	] ) => {
 		assert.deepEqual(
 			settings( {}, {
 				type: actionTypes.SETTINGS_CHANGE,
-				oldValue: { page: testCase[ 1 ], reference: testCase[ 3 ] },
-				newValue: { page: testCase[ 2 ], reference: testCase[ 4 ] }
+				oldValue: { page: pageBefore, reference: referenceBefore },
+				newValue: { page: pageAfter, reference: referenceAfter }
 			} ),
-			testCase[ 5 ],
-			testCase[ 0 ] || 'Test case #' + index
+			expected,
+			message
 		);
 	} );
 } );
