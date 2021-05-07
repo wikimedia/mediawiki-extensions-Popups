@@ -9,7 +9,7 @@
  * @return {boolean}
  */
 function isOwnPageAnchorLink( el ) {
-	// TODO: Is this incompatibility with Firefox 4 intentional?
+	// Probably a false positive. MediaWiki 1.36 dropped Firefox 4 support anyway.
 	/* eslint-disable compat/compat */
 	return el.hash &&
 		// Note: The protocol is ignored for the sake of simplicity.

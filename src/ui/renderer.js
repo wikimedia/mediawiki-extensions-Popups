@@ -517,7 +517,16 @@ export function layoutPreview(
 		);
 	}
 
-	// eslint-disable-next-line mediawiki/class-doc
+	// The following classes are used here:
+	// * flipped-x
+	// * flipped-x-y
+	// * flipped-y
+	// * mwe-popups-fade-in-down
+	// * mwe-popups-fade-in-up
+	// * mwe-popups-image-pointer
+	// * mwe-popups-is-not-tall
+	// * mwe-popups-is-tall
+	// * mwe-popups-no-image-pointer
 	popup.addClass( classes.join( ' ' ) );
 
 	popup.css( {
