@@ -17,5 +17,6 @@
 	"prefs-reading": "Йешаран гӀирс",
 	"popups-prefs-optin": "АгӀонашка хьалххе хьажар (агӀонаш йоьшушехь гойту хьалххе хьажар):",
 	"popups-prefs-conflicting-gadgets-info": "Цхьайолу гаджеташ а, нисдаран гӀирсаш а хӀокху функцин халонаш йан мега. Хьайна халонаш хиллехь дехар до гаджеташка а, долара скрипташка а хьажа.",
-	"popups-refpreview-beta-feature-description": "''' ХӀокху функцега болхбайта дӀайайъа гаджет «{{int:gadget-referenceTooltips}}» [[Белхан:Нисдаран гӀирс#mw-prefsection-gadgets|гаджетийн агӀрнгахь]].'''\n\nТӀетовжаман лоьмар тӀе цамза хьажича билгаодахаршца хаам гучубоккху. Хьан [[Wikipedia:Tools/Navigation popups|навигацин корийн гаджет]] латина йелахь, хӀокху функцено болхбира бац"
+	"popups-refpreview-beta-feature-message": "ТӀетовжамашка хьалххе хьажар",
+	"popups-refpreview-beta-feature-description": "''' ХӀокху функцега болхбайта дӀайайъа гаджет «{{int:gadget-referenceTooltips}}» [[Белхан:Нисдаран гӀирс#mw-prefsection-gadgets|гаджетийн агӀонгахь]].'''\n\nТӀетовжаман лоьмар тӀе цамза хьажича билгаодахаршца хаам гучубоккху. Хьан [[Wikipedia:Tools/Navigation popups|навигацин корийн гаджет]] латина йелахь, хӀокху функцено болхбира бац"
 }
