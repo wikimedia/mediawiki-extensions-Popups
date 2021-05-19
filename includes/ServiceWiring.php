@@ -11,31 +11,31 @@ use Popups\UserPreferencesChangeHandler;
  * @codeCoverageIgnore
  */
 return [
-	'Popups.Config' => function ( MediaWikiServices $services ) {
+	'Popups.Config' => static function ( MediaWikiServices $services ) {
 		return $services->getService( 'ConfigFactory' )
 			->makeConfig( PopupsContext::EXTENSION_NAME );
 	},
-	'Popups.GadgetsIntegration' => function ( MediaWikiServices $services ) {
+	'Popups.GadgetsIntegration' => static function ( MediaWikiServices $services ) {
 		return new PopupsGadgetsIntegration(
 			$services->getService( 'Popups.Config' ),
 			ExtensionRegistry::getInstance()
 		);
 	},
-	'Popups.EventLogger' => function ( MediaWikiServices $services ) {
+	'Popups.EventLogger' => static function ( MediaWikiServices $services ) {
 		$factory = new EventLoggerFactory(
 			ExtensionRegistry::getInstance()
 		);
 		return $factory->get();
 	},
-	'Popups.UserPreferencesChangeHandler' => function ( MediaWikiServices $services ) {
+	'Popups.UserPreferencesChangeHandler' => static function ( MediaWikiServices $services ) {
 		return new UserPreferencesChangeHandler(
 			$services->getService( 'Popups.Context' )
 		);
 	},
-	'Popups.Logger' => function ( MediaWikiServices $services ) {
+	'Popups.Logger' => static function ( MediaWikiServices $services ) {
 		return LoggerFactory::getInstance( PopupsContext::LOGGER_CHANNEL );
 	},
-	'Popups.Context' => function ( MediaWikiServices $services ) {
+	'Popups.Context' => static function ( MediaWikiServices $services ) {
 		return new PopupsContext(
 			$services->getService( 'Popups.Config' ),
 			ExtensionRegistry::getInstance(),
