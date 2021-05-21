@@ -48,7 +48,7 @@
 	"popups-refpreview-news": "Référence d’actualités",
 	"popups-refpreview-note": "Note",
 	"popups-refpreview-web": "Référence du web",
-	"popups-refpreview-collapsible-placeholder": "Cette référence inclut un graphique qui ne rentre pas dans l’aperçu.",
+	"popups-refpreview-collapsible-placeholder": "Cette référence inclut une illustration qui ne rentre pas dans l’aperçu.",
 	"popups-refpreview-user-preference-label": "Activer les aperçus des références (obtenir des aperçus rapides d’une référence lors de la lecture d’une page)",
 	"popups-refpreview-beta-feature-message": "Aperçus de référence",
 	"popups-refpreview-beta-feature-description": "Afficher un aperçu de la référence lors du survol de sa marque de renvoi.\n\nVeuillez prendre note : si vous utilisez le gadget <em>[//fr.wikipedia.org/wiki/Utilisateur:Leag/Navigation_popups Navigation popups]</em> ou le gadget <em>[[mw:Special:MyLanguage/Reference Tooltips|Infobulles de référence]]</em>, vous ne verrez pas l’aperçu des références."
