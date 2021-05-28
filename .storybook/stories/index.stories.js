@@ -6,7 +6,6 @@
  */
 // NOTE: The following import overrides the webpack config for this specific LESS file in order to
 // omit the 'style-loader' and import the content as a string.
-// The "./mocks/less" path is hard-coded and should be kept in sync with the path in webpack.config.js
 import PopupsCSSString from '../../src/ui/index.less';
 import '../mocks/custom.less';
 // The CSSJanus library is used to transform CSS for RTL languages.
