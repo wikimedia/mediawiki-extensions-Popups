@@ -19,6 +19,7 @@
  * @ingroup extensions
  */
 
+use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use Popups\EventLogging\EventLogger;
 use Popups\PopupsContext;
@@ -118,7 +119,8 @@ class PopupsContextTest extends MediaWikiTestCase {
 
 		$context = $this->getContext();
 		$user = $this->getMutableTestUser()->getUser();
-		$user->setOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
+		$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
 		$this->assertSame( $expected,
 			$context->shouldSendModuleToUser( $user ),
 			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
