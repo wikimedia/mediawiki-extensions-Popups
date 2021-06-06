@@ -44,15 +44,26 @@ class PopupsContextTestWrapper extends PopupsContext {
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 * @param PopupsGadgetsIntegration|null $gadgetsIntegration Gadgets integration helper
 	 * @param EventLogger|null $eventLogger EventLogger
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
-	public function __construct( Config $config, ExtensionRegistry $extensionRegistry,
-		PopupsGadgetsIntegration $gadgetsIntegration = null,
-		EventLogger $eventLogger = null ) {
+	public function __construct(
+		Config $config,
+		ExtensionRegistry $extensionRegistry,
+		PopupsGadgetsIntegration $gadgetsIntegration,
+		EventLogger $eventLogger,
+		UserOptionsLookup $userOptionsLookup
+	) {
 		$gadgetsIntegration = $gadgetsIntegration ?:
 			new PopupsGadgetsIntegration( $config, $extensionRegistry );
 		$eventLogger = $eventLogger ?: new NullLogger();
 
-		parent::__construct( $config, $extensionRegistry, $gadgetsIntegration, $eventLogger );
+		parent::__construct(
+			$config,
+			$extensionRegistry,
+			$gadgetsIntegration,
+			$eventLogger,
+			$userOptionsLookup
+		);
 	}
 
 	/**

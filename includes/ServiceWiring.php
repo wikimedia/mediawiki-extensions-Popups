@@ -29,7 +29,8 @@ return [
 	},
 	'Popups.UserPreferencesChangeHandler' => static function ( MediaWikiServices $services ) {
 		return new UserPreferencesChangeHandler(
-			$services->getService( 'Popups.Context' )
+			$services->getService( 'Popups.Context' ),
+			$services->getUserOptionsLookup()
 		);
 	},
 	'Popups.Logger' => static function ( MediaWikiServices $services ) {
@@ -40,7 +41,8 @@ return [
 			$services->getService( 'Popups.Config' ),
 			ExtensionRegistry::getInstance(),
 			$services->getService( 'Popups.GadgetsIntegration' ),
-			$services->getService( 'Popups.EventLogger' )
+			$services->getService( 'Popups.EventLogger' ),
+			$services->getUserOptionsLookup()
 		);
 	}
 ];
