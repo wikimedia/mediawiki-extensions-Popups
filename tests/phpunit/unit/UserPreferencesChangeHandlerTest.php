@@ -18,6 +18,8 @@
  * @file
  * @ingroup extensions
  */
+
+use MediaWiki\User\UserOptionsLookup;
 use Popups\PopupsContext;
 use Popups\UserPreferencesChangeHandler;
 
@@ -37,16 +39,22 @@ class UserPreferencesChangeHandlerTest extends MediaWikiUnitTestCase {
 		$contextMock->expects( $expectedMethodCallsCount )
 			->method( 'logUserDisabledPagePreviewsEvent' );
 
-		$user = $this->createMock( User::class );
-		$user->method( 'getBoolOption' )
+		/** @var User $userMock */
+		$userMock = $this->createMock( User::class );
+
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
+		$userOptionsLookupMock
+			->method( 'getBoolOption' )
 			->willReturn( $newOption );
-		/** @var User $user */
 
 		$oldOptions = [
 			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME => $oldOption
 		];
-		$listener = new UserPreferencesChangeHandler( $contextMock );
-		$listener->doPreferencesFormPreSave( $user, $oldOptions );
+		$listener = new UserPreferencesChangeHandler(
+			$contextMock,
+			$userOptionsLookupMock
+		);
+		$listener->doPreferencesFormPreSave( $userMock, $oldOptions );
 	}
 
 	public function provideDataForEventHandling() {

@@ -22,6 +22,7 @@ namespace Popups;
 
 use HTMLForm;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserOptionsLookup;
 use User;
 
 /**
@@ -37,10 +38,20 @@ class UserPreferencesChangeHandler {
 	private $popupsContext;
 
 	/**
-	 * @param PopupsContext $context
+	 * @var UserOptionsLookup
 	 */
-	public function __construct( PopupsContext $context ) {
+	private $userOptionsLookup;
+
+	/**
+	 * @param PopupsContext $context
+	 * @param UserOptionsLookup $userOptionsLookup
+	 */
+	public function __construct(
+		PopupsContext $context,
+		UserOptionsLookup $userOptionsLookup
+	) {
 		$this->popupsContext = $context;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -56,7 +67,10 @@ class UserPreferencesChangeHandler {
 		}
 
 		$oldSetting = (bool)$oldUserOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME];
-		$newSetting = $user->getBoolOption( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME );
+		$newSetting = $this->userOptionsLookup->getBoolOption(
+			$user,
+			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME
+		);
 
 		if ( $oldSetting && !$newSetting ) {
 			$this->popupsContext->logUserDisabledPagePreviewsEvent();

@@ -24,6 +24,7 @@ use BetaFeatures;
 use Config;
 use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserOptionsLookup;
 use Popups\EventLogging\EventLogger;
 use Title;
 
@@ -44,12 +45,12 @@ class PopupsContext {
 	/**
 	 * User preference value for enabled Page Previews
 	 */
-	public const PREVIEWS_ENABLED = '1';
+	public const PREVIEWS_ENABLED = true;
 
 	/**
 	 * User preference value for disabled Page Previews
 	 */
-	public const PREVIEWS_DISABLED = '0';
+	public const PREVIEWS_DISABLED = false;
 
 	/**
 	 * User preference key to enable/disable Page Previews
@@ -101,17 +102,29 @@ class PopupsContext {
 	private $eventLogger;
 
 	/**
+	 * @var UserOptionsLookup
+	 */
+	private $userOptionsLookup;
+
+	/**
 	 * @param Config $config Mediawiki configuration
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 * @param PopupsGadgetsIntegration $gadgetsIntegration Gadgets integration helper
 	 * @param EventLogger $eventLogger A logger capable of logging EventLogging
+	 * @param UserOptionsLookup $userOptionsLookup
 	 *  events
 	 */
-	public function __construct( Config $config, ExtensionRegistry $extensionRegistry,
-		PopupsGadgetsIntegration $gadgetsIntegration, EventLogger $eventLogger ) {
+	public function __construct(
+		Config $config,
+		ExtensionRegistry $extensionRegistry,
+		PopupsGadgetsIntegration $gadgetsIntegration,
+		EventLogger $eventLogger,
+		UserOptionsLookup $userOptionsLookup
+	) {
 		$this->extensionRegistry = $extensionRegistry;
 		$this->gadgetsIntegration = $gadgetsIntegration;
 		$this->eventLogger = $eventLogger;
+		$this->userOptionsLookup = $userOptionsLookup;
 
 		$this->config = $config;
 	}
@@ -159,8 +172,9 @@ class PopupsContext {
 			);
 		}
 
-		return !$user->isRegistered() ||
-			$user->getBoolOption( self::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA );
+		return !$user->isRegistered() || $this->userOptionsLookup->getBoolOption(
+			$user, self::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA
+		);
 	}
 
 	/**
@@ -192,7 +206,10 @@ class PopupsContext {
 			return true;
 		}
 
-		$shouldLoadPagePreviews = $user->getBoolOption( self::PREVIEWS_OPTIN_PREFERENCE_NAME );
+		$shouldLoadPagePreviews = $this->userOptionsLookup->getBoolOption(
+			$user,
+			self::PREVIEWS_OPTIN_PREFERENCE_NAME
+		);
 		$shouldLoadReferencePreviews = $this->isReferencePreviewsEnabled( $user );
 
 		return $shouldLoadPagePreviews || $shouldLoadReferencePreviews;
