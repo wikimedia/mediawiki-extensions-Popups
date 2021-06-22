@@ -19,5 +19,9 @@
 	"popups-preview-disambiguation-link": "Oxşar səhifələrə baxın",
 	"prefs-reading": "Oxu seçimləri",
 	"popups-prefs-optin": "Səhifə ön görünüşü (səhifə oxuyarkən məqaləyə cəld ilkin baxış):",
-	"popups-prefs-conflicting-gadgets-info": "Bəzi qadcetlər və digər uyğunlaşdırmalar bu funksiyanın fəaliyyətinə təsir edə bilər. Əgər problemlərlə qarşılarşırsınızsa, qloballar da daxil olmaqla qadcetlərinizi, istifadəçi skriptlərini nəzərdən keçirin."
+	"popups-prefs-conflicting-gadgets-info": "Bəzi qadcetlər və digər uyğunlaşdırmalar bu funksiyanın fəaliyyətinə təsir edə bilər. Əgər problemlərlə qarşılarşırsınızsa, qloballar da daxil olmaqla qadcetlərinizi, istifadəçi skriptlərini nəzərdən keçirin.",
+	"popups-refpreview-book": "Kitab istinadı",
+	"popups-refpreview-journal": "Jurnal istinadı",
+	"popups-refpreview-news": "Xəbər istinadı",
+	"popups-refpreview-web": "Veb istinadı"
 }
