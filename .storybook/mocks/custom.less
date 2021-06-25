@@ -5,10 +5,20 @@
 @import './mediawiki.ui/components/icons.less';
 @import './production-icons.less';
 
-html, body {
+html,
+body {
 	height: 100%;
 	font-family: sans-serif;
-    }
+}
+
+#root {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 50px;
+	padding: 20px;
+}
 
 /**
  * Stopping the fade animation to avoid the animation appearing
@@ -28,5 +38,21 @@ html, body {
 /* show popups by default */
 .mwe-popups {
 	display: block;
+	// overrides the popups default "position:absolute" styling
+	// so they align naturally within the flexbox parent.
+	position: static;
 }
 
+/**
+ * This rule, combined with the rule above, allows the footer
+ * to be positioned correctly without the absolute positioning
+ * that is overridden above.
+ * NOTE: This causes a slight discrepancy in the positioning of
+ * of the settings cog in Storybook when compared to production.
+ * This issue only occurs with previews that have the pokey positioned
+ * at the bottom.
+ */
+
+.mwe-popups-container {
+	position: relative;
+}

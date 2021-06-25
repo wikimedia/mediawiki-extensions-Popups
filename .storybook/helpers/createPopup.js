@@ -19,11 +19,7 @@ function createPopup( model, layout ) {
 
 	const preview = createPreviewWithType( model );
 
-	Object.assign( layout, { dir: model.languageDirection } );
-	layout.offset = layout.flippedY ? {
-		left: layout.offset.left,
-		top: layout.offset.top + layout.flipOffset
-	} : layout.offset;
+	Object.assign( layout, { dir: model.languageDirection, offset: { left: 0, top: 0 } } );
 
 	layoutPreview(
 		preview,
