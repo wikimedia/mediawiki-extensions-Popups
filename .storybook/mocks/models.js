@@ -42,7 +42,7 @@ MODELS.THUMBNAIL_LANDSCAPE = {
 	type: "page",
 	thumbnail: {
 		source:
-		"img/542px-Atlantic_Ocean_location_map.svg.png",
+		"img/640px-Atlantic_Ocean_location_map.svg.png",
 		width: 542,
 		height: 640
 	},
