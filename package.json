@@ -29,7 +29,7 @@
 		"@babel/core": "7.2.0",
 		"@babel/preset-env": "7.2.0",
 		"@babel/register": "7.0.0",
-		"@storybook/html": "5.1.10",
+		"@storybook/html": "6.2.9",
 		"@types/jquery": "3.3.29",
 		"@wdio/cli": "6.3.5",
 		"@wdio/junit-reporter": "6.1.5",
@@ -62,7 +62,7 @@
 		"url-loader": "1.1.2",
 		"wdio-mediawiki": "1.0.0",
 		"webdriverio": "6.3.5",
-		"webpack": "4.27.1",
+		"webpack": "4.44.2",
 		"webpack-cli": "3.1.2"
 	},
 	"bundlesize": [

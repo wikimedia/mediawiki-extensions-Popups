@@ -33,6 +33,10 @@ import createPopup from '../helpers/createPopup';
  */
 import pointerMaskSVG from '../../src/ui/pointer-mask.svg';
 
+
+import mockMediaWiki from '@wikimedia/mw-node-qunit/src/mockMediaWiki.js';
+global.mw = mockMediaWiki();
+
 const popupsCSS = {
 		ltr: PopupsCSSString,
 		rtl: cssjanus.transform( PopupsCSSString.toString() )
