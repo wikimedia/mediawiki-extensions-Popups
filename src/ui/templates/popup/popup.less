@@ -378,6 +378,8 @@
 @supports ( clip-path: polygon( 1px 1px ) ) {
 	.mwe-popups {
 		.mwe-popups-thumbnail {
+			// Remove whitespace below image.
+			display: block;
 			object-fit: cover;
 			outline: 1px solid rgba( 0, 0, 0, 0.1 );
 		}
@@ -473,9 +475,23 @@
 		}
 
 		&.mwe-popups-image-pointer {
+			.mwe-popups-discreet {
+				// Override the negative margin on element which undesirably pulls
+				// mwe-popups-extract up.
+				margin-bottom: 0;
+			}
+
 			.mwe-popups-extract {
 				margin-top: 0;
 			}
+		}
+
+		// Add top padding the same size as the pokey height to account for
+		// clip-path cutting off the .mwe-popups-extract's margin. We don't want
+		// this to apply to elements with the .mwe-popups-image-pointer class
+		// because the pokey is on the image.
+		&:not( .flipped-y ):not( .flipped-x-y ):not( .mwe-popups-image-pointer ):not( .mwe-popups-type-disambiguation ) .mwe-popups-extract {
+			padding-top: var( --pointer-height );
 		}
 	}
 
