@@ -39,20 +39,18 @@ body {
 .mwe-popups {
 	display: block;
 	// overrides the popups default "position:absolute" styling
-	// so they align naturally within the flexbox parent.
-	position: static;
-}
-
-/**
- * This rule, combined with the rule above, allows the footer
- * to be positioned correctly without the absolute positioning
- * that is overridden above.
- * NOTE: This causes a slight discrepancy in the positioning of
- * of the settings cog in Storybook when compared to production.
- * This issue only occurs with previews that have the pokey positioned
- * at the bottom.
- */
-
-.mwe-popups-container {
+	// so they align naturally within the flexbox parent. Use relative instead of
+	// static so that absolutely positioned children elements can still accurately
+	// position themselves.
 	position: relative;
+	// Override the top, left, bottom, right properties so that the absolute
+	// positioning doesn't take effect in storybook.
+	/* stylelint-disable-next-line  declaration-no-important */
+	top: 0 !important;
+	/* stylelint-disable-next-line  declaration-no-important */
+	right: 0 !important;
+	/* stylelint-disable-next-line  declaration-no-important */
+	bottom: 0 !important;
+	/* stylelint-disable-next-line  declaration-no-important */
+	left: 0 !important;
 }
