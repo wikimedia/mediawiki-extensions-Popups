@@ -13,7 +13,7 @@ curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/
 curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.less/mediawiki.ui/variables.less -o .storybook/mocks/mediawiki.ui/variables.less
 
 # mediawiki.ui icons.less
-curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.ui/components/icons.less -o .storybook/mocks/mediawiki.ui/components/icons.less
+curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.ui/components/icons-2.less -o .storybook/mocks/mediawiki.ui/components/icons.less
 
 # OOUI/WikimediaUI theme icons
-curl "https://en.wikipedia.org/w/load.php?modules=ext.popups.icons&only=styles&debug=true"  -o .storybook/mocks/production-icons.less
+curl "https://en.wikipedia.org/w/load.php?modules=ext.popups.icons|ext.popups.images&only=styles&debug=true"  -o .storybook/mocks/production-icons.less

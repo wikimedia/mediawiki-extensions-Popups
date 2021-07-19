@@ -28,16 +28,9 @@
 	min-width: 300px;
 	border-radius: @borderRadius;
 
-	.mw-ui-icon {
-		// mw-ui-icon assumes a font size of 16px so we must declare it here
-		// FIXME: This should be in `em` for user scalability and skin specific or with overrides.
-		font-size: 16px;
-	}
-
 	// icons positioned at the top of the popup
 	.mw-ui-icon-preview-disambiguation,
 	.mw-ui-icon-preview-generic {
-		margin: 21px 0 8px 0;
 		opacity: 0.25;
 	}
 
@@ -61,24 +54,10 @@
 
 	.mwe-popups-settings-icon {
 		display: block;
-		overflow: hidden;
-		font-size: 16px; // should be equal to .mwe-popups .mw-ui-icon { font-size: 16px; }
-		width: @iconSize;
-		height: @iconSize;
-		padding: 3px; // enlarges icon box (visible on hover)
 		float: right; // positions icon near bottom right corner
-		margin: 4px 4px 2px 4px; // adjusts position
-		text-indent: -1em; // offsets .mw-ui-icon-element:before { margin: 0 1em; }
 		border-radius: @borderRadius;
 		opacity: 0.67;
 		.transition( ~'background-color 100ms, opacity 100ms' );
-
-		// Reset properties modified by MinervaNeue
-		.mw-ui-icon-element {
-			padding: 0;
-			// Same as @width-icon--legacy
-			width: @size-icon + 2 * @width-icon-gutter;
-		}
 
 		&:hover {
 			background-color: @colorGray14;
@@ -169,9 +148,15 @@
 			float: left;
 		}
 
-		footer {
-			width: @popupTallWidth;
+		.mwe-popups-extract + footer {
 			left: 0;
+			right: @popupTallWidth;
+
+			.rtl & {
+				/* @noflip */
+				right: -12px;
+				width: @popupTallWidth;
+			}
 		}
 	}
 

@@ -5,29 +5,16 @@
 
 .mwe-popups.mwe-popups-type-reference {
 	.mwe-popups-title {
-		margin: 0 0 @popupPadding;
+		// align icon with outer padding
+		margin: 0 0 12px 0;
 
 		.mw-ui-icon {
-			// Since 6bc3aada (T277663) this is @min-size-icon = 20px upstream in
-			// …/mediawiki.ui/components/icons.less, too small for us
-			min-height: @size-icon;
-			vertical-align: middle;
+			padding: 0 8px 0 0;
 
-			&.mw-ui-icon-element {
-				// This is @width-icon--legacy = 3.5em upstream in
-				// …/mediawiki.ui/components/icons.less, way to wide for us
-				min-width: @size-icon;
-				width: @size-icon;
-
-				&:before {
-					margin: 0;
-				}
+			&:hover {
+				/* stylelint-disable-next-line declaration-no-important */
+				background-color: transparent !important;
 			}
-		}
-
-		.mw-ui-icon-reference-generic {
-			/* align narrow icon with the text */
-			margin-left: -2px;
 		}
 
 		// There is currently no "reference-note" icon specified in extension.json
@@ -81,16 +68,13 @@
 		margin: 1em 0;
 		position: relative;
 
-		// This mirrors .oo-ui-iconElement-icon
 		.mw-ui-icon {
-			margin-left: -@width-icon-gutter;
-			min-height: @size-icon;
+			margin-left: -0.78em;
 			position: absolute;
 		}
 
-		// This mirrors .oo-ui-messageWidget > .oo-ui-labelElement-label
 		.mwe-collapsible-placeholder-label {
-			margin-left: @size-icon + 0.5em;
+			margin-left: 2.5em;
 		}
 	}
 }
