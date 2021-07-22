@@ -5,7 +5,7 @@
 		"build-storybook": "./.storybook/storybook-resources.sh && build-storybook --config-dir=.storybook -o docs/ui -s .storybook/static",
 		"start": "webpack -w --mode=development",
 		"build": "webpack --mode=production",
-		"test": "npm -s run check-built-assets && npm run test:lint && bash ./dev-scripts/svg_check.sh && npm -s run coverage && npm -s run -s doc && bundlesize && npm run build-storybook",
+		"test": "npm -s run check-built-assets && npm run test:lint && bash ./dev-scripts/svg_check.sh && npm -s run coverage && npm -s run doc && bundlesize",
 		"test:unit": "mw-node-qunit 'tests/node-qunit/**/*.test.js' --require \"$PWD/tests/node-qunit/run.js\" | tap-mocha-reporter dot",
 		"test:lint": "npm -s run test:lint:styles && npm -s run test:lint:js && npm -s run test:lint:i18n",
 		"test:lint:js": "npm -s run linter:js",
