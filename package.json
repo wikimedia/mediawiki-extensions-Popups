@@ -23,7 +23,7 @@
 		"selenium-test": "wdio tests/selenium/wdio.conf.js"
 	},
 	"engines": {
-		"node": "10.24.0"
+		"node": "12.21.0"
 	},
 	"devDependencies": {
 		"@babel/core": "7.2.0",
