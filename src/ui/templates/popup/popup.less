@@ -202,8 +202,9 @@
 		.mwe-popups-extract {
 			min-height: auto;
 			padding-top: 4px;
-			margin-bottom: 60px;
 			margin-top: 0;
+			margin-bottom: var( --margin-bottom );
+			--margin-bottom: 60px;
 		}
 
 		.mwe-popups-read-link {
@@ -492,6 +493,16 @@
 		// because the pokey is on the image.
 		&:not( .flipped-y ):not( .flipped-x-y ):not( .mwe-popups-image-pointer ):not( .mwe-popups-type-disambiguation ) .mwe-popups-extract {
 			padding-top: var( --pointer-height );
+		}
+
+		&.mwe-popups-type-disambiguation:not( .flipped-y ):not( .flipped-x-y ) {
+			.mwe-popups-container {
+				padding-top: var( --pointer-height );
+
+				.mwe-popups-extract {
+					margin-bottom: ~'calc( var( --margin-bottom ) - var( --pointer-height ) )';
+				}
+			}
 		}
 	}
 
