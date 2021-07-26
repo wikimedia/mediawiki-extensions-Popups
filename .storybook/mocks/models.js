@@ -423,4 +423,62 @@ MODELS.TH_WIKI = {
 	pageId: 901909
 };
 
+const REFERENCE_EXTRACT = 'Link to <a href="#">website</a>, <a href="https://wikipedia.org">external</a> and <a href="https://wikipedia.org/w/index.pdf">pdf</a>';
+
+const REFERENCE_EXTRACT_LONG = `This reference has really long text. When you have really long text, and I mean really really long text, not just quite long text, it should introduce a scrollbar.
+The scrollbar is beautiful, one of the most beautiful things you have ever seen but it will only kick in when you have enough text and the text that has been
+written so far is not enough so we will continue writing more and more text until it shows. More and more and more and more. More and more and more.
+Sometimes it feels like it is never ending. The reference preview gets larger and larger. Larger and larger that you start to doubt yourself and wonder:
+perhaps I need some kind of special flag in the reference model to make the scrolling appear. However, luckily as you have that thought the storybook refreshes and a scrollbar
+appears. The reference preview no longer grows and you sigh a sigh of relief. You scroll down in the storybook and click one of the reference links
+and finally find <a href="#">the reference</a> you were looking for.`;
+
+MODELS.TYPE_REFERENCE_BOOK = {
+	type: 'reference',
+	referenceType: 'book',
+	extract: REFERENCE_EXTRACT
+};
+
+MODELS.TYPE_REFERENCE_JOURNAL = {
+	type: 'reference',
+	referenceType: 'journal',
+	extract: REFERENCE_EXTRACT
+};
+
+MODELS.TYPE_REFERENCE_NEWS = {
+	type: 'reference',
+	referenceType: 'news',
+	extract: REFERENCE_EXTRACT
+};
+
+MODELS.TYPE_REFERENCE_WEB = {
+	type: 'reference',
+	referenceType: 'web',
+	extract: REFERENCE_EXTRACT
+};
+
+MODELS.TYPE_REFERENCE_GENERIC = {
+	type: 'reference',
+	referenceType: 'generic',
+	extract: REFERENCE_EXTRACT
+};
+
+MODELS.TYPE_REFERENCE_GENERIC_LONG = {
+	type: 'reference',
+	referenceType: 'generic',
+	extract: REFERENCE_EXTRACT_LONG
+};
+
+MODELS.TYPE_REFERENCE_NOTE = {
+	type: 'reference',
+	referenceType: 'note',
+	extract: `<p>This is a note.</p>`
+};
+
+MODELS.TYPE_REFERENCE_GENERIC_COLLAPSIBLE = {
+	type: 'reference',
+	referenceType: 'generic',
+	extract: `<p>This is a reference.</p><div class="mw-collapsible"></div>`
+};
+
 export default MODELS;

@@ -26,7 +26,9 @@ import { createPointerMasks } from '../../src/ui/renderer.js';
  * Popups helpers
  */
 import MODELS from '../mocks/models';
+import message from '../mocks/message';
 import createPopup from '../helpers/createPopup';
+import createFlippedVariants from '../helpers/createFlippedVariants';
 
 /**
  * SVG Assets
@@ -35,7 +37,10 @@ import pointerMaskSVG from '../../src/ui/pointer-mask.svg';
 
 
 import mockMediaWiki from '@wikimedia/mw-node-qunit/src/mockMediaWiki.js';
-global.mw = mockMediaWiki();
+const mw = mockMediaWiki();
+mw.message = message;
+
+global.mw = mw;
 
 const popupsCSS = {
 		ltr: PopupsCSSString,
@@ -169,6 +174,35 @@ storiesOf( 'Text', module )
 	`;
 } );
 
+const refPreview = ( model ) => {
+	modifyStorybookHead( model.languageCode, model.languageDirection )
+	return createFlippedVariants( model );
+}
+storiesOf( 'Reference Preview', module )
+.add( 'generic', () => {
+	return refPreview( MODELS.TYPE_REFERENCE_GENERIC );
+} )
+.add( 'generic with long text', () => {
+	return refPreview( MODELS.TYPE_REFERENCE_GENERIC_LONG );
+} )
+.add( 'generic with collapsible element', () => {
+	return refPreview( MODELS.TYPE_REFERENCE_GENERIC_COLLAPSIBLE );
+} )
+.add( 'journal', () => {
+	return refPreview( MODELS.TYPE_REFERENCE_JOURNAL );
+} )
+.add( 'news', () => {
+	return refPreview( MODELS.TYPE_REFERENCE_NEWS );
+} )
+.add( 'book', () => {
+	return refPreview( MODELS.TYPE_REFERENCE_BOOK );
+} )
+.add( 'note', () => {
+	return refPreview( MODELS.TYPE_REFERENCE_NOTE );
+} )
+.add( 'web', () => {
+	return refPreview( MODELS.TYPE_REFERENCE_WEB );
+} );
 storiesOf( 'Disambiguation', module )
 .add( 'standard', () => {
 	modifyStorybookHead( MODELS.DISAMBIGUATION.languageCode, MODELS.DISAMBIGUATION.languageDirection )
