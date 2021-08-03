@@ -36,21 +36,28 @@ body {
 }
 
 /* show popups by default */
-.mwe-popups {
-	display: block;
-	// overrides the popups default "position:absolute" styling
-	// so they align naturally within the flexbox parent. Use relative instead of
-	// static so that absolutely positioned children elements can still accurately
-	// position themselves.
+.popups-storybook-example {
+	border: solid 1px #aaa;
+	padding: 8px;
+	display: flex;
+	width: 500px;
+	height: 550px;
 	position: relative;
-	// Override the top, left, bottom, right properties so that the absolute
-	// positioning doesn't take effect in storybook.
-	/* stylelint-disable-next-line  declaration-no-important */
-	top: 0 !important;
-	/* stylelint-disable-next-line  declaration-no-important */
-	right: 0 !important;
-	/* stylelint-disable-next-line  declaration-no-important */
-	bottom: 0 !important;
-	/* stylelint-disable-next-line  declaration-no-important */
-	left: 0 !important;
+
+	&-tall {
+		width: 500px;
+		height: 300px;
+	}
+
+	&-flipped-y > .popups-storybook-link {
+		align-self: flex-end;
+	}
+
+	&-flipped-x {
+		justify-content: flex-end;
+	}
+
+	.mwe-popups {
+		display: block;
+	}
 }

@@ -15,6 +15,8 @@ const landscapePopupWidth = 450,
 	pointerSize = 8, // Height of the pointer.
 	maxLinkWidthForCenteredPointer = 28; // Link with roughly < 4 chars.
 
+export { pointerSize, landscapePopupWidth, portraitPopupWidth }; // for use in storybook
+
 /**
  * @typedef {Object} ext.popups.Measures
  * @property {number} pageX

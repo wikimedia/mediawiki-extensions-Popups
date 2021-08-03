@@ -6,7 +6,7 @@
  */
 // NOTE: The following import overrides the webpack config for this specific LESS file in order to
 // omit the 'style-loader' and import the content as a string.
-import PopupsCSSString from '../../src/ui/index.less';
+import PopupsCSSString from '!css-loader!less-loader?{"paths":".storybook/mocks/"}!../../src/ui/index.less';
 import '../mocks/custom.less';
 // The CSSJanus library is used to transform CSS for RTL languages.
 import * as cssjanus from 'cssjanus';
@@ -67,9 +67,9 @@ function insertPopupsStyleElement() {
 /**
  * Modifies the Popups CSS via CSSJanus and changes the document lang and dir attributes.
  * @param {string} lang
- * @param {string} dir
+ * @param {string} [dir]
  */
-function modifyStorybookHead( lang, dir ) {
+function modifyStorybookHead( lang, dir = 'ltr' ) {
 	const PopupsCSSElement = document.getElementById( PopupsCSSElementId );
 
 	if ( document.documentElement.lang !== lang ) {
@@ -78,6 +78,7 @@ function modifyStorybookHead( lang, dir ) {
 
 	if ( document.documentElement.dir !== dir ) {
 		document.documentElement.dir = dir;
+		document.body.classList.remove( dir === 'ltr' ? 'rtl' : 'ltr' )
 		document.body.classList.add( dir )
 	}
 
