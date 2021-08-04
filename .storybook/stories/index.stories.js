@@ -153,6 +153,33 @@ storiesOf( 'Thumbnails', module )
 		${createPopup( MODELS.THUMBNAIL_DIVIDER, { flippedX: true, flippedY: true } )}
 	`;
 } )
+.add( 'portrait - Small square', () => {
+	modifyStorybookHead( MODELS.THUMBNAIL_SQUARE.languageCode, MODELS.THUMBNAIL_SQUARE.languageDirection )
+	return `
+	${createPopup( MODELS.THUMBNAIL_SQUARE, { flippedX: false, flippedY: false } )}
+	${createPopup( MODELS.THUMBNAIL_SQUARE, { flippedX: true, flippedY: false } )}
+	${createPopup( MODELS.THUMBNAIL_SQUARE, { flippedX: false, flippedY: true } )}
+	${createPopup( MODELS.THUMBNAIL_SQUARE, { flippedX: true, flippedY: true } )}
+`;
+} )
+.add( 'landscape - Small tall', () => {
+	modifyStorybookHead( MODELS.THUMBNAIL_SMALL_TALL.languageCode, MODELS.THUMBNAIL_SMALL_TALL.languageDirection )
+	return `
+	${createPopup( MODELS.THUMBNAIL_SMALL_TALL, { flippedX: false, flippedY: false } )}
+	${createPopup( MODELS.THUMBNAIL_SMALL_TALL, { flippedX: true, flippedY: false } )}
+	${createPopup( MODELS.THUMBNAIL_SMALL_TALL, { flippedX: false, flippedY: true } )}
+	${createPopup( MODELS.THUMBNAIL_SMALL_TALL, { flippedX: true, flippedY: true } )}
+`;
+} )
+.add( 'portrait - Small short', () => {
+	modifyStorybookHead( MODELS.THUMBNAIL_SMALL_SHORT.languageCode, MODELS.THUMBNAIL_SMALL_SHORT.languageDirection )
+	return `
+	${createPopup( MODELS.THUMBNAIL_SMALL_SHORT, { flippedX: false, flippedY: false } )}
+	${createPopup( MODELS.THUMBNAIL_SMALL_SHORT, { flippedX: true, flippedY: false } )}
+	${createPopup( MODELS.THUMBNAIL_SMALL_SHORT, { flippedX: false, flippedY: true } )}
+	${createPopup( MODELS.THUMBNAIL_SMALL_SHORT, { flippedX: true, flippedY: true } )}
+`;
+} )
 
 storiesOf( 'Text', module )
 .add( 'Short & long', () => {

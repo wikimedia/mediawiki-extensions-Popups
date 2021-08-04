@@ -50,15 +50,15 @@ export function createThumbnail( rawThumbnail, useCSSClipPath ) {
 		return null;
 	}
 
-	const tall = rawThumbnail.width < rawThumbnail.height;
 	const thumbWidth = rawThumbnail.width / devicePixelRatio;
 	const thumbHeight = rawThumbnail.height / devicePixelRatio;
+	// For images less than 320 wide, try to display a 250 high vertical slice instead
+	const tall = rawThumbnail.height > rawThumbnail.width || thumbWidth < SIZES.landscapeImage.w;
 
 	if (
-		// Image too small for landscape display
-		( !tall && thumbWidth < SIZES.landscapeImage.w ) ||
 		// Image too small for portrait display
-		( tall && thumbHeight < SIZES.portraitImage.h ) ||
+		( tall && thumbHeight < SIZES.portraitImage.h &&
+			rawThumbnail.height < SIZES.portraitImage.h ) ||
 		// These characters in URL that could inject CSS and thus JS
 		(
 			rawThumbnail.source.indexOf( '\\' ) > -1 ||

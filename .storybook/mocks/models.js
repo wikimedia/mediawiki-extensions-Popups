@@ -116,6 +116,51 @@ MODELS.THUMBNAIL_DIVIDER = {
 	},
 	pageId: 15573
 };
+MODELS.THUMBNAIL_SQUARE = {
+	title: "Swing When You're Winning",
+	url: "Swing When You're Winning",
+	languageCode: "en",
+	languageDirection: "ltr",
+	extract:
+		"<p><i><b>Swing When You're Winning</b></i> is a swing cover album by English singer-songwriter Robbie Williams, and his fourth studio album overall. It was released in the United Kingdom on 19 November 2001 and peaked at number one on the UK Albums Chart.</p>",
+	type: "page",
+	thumbnail: {
+		source: 'img/300px-Swing_When_You%27re_Winning_cover.png',
+		width: 300,
+		height: 300
+	},
+	pageId: 2846305
+};
+MODELS.THUMBNAIL_SMALL_TALL = {
+	title: "Ocean",
+	url: "Ocean",
+	languageCode: "en",
+	languageDirection: "ltr",
+	extract:
+		"<p>The <i><b>ocean</b></i> (also the sea or the world ocean) is the body of salt water which covers approximately 71% of the surface of the Earth and contains 97% of Earth's water.</p>",
+	type: "page",
+	thumbnail: {
+		source: 'img/300px-waves_unsplash.jpg',
+		width: 300,
+		height: 1000
+	},
+	pageId: 8246305
+};
+MODELS.THUMBNAIL_SMALL_SHORT = {
+	title: "Full Moon",
+	url: "Full Moon",
+	languageCode: "en",
+	languageDirection: "ltr",
+	extract:
+		"<p>The <i><b>full moon</b></i> is the lunar phase when the Moon appears fully illuminated from Earth's perspective. This occurs when Earth is located between the Sun and the Moon (more exactly, when the ecliptic longitudes of the Sun and Moon differ by 180°).</p>",
+	type: "page",
+	thumbnail: {
+		source: 'img/300px-full_moon_unsplash.jpg',
+		width: 300,
+		height: 200
+	},
+	pageId: 2486305
+};
 MODELS.LONG_WORD_1 = {
 	title: "Pneumonoultramicroscopicsilicovolcanoconiosis",
 	url: "Pneumonoultramicroscopicsilicovolcanoconiosis",

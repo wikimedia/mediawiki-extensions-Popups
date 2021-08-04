@@ -9,28 +9,43 @@ QUnit.module( 'ext.popups#thumbnail', {
 
 QUnit.test( 'createThumbnail - tall image', ( assert ) => {
 	const devicePixelRatio = constants.default.BRACKETED_DEVICE_PIXEL_RATIO,
-		rawThumbnail = {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
-			width: 409,
-			height: 512
-		},
-		thumbnail = createThumbnail( rawThumbnail );
+		cases = [
+			{
+				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
+				width: 409,
+				height: 512
+			},
+			{
+				// Per T268999 code review, short/wide images that are less than the portrait width
+				// requirement are getting the "tall" treatment.
+				source: 'https://upload.wikimedia.org/wikipedia/en/6/60/Sonic_Adventure.PNG',
+				width: 300,
+				height: 297
+			}
+		];
 
-	assert.strictEqual(
-		thumbnail.isTall,
-		true,
-		'Thumbnail is tall.'
-	);
-	assert.strictEqual(
-		thumbnail.width,
-		thumbnail.width / devicePixelRatio,
-		'Thumbnail width is correct.'
-	);
-	assert.strictEqual(
-		thumbnail.height,
-		thumbnail.height / devicePixelRatio,
-		'Thumbnail height is correct.'
-	);
+	cases.forEach( ( case_ ) => {
+		const thumbnail = createThumbnail( {
+			source: case_.source,
+			width: case_.width,
+			height: case_.height
+		} );
+		assert.strictEqual(
+			thumbnail.isTall,
+			true,
+			'Thumbnail is tall.'
+		);
+		assert.strictEqual(
+			thumbnail.width,
+			thumbnail.width / devicePixelRatio,
+			'Thumbnail width is correct.'
+		);
+		assert.strictEqual(
+			thumbnail.height,
+			thumbnail.height / devicePixelRatio,
+			'Thumbnail height is correct.'
+		);
+	} );
 } );
 
 QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
@@ -115,28 +130,43 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 
 QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
 	const devicePixelRatio = constants.default.BRACKETED_DEVICE_PIXEL_RATIO,
-		rawThumbnail = {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg',
-			width: 500,
-			height: 400
-		},
-		thumbnail = createThumbnail( rawThumbnail );
+		cases = [
+			{
+				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg',
+				width: 500,
+				height: 400
+			},
+			{
+				// Per T268999 code review, square images receive horizontal (landscape) treatment
+				// to be rendered in portrait-mode popups.
+				source: 'https://image.url',
+				width: 320,
+				height: 320
+			}
+		];
 
-	assert.strictEqual(
-		thumbnail.isTall,
-		false,
-		'Thumbnail is not tall.'
-	);
-	assert.strictEqual(
-		thumbnail.width,
-		thumbnail.width / devicePixelRatio,
-		'Thumbnail width is correct.'
-	);
-	assert.strictEqual(
-		thumbnail.height,
-		thumbnail.height / devicePixelRatio,
-		'Thumbnail height is correct.'
-	);
+	cases.forEach( ( case_ ) => {
+		const thumbnail = createThumbnail( {
+			source: case_.source,
+			width: case_.width,
+			height: case_.height
+		} );
+		assert.strictEqual(
+			thumbnail.isTall,
+			false,
+			'Thumbnail is not tall.'
+		);
+		assert.strictEqual(
+			thumbnail.width,
+			thumbnail.width / devicePixelRatio,
+			'Thumbnail width is correct.'
+		);
+		assert.strictEqual(
+			thumbnail.height,
+			thumbnail.height / devicePixelRatio,
+			'Thumbnail height is correct.'
+		);
+	} );
 } );
 
 QUnit.test( 'createThumbnail - clip-path is supported', ( assert ) => {
@@ -216,11 +246,22 @@ QUnit.test( 'createThumbnail - no raw thumbnail', ( assert ) => {
 	assert.strictEqual( thumbnail, null, 'No thumbnail.' );
 } );
 
-QUnit.test( 'createThumbnail - small wide image', ( assert ) => {
+QUnit.test( 'createThumbnail - medium wide image (>=250 high)', ( assert ) => {
 	const rawThumbnail = {
 			source: 'https://landscape-image.jpg',
 			width: 299,
 			height: 298
+		},
+		thumbnail = createThumbnail( rawThumbnail );
+
+	assert.notStrictEqual( thumbnail, null, 'There is a thumbnail.' );
+} );
+
+QUnit.test( 'createThumbnail - small wide image (<250 high)', ( assert ) => {
+	const rawThumbnail = {
+			source: 'https://landscape-image.jpg',
+			width: 299,
+			height: 249
 		},
 		thumbnail = createThumbnail( rawThumbnail );
 
