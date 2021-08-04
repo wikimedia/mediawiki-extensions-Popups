@@ -784,6 +784,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			[
 				'mwe-popups-fade-in-down',
 				'flipped-y',
+				'mwe-popups-no-image-pointer',
 				'mwe-popups-is-not-tall'
 			],
 			'Y flipped.'
@@ -817,6 +818,7 @@ QUnit.test( '#getClasses when no thumbnail is available', ( assert ) => {
 			[
 				'mwe-popups-fade-in-down',
 				'flipped-x-y',
+				'mwe-popups-no-image-pointer',
 				'mwe-popups-is-not-tall'
 			],
 			'X and Y flipped.'
@@ -861,6 +863,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			[
 				'mwe-popups-fade-in-down',
 				'flipped-y',
+				'mwe-popups-no-image-pointer',
 				'mwe-popups-is-not-tall'
 			],
 			'Y flipped.'
@@ -894,6 +897,7 @@ QUnit.test( '#getClasses when a non-tall thumbnail is available', ( assert ) => 
 			[
 				'mwe-popups-fade-in-down',
 				'flipped-x-y',
+				'mwe-popups-no-image-pointer',
 				'mwe-popups-is-not-tall'
 			],
 			'X and Y flipped.'
@@ -939,6 +943,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			[
 				'mwe-popups-fade-in-down',
 				'flipped-y',
+				'mwe-popups-no-image-pointer',
 				'mwe-popups-is-tall'
 			],
 			'Y flipped.'
@@ -955,6 +960,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			[
 				'mwe-popups-fade-in-up',
 				'flipped-x',
+				'mwe-popups-image-pointer',
 				'mwe-popups-is-tall'
 			],
 			'X flipped.'
@@ -971,6 +977,7 @@ QUnit.test( '#getClasses when a tall thumbnail is available', ( assert ) => {
 			[
 				'mwe-popups-fade-in-down',
 				'flipped-x-y',
+				'mwe-popups-image-pointer',
 				'mwe-popups-is-tall'
 			],
 			'X and Y flipped.'
@@ -1149,6 +1156,124 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 		'url(#mwe-popups-mask-flip)',
 		'Image clip path is correct.'
 	);
+} );
+
+QUnit.test( '#hasPointerOnImage', ( assert ) => {
+	const cases = [
+		{
+			preview: {
+				hasThumbnail: false
+			},
+			layout: {},
+			expected: false,
+			reason: 'If no thumbnails no chance pointer will be on image'
+		},
+		{
+			preview: {
+				isTall: true,
+				hasThumbnail: true
+			},
+			layout: {
+				flippedX: false,
+				flippedY: false
+			},
+			expected: false,
+			reason: '(landscape) Pointer on left, image on right'
+		},
+		{
+			preview: {
+				isTall: true,
+				hasThumbnail: true
+			},
+			layout: {
+				flippedX: false,
+				flippedY: true
+			},
+			expected: false,
+			reason: '(landscape) Pointer on left, image on right'
+		},
+		{
+			preview: {
+				isTall: true,
+				hasThumbnail: true
+			},
+			layout: {
+				flippedX: true,
+				flippedY: true
+			},
+			expected: true,
+			reason: '(landscape) Pointer on bottom right, image on right'
+		},
+		{
+			preview: {
+				isTall: false,
+				hasThumbnail: true
+			},
+			layout: {
+				flippedX: false,
+				flippedY: false
+			},
+			expected: true,
+			reason: '(portrait) Pointer on top left, image on top'
+		},
+		{
+			preview: {
+				isTall: false,
+				hasThumbnail: true
+			},
+			layout: {
+				flippedX: true,
+				flippedY: false
+			},
+			expected: true,
+			reason: '(portrait) Pointer on top right, image on top'
+		},
+		{
+			preview: {
+				isTall: false,
+				hasThumbnail: true
+			},
+			layout: {
+				flippedX: false,
+				flippedY: true
+			},
+			expected: false,
+			reason: '(portrait) Pointer on bottom left, image on top'
+		},
+		{
+			preview: {
+				isTall: false,
+				hasThumbnail: true
+			},
+			layout: {
+				flippedX: true,
+				flippedY: true
+			},
+			expected: false,
+			reason: '(portrait) Pointer on bottom right, image on top'
+		},
+
+		{
+			preview: {
+				isTall: true,
+				hasThumbnail: true
+			},
+			layout: {
+				flippedX: true,
+				flippedY: false
+			},
+			expected: true,
+			reason: '(landscape) Pointer on top right, image on right'
+		}
+	];
+
+	cases.forEach( ( testCase ) => {
+		assert.strictEqual(
+			renderer.hasPointerOnImage( testCase.preview, testCase.layout ),
+			testCase.expected,
+			testCase.reason
+		);
+	} );
 } );
 
 QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert ) => {

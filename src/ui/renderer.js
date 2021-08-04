@@ -443,6 +443,29 @@ export function createLayout(
 }
 
 /**
+ * is there a pointer on the image of the preview?
+ *
+ * @param {ext.popups.Preview} preview
+ * @param {ext.popups.PreviewLayout} layout
+ * @return {boolean}
+ */
+export function hasPointerOnImage( preview, layout ) {
+	if ( ( !preview.hasThumbnail || preview.isTall && !layout.flippedX ) &&
+		!layout.flippedY ) {
+		return false;
+	}
+	if ( preview.hasThumbnail ) {
+		if (
+			( !preview.isTall && !layout.flippedY ) ||
+			( preview.isTall && layout.flippedX )
+		) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
  * Generates a list of declarative CSS classes that represent the layout of
  * the preview.
  *
@@ -467,14 +490,10 @@ export function getClasses( preview, layout ) {
 		classes.push( 'flipped-x' );
 	}
 
-	if ( ( !preview.hasThumbnail || preview.isTall && !layout.flippedX ) &&
-		!layout.flippedY ) {
-		classes.push( 'mwe-popups-no-image-pointer' );
-	}
-
-	if ( preview.hasThumbnail && !preview.isTall && !layout.flippedY ) {
-		classes.push( 'mwe-popups-image-pointer' );
-	}
+	classes.push(
+		hasPointerOnImage( preview, layout ) ?
+			'mwe-popups-image-pointer' : 'mwe-popups-no-image-pointer'
+	);
 
 	if ( preview.isTall ) {
 		classes.push( 'mwe-popups-is-tall' );
