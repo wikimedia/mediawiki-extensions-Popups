@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bikarhêner",
 			"George Animal"
 		]
 	},
-	"popups-settings-title": "Pêşdîtina rûpelê",
+	"popups-settings-title": "Pêşdîtin",
 	"popups-settings-option-page": "Çalak bike",
 	"popups-settings-save": "Tomar bike",
 	"popups-settings-help-ok": "Çêbû",
 	"popups-settings-cancel": "Betal bike",
-	"popups-settings-enable": "Pêşdîtinan çalak bike"
+	"popups-settings-enable": "Mîhengên pêşdîtinê biguherîne"
 }
