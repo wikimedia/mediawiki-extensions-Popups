@@ -118,6 +118,24 @@ storiesOf( 'Thumbnails', module )
 	`;
 
 } )
+.add( 'portrait panorama (T255549)', () => {
+	modifyStorybookHead( MODELS.THUMBNAIL_PORTRAIT_PANORAMA.languageCode, MODELS.THUMBNAIL_PORTRAIT.languageDirection )
+	return `
+		${createPopup( MODELS.THUMBNAIL_PORTRAIT_PANORAMA, { flippedX: false, flippedY: false } )}
+		${createPopup( MODELS.THUMBNAIL_PORTRAIT_PANORAMA, { flippedX: true, flippedY: false } )}
+		${createPopup( MODELS.THUMBNAIL_PORTRAIT_PANORAMA, { flippedX: false, flippedY: true } )}
+		${createPopup( MODELS.THUMBNAIL_PORTRAIT_PANORAMA, { flippedX: true, flippedY: true } )}
+	`;
+} )
+.add( 'landscape panorama (T255549)', () => {
+	modifyStorybookHead( MODELS.THUMBNAIL_LANDSCAPE_PANORAMA.languageCode, MODELS.THUMBNAIL_LANDSCAPE_PANORAMA.languageDirection )
+	return `
+		${createPopup( MODELS.THUMBNAIL_LANDSCAPE_PANORAMA, { flippedX: false, flippedY: false } )}
+		${createPopup( MODELS.THUMBNAIL_LANDSCAPE_PANORAMA, { flippedX: true, flippedY: false } )}
+		${createPopup( MODELS.THUMBNAIL_LANDSCAPE_PANORAMA, { flippedX: false, flippedY: true } )}
+		${createPopup( MODELS.THUMBNAIL_LANDSCAPE_PANORAMA, { flippedX: true, flippedY: true } )}
+	`;
+} )
 .add( 'portrait - SVG', () => {
 	modifyStorybookHead( MODELS.SVG_PORTRAIT.languageCode, MODELS.SVG_PORTRAIT.languageDirection )
 	return `
