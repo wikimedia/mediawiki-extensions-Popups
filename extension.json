@@ -36,7 +36,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"ReferencePreviewsPopups": "/analytics/legacy/referencepreviewspopups/1.0.0",
-				"VirtualPageView": 17780078
+				"VirtualPageView": "/analytics/legacy/virtualpageview/1.0.0"
 			}
 		}
 	},
