@@ -1,3 +1,5 @@
+# Doxyfile <https://www.doxygen.nl/manual/config.html>
+
 PROJECT_NAME           = Popups
 PROJECT_BRIEF          = "Displays page/reference previews when hovering over a link to an article/reference."
 
@@ -9,8 +11,9 @@ JAVADOC_AUTOBRIEF      = YES
 QT_AUTOBRIEF           = YES
 
 WARN_NO_PARAMDOC       = YES
+QUIET                  = YES
 
-INPUT                  = .
+INPUT                  = README.md CODE_OF_CONDUCT.md .
 EXCLUDE_PATTERNS       = doc docs vendor node_modules tests
 FILE_PATTERNS          = *.php
 
@@ -18,19 +21,9 @@ FILE_PATTERNS          = *.php
 RECURSIVE              = YES
 
 # NOTE: USE_MDFILE_AS_MAINPAGE requires that the specified file is included as an input file.
-USE_MDFILE_AS_MAINPAGE = ./README.md
-INPUT                 += ./README.md
+USE_MDFILE_AS_MAINPAGE = README.md
 
 HTML_DYNAMIC_SECTIONS  = YES
 GENERATE_TREEVIEW      = YES
 TREEVIEW_WIDTH         = 250
-
 GENERATE_LATEX         = NO
-
-HAVE_DOT               = YES
-DOT_FONTNAME           = Helvetica
-DOT_FONTSIZE           = 12
-TEMPLATE_RELATIONS     = YES
-
-# Makes dot run faster. Requires graphviz >1.8.10
-DOT_MULTI_TARGETS      = YES
