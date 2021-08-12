@@ -49,6 +49,38 @@ MODELS.THUMBNAIL_LANDSCAPE = {
 	pageId: 698
 };
 
+MODELS.THUMBNAIL_LANDSCAPE_PANORAMA = {
+	title: 'Zhongyuan Tower',
+	url: 'Zhongyuan Tower',
+	languageCode: "en",
+	languageDirection: "ltr",
+	extract: '<p><b>Zhongyuan Tower,</b> also known as Henan Radio and Television Tower, is located in Zhengzhou, Henan province, China. It is a multi-functional commercial, artistic and cultural center integrating radio and television broadcasting, tourism, cross-border trade, cultural performance, catering and leisure.The tower is 268 meters high and the top antenna is 120 meters high, with a total height of 388 meters. It is the world\'s second tallest steel tower after the Tokyo Skytree.</p>',
+	type: "page",
+	thumbnail: {
+		source:
+		"img/211px-HnzyftB.jpg",
+		width: 211,
+		height: 320
+	},
+	pageId: 3332543
+};
+
+MODELS.THUMBNAIL_PORTRAIT_PANORAMA = {
+	title: 'Deutsche Telekom',
+	url: 'Deutsche Telekom',
+	languageCode: "de",
+	languageDirection: "ltr",
+	extract: '<p>Die <b>Deutsche Telekom AG</b> ist die Dachgesellschaft von Europas größtem Tele­kommunikations­unternehmen mit Hauptsitz in Bonn. In der Liste Forbes Global 2000 der weltgrößten börsennotierten Unternehmen belegt die Deutsche Telekom Platz 69. Das Unternehmen kam im März 2021 auf einen Börsenwert von ca. 78,2 Mrd. Euro.</p>',
+	type: "page",
+	thumbnail: {
+		source:
+		"img/langde-320px-Telekom_Logo_2013.svg.png",
+		width: 320,
+		height: 157
+	},
+	pageId: 3332543
+};
+
 MODELS.SVG_PORTRAIT = {
 	title: "South Georgia and the South Sandwich Islands",
 	url:
