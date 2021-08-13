@@ -2,7 +2,7 @@
 * Various Page Preview models used for different configurations.
 * PreviewModel is defined in 'src/preview/model.js`.
 *
-* In produciton, thumbnail size is determined by the gateway before fetching
+* In production, thumbnail size is determined by the gateway before fetching
 * from the server. Here, thumbnails are defined statically so they
 * must be scaled down for low-dpi display, using `helpers/scaleDownThumbnails.js`.
 *
@@ -176,7 +176,7 @@ MODELS.THUMBNAIL_SMALL_TALL = {
 		width: 300,
 		height: 1000
 	},
-	pageId: 8246305
+	pageId: 18842359
 };
 MODELS.THUMBNAIL_SMALL_SHORT = {
 	title: "Full Moon",
@@ -191,7 +191,7 @@ MODELS.THUMBNAIL_SMALL_SHORT = {
 		width: 300,
 		height: 200
 	},
-	pageId: 2486305
+	pageId: 11432
 };
 MODELS.LONG_WORD_1 = {
 	title: "Pneumonoultramicroscopicsilicovolcanoconiosis",
@@ -556,6 +556,14 @@ MODELS.TYPE_REFERENCE_GENERIC_COLLAPSIBLE = {
 	type: 'reference',
 	referenceType: 'generic',
 	extract: `<p>This is a reference.</p><div class="mw-collapsible"></div>`
+};
+
+MODELS.ERROR = {
+	title: "Error Preview",
+	url: "Error Preview",
+	languageCode: "en",
+	languageDirection: "ltr",
+	type: 'generic',
 };
 
 export default MODELS;

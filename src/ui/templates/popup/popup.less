@@ -294,6 +294,10 @@
 			z-index: @zIndexThumbnailMask;
 			right: 0;
 		}
+
+		.mwe-popups-extract {
+			margin-top: 8px;
+		}
 	}
 
 	&.flipped-x-y {
@@ -495,6 +499,7 @@
 			padding-top: var( --pointer-height );
 		}
 
+		&.mwe-popups-type-generic:not( .flipped-y ):not( .flipped-x-y ),
 		&.mwe-popups-type-disambiguation:not( .flipped-y ):not( .flipped-x-y ) {
 			.mwe-popups-container {
 				padding-top: var( --pointer-height );

@@ -306,6 +306,17 @@ storiesOf( 'Non-latin', module )
 	`;
 } )
 
+storiesOf( 'Error', module )
+.add( 'generic', () => {
+	modifyStorybookHead( MODELS.ERROR.languageCode, MODELS.ERROR.languageDirection )
+	return `
+		${createPopup( MODELS.ERROR, { flippedX: false, flippedY: false } )}
+		${createPopup( MODELS.ERROR, { flippedX: true, flippedY: false } )}
+		${createPopup( MODELS.ERROR, { flippedX: false, flippedY: true } )}
+		${createPopup( MODELS.ERROR, { flippedX: true, flippedY: true } )}
+	`;
+} );
+
 storiesOf( 'assets', module )
 .add( 'SVG Masks', () => {
 	const parser = new DOMParser(),
