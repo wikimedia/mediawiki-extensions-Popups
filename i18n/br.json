@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adriendelucca",
 			"Fohanno",
 			"Fulup",
 			"Y-M D"
@@ -9,6 +10,6 @@
 	"popups-settings-option-page": "Eeun",
 	"popups-settings-save": "Enrollañ",
 	"popups-settings-cancel": "Nullañ",
-	"popups-preview-footer-read": "Lenn",
+	"popups-preview-footer-read": "Mont d'ar bajenn-mañ",
 	"prefs-reading": "Penndibaboù lenn"
 }
