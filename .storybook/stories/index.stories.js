@@ -29,6 +29,7 @@ import MODELS from '../mocks/models';
 import message from '../mocks/message';
 import createPopup from '../helpers/createPopup';
 import createFlippedVariants from '../helpers/createFlippedVariants';
+import testSizesScript from '!!raw-loader!../helpers/testSizes.js';
 
 /**
  * SVG Assets
@@ -98,7 +99,15 @@ modifyStorybookHead( 'en', 'ltr' );
  * Stories
  */
 
+const testSizesScriptDecorator = ( story ) => {
+	return `${story()}
+<div class="report"></div>
+<script>${testSizesScript}</script>
+`;
+};
+
 storiesOf( 'Thumbnails', module )
+.addDecorator(testSizesScriptDecorator)
 .add( 'portrait', () => {
 	modifyStorybookHead( MODELS.THUMBNAIL_PORTRAIT.languageCode, MODELS.THUMBNAIL_PORTRAIT.languageDirection )
 	return `${createPopup( MODELS.THUMBNAIL_PORTRAIT, { flippedX: false, flippedY: false, flipOffset: 0 } )}
@@ -109,7 +118,6 @@ storiesOf( 'Thumbnails', module )
 
 } )
 .add( 'landscape', () => {
-
 	modifyStorybookHead( MODELS.THUMBNAIL_LANDSCAPE.languageCode, MODELS.THUMBNAIL_LANDSCAPE.languageDirection )
 	return `${createPopup( MODELS.THUMBNAIL_LANDSCAPE, { flippedX: false, flippedY: false } )}
 		${createPopup( MODELS.THUMBNAIL_LANDSCAPE, { flippedX: true, flippedY: false } )}
@@ -172,7 +180,7 @@ storiesOf( 'Thumbnails', module )
 		${createPopup( MODELS.THUMBNAIL_DIVIDER, { flippedX: true, flippedY: true } )}
 	`;
 } )
-.add( 'portrait - Small square', () => {
+.add( 'Small square image', () => {
 	modifyStorybookHead( MODELS.THUMBNAIL_SQUARE.languageCode, MODELS.THUMBNAIL_SQUARE.languageDirection )
 	return `
 	${createPopup( MODELS.THUMBNAIL_SQUARE, { flippedX: false, flippedY: false } )}
@@ -201,6 +209,7 @@ storiesOf( 'Thumbnails', module )
 } )
 
 storiesOf( 'Text', module )
+.addDecorator(testSizesScriptDecorator)
 .add( 'Short & long', () => {
 	modifyStorybookHead( MODELS.LONG_WORD_1.languageCode, MODELS.LONG_WORD_1.languageDirection )
 	return `
@@ -261,6 +270,7 @@ storiesOf( 'Disambiguation', module )
 } )
 
 storiesOf( 'RTL', module )
+.addDecorator(testSizesScriptDecorator)
 .add( 'portrait', () => {
 	modifyStorybookHead( MODELS.HE_WIKI.languageCode, MODELS.HE_WIKI.languageDirection )
 	return `
@@ -294,6 +304,7 @@ storiesOf( 'RTL', module )
 	`;
 } )
 storiesOf( 'Non-latin', module )
+.addDecorator(testSizesScriptDecorator)
 .add( 'thumbnails', () => {
 	modifyStorybookHead( MODELS.RU_WIKI.languageCode, MODELS.RU_WIKI.languageDirection )
 	return `
