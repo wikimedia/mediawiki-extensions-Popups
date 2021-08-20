@@ -128,7 +128,7 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 	} );
 } );
 
-QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
+QUnit.test( 'createThumbnail - square images', ( assert ) => {
 	const devicePixelRatio = constants.default.BRACKETED_DEVICE_PIXEL_RATIO,
 		cases = [
 			{
@@ -153,8 +153,8 @@ QUnit.test( 'createThumbnail - landscape image', ( assert ) => {
 		} );
 		assert.strictEqual(
 			thumbnail.isTall,
-			false,
-			'Thumbnail is not tall.'
+			true,
+			'Square or almost square images are evaluated as tall.'
 		);
 		assert.strictEqual(
 			thumbnail.width,

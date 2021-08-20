@@ -162,7 +162,7 @@
 
 		.mwe-popups-extract + footer {
 			left: 0;
-			right: @popupTallWidth;
+			right: @popupLandscapeThumbnailWidth;
 
 			.rtl & {
 				/* @noflip */
@@ -178,10 +178,10 @@
 		.mwe-popups-extract {
 			@minHeight: 2 * @lineHeight;
 			// On short summaries, we want to avoid an overlap with the gradient.
-			min-height: @minHeight;
-			max-height: 7 * @lineHeight;
+			min-height: @minHeight + 2px;
+			max-height: ( 7 * @lineHeight );
 			overflow: hidden;
-			margin-bottom: @minHeight + 7px;
+			margin-bottom: @minHeight + 4px;
 			padding-bottom: 0;
 		}
 
@@ -401,10 +401,6 @@
 			outline: 1px solid rgba( 0, 0, 0, 0.1 );
 		}
 
-		.mwe-popups-discreet {
-			margin-bottom: -9px;
-		}
-
 		.mwe-popups-extract[ dir='rtl' ] + footer {
 			/* @noflip */
 			left: unset;
@@ -464,7 +460,8 @@
 		&.mwe-popups-is-tall {
 			.mwe-popups-discreet {
 				.mwe-popups-thumbnail {
-					width: @popupTallWidth;
+					width: @popupLandscapeThumbnailWidth;
+					box-sizing: border-box;
 					height: 250px;
 				}
 				order: 1;
@@ -475,7 +472,8 @@
 		&.mwe-popups-is-not-tall {
 			.mwe-popups-thumbnail {
 				width: @popupWidth;
-				min-height: 181px;
+				// should never exceed this value per https://phabricator.wikimedia.org/T255549#7296087
+				height: @popupPortraitThumbnailHeight;
 			}
 
 			.mwe-popups-container {

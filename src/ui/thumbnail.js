@@ -69,6 +69,9 @@ export function createThumbnail( rawThumbnail, useCSSClipPath ) {
 		return null;
 	}
 
+	const aspectRatio = thumbWidth / thumbHeight;
+	const isSquare = aspectRatio > 0.7 && aspectRatio < 1.3;
+
 	let x, y, width, height;
 	if ( tall ) {
 		x = ( thumbWidth > SIZES.portraitImage.w ) ?
@@ -108,7 +111,7 @@ export function createThumbnail( rawThumbnail, useCSSClipPath ) {
 
 	return {
 		el,
-		isTall: tall,
+		isTall: tall || isSquare,
 		isNarrow,
 		offset: isNarrow ? SIZES.portraitImage.w - thumbWidth : 0,
 		width: thumbWidth,
