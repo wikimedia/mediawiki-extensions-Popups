@@ -161,7 +161,9 @@
 				"popups-refpreview-journal",
 				"popups-refpreview-news",
 				"popups-refpreview-web",
-				"popups-refpreview-jump-to-reference"
+				"popups-refpreview-jump-to-reference",
+				"popups-fandom-action-button",
+				"popups-fandom-header-text"
 			],
 			"dependencies": [
 				"ext.popups.images",

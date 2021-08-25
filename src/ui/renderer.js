@@ -9,6 +9,9 @@ import { previewTypes } from '../preview/model';
 import { renderPreview } from './templates/preview/preview';
 import { renderReferencePreview } from './templates/referencePreview/referencePreview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';
+import { renderPagePreviewWithButton } from './templates/pagePreviewWithButton/pagePreviewWithButton';
+import { renderPagePreviewWithTitle } from './templates/pagePreviewWithTitle/pagePreviewWithTitle';
+import { renderPagePreviewWithImage } from './templates/pagePreviewWithImage/pagePreviewWithImage';
 
 const mw = mediaWiki,
 	$ = jQuery,
@@ -159,6 +162,57 @@ function createPagePreview( model ) {
 		hasThumbnail,
 		thumbnail,
 		isTall: hasThumbnail && thumbnail.isTall
+	};
+}
+
+/**
+ * Creates an instance of the DTO backing a preview with buttons.
+ *
+ * @param {ext.popups.PagePreviewModel} model
+ * @return {ext.popups.Preview}
+ */
+function createPagePreviewWithButton( model ) {
+	const thumbnail = createThumbnail( model.thumbnail ),
+		hasThumbnail = thumbnail !== null;
+
+	return {
+		el: renderPagePreviewWithButton( model, thumbnail ),
+		hasThumbnail,
+		thumbnail,
+		isTall: hasThumbnail && thumbnail.isTall
+	};
+}
+
+/**
+ * Creates an instance of the DTO backing a preview with title.
+ *
+ * @param {ext.popups.PagePreviewModel} model
+ * @return {ext.popups.Preview}
+ */
+function createPagePreviewWithTitle( model ) {
+	return {
+		el: renderPagePreviewWithTitle( model, null ),
+		hasThumbnail: false,
+		thumbnail: false,
+		isTall: false
+	};
+}
+
+/**
+ * Creates an instance of the DTO backing a preview with image.
+ *
+ * @param {ext.popups.PagePreviewModel} model
+ * @return {ext.popups.Preview}
+ */
+function createPagePreviewWithImage( model ) {
+	const thumbnail = createThumbnail( model.thumbnail ),
+		hasThumbnail = thumbnail !== null;
+
+	return {
+		el: renderPagePreviewWithImage( model, thumbnail ),
+		hasThumbnail,
+		thumbnail,
+		isTall: false
 	};
 }
 
