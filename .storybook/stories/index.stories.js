@@ -207,6 +207,15 @@ storiesOf( 'Thumbnails', module )
 	${createPopup( MODELS.THUMBNAIL_SMALL_SHORT, { flippedX: true, flippedY: true } )}
 `;
 } )
+.add( 'landscape - Blockquote', () => {
+	modifyStorybookHead( MODELS.THUMBNAIL_BLOCKQUOTE.languageCode, MODELS.THUMBNAIL_BLOCKQUOTE.languageDirection )
+	return `
+	${createPopup( MODELS.THUMBNAIL_BLOCKQUOTE, { flippedX: false, flippedY: false } )}
+	${createPopup( MODELS.THUMBNAIL_BLOCKQUOTE, { flippedX: true, flippedY: false } )}
+	${createPopup( MODELS.THUMBNAIL_BLOCKQUOTE, { flippedX: false, flippedY: true } )}
+	${createPopup( MODELS.THUMBNAIL_BLOCKQUOTE, { flippedX: true, flippedY: true } )}
+`;
+} )
 
 storiesOf( 'Text', module )
 .addDecorator(testSizesScriptDecorator)

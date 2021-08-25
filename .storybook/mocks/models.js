@@ -193,6 +193,21 @@ MODELS.THUMBNAIL_SMALL_SHORT = {
 	},
 	pageId: 11432
 };
+MODELS.THUMBNAIL_BLOCKQUOTE = {
+	title: "List of photographs of Abraham Lincoln",
+	url: "List of photographs of Abraham Lincoln",
+	languageCode: "en",
+	languageDirection: "ltr",
+	extract:
+		`<p>There are 130 known photographs of Abraham Lincoln.</p><blockquote class="templatequote "><p>Lincoln's features were the despair of every artist who undertook his portrait. The writer saw nearly a dozen, one after another, soon after the first nomination to the presidency, attempt the task. They put into their pictures the large, rugged features, and strong, prominent lines; they made measurements to obtain exact proportions; they "petrified" some single look, but the picture remained hard and cold. Even before these paintings were finished it was plain to see that they were unsatisfactory to the artists themselves, and much more so to the intimate friends of the man this was not he who smiled, spoke, laughed, charmed. The picture was to the man as the grain of sand to the mountain, as the dead to the living. Graphic art was powerless before a face that moved through a thousand delicate gradations of line and contour, light and shade, sparkle of the eye and curve of the lip, in the long gamut of expression from grave to gay, and back again from the rollicking jollity of laughter to that serious, far away look that with prophetic intuitions beheld the awful panorama of war, and heard the cry of oppression and suffering. There are many pictures of Lincoln; there is no portrait of him.</p></blockquote>`,
+	type: "page",
+	thumbnail: {
+		source: 'img/640px-Abraham_Lincoln_by_Nicholas_Shepherd,_1846-crop.jpg',
+		width: 506,
+		height: 640
+	},
+	pageId: 38746858
+};
 MODELS.LONG_WORD_1 = {
 	title: "Pneumonoultramicroscopicsilicovolcanoconiosis",
 	url: "Pneumonoultramicroscopicsilicovolcanoconiosis",

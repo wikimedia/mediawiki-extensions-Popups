@@ -83,7 +83,8 @@
 			text-decoration: none;
 		}
 
-		&:after {
+		&:after,
+		blockquote:after {
 			content: ' ';
 			position: absolute;
 			bottom: 0;
@@ -111,6 +112,17 @@
 			background-image: -webkit-linear-gradient( to left, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 			/* @noflip */
 			background-image: linear-gradient( to left, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
+		}
+
+		blockquote:after {
+			width: 100%;
+			height: @lineHeight + 5px;
+			/* @noflip */
+			bottom: 0;
+			/* @noflip */
+			background-image: -webkit-linear-gradient( to bottom, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 75% );
+			/* @noflip */
+			background-image: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 75% );
 		}
 		/* stylelint-enable function-linear-gradient-no-nonstandard-direction */
 
