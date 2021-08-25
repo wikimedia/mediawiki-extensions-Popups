@@ -12,6 +12,7 @@ setTimeout( function () {
         const bbox = popup.getBoundingClientRect();
         const h = Math.floor( bbox.height );
         const w = Math.floor( bbox.width );
+        const extract = popup.querySelector( '.mwe-popups-extract' );
 
         // Per https://www.mediawiki.org/wiki/Page_Previews/Design_specifications
         //
@@ -52,28 +53,52 @@ setTimeout( function () {
         const hClass = `class="${h > maxHeight + 1 || h < minHeight - 1 ? 'error' : ''}"`;
 
         let thumbnailReport = '';
+        let thumbH = 0;
         if ( thumbnail ) {
             const bboxThumb = thumbnail.getBoundingClientRect();
+            thumbH = Math.round( bboxThumb.height );
             if ( isLandscape ) {
                 const thumbW = Math.round( bboxThumb.width );
                 // See https://www.mediawiki.org/wiki/Page_Previews/Design_specifications#Inner_styling_2
                 const expectedThumbWidth = 203;
                 const thumbWClass = `class="${thumbW !== expectedThumbWidth ? 'error' : ''}"`;
-                thumbnailReport = `Thumbnail width = <span ${thumbWClass}>${thumbW} <span> (expected ${expectedThumbWidth})</span>`;
+                thumbnailReport = `Thumbnail width = <span ${thumbWClass}>${thumbW} <span> (expected ${expectedThumbWidth})</span>
+                </span>`;
             } else {
-                const thumbH = Math.round( bboxThumb.height );
                 // See https://www.mediawiki.org/wiki/Page_Previews/Design_specifications#Inner_styling_3
                 const expectedThumbHeight = 192;
                 const thumbHClass = `class="${thumbH !== expectedThumbHeight ? 'error' : ''}"`;
-                thumbnailReport = `ThumbH = <span ${thumbHClass}>${thumbH} <span> (expected ${expectedThumbHeight})</span>`;
+                thumbnailReport = `ThumbH = <span ${thumbHClass}>${thumbH} <span> (expected ${expectedThumbHeight})</span>
+                </span>`;
             }
         }
+
+        let extractReport = '';
+        const extractBBox = extract.getBoundingClientRect();
+        // https://www.mediawiki.org/wiki/Page_Previews/Design_specifications#Inner_styling
+        // Footer contains 34x34 icon and 16px padding.
+        // Top padding of the preview extract is always 20px;
+        const PREVIEW_FOOTER_HEIGHT = 34 + 16;
+        const maxHeightExtract = isLandscape ?
+            // https://www.mediawiki.org/wiki/Page_Previews/Design_specifications#Inner_styling_2
+            242:
+            // https://www.mediawiki.org/wiki/Page_Previews/Design_specifications#Inner_styling_3
+            202;
+
+        const extractHeight = extractBBox.height + PREVIEW_FOOTER_HEIGHT;
+
+        const errorClass = ( extractHeight > maxHeightExtract + 1 ) ?
+            'error' : '';
+        extractReport = `ExH = <span class="${errorClass}">${extractHeight}
+            <span>(expected < ${maxHeightExtract})</span>
+        </span>`;
 
         const report = document.createElement( 'div' );
         report.setAttribute( 'class', 'storybook-report' );
         report.innerHTML = `W=<span ${wClass}>${w}<span>(expected ${expectedWidth})</span></span>,
 H=<span ${hClass}>${h}<span> (expected range ${minHeight} - ${maxHeight})</span></span>
-${thumbnailReport}`;
+${thumbnailReport}
+${extractReport}`;
         popup.parentNode.appendChild( report );
     })
 }, 50 );
