@@ -1,6 +1,9 @@
 {
 	"presets": ["@babel/preset-env"],
 	"plugins": [
+		["@babel/transform-runtime", {
+			"regenerator": true
+		}],
 		["@babel/plugin-proposal-private-property-in-object", {
 		"loose": true
 	  }]
