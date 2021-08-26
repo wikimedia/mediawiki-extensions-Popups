@@ -35,9 +35,10 @@ export function renderPagePreviewWithImage(model, thumbnail) {
 
 
 	// We display all images in landscape view, therefore we need to put image in the middle
-	thumbnail.isTall && $imageContainer.find('svg').css({
+	$imageContainer.find('svg').css({
 		display: 'block',
-		margin: '0 auto'
+		margin: '0 auto',
+		position: 'relative'
 	});
 
 	return $el;
