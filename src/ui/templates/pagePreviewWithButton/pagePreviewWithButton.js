@@ -11,6 +11,7 @@ export function renderPagePreviewWithButton(model, thumbnail) {
 	buttonSection.append(`<a href="${url}" target="_blank" class="wds-button">${mw.msg('popups-fandom-action-button')}</a>`);
 
 	$el.find('.mwe-popups-container')
+		.addClass('mwe-popups-fandom')
 		.prepend(`<div class="mwe-popups-header">${mw.msg('popups-fandom-header-text')}</div>`)
 		.append(buttonSection);
 	return $el;

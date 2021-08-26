@@ -2,18 +2,20 @@
 
 .mwe-popups {
   .mwe-popups-container {
+	&.mwe-popups-fandom {
+	  footer {
+		position: relative;
+
+		.mwe-popups-settings-icon {
+		  position: absolute;
+		  right: 0;
+		}
+	  }
+	}
+
 	.mwe-popups-header {
 	  margin: @popupPadding;
 	  font-weight: bold;
-	}
-
-	footer {
-	  position: relative;
-
-	  .mwe-popups-settings-icon {
-		position: absolute;
-		right: 0;
-	  }
 	}
 
 	.mwe-popups-buttons-section {
