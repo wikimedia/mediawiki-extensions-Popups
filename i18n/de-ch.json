@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Filzstift"
+		]
+	},
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Du hast die Helferlein [[$1|Navigations-Popups]] und [[$1|Fussnoten-Tooltip]] aktiviert, sodass du keine durch diese Funktion zur Verfügung gestellte Vorschauen sehen wirst. Diese Helferlein können abhängig von deinem Wiki einen leicht abweichenden Namen haben. Wenn du weiterhin Probleme hast, prüfe bitte deine Helferlein und Benutzerskripte, inklusive den globalen."
+}
