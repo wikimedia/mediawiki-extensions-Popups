@@ -357,13 +357,13 @@ export function bindBehavior( preview, behavior ) {
 
 	// Popups experiment:
 	// find the button and track click action, hover on popup
-	preview.el.find( '.mwe-popups-buttons-section .mwe-popups-discreet .mwe-popups-extract').click( ( event ) => {
+	preview.el.find( '.mwe-popups' ).click( ( event ) => {
 		event.stopPropagation();
 		trackExperimentsInteractions.trackPopupClick( event );
 	});
 
 	let timeoutId = null;
-	preview.el.find( '.mwe-popups' ).on(
+	preview.el.on(
 		'mouseover', function( event ) {
 			timeoutId = setTimeout(function(){
 				trackExperimentsInteractions.trackPopupHover( event );
@@ -371,7 +371,7 @@ export function bindBehavior( preview, behavior ) {
 		},
 		false
 	);
-	preview.el.find( '.mwe-popups' ).on(
+	preview.el.on(
 		'mouseout', function() {
 			clearTimeout( timeoutId )
 		},
