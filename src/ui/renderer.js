@@ -12,6 +12,7 @@ import { renderPagePreview } from './templates/pagePreview/pagePreview';
 import { renderPagePreviewWithButton } from './templates/pagePreviewWithButton/pagePreviewWithButton';
 import { renderPagePreviewWithTitle } from './templates/pagePreviewWithTitle/pagePreviewWithTitle';
 import { renderPagePreviewWithImage } from './templates/pagePreviewWithImage/pagePreviewWithImage';
+import * as trackExperimentsInteractions from "../trackExperimentsInteractions";
 
 const mw = mediaWiki,
 	$ = jQuery,
@@ -353,6 +354,30 @@ export function bindBehavior( preview, behavior ) {
 
 			behavior.showSettings( event );
 		} );
+
+	// Popups experiment:
+	// find the button and track click action, hover on popup
+	// preview.el.find( '.mwe-popups-buttons-section' ).click( ( event ) => {
+	preview.el.find( '.mwe-popups' ).click( ( event ) => {
+		event.stopPropagation();
+		trackExperimentsInteractions.trackPopupClick( event );
+	});
+
+	let timeoutId = null;
+	preview.el.find( '.mwe-popups' ).addEventListener(
+		'mouseover', function( event ) {
+			timeoutId = window.setTimeout(function(){
+				trackExperimentsInteractions.trackPopupHover( event );
+			}, 2000);
+		},
+		false
+	);
+	preview.el.find( '.mwe-popups' ).addEventListener(
+		'mouseout', function() {
+			window.clearTimeout( timeoutId )
+		},
+		false
+	);
 }
 
 /**
