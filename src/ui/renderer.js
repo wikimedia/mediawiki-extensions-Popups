@@ -366,7 +366,7 @@ export function bindBehavior( preview, behavior ) {
 	let timeoutId = null;
 	preview.el.find( '.mwe-popups' ).addEventListener(
 		'mouseover', function( event ) {
-			timeoutId = window.setTimeout(function(){
+			timeoutId = setTimeout(function(){
 				trackExperimentsInteractions.trackPopupHover( event );
 			}, 2000);
 		},
@@ -374,7 +374,7 @@ export function bindBehavior( preview, behavior ) {
 	);
 	preview.el.find( '.mwe-popups' ).addEventListener(
 		'mouseout', function() {
-			window.clearTimeout( timeoutId )
+			clearTimeout( timeoutId )
 		},
 		false
 	);
