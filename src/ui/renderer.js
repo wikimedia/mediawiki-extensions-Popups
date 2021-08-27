@@ -357,7 +357,7 @@ export function bindBehavior( preview, behavior ) {
 
 	// Popups experiment:
 	// find the button and track click action, hover on popup
-	preview.el.find( '.mwe-popups-buttons-section .mwe-popups-discreet .mwe-popups-extract .').click( ( event ) => {
+	preview.el.find( '.mwe-popups-buttons-section .mwe-popups-discreet .mwe-popups-extract').click( ( event ) => {
 		event.stopPropagation();
 		trackExperimentsInteractions.trackPopupClick( event );
 	});
