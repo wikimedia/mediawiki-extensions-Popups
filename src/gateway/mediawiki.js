@@ -52,6 +52,8 @@ export default function createMediaWikiApiGateway( api, config ) {
 			maxage: CACHE_LIFETIME,
 			uselang: 'content',
 			vigthumbsize: config.THUMBNAIL_SIZE,
+			vigminwidth: 200,
+			vigminheight: 200,
 		}, {
 			headers: {
 				'X-Analytics': 'preview=1',
