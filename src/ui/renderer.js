@@ -313,6 +313,10 @@ export function show(
 		dir
 	);
 
+	$link.click(function() {
+		trackExperimentsInteractions.trackPopupClick();
+	});
+
 	preview.el.appendTo( container );
 
 	layoutPreview(
