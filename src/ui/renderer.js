@@ -357,26 +357,24 @@ export function bindBehavior( preview, behavior ) {
 
 	// Popups experiment:
 	// find the button and track click action, hover on popup
-	preview.el.find( '.mwe-popups' ).click( ( event ) => {
-		event.stopPropagation();
-		trackExperimentsInteractions.trackPopupClick( event );
+	$("div.mwe-popups a").not(".mwe-popups-settings-icon").click(function() {
+		trackExperimentsInteractions.trackPopupClick();
 	});
 
-	let timeoutId = null;
-	preview.el.on(
-		'mouseover', function( event ) {
-			timeoutId = setTimeout(function(){
-				trackExperimentsInteractions.trackPopupHover( event );
+	let timeoutId;
+	$("div.mwe-popups").hover(function() {
+		if (!timeoutId) {
+			timeoutId = setTimeout(function() {
+				timeoutId = null;
+				trackExperimentsInteractions.trackPopupHover();
 			}, 2000);
-		},
-		false
-	);
-	preview.el.on(
-		'mouseout', function() {
-			clearTimeout( timeoutId )
-		},
-		false
-	);
+		}
+	}, function () {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
+	});
 }
 
 /**

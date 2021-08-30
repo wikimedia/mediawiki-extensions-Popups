@@ -2,16 +2,16 @@
  * @module trackExperimentsInteractions
  */
 
-export function trackPopupClick( user ) {
-	if ( user.isAnon() && window.pathfinderPopupsExtVariant ) {
+export function trackPopupClick() {
+	if ( window.pathfinderPopupsExtVariant ) {
 		window.pathfinderTracking.trackPopupsExt({
 			action: 'click'
 		});
 	}
 }
 
-export function trackPopupHover( user ) {
-	if ( user.isAnon() && window.pathfinderPopupsExtVariant ) {
+export function trackPopupHover() {
+	if ( window.pathfinderPopupsExtVariant ) {
 		window.pathfinderTracking.trackPopupsExt({
 			action: 'mouseover'
 		});
