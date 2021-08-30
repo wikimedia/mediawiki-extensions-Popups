@@ -89,7 +89,7 @@ export function init() {
  * orientation, if necessary.
  *
  * @param {ext.popups.PreviewModel} model
- * @return {ext.popups.Preview}
+ * @return {ext.popups.Preview|null}
  */
 export function render( model ) {
 	const preview = createPreviewWithType( model );
@@ -113,6 +113,9 @@ export function render( model ) {
 			$( event.target ).click(function() {
 				trackExperimentsInteractions.trackLinkClick();
 			});
+			if (window.pathfinderPopupsExtVariant && window.pathfinderPopupsExtVariant === "popups-variant-control") {
+				return null;
+			}
 			return show(
 				preview, event, $( event.target ), boundActions, token,
 				document.body, document.documentElement.getAttribute( 'dir' )
