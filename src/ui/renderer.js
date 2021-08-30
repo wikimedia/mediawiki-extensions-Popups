@@ -13,6 +13,7 @@ import { renderPagePreviewWithButton } from './templates/pagePreviewWithButton/p
 import { renderPagePreviewWithTitle } from './templates/pagePreviewWithTitle/pagePreviewWithTitle';
 import { renderPagePreviewWithImage } from './templates/pagePreviewWithImage/pagePreviewWithImage';
 import * as trackExperimentsInteractions from "../trackExperimentsInteractions";
+import {trackLinkClick} from "../trackExperimentsInteractions";
 
 const mw = mediaWiki,
 	$ = jQuery,
@@ -314,7 +315,22 @@ export function show(
 	);
 
 	$link.click(function() {
-		trackExperimentsInteractions.trackPopupClick();
+		trackExperimentsInteractions.trackLinkClick();
+	});
+
+	let timeoutId;
+	$link.hover(function() {
+		if (!timeoutId) {
+			timeoutId = setTimeout(function() {
+				timeoutId = null;
+				trackExperimentsInteractions.trackPopupHover();
+			}, 2000);
+		}
+	}, function () {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
 	});
 
 	preview.el.appendTo( container );
