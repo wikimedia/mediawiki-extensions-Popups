@@ -93,7 +93,6 @@ export function init() {
  */
 export function render( model ) {
 	const preview = createPreviewWithType( model );
-
 	return {
 		/**
 		 * Shows the preview given an event representing the user's interaction
@@ -111,6 +110,9 @@ export function render( model ) {
 		 * @return {JQuery.Promise<void>}
 		 */
 		show( event, boundActions, token ) {
+			$( event.target ).click(function() {
+				trackExperimentsInteractions.trackLinkClick();
+			});
 			return show(
 				preview, event, $( event.target ), boundActions, token,
 				document.body, document.documentElement.getAttribute( 'dir' )
@@ -313,10 +315,6 @@ export function show(
 		pointerSize,
 		dir
 	);
-
-	$link.click(function() {
-		trackExperimentsInteractions.trackLinkClick();
-	});
 
 	let timeoutId;
 	$link.hover(function() {
