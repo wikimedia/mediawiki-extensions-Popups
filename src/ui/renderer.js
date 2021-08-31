@@ -12,6 +12,8 @@ import { renderPagePreview } from './templates/pagePreview/pagePreview';
 import { renderPagePreviewWithButton } from './templates/pagePreviewWithButton/pagePreviewWithButton';
 import { renderPagePreviewWithTitle } from './templates/pagePreviewWithTitle/pagePreviewWithTitle';
 import { renderPagePreviewWithImage } from './templates/pagePreviewWithImage/pagePreviewWithImage';
+import * as trackExperimentsInteractions from "../trackExperimentsInteractions";
+import {trackLinkClick} from "../trackExperimentsInteractions";
 
 const mw = mediaWiki,
 	$ = jQuery,
@@ -87,11 +89,10 @@ export function init() {
  * orientation, if necessary.
  *
  * @param {ext.popups.PreviewModel} model
- * @return {ext.popups.Preview}
+ * @return {ext.popups.Preview|null}
  */
 export function render( model ) {
 	const preview = createPreviewWithType( model );
-
 	return {
 		/**
 		 * Shows the preview given an event representing the user's interaction
@@ -109,6 +110,12 @@ export function render( model ) {
 		 * @return {JQuery.Promise<void>}
 		 */
 		show( event, boundActions, token ) {
+			$( event.target ).click(function() {
+				trackExperimentsInteractions.trackLinkClick();
+			});
+			if (window.pathfinderPopupsExtVariant && window.pathfinderPopupsExtVariant === "popups-variant-control") {
+				return null;
+			}
 			return show(
 				preview, event, $( event.target ), boundActions, token,
 				document.body, document.documentElement.getAttribute( 'dir' )
@@ -312,6 +319,21 @@ export function show(
 		dir
 	);
 
+	let timeoutId;
+	$link.hover(function() {
+		if (!timeoutId) {
+			timeoutId = setTimeout(function() {
+				timeoutId = null;
+				trackExperimentsInteractions.trackPopupHover();
+			}, 2000);
+		}
+	}, function () {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
+	});
+
 	preview.el.appendTo( container );
 
 	layoutPreview(
@@ -353,6 +375,27 @@ export function bindBehavior( preview, behavior ) {
 
 			behavior.showSettings( event );
 		} );
+
+	// Popups experiment:
+	// find the button and track click action, hover on popup
+	$("div.mwe-popups a").not(".mwe-popups-settings-icon").click(function() {
+		trackExperimentsInteractions.trackPopupClick();
+	});
+
+	let timeoutId;
+	$("div.mwe-popups").hover(function() {
+		if (!timeoutId) {
+			timeoutId = setTimeout(function() {
+				timeoutId = null;
+				trackExperimentsInteractions.trackPopupHover();
+			}, 2000);
+		}
+	}, function () {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
+	});
 }
 
 /**
