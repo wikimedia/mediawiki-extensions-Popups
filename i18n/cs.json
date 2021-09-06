@@ -38,7 +38,7 @@
 	"popups-refpreview-news": "Zpravodajská reference",
 	"popups-refpreview-web": "Webová reference",
 	"popups-refpreview-collapsible-placeholder": "Tato reference obsahuje grafický prvek, který nelze v náhledu zobrazit.",
-	"popups-refpreview-user-preference-label": "Náhledy referencí (získejte rychlé náhledy poznámek pod čarou)",
+	"popups-refpreview-user-preference-label": "Zapnout náhledy referencí (při čtení stránky poskytne rychlé náhledy referencí)",
 	"popups-refpreview-beta-feature-message": "Náhledy referencí",
 	"popups-refpreview-beta-feature-description": "Zobrazit náhled reference při umístění kurzoru myši nad značku reference (číslo reference v horním indexu).\n\nUpozornění: Pokud používáte udělátko [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] nebo [[mw:Special:MyLanguage/Reference Tooltips|Vyskakovací reference]], tak náhledy referencí neuvidíte."
 }
