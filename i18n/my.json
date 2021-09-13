@@ -6,7 +6,13 @@
 	},
 	"popups-settings-title": "ကြိုတင်အစမ်းကြည့်ရှုရန်",
 	"popups-settings-option-page": "စာမျက်နှာ အကြိုမြင်ကွင်းများ",
+	"popups-settings-save": "သိမ်းရန်",
+	"popups-settings-help-ok": "ပြီးပြီ",
 	"popups-settings-cancel": "မလုပ်တော့ပါ",
+	"popups-preview-footer-read": "ဤစာမျက်နှာသို့သွားရန်",
+	"popups-preview-disambiguation": "ဤခေါင်းစဉ်သည် စာမျက်နှာတစ်ခုထက်ပို၍ ဆက်နွယ်သည်",
+	"popups-preview-disambiguation-link": "ဆင်တူစာမျက်နှာများကို ကြည့်ရန်",
 	"prefs-reading": "စာဖတ် အပြင်အဆင်များ",
-	"popups-refpreview-reference": "ကိုးကား"
+	"popups-refpreview-reference": "ကိုးကား",
+	"popups-refpreview-note": "မှတ်စု"
 }
