@@ -20,9 +20,9 @@
  */
 namespace Popups;
 
-use BetaFeatures;
 use Config;
 use ExtensionRegistry;
+use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserOptionsLookup;
 use Title;
