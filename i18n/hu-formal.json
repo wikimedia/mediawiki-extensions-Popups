@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tacsipacsi"
+		]
+	},
+	"popups-message": "Előnézetek",
+	"popups-desc": "Amikor a felhasználó egy hivatkozás fölé viszi az egérmutatót, megjelenik az előnézete egy buborékban"
+}
