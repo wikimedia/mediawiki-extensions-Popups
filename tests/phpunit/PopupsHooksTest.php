@@ -30,7 +30,7 @@ use Psr\Log\LoggerInterface;
  * @group Popups
  * @coversDefaultClass \Popups\PopupsHooks
  */
-class PopupsHooksTest extends MediaWikiTestCase {
+class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onGetPreferences

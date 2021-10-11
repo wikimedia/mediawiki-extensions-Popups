@@ -28,11 +28,11 @@ use Popups\PopupsGadgetsIntegration;
  * @group Popups
  * @coversDefaultClass \Popups\PopupsContext
  */
-class PopupsContextTest extends MediaWikiTestCase {
+class PopupsContextTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * Anonymous user id
-	 * @see MediaWikiTestCase::addCoreDBData()
+	 * @see MediaWikiIntegrationTestCase::addCoreDBData()
 	 */
 	private const ANONYMOUS_USER = 0;
 
