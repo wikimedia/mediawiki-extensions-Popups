@@ -548,7 +548,7 @@ export function layoutPreview(
 	// * mwe-popups-is-not-tall
 	// * mwe-popups-is-tall
 	// * mwe-popups-no-image-pointer
-	popup.addClass( classes.join( ' ' ) );
+	popup.addClass( classes );
 
 	popup.css( {
 		left: `${layout.offset.left}px`,
