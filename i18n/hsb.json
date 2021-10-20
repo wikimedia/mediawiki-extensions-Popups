@@ -1,16 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"J budissin"
+			"J budissin",
+			"Michawiki"
 		]
 	},
 	"popups-message": "Přehlady",
-	"popups-settings-title": "Přehlad strony",
+	"popups-settings-title": "Přehlady",
 	"popups-settings-option-page": "Zmóžnić",
 	"popups-settings-save": "Składować",
 	"popups-settings-help-ok": "Hotowo",
 	"popups-settings-cancel": "Přetorhnyć",
-	"popups-settings-enable": "Přehlady zmóžnić",
+	"popups-settings-enable": "Nastajenja přehlada wobdźěłać",
 	"popups-preview-footer-read": "K tutej stronje hić",
 	"popups-preview-disambiguation": "Tutón titul poćahuje so na wjacore strony",
 	"popups-preview-disambiguation-link": "Podobne strony wobhladać",
