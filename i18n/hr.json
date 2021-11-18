@@ -4,7 +4,8 @@
 			"Bugoslav",
 			"Johanna Strodt (WMDE)",
 			"MaGa",
-			"Neptune, the Mystic"
+			"Neptune, the Mystic",
+			"Ponor"
 		]
 	},
 	"popups-message": "Pregledi",
@@ -21,8 +22,8 @@
 	"popups-preview-footer-read": "Idi na ovu stranicu",
 	"popups-preview-disambiguation": "Ovaj se naslov odnosi na više stranica",
 	"popups-preview-disambiguation-link": "Vidi slične stranice",
-	"prefs-reading": "Postavke prikaza načina čitanja",
-	"popups-prefs-optin": "Pregled stranica (ostvari brzo pregledanje teme dok čitate stranicu):",
+	"prefs-reading": "Prikaz prilikom čitanja",
+	"popups-prefs-optin": "Omogući kratki pregled stranice na koju vodi poveznica u tekstu",
 	"popups-prefs-disable-nav-gadgets-info": "Morate [[$1 | isključiti dodatak Navigacijski prozorčići ''(Navigation Popups)'']] iz kartice »Dodatci« u Postavkama da biste uključili Pregled stranica",
 	"popups-prefs-conflicting-gadgets-info": "Neki dodatci i druge prilagodbe mogu utjecati na rad ove mogućnosti. Ako naiđete na probleme, provjerite svoje dodatke i suradničke skripte, uključujući i globalne.",
 	"popups-refpreview-reference": "Izvori",
