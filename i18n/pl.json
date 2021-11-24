@@ -9,7 +9,8 @@
 			"SemanticPioneer",
 			"Ty221",
 			"WTM",
-			"Woytecr"
+			"Woytecr",
+			"Matma Rex"
 		]
 	},
 	"popups-message": "Podgląd",
@@ -17,11 +18,13 @@
 	"popups-settings-title": "Podgląd",
 	"popups-settings-option-page": "Podgląd stron",
 	"popups-settings-option-page-description": "Uzyskaj szybkie podglądy tematu podczas czytania strony.",
+	"popups-settings-option-reference": "Podgląd przypisów",
+	"popups-settings-option-reference-description": "Uzyskaj szybkie podglądy przypisów podczas czytania strony.",
 	"popups-settings-save": "Zapisz",
 	"popups-settings-help-ok": "Gotowe",
 	"popups-settings-cancel": "Anuluj",
 	"popups-settings-help": "Możesz ponownie włączyć podgląd za pomocą linku znajdującego się w stopce strony.",
-	"popups-settings-enable": "Aktywuj podgląd",
+	"popups-settings-enable": "Ustawienia podglądu",
 	"popups-settings-icon-gear-title": "Zmień ustawienia podglądu stron",
 	"popups-preview-no-preview": "Wystąpił problem z wyświetlaniem podglądu strony",
 	"popups-preview-footer-read": "Przejdź do tej strony",
@@ -40,7 +43,7 @@
 	"popups-refpreview-news": "Przypis do artykułu w wiadomościach",
 	"popups-refpreview-note": "Uwaga",
 	"popups-refpreview-web": "Przypis do strony internetowej",
-	"popups-refpreview-collapsible-placeholder": "Ten przypis zawiera grafikę, która nie mieści się w podglądzie.",
+	"popups-refpreview-collapsible-placeholder": "Ten przypis zawiera elementy, które nie mieszczą się w podglądzie.",
 	"popups-refpreview-user-preference-label": "Włącz podgląd przypisów (szybki podgląd przypisów podczas czytania strony)",
 	"popups-refpreview-beta-feature-message": "Podgląd przypisów",
 	"popups-refpreview-beta-feature-description": "Pokaż podgląd przypisu po najechaniu na jego oznaczenie (numer).\n\nUwaga: Jeżeli korzystasz z gadżetu [https://pl.wikipedia.org/wiki/Wikipedia:Narzędzia/Navigation_popups Navigation popups] lub [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], podglądy przypisów nie będą pokazywane."

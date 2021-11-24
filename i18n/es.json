@@ -13,7 +13,8 @@
 			"Peter Bowman",
 			"PoLuX124",
 			"Tusca",
-			"Yllelder"
+			"Yllelder",
+			"Jakeukalane"
 		]
 	},
 	"popups-message": "Previsualizaciones",
@@ -38,6 +39,7 @@
 	"popups-prefs-conflicting-gadgets-info": "Ciertos accesorios y otras personalizaciones pueden afectar al rendimiento de esta funcionalidad. Si tienes problemas revisa tus accesorios y scripts de usuario, incluyendo los globales.",
 	"popups-refpreview-reference": "Referencia",
 	"popups-refpreview-collapsible-placeholder": "Esta referencia incluye una imagen que no cabe en la previsualización.",
+	"popups-refpreview-user-preference-label": "Habilita las vistas previas de referencias (obtenga vistas previas rápidas de una referencia mientras lee una página):",
 	"popups-refpreview-beta-feature-message": "Previsualizaciones de referencias",
 	"popups-refpreview-beta-feature-description": "Muestra una vista previa de una referencia al poner el cursor sobre su marcador de nota al pie.\n\nNota: Si estás usando el accesorio de [https://es.wikipedia.org/wiki/Wikipedia:Popups_de_navegaci%C3%B3n Popups de navegación], no verás las previsualizaciones de referencias. Si estás usando el accesorio de [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], aparecerán tanto los mensajes emergentes de ese accesorio como los de las previsualizaciones de referencias."
 }

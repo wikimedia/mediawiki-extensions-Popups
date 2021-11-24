@@ -8,19 +8,20 @@
 			"Nike",
 			"Pxos",
 			"Pyscowicz",
-			"Stryn"
+			"Stryn",
+			"Rönttönen"
 		]
 	},
 	"popups-message": "Esikatselut",
 	"popups-desc": "Näyttää esikatselut, kun käyttäjä vie hiiren linkin päälle",
-	"popups-settings-title": "Sivun esikatselu",
+	"popups-settings-title": "Esikatselut",
 	"popups-settings-option-page": "Ota käyttöön",
 	"popups-settings-option-page-description": "Näytä aiheiden pikaesikatselut lukutilassa.",
 	"popups-settings-save": "Tallenna",
 	"popups-settings-help-ok": "Valmis",
 	"popups-settings-cancel": "Peruuta",
 	"popups-settings-help": "Voit ottaa esikatselut takaisin käyttöön sivun alalaidan linkistä.",
-	"popups-settings-enable": "Ota esikatselut käyttöön",
+	"popups-settings-enable": "Muuta esikatselun asetuksia",
 	"popups-preview-no-preview": "Virheen vuoksi tätä esikatselua ei voitu näyttää",
 	"popups-preview-footer-read": "Mene tälle sivulle",
 	"popups-preview-disambiguation": "Tämä otsikko liittyy useampaan kuin yhteen sivuun",
@@ -38,7 +39,7 @@
 	"popups-refpreview-news": "Uutisviite",
 	"popups-refpreview-note": "Huomautus",
 	"popups-refpreview-web": "Verkkoviite",
-	"popups-refpreview-collapsible-placeholder": "Tämä viite sisältää grafiikkaa, joka ei mahdu esikatseluun.",
+	"popups-refpreview-collapsible-placeholder": "Tämä viite sisältää kaavion, joka ei mahdu esikatseluun.",
 	"popups-refpreview-user-preference-label": "Ota käyttöön viitteiden esikatselut (näe viitteen pikaesikatselu sivua lukiessasi)",
 	"popups-refpreview-beta-feature-message": "Viitteiden esikatselu",
 	"popups-refpreview-beta-feature-description": "Näytä viitteen esikatselu, kun hiiren osoitin on lähdeviittauksen kohdalla.\n\nHuom: Jos käytät [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] tai [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] -pienoisohjelmaa, tämä viitteiden esikatselu ei toimi."
