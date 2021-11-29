@@ -21,7 +21,13 @@
 namespace Popups;
 
 use Config;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Hook\BeforePageDisplayHook;
+use MediaWiki\Hook\MakeGlobalVariablesScriptHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use OutputPage;
 use Skin;
 use User;
@@ -31,7 +37,14 @@ use User;
  *
  * @package Popups
  */
-class PopupsHooks {
+class PopupsHooks implements
+	GetPreferencesHook,
+	BeforePageDisplayHook,
+	ResourceLoaderGetConfigVarsHook,
+	MakeGlobalVariablesScriptHook,
+	UserGetDefaultOptionsHook,
+	LocalUserCreatedHook
+{
 
 	private const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
@@ -41,7 +54,7 @@ class PopupsHooks {
 	 * @param User $user User whose preferences are being modified
 	 * @param array[] &$prefs Preferences description array, to be fed to a HTMLForm object
 	 */
-	public static function onGetPreferences( User $user, array &$prefs ) {
+	public function onGetPreferences( $user, &$prefs ) {
 		/** @var PopupsContext $context */
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 
@@ -141,7 +154,7 @@ class PopupsHooks {
 	 * @param OutputPage $out The Output page object
 	 * @param Skin $skin Skin object that will be used to generate the page
 	 */
-	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		/** @var PopupsContext $context */
 		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		if ( $context->isTitleExcluded( $out->getTitle() ) ) {
@@ -171,8 +184,9 @@ class PopupsHooks {
 	 *
 	 * @param array &$vars Array of variables to be added into the output of the startup module
 	 * @param string $skin
+	 * @param Config $config
 	 */
-	public static function onResourceLoaderGetConfigVars( array &$vars, $skin ) {
+	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		/** @var Config $config */
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 
@@ -200,7 +214,7 @@ class PopupsHooks {
 	 * @param array &$vars variables to be added into the output of OutputPage::headElement
 	 * @param \IContextSource $out OutputPage instance calling the hook
 	 */
-	public static function onMakeGlobalVariablesScript( array &$vars, \IContextSource $out ) {
+	public function onMakeGlobalVariablesScript( &$vars, $out ): void {
 		$services = MediaWikiServices::getInstance();
 		/** @var PopupsContext $context */
 		$context = $services->getService( 'Popups.Context' );
@@ -212,7 +226,7 @@ class PopupsHooks {
 	 *
 	 * @param array &$defaultOptions
 	 */
-	public static function onUserGetDefaultOptions( array &$defaultOptions ) {
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		/** @var Config $config */
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 		$default = $config->get( 'PopupsOptInDefaultState' );
@@ -233,7 +247,7 @@ class PopupsHooks {
 	 * @param User $user Newly created user object
 	 * @param bool $isAutoCreated
 	 */
-	public static function onLocalUserCreated( User $user, $isAutoCreated ) {
+	public function onLocalUserCreated( $user, $isAutoCreated ) {
 		/** @var Config $config */
 		$services = MediaWikiServices::getInstance();
 		$config = $services->getService( 'Popups.Config' );
@@ -264,7 +278,7 @@ class PopupsHooks {
 	 * @param User $user User whose preferences are being modified
 	 * @param array[] &$prefs Array of beta features
 	 */
-	public static function onGetBetaFeaturePreferences( User $user, array &$prefs ) {
+	public function onGetBetaFeaturePreferences( User $user, array &$prefs ) {
 		/** @var Config $config */
 		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 		$extensionAssetsPath = $config->get( 'ExtensionAssetsPath' );

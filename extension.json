@@ -10,7 +10,7 @@
 	"descriptionmsg": "popups-desc",
 	"license-name": "GPL-2.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.34.0"
+		"MediaWiki": ">= 1.35.0"
 	},
 	"AutoloadNamespaces": {
 		"Popups\\": "includes/"
@@ -19,13 +19,18 @@
 		"popups": "GlobalVarConfig::newInstance"
 	},
 	"Hooks": {
-		"BeforePageDisplay": "Popups\\PopupsHooks::onBeforePageDisplay",
-		"ResourceLoaderGetConfigVars": "Popups\\PopupsHooks::onResourceLoaderGetConfigVars",
-		"GetPreferences": "Popups\\PopupsHooks::onGetPreferences",
-		"UserGetDefaultOptions": "Popups\\PopupsHooks::onUserGetDefaultOptions",
-		"MakeGlobalVariablesScript": "Popups\\PopupsHooks::onMakeGlobalVariablesScript",
-		"LocalUserCreated": "Popups\\PopupsHooks::onLocalUserCreated",
-		"GetBetaFeaturePreferences": "Popups\\PopupsHooks::onGetBetaFeaturePreferences"
+		"BeforePageDisplay": "PopupsHooks",
+		"ResourceLoaderGetConfigVars": "PopupsHooks",
+		"GetPreferences": "PopupsHooks",
+		"UserGetDefaultOptions": "PopupsHooks",
+		"MakeGlobalVariablesScript": "PopupsHooks",
+		"LocalUserCreated": "PopupsHooks",
+		"GetBetaFeaturePreferences": "PopupsHooks"
+	},
+	"HookHandlers": {
+		"PopupsHooks": {
+			"class": "Popups\\PopupsHooks"
+		}
 	},
 	"MessagesDirs": {
 		"Popups": [
