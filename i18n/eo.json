@@ -3,7 +3,8 @@
 		"authors": [
 			"KuboF",
 			"Mirin",
-			"Tlustulimu"
+			"Tlustulimu",
+			"Jakub Fabijan"
 		]
 	},
 	"popups-message": "Antaŭrigardo de paĝo",
@@ -24,7 +25,7 @@
 	"popups-preview-disambiguation": "Ĉi tiu titolo rilatas al pli ol unu paĝo",
 	"popups-preview-disambiguation-link": "Vidi similajn paĝojn",
 	"prefs-reading": "Legopreferoj",
-	"popups-prefs-optin": "Ŝalti paĝajn antaŭrigardojn (rapidaj antaŭrigardoj de temo dum legado de paĝo):",
+	"popups-prefs-optin": "Ŝalti paĝajn antaŭrigardojn (ricevi rapidajn antaŭrigardojn de temo dum legado de paĝo)",
 	"popups-refpreview-reference": "Referenco",
 	"popups-refpreview-book": "Referenco al libro",
 	"popups-refpreview-journal": "Referenco al artikolo",

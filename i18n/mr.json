@@ -3,10 +3,12 @@
 		"authors": [
 			"V.narsikar",
 			"अभय नातू",
-			"संतोष दहिवळ"
+			"संतोष दहिवळ",
+			"Goresm",
+			"Tiven2240"
 		]
 	},
-	"popups-message": "पानाची झलक",
+	"popups-message": "पूर्वावलोकने",
 	"popups-desc": "जेंव्हा सदस्य एखाद्या पानदुव्यावर घुटमळतो तेंव्हा, झलक दर्शविते",
 	"popups-settings-title": "पानाची झलक",
 	"popups-settings-option-simple": "सक्षम करा",
@@ -17,14 +19,23 @@
 	"popups-settings-save": "जतन करा",
 	"popups-settings-help-ok": "झाले",
 	"popups-settings-cancel": "रद्द करा",
-	"popups-settings-help": "आपण पानाच्या तळाशी असलेला दुवा वापरुन,झलक दिसणे परत सुरु करु शकता.",
+	"popups-settings-help": "आपण पानाच्या तळाशी असलेला दुवा वापरुन, झलक दिसणे परत सुरु करु शकता.",
 	"popups-settings-enable": "झलक पाहण्याची सोय करा",
-	"popups-preview-no-preview": "ही झलक दाखवितांना एक मुद्दा उद्भवला",
+	"popups-settings-icon-gear-title": "पूर्वावलोकन मांडणी बदला",
+	"popups-preview-no-preview": "हे पूर्वावलोकन प्रदर्शित करताना एक समस्या आली",
 	"popups-preview-footer-read": "या पानावर जा",
 	"popups-preview-disambiguation": "हे शीर्षक एकाधिक पानांशी संबंधीत आहे",
 	"popups-preview-disambiguation-link": "यासम पाने बघा",
 	"prefs-reading": "वाचन पसंतीक्रम",
 	"popups-prefs-optin": "पानाची झलक(पान वाचत असतांना एखाद्या विषयाबाबत त्वरीत झलक प्राप्त करा):",
 	"popups-prefs-disable-nav-gadgets-info": "आपणास, पानाची झलक पाहण्यास, गॅजेट कळीमधून [[$1 |नॅव्हीगेशन पॉप-अप गॅजेट अक्षम]] करावे लागेल",
-	"popups-prefs-conflicting-gadgets-info": "काही साधने/उपकरणे व इतर अनुकुलीकरण या प्रारूपाच्या कार्यक्षमतेवर परिणाम करू शकतात. जर आपणांस समस्या येत असेल तर कृपया आपली उपकरणे व सदस्य-लेखन (वैश्विक स्तरासह) पुन्हा एकदा तपासा."
+	"popups-prefs-conflicting-gadgets-info": "काही साधने/उपकरणे व इतर अनुकुलीकरण या प्रारूपाच्या कार्यक्षमतेवर परिणाम करू शकतात. जर आपणांस समस्या येत असेल तर कृपया आपली उपकरणे व सदस्य-लेखन (वैश्विक स्तरासह) पुन्हा एकदा तपासा.",
+	"popups-refpreview-reference": "स्रोत",
+	"popups-refpreview-book": "पुस्तक स्रोत",
+	"popups-refpreview-journal": "नियतकालिक स्रोत",
+	"popups-refpreview-news": "बातमी स्रोत",
+	"popups-refpreview-note": "नोंद",
+	"popups-refpreview-web": "संकेतस्थळ स्रोत",
+	"popups-refpreview-user-preference-label": "संदर्भाचे पूर्वावलोकन सक्षम करा (पान वाचत असताना संदर्भाचे तात्काळ पूर्वावलोकन मिळवा.",
+	"popups-refpreview-beta-feature-message": "संदर्भ पूर्वावलोकने"
 }

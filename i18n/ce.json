@@ -11,13 +11,14 @@
 	"popups-settings-option-simple": "Латае",
 	"popups-settings-option-advanced": "Шуьйра",
 	"popups-settings-option-off": "ДӀаяйа",
-	"popups-settings-save": "Ӏалашъян",
-	"popups-settings-help-ok": "Кийчча ю",
-	"popups-settings-cancel": "Юхаяккхар",
+	"popups-settings-save": "Ӏалашйан",
+	"popups-settings-help-ok": "Кийчча йу",
+	"popups-settings-cancel": "Йухайаккхар",
 	"popups-settings-enable": "Латтаде хьалххе хьажар",
-	"popups-preview-footer-read": "Ешар",
-	"prefs-reading": "Ешаран гӀирс",
+	"popups-preview-footer-read": "АгӀонга дехьагӀо",
+	"prefs-reading": "Йешаран гӀирс",
 	"popups-prefs-optin": "АгӀонашка хьалххе хьажар (агӀонаш йоьшушехь гойту хьалххе хьажар):",
-	"popups-prefs-conflicting-gadgets-info": "Цхьайолу гаджеташ а, нисдаран гӀирсаш а хӀокху функцин халонаш ян мега. Хьайна халонаш хиллехь дехар до гаджеташка а, долара скрипташка а хьажа.",
-	"popups-refpreview-beta-feature-description": "''' ХӀокху функцега болхбайта дӀаяйа гаджет «{{int:gadget-referenceTooltips}}» [[Белхан:Нисдаран гӀирс#mw-prefsection-gadgets|гаджетийн агӀрнгахь]].'''\n\nТӀетовжаман лоьмар тӀе цамза хьажича билгаодахаршца хаам гучубоккху. Хьан [[Wikipedia:Tools/Navigation popups|навигацин корийн гаджет]] латина елахь, хӀокху функцено болхбира бац"
+	"popups-prefs-conflicting-gadgets-info": "Цхьайолу гаджеташ а, нисдаран гӀирсаш а хӀокху функцин халонаш йан мега. Хьайна халонаш хиллехь дехар до гаджеташка а, долара скрипташка а хьажа.",
+	"popups-refpreview-beta-feature-message": "ТӀетовжамашка хьалххе хьажар",
+	"popups-refpreview-beta-feature-description": "''' ХӀокху функцега болхбайта дӀайайъа гаджет «{{int:gadget-referenceTooltips}}» [[Белхан:Нисдаран гӀирс#mw-prefsection-gadgets|гаджетийн агӀонгахь]].'''\n\nТӀетовжаман лоьмар тӀе цамза хьажича билгаодахаршца хаам гучубоккху. Хьан [[Wikipedia:Tools/Navigation popups|навигацин корийн гаджет]] латина йелахь, хӀокху функцено болхбира бац"
 }
