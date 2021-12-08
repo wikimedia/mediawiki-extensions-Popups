@@ -14,7 +14,8 @@
 			"Wctaiwan",
 			"Xiplus",
 			"Zhxy 519",
-			"烈羽"
+			"烈羽",
+			"Winston Sung"
 		]
 	},
 	"popups-message": "預覽",
@@ -50,5 +51,5 @@
 	"popups-refpreview-collapsible-placeholder": "此參考包含的圖片不適合用在預覽。",
 	"popups-refpreview-user-preference-label": "啟用參考文獻預覽（在閱讀頁面時取得參考文獻的快速預覽）",
 	"popups-refpreview-beta-feature-message": "參考預覽",
-	"popups-refpreview-beta-feature-description": "透過游標覆蓋在腳註標記上來顯示參考文獻預覽。\n\n請注意：如果您使用[//zh.wikipedia.org/wiki/Wikipedia:维基百科工具/导航Popup 導航Popup]小工具或是[[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]小工具，您不會看到參考預覽。"
+	"popups-refpreview-beta-feature-description": "透過游標覆蓋在腳註標記上來顯示參考文獻預覽。\n\n請注意：如果您使用[//zh.wikipedia.org/wiki/Wikipedia:维基百科工具/导航Popup 彈出式導覽/導覽彈窗]小工具或是[[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]小工具，您不會看到參考預覽。"
 }
