@@ -13,10 +13,12 @@
 			"Wctaiwan",
 			"Xiplus",
 			"Zhxy 519",
-			"烈羽"
+			"烈羽",
+			"Tranve",
+			"Winston Sung"
 		]
 	},
-	"popups-message": "預覽",
+	"popups-message": "預覽（Previews）",
 	"popups-desc": "在游標停駐於連結上方時顯示彈跳預覽畫面。",
 	"popups-settings-title": "頁面預覽",
 	"popups-settings-option-simple": "啟用",
@@ -31,7 +33,7 @@
 	"popups-settings-enable": "開啟預覽",
 	"popups-preview-no-preview": "顯示此頁面預覽時出現問題",
 	"popups-preview-footer-read": "前往該頁面",
-	"popups-preview-disambiguation": "此標題與多於一個以上頁面相關。",
+	"popups-preview-disambiguation": "此標題與多於一個以上頁面相關",
 	"popups-preview-disambiguation-link": "顯示類似的頁面",
 	"prefs-reading": "閱讀偏好設定",
 	"popups-prefs-optin-title": "頁面預覽（當閱讀條目時，取得對應頁面的快速預覽）：",

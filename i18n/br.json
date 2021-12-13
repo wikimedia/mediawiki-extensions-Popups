@@ -3,13 +3,14 @@
 		"authors": [
 			"Fohanno",
 			"Fulup",
-			"Y-M D"
+			"Y-M D",
+			"Adriendelucca"
 		]
 	},
 	"popups-settings-option-simple": "Eeun",
 	"popups-settings-save": "Enrollañ",
 	"popups-settings-cancel": "Nullañ",
-	"popups-preview-footer-read": "Lenn",
+	"popups-preview-footer-read": "Mont d'ar bajenn-mañ",
 	"prefs-reading": "Penndibaboù lenn",
 	"popups-prefs-optin-enabled-label": "Gweredekaat",
 	"popups-prefs-optin-disabled-label": "Diweredekaat"

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Azniv Stepanian"
+			"Azniv Stepanian",
+			"Շահէն"
 		]
 	},
+	"popups-message": "Կանխաստուգումներ",
 	"popups-settings-option-advanced": "Յառաջացած",
 	"popups-settings-save": "Յիշել",
 	"popups-settings-help-ok": "Եղած է",

@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Les Meloures"
 		]
 	},
 	"popups-message": "Biller wéi Säiten ausgesinn",
-	"popups-desc": "Weist Biller wéi et ausgesäit wann de Benotzer mat der Maus iwwer e Säitelink fiert.",
+	"popups-desc": "Weist e Popup wéi et ausgesäit, wann de Benotzer mat der Maus iwwer e Säitelink fiert.",
 	"popups-settings-title": "Säit kucken ouni ofzespäicheren",
 	"popups-settings-option-simple": "Aschalten",
 	"popups-settings-option-simple-description": "Et séieren Iwwerbléck iwwer en Thema kréien iwwer dem Liese vun enger Säit.",
@@ -15,7 +16,7 @@
 	"popups-settings-help-ok": "Fäerdeg",
 	"popups-settings-cancel": "Ofbriechen",
 	"popups-settings-enable": "Kucken ouni ze späicheren aktivéieren",
-	"popups-preview-no-preview": "Et gouf e Problem fir dëst ze weisen",
+	"popups-preview-no-preview": "Et gouf e Probleem fir dëst ze weisen",
 	"popups-preview-footer-read": "Op dës Säit goen",
 	"popups-preview-disambiguation": "Dësen Titel bezitt sech op méi wéi eng Säit",
 	"popups-preview-disambiguation-link": "Änlech Säite weisen",
@@ -28,5 +29,6 @@
 	"popups-refpreview-journal": "Zeitungs-Referenz",
 	"popups-refpreview-news": "Neiegkeeten-Referenz",
 	"popups-refpreview-web": "Internet-Referenz",
-	"popups-refpreview-jump-to-reference": "Op d'Referenz sprangen"
+	"popups-refpreview-jump-to-reference": "Op d'Referenz sprangen",
+	"popups-refpreview-beta-feature-message": "Ausgesinn vun de Referenzen"
 }

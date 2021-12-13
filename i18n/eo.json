@@ -3,11 +3,12 @@
 		"authors": [
 			"KuboF",
 			"Mirin",
-			"Tlustulimu"
+			"Tlustulimu",
+			"Jakub Fabijan"
 		]
 	},
 	"popups-message": "Antaŭrigardo de paĝo",
-	"popups-desc": "Antaŭrigardi kiam la uzanto musumas sur paĝa ligilo",
+	"popups-desc": "Montras antaŭrigardojn kiam la uzanto musumas sur ligilo",
 	"popups-settings-title": "Antaŭrigardo",
 	"popups-settings-option-simple": "Ŝalti",
 	"popups-settings-option-simple-description": "Montru la enkondukan frazon de paĝo kaj antaŭrigardan bildon. Tio estas rekomendata al legantoj.",

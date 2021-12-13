@@ -13,11 +13,12 @@
 			"Romaine",
 			"SPQRobin",
 			"Siebrand",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"McDutchie"
 		]
 	},
-	"popups-message": "Pop-uppagina's",
-	"popups-desc": "Toont voorvertoningen wanneer de gebruiker met de muis over paginakoppelingen gaat.",
+	"popups-message": "Voorvertoningen",
+	"popups-desc": "Toont een pop-up met voorvertoning wanneer de gebruiker met de muis over een koppeling gaat",
 	"popups-settings-title": "Paginavoorvertoning",
 	"popups-settings-option-simple": "Inschakelen",
 	"popups-settings-option-simple-description": "Bekijk de inleidende paragraaf en een eventuele afbeelding van een pagina.",

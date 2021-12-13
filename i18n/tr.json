@@ -9,7 +9,10 @@
 			"McAang",
 			"Meelo",
 			"Rapsar",
-			"Sayginer"
+			"Sayginer",
+			"MuratTheTurkish",
+			"SaldırganSincap",
+			"Sezgin İbiş"
 		]
 	},
 	"popups-message": "Önizlemeler",
@@ -23,9 +26,9 @@
 	"popups-settings-save": "Kaydet",
 	"popups-settings-help-ok": "Yapıldı",
 	"popups-settings-cancel": "İptal",
-	"popups-settings-help": "Sayfanın alt kısmındaki bir bağlantıyı kullanarak önizlemeyi geri açabilirsiniz.",
+	"popups-settings-help": "Sayfanın altbilgisindeki bir bağlantıyı kullanarak önizlemeleri tekrar açabilirsiniz.",
 	"popups-settings-enable": "Önizlemeyi etkinleştir",
-	"popups-preview-no-preview": "Bu önizlemeyi görüntülemede bir sorun oluştu",
+	"popups-preview-no-preview": "Bu önizlemeyi görüntülerken bir sorun oluştu",
 	"popups-preview-footer-read": "Bu sayfaya git",
 	"popups-preview-disambiguation": "Bu başlık birden fazla sayfa ile ilgilidir",
 	"popups-preview-disambiguation-link": "Benzer sayfaları görüntüle",

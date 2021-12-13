@@ -17,7 +17,11 @@
 			"Ole Yves",
 			"Putnik",
 			"Redredsonia",
-			"Vlad5250"
+			"Vlad5250",
+			"Kareyac",
+			"Nastua Buldakova",
+			"Rubin16",
+			"Wileyfoxyx"
 		]
 	},
 	"popups-message": "Предпросмотр",
@@ -44,5 +48,10 @@
 	"popups-prefs-disable-nav-gadgets-info": "Вы должны [[$1 | отключить гаджет «Навигационные окошки»]] во вкладке «Гаджеты» для активации предпросмотра страниц",
 	"popups-prefs-conflicting-gadgets-info": "Некоторые гаджеты и прочие настройки могут влиять на производительность этой функции. Если вы испытываете проблемы, пожалуйста, осмотрите свои гаджеты и пользовательские скрипты, включая глобальные.",
 	"popups-refpreview-reference": "Сноска",
-	"popups-refpreview-jump-to-reference": "Перейти к сноске"
+	"popups-refpreview-book": "Ссылка на книгу",
+	"popups-refpreview-journal": "Ссылка на статью",
+	"popups-refpreview-news": "Ссылка на новость",
+	"popups-refpreview-web": "Веб-ссылка",
+	"popups-refpreview-jump-to-reference": "Перейти к сноске",
+	"popups-refpreview-beta-feature-message": "Предпросмотр сносок"
 }

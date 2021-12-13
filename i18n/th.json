@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Aefgh39622",
-			"B20180"
+			"B20180",
+			"Patsagorn Y."
 		]
 	},
 	"popups-message": "การแสดงตัวอย่างหน้า",
-	"popups-desc": "แสดงตัวอย่างหน้าเมื่อผู้ใช้วางเมาส์เหนือลิงก์หน้า",
+	"popups-desc": "แสดงปอปอัพตัวอย่างเมื่อผู้ใช้วางเมาส์เหนือลิงก์หน้า",
 	"popups-settings-title": "การแสดงตัวอย่างหน้า",
 	"popups-settings-option-simple": "เปิดใช้งาน",
 	"popups-settings-option-advanced": "ขั้นสูง",
@@ -18,11 +19,19 @@
 	"popups-settings-enable": "เปิดใช้งานการแสดงตัวอย่าง",
 	"popups-preview-no-preview": "มีปัญหาในการแสดงผลตัวอย่างนี้",
 	"popups-preview-footer-read": "ไปที่หน้านี้",
+	"popups-preview-disambiguation": "หัวข้อนี้เกี่ยวข้องกับหน้ามากกว่าหนึ่งหน้า",
+	"popups-preview-disambiguation-link": "ดูหน้าที่คล้ายกัน",
 	"prefs-reading": "การตั้งค่าการอ่าน",
 	"popups-prefs-optin-title": "การแสดงตัวอย่างหน้า\n\n<em>แสดงตัวอย่างหัวข้ออย่างรวดเร็วขณะอ่านหน้า</em>",
 	"popups-prefs-optin-enabled-label": "เปิดใช้งาน",
 	"popups-prefs-optin-disabled-label": "ปิดใช้งาน",
 	"popups-prefs-disable-nav-gadgets-info": "คุณต้อง[[$1 | ปิดใช้งานแกเจตป๊อปอัปการนำทาง (Navigation Popups)]] จากในแถบอุปกรณ์เสริมเพื่อเปิดใช้งานการแสดงตัวอย่างหน้า",
 	"popups-prefs-conflicting-gadgets-info": "แกเจตและการปรับแต่งอื่น ๆ บางอย่างอาจส่งผลต่อประสิทธิภาพของคุณลักษณะนี้ ถ้าคุณพบปัญหา กรุณาตรวจสอบแกเจตและสคริปต์ผู้ใช้ รวมถึง รวมถึงการตั้งค่ากลางด้วย",
-	"popups-refpreview-jump-to-reference": "ข้ามไปที่เชิงอรรถ"
+	"popups-refpreview-reference": "อ้างอิง",
+	"popups-refpreview-book": "หนังสืออ้างอิง",
+	"popups-refpreview-journal": "วารสารอ้างอิง",
+	"popups-refpreview-news": "ข่าวอ้างอิง",
+	"popups-refpreview-web": "เว็บอ้างอิง",
+	"popups-refpreview-jump-to-reference": "ข้ามไปที่เชิงอรรถ",
+	"popups-refpreview-beta-feature-message": "ตัวอย่างอ้างอิง"
 }

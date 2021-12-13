@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"George Animal"
+			"George Animal",
+			"Balyozxane",
+			"Bikarhêner"
 		]
 	},
 	"popups-settings-title": "Pêşdîtina rûpelê",
@@ -10,5 +12,6 @@
 	"popups-settings-save": "Tomar bike",
 	"popups-settings-help-ok": "Çêbû",
 	"popups-settings-cancel": "Betal bike",
-	"popups-settings-enable": "Pêşdîtinan çalak bike"
+	"popups-settings-enable": "Pêşdîtinan çalak bike",
+	"popups-refpreview-web": "Çavkaniya înternetê"
 }

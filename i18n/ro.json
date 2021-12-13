@@ -3,11 +3,12 @@
 		"authors": [
 			"Andrei Stroe",
 			"Andreyyshore",
-			"Minisarm"
+			"Minisarm",
+			"NGC 54"
 		]
 	},
-	"popups-message": "Previzualizări de pagină",
-	"popups-desc": "Afișează previzualizări când utilizatorul trece cu cursorul peste o legătură internă",
+	"popups-message": "Previzualizări",
+	"popups-desc": "Afișează popup-uri de previzualizare când utilizatorul trece cu cursorul peste o legătură internă",
 	"popups-settings-title": "Previzualizare pagină",
 	"popups-settings-option-simple": "Activează",
 	"popups-settings-option-simple-description": "Obțineți o previzualizare rapidă a unui subiect în timp ce lecturați o pagină.",
@@ -17,7 +18,18 @@
 	"popups-settings-save": "Salvare",
 	"popups-settings-help-ok": "Realizat",
 	"popups-settings-cancel": "Revocare",
-	"popups-settings-help": "Puteți reactiva previzualizările accesând legătura din subsolul paginii.",
+	"popups-settings-help": "Puteți reactiva previzualizările accesând o legătură din subsolul paginii.",
 	"popups-settings-enable": "Activează previzualizările",
-	"prefs-reading": "Opțiuni lectură"
+	"popups-preview-no-preview": "A apărut o eroare la afișarea acestei previzualizări",
+	"popups-preview-footer-read": "Mergi la această pagină",
+	"popups-preview-disambiguation": "Acest titlu se referă la mai mult de o pagină",
+	"popups-preview-disambiguation-link": "Vezi pagini similare",
+	"prefs-reading": "Preferințe de lectură",
+	"popups-prefs-conflicting-gadgets-info": "Anumite gadgeturi și alte personalizări pot afecta performanța acestei funcții. Dacă întâmpinați probleme vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, inclusiv cele globale.",
+	"popups-refpreview-reference": "Referință",
+	"popups-refpreview-book": "Referință de carte",
+	"popups-refpreview-journal": "Referință de jurnal",
+	"popups-refpreview-news": "Referință de știri",
+	"popups-refpreview-web": "Referință web",
+	"popups-refpreview-beta-feature-message": "Previzualizări de referințe"
 }

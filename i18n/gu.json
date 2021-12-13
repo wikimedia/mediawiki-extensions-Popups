@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dsvyas"
+		]
+	},
+	"popups-message": "પૂર્વાવલોકનો",
+	"popups-desc": "કડી ઉપર કર્શર લઈ જતા પૂર્વાવલોકન દર્શાવતું ખાનું ઉપસી આવશે",
+	"popups-settings-save": "સાચવો",
+	"popups-settings-help-ok": "પૂર્ણ",
+	"popups-settings-cancel": "રદ કરો",
+	"popups-settings-help": "પૃષ્ઠના અંતે આપેલી કડી પર જઈ ને તમે પૂર્વાવલોકનો પુનઃસક્રિય કરી શકો છો.",
+	"popups-preview-no-preview": "આ પૂર્વાવલોકન દર્શાવવામાં ક્ષતિ આવી",
+	"popups-preview-footer-read": "આ પૃષ્ઠ પર જાઓ",
+	"popups-preview-disambiguation": "આ શીર્ષક એક કરતા વધુ પૃષ્ઠ સાથે સંલગ્ન છે",
+	"popups-preview-disambiguation-link": "ભળતા પૃષ્ઠ જુઓ",
+	"prefs-reading": "વાંચન પસંદગી",
+	"popups-prefs-conflicting-gadgets-info": "અમુક યંત્રો/સાધનો અને અન્ય ગોઠવણીઓ આ સુવિધાના સંચાલનમાં અવરોધ પેદા કરી શકે છે. જો તમને કોઈ ક્ષતિ આવતી હોય તો તમારા સક્રિય કરેલા યંત્રો/સાધનો અને યુઝર સ્ક્રિપ્ટ ચકાસી જુઓ.",
+	"popups-refpreview-reference": "સંદર્ભ",
+	"popups-refpreview-book": "પુસ્તક સંદર્ભ",
+	"popups-refpreview-journal": "જર્નલ સંદર્ભ",
+	"popups-refpreview-news": "સમાચાર સંદર્ભ",
+	"popups-refpreview-web": "વેબ સંદર્ભ",
+	"popups-refpreview-beta-feature-message": "સંદર્ભ પૂર્વાવલોકનો"
+}

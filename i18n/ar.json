@@ -9,8 +9,8 @@
 			"محمد أحمد عبد الفتاح"
 		]
 	},
-	"popups-message": "معاينات الصفحة",
-	"popups-desc": "يقوم بعرض منبثقات المعاينة عندما يقوم المستخدم بحوم المؤشر على وصلة.",
+	"popups-message": "المعاينات",
+	"popups-desc": "عرض منبثقات المعاينة عند وضع المستخدم المؤشر على وصلة.",
 	"popups-settings-title": "معاينة الصفحة",
 	"popups-settings-option-simple": "تمكين",
 	"popups-settings-option-simple-description": "الحصول على معاينة سريعة للموضوع أثناء قراءة الصفحة.",

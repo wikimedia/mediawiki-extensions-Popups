@@ -9,7 +9,7 @@
 		]
 	},
 	"popups-message": "Peržiūros",
-	"popups-desc": "Rodo puslapio peržiūrą, kai naudotojas užveda pelę ant nuorodos",
+	"popups-desc": "Rodo puslapio peržiūros korteles, kai naudotojas užveda pelę ant nuorodos",
 	"popups-settings-title": "Puslapio peržiūra",
 	"popups-settings-option-simple": "Įgalinti",
 	"popups-settings-option-advanced": "Išplėstinis",
@@ -25,5 +25,11 @@
 	"prefs-reading": "Skaitymo nustatymai",
 	"popups-prefs-optin-title": "<em>Rodyti trumpas straipsnių santraukas, kai skaitote straipsnį</em>",
 	"popups-prefs-optin-enabled-label": "Įgalinti",
-	"popups-prefs-optin-disabled-label": "Išjungti"
+	"popups-prefs-optin-disabled-label": "Išjungti",
+	"popups-refpreview-reference": "Išnaša",
+	"popups-refpreview-book": "Knygos išnaša",
+	"popups-refpreview-journal": "Žurnalo išnaša",
+	"popups-refpreview-news": "Naujienų išnaša",
+	"popups-refpreview-web": "Internetinė išnaša",
+	"popups-refpreview-beta-feature-message": "Išnašų peržiūra"
 }

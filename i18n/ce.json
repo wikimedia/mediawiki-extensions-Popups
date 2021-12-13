@@ -11,14 +11,15 @@
 	"popups-settings-option-simple": "Латае",
 	"popups-settings-option-advanced": "Шуьйра",
 	"popups-settings-option-off": "ДӀаяйа",
-	"popups-settings-save": "Ӏалашъян",
-	"popups-settings-help-ok": "Кийчча ю",
-	"popups-settings-cancel": "Юхаяккхар",
+	"popups-settings-save": "Ӏалашйан",
+	"popups-settings-help-ok": "Кийчча йу",
+	"popups-settings-cancel": "Йухайаккхар",
 	"popups-settings-enable": "Латтаде хьалххе хьажар",
-	"popups-preview-footer-read": "Ешар",
-	"prefs-reading": "Ешаран гӀирс",
+	"popups-preview-footer-read": "АгӀонга дехьагӀо",
+	"prefs-reading": "Йешаран гӀирс",
 	"popups-prefs-optin-title": "АгӀонашка хьалххе хьажар (агӀонаш йоьшушехь гойту хьалххе хьажар):",
 	"popups-prefs-optin-enabled-label": "Латае",
 	"popups-prefs-optin-disabled-label": "ДӀаяйа",
-	"popups-prefs-conflicting-gadgets-info": "Цхьайолу гаджеташ а, нисдаран гӀирсаш а хӀокху функцин халонаш ян мега. Хьайна халонаш хиллехь дехар до гаджеташка а, долара скрипташка а хьажа."
+	"popups-prefs-conflicting-gadgets-info": "Цхьайолу гаджеташ а, нисдаран гӀирсаш а хӀокху функцин халонаш йан мега. Хьайна халонаш хиллехь дехар до гаджеташка а, долара скрипташка а хьажа.",
+	"popups-refpreview-beta-feature-message": "ТӀетовжамашка хьалххе хьажар"
 }

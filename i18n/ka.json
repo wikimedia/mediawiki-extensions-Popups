@@ -4,11 +4,12 @@
 			"David1010",
 			"MIKHEIL",
 			"Otogi",
-			"Გიო ოქრო"
+			"Გიო ოქრო",
+			"Იო ოქრო"
 		]
 	},
-	"popups-message": "კონტექსტური სარკმელი",
-	"popups-desc": "ასახავს კონტექსტურ სარკმელს, სადაც ჩანს არსებული გვერდის შემცვლელობა; ვლინდება კურსორის მიტანისას სტატიათა ბმულზე.",
+	"popups-message": "წინასწარი გადახედვა",
+	"popups-desc": "აჩვენებს წინასწარი გადახედვის სარკმელს, სადაც ჩანს არსებული გვერდის შემცვლელობა; ვლინდება კურსორის მიტანისას ბმულზე.",
 	"popups-settings-title": "გვერდის წინასწარი გადახედვა",
 	"popups-settings-option-simple": "ჩართვა",
 	"popups-settings-option-simple-description": "გვერდზე აჩვენებს პირველ წინადადებასა და ილუსტრაციას. რეკომენდებულ­ია მკითხველთათვის.",
@@ -19,10 +20,18 @@
 	"popups-settings-cancel": "გაუქმება",
 	"popups-preview-no-preview": "გვერდის წინასწარი გადახედვა მიუწვდომელია",
 	"popups-preview-footer-read": "გვერდზე გადასვლა",
+	"popups-preview-disambiguation": "ეს სათაური დაკავშირებულია ერთზე მეტ გვერდთან",
+	"popups-preview-disambiguation-link": "მსგავსი გვერდების ხილვა",
 	"prefs-reading": "წაკითხვის დაყენება",
 	"popups-prefs-optin-title": "გვერდის წინასწარი გადახედვა\n\n<em>თემის სწრაფი წინასწარი ჩვენება გვერდის კითვისას</em>",
 	"popups-prefs-optin-enabled-label": "ჩართვა",
 	"popups-prefs-optin-disabled-label": "გამორთვა",
 	"popups-prefs-conflicting-gadgets-info": "ზოგიერთმა გაჯეტმა და სხვა მომართვებმა შეიძლება გავლენა იქონიონ ამ ფუნქციის წარმოებაზე. თუკი შეგექმნათ პრობლემები, გთხოვთ, გადახედეთ თქვენ გაჯეტებსა და სამომხმარებლო სკრიპტებს, გლობალურის ჩათვლით.",
-	"popups-refpreview-jump-to-reference": "სქოლიოზე გადასვლა"
+	"popups-refpreview-reference": "სქოლიო",
+	"popups-refpreview-book": "სქოლიო წიგნიდან",
+	"popups-refpreview-journal": "სქოლიო ჟურნალ-გაზეთიდან",
+	"popups-refpreview-news": "ახალი ამბების სქოლიო",
+	"popups-refpreview-web": "ინტერნეტსქოლიო",
+	"popups-refpreview-jump-to-reference": "სქოლიოზე გადასვლა",
+	"popups-refpreview-beta-feature-message": "სქოლიოს გადახედვა"
 }

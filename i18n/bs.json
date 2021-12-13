@@ -3,11 +3,12 @@
 		"authors": [
 			"Obsuser",
 			"Semina x",
-			"Srdjan m"
+			"Srdjan m",
+			"Srđan"
 		]
 	},
 	"popups-message": "Info kartice",
-	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko linka stranice.",
+	"popups-desc": "Prikazuje info kartice s kratkim sadržajem prelaskom miša preko linka stranice",
 	"popups-settings-title": "Pregled stranice",
 	"popups-settings-option-simple": "Uključi",
 	"popups-settings-option-simple-description": "Brz pregled bilo koje teme dok čitate članak.",
@@ -28,6 +29,11 @@
 	"popups-prefs-optin-disabled-label": "Isključi",
 	"popups-prefs-disable-nav-gadgets-info": "Morate [[$1 | isključiti dodatak \"Navigation Popups\"]] iz kartice \"Dodaci\" u Postavkama da biste uključili Pregled stranica",
 	"popups-prefs-conflicting-gadgets-info": "Određeni dodaci i druga prilagođavanja mogu utjecati na rad ove opcije. Ako naiđete na probleme, provjerite svoje dodatke i korisničke skripte.",
+	"popups-refpreview-reference": "Referenca",
+	"popups-refpreview-book": "Navedena knjiga",
+	"popups-refpreview-journal": "Naveden časopis",
+	"popups-refpreview-news": "Navedene vijesti",
+	"popups-refpreview-web": "Naveden sajt",
 	"popups-refpreview-user-preference-label": "Pregled reference (brzi pregled futnota)",
 	"popups-refpreview-beta-feature-message": "Brzi pregled referenci",
 	"popups-refpreview-beta-feature-description": "Prikazuje pregled reference kada mišem pređete preko njene oznake.\n\nNapomena: Ova mogućnost ne radi ako koristite dodatak [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigacijski prozorčići]. Ako koristite dodatak [[mw:Special:MyLanguage/Reference Tooltips|Oblačići za reference]], prikazivat će Vam se oba oblačića."

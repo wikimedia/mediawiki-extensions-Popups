@@ -7,7 +7,9 @@
 			"Nike",
 			"Pxos",
 			"Pyscowicz",
-			"Stryn"
+			"Stryn",
+			"01miki10",
+			"Rönttönen"
 		]
 	},
 	"popups-message": "Esikatselut",
@@ -20,15 +22,22 @@
 	"popups-settings-save": "Tallenna",
 	"popups-settings-help-ok": "Valmis",
 	"popups-settings-cancel": "Peruuta",
+	"popups-settings-help": "Voit ottaa esikatselut takaisin käyttöön sivun alalaidan linkistä.",
 	"popups-settings-enable": "Ota esikatselu käyttöön",
-	"popups-preview-no-preview": "Virheen vuoksi esikatselua ei voida näyttää",
+	"popups-preview-no-preview": "Virheen vuoksi tätä esikatselua ei voitu näyttää",
 	"popups-preview-footer-read": "Mene tälle sivulle",
-	"popups-preview-disambiguation": "Tämä sivun nimi liittyy useampaan kuin yhteen sivuun",
+	"popups-preview-disambiguation": "Tämä otsikko liittyy useampaan kuin yhteen sivuun",
 	"popups-preview-disambiguation-link": "Katso samankaltaisia sivuja",
 	"prefs-reading": "Lukemisen asetukset",
 	"popups-prefs-optin-title": "Sivun esikatselut (näe nopeasti aiheen esikatselut sivua lukiessasi):",
 	"popups-prefs-optin-enabled-label": "Ota käyttöön",
 	"popups-prefs-optin-disabled-label": "Poista käytöstä",
 	"popups-prefs-disable-nav-gadgets-info": "Sinun täytyy ottaa pois käytöstä [[$1 | Navigation popups -pienoisohjelma]] ottaaksesi sivujen esikatselut käyttöön.",
-	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset."
+	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset.",
+	"popups-refpreview-reference": "Viite",
+	"popups-refpreview-book": "Kirjaviite",
+	"popups-refpreview-journal": "Lehtiviite",
+	"popups-refpreview-news": "Uutisviite",
+	"popups-refpreview-web": "Verkkoviite",
+	"popups-refpreview-beta-feature-message": "Viitteiden esikatselu"
 }

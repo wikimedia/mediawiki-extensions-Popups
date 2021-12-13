@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Teemeah"
+			"Teemeah",
+			"Tacsipacsi"
 		]
 	},
-	"popups-message": "Hovercards",
-	"popups-desc": "Amikor a felhasználó egy belső hivatkozás fölé viszi az egérmutatót, egy kis felugró ablakban megjelenik az oldal összefoglalója."
+	"popups-message": "Előnézetek",
+	"popups-desc": "Amikor a felhasználó egy hivatkozás fölé viszi az egérmutatót, megjelenik az előnézete egy buborékban"
 }

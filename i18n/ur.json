@@ -4,7 +4,7 @@
 			"Muhammad Shuaib"
 		]
 	},
-	"popups-message": "صفحے کی نمائشیں",
+	"popups-message": "جھلکیاں",
 	"popups-desc": "جب صارف کسی صفحے کے ربط پر کرسر لے جائے تو اس صفحے کی ایک جھلک دکھاتا ہے",
 	"popups-settings-title": "صفحے کی نمائش",
 	"popups-settings-option-simple": "فعال کریں",
@@ -17,11 +17,19 @@
 	"popups-settings-cancel": "منسوخ",
 	"popups-settings-help": "آپ صفحہ کے نیچے موجود ربط کی مدد سے ان نمائشوں کو دوبارہ فعال کر سکتے ہیں۔",
 	"popups-settings-enable": "نمائشیں فعال کریں",
-	"popups-preview-no-preview": "ایسا معلوم ہوتا ہے کہ اس صفحہ کی نمائش موجود نہیں ہے",
-	"popups-preview-footer-read": "پڑھیں",
+	"popups-preview-no-preview": "اس جھلک کو دکھانے میں کوئی مشکل درپیش ہے",
+	"popups-preview-footer-read": "اس صفحہ میں جائیں",
+	"popups-preview-disambiguation": "یہ عنوان ایک سے زائد صفحات سے متعلق ہے",
+	"popups-preview-disambiguation-link": "مماثل صفحات دیکھیں",
 	"prefs-reading": "مطالعے کی ترجیحات",
 	"popups-prefs-optin-title": "<em>دوران مطالعہ میں موضوع کی فوری نمائش ملاحظہ فرمائیں</em>",
 	"popups-prefs-optin-enabled-label": "فعال کریں",
 	"popups-prefs-optin-disabled-label": "غیر فعال کریں",
-	"popups-prefs-conflicting-gadgets-info": "شاید کچھ آلات اور شخصی ترتیبات کی وجہ سے یہ سہولت درست کام نہ کرے۔ اگر آپ کو مشکل پیش آرہی ہو تو براہ کرم اپنے آلات اور صارف اسکرپٹ کو ایک بار جانچ لیں۔"
+	"popups-prefs-conflicting-gadgets-info": "شاید کچھ آلات اور شخصی ترتیبات کی وجہ سے یہ سہولت درست کام نہ کرے۔ اگر آپ کو مشکل پیش آرہی ہو تو براہ کرم اپنے آلات اور صارف اسکرپٹ بشمول عالمی اسکرپٹ کو ایک بار جانچ لیں۔",
+	"popups-refpreview-reference": "حوالہ",
+	"popups-refpreview-book": "کتابی حوالہ",
+	"popups-refpreview-journal": "رسالہ کا حوالہ",
+	"popups-refpreview-news": "خبر کا حوالہ",
+	"popups-refpreview-web": "ویب کا حوالہ",
+	"popups-refpreview-beta-feature-message": "حوالے کی جھلکیاں"
 }

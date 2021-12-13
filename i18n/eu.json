@@ -4,13 +4,28 @@
 			"Mikel Ibaiba",
 			"Sator",
 			"Subi",
-			"Xabier Armendaritz"
+			"Xabier Armendaritz",
+			"Iñaki LL"
 		]
 	},
+	"popups-message": "Aurrebistak",
+	"popups-desc": "Laster-aurrebista bat erakusten du erabiltzailea esteka baten gainean jartzen denean",
 	"popups-settings-option-simple-description": "Gai baten aurreikuspena lortu orrialdea irakurtzen duzun bitartean.",
 	"popups-settings-save": "Gorde",
 	"popups-settings-help-ok": "Egina",
 	"popups-settings-cancel": "Utzi",
-	"popups-preview-disambiguation": "Izenburu hau orri bati baino gehiagori dagokie",
-	"popups-prefs-optin-title": "Orrialdearen aurreikuspenak\n\n<em>Gaiaren inguruko aurreikuespen azkarrak lortu orrialdea irakurtzen duzun bitartean</em>"
+	"popups-settings-help": "Aurrebistak berriz piztu ditzakezu orri-oineko esteka bat erabiliz.",
+	"popups-preview-no-preview": "Ezusteko bat gertatu da aurrebista hau bistaratzean",
+	"popups-preview-footer-read": "Joan orri honetara",
+	"popups-preview-disambiguation": "Izenburu hau orri bati baino gehiagori dagokio",
+	"popups-preview-disambiguation-link": "Ikus antzeko orriak",
+	"prefs-reading": "Ezarpenak irakurtzen",
+	"popups-prefs-optin-title": "Orrialdearen aurreikuspenak\n\n<em>Gaiaren inguruko aurreikuespen azkarrak lortu orrialdea irakurtzen duzun bitartean</em>",
+	"popups-prefs-conflicting-gadgets-info": "Zenbait gadgetek eta beste pertsonalizazio batzuek eginbide honen errendimendua trabatu dezakete. Arazoak badituzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere.",
+	"popups-refpreview-reference": "Erreferentzia",
+	"popups-refpreview-book": "Liburu erreferentzia",
+	"popups-refpreview-journal": "Aldizkari erreferentzia",
+	"popups-refpreview-news": "Albiste erreferentzia",
+	"popups-refpreview-web": "Internet erreferentzia",
+	"popups-refpreview-beta-feature-message": "Erreferentzien aurrebistak"
 }

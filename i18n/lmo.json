@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"El Bux Del Cu",
+			"Salvemm el lombard"
+		]
+	},
+	"popups-desc": "El mostra un popap de veduda antecipada quand che l'utent el passa el pontador sora un conligament",
+	"popups-settings-save": "Salva",
+	"popups-settings-help-ok": "Fad",
+	"popups-settings-cancel": "Anula",
+	"popups-settings-help": "Te podet ativà anmò i pagine de veduda antecipada cont el drovà el conligament in fond a la pagina.",
+	"popups-preview-no-preview": "A l'è capitad un problema in del cors de la visualizzazion de questa pagina de veduda antecipada",
+	"popups-preview-footer-read": "Và a questa pagina chì",
+	"popups-preview-disambiguation": "Quel titol chì l'è riferid a pussee d'una pagina",
+	"popups-preview-disambiguation-link": "Varda di pagine compagne",
+	"prefs-reading": "Preferenze de letura",
+	"popups-prefs-conflicting-gadgets-info": "Un quai acessori e di alter personalizazzion a poden influì sora i prestazzion de quella fonzion chì. Se te gh'hee un quai problema varda anmò i to acessori e i script d'utent, compres quei globai.",
+	"popups-refpreview-reference": "Riferiment",
+	"popups-refpreview-book": "Riferiment a un liber",
+	"popups-refpreview-journal": "Riferiment a una rivista",
+	"popups-refpreview-news": "Riferiment a di notizzi",
+	"popups-refpreview-web": "Riferiment a un sit de la red",
+	"popups-refpreview-beta-feature-message": "Veduda antecipada di riferiment"
+}

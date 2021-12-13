@@ -10,11 +10,13 @@
 			"Huji",
 			"Ladsgroup",
 			"Obzord",
-			"Reza1615"
+			"Reza1615",
+			"Jeeputer",
+			"Mohammad ebz"
 		]
 	},
 	"popups-message": "پیش‌نمایش",
-	"popups-desc": "نمایش پیش‌نمایش هنگامی که کاربر موش‌واره را بر پیوند یک صفحه نگه می‌دارد.",
+	"popups-desc": "نمایش پیش‌نمایش هنگامی که کاربر موش‌واره را بر یک پیوند نگه می‌دارد.",
 	"popups-settings-title": "صفحه پیش‌نمایش",
 	"popups-settings-option-simple": "فعال",
 	"popups-settings-option-simple-description": "پیش‌نمایشی سریع از یک موضوع را هنگام خواندن یک صفحه ببینید",
@@ -24,12 +26,13 @@
 	"popups-settings-save": "ذخیره",
 	"popups-settings-help-ok": "انجام شد",
 	"popups-settings-cancel": "انصراف",
+	"popups-settings-help": "با استفاده از پیوند موجود در پایین صفحه می‌توانید پیش‌نمایش‌ها را دوباره فعال کنید.",
 	"popups-settings-enable": "فعال کردن پیش‌نمایش‌ها",
 	"popups-preview-no-preview": "مشکلی هنگام نمایش این پیش‌نمایش پیش آمد",
 	"popups-preview-footer-read": "رفتن به این صفحه",
 	"popups-preview-disambiguation": "این عنوان به بیش از یک صفحه اشاره می‌کند",
 	"popups-preview-disambiguation-link": "نمایش صفحه‌های مشابه",
-	"prefs-reading": "ترجیحات خواندن",
+	"prefs-reading": "ترجیحات مطالعه",
 	"popups-prefs-optin-title": "پیش‌نمایش صفحات(پیش‌نمایشی سریع از یک موضوع را هنگام خواندن یک صفحه ببینید):",
 	"popups-prefs-optin-enabled-label": "فعال",
 	"popups-prefs-optin-disabled-label": "غیرفعال سازی",
@@ -40,5 +43,5 @@
 	"popups-refpreview-news": "منبع خبری",
 	"popups-refpreview-web": "منبع وب",
 	"popups-refpreview-jump-to-reference": "پرش به منبع",
-	"popups-refpreview-beta-feature-message": "پیش‌نمایش منابع"
+	"popups-refpreview-beta-feature-message": "پیش‌نمایش ارجاع"
 }
