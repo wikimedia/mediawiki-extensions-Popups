@@ -35,7 +35,7 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"ReferencePreviewsPopups": "/analytics/legacy/referencepreviewspopups/1.0.0",
+				"ReferencePreviewsPopups": "/analytics/legacy/referencepreviewspopups/1.1.0",
 				"VirtualPageView": "/analytics/legacy/virtualpageview/1.0.0"
 			}
 		}
