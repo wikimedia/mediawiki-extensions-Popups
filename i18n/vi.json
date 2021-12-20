@@ -4,11 +4,12 @@
 			"Dinhxuanduyet",
 			"Minh Nguyen",
 			"Skye Darcy",
-			"Louis Anderson"
+			"Louis Anderson",
+			"Nghiemtrongdai VN"
 		]
 	},
 	"popups-message": "Phiếu tóm tắt",
-	"popups-desc": "Hiển thị phiếu xem trước bật lên khi người dùng di chuột lên một liên kết",
+	"popups-desc": "Hiển thị bản xem trước bật lên khi người dùng di chuột lên một liên kết",
 	"popups-settings-title": "Xem trước trang",
 	"popups-settings-option-simple": "Kích hoạt",
 	"popups-settings-option-simple-description": "Xem trước một đề tài nhanh chóng trong khi đọc trang.",
@@ -18,7 +19,7 @@
 	"popups-settings-save": "Lưu",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Hủy bỏ",
-	"popups-settings-help": "Bạn có thể trở lại phần xem-trước về cách sử dụng một liên kết trong chân trang của trang.",
+	"popups-settings-help": "Bạn có thể bật lại chế độ xem trước bằng liên kết ở cuối trang.",
 	"popups-settings-enable": "Bật phiếu tóm tắt",
 	"popups-preview-no-preview": "Đã gặp vấn đề khi tóm tắt trang này",
 	"popups-preview-footer-read": "Mở trang này",
@@ -35,5 +36,5 @@
 	"popups-refpreview-journal": "Chú thích tạp chí",
 	"popups-refpreview-news": "Chú thích báo",
 	"popups-refpreview-web": "Chú thích web",
-	"popups-refpreview-beta-feature-message": "Xem trước Chú thích"
+	"popups-refpreview-beta-feature-message": "Xem trước chú thích"
 }
