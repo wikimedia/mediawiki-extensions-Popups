@@ -4,11 +4,12 @@
 			"Dinhxuanduyet",
 			"Minh Nguyen",
 			"Skye Darcy",
-			"Louis Anderson"
+			"Louis Anderson",
+			"Nghiemtrongdai VN"
 		]
 	},
 	"popups-message": "Phiếu tóm tắt",
-	"popups-desc": "Hiển thị phiếu xem trước bật lên khi người dùng di chuột lên một liên kết",
+	"popups-desc": "Hiển thị bản xem trước bật lên khi người dùng di chuột lên một liên kết",
 	"popups-settings-title": "Xem trước trang",
 	"popups-settings-option-simple": "Kích hoạt",
 	"popups-settings-option-simple-description": "Xem trước một đề tài nhanh chóng trong khi đọc trang.",
@@ -18,7 +19,7 @@
 	"popups-settings-save": "Lưu",
 	"popups-settings-help-ok": "OK",
 	"popups-settings-cancel": "Hủy bỏ",
-	"popups-settings-help": "Bạn có thể trở lại phần xem-trước về cách sử dụng một liên kết trong chân trang của trang.",
+	"popups-settings-help": "Bạn có thể bật lại chế độ xem trước bằng liên kết ở cuối trang.",
 	"popups-settings-enable": "Bật phiếu tóm tắt",
 	"popups-settings-icon-gear-title": "Thay đổi cài đặt xem trước trang",
 	"popups-preview-no-preview": "Đã gặp vấn đề khi tóm tắt trang này",
@@ -27,11 +28,11 @@
 	"popups-preview-disambiguation-link": "Xem các trang có liên quan",
 	"prefs-reading": "Tùy chọn đọc",
 	"popups-prefs-optin": "Bật xem trước trang (xem trước nhanh một chủ đề khi đang đọc trang)",
-	"popups-prefs-disable-nav-gadgets-info": "Bạn cần [[$1|tắt tiện ích Các popup chuyển hướng]] trong thẻ Tiện ích của trang tùy chọn để bật xem trước trang.",
+	"popups-prefs-disable-nav-gadgets-info": "Bạn cần [[$1|tắt tiện ích popup điều hướng]] trong thẻ Tiện ích của trang tùy chọn để bật xem trước trang.",
 	"popups-prefs-conflicting-gadgets-info": "Một số tiện ích và tùy chỉnh khác có thể có ảnh hưởng đến hiệu suất của tính năng này. Nếu bạn gặp phải, xin hãy xem lại các tiện ích và kịch bản cá nhân của bạn, kể cả các tiện ích toàn cục.",
-	"popups-prefs-navpopups-gadget-conflict-info": "Bạn đang bật tiện ích [[$1|Các popup chuyển hướng]], do đó bạn sẽ không thấy các bản xem trước cung cấp bởi tính năng này. Tùy theo wiki của bạn, tiện ích này có thể có tên gọi khác biệt đôi chút. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên của bạn, bao gồm cả các tiện ích và kịch bản toàn cục.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Bạn đang bật tiện ích [[$1|Chú thích nổi]] do đó bạn sẽ không thấy các cửa sổ xem trước chú thích nhưng vẫn có thể xem các cửa sổ xem trước trang. Tùy theo wiki của bạn, tiện ích này có thể có tên gọi khác biệt đôi chút. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên của bạn, bao gồm cả các tiện ích và kịch bản toàn cục.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Bạn đang bật các tiện ích [[$1|Các popup chuyển hướng]] và [[$1|Chú thích nổi]], do đó bạn sẽ không thấy các bản xem trước cung cấp bởi tính năng này. Tùy theo wiki của bạn, các tiện ích này có thể có tên gọi khác biệt đôi chút. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên, bao gồm cả các tiện ích và kịch bản toàn cục.",
+	"popups-prefs-navpopups-gadget-conflict-info": "Bạn đang bật tiện ích [[$1|popup điều hướng]], do đó bạn sẽ không thấy các bản xem trước cung cấp bởi tính năng này. Tùy theo wiki của bạn, tiện ích này có thể có tên gọi khác nhau. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên của bạn, bao gồm cả các tiện ích và kịch bản toàn cục.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Bạn đang bật tiện ích [[$1|chú thích nổi]], do đó bạn sẽ không thấy các cửa sổ xem trước chú thích nhưng vẫn có thể xem các cửa sổ xem trước trang. Tùy theo wiki của bạn, tiện ích này có thể có tên gọi nhau. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên của bạn, bao gồm cả các tiện ích và kịch bản toàn cục.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Bạn đang bật các tiện ích [[$1|popup điều hướng]] và [[$1|chú thích nổi]], do đó bạn sẽ không thấy các bản xem trước cung cấp bởi tính năng này. Tùy theo wiki của bạn, các tiện ích này có thể có tên gọi khác nhau. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên, bao gồm cả các tiện ích và kịch bản toàn cục.",
 	"popups-refpreview-reference": "Chú thích",
 	"popups-refpreview-book": "Chú thích sách",
 	"popups-refpreview-journal": "Chú thích tạp chí",
@@ -39,6 +40,6 @@
 	"popups-refpreview-note": "Ghi chú",
 	"popups-refpreview-web": "Chú thích web",
 	"popups-refpreview-user-preference-label": "Bật xem trước chú thích (xem trước nhanh một chú thích khi đang đọc trang)",
-	"popups-refpreview-beta-feature-message": "Xem trước Chú thích",
-	"popups-refpreview-beta-feature-description": "Hiển thị bản xem trước chú thích bằng cách di chuột lên dấu chú thích đó.\n\nXin lưu ý: Nếu bạn đang dùng tiện ích [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Các popup chuyển hướng] hoặc [[mw:Special:MyLanguage/Reference Tooltips|Chú thích nổi]], bạn sẽ không thấy các bản xem trước chú thích."
+	"popups-refpreview-beta-feature-message": "Xem trước chú thích",
+	"popups-refpreview-beta-feature-description": "Hiển thị bản xem trước chú thích bằng cách di chuột lên dấu chú thích đó.\n\nXin lưu ý: Nếu bạn đang dùng tiện ích [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups popup điều hướng] hoặc [[mw:Special:MyLanguage/Reference Tooltips|chú thích nổi]], bạn sẽ không thấy các bản xem trước chú thích."
 }
