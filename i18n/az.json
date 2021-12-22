@@ -12,6 +12,7 @@
 	"popups-settings-title": "Sınaq görüntüləri",
 	"popups-settings-option-page": "Yandır",
 	"popups-settings-option-page-description": "Bir məqalə oxuyarkən daxili keçidlərə cəld baxış.",
+	"popups-settings-option-reference": "İstinadların sınaq göstərişi",
 	"popups-settings-save": "Qeyd et",
 	"popups-preview-no-preview": "Səhifəyə ilkin baxış göstərilə bilmədi",
 	"popups-preview-footer-read": "Bu səhifəyə keç",
@@ -23,5 +24,7 @@
 	"popups-refpreview-book": "Kitab istinadı",
 	"popups-refpreview-journal": "Jurnal istinadı",
 	"popups-refpreview-news": "Xəbər istinadı",
-	"popups-refpreview-web": "Veb istinadı"
+	"popups-refpreview-web": "Veb istinadı",
+	"popups-refpreview-beta-feature-message": "İstinadların sınaq göstərişi",
+	"popups-refpreview-beta-feature-description": "İstinad göstəricisinin üzərinə gəldikdə istinadın sınaq göstərişini et.\n\nDiqqət: Əgər [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups \"Naviqasiya qutucuqları\"] və ya [[mw:Special:MyLanguage/Reference Tooltips|\"İstinad bələdçisi\"]] qadcetlərindən istifadə edirsinizsə, istinad nümunələrini görə bilməyəcəksiniz."
 }
