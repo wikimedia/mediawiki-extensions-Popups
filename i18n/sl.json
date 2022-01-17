@@ -4,7 +4,8 @@
 			"Dbc334",
 			"HairyFotr",
 			"Janezdrilc",
-			"Eleassar"
+			"Eleassar",
+			"Upwinxp"
 		]
 	},
 	"popups-message": "Povzetki",
@@ -22,11 +23,18 @@
 	"popups-settings-enable": "Vključi povzetke",
 	"popups-preview-no-preview": "Pri prikazu predogleda je prišlo do težave",
 	"popups-preview-footer-read": "Pojdi na stran",
+	"popups-preview-disambiguation": "Ta naslov se nanaša na več kot eno stran",
+	"popups-preview-disambiguation-link": "Oglej si podobne strani",
 	"prefs-reading": "Nastavitve za branje",
 	"popups-prefs-optin-title": "Povzetki strani (oglej si kratke povzetke teme, medtem ko prebiraš članek):",
 	"popups-prefs-optin-enabled-label": "Vključi",
 	"popups-prefs-optin-disabled-label": "Izključi",
 	"popups-prefs-disable-nav-gadgets-info": "Če želiš vključiti povzetke strani, moraš [[$1 | izključiti Navigacijske izskokce]] na zavihku Vtičniki",
 	"popups-prefs-conflicting-gadgets-info": "Nekateri vtičniki in druge nastavitve lahko vplivajo na delovanje te funkcije. Če naletiš na težavo, prosimo, da preveriš vtičnike in uporabniške skripte, vključno z globalnimi.",
+	"popups-refpreview-reference": "Sklic",
+	"popups-refpreview-book": "Sklic na knjigo",
+	"popups-refpreview-journal": "Sklic na revijo",
+	"popups-refpreview-news": "Sklic na novice",
+	"popups-refpreview-web": "Spletni sklic",
 	"popups-refpreview-beta-feature-message": "Predogledi sklicev"
 }
