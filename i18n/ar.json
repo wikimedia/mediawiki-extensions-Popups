@@ -6,7 +6,8 @@
 			"ديفيد",
 			"زكريا",
 			"علاء",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Michel Bakni"
 		]
 	},
 	"popups-message": "المعاينات",
@@ -22,8 +23,8 @@
 	"popups-settings-cancel": "ألغ",
 	"popups-settings-help": "يمكنك تفعيل المعاينات مرة أُخرى من خلال استعمال رابط في تذييل الصفحة.",
 	"popups-settings-enable": "فعل المعاينات",
-	"popups-preview-no-preview": "كانت هناك مشكلة في عرض هذه المعاينة",
-	"popups-preview-footer-read": "اذهب إلى هذه الصفحة",
+	"popups-preview-no-preview": "حصلت مشكلة عند عرض هذه المعاينة",
+	"popups-preview-footer-read": "زر هذه الصفحة",
 	"popups-preview-disambiguation": "يرتبط هذا العنوان بأكثر من صفحة واحدة",
 	"popups-preview-disambiguation-link": "عرض الصفحات المماثلة",
 	"prefs-reading": "تفضيلات القراءة",
