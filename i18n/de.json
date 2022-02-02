@@ -12,7 +12,8 @@
 			"PerfektesChaos",
 			"Peter Bowman",
 			"TMg",
-			"ThePiscin"
+			"ThePiscin",
+			"Brettchenweber"
 		]
 	},
 	"popups-message": "Vorschaubilder",
@@ -36,9 +37,9 @@
 	"popups-prefs-optin": "Seitenvorschau aktivieren (schnelle Vorschau auf ein Thema beim Lesen einer Seite)",
 	"popups-prefs-disable-nav-gadgets-info": "Du musst das Helferlein [[$1|Navigations-Popups]] in deinen Helferlein-Einstellungen deaktivieren, um Seitenvorschaubilder zu aktivieren.",
 	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls du Probleme entdeckst, überprüfe bitte deine Helferlein und Benutzerskripte, inklusive globaler.",
-	"popups-prefs-navpopups-gadget-conflict-info": "Du hast das Helferlein [[$1|Navigations-Popups]] aktiviert, sodass du keine durch diese Funktion zur Verfügung gestellte Vorschauen sehen wirst. Dieses Helferlein kann abhängig von deinem Wiki einen leicht abweichenden Namen haben. Wenn du weiterhin Probleme hast, prüfe bitte deine Helferlein und Benutzerskripte, inklusive den globalen.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Du hast das Helferlein [[$1|Fußnoten-Tooltip]] aktiviert, sodass du keine durch diese Funktion zur Verfügung gestellte Fußnoten-Vorschauen sehen wirst. Dieses Helferlein kann abhängig von deinem Wiki einen leicht abweichenden Namen haben. Wenn du weiterhin Probleme hast, prüfe bitte deine Helferlein und Benutzerskripte, inklusive den globalen.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Du hast die Helferlein [[$1|Navigations-Popups]] und [[$1|Fußnoten-Tooltip]] aktiviert, sodass du keine durch diese Funktion zur Verfügung gestellte Vorschauen sehen wirst. Diese Helferlein können abhängig von deinem Wiki einen leicht abweichenden Namen haben. Wenn du weiterhin Probleme hast, prüfe bitte deine Helferlein und Benutzerskripte, inklusive den globalen.",
+	"popups-prefs-navpopups-gadget-conflict-info": "Du hast das Helferlein [[$1|Navigations-Popups]] aktiviert, sodass du keine durch diese Funktion zur Verfügung gestellte Vorschau sehen wirst. Dieses Helferlein kann abhängig von deinem Wiki einen leicht abweichenden Namen haben. Wenn du weiterhin Probleme hast, prüfe bitte deine Helferlein und Benutzerskripte, inklusive den globalen.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Du hast das Helferlein [[$1|Fußnoten-Tooltip]] aktiviert, sodass du keine durch diese Funktion zur Verfügung gestellte Fußnoten-Vorschau sehen wirst. Dieses Helferlein kann abhängig von deinem Wiki einen leicht abweichenden Namen haben. Wenn du weiterhin Probleme hast, prüfe bitte deine Helferlein und Benutzerskripte, inklusive den globalen.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Du hast die Helferlein [[$1|Navigations-Popups]] und [[$1|Fußnoten-Tooltip]] aktiviert, sodass du keine durch diese Funktion zur Verfügung gestellten Vorschauen sehen wirst. Diese Helferlein können abhängig von deinem Wiki einen leicht abweichenden Namen haben. Wenn du weiterhin Probleme hast, prüfe bitte deine Helferlein und Benutzerskripte, inklusive den globalen.",
 	"popups-refpreview-reference": "Einzelnachweis",
 	"popups-refpreview-book": "Literaturquelle",
 	"popups-refpreview-journal": "Zeitschriftenquelle",
