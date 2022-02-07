@@ -45,5 +45,6 @@
 	"popups-refpreview-journal": "Tijdschriftreferentie",
 	"popups-refpreview-news": "Nieuwsreferentie",
 	"popups-refpreview-web": "Webreferentie",
-	"popups-refpreview-jump-to-reference": "Naar verwijzing springen"
+	"popups-refpreview-jump-to-reference": "Naar verwijzing springen",
+	"popups-refpreview-beta-feature-message": "Voorvertoningen van referenties"
 }
