@@ -142,7 +142,7 @@ QUnit.test( 'Reference preview gateway rejects non-existing references', functio
 		title = createStubTitle( 1, 'Foo', 'undefined' );
 
 	return gateway.fetchPreviewForTitle( title, this.$sourceElement[ 0 ] ).then( () => {
-		assert.ok( false, 'It should not resolve' );
+		assert.true( false, 'It should not resolve' );
 	} ).catch( ( reason, result ) => {
 		assert.propEqual( result, { textStatus: 'abort', xhr: { readyState: 0 } } );
 	} );
@@ -153,7 +153,7 @@ QUnit.test( 'Reference preview gateway rejects all-whitespace references', funct
 		title = createStubTitle( 1, 'Foo', 'cite note-5' );
 
 	return gateway.fetchPreviewForTitle( title, this.$sourceElement[ 0 ] ).then( () => {
-		assert.ok( false, 'It should not resolve' );
+		assert.true( false, 'It should not resolve' );
 	} ).catch( ( reason, result ) => {
 		assert.propEqual( result, { textStatus: 'abort', xhr: { readyState: 0 } } );
 	} );

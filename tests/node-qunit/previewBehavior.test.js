@@ -47,12 +47,12 @@ QUnit.test( 'it shouldn\'t set a showSettings handler if the user is logged in',
 			preventDefault: this.sandbox.spy()
 		},
 		actions = {
-			showSettings: () => assert.ok( false, 'No show settings handler is set.' )
+			showSettings: () => assert.true( false, 'No show settings handler is set.' )
 		},
 		behavior = createPreviewBehavior( user, actions );
 
 	behavior.showSettings( event );
-	assert.ok( true );
+	assert.true( true );
 } );
 
 QUnit.test( 'it should set a showSettings handler if the user is logged out', function ( assert ) {
@@ -67,12 +67,12 @@ QUnit.test( 'it should set a showSettings handler if the user is logged out', fu
 
 	behavior.showSettings( event );
 
-	assert.ok(
+	assert.true(
 		event.preventDefault.called,
 		'It should prevent the default action of the event.'
 	);
 
-	assert.ok(
+	assert.true(
 		actions.showSettings.called,
 		'It should dispatch the SETTINGS_SHOW action.'
 	);

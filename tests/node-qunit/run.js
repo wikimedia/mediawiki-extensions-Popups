@@ -39,7 +39,7 @@ QUnit.module = function ( name, localEnv ) {
 			const config = Object.assign( {}, sinon.config, {
 				injectInto: this
 			} );
-			sinon.sandbox.create( config );
+			this.sandbox = sinon.createSandbox( config );
 
 			if ( localEnv.beforeEach ) {
 				localEnv.beforeEach.call( this );

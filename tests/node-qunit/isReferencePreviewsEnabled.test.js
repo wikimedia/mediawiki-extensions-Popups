@@ -127,14 +127,14 @@ QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 			userSettings = {
 				isReferencePreviewsEnabled: () => data.isAnon ?
 					data.enabledByAnon :
-					assert.ok( false, 'not expected to be called' )
+					assert.true( false, 'not expected to be called' )
 			},
 			config = {
 				get: ( key ) => key === 'skin' && data.isMobile ? 'minerva' : data[ key ]
 			};
 
 		if ( data.isAnon ) {
-			mw.user.options.get = () => assert.ok( false, 'not expected to be called' );
+			mw.user.options.get = () => assert.true( false, 'not expected to be called' );
 		} else {
 			mw.user.options.get = () => data.enabledByRegistered ? '1' : '0';
 		}
@@ -155,7 +155,7 @@ QUnit.test( 'it should display reference previews when conditions are fulfilled'
 	config.set( 'wgPopupsReferencePreviews', true );
 	config.set( 'wgPopupsConflictsWithRefTooltipsGadget', false );
 
-	assert.ok(
+	assert.true(
 		isReferencePreviewsEnabled( user, userSettings, config ),
 		'If the user is logged in and the user is in the on group, then it\'s enabled.'
 	);
@@ -169,8 +169,9 @@ QUnit.test( 'it should handle the conflict with the Reference Tooltips Gadget', 
 	config.set( 'wgPopupsReferencePreviews', true );
 	config.set( 'wgPopupsConflictsWithRefTooltipsGadget', true );
 
-	assert.notOk(
+	assert.strictEqual(
 		isReferencePreviewsEnabled( user, userSettings, config ),
+		null,
 		'Reference Previews is disabled.'
 	);
 } );
@@ -183,8 +184,9 @@ QUnit.test( 'it should not be enabled when the global is disabling it', ( assert
 	config.set( 'wgPopupsReferencePreviews', false );
 	config.set( 'wgPopupsConflictsWithRefTooltipsGadget', false );
 
-	assert.notOk(
+	assert.strictEqual(
 		isReferencePreviewsEnabled( user, userSettings, config ),
+		null,
 		'Reference Previews is disabled.'
 	);
 } );
@@ -198,8 +200,9 @@ QUnit.test( 'it should not be enabled when minerva skin used', ( assert ) => {
 	config.set( 'wgPopupsConflictsWithRefTooltipsGadget', false );
 	config.set( 'skin', 'minerva' );
 
-	assert.notOk(
+	assert.strictEqual(
 		isReferencePreviewsEnabled( user, userSettings, config ),
+		null,
 		'Reference Previews is disabled.'
 	);
 } );

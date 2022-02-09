@@ -29,7 +29,7 @@ QUnit.test(
 		const changeListener = render( previewBehavior );
 		changeListener( undefined, newState );
 
-		assert.ok(
+		assert.true(
 			this.preview.show.calledWith(
 				newState.preview.measures,
 				previewBehavior,
@@ -51,7 +51,7 @@ QUnit.test( 'it should render the preview', ( assert ) => {
 	const changeListener = render( /* previewBehavior = undefined */ );
 	changeListener( undefined, newState );
 
-	assert.ok(
+	assert.true(
 		RendererModule.render.calledWith( newState.preview.fetchResponse ),
 		'It should use the data from the gateway.'
 	);

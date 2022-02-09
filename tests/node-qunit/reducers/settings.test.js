@@ -65,8 +65,6 @@ QUnit.test( 'BOOT with multiple popup types', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_SHOW', ( assert ) => {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	assert.deepEqual(
 		settings( {}, { type: actionTypes.SETTINGS_SHOW } ),
 		{
@@ -78,8 +76,6 @@ QUnit.test( 'SETTINGS_SHOW', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
-	assert.expect( 1, 'All assertions are executed.' );
-
 	assert.deepEqual(
 		settings( {}, { type: actionTypes.SETTINGS_HIDE } ),
 		{

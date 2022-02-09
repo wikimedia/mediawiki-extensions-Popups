@@ -36,27 +36,27 @@ QUnit.module( 'ext.popups/changeListeners/settings', {
 
 QUnit.test( 'it should not create settings when shouldShow is false', function ( assert ) {
 	this.settings( null, this.defaultState );
-	assert.notOk( this.render.called, 'The renderer should not be called' );
+	assert.false( this.render.called, 'The renderer should not be called' );
 } );
 
 QUnit.test( 'it should not create settings when shouldShow keeps being false', function ( assert ) {
 	this.settings( null, this.defaultState );
 	this.settings( this.defaultState, this.defaultState );
 
-	assert.notOk( this.render.called, 'The renderer should not be called' );
+	assert.false( this.render.called, 'The renderer should not be called' );
 } );
 
 QUnit.test( 'it should create settings when shouldShow becomes true', function ( assert ) {
 	this.settings( null, this.defaultState );
 	this.settings( this.defaultState, this.showState );
 
-	assert.ok( this.render.calledWith( 'actions' ),
+	assert.true( this.render.calledWith( 'actions' ),
 		'The renderer should be called with the actions' );
-	assert.ok( this.rendered.appendTo.called,
+	assert.true( this.rendered.appendTo.called,
 		'The rendered object should be in the DOM' );
-	assert.ok( this.rendered.setEnabled.called,
+	assert.true( this.rendered.setEnabled.called,
 		'The rendered form should be up to date' );
-	assert.ok( this.rendered.show.called,
+	assert.true( this.rendered.show.called,
 		'The rendered object should be showed' );
 } );
 
@@ -71,7 +71,7 @@ QUnit.test( 'it should not create settings when shouldShow keeps being true', fu
 		'The rendered object should be in the DOM' );
 	assert.strictEqual( this.rendered.show.callCount, 1,
 		'The rendered object should be showed just once' );
-	assert.notOk( this.rendered.hide.called,
+	assert.false( this.rendered.hide.called,
 		'The rendered object should not be hidden' );
 } );
 
@@ -111,7 +111,7 @@ QUnit.test( 'it should show help when showHelp becomes true', function ( assert 
 	this.settings( this.defaultState, this.showState );
 	this.settings( this.showState, this.showHelpState );
 
-	assert.ok( this.rendered.toggleHelp.calledWith( true ),
+	assert.true( this.rendered.toggleHelp.calledWith( true ),
 		'Help should be shown' );
 } );
 

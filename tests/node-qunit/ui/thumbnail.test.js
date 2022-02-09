@@ -340,8 +340,8 @@ QUnit.test( 'createThumbnailSVG', ( assert ) => {
 				'http://www.w3.org/2000/svg',
 				'SVG namespace is correct.'
 			);
-			assert.equal( $thumbnail.attr( 'height' ), height, 'SVG height is correct.' );
-			assert.equal( $thumbnail.attr( 'width' ), width, 'SVG width is correct.' );
+			assert.strictEqual( +$thumbnail.attr( 'height' ), height, 'SVG height is correct.' );
+			assert.strictEqual( +$thumbnail.attr( 'width' ), width, 'SVG width is correct.' );
 		}
 	} );
 } );

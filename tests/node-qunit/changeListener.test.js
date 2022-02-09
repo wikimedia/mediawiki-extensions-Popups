@@ -28,13 +28,13 @@ QUnit.test( 'it should only call the callback when the state has changed', funct
 	stubStore.setState( {} );
 
 	if ( !boundChangeListener ) {
-		assert.ok( false, 'The change listener was not bound.' );
+		assert.true( false, 'The change listener was not bound.' );
 	}
 	boundChangeListener();
 	boundChangeListener();
 
 	assert.strictEqual( spy.callCount, 1, 'The spy was called once.' );
-	assert.ok(
+	assert.true(
 		spy.calledWith(
 			undefined, // The initial internal state of the change listener.
 			{}
@@ -49,7 +49,7 @@ QUnit.test( 'it should only call the callback when the state has changed', funct
 	boundChangeListener();
 
 	assert.strictEqual( spy.callCount, 2, 'The spy was called twice.' );
-	assert.ok(
+	assert.true(
 		spy.calledWith(
 			{},
 			{

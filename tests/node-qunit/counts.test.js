@@ -20,8 +20,6 @@ QUnit.test( '#getEditCountBucket', ( assert ) => {
 		[ 1500, '1000+ edits' ]
 	];
 
-	assert.expect( cases.length, 'All assertions are executed.' );
-
 	for ( let i = 0; i < cases.length; i++ ) {
 		const count = cases[ i ][ 0 ];
 		const bucket = counts.getEditCountBucket( count );
@@ -52,8 +50,6 @@ QUnit.test( '#getPreviewCountBucket', ( assert ) => {
 		[ 100, '21+ previews' ],
 		[ 1000, '21+ previews' ]
 	];
-
-	assert.expect( cases.length, 'All assertions are executed.' );
 
 	for ( let i = 0; i < cases.length; i++ ) {
 		const count = cases[ i ][ 0 ];

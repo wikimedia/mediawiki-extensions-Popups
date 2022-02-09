@@ -51,7 +51,7 @@ QUnit.test( 'it should handle logged in users', ( assert ) => {
 	const user = stubs.createStubUser( /* isAnon = */ false ),
 		config = new Map();
 
-	assert.ok(
+	assert.true(
 		isPagePreviewsEnabled( user, {}, config ),
 		'If the user is logged in and the user is in the on group, then it\'s enabled.'
 	);
@@ -63,8 +63,9 @@ QUnit.test( 'it should handle the conflict with the Navigation Popups Gadget', (
 
 	config.set( 'wgPopupsConflictsWithNavPopupGadget', true );
 
-	assert.notOk(
+	assert.strictEqual(
 		isPagePreviewsEnabled( user, {}, config ),
+		null,
 		'Page Previews is disabled when it conflicts with the Navigation Popups Gadget.'
 	);
 

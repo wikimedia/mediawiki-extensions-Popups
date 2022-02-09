@@ -136,7 +136,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 		// Use the original if it's a supported image format.
 		return originalIsSafe && original;
 	}
-	const filename = lastPart.substr( filenamePxIndex + 3 );
+	const filename = lastPart.slice( filenamePxIndex + 3 );
 
 	// Scale the thumbnail's largest dimension.
 	let width, height;
