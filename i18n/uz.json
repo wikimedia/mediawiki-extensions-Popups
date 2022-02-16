@@ -2,14 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Nataev",
-			"Sociologist"
+			"Sociologist",
+			"Malikxan"
 		]
 	},
-	"popups-settings-title": "Qisqa tanishuv",
+	"popups-settings-title": "Qisqa tanishuvlar",
 	"popups-settings-option-page": "Oddiy",
 	"popups-settings-option-page-description": "Sahifadagi birinchi gap va rasm koʻrsatiladi. Mutolaa etuvchilar uchun tavsiya etiladi.",
 	"popups-settings-save": "Saqlash",
-	"popups-settings-help-ok": "OK",
+	"popups-settings-help-ok": "Bajarildi",
 	"popups-settings-cancel": "Bekor qilish",
-	"popups-settings-enable": "Qisqa tanishuv"
+	"popups-settings-enable": "Qisqa tanishuvni tahrirlash",
+	"popups-settings-icon-gear-title": "Sahifa qisqa tanishuvi sozlamalarini oʻzgartirish",
+	"popups-preview-footer-read": "Bu sahifaga oʻtish"
 }
