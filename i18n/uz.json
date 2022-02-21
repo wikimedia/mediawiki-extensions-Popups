@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Nataev",
-			"Sociologist"
+			"Sociologist",
+			"Malikxan"
 		]
 	},
 	"popups-settings-title": "Qisqa tanishuv",
@@ -11,7 +12,8 @@
 	"popups-settings-option-advanced": "Kengaytirilgan",
 	"popups-settings-option-off": "Oʻchirilsin",
 	"popups-settings-save": "Saqlash",
-	"popups-settings-help-ok": "OK",
+	"popups-settings-help-ok": "Bajarildi",
 	"popups-settings-cancel": "Bekor qilish",
-	"popups-settings-enable": "Qisqa tanishuv"
+	"popups-settings-enable": "Qisqa tanishuv",
+	"popups-preview-footer-read": "Bu sahifaga oʻtish"
 }
