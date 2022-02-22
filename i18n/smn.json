@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yupik"
+			"Yupik",
+			"Seipinne"
 		]
 	},
-	"popups-settings-save": "Vuorkkii"
+	"popups-settings-save": "Vuorkkii",
+	"prefs-reading": "Luuhâm asâttâsah"
 }
