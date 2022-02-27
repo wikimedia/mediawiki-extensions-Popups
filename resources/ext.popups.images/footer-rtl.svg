@@ -8,10 +8,10 @@
 	<g fill="none" fill-rule="evenodd">
 		<g transform="translate(34)">
 			<g transform="matrix(1 0 0 -1 0 13)">
-				<use fill="#f8f9fa" xlink:href="#a"/>
+				<use xlink:href="#a" fill="#f8f9fa"/>
 				<rect width="199" height="11" x="1" y="1" stroke="#a2a9b1" stroke-width="2" rx="2"/>
 			</g>
-			<use fill="#fff" xlink:href="#b"/>
+			<use xlink:href="#b" fill="#fff"/>
 			<rect width="199" height="167" x="1" y="11" stroke="#a2a9b1" stroke-width="2" rx="2"/>
 			<g fill="#72777d" opacity=".4" transform="matrix(-1 0 0 1 132 35)">
 				<rect width="73" height="2" y="7" fill="#c8ccd1" rx="1"/>
@@ -37,7 +37,7 @@
 			</g>
 			<rect width="30" height="2" x="69" y="158" fill="#72777d" opacity=".4" rx="1"/>
 			<rect width="30" height="2" x="101" y="158" fill="#72777d" opacity=".4" rx="1"/>
-			<use fill="#36C" xlink:href="#c"/>
+			<use xlink:href="#c" fill="#36C"/>
 			<rect width="33" height="5" x="32.5" y="156.5" stroke="#ffc057" stroke-opacity=".447" stroke-width="3" rx="2.5"/>
 			<circle cx="168" cy="49" r="19" fill="#eaecf0"/>
 			<g fill="#a2a9b1" transform="translate(183 5)">
