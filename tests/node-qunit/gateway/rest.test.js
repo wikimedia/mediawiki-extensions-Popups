@@ -359,7 +359,7 @@ QUnit.test( 'RESTBase gateway handles API failure', function ( assert ) {
 		gateway = createRESTBaseGateway( api, {} );
 
 	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) ).catch( () => {
-		assert.ok( true, 'The gateway threw an error.' );
+		assert.true( true, 'The gateway threw an error.' );
 	} );
 } );
 
@@ -369,7 +369,7 @@ QUnit.test( 'RESTBase gateway handles 404 as a failure', function ( assert ) {
 		gateway = createRESTBaseGateway( api, {} );
 
 	return gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) ).catch( () => {
-		assert.ok( true, 'The gateway threw an error.' );
+		assert.true( true, 'The gateway threw an error.' );
 	} );
 } );
 
@@ -443,7 +443,7 @@ QUnit.test( 'RESTBase gateway is abortable', function ( assert ) {
 	const xhr = gateway.fetchPreviewForTitle( createStubTitle( 1, 'Test Title' ) );
 
 	const chain = xhr.then( () => {
-		assert.ok( false, 'It never calls a thenable after rejection' );
+		assert.true( false, 'It never calls a thenable after rejection' );
 	} ).catch( ( data ) => {
 		assert.strictEqual( data, 'http' );
 	} );

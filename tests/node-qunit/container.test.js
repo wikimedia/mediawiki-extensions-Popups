@@ -10,7 +10,7 @@ QUnit.module( 'container', {
 QUnit.test( '#has', function ( assert ) {
 	this.container.set( 'foo', this.factory );
 
-	assert.ok( this.container.has( 'foo' ), 'The container checks the factory.' );
+	assert.true( this.container.has( 'foo' ), 'The container checks the factory.' );
 } );
 
 QUnit.test( '#get', function ( assert ) {
@@ -31,7 +31,7 @@ QUnit.test( '#get', function ( assert ) {
 
 	this.container.get( 'foo' );
 
-	assert.ok(
+	assert.true(
 		this.factory.calledOnce,
 		'It should memoize the result of the factory.'
 	);

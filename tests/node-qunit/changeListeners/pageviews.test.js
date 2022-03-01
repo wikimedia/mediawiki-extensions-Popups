@@ -43,7 +43,7 @@ QUnit.module( 'ext.popups/pageviews', {
 QUnit.test( 'it should log the queued event', function ( assert ) {
 	this.changeListener( undefined, newState );
 
-	assert.ok(
+	assert.true(
 		this.pageviewTracker.calledWith(
 			'event.VirtualPageView',
 			{
@@ -60,7 +60,7 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 		),
 		'Event is logged with the current page context'
 	);
-	assert.ok(
+	assert.true(
 		this.boundActions.pageviewLogged.called,
 		'When logged an action is taken to unqueue the pageview'
 	);
@@ -72,11 +72,11 @@ QUnit.test( 'it should not log something that is not a pageview', function ( ass
 
 	this.changeListener( undefined, newState );
 
-	assert.notOk(
+	assert.false(
 		this.pageviewTracker.called,
 		'No pageview tracked'
 	);
-	assert.notOk(
+	assert.false(
 		this.boundActions.pageviewLogged.called,
 		'No action taken'
 	);

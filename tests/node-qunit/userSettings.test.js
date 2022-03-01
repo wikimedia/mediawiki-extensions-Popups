@@ -11,7 +11,7 @@ QUnit.module( 'ext.popups/userSettings', {
 QUnit.test( '#isPagePreviewsEnabled should return false if Page Previews have been disabled', function ( assert ) {
 	this.userSettings.storePagePreviewsEnabled( false );
 
-	assert.notOk(
+	assert.false(
 		this.userSettings.isPagePreviewsEnabled(),
 		'The user has disabled Page Previews.'
 	);
@@ -20,7 +20,7 @@ QUnit.test( '#isPagePreviewsEnabled should return false if Page Previews have be
 
 	this.userSettings.storePagePreviewsEnabled( true );
 
-	assert.ok(
+	assert.true(
 		this.userSettings.isPagePreviewsEnabled(),
 		'#isPagePreviewsEnabled should return true if Page Previews have been enabled'
 	);
@@ -32,7 +32,7 @@ QUnit.test( '#isReferencePreviewsEnabled', function ( assert ) {
 		null,
 		'Precondition: storage is empty.'
 	);
-	assert.ok(
+	assert.true(
 		this.userSettings.isReferencePreviewsEnabled(),
 		'#isReferencePreviewsEnabled should default to true.'
 	);
@@ -44,7 +44,7 @@ QUnit.test( '#isReferencePreviewsEnabled', function ( assert ) {
 		'0',
 		'#storeReferencePreviewsEnabled changes the storage.'
 	);
-	assert.notOk(
+	assert.false(
 		this.userSettings.isReferencePreviewsEnabled(),
 		'#isReferencePreviewsEnabled is now false.'
 	);

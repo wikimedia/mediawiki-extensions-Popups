@@ -50,12 +50,12 @@ QUnit.test( 'Element instances should not be cloned', ( assert ) => {
 		newElement = document.createElement( 'b' ),
 		state = { element },
 		after = nextState( state, { element: newElement } );
-	assert.ok(
-		state.element === element,
+	assert.strictEqual(
+		state.element, element,
 		'original state is unchanged'
 	);
-	assert.ok(
-		after.element === newElement,
+	assert.strictEqual(
+		after.element, newElement,
 		'Element instance was not cloned'
 	);
 } );

@@ -19,7 +19,7 @@ QUnit.test( 'it uses mediawiki plain text gateway with wgPopupsGateway == "mwApi
 
 	createPagePreviewGateway( this.config );
 
-	assert.ok( this.createMediaWikiApiGateway.called,
+	assert.true( this.createMediaWikiApiGateway.called,
 		'MW plain text gateway called' );
 } );
 
@@ -28,7 +28,7 @@ QUnit.test( 'it uses rest plain text gateway with wgPopupsGateway == "restbasePl
 
 	createPagePreviewGateway( this.config );
 
-	assert.ok( this.createRESTBaseGateway.called,
+	assert.true( this.createRESTBaseGateway.called,
 		'REST plain text gateway called' );
 } );
 
@@ -37,5 +37,5 @@ QUnit.test( 'it uses rest HTML gateway with wgPopupsGateway == "restbaseHTML"', 
 
 	createPagePreviewGateway( this.config );
 
-	assert.ok( this.createRESTBaseGateway.called, 'REST HTML gateway called' );
+	assert.true( this.createRESTBaseGateway.called, 'REST HTML gateway called' );
 } );

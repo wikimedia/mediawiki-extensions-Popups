@@ -20,7 +20,7 @@ QUnit.test(
 		this.changeListener( undefined, newState );
 		this.changeListener( oldState, newState );
 
-		assert.notOk(
+		assert.false(
 			this.userSettings.storePagePreviewsEnabled.called,
 			'The user setting is unchanged.'
 		);
@@ -33,7 +33,7 @@ QUnit.test( 'it should update the storage if the enabled flag has changed', func
 
 	this.changeListener( oldState, newState );
 
-	assert.ok(
+	assert.true(
 		this.userSettings.storePagePreviewsEnabled.calledWith( false ),
 		'The user setting is disabled.'
 	);
@@ -48,7 +48,7 @@ QUnit.test(
 		this.changeListener( undefined, newState );
 		this.changeListener( oldState, newState );
 
-		assert.notOk(
+		assert.false(
 			this.userSettings.storeReferencePreviewsEnabled.called,
 			'Reference previews are unchanged.'
 		);
@@ -61,11 +61,11 @@ QUnit.test( 'it should update the storage if the reference preview state has cha
 
 	this.changeListener( oldState, newState );
 
-	assert.notOk(
+	assert.false(
 		this.userSettings.storePagePreviewsEnabled.called,
 		'Page previews are unchanged.'
 	);
-	assert.ok(
+	assert.true(
 		this.userSettings.storeReferencePreviewsEnabled.calledWith( false ),
 		'Reference previews opt-out is stored.'
 	);

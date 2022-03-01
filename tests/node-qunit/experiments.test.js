@@ -37,7 +37,7 @@ QUnit.test( 'it should call mw.experiments#getBucket', function ( assert ) {
 
 	getBucketStub.returns( 'true' );
 
-	assert.ok(
+	assert.true(
 		experiments.weightedBoolean( 'foo', 0.2, 'barbaz' ),
 		'It should return true if the bucket is "true".'
 	);

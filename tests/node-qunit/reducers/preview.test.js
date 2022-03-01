@@ -11,8 +11,6 @@ QUnit.module( 'ext.popups/reducers#preview', {
 QUnit.test( '@@INIT', ( assert ) => {
 	const state = preview( undefined, { type: '@@INIT' } );
 
-	assert.expect( 1, 'All assertions are executed.' );
-
 	assert.deepEqual(
 		state,
 		{
@@ -35,8 +33,6 @@ QUnit.test( 'BOOT', ( assert ) => {
 		initiallyEnabled: { page: true }
 	};
 
-	assert.expect( 1, 'All assertions are executed.' );
-
 	assert.deepEqual(
 		preview( {}, action ),
 		{
@@ -51,8 +47,6 @@ QUnit.test( 'SETTINGS_CHANGE', ( assert ) => {
 		type: actionTypes.SETTINGS_CHANGE,
 		newValue: { page: true }
 	};
-
-	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
 		preview( { enabled: {} }, action ),
@@ -174,8 +168,6 @@ QUnit.test( 'FETCH_COMPLETE', ( assert ) => {
 			result: {}
 		};
 
-	assert.expect( 3, 'All assertions are executed.' );
-
 	assert.deepEqual(
 		preview( state, action ),
 		{
@@ -236,8 +228,6 @@ QUnit.test( actionTypes.FETCH_FAILED, ( assert ) => {
 		token
 	};
 
-	assert.expect( 2, 'All assertions are executed.' );
-
 	assert.deepEqual(
 		preview( state, action ),
 		{
@@ -272,8 +262,6 @@ QUnit.test( 'PREVIEW_DWELL', ( assert ) => {
 	const action = {
 		type: actionTypes.PREVIEW_DWELL
 	};
-
-	assert.expect( 1, 'All assertions are executed.' );
 
 	assert.deepEqual(
 		preview( {}, action ),

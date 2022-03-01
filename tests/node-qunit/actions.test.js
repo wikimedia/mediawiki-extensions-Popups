@@ -279,7 +279,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 QUnit.test( 'it should fetch data from the gateway immediately', function ( assert ) {
 	this.fetch();
 
-	assert.ok(
+	assert.true(
 		this.gateway.fetchPreviewForTitle.calledWith( TEST_TITLE ),
 		'The gateway was called with the correct arguments.'
 	);
@@ -439,7 +439,7 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 
 	const abandoned = actions.abandon()( dispatch, getState );
 
-	assert.ok(
+	assert.true(
 		dispatch.calledWith( {
 			type: actionTypes.ABANDON_START,
 			timestamp: mw.now(),
@@ -450,13 +450,13 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 
 	// ---
 
-	assert.ok(
+	assert.true(
 		this.wait.calledWith( 300 ),
 		'Have you spoken with #Design about changing this value?'
 	);
 
 	return abandoned.then( () => {
-		assert.ok(
+		assert.true(
 			dispatch.calledWith( {
 				type: actionTypes.ABANDON_END,
 				token
@@ -497,11 +497,11 @@ QUnit.test( 'it should dispatch an action with previous and current enabled stat
 
 	actions.saveSettings( { page: true } )( dispatch, getState );
 
-	assert.ok(
+	assert.true(
 		getState.calledOnce,
 		'it should query the global state for the current state'
 	);
-	assert.ok(
+	assert.true(
 		dispatch.calledWith( {
 			type: actionTypes.SETTINGS_CHANGE,
 			oldValue: { page: false },
@@ -535,7 +535,7 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 	const previewShow = actions
 		.previewShow( token )( dispatch, getState );
 
-	assert.ok(
+	assert.true(
 		dispatch.calledWith( {
 			type: actionTypes.PREVIEW_SHOW,
 			token,
@@ -550,11 +550,11 @@ QUnit.test( 'it should dispatch the PREVIEW_SHOW action and log a pageview', fun
 		'It waits for PAGEVIEW_VISIBILITY_DURATION milliseconds before trigging a pageview.'
 	);
 	return previewShow.then( () => {
-		assert.ok(
+		assert.true(
 			dispatch.calledTwice,
 			'Dispatch was called twice - once for PREVIEW_SHOW then for PREVIEW_SEEN'
 		);
-		assert.ok(
+		assert.true(
 			dispatch.calledWith( {
 				type: actionTypes.PREVIEW_SEEN,
 				namespace: 0,
@@ -584,7 +584,7 @@ QUnit.test( 'PREVIEW_SEEN action not called if activeToken changes', function ( 
 		.previewShow( token )( dispatch, getState );
 
 	return previewShow.then( () => {
-		assert.ok(
+		assert.true(
 			dispatch.calledOnce,
 			'Dispatch was only called for PREVIEW_SHOW'
 		);
@@ -609,7 +609,7 @@ QUnit.test( 'PREVIEW_SEEN action not called if preview type not page', function 
 		.previewShow( token )( dispatch, getState );
 
 	return previewShow.then( () => {
-		assert.ok(
+		assert.true(
 			dispatch.calledOnce,
 			'Dispatch was only called for PREVIEW_SHOW'
 		);

@@ -15,7 +15,7 @@ const previewTypes = {
 	TYPE_PAGE: 'page',
 	/** Disambiguation page preview */
 	TYPE_DISAMBIGUATION: 'disambiguation',
-	/** Reference preview **/
+	/** Reference preview */
 	TYPE_REFERENCE: 'reference'
 };
 
