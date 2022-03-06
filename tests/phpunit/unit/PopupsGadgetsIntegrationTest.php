@@ -18,6 +18,7 @@
  * @ingroup extensions
  */
 
+use MediaWiki\Extension\Gadgets\GadgetRepo;
 use PHPUnit\Framework\MockObject\MockObject;
 use Popups\PopupsGadgetsIntegration;
 

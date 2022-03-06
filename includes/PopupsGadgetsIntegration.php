@@ -21,6 +21,7 @@ namespace Popups;
 
 use Config;
 use ExtensionRegistry;
+use MediaWiki\Extension\Gadgets\GadgetRepo;
 
 /**
  * Gadgets integration
@@ -84,7 +85,7 @@ class PopupsGadgetsIntegration {
 	 */
 	public function conflictsWithNavPopupsGadget( \User $user ) {
 		if ( $this->isGadgetExtensionEnabled() ) {
-			$gadgetsRepo = \GadgetRepo::singleton();
+			$gadgetsRepo = GadgetRepo::singleton();
 			$match = array_search( $this->navPopupsGadgetName, $gadgetsRepo->getGadgetIds() );
 			if ( $match !== false ) {
 				try {
@@ -107,7 +108,7 @@ class PopupsGadgetsIntegration {
 	 */
 	public function conflictsWithRefTooltipsGadget( \User $user ) {
 		if ( $this->isGadgetExtensionEnabled() ) {
-			$gadgetsRepo = \GadgetRepo::singleton();
+			$gadgetsRepo = GadgetRepo::singleton();
 			$match = array_search( $this->refTooltipsGadgetName, $gadgetsRepo->getGadgetIds() );
 			if ( $match !== false ) {
 				try {
