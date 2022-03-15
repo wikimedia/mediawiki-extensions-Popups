@@ -11,7 +11,8 @@
 			"렌즈",
 			"아라",
 			"Ellif",
-			"Kwj2772"
+			"Kwj2772",
+			"MemphisA5"
 		]
 	},
 	"popups-message": "미리 보기",
@@ -36,7 +37,7 @@
 	"popups-prefs-optin": "문서 미리 보기를 사용합니다 (문서를 읽는 동안 주제를 빠르게 미리 봅니다)",
 	"popups-prefs-disable-nav-gadgets-info": "문서 미리보기를 활성화하려면 소도구 설정에서 [[$1|내비게이션 팝업 소도구를 비활성화]]해야 합니다",
 	"popups-prefs-conflicting-gadgets-info": "일부 소도구와 기타 사용자 지정 기능으로 인해 이 기능의 성능에 영향을 미칠 수 있습니다. 문제가 있으면 소도구와 사용자 스크립트를 확인해 보십시오.",
-	"popups-prefs-navpopups-gadget-conflict-info": "[[$1|내비게이션 팝업]] 소도구를 사용하고 있으므로 이 기능이 제공하는 미리 보기를 볼 수 없ㅂ니다. 위키에 따라 이 소도구의 이름은 조금씩 다를 수 있습니다. 문제를 계속 마주친다면 통합 계정을 포함하여 {{int:prefs-gadgets}} 환경 설정과 사용자 스크립트를 검토해 주십시오.",
+	"popups-prefs-navpopups-gadget-conflict-info": "[[$1|내비게이션 팝업]] 소도구를 사용하고 있으므로 이 기능이 제공하는 미리 보기를 볼 수 없습니다. 위키에 따라 이 소도구의 이름은 조금씩 다를 수 있습니다. 문제를 계속 마주친다면 통합 계정을 포함하여 소도구와 사용자 스크립트를 검토해 주십시오.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "[[$1|내비게이션 팝업]]과 [[$1|각주 풍선말]] 소도구를 사용하고 있으므로 이 기능이 제공하는 미리 보기를 볼 수 없ㅂ니다. 위키에 따라 이 소도구의 이름은 조금씩 다를 수 있습니다. 문제를 계속 마주친다면 통합 계정을 포함하여 {{int:prefs-gadgets}} 환경 설정과 사용자 스크립트를 검토해 주십시오.",
 	"popups-refpreview-reference": "각주",
 	"popups-refpreview-book": "서적 참고 문헌",
@@ -44,7 +45,7 @@
 	"popups-refpreview-news": "뉴스 참조",
 	"popups-refpreview-note": "각주",
 	"popups-refpreview-web": "웹 참조",
-	"popups-refpreview-user-preference-label": "각주 미리 보기 (각주를 빠르게 미리 봅니다)",
+	"popups-refpreview-user-preference-label": "각주 미리 보기 활성화 (문서를 읽는 동안 각주를 빠르게 미리 보기)",
 	"popups-refpreview-beta-feature-message": "각주 미리 보기",
 	"popups-refpreview-beta-feature-description": "각주 표시에 커서를 올리면 각주 미리 보기를 표시합니다.\n\n참고: [//ko.wikipedia.org/wiki/위키백과:도구/내비게이션_팝업 내비게이션 팝업] 소도구 또는 [[mw:Special:MyLanguage/Reference Tooltips|각주 말풍선]] 소도구를 사용하는 경우 각주 미리 보기가 표시되지 않습니다."
 }
