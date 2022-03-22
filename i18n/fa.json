@@ -12,7 +12,8 @@
 			"Obzord",
 			"Reza1615",
 			"Jeeputer",
-			"Mohammad ebz"
+			"Mohammad ebz",
+			"Beginneruser"
 		]
 	},
 	"popups-message": "پیش‌نمایش",
@@ -29,8 +30,8 @@
 	"popups-settings-help": "با استفاده از پیوند موجود در پایین صفحه می‌توانید پیش‌نمایش‌ها را دوباره فعال کنید.",
 	"popups-settings-enable": "فعال کردن پیش‌نمایش‌ها",
 	"popups-settings-icon-gear-title": "تغییر تنظیمات پیش‌نمایش صفحه",
-	"popups-preview-no-preview": "مشکلی هنگام نمایش این پیش‌نمایش پیش آمد",
-	"popups-preview-footer-read": "رفتن به این صفحه",
+	"popups-preview-no-preview": "مشکلی در نمایش این پیش‌نمایش وجود دارد",
+	"popups-preview-footer-read": "برو به این صفحه",
 	"popups-preview-disambiguation": "این عنوان به بیش از یک صفحه اشاره می‌کند",
 	"popups-preview-disambiguation-link": "نمایش صفحه‌های مشابه",
 	"prefs-reading": "ترجیحات مطالعه",
