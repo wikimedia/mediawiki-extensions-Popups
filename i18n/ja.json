@@ -15,7 +15,8 @@
 			"Whym",
 			"Yusuke1109",
 			"赤城。",
-			"RYOUMA1117"
+			"RYOUMA1117",
+			"Yamagata Yusuke"
 		]
 	},
 	"popups-message": "プレビュー",
@@ -51,5 +52,5 @@
 	"popups-refpreview-collapsible-placeholder": "このリファレンスには、プレビューに収まらない図が含まれています。",
 	"popups-refpreview-user-preference-label": "ページのプレビュー (ページを読みながら題目をプレビュー)",
 	"popups-refpreview-beta-feature-message": "参考資料プレビュー",
-	"popups-refpreview-beta-feature-description": "脚注マーカにマウスを当てると参考資料のプレビューを表示。\n\n注記：ウィキペディアのガジェットのうち[https://ja.wikipedia.org/wiki/Help:ナビゲーション・ポップアップ ナビゲーション ポップアップ]ガジェットを有効にしてあると、参考資料プレビューは表示しません。[[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]ガジェットが有効な場合、ツールチップと参考資料プレビューの両方がポップアップ表示されます。"
+	"popups-refpreview-beta-feature-description": "脚注マーカにマウスを当てると参考資料のプレビューを表示。\n\n注記：ウィキペディアのガジェットのうち[https://ja.wikipedia.org/wiki/Help:ナビゲーション・ポップアップ ナビゲーション ポップアップ]ガジェット若しくは[[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]ガジェットを有効にしてあると、参考資料プレビューは表示されません。"
 }
