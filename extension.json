@@ -238,7 +238,7 @@
 		"includes/ServiceWiring.php"
 	],
 	"DefaultUserOptions": {
-		"popupsreferencepreviews": 0,
+		"popupsreferencepreviews": null,
 		"popups-reference-previews": 0
 	},
 	"manifest_version": 2
