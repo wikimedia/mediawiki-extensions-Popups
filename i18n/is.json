@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Snævar",
-			"Sveinn í Felli"
+			"Sveinn í Felli",
+			"LoveIceLang"
 		]
 	},
 	"popups-settings-title": "Forskoðun síðu",
@@ -13,5 +14,7 @@
 	"popups-settings-cancel": "Hætta við",
 	"popups-settings-help": "Þú getur kveikt aftur á forskoðun með því að nota tengil neðst á síðunni.",
 	"popups-settings-enable": "Virkja forskoðun",
+	"popups-preview-disambiguation": "Þessi titil tengist fleiri en einni síðu",
+	"popups-preview-disambiguation-link": "Skoða svipaðar síður",
 	"prefs-reading": "Kjörstillingar við lestur"
 }
