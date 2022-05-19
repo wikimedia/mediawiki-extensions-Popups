@@ -21,7 +21,8 @@
 			"Redredsonia",
 			"Rubin16",
 			"Vlad5250",
-			"Wileyfoxyx"
+			"Wileyfoxyx",
+			"Pacha Tchernof"
 		]
 	},
 	"popups-message": "Предпросмотр",
@@ -29,6 +30,7 @@
 	"popups-settings-title": "Предпросмотр",
 	"popups-settings-option-page": "Предпросмотр страницы",
 	"popups-settings-option-page-description": "Показывать быстрый предпросмотр тем при наведении мыши.",
+	"popups-settings-option-reference": "Предпросмотры сносок",
 	"popups-settings-save": "Сохранить",
 	"popups-settings-help-ok": "Готово",
 	"popups-settings-cancel": "Отмена",
@@ -53,6 +55,7 @@
 	"popups-refpreview-note": "Примечание",
 	"popups-refpreview-web": "Веб-ссылка",
 	"popups-refpreview-collapsible-placeholder": "Эта ссылка включает в себя фигуру, которая не помещается в окно предпросмотра.",
+	"popups-refpreview-user-preference-label": "Включить предпросмотры сносок (мгновенно отображать предпросмотры сносок во время чтения страницы)",
 	"popups-refpreview-beta-feature-message": "Предпросмотр сносок",
 	"popups-refpreview-beta-feature-description": "Вызовите предпросмотр текста сноски, наведя курсор мыши на её метку.\n\nПожалуйста, обратите внимание: если вы используете гаджет [//ru.wikipedia.org/wiki/Википедия:Гаджеты/Навигационные_окошки всплывающих навигационных окошек] или [[mw:Special:MyLanguage/Reference Tooltips|всплывающей подсказки по ссылкам]], то вы не увидите окошек с предпросмотром текста сносок."
 }
