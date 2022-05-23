@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Artsiom91",
-			"Chadyka"
+			"Chadyka",
+			"No Sleep till Krupki"
 		]
 	},
-	"popups-message": "Папярэдні прагляд старонкі",
+	"popups-message": "Папярэдні прагляд",
 	"popups-desc": "Паказвае ўсплывальны перадпрагляд старонкі, калі ўдзельнік наводзіць курсор на спасылку",
 	"popups-settings-title": "Перадпрагляд старонкі",
 	"popups-settings-option-simple-description": "Атрымаць хуткі папярэдні прагляд тэмы пры чытанні старонкі",
