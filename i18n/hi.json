@@ -5,11 +5,26 @@
 			"Phoenix303",
 			"Prong$31",
 			"Sfic",
-			"Wikiuser13"
+			"Wikiuser13",
+			"Saurmandal"
 		]
 	},
 	"popups-message": "पृष्ठ की झलक",
-	"popups-desc": "जब एक उपयोगकर्ता पृष्ठ लिंक पर हूवर करता है तब हूवरकार्ड पृष्ठ सारांश की सामग्री प्रदर्शित करता है।",
-	"popups-preview-footer-read": "इस पृष्ठ पर जाएं",
-	"popups-refpreview-reference": "पादटिप्पणी"
+	"popups-desc": "सदस्य द्वारा कड़ी पर होवर किए जाने पर पूर्वावलोकन पॉपअप्स दिखाए जाते हैं",
+	"popups-settings-save": "सहेजें",
+	"popups-settings-help-ok": "हो गया",
+	"popups-settings-cancel": "रद्द करें",
+	"popups-settings-help": "पृष्ठ के फ़ुटर पर मौजूद एक कड़ी का इस्तेमाल करके आप पूर्वावलोकन को वापस सक्षम कर सकते हैं।",
+	"popups-preview-no-preview": "इस पूर्वावलोकन को दिखाते समय एक त्रुटि आई",
+	"popups-preview-footer-read": "इस पृष्ठ पर जाएँ",
+	"popups-preview-disambiguation": "यह शीर्षक एक से अधिक पृष्ठों से जुड़ा है",
+	"popups-preview-disambiguation-link": "संबंधित पृष्ठ देखें",
+	"prefs-reading": "पढ़ने की वरीयताएँ",
+	"popups-prefs-conflicting-gadgets-info": "कुछ गैजेट्स और दूसरे अनुकूलन के मौजूद होने पर इस सुविधा के प्रदर्शन पर प्रभाव पड़ सकता है। अगर आपको समस्याएँ आती हैं, कृपया अपने गैजेट्स और सदस्य स्क्रिप्ट्स को जाँचें, ग्लोबल वालो को भी।",
+	"popups-refpreview-reference": "सन्दर्भ",
+	"popups-refpreview-book": "पुस्तक का सन्दर्भ",
+	"popups-refpreview-journal": "पत्रिका का सन्दर्भ",
+	"popups-refpreview-news": "समाचार का सन्दर्भ",
+	"popups-refpreview-web": "वेब सन्दर्भ",
+	"popups-refpreview-beta-feature-message": "सन्दर्भ पूर्वावलोकन"
 }
