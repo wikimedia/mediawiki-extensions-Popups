@@ -4,12 +4,15 @@
 			"Adriendelucca",
 			"Fohanno",
 			"Fulup",
+			"Huñvreüs",
 			"Y-M D"
 		]
 	},
 	"popups-settings-option-page": "Eeun",
 	"popups-settings-save": "Enrollañ",
 	"popups-settings-cancel": "Nullañ",
+	"popups-settings-icon-gear-title": "Kemmañ arventennoù rakwelet pajennoù",
 	"popups-preview-footer-read": "Mont d'ar bajenn-mañ",
-	"prefs-reading": "Penndibaboù lenn"
+	"prefs-reading": "Penndibaboù lenn",
+	"popups-refpreview-reference": "Daveenn"
 }
