@@ -4,7 +4,8 @@
 			"Fohanno",
 			"Fulup",
 			"Y-M D",
-			"Adriendelucca"
+			"Adriendelucca",
+			"Huñvreüs"
 		]
 	},
 	"popups-settings-option-simple": "Eeun",
@@ -13,5 +14,6 @@
 	"popups-preview-footer-read": "Mont d'ar bajenn-mañ",
 	"prefs-reading": "Penndibaboù lenn",
 	"popups-prefs-optin-enabled-label": "Gweredekaat",
-	"popups-prefs-optin-disabled-label": "Diweredekaat"
+	"popups-prefs-optin-disabled-label": "Diweredekaat",
+	"popups-refpreview-reference": "Daveenn"
 }
