@@ -7,7 +7,6 @@ curl -sSL "https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/skins/Vector
 
 # MediaWiki LESS mixins
 curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.less/mediawiki.mixins.less -o .storybook/mocks/mediawiki.mixins.less
-curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.less/mediawiki.mixins.animation.less -o .storybook/mocks/mediawiki.mixins.animation.less
 
 # mediawiki.ui variables
 curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.less/mediawiki.ui/variables.less -o .storybook/mocks/mediawiki.ui/variables.less
