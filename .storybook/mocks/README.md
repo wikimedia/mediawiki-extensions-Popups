@@ -3,7 +3,6 @@
 The following files:
 
 - mediawiki.mixins
-- mediawiki.mixins.animation
 - mediawiki.mixins.less
 
 are LESS files containing one-line imports that correspond to files in

@@ -109,16 +109,12 @@
 			/* @noflip */
 			right: 0;
 			/* @noflip */
-			background-image: -webkit-linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
-			/* @noflip */
 			background-image: linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 		}
 
 		&[ dir='rtl' ]:after {
 			/* @noflip */
 			left: 0;
-			/* @noflip */
-			background-image: -webkit-linear-gradient( to left, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 			/* @noflip */
 			background-image: linear-gradient( to left, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 		}
@@ -128,8 +124,6 @@
 			height: @lineHeight + 5px;
 			/* @noflip */
 			bottom: 0;
-			/* @noflip */
-			background-image: -webkit-linear-gradient( to bottom, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 75% );
 			/* @noflip */
 			background-image: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 75% );
 		}
@@ -364,36 +358,36 @@
 // Position the SVG border
 .mwe-popups-is-tall {
 	polyline {
-		.mwe-popups-translate( 0, 0 );
+		transform: translate( 0, 0 );
 	}
 
 	&.flipped-x-y {
 		polyline {
-			.mwe-popups-translate( 0, -8px );
+			transform: translate( 0, -8px );
 		}
 	}
 
 	&.flipped-x {
 		polyline {
-			.mwe-popups-translate( 0, 8px );
+			transform: translate( 0, 8px );
 		}
 	}
 }
 
 .rtl .mwe-popups-is-tall {
 	polyline {
-		.mwe-popups-translate( -100%, 0 );
+		transform: translate( -100%, 0 );
 	}
 
 	&.flipped-x-y {
 		polyline {
-			.mwe-popups-translate( -100%, -8px );
+			transform: translate( -100%, -8px );
 		}
 	}
 
 	&.flipped-x {
 		polyline {
-			.mwe-popups-translate( -100%, 8px );
+			transform: translate( -100%, 8px );
 		}
 	}
 }
