@@ -13,9 +13,9 @@
 	"include": [ "src/**/*.js" ],
 
 	"//": "Set the coverage percentage by category thresholds.",
-	"statements": 85,
-	"branches": 72,
-	"functions": 83,
+	"statements": 84,
+	"branches": 70,
+	"functions": 82,
 	"lines": 90,
 
 	"//": "Fail if the coverage is below threshold.",

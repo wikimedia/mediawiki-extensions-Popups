@@ -13,19 +13,30 @@ import createSettingsDialogRenderer from './ui/settingsDialogRenderer';
 import registerChangeListener from './changeListener';
 import createIsPagePreviewsEnabled from './isPagePreviewsEnabled';
 import { fromElement as titleFromElement } from './title';
-import { init as rendererInit } from './ui/renderer';
+import { init as rendererInit, registerPreviewUI, createPagePreview,
+	createDisambiguationPreview,
+	createReferencePreview
+} from './ui/renderer';
 import createExperiments from './experiments';
 import { isEnabled as isStatsvEnabled } from './instrumentation/statsv';
 import changeListeners from './changeListeners';
 import * as actions from './actions';
 import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
-import { previewTypes, getPreviewType } from './preview/model';
+import { previewTypes, getPreviewType,
+	registerModel,
+	isAnythingEligible,
+	isEligible } from './preview/model';
 import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
 import setUserConfigFlags from './setUserConfigFlags';
+import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
+
+const $window = $( window );
 
 const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
+	// ignore links that point to the same article
+	'.mw-selflink',
 	'.image',
 	'.new',
 	'.internal',
@@ -109,6 +120,25 @@ function registerChangeListeners(
 	);
 }
 
+/**
+ * Creates an event handler that only executes if the current target
+ * is eligible for page previews and a title can be associated with the element.
+ *
+ * @param {Function} handler
+ * @return {Function}
+ */
+function handleDOMEventIfEligible( handler ) {
+	return function ( event ) {
+		const target = event.target;
+		if ( !isEligible( target ) ) {
+			return;
+		}
+		const mwTitle = titleFromElement( target, mw.config );
+		if ( mwTitle ) {
+			handler( target, mwTitle, event );
+		}
+	};
+}
 /*
  * Initialize the application by:
  * 1. Initializing side-effects and "services"
@@ -175,21 +205,39 @@ function registerChangeListeners(
 	 * Register external interface exposing popups internals so that other
 	 * extensions can query it (T171287)
 	 */
-	mw.popups = createMediaWikiPopupsObject( store );
+	mw.popups = createMediaWikiPopupsObject(
+		store, registerModel, registerPreviewUI, registerGatewayForPreviewType
+	);
 
-	const selectors = [];
 	if ( initiallyEnabled[ previewTypes.TYPE_PAGE ] !== null ) {
 		const excludedLinksSelector = EXCLUDED_LINK_SELECTORS.join( ', ' );
-		selectors.push( `#mw-content-text a[href][title]:not(${excludedLinksSelector})` );
+		// Register default preview type
+		mw.popups.register( {
+			type: previewTypes.TYPE_PAGE,
+			selector: `#mw-content-text a[href][title]:not(${excludedLinksSelector})`,
+			gateway: pagePreviewGateway,
+			renderFn: createPagePreview,
+			subTypes: [
+				{
+					type: previewTypes.TYPE_DISAMBIGUATION,
+					renderFn: createDisambiguationPreview
+				}
+			]
+		} );
 	}
 	if ( initiallyEnabled[ previewTypes.TYPE_REFERENCE ] !== null ) {
-		selectors.push( '#mw-content-text .reference a[ href*="#" ]' );
+		// Register the reference preview type
+		mw.popups.register( {
+			type: previewTypes.TYPE_REFERENCE,
+			selector: '#mw-content-text .reference a[ href*="#" ]',
+			gateway: referenceGateway,
+			renderFn: createReferencePreview
+		} );
 	}
-	if ( !selectors.length ) {
+	if ( !isAnythingEligible() ) {
 		mw.log.warn( 'ext.popups was loaded but everything is disabled' );
 		return;
 	}
-	const validLinkSelector = selectors.join( ', ' );
 
 	rendererInit();
 
@@ -197,58 +245,43 @@ function registerChangeListeners(
 	 * Binding hover and click events to the eligible links to trigger actions
 	 */
 	$( document )
-		.on( 'mouseover keyup', validLinkSelector, function ( event ) {
-			const mwTitle = titleFromElement( this, mw.config );
-			if ( !mwTitle ) {
-				return;
-			}
-			const type = getPreviewType( this, mw.config, mwTitle );
-			let gateway;
-
-			switch ( type ) {
-				case previewTypes.TYPE_PAGE:
-					gateway = pagePreviewGateway;
-					break;
-				case previewTypes.TYPE_REFERENCE:
-					gateway = referenceGateway;
-					break;
-				default:
+		.on( 'mouseover keyup',
+			handleDOMEventIfEligible( function ( target, mwTitle, event ) {
+				const $target = $( target );
+				const type = getPreviewType( target );
+				const gateway = getGatewayForPreviewType( type );
+				if ( !gateway ) {
 					return;
-			}
-
-			const $target = $( this );
-			const $window = $( window );
-
-			const measures = {
-				pageX: event.pageX,
-				pageY: event.pageY,
-				clientY: event.clientY,
-				width: $target.width(),
-				height: $target.height(),
-				offset: $target.offset(),
-				clientRects: this.getClientRects(),
-				windowWidth: $window.width(),
-				windowHeight: $window.height(),
-				scrollTop: $window.scrollTop()
-			};
-
-			boundActions.linkDwell( mwTitle, this, measures, gateway, generateToken, type );
-		} )
-		.on( 'mouseout blur', validLinkSelector, function () {
-			const mwTitle = titleFromElement( this, mw.config );
-
-			if ( mwTitle ) {
-				boundActions.abandon();
-			}
-		} )
-		.on( 'click', validLinkSelector, function () {
-			const mwTitle = titleFromElement( this, mw.config );
-			if ( mwTitle ) {
-				if ( previewTypes.TYPE_PAGE === getPreviewType( this, mw.config, mwTitle ) ) {
-					boundActions.linkClick( this );
 				}
-			}
-		} );
+
+				const measures = {
+					pageX: event.pageX,
+					pageY: event.pageY,
+					clientY: event.clientY,
+					width: $target.width(),
+					height: $target.height(),
+					offset: $target.offset(),
+					clientRects: target.getClientRects(),
+					windowWidth: $window.width(),
+					windowHeight: $window.height(),
+					scrollTop: $window.scrollTop()
+				};
+
+				boundActions.linkDwell( mwTitle, target, measures, gateway, generateToken, type );
+			} )
+		)
+		.on( 'mouseout blur',
+			handleDOMEventIfEligible( function () {
+				boundActions.abandon();
+			} )
+		)
+		.on( 'click',
+			handleDOMEventIfEligible( function ( target ) {
+				if ( previewTypes.TYPE_PAGE === getPreviewType( target ) ) {
+					boundActions.linkClick( target );
+				}
+			} )
+		);
 }() );
 
 window.Redux = Redux;

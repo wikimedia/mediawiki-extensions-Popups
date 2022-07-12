@@ -92,6 +92,9 @@ export function isValid( title, contentNamespaces ) {
  * @return {mw.Title|null}
  */
 export function fromElement( el, config ) {
+	if ( el.dataset.title ) {
+		return mw.Title.newFromText( el.dataset.title );
+	}
 	if ( isOwnPageAnchorLink( el ) ) {
 		// No need to check the namespace. A self-link can't point to different one.
 		try {

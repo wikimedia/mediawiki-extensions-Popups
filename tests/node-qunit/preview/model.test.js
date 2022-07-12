@@ -1,6 +1,5 @@
-import { createModel, getPreviewType, previewTypes }
-	from '../../../src/preview/model';
-import { createStubTitle } from '../stubs';
+import { createModel, getPreviewType, previewTypes, registerModel, test,
+	isAnythingEligible } from '../../../src/preview/model';
 
 QUnit.module( 'ext.popups.preview#createModel' );
 
@@ -89,66 +88,74 @@ QUnit.test( 'it computes the type property', ( assert ) => {
 
 QUnit.module( 'ext.popups.preview#getPreviewType', {
 	beforeEach() {
-		this.config = new Map();
-		this.config.set( 'wgPopupsReferencePreviews', true );
-		this.config.set( 'wgTitle', 'Foo' );
-		this.config.set( 'wgNamespaceNumber', 1 );
-		this.referenceLink = createStubTitle( 1, 'Foo', 'ref-fragment' );
+		this.referenceLink = $( '<a>' )
+			.attr( 'href', '#RefLink' )
+			.appendTo( $( '<span>' ).addClass( 'reference' ) ).get( 0 );
+		this.referenceLinkNoFragment = $( '<a>' )
+			.attr( 'href', '/wiki/Url' )
+			.appendTo( $( '<span>' ).addClass( 'reference' ) ).get( 0 );
 		this.validEl = $( '<a>' ).appendTo( $( '<span>' ).addClass( 'reference' ) ).get( 0 );
+		this.registerRefModel = () => {
+			registerModel(
+				previewTypes.TYPE_REFERENCE,
+				'.reference a[ href*="#" ]'
+			);
+		};
+	},
+	afterEach() {
+		test.reset();
 	}
 } );
 
-QUnit.test( 'it uses the reference gateway with wgPopupsReferencePreviews == true and valid element', function ( assert ) {
+QUnit.test( 'isAnythingEligible returns false by default', function ( assert ) {
+	test.reset();
 	assert.strictEqual(
-		getPreviewType( this.validEl, this.config, this.referenceLink ),
+		isAnythingEligible(),
+		false
+	);
+} );
+
+QUnit.test( 'isAnythingEligible returns true when model is registered', function ( assert ) {
+	this.registerRefModel();
+	assert.strictEqual(
+		isAnythingEligible(),
+		true
+	);
+} );
+
+QUnit.test( 'it uses the reference gateway with valid element', function ( assert ) {
+	this.registerRefModel();
+	assert.strictEqual(
+		getPreviewType( this.referenceLink ),
 		previewTypes.TYPE_REFERENCE
 	);
 } );
 
-QUnit.test( 'it does not suggest page previews on reference links when reference previews are disabled', function ( assert ) {
-	this.config.set( 'wgPopupsReferencePreviews', false );
-
+QUnit.test( 'it does not suggest page previews on reference links when reference previews are not registered', function ( assert ) {
 	assert.strictEqual(
-		getPreviewType( this.validEl, this.config, this.referenceLink ),
+		getPreviewType( this.notReferenceLink ),
 		null
 	);
 } );
 
 QUnit.test( 'it uses the page gateway when on links to a different page', function ( assert ) {
-	assert.strictEqual(
-		getPreviewType(
-			this.validEl,
-			this.config,
-			createStubTitle( 1, 'NotFoo' )
-		),
-		previewTypes.TYPE_PAGE
+	registerModel(
+		previewTypes.TYPE_PAGE,
+		'a'
 	);
-
 	assert.strictEqual(
 		getPreviewType(
-			this.validEl,
-			this.config,
-			createStubTitle( 1, 'NotFoo', 'fragment' )
-		),
-		previewTypes.TYPE_PAGE
-	);
-
-	assert.strictEqual(
-		getPreviewType(
-			this.validEl,
-			this.config,
-			createStubTitle( 2, 'Foo', 'fragment' )
+			this.validEl
 		),
 		previewTypes.TYPE_PAGE
 	);
 } );
 
 QUnit.test( 'it does not use the reference gateway when there is no fragment', function ( assert ) {
+	this.registerRefModel();
 	assert.strictEqual(
 		getPreviewType(
-			this.validEl,
-			this.config,
-			createStubTitle( 1, 'Foo' )
+			this.referenceLinkNoFragment
 		),
 		null
 	);
@@ -156,9 +163,9 @@ QUnit.test( 'it does not use the reference gateway when there is no fragment', f
 
 QUnit.test( 'it does not suggest page previews on reference links not having a parent with reference class', function ( assert ) {
 	const el = $( '<a>' ).appendTo( $( '<span>' ) ).get( 0 );
-
+	this.registerRefModel();
 	assert.strictEqual(
-		getPreviewType( el, this.config, this.referenceLink ),
+		getPreviewType( el ),
 		null
 	);
 } );
