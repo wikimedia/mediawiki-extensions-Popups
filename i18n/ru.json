@@ -22,7 +22,8 @@
 			"Rubin16",
 			"Vlad5250",
 			"Wileyfoxyx",
-			"Pacha Tchernof"
+			"Pacha Tchernof",
+			"Stjn"
 		]
 	},
 	"popups-message": "Предпросмотр",
@@ -39,7 +40,7 @@
 	"popups-settings-icon-gear-title": "Изменение настроек предварительного просмотра страницы",
 	"popups-preview-no-preview": "В ходе предпросмотра возникла проблема",
 	"popups-preview-footer-read": "Перейти на страницу",
-	"popups-preview-disambiguation": "Это название относится более чем к одной странице",
+	"popups-preview-disambiguation": "Это название относится к нескольким страницам",
 	"popups-preview-disambiguation-link": "Просмотр схожих страниц",
 	"prefs-reading": "Настройки чтения",
 	"popups-prefs-optin": "Включить предпросмотр страниц (быстрый предпросмотр тем при чтении страницы):",
