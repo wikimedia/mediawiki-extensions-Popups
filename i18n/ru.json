@@ -21,7 +21,9 @@
 			"Kareyac",
 			"Nastua Buldakova",
 			"Rubin16",
-			"Wileyfoxyx"
+			"Wileyfoxyx",
+			"Pacha Tchernof",
+			"Stjn"
 		]
 	},
 	"popups-message": "Предпросмотр",
@@ -39,7 +41,7 @@
 	"popups-settings-enable": "Включить предпросмотр",
 	"popups-preview-no-preview": "В ходе предпросмотра возникла проблема",
 	"popups-preview-footer-read": "Перейти на страницу",
-	"popups-preview-disambiguation": "Это название относится более чем к одной странице",
+	"popups-preview-disambiguation": "Это название относится к нескольким страницам",
 	"popups-preview-disambiguation-link": "Просмотр схожих страниц",
 	"prefs-reading": "Настройки чтения",
 	"popups-prefs-optin-title": "Предпросмотр страниц (показывать быстрый предпросмотр тем при чтении страницы):",
