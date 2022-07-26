@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bada Kaji",
 			"NehalDaveND",
 			"पर्वत सुबेदी"
 		]
@@ -9,7 +10,7 @@
 	"popups-settings-option-page": "सक्षम पार्नुहोस्",
 	"popups-settings-save": "सङ्ग्रह गर्ने",
 	"popups-settings-help-ok": "ठीक",
-	"popups-settings-cancel": "रद्द गर्ने",
+	"popups-settings-cancel": "रद्द गर्नुहोस्",
 	"popups-settings-enable": "पुर्वावलाेकन सक्षम पार्नुहाेस्",
 	"prefs-reading": "अध्ययन अभिरूचिहरू",
 	"popups-refpreview-reference": "सन्दर्भ",
