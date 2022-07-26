@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lancine.kounfantoh.fofana"
+		]
+	},
+	"popups-settings-title": "ߢߍߦߋߟߌ",
+	"popups-settings-option-page": "ߞߐߜߍ ߘߐߜߍ߫ ߡߎߣߎ߲߬",
+	"popups-settings-option-page-description": "ߝߋ߲ ߞߊߟߌߦߊ߫ ߘߐ߫ ߦߋߟߌ ߡߊߛߐ߬ߘߐ߲߫ ߞߐߜߍ ߘߐߞߊ߬ߙߊ߲߬ ߕߎߡߊ ߟߊ߫.",
+	"popups-settings-option-reference": "ߦߟߌߡߊߛߙߋ ߦߋ߫",
+	"popups-settings-option-reference-description": "ߦߟߌߡߊߛߙߋ ߞߊߟߌߦߊ߫ ߘߐ߫ ߦߋߟߌ ߡߊߛߐ߬ߘߐ߲߫ ߞߐߜߍ ߘߐߞߊ߬ߙߊ߲߬ ߕߎߡߊ ߟߊ߫.",
+	"popups-settings-save": "ߊ߬ ߟߊߞߎ߲߬ߘߎ߬",
+	"popups-settings-help-ok": "ߊ߬ ߓߘߊ߫ ߞߍ߫",
+	"popups-settings-cancel": "ߊ߬ ߘߐߛߊ߬",
+	"popups-settings-help": "ߌ ߘߌ߫ ߛߋ߫ ߟߊߞߎߣߎ߲߫ ߠߊ߫ ߞߎߘߊ߫ ߘߌ߫ ߛߘߌ߬ߜߋ߲ ߠߊߓߊ߯ߙߊ ߟߊ߫ ߞߐߜߍ ߛߋ߲߬ߞߘߐ߫.",
+	"popups-settings-enable": "ߦߋߟߌ ߟߊ߬ߓߍ߲߬ߢߐ߲߰ߡߦߊ߬ߘߊ ߡߊߦߟߍ߬ߡߊ߲߫",
+	"popups-settings-icon-gear-title": "ߞߐߜߍ ߦߋߟߌ ߟߊ߬ߓߍ߲߬ߢߐ߲߰ߡߦߊ߬ߘߊ ߡߊߦߟߍ߬ߡߊ߲߫",
+	"popups-preview-no-preview": "ߝߙߋߞߋ ߘߏ߫ ߓߘߊ߫ ߓߌ߬ߟߴߊ߬ ߘߐ߫ ߦߋߟߌ ߣߌ߲߬ ߠߊߓߊ߯ߙߊ߫ ߕߎߡߊ ߟߊ߫.",
+	"popups-preview-footer-read": "ߕߊ߯ ߞߐߜߍ ߣߌ߲߬ ߞߊ߲߬",
+	"popups-preview-disambiguation": "ߞߎ߲߬ߕߐ߮ ߓߌ߬ߟߊ߬ߣߍ߲߬ ߦߋ߫ ߞߐߜߍ ߡߍ߲ ߠߎ߬ ߡߊ߬߸ ߏ߬ ߛߌߦߊߡߊ߲߫ ߞߋߟߋ߲߫ ߘߌ߫",
+	"popups-preview-disambiguation-link": "ߞߐߜߍ߫ ߡߎߣߎ߲ߣߍ߲ ߠߎ߬ ߦߋ߫.",
+	"prefs-reading": "ߘߐߞߊ߬ߙߊ߲߬ߠߌ߲ ߦߟߌߡߊߛߙߋ",
+	"popups-prefs-optin": "ߞߐߜߍ ߢߍߦߋߟߌ ߟߊߞߎߣߎ߲߫ (ߝߋ߲ ߘߏ߫ ߦߋ߫ ߞߐߜߍ ߘߐߞߊ߬ߙߊ߲߬ ߕߎߡߊ ߟߊ߫)",
+	"popups-refpreview-reference": "ߦߟߌߡߊߛߙߋ",
+	"popups-refpreview-book": "ߞߊ߬ߝߊ ߦߟߌߡߊߛߙߋ",
+	"popups-refpreview-journal": "ߝߐ߰ߓߍ ߦߟߌߡߊߛߙߋ",
+	"popups-refpreview-news": "ߞߍߞߎߘߊ ߦߟߌߡߊߛߙߋ",
+	"popups-refpreview-note": "ߦߟߌߣߐ",
+	"popups-refpreview-web": "ߓߟߐߟߐ ߦߟߌߡߊߛߙߋ"
+}
