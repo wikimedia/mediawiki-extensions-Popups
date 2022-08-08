@@ -8,7 +8,7 @@
 		]
 	},
 	"popups-message": "Previzualizări",
-	"popups-desc": "Afișează popup-uri de previzualizare când utilizatorul trece cu cursorul peste o legătură internă",
+	"popups-desc": "Afișează popup-uri de previzualizare atunci când utilizatorul trece cu cursorul peste o legătură internă",
 	"popups-settings-title": "Previzualizare pagină",
 	"popups-settings-option-simple": "Activează",
 	"popups-settings-option-simple-description": "Obțineți o previzualizare rapidă a unui subiect în timp ce lecturați o pagină.",
