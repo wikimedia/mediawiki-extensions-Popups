@@ -24,14 +24,14 @@
 	"popups-preview-disambiguation-link": "Преглед на подобните страници",
 	"prefs-reading": "Настройки за четене",
 	"popups-prefs-optin": "Активиране на предварителен преглед на страници (показване на бърза визуализация на тема, докато четете страница)",
-	"popups-prefs-disable-nav-gadgets-info": "За да включите Бърз преглед на страниците, трябва да [[$1 | изключите джаджата Навигационни прозорци]] от таб Джаджи.",
+	"popups-prefs-disable-nav-gadgets-info": "За да включите Бърз преглед на страниците, трябва да [[$1|изключите джаджата Навигационни прозорци]] от таб Джаджи.",
 	"popups-prefs-conflicting-gadgets-info": "Някои джаджи и други персонализации могат да повлияят на работата на тази функция. Ако имате проблеми, моля, прегледайте вашите джаджи и потребителски скриптове, включително глобалните.",
 	"popups-refpreview-reference": "Източник",
 	"popups-refpreview-book": "Източник от книга",
 	"popups-refpreview-journal": "Източник от периодичен печат",
 	"popups-refpreview-news": "Източник от новина",
 	"popups-refpreview-web": "Източник от уеб сайт",
-	"popups-refpreview-user-preference-label": "Преглед на източници (бърз преглед на бележките под линия)",
+	"popups-refpreview-user-preference-label": "Включване на преглед на източници (бърз преглед на бележките, докато четете страница)",
 	"popups-refpreview-beta-feature-message": "Бърз преглед на източниците",
-	"popups-refpreview-beta-feature-description": "Показва предварителен преглед на източник, чрез посочване на отбелязката.\n\nЗабележка: Ако използвате джаджата [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигационни прозорци], няма да можете да виждате предварителен преглед на бележките. Ако използвате джаджата [[mw:Special:MyLanguage/Reference Tooltips|Изскачащи прозорци за бележките]], ще се появят изскачащите подсказки и на двете джаджи."
+	"popups-refpreview-beta-feature-description": "Показва предварителен преглед на източник, чрез посочване на отбелязката.\n\nЗабележка: Ако използвате джаджата [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигационни прозорци] или [[mw:Special:MyLanguage/Reference Tooltips|Изскачащи прозорци за бележките]], няма да се вижда прегледа на източниците."
 }
