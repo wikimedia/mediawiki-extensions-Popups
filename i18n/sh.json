@@ -7,8 +7,11 @@
 	},
 	"popups-message": "Pregledi stranica",
 	"popups-desc": "Prikazuje sažetak prikaza sadržaja stranice kada idete sa strelicom na datoj vezi.",
-	"popups-settings-title": "Pregled stranice",
+	"popups-settings-title": "Pretpregledi",
 	"popups-settings-option-page": "Omogući",
 	"popups-settings-option-page-description": "Brzi pregled neke teme prilikom čitanja stranice.",
+	"popups-settings-option-reference": "Pretpregledi referenci",
+	"popups-settings-save": "Sačuvaj",
+	"popups-settings-help-ok": "Gotovo",
 	"popups-settings-cancel": "Otkaži"
 }
