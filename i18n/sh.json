@@ -12,5 +12,7 @@
 	"popups-settings-option-simple-description": "Brzi pregled neke teme prilikom čitanja stranice.",
 	"popups-settings-option-advanced": "Napredno",
 	"popups-settings-option-advanced-description": "Pregled sadržaja linkova i pristup izbornicima s mogućnostima uređivanja. To koriste mnogi urednici.",
+	"popups-settings-save": "Sačuvaj",
+	"popups-settings-help-ok": "Gotovo",
 	"popups-settings-cancel": "Otkaži"
 }
