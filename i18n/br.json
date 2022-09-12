@@ -8,13 +8,25 @@
 			"Y-M D"
 		]
 	},
+	"popups-settings-title": "Rakweloù",
 	"popups-settings-option-page": "Eeun",
+	"popups-settings-option-page-description": "Gwelout rakweloù prim eus un danvez en ul lenn ur bajenn.",
+	"popups-settings-option-reference": "Rakweloù daveoù",
 	"popups-settings-save": "Enrollañ",
+	"popups-settings-help-ok": "Echu",
 	"popups-settings-cancel": "Nullañ",
+	"popups-settings-enable": "Kemmañ dibarzhioù rakwel",
 	"popups-settings-icon-gear-title": "Kemmañ arventennoù rakwelet pajennoù",
+	"popups-preview-no-preview": "Ur fazi ez eus bet en ur ziskouez ar rakwel-mañ",
 	"popups-preview-footer-read": "Mont d'ar bajenn-mañ",
 	"popups-preview-disambiguation": "An titl-mañ zo anv meur a bajenn",
 	"popups-preview-disambiguation-link": "Diskouez ar pajennoù heñvel",
 	"prefs-reading": "Penndibaboù lenn",
-	"popups-refpreview-reference": "Daveenn"
+	"popups-refpreview-reference": "Daveenn",
+	"popups-refpreview-book": "Dave levr",
+	"popups-refpreview-journal": "Dave kazetenn",
+	"popups-refpreview-news": "Dave neventioù",
+	"popups-refpreview-note": "Notenn",
+	"popups-refpreview-web": "Dave gwiad",
+	"popups-refpreview-beta-feature-message": "Rakwel daveoù"
 }
