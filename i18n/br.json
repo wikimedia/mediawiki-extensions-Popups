@@ -8,6 +8,8 @@
 			"Y-M D"
 		]
 	},
+	"popups-message": "Rakweloù",
+	"popups-desc": "Diskwel a ra prenestroù popup pa dremen bir al logodenn war ul liamm",
 	"popups-settings-title": "Rakweloù",
 	"popups-settings-option-page": "Eeun",
 	"popups-settings-option-page-description": "Gwelout rakweloù prim eus un danvez en ul lenn ur bajenn.",
@@ -22,7 +24,9 @@
 	"popups-preview-disambiguation": "An titl-mañ zo anv meur a bajenn",
 	"popups-preview-disambiguation-link": "Diskouez ar pajennoù heñvel",
 	"prefs-reading": "Penndibaboù lenn",
-	"popups-refpreview-reference": "Daveenn",
+	"popups-prefs-optin": "Gweredekaat rakwel pajennoù (kaout rakweloù prim eus un danvez en ur lenn ur bajenn)",
+	"popups-prefs-conflicting-gadgets-info": "Gallout a rafe bitrakoù ha kemmoù d’an ardremmez mirout ar arc’hweladur-mañ da vont en-dro mat. M’ho peus kudennoù, kit da welout mar plij ho pitrakoù ha skriptoù implijer, ar re hollek en o zouesk.",
+	"popups-refpreview-reference": "Dave",
 	"popups-refpreview-book": "Dave levr",
 	"popups-refpreview-journal": "Dave kazetenn",
 	"popups-refpreview-news": "Dave neventioù",
