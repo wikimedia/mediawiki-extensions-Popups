@@ -8,14 +8,24 @@
 			"Huñvreüs"
 		]
 	},
+	"popups-message": "Rakweloù",
+	"popups-desc": "Diskwel a ra prenestroù popup pa dremen bir al logodenn war ul liamm",
 	"popups-settings-option-simple": "Eeun",
 	"popups-settings-save": "Enrollañ",
+	"popups-settings-help-ok": "Echu",
 	"popups-settings-cancel": "Nullañ",
+	"popups-preview-no-preview": "Ur fazi ez eus bet en ur ziskouez ar rakwel-mañ",
 	"popups-preview-footer-read": "Mont d'ar bajenn-mañ",
 	"popups-preview-disambiguation": "An titl-mañ zo anv meur a bajenn",
 	"popups-preview-disambiguation-link": "Diskouez ar pajennoù heñvel",
 	"prefs-reading": "Penndibaboù lenn",
 	"popups-prefs-optin-enabled-label": "Gweredekaat",
 	"popups-prefs-optin-disabled-label": "Diweredekaat",
-	"popups-refpreview-reference": "Daveenn"
+	"popups-prefs-conflicting-gadgets-info": "Gallout a rafe bitrakoù ha kemmoù d’an ardremmez mirout ar arc’hweladur-mañ da vont en-dro mat. M’ho peus kudennoù, kit da welout mar plij ho pitrakoù ha skriptoù implijer, ar re hollek en o zouesk.",
+	"popups-refpreview-reference": "Dave",
+	"popups-refpreview-book": "Dave levr",
+	"popups-refpreview-journal": "Dave kazetenn",
+	"popups-refpreview-news": "Dave neventioù",
+	"popups-refpreview-web": "Dave gwiad",
+	"popups-refpreview-beta-feature-message": "Rakwel daveoù"
 }
