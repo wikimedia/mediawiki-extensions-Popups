@@ -27,7 +27,7 @@
 	"popups-preview-disambiguation-link": "Oglej si podobne strani",
 	"prefs-reading": "Nastavitve za branje",
 	"popups-prefs-optin": "Omogoči povzetke strani (prikaže hitre predoglede teme med prebiranjem članka)",
-	"popups-prefs-disable-nav-gadgets-info": "Če želiš vključiti povzetke strani, moraš [[$1|izključiti Navigacijske izskokce]] na nastavitvah svojih Vtičnikov",
+	"popups-prefs-disable-nav-gadgets-info": "Če želite vključiti povzetke strani, morate v nastavitvah vtičnikov [[$1|izključiti Navigacijske izskokce]]",
 	"popups-prefs-conflicting-gadgets-info": "Nekateri vtičniki in druge nastavitve lahko vplivajo na delovanje te funkcije. Če naletiš na težavo, prosimo, da preveriš vtičnike in uporabniške skripte, vključno z globalnimi.",
 	"popups-refpreview-reference": "Sklic",
 	"popups-refpreview-book": "Sklic na knjigo",
