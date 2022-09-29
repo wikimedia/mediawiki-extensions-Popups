@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"GinawaSaHapon",
+			"Jojit fb"
+		]
+	},
+	"popups-desc": "Nagpapakita ng mga pasilip na popup kapag nagho-hover ang tagagamit sa isang link",
+	"popups-settings-title": "Mga pasilip",
+	"popups-settings-option-page": "Mga pasilip sa pahina",
+	"popups-settings-option-page-description": "Kunin ang mga mabilisang pasilip sa isang paksa habang nagbabasa ng pahina.",
+	"popups-settings-option-reference": "Mga pasilip sa sanggunian",
+	"popups-settings-option-reference-description": "Kunin ang mga mabilisang pasilip sa isang sanggunian habang nagbabasa ng pahina.",
+	"popups-settings-save": "I-save",
+	"popups-settings-help-ok": "Tapos na",
+	"popups-settings-cancel": "Ikansela",
+	"popups-settings-help": "Pwede mong pagamitin muli ang mga pasilip ng link sa ibaba ng pahina.",
+	"popups-settings-enable": "Baguhin ang pagsasaayos sa pasilip",
+	"popups-settings-icon-gear-title": "Baguhin ang pagsasaayos ng pasilip sa pahina",
+	"popups-preview-no-preview": "Nagka-isyu sa pagpapakita sa pasilip na ito",
+	"popups-preview-footer-read": "Pumunta sa pahinang ito",
+	"popups-preview-disambiguation": "Tumuturo ang pamagat na ito sa higit sa isang pahina",
+	"popups-preview-disambiguation-link": "Tingnan ang mga katulad na pahina",
+	"prefs-reading": "Pagsasaayos sa pagbasa",
+	"popups-prefs-optin": "Buksan ang mga pasilip sa pahina (kunin ang mga mabilisang pasilip sa isang paksa habang nagbabasa ng pahina)",
+	"popups-prefs-disable-nav-gadgets-info": "Kailangan mo munang [[$1|isara ang gadget na Navigation popupe]] sa pagsasaayos mo sa mga gadget para mabuksan ang mga pasilip sa pahina.",
+	"popups-prefs-conflicting-gadgets-info": "Posibleng makaapekto sa kahusayan ng tampok na ito ang ilang mga gadget at customization. Kung nakakaranas ka ng mga problema, pakirebyu ang mga gadget niyo pati ang mga user script, kasama na ang mga pandaigdigan.",
+	"popups-prefs-navpopups-gadget-conflict-info": "Kasalukuyang nakabukas ang gadget na [[$1|Navigation popups]], kaya hindi mo makikita ang mga pasilip na binibigay ng tampok na ito. Depende sa wiki ko, posibleng iba ang pangalan ng gadget. Kung patuloy ka pa ring nakakaranas ng mga isyu, pakirebyu ang mga gadget mo pati mga user script, kasama na ang mga pandaigdigan.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Kasalukuyang nakabukas ang gadget na [[$1|Reference Tooltips]], kaya hindi mo makikita ang mga pasilip sa sanggunian pero makikita mo pa rin ang mga pasilip sa pahina. Depende sa wiki ko, posibleng iba ang pangalan ng gadget. Kung patuloy ka pa ring nakakaranas ng mga isyu, pakirebyu ang mga gadget mo pati mga user script, kasama na ang mga pandaigdigan.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Kasalukuyang nakabukas ang gadget na [[$1|Navigation popups]] at [[$2|Reference Tooltips]], kaya hindi mo makikita ang mga pasilip na binibigay ng tampok na ito. Depende sa wiki ko, posibleng iba ang pangalan ng gadget. Kung patuloy ka pa ring nakakaranas ng mga isyu, pakirebyu ang mga gadget mo pati mga user script, kasama na ang mga pandaigdigan.",
+	"popups-refpreview-reference": "Sanggunian",
+	"popups-refpreview-book": "Sanggunian sa aklat",
+	"popups-refpreview-journal": "Sanggunian sa dyornal",
+	"popups-refpreview-news": "Sanggunian sa balita",
+	"popups-refpreview-note": "Talababa",
+	"popups-refpreview-web": "Sanggunian sa web",
+	"popups-refpreview-collapsible-placeholder": "Naglalaman ang sanggunian na ito ng isang bagay na hindi kasya sa pasilip.",
+	"popups-refpreview-user-preference-label": "Buksan ang mga pasilip sa sanggunian (kunin ang mga mabilisang pasilip sa isang sanggunian habang nagbabasa ng pahina)",
+	"popups-refpreview-beta-feature-message": "Mga pasilip sa sanggunian",
+	"popups-refpreview-beta-feature-description": "Nagpapakita ng pasilip sa isang sanggunian sa pamamagitan ng pag-hover sa naturang sanggunian.\n\nPaalala: Kung gumagamit ka ng gadget na [[//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popupe Navigation popups] o [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], hindi mo makikita ang mga pasilip sa sanggunian."
+}
