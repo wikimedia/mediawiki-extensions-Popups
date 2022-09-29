@@ -59,8 +59,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiUnitTestCase {
 	 */
 	private function getExtensionRegistryMock( $gadgetsEnabled ) {
 		$mock = $this->createMock( ExtensionRegistry::class );
-		$mock->expects( $this->any() )
-			->method( 'isLoaded' )
+		$mock->method( 'isLoaded' )
 			->with( 'Gadgets' )
 			->willReturn( $gadgetsEnabled );
 		return $mock;

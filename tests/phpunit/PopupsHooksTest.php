@@ -39,7 +39,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
-			->will( $this->returnValue( false ) );
+			->willReturn( false );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		$prefs = [ 'someNotEmptyValue' => 'notEmpty' ];
@@ -60,11 +60,11 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
-			->will( $this->returnValue( true ) );
+			->willReturn( true );
 		$contextMock->expects( $this->once() )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->with( $userMock )
-			->will( $this->returnValue( true ) );
+			->willReturn( true );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		$prefs = [];
@@ -90,10 +90,10 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
-			->will( $this->returnValue( true ) );
+			->willReturn( true );
 		$contextMock->expects( $this->once() )
 			->method( 'conflictsWithNavPopupsGadget' )
-			->will( $this->returnValue( false ) );
+			->willReturn( false );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		$prefs = [
@@ -123,10 +123,10 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
-			->will( $this->returnValue( true ) );
+			->willReturn( true );
 		$contextMock->expects( $this->once() )
 			->method( 'conflictsWithNavPopupsGadget' )
-			->will( $this->returnValue( false ) );
+			->willReturn( false );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		$prefs = [
@@ -185,13 +185,13 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'areDependenciesMet' )
-			->will( $this->returnValue( false ) );
+			->willReturn( false );
 		$contextMock->expects( $this->once() )
 			->method( 'isTitleExcluded' )
-			->will( $this->returnValue( false ) );
+			->willReturn( false );
 		$contextMock->expects( $this->once() )
 			->method( 'getLogger' )
-			->will( $this->returnValue( $loggerMock ) );
+			->willReturn( $loggerMock );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		( new PopupsHooks() )->onBeforePageDisplay( $outPageMock, $skinMock );
@@ -228,16 +228,15 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		if ( !$isTitleExcluded ) {
 			$contextMock->expects( $this->once() )
 				->method( 'areDependenciesMet' )
-				->will( $this->returnValue( true ) );
+				->willReturn( true );
 		}
 
-		$contextMock->expects( $this->any() )
-			->method( 'shouldSendModuleToUser' )
-			->will( $this->returnValue( $shouldSendModuleToUser ) );
+		$contextMock->method( 'shouldSendModuleToUser' )
+			->willReturn( $shouldSendModuleToUser );
 
 		$contextMock->expects( $this->once() )
 			->method( 'isTitleExcluded' )
-			->will( $this->returnValue( $isTitleExcluded ) );
+			->willReturn( $isTitleExcluded );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		( new PopupsHooks() )->onBeforePageDisplay( $outPageMock, $skinMock );
@@ -250,13 +249,11 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$user = User::newFromId( 0 );
 
 		$outputPage = $this->createMock( OutputPage::class );
-		$outputPage->expects( $this->any() )
-			->method( 'getUser' )
+		$outputPage->method( 'getUser' )
 			->willReturn( $user );
 
 		$contextMock = $this->createMock( PopupsContext::class );
-		$contextMock->expects( $this->any() )
-			->method( 'getConfigBitmaskFromUser' )
+		$contextMock->method( 'getConfigBitmaskFromUser' )
 			->with( $user )
 			->willReturn( 0 );
 

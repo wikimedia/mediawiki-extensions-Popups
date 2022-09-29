@@ -157,8 +157,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 		$returnValues = [ $textExtracts, $pageImages ];
 
 		$mock = $this->createMock( ExtensionRegistry::class );
-		$mock->expects( $this->any() )
-			->method( 'isLoaded' )
+		$mock->method( 'isLoaded' )
 			->will( new ConsecutiveCalls( $returnValues ) );
 		$context = $this->getContext( $mock );
 		$this->assertSame( $expected,
