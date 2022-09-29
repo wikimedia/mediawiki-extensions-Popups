@@ -120,7 +120,7 @@ export function render( model ) {
 		 *  that were (likely) created in [boot.js](./boot.js).
 		 * @param {string} token The unique token representing the link interaction
 		 *  that resulted in showing the preview
-		 * @return {JQuery.Promise<void>}
+		 * @return {jQuery.Promise<void>}
 		 */
 		show( event, boundActions, token ) {
 			return show(
@@ -134,7 +134,7 @@ export function render( model ) {
 		 *
 		 * See `hide` for more detail.
 		 *
-		 * @return {JQuery.Promise<void>}
+		 * @return {jQuery.Promise<void>}
 		 */
 		hide() {
 			return hide( preview );
@@ -257,7 +257,7 @@ function createReferencePreview( model ) {
  * @param {string} token
  * @param {Object} container DOM object to which pointer masks are appended
  * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
- * @return {JQuery.Promise<void>} A promise that resolves when the promise has
+ * @return {jQuery.Promise<void>} A promise that resolves when the promise has
  *                                faded in.
  */
 export function show(
@@ -317,7 +317,7 @@ export function bindBehavior( preview, behavior ) {
  * Extracted from `mw.popups.render.closePopup`.
  *
  * @param {ext.popups.Preview} preview
- * @return {JQuery.Promise<void>} A promise that resolves when the preview has
+ * @return {jQuery.Promise<void>} A promise that resolves when the preview has
  *                                faded out.
  */
 export function hide( preview ) {

@@ -16,7 +16,7 @@
  * that is abortable.
  *
  * @template T
- * @typedef {JQuery.Promise<T>} AbortPromise
+ * @typedef {jQuery.Promise<T>} AbortPromise
  * @property {function(): void} abort
  */
 

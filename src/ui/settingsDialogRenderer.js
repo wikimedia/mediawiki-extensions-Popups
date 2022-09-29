@@ -100,7 +100,7 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 /**
  * Toggles the visibility between a form and the help
  *
- * @param {JQuery.Object} $el element that contains form and help
+ * @param {jQuery.Object} $el element that contains form and help
  * @param {boolean} visible if the help should be visible, or the form
  */
 function toggleHelp( $el, visible ) {

@@ -32,7 +32,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	 * @method
 	 * @name RESTBaseGateway#fetch
 	 * @param {string} title
-	 * @return {JQuery.jqXHR}
+	 * @return {jQuery.jqXHR}
 	 */
 	function fetch( title ) {
 		const endpoint = config.endpoint;
