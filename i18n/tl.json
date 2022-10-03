@@ -1,8 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"Emem.calist"
+			"Emem.calist",
+			"GinawaSaHapon",
+			"Jojit fb"
 		]
 	},
-	"popups-prefs-optin-title": "Etong mga nakasaad sa iyong lathala. Manigurong walang mali."
+	"popups-desc": "Nagpapakita ng mga pasilip na popup kapag nagho-hover ang tagagamit sa isang link",
+	"popups-settings-save": "I-save",
+	"popups-settings-help-ok": "Tapos na",
+	"popups-settings-cancel": "Ikansela",
+	"popups-settings-help": "Pwede mong pagamitin muli ang mga pasilip ng link sa ibaba ng pahina.",
+	"popups-preview-no-preview": "Nagka-isyu sa pagpapakita sa pasilip na ito",
+	"popups-preview-footer-read": "Pumunta sa pahinang ito",
+	"popups-preview-disambiguation": "Tumuturo ang pamagat na ito sa higit sa isang pahina",
+	"popups-preview-disambiguation-link": "Tingnan ang mga katulad na pahina",
+	"prefs-reading": "Pagsasaayos sa pagbasa",
+	"popups-prefs-optin-title": "Etong mga nakasaad sa iyong lathala. Manigurong walang mali.",
+	"popups-prefs-conflicting-gadgets-info": "Posibleng makaapekto sa kahusayan ng tampok na ito ang ilang mga gadget at customization. Kung nakakaranas ka ng mga problema, pakirebyu ang mga gadget niyo pati ang mga user script, kasama na ang mga pandaigdigan.",
+	"popups-refpreview-reference": "Sanggunian",
+	"popups-refpreview-book": "Sanggunian sa aklat",
+	"popups-refpreview-journal": "Sanggunian sa dyornal",
+	"popups-refpreview-news": "Sanggunian sa balita",
+	"popups-refpreview-web": "Sanggunian sa web",
+	"popups-refpreview-beta-feature-message": "Mga pasilip sa sanggunian"
 }
