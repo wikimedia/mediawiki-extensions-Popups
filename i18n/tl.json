@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"GinawaSaHapon"
+			"GinawaSaHapon",
+			"Jojit fb"
 		]
 	},
 	"popups-desc": "Nagpapakita ng mga pasilip na popup kapag nagho-hover ang tagagamit sa isang link",
@@ -14,7 +15,7 @@
 	"popups-settings-help-ok": "Tapos na",
 	"popups-settings-cancel": "Ikansela",
 	"popups-settings-help": "Pwede mong pagamitin muli ang mga pasilip ng link sa ibaba ng pahina.",
-	"popups-settings-enable": "I-edit ang pagsasaayos sa pasilip",
+	"popups-settings-enable": "Baguhin ang pagsasaayos sa pasilip",
 	"popups-settings-icon-gear-title": "Baguhin ang pagsasaayos ng pasilip sa pahina",
 	"popups-preview-no-preview": "Nagka-isyu sa pagpapakita sa pasilip na ito",
 	"popups-preview-footer-read": "Pumunta sa pahinang ito",
