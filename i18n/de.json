@@ -13,7 +13,8 @@
 			"PerfektesChaos",
 			"Peter Bowman",
 			"TMg",
-			"ThePiscin"
+			"ThePiscin",
+			"Inkowik"
 		]
 	},
 	"popups-message": "Vorschaubilder",
@@ -47,7 +48,7 @@
 	"popups-refpreview-note": "Anmerkung",
 	"popups-refpreview-web": "Internetquelle",
 	"popups-refpreview-collapsible-placeholder": "Diese Referenz enthält eine Abbildung, die nicht in die Vorschau passt.",
-	"popups-refpreview-user-preference-label": "Aktivieren der Einzelnachweis-Vorschau (schnelle Vorschau eines Einzelnachweises während des Lesens einer Seite)",
+	"popups-refpreview-user-preference-label": "Einzelnachweisvorschau aktivieren (schnelle Vorschau eines Einzelnachweises während des Lesens einer Seite)",
 	"popups-refpreview-beta-feature-message": "Vorschau von Einzelnachweisen",
 	"popups-refpreview-beta-feature-description": "Zeigt eine Vorschau eines Einzelnachweises an, wenn man mit dem Mauszeiger über den Fußnotenmarker fährt oder darauf klickt.\n\nBeachte bitte: Falls du das Helferlein [https://de.wikipedia.org/wiki/Wikipedia:Technik/Skin/Gadgets/navigation-popups „Navigations-Popups“] oder das Helferlein [[mw:Special:MyLanguage/Reference Tooltips|„Einzelnachweis-Tooltipps“]] benutzt, wirst du keine Einzelnachweis-Vorschau sehen."
 }
