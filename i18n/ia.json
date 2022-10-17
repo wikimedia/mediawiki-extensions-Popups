@@ -4,6 +4,21 @@
 			"McDutchie"
 		]
 	},
-	"popups-mobile-continue-to-page": "Continuar al pagina",
-	"popups-mobile-dismiss": "Clauder"
+	"popups-desc": "Monstra previsualisationes emergente quando le usator passa le mouse supra un ligamine",
+	"popups-settings-save": "Salveguardar",
+	"popups-settings-help-ok": "Facite",
+	"popups-settings-cancel": "Cancellar",
+	"popups-settings-help": "Tu pote reactivar le previsualisationes usante un ligamine in le pede del pagina.",
+	"popups-preview-no-preview": "Un problema ha occurrite in le rendition de iste previsualisation",
+	"popups-preview-footer-read": "Visitar iste pagina",
+	"popups-preview-disambiguation": "Iste titulo face referentia a plus de un pagina",
+	"popups-preview-disambiguation-link": "Vider paginas similar",
+	"prefs-reading": "Preferentias de lectura",
+	"popups-prefs-conflicting-gadgets-info": "Certe gadgets e altere personalisationes pote influentiar le efficacia de iste function. Si tu incontra problemas, per favor revide tu gadgets e scripts de usator, incluse le globales.",
+	"popups-refpreview-reference": "Referentia",
+	"popups-refpreview-book": "Referentia de libro",
+	"popups-refpreview-journal": "Referentia de revista",
+	"popups-refpreview-news": "Referentia de novas",
+	"popups-refpreview-web": "Referentia web",
+	"popups-refpreview-beta-feature-message": "Previsualisationes de referentias"
 }

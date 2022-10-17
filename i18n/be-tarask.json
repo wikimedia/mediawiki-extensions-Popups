@@ -6,5 +6,21 @@
 		]
 	},
 	"popups-message": "Папярэдні прагляд",
-	"popups-desc": "Паказвае ўсплывальны перадпрагляд старонкі, калі карыстальнік наводзіць курсор на спасылку"
+	"popups-desc": "Паказвае ўсплывальны перадпрагляд старонкі, калі карыстальнік наводзіць курсор на спасылку",
+	"popups-settings-save": "Захаваць",
+	"popups-settings-help-ok": "Зроблена",
+	"popups-settings-cancel": "Скасаваць",
+	"popups-settings-help": "Папярэдні прагляд можна паўторна ўключыць з дапамогай спасылкі ўнізе старонкі.",
+	"popups-preview-no-preview": "Паўстала праблема пры вывадзе гэтага папярэдняга прагляду",
+	"popups-preview-footer-read": "Перайсьці на гэтую старонку",
+	"popups-preview-disambiguation": "Гэтая назва датычыцца некалькіх старонак",
+	"popups-preview-disambiguation-link": "Паглядзець падобныя старонкі",
+	"prefs-reading": "Налады чытаньня",
+	"popups-prefs-conflicting-gadgets-info": "На прадукцыйнасьць гэтай функцыі могуць уплываць пэўныя інструмэнты й іншыя налады. Калі ў вас паўсталі праблемы, праглядзіце свае інструмэнты і карыстальніцкія сцэнары, улучна з глябальнымі.",
+	"popups-refpreview-reference": "Зноска",
+	"popups-refpreview-book": "Зноска на кнігу",
+	"popups-refpreview-journal": "Зноска на часопіс",
+	"popups-refpreview-news": "Зноска на навіну",
+	"popups-refpreview-web": "Вэб-спасылка",
+	"popups-refpreview-beta-feature-message": "Папярэдні прагляд зносак"
 }
