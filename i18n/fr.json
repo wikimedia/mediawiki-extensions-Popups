@@ -15,7 +15,8 @@
 			"Trizek (WMF)",
 			"VIGNERON",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"McDutchie"
 		]
 	},
 	"popups-message": "Aperçus",
@@ -28,7 +29,7 @@
 	"popups-settings-save": "Enregistrer",
 	"popups-settings-help-ok": "Terminé",
 	"popups-settings-cancel": "Annuler",
-	"popups-settings-help": "Vous pouvez activer des aperçus sur l’utilisation d’un lien dans le pied de page.",
+	"popups-settings-help": "Vous pouvez réactiver les aperçus à l’aide d’un lien situé dans le pied de page.",
 	"popups-settings-enable": "Modifier les paramètres d’aperçu",
 	"popups-settings-icon-gear-title": "Modifier les paramètres de prévisualisation de page",
 	"popups-preview-no-preview": "Un problème est survenu en affichant cet aperçu",

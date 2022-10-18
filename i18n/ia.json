@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"popups-desc": "Monstra previsualisationes emergente quando le usator passa le mouse supra un ligamine",
+	"popups-settings-title": "Previsualisationes",
+	"popups-settings-option-page": "Previsualisationes de pagina",
+	"popups-settings-option-page-description": "Obtener previsualisationes rapide de topicos durante le lectura de un pagina.",
+	"popups-settings-option-reference": "Previsualisationes de referentias",
+	"popups-settings-option-reference-description": "Obtener previsualisationes rapide de referentias durante le lectura de un pagina.",
+	"popups-settings-save": "Salveguardar",
+	"popups-settings-help-ok": "Facite",
+	"popups-settings-cancel": "Cancellar",
+	"popups-settings-help": "Tu pote reactivar le previsualisationes usante un ligamine in le pede del pagina.",
+	"popups-settings-enable": "Modificar le parametros de previsualisation",
+	"popups-settings-icon-gear-title": "Cambiar le parametros de previsualisation de paginas",
+	"popups-preview-no-preview": "Un problema ha occurrite in le rendition de iste previsualisation",
+	"popups-preview-footer-read": "Visitar iste pagina",
+	"popups-preview-disambiguation": "Iste titulo face referentia a plus de un pagina",
+	"popups-preview-disambiguation-link": "Vider paginas similar",
+	"prefs-reading": "Preferentias de lectura",
+	"popups-prefs-optin": "Activar le previsualisation de paginas (obtener rapide previsualisationes de topicos durante le lectura de un pagina)",
+	"popups-prefs-disable-nav-gadgets-info": "Es necessari [[$1|disactivar le gadget Fenestras emergente de navigation]] in tu preferentias de Gadgets pro activar le previsualisation de paginas.",
+	"popups-prefs-conflicting-gadgets-info": "Certe gadgets e altere personalisationes pote influentiar le efficacia de iste function. Si tu incontra problemas, per favor revide tu gadgets e scripts de usator, incluse le globales.",
+	"popups-prefs-navpopups-gadget-conflict-info": "Tu ha activate le gadget [[$1|Fenestras emergente de navigation]], dunque tu non videra le previsualisationes que iste function forni. Dependente de tu wiki, le nomine del gadget pote esser un poco differente. Si tu continua a incontrar problemas, per favor revide tu gadgets e scripts de usator, incluse le globales.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Tu ha activate le gadget [[$1|Legendas emergente de referentias]], dunque tu non videra le previsualisationes de referentias, ma tu videra totevia le previsualisationes de paginas. Dependente de tu wiki, le nomine del gadget pote esser un poco differente. Si tu continua a incontrar problemas, per favor revide tu gadgets e scripts de usator, incluse le globales.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Tu ha activate le gadgets [[$1|Fenestras emergente de navigation]] e [[$1|Legendas emergente de referentias]], dunque tu non videra le previsualisationes que iste function forni. Dependente de tu wiki, le nomines del gadgets pote esser un poco differente. Si tu continua a incontrar problemas, per favor revide tu gadgets e scripts de usator, incluse le globales.",
+	"popups-refpreview-reference": "Referentia",
+	"popups-refpreview-book": "Referentia de libro",
+	"popups-refpreview-journal": "Referentia de revista",
+	"popups-refpreview-news": "Referentia de novas",
+	"popups-refpreview-note": "Nota",
+	"popups-refpreview-web": "Referentia web",
+	"popups-refpreview-collapsible-placeholder": "Iste referentia include un figura que es troppo grande pro le previsualisation.",
+	"popups-refpreview-user-preference-label": "Activar le previsualisation de referentias (obtener rapide previsualisationes de referentias durante le lectura de un pagina)",
+	"popups-refpreview-beta-feature-message": "Previsualisationes de referentias",
+	"popups-refpreview-beta-feature-description": "Monstrar un previsualisation de un referentia quando le mouse passa supra su marcator de nota a pede.\n\nNota ben: Si tu usa le gadget [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Fenestras emergente de navigation] o le gadget [[mw:Special:MyLanguage/Reference Tooltips|Legendas emergente de referentias]], tu non videra previsualisationes de referentias."
+}
