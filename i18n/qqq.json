@@ -3,6 +3,7 @@
 		"authors": [
 			"AJBot2",
 			"Amire80",
+			"Kghbln",
 			"Liuxinyu970226",
 			"Mar(c)",
 			"Mateon1",
@@ -15,7 +16,7 @@
 			"Verdy p"
 		]
 	},
-	"popups-message": "Name shown in user preference for this extension\n{{name}}",
+	"popups-message": "{{name}}",
 	"popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
 	"popups-settings-title": "Title used for the setting's dialog",
 	"popups-settings-option-page": "Label for the page preview popup option\n{{Identical|Preview}}",
