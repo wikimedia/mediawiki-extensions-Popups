@@ -28,7 +28,7 @@
 	"popups-prefs-optin-enabled-label": "Ynskeakelje",
 	"popups-prefs-optin-disabled-label": "Utskeakelje",
 	"popups-prefs-disable-nav-gadgets-info": "Jo moatte de [[$1 | 'gadget' Navigation Popups útskeakelje]] yn it tabblêd Gadgets, om sideproefbylden ynskeakelje te kinnen",
-	"popups-prefs-conflicting-gadgets-info": "Beskate 'gadgets' en oare oanpassings kinne de prestaasjes fan dizze funksje beynfloedzje. At jo problemen ûnderfine, besjoch dan jo gadgets en meidoggerskripts, ek dy't globaal binne.",
+	"popups-prefs-conflicting-gadgets-info": "Beskaat 'lytsark' en oare oanpassings kinne de prestaasjes fan dizze funksje beynfloedzje. At jo problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne.",
 	"popups-refpreview-reference": "Referinsje",
 	"popups-refpreview-book": "Boekreferinsje",
 	"popups-refpreview-journal": "Tydskriftreferinsje",
