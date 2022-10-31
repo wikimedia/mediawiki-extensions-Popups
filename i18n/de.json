@@ -8,10 +8,16 @@
 			"Metalhead64",
 			"PerfektesChaos",
 			"Peter Bowman",
-			"TMg"
+			"TMg",
+			"Brettchenweber",
+			"FF11",
+			"Filzstift",
+			"HajFunk",
+			"Inkowik",
+			"ThePiscin"
 		]
 	},
-	"popups-message": "Vorschaubilder",
+	"popups-message": "Popups",
 	"popups-desc": "Zeigt eine Vorschau als Popup an, wenn der Benutzer die Maus über einen Link führt",
 	"popups-settings-title": "Seitenvorschau",
 	"popups-settings-option-simple": "Aktivieren",

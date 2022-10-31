@@ -9,10 +9,14 @@
 			"Raymond",
 			"Robby",
 			"Shirayuki",
-			"Umherirrender"
+			"Umherirrender",
+			"AJBot2",
+			"Kghbln",
+			"TMg",
+			"Verdy p"
 		]
 	},
-	"popups-message": "Name shown in user preference for this extension\n{{name}}",
+	"popups-message": "{{name}}",
 	"popups-desc": "{{desc|name=Popups|url=https://www.mediawiki.org/wiki/Extension:Popups}}",
 	"popups-settings-title": "Title used for the setting's dialog",
 	"popups-settings-option-simple": "Title for the reader popup option\n{{Identical|Enable}}",
