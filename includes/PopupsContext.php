@@ -241,7 +241,7 @@ class PopupsContext {
 
 		if ( $title->isSpecialPage() ) {
 			// it's special page, translate it to canonical name
-			list( $name, $subpage ) = MediaWikiServices::getInstance()->getSpecialPageFactory()
+			[ $name, $subpage ] = MediaWikiServices::getInstance()->getSpecialPageFactory()
 				->resolveAlias( $canonicalTitle->getText() );
 
 			if ( $name !== null ) {
