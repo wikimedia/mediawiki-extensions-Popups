@@ -29,6 +29,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
+use MediaWiki\User\UserOptionsManager;
 use OutputPage;
 use Skin;
 use User;
@@ -48,6 +49,18 @@ class PopupsHooks implements
 {
 
 	private const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
+
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
+
+	/**
+	 * @param UserOptionsManager $userOptionsManager
+	 */
+	public function __construct(
+		UserOptionsManager $userOptionsManager
+	) {
+		$this->userOptionsManager = $userOptionsManager;
+	}
 
 	/**
 	 * Get custom Popups types registered by extensions
@@ -226,9 +239,8 @@ class PopupsHooks implements
 	 * @param \IContextSource $out OutputPage instance calling the hook
 	 */
 	public function onMakeGlobalVariablesScript( &$vars, $out ): void {
-		$services = MediaWikiServices::getInstance();
 		/** @var PopupsContext $context */
-		$context = $services->getService( 'Popups.Context' );
+		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
 		$vars['wgPopupsFlags'] = $context->getConfigBitmaskFromUser( $out->getUser() );
 	}
 
@@ -260,11 +272,9 @@ class PopupsHooks implements
 	 */
 	public function onLocalUserCreated( $user, $isAutoCreated ) {
 		/** @var Config $config */
-		$services = MediaWikiServices::getInstance();
-		$config = $services->getService( 'Popups.Config' );
+		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
 		$default = $config->get( 'PopupsOptInStateForNewAccounts' );
-		$userOptionsManager = $services->getUserOptionsManager();
-		$userOptionsManager->setOption(
+		$this->userOptionsManager->setOption(
 			$user,
 			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			$default
@@ -275,7 +285,7 @@ class PopupsHooks implements
 		if ( $config->get( 'PopupsReferencePreviews' ) &&
 			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
 		) {
-			$userOptionsManager->setOption(
+			$this->userOptionsManager->setOption(
 				$user,
 				PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA,
 				$default

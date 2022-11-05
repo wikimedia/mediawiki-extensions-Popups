@@ -29,7 +29,10 @@
 	},
 	"HookHandlers": {
 		"PopupsHooks": {
-			"class": "Popups\\PopupsHooks"
+			"class": "Popups\\PopupsHooks",
+			"services": [
+				"UserOptionsManager"
+			]
 		}
 	},
 	"MessagesDirs": {
