@@ -19,7 +19,6 @@
  * @ingroup extensions
  */
 
-use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
@@ -50,7 +49,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			$integration->method( 'conflictsWithNavPopupsGadget' )
 				->willReturn( false );
 		}
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		return new PopupsContext(
 			$config,
 			$registry,
@@ -121,7 +120,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 
 		$context = $this->getContext();
 		$user = $this->getMutableTestUser()->getUser();
-		$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		$userOptionsManager->setOption( $user, PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
 		$this->assertSame( $expected,
 			$context->shouldSendModuleToUser( $user ),
