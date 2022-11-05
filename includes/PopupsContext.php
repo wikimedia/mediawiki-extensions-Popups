@@ -24,6 +24,7 @@ use Config;
 use ExtensionRegistry;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsLookup;
 use Title;
 
@@ -96,6 +97,11 @@ class PopupsContext {
 	private $gadgetsIntegration;
 
 	/**
+	 * @var SpecialPageFactory
+	 */
+	private $specialPageFactory;
+
+	/**
 	 * @var UserOptionsLookup
 	 */
 	private $userOptionsLookup;
@@ -104,6 +110,7 @@ class PopupsContext {
 	 * @param Config $config Mediawiki configuration
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
 	 * @param PopupsGadgetsIntegration $gadgetsIntegration Gadgets integration helper
+	 * @param SpecialPageFactory $specialPageFactory
 	 * @param UserOptionsLookup $userOptionsLookup
 	 *  events
 	 */
@@ -111,10 +118,12 @@ class PopupsContext {
 		Config $config,
 		ExtensionRegistry $extensionRegistry,
 		PopupsGadgetsIntegration $gadgetsIntegration,
+		SpecialPageFactory $specialPageFactory,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->extensionRegistry = $extensionRegistry;
 		$this->gadgetsIntegration = $gadgetsIntegration;
+		$this->specialPageFactory = $specialPageFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 
 		$this->config = $config;
@@ -241,7 +250,7 @@ class PopupsContext {
 
 		if ( $title->isSpecialPage() ) {
 			// it's special page, translate it to canonical name
-			[ $name, $subpage ] = MediaWikiServices::getInstance()->getSpecialPageFactory()
+			[ $name, $subpage ] = $this->specialPageFactory
 				->resolveAlias( $canonicalTitle->getText() );
 
 			if ( $name !== null ) {

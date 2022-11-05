@@ -50,12 +50,13 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			$integration->method( 'conflictsWithNavPopupsGadget' )
 				->willReturn( false );
 		}
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		$services = MediaWikiServices::getInstance();
 		return new PopupsContext(
 			$config,
 			$registry,
 			$integration,
-			$userOptionsLookup
+			$services->getSpecialPageFactory(),
+			$services->getUserOptionsLookup()
 		);
 	}
 

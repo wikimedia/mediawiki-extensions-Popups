@@ -27,6 +27,7 @@ return [
 			$services->getService( 'Popups.Config' ),
 			ExtensionRegistry::getInstance(),
 			$services->getService( 'Popups.GadgetsIntegration' ),
+			$services->getSpecialPageFactory(),
 			$services->getUserOptionsLookup()
 		);
 	}
