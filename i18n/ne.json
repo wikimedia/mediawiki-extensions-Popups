@@ -8,13 +8,21 @@
 		]
 	},
 	"popups-message": "पूर्वावलोकन",
+	"popups-settings-title": "पूर्वावलोकन",
 	"popups-settings-option-page": "सक्षम पार्नुहोस्",
 	"popups-settings-save": "सङ्ग्रह गर्नुहोस्",
-	"popups-settings-help-ok": "ठीक",
+	"popups-settings-help-ok": "भयो",
 	"popups-settings-cancel": "रद्द गर्नुहोस्",
 	"popups-settings-enable": "पुर्वावलाेकन सक्षम पार्नुहाेस्",
+	"popups-preview-no-preview": "यस पूर्वावलोकनलाई प्रदर्शन गर्दा यहाँ केही उलझन भइरहेको छ।",
+	"popups-preview-footer-read": "यो पृष्ठमा जानुहोस्",
 	"prefs-reading": "अध्ययन अभिरूचिहरू",
 	"popups-refpreview-reference": "सन्दर्भ",
+	"popups-refpreview-book": "पुस्तक सन्दर्भ",
+	"popups-refpreview-journal": "जर्नल सन्दर्भ",
+	"popups-refpreview-news": "समाचार सन्दर्भ",
+	"popups-refpreview-note": "टिप्पणी",
+	"popups-refpreview-web": "वेब सन्दर्भ",
 	"popups-refpreview-beta-feature-message": "सन्दर्भ पुर्वावलाेकन",
 	"popups-refpreview-beta-feature-description": "यसको फुटनोट मार्करमा होभर गरेर सन्दर्भको पूर्वावलोकन हेर्नुहोस्।\n\nकृपया ध्यान दिनुहोस्: यदि तपाईं  [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups नेभिगेसन पपअप] उपकरण वा [[mw:Special:MyLanguage/Reference Tooltips|सन्दर्भ उपकरणटिप]] उपकरण प्रयोग गर्दै हुनुहुन्छ भने, तपाईं सन्दर्भ पूर्वावलोकनहरू देख्नुहुनेछैन।"
 }
