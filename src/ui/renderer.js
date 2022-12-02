@@ -5,7 +5,6 @@
 import wait from '../wait';
 import pointerMaskSVG from './pointer-mask.svg';
 import { SIZES, createThumbnail } from './thumbnail';
-import { previewTypes } from '../preview/model';
 import { renderPreview } from './templates/preview/preview';
 import { renderReferencePreview } from './templates/referencePreview/referencePreview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';
@@ -141,6 +140,18 @@ export function render( model ) {
 		}
 	};
 }
+
+let renderers = {};
+
+/**
+ * @param {string} type
+ * @param {function( ext.popups.PreviewModel ): ext.popups.Preview} [previewFn]
+ *
+ */
+export function registerPreviewUI( type, previewFn ) {
+	renderers[ type ] = previewFn || createPagePreview;
+}
+
 /**
  * Creates an instance of a Preview based on
  * the type property of the PreviewModel
@@ -149,16 +160,8 @@ export function render( model ) {
  * @return {ext.popups.Preview}
  */
 export function createPreviewWithType( model ) {
-	switch ( model.type ) {
-		case previewTypes.TYPE_PAGE:
-			return createPagePreview( model );
-		case previewTypes.TYPE_DISAMBIGUATION:
-			return createDisambiguationPreview( model );
-		case previewTypes.TYPE_REFERENCE:
-			return createReferencePreview( model );
-		default:
-			return createEmptyPreview( model );
-	}
+	const fn = renderers[ model.type ] || createEmptyPreview;
+	return fn( model );
 }
 
 function supportsCSSClipPath() {
@@ -175,7 +178,7 @@ function supportsCSSClipPath() {
  * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
-function createPagePreview( model ) {
+export function createPagePreview( model ) {
 	const thumbnail = createThumbnail( model.thumbnail, supportsCSSClipPath() ),
 		hasThumbnail = thumbnail !== null,
 		withCSSClipPath = supportsCSSClipPath(),
@@ -200,7 +203,7 @@ function createPagePreview( model ) {
  * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
-function createEmptyPreview( model ) {
+export function createEmptyPreview( model ) {
 	const showTitle = false,
 		extractMsg = mw.msg( 'popups-preview-no-preview' ),
 		linkMsg = mw.msg( 'popups-preview-footer-read' );
@@ -218,7 +221,7 @@ function createEmptyPreview( model ) {
  * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
-function createDisambiguationPreview( model ) {
+export function createDisambiguationPreview( model ) {
 	const showTitle = true,
 		extractMsg = mw.msg( 'popups-preview-disambiguation' ),
 		linkMsg = mw.msg( 'popups-preview-disambiguation-link' );
@@ -234,7 +237,7 @@ function createDisambiguationPreview( model ) {
  * @param {ext.popups.ReferencePreviewModel} model
  * @return {ext.popups.Preview}
  */
-function createReferencePreview( model ) {
+export function createReferencePreview( model ) {
 	return {
 		el: renderReferencePreview( model ),
 		hasThumbnail: false,
@@ -672,3 +675,10 @@ export function getClosestYPosition( y, rects, isTop ) {
 
 	return result;
 }
+
+export const test = {
+	/** For testing only */
+	reset: () => {
+		renderers = {};
+	}
+};

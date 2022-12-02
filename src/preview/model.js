@@ -106,39 +106,48 @@ export function createNullModel( title, url ) {
 }
 
 /**
+ * @param {Element} element
+ * @param {string} selector
+ * @return {boolean}
+ */
+const elementMatchesSelector = ( element, selector ) => {
+	// polyfill older browsers.
+	if ( typeof element.matches === 'undefined' ) {
+		element.matches = element.mozMatchesSelector ||
+			// IE11, Edge 12-14
+			element.msMatchesSelector ||
+			element.oMatchesSelector ||
+			element.webkitMatchesSelector ||
+			( function () {
+				return false;
+			} );
+	}
+	return element.matches( selector );
+};
+
+/**
+ * @typedef {Object} PreviewType
+ * @property {string} name identifier for preview type
+ * @property {string} selector a CSS selector
+ * @type {PreviewType[]}
+ */
+const registeredPreviewTypes = [];
+
+/**
  * Determines the applicable popup type based on title and link element.
  *
  * @param {HTMLAnchorElement} el
- * @param {mw.Map} config
- * @param {mw.Title} title
  * @return {string|null} One of the previewTypes.TYPE_… constants
  */
-export function getPreviewType( el, config, title ) {
-	if ( !isSelfLink( title, config ) ) {
-		return previewTypes.TYPE_PAGE;
-	}
+export function getPreviewType( el ) {
+	const candidates = registeredPreviewTypes.filter( ( type ) => elementMatchesSelector( el, type.selector ) );
 
-	// The other selector can potentially pick up self-links with a class="reference"
-	// parent, but no fragment
-	if ( title.getFragment() &&
-		config.get( 'wgPopupsReferencePreviews' ) &&
-		// eslint-disable-next-line no-jquery/no-class-state
-		$( el ).parent().hasClass( 'reference' )
-	) {
-		return previewTypes.TYPE_REFERENCE;
+	// If the filter returned some possibilities, use the last registered one.
+	if ( candidates.length > 0 ) {
+		return candidates[ candidates.length - 1 ].name;
 	}
 
 	return null;
-}
-
-/**
- * @param {mw.Title} title
- * @param {mw.Map} config
- * @return {boolean} True when the link points to the current page.
- */
-function isSelfLink( title, config ) {
-	return title.getNamespaceId() === config.get( 'wgNamespaceNumber' ) &&
-		title.getMainText() === config.get( 'wgTitle' );
 }
 
 /**
@@ -191,3 +200,49 @@ function getPagePreviewType( type, processedExtract ) {
 			return previewTypes.TYPE_PAGE;
 	}
 }
+
+const selectors = [];
+
+/**
+ * Allows extensions to register their own page previews.
+ *
+ * @stable
+ * @param {string} type
+ * @param {string} selector A valid CSS selector to associate preview with
+ */
+export function registerModel( type, selector ) {
+	selectors.push( selector );
+	registeredPreviewTypes.push( {
+		name: type,
+		selector
+	} );
+}
+
+/**
+ * Check whether the element is eligible for previews.
+ *
+ * @param {Element} element
+ * @return {boolean}
+ */
+export function isEligible( element ) {
+	const validLinkSelector = selectors.join( ', ' );
+	return elementMatchesSelector( element, validLinkSelector );
+}
+
+/**
+ * Check whether any kind of preview is enabled.
+ *
+ * @return {boolean}
+ */
+export function isAnythingEligible() {
+	return !!selectors.length;
+}
+
+export const test = {
+	/** For testing only */
+	reset: () => {
+		while ( registeredPreviewTypes.length ) {
+			registeredPreviewTypes.pop();
+		}
+	}
+};

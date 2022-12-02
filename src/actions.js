@@ -252,11 +252,17 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
 
 		return promise.then( () => {
 			const previewState = getState().preview;
+			const enabledValue = previewState.enabled[ type ];
+			// Note: Only reference previews and default previews can be disabled at this point.
+			// If there is no UI the enabledValue is always true.
+			const isEnabled = typeof enabledValue === 'undefined' ? true : enabledValue;
 
 			// The `enabled` flags allow to disable individual popup types while still showing the
 			// footer link. This comes from the boot() action (called `initiallyEnabled` there) and
 			// the preview() reducer.
-			if ( previewState.enabled[ type ] && isNewInteraction() ) {
+			// If the preview type has not been enabled, we ignore it as it cannot be disabled (currently)
+			// by the UI.
+			if ( isEnabled && isNewInteraction() ) {
 				return dispatch( fetch( gateway, title, el, token, type ) );
 			}
 		} );

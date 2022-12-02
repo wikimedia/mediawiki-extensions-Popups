@@ -65,6 +65,7 @@ QUnit.module( 'ext.popups#renderer', {
 		mw.msg = null;
 		mw.message = null;
 		mw.html = null;
+		renderer.test.reset();
 	}
 } );
 
@@ -113,6 +114,10 @@ QUnit.test( 'createPointerMasks', ( assert ) => {
 } );
 
 QUnit.test( 'createPagePreview', ( assert ) => {
+	renderer.registerPreviewUI(
+		previewTypes.TYPE_PAGE,
+		renderer.createPagePreview
+	);
 	const model = {
 			title: 'Test',
 			url: 'https://en.wikipedia.org/wiki/Test <"\'>',
@@ -168,6 +173,10 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 } );
 
 QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
+	renderer.registerPreviewUI(
+		previewTypes.TYPE_GENERIC,
+		renderer.createEmptyPreview
+	);
 	const model = {
 			title: 'Test',
 			url: 'https://en.wikipedia.org/wiki/Test <"\'>',
@@ -267,6 +276,10 @@ QUnit.test( 'createPreviewWithType(model with unknown type)', ( assert ) => {
 } );
 
 QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
+	renderer.registerPreviewUI(
+		previewTypes.TYPE_DISAMBIGUATION,
+		renderer.createDisambiguationPreview
+	);
 	const model = {
 			title: 'Barack (disambiguation)',
 			url: 'url/Barack (disambiguation) <"\'>',
@@ -309,6 +322,10 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 } );
 
 QUnit.test( 'createReferencePreview(model)', ( assert ) => {
+	renderer.registerPreviewUI(
+		previewTypes.TYPE_REFERENCE,
+		renderer.createReferencePreview
+	);
 	const model = {
 			url: '#custom_id',
 			extract: 'Custom <i>extract</i> with an <a href="/wiki/Internal">internal</a> and an <a href="//wikipedia.de" class="external">external</a> link',
@@ -336,6 +353,10 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 } );
 
 QUnit.test( 'createReferencePreview collapsible/sortable handling', ( assert ) => {
+	renderer.registerPreviewUI(
+		previewTypes.TYPE_REFERENCE,
+		renderer.createReferencePreview
+	);
 	const model = {
 			url: '',
 			extract: '<table class="mw-collapsible"></table>' +
@@ -354,6 +375,10 @@ QUnit.test( 'createReferencePreview collapsible/sortable handling', ( assert ) =
 } );
 
 QUnit.test( 'createReferencePreview default title', ( assert ) => {
+	renderer.registerPreviewUI(
+		previewTypes.TYPE_REFERENCE,
+		renderer.createReferencePreview
+	);
 	const model = {
 			url: '',
 			extract: '',
@@ -368,6 +393,10 @@ QUnit.test( 'createReferencePreview default title', ( assert ) => {
 } );
 
 QUnit.test( 'createReferencePreview updates fade-out effect on scroll', ( assert ) => {
+	renderer.registerPreviewUI(
+		previewTypes.TYPE_REFERENCE,
+		renderer.createReferencePreview
+	);
 	const model = {
 			url: '',
 			extract: '',

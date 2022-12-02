@@ -178,7 +178,11 @@
 		},
 		"ext.popups": {
 			"targets": [ "desktop", "mobile" ],
-			"scripts": [
+			"packageFiles": [
+				{
+					"name": "resources/ext.popups/types.json",
+					"callback": "Popups\\PopupsHooks::getCustomPopupTypes"
+				},
 				"resources/ext.popups/index.js"
 			]
 		},

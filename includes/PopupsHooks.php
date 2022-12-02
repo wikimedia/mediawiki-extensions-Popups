@@ -21,6 +21,7 @@
 namespace Popups;
 
 use Config;
+use ExtensionRegistry;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\MakeGlobalVariablesScriptHook;
@@ -47,6 +48,16 @@ class PopupsHooks implements
 {
 
 	private const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
+
+	/**
+	 * Get custom Popups types registered by extensions
+	 * @return array
+	 */
+	public static function getCustomPopupTypes(): array {
+		return ExtensionRegistry::getInstance()->getAttribute(
+			'PopupsPluginModules'
+		);
+	}
 
 	/**
 	 * Add options to user Preferences page

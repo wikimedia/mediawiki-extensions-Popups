@@ -34,3 +34,23 @@
  *
  * @typedef {function(Object, ...any): PagePreviewModel} ConvertPageToModel
  */
+
+const gatewayMap = {};
+
+/**
+ * @param {string} type Type of preview we are handling
+ * @return {Gateway|undefined}
+ */
+export function getGatewayForPreviewType( type ) {
+	return gatewayMap[ type ];
+}
+
+/**
+ * Register a gateway for a given preview type.
+ *
+ * @param {string} type preview type
+ * @param {Gateway} gateway
+ */
+export function registerGatewayForPreviewType( type, gateway ) {
+	gatewayMap[ type ] = gateway;
+}
