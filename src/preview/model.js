@@ -111,18 +111,17 @@ export function createNullModel( title, url ) {
  * @return {boolean}
  */
 const elementMatchesSelector = ( element, selector ) => {
-	// polyfill older browsers.
-	if ( typeof element.matches === 'undefined' ) {
-		element.matches = element.mozMatchesSelector ||
-			// IE11, Edge 12-14
-			element.msMatchesSelector ||
-			element.oMatchesSelector ||
-			element.webkitMatchesSelector ||
-			( function () {
-				return false;
-			} );
+	try {
+		return element.matches( selector );
+	} catch ( e ) {
+		// The native element.matches method will fail if:
+		// 1) The method hasn't been implemented in the current browser
+		// 2) The method doesn't suppport :not with multiple arguments
+		// (https://caniuse.com/css-not-sel-list)
+		// The try / catch block can be removed if and when Popups is restricted
+		// to ES6 browsers.
+		return $( element ).is( selector );
 	}
-	return element.matches( selector );
 };
 
 /**
