@@ -125,6 +125,39 @@ const elementMatchesSelector = ( element, selector ) => {
 };
 
 /**
+ * Emulates closest method for browsers that do not
+ * support it. e.g. IE11.
+ *
+ * @param {Element} element
+ * @param {string} selector
+ * @return {Element|null}
+ */
+function legacyClosest( element, selector ) {
+	const parentNode = element.parentNode;
+	if ( elementMatchesSelector( element, selector ) ) {
+		return element;
+	} else if ( !parentNode || parentNode === document.body ) {
+		// The `body` cannot be used as a preview selector.
+		return null;
+	}
+	return legacyClosest( parentNode, selector );
+}
+
+/**
+ * Recursively checks the element and its parents.
+ * @param {Element} element
+ * @return {Element|null}
+ */
+export function findNearestEligibleTarget( element ) {
+	const selector = selectors.join( ', ' );
+	if ( element.closest ) {
+		return element.closest( selector );
+	} else {
+		return legacyClosest( element, selector );
+	}
+}
+
+/**
  * @typedef {Object} PreviewType
  * @property {string} name identifier for preview type
  * @property {string} selector a CSS selector
@@ -215,17 +248,6 @@ export function registerModel( type, selector ) {
 		name: type,
 		selector
 	} );
-}
-
-/**
- * Check whether the element is eligible for previews.
- *
- * @param {Element} element
- * @return {boolean}
- */
-export function isEligible( element ) {
-	const validLinkSelector = selectors.join( ', ' );
-	return elementMatchesSelector( element, validLinkSelector );
 }
 
 /**

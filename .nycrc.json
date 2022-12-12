@@ -13,7 +13,7 @@
 	"include": [ "src/**/*.js" ],
 
 	"//": "Set the coverage percentage by category thresholds.",
-	"statements": 84,
+	"statements": 83,
 	"branches": 70,
 	"functions": 82,
 	"lines": 90,

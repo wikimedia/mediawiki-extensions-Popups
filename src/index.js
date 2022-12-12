@@ -25,8 +25,7 @@ import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
 import { previewTypes, getPreviewType,
 	registerModel,
-	isAnythingEligible,
-	isEligible } from './preview/model';
+	isAnythingEligible, findNearestEligibleTarget } from './preview/model';
 import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
 import setUserConfigFlags from './setUserConfigFlags';
 import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
@@ -129,8 +128,8 @@ function registerChangeListeners(
  */
 function handleDOMEventIfEligible( handler ) {
 	return function ( event ) {
-		const target = event.target;
-		if ( !isEligible( target ) ) {
+		const target = findNearestEligibleTarget( event.target );
+		if ( target === null ) {
 			return;
 		}
 		const mwTitle = titleFromElement( target, mw.config );
