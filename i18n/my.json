@@ -14,5 +14,10 @@
 	"popups-preview-disambiguation-link": "ဆင်တူစာမျက်နှာများကို ကြည့်ရန်",
 	"prefs-reading": "စာဖတ် အပြင်အဆင်များ",
 	"popups-refpreview-reference": "ကိုးကား",
-	"popups-refpreview-note": "မှတ်စု"
+	"popups-refpreview-book": "စာအုပ် ကိုးကားချက်",
+	"popups-refpreview-journal": "ဂျာနယ် ကိုးကားချက်",
+	"popups-refpreview-news": "သတင်း ကိုးကားချက်",
+	"popups-refpreview-note": "မှတ်စု",
+	"popups-refpreview-web": "ဝဘ် ကိုးကားချက်",
+	"popups-refpreview-beta-feature-message": "အကိုးအကား အစမ်းကြည့်မှုများ"
 }
