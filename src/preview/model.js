@@ -150,9 +150,11 @@ function legacyClosest( element, selector ) {
  */
 export function findNearestEligibleTarget( element ) {
 	const selector = selectors.join( ', ' );
-	if ( element.closest ) {
+	try {
 		return element.closest( selector );
-	} else {
+	} catch ( e ) {
+		// The browser either doesn't support the selector we gave it or doesn't
+		// have the closest method.
 		return legacyClosest( element, selector );
 	}
 }
