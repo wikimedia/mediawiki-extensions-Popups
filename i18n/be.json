@@ -3,7 +3,8 @@
 		"authors": [
 			"Artsiom91",
 			"Chadyka",
-			"No Sleep till Krupki"
+			"No Sleep till Krupki",
+			"Plaga med"
 		]
 	},
 	"popups-message": "Папярэдні прагляд",
@@ -15,7 +16,7 @@
 	"popups-settings-option-reference-description": "Атрымлівайце хуткія перадпрагляды зноскі падчас чытання старонкі.",
 	"popups-settings-save": "Запісаць",
 	"popups-settings-help-ok": "Гатова",
-	"popups-settings-cancel": "Зачыніць",
+	"popups-settings-cancel": "Закрыць",
 	"popups-settings-help": "Вы можаце зноў уключыць перадпрагляд, выкарыстоўваючы спасылку ў ніжнім калонтытуле старонкі.",
 	"popups-settings-enable": "Змяніць налады перадпрагляду",
 	"popups-settings-icon-gear-title": "Змяніць налады перадпрагляду старонак",
