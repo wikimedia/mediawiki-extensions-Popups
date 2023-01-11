@@ -66,13 +66,21 @@ class PopupsPage extends Page {
 		$( '#content h1' ).moveTo();
 	}
 
-	dwellLink( selector ) {
+	dwellLink( selector, doesNotTriggerPreview ) {
 		$( selector ).moveTo();
-		$( POPUPS_SELECTOR ).waitForExist();
+		if ( !doesNotTriggerPreview ) {
+			$( POPUPS_SELECTOR ).waitForExist();
+		} else {
+			browser.pause( 1000 );
+		}
 	}
 
 	dwellPageLink() {
 		this.dwellLink( PAGE_POPUPS_LINK_SELECTOR );
+	}
+
+	dwellPageFragment() {
+		this.dwellLink( '[href="#section"]', true );
 	}
 
 	hoverPageLink() {
