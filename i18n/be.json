@@ -3,7 +3,9 @@
 		"authors": [
 			"Artsiom91",
 			"Chadyka",
-			"No Sleep till Krupki"
+			"No Sleep till Krupki",
+			"Maksim L.",
+			"Plaga med"
 		]
 	},
 	"popups-message": "Папярэдні прагляд",
@@ -12,11 +14,11 @@
 	"popups-settings-option-simple-description": "Атрымаць хуткі папярэдні прагляд тэмы пры чытанні старонкі",
 	"popups-settings-save": "Запісаць",
 	"popups-settings-help-ok": "Гатова",
-	"popups-settings-cancel": "Зачыніць",
+	"popups-settings-cancel": "Закрыць",
 	"popups-settings-help": "Вы можаце зноў уключыць перадпрагляд, выкарыстоўваючы спасылку ў ніжнім калонтытуле старонкі.",
 	"popups-preview-no-preview": "Узнікла праблема з адлюстраваннем гэтага перадпрагляду",
 	"popups-preview-footer-read": "Перайсці на гэтую старонку",
-	"popups-preview-disambiguation": "Гэта назва датычыцца больш чым адной старонцы",
+	"popups-preview-disambiguation": "Найменне звязана з некалькімі старонкамі",
 	"popups-preview-disambiguation-link": "Паглядзець падобныя старонкі",
 	"prefs-reading": "Параметры чытання",
 	"popups-prefs-optin-title": "Перадпрагляд старонак\n\n<em>Паказваць хуткі перадпрагляд тэм пры навядзенні мышы</em>",

@@ -6,7 +6,7 @@
 		]
 	},
 	"popups-message": "Pregledi stranica",
-	"popups-desc": "Prikazuje sažetak prikaza sadržaja stranice kada idete sa strelicom na datoj vezi.",
+	"popups-desc": "Prikazuje iskočni pregled kada korisnik zadrži strelicu iznad linka",
 	"popups-settings-title": "Pregled stranice",
 	"popups-settings-option-simple": "Omogući",
 	"popups-settings-option-simple-description": "Brzi pregled neke teme prilikom čitanja stranice.",
@@ -14,5 +14,15 @@
 	"popups-settings-option-advanced-description": "Pregled sadržaja linkova i pristup izbornicima s mogućnostima uređivanja. To koriste mnogi urednici.",
 	"popups-settings-save": "Sačuvaj",
 	"popups-settings-help-ok": "Gotovo",
-	"popups-settings-cancel": "Otkaži"
+	"popups-settings-cancel": "Otkaži",
+	"popups-preview-no-preview": "Došlo je do greške pri prikazivanju pregleda",
+	"popups-preview-footer-read": "Idi na ovu stranicu",
+	"popups-preview-disambiguation": "Naslov se odnosi na više stranica",
+	"popups-preview-disambiguation-link": "Pogl. slične stranice",
+	"prefs-reading": "Postavke čitanja",
+	"popups-refpreview-reference": "Referenca",
+	"popups-refpreview-book": "Referenca ka knjizi",
+	"popups-refpreview-journal": "Referenca ka časopisu",
+	"popups-refpreview-news": "Referenca ka vijestima",
+	"popups-refpreview-web": "Referenca ka veb-sajtu"
 }
