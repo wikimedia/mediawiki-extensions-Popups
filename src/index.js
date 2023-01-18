@@ -43,7 +43,15 @@ const EXCLUDED_LINK_SELECTORS = [
 	'.mw-cite-backlink a',
 	'.oo-ui-buttonedElement-button',
 	'.ve-ce-surface a', // T259889
-	'.cancelLink a'
+	'.cancelLink a',
+	// T198652: lists to hash fragments are ignored.
+	// Note links that include the path will still trigger a hover,
+	// e.g. <a href="Foo#foo"> will trigger a preview but <a href="#foo"> will not.
+	// This is intentional behaviour that will not be handled by page previews, to avoid
+	// introducing complex behaviour. If a link must include the path it should make use of
+	// the .mw-selflink-fragment class.
+	'.mw-selflink-fragment',
+	'[href^="#"]'
 ];
 
 /**
