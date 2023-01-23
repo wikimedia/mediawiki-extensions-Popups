@@ -133,7 +133,7 @@ QUnit.test( 'it uses the reference gateway with valid element', function ( asser
 
 QUnit.test( 'it does not suggest page previews on reference links when reference previews are not registered', function ( assert ) {
 	assert.strictEqual(
-		getPreviewType( this.notReferenceLink ),
+		getPreviewType( this.referenceLink ),
 		null
 	);
 } );
