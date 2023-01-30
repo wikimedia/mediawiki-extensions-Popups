@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Afalau"
+		]
+	},
+	"popups-desc": "Yn dangos ffenestri rhagolwg pan fydd y defnyddiwr yn rhoi'r cyrchwr dros ddolen",
+	"popups-settings-save": "Cadw",
+	"popups-settings-help-ok": "Iawn",
+	"popups-settings-cancel": "Canslo",
+	"popups-preview-footer-read": "Ewch i'r dudalen hon",
+	"popups-refpreview-reference": "Cyfeiriadau",
+	"popups-refpreview-book": "Cyfeiriad llyfr",
+	"popups-refpreview-journal": "Cyfeiriad cyfnodolyn",
+	"popups-refpreview-news": "Cyfeiriad newyddion",
+	"popups-refpreview-web": "Cyfeiriad safle gwe",
+	"popups-refpreview-beta-feature-message": "Rhagolygon Cyfeiriadau"
+}
