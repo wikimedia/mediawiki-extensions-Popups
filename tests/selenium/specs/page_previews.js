@@ -18,6 +18,11 @@ describe( 'Dwelling on a valid page link', function () {
 		assert( page.seePagePreview(), 'Page preview is shown.' );
 	} );
 
+	it( 'I should not see a page preview on hash fragment', function () {
+		page.dwellPageFragment();
+		assert( page.doNotSeePagePreview(), 'Page preview is not shown.' );
+	} );
+
 	it( 'Abandoning link hides page preview', function () {
 		page.dwellPageLink();
 		page.abandonLink();
