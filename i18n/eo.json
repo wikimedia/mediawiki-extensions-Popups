@@ -4,7 +4,8 @@
 			"Jakub Fabijan",
 			"KuboF",
 			"Mirin",
-			"Tlustulimu"
+			"Tlustulimu",
+			"Chaetodipus"
 		]
 	},
 	"popups-message": "Antaŭrigardo de paĝo",
@@ -12,11 +13,13 @@
 	"popups-settings-title": "Antaŭrigardoj",
 	"popups-settings-option-page": "Ŝalti",
 	"popups-settings-option-page-description": "Montri rapidajn antaŭmontrojn de temo dum legado de paĝo.",
+	"popups-settings-option-reference": "Antaŭrigardo de referencoj",
 	"popups-settings-save": "Konservi",
 	"popups-settings-help-ok": "Farite",
 	"popups-settings-cancel": "Nuligi",
 	"popups-settings-help": "Vi povas reaktivigi la antaŭrigardajn bildojn uzante la ligilon je la fino de la paĝo.",
 	"popups-settings-enable": "Redakti antaŭrigardajn agordojn",
+	"popups-settings-icon-gear-title": "Ŝanĝi paĝo-antaŭrigardajn agordojn",
 	"popups-preview-no-preview": "Eraro okazis dum antaŭprezentado",
 	"popups-preview-footer-read": "Iri al ĉi tiu paĝo",
 	"popups-preview-disambiguation": "Ĉi tiu titolo rilatas al pli ol unu paĝo",
