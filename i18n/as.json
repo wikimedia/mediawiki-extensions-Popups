@@ -4,7 +4,22 @@
 			"Simbu123"
 		]
 	},
+	"popups-message": "প্ৰাকদৰ্শন",
+	"popups-desc": "যেতিয়া কোনো সংযোগৰ ওপৰত মাউচ নিয়া যায় তেতিয়া পৃষ্ঠাখনৰ বিষয়বস্তুৰ প্ৰাকদৰ্শনৰ প্ৰদৰ্শন কৰা হয়",
+	"popups-settings-save": "সাঁচি থওক",
+	"popups-settings-help-ok": "কৰা হ’ল",
+	"popups-settings-cancel": "বাতিল কৰক",
+	"popups-settings-help": "আপুনি পৃষ্ঠাৰ ফুটাৰত থকা এটা লিংক ব্যৱহাৰ কৰি প্ৰাকদৰ্শনসমূহ পুনৰ সক্ষম কৰিব পাৰে।",
+	"popups-preview-no-preview": "এই প্ৰাকদৰ্শন প্ৰদৰ্শন কৰাত কিবা সমস্যা হৈছে",
+	"popups-preview-footer-read": "এই পৃষ্ঠালৈ যাওক",
+	"popups-preview-disambiguation": "এই শিৰোনামটো একাধিক পৃষ্ঠাৰ সৈতে জড়িত",
+	"popups-preview-disambiguation-link": "অনুৰূপ পৃষ্ঠাসমূহ চাওক",
 	"prefs-reading": "পঠন পছন্দসমূহ",
 	"popups-prefs-conflicting-gadgets-info": "কিছুমান গেজেট আৰু অন্যান্য সাল-সলনিয়ে এই বৈশিষ্ট্যটোৰ প্ৰদৰ্শনত প্ৰভাৱিত কৰিব পাৰে। ব্যৱহাৰত যদি আপুনি কোনো সমস্যা পায়, অনুগ্ৰহ কৰি আপোনাৰ গেজেট আৰু সদস্য স্ক্ৰিপ্টবোৰ বা গোলকীয় স্ক্ৰিপ্টবোৰ সমীক্ষা কৰক।",
+	"popups-refpreview-reference": "তথ্যসূত্ৰ",
+	"popups-refpreview-book": "কিতাপৰ তথ্যসূত্ৰ",
+	"popups-refpreview-journal": "জাৰ্নেলৰ তথ্যসূত্ৰ",
+	"popups-refpreview-news": "বাতৰিৰ তথ্যসূত্ৰ",
+	"popups-refpreview-web": "ৱেব তথ্যসূত্ৰ",
 	"popups-refpreview-beta-feature-message": "উদ্ধৃতি পূৰ্বদৰ্শন"
 }
