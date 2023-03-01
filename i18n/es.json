@@ -48,5 +48,5 @@
 	"popups-refpreview-collapsible-placeholder": "Esta referencia incluye una figura que no cabe en la vista previa.",
 	"popups-refpreview-user-preference-label": "Habilita las vistas previas de referencias (obtenga vistas previas rápidas de una referencia mientras lee una página):",
 	"popups-refpreview-beta-feature-message": "Previsualizaciones de referencias",
-	"popups-refpreview-beta-feature-description": "Muestra una vista previa de una referencia al poner el cursor sobre su marcador de nota al pie.\n\nNota: Si estás usando el accesorio de [https://es.wikipedia.org/wiki/Wikipedia:Popups_de_navegaci%C3%B3n Popups de navegación], no verás las previsualizaciones de referencias. Si estás usando el accesorio de [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], aparecerán tanto los mensajes emergentes de ese accesorio como los de las previsualizaciones de referencias."
+	"popups-refpreview-beta-feature-description": "Muestra una vista previa de una referencia al poner el cursor sobre su marcador de nota al pie.\n\nNota: Esta característica no funcionará si usas cualquiera de los siguientes accesorios o herramientas: [https://es.wikipedia.org/wiki/Wikipedia:Popups_de_navegaci%C3%B3n popups de navegación], [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]."
 }
