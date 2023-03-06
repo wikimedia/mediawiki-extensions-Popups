@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Les Meloures",
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"popups-message": "Biller wéi Säiten ausgesinn",
@@ -33,5 +34,5 @@
 	"popups-refpreview-collapsible-placeholder": "An dëser Referenz ass eng Duerstellung déi net an dës Fënster passt.",
 	"popups-refpreview-user-preference-label": "Ausgesi vun de Referenzen (séier gesinn, wéi d'Foussnouten ausgesinn) aschalten",
 	"popups-refpreview-beta-feature-message": "Ausgesi vun de Referenzen",
-	"popups-refpreview-beta-feature-description": "Weist wéi eng Referenz ausgesäit wann een iwwer d'Mark vun der Foussnott driwwer fiert.\n\nDenkt drun: Wann Dir de Gadget [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] benotzt oder de Gadget [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], da gesitt Dir d'Virschau vun der Referenz net."
+	"popups-refpreview-beta-feature-description": "Weist, wéi eng Referenz ausgesäit, wann een iwwer d'Mark vun der Foussnott driwwer fiert.\n\nDenkt drun: Wann Dir de Gadget [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] benotzt oder de Gadget [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], da gesitt Dir d'Virschau vun der Referenz net."
 }
