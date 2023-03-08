@@ -5,12 +5,15 @@
 			"Դավիթ Սարոյան"
 		]
 	},
-	"popups-message": "Նախադիտման քարտեր",
+	"popups-message": "Նախադիտում",
 	"popups-desc": "Երբ մասնակիցը կուրսորը պահում է հղման վրա, ցուցադրվում են նախադիտման քարտեր՝ հոդվածի համառոտ բովանդակությամբ:",
 	"popups-settings-title": "Նախադիտում",
 	"popups-settings-option-page": "Էջի նախադիտում",
-	"popups-settings-save": "Պահպանել",
+	"popups-settings-save": "Հիշել",
 	"popups-settings-help-ok": "Արված է",
 	"popups-settings-cancel": "Չեղարկել",
-	"popups-settings-enable": "Միացնել նախադիտումը"
+	"popups-settings-enable": "Միացնել նախադիտումը",
+	"popups-preview-footer-read": "Անցնել այս էջ",
+	"popups-refpreview-reference": "Ծանոթագրություն",
+	"popups-refpreview-note": "Նշում"
 }
