@@ -10,7 +10,7 @@
 	"descriptionmsg": "popups-desc",
 	"license-name": "GPL-2.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.35.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"AutoloadNamespaces": {
 		"Popups\\": "includes/"
@@ -177,13 +177,19 @@
 			}
 		},
 		"ext.popups": {
-			"targets": [ "desktop", "mobile" ],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
 			"scripts": [
 				"resources/ext.popups/index.js"
 			]
 		},
 		"ext.popups.main": {
-			"targets": [ "desktop", "mobile" ],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
 			"scripts": [
 				"resources/dist/index.js"
 			],
