@@ -23,10 +23,6 @@ import { previewTypes } from '../preview/model';
 export default function syncUserSettings( userSettings ) {
 	return ( oldState, newState ) => {
 		syncIfChanged(
-			oldState, newState, 'eventLogging.previewCount',
-			userSettings.storePreviewCount
-		);
-		syncIfChanged(
 			oldState, newState, 'preview.enabled.' + previewTypes.TYPE_PAGE,
 			userSettings.storePagePreviewsEnabled
 		);
