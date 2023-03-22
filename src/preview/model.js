@@ -203,19 +203,46 @@ function getPagePreviewType( type, processedExtract ) {
 
 const selectors = [];
 
+const dwellDelay = {};
+
+/**
+ * Determines the delay before showing the preview when dwelling a link.
+ *
+ * @param {string} type
+ * @return {number}
+ */
+export function getDwellDelay( type ) {
+	return dwellDelay[ type ] || 0;
+}
+
+/***
+ * Set the delay before showing the preview when dwelling a link.
+ *
+ * @param {string} type
+ * @param {number} delay
+ */
+export function setDwellTime( type, delay ) {
+	dwellDelay[ type ] = delay;
+}
+
 /**
  * Allows extensions to register their own page previews.
  *
  * @stable
  * @param {string} type
  * @param {string} selector A valid CSS selector to associate preview with
+ * @param {number} [delay] optional delay between hovering and displaying preview.
+ *  If not defined, delay will be zero.
  */
-export function registerModel( type, selector ) {
+export function registerModel( type, selector, delay ) {
 	selectors.push( selector );
 	registeredPreviewTypes.push( {
 		name: type,
 		selector
 	} );
+	if ( delay ) {
+		setDwellTime( type, delay );
+	}
 }
 
 /**

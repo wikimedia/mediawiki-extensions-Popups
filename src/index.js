@@ -30,6 +30,7 @@ import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
 import setUserConfigFlags from './setUserConfigFlags';
 import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
 import { initReferencePreviewsInstrumentation } from './instrumentation/referencePreviews';
+import { FETCH_START_DELAY, FETCH_COMPLETE_TARGET_DELAY, FETCH_DELAY_REFERENCE_TYPE } from './constants';
 
 const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
@@ -245,6 +246,7 @@ function handleDOMEventIfEligible( handler ) {
 		mw.popups.register( {
 			type: previewTypes.TYPE_PAGE,
 			selector: `#mw-content-text a[href][title]:not(${excludedLinksSelector})`,
+			delay: FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY,
 			gateway: pagePreviewGateway,
 			renderFn: createPagePreview,
 			subTypes: [
@@ -260,6 +262,7 @@ function handleDOMEventIfEligible( handler ) {
 		mw.popups.register( {
 			type: previewTypes.TYPE_REFERENCE,
 			selector: '#mw-content-text .reference a[ href*="#" ]',
+			delay: FETCH_DELAY_REFERENCE_TYPE,
 			gateway: referenceGateway,
 			renderFn: createReferencePreview,
 			init: () => {

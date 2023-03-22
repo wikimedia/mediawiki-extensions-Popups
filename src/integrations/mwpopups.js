@@ -38,6 +38,8 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 		 * @property {function(ext.popups.PreviewModel): ext.popups.Preview}[renderFn] How the custom preview type will render the preview.
 		 *  If not provided default renderer is used.
 		 * @property {PopupSubtype[]} subTypes this is for registering types that are subsets of the current type e.g. share the same selector.
+		 * @property {number} [delay] optional delay between hovering and displaying preview.
+		 *  If not defined, delay will be zero.
 		 */
 		/**
 		 * Register a custom preview type.
@@ -57,13 +59,13 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 		 * @param {PopupModule} module
 		 */
 		register: function ( module ) {
-			const { type, selector, gateway, renderFn, subTypes, init } = module;
+			const { type, selector, gateway, renderFn, subTypes, delay, init } = module;
 			if ( !type || !selector || !gateway ) {
 				throw new Error(
 					`Registration of Popups custom preview type "${type}" failed: You must specify a type, a selector, and a gateway.`
 				);
 			}
-			registerModel( type, selector );
+			registerModel( type, selector, delay );
 			registerGatewayForPreviewType( type, gateway );
 			registerPreviewUI( type, renderFn );
 			if ( subTypes ) {

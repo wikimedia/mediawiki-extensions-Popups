@@ -2,7 +2,7 @@ import { createStubUser, createStubTitle } from './stubs';
 import * as actions from '../../src/actions';
 import * as WaitModule from '../../src/wait';
 import actionTypes from '../../src/actionTypes';
-import { previewTypes } from '../../src/preview/model';
+import { setDwellTime, previewTypes } from '../../src/preview/model';
 
 const REFERRER = 'https://en.wikipedia.org/wiki/Kitten',
 	TEST_TITLE = createStubTitle( 0, 'Foo' );
@@ -268,6 +268,7 @@ QUnit.module( 'ext.popups/actions#fetch', {
 		this.token = '1234567890';
 
 		// Sugar.
+		setDwellTime( previewTypes.TYPE_PAGE, 350 );
 		this.fetch = () => {
 			return actions.fetch(
 				this.gateway, this.title, this.el, this.token, previewTypes.TYPE_PAGE

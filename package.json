@@ -71,7 +71,7 @@
 	"bundlesize": [
 		{
 			"path": "resources/dist/index.js",
-			"maxSize": "14.6kB"
+			"maxSize": "14.7kB"
 		}
 	]
 }
