@@ -92,8 +92,8 @@
 			text-decoration: none;
 		}
 
-		&:after,
-		blockquote:after {
+		&::after,
+		blockquote::after {
 			content: ' ';
 			position: absolute;
 			bottom: 0;
@@ -103,23 +103,21 @@
 			pointer-events: none; // Allows clicking 'through' the element
 		}
 
-		/* Stylelint rule broken for vendor prefixes: https://github.com/stylelint/stylelint/issues/1939 */
-		/* stylelint-disable function-linear-gradient-no-nonstandard-direction */
-		&[ dir='ltr' ]:after {
+		&[ dir='ltr' ]::after {
 			/* @noflip */
 			right: 0;
 			/* @noflip */
 			background-image: linear-gradient( to right, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 		}
 
-		&[ dir='rtl' ]:after {
+		&[ dir='rtl' ]::after {
 			/* @noflip */
 			left: 0;
 			/* @noflip */
 			background-image: linear-gradient( to left, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 50% );
 		}
 
-		blockquote:after {
+		blockquote::after {
 			width: 100%;
 			height: @lineHeight + 5px;
 			/* @noflip */
@@ -127,7 +125,6 @@
 			/* @noflip */
 			background-image: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ), rgba( 255, 255, 255, 1 ) 75% );
 		}
-		/* stylelint-enable function-linear-gradient-no-nonstandard-direction */
 
 		// Make the text fit in exactly as many lines as we want.
 		p {
@@ -234,44 +231,44 @@
 
 	/* Triangles/Pointers */
 	&.mwe-popups-no-image-pointer {
-		&:before {
+		&::before {
 			.mwe-popups-border-pointer-top( 8px, 10px, @borderColorPopupPointerNoImage, 0 );
 		}
 
-		&:after {
+		&::after {
 			.mwe-popups-border-pointer-top( 7px, 7px, #fff, 4px );
 		}
 	}
 
 	&.flipped-x.mwe-popups-no-image-pointer {
-		&:before {
+		&::before {
 			left: auto;
 			right: 10px;
 		}
 
-		&:after {
+		&::after {
 			left: auto;
 			right: 7px;
 		}
 	}
 
 	&.mwe-popups-image-pointer {
-		&:before {
+		&::before {
 			.mwe-popups-border-pointer-top( 9px, 9px, @colorGray10, 0 );
 			z-index: @zIndexBackground;
 		}
 
-		&:after {
+		&::after {
 			.mwe-popups-border-pointer-top( 8px, 6px, #fff, 4px );
 			z-index: @zIndexForeground;
 		}
 
 		&.flipped-x {
-			&:before {
+			&::before {
 				.mwe-popups-border-pointer-top( 9px, 293px, @colorGray10, 0 );
 			}
 
-			&:after {
+			&::after {
 				.mwe-popups-border-pointer-top( 8px, 290px, #fff, 4px );
 			}
 		}
@@ -293,7 +290,7 @@
 	&.flipped-x.mwe-popups-is-tall {
 		min-height: 242px;
 
-		&:before {
+		&::before {
 			.mwe-popups-border-pointer-top( 9px, 420px, @colorGray10, 0 );
 			z-index: @zIndexBackground;
 		}
@@ -313,12 +310,12 @@
 	}
 
 	&.flipped-x-y {
-		&:before {
+		&::before {
 			.mwe-popups-border-pointer-bottom( 9px, 293px, @colorGray10, 0 );
 			z-index: @zIndexBackground;
 		}
 
-		&:after {
+		&::after {
 			.mwe-popups-border-pointer-bottom( 8px, 290px, #fff, 4px );
 			z-index: @zIndexForeground;
 		}
@@ -326,11 +323,11 @@
 		&.mwe-popups-is-tall {
 			min-height: 242px;
 
-			&:before {
+			&::before {
 				.mwe-popups-border-pointer-bottom( 9px, 420px, @colorGray10, 0 );
 			}
 
-			&:after {
+			&::after {
 				.mwe-popups-border-pointer-bottom( 8px, 417px, #fff, 4px );
 			}
 
@@ -345,11 +342,11 @@
 	}
 
 	&.flipped-y {
-		&:before {
+		&::before {
 			.mwe-popups-border-pointer-bottom( 8px, 10px, @colorGray10, 0 );
 		}
 
-		&:after {
+		&::after {
 			.mwe-popups-border-pointer-bottom( 7px, 7px, #fff, 4px );
 		}
 	}
@@ -481,11 +478,11 @@
 			}
 		}
 
-		&:before {
+		&::before {
 			display: none;
 		}
 
-		&:after {
+		&::after {
 			display: none;
 		}
 

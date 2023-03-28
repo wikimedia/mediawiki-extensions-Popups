@@ -87,7 +87,7 @@
 					margin-bottom: 5px;
 				}
 
-				&:before {
+				&::before {
 					// stylelint-disable-next-line declaration-no-important
 					top: @size-input-binary / 2 !important;
 				}
@@ -106,7 +106,7 @@
 
 	// Icon is larger than mw-ui-icon-large
 	// Thus we hack it to get it to the size we want.
-	.mw-ui-icon:before,
+	.mw-ui-icon::before,
 	.mw-ui-icon {
 		background-size: contain;
 		height: @imageHeight;
