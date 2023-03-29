@@ -1,3 +1,4 @@
+@import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins.less';
 
 /*
@@ -17,9 +18,9 @@
 .mwe-popups-border-pointer-top( @size, @left, @color, @extra ) {
 	content: '';
 	position: absolute;
-	border: ( @size + @extra ) solid transparent;
+	border: ( @size + @extra ) @border-style-base @border-color-transparent;
 	border-top: 0;
-	border-bottom: ( @size + @extra ) solid @color;
+	border-bottom: ( @size + @extra ) @border-style-base @color;
 	top: -@size;
 	left: @left;
 }
@@ -27,9 +28,9 @@
 .mwe-popups-border-pointer-bottom( @size, @left, @color, @extra ) {
 	content: '';
 	position: absolute;
-	border: ( @size + @extra ) solid transparent;
+	border: ( @size + @extra ) @border-style-base @border-color-transparent;
 	border-bottom: 0;
-	border-top: ( @size + @extra ) solid @color;
+	border-top: ( @size + @extra ) @border-style-base @color;
 	bottom: -@size;
 	left: @left;
 }

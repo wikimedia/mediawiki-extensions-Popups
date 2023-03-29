@@ -1,3 +1,4 @@
+@import 'mediawiki.skin.variables.less';
 @import '../../variables.less';
 @import '../../mixins.less';
 
@@ -40,7 +41,7 @@
 	}
 
 	.mwe-popups-container {
-		color: @colorText;
+		color: @color-base;
 		margin-top: -@previewPointerHeight;
 		padding-top: 9px;
 		text-decoration: none;
@@ -69,11 +70,15 @@
 		transition: background-color 100ms, opacity 100ms;
 
 		&:hover {
-			background-color: @colorGray14;
+			// TODO: Replace by `@background-color-button-quiet--hover`
+			// as soon as available in mediawiki.skin.variables.
+			background-color: rgba( 0, 24, 73, 0.027 );
 		}
 
 		&:active {
-			background-color: @colorGray12;
+			// TODO: Replace by `@background-color-button-quiet--active`
+			// as soon as available in mediawiki.skin.variables.
+			background-color: rgba( 0, 24, 73, 0.082 );
 			opacity: 1;
 		}
 	}
@@ -84,7 +89,7 @@
 		// the settings cog in IE9-11.
 		margin: @popupPadding;
 		display: block;
-		color: @colorText;
+		color: @color-base;
 		text-decoration: none;
 		position: relative;
 
@@ -254,7 +259,7 @@
 
 	&.mwe-popups-image-pointer {
 		&::before {
-			.mwe-popups-border-pointer-top( 9px, 9px, @colorGray10, 0 );
+			.mwe-popups-border-pointer-top( 9px, 9px, @border-color-base, 0 );
 			z-index: @zIndexBackground;
 		}
 
@@ -265,7 +270,7 @@
 
 		&.flipped-x {
 			&::before {
-				.mwe-popups-border-pointer-top( 9px, 293px, @colorGray10, 0 );
+				.mwe-popups-border-pointer-top( 9px, 293px, @border-color-base, 0 );
 			}
 
 			&::after {
@@ -291,7 +296,7 @@
 		min-height: 242px;
 
 		&::before {
-			.mwe-popups-border-pointer-top( 9px, 420px, @colorGray10, 0 );
+			.mwe-popups-border-pointer-top( 9px, 420px, @border-color-base, 0 );
 			z-index: @zIndexBackground;
 		}
 
@@ -311,7 +316,7 @@
 
 	&.flipped-x-y {
 		&::before {
-			.mwe-popups-border-pointer-bottom( 9px, 293px, @colorGray10, 0 );
+			.mwe-popups-border-pointer-bottom( 9px, 293px, @border-color-base, 0 );
 			z-index: @zIndexBackground;
 		}
 
@@ -324,7 +329,7 @@
 			min-height: 242px;
 
 			&::before {
-				.mwe-popups-border-pointer-bottom( 9px, 420px, @colorGray10, 0 );
+				.mwe-popups-border-pointer-bottom( 9px, 420px, @border-color-base, 0 );
 			}
 
 			&::after {
@@ -343,7 +348,7 @@
 
 	&.flipped-y {
 		&::before {
-			.mwe-popups-border-pointer-bottom( 8px, 10px, @colorGray10, 0 );
+			.mwe-popups-border-pointer-bottom( 8px, 10px, @border-color-base, 0 );
 		}
 
 		&::after {
