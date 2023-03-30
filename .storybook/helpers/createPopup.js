@@ -1,9 +1,18 @@
 import { SIZES } from '../../src/ui/thumbnail';
 import { createPreviewWithType, layoutPreview, getClasses,
 	createLayout,
+	registerPreviewUI,
+	createPagePreview,
+	createDisambiguationPreview,
+	createReferencePreview,
 	pointerSize, landscapePopupWidth, portraitPopupWidth
 } from '../../src/ui/renderer.js';
+import { previewTypes } from '../../src/preview/model';
 import scaleDownThumbnail from './scaleDownThumbnail';
+
+registerPreviewUI( previewTypes.TYPE_PAGE, createPagePreview );
+registerPreviewUI( previewTypes.TYPE_REFERENCE, createReferencePreview );
+registerPreviewUI( previewTypes.TYPE_DISAMBIGUATION, createDisambiguationPreview );
 
 /**
  * @typedef {LayoutHint}

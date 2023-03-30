@@ -7,5 +7,6 @@
 /composer.lock
 /.eslintcache
 /.storybook/mocks/**/*.less
+/.storybook/mocks/**/*.tmp
 /tests/selenium/log
 .DS_Store
