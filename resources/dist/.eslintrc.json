@@ -1,5 +1,6 @@
 {
 	"rules": {
-		"es/no-object-getownpropertysymbols": "off"
+		"es/no-object-getownpropertysymbols": "off",
+		"es-x/no-object-getownpropertysymbols": "warn"
 	}
 }

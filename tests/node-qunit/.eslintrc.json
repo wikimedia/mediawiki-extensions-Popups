@@ -3,6 +3,7 @@
 		"wikimedia/qunit"
 	],
 	"rules": {
-		"no-jquery/no-class-state": "off"
+		"no-jquery/no-class-state": "off",
+		"es-x/no-hashbang": "warn"
 	}
 }

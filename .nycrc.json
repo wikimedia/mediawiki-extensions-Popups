@@ -23,7 +23,7 @@
 
 	"//": "Work around source maps being included ",
 	"//": "https://github.com/istanbuljs/nyc/issues/847:",
-	"//":  "  Error: ENAMETOOLONG: name too long, open '.../vagrant/mediawiki/extensions/Popups/src/data:application/json;...'",
+	"//": "  Error: ENAMETOOLONG: name too long, open '.../vagrant/mediawiki/extensions/Popups/src/data:application/json;...'",
 	"//": "Unfortunately, the reported line numbers appear to be",
 	"//": "nondeterministic across runs when all is enabled and incorrect when",
 	"//": "disabled.",

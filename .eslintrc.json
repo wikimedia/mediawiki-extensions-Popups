@@ -15,7 +15,10 @@
 	},
 	"rules": {
 		"no-use-before-define": "off",
-		"jsdoc/no-undefined-types": "off"
+		"jsdoc/no-undefined-types": "off",
+		"no-dupe-keys": "warn",
+		"yml/block-sequence": "warn",
+		"yml/plain-scalar": "warn"
 	},
 	"settings": {
 		"jsdoc": {
