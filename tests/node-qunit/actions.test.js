@@ -129,7 +129,7 @@ QUnit.test( '#linkDwell', function ( assert ) {
 			timestamp: mw.now(),
 			title: 'Foo',
 			namespaceId: 0,
-			promise: $.Deferred().promise()
+			promise: Promise.resolve()
 		},
 		'The dispatcher was called with the correct arguments.'
 	);

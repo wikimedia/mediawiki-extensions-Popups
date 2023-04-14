@@ -16,9 +16,25 @@
  * that is abortable.
  *
  * @template T
- * @typedef {jQuery.Promise<T>} AbortPromise
+ * @typedef {Promise<T>} AbortPromise
  * @property {function(): void} abort
  */
+
+/**
+ * @param {Promise|jQuery.Promise<T>} promise
+ * @param {function(): void} [abort]
+ * @return {AbortPromise}
+ */
+export function abortablePromise( promise, abort = () => {} ) {
+	// JQuery provided.
+	if ( promise.promise ) {
+		return promise.promise( {
+			abort
+		} );
+	}
+	promise.abort = abort;
+	return promise;
+}
 
 /**
  * Fetches a preview for a page or reference.

@@ -143,8 +143,8 @@ QUnit.test( 'Reference preview gateway rejects non-existing references', functio
 
 	return gateway.fetchPreviewForTitle( title, this.$sourceElement[ 0 ] ).then( () => {
 		assert.true( false, 'It should not resolve' );
-	} ).catch( ( reason, result ) => {
-		assert.propEqual( result, { textStatus: 'abort', xhr: { readyState: 0 } } );
+	} ).catch( ( result ) => {
+		assert.propEqual( result, { textStatus: 'abort', textContext: 'Footnote not found or empty', xhr: { readyState: 0 } } );
 	} );
 } );
 
@@ -154,8 +154,8 @@ QUnit.test( 'Reference preview gateway rejects all-whitespace references', funct
 
 	return gateway.fetchPreviewForTitle( title, this.$sourceElement[ 0 ] ).then( () => {
 		assert.true( false, 'It should not resolve' );
-	} ).catch( ( reason, result ) => {
-		assert.propEqual( result, { textStatus: 'abort', xhr: { readyState: 0 } } );
+	} ).catch( ( result ) => {
+		assert.propEqual( result, { textStatus: 'abort', textContext: 'Footnote not found or empty', xhr: { readyState: 0 } } );
 	} );
 } );
 

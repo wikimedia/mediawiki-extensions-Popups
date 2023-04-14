@@ -247,7 +247,7 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
 		}
 
 		if ( !isNewInteraction() ) {
-			return $.Deferred().resolve().promise();
+			return Promise.resolve();
 		}
 
 		return promise.then( () => {
@@ -282,7 +282,7 @@ export function abandon() {
 		const { activeToken: token, promise } = getState().preview;
 
 		if ( !token ) {
-			return $.Deferred().resolve().promise();
+			return Promise.resolve();
 		}
 
 		dispatch( timedAction( {

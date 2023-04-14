@@ -14,10 +14,10 @@ import * as formatters from './restFormatters';
  * @return {Gateway}
  */
 export default function createPagePreviewGateway( config ) {
-	const gatewayConfig = $.extend( {}, constants, {
+	const gatewayConfig = Object.assign( {}, constants, {
 		acceptLanguage: config.get( 'wgPageContentLanguage' )
 	} );
-	const restConfig = $.extend( {}, gatewayConfig, {
+	const restConfig = Object.assign( {}, gatewayConfig, {
 		endpoint: config.get( 'wgPopupsRestGatewayEndpoint' )
 	} );
 	switch ( config.get( 'wgPopupsGateway' ) ) {
