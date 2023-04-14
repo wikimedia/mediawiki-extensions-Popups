@@ -30,8 +30,6 @@ import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
 import setUserConfigFlags from './setUserConfigFlags';
 import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
 
-const $window = $( window );
-
 const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
 	// ignore links that point to the same article
@@ -251,44 +249,50 @@ function handleDOMEventIfEligible( handler ) {
 	/*
 	 * Binding hover and click events to the eligible links to trigger actions
 	 */
-	$( document )
-		.on( 'mouseover keyup',
-			handleDOMEventIfEligible( function ( target, mwTitle, event ) {
-				const $target = $( target );
-				const type = getPreviewType( target );
-				const gateway = getGatewayForPreviewType( type );
-				if ( !gateway ) {
-					return;
-				}
+	function setupEventListeners() {
+		const onHover = handleDOMEventIfEligible( function ( target, mwTitle, event ) {
+			const type = getPreviewType( target );
+			const gateway = getGatewayForPreviewType( type );
+			if ( !gateway ) {
+				return;
+			}
 
-				const measures = {
-					pageX: event.pageX,
-					pageY: event.pageY,
-					clientY: event.clientY,
-					width: $target.width(),
-					height: $target.height(),
-					offset: $target.offset(),
-					clientRects: target.getClientRects(),
-					windowWidth: $window.width(),
-					windowHeight: $window.height(),
-					scrollTop: $window.scrollTop()
-				};
+			const scrollTop = window.scrollY;
+			const bbox = target.getBoundingClientRect();
+			const offset = {
+				top: scrollTop + bbox.y,
+				left: window.scrollX + bbox.x
+			};
+			const measures = {
+				pageX: event.pageX,
+				pageY: event.pageY,
+				clientY: event.clientY,
+				width: target.offsetWidth,
+				height: target.offsetHeight,
+				offset,
+				clientRects: target.getClientRects(),
+				windowWidth: window.innerWidth,
+				windowHeight: window.innerHeight,
+				scrollTop
+			};
 
-				boundActions.linkDwell( mwTitle, target, measures, gateway, generateToken, type );
-			} )
-		)
-		.on( 'mouseout blur',
-			handleDOMEventIfEligible( function () {
-				boundActions.abandon();
-			} )
-		)
-		.on( 'click',
-			handleDOMEventIfEligible( function ( target ) {
-				if ( previewTypes.TYPE_PAGE === getPreviewType( target ) ) {
-					boundActions.linkClick( target );
-				}
-			} )
-		);
+			boundActions.linkDwell( mwTitle, target, measures, gateway, generateToken, type );
+		} );
+		const onHoverOut = handleDOMEventIfEligible( function () {
+			boundActions.abandon();
+		} );
+		const onClick = handleDOMEventIfEligible( function ( target ) {
+			if ( previewTypes.TYPE_PAGE === getPreviewType( target ) ) {
+				boundActions.linkClick( target );
+			}
+		} );
+		document.addEventListener( 'mouseover', onHover );
+		document.addEventListener( 'keyup', onHover );
+		document.addEventListener( 'mouseout', onHoverOut );
+		document.addEventListener( 'blur', onHoverOut );
+		document.addEventListener( 'click', onClick );
+	}
+	setupEventListeners();
 }() );
 
 window.Redux = Redux;
