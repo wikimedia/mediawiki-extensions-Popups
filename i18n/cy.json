@@ -4,12 +4,17 @@
 			"Afalau"
 		]
 	},
+	"popups-message": "Rhagolygon",
 	"popups-desc": "Yn dangos ffenestri rhagolwg pan fydd y defnyddiwr yn rhoi'r cyrchwr dros ddolen",
 	"popups-settings-save": "Cadw",
 	"popups-settings-help-ok": "Iawn",
 	"popups-settings-cancel": "Canslo",
+	"popups-settings-help": "Gallwch alluogi rhagolygon gan ddefnyddio dolen yn nhroedyn y dudalen.",
+	"popups-preview-no-preview": "Roedd gwall wrth ddangos y rhagolwg hwn",
 	"popups-preview-footer-read": "Ewch i'r dudalen hon",
+	"popups-preview-disambiguation": "Mae'r teitl hwn yn perthyn i fwy nag un dudalen",
 	"popups-preview-disambiguation-link": "Gweld tudalennau tebyg",
+	"prefs-reading": "Dewisiadau darllen",
 	"popups-refpreview-reference": "Cyfeiriadau",
 	"popups-refpreview-book": "Cyfeiriad llyfr",
 	"popups-refpreview-journal": "Cyfeiriad cyfnodolyn",
