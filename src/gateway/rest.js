@@ -3,6 +3,7 @@
  */
 
 import { createModel } from '../preview/model';
+import { abortablePromise } from './index.js';
 
 const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0';
 
@@ -53,7 +54,7 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	function fetchPreviewForTitle( title ) {
 		const titleText = title.getPrefixedDb(),
 			xhr = fetch( titleText );
-		return xhr.then( ( page ) => {
+		return abortablePromise( xhr.then( ( page ) => {
 			// Endpoint response may be empty or simply missing a title.
 			page = page || {};
 			page.title = page.title || titleText;
@@ -66,12 +67,12 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 			// The client will choose how to handle these errors which may include
 			// those due to HTTP 4xx and 5xx status. The rejection typing matches
 			// fetch failures.
-			return $.Deferred().reject( 'http', {
+			return Promise.reject( 'http', {
 				xhr: jqXHR,
 				textStatus,
 				exception: errorThrown
 			} );
-		} ).promise( { abort() { xhr.abort(); } } );
+		} ), () => xhr.abort() );
 	}
 
 	return {

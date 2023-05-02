@@ -3,6 +3,7 @@
  */
 
 import { previewTypes } from '../preview/model';
+import { abortablePromise } from './index.js';
 
 /**
  * @return {Gateway}
@@ -58,11 +59,10 @@ export default function createReferenceGateway() {
 			// Skip references that don't contain anything but whitespace, e.g. a single &nbsp;
 			( !$referenceText.text().trim() && !$referenceText.children().length )
 		) {
-			return $.Deferred().reject(
-				'Footnote not found or empty',
+			return Promise.reject(
 				// Required to set `showNullPreview` to false and not open an error popup
-				{ textStatus: 'abort', xhr: { readyState: 0 } }
-			).promise( { abort() {} } );
+				{ textStatus: 'abort', textContext: 'Footnote not found or empty', xhr: { readyState: 0 } }
+			);
 		}
 
 		const model = {
@@ -74,7 +74,7 @@ export default function createReferenceGateway() {
 			sourceElementId: el.parentNode.id
 		};
 
-		return $.Deferred().resolve( model ).promise( { abort() {} } );
+		return abortablePromise( Promise.resolve( model ) );
 	}
 
 	return {
