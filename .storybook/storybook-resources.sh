@@ -10,9 +10,6 @@ sed "s/..\/..\/lib\/codex/@wikimedia\/codex/g" .storybook/mocks/mediawiki.skin.d
 # MediaWiki LESS mixins
 curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.less/mediawiki.mixins.less -o .storybook/mocks/mediawiki.mixins.less
 
-# mediawiki.ui variables
-curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.less/mediawiki.ui/variables.less -o .storybook/mocks/mediawiki.ui/variables.less
-
 # mediawiki.ui.icon icons.less
 curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.ui.icon/icons-2.less -o .storybook/mocks/mediawiki.ui.icon/icons.less
 

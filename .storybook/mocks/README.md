@@ -9,10 +9,11 @@ are LESS files containing one-line imports that correspond to files in
 mediawiki-core. This file structure is required to mimick ResourceLoaders
 LESS module-import behaviour.
 
-ResourceLoader can resolve LESS modules with file paths like `@import "mediawiki.ui/variables"`.
-Webpack however, cannot do this easily. The default LESS resolver requires
-files ending in ".less", and although webpack can create an alias to a
-module, that alias cannot include a path separator.
+ResourceLoader can resolve LESS modules with file paths like
+`@import 'mediawiki.skin.variables.less';`. Webpack however, cannot do this
+easily. The default LESS resolver requires files ending in ".less", and
+although webpack can create an alias to a module, that alias cannot include
+a path separator.
 
 The webpack LESS-loader treats imports that don't begin with a relative or
 absolute filepath as coming from the current directory (.i.e. "./").
