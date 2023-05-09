@@ -29,6 +29,7 @@ import { previewTypes, getPreviewType,
 import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
 import setUserConfigFlags from './setUserConfigFlags';
 import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
+import { initReferencePreviewsInstrumentation } from './instrumentation/referencePreviews';
 
 const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
@@ -236,7 +237,10 @@ function handleDOMEventIfEligible( handler ) {
 			type: previewTypes.TYPE_REFERENCE,
 			selector: '#mw-content-text .reference a[ href*="#" ]',
 			gateway: referenceGateway,
-			renderFn: createReferencePreview
+			renderFn: createReferencePreview,
+			init: () => {
+				initReferencePreviewsInstrumentation();
+			}
 		} );
 	}
 	if ( !isAnythingEligible() ) {

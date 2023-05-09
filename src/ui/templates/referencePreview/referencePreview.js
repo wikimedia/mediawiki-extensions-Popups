@@ -1,7 +1,7 @@
 /**
  * @module referencePreview
  */
-
+import { isTrackingEnabled, LOGGING_SCHEMA } from '../../../instrumentation/referencePreviews';
 import { renderPopup } from '../popup/popup';
 import { createNodeFromTemplate, escapeHTML } from '../templateUtil';
 
@@ -21,19 +21,6 @@ const templateHTML = `
 		<div class="mwe-popups-settings"></div>
 	</footer>
 </div>`;
-
-const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
-let isTracking = false;
-$( () => {
-	if ( mw.config.get( 'wgPopupsReferencePreviews' ) &&
-		navigator.sendBeacon &&
-		mw.config.get( 'wgIsArticle' ) &&
-		!isTracking
-	) {
-		isTracking = true;
-		mw.track( LOGGING_SCHEMA, { action: 'pageview' } );
-	}
-} );
 
 /**
  * @param {ext.popups.ReferencePreviewModel} model
@@ -108,7 +95,7 @@ export function renderReferencePreview(
 		$el.find( '.mwe-popups-container' ).addClass( 'footer-empty' );
 	}
 
-	if ( isTracking ) {
+	if ( isTrackingEnabled() ) {
 		$el.find( '.mw-parser-output' ).on( 'click', 'a', () => {
 			mw.track( LOGGING_SCHEMA, {
 				action: 'clickedReferencePreviewsContentLink'
@@ -121,7 +108,7 @@ export function renderReferencePreview(
 			// We are dealing with floating point numbers here when the page is zoomed!
 			scrolledToBottom = element.scrollTop >= element.scrollHeight - element.clientHeight - 1;
 
-		if ( isTracking ) {
+		if ( isTrackingEnabled() ) {
 			if ( !element.isOpenRecorded ) {
 				mw.track( LOGGING_SCHEMA, {
 					action: 'poppedOpen',
