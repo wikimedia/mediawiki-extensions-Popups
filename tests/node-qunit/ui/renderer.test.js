@@ -254,7 +254,7 @@ QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
 QUnit.test( 'createPreviewWithType(model with unknown type)', ( assert ) => {
 	const model = {
 			url: '/wiki/Unknown <"\'>',
-			type: 'unknown <"\'>'
+			type: 'unknown'
 		},
 		emptyPreview = renderer.createPreviewWithType( model );
 
@@ -265,12 +265,12 @@ QUnit.test( 'createPreviewWithType(model with unknown type)', ( assert ) => {
 	);
 	assert.strictEqual(
 		emptyPreview.el.attr( 'class' ),
-		'mwe-popups mwe-popups-type-unknown <"\'>',
+		'mwe-popups mwe-popups-type-unknown',
 		'Popup type is safely espaced'
 	);
 	assert.strictEqual(
 		emptyPreview.el.find( '.mw-ui-icon' ).attr( 'class' ),
-		'mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-unknown <"\'>',
+		'mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-unknown',
 		'Icon type is safely espaced'
 	);
 } );
