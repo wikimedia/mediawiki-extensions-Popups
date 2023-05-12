@@ -111,37 +111,8 @@ export function createNullModel( title, url ) {
  * @return {boolean}
  */
 const elementMatchesSelector = ( element, selector ) => {
-	try {
-		return element.matches( selector );
-	} catch ( e ) {
-		// The native element.matches method will fail if:
-		// 1) The method hasn't been implemented in the current browser
-		// 2) The method doesn't suppport :not with multiple arguments
-		// (https://caniuse.com/css-not-sel-list)
-		// The try / catch block can be removed if and when Popups is restricted
-		// to ES6 browsers.
-		return $( element ).is( selector );
-	}
+	return element.matches( selector );
 };
-
-/**
- * Emulates closest method for browsers that do not
- * support it. e.g. IE11.
- *
- * @param {Element} element
- * @param {string} selector
- * @return {Element|null}
- */
-function legacyClosest( element, selector ) {
-	const parentNode = element.parentNode;
-	if ( elementMatchesSelector( element, selector ) ) {
-		return element;
-	} else if ( !parentNode || parentNode === document.body ) {
-		// The `body` cannot be used as a preview selector.
-		return null;
-	}
-	return legacyClosest( parentNode, selector );
-}
 
 /**
  * Recursively checks the element and its parents.
@@ -150,13 +121,7 @@ function legacyClosest( element, selector ) {
  */
 export function findNearestEligibleTarget( element ) {
 	const selector = selectors.join( ', ' );
-	try {
-		return element.closest( selector );
-	} catch ( e ) {
-		// The browser either doesn't support the selector we gave it or doesn't
-		// have the closest method.
-		return legacyClosest( element, selector );
-	}
+	return element.closest( selector );
 }
 
 /**

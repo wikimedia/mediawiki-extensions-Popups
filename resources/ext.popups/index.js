@@ -1,7 +1,14 @@
 var types = require( './types.json' );
 // Load Popups when touch events are not available in the browser (e.g. not a mobile device).
 var isTouchDevice = 'ontouchstart' in document.documentElement;
-if ( !isTouchDevice ) {
+var supportNotQueries;
+try {
+	supportNotQueries = document.body.matches( 'div:not(.foo,.bar)' );
+	supportNotQueries = true;
+} catch ( e ) {
+	supportNotQueries = false;
+}
+if ( !isTouchDevice && supportNotQueries ) {
 	mw.loader.using( types.concat( [ 'ext.popups.main' ] ) ).then( function () {
 		// Load custom popup types
 		types.forEach( function ( moduleName ) {
