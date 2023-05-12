@@ -127,6 +127,18 @@ function createThumbnailImg( url ) {
 }
 
 /**
+ * Sets multiple attributes on a node.
+ *
+ * @param {HTMLElement} node
+ * @param {Record<String, String>} attrs
+ */
+const addAttributes = ( node, attrs ) => {
+	Object.keys( attrs ).forEach( ( key ) => {
+		node.setAttribute( key, attrs[ key ] );
+	} );
+};
+
+/**
  * Creates the SVG image element that represents the thumbnail.
  *
  * This function is distinct from `createThumbnail` as it abstracts away some
@@ -141,7 +153,7 @@ function createThumbnailImg( url ) {
  * @param {number} thumbnailHeight
  * @param {number} width
  * @param {number} height
- * @return {JQuery}
+ * @return {HTMLElement}
  */
 
 export function createThumbnailSVG(
@@ -162,28 +174,31 @@ export function createThumbnailSVG(
 	line.setAttribute( 'points', points.join( ' ' ) );
 	line.setAttribute( 'stroke-width', 1 );
 
-	const $thumbnailSVGImage = $( document.createElementNS( nsSvg, 'image' ) );
-	$thumbnailSVGImage[ 0 ].setAttributeNS( nsXlink, 'href', url );
+	const thumbnailSVGImage = document.createElementNS( nsSvg, 'image' );
+	thumbnailSVGImage.setAttributeNS( nsXlink, 'href', url );
 	// The following classes are used here:
 	// * mwe-popups-is-not-tall
 	// * mwe-popups-is-tall
-	$thumbnailSVGImage
-		.addClass( className )
-		.attr( {
+	thumbnailSVGImage.classList.add( className );
+	addAttributes(
+		thumbnailSVGImage,
+		{
 			x,
 			y,
 			width: thumbnailWidth,
 			height: thumbnailHeight
-		} );
+		}
+	);
 
-	const $thumbnail = $( document.createElementNS( nsSvg, 'svg' ) )
-		.attr( {
+	const thumbnail = document.createElementNS( nsSvg, 'svg' );
+	addAttributes(
+		thumbnail, {
 			xmlns: nsSvg,
 			width,
 			height
-		} )
-		.append( $thumbnailSVGImage );
-
-	$thumbnail.append( line );
-	return $thumbnail;
+		}
+	);
+	thumbnail.appendChild( thumbnailSVGImage );
+	thumbnail.appendChild( line );
+	return thumbnail;
 }

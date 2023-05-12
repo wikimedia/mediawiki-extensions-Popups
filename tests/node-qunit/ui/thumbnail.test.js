@@ -86,32 +86,32 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 		} );
 
 		assert.strictEqual(
-			+thumbnail.el.find( 'image' ).attr( 'x' ),
+			+$( thumbnail.el ).find( 'image' ).attr( 'x' ),
 			case_.expectedX,
 			`Image element x coordinate is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.find( 'image' ).attr( 'y' ),
+			+$( thumbnail.el ).find( 'image' ).attr( 'y' ),
 			case_.expectedY,
 			`Image element y coordinate is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.find( 'image' ).attr( 'width' ),
+			+$( thumbnail.el ).find( 'image' ).attr( 'width' ),
 			case_.width,
 			`Image element width is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.find( 'image' ).attr( 'height' ),
+			+$( thumbnail.el ).find( 'image' ).attr( 'height' ),
 			case_.height,
 			`Image element height is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.attr( 'width' ),
+			+$( thumbnail.el ).attr( 'width' ),
 			case_.expectedSVGWidth,
 			`Image SVG width is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.attr( 'height' ),
+			+$( thumbnail.el ).attr( 'height' ),
 			case_.expectedSVGHeight,
 			`Image SVG height is correct. ${case_.message}`
 		);
@@ -208,32 +208,32 @@ QUnit.test( 'createThumbnail - landscape image element', ( assert ) => {
 		} );
 
 		assert.strictEqual(
-			+thumbnail.el.find( 'image' ).attr( 'x' ),
+			+$( thumbnail.el ).find( 'image' ).attr( 'x' ),
 			case_.expectedX,
 			`Image x coordinate is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.find( 'image' ).attr( 'y' ),
+			+$( thumbnail.el ).find( 'image' ).attr( 'y' ),
 			case_.expectedY,
 			`Image y coordinate is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.find( 'image' ).attr( 'width' ),
+			+$( thumbnail.el ).find( 'image' ).attr( 'width' ),
 			case_.width,
 			`Image element width is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.find( 'image' ).attr( 'height' ),
+			+$( thumbnail.el ).find( 'image' ).attr( 'height' ),
 			case_.height,
 			`Image element height is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.attr( 'width' ),
+			+$( thumbnail.el ).attr( 'width' ),
 			case_.expectedSVGWidth,
 			`Image SVG width is correct. ${case_.message}`
 		);
 		assert.strictEqual(
-			+thumbnail.el.attr( 'height' ),
+			+$( thumbnail.el ).attr( 'height' ),
 			case_.expectedSVGHeight,
 			`Image SVG height is correct. ${case_.message}`
 		);
@@ -318,9 +318,10 @@ QUnit.test( 'createThumbnailSVG', ( assert ) => {
 			expectedPoints: '0 0 0 300'
 		}
 	].forEach( ( { className, expectedPoints, expectedHTML }, i ) => {
-		const $thumbnail = createThumbnailSVG(
+		const thumbnail = createThumbnailSVG(
 			className, url, x, y, thumbnailWidth, thumbnailHeight,
 			width, height );
+		const $thumbnail = $( thumbnail );
 
 		// Simplify HTML image test
 		const points = $thumbnail.find( 'polyline' ).attr( 'points' );

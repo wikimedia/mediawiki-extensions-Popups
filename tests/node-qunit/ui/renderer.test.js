@@ -135,8 +135,8 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 
 	assert.strictEqual( preview.hasThumbnail, true, 'Preview has thumbnail.' );
 	assert.deepEqual(
-		preview.thumbnail.el.html(),
-		createThumbnail( model.thumbnail ).el.html(),
+		$( preview.thumbnail.el ).html(),
+		$( createThumbnail( model.thumbnail ).el ).html(),
 		'Preview thumbnail is the correct one.'
 	);
 	assert.strictEqual(
