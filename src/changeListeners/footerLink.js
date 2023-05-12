@@ -12,31 +12,34 @@
  * # `#f-list`
  * # The parent element of `#footer li`, which is either an `ol` or `ul`.
  *
- * @return {JQuery} The link element
+ * @return {HTMLElement} The link element
  */
 function createFooterLink() {
-	const $link = $( '<li>' ).append(
-		$( '<a>' )
-			.attr( 'href', '#' )
-			.text( mw.message( 'popups-settings-enable' ).text() )
-	);
+	const footerListItem = document.createElement( 'li' );
+	const footerLinkElement = document.createElement( 'a' );
+	footerLinkElement.href = '#';
+	footerLinkElement.textContent = mw.message( 'popups-settings-enable' ).text();
+	footerListItem.appendChild( footerLinkElement );
 
 	// As yet, we don't know whether the link should be visible.
-	$link.hide();
+	footerListItem.style.display = 'none';
 
 	// From https://en.wikipedia.org/wiki/MediaWiki:Gadget-ReferenceTooltips.js,
 	// which was written by Yair rand <https://en.wikipedia.org/wiki/User:Yair_rand>.
 	// eslint-disable-next-line no-jquery/no-global-selector
-	let $footer = $( '#footer-places, #f-list' );
+	let footer = document.querySelector( '#footer-places, #f-list' );
 
-	if ( $footer.length === 0 ) {
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$footer = $( '#footer li' ).parent();
+	if ( !footer ) {
+		const footerLegacy = document.querySelector( '#footer li' );
+		if ( footerLegacy ) {
+			footer = footerLegacy.parentNode;
+		}
 	}
 
-	$footer.append( $link );
-
-	return $link;
+	if ( footer ) {
+		footer.appendChild( footerListItem );
+	}
+	return footerListItem;
 }
 
 /**
@@ -55,21 +58,21 @@ function createFooterLink() {
  * @return {ext.popups.ChangeListener}
  */
 export default function footerLink( boundActions ) {
-	let $footerLink;
+	let footerLinkElement;
 
 	return ( oldState, newState ) => {
-		if ( $footerLink === undefined ) {
-			$footerLink = createFooterLink();
-			$footerLink.on( 'click', ( e ) => {
+		if ( footerLinkElement === undefined ) {
+			footerLinkElement = createFooterLink();
+			footerLinkElement.addEventListener( 'click', ( e ) => {
 				e.preventDefault();
 				boundActions.showSettings();
 			} );
 		}
 
 		if ( newState.settings.shouldShowFooterLink ) {
-			$footerLink.show();
+			footerLinkElement.style.display = '';
 		} else {
-			$footerLink.hide();
+			footerLinkElement.style.display = 'none';
 		}
 	};
 }
