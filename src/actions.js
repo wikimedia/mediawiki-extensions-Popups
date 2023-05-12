@@ -162,11 +162,11 @@ export function fetch( gateway, title, el, token, type ) {
 				throw exception;
 			} );
 
-		return $.when(
+		return Promise.all( [
 			chain,
 			wait( getDwellDelay( type ) )
-		)
-			.then( ( result ) => {
+		] )
+			.then( ( [ result ] ) => {
 				dispatch( {
 					type: types.FETCH_COMPLETE,
 					el,

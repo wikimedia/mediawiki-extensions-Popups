@@ -222,6 +222,7 @@
 				"popups-refpreview-collapsible-placeholder"
 			],
 			"dependencies": [
+				"web2017-polyfills",
 				"ext.popups.icons",
 				"ext.popups.images",
 				"mediawiki.experiments",
