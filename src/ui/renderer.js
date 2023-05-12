@@ -51,10 +51,10 @@ export { pointerSize, landscapePopupWidth, portraitPopupWidth }; // for use in s
  * @return {void}
  */
 export function createPointerMasks( container ) {
-	$( '<div>' )
-		.attr( 'id', 'mwe-popups-svg' )
-		.html( pointerMaskSVG )
-		.appendTo( container );
+	const node = document.createElement( 'div' );
+	node.setAttribute( 'id', 'mwe-popups-svg' );
+	node.innerHTML = pointerMaskSVG;
+	container.appendChild( node );
 }
 
 /**
@@ -123,7 +123,7 @@ export function render( model ) {
 		 */
 		show( event, boundActions, token ) {
 			return show(
-				preview, event, $( event.target ), boundActions, token,
+				preview, event, event.target, boundActions, token,
 				document.body, document.documentElement.getAttribute( 'dir' )
 			);
 		},
@@ -254,7 +254,7 @@ export function createReferencePreview( model ) {
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.Measures} measures
- * @param {JQuery} $link event target
+ * @param {HTMLElement} _link event target (unused)
  * @param {ext.popups.PreviewBehavior} behavior
  * @param {string} token
  * @param {Object} container DOM object to which pointer masks are appended
@@ -263,7 +263,7 @@ export function createReferencePreview( model ) {
  *                                faded in.
  */
 export function show(
-	preview, measures, $link, behavior, token, container, dir
+	preview, measures, _link, behavior, token, container, dir
 ) {
 	const layout = createLayout(
 		preview.isTall,
@@ -272,18 +272,18 @@ export function show(
 		dir
 	);
 
-	preview.el.appendTo( container );
+	container.appendChild( preview.el );
 
 	layoutPreview(
 		preview, layout, getClasses( preview, layout ),
 		SIZES.landscapeImage.h, pointerSize, measures.windowHeight
 	);
 
-	preview.el.show();
+	preview.el.style.display = 'block';
 
 	// Trigger fading effect for reference previews after the popup has been rendered
-	if ( preview.el.hasClass( 'mwe-popups-type-reference' ) ) {
-		preview.el.find( '.mwe-popups-scroll' ).first().trigger( 'scroll' );
+	if ( preview.el.classList.contains( 'mwe-popups-type-reference' ) ) {
+		preview.el.querySelector( '.mwe-popups-scroll' ).dispatchEvent( new Event( 'scroll' ) );
 	}
 
 	return wait( 200 )
@@ -301,18 +301,20 @@ export function show(
  * @return {void}
  */
 export function bindBehavior( preview, behavior ) {
-	preview.el.on( 'mouseenter', behavior.previewDwell )
-		.on( 'mouseleave', behavior.previewAbandon );
+	preview.el.addEventListener( 'mouseenter', behavior.previewDwell );
+	preview.el.addEventListener( 'mouseleave', behavior.previewAbandon );
 
-	preview.el.click( behavior.click );
+	preview.el.addEventListener( 'click', behavior.click );
 
-	preview.el.find( '.mwe-popups-settings-icon' )
-		.attr( 'href', behavior.settingsUrl )
-		.click( ( event ) => {
+	const icon = preview.el.querySelector( '.mwe-popups-settings-icon' );
+	if ( icon ) {
+		icon.href = behavior.settingsUrl;
+		icon.addEventListener( 'click', ( event ) => {
 			event.stopPropagation();
 
 			behavior.showSettings( event );
 		} );
+	}
 }
 
 /**
@@ -324,7 +326,7 @@ export function bindBehavior( preview, behavior ) {
  */
 export function hide( preview ) {
 	// FIXME: This method clearly needs access to the layout of the preview.
-	const fadeInClass = ( preview.el.hasClass( 'mwe-popups-fade-in-up' ) ) ?
+	const fadeInClass = ( preview.el.classList.contains( 'mwe-popups-fade-in-up' ) ) ?
 		'mwe-popups-fade-in-up' :
 		'mwe-popups-fade-in-down';
 
@@ -334,9 +336,9 @@ export function hide( preview ) {
 
 	// Classes documented above
 	// eslint-disable-next-line mediawiki/class-doc
-	preview.el
-		.removeClass( fadeInClass )
-		.addClass( fadeOutClass );
+	preview.el.classList.remove( fadeInClass );
+	// eslint-disable-next-line mediawiki/class-doc
+	preview.el.classList.add( fadeOutClass );
 
 	return wait( 150 ).then( () => {
 		preview.el.remove();
@@ -534,10 +536,8 @@ export function layoutPreview(
 		!flippedY && !isTall && hasThumbnail &&
 			thumbnail.height < predefinedLandscapeImageHeight && !supportsCSSClipPath()
 	) {
-		popup.find( '.mwe-popups-extract' ).css(
-			'margin-top',
-			thumbnail.height - pointerSpaceSize
-		);
+		const popupExtract = popup.querySelector( '.mwe-popups-extract' );
+		popupExtract.style.marginTop = `${( thumbnail.height - pointerSpaceSize )}px`;
 	}
 
 	// The following classes are used here:
@@ -550,13 +550,11 @@ export function layoutPreview(
 	// * mwe-popups-is-not-tall
 	// * mwe-popups-is-tall
 	// * mwe-popups-no-image-pointer
-	popup.addClass( classes );
+	popup.classList.add.apply( popup.classList, classes );
 
-	popup.css( {
-		left: `${layout.offset.left}px`,
-		top: flippedY ? 'auto' : layout.offset.top,
-		bottom: flippedY ? `${windowHeight - layout.offset.top}px` : 'auto'
-	} );
+	popup.style.left = `${layout.offset.left}px`;
+	popup.style.top = flippedY ? 'auto' : `${layout.offset.top}px`;
+	popup.style.bottom = flippedY ? `${windowHeight - layout.offset.top}px` : 'auto';
 
 	if ( hasThumbnail && !supportsCSSClipPath() ) {
 		setThumbnailClipPath( preview, layout );
@@ -606,7 +604,7 @@ export function setThumbnailClipPath(
 			`matrix(${matrix.scaleX} 0 0 1 ${matrix.translateX} 0)`
 		);
 
-		el.find( 'image' )[ 0 ]
+		el.querySelector( 'image' )
 			.setAttribute( 'clip-path', `url(#${maskID})` );
 	}
 }

@@ -3,6 +3,9 @@ import createReferenceGateway from '../../../src/gateway/reference';
 
 QUnit.module( 'ext.popups/gateway/reference', {
 	beforeEach() {
+		global.CSS = {
+			escape: ( str ) => $.escapeSelector( str )
+		};
 		mw.msg = ( key ) => `<${key}>`;
 		mw.message = ( key ) => {
 			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${key}>` };

@@ -10,7 +10,7 @@ QUnit.module( 'ext.popups/changeListeners/linkTitle', {
 		this.state = {
 			preview: {
 				enabled: { page: true },
-				activeLink: this.$link,
+				activeLink: this.$link[ 0 ],
 				previewType: 'page'
 			}
 		};
@@ -71,7 +71,7 @@ QUnit.test( 'it should restore the title when the user dwells on another link im
 
 	let nextState = $.extend( true, {}, this.state, {
 		preview: {
-			activeLink: $anotherLink
+			activeLink: $anotherLink[ 0 ]
 		}
 	} );
 
