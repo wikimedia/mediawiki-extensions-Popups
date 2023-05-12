@@ -44,7 +44,7 @@ function escapeChoices( choices = [] ) {
 
 /**
  * @param {SettingsModel} model
- * @return {JQuery}
+ * @return {Element}
  */
 export function renderSettingsDialog( model ) {
 	const heading = escapeHTML( model.heading ),
@@ -53,7 +53,8 @@ export function renderSettingsDialog( model ) {
 		helpText = escapeHTML( model.helpText ),
 		okLabel = escapeHTML( model.okLabel ),
 		choices = escapeChoices( model.choices );
-	return $( $.parseHTML( `
+	const node = document.createElement( 'div' );
+	node.innerHTML = `
 		<section id='mwe-popups-settings'>
 			<header>
 				<div>
@@ -86,5 +87,6 @@ export function renderSettingsDialog( model ) {
 				<p>${helpText}</p>
 			</div>
 		</section>
-	`.trim() ) );
+	`.trim();
+	return node.querySelector( 'section' );
 }

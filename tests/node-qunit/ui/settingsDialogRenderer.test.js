@@ -1,4 +1,4 @@
-import createSettingsDialogRenderer from '../../../src/ui/settingsDialogRenderer';
+import createSettingsDialogRenderer, { toggleHelp } from '../../../src/ui/settingsDialogRenderer';
 
 QUnit.module( 'ext.popups/settingsDialogRenderer', {
 	beforeEach() {
@@ -20,6 +20,21 @@ QUnit.module( 'ext.popups/settingsDialogRenderer', {
 		mw.template = null;
 		mw.html = null;
 	}
+} );
+
+QUnit.test( '#toggleHelp', ( assert ) => {
+	const dialog = document.createElement( 'div' );
+	const main = document.createElement( 'main' );
+	const save = document.createElement( 'button' );
+	save.classList.add( 'mwe-popups-settings-help' );
+	dialog.appendChild( main );
+	dialog.appendChild( save );
+	toggleHelp( dialog, true );
+	assert.strictEqual( main.style.display, 'none' );
+	assert.strictEqual( save.style.display, '' );
+	toggleHelp( dialog, false );
+	assert.strictEqual( main.style.display, '' );
+	assert.strictEqual( save.style.display, 'none' );
 } );
 
 QUnit.test( '#render', ( assert ) => {

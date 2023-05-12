@@ -9,7 +9,7 @@ import { previewTypes } from '../preview/model';
  * Create the settings dialog shown to anonymous users.
  *
  * @param {boolean} referencePreviewsAvaliable
- * @return {JQuery} settings dialog
+ * @return {HTMLElement} settings dialog
  */
 export function createSettingsDialog( referencePreviewsAvaliable ) {
 	const choices = [

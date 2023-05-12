@@ -15,15 +15,15 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 	/**
 	 * Cached settings dialog
 	 *
-	 * @type {JQuery}
+	 * @type {HTMLElement}
 	 */
-	let $dialog,
+	let dialog,
 		/**
 		 * Cached settings overlay
 		 *
-		 * @type {JQuery}
+		 * @type {HTMLElement}
 		 */
-		$overlay;
+		overlay;
 
 	/**
 	 * Renders the relevant form and labels in the settings dialog
@@ -32,20 +32,22 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 	 * @return {Object} object with methods to affect the rendered UI
 	 */
 	return ( boundActions ) => {
-		if ( !$dialog ) {
-			$dialog = createSettingsDialog( referencePreviewsAvaliable );
-			$overlay = $( '<div>' ).addClass( 'mwe-popups-overlay' );
+		if ( !dialog ) {
+			dialog = createSettingsDialog( referencePreviewsAvaliable );
+			overlay = document.createElement( 'div' );
+			overlay.classList.add( 'mwe-popups-overlay' );
 
 			// Setup event bindings
 
-			$dialog.find( '.save' ).on( 'click', () => {
+			dialog.querySelector( '.save' ).addEventListener( 'click', () => {
 				const enabled = {};
-				$dialog.find( 'input' ).each( ( index, el ) => {
-					enabled[ el.value ] = $( el ).is( ':checked' );
+				Array.prototype.forEach.call( dialog.querySelectorAll( 'input' ), ( el ) => {
+					enabled[ el.value ] = el.matches( ':checked' );
 				} );
 				boundActions.saveSettings( enabled );
 			} );
-			$dialog.find( '.close, .okay' ).on( 'click', boundActions.hideSettings );
+			dialog.querySelector( '.close' ).addEventListener( 'click', boundActions.hideSettings );
+			dialog.querySelector( '.okay' ).addEventListener( 'click', boundActions.hideSettings );
 		}
 
 		return {
@@ -55,22 +57,22 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 			 * @param {HTMLElement} el
 			 */
 			appendTo( el ) {
-				$overlay.appendTo( el );
-				$dialog.appendTo( $overlay );
+				el.appendChild( overlay );
+				overlay.appendChild( dialog );
 			},
 
 			/**
 			 * Show the settings element and position it correctly
 			 */
 			show() {
-				$overlay.show();
+				overlay.style.display = '';
 			},
 
 			/**
 			 * Hide the settings dialog.
 			 */
 			hide() {
-				$overlay.hide();
+				overlay.style.display = 'none';
 			},
 
 			/**
@@ -79,7 +81,7 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 			 * @param {boolean} visible if you want to show or hide the help dialog
 			 */
 			toggleHelp( visible ) {
-				toggleHelp( $dialog, visible );
+				toggleHelp( dialog, visible );
 			},
 
 			/**
@@ -89,8 +91,10 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 			 */
 			setEnabled( enabled ) {
 				Object.keys( enabled ).forEach( ( type ) => {
-					$dialog.find( '#mwe-popups-settings-' + type )
-						.prop( 'checked', enabled[ type ] );
+					const node = dialog.querySelector( `#mwe-popups-settings-${type}` );
+					if ( node ) {
+						node.checked = enabled[ type ];
+					}
 				} );
 			}
 		};
@@ -98,22 +102,39 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 }
 
 /**
+ * @param {NodeList} nodes
+ */
+function hideAll( nodes ) {
+	Array.prototype.forEach.call( nodes, ( node ) => {
+		node.style.display = 'none';
+	} );
+}
+
+/**
+ * @param {NodeList} nodes
+ */
+function showAll( nodes ) {
+	Array.prototype.forEach.call( nodes, ( node ) => {
+		node.style.display = '';
+	} );
+}
+
+/**
  * Toggles the visibility between a form and the help
  *
- * @param {jQuery.Object} $el element that contains form and help
+ * @param {HTMLElement} dialog element that contains form and help
  * @param {boolean} visible if the help should be visible, or the form
  */
-function toggleHelp( $el, visible ) {
-	// eslint-disable-next-line no-jquery/no-global-selector
-	const $dialog = $( '#mwe-popups-settings' ),
+export function toggleHelp( dialog, visible ) {
+	const
 		formSelectors = 'main, .save, .close',
 		helpSelectors = '.mwe-popups-settings-help, .okay';
 
 	if ( visible ) {
-		$dialog.find( formSelectors ).hide();
-		$dialog.find( helpSelectors ).show();
+		hideAll( dialog.querySelectorAll( formSelectors ) );
+		showAll( dialog.querySelectorAll( helpSelectors ) );
 	} else {
-		$dialog.find( formSelectors ).show();
-		$dialog.find( helpSelectors ).hide();
+		showAll( dialog.querySelectorAll( formSelectors ) );
+		hideAll( dialog.querySelectorAll( helpSelectors ) );
 	}
 }
