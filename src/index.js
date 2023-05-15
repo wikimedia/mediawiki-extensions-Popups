@@ -135,6 +135,11 @@ function registerChangeListeners(
  */
 function handleDOMEventIfEligible( handler ) {
 	return function ( event ) {
+		// If the event bubbles up all the way,
+		// document does not have closest method, so exit early (T336650).
+		if ( event.target === document ) {
+			return;
+		}
 		const target = findNearestEligibleTarget( event.target );
 		if ( target === null ) {
 			return;
