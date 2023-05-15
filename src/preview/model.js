@@ -116,6 +116,7 @@ const elementMatchesSelector = ( element, selector ) => {
 
 /**
  * Recursively checks the element and its parents.
+ *
  * @param {Element} element
  * @return {Element|null}
  */

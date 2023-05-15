@@ -165,7 +165,6 @@ export function createPreviewWithType( model ) {
 }
 
 function supportsCSSClipPath() {
-	/* eslint-disable compat/compat */
 	return window.CSS &&
 		typeof CSS.supports === 'function' &&
 		CSS.supports( 'clip-path', 'polygon(1px 1px)' );
