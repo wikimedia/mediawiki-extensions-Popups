@@ -7,7 +7,8 @@
 			"Johanna Strodt (WMDE)",
 			"Jon Harald Søby",
 			"Kingu",
-			"Orf3us"
+			"Orf3us",
+			"Abuluntu"
 		]
 	},
 	"popups-message": "Forhåndsvisninger",
@@ -21,7 +22,7 @@
 	"popups-settings-save": "Lagre",
 	"popups-settings-help-ok": "Ferdig",
 	"popups-settings-cancel": "Avbryt",
-	"popups-settings-help": "Du kan skru på igjen forhåndsvisning ved å bruke lenken i sidens bunntekst.",
+	"popups-settings-help": "Du kan skru på forhåndsvisning igjen ved å bruke lenken i sidens bunntekst.",
 	"popups-settings-enable": "Skru på forhåndsvisning",
 	"popups-preview-no-preview": "Det oppstod en feil under fremvisning av forhåndsvisningen.",
 	"popups-preview-footer-read": "Gå til denne siden",
@@ -32,7 +33,7 @@
 	"popups-prefs-optin-enabled-label": "Slå på",
 	"popups-prefs-optin-disabled-label": "Slå av",
 	"popups-prefs-disable-nav-gadgets-info": "Du må [[$1 |slå av tilleggsfunksjonen «Navigation Popups»]] for å kunne slå på sideforhåndsvisning",
-	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke denne funksjonen. Om du opplever problemer, sjekk dine tilleggsfunksjoner og brukerscript, inkludert dine globale script.",
+	"popups-prefs-conflicting-gadgets-info": "Visse tilleggsfunksjoner og andre tilpasninger kan påvirke denne funksjonen. Om du opplever problemer, sjekk dine tilleggsfunksjoner og brukerskript, inkludert dine globale skript.",
 	"popups-refpreview-reference": "Referanse",
 	"popups-refpreview-book": "Bokreferanse",
 	"popups-refpreview-journal": "Tidsskriftreferanse",
