@@ -197,7 +197,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiUnitTestCase {
 			self::GADGET_ENABLED );
 	}
 
-	public function provideGadgetNamesWithSanitizedVersion() {
+	public static function provideGadgetNamesWithSanitizedVersion() {
 		return [
 			[ ' Popups ', 'Popups' ],
 			[ 'Navigation_popups-API', 'Navigation_popups-API' ],

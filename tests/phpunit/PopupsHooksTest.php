@@ -209,7 +209,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			->onBeforePageDisplay( $outPageMock, $skinMock );
 	}
 
-	public function providerOnBeforePageDisplay() {
+	public static function providerOnBeforePageDisplay() {
 		return [
 			[ false, false, false ],
 			[ true, true, false ],
@@ -334,7 +334,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			->onLocalUserCreated( $userMock, false );
 	}
 
-	public function provideReferencePreviewsBetaFlag() {
+	public static function provideReferencePreviewsBetaFlag() {
 		return [
 			[ false ],
 			[ true ],

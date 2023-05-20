@@ -73,7 +73,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			'The previews opt-in is ' . ( $expected ? 'shown.' : 'hidden.' ) );
 	}
 
-	public function provideConfigForShowPreviewsInOptIn() {
+	public static function provideConfigForShowPreviewsInOptIn() {
 		return [
 			[
 				[
@@ -127,7 +127,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
 	}
 
-	public function provideTestDataForShouldSendModuleToUser() {
+	public static function provideTestDataForShouldSendModuleToUser() {
 		return [
 			[
 				'optin' => PopupsContext::PREVIEWS_ENABLED,
@@ -165,7 +165,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			'Dependencies are ' . ( $expected ? '' : 'not ' ) . 'met.' );
 	}
 
-	public function provideTestDataForTestAreDependenciesMet() {
+	public static function provideTestDataForTestAreDependenciesMet() {
 		return [
 			// Dependencies are met
 			[
@@ -213,7 +213,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			'The title is' . ( $expected ? ' ' : ' not ' ) . 'excluded.' );
 	}
 
-	public function provideTestIsTitleExcluded() {
+	public static function provideTestIsTitleExcluded() {
 		$excludedPages = [ 'Special:Userlogin', 'Special:CreateAccount', 'User:A' ];
 		return [
 			[ $excludedPages, Title::newFromText( 'Main_Page' ), false ],
@@ -305,7 +305,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function provideTestGetConfigBitmaskFromUser() {
+	public static function provideTestGetConfigBitmaskFromUser() {
 		return [
 			[
 				true,
