@@ -30,7 +30,7 @@
 	"popups-prefs-optin-enabled-label": "Vključi",
 	"popups-prefs-optin-disabled-label": "Izključi",
 	"popups-prefs-disable-nav-gadgets-info": "Če želiš vključiti povzetke strani, moraš [[$1 | izključiti Navigacijske izskokce]] na zavihku Vtičniki",
-	"popups-prefs-conflicting-gadgets-info": "Na delovsnje te možnosti lahko vplivajo nekateri pripomočki in druge prilagoditve. Če naletite na težavo, preverite svoje pripomočke in uporabniške skripte, vključno z globalnimi.",
+	"popups-prefs-conflicting-gadgets-info": "Na delovanje te možnosti lahko vplivajo nekateri pripomočki in druge prilagoditve. Če naletite na težavo, preverite svoje pripomočke in uporabniške skripte, vključno z globalnimi.",
 	"popups-refpreview-reference": "Sklic",
 	"popups-refpreview-book": "Sklic na knjigo",
 	"popups-refpreview-journal": "Sklic na revijo",
