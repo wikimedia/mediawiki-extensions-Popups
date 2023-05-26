@@ -10,7 +10,7 @@ const templateHTML = `
 /**
  * @param {ext.popups.previewTypes} type
  * @param {Element} element The contents of the popup.
- * @return {JQuery}
+ * @return {Element}
  */
 
 export function renderPopup( type, container ) {
@@ -23,5 +23,5 @@ export function renderPopup( type, container ) {
 	element.className = `mwe-popups mwe-popups-type-${type}`;
 	container.className = 'mwe-popups-container';
 	element.appendChild( container );
-	return $( element );
+	return element;
 }

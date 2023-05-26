@@ -19,9 +19,8 @@ export default function linkTitle() {
 	function destroyTitleAttr( el ) {
 		// Has the user dwelled on a link? If we've already removed its title attribute, then NOOP.
 		if ( el && !savedTitle ) {
-			const $el = $( el );
-			savedTitle = $el.attr( 'title' );
-			$el.attr( 'title', '' );
+			savedTitle = el.getAttribute( 'title' );
+			el.setAttribute( 'title', '' );
 		}
 	}
 
@@ -33,7 +32,7 @@ export default function linkTitle() {
 	function restoreTitleAttr( el ) {
 		// Avoid overwriting a non-empty title with an empty one, just to be sure
 		if ( el && savedTitle ) {
-			$( el ).attr( 'title', savedTitle );
+			el.setAttribute( 'title', savedTitle );
 			savedTitle = undefined;
 		}
 	}

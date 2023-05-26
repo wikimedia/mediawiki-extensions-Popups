@@ -19,7 +19,7 @@ function createPagePreview( isTall, hasThumbnail, thumbnail ) {
 			hasThumbnail ? $( '<image>' ) : '',
 			$( '<a>' ).addClass( 'mwe-popups-extract' ).text( 'extract' ),
 			$( '<a>' ).addClass( 'mwe-popups-settings-icon' )
-		),
+		)[ 0 ],
 		isTall,
 		hasThumbnail,
 		thumbnail
@@ -145,28 +145,28 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 		'Preview is tall (because the thumbnail is tall).'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-extract' ).text(),
+		$( preview.el ).find( '.mwe-popups-extract' ).text(),
 		'This is a test page.',
 		'Preview extract is correct.'
 	);
 
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-extract' ).attr( 'href' ),
+		$( preview.el ).find( '.mwe-popups-extract' ).attr( 'href' ),
 		'https://en.wikipedia.org/wiki/Test <"\'>',
 		'URL is safely espaced'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-extract' ).attr( 'lang' ),
+		$( preview.el ).find( '.mwe-popups-extract' ).attr( 'lang' ),
 		'en <"\'>',
 		'Language code is safely espaced'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-extract' ).attr( 'dir' ),
+		$( preview.el ).find( '.mwe-popups-extract' ).attr( 'dir' ),
 		'ltr <"\'>',
 		'Language direction is safely espaced'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-settings-icon' ).attr( 'title' ),
+		$( preview.el ).find( '.mwe-popups-settings-icon' ).attr( 'title' ),
 		'<popups-settings-icon-gear-title>',
 		'Title attribute is correct.'
 	);
@@ -197,22 +197,22 @@ QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
 	);
 
 	assert.strictEqual(
-		emptyPreview.el.find( '.mwe-popups-title' ).text().trim(),
+		$( emptyPreview.el ).find( '.mwe-popups-title' ).text().trim(),
 		'',
 		'Empty preview title is hidden.'
 	);
 	assert.strictEqual(
-		emptyPreview.el.find( '.mwe-popups-extract' ).text().trim(),
+		$( emptyPreview.el ).find( '.mwe-popups-extract' ).text().trim(),
 		'<popups-preview-no-preview>',
 		'Empty preview extract is correct.'
 	);
 	assert.strictEqual(
-		emptyPreview.el.find( '.mwe-popups-read-link' ).text().trim(),
+		$( emptyPreview.el ).find( '.mwe-popups-read-link' ).text().trim(),
 		'<popups-preview-footer-read>',
 		'Empty preview link text is correct.'
 	);
 	assert.strictEqual(
-		emptyPreview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
+		$( emptyPreview.el ).find( '.mwe-popups-read-link' ).attr( 'href' ),
 		'https://en.wikipedia.org/wiki/Test <"\'>',
 		'URL is safely espaced'
 	);
@@ -235,17 +235,17 @@ QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
 	);
 
 	assert.strictEqual(
-		emptyPreview.el.find( '.mwe-popups-title' ).text().trim(),
+		$( emptyPreview.el ).find( '.mwe-popups-title' ).text().trim(),
 		'',
 		'Empty preview title is hidden.'
 	);
 	assert.strictEqual(
-		emptyPreview.el.find( '.mwe-popups-extract' ).text().trim(),
+		$( emptyPreview.el ).find( '.mwe-popups-extract' ).text().trim(),
 		'<popups-preview-no-preview>',
 		'Empty preview extract is correct.'
 	);
 	assert.strictEqual(
-		emptyPreview.el.find( '.mwe-popups-read-link' ).text().trim(),
+		$( emptyPreview.el ).find( '.mwe-popups-read-link' ).text().trim(),
 		'<popups-preview-footer-read>',
 		'Empty preview link text is correct.'
 	);
@@ -259,17 +259,17 @@ QUnit.test( 'createPreviewWithType(model with unknown type)', ( assert ) => {
 		emptyPreview = renderer.createPreviewWithType( model );
 
 	assert.strictEqual(
-		emptyPreview.el.find( '.mwe-popups-extract' ).attr( 'href' ),
+		$( emptyPreview.el ).find( '.mwe-popups-extract' ).attr( 'href' ),
 		'/wiki/Unknown <"\'>',
 		'URL is safely espaced'
 	);
 	assert.strictEqual(
-		emptyPreview.el.attr( 'class' ),
+		$( emptyPreview.el ).attr( 'class' ),
 		'mwe-popups mwe-popups-type-unknown',
 		'Popup type is safely espaced'
 	);
 	assert.strictEqual(
-		emptyPreview.el.find( '.mw-ui-icon' ).attr( 'class' ),
+		$( emptyPreview.el ).find( '.mw-ui-icon' ).attr( 'class' ),
 		'mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-unknown',
 		'Icon type is safely espaced'
 	);
@@ -300,22 +300,22 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 	);
 
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-title' ).text().trim(),
+		$( preview.el ).find( '.mwe-popups-title' ).text().trim(),
 		'Barack (disambiguation)',
 		'Preview title is show.'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-extract' ).text().trim(),
+		$( preview.el ).find( '.mwe-popups-extract' ).text().trim(),
 		'<popups-preview-disambiguation>',
 		'Preview extract is correct.'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-read-link' ).text().trim(),
+		$( preview.el ).find( '.mwe-popups-read-link' ).text().trim(),
 		'<popups-preview-disambiguation-link>',
 		'Preview link text is correct.'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-read-link' ).attr( 'href' ),
+		$( preview.el ).find( '.mwe-popups-read-link' ).attr( 'href' ),
 		'url/Barack (disambiguation) <"\'>',
 		'URL is safely espaced'
 	);
@@ -338,15 +338,15 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 	assert.strictEqual( preview.isTall, false );
 
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-title' ).text().trim(),
+		$( preview.el ).find( '.mwe-popups-title' ).text().trim(),
 		'<popups-refpreview-web>'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mw-parser-output' ).text().trim(),
+		$( preview.el ).find( '.mw-parser-output' ).text().trim(),
 		'Custom extract with an internal and an external link'
 	);
 	assert.strictEqual(
-		preview.el.find( 'a[target="_blank"]' ).length,
+		$( preview.el ).find( 'a[target="_blank"]' ).length,
 		1,
 		'only external links open in new tabs'
 	);
@@ -365,11 +365,11 @@ QUnit.test( 'createReferencePreview collapsible/sortable handling', ( assert ) =
 		},
 		preview = renderer.createPreviewWithType( model );
 
-	assert.strictEqual( preview.el.find( '.mw-collapsible, .sortable, .headerSort' ).length, 0 );
-	assert.strictEqual( preview.el.find( 'th' ).attr( 'tabindex' ), undefined );
-	assert.strictEqual( preview.el.find( 'th' ).attr( 'title' ), undefined );
+	assert.strictEqual( $( preview.el ).find( '.mw-collapsible, .sortable, .headerSort' ).length, 0 );
+	assert.strictEqual( $( preview.el ).find( 'th' ).attr( 'tabindex' ), undefined );
+	assert.strictEqual( $( preview.el ).find( 'th' ).attr( 'title' ), undefined );
 	assert.strictEqual(
-		preview.el.find( '.mwe-collapsible-placeholder' ).text(),
+		$( preview.el ).find( '.mwe-collapsible-placeholder' ).text(),
 		'<popups-refpreview-collapsible-placeholder>'
 	);
 } );
@@ -387,7 +387,7 @@ QUnit.test( 'createReferencePreview default title', ( assert ) => {
 		preview = renderer.createPreviewWithType( model );
 
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-title' ).text().trim(),
+		$( preview.el ).find( '.mwe-popups-title' ).text().trim(),
 		'<popups-refpreview-reference>'
 	);
 } );
@@ -403,9 +403,9 @@ QUnit.test( 'createReferencePreview updates fade-out effect on scroll', ( assert
 			type: previewTypes.TYPE_REFERENCE
 		},
 		preview = renderer.createPreviewWithType( model ),
-		$extract = preview.el.find( '.mwe-popups-extract' );
+		$extract = $( preview.el ).find( '.mwe-popups-extract' );
 
-	$extract.children().trigger( 'scroll' );
+	$extract.children()[ 0 ].dispatchEvent( new Event( 'scroll' ) );
 
 	assert.false( $extract.children()[ 0 ].isScrolling );
 	assert.false( $extract.hasClass( 'mwe-popups-fade-out' ) );
@@ -416,7 +416,7 @@ QUnit.test( 'bindBehavior - preview dwell', function ( assert ) {
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
-	preview.el.mouseenter();
+	preview.el.dispatchEvent( new Event( 'mouseenter' ) );
 
 	assert.strictEqual( behavior.previewDwell.callCount, 1, 'Preview dwell is called.' );
 	assert.false(
@@ -430,7 +430,7 @@ QUnit.test( 'bindBehavior - preview abandon', function ( assert ) {
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
-	preview.el.mouseleave();
+	preview.el.dispatchEvent( new Event( 'mouseleave' ) );
 
 	assert.false( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
 	assert.strictEqual( behavior.previewAbandon.callCount, 1, 'Preview abandon is called.' );
@@ -443,7 +443,7 @@ QUnit.test( 'bindBehavior - preview click', function ( assert ) {
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
-	preview.el.click();
+	preview.el.dispatchEvent( new Event( 'click' ) );
 
 	assert.false( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
 	assert.false(
@@ -458,7 +458,7 @@ QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
-	preview.el.find( '.mwe-popups-settings-icon' ).click();
+	preview.el.querySelector( '.mwe-popups-settings-icon' ).dispatchEvent( new Event( 'click' ) );
 
 	assert.false( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
 	assert.false(
@@ -475,7 +475,7 @@ QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
 	renderer.bindBehavior( preview, behavior );
 
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-settings-icon' ).attr( 'href' ),
+		$( preview.el ).find( '.mwe-popups-settings-icon' ).attr( 'href' ),
 		behavior.settingsUrl,
 		'Settings link URL is correct.'
 	);
@@ -506,7 +506,7 @@ QUnit.test( 'show', function ( assert ) {
 		token = 'some-token',
 		$container = $( '<div>' );
 
-	preview.el.show = this.sandbox.stub();
+	$( preview.el ).show = this.sandbox.stub();
 
 	const showPreview = renderer.show(
 		preview, measures, {}, behavior, token, $container.get( 0 ), 'ltr' );
@@ -516,8 +516,9 @@ QUnit.test( 'show', function ( assert ) {
 		'',
 		'Container is not empty.'
 	);
-	assert.true(
-		preview.el.show.calledOnce,
+	assert.strictEqual(
+		preview.el.style.display,
+		'block',
 		'Preview has been shown.'
 	);
 
@@ -531,7 +532,7 @@ QUnit.test( 'show', function ( assert ) {
 
 QUnit.test( 'hide - fade out up', ( assert ) => {
 	const preview = {
-			el: $( '<div>' ).addClass( 'mwe-popups-fade-in-down' ),
+			el: $( '<div>' ).addClass( 'mwe-popups-fade-in-down' )[ 0 ],
 			hasThumbnail: false,
 			thumbnail: null,
 			isTall: false
@@ -540,11 +541,11 @@ QUnit.test( 'hide - fade out up', ( assert ) => {
 		hidePreview = renderer.hide( preview );
 
 	assert.true(
-		preview.el.hasClass( 'mwe-popups-fade-out-up' ),
+		$( preview.el ).hasClass( 'mwe-popups-fade-out-up' ),
 		'Thumbnail has faded out up.'
 	);
 	assert.false(
-		preview.el.hasClass( 'mwe-popups-fade-in-down' ),
+		$( preview.el ).hasClass( 'mwe-popups-fade-in-down' ),
 		'Fade-in class has been removed.'
 	);
 	assert.notStrictEqual(
@@ -563,7 +564,7 @@ QUnit.test( 'hide - fade out up', ( assert ) => {
 
 QUnit.test( 'hide - fade out down', ( assert ) => {
 	const preview = {
-			el: $( '<div>' ).addClass( 'mwe-popups-fade-in-up' ),
+			el: $( '<div>' ).addClass( 'mwe-popups-fade-in-up' )[ 0 ],
 			hasThumbnail: false,
 			thumbnail: null,
 			isTall: false
@@ -572,11 +573,11 @@ QUnit.test( 'hide - fade out down', ( assert ) => {
 		hidePreview = renderer.hide( preview );
 
 	assert.true(
-		preview.el.hasClass( 'mwe-popups-fade-out-down' ),
+		$( preview.el ).hasClass( 'mwe-popups-fade-out-down' ),
 		'Thumbnail has faded out down.'
 	);
 	assert.false(
-		preview.el.hasClass( 'mwe-popups-fade-in-up' ),
+		$( preview.el ).hasClass( 'mwe-popups-fade-in-up' ),
 		'Fade-in class has been removed.'
 	);
 	assert.notStrictEqual(
@@ -1038,16 +1039,17 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.true(
-		classes.every( ( c ) => preview.el.hasClass( c ) ),
+		classes.every( ( c ) => $( preview.el ).hasClass( c ) ),
 		'Classes have been added.'
 	);
+
 	assert.strictEqual(
-		preview.el.css( 'top' ),
+		$( preview.el ).css( 'top' ),
 		`${layout.offset.top}px`,
 		'Top is correct.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'left' ),
+		$( preview.el ).css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
 	);
@@ -1073,25 +1075,25 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function 
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.true(
-		classes.every( ( c ) => preview.el.hasClass( c ) ),
+		classes.every( ( c ) => $( preview.el ).hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'top' ),
+		$( preview.el ).css( 'top' ),
 		`${layout.offset.top}px`,
 		'Top is correct.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'left' ),
+		$( preview.el ).css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
 	);
 	assert.false(
-		preview.el.hasClass( 'mwe-popups-no-image-pointer' ),
+		$( preview.el ).hasClass( 'mwe-popups-no-image-pointer' ),
 		'A class has been removed.'
 	);
 	assert.strictEqual(
-		preview.el.find( 'image' ).attr( 'clip-path' ),
+		$( preview.el ).find( 'image' ).attr( 'clip-path' ),
 		'url(#mwe-popups-landscape-mask)',
 		'Image clip path is correct.'
 	);
@@ -1117,26 +1119,26 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.true(
-		classes.every( ( c ) => preview.el.hasClass( c ) ),
+		classes.every( ( c ) => $( preview.el ).hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'top' ),
+		$( preview.el ).css( 'top' ),
 		`${layout.offset.top}px`,
 		'Top is correct.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'left' ),
+		$( preview.el ).css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-extract' ).css( 'margin-top' ),
+		$( preview.el ).find( '.mwe-popups-extract' ).css( 'margin-top' ),
 		`${199 - 8}px`, // thumb height - pointer size
 		'Extract margin top has been set when preview height is smaller than the predefined landscape image height.'
 	);
 	assert.strictEqual(
-		preview.el.find( 'image' ).attr( 'clip-path' ),
+		$( preview.el ).find( 'image' ).attr( 'clip-path' ),
 		'url(#mwe-popups-mask-flip)',
 		'Image clip path is correct.'
 	);
@@ -1162,26 +1164,26 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.true(
-		classes.every( ( c ) => preview.el.hasClass( c ) ),
+		classes.every( ( c ) => $( preview.el ).hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'top' ),
+		$( preview.el ).css( 'top' ),
 		`${layout.offset.top}px`,
 		'Top is correct.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'left' ),
+		$( preview.el ).css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
-		preview.el.find( '.mwe-popups-extract' ).attr( 'margin-top' ),
+		$( preview.el ).find( '.mwe-popups-extract' ).attr( 'margin-top' ),
 		undefined,
 		'Extract margin top has NOT been set when preview height is bigger than the predefined landscape image height.'
 	);
 	assert.strictEqual(
-		preview.el.find( 'image' ).attr( 'clip-path' ),
+		$( preview.el ).find( 'image' ).attr( 'clip-path' ),
 		'url(#mwe-popups-mask-flip)',
 		'Image clip path is correct.'
 	);
@@ -1321,23 +1323,23 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.true(
-		classes.every( ( c ) => preview.el.hasClass( c ) ),
+		classes.every( ( c ) => $( preview.el ).hasClass( c ) ),
 		'Classes have been added.'
 	);
 
 	assert.strictEqual(
-		preview.el.css( 'bottom' ),
+		$( preview.el ).css( 'bottom' ),
 		`${windowHeight - layout.offset.top}px`,
 		'Bottom is correct.'
 	);
 
 	assert.strictEqual(
-		preview.el.css( 'left' ),
+		$( preview.el ).css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
-		preview.el.find( 'image' ).attr( 'clip-path' ),
+		$( preview.el ).find( 'image' ).attr( 'clip-path' ),
 		undefined,
 		'Image clip path is not set.'
 	);
@@ -1363,21 +1365,21 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', fun
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.true(
-		classes.every( ( c ) => preview.el.hasClass( c ) ),
+		classes.every( ( c ) => $( preview.el ).hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'left' ),
+		$( preview.el ).css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'bottom' ),
+		$( preview.el ).css( 'bottom' ),
 		`${windowHeight - layout.offset.top}px`,
 		'Bottom is correct.'
 	);
 	assert.strictEqual(
-		preview.el.find( 'image' ).attr( 'clip-path' ),
+		$( preview.el ).find( 'image' ).attr( 'clip-path' ),
 		'url(#mwe-popups-landscape-mask-flip)',
 		'Image clip path is not set.'
 	);
@@ -1399,21 +1401,21 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 	renderer.layoutPreview( preview, layout, classes, 200, 8, windowHeight );
 
 	assert.true(
-		classes.every( ( c ) => preview.el.hasClass( c ) ),
+		classes.every( ( c ) => $( preview.el ).hasClass( c ) ),
 		'Classes have been added.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'left' ),
+		$( preview.el ).css( 'left' ),
 		`${layout.offset.left}px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
-		preview.el.css( 'bottom' ),
+		$( preview.el ).css( 'bottom' ),
 		`${windowHeight - layout.offset.top}px`,
 		'Bottom is correct.'
 	);
 	assert.strictEqual(
-		preview.el.find( 'image' ).attr( 'clip-path' ),
+		$( preview.el ).find( 'image' ).attr( 'clip-path' ),
 		undefined,
 		'Image clip path is not set.'
 	);

@@ -28,24 +28,25 @@ const templateHTML = `
 export function renderPreview(
 	model, showTitle, extractMsg, linkMsg
 ) {
-	const $popup = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
+	const popup = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
 
 	// The following classes are used here:
 	// * mw-icon-preview-reference
 	// * mw-icon-preview-unknown
 	// * mw-icon-preview-generic
 	// * mw-icon-preview-disambiguation
-	$popup.find( '.mw-ui-icon ' ).addClass( `mw-ui-icon-preview-${model.type}` );
-	$popup.find( '.mwe-popups-extract' ).attr( 'href', model.url );
-	$popup.find( '.mwe-popups-message' ).html( escapeHTML( extractMsg ) );
-	$popup.find( '.mwe-popups-read-link' )
-		.html( escapeHTML( linkMsg ) )
-		.attr( 'href', model.url );
+	popup.querySelector( '.mw-ui-icon' ).classList.add( `mw-ui-icon-preview-${model.type}` );
+	popup.querySelector( '.mwe-popups-extract' ).setAttribute( 'href', model.url );
+	popup.querySelector( '.mwe-popups-message' ).innerHTML = escapeHTML( extractMsg );
+	const readLink = popup.querySelector( '.mwe-popups-read-link' );
+	readLink.innerHTML = escapeHTML( linkMsg );
+	readLink.setAttribute( 'href', model.url );
+	const title = popup.querySelector( '.mwe-popups-title' );
 	if ( showTitle ) {
-		$popup.find( '.mwe-popups-title' ).html( escapeHTML( model.title ) );
+		title.innerHTML = escapeHTML( model.title );
 	} else {
-		$popup.find( '.mwe-popups-title' ).remove();
+		title.remove();
 	}
 
-	return $popup;
+	return popup;
 }

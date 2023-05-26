@@ -23,40 +23,39 @@ const templateHTML = `
  * @param {ext.popups.Thumbnail|null} thumbnail
  * @param {boolean} withCSSClipPath
  * @param {string} linkTitle
- * @return {JQuery}
+ * @return {Element}
  */
 export function renderPagePreview(
 	model, thumbnail, withCSSClipPath, linkTitle
 ) {
-	const $el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
+	const el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
 
-	$el.find( '.mwe-popups-discreet, .mwe-popups-extract' )
-		.attr( 'href', model.url );
+	const linkDiscreet = el.querySelector( '.mwe-popups-discreet' );
+	const extract = el.querySelector( '.mwe-popups-extract' );
+	extract.setAttribute( 'href', model.url );
+	linkDiscreet.setAttribute( 'href', model.url );
+	extract.setAttribute( 'dir', model.languageDirection );
+	extract.setAttribute( 'lang', model.languageCode );
 
-	$el.find( '.mwe-popups-extract' )
-		.attr( 'dir', model.languageDirection )
-		.attr( 'lang', model.languageCode );
-
-	$el.find( '.mwe-popups-settings-icon' )
-		.attr( 'title', linkTitle );
+	el.querySelector( '.mwe-popups-settings-icon' )
+		.setAttribute( 'title', linkTitle );
 
 	if ( thumbnail ) {
-		$el.find( '.mwe-popups-discreet' ).append( thumbnail.el );
+		el.querySelector( '.mwe-popups-discreet' ).appendChild( thumbnail.el );
 	} else {
-		$el.find( '.mwe-popups-discreet' ).remove();
+		linkDiscreet.remove();
 	}
 
-	const $extract = $el.find( '.mwe-popups-extract' );
 	if ( model.extract ) {
-		$extract.append( model.extract );
+		extract.append( ...model.extract );
 		const extractWidth = getExtractWidth( thumbnail );
 		if ( !withCSSClipPath ) {
-			$extract.css( 'width', extractWidth );
-			$el.find( 'footer' ).css( 'width', extractWidth );
+			extract.style.width = extractWidth;
+			el.querySelector( 'footer' ).style.width = extractWidth;
 		}
 	}
 
-	return $el;
+	return el;
 }
 
 export { defaultExtractWidth }; // for testing
