@@ -15,7 +15,8 @@
 			"A2y4",
 			"RYOUMA1117",
 			"Tamaki Wakita",
-			"Tmv"
+			"Tmv",
+			"Yamagata Yusuke"
 		]
 	},
 	"popups-message": "プレビュー",
@@ -40,7 +41,7 @@
 	"popups-prefs-optin-enabled-label": "有効",
 	"popups-prefs-optin-disabled-label": "無効",
 	"popups-prefs-disable-nav-gadgets-info": "Page Previews を有効にするには、ガジェットタブから[[$1 | ナビゲーション・ポップアップを無効]]にしてください",
-	"popups-prefs-conflicting-gadgets-info": "一部のガジェットやカスタマイズが、この機能の動作に影響を与える可能性があります。不具合を経験されましたら、グローバルの設定とローカルのガジェットやユーザースクリプトをご確認ください。",
+	"popups-prefs-conflicting-gadgets-info": "一部のガジェットやカスタマイズが、この機能の動作に影響を与える可能性があります。不具合を経験されましたら、グローバルの設定とローカルのガジェットや利用者スクリプトをご確認ください。",
 	"popups-refpreview-reference": "参考資料",
 	"popups-refpreview-book": "書籍の出典",
 	"popups-refpreview-journal": "定期刊行物の出典",
