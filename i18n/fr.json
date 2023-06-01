@@ -37,7 +37,7 @@
 	"popups-preview-disambiguation": "Ce titre fait référence à plus d’une page",
 	"popups-preview-disambiguation-link": "Afficher des pages similaires",
 	"prefs-reading": "Préférences de lecture",
-	"popups-prefs-optin": "Active la prévisualisation des pages (aperçus rapides d’un sujet pendant la lecture d’une page)",
+	"popups-prefs-optin": "Activer l’aperçu des pages (aperçu rapide d’un sujet pendant la lecture d’une page)",
 	"popups-prefs-disable-nav-gadgets-info": "Vous devez [[$1|désactiver le gadget Popups de navigation]] dans vos préférences de gadgets pour activer les aperçus de page.",
 	"popups-prefs-conflicting-gadgets-info": "Certains gadgets et autres personnalisations peuvent affecter la performance de cette fonctionnalité. Si vous rencontrez des problèmes, veuillez vérifier vos gadgets et scripts utilisateur, y compris au niveau global.",
 	"popups-prefs-navpopups-gadget-conflict-info": "Vous avez activé le gadget [[$1|Popups de navigation]], donc vous ne verrez pas les aperçus fournis par cette fonctionnalité. Selon votre wiki, le gadget peut avoir un nom quelque peu différent. Si vous continuez à rencontrer des problèmes, veuillez revoir vos scripts utilisateur ainsi que ceux de vos gadgets, y compris les scripts globaux.",
