@@ -172,7 +172,7 @@ class PopupsContext {
 			);
 		}
 
-		return !$user->isRegistered() || $this->userOptionsLookup->getBoolOption(
+		return !$user->isNamed() || $this->userOptionsLookup->getBoolOption(
 			$user, self::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA
 		);
 	}
@@ -202,7 +202,7 @@ class PopupsContext {
 	 * @return bool
 	 */
 	public function shouldSendModuleToUser( \User $user ) {
-		if ( !$user->isRegistered() ) {
+		if ( !$user->isNamed() ) {
 			return true;
 		}
 
