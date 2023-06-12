@@ -89,7 +89,7 @@ export function boot(
 			id: config.get( 'wgArticleId' )
 		},
 		user: {
-			isAnon: user.isAnon(),
+			isAnon: user.isAnon() || mw.user.isTemp(),
 			editCount
 		}
 	};

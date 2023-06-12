@@ -10,6 +10,12 @@ export function createStubUser( isAnon ) {
 		getPageviewToken() {
 			return '9876543210';
 		},
+		isNamed() {
+			return !isAnon;
+		},
+		isTemp() {
+			return false;
+		},
 		isAnon() {
 			return isAnon;
 		},

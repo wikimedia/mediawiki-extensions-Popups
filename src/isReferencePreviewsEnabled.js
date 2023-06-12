@@ -1,6 +1,7 @@
 /**
  * @module isReferencePreviewsEnabled
  */
+const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
 
 /**
  * Given the global state of the application, creates a function that gets
@@ -29,7 +30,7 @@ export default function isReferencePreviewsEnabled( user, userSettings, config )
 
 	// For anonymous users, the code loads always, but the feature can be toggled at run-time via
 	// local storage.
-	if ( user.isAnon() ) {
+	if ( !canSaveToUserPreferences( user ) ) {
 		return userSettings.isReferencePreviewsEnabled();
 	}
 

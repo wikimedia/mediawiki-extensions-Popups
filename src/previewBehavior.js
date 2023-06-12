@@ -1,6 +1,7 @@
 /**
  * @module previewBehaviour
  */
+const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
 
 /**
  * A collection of event handlers specific to how the user interacts with all
@@ -33,7 +34,7 @@
 export default function createPreviewBehavior( user, actions ) {
 	let settingsUrl, showSettings = () => {};
 
-	if ( user.isAnon() ) {
+	if ( !canSaveToUserPreferences( user ) ) {
 		showSettings = ( event ) => {
 			event.preventDefault();
 

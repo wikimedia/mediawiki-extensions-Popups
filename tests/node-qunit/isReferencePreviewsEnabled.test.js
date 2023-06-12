@@ -123,7 +123,10 @@ QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 			expected: null
 		}
 	].forEach( ( data ) => {
-		const user = { isAnon: () => data.isAnon },
+		const user = {
+				isNamed: () => !data.isAnon && !data.isIPMasked,
+				isAnon: () => data.isAnon
+			},
 			userSettings = {
 				isReferencePreviewsEnabled: () => data.isAnon ?
 					data.enabledByAnon :
