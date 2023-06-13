@@ -26,7 +26,6 @@ function createFooterLink() {
 
 	// From https://en.wikipedia.org/wiki/MediaWiki:Gadget-ReferenceTooltips.js,
 	// which was written by Yair rand <https://en.wikipedia.org/wiki/User:Yair_rand>.
-	// eslint-disable-next-line no-jquery/no-global-selector
 	let footer = document.querySelector( '#footer-places, #f-list' );
 
 	if ( !footer ) {
