@@ -13,7 +13,7 @@
 		"test:lint:styles": "npm -s run linter:styles",
 		"test:lint:i18n": "banana-checker --requireLowerCase=0 i18n/",
 		"check-built-assets": "echo 'CHECKING BUILD SOURCES ARE COMMITTED OR STAGED' && npm -s run build && git diff --exit-code resources/dist || { npm run node-debug; false; }",
-		"coverage": "nyc npm -s run test:unit",
+		"coverage": "nyc --reporter=lcov npm -s run test:unit",
 		"doc": "jsdoc -c jsdoc.json && npm run build-storybook",
 		"linter:js": "eslint --cache .",
 		"linter:styles": "stylelint 'src/**/*.less'",
