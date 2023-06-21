@@ -10,13 +10,14 @@
 			"Nikosgranturismogt",
 			"Norhorn",
 			"SucreRouge",
-			"Ανώνυμος Βικιπαιδιστής"
+			"Ανώνυμος Βικιπαιδιστής",
+			"Spyridon Eftychios Kokotos"
 		]
 	},
-	"popups-message": "Προεπισκόπηση σελίδων",
+	"popups-message": "Προεπισκόπηση",
 	"popups-desc": "Εμφανίζει αναδυόμενες προεπισκοπήσεις όταν ο χρήστης αιωρεί το δείκτη πάνω από ένα σύνδεσμο σελίδας",
 	"popups-settings-title": "Προεπισκοπήσεις",
-	"popups-settings-option-page": "Ενεργοποιημένο",
+	"popups-settings-option-page": "Προεπισκοπήσεις σελίδων",
 	"popups-settings-option-page-description": "Αποκτήστε γρήγορη προεπισκόπηση ενός θέματος, ενώ διαβάζετε μια σελίδα.",
 	"popups-settings-option-reference": "Προεπισκόπηση παραπομπών",
 	"popups-settings-option-reference-description": "Αποκτήστε γρήγορη προεπισκόπηση μιας παραπομπής ενώ διαβάζετε μια σελίδα.",
