@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yupik"
+			"Yupik",
+			"Kimberli Mäkäräinen (WMNO)"
 		]
 	},
 	"popups-settings-save": "Vurke",
-	"popups-settings-cancel": "Šluhtte"
+	"popups-settings-cancel": "Šluhtte",
+	"popups-refpreview-reference": "Gáldu"
 }
