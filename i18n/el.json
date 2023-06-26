@@ -8,10 +8,13 @@
 			"Nikosgranturismogt",
 			"Norhorn",
 			"SucreRouge",
-			"Ανώνυμος Βικιπαιδιστής"
+			"Ανώνυμος Βικιπαιδιστής",
+			"Giannaras99",
+			"NikosLikomitros",
+			"Spyridon Eftychios Kokotos"
 		]
 	},
-	"popups-message": "Προεπισκόπηση σελίδων",
+	"popups-message": "Προεπισκόπηση",
 	"popups-desc": "Εμφανίζει αναδυόμενες προεπισκοπήσεις όταν ο χρήστης αιωρεί το δείκτη πάνω από ένα σύνδεσμο σελίδας",
 	"popups-settings-title": "Προεπισκόπηση σελίδων",
 	"popups-settings-option-simple": "Ενεργοποιημένο",
