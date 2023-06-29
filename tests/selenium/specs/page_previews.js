@@ -5,11 +5,11 @@ const assert = require( 'assert' ),
 
 describe( 'Dwelling on a valid page link', function () {
 	before( function () {
-		page.setup();
+		page.setupPagePreviews();
 	} );
 
 	beforeEach( function () {
-		page.open();
+		page.openPagePopupsTest();
 		page.ready();
 	} );
 

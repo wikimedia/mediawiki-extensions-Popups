@@ -6,14 +6,14 @@ const assert = require( 'assert' ),
 
 describe( 'Dwelling on a valid reference link', function () {
 	before( function () {
-		page.setup();
+		page.setupReferencePreviews();
 		// TODO Remove or adjust when not in Beta any more
 		UserLoginPage.loginAdmin();
 		page.shouldUseReferencePopupsBetaFeature( true );
 	} );
 
 	beforeEach( function () {
-		page.open();
+		page.openReferencePopupsTest();
 		page.ready();
 	} );
 

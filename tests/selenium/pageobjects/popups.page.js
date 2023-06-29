@@ -7,7 +7,8 @@ const
 	Api = require( 'wdio-mediawiki/Api' ),
 	Page = require( 'wdio-mediawiki/Page' ),
 	Util = require( 'wdio-mediawiki/Util' ),
-	TEST_PAGE_TITLE = 'Popups test page',
+	TEST_PAGE_POPUPS_TITLE = 'Page popups test page',
+	TEST_REFERENCE_POPUPS_TITLE = 'Reference popups test page',
 	POPUPS_SELECTOR = '.mwe-popups',
 	PAGE_POPUPS_SELECTOR = '.mwe-popups-type-page',
 	PAGE_POPUPS_LINK_SELECTOR = '.mw-body-content ul a',
@@ -15,28 +16,24 @@ const
 	REFERENCE_INCEPTION_LINK_SELECTOR = '.mwe-popups-type-reference .reference a',
 	POPUPS_MODULE_NAME = 'ext.popups.main';
 
-function makePage( title, path ) {
-	return new Promise( ( resolve ) => {
-		fs.readFile( path, 'utf-8', ( err, content ) => {
-			if ( err ) {
-				throw err;
-			}
-			resolve( content );
-		} );
-	} ).then( async ( content ) => {
-		const bot = await Api.bot();
-		await bot.edit( title, content );
-	} );
+async function makePage( title, path ) {
+	const content = fs.readFileSync( path, 'utf-8' );
+	const bot = await Api.bot();
+	await bot.edit( title, content );
 }
 class PopupsPage extends Page {
-	setup() {
-		browser.call( () => {
+	setupPagePreviews() {
+		browser.call( async () => {
 			const path = `${__dirname}/../fixtures/`;
-			// FIXME: Cannot use Promise.all as wdio-mediawiki/Api will trigger a bad
-			// token error.
-			return makePage( `${TEST_PAGE_TITLE} 2`, `${path}/test_page_2.wikitext` ).then( () => {
-				return makePage( TEST_PAGE_TITLE, `${path}test_page.wikitext` );
-			} );
+			await makePage( `${TEST_PAGE_POPUPS_TITLE} 2`, `${path}test_page_2.wikitext` );
+			await makePage( TEST_PAGE_POPUPS_TITLE, `${path}test_page.wikitext` );
+		} );
+	}
+
+	setupReferencePreviews() {
+		browser.call( async () => {
+			const path = `${__dirname}/../fixtures/`;
+			await makePage( TEST_REFERENCE_POPUPS_TITLE, `${path}test_page.wikitext` );
 		} );
 	}
 
@@ -135,8 +132,12 @@ class PopupsPage extends Page {
 		return $( '.mwe-popups-fade-out' ).isExisting();
 	}
 
-	open() {
-		super.openTitle( TEST_PAGE_TITLE );
+	openPagePopupsTest() {
+		super.openTitle( TEST_PAGE_POPUPS_TITLE );
+	}
+
+	openReferencePopupsTest() {
+		super.openTitle( TEST_REFERENCE_POPUPS_TITLE );
 	}
 
 }
