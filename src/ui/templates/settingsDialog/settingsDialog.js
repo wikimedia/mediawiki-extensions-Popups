@@ -58,12 +58,15 @@ export function renderSettingsDialog( model ) {
 		<section id='mwe-popups-settings'>
 			<header>
 				<div>
-					<div class='mw-ui-icon mw-ui-icon-element mw-ui-icon-popups-close close'>${closeLabel}</div>
+					<button class='cdx-button cdx-button--weight-quiet cdx-button--icon-only'>
+						<span class='mw-ui-icon mw-ui-icon-popups-close close'></span>
+						<span>${closeLabel}</span>
+					</button>
 				</div>
 				<h1>${heading}</h1>
 				<div>
-					<button class='save mw-ui-button mw-ui-progressive'>${saveLabel}</button>
-					<button class='okay mw-ui-button mw-ui-progressive' style='display:none;'>${okLabel}</button>
+					<button class='save cdx-button cdx-button--weight-primary cdx-button--action-progressive'>${saveLabel}</button>
+					<button class='okay cdx-button cdx-button--weight-primary cdx-button--action-progressive' style='display:none;'>${okLabel}</button>
 				</div>
 			</header>
 			<main id='mwe-popups-settings-form'>
@@ -83,7 +86,7 @@ export function renderSettingsDialog( model ) {
 				</form>
 			</main>
 			<div class='mwe-popups-settings-help' style='display:none;'>
-				<div class="mw-ui-icon mw-ui-icon-element mw-ui-icon-footer"></div>
+				<div class="mw-ui-icon mw-ui-icon-footer"></div>
 				<p>${helpText}</p>
 			</div>
 		</section>

@@ -62,25 +62,12 @@
 		}
 	}
 
-	.mwe-popups-settings-icon {
-		display: block;
+	.mwe-popups-settings-button {
 		float: right; // positions icon near bottom right corner
-		border-radius: @border-radius-base;
-		opacity: 0.67;
-		transition: background-color 100ms, opacity 100ms;
-
-		&:hover {
-			// TODO: Replace by `@background-color-button-quiet--hover`
-			// as soon as available in mediawiki.skin.variables.
-			background-color: rgba( 0, 24, 73, 0.027 );
-		}
-
-		&:active {
-			// TODO: Replace by `@background-color-button-quiet--active`
-			// as soon as available in mediawiki.skin.variables.
-			background-color: rgba( 0, 24, 73, 0.082 );
-			opacity: 1;
-		}
+		pointer-events: auto; // Overrides pointer-events: none on footer to ensure the button is interactive
+		// !important needed to override 'responsive' button styles on smaller viewports defined in Vector's Button.less
+		min-width: 32px !important; /* stylelint-disable-line declaration-no-important */
+		min-height: 32px !important; /* stylelint-disable-line declaration-no-important */
 	}
 
 	.mwe-popups-extract {
@@ -409,7 +396,7 @@
 			/* @noflip */
 			right: 0;
 
-			.mwe-popups-settings-icon {
+			.mwe-popups-settings-button {
 				/* @noflip */
 				float: left;
 			}

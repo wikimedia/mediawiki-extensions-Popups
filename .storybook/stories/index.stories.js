@@ -21,6 +21,7 @@ import { storiesOf } from '@storybook/html';
  * Popups dependencies
  */
 import { createPointerMasks } from '../../src/ui/renderer.js';
+import '../../node_modules/@wikimedia/codex/dist/codex.style.css';
 
 /**
  * Popups helpers

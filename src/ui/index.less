@@ -9,3 +9,15 @@
 	position: absolute;
 	top: -1000px;
 }
+
+.cdx-button.cdx-button--icon-only {
+	// Hide text in icon only buttons
+	span + span {
+		.mixin-screen-reader-text();
+	}
+}
+
+// FIXME: Remove after Iac69f7b14b732b0bbaa6ba265379ed4c4cdb3f7e is merged
+.cdx-button--fake-button {
+	justify-content: center;
+}

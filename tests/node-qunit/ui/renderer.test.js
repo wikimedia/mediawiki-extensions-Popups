@@ -18,7 +18,7 @@ function createPagePreview( isTall, hasThumbnail, thumbnail ) {
 		el: $( '<div>' ).append(
 			hasThumbnail ? $( '<image>' ) : '',
 			$( '<a>' ).addClass( 'mwe-popups-extract' ).text( 'extract' ),
-			$( '<a>' ).addClass( 'mwe-popups-settings-icon' )
+			$( '<a>' ).addClass( 'mwe-popups-settings-button' )
 		)[ 0 ],
 		isTall,
 		hasThumbnail,
@@ -166,7 +166,7 @@ QUnit.test( 'createPagePreview', ( assert ) => {
 		'Language direction is safely espaced'
 	);
 	assert.strictEqual(
-		$( preview.el ).find( '.mwe-popups-settings-icon' ).attr( 'title' ),
+		$( preview.el ).find( '.mwe-popups-settings-button' ).attr( 'title' ),
 		'<popups-settings-icon-gear-title>',
 		'Title attribute is correct.'
 	);
@@ -458,7 +458,7 @@ QUnit.test( 'bindBehavior - settings link click', function ( assert ) {
 		behavior = createBehavior( this.sandbox );
 
 	renderer.bindBehavior( preview, behavior );
-	preview.el.querySelector( '.mwe-popups-settings-icon' ).dispatchEvent( new Event( 'click' ) );
+	preview.el.querySelector( '.mwe-popups-settings-button' ).dispatchEvent( new Event( 'click' ) );
 
 	assert.false( behavior.previewDwell.called, 'Preview dwell is NOT called.' );
 	assert.false(
@@ -475,7 +475,7 @@ QUnit.test( 'bindBehavior - settings link URL', function ( assert ) {
 	renderer.bindBehavior( preview, behavior );
 
 	assert.strictEqual(
-		$( preview.el ).find( '.mwe-popups-settings-icon' ).attr( 'href' ),
+		$( preview.el ).find( '.mwe-popups-settings-button' ).attr( 'href' ),
 		behavior.settingsUrl,
 		'Settings link URL is correct.'
 	);

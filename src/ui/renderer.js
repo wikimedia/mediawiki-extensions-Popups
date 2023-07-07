@@ -306,10 +306,10 @@ export function bindBehavior( preview, behavior ) {
 
 	preview.el.addEventListener( 'click', behavior.click );
 
-	const icon = preview.el.querySelector( '.mwe-popups-settings-icon' );
-	if ( icon ) {
-		icon.href = behavior.settingsUrl;
-		icon.addEventListener( 'click', ( event ) => {
+	const button = preview.el.querySelector( '.mwe-popups-settings-button' );
+	if ( button ) {
+		button.href = behavior.settingsUrl;
+		button.addEventListener( 'click', ( event ) => {
 			event.stopPropagation();
 
 			behavior.showSettings( event );

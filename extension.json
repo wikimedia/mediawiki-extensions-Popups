@@ -25,7 +25,8 @@
 		"UserGetDefaultOptions": "PopupsHooks",
 		"MakeGlobalVariablesScript": "PopupsHooks",
 		"LocalUserCreated": "PopupsHooks",
-		"GetBetaFeaturePreferences": "PopupsHooks"
+		"GetBetaFeaturePreferences": "PopupsHooks",
+		"ResourceLoaderRegisterModules": "PopupsHooks"
 	},
 	"HookHandlers": {
 		"PopupsHooks": {
@@ -229,12 +230,12 @@
 				"mediawiki.jqueryMsg",
 				"mediawiki.storage",
 				"mediawiki.Title",
-				"mediawiki.ui.button",
 				"mediawiki.ui.checkbox",
 				"mediawiki.ui.icon",
 				"mediawiki.Uri",
 				"mediawiki.user",
-				"mediawiki.util"
+				"mediawiki.util",
+				"codex-search-styles"
 			]
 		}
 	},

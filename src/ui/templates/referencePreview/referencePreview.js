@@ -106,12 +106,15 @@ export function renderReferencePreview(
 	// TODO: Remove when not in Beta any more
 	if ( !mw.config.get( 'wgPopupsReferencePreviewsBetaFeature' ) ) {
 		// TODO: Do not remove this but move it up into the templateHTML constant!
-		const settingsIconLink = document.createElement( 'a' );
-		settingsIconLink.classList.add( 'mwe-popups-settings-icon' );
-		const settingsIconLabel = document.createElement( 'span' );
-		settingsIconLabel.classList.add( 'mw-ui-icon', 'mw-ui-icon-element', 'mw-ui-icon-small', 'mw-ui-icon-settings' );
-		settingsIconLink.append( settingsIconLabel );
-		el.querySelector( '.mwe-popups-settings' ).appendChild( settingsIconLink );
+		const settingsButton = document.createElement( 'button' );
+		settingsButton.classList.add( 'cdx-button', 'cdx-button--fake-button', 'cdx-button--fake-button--enabled', 'cdx-button--weight-quiet', 'cdx-button--icon-only', 'mwe-popups-settings-button' );
+		const settingsIcon = document.createElement( 'span' );
+		settingsIcon.classList.add( 'mw-ui-icon', 'mw-ui-icon-small', 'mw-ui-icon-settings' );
+		const settingsButtonLabel = document.createElement( 'span' );
+		settingsButtonLabel.textContent = mw.msg( 'popups-settings-icon-gear-title' );
+		settingsButton.append( settingsIcon );
+		settingsButton.append( settingsButtonLabel );
+		el.querySelector( '.mwe-popups-settings' ).appendChild( settingsButton );
 	} else {
 		// Change the styling when there is no content in the footer (to prevent empty space)
 		el.querySelector( '.mwe-popups-container' ).classList.add( 'footer-empty' );

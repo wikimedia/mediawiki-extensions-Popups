@@ -63,6 +63,12 @@ module.exports = ( env, argv ) => ( {
 			options: {
 				removeSVGTagAttrs: false // Keep width and height attributes.
 			}
+		}, {
+			test: /\.css$/,
+			use: [
+				'style-loader',
+				'css-loader'
+			]
 		} ]
 	},
 	optimization: {
@@ -112,8 +118,8 @@ module.exports = ( env, argv ) => ( {
 		// Minified uncompressed size limits for chunks / assets and entrypoints. Keep these numbers
 		// up-to-date and rounded to the nearest 10th of a kibibyte so that code sizing costs are
 		// well understood. Related to bundlesize minified, gzipped compressed file size tests.
-		maxAssetSize: 45.8 * 1024,
-		maxEntrypointSize: 45.8 * 1024,
+		maxAssetSize: 46.4 * 1024,
+		maxEntrypointSize: 46.4 * 1024,
 
 		// The default filter excludes map files but we rename ours.
 		assetFilter: ( filename ) => !filename.endsWith( srcMapExt )

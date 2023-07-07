@@ -3,7 +3,7 @@
  */
 
 import { renderPopup } from '../popup/popup';
-import { createNodeFromTemplate } from '../templateUtil';
+import { escapeHTML, createNodeFromTemplate } from '../templateUtil';
 
 const defaultExtractWidth = 215;
 const templateHTML = `
@@ -11,8 +11,9 @@ const templateHTML = `
     <a class="mwe-popups-discreet"></a>
     <a class="mwe-popups-extract"></a>
     <footer>
-        <a class="mwe-popups-settings-icon">
-            <span class="mw-ui-icon mw-ui-icon-element mw-ui-icon-small mw-ui-icon-settings"></span>
+		<a class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only mwe-popups-settings-button">
+			<span class="mw-ui-icon mw-ui-icon-small mw-ui-icon-settings"></span>
+			<span class="mwe-popups-settings-button-label"></span>
         </a>
     </footer>
 </div>
@@ -37,8 +38,13 @@ export function renderPagePreview(
 	extract.setAttribute( 'dir', model.languageDirection );
 	extract.setAttribute( 'lang', model.languageCode );
 
-	el.querySelector( '.mwe-popups-settings-icon' )
+	el.querySelector( '.mwe-popups-settings-button' )
 		.setAttribute( 'title', linkTitle );
+
+	// Set label on settings icon button
+	const labelText = escapeHTML( mw.msg( 'popups-settings-icon-gear-title' ) );
+	const label = el.querySelector( '.mwe-popups-settings-button-label' );
+	label.textContent = labelText;
 
 	if ( thumbnail ) {
 		el.querySelector( '.mwe-popups-discreet' ).appendChild( thumbnail.el );
