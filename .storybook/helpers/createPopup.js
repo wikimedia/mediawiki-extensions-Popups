@@ -31,9 +31,6 @@ function createPopup( model, layoutHint ) {
 	if ( model.thumbnail ) {
 		model.thumbnail = scaleDownThumbnail( model.thumbnail );
 	}
-	const extractNode = document.createElement( 'div' );
-	extractNode.innerHTML = model.extract;
-	model.extract = extractNode.childNodes;
 
 	const preview = createPreviewWithType( model );
 	const WINDOW_WIDTH = preview.isTall ? 500 : 500;

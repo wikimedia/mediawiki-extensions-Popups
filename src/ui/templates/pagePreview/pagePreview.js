@@ -47,7 +47,11 @@ export function renderPagePreview(
 	}
 
 	if ( model.extract ) {
-		extract.append( ...model.extract );
+		if ( typeof model.extract === 'string' ) {
+			extract.innerHTML = model.extract;
+		} else {
+			extract.append( ...model.extract );
+		}
 		const extractWidth = getExtractWidth( thumbnail );
 		if ( !withCSSClipPath ) {
 			extract.style.width = extractWidth;
