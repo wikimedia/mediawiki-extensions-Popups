@@ -135,6 +135,11 @@ function registerChangeListeners(
  */
 function handleDOMEventIfEligible( handler ) {
 	return function ( event ) {
+		// if the element is a text node, as events can be triggered on text nodes
+		// it won't have a closest method, so we get its parent element (T340081)
+		if ( event.target.nodeType === 3 ) {
+			event.target = event.target.parentNode;
+		}
 		// If the event bubbles up all the way,
 		// document does not have closest method, so exit early (T336650).
 		if ( event.target === document ) {

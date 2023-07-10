@@ -1,5 +1,7 @@
-import { createModel, getPreviewType, previewTypes, registerModel, test,
-	isAnythingEligible } from '../../../src/preview/model';
+import {
+	createModel, getPreviewType, previewTypes, registerModel, test,
+	isAnythingEligible, findNearestEligibleTarget, createNullModel
+} from '../../../src/preview/model';
 
 QUnit.module( 'ext.popups.preview#createModel' );
 
@@ -167,5 +169,27 @@ QUnit.test( 'it does not suggest page previews on reference links not having a p
 	assert.strictEqual(
 		getPreviewType( el ),
 		null
+	);
+} );
+
+QUnit.test( 'findNearestEligibleTarget returns null by default', function ( assert ) {
+	test.reset();
+	assert.strictEqual(
+		findNearestEligibleTarget( document.createElement( 'div' ) ),
+		null
+	);
+} );
+
+QUnit.test( 'createNullModel returns an empty page preview model', function ( assert ) {
+	const testTitle = 'test title';
+	const testUrl = 'test://url.com';
+	const nullModel = createNullModel( testTitle, testUrl );
+	assert.strictEqual(
+		nullModel.title,
+		testTitle
+	);
+	assert.strictEqual(
+		nullModel.url,
+		testUrl
 	);
 } );
