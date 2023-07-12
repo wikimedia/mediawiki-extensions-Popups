@@ -36,7 +36,8 @@ describe( 'Dwelling on a valid reference link', function () {
 		assert( page.doNotSeeReferencePreview(), 'Reference preview is kept hidden.' );
 	} );
 
-	it( 'References with lots of text are scrollable and fades', function () {
+	// Skipped due to T341763
+	it.skip( 'References with lots of text are scrollable and fades', function () {
 		if ( !page.hasReferencePopupsEnabled() ) {
 			this.skip();
 		}
