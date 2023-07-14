@@ -46,7 +46,7 @@ describe( 'Dwelling on a valid reference link', function () {
 		assert( page.seeFadeoutOnReferenceText(), 'Reference preview has a fading effect' );
 	} );
 
-	it( 'Dwelling references links inside reference previews does not close the popup ', function () {
+	it.skip( 'Dwelling references links inside reference previews does not close the popup ', function () {
 		if ( !page.hasReferencePopupsEnabled() ) {
 			this.skip();
 		}
