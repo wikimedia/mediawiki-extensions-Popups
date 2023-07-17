@@ -135,17 +135,30 @@ function registerChangeListeners(
  */
 function handleDOMEventIfEligible( handler ) {
 	return function ( event ) {
-		// if the element is a text node, as events can be triggered on text nodes
-		// it won't have a closest method, so we get its parent element (T340081)
-		if ( event.target.nodeType === 3 ) {
-			event.target = event.target.parentNode;
-		}
-		// If the event bubbles up all the way,
-		// document does not have closest method, so exit early (T336650).
-		if ( event.target === document ) {
+		let target = event && event.target;
+		if ( !target ) {
 			return;
 		}
-		const target = findNearestEligibleTarget( event.target );
+		// if the element is a text node, as events can be triggered on text nodes
+		// it won't have a closest method, so we get its parent element (T340081)
+		if ( target.nodeType === 3 ) {
+			target = target.parentNode;
+		}
+
+		// If the closest method is not defined, let's return early and
+		// understand this better by logging an error. (T340081)
+		if ( target && !target.closest ) {
+			const err = new Error( `T340081: Unexpected DOM element ${target.tagName} with nodeType ${target.nodeType}` );
+			mw.errorLogger.logError( err, 'error.web-team' );
+			return;
+		}
+
+		// If the event bubbles up all the way,
+		// document does not have closest method, so exit early (T336650).
+		if ( target === document ) {
+			return;
+		}
+		target = findNearestEligibleTarget( target );
 		if ( target === null ) {
 			return;
 		}
