@@ -22,122 +22,122 @@ async function makePage( title, path ) {
 	await bot.edit( title, content );
 }
 class PopupsPage extends Page {
-	setupPagePreviews() {
-		browser.call( async () => {
+	async setupPagePreviews() {
+		return browser.call( async () => {
 			const path = `${__dirname}/../fixtures/`;
 			await makePage( `${TEST_PAGE_POPUPS_TITLE} 2`, `${path}test_page_2.wikitext` );
 			await makePage( TEST_PAGE_POPUPS_TITLE, `${path}test_page.wikitext` );
 		} );
 	}
 
-	setupReferencePreviews() {
-		browser.call( async () => {
+	async setupReferencePreviews() {
+		return browser.call( async () => {
 			const path = `${__dirname}/../fixtures/`;
 			await makePage( TEST_REFERENCE_POPUPS_TITLE, `${path}test_page.wikitext` );
 		} );
 	}
 
-	ready() {
-		Util.waitForModuleState( POPUPS_MODULE_NAME );
+	async ready() {
+		await Util.waitForModuleState( POPUPS_MODULE_NAME );
 	}
 
-	shouldUseReferencePopupsBetaFeature( shouldUse ) {
-		Util.waitForModuleState( 'mediawiki.base' );
-		return browser.execute( function ( use ) {
+	async shouldUseReferencePopupsBetaFeature() {
+		await Util.waitForModuleState( 'mediawiki.base' );
+		await browser.execute( function () {
 			return mw.loader.using( 'mediawiki.api' ).then( function () {
 				return new mw.Api().saveOptions( {
 					// TODO: Remove the first option when all Beta code is gone
-					popupsreferencepreviews: use ? '1' : '0',
-					'popups-reference-previews': use ? '1' : '0'
+					popupsreferencepreviews: '1',
+					'popups-reference-previews': '1'
 				} );
 			} );
-		}, shouldUse );
+		} );
 	}
 
-	hasReferencePopupsEnabled() {
+	async hasReferencePopupsEnabled() {
 		// TODO Remove or adjust when not in Beta any more
 		return browser.execute( () => mw.config.get( 'wgPopupsReferencePreviews' ) );
 	}
 
-	abandonLink() {
-		$( '#content h1' ).moveTo();
+	async abandonLink() {
+		return $( '#content h1' ).moveTo();
 	}
 
-	dwellLink( selector, doesNotTriggerPreview ) {
-		$( selector ).moveTo();
+	async dwellLink( selector, doesNotTriggerPreview ) {
+		await $( selector ).moveTo();
 		if ( !doesNotTriggerPreview ) {
-			$( POPUPS_SELECTOR ).waitForExist();
+			await $( POPUPS_SELECTOR ).waitForExist();
 		} else {
-			browser.pause( 1000 );
+			await browser.pause( 1000 );
 		}
 	}
 
-	dwellPageLink() {
-		this.dwellLink( PAGE_POPUPS_LINK_SELECTOR );
+	async dwellPageLink() {
+		await this.dwellLink( PAGE_POPUPS_LINK_SELECTOR );
 	}
 
-	dwellPageFragment() {
-		this.dwellLink( '[href="#section"]', true );
+	async dwellPageFragment() {
+		await this.dwellLink( '[href="#section"]', true );
 	}
 
-	hoverPageLink() {
-		$( PAGE_POPUPS_LINK_SELECTOR ).moveTo();
+	async hoverPageLink() {
+		await $( PAGE_POPUPS_LINK_SELECTOR ).moveTo();
 	}
 
-	dwellReferenceLink( num ) {
-		this.dwellLink( `.reference:nth-of-type(${num}) a` );
+	async dwellReferenceLink( num ) {
+		await this.dwellLink( `.reference:nth-of-type(${num}) a` );
 	}
 
-	dwellReferenceInceptionLink() {
-		$( REFERENCE_INCEPTION_LINK_SELECTOR ).moveTo();
-		browser.pause( 1000 );
+	async dwellReferenceInceptionLink() {
+		await $( REFERENCE_INCEPTION_LINK_SELECTOR ).moveTo();
+		await browser.pause( 1000 );
 	}
 
-	doNotSeePreview( selector ) {
-		return browser.waitUntil( () => !$( selector ).isDisplayed() );
+	async doNotSeePreview( selector ) {
+		return browser.waitUntil( async () => !( await $( selector ).isDisplayed() ) );
 	}
 
-	doNotSeePagePreview() {
+	async doNotSeePagePreview() {
 		return this.doNotSeePreview( PAGE_POPUPS_SELECTOR );
 	}
 
-	doNotSeeReferencePreview() {
+	async doNotSeeReferencePreview() {
 		return this.doNotSeePreview( REFERENCE_POPUPS_SELECTOR );
 	}
 
-	seePreview( selector ) {
-		return $( selector ).isDisplayed();
+	async seePreview( selector ) {
+		return await $( selector ).isDisplayed();
 	}
 
-	seePagePreview() {
-		return this.seePreview( PAGE_POPUPS_SELECTOR );
+	async seePagePreview() {
+		return await this.seePreview( PAGE_POPUPS_SELECTOR );
 	}
 
-	seeReferencePreview() {
-		return this.seePreview( REFERENCE_POPUPS_SELECTOR );
+	async seeReferencePreview() {
+		return await this.seePreview( REFERENCE_POPUPS_SELECTOR );
 	}
 
-	seeReferenceInceptionPreview() {
-		return this.seePreview( REFERENCE_INCEPTION_LINK_SELECTOR );
+	async seeReferenceInceptionPreview() {
+		return await this.seePreview( REFERENCE_INCEPTION_LINK_SELECTOR );
 	}
 
-	seeScrollableReferencePreview() {
+	async seeScrollableReferencePreview() {
 		return browser.execute( () => {
 			const el = document.querySelector( '.mwe-popups-extract .mwe-popups-scroll' );
 			return el.scrollHeight > el.offsetHeight;
 		} );
 	}
 
-	seeFadeoutOnReferenceText() {
+	async seeFadeoutOnReferenceText() {
 		return $( '.mwe-popups-fade-out' ).isExisting();
 	}
 
-	openPagePopupsTest() {
-		super.openTitle( TEST_PAGE_POPUPS_TITLE );
+	async openPagePopupsTest() {
+		return super.openTitle( TEST_PAGE_POPUPS_TITLE );
 	}
 
-	openReferencePopupsTest() {
-		super.openTitle( TEST_REFERENCE_POPUPS_TITLE );
+	async openReferencePopupsTest() {
+		return super.openTitle( TEST_REFERENCE_POPUPS_TITLE );
 	}
 
 }

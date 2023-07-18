@@ -5,53 +5,53 @@ const assert = require( 'assert' ),
 	UserLoginPage = require( 'wdio-mediawiki/LoginPage' );
 
 describe( 'Dwelling on a valid reference link', function () {
-	before( function () {
-		page.setupReferencePreviews();
+	before( async function () {
+		await page.setupReferencePreviews();
 		// TODO Remove or adjust when not in Beta any more
-		UserLoginPage.loginAdmin();
-		page.shouldUseReferencePopupsBetaFeature( true );
+		await UserLoginPage.loginAdmin();
+		await page.shouldUseReferencePopupsBetaFeature();
 	} );
 
-	beforeEach( function () {
-		page.openReferencePopupsTest();
-		page.ready();
+	beforeEach( async function () {
+		await page.openReferencePopupsTest();
+		await page.ready();
 	} );
 
-	it( 'I should see a reference preview', function () {
-		if ( !page.hasReferencePopupsEnabled() ) {
+	it( 'I should see a reference preview', async function () {
+		if ( !( await page.hasReferencePopupsEnabled() ) ) {
 			this.skip();
 		}
-		page.dwellReferenceLink( 1 );
-		assert( page.seeReferencePreview(), 'Reference preview is shown.' );
-		assert( !page.seeScrollableReferencePreview(), 'Reference preview is not scrollable.' );
-		assert( !page.seeFadeoutOnReferenceText(), 'Reference preview has no fading effect' );
+		await page.dwellReferenceLink( 1 );
+		assert( await page.seeReferencePreview(), 'Reference preview is shown.' );
+		assert( !( await page.seeScrollableReferencePreview() ), 'Reference preview is not scrollable.' );
+		assert( !( await page.seeFadeoutOnReferenceText() ), 'Reference preview has no fading effect' );
 	} );
 
-	it( 'Abandoning link hides reference preview', function () {
-		if ( !page.hasReferencePopupsEnabled() ) {
+	it( 'Abandoning link hides reference preview', async function () {
+		if ( !( await page.hasReferencePopupsEnabled() ) ) {
 			this.skip();
 		}
-		page.dwellReferenceLink( 1 );
-		page.abandonLink();
-		assert( page.doNotSeeReferencePreview(), 'Reference preview is kept hidden.' );
+		await page.dwellReferenceLink( 1 );
+		await page.abandonLink();
+		assert( await page.doNotSeeReferencePreview(), 'Reference preview is kept hidden.' );
 	} );
 
 	// Skipped due to T341763
-	it.skip( 'References with lots of text are scrollable and fades', function () {
-		if ( !page.hasReferencePopupsEnabled() ) {
+	it.skip( 'References with lots of text are scrollable and fades', async function () {
+		if ( !( await page.hasReferencePopupsEnabled() ) ) {
 			this.skip();
 		}
-		page.dwellReferenceLink( 2 );
-		assert( page.seeScrollableReferencePreview(), 'Reference preview is scrollable' );
-		assert( page.seeFadeoutOnReferenceText(), 'Reference preview has a fading effect' );
+		await page.dwellReferenceLink( 2 );
+		assert( await page.seeScrollableReferencePreview(), 'Reference preview is scrollable' );
+		assert( await page.seeFadeoutOnReferenceText(), 'Reference preview has a fading effect' );
 	} );
 
-	it.skip( 'Dwelling references links inside reference previews does not close the popup ', function () {
-		if ( !page.hasReferencePopupsEnabled() ) {
+	it.skip( 'Dwelling references links inside reference previews does not close the popup ', async function () {
+		if ( !( await page.hasReferencePopupsEnabled() ) ) {
 			this.skip();
 		}
-		page.dwellReferenceLink( 3 );
-		page.dwellReferenceInceptionLink();
-		assert( page.seeReferenceInceptionPreview(), 'The reference preview is still showing.' );
+		await page.dwellReferenceLink( 3 );
+		await page.dwellReferenceInceptionLink();
+		assert( await page.seeReferenceInceptionPreview(), 'The reference preview is still showing.' );
 	} );
 } );
