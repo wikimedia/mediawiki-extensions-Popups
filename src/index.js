@@ -145,6 +145,12 @@ function handleDOMEventIfEligible( handler ) {
 			target = target.parentNode;
 		}
 
+		// If the event bubbles up all the way,
+		// document does not have closest method, so exit early (T336650).
+		if ( target === document ) {
+			return;
+		}
+
 		// If the closest method is not defined, let's return early and
 		// understand this better by logging an error. (T340081)
 		if ( target && !target.closest ) {
@@ -153,11 +159,6 @@ function handleDOMEventIfEligible( handler ) {
 			return;
 		}
 
-		// If the event bubbles up all the way,
-		// document does not have closest method, so exit early (T336650).
-		if ( target === document ) {
-			return;
-		}
 		target = findNearestEligibleTarget( target );
 		if ( target === null ) {
 			return;
