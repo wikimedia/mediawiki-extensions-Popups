@@ -10,7 +10,9 @@
 	top: -1000px;
 }
 
-.cdx-button.cdx-button--icon-only {
+// FIXME: Upstream this to Codex with T342910
+.mwe-popups-overlay .cdx-button.cdx-button--icon-only,
+.mwe-popups .cdx-button.cdx-button--icon-only {
 	// Hide text in icon only buttons
 	span + span {
 		.mixin-screen-reader-text();
