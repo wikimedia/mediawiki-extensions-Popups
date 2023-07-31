@@ -2,11 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Yupik",
-			"Kimberli Mäkäräinen (WMNO)"
+			"Kimberli Mäkäräinen (WMNO)",
+			"Ante75"
 		]
 	},
+	"popups-desc": "Ovdačájáheapmi ihtá go geavaheaddji bisánastá liŋkka bajil",
 	"popups-settings-save": "Vurke",
+	"popups-settings-help-ok": "Geargan",
 	"popups-settings-cancel": "Šluhtte",
+	"popups-settings-help": "Sáhtát fas ovdačájehemiid coahkkalit nala siiddu bodneteavsttas.",
+	"popups-preview-no-preview": "Boastuvuohta hehttii dán ovdačájeheami oidnomis",
+	"popups-preview-footer-read": "Mana dán siidui",
+	"popups-preview-disambiguation": "Dát namma čujuha eanet go ovtta siidui",
+	"popups-preview-disambiguation-link": "Čajet sullasaš siidduid",
 	"prefs-reading": "Lohkanásahusat",
 	"popups-refpreview-reference": "Gáldu"
 }
