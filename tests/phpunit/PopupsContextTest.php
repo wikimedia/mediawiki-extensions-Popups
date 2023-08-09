@@ -19,6 +19,7 @@
  * @ingroup extensions
  */
 
+use MediaWiki\User\UserOptionsLookup;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
@@ -94,8 +95,8 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::shouldSendModuleToUser
 	 */
 	public function testShouldSendToAnonUser() {
-		$user = $this->getMutableTestUser()->getUser();
-		$user->setId( self::ANONYMOUS_USER );
+		$user = $this->createMock( User::class );
+		$user->method( 'getId' )->willReturn( self::ANONYMOUS_USER );
 
 		$context = $this->getContext();
 		$this->assertTrue(
@@ -118,10 +119,15 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			'wgPopupsReferencePreviews' => false,
 		] );
 
+		$user = $this->createMock( User::class );
+		$user->method( 'isNamed' )->willReturn( true );
+		$userOptLookup = $this->createMock( UserOptionsLookup::class );
+		$userOptLookup->method( 'getBoolOption' )
+			->with( $user, PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME )
+			->willReturn( $optIn );
+		$this->setService( 'UserOptionsLookup', $userOptLookup );
+
 		$context = $this->getContext();
-		$user = $this->getMutableTestUser()->getUser();
-		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
-		$userOptionsManager->setOption( $user, PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME, $optIn );
 		$this->assertSame( $expected,
 			$context->shouldSendModuleToUser( $user ),
 			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
@@ -252,7 +258,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	public function testConflictsWithNavPopupsGadget() {
 		$integrationMock = $this->createMock( PopupsGadgetsIntegration::class );
 
-		$user = $this->getTestUser()->getUser();
+		$user = $this->createMock( User::class );
 
 		$integrationMock->expects( $this->once() )
 			->method( 'conflictsWithNavPopupsGadget' )
@@ -301,7 +307,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertSame(
 			$expected,
-			$contextMock->getConfigBitmaskFromUser( $this->getTestUser()->getUser() )
+			$contextMock->getConfigBitmaskFromUser( $this->createMock( User::class ) )
 		);
 	}
 

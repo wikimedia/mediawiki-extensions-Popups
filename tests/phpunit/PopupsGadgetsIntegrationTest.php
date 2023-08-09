@@ -27,7 +27,7 @@ use Popups\PopupsGadgetsIntegration;
  * @group Popups
  * @coversDefaultClass \Popups\PopupsGadgetsIntegration
  */
-class PopupsGadgetsIntegrationTest extends MediaWikiUnitTestCase {
+class PopupsGadgetsIntegrationTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * Gadget name for testing
