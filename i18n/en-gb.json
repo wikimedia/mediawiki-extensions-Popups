@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Reedy"
+		]
+	},
+	"popups-prefs-conflicting-gadgets-info": "Certain gadgets and other customisations may affect the performance of this feature. If you experience problems please review your gadgets and user scripts, including global ones."
+}
