@@ -46,7 +46,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		( new PopupsHooks( $userOptionsManager ) )
-			->onGetPreferences( $this->getTestUser()->getUser(), $prefs );
+			->onGetPreferences( $this->createMock( User::class ), $prefs );
 		$this->assertCount( 1, $prefs, 'No preferences are retrieved.' );
 		$this->assertSame( 'notEmpty',
 			$prefs[ 'someNotEmptyValue'],
@@ -57,7 +57,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::onGetPreferences
 	 */
 	public function testOnGetPreferencesNavPopupGadgetIsOn() {
-		$userMock = $this->getTestUser()->getUser();
+		$userMock = $this->createMock( User::class );
 
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
@@ -73,7 +73,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		( new PopupsHooks( $userOptionsManager ) )
-			->onGetPreferences( $this->getTestUser()->getUser(), $prefs );
+			->onGetPreferences( $userMock, $prefs );
 		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			$prefs,
 			'The opt-in preference is retrieved.' );
@@ -108,7 +108,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		( new PopupsHooks( $userOptionsManager ) )
-			->onGetPreferences( $this->getTestUser()->getUser(), $prefs );
+			->onGetPreferences( $this->createMock( User::class ), $prefs );
 		$this->assertGreaterThan( 3, count( $prefs ), 'A preference is retrieved.' );
 		$this->assertSame( 'notEmpty',
 			$prefs[ 'someNotEmptyValue'],
@@ -142,7 +142,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		( new PopupsHooks( $userOptionsManager ) )
-			->onGetPreferences( $this->getTestUser()->getUser(), $prefs );
+			->onGetPreferences( $this->createMock( User::class ), $prefs );
 		$this->assertGreaterThan( 2, count( $prefs ), 'A preference is retrieved.' );
 		$this->assertArrayHasKey( PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			$prefs,
