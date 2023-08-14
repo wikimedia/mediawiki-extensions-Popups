@@ -14,7 +14,8 @@
 			"Kghbln",
 			"TMg",
 			"Verdy p",
-			"Balyozxane"
+			"Balyozxane",
+			"Kimberli Mäkäräinen (WMNO)"
 		]
 	},
 	"popups-message": "{{name}}",
@@ -41,7 +42,7 @@
 	"popups-prefs-disable-nav-gadgets-info": "Help message telling to disable Navigation Popups gadget in order to enable page previews.\n\nParameters:\n* $1 – Link to the Gadgets tab of Preferences",
 	"popups-prefs-conflicting-gadgets-info": "Help message informing about possible conflicts with other gadgets/customizations",
 	"popups-refpreview-reference": "Default heading for popups that show previews of references as provided by the Cite extension's <ref> tags (also known as footnotes).\n{{Identical|Reference}}",
-	"popups-refpreview-book": "Çavkaniya pirtûkê",
+	"popups-refpreview-book": "Heading for a popup previewing a citation from a book.\n{{Identical|Book}}",
 	"popups-refpreview-journal": "Heading for a popup previewing a citation from a journal.\n{{Identical|Journal}}",
 	"popups-refpreview-news": "Heading for a popup previewing a citation from the news.\n{{Identical|News}}",
 	"popups-refpreview-web": "Heading for a popup previewing a citation from a website.\n{{Identical|Website}}",
