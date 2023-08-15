@@ -125,13 +125,14 @@
 	"ResourceModules": {
 		"ext.popups.icons": {
 			"class": "ResourceLoaderOOUIIconPackModule",
+			"selectorWithoutVariant": ".mw-ui-icon-{name}",
 			"icons": [
 				"infoFilled",
 				"settings"
 			]
 		},
 		"ext.popups.images": {
-			"selector": ".mw-ui-icon-{name}:before",
+			"selector": ".mw-ui-icon-{name}",
 			"class": "ResourceLoaderImageModule",
 			"images": {
 				"popups-close": "resources/ext.popups.images/close.svg",
@@ -231,7 +232,6 @@
 				"mediawiki.storage",
 				"mediawiki.Title",
 				"mediawiki.ui.checkbox",
-				"mediawiki.ui.icon",
 				"mediawiki.Uri",
 				"mediawiki.user",
 				"mediawiki.util",
