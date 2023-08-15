@@ -5,7 +5,8 @@
 			"Manvydasz",
 			"Nersip",
 			"Tomasdd",
-			"Zygimantus"
+			"Zygimantus",
+			"Nokeoo"
 		]
 	},
 	"popups-message": "Peržiūros",
@@ -13,6 +14,7 @@
 	"popups-settings-title": "Peržiūros",
 	"popups-settings-option-page": "Įgalinti",
 	"popups-settings-option-page-description": "Rodyti trumpas puslapių nuorodų santraukas, kai skaitote straipsnį.",
+	"popups-settings-option-reference": "Išnašų peržiūros",
 	"popups-settings-save": "Išsaugoti",
 	"popups-settings-help-ok": "Atlikta",
 	"popups-settings-cancel": "Atšaukti",
