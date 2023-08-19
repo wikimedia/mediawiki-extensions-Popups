@@ -25,8 +25,8 @@ use ExtensionRegistry;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserOptionsLookup;
-use Title;
 
 /**
  * Popups Module

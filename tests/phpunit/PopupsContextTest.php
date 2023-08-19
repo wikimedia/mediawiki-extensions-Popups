@@ -19,6 +19,7 @@
  * @ingroup extensions
  */
 
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserOptionsLookup;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use Popups\PopupsContext;
