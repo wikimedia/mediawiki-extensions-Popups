@@ -198,13 +198,13 @@ QUnit.test( 'createEmptyPreview(model)', ( assert ) => {
 
 	assert.strictEqual(
 		$( emptyPreview.el ).find( '.mwe-popups-title' ).text().trim(),
-		'',
+		'<popups-preview-no-preview>',
 		'Empty preview title is hidden.'
 	);
 	assert.strictEqual(
-		$( emptyPreview.el ).find( '.mwe-popups-extract' ).text().trim(),
-		'<popups-preview-no-preview>',
-		'Empty preview extract is correct.'
+		$( emptyPreview.el ).find( '.mwe-popups-message' ).length,
+		0,
+		'No preview message text.'
 	);
 	assert.strictEqual(
 		$( emptyPreview.el ).find( '.mwe-popups-read-link' ).text().trim(),
@@ -236,13 +236,13 @@ QUnit.test( 'createEmptyPreview(null model)', ( assert ) => {
 
 	assert.strictEqual(
 		$( emptyPreview.el ).find( '.mwe-popups-title' ).text().trim(),
-		'',
+		'<popups-preview-no-preview>',
 		'Empty preview title is hidden.'
 	);
 	assert.strictEqual(
-		$( emptyPreview.el ).find( '.mwe-popups-extract' ).text().trim(),
-		'<popups-preview-no-preview>',
-		'Empty preview extract is correct.'
+		$( emptyPreview.el ).find( '.mwe-popups-message' ).length,
+		0,
+		'No preview message text.'
 	);
 	assert.strictEqual(
 		$( emptyPreview.el ).find( '.mwe-popups-read-link' ).text().trim(),
@@ -269,8 +269,8 @@ QUnit.test( 'createPreviewWithType(model with unknown type)', ( assert ) => {
 		'Popup type is safely espaced'
 	);
 	assert.strictEqual(
-		$( emptyPreview.el ).find( '.mw-ui-icon' ).attr( 'class' ),
-		'mw-ui-icon mw-ui-icon-element mw-ui-icon-preview-unknown',
+		$( emptyPreview.el ).find( '.popups-icon' ).attr( 'class' ),
+		'popups-icon mw-ui-icon-preview-unknown',
 		'Icon type is safely espaced'
 	);
 } );
@@ -305,9 +305,9 @@ QUnit.test( 'createDisambiguationPreview(model)', ( assert ) => {
 		'Preview title is show.'
 	);
 	assert.strictEqual(
-		$( preview.el ).find( '.mwe-popups-extract' ).text().trim(),
+		$( preview.el ).find( '.mwe-popups-message' ).text().trim(),
 		'<popups-preview-disambiguation>',
-		'Preview extract is correct.'
+		'Preview message is correct.'
 	);
 	assert.strictEqual(
 		$( preview.el ).find( '.mwe-popups-read-link' ).text().trim(),

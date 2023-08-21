@@ -203,12 +203,11 @@ export function createPagePreview( model ) {
  * @return {ext.popups.Preview}
  */
 export function createEmptyPreview( model ) {
-	const showTitle = false,
-		extractMsg = mw.msg( 'popups-preview-no-preview' ),
-		linkMsg = mw.msg( 'popups-preview-footer-read' );
+	model.title = mw.msg( 'popups-preview-no-preview' );
+	const linkMsg = mw.msg( 'popups-preview-footer-read' );
 
 	return {
-		el: renderPreview( model, showTitle, extractMsg, linkMsg ),
+		el: renderPreview( model, null, linkMsg ),
 		hasThumbnail: false,
 		isTall: false
 	};
@@ -221,12 +220,11 @@ export function createEmptyPreview( model ) {
  * @return {ext.popups.Preview}
  */
 export function createDisambiguationPreview( model ) {
-	const showTitle = true,
-		extractMsg = mw.msg( 'popups-preview-disambiguation' ),
-		linkMsg = mw.msg( 'popups-preview-disambiguation-link' );
+	const extractMsg = mw.msg( 'popups-preview-disambiguation' );
+	const linkMsg = mw.msg( 'popups-preview-disambiguation-link' );
 
 	return {
-		el: renderPreview( model, showTitle, extractMsg, linkMsg ),
+		el: renderPreview( model, extractMsg, linkMsg ),
 		hasThumbnail: false,
 		isTall: false
 	};

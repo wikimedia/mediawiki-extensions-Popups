@@ -59,7 +59,7 @@ export function renderSettingsDialog( model ) {
 			<header>
 				<div>
 					<button class='cdx-button cdx-button--weight-quiet cdx-button--icon-only'>
-						<span class='mw-ui-icon mw-ui-icon-popups-close close'></span>
+						<span class='popups-icon mw-ui-icon-popups-close close'></span>
 						<span>${closeLabel}</span>
 					</button>
 				</div>
@@ -86,7 +86,7 @@ export function renderSettingsDialog( model ) {
 				</form>
 			</main>
 			<div class='mwe-popups-settings-help' style='display:none;'>
-				<div class="mw-ui-icon mw-ui-icon-footer"></div>
+				<div class="popups-icon mw-ui-icon-footer"></div>
 				<p>${helpText}</p>
 			</div>
 		</section>

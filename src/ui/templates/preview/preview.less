@@ -1,7 +1,36 @@
 .mwe-popups {
 	.mwe-popups-title {
 		display: block;
-		font-weight: bold;
-		margin: 0 16px;
+		margin-bottom: 12px;
+
+		.mwe-popups-type-generic& {
+			font-weight: normal;
+			margin: 0;
+		}
+	}
+
+	.mwe-popups-extract .popups-icon {
+		padding: 0 8px 0 0;
+	}
+
+	&.mwe-popups-type-generic,
+	&.mwe-popups-type-disambiguation {
+		.mwe-popups-extract {
+			min-height: auto;
+		}
+
+		.mwe-popups-read-link {
+			font-weight: bold;
+			font-size: 12px;
+			text-decoration: none;
+		}
+
+		// When the user dwells on the 'There was an issue displaying this preview'
+		// text, which is a link to the page, then highlight the 'Go to this page'
+		// link too.
+		.mwe-popups-extract:hover + footer .mwe-popups-read-link,
+		.mwe-popups-read-link:hover {
+			text-decoration: underline;
+		}
 	}
 }

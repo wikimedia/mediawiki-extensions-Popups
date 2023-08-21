@@ -21,6 +21,7 @@
 
 // Same as the --pointer-height in popup.less
 @previewPointerHeight: 8px;
+@minHeight: @previewFooterHeight + @previewPointerHeight;
 
 .mwe-popups {
 	background: #fff;
@@ -168,7 +169,6 @@
 		width: @popupWidth;
 
 		.mwe-popups-extract {
-			@minHeight: @previewFooterHeight + @previewPointerHeight;
 			// On short summaries, we want to avoid an overlap with the gradient.
 			min-height: @minHeight;
 			max-height: 202px - @previewFooterHeight - @popupPadding;
@@ -196,29 +196,6 @@
 	&.flipped-y .mwe-popups-container.footer-empty .mwe-popups-extract,
 	&.flipped-x-y .mwe-popups-container.footer-empty .mwe-popups-extract {
 		margin-bottom: @popupPadding + @previewPointerHeight;
-	}
-
-	&.mwe-popups-type-generic,
-	&.mwe-popups-type-disambiguation {
-		.mwe-popups-extract {
-			min-height: auto;
-			padding-top: 4px;
-			margin-top: 0;
-			margin-bottom: var( --margin-bottom );
-			--margin-bottom: 60px;
-		}
-
-		.mwe-popups-read-link {
-			font-weight: bold;
-			font-size: 12px;
-		}
-
-		// When the user dwells on the 'There was an issue displaying this preview'
-		// text, which is a link to the page, then highlight the 'Go to this page'
-		// link too.
-		.mwe-popups-extract:hover + footer .mwe-popups-read-link {
-			text-decoration: underline;
-		}
 	}
 
 	/* Triangles/Pointers */
@@ -494,18 +471,14 @@
 		// clip-path cutting off the .mwe-popups-extract's margin. We don't want
 		// this to apply to elements with the .mwe-popups-image-pointer class
 		// because the pokey is on the image.
-		&:not( .flipped-y ):not( .flipped-x-y ):not( .mwe-popups-image-pointer ):not( .mwe-popups-type-disambiguation ) .mwe-popups-extract {
+		&:not( .flipped-y ):not( .flipped-x-y ):not( .mwe-popups-image-pointer ) .mwe-popups-extract {
 			padding-top: var( --pointer-height );
 		}
 
 		&.mwe-popups-type-generic:not( .flipped-y ):not( .flipped-x-y ),
 		&.mwe-popups-type-disambiguation:not( .flipped-y ):not( .flipped-x-y ) {
-			.mwe-popups-container {
-				padding-top: var( --pointer-height );
-
-				.mwe-popups-extract {
-					margin-bottom: ~'calc( var( --margin-bottom ) - var( --pointer-height ) )';
-				}
+			.mwe-popups-extract {
+				margin-bottom: ~'calc( @{minHeight} - var( --pointer-height ) )';
 			}
 		}
 	}

@@ -6,23 +6,9 @@
 }
 
 .mwe-popups.mwe-popups-type-reference {
-	.mwe-popups-title {
-		// align icon with outer padding
-		margin: 0 0 12px 0;
-
-		.mw-ui-icon {
-			padding: 0 8px 0 0;
-
-			&:hover {
-				/* stylelint-disable-next-line declaration-no-important */
-				background-color: transparent !important;
-			}
-		}
-
+	.mwe-popups-title .mw-ui-icon-reference-note {
 		// There is currently no "reference-note" icon specified in extension.json
-		.mw-ui-icon-reference-note {
-			display: none;
-		}
+		display: none;
 	}
 
 	.mwe-popups-extract {
@@ -68,14 +54,5 @@
 		font-weight: bold;
 		margin: 1em 0;
 		position: relative;
-
-		.mw-ui-icon {
-			margin-left: -0.78em;
-			position: absolute;
-		}
-
-		.mwe-collapsible-placeholder-label {
-			margin-left: 2.5em;
-		}
 	}
 }
