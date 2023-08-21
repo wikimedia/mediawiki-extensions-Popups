@@ -5,7 +5,8 @@
 			"Manvydasz",
 			"Nersip",
 			"Tomasdd",
-			"Zygimantus"
+			"Zygimantus",
+			"Nokeoo"
 		]
 	},
 	"popups-message": "Peržiūros",
@@ -17,6 +18,7 @@
 	"popups-settings-save": "Išsaugoti",
 	"popups-settings-help-ok": "Atlikta",
 	"popups-settings-cancel": "Atšaukti",
+	"popups-settings-help": "Galite vėl įjungti peržiūrą naudodami nuorodą puslapio poraštėje.",
 	"popups-settings-enable": "Išjungti puslapio peržiūrą",
 	"popups-preview-no-preview": "Puslapio peržiūros klaida",
 	"popups-preview-footer-read": "Eiti į šį puslapį",
@@ -26,6 +28,7 @@
 	"popups-prefs-optin-title": "<em>Rodyti trumpas straipsnių santraukas, kai skaitote straipsnį</em>",
 	"popups-prefs-optin-enabled-label": "Įgalinti",
 	"popups-prefs-optin-disabled-label": "Išjungti",
+	"popups-prefs-conflicting-gadgets-info": "Kai kurios priemonės ir tinkinimai gali veikti šią funkciją. Jei patiriate problemų, prašome peržiūrėti savo priemones ir naudotojo kodą, įskaitant visuotinius.",
 	"popups-refpreview-reference": "Išnaša",
 	"popups-refpreview-book": "Knygos išnaša",
 	"popups-refpreview-journal": "Žurnalo išnaša",
