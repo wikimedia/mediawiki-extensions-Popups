@@ -12,7 +12,7 @@ const templateHTML = `
     <a class="mwe-popups-extract"></a>
     <footer>
 		<a class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only mwe-popups-settings-button">
-			<span class="popups-icon popups-icon--size-small mw-ui-icon-settings"></span>
+			<span class="popups-icon popups-icon--size-small popups-icon--settings"></span>
 			<span class="mwe-popups-settings-button-label"></span>
         </a>
     </footer>

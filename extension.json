@@ -125,17 +125,16 @@
 	"ResourceModules": {
 		"ext.popups.icons": {
 			"class": "ResourceLoaderOOUIIconPackModule",
-			"selectorWithoutVariant": ".mw-ui-icon-{name}",
+			"selectorWithoutVariant": ".popups-icon--{name}",
 			"icons": [
 				"infoFilled",
 				"settings"
 			]
 		},
 		"ext.popups.images": {
-			"selector": ".mw-ui-icon-{name}",
+			"selector": ".popups-icon--{name}",
 			"class": "ResourceLoaderImageModule",
 			"images": {
-				"popups-close": "resources/ext.popups.images/close.svg",
 				"preview-generic": {
 					"file": {
 						"ltr": "resources/ext.popups.images/sad-face-ltr.svg",
@@ -146,37 +145,6 @@
 					"file": {
 						"ltr": "resources/ext.popups.images/footer-ltr.svg",
 						"rtl": "resources/ext.popups.images/footer-rtl.svg"
-					}
-				},
-				"preview-disambiguation": {
-					"file": {
-						"ltr": "resources/ext.popups.images/articles-ltr.svg",
-						"rtl": "resources/ext.popups.images/articles-rtl.svg"
-					}
-				},
-				"reference-generic": "resources/ext.popups.images/reference.svg",
-				"reference-book": {
-					"file": {
-						"ltr": "resources/ext.popups.images/book-ltr.svg",
-						"rtl": "resources/ext.popups.images/book-rtl.svg"
-					}
-				},
-				"reference-journal": {
-					"file": {
-						"ltr": "resources/ext.popups.images/journal-ltr.svg",
-						"rtl": "resources/ext.popups.images/journal-rtl.svg"
-					}
-				},
-				"reference-news": {
-					"file": {
-						"ltr": "resources/ext.popups.images/newspaper-ltr.svg",
-						"rtl": "resources/ext.popups.images/newspaper-rtl.svg"
-					}
-				},
-				"reference-web": {
-					"file": {
-						"ltr": "resources/ext.popups.images/browser-ltr.svg",
-						"rtl": "resources/ext.popups.images/browser-rtl.svg"
 					}
 				}
 			}
@@ -225,7 +193,6 @@
 			],
 			"dependencies": [
 				"web2017-polyfills",
-				"ext.popups.icons",
 				"ext.popups.images",
 				"mediawiki.experiments",
 				"mediawiki.jqueryMsg",

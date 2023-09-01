@@ -57,14 +57,14 @@ export function renderReferencePreview(
 	const el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
 	replaceWith( el.querySelector( '.mwe-popups-title-placeholder' ), escapeHTML( titleMsg.text() ) );
 	// The following classes are used here:
-	// * mw-ui-icon-reference-generic
-	// * mw-ui-icon-reference-book
-	// * mw-ui-icon-reference-journal
-	// * mw-ui-icon-reference-news
-	// * mw-ui-icon-reference-note
-	// * mw-ui-icon-reference-web
+	// * popups-icon--reference-generic
+	// * popups-icon--reference-book
+	// * popups-icon--reference-journal
+	// * popups-icon--reference-news
+	// * popups-icon--reference-note
+	// * popups-icon--reference-web
 	el.querySelector( '.mwe-popups-title .popups-icon' )
-		.classList.add( `mw-ui-icon-reference-${type}` );
+		.classList.add( `popups-icon--reference-${type}` );
 	el.querySelector( '.mw-parser-output' )
 		.innerHTML = model.extract;
 
@@ -83,7 +83,7 @@ export function renderReferencePreview(
 		const otherNode = document.createElement( 'div' );
 		otherNode.classList.add( 'mwe-collapsible-placeholder' );
 		const icon = document.createElement( 'span' );
-		icon.classList.add( 'popups-icon', 'mw-ui-icon-infoFilled' );
+		icon.classList.add( 'popups-icon', 'popups-icon--infoFilled' );
 		const label = document.createElement( 'span' );
 		label.classList.add( 'mwe-collapsible-placeholder-label' );
 		label.textContent = mw.msg( 'popups-refpreview-collapsible-placeholder' );
@@ -109,7 +109,7 @@ export function renderReferencePreview(
 		const settingsButton = document.createElement( 'a' );
 		settingsButton.classList.add( 'cdx-button', 'cdx-button--fake-button', 'cdx-button--fake-button--enabled', 'cdx-button--weight-quiet', 'cdx-button--icon-only', 'mwe-popups-settings-button' );
 		const settingsIcon = document.createElement( 'span' );
-		settingsIcon.classList.add( 'popups-icon', 'popups-icon--size-small', 'mw-ui-icon-settings' );
+		settingsIcon.classList.add( 'popups-icon', 'popups-icon--size-small', 'popups-icon--settings' );
 		const settingsButtonLabel = document.createElement( 'span' );
 		settingsButtonLabel.textContent = mw.msg( 'popups-settings-icon-gear-title' );
 		settingsButton.append( settingsIcon );

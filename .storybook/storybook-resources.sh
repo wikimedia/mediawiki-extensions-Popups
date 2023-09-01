@@ -12,4 +12,4 @@ sed "s/..\/..\/lib\/codex/@wikimedia\/codex/g" .storybook/mocks/mediawiki.skin.d
 curl https://raw.githubusercontent.com/wikimedia/mediawiki/master/resources/src/mediawiki.less/mediawiki.mixins.less -o .storybook/mocks/mediawiki.mixins.less
 
 # OOUI/WikimediaUI theme icons
-curl "https://en.wikipedia.org/w/load.php?modules=ext.popups.icons|ext.popups.images&only=styles&debug=true"  -o .storybook/mocks/production-icons.less
+curl "https://en.wikipedia.org/w/load.php?modules=ext.popups.images&only=styles&debug=true"  -o .storybook/mocks/production-icons.less

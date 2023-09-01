@@ -270,7 +270,7 @@ QUnit.test( 'createPreviewWithType(model with unknown type)', ( assert ) => {
 	);
 	assert.strictEqual(
 		$( emptyPreview.el ).find( '.popups-icon' ).attr( 'class' ),
-		'popups-icon mw-ui-icon-preview-unknown',
+		'popups-icon popups-icon--preview-unknown',
 		'Icon type is safely espaced'
 	);
 } );
