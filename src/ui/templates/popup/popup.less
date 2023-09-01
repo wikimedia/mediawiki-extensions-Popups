@@ -21,7 +21,6 @@
 
 // Same as the --pointer-height in popup.less
 @previewPointerHeight: 8px;
-@minHeight: @previewFooterHeight + @previewPointerHeight;
 
 .mwe-popups {
 	background: #fff;
@@ -35,16 +34,8 @@
 	min-width: 300px;
 	border-radius: @border-radius-base;
 
-	// icons positioned at the top of the popup
-	.mw-ui-icon-preview-disambiguation,
-	.mw-ui-icon-preview-generic {
-		opacity: 0.25;
-	}
-
 	.mwe-popups-container {
 		color: @color-base;
-		margin-top: -@previewPointerHeight;
-		padding-top: 9px;
 		text-decoration: none;
 
 		footer {
@@ -54,7 +45,6 @@
 			margin: 0;
 			position: absolute;
 			bottom: 0;
-			left: 0;
 			pointer-events: none; // Allows clicking 'through' the element
 
 			a {
@@ -154,15 +144,9 @@
 			float: left;
 		}
 
-		.mwe-popups-extract + footer {
+		footer {
 			left: 0;
 			right: @popupLandscapeThumbnailWidth;
-
-			.rtl & {
-				/* @noflip */
-				right: -12px;
-				width: @popupTallWidth;
-			}
 		}
 	}
 
@@ -171,15 +155,15 @@
 
 		.mwe-popups-extract {
 			// On short summaries, we want to avoid an overlap with the gradient.
-			min-height: @minHeight;
+			min-height: @previewFooterHeight;
 			max-height: 202px - @previewFooterHeight - @popupPadding;
 			overflow: hidden;
-			margin-bottom: @minHeight;
+			margin-bottom: @previewFooterHeight;
 		}
 
 		footer {
-			// 2px = border
-			width: @popupWidth - @cogIconSize - 2;
+			left: 0;
+			right: 0;
 		}
 	}
 
@@ -242,12 +226,6 @@
 			}
 		}
 
-		.mwe-popups-extract {
-			padding-top: @popupPadding;
-			// The number here should reflect landscapeImage.h
-			margin-top: 200px;
-		}
-
 		> div > a > svg {
 			margin-top: -8px;
 			position: absolute;
@@ -271,10 +249,6 @@
 			position: absolute;
 			z-index: @zIndexThumbnailMask;
 			right: 0;
-		}
-
-		.mwe-popups-extract {
-			margin-top: 8px;
 		}
 	}
 
@@ -367,32 +341,42 @@
 			outline: 1px solid rgba( 0, 0, 0, 0.1 );
 		}
 
-		.mwe-popups-extract[ dir='rtl' ] + footer {
-			/* @noflip */
-			left: unset;
-			/* @noflip */
-			right: 0;
-
-			.mwe-popups-settings-button {
-				/* @noflip */
-				float: left;
-			}
-		}
-
+		// Add bottom padding the same size as the pokey height to account for clip-path.
 		&.flipped-y,
 		&.flipped-x-y {
-			.mwe-popups-discreet {
-				margin-bottom: 0;
-			}
-
 			.mwe-popups-container {
 				--y1: 100%;
 				--y2: ~'calc(100% - var(--pointer-height))';
 				--y3: ~'calc(100% - var(--pointer-height) - var(--pseudo-radius))';
 				--y4: ~'var(--pseudo-radius)';
 				--y5: 0;
-				margin-bottom: -9px;
+				margin-bottom: calc( var( --pointer-height ) * -1 );
+				padding-bottom: var( --pointer-height );
+			}
+		}
+
+		// Add top padding the same size as the pokey height to account for clip-path.
+		&:not( .flipped-y ):not( .flipped-x-y ) {
+			.mwe-popups-container {
+				margin-top: calc( var( --pointer-height ) * -1 );
+				padding-top: var( --pointer-height );
+			}
+		}
+
+		// We apply a negative top margin to the image by default. This style handles the following cases:
+		// - when the pokey is on the top, this style accounts for the top padding on .mwe-popups-container
+		// - when the pokey is on the bottom and the popup is not tall, this style is still needed to ensure
+		//	the overall height of the popup is still the same.
+		.mwe-popups-discreet {
+			margin-top: calc( var( --pointer-height ) * -1 );
+		}
+
+		// We apply a negative bottom margin to the image when the pokey is on the bottom and the pop is tall
+		&.mwe-popups-is-tall.flipped-y,
+		&.mwe-popups-is-tall.flipped-x-y {
+			.mwe-popups-discreet {
 				margin-top: 0;
+				margin-bottom: calc( var( --pointer-height ) * -1 );
 			}
 		}
 
@@ -453,33 +437,6 @@
 
 		&::after {
 			display: none;
-		}
-
-		&.mwe-popups-image-pointer {
-			.mwe-popups-discreet {
-				// Override the negative margin on element which undesirably pulls
-				// mwe-popups-extract up.
-				margin-bottom: 0;
-			}
-
-			.mwe-popups-extract {
-				margin-top: 0;
-			}
-		}
-
-		// Add top padding the same size as the pokey height to account for
-		// clip-path cutting off the .mwe-popups-extract's margin. We don't want
-		// this to apply to elements with the .mwe-popups-image-pointer class
-		// because the pokey is on the image.
-		&:not( .flipped-y ):not( .flipped-x-y ):not( .mwe-popups-image-pointer ) .mwe-popups-extract {
-			padding-top: var( --pointer-height );
-		}
-
-		&.mwe-popups-type-generic:not( .flipped-y ):not( .flipped-x-y ),
-		&.mwe-popups-type-disambiguation:not( .flipped-y ):not( .flipped-x-y ) {
-			.mwe-popups-extract {
-				margin-bottom: ~'calc( @{minHeight} - var( --pointer-height ) )';
-			}
 		}
 	}
 
