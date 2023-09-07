@@ -106,7 +106,7 @@ export function renderReferencePreview(
 	// TODO: Remove when not in Beta any more
 	if ( !mw.config.get( 'wgPopupsReferencePreviewsBetaFeature' ) ) {
 		// TODO: Do not remove this but move it up into the templateHTML constant!
-		const settingsButton = document.createElement( 'button' );
+		const settingsButton = document.createElement( 'a' );
 		settingsButton.classList.add( 'cdx-button', 'cdx-button--fake-button', 'cdx-button--fake-button--enabled', 'cdx-button--weight-quiet', 'cdx-button--icon-only', 'mwe-popups-settings-button' );
 		const settingsIcon = document.createElement( 'span' );
 		settingsIcon.classList.add( 'popups-icon', 'popups-icon--size-small', 'mw-ui-icon-settings' );

@@ -304,7 +304,7 @@ export function bindBehavior( preview, behavior ) {
 
 	preview.el.addEventListener( 'click', behavior.click );
 
-	const button = preview.el.querySelector( '.mwe-popups-settings-button' );
+	const button = preview.el.querySelector( 'a.mwe-popups-settings-button' );
 	if ( button ) {
 		button.href = behavior.settingsUrl;
 		button.addEventListener( 'click', ( event ) => {
@@ -312,6 +312,9 @@ export function bindBehavior( preview, behavior ) {
 
 			behavior.showSettings( event );
 		} );
+	} else {
+		const err = new Error( 'Page previews: No settings button found in preview.' );
+		mw.errorLogger.logError( err, 'error.web-team' );
 	}
 }
 
