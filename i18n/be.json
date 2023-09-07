@@ -5,7 +5,8 @@
 			"Chadyka",
 			"Maksim L.",
 			"No Sleep till Krupki",
-			"Plaga med"
+			"Plaga med",
+			"ZlyiLev"
 		]
 	},
 	"popups-message": "Папярэдні прагляд",
@@ -38,7 +39,7 @@
 	"popups-refpreview-news": "Спасылка на навіны",
 	"popups-refpreview-note": "Нататка",
 	"popups-refpreview-web": "Спасылка на інтэрнэт",
-	"popups-refpreview-collapsible-placeholder": "Гэтая зноска ўтрымлівае выяву, якая не ўпісваецца ў перадпрагляд.",
+	"popups-refpreview-collapsible-placeholder": "Гэтая зноска змяшчае выяву, якая не ўпісваецца ў перадпрагляд.",
 	"popups-refpreview-user-preference-label": "Уключыць перадпрагляд зносак (атрымаць хуткі перадпрагляд зноскі пры чытанні старонкі)",
 	"popups-refpreview-beta-feature-message": "Перадпрагляд Зносак",
 	"popups-refpreview-beta-feature-description": "Паказаць перадпрагляд зноскі, навёўшы курсор на яе маркер.\n\nКалі ласка, звярніце ўвагу: калі вы выкарыстоўваеце гаджэт [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навігацыйныя акенцы] або гаджэт [[mw:Special:MyLanguage/Reference Tooltips|Выплыўныя зноскі]], вы не ўбачыце перадпрагляд зносак."
