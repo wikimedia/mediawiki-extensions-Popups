@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bangrapip"
+		]
+	},
+	"popups-desc": "Mampangin sembulan pradeleng kapan pemaké punya panah ceceurut ada di sènggètan",
+	"popups-settings-save": "Simpen",
+	"popups-settings-help-ok": "Kelar",
+	"popups-settings-cancel": "Urungin",
+	"popups-settings-help": "Lu bisa nyalain pradeleng lagi maké sènggètan di cèkèr halaman.",
+	"popups-preview-no-preview": "Ada mas'alah pas mampangin ni pradeleng",
+	"popups-preview-footer-read": "Pegi ke ni halaman",
+	"popups-preview-disambiguation": "Ni judul bekaètan ama lebi deri atu halaman",
+	"popups-preview-disambiguation-link": "Deleng halaman semacem",
+	"prefs-reading": "Pengaturan baca",
+	"popups-refpreview-reference": "Ruju'an",
+	"popups-refpreview-book": "Ruju'an kitab",
+	"popups-refpreview-journal": "Ruju'an majalah ilmiah",
+	"popups-refpreview-news": "Ruju'an berita",
+	"popups-refpreview-web": "Ruju'an jala",
+	"popups-refpreview-beta-feature-message": "Pradeleng Ruju'an"
+}
