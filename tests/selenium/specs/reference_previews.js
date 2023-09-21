@@ -21,7 +21,7 @@ describe( 'Dwelling on a valid reference link', function () {
 		if ( !( await page.hasReferencePopupsEnabled() ) ) {
 			this.skip();
 		}
-		await page.dwellReferenceLink( 1 );
+		await page.dwellReferenceLink( 'cite_ref-1' );
 		assert( await page.seeReferencePreview(), 'Reference preview is shown.' );
 		assert( !( await page.seeScrollableReferencePreview() ), 'Reference preview is not scrollable.' );
 		assert( !( await page.seeFadeoutOnReferenceText() ), 'Reference preview has no fading effect' );
@@ -31,7 +31,7 @@ describe( 'Dwelling on a valid reference link', function () {
 		if ( !( await page.hasReferencePopupsEnabled() ) ) {
 			this.skip();
 		}
-		await page.dwellReferenceLink( 1 );
+		await page.dwellReferenceLink( 'cite_ref-1' );
 		await page.abandonLink();
 		assert( await page.doNotSeeReferencePreview(), 'Reference preview is kept hidden.' );
 	} );
@@ -41,7 +41,7 @@ describe( 'Dwelling on a valid reference link', function () {
 		if ( !( await page.hasReferencePopupsEnabled() ) ) {
 			this.skip();
 		}
-		await page.dwellReferenceLink( 2 );
+		await page.dwellReferenceLink( 'cite_ref-2' );
 		assert( await page.seeScrollableReferencePreview(), 'Reference preview is scrollable' );
 		assert( await page.seeFadeoutOnReferenceText(), 'Reference preview has a fading effect' );
 	} );
@@ -50,7 +50,7 @@ describe( 'Dwelling on a valid reference link', function () {
 		if ( !( await page.hasReferencePopupsEnabled() ) ) {
 			this.skip();
 		}
-		await page.dwellReferenceLink( 3 );
+		await page.dwellReferenceLink( 'cite_ref-3' );
 		await page.dwellReferenceInceptionLink();
 		assert( await page.seeReferenceInceptionPreview(), 'The reference preview is still showing.' );
 	} );

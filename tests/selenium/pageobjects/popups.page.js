@@ -84,8 +84,8 @@ class PopupsPage extends Page {
 		await $( PAGE_POPUPS_LINK_SELECTOR ).moveTo();
 	}
 
-	async dwellReferenceLink( num ) {
-		await this.dwellLink( `.reference:nth-of-type(${num}) a` );
+	async dwellReferenceLink( id ) {
+		await this.dwellLink( `#${id} a` );
 	}
 
 	async dwellReferenceInceptionLink() {
