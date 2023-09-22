@@ -64,7 +64,7 @@
 		"svgo": "3.0.2",
 		"tap-mocha-reporter": "5.0.1",
 		"url-loader": "1.1.2",
-		"wdio-mediawiki": "2.1.0",
+		"wdio-mediawiki": "2.3.0",
 		"webpack": "4.44.2",
 		"webpack-cli": "3.3.12"
 	},
