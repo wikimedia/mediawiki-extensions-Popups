@@ -22,6 +22,7 @@ export default function isReferencePreviewsEnabled( user, userSettings, config )
 
 	// T265872: Unavailable when in conflict with (one of the) reference tooltips gadgets.
 	if ( config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ) ||
+		config.get( 'wgPopupsConflictsWithNavPopupGadget' ) ||
 		// T243822: Temporarily disabled in the mobile skin
 		config.get( 'skin' ) === 'minerva'
 	) {
