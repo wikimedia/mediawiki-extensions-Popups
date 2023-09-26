@@ -13,7 +13,7 @@ const templateHTML = `
                 <span class="popups-icon"></span>
                 <span class="mwe-popups-title-placeholder"></span>
             </strong>
-            <div class="mw-parser-output"></div>
+            <bdi><div class="mw-parser-output"></div></bdi>
         </div>
         <div class="mwe-popups-fade"></div>
     </div>
@@ -171,6 +171,7 @@ export function renderReferencePreview(
 
 		element.isScrolling = !scrolledToBottom;
 		extract.classList.toggle( 'mwe-popups-fade-out', element.isScrolling );
+		extract.setAttribute( 'lang', mw.config.get( 'wgPageContentLanguage' ) );
 	} );
 
 	return el;
