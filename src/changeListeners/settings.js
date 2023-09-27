@@ -13,12 +13,19 @@ export default function settings( boundActions, render ) {
 			// Nothing to do on initialization
 			return;
 		}
+		if (
+			settingsObj &&
+			Object.keys( oldState.settings.keyValues ).length !== Object.keys( newState.settings.keyValues ).length
+		) {
+			// the number of settings changed so force it to be repainted.
+			settingsObj.refresh( newState.settings.keyValues );
+		}
 
 		// Update global modal visibility
 		if ( oldState.settings.shouldShow === false && newState.settings.shouldShow ) {
 			// Lazily instantiate the settings UI
 			if ( !settingsObj ) {
-				settingsObj = render( boundActions );
+				settingsObj = render( boundActions, newState.settings.keyValues );
 				settingsObj.appendTo( document.body );
 			}
 

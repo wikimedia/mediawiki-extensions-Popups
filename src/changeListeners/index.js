@@ -4,7 +4,6 @@ import pageviews from './pageviews';
 import render from './render';
 import settings from './settings';
 import statsv from './statsv';
-import syncUserSettings from './syncUserSettings';
 
 export default {
 	footerLink,
@@ -12,6 +11,5 @@ export default {
 	pageviews,
 	render,
 	settings,
-	statsv,
-	syncUserSettings
+	statsv
 };

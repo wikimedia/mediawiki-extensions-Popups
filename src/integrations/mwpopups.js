@@ -12,9 +12,12 @@ import { previewTypes } from '../preview/model';
  * @param {Function} registerModel allows extensions to register custom preview handlers.
  * @param {Function} registerPreviewUI allows extensions to register custom preview renderers.
  * @param {Function} registerGatewayForPreviewType allows extensions to register gateways for preview types.
+ * @param {Function} registerSetting
  * @return {Object} external Popups interface
  */
-export default function createMwPopups( store, registerModel, registerPreviewUI, registerGatewayForPreviewType ) {
+export default function createMwPopups( store, registerModel, registerPreviewUI,
+	registerGatewayForPreviewType, registerSetting
+) {
 	return {
 		/**
 		 * @return {boolean} If Page Previews are currently active
@@ -59,7 +62,7 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 		 * @param {PopupModule} module
 		 */
 		register: function ( module ) {
-			const { type, selector, gateway, renderFn, subTypes, delay, init } = module;
+			const { type, selector, gateway, renderFn, subTypes, delay, init, enabled } = module;
 			if ( !type || !selector || !gateway ) {
 				throw new Error(
 					`Registration of Popups custom preview type "${type}" failed: You must specify a type, a selector, and a gateway.`
@@ -68,6 +71,16 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 			registerModel( type, selector, delay );
 			registerGatewayForPreviewType( type, gateway );
 			registerPreviewUI( type, renderFn );
+			// Only show if doesn't exist.
+			if ( mw.message( `popups-settings-option-${type}` ).exists() ) {
+				registerSetting( type, enabled === undefined ? true : enabled );
+			/* global process */
+			} else if ( process.env.NODE_ENV !== 'production' ) {
+				mw.log.warn(
+					`[Popups] No setting for ${type} registered.
+Please create message with key "popups-settings-option-${type}" if this is a mistake.`
+				);
+			}
 			if ( subTypes ) {
 				subTypes.forEach( function ( subTypePreview ) {
 					registerPreviewUI( subTypePreview.type, subTypePreview.renderFn );

@@ -4,14 +4,34 @@
 
 import { createSettingsDialog } from './settingsDialog';
 
+const initDialog = ( boundActions, keyValues ) => {
+	const dialog = createSettingsDialog( keyValues );
+
+	// Setup event bindings
+	dialog.querySelector( '.save' ).addEventListener( 'click', () => {
+		boundActions.saveSettings(
+			Array.from( dialog.querySelectorAll( 'input' ) ).reduce(
+				( enabled, el ) => {
+					enabled[ el.value ] = el.matches( ':checked' );
+					return enabled;
+				},
+				{}
+			)
+		);
+	} );
+
+	dialog.querySelector( '.okay' ).addEventListener( 'click', boundActions.hideSettings );
+	dialog.querySelector( '.close' ).addEventListener( 'click', boundActions.hideSettings );
+	return dialog;
+};
+
 /**
  * Creates a render function that will create the settings dialog and return
  * a set of methods to operate on it
  *
- * @param {boolean} referencePreviewsAvaliable
  * @return {Function} render function
  */
-export default function createSettingsDialogRenderer( referencePreviewsAvaliable ) {
+export default function createSettingsDialogRenderer() {
 	/**
 	 * Cached settings dialog
 	 *
@@ -29,28 +49,32 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 	 * Renders the relevant form and labels in the settings dialog
 	 *
 	 * @param {Object} boundActions
+	 * @param {Object} keyValues
 	 * @return {Object} object with methods to affect the rendered UI
 	 */
-	return ( boundActions ) => {
+	return ( boundActions, keyValues ) => {
 		if ( !dialog ) {
-			dialog = createSettingsDialog( referencePreviewsAvaliable );
 			overlay = document.createElement( 'div' );
 			overlay.classList.add( 'mwe-popups-overlay' );
-
-			// Setup event bindings
-
-			dialog.querySelector( '.save' ).addEventListener( 'click', () => {
-				const enabled = {};
-				Array.prototype.forEach.call( dialog.querySelectorAll( 'input' ), ( el ) => {
-					enabled[ el.value ] = el.matches( ':checked' );
-				} );
-				boundActions.saveSettings( enabled );
-			} );
-			dialog.querySelector( '.close' ).addEventListener( 'click', boundActions.hideSettings );
-			dialog.querySelector( '.okay' ).addEventListener( 'click', boundActions.hideSettings );
+			dialog = initDialog( boundActions, keyValues );
 		}
 
 		return {
+			/**
+			 * Re-initialize the dialog when the available settings have changed.
+			 *
+			 * @param {Object} keyValuesNew updated key value pairs
+			 */
+			refresh( keyValuesNew ) {
+				if ( dialog ) {
+					const parent = dialog.parentNode;
+					dialog.remove();
+					dialog = initDialog( boundActions, keyValuesNew );
+					if ( parent ) {
+						dialog.appendTo( parent );
+					}
+				}
+			},
 			/**
 			 * Append the dialog and overlay to a DOM element
 			 *
