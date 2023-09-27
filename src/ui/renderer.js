@@ -312,15 +312,6 @@ export function bindBehavior( preview, behavior ) {
 
 			behavior.showSettings( event );
 		} );
-	} else if (
-		preview.el.classList.contains( 'mwe-popups-type-reference' ) &&
-		mw.config.get( 'wgPopupsReferencePreviewsBetaFeature' )
-	) {
-		// The reference preview when in beta feature doesn't have a settings cog (T346404).
-		return;
-	} else {
-		const err = new Error( 'Page previews: No settings button found in preview.' );
-		mw.errorLogger.logError( err, 'error.web-team' );
 	}
 }
 
