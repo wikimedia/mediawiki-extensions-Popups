@@ -16,10 +16,16 @@
 	"popups-settings-cancel": "Йухайаккхар",
 	"popups-settings-enable": "Латтаде хьалххе хьажар",
 	"popups-preview-footer-read": "АгӀонга дехьагӀо",
+	"popups-preview-disambiguation-link": "Цхьатерра агӀонашка хьажар",
 	"prefs-reading": "Йешаран гӀирс",
 	"popups-prefs-optin-title": "АгӀонашка хьалххе хьажар (агӀонаш йоьшушехь гойту хьалххе хьажар):",
 	"popups-prefs-optin-enabled-label": "Латае",
 	"popups-prefs-optin-disabled-label": "ДӀаяйа",
 	"popups-prefs-conflicting-gadgets-info": "Цхьайолу гаджеташ а, нисдаран гӀирсаш а хӀокху функцин халонаш йан мега. Хьайна халонаш хиллехь дехар до гаджеташка а, долара скрипташка а хьажа.",
+	"popups-refpreview-reference": "ТIетовжам",
+	"popups-refpreview-book": "Жайнан тӀе хьажорг",
+	"popups-refpreview-journal": "Йаззаман тӀе хьажорг",
+	"popups-refpreview-news": "Керлачу хааман тӀе хьажорг",
+	"popups-refpreview-web": "Веб-хьажорг",
 	"popups-refpreview-beta-feature-message": "ТӀетовжамашка хьалххе хьажар"
 }
