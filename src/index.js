@@ -41,7 +41,7 @@ const EXCLUDED_LINK_SELECTORS = [
 	'.internal',
 	'.external',
 	'.mw-cite-backlink a',
-	'.oo-ui-buttonedElement-button',
+	'.oo-ui-buttonElement-button',
 	'.ve-ce-surface a', // T259889
 	'.cancelLink a',
 	// T198652: lists to hash fragments are ignored.
