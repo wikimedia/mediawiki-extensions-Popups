@@ -20,7 +20,7 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 		 * @return {boolean} If Page Previews are currently active
 		 */
 		isEnabled: function isEnabled() {
-			return store.getState().preview.enabled[ previewTypes.TYPE_PAGE ];
+			return !!store.getState().preview.enabled[ previewTypes.TYPE_PAGE ];
 		},
 		/**
 		 * @stable Do not remove properties in the type PopupModule without providing backwards
