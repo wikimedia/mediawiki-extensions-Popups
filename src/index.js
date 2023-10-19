@@ -191,15 +191,11 @@ function handleDOMEventIfEligible( handler ) {
 		referenceGateway = createReferenceGateway(),
 		userSettings = createUserSettings( mw.storage ),
 		referencePreviewsState = isReferencePreviewsEnabled( mw.user, userSettings, mw.config ),
-		settingsDialog = createSettingsDialogRenderer( referencePreviewsState !== null ),
+		settingsDialog = createSettingsDialogRenderer(),
 		experiments = createExperiments( mw.experiments ),
 		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
 		pageviewTracker = getPageviewTracker( mw.config ),
-		initiallyEnabled = {
-			[ previewTypes.TYPE_PAGE ]:
-				createIsPagePreviewsEnabled( mw.user, userSettings, mw.config ),
-			[ previewTypes.TYPE_REFERENCE ]: referencePreviewsState
-		};
+		pagePreviewState = createIsPagePreviewsEnabled( mw.user, userSettings, mw.config );
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) ||
@@ -224,7 +220,7 @@ function handleDOMEventIfEligible( handler ) {
 	);
 
 	boundActions.boot(
-		initiallyEnabled,
+		{},
 		mw.user,
 		userSettings,
 		mw.config,
@@ -236,10 +232,15 @@ function handleDOMEventIfEligible( handler ) {
 	 * extensions can query it (T171287)
 	 */
 	mw.popups = createMediaWikiPopupsObject(
-		store, registerModel, registerPreviewUI, registerGatewayForPreviewType
+		store, registerModel, registerPreviewUI, registerGatewayForPreviewType,
+		boundActions.registerSetting, userSettings
 	);
 
-	if ( initiallyEnabled[ previewTypes.TYPE_PAGE ] !== null ) {
+	// Migrate any old preferences to new system.
+	// FIXME: This can be removed in 4 weeks time.
+	userSettings.migrateOldPreferences();
+
+	if ( pagePreviewState !== null ) {
 		const excludedLinksSelector = EXCLUDED_LINK_SELECTORS.join( ', ' );
 		// Register default preview type
 		mw.popups.register( {
@@ -257,7 +258,7 @@ function handleDOMEventIfEligible( handler ) {
 			]
 		} );
 	}
-	if ( initiallyEnabled[ previewTypes.TYPE_REFERENCE ] !== null ) {
+	if ( referencePreviewsState !== null ) {
 		// Register the reference preview type
 		mw.popups.register( {
 			type: previewTypes.TYPE_REFERENCE,

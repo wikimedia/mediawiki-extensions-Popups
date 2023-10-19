@@ -28,7 +28,12 @@ export default function preview( state, action ) {
 			return nextState( state, {
 				enabled: action.initiallyEnabled
 			} );
-
+		case actionTypes.REGISTER_SETTING:
+			return nextState( state, {
+				enabled: Object.assign( {}, state.enabled, {
+					[ action.name ]: action.enabled
+				} )
+			} );
 		case actionTypes.SETTINGS_CHANGE: {
 			return nextState( state, {
 				enabled: action.newValue

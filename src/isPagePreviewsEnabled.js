@@ -1,6 +1,7 @@
 /**
  * @module isPagePreviewsEnabled
  */
+import { previewTypes } from './preview/model';
 const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
 
 /**
@@ -28,7 +29,7 @@ export default function isPagePreviewsEnabled( user, userSettings, config ) {
 	// For anonymous users, and for IP masked usersm the code loads always,
 	// but the feature can be toggled at run-time via local storage.
 	if ( !canSaveToUserPreferences( user ) ) {
-		return userSettings.isPagePreviewsEnabled();
+		return userSettings.isPreviewTypeEnabled( previewTypes.TYPE_PAGE );
 	}
 
 	// Registered users never can enable popup types at run-time.

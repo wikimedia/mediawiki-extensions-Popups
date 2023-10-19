@@ -10,21 +10,24 @@ QUnit.module( 'ext.popups/changeListeners/settings', {
 			toggleHelp: this.sandbox.spy(),
 			setEnabled: this.sandbox.spy()
 		};
+		const previewTypesEnabled = {};
 		this.render.withArgs( 'actions' ).returns( this.rendered );
 
-		this.defaultState = { settings: { shouldShow: false } };
+		this.defaultState = { settings: { shouldShow: false, previewTypesEnabled } };
 		this.showState = {
-			settings: { shouldShow: true },
+			settings: { shouldShow: true, previewTypesEnabled },
 			preview: { enabled: { page: true, reference: true } }
 		};
 		this.showHelpState = {
 			settings: {
+				previewTypesEnabled,
 				shouldShow: true,
 				showHelp: true
 			}
 		};
 		this.hideHelpState = {
 			settings: {
+				previewTypesEnabled,
 				shouldShow: true,
 				showHelp: false
 			}

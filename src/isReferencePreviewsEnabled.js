@@ -1,3 +1,5 @@
+import { previewTypes } from './preview/model';
+
 /**
  * @module isReferencePreviewsEnabled
  */
@@ -32,7 +34,7 @@ export default function isReferencePreviewsEnabled( user, userSettings, config )
 	// For anonymous users, the code loads always, but the feature can be toggled at run-time via
 	// local storage.
 	if ( !canSaveToUserPreferences( user ) ) {
-		return userSettings.isReferencePreviewsEnabled();
+		return userSettings.isPreviewTypeEnabled( previewTypes.TYPE_REFERENCE );
 	}
 
 	// Registered users never can enable popup types at run-time.

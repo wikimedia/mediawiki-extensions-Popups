@@ -3,7 +3,7 @@ import isPagePreviewsEnabled from '../../src/isPagePreviewsEnabled';
 
 function createStubUserSettings( expectEnabled ) {
 	return {
-		isPagePreviewsEnabled() {
+		isPreviewTypeEnabled() {
 			return expectEnabled !== false;
 		}
 	};

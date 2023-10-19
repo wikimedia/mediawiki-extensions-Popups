@@ -3,8 +3,7 @@ import syncUserSettings from '../../../src/changeListeners/syncUserSettings';
 QUnit.module( 'ext.popups/changeListeners/syncUserSettings', {
 	beforeEach() {
 		this.userSettings = {
-			storePagePreviewsEnabled: this.sandbox.spy(),
-			storeReferencePreviewsEnabled: this.sandbox.spy()
+			storePreviewTypeEnabled: this.sandbox.spy()
 		};
 
 		this.changeListener = syncUserSettings( this.userSettings );
@@ -21,7 +20,7 @@ QUnit.test(
 		this.changeListener( oldState, newState );
 
 		assert.false(
-			this.userSettings.storePagePreviewsEnabled.called,
+			this.userSettings.storePreviewTypeEnabled.called,
 			'The user setting is unchanged.'
 		);
 	}
@@ -34,7 +33,7 @@ QUnit.test( 'it should update the storage if the enabled flag has changed', func
 	this.changeListener( oldState, newState );
 
 	assert.true(
-		this.userSettings.storePagePreviewsEnabled.calledWith( false ),
+		this.userSettings.storePreviewTypeEnabled.calledWith( 'page', false ),
 		'The user setting is disabled.'
 	);
 } );
@@ -49,7 +48,7 @@ QUnit.test(
 		this.changeListener( oldState, newState );
 
 		assert.false(
-			this.userSettings.storeReferencePreviewsEnabled.called,
+			this.userSettings.storePreviewTypeEnabled.called,
 			'Reference previews are unchanged.'
 		);
 	}
@@ -61,12 +60,8 @@ QUnit.test( 'it should update the storage if the reference preview state has cha
 
 	this.changeListener( oldState, newState );
 
-	assert.false(
-		this.userSettings.storePagePreviewsEnabled.called,
-		'Page previews are unchanged.'
-	);
 	assert.true(
-		this.userSettings.storeReferencePreviewsEnabled.calledWith( false ),
+		this.userSettings.storePreviewTypeEnabled.calledWith( 'reference', false ),
 		'Reference previews opt-out is stored.'
 	);
 } );

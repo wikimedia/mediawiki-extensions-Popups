@@ -3,7 +3,7 @@ import isReferencePreviewsEnabled from '../../src/isReferencePreviewsEnabled';
 
 function createStubUserSettings( expectEnabled ) {
 	return {
-		isReferencePreviewsEnabled() {
+		isPreviewTypeEnabled() {
 			return expectEnabled !== false;
 		}
 	};
@@ -128,7 +128,7 @@ QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 				isAnon: () => data.isAnon
 			},
 			userSettings = {
-				isReferencePreviewsEnabled: () => data.isAnon ?
+				isPreviewTypeEnabled: () => data.isAnon ?
 					data.enabledByAnon :
 					assert.true( false, 'not expected to be called' )
 			},
