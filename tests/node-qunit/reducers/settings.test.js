@@ -10,7 +10,6 @@ QUnit.test( '@@INIT', ( assert ) => {
 		state,
 		{
 			shouldShow: false,
-			keyValues: {},
 			showHelp: false,
 			shouldShowFooterLink: false
 		},
@@ -25,15 +24,15 @@ QUnit.test( 'BOOT with a single disabled popup type', ( assert ) => {
 		user: { isAnon: true }
 	};
 	assert.deepEqual(
-		settings( {}, action ).shouldShowFooterLink,
-		true,
+		settings( {}, action ),
+		{ shouldShowFooterLink: true },
 		'The boot state shows a footer link.'
 	);
 
 	action.user.isAnon = false;
 	assert.deepEqual(
-		settings( {}, action ).shouldShowFooterLink,
-		false,
+		settings( {}, action ),
+		{ shouldShowFooterLink: false },
 		'If the user is logged in, then it doesn\'t signal that the footer link should be shown.'
 	);
 } );
@@ -45,59 +44,23 @@ QUnit.test( 'BOOT with multiple popup types', ( assert ) => {
 		user: { isAnon: true }
 	};
 	assert.deepEqual(
-		settings( {}, action ).shouldShowFooterLink,
-		false,
+		settings( {}, action ),
+		{ shouldShowFooterLink: false },
 		'Footer link ignores unavailable popup types.'
 	);
 
 	action.initiallyEnabled.reference = true;
 	assert.deepEqual(
-		settings( {}, action ).shouldShowFooterLink,
-		false,
+		settings( {}, action ),
+		{ shouldShowFooterLink: false },
 		'Footer link is pointless when there is nothing to enable.'
 	);
 
 	action.initiallyEnabled.reference = false;
 	assert.deepEqual(
-		settings( {}, action ).shouldShowFooterLink,
-		true,
+		settings( {}, action ),
+		{ shouldShowFooterLink: true },
 		'Footer link appears when at least one popup type is disabled.'
-	);
-} );
-
-QUnit.test( 'REGISTER_SETTING that is disabled by default reveals footer link', ( assert ) => {
-	const REGISTER_SETTING_FOO_DISABLED = {
-		type: actionTypes.REGISTER_SETTING,
-		name: 'foo',
-		enabled: false
-	};
-	const newState = settings( {
-		keyValues: {},
-		shouldShowFooterLink: false
-	}, REGISTER_SETTING_FOO_DISABLED );
-
-	assert.deepEqual(
-		newState.shouldShowFooterLink,
-		true,
-		'if one setting is registered as disabled, then the footer link is revealed.'
-	);
-} );
-
-QUnit.test( 'REGISTER_SETTING that is enabled by default should not show footer link', ( assert ) => {
-	const REGISTER_SETTING_FOO_ENABLED = {
-		type: actionTypes.REGISTER_SETTING,
-		name: 'foo',
-		enabled: true
-	};
-	const newState = settings( {
-		keyValues: {},
-		shouldShowFooterLink: false
-	}, REGISTER_SETTING_FOO_ENABLED );
-
-	assert.deepEqual(
-		newState.keyValues.foo,
-		true,
-		'keyValues is updated'
 	);
 } );
 

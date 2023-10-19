@@ -43,14 +43,13 @@ QUnit.test( '#render', ( assert ) => {
 			hideSettings() {}
 		},
 		expected = {
-			refresh() {},
 			appendTo() {},
 			show() {},
 			hide() {},
 			toggleHelp() {},
 			setEnabled() {}
 		},
-		result = createSettingsDialogRenderer( mw.config )( boundActions, {} );
+		result = createSettingsDialogRenderer( mw.config )( boundActions );
 
 	// Specifically NOT a deep equal. Only structure.
 	assert.propEqual(

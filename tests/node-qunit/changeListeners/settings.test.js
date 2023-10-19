@@ -10,24 +10,21 @@ QUnit.module( 'ext.popups/changeListeners/settings', {
 			toggleHelp: this.sandbox.spy(),
 			setEnabled: this.sandbox.spy()
 		};
-		const keyValues = {};
 		this.render.withArgs( 'actions' ).returns( this.rendered );
 
-		this.defaultState = { settings: { shouldShow: false, keyValues } };
+		this.defaultState = { settings: { shouldShow: false } };
 		this.showState = {
-			settings: { shouldShow: true, keyValues },
+			settings: { shouldShow: true },
 			preview: { enabled: { page: true, reference: true } }
 		};
 		this.showHelpState = {
 			settings: {
-				keyValues,
 				shouldShow: true,
 				showHelp: true
 			}
 		};
 		this.hideHelpState = {
 			settings: {
-				keyValues,
 				shouldShow: true,
 				showHelp: false
 			}

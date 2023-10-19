@@ -3,28 +3,33 @@
  */
 
 import { renderSettingsDialog } from './templates/settingsDialog/settingsDialog';
+import { previewTypes } from '../preview/model';
 
 /**
  * Create the settings dialog shown to anonymous users.
  *
- * @param {Object} keyValues
+ * @param {boolean} referencePreviewsAvaliable
  * @return {HTMLElement} settings dialog
  */
-export function createSettingsDialog( keyValues ) {
-	const choices = Object.keys( keyValues ).map( ( id ) => (
+export function createSettingsDialog( referencePreviewsAvaliable ) {
+	const choices = [
 		{
-			id,
-			// This can produce:
-			// * popups-settings-option-preview
-			// * popups-settings-option-reference
-			name: mw.msg( `popups-settings-option-${id}` ),
-			// This can produce:
-			// * popups-settings-option-preview-description
-			// * popups-settings-option-reference-description
-			description: mw.msg( `popups-settings-option-${id}-description` ),
-			isChecked: keyValues[ id ]
+			id: previewTypes.TYPE_PAGE,
+			name: mw.msg( 'popups-settings-option-page' ),
+			description: mw.msg( 'popups-settings-option-page-description' )
+		},
+		{
+			id: previewTypes.TYPE_REFERENCE,
+			name: mw.msg( 'popups-settings-option-reference' ),
+			description: mw.msg( 'popups-settings-option-reference-description' )
 		}
-	) );
+	];
+
+	// TODO: Remove when not in Beta any more
+	if ( !referencePreviewsAvaliable ) {
+		// Anonymous users can't access reference previews as long as they are in beta
+		choices.splice( 1, 1 );
+	}
 
 	return renderSettingsDialog( {
 		heading: mw.msg( 'popups-settings-title' ),

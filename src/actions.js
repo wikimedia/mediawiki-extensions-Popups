@@ -73,22 +73,6 @@ export function boot(
 }
 
 /**
- * Registers a page preview setting for anonymous users.
- *
- * @param {string} name setting name which is used for storage and deriving associated
- *  messages.
- * @param {boolean} enabled is the feature enabled by default?
- * @return {Object}
- */
-export function registerSetting( name, enabled ) {
-	return {
-		type: types.REGISTER_SETTING,
-		name,
-		enabled
-	};
-}
-
-/**
  * Represents Page Previews fetching data via the gateway.
  *
  * @param {Gateway} gateway
@@ -229,6 +213,7 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
 		return promise.then( () => {
 			const previewState = getState().preview;
 			const enabledValue = previewState.enabled[ type ];
+			// Note: Only reference previews and default previews can be disabled at this point.
 			// If there is no UI the enabledValue is always true.
 			const isEnabled = typeof enabledValue === 'undefined' ? true : enabledValue;
 

@@ -119,6 +119,8 @@ function registerChangeListeners(
 	registerChangeListener(
 		store, changeListeners.statsv( registerActions, statsvTracker ) );
 	registerChangeListener(
+		store, changeListeners.syncUserSettings( userSettings ) );
+	registerChangeListener(
 		store, changeListeners.settings( registerActions, settingsDialog ) );
 	registerChangeListener( store,
 		changeListeners.pageviews( registerActions, pageviewTracker )
@@ -190,11 +192,15 @@ function handleDOMEventIfEligible( handler ) {
 		referenceGateway = createReferenceGateway(),
 		userSettings = createUserSettings( mw.storage ),
 		referencePreviewsState = isReferencePreviewsEnabled( mw.user, userSettings, mw.config ),
-		settingsDialog = createSettingsDialogRenderer(),
+		settingsDialog = createSettingsDialogRenderer( referencePreviewsState !== null ),
 		experiments = createExperiments( mw.experiments ),
 		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
 		pageviewTracker = getPageviewTracker( mw.config ),
-		pagePreviewState = createIsPagePreviewsEnabled( mw.user, userSettings, mw.config );
+		initiallyEnabled = {
+			[ previewTypes.TYPE_PAGE ]:
+				createIsPagePreviewsEnabled( mw.user, userSettings, mw.config ),
+			[ previewTypes.TYPE_REFERENCE ]: referencePreviewsState
+		};
 
 	// If debug mode is enabled, then enable Redux DevTools.
 	if ( mw.config.get( 'debug' ) ||
@@ -219,7 +225,7 @@ function handleDOMEventIfEligible( handler ) {
 	);
 
 	boundActions.boot(
-		{},
+		initiallyEnabled,
 		mw.user,
 		userSettings,
 		mw.config,
@@ -231,15 +237,13 @@ function handleDOMEventIfEligible( handler ) {
 	 * extensions can query it (T171287)
 	 */
 	mw.popups = createMediaWikiPopupsObject(
-		store, registerModel, registerPreviewUI, registerGatewayForPreviewType,
-		boundActions.registerSetting
+		store, registerModel, registerPreviewUI, registerGatewayForPreviewType
 	);
 
-	if ( pagePreviewState !== null ) {
+	if ( initiallyEnabled[ previewTypes.TYPE_PAGE ] !== null ) {
 		const excludedLinksSelector = EXCLUDED_LINK_SELECTORS.join( ', ' );
 		// Register default preview type
 		mw.popups.register( {
-			enabled: pagePreviewState,
 			type: previewTypes.TYPE_PAGE,
 			selector: `#mw-content-text a[href][title]:not(${excludedLinksSelector})`,
 			delay: FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY,
@@ -253,10 +257,9 @@ function handleDOMEventIfEligible( handler ) {
 			]
 		} );
 	}
-	if ( referencePreviewsState !== null ) {
+	if ( initiallyEnabled[ previewTypes.TYPE_REFERENCE ] !== null ) {
 		// Register the reference preview type
 		mw.popups.register( {
-			enabled: referencePreviewsState,
 			type: previewTypes.TYPE_REFERENCE,
 			selector: '#mw-content-text .reference a[ href*="#" ]',
 			delay: FETCH_DELAY_REFERENCE_TYPE,
