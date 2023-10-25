@@ -198,11 +198,10 @@
 				"mediawiki.jqueryMsg",
 				"mediawiki.storage",
 				"mediawiki.Title",
-				"mediawiki.ui.checkbox",
 				"mediawiki.Uri",
 				"mediawiki.user",
 				"mediawiki.util",
-				"codex-search-styles"
+				"codex-styles"
 			]
 		}
 	},
