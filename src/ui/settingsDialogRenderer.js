@@ -65,7 +65,14 @@ export default function createSettingsDialogRenderer( referencePreviewsAvaliable
 			 * Show the settings element and position it correctly
 			 */
 			show() {
-				overlay.style.display = '';
+				// Load additional styles for checkboxes
+				mw.loader.using( 'codex-styles' ).then( () => {
+					// RequestIdleCallback must be called to make sure
+					// the new stylesheet has been applied.
+					mw.requestIdleCallback( () => {
+						overlay.style.display = '';
+					} );
+				} );
 			},
 
 			/**
