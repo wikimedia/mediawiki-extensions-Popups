@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"YoaR"
 		]
 	},
 	"popups-message": "Vistes previes",
@@ -14,7 +15,7 @@
 	"popups-settings-option-off": "Desactivar",
 	"popups-settings-save": "Guardar",
 	"popups-settings-help-ok": "Fecho",
-	"popups-settings-cancel": "Encaboxar",
+	"popups-settings-cancel": "Zarrar",
 	"popups-settings-help": "Puedes volver a activar les vistes previes usando un enllaz del pie de la páxina.",
 	"popups-settings-enable": "Activar vistes previes",
 	"popups-preview-no-preview": "Asocedió un problema al amosar esta vista previa",
