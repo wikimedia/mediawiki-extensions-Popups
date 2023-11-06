@@ -25,9 +25,9 @@ export function createSettingsDialog( referencePreviewsAvaliable ) {
 		}
 	];
 
-	// TODO: Remove when not in Beta any more
 	if ( !referencePreviewsAvaliable ) {
-		// Anonymous users can't access reference previews as long as they are in beta
+		// Anonymous users can't access reference previews when they're disabled
+		// TODO: Remove when the wgPopupsReferencePreviews feature flag is not needed any more
 		choices.splice( 1, 1 );
 	}
 

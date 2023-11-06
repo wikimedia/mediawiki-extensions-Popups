@@ -7,8 +7,7 @@
  */
 const NAV_POPUPS_ENABLED = 1,
 	REF_TOOLTIPS_ENABLED = 2,
-	REFERENCE_PREVIEWS_ENABLED = 4,
-	REFERENCE_PREVIEWS_BETA = 8;
+	REFERENCE_PREVIEWS_ENABLED = 4;
 
 /**
  * Decodes the bitmask that represents preferences to the related config options.
@@ -30,10 +29,6 @@ export default function setUserConfigFlags( config ) {
 	config.set(
 		'wgPopupsReferencePreviews',
 		!!( popupsFlags & REFERENCE_PREVIEWS_ENABLED )
-	);
-	config.set(
-		'wgPopupsReferencePreviewsBetaFeature',
-		!!( popupsFlags & REFERENCE_PREVIEWS_BETA )
 	);
 	/* eslint-enable no-bitwise */
 }

@@ -41,24 +41,6 @@ class PopupsPage extends Page {
 		await Util.waitForModuleState( POPUPS_MODULE_NAME );
 	}
 
-	async shouldUseReferencePopupsBetaFeature() {
-		await Util.waitForModuleState( 'mediawiki.base' );
-		await browser.execute( function () {
-			return mw.loader.using( 'mediawiki.api' ).then( function () {
-				return new mw.Api().saveOptions( {
-					// TODO: Remove the first option when all Beta code is gone
-					popupsreferencepreviews: '1',
-					'popups-reference-previews': '1'
-				} );
-			} );
-		} );
-	}
-
-	async hasReferencePopupsEnabled() {
-		// TODO Remove or adjust when not in Beta any more
-		return browser.execute( () => mw.config.get( 'wgPopupsReferencePreviews' ) );
-	}
-
 	async abandonLink() {
 		return $( '#content h1' ).moveTo();
 	}

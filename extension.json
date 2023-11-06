@@ -25,7 +25,6 @@
 		"UserGetDefaultOptions": "PopupsHooks",
 		"MakeGlobalVariablesScript": "PopupsHooks",
 		"LocalUserCreated": "PopupsHooks",
-		"GetBetaFeaturePreferences": "PopupsHooks",
 		"ResourceLoaderRegisterModules": "PopupsHooks"
 	},
 	"HookHandlers": {
@@ -84,10 +83,6 @@
 		},
 		"PopupsReferencePreviews": {
 			"description": "Feature flag to enable or disable the separate popup type for references created via the Cite extension's <ref> tag.",
-			"value": true
-		},
-		"PopupsReferencePreviewsBetaFeature": {
-			"description": "Make Reference Previews a Beta feature.",
 			"value": true
 		},
 		"PopupsStatsvSamplingRate": {

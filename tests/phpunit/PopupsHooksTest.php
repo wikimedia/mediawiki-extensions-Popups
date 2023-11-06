@@ -55,21 +55,24 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onGetPreferences
+	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnGetPreferencesNavPopupGadgetIsOn() {
+	public function testOnGetPreferencesNavPopupGadgetIsOn( bool $enabled ) {
 		$userMock = $this->createMock( User::class );
 
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
 			->willReturn( true );
-		$contextMock->expects( $this->once() )
+		$contextMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->with( $userMock )
 			->willReturn( true );
 
 		$this->setService( 'Popups.Context', $contextMock );
 		$prefs = [];
+
+		$this->setMwGlobals( 'wgPopupsReferencePreviews', $enabled );
 
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		( new PopupsHooks( $userOptionsManager ) )
@@ -89,13 +92,14 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onGetPreferences
+	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnGetPreferencesPreviewsEnabled() {
+	public function testOnGetPreferencesPreviewsEnabled( bool $enabled ) {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
 			->willReturn( true );
-		$contextMock->expects( $this->once() )
+		$contextMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->willReturn( false );
 
@@ -105,6 +109,8 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			'someNotEmptyValue' => 'notEmpty',
 			'other' => 'notEmpty'
 		];
+
+		$this->setMwGlobals( 'wgPopupsReferencePreviews', $enabled );
 
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		( new PopupsHooks( $userOptionsManager ) )
@@ -124,13 +130,14 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onGetPreferences
+	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnGetPreferencesPreviewsEnabledWhenSkinIsNotAvailable() {
+	public function testOnGetPreferencesPreviewsEnabledWhenSkinIsNotAvailable( bool $enabled ) {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
 			->willReturn( true );
-		$contextMock->expects( $this->once() )
+		$contextMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->willReturn( false );
 
@@ -139,6 +146,8 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			'someNotEmptyValue' => 'notEmpty',
 			'other' => 'notEmpty'
 		];
+
+		$this->setMwGlobals( 'wgPopupsReferencePreviews', $enabled );
 
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		( new PopupsHooks( $userOptionsManager ) )
@@ -285,40 +294,39 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onUserGetDefaultOptions
-	 * @dataProvider provideReferencePreviewsBetaFlag
+	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnUserGetDefaultOptions( $beta ) {
+	public function testOnUserGetDefaultOptions( bool $enabled ) {
 		$userOptions = [
 			'test' => 'not_empty'
 		];
 
 		$this->setMwGlobals( [
 			'wgPopupsOptInDefaultState' => '1',
-			'wgPopupsReferencePreviews' => true,
-			'wgPopupsReferencePreviewsBetaFeature' => $beta,
+			'wgPopupsReferencePreviews' => $enabled,
 		] );
 
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		( new PopupsHooks( $userOptionsManager ) )
 			->onUserGetDefaultOptions( $userOptions );
-		$this->assertCount( 3 - $beta, $userOptions );
+		$this->assertCount( $enabled ? 3 : 2, $userOptions );
 		$this->assertSame( '1', $userOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
-		if ( $beta === false ) {
+		if ( $enabled ) {
 			$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME ] );
 		}
 	}
 
 	/**
 	 * @covers ::onUserGetDefaultOptions
-	 * @dataProvider provideReferencePreviewsBetaFlag
+	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnLocalUserCreatedForNewlyCreatedUser( $beta ) {
+	public function testOnLocalUserCreatedForNewlyCreatedUser( bool $enabled ) {
 		$expectedState = '1';
 
 		$userMock = $this->createMock( User::class );
 
 		$userOptionsManagerMock = $this->createMock( UserOptionsManager::class );
-		$userOptionsManagerMock->expects( $this->exactly( 2 - $beta ) )
+		$userOptionsManagerMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
 			->method( 'setOption' )
 			->withConsecutive(
 				[ $userMock, 'popups', $expectedState ],
@@ -327,14 +335,13 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 		$this->setMwGlobals( [
 			'wgPopupsOptInStateForNewAccounts' => $expectedState,
-			'wgPopupsReferencePreviews' => true,
-			'wgPopupsReferencePreviewsBetaFeature' => $beta,
+			'wgPopupsReferencePreviews' => $enabled,
 		] );
 		( new PopupsHooks( $userOptionsManagerMock ) )
 			->onLocalUserCreated( $userMock, false );
 	}
 
-	public static function provideReferencePreviewsBetaFlag() {
+	public static function provideReferencePreviewsFlag() {
 		return [
 			[ false ],
 			[ true ],

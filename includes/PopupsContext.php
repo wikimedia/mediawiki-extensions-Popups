@@ -22,7 +22,6 @@ namespace Popups;
 
 use Config;
 use ExtensionRegistry;
-use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
@@ -64,17 +63,11 @@ class PopupsContext {
 	public const REFERENCE_PREVIEWS_PREFERENCE_NAME = 'popups-reference-previews';
 
 	/**
-	 * User preference key to enable/disable Reference Previews
-	 */
-	public const REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME = 'popupsreferencepreviews';
-
-	/**
 	 * Flags passed on to JS representing preferences
 	 */
 	private const NAV_POPUPS_ENABLED = 1;
 	private const REF_TOOLTIPS_ENABLED = 2;
 	private const REFERENCE_PREVIEWS_ENABLED = 4;
-	private const REFERENCE_PREVIEWS_BETA = 8;
 
 	/**
 	 * @var \Config
@@ -163,26 +156,9 @@ class PopupsContext {
 			return false;
 		}
 
-		// TODO: Remove when not in Beta any more
-		if ( $this->isReferencePreviewsInBeta() ) {
-			return BetaFeatures::isFeatureEnabled(
-				$user,
-				self::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME
-			);
-		}
-
 		return !$user->isNamed() || $this->userOptionsLookup->getBoolOption(
 			$user, self::REFERENCE_PREVIEWS_PREFERENCE_NAME
 		);
-	}
-
-	/**
-	 * @return bool whether or not reference previews are a beta feature
-	 */
-	public function isReferencePreviewsInBeta() {
-		// TODO: Remove when not in Beta any more
-		return $this->config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
-			\ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' );
 	}
 
 	/**
@@ -192,8 +168,7 @@ class PopupsContext {
 	public function getConfigBitmaskFromUser( \User $user ) {
 		return ( $this->conflictsWithNavPopupsGadget( $user ) ? self::NAV_POPUPS_ENABLED : 0 ) |
 			( $this->conflictsWithRefTooltipsGadget( $user ) ? self::REF_TOOLTIPS_ENABLED : 0 ) |
-			( $this->isReferencePreviewsEnabled( $user ) ? self::REFERENCE_PREVIEWS_ENABLED : 0 ) |
-			( $this->isReferencePreviewsInBeta() ? self::REFERENCE_PREVIEWS_BETA : 0 );
+			( $this->isReferencePreviewsEnabled( $user ) ? self::REFERENCE_PREVIEWS_ENABLED : 0 );
 	}
 
 	/**

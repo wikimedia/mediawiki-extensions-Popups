@@ -15,7 +15,7 @@ const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
  */
 export default function isReferencePreviewsEnabled( user, userSettings, config ) {
 	// TODO: This and the final `mw.user.options` check are currently redundant. Only this here
-	// should be removed when the feature flag is not needed any more.
+	// should be removed when the wgPopupsReferencePreviews feature flag is not needed any more.
 	if ( !config.get( 'wgPopupsReferencePreviews' ) ) {
 		return null;
 	}
@@ -33,11 +33,6 @@ export default function isReferencePreviewsEnabled( user, userSettings, config )
 	// local storage.
 	if ( !canSaveToUserPreferences( user ) ) {
 		return userSettings.isReferencePreviewsEnabled();
-	}
-
-	// TODO: Remove when not in Beta any more
-	if ( config.get( 'wgPopupsReferencePreviews' ) ) {
-		return true;
 	}
 
 	// Registered users never can enable popup types at run-time.

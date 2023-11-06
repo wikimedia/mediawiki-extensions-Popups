@@ -278,14 +278,12 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	 * @param bool $navPops
 	 * @param bool $refTooltips
 	 * @param bool $refEnabled
-	 * @param bool $refInBeta
 	 * @param int $expected
 	 */
 	public function testGetConfigBitmaskFromUser(
 		$navPops,
 		$refTooltips,
 		$refEnabled,
-		$refInBeta,
 		$expected
 	) {
 		$contextMock = $this->createPartialMock(
@@ -294,7 +292,6 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 				'conflictsWithNavPopupsGadget',
 				'conflictsWithRefTooltipsGadget',
 				'isReferencePreviewsEnabled',
-				'isReferencePreviewsInBeta',
 			]
 		);
 		$contextMock->method( 'conflictsWithNavPopupsGadget' )
@@ -303,8 +300,6 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			->willReturn( $refTooltips );
 		$contextMock->method( 'isReferencePreviewsEnabled' )
 			->willReturn( $refEnabled );
-		$contextMock->method( 'isReferencePreviewsInBeta' )
-			->willReturn( $refInBeta );
 
 		$this->assertSame(
 			$expected,
@@ -318,25 +313,21 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 				true,
 				true,
 				true,
-				true,
-				15,
+				7,
 			],
 			[
 				false,
 				true,
 				false,
-				true,
-				10,
+				2,
 			],
 			[
 				true,
 				false,
 				true,
-				false,
 				5,
 			],
 			[
-				false,
 				false,
 				false,
 				false,
