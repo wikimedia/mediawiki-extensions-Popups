@@ -4,7 +4,6 @@
 		"wikimedia/server"
 	],
 	"rules": {
-		"no-dupe-keys": "warn",
 		"yml/block-sequence": "warn",
 		"yml/plain-scalar": "warn"
 	}
