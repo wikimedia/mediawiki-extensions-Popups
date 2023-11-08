@@ -1,45 +1,11 @@
 {
 	"root": true,
-	"plugins": [
-		"no-jquery"
-	],
 	"extends": [
-		"wikimedia/common",
-		"wikimedia/language/es6",
-		"wikimedia/jquery",
-		"plugin:no-jquery/all",
-		"wikimedia/mediawiki"
+		"wikimedia/server"
 	],
-	"parserOptions": {
-		"sourceType": "module"
-	},
-	"env": {
-		"browser": true,
-		"commonjs": true
-	},
 	"rules": {
-		"no-jquery/no-jquery-constructor": "error",
-		"no-jquery/no-find-collection": "error",
-		"no-jquery/no-attr": "error",
-		"no-jquery/no-class": "error",
-		"no-jquery/no-text": "error",
-		"no-jquery/no-css": "error",
-		"no-jquery/no-other-methods": "error",
-		"no-jquery/no-html": "error",
-		"no-jquery/no-class-state": "error",
-		"no-jquery/no-deferred": "error",
-		"no-jquery/no-when": "error",
-		"no-jquery/no-extend": "error",
-		"compat/compat": "off",
-		"no-use-before-define": "off",
-		"jsdoc/no-undefined-types": "off",
 		"no-dupe-keys": "warn",
 		"yml/block-sequence": "warn",
 		"yml/plain-scalar": "warn"
-	},
-	"settings": {
-		"jsdoc": {
-			"mode": "typescript"
-		}
 	}
 }

@@ -1,0 +1,20 @@
+{
+	"extends": [
+		"wikimedia/common",
+		"wikimedia/language/es6",
+		"wikimedia/jquery",
+		"wikimedia/mediawiki"
+	],
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	"env": {
+		"browser": true,
+		"commonjs": true
+	},
+	"settings": {
+		"jsdoc": {
+			"mode": "typescript"
+		}
+	}
+}

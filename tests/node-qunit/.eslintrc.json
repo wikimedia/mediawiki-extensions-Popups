@@ -1,20 +1,14 @@
 {
+	"root": true,
 	"extends": [
+		"../../src/.eslintrcshared",
 		"wikimedia/qunit"
 	],
 	"rules": {
-		"no-jquery/no-jquery-constructor": "off",
-		"no-jquery/no-find-collection": "off",
-		"no-jquery/no-attr": "off",
-		"no-jquery/no-class": "off",
-		"no-jquery/no-text": "off",
-		"no-jquery/no-css": "off",
-		"no-jquery/no-other-methods": "off",
-		"no-jquery/no-html": "off",
+		"no-jquery/no-class-state": "off",
 		"no-jquery/no-deferred": "warn",
 		"no-jquery/no-when": "warn",
 		"no-jquery/no-extend": "warn",
-		"no-jquery/no-class-state": "off",
 		"es-x/no-hashbang": "warn"
 	}
 }

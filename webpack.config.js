@@ -1,4 +1,5 @@
-/* eslint-env node */
+'use strict';
+
 const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const path = require( 'path' );
 
