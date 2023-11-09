@@ -252,7 +252,8 @@ function handleDOMEventIfEligible( handler ) {
 			subTypes: [
 				{
 					type: previewTypes.TYPE_DISAMBIGUATION,
-					renderFn: createDisambiguationPreview
+					renderFn: createDisambiguationPreview,
+					doNotRequireSummary: true
 				}
 			]
 		} );

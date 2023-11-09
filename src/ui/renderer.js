@@ -142,14 +142,30 @@ export function render( model ) {
 }
 
 let renderers = {};
+const renderersMeta = {};
 
 /**
  * @param {string} type
  * @param {function( ext.popups.PreviewModel ): ext.popups.Preview} [previewFn]
+ * @param {boolean} [doNotRequireSummary] does this type require a summary to be renderable?
  *
  */
-export function registerPreviewUI( type, previewFn ) {
+export function registerPreviewUI( type, previewFn, doNotRequireSummary ) {
 	renderers[ type ] = previewFn || createPagePreview;
+	renderersMeta[ type ] = {
+		requireSummary: !doNotRequireSummary
+	};
+}
+
+/**
+ * Check whether this render type requires a summary to be rendered.
+ *
+ * @param {string} type of preview
+ * @return {boolean}
+ */
+export function requiresSummary( type ) {
+	const meta = renderersMeta[ type ] || { requireSummary: true };
+	return meta.requireSummary;
 }
 
 /**

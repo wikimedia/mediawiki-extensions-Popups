@@ -2,6 +2,8 @@
  * @module preview/model
  */
 
+import { requiresSummary } from '../ui/renderer';
+
 /**
  * Page Preview types as defined in Schema:Popups
  * https://meta.wikimedia.org/wiki/Schema:Popups
@@ -180,7 +182,9 @@ function processExtract( extract ) {
  */
 
 function getPagePreviewType( type, processedExtract ) {
-	if ( processedExtract === undefined ) {
+	// If the preview type requires a summary to display and no extract was
+	// found show the generic (error) preview.
+	if ( processedExtract === undefined && requiresSummary( type ) ) {
 		return previewTypes.TYPE_GENERIC;
 	}
 

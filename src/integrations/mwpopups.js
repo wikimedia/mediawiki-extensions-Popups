@@ -59,7 +59,8 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 		 * @param {PopupModule} module
 		 */
 		register: function ( module ) {
-			const { type, selector, gateway, renderFn, subTypes, delay, init } = module;
+			const { type, selector, gateway, renderFn, subTypes, delay, init,
+				doNotRequireSummary } = module;
 			if ( !type || !selector || !gateway ) {
 				throw new Error(
 					`Registration of Popups custom preview type "${type}" failed: You must specify a type, a selector, and a gateway.`
@@ -67,10 +68,10 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 			}
 			registerModel( type, selector, delay );
 			registerGatewayForPreviewType( type, gateway );
-			registerPreviewUI( type, renderFn );
+			registerPreviewUI( type, renderFn, doNotRequireSummary );
 			if ( subTypes ) {
 				subTypes.forEach( function ( subTypePreview ) {
-					registerPreviewUI( subTypePreview.type, subTypePreview.renderFn );
+					registerPreviewUI( subTypePreview.type, subTypePreview.renderFn, subTypePreview.doNotRequireSummary );
 				} );
 			}
 			// Run initialization function if provided.
