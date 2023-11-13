@@ -20,7 +20,7 @@
 		]
 	},
 	"popups-message": "プレビュー",
-	"popups-desc": "リンク上にポインターを持って行くとプレビューのポップアップを表示する",
+	"popups-desc": "リンク上にカーソルを当てるとプレビューのポップアップを表示",
 	"popups-settings-title": "ページのプレビュー",
 	"popups-settings-option-simple": "有効化",
 	"popups-settings-option-simple-description": "ページの閲覧中に、サッとトピックをチラ見できます。",
@@ -34,7 +34,7 @@
 	"popups-settings-enable": "プレビューを有効にする",
 	"popups-preview-no-preview": "このプレビューを表示する際に問題が発生しました",
 	"popups-preview-footer-read": "このページへ移動する",
-	"popups-preview-disambiguation": "この記事名は複数のページと関係があります",
+	"popups-preview-disambiguation": "このタイトルは複数のページに関連しています",
 	"popups-preview-disambiguation-link": "類似のページを表示",
 	"prefs-reading": "閲覧設定",
 	"popups-prefs-optin-title": "ページのプレビュー (ページを読みながら題目をプレビュー)",

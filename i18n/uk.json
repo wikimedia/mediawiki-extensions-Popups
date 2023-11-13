@@ -10,7 +10,8 @@
 			"Максим Підліснюк",
 			"Base",
 			"DDPAT",
-			"Renamerr"
+			"Renamerr",
+			"Ice bulldog"
 		]
 	},
 	"popups-message": "Попередній перегляд",
@@ -43,6 +44,6 @@
 	"popups-refpreview-web": "Виноска на веб-сайт",
 	"popups-refpreview-jump-to-reference": "Перейти до посилання на джерело",
 	"popups-refpreview-user-preference-label": "Попередній перегляд виносок (швидкий перегляд)",
-	"popups-refpreview-beta-feature-message": "Огляд джерел",
+	"popups-refpreview-beta-feature-message": "Попередній перегляд джерел",
 	"popups-refpreview-beta-feature-description": "Показування попереднього перегляду примітки при наведенні вказівника миші на її номер у тексті.\n\nБудь ласка, зверніть увагу: Якщо ви використовуєте додаток [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навігаційні спливні вікна], то ви не побачите Попередній перегляд приміток. Якщо ви використовуєте додаток [[mw:Special:MyLanguage/Reference Tooltips|Спливні підказки]], то з'являтимуться і спливні підказки, і попередній перегляд приміток."
 }
