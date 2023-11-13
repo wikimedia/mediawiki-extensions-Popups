@@ -41,6 +41,7 @@
 	"popups-refpreview-news": "Референца ка вестима",
 	"popups-refpreview-note": "Напомена",
 	"popups-refpreview-web": "Референца ка веб-сајту",
+	"popups-refpreview-collapsible-placeholder": "Ова референца укључује фигуру која се не уклапа у преглед.",
 	"popups-refpreview-user-preference-label": "Прегледи референци (брзи прегледи фуснота)",
 	"popups-refpreview-beta-feature-message": "Прегледи референци",
 	"popups-refpreview-beta-feature-description": "Приказује преглед референце када задржите стрелицу изнад њеног означивача.\n\nИмајте на уму да ова функција неће радити уколико користите [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Навигацијске искачуће прозоре] или [[mw:Special:MyLanguage/Reference Tooltips|Облачићи за референце]], те вам се неће приказивати преглед референци."
