@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Kghbln",
-			"Mschlindwein"
+			"Mschlindwein",
+			"Tacsipacsi"
 		]
 	},
 	"popups-settings-option-page-description": "Erhalte eine schnelle Vorschau zu einem Thema, während Sie eine Seite lesen.",
-	"popups-prefs-optin": "Seitenvorschaubilder\n\n<em>Ruft schnelle Vorschaubilder zu einem Thema ab, während Sie eine Seite lesen.</em>",
+	"popups-prefs-optin": "Seitenvorschau aktivieren (schnelle Vorschau auf ein Thema beim Lesen einer Seite)",
 	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls Sie Probleme entdecken, überprüfen Sie bitte Ihre Helferlein und Benutzerskripte, inklusiver globaler."
 }
