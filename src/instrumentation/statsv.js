@@ -9,7 +9,7 @@
  *
  * [0]: https://wikitech.wikimedia.org/wiki/Graphite#statsv
  *
- * @param {mw.user} user The `mw.user` singleton instance
+ * @param {mw.User} user The `mw.user` singleton instance
  * @param {mw.Map} config The `mw.config` singleton instance
  * @param {Experiments} experiments
  * @return {boolean}

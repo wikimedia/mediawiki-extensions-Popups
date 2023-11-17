@@ -27,7 +27,7 @@ const templateHTML = `
  * @param {ext.popups.PagePreviewModel} model
  * @param {string|null} message
  * @param {string} linkMsg
- * @return {JQuery}
+ * @return {jQuery}
  */
 export function renderPreview(
 	model, message, linkMsg

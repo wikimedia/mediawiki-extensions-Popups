@@ -13,7 +13,7 @@ const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
  * either be logged in and have enabled the preference or be logged out and have
  * not disabled previews via the settings modal.
  *
- * @param {mw.user} user The `mw.user` singleton instance
+ * @param {mw.User} user The `mw.user` singleton instance
  * @param {Object} userSettings An object returned by `userSettings.js`
  * @param {mw.Map} config
  *

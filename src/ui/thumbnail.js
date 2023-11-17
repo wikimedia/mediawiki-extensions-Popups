@@ -17,7 +17,7 @@ export const SIZES = {
 
 /**
  * @typedef {Object} ext.popups.Thumbnail
- * @property {JQuery} el
+ * @property {jQuery} el
  * @property {boolean} isTall Whether or not the thumbnail is portrait
  * @property {number} width
  * @property {number} height

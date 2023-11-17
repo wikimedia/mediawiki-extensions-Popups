@@ -36,7 +36,7 @@ function timedAction( baseAction ) {
  *
  * @param {Object} initiallyEnabled Allows to disable individual popup types while still showing the
  *  footer link
- * @param {mw.user} user
+ * @param {mw.User} user
  * @param {ext.popups.UserSettings} userSettings
  * @param {mw.Map} config The config of the MediaWiki client-side application,
  *  i.e. `mw.config`

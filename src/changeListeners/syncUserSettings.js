@@ -57,7 +57,6 @@ function get( state, path ) {
  * @param {string} path dot-separated path in the state tree
  * @param {Function} sync function to be called with the newest value if
  * changed
- * @return {void}
  */
 function syncIfChanged( oldState, newState, path, sync ) {
 	const current = get( newState, path );

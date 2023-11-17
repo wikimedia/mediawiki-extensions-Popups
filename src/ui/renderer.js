@@ -48,7 +48,6 @@ export { pointerSize, landscapePopupWidth, portraitPopupWidth }; // for use in s
  *
  * @private
  * @param {Object} container DOM object to which pointer masks are appended
- * @return {void}
  */
 export function createPointerMasks( container ) {
 	const node = document.createElement( 'div' );
@@ -60,7 +59,6 @@ export function createPointerMasks( container ) {
 /**
  * Initializes the renderer.
  *
- * @return {void}
  */
 export function init() {
 	if ( !supportsCSSClipPath() ) {
@@ -75,7 +73,7 @@ export function init() {
  * TODO: Rename `isTall` to `isPortrait`.
  *
  * @typedef {Object} ext.popups.Preview
- * @property {JQuery} el
+ * @property {jQuery} el
  * @property {boolean} hasThumbnail
  * @property {Object} thumbnail
  * @property {boolean} isTall Sugar around
@@ -312,7 +310,6 @@ export function show(
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewBehavior} behavior
- * @return {void}
  */
 export function bindBehavior( preview, behavior ) {
 	preview.el.addEventListener( 'mouseenter', behavior.previewDwell );
@@ -535,7 +532,6 @@ export function getClasses( preview, layout ) {
  * @param {number} predefinedLandscapeImageHeight landscape image height
  * @param {number} pointerSpaceSize
  * @param {number} windowHeight
- * @return {void}
  */
 export function layoutPreview(
 	preview, layout, classes, predefinedLandscapeImageHeight, pointerSpaceSize, windowHeight
@@ -588,7 +584,6 @@ export function layoutPreview(
  *
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewLayout} layout
- * @return {void}
  */
 export function setThumbnailClipPath(
 	{ el, isTall, thumbnail }, { flippedY, flippedX, dir }

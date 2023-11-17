@@ -37,7 +37,7 @@ const replaceWith = ( node, htmlOrOtherNode ) => {
 
 /**
  * @param {ext.popups.ReferencePreviewModel} model
- * @return {JQuery}
+ * @return {jQuery}
  */
 export function renderReferencePreview(
 	model

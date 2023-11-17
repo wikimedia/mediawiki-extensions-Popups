@@ -7,7 +7,7 @@ const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
  * Given the global state of the application, creates a function that gets
  * whether or not the user should have Reference Previews enabled.
  *
- * @param {mw.user} user The `mw.user` singleton instance
+ * @param {mw.User} user The `mw.user` singleton instance
  * @param {Object} userSettings An object returned by `userSettings.js`
  * @param {mw.Map} config
  *

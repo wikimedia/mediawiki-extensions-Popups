@@ -65,7 +65,6 @@ QUnit.test( '#boot', ( assert ) => {
  * of the module.
  *
  * @param {Object} module
- * @return {void}
  */
 function setupWait( module ) {
 	module.waitPromise = $.Deferred().resolve().promise( { abort() {} } );
@@ -79,7 +78,6 @@ function setupWait( module ) {
  * creator.
  *
  * @param {Object} module
- * @return {void}
  */
 function setupEl( module ) {
 	module.title = TEST_TITLE;

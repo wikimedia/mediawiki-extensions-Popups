@@ -110,7 +110,7 @@ export function createNullModel( title, url ) {
 }
 
 /**
- * @param {Element} element
+ * @param {HTMLElement} element
  * @param {string} selector
  * @return {boolean}
  */
@@ -121,8 +121,8 @@ const elementMatchesSelector = ( element, selector ) => {
 /**
  * Recursively checks the element and its parents.
  *
- * @param {Element} element
- * @return {Element|null}
+ * @param {HTMLElement} element
+ * @return {HTMLElement|null}
  */
 export function findNearestEligibleTarget( element ) {
 	const selector = selectors.join( ', ' );

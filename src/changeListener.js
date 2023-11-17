@@ -22,7 +22,6 @@
  *
  * @param {Redux.Store} store
  * @param {ext.popups.ChangeListener} callback
- * @return {void}
  */
 export default function registerChangeListener( store, callback ) {
 	// This function is based on the example in [the documentation for

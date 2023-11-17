@@ -9,8 +9,8 @@ const templateHTML = `
 `;
 /**
  * @param {ext.popups.previewTypes} type
- * @param {Element} element The contents of the popup.
- * @return {Element}
+ * @param {HTMLElement} element The contents of the popup.
+ * @return {HTMLElement}
  */
 
 export function renderPopup( type, container ) {

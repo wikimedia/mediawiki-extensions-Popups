@@ -24,7 +24,7 @@ const templateHTML = `
  * @param {ext.popups.Thumbnail|null} thumbnail
  * @param {boolean} withCSSClipPath
  * @param {string} linkTitle
- * @return {Element}
+ * @return {HTMLElement}
  */
 export function renderPagePreview(
 	model, thumbnail, withCSSClipPath, linkTitle

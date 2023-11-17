@@ -13,7 +13,7 @@ export function escapeHTML( str ) {
 const templates = {};
 /**
  * @param {string} html markup of the template
- * @return {Element} a cloned root element of the template
+ * @return {HTMLElement} a cloned root element of the template
  */
 export function createNodeFromTemplate( html ) {
 	if ( !templates[ html ] ) {

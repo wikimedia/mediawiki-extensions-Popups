@@ -25,7 +25,6 @@ export default function createContainer() {
 		 * @name Container#set
 		 * @param {string} name
 		 * @param {*} factory
-		 * @return {void}
 		 */
 		set( name, factory ) {
 			factories[ name ] = factory;

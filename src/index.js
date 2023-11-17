@@ -107,7 +107,6 @@ function getPageviewTracker( config ) {
  * @param {PreviewBehavior} previewBehavior
  * @param {EventTracker} statsvTracker
  * @param {EventTracker} pageviewTracker
- * @return {void}
  */
 function registerChangeListeners(
 	store, registerActions, userSettings, settingsDialog, previewBehavior,

@@ -14,7 +14,7 @@ export default function linkTitle() {
 	 * Destroys the title attribute of the element, storing its value in local
 	 * state so that it can be restored later (see `restoreTitleAttr`).
 	 *
-	 * @param {Element|undefined} el
+	 * @param {HTMLElement|undefined} el
 	 */
 	function destroyTitleAttr( el ) {
 		// Has the user dwelled on a link? If we've already removed its title attribute, then NOOP.
@@ -27,7 +27,7 @@ export default function linkTitle() {
 	/**
 	 * Restores the title attribute of the element.
 	 *
-	 * @param {Element|undefined} el
+	 * @param {HTMLElement|undefined} el
 	 */
 	function restoreTitleAttr( el ) {
 		// Avoid overwriting a non-empty title with an empty one, just to be sure
