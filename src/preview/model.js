@@ -4,6 +4,8 @@
 
 import { requiresSummary } from '../ui/renderer';
 
+const selectors = [];
+
 /**
  * Page Preview types as defined in Schema:Popups
  * https://meta.wikimedia.org/wiki/Schema:Popups
@@ -204,8 +206,6 @@ function getPagePreviewType( type, processedExtract ) {
 			return previewTypes.TYPE_PAGE;
 	}
 }
-
-const selectors = [];
 
 const dwellDelay = {};
 
