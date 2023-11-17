@@ -12,8 +12,6 @@ import { escapeHTML } from '../templateUtil';
  * @property {string} helpText
  * @property {string} okLabel
  * @property {SettingsChoiceModel[]} [choices]
- *
- * @global
  */
 
 /**
@@ -22,8 +20,6 @@ import { escapeHTML } from '../templateUtil';
  * @property {string} name
  * @property {string} [description]
  * @property {boolean} [isChecked] Whether the setting is checked.
- *
- * @global
  */
 
 /**

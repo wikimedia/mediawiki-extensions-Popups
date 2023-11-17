@@ -4,12 +4,6 @@ import { previewTypes } from './preview/model';
  * @module userSettings
  */
 
-/**
- * @interface UserSettings
- *
- * @global
- */
-
 const PAGE_PREVIEWS_ENABLED_KEY = 'mwe-popups-enabled',
 	REFERENCE_PREVIEWS_ENABLED_KEY = 'mwe-popups-referencePreviews-enabled',
 	PAGE_PREVIEWS_CHANGE_SETTING_EVENT = 'Popups.SettingChange';

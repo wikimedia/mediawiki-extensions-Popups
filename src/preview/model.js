@@ -29,8 +29,6 @@ export { previewTypes };
  * @typedef {Object} PreviewModel
  * @property {string} url The canonical URL of the page being previewed
  * @property {string} type One of the previewTypes.TYPE_… constants.
- *
- * @global
  */
 
 /**
@@ -44,8 +42,6 @@ export { previewTypes };
  * @property {string} languageDirection Either "ltr" or "rtl", or an empty string if undefined.
  * @property {{source: string, width: number, height: number}|undefined} thumbnail
  * @property {number} pageId Currently not used by any known popup type.
- *
- * @global
  */
 
 /**
@@ -54,8 +50,6 @@ export { previewTypes };
  * @property {string} extract An HTML snippet, not necessarily with a single top-level node
  * @property {string} referenceType A type identifier, e.g. "web"
  * @property {string} sourceElementId ID of the parent element that triggered the preview
- *
- * @global
  */
 
 /**

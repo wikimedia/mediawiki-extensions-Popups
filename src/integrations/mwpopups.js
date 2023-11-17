@@ -1,5 +1,5 @@
 /**
- * @module MediaWiki-Popups Integration
+ * @module MediaWiki-Popups-Integration
  */
 
 import { previewTypes } from '../preview/model';

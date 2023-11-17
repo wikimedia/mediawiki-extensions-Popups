@@ -3,12 +3,6 @@
  */
 
 /**
- * @interface Experiments
- *
- * @global
- */
-
-/**
  * Creates a helper wrapper for the MediaWiki-provided
  * `mw.experiments#getBucket` bucketing function.
  *

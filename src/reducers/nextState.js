@@ -1,4 +1,8 @@
 /**
+ * @module nextState
+ */
+
+/**
  * Creates the next state tree from the current state tree and some updates.
  *
  * N.B. OO.copy doesn't copy Element instances, whereas $.extend does.

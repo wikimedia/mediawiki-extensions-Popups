@@ -1,4 +1,8 @@
 /**
+ * @module formatter
+ */
+
+/**
  * Improves the plain text extracts
  *
  * @param {string} plainTextExtract

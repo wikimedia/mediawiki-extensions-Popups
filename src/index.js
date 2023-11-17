@@ -57,8 +57,6 @@ const EXCLUDED_LINK_SELECTORS = [
  *
  * @param {string} topic
  * @param {Object} data
- *
- * @global
  */
 
 /**

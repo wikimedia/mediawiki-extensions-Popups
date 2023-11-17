@@ -13,9 +13,6 @@ export default function createContainer() {
 
 	/**
 	 * The interface implemented by all service containers.
-	 *
-	 * @interface Container
-	 * @global
 	 */
 	return {
 		/**

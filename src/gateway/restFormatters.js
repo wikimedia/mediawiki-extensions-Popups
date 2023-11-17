@@ -1,3 +1,7 @@
+/**
+ * @module restFormatters
+ */
+
 import * as formatter from '../formatter';
 
 /**
