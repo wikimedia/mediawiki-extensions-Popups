@@ -6,6 +6,7 @@
 			"LoveIceLang"
 		]
 	},
+	"popups-desc": "Sýnir forskoðunar sprettiglugga þegar notandi hangir yfir tengli",
 	"popups-settings-title": "Forskoðun síðu",
 	"popups-settings-option-simple": "Virkja",
 	"popups-settings-option-simple-description": "Fá snögga forskoðun á viðfangsefni á meðan þú lest síðu.",
@@ -17,9 +18,17 @@
 	"popups-settings-cancel": "Hætta við",
 	"popups-settings-help": "Þú getur kveikt aftur á forskoðun með því að nota tengil neðst á síðunni.",
 	"popups-settings-enable": "Virkja forskoðun",
+	"popups-preview-no-preview": "Það var villa við að sýna þessa forskoðun",
+	"popups-preview-footer-read": "Fara á þessa síðu",
 	"popups-preview-disambiguation": "Þessi titil tengist fleiri en einni síðu",
 	"popups-preview-disambiguation-link": "Skoða svipaðar síður",
 	"prefs-reading": "Kjörstillingar við lestur",
 	"popups-prefs-optin-enabled-label": "Gera virkt",
-	"popups-prefs-optin-disabled-label": "Gera óvirkt"
+	"popups-prefs-optin-disabled-label": "Gera óvirkt",
+	"popups-refpreview-reference": "Tilvísun",
+	"popups-refpreview-book": "Tilvísun í bók",
+	"popups-refpreview-journal": "Tilvísun í tímarit",
+	"popups-refpreview-news": "Tilvísun í frétt",
+	"popups-refpreview-web": "Veftilvísun",
+	"popups-refpreview-beta-feature-message": "Forskoðun heimilda"
 }
