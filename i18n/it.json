@@ -15,6 +15,8 @@
 	"popups-settings-title": "Anteprime",
 	"popups-settings-option-page": "Anteprima delle pagine",
 	"popups-settings-option-page-description": "Ottieni una veloce anteprima di un argomento mentre leggi una pagina.",
+	"popups-settings-option-reference": "Anteprima note",
+	"popups-settings-option-reference-description": "Ottieni una veloce anteprima di una nota mentre leggi una pagina.",
 	"popups-settings-save": "Salva",
 	"popups-settings-help-ok": "Fatto",
 	"popups-settings-cancel": "Annulla",
@@ -34,6 +36,8 @@
 	"popups-refpreview-news": "Riferimento a notizie",
 	"popups-refpreview-note": "Nota",
 	"popups-refpreview-web": "Riferimento a sito web",
+	"popups-refpreview-collapsible-placeholder": "Questa nota include una figura che non rientra nell'anteprima.",
+	"popups-refpreview-user-preference-label": "Abilita l'anteprima delle note (ottieni una veloce anteprima di un riferimento mentre leggi una pagina)",
 	"popups-refpreview-beta-feature-message": "Anteprima note",
 	"popups-refpreview-beta-feature-description": "Mostra l'anteprima di una nota quando si posiziona il mouse sul suo marcatore.\n\nAttenzione: le anteprime delle note non appaiono se si tiene attivo l'accessorio dei [https://it.wikipedia.org/wiki/Aiuto:Accessori/Popup_di_navigazione popup] o se si ha attivo l'accessorio [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]."
 }
