@@ -304,7 +304,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertCount( 3 - $beta, $userOptions );
 		$this->assertSame( '1', $userOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
 		if ( $beta === false ) {
-			$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA ] );
+			$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME ] );
 		}
 	}
 

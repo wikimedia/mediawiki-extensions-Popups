@@ -171,7 +171,7 @@ class PopupsHooks implements
 		}
 
 		return [
-			PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA => $option
+			PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME => $option
 		];
 	}
 
@@ -263,7 +263,7 @@ class PopupsHooks implements
 		if ( $config->get( 'PopupsReferencePreviews' ) &&
 			!$config->get( 'PopupsReferencePreviewsBetaFeature' )
 		) {
-			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA] = '1';
+			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = '1';
 		}
 	}
 
@@ -290,7 +290,7 @@ class PopupsHooks implements
 		) {
 			$this->userOptionsManager->setOption(
 				$user,
-				PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA,
+				PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME,
 				$default
 			);
 		}
@@ -310,7 +310,7 @@ class PopupsHooks implements
 		if ( $config->get( 'PopupsReferencePreviewsBetaFeature' ) &&
 			$config->get( 'PopupsReferencePreviews' )
 		) {
-			$prefs[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = [
+			$prefs[PopupsContext::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME] = [
 				'label-message' => 'popups-refpreview-beta-feature-message',
 				'desc-message' => 'popups-refpreview-beta-feature-description',
 				'screenshot' => [

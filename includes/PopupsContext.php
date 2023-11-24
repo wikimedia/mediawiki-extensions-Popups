@@ -61,12 +61,12 @@ class PopupsContext {
 	 * User preference key to enable/disable Reference Previews. Named
 	 * "mwe-popups-referencePreviews-enabled" in localStorage for anonymous users.
 	 */
-	public const REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA = 'popups-reference-previews';
+	public const REFERENCE_PREVIEWS_PREFERENCE_NAME = 'popups-reference-previews';
 
 	/**
 	 * User preference key to enable/disable Reference Previews
 	 */
-	public const REFERENCE_PREVIEWS_PREFERENCE_NAME = 'popupsreferencepreviews';
+	public const REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME = 'popupsreferencepreviews';
 
 	/**
 	 * Flags passed on to JS representing preferences
@@ -159,7 +159,6 @@ class PopupsContext {
 	 * @return bool whether or not to show reference previews
 	 */
 	public function isReferencePreviewsEnabled( \User $user ) {
-		// TODO: Remove when the feature flag is not needed any more
 		if ( !$this->config->get( 'PopupsReferencePreviews' ) ) {
 			return false;
 		}
@@ -168,12 +167,12 @@ class PopupsContext {
 		if ( $this->isReferencePreviewsInBeta() ) {
 			return BetaFeatures::isFeatureEnabled(
 				$user,
-				self::REFERENCE_PREVIEWS_PREFERENCE_NAME
+				self::REFERENCE_PREVIEWS_BETA_PREFERENCE_NAME
 			);
 		}
 
 		return !$user->isNamed() || $this->userOptionsLookup->getBoolOption(
-			$user, self::REFERENCE_PREVIEWS_PREFERENCE_NAME_AFTER_BETA
+			$user, self::REFERENCE_PREVIEWS_PREFERENCE_NAME
 		);
 	}
 
