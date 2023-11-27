@@ -72,11 +72,10 @@ class PopupsGadgetsIntegrationTest extends MediaWikiIntegrationTestCase {
 		$mock = $this->createMock( Config::class );
 		$mock->expects( $this->atLeastOnce() )
 			->method( 'get' )
-			->withConsecutive(
-				[ PopupsGadgetsIntegration::CONFIG_NAVIGATION_POPUPS_NAME ],
-				[ PopupsGadgetsIntegration::CONFIG_REFERENCE_TOOLTIPS_NAME ]
-			)
-			->willReturn( self::NAV_POPUPS_GADGET_NAME );
+			->willReturnMap( [
+				[ PopupsGadgetsIntegration::CONFIG_NAVIGATION_POPUPS_NAME, self::NAV_POPUPS_GADGET_NAME ],
+				[ PopupsGadgetsIntegration::CONFIG_REFERENCE_TOOLTIPS_NAME, self::NAV_POPUPS_GADGET_NAME ],
+			] );
 		return $mock;
 	}
 
@@ -173,11 +172,10 @@ class PopupsGadgetsIntegrationTest extends MediaWikiIntegrationTestCase {
 		$configMock = $this->createMock( Config::class );
 		$configMock->expects( $this->atLeastOnce() )
 			->method( 'get' )
-			->withConsecutive(
-				[ PopupsGadgetsIntegration::CONFIG_NAVIGATION_POPUPS_NAME ],
-				[ PopupsGadgetsIntegration::CONFIG_REFERENCE_TOOLTIPS_NAME ]
-			)
-			->willReturn( $name );
+			->willReturnMap( [
+				[ PopupsGadgetsIntegration::CONFIG_NAVIGATION_POPUPS_NAME, $name ],
+				[ PopupsGadgetsIntegration::CONFIG_REFERENCE_TOOLTIPS_NAME, $name ]
+			] );
 
 		$gadgetMock = $this->createMock( Gadget::class );
 		$gadgetMock->expects( $this->once() )
