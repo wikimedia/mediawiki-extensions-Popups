@@ -35,7 +35,5 @@
 	"popups-refpreview-note": "Note",
 	"popups-refpreview-web": "Referimende a 'nu site web",
 	"popups-refpreview-collapsible-placeholder": "Stu referimende 'nglude 'na figure 'a quale non ge se 'ndruche bbone jndr'à l'andeprime.",
-	"popups-refpreview-user-preference-label": "Abbilite l'andeprime d'u referimende (pigghie le andeprime veloce de 'nu referimende quanne ste lìgge 'a vôsce)",
-	"popups-refpreview-beta-feature-message": "Andeprime de le refereminde",
-	"popups-refpreview-beta-feature-description": "Face 'ndrucà 'n'andeprime de 'nu referimende passanne cu 'u mouse sus a l'indicatore sue de note a piè de pàgene.\n\n'Ndruche: ce tu ste ause 'u gadget [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups popup de navigazzione] o [[mw:Special:MyLanguage/Reference Tooltips|Tooltip d'u referimende]], non ge 'ndruche le le andeprime d'u referimende."
+	"popups-refpreview-user-preference-label": "Abbilite l'andeprime d'u referimende (pigghie le andeprime veloce de 'nu referimende quanne ste lìgge 'a vôsce)"
 }

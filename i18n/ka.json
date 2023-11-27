@@ -27,7 +27,5 @@
 	"popups-refpreview-book": "სქოლიო წიგნიდან",
 	"popups-refpreview-journal": "სქოლიო ჟურნალ-გაზეთიდან",
 	"popups-refpreview-news": "ახალი ამბების სქოლიო",
-	"popups-refpreview-web": "ინტერნეტსქოლიო",
-	"popups-refpreview-beta-feature-message": "სქოლიოს გადახედვა",
-	"popups-refpreview-beta-feature-description": "წინასწარ გადასახედად მაუსის კურსორი მიიტანეთ სქოლიოს მარკერთან.\n\nგთხოვთ, გაითვალისწინოთ: თუ თქვენ იყენებთ გაჯეტ [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups მხტომიარე ფანჯარას] ან გაჯეტს [[mw:Special:MyLanguage/Reference Tooltips|სქოლიოს ჩვენება ტექსტში]], მაშინ თქვენ ვერ შეძლებთ წინასწარი გადახედვის ნახვას."
+	"popups-refpreview-web": "ინტერნეტსქოლიო"
 }

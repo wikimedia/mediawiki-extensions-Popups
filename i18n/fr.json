@@ -51,7 +51,5 @@
 	"popups-refpreview-note": "Note",
 	"popups-refpreview-web": "Référence du web",
 	"popups-refpreview-collapsible-placeholder": "Cette référence inclut une illustration qui ne rentre pas dans l’aperçu.",
-	"popups-refpreview-user-preference-label": "Activer l’aperçu des références (aperçu rapide des références lors de la lecture d’une page)",
-	"popups-refpreview-beta-feature-message": "Aperçus de référence",
-	"popups-refpreview-beta-feature-description": "Afficher un aperçu des notes de bas de page lors du survol de leur appel de note.\n\nAvertissement : si vous utilisez les gadgets [//fr.wikipedia.org/wiki/Utilisateur:Leag/Navigation_popups Navigation popups] ou [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], vous ne verrez pas l’aperçu des références."
+	"popups-refpreview-user-preference-label": "Activer l’aperçu des références (aperçu rapide des références lors de la lecture d’une page)"
 }

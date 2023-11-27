@@ -34,7 +34,5 @@
 	"popups-refpreview-news": "Referenca ka vestima",
 	"popups-refpreview-note": "Napomena",
 	"popups-refpreview-web": "Referenca ka veb-sajtu",
-	"popups-refpreview-user-preference-label": "Pregledi referenci (brzi pregledi fusnota)",
-	"popups-refpreview-beta-feature-message": "Pregledi referenci",
-	"popups-refpreview-beta-feature-description": "Prikazuje pregled reference kada zadržite strelicu iznad njenog označivača.\n\nImajte na umu da ova funkcija neće raditi ukoliko koristite [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigacijske iskačuće prozore] ili [[mw:Special:MyLanguage/Reference Tooltips|Oblačići za reference]], te vam se neće prikazivati pregled referenci."
+	"popups-refpreview-user-preference-label": "Pregledi referenci (brzi pregledi fusnota)"
 }

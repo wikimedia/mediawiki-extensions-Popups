@@ -36,7 +36,5 @@
 	"popups-refpreview-note": "לתשומת ליבך",
 	"popups-refpreview-web": "הפניה לאתר",
 	"popups-refpreview-collapsible-placeholder": "הערת השוליים הזאת מכילה תמונה שגודלה אינו מתאים לתצוגה מקדימה.",
-	"popups-refpreview-user-preference-label": "הפעלת תצוגה מקדימה של הערות שוליים (קבלת תצוגה מקדימה מהירה של הערת שוליים בזמן קריאת דף):",
-	"popups-refpreview-beta-feature-message": "תצוגה מקדימה של הערות שוליים",
-	"popups-refpreview-beta-feature-description": "תצוגה מקדימה של הערת שוליים באמצעות העברת סמן מעל מספר ההערה.\n\nלתשומת ליבך: המשתמשים בגאדג'ט [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] או בגאדג'ט [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] לא יראו את התצוגה מקדימה של הערות שוליים."
+	"popups-refpreview-user-preference-label": "הפעלת תצוגה מקדימה של הערות שוליים (קבלת תצוגה מקדימה מהירה של הערת שוליים בזמן קריאת דף):"
 }

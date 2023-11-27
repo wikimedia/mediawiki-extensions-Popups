@@ -32,7 +32,5 @@
 	"popups-refpreview-note": "Napomena",
 	"popups-refpreview-web": "Naveden sajt",
 	"popups-refpreview-collapsible-placeholder": "Reference sadrži grafiku koja ne može stati u ovaj pregled.",
-	"popups-refpreview-user-preference-label": "Pregled reference (brzi pregled futnota)",
-	"popups-refpreview-beta-feature-message": "Brzi pregled referenci",
-	"popups-refpreview-beta-feature-description": "Prikazuje pregled reference kada mišem pređete preko njene oznake.\n\nNapomena: Ova mogućnost ne radi ako koristite dodatak [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigacijski prozorčići]. Ako koristite dodatak [[mw:Special:MyLanguage/Reference Tooltips|Oblačići za reference]], prikazivat će Vam se oba oblačića."
+	"popups-refpreview-user-preference-label": "Pregled reference (brzi pregled futnota)"
 }

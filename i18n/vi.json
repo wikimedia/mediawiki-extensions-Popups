@@ -40,7 +40,5 @@
 	"popups-refpreview-note": "Ghi chú",
 	"popups-refpreview-web": "Chú thích web",
 	"popups-refpreview-collapsible-placeholder": "Chú thích này có chứa hình ảnh quá lớn để hiển thị trong bản xem trước.",
-	"popups-refpreview-user-preference-label": "Bật xem trước chú thích (xem trước nhanh một chú thích khi đang đọc trang)",
-	"popups-refpreview-beta-feature-message": "Xem trước chú thích",
-	"popups-refpreview-beta-feature-description": "Hiển thị bản xem trước chú thích bằng cách di chuột lên dấu chú thích đó.\n\nXin lưu ý: Nếu bạn đang dùng tiện ích [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups popup điều hướng] hoặc [[mw:Special:MyLanguage/Reference Tooltips|chú thích nổi]], bạn sẽ không thấy các bản xem trước chú thích."
+	"popups-refpreview-user-preference-label": "Bật xem trước chú thích (xem trước nhanh một chú thích khi đang đọc trang)"
 }

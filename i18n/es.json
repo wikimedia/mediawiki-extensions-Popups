@@ -46,7 +46,5 @@
 	"popups-refpreview-note": "Nota",
 	"popups-refpreview-web": "Web de referencia",
 	"popups-refpreview-collapsible-placeholder": "Esta referencia incluye una figura que no cabe en la vista previa.",
-	"popups-refpreview-user-preference-label": "Habilita las vistas previas de referencias (obtenga vistas previas rápidas de una referencia mientras lee una página):",
-	"popups-refpreview-beta-feature-message": "Previsualizaciones de referencias",
-	"popups-refpreview-beta-feature-description": "Muestra una vista previa de una referencia al poner el cursor sobre su marcador de nota al pie.\n\nNota: Esta característica no funcionará si usas cualquiera de los siguientes accesorios o herramientas: [https://es.wikipedia.org/wiki/Wikipedia:Popups_de_navegaci%C3%B3n popups de navegación], [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]."
+	"popups-refpreview-user-preference-label": "Habilita las vistas previas de referencias (obtenga vistas previas rápidas de una referencia mientras lee una página):"
 }

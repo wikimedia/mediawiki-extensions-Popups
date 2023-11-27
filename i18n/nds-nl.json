@@ -15,7 +15,5 @@
 	"popups-preview-no-preview": "Der güng yts faut by et weadergeaven van dit vöärbealdvinster",
 	"popups-preview-footer-read": "Gå nå disse syde",
 	"popups-preview-disambiguation": "Disse titel hevt meyrere beteykenissen",
-	"popups-preview-disambiguation-link": "Vergelykbåre syden bekyken",
-	"popups-refpreview-beta-feature-message": "Vöärbeald van referensys",
-	"popups-refpreview-beta-feature-description": "Givt een vöärbeald van een referensy weader as jy mid de muus oaver de vootnote gån.\n\nWårt ju: as jy de [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups navigatyfluupvinsteruutbreiding] gebruket, dan sül jy de referensyvöärbealden neet seen. As jy de [[mw:Special:MyLanguage/Reference Tooltips|referensyhülpwenkuutbreiding]] gebruket, wörden sowel de fluupvinsters van de referensyhülpwenken as de referensyvöärbealden weadergeaven."
+	"popups-preview-disambiguation-link": "Vergelykbåre syden bekyken"
 }

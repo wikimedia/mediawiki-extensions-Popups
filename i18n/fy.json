@@ -37,7 +37,5 @@
 	"popups-refpreview-note": "Noat",
 	"popups-refpreview-web": "Webreferinsje",
 	"popups-refpreview-collapsible-placeholder": "Dizze referinsje befettet in yllustraasje dy't net yn it proefbyld past.",
-	"popups-refpreview-user-preference-label": "Proefbylden fan referinsjes ynskeakelje (jout flugge foarfertoanings fan referinsjes ûnder it lêzen)",
-	"popups-refpreview-beta-feature-message": "Proefbylden fan referinsjes",
-	"popups-refpreview-beta-feature-description": "It proefbyld fan in referinsje werjaan troch oer syn fuotnoatmarkearder hinne te mûzen.\n\nTink derom: At jo it 'lytsark' [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] of [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] brûke, sille jo gjin referinsjeproefbylden sjen."
+	"popups-refpreview-user-preference-label": "Proefbylden fan referinsjes ynskeakelje (jout flugge foarfertoanings fan referinsjes ûnder it lêzen)"
 }

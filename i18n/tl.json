@@ -35,7 +35,5 @@
 	"popups-refpreview-note": "Talababa",
 	"popups-refpreview-web": "Sanggunian sa web",
 	"popups-refpreview-collapsible-placeholder": "Naglalaman ang sanggunian na ito ng isang bagay na hindi kasya sa pasilip.",
-	"popups-refpreview-user-preference-label": "Buksan ang mga pasilip sa sanggunian (kunin ang mga mabilisang pasilip sa isang sanggunian habang nagbabasa ng pahina)",
-	"popups-refpreview-beta-feature-message": "Mga pasilip sa sanggunian",
-	"popups-refpreview-beta-feature-description": "Nagpapakita ng pasilip sa isang sanggunian sa pamamagitan ng pag-hover sa naturang sanggunian.\n\nPaalala: Kung gumagamit ka ng gadget na [[//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popupe Navigation popups] o [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], hindi mo makikita ang mga pasilip sa sanggunian."
+	"popups-refpreview-user-preference-label": "Buksan ang mga pasilip sa sanggunian (kunin ang mga mabilisang pasilip sa isang sanggunian habang nagbabasa ng pahina)"
 }

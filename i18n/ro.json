@@ -38,7 +38,5 @@
 	"popups-refpreview-note": "Notă",
 	"popups-refpreview-web": "Referință web",
 	"popups-refpreview-collapsible-placeholder": "Această referință include o figură care nu se potrivește în previzualizare.",
-	"popups-refpreview-user-preference-label": "Activați previzualizări de referințe (primiți previzualizări rapide ale notelor de subsol)",
-	"popups-refpreview-beta-feature-message": "Previzualizări de referințe",
-	"popups-refpreview-beta-feature-description": "Afișează o previzualizare a unei referințe prin trecerea peste marcatorului său de notă de subsol.\n\nVă rugăm să luați în considerare: Dacă utilizați gadgetul [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] sau gadgetul [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], nu veți vedea previzualizări de referințe."
+	"popups-refpreview-user-preference-label": "Activați previzualizări de referințe (primiți previzualizări rapide ale notelor de subsol)"
 }

@@ -44,7 +44,5 @@
 	"popups-refpreview-note": "Huomautus",
 	"popups-refpreview-web": "Verkkoviite",
 	"popups-refpreview-collapsible-placeholder": "Tämä viite sisältää kaavion, joka ei mahdu esikatseluun.",
-	"popups-refpreview-user-preference-label": "Ota käyttöön viitteiden esikatselut (näe viitteen pikaesikatselu sivua lukiessasi)",
-	"popups-refpreview-beta-feature-message": "Viitteiden esikatselu",
-	"popups-refpreview-beta-feature-description": "Näytä viitteen esikatselu, kun hiiren osoitin on lähdeviittauksen kohdalla.\n\nHuom: Jos käytät [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] tai [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] -pienoisohjelmaa, tämä viitteiden esikatselu ei toimi."
+	"popups-refpreview-user-preference-label": "Ota käyttöön viitteiden esikatselut (näe viitteen pikaesikatselu sivua lukiessasi)"
 }

@@ -34,7 +34,5 @@
 	"popups-refpreview-note": "Nota",
 	"popups-refpreview-web": "Referentia web",
 	"popups-refpreview-collapsible-placeholder": "Iste referentia include un figura que es troppo grande pro le previsualisation.",
-	"popups-refpreview-user-preference-label": "Activar le previsualisation de referentias (obtener rapide previsualisationes de referentias durante le lectura de un pagina)",
-	"popups-refpreview-beta-feature-message": "Previsualisationes de referentias",
-	"popups-refpreview-beta-feature-description": "Monstrar un previsualisation de un referentia quando le mouse passa supra su marcator de nota a pede.\n\nNota ben: Si tu usa le accessorio [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Fenestras emergente de navigation] o le accessorio [[mw:Special:MyLanguage/Reference Tooltips|Legendas emergente de referentias]], tu non videra previsualisationes de referentias."
+	"popups-refpreview-user-preference-label": "Activar le previsualisation de referentias (obtener rapide previsualisationes de referentias durante le lectura de un pagina)"
 }

@@ -45,7 +45,5 @@
 	"popups-refpreview-note": "Нотатка",
 	"popups-refpreview-web": "Виноска на веб-сайт",
 	"popups-refpreview-collapsible-placeholder": "Ця примітка включає рисунок, який не вміщається до попереднього перегляду.",
-	"popups-refpreview-user-preference-label": "Дозволити попередній перегляд виносок (отримувати швидкі попередні перегляди виносок під час читання сторінки)",
-	"popups-refpreview-beta-feature-message": "Попередній перегляд джерел",
-	"popups-refpreview-beta-feature-description": "Показування попереднього перегляду примітки при наведенні вказівника миші на її номер у тексті.\n\nБудь ласка, зверніть увагу: Якщо ви використовуєте додаток [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups «Навігаційні спливні вікна»] або додаток [[mw:Special:MyLanguage/Reference Tooltips|«Спливні підказки»]], то ви не побачите попередній перегляд приміток."
+	"popups-refpreview-user-preference-label": "Дозволити попередній перегляд виносок (отримувати швидкі попередні перегляди виносок під час читання сторінки)"
 }

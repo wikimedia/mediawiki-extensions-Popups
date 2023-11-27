@@ -23,7 +23,5 @@
 	"popups-refpreview-journal": "जर्नल सन्दर्भ",
 	"popups-refpreview-news": "समाचार सन्दर्भ",
 	"popups-refpreview-note": "टिप्पणी",
-	"popups-refpreview-web": "वेब सन्दर्भ",
-	"popups-refpreview-beta-feature-message": "सन्दर्भ पुर्वावलाेकन",
-	"popups-refpreview-beta-feature-description": "यसको फुटनोट मार्करमा होभर गरेर सन्दर्भको पूर्वावलोकन हेर्नुहोस्।\n\nकृपया ध्यान दिनुहोस्: यदि तपाईं  [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups नेभिगेसन पपअप] उपकरण वा [[mw:Special:MyLanguage/Reference Tooltips|सन्दर्भ उपकरणटिप]] उपकरण प्रयोग गर्दै हुनुहुन्छ भने, तपाईं सन्दर्भ पूर्वावलोकनहरू देख्नुहुनेछैन।"
+	"popups-refpreview-web": "वेब सन्दर्भ"
 }

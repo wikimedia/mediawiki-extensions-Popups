@@ -40,7 +40,5 @@
 	"popups-refpreview-note": "टिप्पणी",
 	"popups-refpreview-web": "वेब सन्दर्भ",
 	"popups-refpreview-collapsible-placeholder": "इस सन्दर्भ में एक आकृति है जो पूर्वावलोकन में नहीं दिखाई जा सकती।",
-	"popups-refpreview-user-preference-label": "सन्दर्भ पूर्वावलोकन सक्षम करें (कोई पृष्ठ पढ़ते समय किसी सन्दर्भ के छोटे पूर्वावलोकन पाएँ)",
-	"popups-refpreview-beta-feature-message": "सन्दर्भ पूर्वावलोकन",
-	"popups-refpreview-beta-feature-description": "सन्दर्भ के फ़ुटनोट मार्कर पर होवर करके सन्दर्भ का एक पूर्वावलोकन देखें।\n\nकृपया ध्यान दें: अगर आप [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups नेविगेशन पॉपअप्स] गैजेट या फिर [[mw:Special:MyLanguage/Reference Tooltips|सन्दर्भ टूलटिप्स]] गैजेट का इस्तेमाल करते हैं, आपको सन्दर्भ पूर्वावलोकन नहीं दिखेंगे।"
+	"popups-refpreview-user-preference-label": "सन्दर्भ पूर्वावलोकन सक्षम करें (कोई पृष्ठ पढ़ते समय किसी सन्दर्भ के छोटे पूर्वावलोकन पाएँ)"
 }

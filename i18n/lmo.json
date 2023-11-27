@@ -35,7 +35,5 @@
 	"popups-refpreview-note": "Nota",
 	"popups-refpreview-web": "Riferiment a un sit de la red",
 	"popups-refpreview-collapsible-placeholder": "Quel riferment chì el gh'hà dent un'imagin che l'è minga adatta per la pagina de veduda antecipada",
-	"popups-refpreview-user-preference-label": "Ativa la veduda antecipada di riferiment (oten subit una veduda antecipada di riferiment intanta che te see 'dree a leger una pagina)",
-	"popups-refpreview-beta-feature-message": "Veduda antecipada di riferiment",
-	"popups-refpreview-beta-feature-description": "El mostra la veduda antecipada d'un riferiment quand che se passa con la maneta in sul so marcador. \n\nTen in cunt: Se te see 'dree a drovà i acessori [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] o i acessori [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] te vedaret minga i vedude antecipade di riferiment."
+	"popups-refpreview-user-preference-label": "Ativa la veduda antecipada di riferiment (oten subit una veduda antecipada di riferiment intanta che te see 'dree a leger una pagina)"
 }

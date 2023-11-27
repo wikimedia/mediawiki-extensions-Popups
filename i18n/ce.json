@@ -24,7 +24,5 @@
 	"popups-refpreview-journal": "Йаззаман тӀе хьажорг",
 	"popups-refpreview-news": "Керлачу хааман тӀе хьажорг",
 	"popups-refpreview-note": "Билгалдаккхар",
-	"popups-refpreview-web": "Веб-хьажорг",
-	"popups-refpreview-beta-feature-message": "ТӀетовжамашка хьалххе хьажар",
-	"popups-refpreview-beta-feature-description": "''' ХӀокху функцега болхбайта дӀайайъа гаджет «{{int:gadget-referenceTooltips}}» [[Белхан:Нисдаран гӀирс#mw-prefsection-gadgets|гаджетийн агӀонгахь]].'''\n\nТӀетовжаман лоьмар тӀе цамза хьажича билгаодахаршца хаам гучубоккху. Хьан [[Wikipedia:Tools/Navigation popups|навигацин корийн гаджет]] латина йелахь, хӀокху функцено болхбира бац"
+	"popups-refpreview-web": "Веб-хьажорг"
 }

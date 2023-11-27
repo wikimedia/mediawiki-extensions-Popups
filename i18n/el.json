@@ -46,7 +46,5 @@
 	"popups-refpreview-note": "Σημείωση",
 	"popups-refpreview-web": "Παραπομπή σε ιστοσελίδα",
 	"popups-refpreview-collapsible-placeholder": "Αυτή η παραπομπή περιλαμβάνει ένα σχήμα που δεν χωράει στην προεπισκόπηση.",
-	"popups-refpreview-user-preference-label": "Ενεργοποίηση προεπισκοπήσεων παραπομπών (λάβετε γρήγορες προεπισκοπήσεις παραπομπών κατά την ανάγνωση μιας σελίδας)",
-	"popups-refpreview-beta-feature-message": "Προεπισκόπηση Παραπομπών",
-	"popups-refpreview-beta-feature-description": "Εμφανίστε προεπισκόπηση μιας παραπομπής τοποθετώντας το δείκτη πάνω στην υποσημείωση.\n\nΣημειώστε: Εάν χρησιμοποιείτε το εργαλείο [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] ή το [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], δεν θα βλέπετε προεπισκοπήσεις παραπομπών."
+	"popups-refpreview-user-preference-label": "Ενεργοποίηση προεπισκοπήσεων παραπομπών (λάβετε γρήγορες προεπισκοπήσεις παραπομπών κατά την ανάγνωση μιας σελίδας)"
 }

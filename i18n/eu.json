@@ -39,7 +39,5 @@
 	"popups-refpreview-note": "Oharra",
 	"popups-refpreview-web": "Internet erreferentzia",
 	"popups-refpreview-collapsible-placeholder": "Erreferentzia honek aurrebistan sartzen ez den grafiko bat du.",
-	"popups-refpreview-user-preference-label": "Gaitu erreferentzien aurrebistak (aurrebistak berehala ikusiko dituzu orri bat irakurtzean)",
-	"popups-refpreview-beta-feature-message": "Erreferentzien aurrebistak",
-	"popups-refpreview-beta-feature-description": "Erakutsi erreferentzia baten aurrebista oin-oharraren dei adierazlearen gainean jarriz."
+	"popups-refpreview-user-preference-label": "Gaitu erreferentzien aurrebistak (aurrebistak berehala ikusiko dituzu orri bat irakurtzean)"
 }

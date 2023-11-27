@@ -35,7 +35,5 @@
 	"popups-refpreview-note": "નોંધ",
 	"popups-refpreview-web": "વેબ સંદર્ભ",
 	"popups-refpreview-collapsible-placeholder": "આ સંદર્ભમાં આલેખન સમાવિષ્ટ છે જે પૂર્વાવલોકનમાં બંધબેસતું નથી.",
-	"popups-refpreview-user-preference-label": "સંદર્ભ પૂર્વાવલોકન સક્રિય કરો (પૃષ્ઠ વાંચતી વખતે સંદર્ભનું સંક્ષિપ્ત પૂર્વાવલોકન મેળવો)",
-	"popups-refpreview-beta-feature-message": "સંદર્ભ પૂર્વાવલોકનો",
-	"popups-refpreview-beta-feature-description": "સંદર્ભ ક્રમાંક પર માઉસ લઈ જતાં તેનું પૂર્વાવલોકન દર્શાવો.\n\nનોંધ: જો તમે [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups નેવિગેશન પોપ-અપ] સાધન કે પછી [[mw:Special:MyLanguage/Reference Tooltips|સંદર્ભ ટૂલટિપ]] સાધન વાપરતા હશો તો તમને સંદર્ભ પૂર્વાવલોકનો જોવા નહિ મળે."
+	"popups-refpreview-user-preference-label": "સંદર્ભ પૂર્વાવલોકન સક્રિય કરો (પૃષ્ઠ વાંચતી વખતે સંદર્ભનું સંક્ષિપ્ત પૂર્વાવલોકન મેળવો)"
 }

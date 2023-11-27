@@ -42,7 +42,5 @@
 	"popups-refpreview-note": "Catatan",
 	"popups-refpreview-web": "Referensi web",
 	"popups-refpreview-collapsible-placeholder": "Referensi ini menyertakan bagan yang tidak bisa dimasukkan ke dalam pratayang.",
-	"popups-refpreview-user-preference-label": "Aktifkan pratayang referensi (dapatkan pratayang referensi secara cepat ketika membaca halaman)",
-	"popups-refpreview-beta-feature-message": "Pratayang Referensi",
-	"popups-refpreview-beta-feature-description": "Menampilkan pratayang suatu referensi dengan mengatahkan kursor ke penanda catat kakinya.\n\nTolong perhatikan: Jika Anda menggunakan perkakas [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Popup navigasi] atau [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], Anda tidak akan melihat pratayang referensi."
+	"popups-refpreview-user-preference-label": "Aktifkan pratayang referensi (dapatkan pratayang referensi secara cepat ketika membaca halaman)"
 }

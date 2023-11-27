@@ -42,7 +42,5 @@
 	"popups-refpreview-note": "ملاحظة",
 	"popups-refpreview-web": "مرجع على الويب",
 	"popups-refpreview-collapsible-placeholder": "يتضمن هذا المرجع رسماً لا يتناسب مع المعاينة.",
-	"popups-refpreview-user-preference-label": "تشغيل معاينة المراجع (معاينة سريعة للمرجع أثناء قراءة الصفحة)",
-	"popups-refpreview-beta-feature-message": "بيان المراجع",
-	"popups-refpreview-beta-feature-description": "إظهار معاينة لمرجع بوضع المؤشر فوق علامة حاشيته السفلية.\n\nإذا كنت تستخدم أداة [https://ar.wikipedia.org/wiki/%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D8%A7%D9%84%D9%85%D9%86%D8%A8%D8%AB%D9%82%D8%A7%D8%AA المنبثقات] أو [[mw:Special:MyLanguage/Reference Tooltips|بيان المراجع]]، لا تظهر لك معاينات المراجع."
+	"popups-refpreview-user-preference-label": "تشغيل معاينة المراجع (معاينة سريعة للمرجع أثناء قراءة الصفحة)"
 }

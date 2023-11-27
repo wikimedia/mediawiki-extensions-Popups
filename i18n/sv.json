@@ -41,7 +41,5 @@
 	"popups-refpreview-note": "Fotnot",
 	"popups-refpreview-web": "Webbreferens",
 	"popups-refpreview-collapsible-placeholder": "Denna referens inkluderar en figur som inte får plats i förhandsvisningen.",
-	"popups-refpreview-user-preference-label": "Aktivera förhandsvisningar av referenser (få kortfattade förhandsvisningar av en referens medan du läser en sida)",
-	"popups-refpreview-beta-feature-message": "Förhandsvisning av referenser",
-	"popups-refpreview-beta-feature-description": "Visa en förhandsvisningar av en referens genom att lägga muspekaren över fotnotsmarkören.\n\nOBS: Om du använder finessen [https://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] eller [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] kommer du inte se förhandsgranskningar av referenser."
+	"popups-refpreview-user-preference-label": "Aktivera förhandsvisningar av referenser (få kortfattade förhandsvisningar av en referens medan du läser en sida)"
 }

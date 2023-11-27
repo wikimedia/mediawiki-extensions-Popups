@@ -40,7 +40,5 @@
 	"popups-refpreview-note": "Pastaba",
 	"popups-refpreview-web": "Internetinė išnaša",
 	"popups-refpreview-collapsible-placeholder": "Šioje nuorodoje yra elementas, kuris netelpa į peržiūrą.",
-	"popups-refpreview-user-preference-label": "Įjungti nuorodų peržiūrą (gauti trumpas nuorodų peržiūras skaitant puslapį)",
-	"popups-refpreview-beta-feature-message": "Išnašų peržiūra",
-	"popups-refpreview-beta-feature-description": "Rodyti nuorodas peržiūra užėjus su pelyte ant nuorodos žymeklio.\n\nPastaba: Jei naudojate [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigacijos iššokančių langų] priemonę arba [[mw:Special:MyLanguage/Reference Tooltips|Nuorodų pastabų]] priemonę, peržiūros nematysite."
+	"popups-refpreview-user-preference-label": "Įjungti nuorodų peržiūrą (gauti trumpas nuorodų peržiūras skaitant puslapį)"
 }

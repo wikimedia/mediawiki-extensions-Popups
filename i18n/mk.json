@@ -36,7 +36,5 @@
 	"popups-refpreview-note": "Белешка",
 	"popups-refpreview-web": "Наведено мрежно место",
 	"popups-refpreview-collapsible-placeholder": "Овој навод содржи приказ за кој нема место во прегледот.",
-	"popups-refpreview-user-preference-label": "Овозможи преглед на наводи (дај брз преглед на навод при додека ја читам страницата)",
-	"popups-refpreview-beta-feature-message": "Брз преглед на подножни наводи",
-	"popups-refpreview-beta-feature-description": "Го прикажува наводот кога кога стрелката е над неговото бројче.\n\nНапомена: Оваа можност не работи ако истовремено ја користите алатката [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Прегледнички прозорчиња] или [[mw:Special:MyLanguage/Reference Tooltips|Прозорчиња за наводи]]."
+	"popups-refpreview-user-preference-label": "Овозможи преглед на наводи (дај брз преглед на навод при додека ја читам страницата)"
 }

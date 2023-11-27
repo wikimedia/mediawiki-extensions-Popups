@@ -39,7 +39,5 @@
 	"popups-refpreview-note": "Notenn",
 	"popups-refpreview-web": "Dave gwiad",
 	"popups-refpreview-collapsible-placeholder": "En dave-mañ ez eus un tres ha n’ez a ket ur rakwel.",
-	"popups-refpreview-user-preference-label": "Gweredekaat rakwel daveoù (kaout rakweloù prim eus un dave en ul lenn ur bajenn)",
-	"popups-refpreview-beta-feature-message": "Rakwel daveoù",
-	"popups-refpreview-beta-feature-description": "Diskouez ur rakwel eus un dave en un dremen bir al logodenn war ar merk en traoñ ar bajenn.\n\nNotit mar plijː ma grit gant an bitrak [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups] pe an bitrak [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], ne weloc’h ket rakweloù daveoù."
+	"popups-refpreview-user-preference-label": "Gweredekaat rakwel daveoù (kaout rakweloù prim eus un dave en ul lenn ur bajenn)"
 }

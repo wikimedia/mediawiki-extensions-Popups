@@ -49,7 +49,5 @@
 	"popups-refpreview-note": "Voetnoot",
 	"popups-refpreview-web": "Webreferentie",
 	"popups-refpreview-collapsible-placeholder": "Deze referentie bevat een figuur dat niet in de voorvertoning past.",
-	"popups-refpreview-user-preference-label": "Schakel referentievoorbeelden in (krijg snelle voorbeelden van een referentie tijdens het lezen van een pagina)",
-	"popups-refpreview-beta-feature-message": "Voorvertoningen van referenties",
-	"popups-refpreview-beta-feature-description": "Toon een voorbeeld van een referentie door de muisaanwijzer op de voetnootmarkering te plaatsen.\n\nLet op: als u het gadget [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigatie pop-ups] of het gadget [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] gebruikt, ziet u de referentievoorbeelden niet."
+	"popups-refpreview-user-preference-label": "Schakel referentievoorbeelden in (krijg snelle voorbeelden van een referentie tijdens het lezen van een pagina)"
 }

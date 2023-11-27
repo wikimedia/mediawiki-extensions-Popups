@@ -39,7 +39,5 @@
 	"popups-refpreview-note": "Opomba",
 	"popups-refpreview-web": "Spletni sklic",
 	"popups-refpreview-collapsible-placeholder": "Ta sklic vključuje sliko, ki se ne prilega predogledu.",
-	"popups-refpreview-user-preference-label": "Omogoči predoglede sklicev (prikaže hitre predoglede sklicev med branjem strani)",
-	"popups-refpreview-beta-feature-message": "Predogledi sklicev",
-	"popups-refpreview-beta-feature-description": "Ob postavitvi kazalca nad označevalnik sprotne opombe prikaže predogled sklica.\n\nOpomba: Če uporabljate pripomoček [//en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups Navigation popups]  (navigacijski izskokci) ali pripomoček [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]] (opisi orodij za sklice), ne boste videli predogledov sklicev."
+	"popups-refpreview-user-preference-label": "Omogoči predoglede sklicev (prikaže hitre predoglede sklicev med branjem strani)"
 }

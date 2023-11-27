@@ -8,7 +8,5 @@
 	"popups-preview-no-preview": "A ghe xé sta on eror in tel cargamento de sta anteprima.",
 	"popups-preview-footer-read": "Nar in sta pàjina",
 	"popups-preview-disambiguation": "Sto titoło el se rifarise a pì de na pàjina. Ła xe na dexanbìgua",
-	"popups-preview-disambiguation-link": "Varda pàjine che ghe someja",
-	"popups-refpreview-beta-feature-message": "Vista prèvia de łe notasion",
-	"popups-refpreview-beta-feature-description": "Mostra na anteprima de na refarensa co ghe se mete el cursor sora de na nota.\nTiente in ła mente: Se te si drio doparar el açesorio de Popup de navegasion, no te vedarè ła previxuałixasion de łe refarense. Se te si drio doparar el açesorio [[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]], vegnarà fora i mesaji emerxenti de sto açesorio cofà chełi de previxuałixasion de łe refarense."
+	"popups-preview-disambiguation-link": "Varda pàjine che ghe someja"
 }
