@@ -28,8 +28,6 @@ use MediaWiki\Hook\MakeGlobalVariablesScriptHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
-use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
-use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsManager;
 use OutputPage;
@@ -45,7 +43,6 @@ class PopupsHooks implements
 	GetPreferencesHook,
 	BeforePageDisplayHook,
 	ResourceLoaderGetConfigVarsHook,
-	ResourceLoaderRegisterModulesHook,
 	MakeGlobalVariablesScriptHook,
 	UserGetDefaultOptionsHook,
 	LocalUserCreatedHook
@@ -281,28 +278,6 @@ class PopupsHooks implements
 				PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME,
 				$default
 			);
-		}
-	}
-
-	/**
-	 * ResourceLoaderRegisterModules hook handler.
-	 *
-	 * Provides support for MLEB where needed.
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ResourceLoaderRegisterModules
-	 *
-	 * @param ResourceLoader $resourceLoader
-	 */
-	public function onResourceLoaderRegisterModules( ResourceLoader $resourceLoader ): void {
-		if ( !$resourceLoader->getModule( 'codex-search-styles' ) ) {
-			// We're running an older version of MediaWiki.
-			$resourceLoader->register( [
-				'codex-search-styles' => [
-					'localBasePath' => dirname( __DIR__ ),
-					'remoteExtPath' => 'UniversalLanguageSelector',
-					'styles' => 'resources/codex.mleb.css',
-				]
-			] );
 		}
 	}
 }

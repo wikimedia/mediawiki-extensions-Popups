@@ -24,8 +24,7 @@
 		"GetPreferences": "PopupsHooks",
 		"UserGetDefaultOptions": "PopupsHooks",
 		"MakeGlobalVariablesScript": "PopupsHooks",
-		"LocalUserCreated": "PopupsHooks",
-		"ResourceLoaderRegisterModules": "PopupsHooks"
+		"LocalUserCreated": "PopupsHooks"
 	},
 	"HookHandlers": {
 		"PopupsHooks": {
