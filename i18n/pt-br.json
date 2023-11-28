@@ -12,7 +12,8 @@
 			"Mariagarbin",
 			"Peter Fernando",
 			"Rodrigo codignoli",
-			"Tks4Fish"
+			"Tks4Fish",
+			"Marinaazev"
 		]
 	},
 	"popups-message": "Pré-visualizações",
@@ -36,6 +37,9 @@
 	"popups-prefs-optin": "Ativar a pré-visualizações de página (obtenha pré-visualizações rápidas de um tópico durante a leitura de uma página):",
 	"popups-prefs-disable-nav-gadgets-info": "Você precisa [[$1|desativar o gadget de popups de navegação]] na suas preferências de Gadgets para ativar a pré-visualização de páginas.",
 	"popups-prefs-conflicting-gadgets-info": "Certos ''gadgets'' e outras personalizações podem afetar negativamente o desempenho desta funcionalidade. Se tiver problemas, reveja os seus ''gadgets'' e arquivos de comandos (''scripts'') de usuário, incluindo os globais.",
+	"popups-prefs-navpopups-gadget-conflict-info": "Voe tem o ''gadget'' da [[$1|navegação flutuante]] (''navigation popups'') ativado, por isso não verá as pré-visualizações fornecidas por esta funcionalidade. Dependendo da sua wiki, este ''gadget'' pode ter um nome ligeiramente diferente. Se continuar a ter problemas, reveja os seus ''gadgets'' e os ''scripts'' do usuário, incluindo os globais.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Você tem o ''gadget'' das [[$1|dicas de referências]] (''reference tooltips'') ativado, por isso não verá as pré-visualizações de referências,  mas continuará a ver as pré-visualizações de páginas. Dependendo da sua wiki, este ''gadget'' pode ter um nome ligeiramente diferente. Se continuar a ter problemas, reveja os seus ''gadgets'' e os ''scripts'' do utilizador, incluindo os globais.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Você tem os ''gadgets'' da [[$1|navegação flutuante]] (''navigation popups'') e das [[$1|dicas de referências]] (''reference tooltips'') ativados, por isso não verá as pré-visualizações fornecidas por esta funcionalidade. Dependendo da sua wiki, estes ''gadgets'' pode ter nomes ligeiramente diferentes. Se continuar a ter problemas, reveja os seus ''gadgets'' e os ''scripts'' do usuário, incluindo os globais.",
 	"popups-refpreview-reference": "Referência",
 	"popups-refpreview-book": "Referência de livro",
 	"popups-refpreview-journal": "Referência de revista",
