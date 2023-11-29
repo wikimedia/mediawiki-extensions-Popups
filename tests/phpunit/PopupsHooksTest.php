@@ -19,7 +19,7 @@
  * @ingroup extensions
  */
 
-use MediaWiki\User\UserOptionsManager;
+use MediaWiki\User\Options\UserOptionsManager;
 use Popups\PopupsContext;
 use Popups\PopupsHooks;
 use Psr\Log\LoggerInterface;
