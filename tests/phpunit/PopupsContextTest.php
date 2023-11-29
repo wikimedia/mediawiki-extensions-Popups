@@ -20,7 +20,7 @@
  */
 
 use MediaWiki\Title\Title;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
