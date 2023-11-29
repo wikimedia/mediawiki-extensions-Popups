@@ -18,7 +18,6 @@
 		"no-jquery/no-when": "error",
 		"no-jquery/no-extend": "error",
 		"compat/compat": "off",
-		"no-use-before-define": "off",
 		"jsdoc/no-undefined-types": "off"
 	}
 }
