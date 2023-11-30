@@ -326,12 +326,18 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$userMock = $this->createMock( User::class );
 
 		$userOptionsManagerMock = $this->createMock( UserOptionsManager::class );
+		$expectedOptions = [
+			'popups' => $expectedState,
+			'popups-reference-previews' => $expectedState
+		];
 		$userOptionsManagerMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
 			->method( 'setOption' )
-			->withConsecutive(
-				[ $userMock, 'popups', $expectedState ],
-				[ $userMock, 'popups-reference-previews', $expectedState ]
-			);
+			->willReturnCallback( function ( $user, $option, $val ) use ( &$expectedOptions, $userMock ) {
+				$this->assertSame( $userMock, $user );
+				$this->assertArrayHasKey( $option, $expectedOptions );
+				$this->assertSame( $expectedOptions[$option], $val );
+				unset( $expectedOptions[$option] );
+			} );
 
 		$this->setMwGlobals( [
 			'wgPopupsOptInStateForNewAccounts' => $expectedState,
