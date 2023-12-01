@@ -118,7 +118,7 @@
 	},
 	"ResourceModules": {
 		"ext.popups.icons": {
-			"class": "ResourceLoaderOOUIIconPackModule",
+			"class": "MediaWiki\\ResourceLoader\\OOUIIconPackModule",
 			"selectorWithoutVariant": ".popups-icon--{name}",
 			"icons": [
 				"infoFilled",
@@ -127,7 +127,7 @@
 		},
 		"ext.popups.images": {
 			"selector": ".popups-icon--{name}",
-			"class": "ResourceLoaderImageModule",
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
 			"images": {
 				"preview-generic": {
 					"file": {
