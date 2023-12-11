@@ -40,7 +40,7 @@
 	"popups-prefs-optin-enabled-label": "Inschakelen",
 	"popups-prefs-optin-disabled-label": "Uitschakelen",
 	"popups-prefs-disable-nav-gadgets-info": "Om paginavoorvertoningen te kunnen inschakelen, moet u eerst Navigatiepop-ups uitschakelen [[$1 | op het Uitbreidingen-tabblad]]",
-	"popups-prefs-conflicting-gadgets-info": "Bepaalde uitbreidingen en andere aanpassingen kunnen de prestaties van deze functie beïnvloeden. Als u problemen ondervindt, controleer dan uw gadgets en gebruikersscripts, inclusief de projectoverstijgende.",
+	"popups-prefs-conflicting-gadgets-info": "Bepaalde gadgets en andere aanpassingen kunnen de prestaties van deze functie beïnvloeden. Als u problemen ondervindt, controleer dan uw gadgets en gebruikersscripts, ook de globale.",
 	"popups-refpreview-reference": "Verwijzing",
 	"popups-refpreview-book": "Boekreferentie",
 	"popups-refpreview-journal": "Tijdschriftreferentie",
