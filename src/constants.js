@@ -20,11 +20,6 @@ export const FETCH_COMPLETE_TARGET_DELAY = 350 + FETCH_START_DELAY; // ms.
 export const PREVIEW_SEEN_DURATION = 1000; // ms
 export const ABANDON_END_DELAY = 300;
 
-//
-// Reference previews specific config
-//
-export const FETCH_DELAY_REFERENCE_TYPE = 150; // ms.
-
 export default {
 	BRACKETED_DEVICE_PIXEL_RATIO: bpr,
 	// See https://phabricator.wikimedia.org/T272169: requesting a larger thumbnail to avoid bluriness

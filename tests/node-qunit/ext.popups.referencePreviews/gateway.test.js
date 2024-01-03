@@ -1,7 +1,7 @@
 import { createStubTitle } from '../stubs';
-import createReferenceGateway from '../../../src/gateway/reference';
+import createReferenceGateway from '../../../src/ext.popups.referencePreviews/createReferenceGateway';
 
-QUnit.module( 'ext.popups/gateway/reference', {
+QUnit.module( 'ext.popups.referencePreviews/createReferenceGateway', {
 	beforeEach() {
 		global.CSS = {
 			escape: ( str ) => $.escapeSelector( str )

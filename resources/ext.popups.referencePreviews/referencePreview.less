@@ -1,11 +1,36 @@
 @import 'mediawiki.skin.variables.less';
+@import '../../src/ui/variables.less';
 
-// Don't do any event bubbling on childs like <a><span>[</span>2]</a>, see T214693
+.popups-icon--reference-generic {
+	.cdx-mixin-css-icon( @cdx-icon-reference );
+}
+
+.popups-icon--reference-book {
+	.cdx-mixin-css-icon( @cdx-icon-book );
+}
+
+.popups-icon--reference-journal {
+	.cdx-mixin-css-icon( @cdx-icon-journal );
+}
+
+.popups-icon--reference-news {
+	.cdx-mixin-css-icon( @cdx-icon-newspaper );
+}
+
+.popups-icon--reference-web {
+	.cdx-mixin-css-icon( @cdx-icon-browser );
+}
+
+.popups-icon--preview-disambiguation {
+	.cdx-mixin-css-icon( @cdx-icon-articles );
+}
+
+// Don't do any event bubbling on childs like <a><span>[</span>2]</a>
+// see https://phabricator.wikimedia.org/T214693
 #mw-content-text .reference a[ href*='#' ] * {
 	pointer-events: none;
 }
-
-.mwe-popups.mwe-popups-type-reference {
+.mwe-popups.mwe-popups-type-reference .mwe-popups-container {
 	.mwe-popups-title .popups-icon--reference-note {
 		// There is currently no "reference-note" icon specified in extension.json
 		display: none;
@@ -14,13 +39,12 @@
 	.mwe-popups-extract {
 		margin-right: 0;
 		max-height: inherit;
-
 		.mwe-popups-scroll {
-			// This is how the `margin-bottom: 47px` in popup.less is calculated
-			@marginBottom: 2 * @lineHeight + 7px;
-			// Same as the --pointer-height in popup.less
+			// This is how the @previewFooterHeight in popup.less is calculated
+			@marginBottom: @popupPadding + 34px;
+			// Same as @previewPointerHeight in popup.less
 			@pointerHeight: 8px;
-			max-height: 403px - @popupPadding - @marginBottom + @pointerHeight;
+			max-height: 401px - @popupPadding - @marginBottom + @pointerHeight;
 			overflow: auto;
 			padding-right: @popupPadding;
 		}
@@ -49,7 +73,6 @@
 			opacity: 1;
 		}
 	}
-
 	.mwe-collapsible-placeholder {
 		font-weight: bold;
 		margin: 1em 0;

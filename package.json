@@ -71,7 +71,11 @@
 	"bundlesize": [
 		{
 			"path": "resources/dist/index.js",
-			"maxSize": "15.1kB"
+			"maxSize": "13.5kB"
+		},
+		{
+			"path": "resources/dist/referencePreviews.js",
+			"maxSize": "2.7kB"
 		}
 	]
 }

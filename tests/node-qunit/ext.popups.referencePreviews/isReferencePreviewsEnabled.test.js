@@ -1,5 +1,5 @@
-import * as stubs from './stubs';
-import isReferencePreviewsEnabled from '../../src/isReferencePreviewsEnabled';
+import * as stubs from '../stubs';
+import isReferencePreviewsEnabled from '../../../src/ext.popups.referencePreviews/isReferencePreviewsEnabled';
 
 function createStubUserSettings( expectEnabled ) {
 	return {
@@ -9,14 +9,9 @@ function createStubUserSettings( expectEnabled ) {
 	};
 }
 
-QUnit.module( 'ext.popups#isReferencePreviewsEnabled', {
-	beforeEach() {
-		mw.user = { options: { get: () => '1' } };
-	},
-	afterEach() {
-		mw.user = null;
-	}
-} );
+const options = { get: () => '1' };
+
+QUnit.module( 'ext.popups.referencePreviews#isReferencePreviewsEnabled' );
 
 QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 	[
@@ -125,7 +120,10 @@ QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 	].forEach( ( data ) => {
 		const user = {
 				isNamed: () => !data.isAnon && !data.isIPMasked,
-				isAnon: () => data.isAnon
+				isAnon: () => data.isAnon,
+				options: {
+					get: () => {}
+				}
 			},
 			userSettings = {
 				isPreviewTypeEnabled: () => data.isAnon ?
@@ -137,9 +135,9 @@ QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 			};
 
 		if ( data.isAnon ) {
-			mw.user.options.get = () => assert.true( false, 'not expected to be called' );
+			user.options.get = () => assert.true( false, 'not expected to be called' );
 		} else {
-			mw.user.options.get = () => data.enabledByRegistered ? '1' : '0';
+			user.options.get = () => data.enabledByRegistered ? '1' : '0';
 		}
 
 		assert.strictEqual(
@@ -151,7 +149,7 @@ QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 } );
 
 QUnit.test( 'it should display reference previews when conditions are fulfilled', ( assert ) => {
-	const user = stubs.createStubUser( false ),
+	const user = stubs.createStubUser( false, options ),
 		userSettings = createStubUserSettings( false ),
 		config = new Map();
 

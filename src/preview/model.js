@@ -18,9 +18,7 @@ const previewTypes = {
 	/** Standard page preview with or without thumbnail */
 	TYPE_PAGE: 'page',
 	/** Disambiguation page preview */
-	TYPE_DISAMBIGUATION: 'disambiguation',
-	/** Reference preview */
-	TYPE_REFERENCE: 'reference'
+	TYPE_DISAMBIGUATION: 'disambiguation'
 };
 
 export { previewTypes };

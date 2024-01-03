@@ -5,7 +5,8 @@
 /**
  * Same as in includes/PopupsContext.php
  */
-const NAV_POPUPS_ENABLED = 1;
+const REF_TOOLTIPS_ENABLED = 2,
+	REFERENCE_PREVIEWS_ENABLED = 4;
 
 /**
  * Decodes the bitmask that represents preferences to the related config options.
@@ -17,8 +18,12 @@ export default function setUserConfigFlags( config ) {
 
 	/* eslint-disable no-bitwise */
 	config.set(
-		'wgPopupsConflictsWithNavPopupGadget',
-		!!( popupsFlags & NAV_POPUPS_ENABLED )
+		'wgPopupsConflictsWithRefTooltipsGadget',
+		!!( popupsFlags & REF_TOOLTIPS_ENABLED )
+	);
+	config.set(
+		'wgPopupsReferencePreviews',
+		!!( popupsFlags & REFERENCE_PREVIEWS_ENABLED )
 	);
 	/* eslint-enable no-bitwise */
 }

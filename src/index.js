@@ -6,7 +6,6 @@ import * as Redux from 'redux';
 import * as ReduxThunk from 'redux-thunk';
 
 import createPagePreviewGateway from './gateway/page';
-import createReferenceGateway from './gateway/reference';
 import createUserSettings from './userSettings';
 import createPreviewBehavior from './previewBehavior';
 import createSettingsDialogRenderer from './ui/settingsDialogRenderer';
@@ -14,8 +13,7 @@ import registerChangeListener from './changeListener';
 import createIsPagePreviewsEnabled from './isPagePreviewsEnabled';
 import { fromElement as titleFromElement } from './title';
 import { init as rendererInit, registerPreviewUI, createPagePreview,
-	createDisambiguationPreview,
-	createReferencePreview
+	createDisambiguationPreview
 } from './ui/renderer';
 import createExperiments from './experiments';
 import { isEnabled as isStatsvEnabled } from './instrumentation/statsv';
@@ -26,11 +24,9 @@ import createMediaWikiPopupsObject from './integrations/mwpopups';
 import { previewTypes, getPreviewType,
 	registerModel,
 	isAnythingEligible, findNearestEligibleTarget } from './preview/model';
-import isReferencePreviewsEnabled from './isReferencePreviewsEnabled';
 import setUserConfigFlags from './setUserConfigFlags';
 import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
-import { initReferencePreviewsInstrumentation } from './instrumentation/referencePreviews';
-import { FETCH_START_DELAY, FETCH_COMPLETE_TARGET_DELAY, FETCH_DELAY_REFERENCE_TYPE } from './constants';
+import { FETCH_START_DELAY, FETCH_COMPLETE_TARGET_DELAY } from './constants';
 
 const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
@@ -188,9 +184,7 @@ function handleDOMEventIfEligible( handler ) {
 		// So-called "services".
 		generateToken = mw.user.generateRandomSessionId,
 		pagePreviewGateway = createPagePreviewGateway( mw.config ),
-		referenceGateway = createReferenceGateway(),
 		userSettings = createUserSettings( mw.storage ),
-		referencePreviewsState = isReferencePreviewsEnabled( mw.user, userSettings, mw.config ),
 		settingsDialog = createSettingsDialogRenderer(),
 		experiments = createExperiments( mw.experiments ),
 		statsvTracker = getStatsvTracker( mw.user, mw.config, experiments ),
@@ -258,19 +252,7 @@ function handleDOMEventIfEligible( handler ) {
 			]
 		} );
 	}
-	if ( referencePreviewsState !== null ) {
-		// Register the reference preview type
-		mw.popups.register( {
-			type: previewTypes.TYPE_REFERENCE,
-			selector: '#mw-content-text .reference a[ href*="#" ]',
-			delay: FETCH_DELAY_REFERENCE_TYPE,
-			gateway: referenceGateway,
-			renderFn: createReferencePreview,
-			init: () => {
-				initReferencePreviewsInstrumentation();
-			}
-		} );
-	}
+
 	if ( !isAnythingEligible() ) {
 		mw.log.warn( 'ext.popups was loaded but everything is disabled' );
 		return;

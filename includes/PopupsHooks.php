@@ -67,9 +67,11 @@ class PopupsHooks implements
 	 * @return array
 	 */
 	public static function getCustomPopupTypes(): array {
-		return ExtensionRegistry::getInstance()->getAttribute(
+		return array_merge( ExtensionRegistry::getInstance()->getAttribute(
 			'PopupsPluginModules'
-		);
+		), [
+			'ext.popups.referencePreviews'
+		] );
 	}
 
 	/**

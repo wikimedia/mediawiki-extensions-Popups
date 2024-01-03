@@ -152,6 +152,15 @@
 				"resources/ext.popups/index.js"
 			]
 		},
+		"ext.popups.referencePreviews": {
+			"styles": [
+				"resources/ext.popups.referencePreviews/referencePreview.less"
+			],
+			"scripts": [
+				"resources/dist/referencePreviews.js",
+				"resources/ext.popups.referencePreviews/index.js"
+			]
+		},
 		"ext.popups.main": {
 			"scripts": [
 				"resources/dist/index.js"

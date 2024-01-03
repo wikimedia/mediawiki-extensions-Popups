@@ -1,9 +1,9 @@
 /**
  * @module referencePreview
  */
-import { isTrackingEnabled, LOGGING_SCHEMA } from '../../../instrumentation/referencePreviews';
-import { renderPopup } from '../popup/popup';
-import { createNodeFromTemplate, escapeHTML } from '../templateUtil';
+import { isTrackingEnabled, LOGGING_SCHEMA } from './referencePreviews';
+import { renderPopup } from '../ui/templates/popup/popup';
+import { createNodeFromTemplate, escapeHTML } from '../ui/templates/templateUtil';
 
 const templateHTML = `
 <div class="mwe-popups-container">
@@ -39,7 +39,7 @@ const replaceWith = ( node, htmlOrOtherNode ) => {
  * @param {ext.popups.ReferencePreviewModel} model
  * @return {jQuery}
  */
-export function renderReferencePreview(
+function renderReferencePreview(
 	model
 ) {
 	const type = model.referenceType || 'generic';
@@ -169,4 +169,16 @@ export function renderReferencePreview(
 	} );
 
 	return el;
+}
+
+/**
+ * @param {ext.popups.ReferencePreviewModel} model
+ * @return {ext.popups.Preview}
+ */
+export default function createReferencePreview( model ) {
+	return {
+		el: renderReferencePreview( model ),
+		hasThumbnail: false,
+		isTall: false
+	};
 }

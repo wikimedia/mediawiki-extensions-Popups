@@ -1,9 +1,9 @@
-import { previewTypes } from './preview/model';
+import { TYPE_REFERENCE } from './constants.js';
 
 /**
  * @module isReferencePreviewsEnabled
  */
-const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
+const canSaveToUserPreferences = require( '../canSaveToUserPreferences.js' );
 
 /**
  * Given the global state of the application, creates a function that gets
@@ -34,9 +34,9 @@ export default function isReferencePreviewsEnabled( user, userSettings, config )
 	// For anonymous users, the code loads always, but the feature can be toggled at run-time via
 	// local storage.
 	if ( !canSaveToUserPreferences( user ) ) {
-		return userSettings.isPreviewTypeEnabled( previewTypes.TYPE_REFERENCE );
+		return userSettings.isPreviewTypeEnabled( TYPE_REFERENCE );
 	}
 
 	// Registered users never can enable popup types at run-time.
-	return mw.user.options.get( 'popups-reference-previews' ) === '1' ? true : null;
+	return user.options.get( 'popups-reference-previews' ) === '1' ? true : null;
 }

@@ -2,8 +2,8 @@
  * @module gateway/reference
  */
 
-import { previewTypes } from '../preview/model';
-import { abortablePromise } from './index.js';
+import { TYPE_REFERENCE } from './constants.js';
+import { abortablePromise } from '../gateway/index.js';
 
 /**
  * @return {Gateway}
@@ -77,7 +77,7 @@ export default function createReferenceGateway() {
 		const model = {
 			url: `#${ id }`,
 			extract: referenceNode.innerHTML,
-			type: previewTypes.TYPE_REFERENCE,
+			type: TYPE_REFERENCE,
 			referenceType: scrapeReferenceType( referenceNode ),
 			// Note: Even the top-most HTMLHtmlElement is guaranteed to have a parent.
 			sourceElementId: el.parentNode.id

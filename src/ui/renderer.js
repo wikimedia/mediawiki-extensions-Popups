@@ -6,7 +6,6 @@ import wait from '../wait';
 import pointerMaskSVG from './pointer-mask.svg';
 import { SIZES, createThumbnail } from './thumbnail';
 import { renderPreview } from './templates/preview/preview';
-import { renderReferencePreview } from './templates/referencePreview/referencePreview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';
 
 const landscapePopupWidth = 450,
@@ -239,18 +238,6 @@ export function createDisambiguationPreview( model ) {
 
 	return {
 		el: renderPreview( model, extractMsg, linkMsg ),
-		hasThumbnail: false,
-		isTall: false
-	};
-}
-
-/**
- * @param {ext.popups.ReferencePreviewModel} model
- * @return {ext.popups.Preview}
- */
-export function createReferencePreview( model ) {
-	return {
-		el: renderReferencePreview( model ),
 		hasThumbnail: false,
 		isTall: false
 	};

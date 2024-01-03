@@ -10,11 +10,9 @@ QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 
 	assert.deepEqual(
 		[
-			config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
-			config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ),
-			config.get( 'wgPopupsReferencePreviews' )
+			config.get( 'wgPopupsConflictsWithNavPopupGadget' )
 		],
-		[ true, true, true ]
+		[ true ]
 	);
 
 	config.set( 'wgPopupsFlags', '2' );
@@ -22,11 +20,9 @@ QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 
 	assert.deepEqual(
 		[
-			config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
-			config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ),
-			config.get( 'wgPopupsReferencePreviews' )
+			config.get( 'wgPopupsConflictsWithNavPopupGadget' )
 		],
-		[ false, true, false ]
+		[ false ]
 	);
 
 	config.set( 'wgPopupsFlags', '5' );
@@ -34,11 +30,9 @@ QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 
 	assert.deepEqual(
 		[
-			config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
-			config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ),
-			config.get( 'wgPopupsReferencePreviews' )
+			config.get( 'wgPopupsConflictsWithNavPopupGadget' )
 		],
-		[ true, false, true ]
+		[ true ]
 	);
 
 	config.set( 'wgPopupsFlags', '0' );
@@ -46,10 +40,8 @@ QUnit.test( 'config settings are successfully set from bitmask', ( assert ) => {
 
 	assert.deepEqual(
 		[
-			config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
-			config.get( 'wgPopupsConflictsWithRefTooltipsGadget' ),
-			config.get( 'wgPopupsReferencePreviews' )
+			config.get( 'wgPopupsConflictsWithNavPopupGadget' )
 		],
-		[ false, false, false ]
+		[ false ]
 	);
 } );
