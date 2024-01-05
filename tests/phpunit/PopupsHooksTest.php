@@ -19,7 +19,10 @@
  * @ingroup extensions
  */
 
+use MediaWiki\Config\MultiConfig;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\User;
 use Popups\PopupsContext;
 use Popups\PopupsHooks;
 use Psr\Log\LoggerInterface;

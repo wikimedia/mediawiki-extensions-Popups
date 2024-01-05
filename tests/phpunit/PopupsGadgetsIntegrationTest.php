@@ -18,8 +18,10 @@
  * @ingroup extensions
  */
 
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\Gadgets\Gadget;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
+use MediaWiki\User\User;
 use PHPUnit\Framework\MockObject\MockObject;
 use Popups\PopupsGadgetsIntegration;
 

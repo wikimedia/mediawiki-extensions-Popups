@@ -20,12 +20,13 @@
  */
 namespace Popups;
 
-use Config;
 use ExtensionRegistry;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 
 /**
  * Popups Module
@@ -70,7 +71,7 @@ class PopupsContext {
 	private const REFERENCE_PREVIEWS_ENABLED = 4;
 
 	/**
-	 * @var \Config
+	 * @var Config
 	 */
 	private $config;
 
@@ -123,18 +124,18 @@ class PopupsContext {
 	}
 
 	/**
-	 * @param \User $user User whose gadgets settings are being checked
+	 * @param User $user User whose gadgets settings are being checked
 	 * @return bool
 	 */
-	public function conflictsWithNavPopupsGadget( \User $user ) {
+	public function conflictsWithNavPopupsGadget( User $user ) {
 		return $this->gadgetsIntegration->conflictsWithNavPopupsGadget( $user );
 	}
 
 	/**
-	 * @param \User $user User whose gadgets settings are being checked
+	 * @param User $user User whose gadgets settings are being checked
 	 * @return bool
 	 */
-	public function conflictsWithRefTooltipsGadget( \User $user ) {
+	public function conflictsWithRefTooltipsGadget( User $user ) {
 		return $this->gadgetsIntegration->conflictsWithRefTooltipsGadget( $user );
 	}
 
@@ -148,10 +149,10 @@ class PopupsContext {
 	}
 
 	/**
-	 * @param \User $user User whose preferences are checked
+	 * @param User $user User whose preferences are checked
 	 * @return bool whether or not to show reference previews
 	 */
-	public function isReferencePreviewsEnabled( \User $user ) {
+	public function isReferencePreviewsEnabled( User $user ) {
 		if ( !$this->config->get( 'PopupsReferencePreviews' ) ) {
 			return false;
 		}
@@ -162,20 +163,20 @@ class PopupsContext {
 	}
 
 	/**
-	 * @param \User $user User whose preferences are checked
+	 * @param User $user User whose preferences are checked
 	 * @return int
 	 */
-	public function getConfigBitmaskFromUser( \User $user ) {
+	public function getConfigBitmaskFromUser( User $user ) {
 		return ( $this->conflictsWithNavPopupsGadget( $user ) ? self::NAV_POPUPS_ENABLED : 0 ) |
 			( $this->conflictsWithRefTooltipsGadget( $user ) ? self::REF_TOOLTIPS_ENABLED : 0 ) |
 			( $this->isReferencePreviewsEnabled( $user ) ? self::REFERENCE_PREVIEWS_ENABLED : 0 );
 	}
 
 	/**
-	 * @param \User $user User whose preferences are checked
+	 * @param User $user User whose preferences are checked
 	 * @return bool
 	 */
-	public function shouldSendModuleToUser( \User $user ) {
+	public function shouldSendModuleToUser( User $user ) {
 		if ( !$user->isNamed() ) {
 			return true;
 		}

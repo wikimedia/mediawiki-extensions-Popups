@@ -19,9 +19,10 @@
  */
 namespace Popups;
 
-use Config;
 use ExtensionRegistry;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
+use MediaWiki\User\User;
 
 /**
  * Gadgets integration
@@ -80,10 +81,10 @@ class PopupsGadgetsIntegration {
 	 * Check if Popups conflicts with Nav Popups Gadget
 	 * If user enabled Nav Popups, Popups is unavailable
 	 *
-	 * @param \User $user User whose gadget settings are checked
+	 * @param User $user User whose gadget settings are checked
 	 * @return bool
 	 */
-	public function conflictsWithNavPopupsGadget( \User $user ) {
+	public function conflictsWithNavPopupsGadget( User $user ) {
 		if ( $this->isGadgetExtensionEnabled() ) {
 			$gadgetsRepo = GadgetRepo::singleton();
 			$match = array_search( $this->navPopupsGadgetName, $gadgetsRepo->getGadgetIds() );
@@ -103,10 +104,10 @@ class PopupsGadgetsIntegration {
 	 * Check if Popups conflicts with Ref Tooltips Gadget
 	 * If user enabled Ref Tooltip, Popups is unavailable
 	 *
-	 * @param \User $user User whose gadget settings are checked
+	 * @param User $user User whose gadget settings are checked
 	 * @return bool
 	 */
-	public function conflictsWithRefTooltipsGadget( \User $user ) {
+	public function conflictsWithRefTooltipsGadget( User $user ) {
 		if ( $this->isGadgetExtensionEnabled() ) {
 			$gadgetsRepo = GadgetRepo::singleton();
 			$match = array_search( $this->refTooltipsGadgetName, $gadgetsRepo->getGadgetIds() );
