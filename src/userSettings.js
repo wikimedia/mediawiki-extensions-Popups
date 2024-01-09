@@ -1,4 +1,5 @@
 import { previewTypes } from './preview/model';
+import { TYPE_REFERENCE } from './ext.popups.referencePreviews/constants.js';
 
 /**
  * @module userSettings
@@ -33,7 +34,7 @@ export default function createUserSettings( storage ) {
 			const isRefsDisabled = !!storage.get( REFERENCE_PREVIEWS_ENABLED_KEY );
 			if ( isRefsDisabled ) {
 				storage.remove( REFERENCE_PREVIEWS_ENABLED_KEY );
-				this.storePreviewTypeEnabled( previewTypes.TYPE_REFERENCE, false );
+				this.storePreviewTypeEnabled( TYPE_REFERENCE, false );
 			}
 		},
 		/**
@@ -60,7 +61,7 @@ export default function createUserSettings( storage ) {
 		 * @param {boolean} enabled
 		 */
 		storePreviewTypeEnabled( previewType, enabled ) {
-			if ( previewType === previewTypes.TYPE_REFERENCE ) {
+			if ( previewType === TYPE_REFERENCE ) {
 				mw.track( REFERENCE_PREVIEWS_LOGGING_SCHEMA, {
 					action: enabled ? 'anonymousEnabled' : 'anonymousDisabled'
 				} );

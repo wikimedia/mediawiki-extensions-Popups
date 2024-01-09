@@ -11,7 +11,6 @@ import { previewTypes } from '../../src/preview/model';
 import scaleDownThumbnail from './scaleDownThumbnail';
 
 registerPreviewUI( previewTypes.TYPE_PAGE, createPagePreview );
-registerPreviewUI( previewTypes.TYPE_REFERENCE, createReferencePreview );
 registerPreviewUI( previewTypes.TYPE_DISAMBIGUATION, createDisambiguationPreview );
 
 /**
@@ -95,8 +94,8 @@ function createPopup( model, layoutHint ) {
 	link.setAttribute( 'href', '#' );
 	link.setAttribute( 'class', 'popups-storybook-link' );
 	link.textContent = `Page preview ${layout.flippedX ? 'flipped-x' : ''}
-		${layout.flippedY ? 'flipped-y' : ''} 
-		${preview.isTall ? '(landscape)' : '(portrait)'} 
+		${layout.flippedY ? 'flipped-y' : ''}
+		${preview.isTall ? '(landscape)' : '(portrait)'}
 		${preview.hasThumbnail ? 'with thumbnail' : ''}`;
 
 	wrapper.appendChild( link );
