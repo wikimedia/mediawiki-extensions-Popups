@@ -2,8 +2,6 @@
  * @module changeListeners/syncUserSettings
  */
 
-import { previewTypes } from '../preview/model';
-
 /**
  * Creates an instance of the user settings sync change listener.
  *
@@ -22,14 +20,14 @@ import { previewTypes } from '../preview/model';
  */
 export default function syncUserSettings( userSettings ) {
 	return ( oldState, newState ) => {
-		syncIfChanged(
-			oldState, newState, 'preview.enabled.' + previewTypes.TYPE_PAGE,
-			userSettings.storePagePreviewsEnabled
-		);
-		syncIfChanged(
-			oldState, newState, 'preview.enabled.' + previewTypes.TYPE_REFERENCE,
-			userSettings.storeReferencePreviewsEnabled
-		);
+		Object.keys( newState.preview.enabled ).forEach( ( key ) => {
+			syncIfChanged(
+				oldState, newState, `preview.enabled.${key}`,
+				( value ) => {
+					userSettings.storePreviewTypeEnabled( key, value );
+				}
+			);
+		} );
 	};
 }
 

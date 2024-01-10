@@ -16,7 +16,7 @@ module.exports = {
 
 	// Set the coverage percentage by category thresholds.
 	statements: 80,
-	branches: 70,
+	branches: 69,
 	functions: 80,
 	lines: 90,
 

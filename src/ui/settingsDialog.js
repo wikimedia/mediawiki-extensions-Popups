@@ -3,33 +3,28 @@
  */
 
 import { renderSettingsDialog } from './templates/settingsDialog/settingsDialog';
-import { previewTypes } from '../preview/model';
 
 /**
  * Create the settings dialog shown to anonymous users.
  *
- * @param {boolean} referencePreviewsAvaliable
+ * @param {Object} previewTypesEnabled
  * @return {HTMLElement} settings dialog
  */
-export function createSettingsDialog( referencePreviewsAvaliable ) {
-	const choices = [
+export function createSettingsDialog( previewTypesEnabled ) {
+	const choices = Object.keys( previewTypesEnabled ).map( ( id ) => (
 		{
-			id: previewTypes.TYPE_PAGE,
-			name: mw.msg( 'popups-settings-option-page' ),
-			description: mw.msg( 'popups-settings-option-page-description' )
-		},
-		{
-			id: previewTypes.TYPE_REFERENCE,
-			name: mw.msg( 'popups-settings-option-reference' ),
-			description: mw.msg( 'popups-settings-option-reference-description' )
+			id,
+			// This can produce:
+			// * popups-settings-option-preview
+			// * popups-settings-option-reference
+			name: mw.msg( `popups-settings-option-${id}` ),
+			// This can produce:
+			// * popups-settings-option-preview-description
+			// * popups-settings-option-reference-description
+			description: mw.msg( `popups-settings-option-${id}-description` ),
+			isChecked: previewTypesEnabled[ id ]
 		}
-	];
-
-	if ( !referencePreviewsAvaliable ) {
-		// Anonymous users can't access reference previews when they're disabled
-		// TODO: Remove when the wgPopupsReferencePreviews feature flag is not needed any more
-		choices.splice( 1, 1 );
-	}
+	) );
 
 	return renderSettingsDialog( {
 		heading: mw.msg( 'popups-settings-title' ),

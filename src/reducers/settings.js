@@ -12,6 +12,7 @@ export default function settings( state, action ) {
 	if ( state === undefined ) {
 		state = {
 			shouldShow: false,
+			previewTypesEnabled: {},
 			showHelp: false,
 			shouldShowFooterLink: false
 		};
@@ -57,12 +58,23 @@ export default function settings( state, action ) {
 				shouldShowFooterLink: anyDisabled
 			} );
 		}
+		case actionTypes.REGISTER_SETTING: {
+			const previewTypesEnabled = Object.assign( {}, state.previewTypesEnabled, {
+				[ action.name ]: action.enabled
+			} );
+			return nextState( state, {
+				previewTypesEnabled,
+				shouldShowFooterLink: state.shouldShowFooterLink || !action.enabled
+			} );
+		}
 		case actionTypes.BOOT: {
 			// Warning, when the state is null the user can't re-enable this popup type!
 			const anyDisabled = Object.keys( action.initiallyEnabled )
 				.some( ( type ) => action.initiallyEnabled[ type ] === false );
+			const previewTypesEnabled = Object.assign( {}, action.initiallyEnabled );
 
 			return nextState( state, {
+				previewTypesEnabled,
 				shouldShowFooterLink: action.user.isAnon && anyDisabled
 			} );
 		}

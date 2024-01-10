@@ -5,6 +5,14 @@
 import { previewTypes } from '../preview/model';
 
 /**
+ * @param {string} type
+ * @return {boolean} whether the preview type supports being disabled/enabled.
+ */
+function canShowSettingForPreviewType( type ) {
+	return mw.message( `popups-settings-option-${type}` ).exists();
+}
+
+/**
  * This function provides a mw.popups object which can be used by 3rd party
  * to interact with Popups.
  *
@@ -12,9 +20,13 @@ import { previewTypes } from '../preview/model';
  * @param {Function} registerModel allows extensions to register custom preview handlers.
  * @param {Function} registerPreviewUI allows extensions to register custom preview renderers.
  * @param {Function} registerGatewayForPreviewType allows extensions to register gateways for preview types.
+ * @param {Function} registerSetting
+ * @param {UserSettings} userSettings
  * @return {Object} external Popups interface
  */
-export default function createMwPopups( store, registerModel, registerPreviewUI, registerGatewayForPreviewType ) {
+export default function createMwPopups( store, registerModel, registerPreviewUI,
+	registerGatewayForPreviewType, registerSetting, userSettings
+) {
 	return {
 		/**
 		 * @return {boolean} If Page Previews are currently active
@@ -69,6 +81,15 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 			registerModel( type, selector, delay );
 			registerGatewayForPreviewType( type, gateway );
 			registerPreviewUI( type, renderFn, doNotRequireSummary );
+			// Only show if doesn't exist.
+			if ( canShowSettingForPreviewType( type ) ) {
+				registerSetting( type, userSettings.isPreviewTypeEnabled( type ) );
+			} else {
+				mw.log.warn(
+					`[Popups] No setting for ${type} registered.
+Please create message with key "popups-settings-option-${type}" if this is a mistake.`
+				);
+			}
 			if ( subTypes ) {
 				subTypes.forEach( function ( subTypePreview ) {
 					registerPreviewUI( subTypePreview.type, subTypePreview.renderFn, subTypePreview.doNotRequireSummary );
