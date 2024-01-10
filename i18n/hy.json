@@ -6,14 +6,15 @@
 		]
 	},
 	"popups-message": "Նախադիտում",
-	"popups-desc": "Երբ մասնակիցը կուրսորը պահում է հղման վրա, ցուցադրվում են նախադիտման քարտեր՝ հոդվածի համառոտ բովանդակությամբ:",
+	"popups-desc": "Ցուցադրում է նախադիտման թռուցիկները, երբ մասնակիցը սավառնում է հղման վրա",
 	"popups-settings-title": "Նախադիտում",
 	"popups-settings-option-page": "Էջի նախադիտում",
 	"popups-settings-save": "Հիշել",
 	"popups-settings-help-ok": "Արված է",
 	"popups-settings-cancel": "Չեղարկել",
-	"popups-settings-enable": "Միացնել նախադիտումը",
+	"popups-settings-enable": "Խմբագրել նախադիտման կարգավորումները",
 	"popups-preview-footer-read": "Անցնել այս էջ",
+	"popups-preview-disambiguation-link": "Դիտեք նմանատիպ էջերը",
 	"popups-refpreview-reference": "Ծանոթագրություն",
 	"popups-refpreview-note": "Նշում"
 }
