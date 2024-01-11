@@ -22,7 +22,7 @@ export default function syncUserSettings( userSettings ) {
 	return ( oldState, newState ) => {
 		Object.keys( newState.preview.enabled ).forEach( ( key ) => {
 			syncIfChanged(
-				oldState, newState, `preview.enabled.${key}`,
+				oldState, newState, `preview.enabled.${ key }`,
 				( value ) => {
 					userSettings.storePreviewTypeEnabled( key, value );
 				}

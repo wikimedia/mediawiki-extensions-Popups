@@ -26,7 +26,7 @@ QUnit.test( '#getEditCountBucket', ( assert ) => {
 		assert.strictEqual(
 			bucket,
 			cases[ i ][ 1 ],
-			`Edit count bucket is "${bucket}" when edit count is ${count}.`
+			`Edit count bucket is "${ bucket }" when edit count is ${ count }.`
 		);
 	}
 } );
@@ -57,7 +57,7 @@ QUnit.test( '#getPreviewCountBucket', ( assert ) => {
 		assert.strictEqual(
 			bucket,
 			cases[ i ][ 1 ],
-			`Preview count bucket is "${bucket}" when preview count is ${count}.`
+			`Preview count bucket is "${ bucket }" when preview count is ${ count }.`
 		);
 	}
 } );

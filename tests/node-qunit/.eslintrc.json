@@ -6,9 +6,6 @@
 	],
 	"rules": {
 		"no-jquery/no-class-state": "off",
-		"no-jquery/no-deferred": "warn",
-		"no-jquery/no-when": "warn",
-		"no-jquery/no-extend": "warn",
 		"es-x/no-hashbang": "warn"
 	}
 }

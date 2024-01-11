@@ -20,7 +20,7 @@ export function renderPopup( type, container ) {
 	// * mwe-popups-type-unknown
 	// * mwe-popups-type-generic
 	// * mwe-popups-type-disambiguation
-	element.className = `mwe-popups mwe-popups-type-${type}`;
+	element.className = `mwe-popups mwe-popups-type-${ type }`;
 	container.className = 'mwe-popups-container';
 	element.appendChild( container );
 	return element;

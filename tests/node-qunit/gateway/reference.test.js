@@ -6,9 +6,9 @@ QUnit.module( 'ext.popups/gateway/reference', {
 		global.CSS = {
 			escape: ( str ) => $.escapeSelector( str )
 		};
-		mw.msg = ( key ) => `<${key}>`;
+		mw.msg = ( key ) => `<${ key }>`;
 		mw.message = ( key ) => {
-			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${key}>` };
+			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${ key }>` };
 		};
 
 		this.$sourceElement = $( '<a>' ).appendTo(

@@ -17,6 +17,7 @@ const
 	POPUPS_MODULE_NAME = 'ext.popups.main';
 
 async function makePage( title, path ) {
+	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	const content = fs.readFileSync( path, 'utf-8' );
 	const bot = await Api.bot();
 	await bot.edit( title, content );
@@ -24,16 +25,16 @@ async function makePage( title, path ) {
 class PopupsPage extends Page {
 	async setupPagePreviews() {
 		return browser.call( async () => {
-			const path = `${__dirname}/../fixtures/`;
-			await makePage( `${TEST_PAGE_POPUPS_TITLE} 2`, `${path}test_page_2.wikitext` );
-			await makePage( TEST_PAGE_POPUPS_TITLE, `${path}test_page.wikitext` );
+			const path = `${ __dirname }/../fixtures/`;
+			await makePage( `${ TEST_PAGE_POPUPS_TITLE } 2`, `${ path }test_page_2.wikitext` );
+			await makePage( TEST_PAGE_POPUPS_TITLE, `${ path }test_page.wikitext` );
 		} );
 	}
 
 	async setupReferencePreviews() {
 		return browser.call( async () => {
-			const path = `${__dirname}/../fixtures/`;
-			await makePage( TEST_REFERENCE_POPUPS_TITLE, `${path}test_page.wikitext` );
+			const path = `${ __dirname }/../fixtures/`;
+			await makePage( TEST_REFERENCE_POPUPS_TITLE, `${ path }test_page.wikitext` );
 		} );
 	}
 
@@ -67,7 +68,7 @@ class PopupsPage extends Page {
 	}
 
 	async dwellReferenceLink( id ) {
-		await this.dwellLink( `#${id} a` );
+		await this.dwellLink( `#${ id } a` );
 	}
 
 	async dwellReferenceInceptionLink() {

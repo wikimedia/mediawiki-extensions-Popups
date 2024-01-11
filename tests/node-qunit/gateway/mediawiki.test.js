@@ -65,7 +65,7 @@ QUnit.module( 'ext.popups/gateway/mediawiki', {
 } );
 
 QUnit.test( 'MediaWiki API gateway is called with correct arguments', function ( assert ) {
-	const config = $.extend( {}, DEFAULT_CONSTANTS, {
+	const config = Object.assign( {}, DEFAULT_CONSTANTS, {
 		acceptLanguage: 'pl'
 	} );
 	const spy = this.sandbox.spy(),
@@ -136,8 +136,10 @@ QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from th
 
 	errorCases.forEach( ( data, i ) => {
 		assert.throws(
-			() => { gateway.extractPageFromResponse( data ); },
-			`Case ${i}: the gateway throws an error.`
+			() => {
+				gateway.extractPageFromResponse( data );
+			},
+			`Case ${ i }: the gateway throws an error.`
 		);
 	} );
 
@@ -145,7 +147,7 @@ QUnit.test( 'MediaWiki API gateway is correctly extracting the page data from th
 		assert.deepEqual(
 			gateway.extractPageFromResponse( data[ 0 ] ),
 			data[ 1 ],
-			`Case ${i}: the gateway extracts the response.`
+			`Case ${ i }: the gateway extracts the response.`
 		);
 	} );
 } );
@@ -237,7 +239,9 @@ QUnit.test( 'MediaWiki API gateway is abortable', function ( assert ) {
 		deferred = $.Deferred(),
 		api = {
 			get: this.sandbox.stub().returns(
-				deferred.promise( { abort() { deferred.reject( 'http' ); } } )
+				deferred.promise( { abort() {
+					deferred.reject( 'http' );
+				} } )
 			)
 		},
 		gateway = createMediaWikiApiGateway( api, DEFAULT_CONSTANTS );

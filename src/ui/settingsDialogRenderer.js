@@ -120,7 +120,7 @@ export default function createSettingsDialogRenderer() {
 			 */
 			setEnabled( enabled ) {
 				Object.keys( enabled ).forEach( ( type ) => {
-					const node = dialog.querySelector( `#mwe-popups-settings-${type}` );
+					const node = dialog.querySelector( `#mwe-popups-settings-${ type }` );
 					if ( node ) {
 						node.checked = enabled[ type ];
 					}

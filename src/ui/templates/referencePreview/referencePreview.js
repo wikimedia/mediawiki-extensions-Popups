@@ -49,7 +49,7 @@ export function renderReferencePreview(
 	// * popups-refpreview-news
 	// * popups-refpreview-note
 	// * popups-refpreview-web
-	let titleMsg = mw.message( `popups-refpreview-${type}` );
+	let titleMsg = mw.message( `popups-refpreview-${ type }` );
 	if ( !titleMsg.exists() ) {
 		titleMsg = mw.message( 'popups-refpreview-reference' );
 	}
@@ -64,7 +64,7 @@ export function renderReferencePreview(
 	// * popups-icon--reference-note
 	// * popups-icon--reference-web
 	el.querySelector( '.mwe-popups-title .popups-icon' )
-		.classList.add( `popups-icon--reference-${type}` );
+		.classList.add( `popups-icon--reference-${ type }` );
 	el.querySelector( '.mw-parser-output' )
 		.innerHTML = model.extract;
 
@@ -74,7 +74,7 @@ export function renderReferencePreview(
 		( a ) => {
 			a.target = '_blank';
 			// Don't let the external site access and possibly manipulate window.opener.location
-			a.rel = `${a.rel ? `${a.rel} ` : ''}noopener`;
+			a.rel = `${ a.rel ? `${ a.rel } ` : '' }noopener`;
 		}
 	);
 
@@ -160,8 +160,8 @@ export function renderReferencePreview(
 			hasVerticalScroll = element.scrollHeight > element.clientHeight,
 			scrollbarWidth = element.offsetWidth - element.clientWidth;
 		const fade = extract.querySelector( '.mwe-popups-fade' );
-		fade.style.bottom = hasHorizontalScroll ? `${scrollbarHeight}px` : 0;
-		fade.style.right = hasVerticalScroll ? `${scrollbarWidth}px` : 0;
+		fade.style.bottom = hasHorizontalScroll ? `${ scrollbarHeight }px` : 0;
+		fade.style.right = hasVerticalScroll ? `${ scrollbarWidth }px` : 0;
 
 		element.isScrolling = !scrolledToBottom;
 		extract.classList.toggle( 'mwe-popups-fade-out', element.isScrolling );

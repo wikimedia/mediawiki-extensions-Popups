@@ -15,7 +15,8 @@ export default function settings( boundActions, render ) {
 		}
 		if (
 			settingsObj &&
-			Object.keys( oldState.settings.previewTypesEnabled ).length !== Object.keys( newState.settings.previewTypesEnabled ).length
+			Object.keys( oldState.settings.previewTypesEnabled ).length !==
+			Object.keys( newState.settings.previewTypesEnabled ).length
 		) {
 			// the number of settings changed so force it to be repainted.
 			settingsObj.refresh( newState.settings.previewTypesEnabled );

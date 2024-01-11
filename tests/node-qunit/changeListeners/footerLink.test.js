@@ -9,7 +9,9 @@ QUnit.module( 'ext.popups/changeListeners/footerLink @integration', {
 		// Stub internal usage of mw.message
 		mw.message = ( str ) =>
 			( {
-				text() { return str; }
+				text() {
+					return str;
+				}
 			} );
 
 		boundActions.showSettings = this.showSettingsSpy = this.sandbox.spy();

@@ -47,9 +47,10 @@ export default function linkTitle() {
 			restoreTitleAttr( oldLink );
 
 			// FIXME: This will not work on anything other than 'reference' or 'preview' types as
-			// mw.popups.register does not register the previewType as a key in newState.preview.enabled
-			// This is not a problem at time of writing (November 2022) but will become a problem if we
-			// introduce custom preview types that must remove the title attribute.
+			// mw.popups.register does not register the previewType as a key in
+			// newState.preview.enabled
+			// This is not a problem at time of writing (November 2022) but will become a problem if
+			// we introduce custom preview types that must remove the title attribute.
 			if ( newState.preview.enabled[ newState.preview.previewType ] ) {
 				destroyTitleAttr( newState.preview.activeLink );
 			}

@@ -4,7 +4,5 @@
 		"wikimedia/server"
 	],
 	"rules": {
-		"yml/block-sequence": "warn",
-		"yml/plain-scalar": "warn"
 	}
 }

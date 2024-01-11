@@ -16,6 +16,7 @@ require( '@babel/register' )( {
 } );
 
 require.extensions[ '.svg' ] = ( module, filename ) => {
+	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	const svg = fs.readFileSync( filename, { encoding: 'utf8' } );
 	// eslint-disable-next-line no-underscore-dangle
 	module._compile( svgInlineLoader( svg ), filename );

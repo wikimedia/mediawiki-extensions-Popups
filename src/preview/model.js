@@ -144,7 +144,9 @@ const registeredPreviewTypes = [];
  * @return {string|null} One of the previewTypes.TYPE_… constants
  */
 export function getPreviewType( el ) {
-	const candidates = registeredPreviewTypes.filter( ( type ) => elementMatchesSelector( el, type.selector ) );
+	const candidates = registeredPreviewTypes.filter(
+		( type ) => elementMatchesSelector( el, type.selector )
+	);
 
 	// If the filter returned some possibilities, use the last registered one.
 	if ( candidates.length > 0 ) {

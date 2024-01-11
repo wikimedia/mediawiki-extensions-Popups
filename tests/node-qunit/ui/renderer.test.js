@@ -41,9 +41,9 @@ QUnit.module( 'ext.popups#renderer', {
 	beforeEach() {
 		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 
-		mw.msg = ( key ) => `<${key}>`;
+		mw.msg = ( key ) => `<${ key }>`;
 		mw.message = ( key ) => {
-			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${key}>` };
+			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${ key }>` };
 		};
 
 		mw.html = {
@@ -77,7 +77,7 @@ QUnit.test( 'getExtractWidth', ( assert ) => {
 		],
 		[ {
 			isNarrow: true, offset: 10
-		}, `${pagePreview.defaultExtractWidth + 10}px` ],
+		}, `${ pagePreview.defaultExtractWidth + 10 }px` ],
 		[ {
 			// Fall back to css stylesheet for non-narrow thumbs.
 			isNarrow: false, offset: 100
@@ -88,7 +88,7 @@ QUnit.test( 'getExtractWidth', ( assert ) => {
 		assert.strictEqual(
 			pagePreview.getExtractWidth( case_[ 0 ] ),
 			case_[ 1 ],
-			`Case ${i}: the expected extract width matches.`
+			`Case ${ i }: the expected extract width matches.`
 		);
 	} );
 } );
@@ -106,9 +106,9 @@ QUnit.test( 'createPointerMasks', ( assert ) => {
 
 	cases.forEach( ( case_, i ) => {
 		assert.strictEqual(
-			$container.find( `${case_[ 0 ]} path` ).attr( 'd' ),
+			$container.find( `${ case_[ 0 ] } path` ).attr( 'd' ),
 			case_[ 1 ],
-			`Case ${i}: the SVG's polygons match.`
+			`Case ${ i }: the SVG's polygons match.`
 		);
 	} );
 } );
@@ -637,7 +637,7 @@ QUnit.test( '#createLayout - portrait preview, mouse event, link is on the top l
 				flippedY: false,
 				dir
 			},
-			`Case ${i}: the layout is correct.`
+			`Case ${ i }: the layout is correct.`
 		);
 	} );
 } );
@@ -685,7 +685,7 @@ QUnit.test( '#createLayout - tall preview, mouse event, link is on the bottom ce
 				flippedY: true,
 				dir
 			},
-			`Case ${i}: the layout is correct. Y is flipped.`
+			`Case ${ i }: the layout is correct. Y is flipped.`
 		);
 	} );
 } );
@@ -730,7 +730,7 @@ QUnit.test( '#createLayout - empty preview, keyboard event, link is on the cente
 				flippedY: true,
 				dir
 			},
-			`Case ${i}: the layout is correct. Both X and Y are flipped.`
+			`Case ${ i }: the layout is correct. Both X and Y are flipped.`
 		);
 	} );
 } );
@@ -778,7 +778,7 @@ QUnit.test( '#createLayout - empty preview, mouse event, popup pointer is in the
 				flippedY: false,
 				dir
 			},
-			`Case ${i}: the layout is correct.`
+			`Case ${ i }: the layout is correct.`
 		);
 	} );
 } );
@@ -1045,12 +1045,12 @@ QUnit.test( '#layoutPreview - no thumbnail', ( assert ) => {
 
 	assert.strictEqual(
 		$( preview.el ).css( 'top' ),
-		`${layout.offset.top}px`,
+		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'left' ),
-		`${layout.offset.left}px`,
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 } );
@@ -1080,12 +1080,12 @@ QUnit.test( '#layoutPreview - tall preview, flipped X, has thumbnail', function 
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'top' ),
-		`${layout.offset.top}px`,
+		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'left' ),
-		`${layout.offset.left}px`,
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.false(
@@ -1124,17 +1124,17 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, small 
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'top' ),
-		`${layout.offset.top}px`,
+		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'left' ),
-		`${layout.offset.left}px`,
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
 		$( preview.el ).find( '.mwe-popups-extract' ).css( 'margin-top' ),
-		`${199 - 8}px`, // thumb height - pointer size
+		`${ 199 - 8 }px`, // thumb height - pointer size
 		'Extract margin top has been set when preview height is smaller than the predefined landscape image height.'
 	);
 	assert.strictEqual(
@@ -1169,12 +1169,12 @@ QUnit.test( '#layoutPreview - portrait preview, flipped X, has thumbnail, big he
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'top' ),
-		`${layout.offset.top}px`,
+		`${ layout.offset.top }px`,
 		'Top is correct.'
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'left' ),
-		`${layout.offset.left}px`,
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
@@ -1329,13 +1329,13 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped Y', ( assert 
 
 	assert.strictEqual(
 		$( preview.el ).css( 'bottom' ),
-		`${windowHeight - layout.offset.top}px`,
+		`${ windowHeight - layout.offset.top }px`,
 		'Bottom is correct.'
 	);
 
 	assert.strictEqual(
 		$( preview.el ).css( 'left' ),
-		`${layout.offset.left}px`,
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
@@ -1370,12 +1370,12 @@ QUnit.test( '#layoutPreview - tall preview, has thumbnail, flipped X and Y', fun
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'left' ),
-		`${layout.offset.left}px`,
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'bottom' ),
-		`${windowHeight - layout.offset.top}px`,
+		`${ windowHeight - layout.offset.top }px`,
 		'Bottom is correct.'
 	);
 	assert.strictEqual(
@@ -1406,12 +1406,12 @@ QUnit.test( '#layoutPreview - portrait preview, has thumbnail, flipped X and Y',
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'left' ),
-		`${layout.offset.left}px`,
+		`${ layout.offset.left }px`,
 		'Left is correct.'
 	);
 	assert.strictEqual(
 		$( preview.el ).css( 'bottom' ),
-		`${windowHeight - layout.offset.top}px`,
+		`${ windowHeight - layout.offset.top }px`,
 		'Bottom is correct.'
 	);
 	assert.strictEqual(
@@ -1458,7 +1458,7 @@ QUnit.test( '#setThumbnailClipPath', function ( assert ) {
 		assert.strictEqual(
 			clipPath.getAttribute( 'transform' ),
 			expected,
-			`Transform is correct for: { isTall: ${isTall}, dir: ${dir} }.`
+			`Transform is correct for: { isTall: ${ isTall }, dir: ${ dir } }.`
 		);
 	} );
 } );
@@ -1478,7 +1478,7 @@ QUnit.test( '#getThumbnailClipPathID', ( assert ) => {
 		assert.strictEqual(
 			renderer.getThumbnailClipPathID( isTall, flippedY, flippedX ),
 			expected,
-			`Correct element ID is returned for: { flippedY: ${flippedY}, flippedX: ${flippedX}, isTall: ${isTall} }.`
+			`Correct element ID is returned for: { flippedY: ${ flippedY }, flippedX: ${ flippedX }, isTall: ${ isTall } }.`
 		);
 	} );
 } );

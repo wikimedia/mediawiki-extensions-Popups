@@ -34,7 +34,9 @@ QUnit.module( 'ext.popups/pageviews', {
 		// Stub internal usage of mw.Title.newFromText
 		mw.Title.newFromText = ( str ) => {
 			return {
-				getPrefixedDb: () => { return str; }
+				getPrefixedDb: () => {
+					return str;
+				}
 			};
 		};
 	}
@@ -67,7 +69,7 @@ QUnit.test( 'it should log the queued event', function ( assert ) {
 } );
 
 QUnit.test( 'it should not log something that is not a pageview', function ( assert ) {
-	const noPageviewState = $.extend( {}, newState );
+	const noPageviewState = Object.assign( {}, newState );
 	delete noPageviewState.pageviews.pageview;
 
 	this.changeListener( undefined, newState );

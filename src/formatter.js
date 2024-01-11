@@ -36,12 +36,13 @@ export function formatPlainTextExtract( plainTextExtract, title ) {
  */
 function makeTitleInExtractBold( extract, title ) {
 	const elements = [],
-		boldIdentifier = `<bi-${Math.random()}>`,
-		snip = `<snip-${Math.random()}>`;
+		boldIdentifier = `<bi-${ Math.random() }>`,
+		snip = `<snip-${ Math.random() }>`;
 
 	title = title.replace( /\s+/g, ' ' ).trim(); // Remove extra white spaces
 	const escapedTitle = mw.util.escapeRegExp( title );
-	const regExp = new RegExp( `(^|\\s)(${escapedTitle})(|$)`, 'i' );
+	// eslint-disable-next-line security/detect-non-literal-regexp
+	const regExp = new RegExp( `(^|\\s)(${ escapedTitle })(|$)`, 'i' );
 
 	// Remove text in parentheses along with the parentheses
 	extract = extract.replace( /\s+/, ' ' ); // Remove extra white spaces
@@ -51,7 +52,7 @@ function makeTitleInExtractBold( extract, title ) {
 	// Also, the title is escaped of RegExp elements thus can't have "*"
 	extract = extract.replace(
 		regExp,
-		`$1${snip}${boldIdentifier}$2${snip}$3`
+		`$1${ snip }${ boldIdentifier }$2${ snip }$3`
 	);
 	extract = extract.split( snip );
 

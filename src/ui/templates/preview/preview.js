@@ -38,7 +38,7 @@ export function renderPreview(
 	// * popups-icon--preview-unknown
 	// * popups-icon--preview-generic
 	// * popups-icon--preview-disambiguation
-	popup.querySelector( '.popups-icon' ).classList.add( `popups-icon--preview-${model.type}` );
+	popup.querySelector( '.popups-icon' ).classList.add( `popups-icon--preview-${ model.type }` );
 	popup.querySelector( '.mwe-popups-extract' ).setAttribute( 'href', model.url );
 	const messageElement = popup.querySelector( '.mwe-popups-message' );
 	if ( message ) {

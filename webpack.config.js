@@ -95,9 +95,9 @@ module.exports = ( env, argv ) => ( {
 
 		// Rename source map extensions. Per T173491 files with a .map extension cannot be served
 		// from prod.
-		sourceMapFilename: `[file]${srcMapExt}`,
+		sourceMapFilename: `[file]${ srcMapExt }`,
 
-		devtoolModuleFilenameTemplate: `${PUBLIC_PATH}/[resource-path]`
+		devtoolModuleFilenameTemplate: `${ PUBLIC_PATH }/[resource-path]`
 	},
 
 	// Accurate source maps at the expense of build time. The source map is intentionally exposed

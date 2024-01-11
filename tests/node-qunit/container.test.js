@@ -39,7 +39,9 @@ QUnit.test( '#get', function ( assert ) {
 	// ---
 
 	assert.throws(
-		() => { this.container.get( 'bar' ); },
+		() => {
+			this.container.get( 'bar' );
+		},
 		/The service "bar" hasn't been defined./,
 		'The container throws an error when no factory exists.'
 	);

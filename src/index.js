@@ -154,7 +154,7 @@ function handleDOMEventIfEligible( handler ) {
 		// If the closest method is not defined, let's return early and
 		// understand this better by logging an error. (T340081)
 		if ( target && !target.closest ) {
-			const err = new Error( `T340081: Unexpected DOM element ${target.tagName} with nodeType ${target.nodeType}` );
+			const err = new Error( `T340081: Unexpected DOM element ${ target.tagName } with nodeType ${ target.nodeType }` );
 			mw.errorLogger.logError( err, 'error.web-team' );
 			return;
 		}
@@ -245,7 +245,7 @@ function handleDOMEventIfEligible( handler ) {
 		// Register default preview type
 		mw.popups.register( {
 			type: previewTypes.TYPE_PAGE,
-			selector: `#mw-content-text a[href][title]:not(${excludedLinksSelector})`,
+			selector: `#mw-content-text a[href][title]:not(${ excludedLinksSelector })`,
 			delay: FETCH_COMPLETE_TARGET_DELAY - FETCH_START_DELAY,
 			gateway: pagePreviewGateway,
 			renderFn: createPagePreview,

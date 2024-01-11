@@ -235,8 +235,8 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
 			// The `enabled` flags allow to disable individual popup types while still showing the
 			// footer link. This comes from the boot() action (called `initiallyEnabled` there) and
 			// the preview() reducer.
-			// If the preview type has not been enabled, we ignore it as it cannot be disabled (currently)
-			// by the UI.
+			// If the preview type has not been enabled, we ignore it as it cannot be disabled
+			// (currently) by the UI.
 			if ( isEnabled && isNewInteraction() ) {
 				return dispatch( fetch( gateway, title, el, token, type ) );
 			}

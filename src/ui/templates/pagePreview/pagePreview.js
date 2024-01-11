@@ -78,5 +78,5 @@ export { defaultExtractWidth }; // for testing
  *   used for the extract
  */
 export function getExtractWidth( thumbnail ) {
-	return thumbnail && thumbnail.isNarrow ? `${defaultExtractWidth + thumbnail.offset}px` : '';
+	return thumbnail && thumbnail.isNarrow ? `${ defaultExtractWidth + thumbnail.offset }px` : '';
 }

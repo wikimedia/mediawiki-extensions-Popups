@@ -60,36 +60,36 @@ export function renderSettingsDialog( model ) {
 				<div>
 					<button class='cdx-button cdx-button--weight-quiet cdx-button--icon-only'>
 						<span class='popups-icon popups-icon--close close'></span>
-						<span>${closeLabel}</span>
+						<span>${ closeLabel }</span>
 					</button>
 				</div>
-				<h1>${heading}</h1>
+				<h1>${ heading }</h1>
 				<div>
-					<button class='save cdx-button cdx-button--weight-primary cdx-button--action-progressive'>${saveLabel}</button>
-					<button class='okay cdx-button cdx-button--weight-primary cdx-button--action-progressive' style='display:none;'>${okLabel}</button>
+					<button class='save cdx-button cdx-button--weight-primary cdx-button--action-progressive'>${ saveLabel }</button>
+					<button class='okay cdx-button cdx-button--weight-primary cdx-button--action-progressive' style='display:none;'>${ okLabel }</button>
 				</div>
 			</header>
 			<main id='mwe-popups-settings-form'>
 				<form>
-					${choices.map( ( { id, name, description, isChecked } ) => `
+					${ choices.map( ( { id, name, description, isChecked } ) => `
 					<p class="cdx-checkbox">
 						<input
-							${isChecked ? 'checked' : ''}
-							value='${id}'
+							${ isChecked ? 'checked' : '' }
+							value='${ id }'
 							type='checkbox'
-							id='mwe-popups-settings-${id}'
+							id='mwe-popups-settings-${ id }'
 							class='cdx-checkbox__input'>
 						<span class="cdx-checkbox__icon">&nbsp;</span>
-						<label class="cdx-checkbox__label" for='mwe-popups-settings-${id}'>
-							<span>${name}</span>
-							${description}
+						<label class="cdx-checkbox__label" for='mwe-popups-settings-${ id }'>
+							<span>${ name }</span>
+							${ description }
 						</label>
-					</p>` ).join( '' )}
+					</p>` ).join( '' ) }
 				</form>
 			</main>
 			<div class='mwe-popups-settings-help' style='display:none;'>
 				<div class="popups-icon popups-icon--footer"></div>
-				<p>${helpText}</p>
+				<p>${ helpText }</p>
 			</div>
 		</section>
 	`.trim();

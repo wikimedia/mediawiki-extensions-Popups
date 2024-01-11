@@ -17,11 +17,11 @@ export function createSettingsDialog( previewTypesEnabled ) {
 			// This can produce:
 			// * popups-settings-option-preview
 			// * popups-settings-option-reference
-			name: mw.msg( `popups-settings-option-${id}` ),
+			name: mw.msg( `popups-settings-option-${ id }` ),
 			// This can produce:
 			// * popups-settings-option-preview-description
 			// * popups-settings-option-reference-description
-			description: mw.msg( `popups-settings-option-${id}-description` ),
+			description: mw.msg( `popups-settings-option-${ id }-description` ),
 			isChecked: previewTypesEnabled[ id ]
 		}
 	) );

@@ -1,7 +1,6 @@
 instrumentation:
   include-all-sources: true
-  excludes: [
-    "resources/dist/*", # Compiled assets
-    "*.js", # Gruntfile.js and webpack.config.js
-    "src/index.js", # Application entry point
-  ]
+  excludes:
+    - "resources/dist/*" # Compiled assets
+    - "*.js" # Gruntfile.js and webpack.config.js
+    - src/index.js # Application entry point

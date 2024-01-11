@@ -130,7 +130,7 @@ function createThumbnailImg( url ) {
  * Sets multiple attributes on a node.
  *
  * @param {HTMLElement} node
- * @param {Record<String, String>} attrs
+ * @param {Record<string, string>} attrs
  */
 const addAttributes = ( node, attrs ) => {
 	Object.keys( attrs ).forEach( ( key ) => {

@@ -9,7 +9,7 @@ import { previewTypes } from '../preview/model';
  * @return {boolean} whether the preview type supports being disabled/enabled.
  */
 function canShowSettingForPreviewType( type ) {
-	return mw.message( `popups-settings-option-${type}` ).exists();
+	return mw.message( `popups-settings-option-${ type }` ).exists();
 }
 
 /**
@@ -19,7 +19,8 @@ function canShowSettingForPreviewType( type ) {
  * @param {Redux.Store} store Popups store
  * @param {Function} registerModel allows extensions to register custom preview handlers.
  * @param {Function} registerPreviewUI allows extensions to register custom preview renderers.
- * @param {Function} registerGatewayForPreviewType allows extensions to register gateways for preview types.
+ * @param {Function} registerGatewayForPreviewType allows extensions to register gateways for
+ * preview types.
  * @param {Function} registerSetting
  * @param {UserSettings} userSettings
  * @return {Object} external Popups interface
@@ -40,16 +41,19 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 		 *
 		 * @typedef {Object} PopupSubtype
 		 * @property {string} type A unique string for identifying the subtype of a page preview
-		 * @property {function(ext.popups.PreviewModel): ext.popups.Preview}[renderFn] How the custom preview type will render the preview.
-		 *  If not provided default renderer is used.
+		 * @property {function(ext.popups.PreviewModel): ext.popups.Preview}[renderFn] How the
+		 * custom preview type will render the preview. If not provided default renderer is used.
 		 *
 		 * @typedef {Object} PopupModule
 		 * @property {string} type A unique string for identifying the type of page preview
-		 * @property {string} selector A CSS selector which identifies elements that will display this type of page preview
+		 * @property {string} selector A CSS selector which identifies elements that will display
+		 * this type of page preview
 		 * @property {Gateway} gateway A Gateway for obtaining the preview data.
-		 * @property {function(ext.popups.PreviewModel): ext.popups.Preview}[renderFn] How the custom preview type will render the preview.
+		 * @property {function(ext.popups.PreviewModel): ext.popups.Preview}[renderFn] How the
+		 * custom preview type will render the preview.
 		 *  If not provided default renderer is used.
-		 * @property {PopupSubtype[]} subTypes this is for registering types that are subsets of the current type e.g. share the same selector.
+		 * @property {PopupSubtype[]} subTypes this is for registering types that are subsets of
+		 * the current type e.g. share the same selector.
 		 * @property {number} [delay] optional delay between hovering and displaying preview.
 		 *  If not defined, delay will be zero.
 		 */
@@ -75,7 +79,7 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 				doNotRequireSummary } = module;
 			if ( !type || !selector || !gateway ) {
 				throw new Error(
-					`Registration of Popups custom preview type "${type}" failed: You must specify a type, a selector, and a gateway.`
+					`Registration of Popups custom preview type "${ type }" failed: You must specify a type, a selector, and a gateway.`
 				);
 			}
 			registerModel( type, selector, delay );
@@ -86,13 +90,17 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 				registerSetting( type, userSettings.isPreviewTypeEnabled( type ) );
 			} else {
 				mw.log.warn(
-					`[Popups] No setting for ${type} registered.
-Please create message with key "popups-settings-option-${type}" if this is a mistake.`
+					`[Popups] No setting for ${ type } registered.
+Please create message with key "popups-settings-option-${ type }" if this is a mistake.`
 				);
 			}
 			if ( subTypes ) {
 				subTypes.forEach( function ( subTypePreview ) {
-					registerPreviewUI( subTypePreview.type, subTypePreview.renderFn, subTypePreview.doNotRequireSummary );
+					registerPreviewUI(
+						subTypePreview.type,
+						subTypePreview.renderFn,
+						subTypePreview.doNotRequireSummary
+					);
 				} );
 			}
 			// Run initialization function if provided.

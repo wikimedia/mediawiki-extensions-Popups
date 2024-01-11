@@ -170,13 +170,13 @@ const DEFAULT_CONSTANTS = {
 	);
 
 function provideParsedExtract( page ) {
-	return `!${page.extract}!`;
+	return `!${ page.extract }!`;
 }
 
 QUnit.module( 'gateway/rest', {
 	beforeEach() {
 		mw.Title = function ( title ) {
-			this.getUrl = () => `url/${title}`;
+			this.getUrl = () => `url/${ title }`;
 		};
 	},
 	afterEach() {
@@ -185,7 +185,7 @@ QUnit.module( 'gateway/rest', {
 } );
 
 QUnit.test( 'RESTBase gateway is called with correct arguments', function ( assert ) {
-	const config = $.extend( {}, DEFAULT_CONSTANTS, {
+	const config = Object.assign( {}, DEFAULT_CONSTANTS, {
 		acceptLanguage: 'pl'
 	} );
 

@@ -182,7 +182,7 @@ function supportsCSSClipPath() {
 	return window.CSS &&
 		typeof CSS.supports === 'function' &&
 		CSS.supports( 'clip-path', 'polygon(1px 1px)' );
-	/* eslint-enable compat/compat */
+
 }
 
 /**
@@ -547,7 +547,7 @@ export function layoutPreview(
 			thumbnail.height < predefinedLandscapeImageHeight && !supportsCSSClipPath()
 	) {
 		const popupExtract = popup.querySelector( '.mwe-popups-extract' );
-		popupExtract.style.marginTop = `${( thumbnail.height - pointerSpaceSize )}px`;
+		popupExtract.style.marginTop = `${ ( thumbnail.height - pointerSpaceSize ) }px`;
 	}
 
 	// The following classes are used here:
@@ -562,9 +562,9 @@ export function layoutPreview(
 	// * mwe-popups-no-image-pointer
 	popup.classList.add.apply( popup.classList, classes );
 
-	popup.style.left = `${layout.offset.left}px`;
-	popup.style.top = flippedY ? 'auto' : `${layout.offset.top}px`;
-	popup.style.bottom = flippedY ? `${windowHeight - layout.offset.top}px` : 'auto';
+	popup.style.left = `${ layout.offset.left }px`;
+	popup.style.top = flippedY ? 'auto' : `${ layout.offset.top }px`;
+	popup.style.bottom = flippedY ? `${ windowHeight - layout.offset.top }px` : 'auto';
 
 	if ( hasThumbnail && !supportsCSSClipPath() ) {
 		setThumbnailClipPath( preview, layout );
@@ -610,11 +610,11 @@ export function setThumbnailClipPath(
 		const mask = document.getElementById( maskID );
 		mask.setAttribute(
 			'transform',
-			`matrix(${matrix.scaleX} 0 0 1 ${matrix.translateX} 0)`
+			`matrix(${ matrix.scaleX } 0 0 1 ${ matrix.translateX } 0)`
 		);
 
 		el.querySelector( 'image' )
-			.setAttribute( 'clip-path', `url(#${maskID})` );
+			.setAttribute( 'clip-path', `url(#${ maskID })` );
 	}
 }
 

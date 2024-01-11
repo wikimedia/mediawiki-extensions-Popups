@@ -41,9 +41,11 @@ export default function createUserSettings( storage ) {
 		 *
 		 * @method
 		 * @param {string} previewType
+		 *
+		 * @return {boolean}
 		 */
 		isPreviewTypeEnabled( previewType ) {
-			const storageKey = `mwe-popups-${previewType}-enabled`;
+			const storageKey = `mwe-popups-${ previewType }-enabled`;
 			const value = storage.get( storageKey );
 			return value === null;
 		},
@@ -63,7 +65,7 @@ export default function createUserSettings( storage ) {
 					action: enabled ? 'anonymousEnabled' : 'anonymousDisabled'
 				} );
 			}
-			const storageKey = `mwe-popups-${previewType}-enabled`;
+			const storageKey = `mwe-popups-${ previewType }-enabled`;
 			if ( enabled ) {
 				storage.remove( storageKey );
 			} else {
