@@ -21,6 +21,8 @@
  */
 
 /**
+ * @stable this function is available to 3rd parties. Any breaking changes must
+ *  go through the MediaWiki deprecation process.
  * @param {Promise|jQuery.Promise<T>} promise
  * @param {function(): void} [abort]
  * @return {AbortPromise}

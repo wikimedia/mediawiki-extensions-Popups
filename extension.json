@@ -153,6 +153,9 @@
 			]
 		},
 		"ext.popups.referencePreviews": {
+			"dependencies": [
+				"ext.popups.main"
+			],
 			"styles": [
 				"resources/ext.popups.referencePreviews/referencePreview.less"
 			],

@@ -125,23 +125,24 @@ QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 					get: () => {}
 				}
 			},
-			userSettings = {
-				isPreviewTypeEnabled: () => data.isAnon ?
-					data.enabledByAnon :
-					assert.true( false, 'not expected to be called' )
+			isPreviewTypeEnabled = () => {
+				if ( !data.isAnon ) {
+					assert.true( false, 'not expected to be called' );
+				}
+				return data.enabledByAnon;
 			},
 			config = {
 				get: ( key ) => key === 'skin' && data.isMobile ? 'minerva' : data[ key ]
 			};
 
 		if ( data.isAnon ) {
-			user.options.get = () => assert.true( false, 'not expected to be called' );
+			user.options.get = () => assert.true( false, 'not expected to be called 2' );
 		} else {
 			user.options.get = () => data.enabledByRegistered ? '1' : '0';
 		}
 
 		assert.strictEqual(
-			isReferencePreviewsEnabled( user, userSettings, config ),
+			isReferencePreviewsEnabled( user, isPreviewTypeEnabled, config ),
 			data.expected,
 			data.testCase
 		);

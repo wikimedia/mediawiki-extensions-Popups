@@ -2,24 +2,25 @@
  * @module referencePreview
  */
 import { isTrackingEnabled, LOGGING_SCHEMA } from './referencePreviews';
-import { renderPopup } from '../ui/templates/popup/popup';
-import { createNodeFromTemplate, escapeHTML } from '../ui/templates/templateUtil';
 
-const templateHTML = `
-<div class="mwe-popups-container">
-    <div class="mwe-popups-extract">
-        <div class="mwe-popups-scroll">
-            <strong class="mwe-popups-title">
-                <span class="popups-icon"></span>
-                <span class="mwe-popups-title-placeholder"></span>
-            </strong>
-            <bdi><div class="mw-parser-output"></div></bdi>
-        </div>
-        <div class="mwe-popups-fade"></div>
-    </div>
-	<footer>
-		<div class="mwe-popups-settings"></div>
-	</footer>
+const TEMPLATE = document.createElement( 'template' );
+TEMPLATE.innerHTML = `
+<div class="mwe-popups mwe-popups mwe-popups-type-reference" aria-hidden>
+	<div class="mwe-popups-container">
+		<div class="mwe-popups-extract">
+			<div class="mwe-popups-scroll">
+				<strong class="mwe-popups-title">
+					<span class="popups-icon"></span>
+					<span class="mwe-popups-title-placeholder"></span>
+				</strong>
+				<bdi><div class="mw-parser-output"></div></bdi>
+			</div>
+			<div class="mwe-popups-fade"></div>
+		</div>
+		<footer>
+			<div class="mwe-popups-settings"></div>
+		</footer>
+	</div>
 </div>`;
 
 /**
@@ -54,8 +55,12 @@ function renderReferencePreview(
 		titleMsg = mw.message( 'popups-refpreview-reference' );
 	}
 
-	const el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
-	replaceWith( el.querySelector( '.mwe-popups-title-placeholder' ), escapeHTML( titleMsg.text() ) );
+	const el = TEMPLATE.content.cloneNode( true ).children[ 0 ];
+
+	replaceWith(
+		el.querySelector( '.mwe-popups-title-placeholder' ),
+		mw.html.escape( titleMsg.text() )
+	);
 	// The following classes are used here:
 	// * popups-icon--reference-generic
 	// * popups-icon--reference-book

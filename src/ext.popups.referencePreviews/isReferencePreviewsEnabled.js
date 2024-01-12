@@ -3,19 +3,18 @@ import { TYPE_REFERENCE } from './constants.js';
 /**
  * @module isReferencePreviewsEnabled
  */
-const canSaveToUserPreferences = require( '../canSaveToUserPreferences.js' );
 
 /**
  * Given the global state of the application, creates a function that gets
  * whether or not the user should have Reference Previews enabled.
  *
  * @param {mw.User} user The `mw.user` singleton instance
- * @param {Object} userSettings An object returned by `userSettings.js`
+ * @param {Function} isPreviewTypeEnabled check whether preview has been disabled or enabled.
  * @param {mw.Map} config
  *
  * @return {boolean|null} Null when there is no way the popup type can be enabled at run-time.
  */
-export default function isReferencePreviewsEnabled( user, userSettings, config ) {
+export default function isReferencePreviewsEnabled( user, isPreviewTypeEnabled, config ) {
 	// TODO: This and the final `mw.user.options` check are currently redundant. Only this here
 	// should be removed when the wgPopupsReferencePreviews feature flag is not needed any more.
 	if ( !config.get( 'wgPopupsReferencePreviews' ) ) {
@@ -31,10 +30,8 @@ export default function isReferencePreviewsEnabled( user, userSettings, config )
 		return null;
 	}
 
-	// For anonymous users, the code loads always, but the feature can be toggled at run-time via
-	// local storage.
-	if ( !canSaveToUserPreferences( user ) ) {
-		return userSettings.isPreviewTypeEnabled( TYPE_REFERENCE );
+	if ( user.isAnon() ) {
+		return isPreviewTypeEnabled( TYPE_REFERENCE );
 	}
 
 	// Registered users never can enable popup types at run-time.

@@ -3,7 +3,6 @@
  */
 
 import { TYPE_REFERENCE } from './constants.js';
-import { abortablePromise } from '../gateway/index.js';
 
 /**
  * @return {Gateway}
@@ -83,7 +82,10 @@ export default function createReferenceGateway() {
 			sourceElementId: el.parentNode.id
 		};
 
-		return abortablePromise( Promise.resolve( model ) );
+		// Make promise abortable.
+		const promise = Promise.resolve( model );
+		promise.abort = () => {};
+		return promise;
 	}
 
 	return {
