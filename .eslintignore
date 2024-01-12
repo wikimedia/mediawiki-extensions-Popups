@@ -3,3 +3,5 @@
 # docs and storybook
 /docs/
 /vendor/
+# Compiled content
+/resources/dist
