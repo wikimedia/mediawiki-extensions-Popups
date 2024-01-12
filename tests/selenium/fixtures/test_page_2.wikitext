@@ -1,9 +1,0 @@
-This page has a lead section.
-
-=Popups test page 2=
-
-==Valid links==
-* [[Popups test page]]
-
-==Invalid links==
-# blah
