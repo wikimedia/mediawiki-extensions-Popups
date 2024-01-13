@@ -144,7 +144,6 @@
 			}
 		},
 		"ext.popups": {
-			"es6": true,
 			"packageFiles": [
 				{
 					"name": "resources/ext.popups/types.json",
@@ -154,7 +153,6 @@
 			]
 		},
 		"ext.popups.main": {
-			"es6": true,
 			"scripts": [
 				"resources/dist/index.js"
 			],
