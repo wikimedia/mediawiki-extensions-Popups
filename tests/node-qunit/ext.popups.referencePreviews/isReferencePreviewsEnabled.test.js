@@ -109,7 +109,7 @@ QUnit.test( 'all relevant combinations of flags', ( assert ) => {
 			// TODO: This combination will make much more sense when the server-side
 			// wgPopupsReferencePreviews flag doesn't include the user's setting any more
 			testCase: 'manually disabled by the registered user',
-			wgPopupsReferencePreviews: false,
+			wgPopupsReferencePreviews: true,
 			wgPopupsConflictsWithRefTooltipsGadget: false,
 			isMobile: false,
 			isAnon: false,

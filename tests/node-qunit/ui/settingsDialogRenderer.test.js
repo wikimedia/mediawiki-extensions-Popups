@@ -38,6 +38,7 @@ QUnit.test( '#toggleHelp', ( assert ) => {
 } );
 
 QUnit.test( '#render', ( assert ) => {
+	const main = document.createElement( 'main' );
 	const boundActions = {
 			saveSettings() {},
 			hideSettings() {}
@@ -50,14 +51,23 @@ QUnit.test( '#render', ( assert ) => {
 			toggleHelp() {},
 			setEnabled() {}
 		},
-		result = createSettingsDialogRenderer( mw.config )( boundActions, {} );
+		dialogRenderer = createSettingsDialogRenderer( mw.config )( boundActions, {} );
 
 	// Specifically NOT a deep equal. Only structure.
 	assert.propEqual(
-		result,
+		dialogRenderer,
 		expected,
 		'Interface exposed has the expected methods'
 	);
+
+	// Sanity checks for some methods
+	assert.strictEqual( main.childElementCount, 0 );
+	dialogRenderer.appendTo( main );
+	assert.strictEqual( main.childElementCount, 1 );
+
+	assert.strictEqual( $( main.children[ 0 ] ).css( 'display' ), 'block' );
+	dialogRenderer.hide();
+	assert.strictEqual( $( main.children[ 0 ] ).css( 'display' ), 'none' );
 } );
 
 // FIXME: Add Qunit integration tests about the rendering and the behavior of
