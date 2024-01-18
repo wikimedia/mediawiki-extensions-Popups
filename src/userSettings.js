@@ -1,5 +1,4 @@
 import { previewTypes } from './preview/model';
-import { TYPE_REFERENCE } from './ext.popups.referencePreviews/constants.js';
 
 /**
  * @module userSettings
@@ -13,7 +12,7 @@ import { TYPE_REFERENCE } from './ext.popups.referencePreviews/constants.js';
 
 const PAGE_PREVIEWS_ENABLED_KEY = 'mwe-popups-enabled',
 	REFERENCE_PREVIEWS_ENABLED_KEY = 'mwe-popups-referencePreviews-enabled',
-	REFERENCE_PREVIEWS_LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
+	PAGE_PREVIEWS_CHANGE_SETTING_EVENT = 'Popups.SettingChange';
 
 /**
  * Creates an object whose methods encapsulate all interactions with the UA's
@@ -31,6 +30,7 @@ export default function createUserSettings( storage ) {
 				storage.remove( PAGE_PREVIEWS_ENABLED_KEY );
 				this.storePreviewTypeEnabled( previewTypes.TYPE_PAGE, false );
 			}
+			const TYPE_REFERENCE = 'reference';
 			const isRefsDisabled = !!storage.get( REFERENCE_PREVIEWS_ENABLED_KEY );
 			if ( isRefsDisabled ) {
 				storage.remove( REFERENCE_PREVIEWS_ENABLED_KEY );
@@ -61,17 +61,19 @@ export default function createUserSettings( storage ) {
 		 * @param {boolean} enabled
 		 */
 		storePreviewTypeEnabled( previewType, enabled ) {
-			if ( previewType === TYPE_REFERENCE ) {
-				mw.track( REFERENCE_PREVIEWS_LOGGING_SCHEMA, {
-					action: enabled ? 'anonymousEnabled' : 'anonymousDisabled'
-				} );
-			}
 			const storageKey = `mwe-popups-${ previewType }-enabled`;
 			if ( enabled ) {
 				storage.remove( storageKey );
 			} else {
 				storage.set( storageKey, '0' );
 			}
+			/**
+			 * @stable for use in MediaWiki extensions.
+			 */
+			mw.track( PAGE_PREVIEWS_CHANGE_SETTING_EVENT, {
+				previewType,
+				action: enabled ? 'anonymousEnabled' : 'anonymousDisabled'
+			} );
 		}
 	};
 }
