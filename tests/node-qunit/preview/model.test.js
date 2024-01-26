@@ -1,6 +1,6 @@
 import {
 	createModel, getPreviewType, previewTypes, registerModel, test,
-	isAnythingEligible, findNearestEligibleTarget, createNullModel
+	findNearestEligibleTarget, createNullModel
 } from '../../../src/preview/model';
 
 QUnit.module( 'ext.popups.preview#createModel' );
@@ -107,22 +107,6 @@ QUnit.module( 'ext.popups.preview#getPreviewType', {
 	afterEach() {
 		test.reset();
 	}
-} );
-
-QUnit.test( 'isAnythingEligible returns false by default', function ( assert ) {
-	test.reset();
-	assert.strictEqual(
-		isAnythingEligible(),
-		false
-	);
-} );
-
-QUnit.test( 'isAnythingEligible returns true when model is registered', function ( assert ) {
-	this.registerRefModel();
-	assert.strictEqual(
-		isAnythingEligible(),
-		true
-	);
 } );
 
 QUnit.test( 'it uses the reference gateway with valid element', function ( assert ) {
