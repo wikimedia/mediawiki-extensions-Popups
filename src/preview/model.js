@@ -249,15 +249,6 @@ export function registerModel( type, selector, delay ) {
 	}
 }
 
-/**
- * Check whether any kind of preview is enabled.
- *
- * @return {boolean}
- */
-export function isAnythingEligible() {
-	return !!selectors.length;
-}
-
 export const test = {
 	/** For testing only */
 	reset: () => {

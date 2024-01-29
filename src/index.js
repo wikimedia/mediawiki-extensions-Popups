@@ -22,8 +22,7 @@ import * as actions from './actions';
 import reducers from './reducers';
 import createMediaWikiPopupsObject from './integrations/mwpopups';
 import { previewTypes, getPreviewType,
-	registerModel,
-	isAnythingEligible, findNearestEligibleTarget } from './preview/model';
+	registerModel, findNearestEligibleTarget } from './preview/model';
 import setUserConfigFlags from './setUserConfigFlags';
 import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
 import { FETCH_START_DELAY, FETCH_COMPLETE_TARGET_DELAY } from './constants';
@@ -251,11 +250,6 @@ function handleDOMEventIfEligible( handler ) {
 				}
 			]
 		} );
-	}
-
-	if ( !isAnythingEligible() ) {
-		mw.log.warn( 'ext.popups was loaded but everything is disabled' );
-		return;
 	}
 
 	rendererInit();
