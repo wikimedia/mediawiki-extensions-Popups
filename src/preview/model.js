@@ -123,8 +123,11 @@ const elementMatchesSelector = ( element, selector ) => {
  * @return {HTMLElement|null}
  */
 export function findNearestEligibleTarget( element ) {
-	const selector = selectors.join( ', ' );
-	return element.closest( selector );
+	if ( selectors.length ) {
+		const selector = selectors.join( ', ' );
+		return element.closest( selector );
+	}
+	return null;
 }
 
 /**
