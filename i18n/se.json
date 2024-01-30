@@ -3,12 +3,13 @@
 		"authors": [
 			"Yupik",
 			"Kimberli Mäkäräinen (WMNO)",
-			"Ante75"
+			"Ante75",
+			"Lea-Christine Sara"
 		]
 	},
 	"popups-desc": "Ovdačájáheapmi ihtá go geavaheaddji bisánastá liŋkka bajil",
 	"popups-settings-title": "Ovdačájeheamit",
-	"popups-settings-option-page": "Siiddu ovdačájehemiid",
+	"popups-settings-option-page": "Siiddu ovdačájeheamit",
 	"popups-settings-option-page-description": "Čájet oanehis ovdačájeheami fáttás logadettiin ovtta siiddu.",
 	"popups-settings-option-reference": "Referánssaid ovdačájeheapmi",
 	"popups-settings-option-reference-description": "Ovdačájeheamit referánssas logadettiin ovtta siiddu.",
@@ -17,12 +18,13 @@
 	"popups-settings-cancel": "Gaskkalduhte",
 	"popups-settings-help": "Sáhtát fas ovdačájehemiid coahkkalit nala siiddu bodneteavsttas.",
 	"popups-settings-enable": "Molsso ovdačájeheami ásahusaid",
-	"popups-settings-icon-gear-title": "Molssot ovdačájeheami ásahusaid",
+	"popups-settings-icon-gear-title": "Molsso ovdačájeheami ásahusaid",
 	"popups-preview-no-preview": "Boastuvuohta hehttii dán ovdačájeheami oidnomis",
 	"popups-preview-footer-read": "Mana dán siidui",
 	"popups-preview-disambiguation": "Dát namma čujuha eanet go ovtta siidui",
 	"popups-preview-disambiguation-link": "Čajet sullasaš siidduid",
 	"prefs-reading": "Lohkanásahusat",
 	"popups-prefs-optin": "Raba ovdačájehemiid (ovdagihtii čájehit fáttáid logadettiin ovtta siiddu)",
-	"popups-refpreview-reference": "Gáldu"
+	"popups-refpreview-reference": "Gáldu",
+	"popups-refpreview-note": "Fuomáš"
 }
