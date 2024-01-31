@@ -7,7 +7,8 @@
 			"Lokal Profil",
 			"Sabelöga",
 			"Skalman",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Lejonel"
 		]
 	},
 	"popups-message": "Förhandsvisningar",
@@ -36,7 +37,7 @@
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Du har aktiverat finesserna [[$1|Navigation popups]] och [[$1|Reference Tooltips]], så du kommer inte att se förhandsvisningar ifrån denna funktion. Beroende på din wiki kan finesserna ha lite annorlunda namn. Om du fortsätter uppleva problem kan du granska dina finesser och användarskript, inklusive de globala.",
 	"popups-refpreview-reference": "Referens",
 	"popups-refpreview-book": "Bokreferens",
-	"popups-refpreview-journal": "Journalreferens",
+	"popups-refpreview-journal": "Tidskriftsreferens",
 	"popups-refpreview-news": "Nyhetsreferens",
 	"popups-refpreview-note": "Fotnot",
 	"popups-refpreview-web": "Webbreferens",
