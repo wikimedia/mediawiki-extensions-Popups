@@ -67,11 +67,17 @@ class PopupsHooks implements
 	 * @return array
 	 */
 	public static function getCustomPopupTypes(): array {
+		$rl = MediaWikiServices::getInstance()->getService( 'ResourceLoader' );
+		// FIXME: If the module ext.cite.referencePreviews does not exist register reference previews.
+		// This code can be removed once T355194 is complete.
+		$others = $rl->getModule( 'ext.cite.referencePreviews' ) ?
+			[] : [
+				'ext.popups.referencePreviews'
+			];
+
 		return array_merge( ExtensionRegistry::getInstance()->getAttribute(
 			'PopupsPluginModules'
-		), [
-			'ext.popups.referencePreviews'
-		] );
+		), $others );
 	}
 
 	/**
