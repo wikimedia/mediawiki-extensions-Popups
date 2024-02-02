@@ -1,4 +1,4 @@
-import { TYPE_REFERENCE } from './constants.js';
+const { TYPE_REFERENCE } = require( './constants.js' );
 
 /**
  * @module isReferencePreviewsEnabled
@@ -14,7 +14,7 @@ import { TYPE_REFERENCE } from './constants.js';
  *
  * @return {boolean|null} Null when there is no way the popup type can be enabled at run-time.
  */
-export default function isReferencePreviewsEnabled( user, isPreviewTypeEnabled, config ) {
+function isReferencePreviewsEnabled( user, isPreviewTypeEnabled, config ) {
 	// TODO: This and the final `mw.user.options` check are currently redundant. Only this here
 	// should be removed when the wgPopupsReferencePreviews feature flag is not needed any more.
 	if ( !config.get( 'wgPopupsReferencePreviews' ) ) {
@@ -37,3 +37,5 @@ export default function isReferencePreviewsEnabled( user, isPreviewTypeEnabled, 
 	// Registered users never can enable popup types at run-time.
 	return user.options.get( 'popups-reference-previews' ) === '1' ? true : null;
 }
+
+module.exports = isReferencePreviewsEnabled;

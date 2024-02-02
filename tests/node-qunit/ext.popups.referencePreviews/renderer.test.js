@@ -1,12 +1,10 @@
-import * as renderer from '../../../src/ui/renderer';
-import * as constants from '../../../src/constants';
-import { previewTypes } from '../../../src/preview/model';
-import createReferencePreview from '../../../src/ext.popups.referencePreviews/createReferencePreview';
+import createReferencePreview from '../../../resources/ext.popups.referencePreviews/createReferencePreview';
+import { TYPE_REFERENCE } from '../../../resources/ext.popups.referencePreviews/constants';
+
+const previewTypes = { TYPE_REFERENCE };
 
 QUnit.module( 'ext.popups.referencePreviews#renderer', {
 	beforeEach() {
-		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
-
 		mw.msg = ( key ) => `<${ key }>`;
 		mw.message = ( key ) => {
 			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${ key }>` };
@@ -31,22 +29,17 @@ QUnit.module( 'ext.popups.referencePreviews#renderer', {
 		mw.msg = null;
 		mw.message = null;
 		mw.html = null;
-		renderer.test.reset();
 	}
 } );
 
 QUnit.test( 'createReferencePreview(model)', ( assert ) => {
-	renderer.registerPreviewUI(
-		previewTypes.TYPE_REFERENCE,
-		createReferencePreview
-	);
 	const model = {
 			url: '#custom_id',
 			extract: 'Custom <i>extract</i> with an <a href="/wiki/Internal">internal</a> and an <a href="//wikipedia.de" class="external">external</a> link',
 			type: previewTypes.TYPE_REFERENCE,
 			referenceType: 'web'
 		},
-		preview = renderer.createPreviewWithType( model );
+		preview = createReferencePreview( model );
 
 	assert.strictEqual( preview.hasThumbnail, false );
 	assert.strictEqual( preview.isTall, false );
@@ -67,16 +60,12 @@ QUnit.test( 'createReferencePreview(model)', ( assert ) => {
 } );
 
 QUnit.test( 'createReferencePreview default title', ( assert ) => {
-	renderer.registerPreviewUI(
-		previewTypes.TYPE_REFERENCE,
-		createReferencePreview
-	);
 	const model = {
 			url: '',
 			extract: '',
 			type: previewTypes.TYPE_REFERENCE
 		},
-		preview = renderer.createPreviewWithType( model );
+		preview = createReferencePreview( model );
 
 	assert.strictEqual(
 		$( preview.el ).find( '.mwe-popups-title' ).text().trim(),
@@ -85,16 +74,12 @@ QUnit.test( 'createReferencePreview default title', ( assert ) => {
 } );
 
 QUnit.test( 'createReferencePreview updates fade-out effect on scroll', ( assert ) => {
-	renderer.registerPreviewUI(
-		previewTypes.TYPE_REFERENCE,
-		createReferencePreview
-	);
 	const model = {
 			url: '',
 			extract: '',
 			type: previewTypes.TYPE_REFERENCE
 		},
-		preview = renderer.createPreviewWithType( model ),
+		preview = createReferencePreview( model ),
 		$extract = $( preview.el ).find( '.mwe-popups-extract' );
 
 	$extract.children()[ 0 ].dispatchEvent( new Event( 'scroll' ) );
@@ -104,17 +89,13 @@ QUnit.test( 'createReferencePreview updates fade-out effect on scroll', ( assert
 } );
 
 QUnit.test( 'createReferencePreview collapsible/sortable handling', ( assert ) => {
-	renderer.registerPreviewUI(
-		previewTypes.TYPE_REFERENCE,
-		createReferencePreview
-	);
 	const model = {
 			url: '',
 			extract: '<table class="mw-collapsible"></table>' +
 				'<table class="sortable"><th class="headerSort" tabindex="1" title="Click here"></th></table>',
 			type: previewTypes.TYPE_REFERENCE
 		},
-		preview = renderer.createPreviewWithType( model );
+		preview = createReferencePreview( model );
 
 	assert.strictEqual( $( preview.el ).find( '.mw-collapsible, .sortable, .headerSort' ).length, 0 );
 	assert.strictEqual( $( preview.el ).find( 'th' ).attr( 'tabindex' ), undefined );

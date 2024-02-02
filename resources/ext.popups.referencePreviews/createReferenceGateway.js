@@ -2,12 +2,12 @@
  * @module gateway/reference
  */
 
-import { TYPE_REFERENCE } from './constants.js';
+const { TYPE_REFERENCE } = require( './constants.js' );
 
 /**
  * @return {Gateway}
  */
-export default function createReferenceGateway() {
+module.exports = function createReferenceGateway() {
 
 	/**
 	 * @param {string} id

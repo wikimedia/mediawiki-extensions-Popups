@@ -13,7 +13,7 @@ const REF_TOOLTIPS_ENABLED = 2,
  *
  * @param {mw.Map} config
  */
-export default function setUserConfigFlags( config ) {
+module.exports = function setUserConfigFlags( config ) {
 	const popupsFlags = parseInt( config.get( 'wgPopupsFlags' ), 10 );
 
 	/* eslint-disable no-bitwise */

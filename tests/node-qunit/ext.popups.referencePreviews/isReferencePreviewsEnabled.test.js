@@ -1,5 +1,5 @@
 import * as stubs from '../stubs';
-import isReferencePreviewsEnabled from '../../../src/ext.popups.referencePreviews/isReferencePreviewsEnabled';
+import isReferencePreviewsEnabled from '../../../resources/ext.popups.referencePreviews/isReferencePreviewsEnabled';
 
 function createStubUserSettings( expectEnabled ) {
 	return {

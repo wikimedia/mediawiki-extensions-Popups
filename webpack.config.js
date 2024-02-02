@@ -29,8 +29,7 @@ module.exports = ( env, argv ) => ( {
 	context: __dirname,
 
 	entry: {
-		index: './src',
-		referencePreviews: './src/ext.popups.referencePreviews/index.js'
+		index: './src'
 	},
 
 	resolve: {
