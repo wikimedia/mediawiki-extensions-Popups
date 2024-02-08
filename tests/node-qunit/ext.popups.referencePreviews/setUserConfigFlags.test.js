@@ -1,4 +1,4 @@
-import setUserConfigFlags from '../../../src/ext.popups.referencePreviews/setUserConfigFlags';
+import setUserConfigFlags from '../../../resources/ext.popups.referencePreviews/setUserConfigFlags';
 
 QUnit.module( 'ext.popups.referencePreviews#setUserConfigFlags' );
 

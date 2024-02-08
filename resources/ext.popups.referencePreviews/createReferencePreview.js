@@ -1,7 +1,7 @@
 /**
  * @module referencePreview
  */
-import { isTrackingEnabled, LOGGING_SCHEMA } from './referencePreviews';
+const { isTrackingEnabled, LOGGING_SCHEMA } = require( './referencePreviews.js' );
 
 const TEMPLATE = document.createElement( 'template' );
 TEMPLATE.innerHTML = `
@@ -180,10 +180,12 @@ function renderReferencePreview(
  * @param {ext.popups.ReferencePreviewModel} model
  * @return {ext.popups.Preview}
  */
-export default function createReferencePreview( model ) {
+function createReferencePreview( model ) {
 	return {
 		el: renderReferencePreview( model ),
 		hasThumbnail: false,
 		isTall: false
 	};
 }
+
+module.exports = createReferencePreview;

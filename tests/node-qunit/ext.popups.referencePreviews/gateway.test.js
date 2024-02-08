@@ -1,5 +1,5 @@
 import { createStubTitle } from '../stubs';
-import createReferenceGateway from '../../../src/ext.popups.referencePreviews/createReferenceGateway';
+import createReferenceGateway from '../../../resources/ext.popups.referencePreviews/createReferenceGateway';
 
 QUnit.module( 'ext.popups.referencePreviews/createReferenceGateway', {
 	beforeEach() {

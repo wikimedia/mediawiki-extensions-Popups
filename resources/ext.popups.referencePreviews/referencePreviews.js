@@ -1,11 +1,11 @@
 let isTracking = false;
 
-export const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
+const LOGGING_SCHEMA = 'event.ReferencePreviewsPopups';
 
 /**
  * Run once the preview is initialized.
  */
-export function initReferencePreviewsInstrumentation() {
+function initReferencePreviewsInstrumentation() {
 	if ( mw.config.get( 'wgPopupsReferencePreviews' ) &&
 		navigator.sendBeacon &&
 		mw.config.get( 'wgIsArticle' ) &&
@@ -16,6 +16,12 @@ export function initReferencePreviewsInstrumentation() {
 	}
 }
 
-export function isTrackingEnabled() {
+function isTrackingEnabled() {
 	return isTracking;
 }
+
+module.exports = {
+	LOGGING_SCHEMA,
+	initReferencePreviewsInstrumentation,
+	isTrackingEnabled
+};

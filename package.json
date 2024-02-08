@@ -72,10 +72,6 @@
 		{
 			"path": "resources/dist/index.js",
 			"maxSize": "13.5kB"
-		},
-		{
-			"path": "resources/dist/referencePreviews.js",
-			"maxSize": "2.1kB"
 		}
 	]
 }
