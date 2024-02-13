@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"BrennodAloisi",
-			"Cedric31"
+			"Cedric31",
+			"Lhanars"
 		]
 	},
 	"popups-message": "Apercebuts de la pagina",
 	"popups-desc": "Aficha un apercebut quand l’utilizaire susvòla un ligam de pagina.",
 	"popups-settings-title": "Previsualizacion de la pagina",
 	"popups-settings-option-page": "Activar",
-	"popups-settings-help-ok": "Fait"
+	"popups-settings-help-ok": "Fait",
+	"popups-preview-no-preview": "\nI a agut un problèma a mòstrar aquela previsualizacion"
 }
