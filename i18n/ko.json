@@ -21,6 +21,8 @@
 	"popups-settings-title": "미리 보기",
 	"popups-settings-option-page": "문서 미리 보기",
 	"popups-settings-option-page-description": "문서를 읽는 동안 주제를 빠르게 미리 봅니다.",
+	"popups-settings-option-reference": "각주 미리 보기",
+	"popups-settings-option-reference-description": "문서를 읽는 동안 각주를 빠르게 미리 봅니다.",
 	"popups-settings-save": "저장",
 	"popups-settings-help-ok": "완료",
 	"popups-settings-cancel": "취소",
