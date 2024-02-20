@@ -3,7 +3,8 @@
 		"authors": [
 			"Jhertel",
 			"Saederup92",
-			"Weblars"
+			"Weblars",
+			"Dipsacus fullonum"
 		]
 	},
 	"popups-settings-option-page": "Aktiver",
@@ -18,7 +19,7 @@
 	"popups-prefs-conflicting-gadgets-info": "Visse gadgets og andre personlige indstillinger kan påvirke denne funktion negativt. Hvis du oplever problemer, så check dine gadgets og brugerscripts, inklusiv dine globale scripts.",
 	"popups-refpreview-reference": "Reference",
 	"popups-refpreview-book": "Bogreference",
-	"popups-refpreview-journal": "Journalreference",
+	"popups-refpreview-journal": "Tidsskriftsreference",
 	"popups-refpreview-news": "Nyhedsreference",
-	"popups-refpreview-web": "Websidereference"
+	"popups-refpreview-web": "Webreference"
 }
