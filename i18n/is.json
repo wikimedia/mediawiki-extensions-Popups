@@ -3,7 +3,8 @@
 		"authors": [
 			"LoveIceLang",
 			"Snævar",
-			"Sveinn í Felli"
+			"Sveinn í Felli",
+			"Stefán Örvar Sigmundsson"
 		]
 	},
 	"popups-desc": "Sýnir forskoðunar sprettiglugga þegar notandi hangir yfir tengli",
@@ -25,7 +26,7 @@
 	"prefs-reading": "Kjörstillingar við lestur",
 	"popups-prefs-optin": "Virkja forskoðun síðna (fá snögga forskoðun á efni á meðan þú lest síðu)",
 	"popups-prefs-disable-nav-gadgets-info": "Þú þarft að [[$1|afvirkja Navigation popups smáforritið]] í stillingunum þínum til að virkja forskoðun síðna.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Þú hefur [[$1|Reference Tooltips]] smáforritið virkt, þú munt ekki sjá forskoðun heimilda en þú munt sjá forskoðanir síðna. Wiki vefsvæðið þitt gæti verið með smáforritið undir öðru nafni. Ef þú heldur áfram að fá villur, skoðaðu hvaða smáforrit og notendaskriftur þú ert með virkar, þar með talið altækar skriftur.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Þú ert með [[$1|Reference Tooltips]]-græjuna virkjaða svo þú munt ekki sjá tilvísunarforskoðun en þú munt sjá síðuforskoðun. Eftir því hvaða wiki þú hefur kann græjan að heita aðeins frábrugðu nafni. Ef þú heldur áfram að lenda í vandræðum skalt þú fara yfir græjurnar þínar og notendaskriftur, þar með talið altækar.",
 	"popups-refpreview-reference": "Tilvísun",
 	"popups-refpreview-book": "Tilvísun í bók",
 	"popups-refpreview-journal": "Tilvísun í tímarit",
