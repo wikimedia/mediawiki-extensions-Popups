@@ -6,12 +6,24 @@
 			"George Animal"
 		]
 	},
+	"popups-message": "Pêşdîtin",
 	"popups-settings-title": "Pêşdîtin",
 	"popups-settings-option-page": "Çalak bike",
+	"popups-settings-option-reference": "Pêşdîtina çavkaniyan",
+	"popups-settings-option-reference-description": "Wextê rûpelê dixwînî, pêşdîtina bilez a çavkaniyekê bibîne",
 	"popups-settings-save": "Tomar bike",
 	"popups-settings-help-ok": "Çêbû",
 	"popups-settings-cancel": "Betal bike",
 	"popups-settings-enable": "Mîhengên pêşdîtinê biguhêre",
+	"popups-settings-icon-gear-title": "Eyarên pêşdîtina rûpelê biguhêre",
+	"popups-preview-footer-read": "Here vê rûpelê",
+	"popups-preview-disambiguation": "Ev sernav eleqedarê ji yekî zêdetir rûpelan e",
+	"popups-preview-disambiguation-link": "Rûpelên wek vî bibîne",
+	"prefs-reading": "Tercîhên xwendinê",
 	"popups-refpreview-reference": "Çavkanî",
+	"popups-refpreview-book": "Çavkaniya kitêban",
+	"popups-refpreview-journal": "Çavkaniya kovaran",
+	"popups-refpreview-news": "Çavkaniya nûçeyan",
+	"popups-refpreview-note": "Not",
 	"popups-refpreview-web": "Çavkaniya înternetê"
 }
