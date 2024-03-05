@@ -16,7 +16,8 @@
 			"Whym",
 			"Yamagata Yusuke",
 			"Yusuke1109",
-			"赤城。"
+			"赤城。",
+			"Marine-Blue"
 		]
 	},
 	"popups-message": "プレビュー",
@@ -37,9 +38,9 @@
 	"popups-preview-disambiguation": "このタイトルは複数のページに関連しています",
 	"popups-preview-disambiguation-link": "類似のページを表示",
 	"prefs-reading": "閲覧設定",
-	"popups-prefs-optin": "ページのプレビュー (ページを読みながら特定の題目をプレビュー)",
+	"popups-prefs-optin": "ページのプレビューを有効にする（ページを読みながらリンク先項目のクイックプレビューを有効にする）",
 	"popups-prefs-disable-nav-gadgets-info": "Page Previews を有効にするには、ガジェットタブから[[$1|ナビゲーション・ポップアップを無効]]にしてください。",
-	"popups-prefs-conflicting-gadgets-info": "一部のガジェットやカスタマイズが、この機能の動作に影響を与える可能性があります。不具合を経験されましたら、グローバルの設定とローカルのガジェットや利用者スクリプトをご確認ください。",
+	"popups-prefs-conflicting-gadgets-info": "一部のガジェットやカスタマイズが、この機能の動作に影響を与える可能性があります。問題が発生した場合は、グローバルおよびローカルの個人設定、ガジェット、利用者スクリプトをご確認ください。",
 	"popups-prefs-navpopups-gadget-conflict-info": "[[$1|ナビゲーションポップアップ]]ガジェットが有効になっているため、この機能によって提供されるプレビューは表示されません。ウィキによっては、ガジェットの名前が少し異なる場合があります。引き続き問題が発生する場合は、グローバルなものを含め、ガジェットと利用者スクリプトを確認してください。",
 	"popups-prefs-reftooltips-gadget-conflict-info": "[[$1|参照ツールチップ]]ガジェットが有効になっているため、参照プレビューは表示されませんが、ページプレビューは表示されます。ウィキによっては、ガジェットの名前が少し異なる場合があります。引き続き問題が発生する場合は、グローバルなものを含め、ガジェットと利用者スクリプトを確認してください。",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "[[$1|ナビゲーションポップアップ]]および[[$1|参照ツールチップ]]ガジェットが有効になっているため、この機能によって提供されるプレビューは表示されません。ウィキによっては、ガジェットの名前が少し異なる場合があります。引き続き問題が発生する場合は、グローバルなものを含め、ガジェットと利用者スクリプトを確認してください",
@@ -50,7 +51,7 @@
 	"popups-refpreview-note": "注釈",
 	"popups-refpreview-web": "ウェブサイトの出典",
 	"popups-refpreview-collapsible-placeholder": "このリファレンスには、プレビューに収まらない図が含まれています。",
-	"popups-refpreview-user-preference-label": "ページのプレビュー (ページを読みながら題目をプレビュー)",
+	"popups-refpreview-user-preference-label": "参考文献のプレビューを有効にする（ページを読んでいるときに参考文献のクイックプレビューを有効にする）",
 	"popups-refpreview-beta-feature-message": "参考資料プレビュー",
 	"popups-refpreview-beta-feature-description": "脚注マーカにマウスを当てると参考資料のプレビューを表示。\n\n注記：ウィキペディアのガジェットのうち[https://ja.wikipedia.org/wiki/Help:ナビゲーション・ポップアップ ナビゲーション ポップアップ]ガジェット若しくは[[mw:Special:MyLanguage/Reference Tooltips|Reference Tooltips]]ガジェットを有効にしてあると、参考資料プレビューは表示されません。"
 }
