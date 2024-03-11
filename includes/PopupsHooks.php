@@ -71,9 +71,7 @@ class PopupsHooks implements
 		// FIXME: If the module ext.cite.referencePreviews does not exist register reference previews.
 		// This code can be removed once T355194 is complete.
 		$others = $rl->getModule( 'ext.cite.referencePreviews' ) ?
-			[] : [
-				'ext.popups.referencePreviews'
-			];
+			[] : [ 'ext.popups.referencePreviews' ];
 
 		return array_merge( ExtensionRegistry::getInstance()->getAttribute(
 			'PopupsPluginModules'
