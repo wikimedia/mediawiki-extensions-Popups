@@ -23,7 +23,7 @@
 @previewPointerHeight: 8px;
 
 .mwe-popups {
-	background: #fff;
+	background: @background-color-base;
 	position: absolute;
 	z-index: @zIndexPopup;
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px @borderColorPopup;
@@ -174,7 +174,7 @@
 		}
 
 		&::after {
-			.mwe-popups-border-pointer-top( 7px, 7px, #fff, 4px );
+			.mwe-popups-border-pointer-top( 7px, 7px, @background-color-base, 4px );
 		}
 	}
 
@@ -197,7 +197,7 @@
 		}
 
 		&::after {
-			.mwe-popups-border-pointer-top( 8px, 6px, #fff, 4px );
+			.mwe-popups-border-pointer-top( 8px, 6px, @background-color-base, 4px );
 			z-index: @zIndexForeground;
 		}
 
@@ -207,7 +207,7 @@
 			}
 
 			&::after {
-				.mwe-popups-border-pointer-top( 8px, 290px, #fff, 4px );
+				.mwe-popups-border-pointer-top( 8px, 290px, @background-color-base, 4px );
 			}
 		}
 
@@ -244,7 +244,7 @@
 		}
 
 		&::after {
-			.mwe-popups-border-pointer-bottom( 8px, 290px, #fff, 4px );
+			.mwe-popups-border-pointer-bottom( 8px, 290px, @background-color-base, 4px );
 			z-index: @zIndexForeground;
 		}
 
@@ -256,7 +256,7 @@
 			}
 
 			&::after {
-				.mwe-popups-border-pointer-bottom( 8px, 417px, #fff, 4px );
+				.mwe-popups-border-pointer-bottom( 8px, 417px, @background-color-base, 4px );
 			}
 
 			> div > a > svg {
@@ -275,7 +275,7 @@
 		}
 
 		&::after {
-			.mwe-popups-border-pointer-bottom( 7px, 7px, #fff, 4px );
+			.mwe-popups-border-pointer-bottom( 7px, 7px, @background-color-base, 4px );
 		}
 	}
 }
@@ -380,7 +380,7 @@
 			--y5: 100%;
 			padding-top: 0;
 			display: flex;
-			background: #fff;
+			background: @background-color-base;
 			--pseudo-radius: 2px;
 			--pointer-height: 8px;
 			--pointer-width: 16px;
@@ -434,6 +434,49 @@
 				--x4: ~'calc(100% - var(--pointer-offset))';
 				--x5: ~'calc(100% - var(--pointer-offset) + (var(--pointer-width) / 2))';
 			}
+		}
+	}
+}
+
+// Apply night mode styles that can't be handled with CSS variables, i.e. anything with rgba()
+html.skin-night-mode-clientpref-1 {
+	.mwe-popups {
+		box-shadow: 0 30px 90px -20px rgba( 255, 255, 255, 0.3 ), 0 0 1px 1px rgba( 255, 255, 255, 0.05 );
+
+		&.mwe-popups-no-image-pointer::before {
+			.mwe-popups-border-pointer-top( 8px, 10px, rgba( 255, 255, 255, 0.07 ), 0 );
+		}
+	}
+
+	.mwe-popups-extract[ dir='ltr' ]::after {
+		/* @noflip */
+		background-image: linear-gradient( to right, rgba( 0, 0, 0, 0 ), rgba( 0, 0, 0, 1 ) 50% );
+	}
+
+	.mwe-popups-extract[ dir='rtl' ]::after {
+		/* @noflip */
+		background-image: linear-gradient( to left, rgba( 0, 0, 0, 0 ), rgba( 0, 0, 0, 1 ) 50% );
+	}
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-night-mode-clientpref-2 {
+		.mwe-popups {
+			box-shadow: 0 30px 90px -20px rgba( 255, 255, 255, 0.3 ), 0 0 1px 1px rgba( 255, 255, 255, 0.05 );
+
+			&.mwe-popups-no-image-pointer::before {
+				.mwe-popups-border-pointer-top( 8px, 10px, rgba( 255, 255, 255, 0.07 ), 0 );
+			}
+		}
+
+		.mwe-popups-extract[ dir='ltr' ]::after {
+			/* @noflip */
+			background-image: linear-gradient( to right, rgba( 0, 0, 0, 0 ), rgba( 0, 0, 0, 1 ) 50% );
+		}
+
+		.mwe-popups-extract[ dir='rtl' ]::after {
+			/* @noflip */
+			background-image: linear-gradient( to left, rgba( 0, 0, 0, 0 ), rgba( 0, 0, 0, 1 ) 50% );
 		}
 	}
 }
