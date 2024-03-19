@@ -50,15 +50,27 @@ class PopupsHooks implements
 
 	private const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
+	/** @var Config */
+	private $config;
+
+	/** @var PopupsContext */
+	private $popupsContext;
+
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
 	/**
+	 * @param Config $config
+	 * @param PopupsContext $popupsContext
 	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
+		Config $config,
+		PopupsContext $popupsContext,
 		UserOptionsManager $userOptionsManager
 	) {
+		$this->config = $config;
+		$this->popupsContext = $popupsContext;
 		$this->userOptionsManager = $userOptionsManager;
 	}
 
@@ -85,21 +97,17 @@ class PopupsHooks implements
 	 * @param array[] &$prefs Preferences description array, to be fed to a HTMLForm object
 	 */
 	public function onGetPreferences( $user, &$prefs ) {
-		/** @var PopupsContext $context */
-		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
-
-		if ( !$context->showPreviewsOptInOnPreferencesPage() ) {
+		if ( !$this->popupsContext->showPreviewsOptInOnPreferencesPage() ) {
 			return;
 		}
 
 		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
-		$readingOptions = self::getPagePreviewPrefToggle( $user, $context );
+		$readingOptions = self::getPagePreviewPrefToggle( $user, $this->popupsContext );
 
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
-		if ( $config->get( 'PopupsReferencePreviews' ) ) {
+		if ( $this->config->get( 'PopupsReferencePreviews' ) ) {
 			$readingOptions = array_merge(
 				$readingOptions,
-				self::getReferencePreviewPrefToggle( $user, $context )
+				self::getReferencePreviewPrefToggle( $user, $this->popupsContext )
 			);
 		}
 
@@ -183,21 +191,19 @@ class PopupsHooks implements
 	 * @param Skin $skin Skin object that will be used to generate the page
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		/** @var PopupsContext $context */
-		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
-		if ( $context->isTitleExcluded( $out->getTitle() ) ) {
+		if ( $this->popupsContext->isTitleExcluded( $out->getTitle() ) ) {
 			return;
 		}
 
-		if ( !$context->areDependenciesMet() ) {
-			$logger = $context->getLogger();
+		if ( !$this->popupsContext->areDependenciesMet() ) {
+			$logger = $this->popupsContext->getLogger();
 			$logger->error( 'Popups requires the PageImages extensions.
 				TextExtracts extension is required when using mwApiPlain gateway.' );
 			return;
 		}
 
 		$user = $out->getUser();
-		if ( $context->shouldSendModuleToUser( $user ) ) {
+		if ( $this->popupsContext->shouldSendModuleToUser( $user ) ) {
 			$out->addModules( [ 'ext.popups' ] );
 		}
 	}
@@ -215,14 +221,11 @@ class PopupsHooks implements
 	 * @param Config $config
 	 */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		/** @var Config $config */
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
-
-		$vars['wgPopupsVirtualPageViews'] = $config->get( 'PopupsVirtualPageViews' );
-		$vars['wgPopupsGateway'] = $config->get( 'PopupsGateway' );
-		$vars['wgPopupsRestGatewayEndpoint'] = $config->get( 'PopupsRestGatewayEndpoint' );
-		$vars['wgPopupsStatsvSamplingRate'] = $config->get( 'PopupsStatsvSamplingRate' );
-		$vars['wgPopupsTextExtractsIntroOnly'] = $config->get( 'PopupsTextExtractsIntroOnly' );
+		$vars['wgPopupsVirtualPageViews'] = $this->config->get( 'PopupsVirtualPageViews' );
+		$vars['wgPopupsGateway'] = $this->config->get( 'PopupsGateway' );
+		$vars['wgPopupsRestGatewayEndpoint'] = $this->config->get( 'PopupsRestGatewayEndpoint' );
+		$vars['wgPopupsStatsvSamplingRate'] = $this->config->get( 'PopupsStatsvSamplingRate' );
+		$vars['wgPopupsTextExtractsIntroOnly'] = $this->config->get( 'PopupsTextExtractsIntroOnly' );
 	}
 
 	/**
@@ -241,9 +244,7 @@ class PopupsHooks implements
 	 * @param \IContextSource $out OutputPage instance calling the hook
 	 */
 	public function onMakeGlobalVariablesScript( &$vars, $out ): void {
-		/** @var PopupsContext $context */
-		$context = MediaWikiServices::getInstance()->getService( 'Popups.Context' );
-		$vars['wgPopupsFlags'] = $context->getConfigBitmaskFromUser( $out->getUser() );
+		$vars['wgPopupsFlags'] = $this->popupsContext->getConfigBitmaskFromUser( $out->getUser() );
 	}
 
 	/**
@@ -252,12 +253,10 @@ class PopupsHooks implements
 	 * @param array &$defaultOptions
 	 */
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		/** @var Config $config */
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
-		$default = $config->get( 'PopupsOptInDefaultState' );
+		$default = $this->config->get( 'PopupsOptInDefaultState' );
 		$defaultOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
 
-		if ( $config->get( 'PopupsReferencePreviews' ) ) {
+		if ( $this->config->get( 'PopupsReferencePreviews' ) ) {
 			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = '1';
 		}
 	}
@@ -269,16 +268,14 @@ class PopupsHooks implements
 	 * @param bool $isAutoCreated
 	 */
 	public function onLocalUserCreated( $user, $isAutoCreated ) {
-		/** @var Config $config */
-		$config = MediaWikiServices::getInstance()->getService( 'Popups.Config' );
-		$default = $config->get( 'PopupsOptInStateForNewAccounts' );
+		$default = $this->config->get( 'PopupsOptInStateForNewAccounts' );
 		$this->userOptionsManager->setOption(
 			$user,
 			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
 			$default
 		);
 
-		if ( $config->get( 'PopupsReferencePreviews' ) ) {
+		if ( $this->config->get( 'PopupsReferencePreviews' ) ) {
 			$this->userOptionsManager->setOption(
 				$user,
 				PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME,

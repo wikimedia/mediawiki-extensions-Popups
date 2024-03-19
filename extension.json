@@ -30,6 +30,8 @@
 		"PopupsHooks": {
 			"class": "Popups\\PopupsHooks",
 			"services": [
+				"Popups.Config",
+				"Popups.Context",
 				"UserOptionsManager"
 			]
 		}
