@@ -32,6 +32,7 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
+use Psr\Log\LoggerInterface;
 use Skin;
 
 /**
@@ -56,21 +57,27 @@ class PopupsHooks implements
 	/** @var PopupsContext */
 	private $popupsContext;
 
+	/** @var LoggerInterface */
+	private $logger;
+
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
 	/**
 	 * @param Config $config
 	 * @param PopupsContext $popupsContext
+	 * @param LoggerInterface $logger
 	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
 		Config $config,
 		PopupsContext $popupsContext,
+		LoggerInterface $logger,
 		UserOptionsManager $userOptionsManager
 	) {
 		$this->config = $config;
 		$this->popupsContext = $popupsContext;
+		$this->logger = $logger;
 		$this->userOptionsManager = $userOptionsManager;
 	}
 
@@ -196,8 +203,7 @@ class PopupsHooks implements
 		}
 
 		if ( !$this->popupsContext->areDependenciesMet() ) {
-			$logger = $this->popupsContext->getLogger();
-			$logger->error( 'Popups requires the PageImages extensions.
+			$this->logger->error( 'Popups requires the PageImages extensions.
 				TextExtracts extension is required when using mwApiPlain gateway.' );
 			return;
 		}
