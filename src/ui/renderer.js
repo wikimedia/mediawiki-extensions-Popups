@@ -381,7 +381,7 @@ export function createLayout(
 			// Position according to link position or size
 			measures.offset.top + measures.height + pointerSize,
 		offsetLeft;
-	const clientTop = measures.clientY ? measures.clientY : offsetTop;
+	const clientTop = measures.clientY ? measures.clientY : offsetTop - measures.scrollTop;
 
 	if ( measures.pageX ) {
 		if ( measures.width > maxLinkWidthForCenteredPointer ) {
