@@ -50,6 +50,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		( new PopupsHooks(
 			new HashConfig(),
 			$contextMock,
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onGetPreferences( $this->createMock( User::class ), $prefs );
@@ -82,6 +83,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 				'PopupsReferencePreviews' => $enabled,
 			] ),
 			$contextMock,
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onGetPreferences( $userMock, $prefs );
@@ -122,6 +124,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 				'PopupsReferencePreviews' => $enabled,
 			] ),
 			$contextMock,
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onGetPreferences( $this->createMock( User::class ), $prefs );
@@ -161,6 +164,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 				'PopupsReferencePreviews' => $enabled,
 			] ),
 			$contextMock,
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onGetPreferences( $this->createMock( User::class ), $prefs );
@@ -189,6 +193,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		( new PopupsHooks(
 			new HashConfig( $config ),
 			$this->getServiceContainer()->getService( 'Popups.Context' ),
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onResourceLoaderGetConfigVars( $vars, '', new MultiConfig( $config ) );
@@ -222,13 +227,11 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$contextMock->expects( $this->once() )
 			->method( 'isTitleExcluded' )
 			->willReturn( false );
-		$contextMock->expects( $this->once() )
-			->method( 'getLogger' )
-			->willReturn( $loggerMock );
 
 		( new PopupsHooks(
 			new HashConfig(),
 			$contextMock,
+			$loggerMock,
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onBeforePageDisplay( $outPageMock, $skinMock );
@@ -278,6 +281,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		( new PopupsHooks(
 			new HashConfig(),
 			$contextMock,
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onBeforePageDisplay( $outPageMock, $skinMock );
@@ -302,6 +306,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		( new PopupsHooks(
 			new HashConfig(),
 			$contextMock,
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onMakeGlobalVariablesScript( $vars, $outputPage );
@@ -326,6 +331,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 				'PopupsReferencePreviews' => $enabled,
 			] ),
 			$this->getServiceContainer()->getService( 'Popups.Context' ),
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onUserGetDefaultOptions( $userOptions );
@@ -365,6 +371,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 				'PopupsReferencePreviews' => $enabled,
 			] ),
 			$this->getServiceContainer()->getService( 'Popups.Context' ),
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$userOptionsManagerMock
 		) )
 			->onLocalUserCreated( $userMock, false );

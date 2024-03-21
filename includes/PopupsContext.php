@@ -22,7 +22,6 @@ namespace Popups;
 
 use ExtensionRegistry;
 use MediaWiki\Config\Config;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
@@ -241,14 +240,5 @@ class PopupsContext {
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Get module logger
-	 *
-	 * @return \Psr\Log\LoggerInterface
-	 */
-	public function getLogger() {
-		return MediaWikiServices::getInstance()->getService( 'Popups.Logger' );
 	}
 }
