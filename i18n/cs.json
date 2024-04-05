@@ -35,6 +35,7 @@
 	"popups-prefs-optin": "Zapnout náhledy stránek (při čtení stránky poskytne rychlé náhledy tématu)",
 	"popups-prefs-disable-nav-gadgets-info": "Abyste si {{GENDER:|mohl|mohla|mohli}} zapnout náhledy stránek, musíte [[$1|vypnout udělátko Navigation Popups]] na záložce Udělátka v nastavení.",
 	"popups-prefs-conflicting-gadgets-info": "Některá udělátka a další přizpůsobení mohou ovlivnit činnost této funkce. Pokud narazíte na problémy, zkontrolujte si prosím svá lokální i globální udělátka a uživatelské skripty.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Máte zapnuté udělátko [[$1|Vyskakovací reference]], takže neuvidíte náhledy referencí, ale i tak uvidíte náhledy stránek. V závislosti na vaší wiki se může udělátko jmenovat i mírně jinak. Pokud budete mít i nadále problémy, zkontrolujte prosím svá udělátka a uživatelské skripty včetně těch globálních.",
 	"popups-refpreview-reference": "Reference",
 	"popups-refpreview-book": "Knižní reference",
 	"popups-refpreview-journal": "Časopisová reference",
