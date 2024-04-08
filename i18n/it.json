@@ -7,7 +7,8 @@
 			"Nemo bis",
 			"Redredsonia",
 			"Sakretsu",
-			"TecnoMaster"
+			"TecnoMaster",
+			"Valepert"
 		]
 	},
 	"popups-message": "Anteprime",
@@ -29,8 +30,11 @@
 	"popups-preview-disambiguation-link": "Vedi pagine simili",
 	"prefs-reading": "Preferenze di lettura",
 	"popups-prefs-optin": "Abilita l'anteprima delle pagine (ottieni una veloce anteprima di un argomento mentre leggi una pagina)",
-	"popups-prefs-disable-nav-gadgets-info": "Devi [[$1|disabilitare il gadget Popup di navigazione]] dalla scheda Accessori per abilitare le anteprime delle pagine.",
+	"popups-prefs-disable-nav-gadgets-info": "Devi [[$1|disabilitare l'accessorio Popup di navigazione]] dalla scheda Accessori per abilitare l'anteprima delle pagine.",
 	"popups-prefs-conflicting-gadgets-info": "Alcuni accessori e altre personalizzazioni potrebbero influire sulle prestazioni di questa funzionalità. Se hai qualche problema rivedi i tuoi accessori e gli script utente, inclusi quelli globali.",
+	"popups-prefs-navpopups-gadget-conflict-info": "Hai abilitato l'accessorio [[$1|Popup di navigazione]] quindi non vedrai le anteprime mostrate da questa preferenza. Se riscontri problemi, verifica i tuoi accessori e la personalizzazione del tema, incluso quello globale.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Hai abilitato l'accessorio [[$1|Reference Tooltips]] quindi non vedrai l'anteprima delle note, ma continuerai a ottenere l'anteprima delle pagine. In base alla tua wiki, l'accessorio potrebbe avere un nome differente. Se riscontri problemi, verifica i tuoi accessori e la personalizzazione del tema, incluso quello globale.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Hai abilitato gli accessori [[$1|Popup di navigazione]] e [[$1|Reference Tooltips]] quindi non vedrai le anteprime. In base alla tua wiki, gli accessori potrebbero avere un nome differente. Se riscontri problemi, verifica i tuoi accessori e la personalizzazione del tema, incluso quello globale.",
 	"popups-refpreview-reference": "Riferimento",
 	"popups-refpreview-book": "Riferimento a libro",
 	"popups-refpreview-news": "Riferimento a notizie",
