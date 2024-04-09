@@ -2,17 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Ernác",
-			"Iltever"
+			"Iltever",
+			"Къарачайлы"
 		]
 	},
 	"popups-message": "Ачылыучу терезеле",
-	"popups-desc": "Бир бетге элтген джибериуге курсорну келтиргенде, бетни ичиндегисин суратлагъан ачылыучу терезени кёргюзтеди",
-	"popups-settings-title": "Бетге ал къарау",
+	"popups-desc": "Хайырланыучу джибериуню юсюне келсе, ал къарауну терезеси ачылыр",
+	"popups-settings-title": "Ал къарау",
 	"popups-settings-option-page": "Тюз",
 	"popups-settings-option-page-description": "Бетде биринчи айтым бла суратны кёргюзтеди.\nБу, окъуучулагъа рекомендация этиледи.",
 	"popups-settings-save": "Сакъла",
-	"popups-settings-help-ok": "ОК",
+	"popups-settings-help-ok": "Тындырылды",
 	"popups-settings-cancel": "Ызына ал",
 	"popups-settings-help": "Бетни тюбюндеги тиек бла алдан къарау (превью) амалны джандырыргъа боллукъсуз.",
-	"popups-settings-enable": "Ал къарауну джандыр"
+	"popups-settings-enable": "Ал къарай джарашдырыуланы тюзет"
 }
