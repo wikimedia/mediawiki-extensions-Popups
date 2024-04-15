@@ -173,6 +173,13 @@
 			]
 		},
 		"ext.popups.main": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexStyleOnly": true,
+			"codexComponents": [
+				"CdxButton",
+				"CdxIcon",
+				"CdxCheckbox"
+			],
 			"scripts": [
 				"resources/dist/index.js"
 			],
@@ -212,8 +219,7 @@
 				"mediawiki.Title",
 				"mediawiki.Uri",
 				"mediawiki.user",
-				"mediawiki.util",
-				"codex-search-styles"
+				"mediawiki.util"
 			]
 		}
 	},
