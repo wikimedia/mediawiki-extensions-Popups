@@ -155,23 +155,6 @@
 				"resources/ext.popups/index.js"
 			]
 		},
-		"ext.popups.referencePreviews": {
-			"dependencies": [
-				"ext.popups.main"
-			],
-			"styles": [
-				"resources/ext.popups.referencePreviews/referencePreview.less"
-			],
-			"packageFiles": [
-				"resources/ext.popups.referencePreviews/index.js",
-				"resources/ext.popups.referencePreviews/constants.js",
-				"resources/ext.popups.referencePreviews/createReferenceGateway.js",
-				"resources/ext.popups.referencePreviews/createReferencePreview.js",
-				"resources/ext.popups.referencePreviews/isReferencePreviewsEnabled.js",
-				"resources/ext.popups.referencePreviews/referencePreviews.js",
-				"resources/ext.popups.referencePreviews/setUserConfigFlags.js"
-			]
-		},
 		"ext.popups.main": {
 			"scripts": [
 				"resources/dist/index.js"

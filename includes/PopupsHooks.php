@@ -27,7 +27,6 @@ use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\MakeGlobalVariablesScriptHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
-use MediaWiki\ResourceLoader\Context;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsManager;
@@ -83,18 +82,12 @@ class PopupsHooks implements
 
 	/**
 	 * Get custom Popups types registered by extensions
-	 * @param Context $context
 	 * @return array
 	 */
-	public static function getCustomPopupTypes( Context $context ): array {
-		// FIXME: If the module ext.cite.referencePreviews does not exist register reference previews.
-		// This code can be removed once T355194 is complete.
-		$others = $context->getResourceLoader()->getModule( 'ext.cite.referencePreviews' ) ?
-			[] : [ 'ext.popups.referencePreviews' ];
-
-		return array_merge( ExtensionRegistry::getInstance()->getAttribute(
+	public static function getCustomPopupTypes(): array {
+		return ExtensionRegistry::getInstance()->getAttribute(
 			'PopupsPluginModules'
-		), $others );
+		);
 	}
 
 	/**
