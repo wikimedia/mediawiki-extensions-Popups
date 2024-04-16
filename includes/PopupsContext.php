@@ -105,7 +105,6 @@ class PopupsContext {
 	 * @param PopupsGadgetsIntegration $gadgetsIntegration Gadgets integration helper
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param UserOptionsLookup $userOptionsLookup
-	 *  events
 	 */
 	public function __construct(
 		Config $config,
@@ -114,12 +113,11 @@ class PopupsContext {
 		SpecialPageFactory $specialPageFactory,
 		UserOptionsLookup $userOptionsLookup
 	) {
+		$this->config = $config;
 		$this->extensionRegistry = $extensionRegistry;
 		$this->gadgetsIntegration = $gadgetsIntegration;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
-
-		$this->config = $config;
 	}
 
 	/**
