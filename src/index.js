@@ -38,6 +38,7 @@ const EXCLUDED_LINK_SELECTORS = [
 	'.mw-cite-backlink a',
 	'.oo-ui-buttonElement-button',
 	'.ve-ce-surface a', // T259889
+	'.ext-discussiontools-init-timestamplink',
 	'.cancelLink a',
 	// T198652: lists to hash fragments are ignored.
 	// Note links that include the path will still trigger a hover,
