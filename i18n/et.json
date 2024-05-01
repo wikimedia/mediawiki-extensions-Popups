@@ -26,7 +26,6 @@
 	"popups-prefs-optin": "Luba lehekülgede eelvaade (näita lehekülje lugemisel teemast kiiret eelvaadet)",
 	"popups-prefs-disable-nav-gadgets-info": "Lehekülgede eelvaadete lubamiseks pead eelistustes  tööriistade kaardil [[$1|tööriista Navigation Popups keelama]].",
 	"popups-prefs-conflicting-gadgets-info": "Teatud tööriistad ja muud kohandused võivad selle funktsiooni toimimist mõjutada. Kui koged probleeme, siis vaata palun üle oma tööriistad ja kasutajaskriptid, ka globaalsed skriptid.",
-	"popups-refpreview-reference": "Viide",
 	"popups-refpreview-book": "Raamatuviide",
 	"popups-refpreview-journal": "Ajakirjaviide",
 	"popups-refpreview-news": "Uudiseviide",

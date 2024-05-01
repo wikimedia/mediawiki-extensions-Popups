@@ -24,7 +24,6 @@
 	"popups-prefs-optin": "Activar as vistas previas de páxinas (obter vistas previas rápidas dun tema mentres le unha páxina)",
 	"popups-prefs-disable-nav-gadgets-info": "Ten que [[$1|desactivar o trebello das ventás emerxentes de navegación]] na pestana de trebellos para activar as vistas previas das páxinas.",
 	"popups-prefs-conflicting-gadgets-info": "Certos trebellos e outras personalizacións poden afectar ó rendemento desta funcionalidade. Se atopa algún problema, por favor, revise os seus trebellos e secuencias de ordes de usuario, incluíndo os globais.",
-	"popups-refpreview-reference": "Referencia",
 	"popups-refpreview-book": "Referencia de libro",
 	"popups-refpreview-journal": "Referencia de revista",
 	"popups-refpreview-news": "Referencia de novas",

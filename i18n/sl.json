@@ -32,7 +32,6 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Vklopljen imate pripomoček [[$1|Navigacijski izskokci]], zato ne boste videli predogledov, ki jih zagotavlja ta možnost. Odvisno od vašega vikija se lahko pripomoček imenuje nekoliko drugače. Če imate še naprej težave, preglejte svoje pripomočke in uporabniške skripte, vključno z globalnimi.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Vklopljen imate pripomoček [[$1|Reference Tooltips]] (Opisi orodij za sklice), zato ne boste videli predogledov sklicev, še vedno pa boste videli predoglede strani. V vašem vikiju se lahko pripomoček imenuje nekoliko drugače. Če imate še naprej težave, preglejte svoje pripomočke in uporabniške skripte, vključno z globalnimi.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Vklopljena imate pripomočka [[$1|Navigation Popups]] (Navigacijski izskokci) in [[$1|Reference Tooltips]] (Opisi orodij za sklice), zato ne boste videli predogledov, ki jih ponuja ta možnost. V vašem vikiju se lahko pripomočka imenujeta nekoliko drugače. Če imate še naprej težave, preglejte svoje pripomočke in uporabniške skripte, vključno z globalnimi.",
-	"popups-refpreview-reference": "Sklic",
 	"popups-refpreview-book": "Sklic na knjigo",
 	"popups-refpreview-journal": "Sklic na revijo",
 	"popups-refpreview-news": "Sklic na novice",

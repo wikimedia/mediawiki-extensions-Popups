@@ -37,7 +37,6 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Sinulla on käytössä [[$1|Navigation popups]] -pienoisohjelma, joten et näe esikatseluja tämän toiminnon kautta. Wikistä riippuen pienoisohjelmalla voi olla erilainen nimi. Jos sinulla on edelleen ongelmia, tarkista käyttämäsi pienoisohjelmat ja käyttäjäskriptit, myös järjestelmänlaajuiset.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Sinulla on käytössä [[$1|Reference Tooltips]] -pienoisohjelma, joten et näe viitteiden esikatseluita mutta näet sivujen esikatselut. Wikistä riippuen pienoisohjelmalla voi olla erilainen nimi. Jos sinulla on edelleen ongelmia, tarkista käyttämäsi pienoisohjelmat ja käyttäjäskriptit, myös järjestelmänlaajuiset.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Sinulla on käytössä pienoisohjelmat [[$1|Navigation popups]] ja [[$1|Reference Tooltips]], ja siksi et näe tämän toiminnon mahdollistamia esikatseluja. Wikistä riippuen pienoisohjelmilla voi olla erilaiset nimet. Jos sinulla on edelleen ongelmia, tarkista käyttämäsi pienoisohjelmat ja käyttäjäskriptit, myös järjestelmänlaajuiset.",
-	"popups-refpreview-reference": "Viite",
 	"popups-refpreview-book": "Kirjaviite",
 	"popups-refpreview-journal": "Lehtiviite",
 	"popups-refpreview-news": "Uutisviite",

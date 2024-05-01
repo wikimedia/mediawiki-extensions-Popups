@@ -31,7 +31,6 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Aveți gadgetul [[$1|Navigation popups]] activat, așa că nu veți vedea previzualizările oferite de această funcție. Depinzând de wiki-ul dvs., gadgetul ar putea avea un nume ușor diferit. Dacă continuați să întâmpinați probleme, vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, incluzând cele globale.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Aveți gadgetul [[$1|Reference Tooltips]] activat, așa că nu veți vedea previzualizările oferite de această funcție. Depinzând de wiki-ul dvs., gadgetul ar putea avea un nume ușor diferit. Dacă continuați să întâmpinați probleme, vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, incluzând cele globale.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Aveți gadgeturile [[$1|Navigation popups]] și [[$1|Reference Tooltips]] activate, așa că nu veți vedea previzualizările oferite de această funcție. Depinzând de wiki-ul dvs., gadgeturile ar putea avea nume ușor diferite. Dacă continuați să întâmpinați probleme, vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, incluzând cele globale.",
-	"popups-refpreview-reference": "Referință",
 	"popups-refpreview-book": "Referință de carte",
 	"popups-refpreview-journal": "Referință de jurnal",
 	"popups-refpreview-news": "Referință de știri",
