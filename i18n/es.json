@@ -40,6 +40,7 @@
 	"popups-prefs-optin": "Habilitar vistas previas de páginas (obtén vistas previas de un tema mientras lees una página):",
 	"popups-prefs-disable-nav-gadgets-info": "Tienes que [[$1|deshabilitar el gadget de ventanas emergentes de navegación]] en tus preferencias de Gadgets para habilitar las vistas previas de la página.",
 	"popups-prefs-conflicting-gadgets-info": "Ciertos accesorios y otras personalizaciones pueden afectar al rendimiento de esta funcionalidad. Si tienes problemas revisa tus accesorios y scripts de usuario, incluyendo los globales.",
+	"popups-refpreview-reference": "Referencia",
 	"popups-refpreview-book": "Libro de referencia",
 	"popups-refpreview-news": "Noticias de referencia",
 	"popups-refpreview-note": "Nota",

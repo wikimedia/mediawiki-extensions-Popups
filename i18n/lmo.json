@@ -28,6 +28,7 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Te gh'heet el dispositiv [[$1|popap de navigazzion]] ativad, donca te vedaret no i vedude antecipade fornide de questa fonzion chì. A segonda del wiki, el dispositiv el podariss ciamass in d'una manera on zich diversa. Se te sutet a havegh di problema, controla i to dispositiv e i script utent, compres quei globai.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Te gh'heet el dispositiv [[$1|sugeriment de navigazzion]] ativad, donca te vedaret no i vedude antecipade di riferiment ma te vedareet anmò i vedude antecipade di pagine. A segonda del wiki, el dispositiv el podariss ciamass in d'una manera on zich diversa. Se te sutet a havegh di problema, controla i to dispositiv e i script utent, compres quei globai.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Te gh'heet el dispositiv [[$1| sugeriment de navigazzion]] ativad, donca te vedaret no i vedude antecipade fornide de quella fonzion chì. A segonda del wiki, el dispositiv el podariss ciamass in d'una manera on zich diversa. Se te sutet a havegh di problema, controla i to dispositiv e i script utent, compres quei globai.",
+	"popups-refpreview-reference": "Riferiment",
 	"popups-refpreview-book": "Riferiment a un liber",
 	"popups-refpreview-journal": "Riferiment a una rivista",
 	"popups-refpreview-news": "Riferiment a di notizzi",

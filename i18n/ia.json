@@ -27,6 +27,7 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Tu ha activate le accessorio [[$1|Fenestras emergente de navigation]], dunque tu non videra le previsualisationes que iste function forni. Dependente de tu wiki, le nomine del accessorio pote esser un poco differente. Si tu continua a incontrar problemas, per favor revide tu accessorios e scripts de usator, incluse le globales.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Tu ha activate le accessorio [[$1|Legendas emergente de referentias]], dunque tu non videra le previsualisationes de referentias, ma tu videra totevia le previsualisationes de paginas. Dependente de tu wiki, le nomine del accessorio pote esser un poco differente. Si tu continua a incontrar problemas, per favor revide tu accessorios e scripts de usator, incluse le globales.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Tu ha activate le gadgets [[$1|Fenestras emergente de navigation]] e [[$1|Legendas emergente de referentias]], dunque tu non videra le previsualisationes que iste function forni. Dependente de tu wiki, le nomines del gadgets pote esser un poco differente. Si tu continua a incontrar problemas, per favor revide tu gadgets e scripts de usator, incluse le globales.",
+	"popups-refpreview-reference": "Referentia",
 	"popups-refpreview-book": "Referentia de libro",
 	"popups-refpreview-journal": "Referentia de revista",
 	"popups-refpreview-news": "Referentia de novas",

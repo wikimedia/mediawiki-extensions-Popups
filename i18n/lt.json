@@ -33,6 +33,7 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Turite įjungę [[$1|Navigacijos iššokančių langų]] priemonę, todėl nematysite peržiūrų, kurias teikia ši funkcija. Priklausomai nuo viki, priemonė gali turėti kitokį pavadinimą. Jei ir toliau susiduriate su problemomis, prašome peržiūrėti savo priemones ir naudotojų kodus, įskaitant visuotinius.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Turite įjungę [[$1|Nuorodų pastabų]] priemonę, todėl nematysite nuorodų peržiūrų, bet vis tiek matysite puslapių peržiūrų skaičių. Priklausomai nuo viki, priemonė gali turėti kitokį pavadinimą. Jei ir toliau susiduriate su problemomis, prašome peržiūrėti savo priemones ir naudotojų kodus, įskaitant visuotinius.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Turite įjungę [[$1|Navigacijos iššokančių langų]] ir [[$1|Nuorodų pastabų]] priemones, todėl nematysite peržiūrų, kurias teikia ši funkcija. Priklausomai nuo viki, priemonė gali turėti kitokį pavadinimą. Jei ir toliau susiduriate su problemomis, prašome peržiūrėti savo priemones ir naudotojų kodus, įskaitant visuotinius.",
+	"popups-refpreview-reference": "Išnaša",
 	"popups-refpreview-book": "Knygos išnaša",
 	"popups-refpreview-journal": "Žurnalo išnaša",
 	"popups-refpreview-news": "Naujienų išnaša",

@@ -43,6 +43,7 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "您已启用[[$1|导航Popup]]小工具，因此您将无法看到本功能显示的预览。在您的wiki上，该小工具可能具有略微不同的名称。如果您继续遇到问题，请检查您的小工具和用户脚本（包括全域脚本）。",
 	"popups-prefs-reftooltips-gadget-conflict-info": "您已启用[[$1|参考文献提示]]小工具，因此您将无法看到参考文献预览，但页面预览不受影响。在您的wiki上，该小工具可能具有略微不同的名称。如果您继续遇到问题，请检查您的小工具和用户脚本（包括全域脚本）。",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "您已启用[[$1|导航Popup]]和[[$1|参考文献提示]]小工具，因此您将无法看到本功能显示的预览。在您的wiki上，这两个小工具可能具有略微不同的名称。如果您继续遇到问题，请检查您的小工具和用户脚本（包括全域脚本）。",
+	"popups-refpreview-reference": "参考文献",
 	"popups-refpreview-book": "书籍参考文献",
 	"popups-refpreview-journal": "期刊参考文献",
 	"popups-refpreview-news": "新闻参考文献",

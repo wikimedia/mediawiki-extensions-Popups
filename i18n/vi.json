@@ -34,6 +34,7 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Bạn đang bật tiện ích [[$1|popup điều hướng]], do đó bạn sẽ không thấy các bản xem trước cung cấp bởi tính năng này. Tùy theo wiki của bạn, tiện ích này có thể có tên gọi khác nhau. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên của bạn, bao gồm cả các tiện ích và kịch bản toàn cục.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Bạn đang bật tiện ích [[$1|chú thích nổi]], do đó bạn sẽ không thấy các cửa sổ xem trước chú thích nhưng vẫn có thể xem các cửa sổ xem trước trang. Tùy theo wiki của bạn, tiện ích này có thể có tên gọi nhau. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên của bạn, bao gồm cả các tiện ích và kịch bản toàn cục.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Bạn đang bật các tiện ích [[$1|popup điều hướng]] và [[$1|chú thích nổi]], do đó bạn sẽ không thấy các bản xem trước cung cấp bởi tính năng này. Tùy theo wiki của bạn, các tiện ích này có thể có tên gọi khác nhau. Nếu bạn tiếp tục gặp vấn đề, vui lòng xem lại các tiện ích và kịch bản (script) thành viên, bao gồm cả các tiện ích và kịch bản toàn cục.",
+	"popups-refpreview-reference": "Chú thích",
 	"popups-refpreview-book": "Chú thích sách",
 	"popups-refpreview-journal": "Chú thích tạp chí",
 	"popups-refpreview-news": "Chú thích báo",

@@ -29,6 +29,7 @@
 	"popups-prefs-optin": "Omogući kratki pregled stranice na koju vodi poveznica u tekstu",
 	"popups-prefs-disable-nav-gadgets-info": "Morate [[$1 | isključiti dodatak Navigacijski prozorčići ''(Navigation Popups)'']] iz kartice »Dodatci« u Postavkama da biste uključili Pregled stranica",
 	"popups-prefs-conflicting-gadgets-info": "Neki dodatci i druge prilagodbe mogu utjecati na rad ove mogućnosti. Ako naiđete na probleme, provjerite svoje dodatke i suradničke skripte, uključujući i globalne.",
+	"popups-refpreview-reference": "Izvori",
 	"popups-refpreview-book": "Knjižni izvor",
 	"popups-refpreview-journal": "Časopisni izvor",
 	"popups-refpreview-news": "Novinski izvor",

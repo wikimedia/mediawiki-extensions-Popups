@@ -37,6 +37,7 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Gadżet [[$1|navigation popups]] jest włączony, co oznacza, że nie zobaczysz poglądów dostarczanych przez tę funkcję. W zależności od wiki, na jakiej się znajdujesz, gadżet ten może nazywać się inaczej. Jeśli problem wciąż będzie występował, sprawdź swoje gadżety oraz skrypty, włączając również te globalne.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Gadżet [[$1|Reference Tooltips]] jest włączony, co oznacza, że nie zobaczysz poglądów przypisów dostarczanych przez tę funkcję. W zależności od wiki, na jakiej się znajdujesz, gadżet ten może nazywać się inaczej. Jeśli problem wciąż będzie występował, sprawdź swoje gadżety oraz skrypty, włączając również te globalne.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Gadżety [[$1|navigation popups]] i [[$1|Reference Tooltips]] są włączone, co oznacza, że nie zobaczysz poglądów dostarczanych przez tę funkcję. W zależności od wiki, na jakiej się znajdujesz, gadżety te mogą nazywać się inaczej. Jeśli problem wciąż będzie występował, sprawdź swoje gadżety oraz skrypty, włączając również te globalne.",
+	"popups-refpreview-reference": "Przypis",
 	"popups-refpreview-book": "Przypis do książki",
 	"popups-refpreview-journal": "Przypis do pisma",
 	"popups-refpreview-news": "Przypis do artykułu w wiadomościach",

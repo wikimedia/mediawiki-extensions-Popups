@@ -35,6 +35,7 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Hai abilitato l'accessorio [[$1|Popup di navigazione]] quindi non vedrai le anteprime mostrate da questa preferenza. Se riscontri problemi, verifica i tuoi accessori e la personalizzazione del tema, incluso quello globale.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Hai abilitato l'accessorio [[$1|Reference Tooltips]] quindi non vedrai l'anteprima delle note, ma continuerai a ottenere l'anteprima delle pagine. In base alla tua wiki, l'accessorio potrebbe avere un nome differente. Se riscontri problemi, verifica i tuoi accessori e la personalizzazione del tema, incluso quello globale.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Hai abilitato gli accessori [[$1|Popup di navigazione]] e [[$1|Reference Tooltips]] quindi non vedrai le anteprime. In base alla tua wiki, gli accessori potrebbero avere un nome differente. Se riscontri problemi, verifica i tuoi accessori e la personalizzazione del tema, incluso quello globale.",
+	"popups-refpreview-reference": "Riferimento",
 	"popups-refpreview-book": "Riferimento a libro",
 	"popups-refpreview-news": "Riferimento a notizie",
 	"popups-refpreview-note": "Nota",
