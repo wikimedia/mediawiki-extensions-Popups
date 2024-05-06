@@ -56,7 +56,7 @@
 	"popups-refpreview-news": "Ссылка на новость",
 	"popups-refpreview-note": "Примечание",
 	"popups-refpreview-web": "Веб-ссылка",
-	"popups-refpreview-collapsible-placeholder": "Эта ссылка включает в себя фигуру, которая не помещается в окно предпросмотра.",
+	"popups-refpreview-collapsible-placeholder": "В этой сноске есть элемент, который сюда не помещается.",
 	"popups-refpreview-user-preference-label": "Включить предпросмотры сносок (мгновенно отображать предпросмотры сносок во время чтения страницы)",
 	"popups-refpreview-beta-feature-message": "Предпросмотр сносок",
 	"popups-refpreview-beta-feature-description": "Вызовите предпросмотр текста сноски, наведя курсор мыши на её метку.\n\nПожалуйста, обратите внимание: если вы используете гаджет [//ru.wikipedia.org/wiki/Википедия:Гаджеты/Навигационные_окошки всплывающих навигационных окошек] или [[mw:Special:MyLanguage/Reference Tooltips|всплывающей подсказки по ссылкам]], то вы не увидите окошек с предпросмотром текста сносок."
