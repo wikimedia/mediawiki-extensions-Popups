@@ -4,17 +4,18 @@
 			"NMW03",
 			"Neriman2003",
 			"Toghrul Rahimli",
-			"Wertuose"
+			"Wertuose",
+			"Nemoralis"
 		]
 	},
 	"popups-message": "Sınaq görüntüləri",
 	"popups-desc": "İstifadəçi kursoru hansısa səhifənin daxili keçidinin üstünə gətirdikdə həmin səhifənin tərkibini əks etdirən kiçik pəncərə peyda olur.",
 	"popups-settings-title": "Sınaq görüntüləri",
-	"popups-settings-option-page": "Yandır",
-	"popups-settings-option-page-description": "Bir məqalə oxuyarkən daxili keçidlərə cəld baxış.",
+	"popups-settings-option-page": "Səhifə önizləmələri",
+	"popups-settings-option-page-description": "Bir səhifə oxuyarkən daxili keçidlərə cəld baxış.",
 	"popups-settings-option-reference": "İstinadların sınaq göstərişi",
-	"popups-settings-option-reference-description": "Bir məqalə oxuyarkən daxili keçidlərə cəld baxış.",
-	"popups-settings-save": "Qeyd et",
+	"popups-settings-option-reference-description": "Bir səhifə oxuyarkən daxili keçidlərə cəld baxış.",
+	"popups-settings-save": "Yadda saxla",
 	"popups-settings-help-ok": "Oldu",
 	"popups-settings-cancel": "İmtina",
 	"popups-settings-help": "Siz səhifənin aşağısındakı keçiddən istifadə edərək önizləmələri yenidən aktivləşdirə bilərsiniz.",
