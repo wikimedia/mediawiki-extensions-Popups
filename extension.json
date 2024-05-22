@@ -22,9 +22,7 @@
 		"BeforePageDisplay": "PopupsHooks",
 		"ResourceLoaderGetConfigVars": "PopupsHooks",
 		"GetPreferences": "PopupsHooks",
-		"UserGetDefaultOptions": "PopupsHooks",
-		"MakeGlobalVariablesScript": "PopupsHooks",
-		"LocalUserCreated": "PopupsHooks"
+		"MakeGlobalVariablesScript": "PopupsHooks"
 	},
 	"HookHandlers": {
 		"PopupsHooks": {
@@ -61,10 +59,6 @@
 		},
 		"PopupsOptInDefaultState": {
 			"description": "@var string:['1'|'0'] Default Page Previews visibility for old accounts. Has to be a string as a compatibility with beta feature settings. For more info see @T191888",
-			"value": "1"
-		},
-		"PopupsOptInStateForNewAccounts": {
-			"description": "@var string:['1'|'0'] Default Page Previews visibility for newly created accounts (from Q2 2018). For more info see @T191888",
 			"value": "1"
 		},
 		"PopupsConflictingNavPopupsGadgetName": {
@@ -214,8 +208,41 @@
 		"includes/ServiceWiring.php"
 	],
 	"DefaultUserOptions": {
+		"popups": 1,
 		"popupsreferencepreviews": 0,
 		"popups-reference-previews": 0
+	},
+	"ConditionalUserOptions": {
+		"popups": [
+			[
+				1,
+				[
+					"registered-after",
+					"20170816000000"
+				]
+			],
+			[
+				0,
+				[
+					"named-user"
+				]
+			]
+		],
+		"popups-reference-previews": [
+			[
+				1,
+				[
+					"registered-after",
+					"20170816000000"
+				]
+			],
+			[
+				0,
+				[
+					"named-user"
+				]
+			]
+		]
 	},
 	"manifest_version": 2
 }
