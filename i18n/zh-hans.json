@@ -21,7 +21,7 @@
 		]
 	},
 	"popups-message": "预览",
-	"popups-desc": "当用户将鼠标悬浮在链接上时显示页面预览弹窗",
+	"popups-desc": "当用户在链接上悬停鼠标时显示悬浮预览卡片",
 	"popups-settings-title": "预览",
 	"popups-settings-option-page": "启用",
 	"popups-settings-option-page-description": "当阅读页面时，获取其中相关内容主题的快捷预览。",
