@@ -208,21 +208,21 @@
 		"includes/ServiceWiring.php"
 	],
 	"DefaultUserOptions": {
-		"popups": 1,
-		"popupsreferencepreviews": 0,
-		"popups-reference-previews": 0
+		"popups": "1",
+		"popupsreferencepreviews": "0",
+		"popups-reference-previews": "0"
 	},
 	"ConditionalUserOptions": {
 		"popups": [
 			[
-				1,
+				"1",
 				[
 					"registered-after",
 					"20170816000000"
 				]
 			],
 			[
-				0,
+				"0",
 				[
 					"named-user"
 				]
@@ -230,14 +230,14 @@
 		],
 		"popups-reference-previews": [
 			[
-				1,
+				"1",
 				[
 					"registered-after",
 					"20170816000000"
 				]
 			],
 			[
-				0,
+				"0",
 				[
 					"named-user"
 				]
