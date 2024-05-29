@@ -22,6 +22,7 @@
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\MultiConfig;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use Popups\PopupsContext;
 use Popups\PopupsHooks;
@@ -313,6 +314,67 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertCount( 1, $vars, 'Number of added variables.' );
 		$this->assertSame( 0, $vars[ 'wgPopupsFlags' ],
 			'The wgPopupsFlags global is present and 0.' );
+	}
+
+	/**
+	 * @covers ::onUserGetDefaultOptions
+	 * @dataProvider provideReferencePreviewsFlag
+	 */
+	public function testOnUserGetDefaultOptions( bool $enabled ) {
+		$userOptions = [
+			'test' => 'not_empty'
+		];
+
+		( new PopupsHooks(
+			new HashConfig( [
+				'PopupsOptInDefaultState' => '1',
+				'PopupsReferencePreviews' => $enabled,
+			] ),
+			$this->getServiceContainer()->getService( 'Popups.Context' ),
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
+			$this->getServiceContainer()->getUserOptionsManager()
+		) )
+			->onUserGetDefaultOptions( $userOptions );
+		$this->assertCount( $enabled ? 3 : 2, $userOptions );
+		$this->assertSame( '1', $userOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
+		if ( $enabled ) {
+			$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME ] );
+		}
+	}
+
+	/**
+	 * @covers ::onUserGetDefaultOptions
+	 * @dataProvider provideReferencePreviewsFlag
+	 */
+	public function testOnLocalUserCreatedForNewlyCreatedUser( bool $enabled ) {
+		$expectedState = '1';
+
+		$userMock = $this->createMock( User::class );
+
+		$userOptionsManagerMock = $this->createMock( UserOptionsManager::class );
+		$expectedOptions = [
+			'popups' => $expectedState,
+			'popups-reference-previews' => $expectedState
+		];
+		$userOptionsManagerMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
+			->method( 'setOption' )
+			->willReturnCallback( function ( $user, $option, $val ) use ( &$expectedOptions, $userMock ) {
+				$this->assertSame( $userMock, $user );
+				$this->assertArrayHasKey( $option, $expectedOptions );
+				$this->assertSame( $expectedOptions[$option], $val );
+				unset( $expectedOptions[$option] );
+			} );
+
+		( new PopupsHooks(
+			new HashConfig( [
+				'PopupsOptInStateForNewAccounts' => $expectedState,
+				'PopupsReferencePreviews' => $enabled,
+			] ),
+			$this->getServiceContainer()->getService( 'Popups.Context' ),
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
+			$userOptionsManagerMock
+		) )
+			->onLocalUserCreated( $userMock, false );
 	}
 
 	public static function provideReferencePreviewsFlag() {

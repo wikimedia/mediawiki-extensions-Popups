@@ -21,12 +21,14 @@
 namespace Popups;
 
 use ExtensionRegistry;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\MakeGlobalVariablesScriptHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use Psr\Log\LoggerInterface;
@@ -41,7 +43,9 @@ class PopupsHooks implements
 	GetPreferencesHook,
 	BeforePageDisplayHook,
 	ResourceLoaderGetConfigVarsHook,
-	MakeGlobalVariablesScriptHook
+	MakeGlobalVariablesScriptHook,
+	UserGetDefaultOptionsHook,
+	LocalUserCreatedHook
 {
 
 	private const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
@@ -240,5 +244,42 @@ class PopupsHooks implements
 	 */
 	public function onMakeGlobalVariablesScript( &$vars, $out ): void {
 		$vars['wgPopupsFlags'] = $this->popupsContext->getConfigBitmaskFromUser( $out->getUser() );
+	}
+
+	/**
+	 * Called whenever a user wants to reset their preferences.
+	 *
+	 * @param array &$defaultOptions
+	 */
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
+		$default = $this->config->get( 'PopupsOptInDefaultState' );
+		$defaultOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
+
+		if ( $this->config->get( 'PopupsReferencePreviews' ) ) {
+			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = '1';
+		}
+	}
+
+	/**
+	 * Called one time when initializing a users preferences for a newly created account.
+	 *
+	 * @param User $user Newly created user object
+	 * @param bool $isAutoCreated
+	 */
+	public function onLocalUserCreated( $user, $isAutoCreated ) {
+		$default = $this->config->get( 'PopupsOptInStateForNewAccounts' );
+		$this->userOptionsManager->setOption(
+			$user,
+			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME,
+			$default
+		);
+
+		if ( $this->config->get( 'PopupsReferencePreviews' ) ) {
+			$this->userOptionsManager->setOption(
+				$user,
+				PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME,
+				$default
+			);
+		}
 	}
 }
