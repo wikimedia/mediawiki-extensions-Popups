@@ -52,22 +52,9 @@ class PopupsContext {
 	public const PREVIEWS_DISABLED = false;
 
 	/**
-	 * User preference key to enable/disable Page Previews
-	 */
-	public const PREVIEWS_OPTIN_PREFERENCE_NAME = 'popups';
-
-	/**
-	 * User preference key to enable/disable Reference Previews. Named
-	 * "mwe-popups-referencePreviews-enabled" in localStorage for anonymous users.
-	 */
-	public const REFERENCE_PREVIEWS_PREFERENCE_NAME = 'popups-reference-previews';
-
-	/**
 	 * Flags passed on to JS representing preferences
 	 */
 	private const NAV_POPUPS_ENABLED = 1;
-	private const REF_TOOLTIPS_ENABLED = 2;
-	private const REFERENCE_PREVIEWS_ENABLED = 4;
 
 	/**
 	 * @var Config
@@ -147,40 +134,10 @@ class PopupsContext {
 
 	/**
 	 * @param User $user User whose preferences are checked
-	 * @return bool whether or not to show reference previews
-	 */
-	public function isReferencePreviewsEnabled( User $user ) {
-		return !$user->isNamed() || $this->userOptionsLookup->getBoolOption(
-			$user, self::REFERENCE_PREVIEWS_PREFERENCE_NAME
-		);
-	}
-
-	/**
-	 * @param User $user User whose preferences are checked
 	 * @return int
 	 */
 	public function getConfigBitmaskFromUser( User $user ) {
-		return ( $this->conflictsWithNavPopupsGadget( $user ) ? self::NAV_POPUPS_ENABLED : 0 ) |
-			( $this->conflictsWithRefTooltipsGadget( $user ) ? self::REF_TOOLTIPS_ENABLED : 0 ) |
-			( $this->isReferencePreviewsEnabled( $user ) ? self::REFERENCE_PREVIEWS_ENABLED : 0 );
-	}
-
-	/**
-	 * @param User $user User whose preferences are checked
-	 * @return bool
-	 */
-	public function shouldSendModuleToUser( User $user ) {
-		if ( !$user->isNamed() ) {
-			return true;
-		}
-
-		$shouldLoadPagePreviews = $this->userOptionsLookup->getBoolOption(
-			$user,
-			self::PREVIEWS_OPTIN_PREFERENCE_NAME
-		);
-		$shouldLoadReferencePreviews = $this->isReferencePreviewsEnabled( $user );
-
-		return $shouldLoadPagePreviews || $shouldLoadReferencePreviews;
+		return ( $this->conflictsWithNavPopupsGadget( $user ) ? self::NAV_POPUPS_ENABLED : 0 );
 	}
 
 	/**

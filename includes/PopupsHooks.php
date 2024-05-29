@@ -28,7 +28,6 @@ use MediaWiki\Output\Hook\MakeGlobalVariablesScriptHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
-use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use Psr\Log\LoggerInterface;
@@ -43,7 +42,6 @@ class PopupsHooks implements
 	GetPreferencesHook,
 	BeforePageDisplayHook,
 	ResourceLoaderGetConfigVarsHook,
-	UserGetDefaultOptionsHook,
 	MakeGlobalVariablesScriptHook
 {
 
@@ -101,10 +99,7 @@ class PopupsHooks implements
 		}
 
 		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
-		$readingOptions = array_merge(
-			$this->getPagePreviewPrefToggle( $user ),
-			$this->getReferencePreviewPrefToggle( $user )
-		);
+		$readingOptions = $this->getPagePreviewPrefToggle( $user );
 
 		if ( $skinPosition !== false ) {
 			$injectIntoIndex = $skinPosition + 1;
@@ -137,43 +132,7 @@ class PopupsHooks implements
 		}
 
 		return [
-			PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME => $option
-		];
-	}
-
-	/**
-	 * Get Reference Preview option
-	 *
-	 * @param User $user User whose preferences are being modified
-	 * @return array[]
-	 */
-	private function getReferencePreviewPrefToggle( User $user ) {
-		$option = [
-			'type' => 'toggle',
-			'label-message' => 'popups-refpreview-user-preference-label',
-			'help-message' => 'popups-prefs-conflicting-gadgets-info',
-			'section' => self::PREVIEWS_PREFERENCES_SECTION
-		];
-
-		$isNavPopupsGadgetEnabled = $this->popupsContext->conflictsWithNavPopupsGadget( $user );
-		$isRefTooltipsGadgetEnabled = $this->popupsContext->conflictsWithRefTooltipsGadget( $user );
-
-		if ( $isNavPopupsGadgetEnabled && $isRefTooltipsGadgetEnabled ) {
-			$option[ 'disabled' ] = true;
-			$option[ 'help-message' ] = [ 'popups-prefs-reftooltips-and-navpopups-gadget-conflict-info',
-				'Special:Preferences#mw-prefsection-gadgets' ];
-		} elseif ( $isNavPopupsGadgetEnabled ) {
-			$option[ 'disabled' ] = true;
-			$option[ 'help-message' ] = [ 'popups-prefs-navpopups-gadget-conflict-info',
-				'Special:Preferences#mw-prefsection-gadgets' ];
-		} elseif ( $isRefTooltipsGadgetEnabled ) {
-			$option[ 'disabled' ] = true;
-			$option[ 'help-message' ] = [ 'popups-prefs-reftooltips-gadget-conflict-info',
-				'Special:Preferences#mw-prefsection-gadgets' ];
-		}
-
-		return [
-			PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME => $option
+			'popups' => $option
 		];
 	}
 
@@ -194,10 +153,7 @@ class PopupsHooks implements
 			return;
 		}
 
-		$user = $out->getUser();
-		if ( $this->popupsContext->shouldSendModuleToUser( $user ) ) {
-			$out->addModules( [ 'ext.popups' ] );
-		}
+		$out->addModules( [ 'ext.popups' ] );
 	}
 
 	/**
@@ -225,8 +181,6 @@ class PopupsHooks implements
 	 * the users settings. These variables end in an inline <script> in the documents head.
 	 *
 	 * Variables added:
-	 * * `wgPopupsReferencePreviews' - The server's notion of whether or not the reference
-	 *   previews should be enabled. Depending on the general setting done on the wiki.
 	 * * `wgPopupsConflictsWithNavPopupGadget' - The server's notion of whether or not the
 	 *   user has enabled conflicting Navigational Popups Gadget.
 	 * * `wgPopupsConflictsWithRefTooltipsGadget' - The server's notion of whether or not the
@@ -237,16 +191,5 @@ class PopupsHooks implements
 	 */
 	public function onMakeGlobalVariablesScript( &$vars, $out ): void {
 		$vars['wgPopupsFlags'] = $this->popupsContext->getConfigBitmaskFromUser( $out->getUser() );
-	}
-
-	/**
-	 * Called whenever a user wants to reset their preferences.
-	 *
-	 * @param array &$defaultOptions
-	 */
-	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		$default = $this->config->get( 'PopupsOptInDefaultState' );
-		$defaultOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
-		$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = '1';
 	}
 }

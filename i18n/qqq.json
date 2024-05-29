@@ -38,9 +38,5 @@
 	"prefs-reading": "Title for 'Reading preferences' section on preferences page; it's a magic message derived from PREVIEWS_PREFERENCES_SECTION (see commit f597e34)",
 	"popups-prefs-optin": "Label for Page Previews option (description for Page Previews option)",
 	"popups-prefs-disable-nav-gadgets-info": "Help message telling to disable the \"Navigation popups\" gadget in order to enable page previews. The word \"Gadgets\" should be based on {{msg-mw|prefs-gadgets}}.\n\nParameters:\n* $1 – Link to the Gadgets tab in the user's preferences",
-	"popups-prefs-conflicting-gadgets-info": "Help message informing about possible conflicts with other gadgets/customizations",
-	"popups-prefs-navpopups-gadget-conflict-info": "Help message telling to disable the \"Navigation popups\" gadget in order to allow page and reference previews. The word \"Gadgets\" should be based on {{msg-mw|prefs-gadgets}}.\n\nParameters:\n* $1 – Link to the Gadgets tab in the user's preferences",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Help message telling to disable the \"Reference Tooltips\" gadget in order to allow reference previews. The word \"Gadgets\" should be based on {{msg-mw|prefs-gadgets}}.\n\nParameters:\n* $1 – Link to the Gadgets tab in the user's preferences",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Help message telling to disable the \"Navigation popups\" and \"Reference Tooltips\" gadgets in order to allow page and reference previews. The word \"Gadgets\" should be based on {{msg-mw|prefs-gadgets}}.\n\nParameters:\n* $1 – Link to the Gadgets tab in the user's preferences",
-	"popups-refpreview-user-preference-label": "Label for the user option to enable or disable reference preview popups"
+	"popups-prefs-conflicting-gadgets-info": "Help message informing about possible conflicts with other gadgets/customizations"
 }

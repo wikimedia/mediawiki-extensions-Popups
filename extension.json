@@ -22,7 +22,6 @@
 		"BeforePageDisplay": "PopupsHooks",
 		"ResourceLoaderGetConfigVars": "PopupsHooks",
 		"GetPreferences": "PopupsHooks",
-		"UserGetDefaultOptions": "PopupsHooks",
 		"MakeGlobalVariablesScript": "PopupsHooks"
 	},
 	"HookHandlers": {
@@ -57,10 +56,6 @@
 		"PopupsHideOptInOnPreferencesPage": {
 			"description": "@var bool: Whether the option to enable/disable Page Previews should be hidden on Preferences page. False by default",
 			"value": false
-		},
-		"PopupsOptInDefaultState": {
-			"description": "@var string:['1'|'0'] Default Page Previews visibility for old accounts. Has to be a string as a compatibility with beta feature settings. For more info see @T191888",
-			"value": "1"
 		},
 		"PopupsConflictingNavPopupsGadgetName": {
 			"description": "@var string: Navigation popups gadget name",
@@ -179,9 +174,7 @@
 		"includes/ServiceWiring.php"
 	],
 	"DefaultUserOptions": {
-		"popups": "1",
-		"popupsreferencepreviews": "0",
-		"popups-reference-previews": "0"
+		"popups": "1"
 	},
 	"ConditionalUserOptions": {
 		"popups": [

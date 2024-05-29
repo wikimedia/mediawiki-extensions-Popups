@@ -95,20 +95,6 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers ::shouldSendModuleToUser
-	 */
-	public function testShouldSendToAnonUser() {
-		$user = $this->createMock( User::class );
-		$user->method( 'getId' )->willReturn( self::ANONYMOUS_USER );
-
-		$context = $this->getContext();
-		$this->assertTrue(
-			$context->shouldSendModuleToUser( $user ),
-			'The module is always sent to anonymous users.'
-		);
-	}
-
-	/**
 	 * @covers ::areDependenciesMet
 	 * @covers ::__construct
 	 * @dataProvider provideTestDataForTestAreDependenciesMet
@@ -235,30 +221,20 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::getConfigBitmaskFromUser
 	 * @dataProvider provideTestGetConfigBitmaskFromUser
 	 * @param bool $navPops
-	 * @param bool $refTooltips
-	 * @param bool $refEnabled
 	 * @param int $expected
 	 */
 	public function testGetConfigBitmaskFromUser(
 		$navPops,
-		$refTooltips,
-		$refEnabled,
 		$expected
 	) {
 		$contextMock = $this->createPartialMock(
 			PopupsContext::class,
 			[
-				'conflictsWithNavPopupsGadget',
-				'conflictsWithRefTooltipsGadget',
-				'isReferencePreviewsEnabled',
+				'conflictsWithNavPopupsGadget'
 			]
 		);
 		$contextMock->method( 'conflictsWithNavPopupsGadget' )
 			->willReturn( $navPops );
-		$contextMock->method( 'conflictsWithRefTooltipsGadget' )
-			->willReturn( $refTooltips );
-		$contextMock->method( 'isReferencePreviewsEnabled' )
-			->willReturn( $refEnabled );
 
 		$this->assertSame(
 			$expected,
@@ -270,25 +246,9 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 		return [
 			[
 				true,
-				true,
-				true,
-				7,
+				1,
 			],
 			[
-				false,
-				true,
-				false,
-				2,
-			],
-			[
-				true,
-				false,
-				true,
-				5,
-			],
-			[
-				false,
-				false,
 				false,
 				0,
 			],
