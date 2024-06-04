@@ -26,12 +26,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "You have the [[$1|Navigation popups]] gadget enabled, so you won't see previews provided by this feature. Depending on your wiki, the gadget may have a slightly different name. If you continue to experience issues, please review your gadgets and user scripts, including global ones.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "You have the [[$1|Reference Tooltips]] gadget enabled, so you won't see reference previews but will still see page previews. Depending on your wiki, the gadget may have a slightly different name. If you continue to experience issues, please review your gadgets and user scripts, including global ones.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "You have the [[$1|Navigation popups]] and [[$1|Reference Tooltips]] gadgets enabled, so you won't see previews provided by this feature. Depending on your wiki, the gadgets may have slightly different names. If you continue to experience issues, please review your gadgets and user scripts, including global ones.",
-	"popups-refpreview-reference": "Reference",
-	"popups-refpreview-book": "Book reference",
-	"popups-refpreview-journal": "Journal reference",
-	"popups-refpreview-news": "News reference",
-	"popups-refpreview-note": "Note",
-	"popups-refpreview-web": "Web reference",
-	"popups-refpreview-collapsible-placeholder": "This reference includes a figure which does not fit in the preview.",
 	"popups-refpreview-user-preference-label": "Enable reference previews (get quick previews of a reference while reading a page)"
 }

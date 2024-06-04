@@ -178,14 +178,7 @@
 				"popups-preview-no-preview",
 				"popups-preview-footer-read",
 				"popups-preview-disambiguation",
-				"popups-preview-disambiguation-link",
-				"popups-refpreview-reference",
-				"popups-refpreview-book",
-				"popups-refpreview-journal",
-				"popups-refpreview-news",
-				"popups-refpreview-note",
-				"popups-refpreview-web",
-				"popups-refpreview-collapsible-placeholder"
+				"popups-preview-disambiguation-link"
 			],
 			"dependencies": [
 				"web2017-polyfills",
