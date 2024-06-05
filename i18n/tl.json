@@ -28,12 +28,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Kasalukuyang nakabukas ang gadget na [[$1|Navigation popups]], kaya hindi mo makikita ang mga pasilip na binibigay ng tampok na ito. Depende sa wiki ko, posibleng iba ang pangalan ng gadget. Kung patuloy ka pa ring nakakaranas ng mga isyu, pakirebyu ang mga gadget mo pati mga user script, kasama na ang mga pandaigdigan.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Kasalukuyang nakabukas ang gadget na [[$1|Reference Tooltips]], kaya hindi mo makikita ang mga pasilip sa sanggunian pero makikita mo pa rin ang mga pasilip sa pahina. Depende sa wiki ko, posibleng iba ang pangalan ng gadget. Kung patuloy ka pa ring nakakaranas ng mga isyu, pakirebyu ang mga gadget mo pati mga user script, kasama na ang mga pandaigdigan.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Kasalukuyang nakabukas ang gadget na [[$1|Navigation popups]] at [[$2|Reference Tooltips]], kaya hindi mo makikita ang mga pasilip na binibigay ng tampok na ito. Depende sa wiki ko, posibleng iba ang pangalan ng gadget. Kung patuloy ka pa ring nakakaranas ng mga isyu, pakirebyu ang mga gadget mo pati mga user script, kasama na ang mga pandaigdigan.",
-	"popups-refpreview-reference": "Sanggunian",
-	"popups-refpreview-book": "Sanggunian sa aklat",
-	"popups-refpreview-journal": "Sanggunian sa dyornal",
-	"popups-refpreview-news": "Sanggunian sa balita",
-	"popups-refpreview-note": "Talababa",
-	"popups-refpreview-web": "Sanggunian sa web",
-	"popups-refpreview-collapsible-placeholder": "Naglalaman ang sanggunian na ito ng isang bagay na hindi kasya sa pasilip.",
 	"popups-refpreview-user-preference-label": "Buksan ang mga pasilip sa sanggunian (kunin ang mga mabilisang pasilip sa isang sanggunian habang nagbabasa ng pahina)"
 }

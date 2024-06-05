@@ -30,12 +30,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Jo hawwe it 'lytsark' [[$1|Navigation popups]] ynskeakele, dat jo sille de proefbylden fan dizze funksje net sjen. Ofhinklik fan jo wiki, kin it lytsark in wat oare namme hawwe. At jo fierders noch problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Jo hawwe it 'lytsark' [[$1|Reference Tooltips]] ynskeakele, dat jo sille de referinsjeproefbylden net sjen mar de sideproefbylden al. Ofhinklik fan jo wiki, kin it lytsark in wat oare namme hawwe. At jo fierders noch problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Jo hawwe it 'lytsark' [[$1|Navigation popups]] en [[$1|Reference Tooltips]] ynskeakele, dat jo sille de proefbylden fan dizze funksje net sjen. Ofhinklik fan jo wiki, kin it lytsark wat oare nammen hawwe. At jo fierders noch problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne.",
-	"popups-refpreview-reference": "Referinsje",
-	"popups-refpreview-book": "Boekreferinsje",
-	"popups-refpreview-journal": "Tydskriftreferinsje",
-	"popups-refpreview-news": "Nijsreferinsje",
-	"popups-refpreview-note": "Noat",
-	"popups-refpreview-web": "Webreferinsje",
-	"popups-refpreview-collapsible-placeholder": "Dizze referinsje befettet in yllustraasje dy't net yn it proefbyld past.",
 	"popups-refpreview-user-preference-label": "Proefbylden fan referinsjes ynskeakelje (jout flugge foarfertoanings fan referinsjes ûnder it lêzen)"
 }

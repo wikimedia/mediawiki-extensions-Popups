@@ -32,12 +32,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Sizdə [[$1|Naviqasiya pop-upları]] qadceti aktivdir, ona görə də bu funksiyanın təqdim etdiyi önizləmələri görməyəcəksiniz. Vikidən asılı olaraq, qadcetin fərqli adı ola bilər. Problemlərlə üzləşməyə davam etsəniz, qlobal olanlar da daxil olmaqla qadcetlərinizi və istifadəçi skriptlərinizi nəzərdən keçirin.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Sizdə [[$1|İstinad aləti]] qadceti aktivdir, ona görə də siz istinad önizləmələrini görməyəcəksiniz, lakin səhifənin önizləmələrini hələ də görəcəksiniz. Vikidən asılı olaraq, qadcetin fərqli adı ola bilər. Problemlərlə üzləşməyə davam etsəniz, qlobal olanlar da daxil olmaqla qadcetlərinizi və istifadəçi skriptlərinizi nəzərdən keçirin.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Sizdə [[$1|Naviqasiya pop-upları]] [[$1|İstinad aləti]] qadcetləri aktivdir, ona görə də siz istinad önizləmələrini görməyəcəksiniz, lakin səhifənin önizləmələrini hələ də görəcəksiniz. Vikidən asılı olaraq, qadcetin fərqli adı ola bilər. Problemlərlə üzləşməyə davam etsəniz, qlobal olanlar da daxil olmaqla qadcetlərinizi və istifadəçi skriptlərinizi nəzərdən keçirin.",
-	"popups-refpreview-reference": "İstinad",
-	"popups-refpreview-book": "Kitab istinadı",
-	"popups-refpreview-journal": "Jurnal istinadı",
-	"popups-refpreview-news": "Xəbər istinadı",
-	"popups-refpreview-note": "Qeyd",
-	"popups-refpreview-web": "Veb istinadı",
-	"popups-refpreview-collapsible-placeholder": "Bu istinad önizləməyə uyğun gəlməyən rəqəmi ehtiva edir.",
 	"popups-refpreview-user-preference-label": "İstinad önizləmələrini aktivləşdirin (səhifəni oxuyarkən istinadın sürətli önizləmələrini əldə edin)"
 }

@@ -42,12 +42,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Tem o ''gadget'' da [[$1|navegação flutuante]] (''navigation popups'') ativado, por isso não verá as antevisões fornecidas por esta funcionalidade. Dependendo da sua wiki, este ''gadget'' pode ter um nome ligeiramente diferente. Se continuar a ter problemas, reveja os seus ''gadgets'' e os ''scripts'' do utilizador, incluindo os globais.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Tem o ''gadget'' das [[$1|dicas de referências]] (''reference tooltips'') ativado, por isso não verá as antevisões de referências  mas continuará a ver as antevisões de páginas. Dependendo da sua wiki, este ''gadget'' pode ter um nome ligeiramente diferente. Se continuar a ter problemas, reveja os seus ''gadgets'' e os ''scripts'' do utilizador, incluindo os globais.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Tem os ''gadgets'' da [[$1|navegação flutuante]] (''navigation popups'') e das [[$1|dicas de referências]] (''reference tooltips'') ativados, por isso não verá as antevisões fornecidas por esta funcionalidade. Dependendo da sua wiki, estes ''gadgets'' pode ter nomes ligeiramente diferentes. Se continuar a ter problemas, reveja os seus ''gadgets'' e os ''scripts'' do utilizador, incluindo os globais.",
-	"popups-refpreview-reference": "Referência",
-	"popups-refpreview-book": "Referência de livro",
-	"popups-refpreview-journal": "Referência de revista",
-	"popups-refpreview-news": "Referência de notícias",
-	"popups-refpreview-note": "Nota",
-	"popups-refpreview-web": "Referência da Internet",
-	"popups-refpreview-collapsible-placeholder": "Esta referência inclui uma figura que não cabe na antevisão.",
 	"popups-refpreview-user-preference-label": "Ativar a antevisão de referências (obter antevisões rápidas de uma referência durante a leitura de uma página)"
 }

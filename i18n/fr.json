@@ -44,12 +44,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Vous avez activé le gadget [[$1|Popups de navigation]], donc vous ne verrez pas les aperçus fournis par cette fonctionnalité. Selon votre wiki, le gadget peut avoir un nom quelque peu différent. Si vous continuez à rencontrer des problèmes, veuillez revoir vos scripts utilisateur ainsi que ceux de vos gadgets, y compris les scripts globaux.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Vous avez activé le gadget [[$1|Reference Tooltips]], donc vous ne verrez pas les aperçus de référence, mais vous verrez toujours les aperçus de page. Selon votre wiki, le gadget peut avoir un nom quelque peu différent. Si vous continuez à rencontrer des problèmes, vérifiez vos préférences pour les gadgets et vos scripts utilisateur, y compris les préférences globales.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Vous avez activé les gadgets [[$1|Navigation popups]] et [[$1|Reference Tooltips]], donc vous ne verrez pas les aperçus fournis par cette fonctionnalité. Selon votre wiki, ces gadgets peuvent avoir des noms quelque peu différents. Si vous continuez à rencontrer des problèmes, vérifiez vos préférences pour les gadgets et vos scripts utilisateur, y compris les préférences globales.",
-	"popups-refpreview-reference": "Référence",
-	"popups-refpreview-book": "Référence de livre",
-	"popups-refpreview-journal": "Référence de revue",
-	"popups-refpreview-news": "Référence d’actualités",
-	"popups-refpreview-note": "Note",
-	"popups-refpreview-web": "Référence du web",
-	"popups-refpreview-collapsible-placeholder": "Cette référence inclut une illustration qui ne rentre pas dans l’aperçu.",
 	"popups-refpreview-user-preference-label": "Activer l’aperçu des références (aperçu rapide des références lors de la lecture d’une page)"
 }

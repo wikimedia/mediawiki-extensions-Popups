@@ -17,11 +17,5 @@
 	"popups-preview-no-preview": "यस पूर्वावलोकनलाई प्रदर्शन गर्दा यहाँ केही उलझन भइरहेको छ।",
 	"popups-preview-footer-read": "यो पृष्ठमा जानुहोस्",
 	"popups-preview-disambiguation": "यो शीर्षक एक भन्दा बढी पृष्ठसँग सम्बन्धित छ",
-	"prefs-reading": "अध्ययन अभिरूचिहरू",
-	"popups-refpreview-reference": "सन्दर्भ",
-	"popups-refpreview-book": "पुस्तक सन्दर्भ",
-	"popups-refpreview-journal": "जर्नल सन्दर्भ",
-	"popups-refpreview-news": "समाचार सन्दर्भ",
-	"popups-refpreview-note": "टिप्पणी",
-	"popups-refpreview-web": "वेब सन्दर्भ"
+	"prefs-reading": "अध्ययन अभिरूचिहरू"
 }

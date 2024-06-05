@@ -27,7 +27,5 @@
 	"prefs-reading": "Preferències de lectura",
 	"popups-prefs-optin": "Habilita les previsualitzacions de pàgines (obté previsualitzacions ràpides d'un tema mentre es llegeix una pàgina)",
 	"popups-prefs-disable-nav-gadgets-info": "Heu de [[$1|desactivar el giny de continguts emergents durant la navegació]] a les preferències de Ginys per habilitar les previsualitzacions de les pàgines.",
-	"popups-prefs-conflicting-gadgets-info": "Certs ginys i altres personalitzacions poden afectar l'acompliment d'aquesta funció. Si teniu problemes, reviseu els vostres ginys i scripts d'usuari, inclosos els globals.",
-	"popups-refpreview-reference": "Referència",
-	"popups-refpreview-note": "Nota"
+	"popups-prefs-conflicting-gadgets-info": "Certs ginys i altres personalitzacions poden afectar l'acompliment d'aquesta funció. Si teniu problemes, reviseu els vostres ginys i scripts d'usuari, inclosos els globals."
 }

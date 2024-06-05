@@ -35,12 +35,5 @@
 	"popups-prefs-optin": "Прегледи страница (кратак преглед било које теме док читате неку страницу)",
 	"popups-prefs-disable-nav-gadgets-info": "Морате [[$1|искључити Навигацијске искачуће прозоре]] из картице Справице да бисте укључили Прегледе страница",
 	"popups-prefs-conflicting-gadgets-info": "Одређене справице и друга прилагођавања могу да утичу на рад ове опције. Ако наиђете на проблеме, прегледајте справице и корисничке скрипте, укључујући глобалне.",
-	"popups-refpreview-reference": "Референца",
-	"popups-refpreview-book": "Референца ка књизи",
-	"popups-refpreview-journal": "Референца ка часопису",
-	"popups-refpreview-news": "Референца ка вестима",
-	"popups-refpreview-note": "Напомена",
-	"popups-refpreview-web": "Референца ка веб-сајту",
-	"popups-refpreview-collapsible-placeholder": "Ова референца укључује фигуру која се не уклапа у преглед.",
 	"popups-refpreview-user-preference-label": "Прегледи референци (брзи прегледи фуснота)"
 }

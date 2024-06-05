@@ -25,10 +25,5 @@
 	"popups-prefs-optin": "پێشبینینەکانی پەڕە (لەکاتی خوێندنەوەی پەڕەیەک پێشبینینی خێرای بابەتێک بەدەست بھێنە):",
 	"popups-prefs-disable-nav-gadgets-info": "بۆ چالاککردنی پێشبینینەکانی پەڕە، پێویستە لە تابی ئامرازەکان [[$1 | ئامرازی پەنجەرەکانی ڕێدۆزی ناچالاک بکەیت]]",
 	"popups-prefs-conflicting-gadgets-info": "ھەندێک ئامراز لەوانەیە کار بکەنە سەر ئەم تایبەتمەندییە. ئەگەر کێشەت ھەیە تکایە بەسەر دەقی ئامراز و ژێرپەڕەکانی خۆت بچۆرەوە.",
-	"popups-refpreview-reference": "سەرچاوە",
-	"popups-refpreview-book": "سەرچاوەی کتێب",
-	"popups-refpreview-journal": "سەرچاوەی گۆڤار",
-	"popups-refpreview-news": "سەرچاوەی ھەواڵ",
-	"popups-refpreview-web": "سەرچاوەی وێب",
 	"popups-refpreview-user-preference-label": "پێشبینینی سەرچاوەکان (پێشبینینی خێرای پەراوێزەکان بەدەست بھێنە)"
 }

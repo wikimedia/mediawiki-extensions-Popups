@@ -16,10 +16,5 @@
 	"popups-preview-disambiguation-link": "Vis lignende sider",
 	"prefs-reading": "Læsepræferencer",
 	"popups-prefs-optin": "Forhåndsvisninger (få hurtig forhåndsvisning af et emne mens du læser en side):",
-	"popups-prefs-conflicting-gadgets-info": "Visse gadgets og andre personlige indstillinger kan påvirke denne funktion negativt. Hvis du oplever problemer, så check dine gadgets og brugerscripts, inklusiv dine globale scripts.",
-	"popups-refpreview-reference": "Reference",
-	"popups-refpreview-book": "Bogreference",
-	"popups-refpreview-journal": "Tidsskriftsreference",
-	"popups-refpreview-news": "Nyhedsreference",
-	"popups-refpreview-web": "Webreference"
+	"popups-prefs-conflicting-gadgets-info": "Visse gadgets og andre personlige indstillinger kan påvirke denne funktion negativt. Hvis du oplever problemer, så check dine gadgets og brugerscripts, inklusiv dine globale scripts."
 }

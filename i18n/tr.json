@@ -39,12 +39,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "[[$1|Dolaşım pencereleri]] aracını etkinleştirdiniz, bu özellikle sağlanan önizlemeleri göremeyeceksiniz. Vikinize bağlı olarak, küçük aracın adı biraz farklı olabilir. Sorun yaşamaya devam ederseniz, küçük araçları ve kullanıcı betiklerini, küresel olanlar da dahil, gözden geçirin.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "[[$1|Kaynak İpuçları]] aracını etkinleştirdiniz, kaynak önizlemelerini göremeyeceksiniz, ancak sayfa önizlemelerini hala görebileceksiniz. Vikinize bağlı olarak, küçük aracın adı biraz farklı olabilir. Sorun yaşamaya devam ederseniz, küçük araçları ve kullanıcı betiklerini, küresel olanlar da dahil, gözden geçirin.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "[[$1|Dolaşım pencereleri]] ve [[$1|Kaynak İpuçları]] araçlarını etkinleştirdiniz, bu özellikle sağlanan önizlemeleri göremeyeceksiniz. Vikinize bağlı olarak, küçük araçların adı biraz farklı olabilir. Sorun yaşamaya devam ederseniz, küçük araçları ve kullanıcı betiklerini, küresel olanlar da dahil, gözden geçirin.",
-	"popups-refpreview-reference": "Kaynak",
-	"popups-refpreview-book": "Kitap kaynağı",
-	"popups-refpreview-journal": "Dergi kaynağı",
-	"popups-refpreview-news": "Haber kaynağı",
-	"popups-refpreview-note": "Not",
-	"popups-refpreview-web": "Web kaynağı",
-	"popups-refpreview-collapsible-placeholder": "Bu kaynak, önizlemeye sığmayan bir çözüm içerir.",
 	"popups-refpreview-user-preference-label": "Kaynak önizlemelerini etkinleştir (bir sayfayı okurken kaynağın hızlı önizlemelerini alın)"
 }

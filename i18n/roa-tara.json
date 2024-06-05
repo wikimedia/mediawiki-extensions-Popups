@@ -28,12 +28,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Tu è abbilitate 'u gadget [[$1|popup de navigazzione]], accussì non ge vuè 'ndrucà le andeprime date da sta funzione. Depende da 'a uicchi toje, 'u gadget pò avè 'nu nome 'nu picca diverse. Ce tu condinue cu ste probbleme, pe piacere condrolle 'u gadget tune e le script utende, 'ngludenne chidde globbale.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Tu è abbilitate 'u gadget [[$1|de le suggerimende de referimende]], accussì non ge vuè 'ndrucà le andeprime de referimende ma 'ndruche angore le andeprime d'a pàgene. Depende da 'a uicchi toje, 'u gadget pò avè 'nu nome 'nu picca diverse. Ce tu condinue cu ste probbleme, pe piacere condrolle 'u gadget tune e le script utende, 'ngludenne chidde globbale.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Tu è abbilitate le gadget [[$1|popup de navigazzione]] e [[$1|de le suggerimende de referimende]], accussì non ge vuè 'ndrucà le andeprime date da sta funzione. Depende da 'a uicchi toje, le gadget ponne avè 'nu nome 'nu picca diverse. Ce tu condinue cu ste probbleme, pe piacere condrolle 'u gadget tune e le script utende, 'ngludenne chidde globbale.",
-	"popups-refpreview-reference": "Riferimende",
-	"popups-refpreview-book": "Referimende a 'nu libbre",
-	"popups-refpreview-journal": "Referimende a 'nu sciurnale",
-	"popups-refpreview-news": "Referimende a 'na nuvetà",
-	"popups-refpreview-note": "Note",
-	"popups-refpreview-web": "Referimende a 'nu site web",
-	"popups-refpreview-collapsible-placeholder": "Stu referimende 'nglude 'na figure 'a quale non ge se 'ndruche bbone jndr'à l'andeprime.",
 	"popups-refpreview-user-preference-label": "Abbilite l'andeprime d'u referimende (pigghie le andeprime veloce de 'nu referimende quanne ste lìgge 'a vôsce)"
 }

@@ -32,12 +32,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "[[$1|Laster-nabigazioa]] gadgeta gaitua duzu; ondorioz ez dituzu ikusiko eginbide honek eskaintzen dituen aurrebistak. Zure wikiaren arabera, gadgetak izen zertxobait desberdina izango du. Arazo horiek izaten jarraitzen baduzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "[[$1|Erreferentzien argibideak]] gadgeta gaitua duzu; ondorioz ez dituzu ikusiko erreferentzien aurrebistak, baina bai orriko aurrebistak. Zure wikiaren arabera, gadgetak izen zertxobait desberdina izango du. Arazo horiek izaten jarraitzen baduzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "[[$1|Laster-nabigazioa]] eta [[$1|Erreferentzien argibideak]] gadgetak gaituak dituzu; ondorioz ez dituzu ikusiko eginbide honek eskaintzen dituen aurrebistak. Zure wikiaren arabera, gadgetak izen zertxobait desberdina izango du. Arazo horiek izaten jarraitzen baduzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere.",
-	"popups-refpreview-reference": "Erreferentzia",
-	"popups-refpreview-book": "Liburu erreferentzia",
-	"popups-refpreview-journal": "Aldizkari erreferentzia",
-	"popups-refpreview-news": "Albiste erreferentzia",
-	"popups-refpreview-note": "Oharra",
-	"popups-refpreview-web": "Internet erreferentzia",
-	"popups-refpreview-collapsible-placeholder": "Erreferentzia honek aurrebistan sartzen ez den grafiko bat du.",
 	"popups-refpreview-user-preference-label": "Gaitu erreferentzien aurrebistak (aurrebistak berehala ikusiko dituzu orri bat irakurtzean)"
 }

@@ -20,10 +20,5 @@
 	"popups-preview-disambiguation": "Šis nosaukums atbilst vairāk nekā vienai lapai",
 	"popups-preview-disambiguation-link": "Skatīt līdzīgas lapas",
 	"prefs-reading": "Lasīšanas izvēles",
-	"popups-prefs-optin": "Lapu priekšskatījumi\n\n<em>Iegūsti ātru priekšskatījumu par tēmu, lasot lapu</em>",
-	"popups-refpreview-reference": "Atsauce",
-	"popups-refpreview-book": "Grāmatas atsauce",
-	"popups-refpreview-journal": "Publikācijas atsauce",
-	"popups-refpreview-news": "Ziņu atsauce",
-	"popups-refpreview-web": "Tīmekļa atsauce"
+	"popups-prefs-optin": "Lapu priekšskatījumi\n\n<em>Iegūsti ātru priekšskatījumu par tēmu, lasot lapu</em>"
 }

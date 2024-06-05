@@ -32,12 +32,5 @@
 	"popups-prefs-navpopups-gadget-conflict-info": "Gweredekaet eo ar bitrak [[$1|Navigation popups]], neuze ne weloc’h ket rakweloù pourchaset gant an arc’hwel-mañ. Gallout a rafe ar bitrak-mañ kaout un anv all en ho wiki. Ma kendalc’hit da gaout kudennoù, arsellit mar plij ho pitrakoù hag ho skriptoù implijer, re hollek hag all.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Gweredekaet eo ar bitrak [[$1|Reference Tooltips]], neuze ne weloc’h ket rakweloù daveoù met gwelout a reoc’h rakweloù pajennoù. Gallout a rafe ar bitrak-mañ kaout un anv all en ho wiki. Ma kendalc’hit da gaout kudennoù, arsellit mar plij ho pitrakoù hag ho skriptoù implijer, re hollek hag all.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Gweredekaet eo ar bitrakoù [[$1|Navigation popups]] ha [[Reference Tooltips]], neuze ne weloc’h ket rakweloù pourchaset gant an arc’hwel-mañ. Gallout a rafe ar bitrakoù-mañ kaout un anv all en ho wiki. Ma kendalc’hit da gaout kudennoù, arsellit mar plij ho pitrakoù hag ho skriptoù implijer, re hollek hag all.",
-	"popups-refpreview-reference": "Dave",
-	"popups-refpreview-book": "Dave levr",
-	"popups-refpreview-journal": "Dave kazetenn",
-	"popups-refpreview-news": "Dave neventioù",
-	"popups-refpreview-note": "Notenn",
-	"popups-refpreview-web": "Dave gwiad",
-	"popups-refpreview-collapsible-placeholder": "En dave-mañ ez eus un tres ha n’ez a ket ur rakwel.",
 	"popups-refpreview-user-preference-label": "Gweredekaat rakwel daveoù (kaout rakweloù prim eus un dave en ul lenn ur bajenn)"
 }
