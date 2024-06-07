@@ -315,6 +315,32 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			'The wgPopupsFlags global is present and 0.' );
 	}
 
+	/**
+	 * @covers ::onUserGetDefaultOptions
+	 * @dataProvider provideReferencePreviewsFlag
+	 */
+	public function testOnUserGetDefaultOptions( bool $enabled ) {
+		$userOptions = [
+			'test' => 'not_empty'
+		];
+
+		( new PopupsHooks(
+			new HashConfig( [
+				'PopupsOptInDefaultState' => '1',
+				'PopupsReferencePreviews' => $enabled,
+			] ),
+			$this->getServiceContainer()->getService( 'Popups.Context' ),
+			$this->getServiceContainer()->getService( 'Popups.Logger' ),
+			$this->getServiceContainer()->getUserOptionsManager()
+		) )
+			->onUserGetDefaultOptions( $userOptions );
+		$this->assertCount( $enabled ? 3 : 2, $userOptions );
+		$this->assertSame( '1', $userOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
+		if ( $enabled ) {
+			$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME ] );
+		}
+	}
+
 	public static function provideReferencePreviewsFlag() {
 		return [
 			[ false ],

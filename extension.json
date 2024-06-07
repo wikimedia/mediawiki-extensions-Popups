@@ -22,6 +22,7 @@
 		"BeforePageDisplay": "PopupsHooks",
 		"ResourceLoaderGetConfigVars": "PopupsHooks",
 		"GetPreferences": "PopupsHooks",
+		"UserGetDefaultOptions": "PopupsHooks",
 		"MakeGlobalVariablesScript": "PopupsHooks"
 	},
 	"HookHandlers": {
@@ -188,21 +189,6 @@
 	},
 	"ConditionalUserOptions": {
 		"popups": [
-			[
-				"1",
-				[
-					"registered-after",
-					"20170816000000"
-				]
-			],
-			[
-				"0",
-				[
-					"named-user"
-				]
-			]
-		],
-		"popups-reference-previews": [
 			[
 				"1",
 				[
