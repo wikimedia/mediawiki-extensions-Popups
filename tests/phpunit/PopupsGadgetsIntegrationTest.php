@@ -19,6 +19,7 @@
  */
 
 use MediaWiki\Config\Config;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\Gadgets\Gadget;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
 use MediaWiki\User\User;

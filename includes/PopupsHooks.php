@@ -22,8 +22,9 @@ namespace Popups;
 
 use ExtensionRegistry;
 use MediaWiki\Config\Config;
-use MediaWiki\Hook\BeforePageDisplayHook;
-use MediaWiki\Hook\MakeGlobalVariablesScriptHook;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
+use MediaWiki\Output\Hook\MakeGlobalVariablesScriptHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
@@ -236,7 +237,7 @@ class PopupsHooks implements
 	 *   user has enabled conflicting Reference Tooltips Gadget.
 	 *
 	 * @param array &$vars variables to be added into the output of OutputPage::headElement
-	 * @param \IContextSource $out OutputPage instance calling the hook
+	 * @param IContextSource $out OutputPage instance calling the hook
 	 */
 	public function onMakeGlobalVariablesScript( &$vars, $out ): void {
 		$vars['wgPopupsFlags'] = $this->popupsContext->getConfigBitmaskFromUser( $out->getUser() );
