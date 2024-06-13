@@ -122,24 +122,6 @@
 				"settings"
 			]
 		},
-		"ext.popups.images": {
-			"selector": ".popups-icon--{name}",
-			"class": "MediaWiki\\ResourceLoader\\ImageModule",
-			"images": {
-				"preview-generic": {
-					"file": {
-						"ltr": "resources/ext.popups.images/sad-face-ltr.svg",
-						"rtl": "resources/ext.popups.images/sad-face-rtl.svg"
-					}
-				},
-				"footer": {
-					"file": {
-						"ltr": "resources/ext.popups.images/footer-ltr.svg",
-						"rtl": "resources/ext.popups.images/footer-rtl.svg"
-					}
-				}
-			}
-		},
 		"ext.popups": {
 			"packageFiles": [
 				{
@@ -182,7 +164,6 @@
 			],
 			"dependencies": [
 				"web2017-polyfills",
-				"ext.popups.images",
 				"mediawiki.experiments",
 				"mediawiki.jqueryMsg",
 				"mediawiki.storage",
