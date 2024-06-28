@@ -8,7 +8,7 @@
 		"template": "node_modules/jsdoc-wmf-theme"
 	},
 	"plugins": [
-		"plugins/markdown"
+		"node_modules/jsdoc-wmf-theme/plugins/default"
 	],
 	"source": {
 		"include": [ "src" ]
@@ -19,24 +19,11 @@
 			"useLongnameInNav": true
 		},
 		"wmf": {
-			"linkMap": {
-				"Array": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
-				"Event": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
-				"HTMLElement": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement",
-				"HTMLAnchorElement": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement",
-				"NodeList": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
-				"Promise": "https://developer.mozilla.org/en-US/docs/Web/API/Promise",
-				"jQuery": "https://api.jquery.com/Types/#jQuery",
-				"jQuery.Promise": "https://api.jquery.com/Types/#Promise",
-				"jQuery.jqXHR": "https://api.jquery.com/Types/#jqXHR",
-				"Redux.Store": "https://redux.js.org/api/store",
-				"Redux.Thunk": "https://redux.js.org/usage/writing-logic-thunks",
-				"mw.Api": "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.Api",
-				"mw.Map": "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.Map",
-				"mw.SafeStorage": "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.SafeStorage",
-				"mw.Title": "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.Title",
-				"mw.User": "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.User"
-			}
+			"repository": "https://gerrit.wikimedia.org/g/mediawiki/extensions/Popups/",
+			"prefixMap": {
+				"mw.": "https://doc.wikimedia.org/mediawiki-core/master/js/{type}.html"
+			},
+			"linkMap": {}
 		}
 	}
 }
