@@ -1,5 +1,6 @@
 /**
  * @module nextState
+ * @private
  */
 
 /**
@@ -52,7 +53,7 @@ export default function nextState( state, updates ) {
 }
 
 /**
- * @param {*} obj
+ * @param {any} obj
  * @return {boolean}
  */
 function isObject( obj ) {

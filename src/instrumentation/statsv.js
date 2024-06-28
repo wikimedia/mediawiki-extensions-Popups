@@ -1,5 +1,6 @@
 /**
  * @module instrumentation/statsv
+ * @private
  */
 
 /**

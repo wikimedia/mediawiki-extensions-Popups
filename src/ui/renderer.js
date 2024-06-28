@@ -1,13 +1,12 @@
-/**
- * @module renderer
- */
-
 import wait from '../wait';
 import pointerMaskSVG from './pointer-mask.svg';
 import { SIZES, createThumbnail } from './thumbnail';
 import { renderPreview } from './templates/preview/preview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';
-
+/**
+ * @module renderer
+ * @private
+ */
 const landscapePopupWidth = 450,
 	portraitPopupWidth = 320,
 	pointerSize = 8, // Height of the pointer.
@@ -110,6 +109,7 @@ export function render( model ) {
 		 *
 		 * See `show` for more detail.
 		 *
+		 * @ignore
 		 * @param {Event} event
 		 * @param {Object} boundActions The
 		 *  [bound action creators](http://redux.js.org/docs/api/bindActionCreators.html)
@@ -130,6 +130,7 @@ export function render( model ) {
 		 *
 		 * See `hide` for more detail.
 		 *
+		 * @ignore
 		 * @return {jQuery.Promise<void>}
 		 */
 		hide() {
@@ -251,6 +252,8 @@ export function createDisambiguationPreview( model ) {
  * TODO: From the perspective of the client, there's no need to distinguish
  * between rendering and showing a preview. Merge #render and Preview#show.
  *
+ * @private
+ * @ignore
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.Measures} measures
  * @param {HTMLElement} _link event target (unused)
@@ -670,7 +673,10 @@ export function getClosestYPosition( y, rects, isTop ) {
 }
 
 export const test = {
-	/** For testing only */
+	/**
+	 * For testing only
+	 * @private
+	 */
 	reset: () => {
 		renderers = {};
 	}

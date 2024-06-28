@@ -1,5 +1,6 @@
 /**
  * @module thumbnail
+ * @private
  */
 
 import constants from '../constants';

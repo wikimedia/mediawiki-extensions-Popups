@@ -1,7 +1,3 @@
-/**
- * @module popups
- */
-
 import * as Redux from 'redux';
 import * as ReduxThunk from 'redux-thunk';
 
@@ -26,7 +22,10 @@ import { previewTypes, getPreviewType,
 import setUserConfigFlags from './setUserConfigFlags';
 import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
 import { FETCH_START_DELAY, FETCH_COMPLETE_TARGET_DELAY } from './constants';
-
+/**
+ * @module popups
+ * @private
+ */
 const EXCLUDED_LINK_SELECTORS = [
 	'.extiw',
 	// ignore links that point to the same article

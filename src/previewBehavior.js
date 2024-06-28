@@ -1,5 +1,6 @@
 /**
  * @module previewBehaviour
+ * @private
  */
 const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
 

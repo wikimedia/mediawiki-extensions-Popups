@@ -1,5 +1,6 @@
 /**
  * @module isPagePreviewsEnabled
+ * @private
  */
 import { previewTypes } from './preview/model';
 const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );

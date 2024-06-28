@@ -1,5 +1,6 @@
 /**
  * @module reducers/pageviews
+ * @private
  */
 
 import actionTypes from '../actionTypes';

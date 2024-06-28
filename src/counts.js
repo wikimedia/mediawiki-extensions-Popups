@@ -1,5 +1,6 @@
 /**
  * @module counts
+ * @private
  */
 
 /**

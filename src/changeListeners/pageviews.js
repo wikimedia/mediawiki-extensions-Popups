@@ -1,5 +1,6 @@
 /**
  * @module changeListeners/pageviews
+ * @private
  */
 
 /**

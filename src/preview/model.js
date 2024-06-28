@@ -1,5 +1,6 @@
 /**
  * @module preview/model
+ * @private
  */
 
 import { requiresSummary } from '../ui/renderer';

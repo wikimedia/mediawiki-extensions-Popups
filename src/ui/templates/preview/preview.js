@@ -1,5 +1,6 @@
 /**
  * @module preview
+ * @private
  */
 
 import { renderPopup } from '../popup/popup';

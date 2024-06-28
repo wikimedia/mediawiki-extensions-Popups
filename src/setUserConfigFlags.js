@@ -1,5 +1,6 @@
 /**
  * @module setUserConfigFlags
+ * @private
  */
 
 /**
