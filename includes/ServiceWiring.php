@@ -18,7 +18,9 @@ return [
 	'Popups.GadgetsIntegration' => static function ( MediaWikiServices $services ): PopupsGadgetsIntegration {
 		return new PopupsGadgetsIntegration(
 			$services->getService( 'Popups.Config' ),
-			ExtensionRegistry::getInstance()
+			ExtensionRegistry::getInstance()->isLoaded( 'Gadgets' ) ?
+				$services->getService( 'GadgetsRepo' ) :
+				null
 		);
 	},
 	'Popups.Logger' => static function ( MediaWikiServices $services ): LoggerInterface {
