@@ -42,7 +42,7 @@ class PopupsContextTestWrapper extends PopupsContext {
 	 *
 	 * @param Config $config MediaWiki config
 	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
-	 * @param PopupsGadgetsIntegration|null $gadgetsIntegration Gadgets integration helper
+	 * @param PopupsGadgetsIntegration $gadgetsIntegration Gadgets integration helper
 	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
@@ -51,8 +51,7 @@ class PopupsContextTestWrapper extends PopupsContext {
 		PopupsGadgetsIntegration $gadgetsIntegration,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		$gadgetsIntegration = $gadgetsIntegration ?:
-			new PopupsGadgetsIntegration( $config, $extensionRegistry );
+		$gadgetsIntegration = $gadgetsIntegration;
 
 		parent::__construct(
 			$config,
