@@ -101,12 +101,12 @@ class PopupsHooks implements
 		}
 
 		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
-		$readingOptions = self::getPagePreviewPrefToggle( $user, $this->popupsContext );
+		$readingOptions = $this->getPagePreviewPrefToggle( $user );
 
 		if ( $this->config->get( 'PopupsReferencePreviews' ) ) {
 			$readingOptions = array_merge(
 				$readingOptions,
-				self::getReferencePreviewPrefToggle( $user, $this->popupsContext )
+				$this->getReferencePreviewPrefToggle( $user )
 			);
 		}
 
@@ -124,10 +124,9 @@ class PopupsHooks implements
 	 * Get Page Preview option
 	 *
 	 * @param User $user User whose preferences are being modified
-	 * @param PopupsContext $context
 	 * @return array[]
 	 */
-	private static function getPagePreviewPrefToggle( User $user, PopupsContext $context ) {
+	private function getPagePreviewPrefToggle( User $user ) {
 		$option = [
 			'type' => 'toggle',
 			'label-message' => 'popups-prefs-optin',
@@ -135,7 +134,7 @@ class PopupsHooks implements
 			'section' => self::PREVIEWS_PREFERENCES_SECTION
 		];
 
-		if ( $context->conflictsWithNavPopupsGadget( $user ) ) {
+		if ( $this->popupsContext->conflictsWithNavPopupsGadget( $user ) ) {
 			$option[ 'disabled' ] = true;
 			$option[ 'help-message' ] = [ 'popups-prefs-disable-nav-gadgets-info',
 				'Special:Preferences#mw-prefsection-gadgets' ];
@@ -150,10 +149,9 @@ class PopupsHooks implements
 	 * Get Reference Preview option
 	 *
 	 * @param User $user User whose preferences are being modified
-	 * @param PopupsContext $context
 	 * @return array[]
 	 */
-	private static function getReferencePreviewPrefToggle( User $user, PopupsContext $context ) {
+	private function getReferencePreviewPrefToggle( User $user ) {
 		$option = [
 			'type' => 'toggle',
 			'label-message' => 'popups-refpreview-user-preference-label',
@@ -161,8 +159,8 @@ class PopupsHooks implements
 			'section' => self::PREVIEWS_PREFERENCES_SECTION
 		];
 
-		$isNavPopupsGadgetEnabled = $context->conflictsWithNavPopupsGadget( $user );
-		$isRefTooltipsGadgetEnabled = $context->conflictsWithRefTooltipsGadget( $user );
+		$isNavPopupsGadgetEnabled = $this->popupsContext->conflictsWithNavPopupsGadget( $user );
+		$isRefTooltipsGadgetEnabled = $this->popupsContext->conflictsWithRefTooltipsGadget( $user );
 
 		if ( $isNavPopupsGadgetEnabled && $isRefTooltipsGadgetEnabled ) {
 			$option[ 'disabled' ] = true;
