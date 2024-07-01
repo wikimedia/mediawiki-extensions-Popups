@@ -1,10 +1,13 @@
 /**
- * @module MediaWiki-Popups-Integration
+ * The public facing MediaWiki Popups API.
+ *
+ * @module mw.popups
  */
 
 import { previewTypes } from '../preview/model';
 
 /**
+ * @private
  * @param {string} type
  * @return {boolean} whether the preview type supports being disabled/enabled.
  */
@@ -16,6 +19,7 @@ function canShowSettingForPreviewType( type ) {
  * This function provides a mw.popups object which can be used by 3rd party
  * to interact with Popups.
  *
+ * @ignore
  * @param {Redux.Store} store Popups store
  * @param {Function} registerModel allows extensions to register custom preview handlers.
  * @param {Function} registerPreviewUI allows extensions to register custom preview renderers.
@@ -46,6 +50,7 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 		 * custom preview type will render the preview. If not provided default renderer is used.
 		 *
 		 * @typedef {Object} PopupModule
+		 * @private
 		 * @property {string} type A unique string for identifying the type of page preview
 		 * @property {string} selector A CSS selector which identifies elements that will display
 		 * this type of page preview
@@ -73,6 +78,7 @@ export default function createMwPopups( store, registerModel, registerPreviewUI,
 		 * ```
 		 *
 		 * @unstable
+		 * @private
 		 * @param {PopupModule} module
 		 */
 		register: function ( module ) {

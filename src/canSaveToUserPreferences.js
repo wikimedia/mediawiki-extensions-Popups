@@ -1,5 +1,6 @@
 /**
  * @module canSaveToUserPreferences
+ * @private
  */
 
 /**

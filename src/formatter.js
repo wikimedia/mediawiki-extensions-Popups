@@ -1,5 +1,6 @@
 /**
  * @module formatter
+ * @private
  */
 
 /**

@@ -1,5 +1,6 @@
 /**
  * @module container
+ * @private
  */
 
 /**
@@ -21,7 +22,7 @@ export default function createContainer() {
 		 * @method
 		 * @name Container#set
 		 * @param {string} name
-		 * @param {*} factory
+		 * @param {any} factory
 		 */
 		set( name, factory ) {
 			factories[ name ] = factory;
@@ -64,7 +65,7 @@ export default function createContainer() {
 		 * @method
 		 * @name Container#get
 		 * @param {string} name
-		 * @return {*}
+		 * @return {any}
 		 * @throws Error If the service hasn't been defined
 		 */
 		get( name ) {

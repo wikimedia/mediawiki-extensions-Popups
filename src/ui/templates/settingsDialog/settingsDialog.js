@@ -1,5 +1,6 @@
 /**
  * @module settingsDialog
+ * @private
  */
 
 import { escapeHTML } from '../templateUtil';

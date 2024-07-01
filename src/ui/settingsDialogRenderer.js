@@ -1,7 +1,3 @@
-/**
- * @module settingsDialogRenderer
- */
-
 import { createSettingsDialog } from './settingsDialog';
 
 const initDialog = ( boundActions, previewTypesEnabled ) => {
@@ -24,11 +20,16 @@ const initDialog = ( boundActions, previewTypesEnabled ) => {
 	dialog.querySelector( '.close' ).addEventListener( 'click', boundActions.hideSettings );
 	return dialog;
 };
-
+/**
+ * @module settingsDialogRenderer
+ * @private
+ */
 /**
  * Creates a render function that will create the settings dialog and return
  * a set of methods to operate on it
  *
+ * @private
+ * @ignore
  * @return {Function} render function
  */
 export default function createSettingsDialogRenderer() {

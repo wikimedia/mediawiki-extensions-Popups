@@ -1,5 +1,6 @@
 /**
  * @module popup
+ * @private
  */
 
 import { createNodeFromTemplate } from '../templateUtil';

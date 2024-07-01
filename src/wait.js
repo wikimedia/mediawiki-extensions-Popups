@@ -1,5 +1,6 @@
 /**
  * @module wait
+ * @private
  */
 
 /**

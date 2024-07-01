@@ -1,5 +1,6 @@
 /**
  * @module settingsDialog
+ * @private
  */
 
 import { renderSettingsDialog } from './templates/settingsDialog/settingsDialog';

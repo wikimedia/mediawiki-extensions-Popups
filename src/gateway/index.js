@@ -1,5 +1,6 @@
 /**
  * @module gateway
+ * @private
  */
 
 /**

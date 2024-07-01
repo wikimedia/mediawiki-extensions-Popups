@@ -1,7 +1,7 @@
 /**
  * @module actionTypes
+ * @private
  */
-
 export default {
 	BOOT: 'BOOT',
 	LINK_DWELL: 'LINK_DWELL',

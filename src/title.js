@@ -1,5 +1,6 @@
 /**
  * @module title
+ * @private
  */
 
 /**

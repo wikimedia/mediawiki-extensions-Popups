@@ -1,5 +1,6 @@
 /**
  * @module changeListeners/syncUserSettings
+ * @private
  */
 
 /**
@@ -37,7 +38,7 @@ export default function syncUserSettings( userSettings ) {
  *
  * @param {Object} state tree
  * @param {string} path dot-separated path in the state tree
- * @return {*}
+ * @return {any}
  */
 function get( state, path ) {
 	return path.split( '.' ).reduce(

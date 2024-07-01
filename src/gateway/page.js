@@ -1,13 +1,13 @@
-/**
- * @module gateway/page
- */
-
 import constants from '../constants';
 import createMediaWikiApiGateway from './mediawiki';
 import createRESTBaseGateway from './rest';
 import * as formatters from './restFormatters';
 import { abortablePromise } from './index.js';
 
+/**
+ * @module gateway/page
+ * @private
+ */
 /**
  * @param {Object} options
  * @return {Promise}

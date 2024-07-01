@@ -2,6 +2,7 @@ import { previewTypes } from './preview/model';
 
 /**
  * @module userSettings
+ * @private
  */
 
 const PAGE_PREVIEWS_ENABLED_KEY = 'mwe-popups-enabled',

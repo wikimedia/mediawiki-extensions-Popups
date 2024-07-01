@@ -1,12 +1,11 @@
-/**
- * @module actions
- */
-
 import types from './actionTypes';
 import wait from './wait';
 import { createNullModel, previewTypes, getDwellDelay } from './preview/model';
 import { FETCH_START_DELAY, PREVIEW_SEEN_DURATION, ABANDON_END_DELAY } from './constants';
-
+/**
+ * @module actions
+ * @private
+ */
 /**
  * Mixes in timing information to an action.
  *
@@ -91,6 +90,7 @@ export function registerSetting( name, enabled ) {
 /**
  * Represents Page Previews fetching data via the gateway.
  *
+ * @private
  * @param {Gateway} gateway
  * @param {mw.Title} title
  * @param {HTMLAnchorElement} el
@@ -189,6 +189,7 @@ export function fetch( gateway, title, el, token, type ) {
  * Represents the user dwelling on a link, either by hovering over it with
  * their mouse or by focussing it using their keyboard or an assistive device.
  *
+ * @private
  * @param {mw.Title} title
  * @param {HTMLAnchorElement} el
  * @param {ext.popups.Measures} measures
@@ -250,6 +251,7 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
  * an assistive device, or abandoning a preview by moving their mouse away
  * from it.
  *
+ * @private
  * @return {Redux.Thunk}
  */
 export function abandon() {
@@ -402,6 +404,7 @@ export function hideSettings() {
  * See docs/adr/0003-keep-enabled-state-only-in-preview-reducer.md for more
  * details.
  *
+ * @private
  * @param {Object} enabled Mapping preview type identifiers to boolean flags
  * @return {Redux.Thunk}
  */

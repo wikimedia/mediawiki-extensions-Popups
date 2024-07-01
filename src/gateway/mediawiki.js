@@ -1,10 +1,12 @@
-/**
- * @module gateway/mediawiki
- */
-
 import { createModel } from '../preview/model';
 import * as formatter from '../formatter';
 import { abortablePromise } from './index.js';
+
+/**
+ * @module gateway/mediawiki
+ * @private
+ * @ignore
+ */
 
 // Public and private cache lifetime (5 minutes)
 //
@@ -20,6 +22,7 @@ const CACHE_LIFETIME = 300;
 /**
  * Creates an instance of the MediaWiki API gateway.
  *
+ * @ignore
  * @param {mw.Api} api
  * @param {Object} config Configuration that affects the major behavior of the
  *  gateway.
