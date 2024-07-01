@@ -10,7 +10,8 @@
 			"Pyscowicz",
 			"Rönttönen",
 			"Stryn",
-			"Leszek Manicki (WMDE)"
+			"Leszek Manicki (WMDE)",
+			"Samoasambia"
 		]
 	},
 	"popups-message": "Esikatselut",
@@ -26,7 +27,7 @@
 	"popups-settings-help": "Voit ottaa esikatselut takaisin käyttöön sivun alalaidan linkistä.",
 	"popups-settings-enable": "Muuta esikatselun asetuksia",
 	"popups-settings-icon-gear-title": "Muuta sivun esikatseluasetuksia",
-	"popups-preview-no-preview": "Virheen vuoksi tätä esikatselua ei voitu näyttää",
+	"popups-preview-no-preview": "Virheen vuoksi tätä esikatselua voida näyttää",
 	"popups-preview-footer-read": "Mene tälle sivulle",
 	"popups-preview-disambiguation": "Tämä otsikko liittyy useampaan kuin yhteen sivuun",
 	"popups-preview-disambiguation-link": "Katso samankaltaisia sivuja",
