@@ -23,7 +23,6 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\Gadgets\Gadget;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
 use MediaWiki\User\User;
-use PHPUnit\Framework\MockObject\MockObject;
 use Popups\PopupsGadgetsIntegration;
 
 /**
@@ -56,18 +55,6 @@ class PopupsGadgetsIntegrationTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	/**
-	 * @param bool $gadgetsEnabled
-	 * @return MockObject|ExtensionRegistry
-	 */
-	private function getExtensionRegistryMock( $gadgetsEnabled ) {
-		$mock = $this->createMock( ExtensionRegistry::class );
-		$mock->method( 'isLoaded' )
-			->with( 'Gadgets' )
-			->willReturn( $gadgetsEnabled );
-		return $mock;
-	}
-
 	private function getConfig( string $name = self::NAV_POPUPS_GADGET_NAME ): Config {
 		return new HashConfig( [
 			PopupsGadgetsIntegration::CONFIG_NAVIGATION_POPUPS_NAME => $name,
@@ -77,14 +64,14 @@ class PopupsGadgetsIntegrationTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::conflictsWithNavPopupsGadget
-	 * @covers ::isGadgetExtensionEnabled
 	 * @covers ::__construct
 	 * @covers ::sanitizeGadgetName
 	 */
 	public function testConflictsWithNavPopupsGadgetIfGadgetsExtensionIsNotLoaded() {
 		$user = $this->createMock( User::class );
 		$integration = new PopupsGadgetsIntegration( $this->getConfig(),
-			$this->getExtensionRegistryMock( false ) );
+			null
+		);
 		$this->assertFalse(
 			$integration->conflictsWithNavPopupsGadget( $user ),
 			'No conflict is identified.' );
@@ -207,16 +194,12 @@ class PopupsGadgetsIntegrationTest extends MediaWikiIntegrationTestCase {
 		GadgetRepo $repoMock,
 		$expected
 	) {
-		$origGadgetsRepo = GadgetRepo::singleton();
-		GadgetRepo::setSingleton( $repoMock );
-
 		$integration = new PopupsGadgetsIntegration( $config,
-			$this->getExtensionRegistryMock( true ) );
+			$repoMock
+		);
 		$this->assertSame( $expected,
 			$integration->conflictsWithNavPopupsGadget( $user ),
 			( $expected ? 'A' : 'No' ) . ' conflict is identified.' );
-
-		GadgetRepo::setSingleton( $origGadgetsRepo );
 	}
 
 }
