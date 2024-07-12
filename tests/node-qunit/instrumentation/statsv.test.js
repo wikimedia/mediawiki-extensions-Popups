@@ -34,11 +34,15 @@ QUnit.test( '#isEnabled', function ( assert ) {
 
 	config.delete( 'wgPopupsStatsvSamplingRate' );
 
-	isEnabled( user, config, experiments );
-
-	assert.deepEqual(
-		weightedBooleanStub.getCall( 1 ).args[ 1 ],
-		0,
-		'The bucketing rate should be 0 by default.'
+	const defaultResult = isEnabled( user, config, experiments );
+	assert.strictEqual(
+		defaultResult,
+		false,
+		'The bucketing is disabled by default.'
+	);
+	assert.strictEqual(
+		weightedBooleanStub.callCount,
+		1,
+		'The experiments object is not called when bucketing rate is the default 0.'
 	);
 } );
