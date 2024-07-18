@@ -43,7 +43,6 @@ QUnit.test( '#boot', ( assert ) => {
 			type: actionTypes.BOOT,
 			initiallyEnabled: { page: false },
 			isNavPopupsEnabled: true,
-			sessionToken: '0123456789',
 			pageToken: '9876543210',
 			page: {
 				url: REFERRER,

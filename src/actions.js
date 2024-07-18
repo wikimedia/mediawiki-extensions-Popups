@@ -56,7 +56,6 @@ export function boot(
 		initiallyEnabled,
 		// This is only used for logging
 		isNavPopupsEnabled: config.get( 'wgPopupsConflictsWithNavPopupGadget' ),
-		sessionToken: user.sessionId(),
 		pageToken: user.getPageviewToken(),
 		page: {
 			url,
