@@ -17,6 +17,10 @@
  */
 export function isEnabled( user, config, experiments ) {
 	const bucketingRate = config.get( 'wgPopupsStatsvSamplingRate', 0 );
+	if ( bucketingRate === 0 || bucketingRate === 1 ) {
+		// Avoid calling user.sessionId() if possible, since it sets a cookie
+		return !!bucketingRate;
+	}
 
 	return experiments.weightedBoolean(
 		'ext.Popups.statsv',
