@@ -20,6 +20,7 @@
  */
 
 use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
@@ -70,7 +71,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	 * @param bool $expected
 	 */
 	public function testShowPreviewsPreferencesPage( array $config, $expected ) {
-		$this->setMwGlobals( $config );
+		$this->overrideConfigValues( $config );
 		$context = $this->getContext();
 		$this->assertSame( $expected,
 			$context->showPreviewsOptInOnPreferencesPage(),
@@ -81,13 +82,13 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 		return [
 			[
 				[
-					'wgPopupsHideOptInOnPreferencesPage' => false
+					'PopupsHideOptInOnPreferencesPage' => false
 				],
 				true
 			],
 			[
 				[
-					'wgPopupsHideOptInOnPreferencesPage' => true
+					'PopupsHideOptInOnPreferencesPage' => true
 				],
 				false
 			]
@@ -118,9 +119,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	 * @param bool $expected
 	 */
 	public function testShouldSendModuleToUser( $optIn, $expected ) {
-		$this->setMwGlobals( [
-			'wgPopupsReferencePreviews' => false,
-		] );
+		$this->overrideConfigValue( 'PopupsReferencePreviews', false );
 
 		$user = $this->createMock( User::class );
 		$user->method( 'isNamed' )->willReturn( true );
@@ -160,9 +159,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testAreDependenciesMet( $textExtracts, $pageImages,
 		$gateway, $expected ) {
-		$this->setMwGlobals( [
-			'wgPopupsGateway' => $gateway,
-		] );
+		$this->overrideConfigValue( 'PopupsGateway', $gateway );
 		$returnValues = [ $textExtracts, $pageImages ];
 
 		$mock = $this->createMock( ExtensionRegistry::class );
@@ -215,7 +212,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	 * @param bool $expected
 	 */
 	public function testIsTitleExcluded( array $excludedPages, Title $title, $expected ) {
-		$this->setMwGlobals( [ 'wgPopupsPageDisabled' => $excludedPages ] );
+		$this->overrideConfigValue( 'PopupsPageDisabled', $excludedPages );
 		$context = $this->getContext();
 		$this->assertSame( $expected,
 			$context->isTitleExcluded( $title ),
@@ -245,9 +242,9 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 		$page = 'Specjalna:Preferencje';
 		$excludedPages = [ 'Special:Preferences' ];
 
-		$this->setMwGlobals( [
-			'wgPopupsPageDisabled' => $excludedPages,
-			'wgLanguageCode' => 'pl'
+		$this->overrideConfigValues( [
+			'PopupsPageDisabled' => $excludedPages,
+			MainConfigNames::LanguageCode => 'pl',
 		] );
 		$context = $this->getContext();
 		$this->assertTrue(
