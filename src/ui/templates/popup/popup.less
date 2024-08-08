@@ -440,23 +440,25 @@
 }
 
 // Apply night mode styles that can't be handled with CSS variables, i.e. anything with rgba()
-html.skin-theme-clientpref-night {
-	.mwe-popups.mwe-popups-no-image-pointer::before {
-		.mwe-popups-border-pointer-top( 8px, 10px, rgba( 255, 255, 255, 0.07 ), 0 );
-	}
+@media screen {
+	html.skin-theme-clientpref-night {
+		.mwe-popups.mwe-popups-no-image-pointer::before {
+			.mwe-popups-border-pointer-top( 8px, 10px, rgba( 255, 255, 255, 0.07 ), 0 );
+		}
 
-	.mwe-popups-extract[ dir='ltr' ]::after {
-		/* @noflip */
-		background-image: linear-gradient( to right, transparent, @background-color-base 50% );
-	}
+		.mwe-popups-extract[ dir='ltr' ]::after {
+			/* @noflip */
+			background-image: linear-gradient( to right, transparent, @background-color-base 50% );
+		}
 
-	.mwe-popups-extract[ dir='rtl' ]::after {
-		/* @noflip */
-		background-image: linear-gradient( to left, transparent, @background-color-base 50% );
+		.mwe-popups-extract[ dir='rtl' ]::after {
+			/* @noflip */
+			background-image: linear-gradient( to left, transparent, @background-color-base 50% );
+		}
 	}
 }
 
-@media ( prefers-color-scheme: dark ) {
+@media screen and ( prefers-color-scheme: dark ) {
 	html.skin-theme-clientpref-os {
 		.mwe-popups.mwe-popups-no-image-pointer::before {
 			.mwe-popups-border-pointer-top( 8px, 10px, rgba( 255, 255, 255, 0.07 ), 0 );
