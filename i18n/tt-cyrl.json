@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ерней",
-			"Ильнар"
+			"Ильнар",
+			"Don Alessandro"
 		]
 	},
 	"popups-message": "Алдан карау",
@@ -12,5 +13,5 @@
 	"popups-settings-help-ok": "Тәмам",
 	"popups-settings-cancel": "Кире алу",
 	"prefs-reading": "Уку көйләнмәләре",
-	"popups-prefs-optin": "Битләрне алдан карау\n<em>Күрсәткечне куйганда мәкаләләрне тиз карау кулланырга</em>"
+	"popups-prefs-optin": "Битләрне алдан карау активлаштырылсын (мәкалә укыганда темаларны тиз карау кулланылыр)"
 }
