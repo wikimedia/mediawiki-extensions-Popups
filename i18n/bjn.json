@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ezagren"
+		]
+	},
+	"popups-message": "Titilikan",
+	"popups-desc": "Manampaiakan popup titilikan isi laman amunnya pamakai maampahakan kursor ka tautan",
+	"popups-settings-title": "Titilikan",
+	"popups-settings-option-page": "Titilikan laman",
+	"popups-settings-option-page-description": "Manampaiakan titilikan singkat matan suatu tupik wayah mambaca sabuting laman.",
+	"popups-settings-option-reference": "Titilikan bahan acuan",
+	"popups-settings-option-reference-description": "Manampaiakan titilikan singkat matan suatu tupik wayah mambaca sabuting laman.",
+	"popups-settings-save": "Simpan",
+	"popups-settings-help-ok": "Tuntung",
+	"popups-settings-cancel": "Pasah",
+	"popups-settings-help": "Pian kawa manyalaakan titilikan pulang lawan mamakai tautan di bagian bawah matan laman ini.",
+	"popups-settings-enable": "Ubah pangaturan titilikan",
+	"popups-settings-icon-gear-title": "Ubah pangaturan titilikan laman",
+	"popups-preview-no-preview": "Ada ungkara wayah manampaiakan titilikan ini",
+	"popups-preview-footer-read": "Tulak ka laman ini",
+	"popups-preview-disambiguation": "Judul ini baraitan lawan labih matan satu laman",
+	"popups-preview-disambiguation-link": "Janaki laman nang mahirip",
+	"prefs-reading": "Kakatujuan baca",
+	"popups-prefs-optin": "Nyalaakan titilikan laman (dapatakan titilikan lakas matan sabuting tupik wayah parhatan mambaca suatu laman)",
+	"popups-prefs-disable-nav-gadgets-info": "Pian musti [[$1|mamajahakan pakakas Navigation Popups]] matan tab Pakakas gasan manyalaakan titilikan laman.",
+	"popups-prefs-conflicting-gadgets-info": "Gawai khusus wan paubahsuaian lainnya kawa mamangaruhi kamampuan fitur ini. Amun Pian maalami ungkara, tulung tinjau gawai wan naskah pamakai Pian, tamasuk nang sipatnya global.",
+	"popups-prefs-navpopups-gadget-conflict-info": "Pian sudah manyalaakan pakakas [[$1|Navigation popups]], jadi Pian kada pacangan maniring titilikan nang disadiaakan ulih fitur ini. Tagantung wiki Pian, pakakas ini pinanya baisi ngaran nang sahikit babida. Amun Pian tarus maalami ungkara, tulung janaki pulang pakakas wan skrip pamakai Pian, tamasuk nang sipatnya global.",
+	"popups-prefs-reftooltips-gadget-conflict-info": "Pian sudah manyalaakan pakakas [[$1|Reference Tooltips]], jadi Pian kada pacangan maniring titilikan bahan acuan, tagal tatap pacangan maniring titilikan laman. Tagantung wiki Pian, pakakas ini pinanya baisi ngaran nang sahikit babida. Amun Pian tarus maalami ungkara, tulung janaki pulang pakakas wan skrip pamakai Pian, tamasuk nang sipatnya global.",
+	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Pian sudah manyalaakan pakakas [[$1|Navigation popups]] wan [[$1|Reference Tooltips]], jadi Pian kada pacangan maniring titilikan nang disadiaakan ulih fitur ini. Tagantung wiki Pian, pakakas ini pinanya baisi ngaran nang sahikit babida. Amun Pian tarus maalami ungkara, tulung janaki pulang pakakas wan skrip pamakai Pian, tamasuk nang sipatnya global.",
+	"popups-refpreview-user-preference-label": "Nyalaakan titilikan bahan acuan (dapatakan titilikan bahan acuan nang lakas wayah mambaca laman)"
+}
