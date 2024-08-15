@@ -8,7 +8,8 @@
 			"Iwan Novirion",
 			"Kenrick95",
 			"RXerself",
-			"Sumbukompor"
+			"Sumbukompor",
+			"Ezagren"
 		]
 	},
 	"popups-message": "Pratayang",
@@ -31,7 +32,7 @@
 	"prefs-reading": "Preferensi baca",
 	"popups-prefs-optin": "Aktifkan pratayang halaman (dapatkan pratayang cepat dari sebuah topik ketika sedang membaca suatu halaman)",
 	"popups-prefs-disable-nav-gadgets-info": "Anda harus [[$1|menonaktifkan perkakas Navigation Popups]] dari tab Perkakas untuk mengaktifkan pratayang halaman.",
-	"popups-prefs-conflicting-gadgets-info": "Gawai tertentu dan pengubahsuaian lainnnya dapat mempengaruhi performa fitur ini. Jika Anda mengalami masalah tolong tinjau gawai dan skrip pengguna Anda, termasuk yang bersifat global.",
+	"popups-prefs-conflicting-gadgets-info": "Gawai tertentu dan pengubahsuaian lainnya dapat memengaruhi performa fitur ini. Jika Anda mengalami masalah tolong tinjau gawai dan skrip pengguna Anda, termasuk yang bersifat global.",
 	"popups-prefs-navpopups-gadget-conflict-info": "Anda telah menyalakan perkakas [[$1|Navigation popups]], jadi Anda tidak akan melihat pratayang yang disediakan oleh fitur ini. Tergantung wiki Anda, perkakas ini mungkin memiliki nama yang sedikit berbeda. Jika Anda terus mengalami masalah, tolong lihat kembali perkakas dan skrip pengguna Anda, termasuk yang sifatnya global.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Anda telah menyalakan perkakas [[$1|Reference Tooltips]], jadi Anda tidak akan melihat pratayang referensi, tetapi tetap akan melihat pratayang halaman. Tergantung wiki Anda, perkakas ini mungkin memiliki nama yang sedikit berbeda. Jika Anda terus mengalami masalah, tolong lihat kembali perkakas dan skrip pengguna Anda, termasuk yang sifatnya global.",
 	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Anda telah menyalakan perkakas [[$1|Navigation popups]] dan [[$1|Reference Tooltips]], jadi Anda tidak akan melihat pratayang yang disediakan oleh fitur ini. Tergantung wiki Anda, perkakas ini mungkin memiliki nama yang sedikit berbeda. Jika Anda terus mengalami masalah, tolong lihat kembali perkakas dan skrip pengguna Anda, termasuk yang sifatnya global.",
