@@ -78,10 +78,6 @@
 			"description": "Specify a REST endpoint where summaries should be sourced from. Endpoint must meet the spec at https://www.mediawiki.org/wiki/Specs/Summary/1.2.0",
 			"value": "/api/rest_v1/page/summary/"
 		},
-		"PopupsReferencePreviews": {
-			"description": "Feature flag to enable or disable the separate popup type for references created via the Cite extension's <ref> tag.",
-			"value": true
-		},
 		"PopupsStatsvSamplingRate": {
 			"description": "Sampling rate for logging performance data to statsv.",
 			"value": 0

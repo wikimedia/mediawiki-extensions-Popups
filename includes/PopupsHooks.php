@@ -101,14 +101,10 @@ class PopupsHooks implements
 		}
 
 		$skinPosition = array_search( 'skin', array_keys( $prefs ) );
-		$readingOptions = $this->getPagePreviewPrefToggle( $user );
-
-		if ( $this->config->get( 'PopupsReferencePreviews' ) ) {
-			$readingOptions = array_merge(
-				$readingOptions,
-				$this->getReferencePreviewPrefToggle( $user )
-			);
-		}
+		$readingOptions = array_merge(
+			$this->getPagePreviewPrefToggle( $user ),
+			$this->getReferencePreviewPrefToggle( $user )
+		);
 
 		if ( $skinPosition !== false ) {
 			$injectIntoIndex = $skinPosition + 1;
@@ -251,9 +247,6 @@ class PopupsHooks implements
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$default = $this->config->get( 'PopupsOptInDefaultState' );
 		$defaultOptions[PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME] = $default;
-
-		if ( $this->config->get( 'PopupsReferencePreviews' ) ) {
-			$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = '1';
-		}
+		$defaultOptions[PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME] = '1';
 	}
 }

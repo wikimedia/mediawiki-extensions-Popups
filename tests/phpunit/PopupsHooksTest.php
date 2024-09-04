@@ -61,16 +61,15 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onGetPreferences
-	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnGetPreferencesNavPopupGadgetIsOn( bool $enabled ) {
+	public function testOnGetPreferencesNavPopupGadgetIsOn() {
 		$userMock = $this->createMock( User::class );
 
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
 			->willReturn( true );
-		$contextMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
+		$contextMock->expects( $this->exactly( 2 ) )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->with( $userMock )
 			->willReturn( true );
@@ -78,9 +77,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		$prefs = [];
 
 		( new PopupsHooks(
-			new HashConfig( [
-				'PopupsReferencePreviews' => $enabled,
-			] ),
+			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
@@ -101,14 +98,13 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onGetPreferences
-	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnGetPreferencesPreviewsEnabled( bool $enabled ) {
+	public function testOnGetPreferencesPreviewsEnabled() {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
 			->willReturn( true );
-		$contextMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
+		$contextMock->expects( $this->exactly( 2 ) )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->willReturn( false );
 
@@ -119,9 +115,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		];
 
 		( new PopupsHooks(
-			new HashConfig( [
-				'PopupsReferencePreviews' => $enabled,
-			] ),
+			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
@@ -142,14 +136,13 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onGetPreferences
-	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnGetPreferencesPreviewsEnabledWhenSkinIsNotAvailable( bool $enabled ) {
+	public function testOnGetPreferencesPreviewsEnabledWhenSkinIsNotAvailable() {
 		$contextMock = $this->createMock( PopupsContext::class );
 		$contextMock->expects( $this->once() )
 			->method( 'showPreviewsOptInOnPreferencesPage' )
 			->willReturn( true );
-		$contextMock->expects( $this->exactly( $enabled ? 2 : 1 ) )
+		$contextMock->expects( $this->exactly( 2 ) )
 			->method( 'conflictsWithNavPopupsGadget' )
 			->willReturn( false );
 
@@ -159,9 +152,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		];
 
 		( new PopupsHooks(
-			new HashConfig( [
-				'PopupsReferencePreviews' => $enabled,
-			] ),
+			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
@@ -317,9 +308,8 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::onUserGetDefaultOptions
-	 * @dataProvider provideReferencePreviewsFlag
 	 */
-	public function testOnUserGetDefaultOptions( bool $enabled ) {
+	public function testOnUserGetDefaultOptions() {
 		$userOptions = [
 			'test' => 'not_empty'
 		];
@@ -327,25 +317,15 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 		( new PopupsHooks(
 			new HashConfig( [
 				'PopupsOptInDefaultState' => '1',
-				'PopupsReferencePreviews' => $enabled,
 			] ),
 			$this->getServiceContainer()->getService( 'Popups.Context' ),
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
 			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onUserGetDefaultOptions( $userOptions );
-		$this->assertCount( $enabled ? 3 : 2, $userOptions );
+		$this->assertCount( 3, $userOptions );
 		$this->assertSame( '1', $userOptions[ PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME ] );
-		if ( $enabled ) {
-			$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME ] );
-		}
-	}
-
-	public static function provideReferencePreviewsFlag() {
-		return [
-			[ false ],
-			[ true ],
-		];
+		$this->assertSame( '1', $userOptions[ PopupsContext::REFERENCE_PREVIEWS_PREFERENCE_NAME ] );
 	}
 
 }

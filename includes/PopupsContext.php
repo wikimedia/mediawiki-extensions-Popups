@@ -150,10 +150,6 @@ class PopupsContext {
 	 * @return bool whether or not to show reference previews
 	 */
 	public function isReferencePreviewsEnabled( User $user ) {
-		if ( !$this->config->get( 'PopupsReferencePreviews' ) ) {
-			return false;
-		}
-
 		return !$user->isNamed() || $this->userOptionsLookup->getBoolOption(
 			$user, self::REFERENCE_PREVIEWS_PREFERENCE_NAME
 		);

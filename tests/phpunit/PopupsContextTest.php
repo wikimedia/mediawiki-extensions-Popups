@@ -22,7 +22,6 @@
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Title\Title;
-use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use Popups\PopupsContext;
@@ -107,45 +106,6 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			$context->shouldSendModuleToUser( $user ),
 			'The module is always sent to anonymous users.'
 		);
-	}
-
-	/**
-	 * Tests #shouldSendModuleToUser when the user is logged in and the reference previews feature
-	 * is disabled.
-	 *
-	 * @covers ::shouldSendModuleToUser
-	 * @dataProvider provideTestDataForShouldSendModuleToUser
-	 * @param bool $optIn
-	 * @param bool $expected
-	 */
-	public function testShouldSendModuleToUser( $optIn, $expected ) {
-		$this->overrideConfigValue( 'PopupsReferencePreviews', false );
-
-		$user = $this->createMock( User::class );
-		$user->method( 'isNamed' )->willReturn( true );
-		$userOptLookup = $this->createMock( UserOptionsLookup::class );
-		$userOptLookup->method( 'getBoolOption' )
-			->with( $user, PopupsContext::PREVIEWS_OPTIN_PREFERENCE_NAME )
-			->willReturn( $optIn );
-		$this->setService( 'UserOptionsLookup', $userOptLookup );
-
-		$context = $this->getContext();
-		$this->assertSame( $expected,
-			$context->shouldSendModuleToUser( $user ),
-			( $expected ? 'A' : 'No' ) . ' module is sent to the user.' );
-	}
-
-	public static function provideTestDataForShouldSendModuleToUser() {
-		return [
-			[
-				'optin' => PopupsContext::PREVIEWS_ENABLED,
-				'expected' => true
-			],
-			[
-				'optin' => PopupsContext::PREVIEWS_DISABLED,
-				'expected' => false
-			]
-		];
 	}
 
 	/**
