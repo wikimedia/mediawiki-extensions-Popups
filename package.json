@@ -49,7 +49,7 @@
 		"eslint-config-wikimedia": "0.26.0",
 		"eslint-plugin-no-jquery": "2.7.0",
 		"expose-loader": "4.1.0",
-		"grunt-banana-checker": "0.11.1",
+		"grunt-banana-checker": "0.13.0",
 		"jquery": "3.7.1",
 		"jsdoc": "4.0.3",
 		"jsdoc-wmf-theme": "1.1.0",
