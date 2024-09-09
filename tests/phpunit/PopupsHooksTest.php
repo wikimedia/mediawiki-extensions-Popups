@@ -246,12 +246,13 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			$isCodeLoaded, $isTitleExcluded ) {
 		$skinMock = $this->createMock( Skin::class );
 
+		$user = $this->getServiceContainer()->getUserFactory()->newAnonymous();
 		$outPageMock = $this->createMock( OutputPage::class );
 		$outPageMock->expects( $isCodeLoaded ? $this->once() : $this->never() )
 			->method( 'addModules' )
 			->with( [ 'ext.popups' ] );
 		$outPageMock->method( 'getUser' )
-			->willReturn( User::newFromId( 0 ) );
+			->willReturn( $user );
 
 		$contextMock = $this->createMock( PopupsContext::class );
 
@@ -281,7 +282,7 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::onMakeGlobalVariablesScript
 	 */
 	public function testOnMakeGlobalVariablesScript() {
-		$user = User::newFromId( 0 );
+		$user = $this->getServiceContainer()->getUserFactory()->newAnonymous();
 
 		$outputPage = $this->createMock( OutputPage::class );
 		$outputPage->method( 'getUser' )
