@@ -29,9 +29,5 @@
 	"prefs-reading": "Skaitymo nustatymai",
 	"popups-prefs-optin": "Įjungti puslapių peržiūras (gaukite trumpas temos santraukas skaitant puslapį)",
 	"popups-prefs-disable-nav-gadgets-info": "Turite [[$1|išjungti Navigacijos iššokančių langų priemonę]] Priemonių nustatymuose, kad įjungtumėte puslapių peržiūras.",
-	"popups-prefs-conflicting-gadgets-info": "Kai kurios priemonės ir tinkinimai gali veikti šią funkciją. Jei patiriate problemų, prašome peržiūrėti savo priemones ir naudotojo kodą, įskaitant visuotinius.",
-	"popups-prefs-navpopups-gadget-conflict-info": "Turite įjungę [[$1|Navigacijos iššokančių langų]] priemonę, todėl nematysite peržiūrų, kurias teikia ši funkcija. Priklausomai nuo viki, priemonė gali turėti kitokį pavadinimą. Jei ir toliau susiduriate su problemomis, prašome peržiūrėti savo priemones ir naudotojų kodus, įskaitant visuotinius.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Turite įjungę [[$1|Nuorodų pastabų]] priemonę, todėl nematysite nuorodų peržiūrų, bet vis tiek matysite puslapių peržiūrų skaičių. Priklausomai nuo viki, priemonė gali turėti kitokį pavadinimą. Jei ir toliau susiduriate su problemomis, prašome peržiūrėti savo priemones ir naudotojų kodus, įskaitant visuotinius.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Turite įjungę [[$1|Navigacijos iššokančių langų]] ir [[$1|Nuorodų pastabų]] priemones, todėl nematysite peržiūrų, kurias teikia ši funkcija. Priklausomai nuo viki, priemonė gali turėti kitokį pavadinimą. Jei ir toliau susiduriate su problemomis, prašome peržiūrėti savo priemones ir naudotojų kodus, įskaitant visuotinius.",
-	"popups-refpreview-user-preference-label": "Įjungti nuorodų peržiūrą (gauti trumpas nuorodų peržiūras skaitant puslapį)"
+	"popups-prefs-conflicting-gadgets-info": "Kai kurios priemonės ir tinkinimai gali veikti šią funkciją. Jei patiriate problemų, prašome peržiūrėti savo priemones ir naudotojo kodą, įskaitant visuotinius."
 }

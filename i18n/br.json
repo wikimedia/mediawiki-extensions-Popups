@@ -28,9 +28,5 @@
 	"prefs-reading": "Penndibaboù lenn",
 	"popups-prefs-optin": "Gweredekaat rakwel pajennoù (kaout rakweloù prim eus un danvez en ur lenn ur bajenn)",
 	"popups-prefs-disable-nav-gadgets-info": "Rankout a rit [[$1|diweredekaat ar bitrak Navigation popups]] en ho penndibaboù Bitrakoù evit gweredekaat rakweloù ar pajennoù.",
-	"popups-prefs-conflicting-gadgets-info": "Gallout a rafe bitrakoù ha kemmoù d’an ardremmez mirout ar arc’hweladur-mañ da vont en-dro mat. M’ho peus kudennoù, kit da welout mar plij ho pitrakoù ha skriptoù implijer, ar re hollek en o zouesk.",
-	"popups-prefs-navpopups-gadget-conflict-info": "Gweredekaet eo ar bitrak [[$1|Navigation popups]], neuze ne weloc’h ket rakweloù pourchaset gant an arc’hwel-mañ. Gallout a rafe ar bitrak-mañ kaout un anv all en ho wiki. Ma kendalc’hit da gaout kudennoù, arsellit mar plij ho pitrakoù hag ho skriptoù implijer, re hollek hag all.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Gweredekaet eo ar bitrak [[$1|Reference Tooltips]], neuze ne weloc’h ket rakweloù daveoù met gwelout a reoc’h rakweloù pajennoù. Gallout a rafe ar bitrak-mañ kaout un anv all en ho wiki. Ma kendalc’hit da gaout kudennoù, arsellit mar plij ho pitrakoù hag ho skriptoù implijer, re hollek hag all.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Gweredekaet eo ar bitrakoù [[$1|Navigation popups]] ha [[Reference Tooltips]], neuze ne weloc’h ket rakweloù pourchaset gant an arc’hwel-mañ. Gallout a rafe ar bitrakoù-mañ kaout un anv all en ho wiki. Ma kendalc’hit da gaout kudennoù, arsellit mar plij ho pitrakoù hag ho skriptoù implijer, re hollek hag all.",
-	"popups-refpreview-user-preference-label": "Gweredekaat rakwel daveoù (kaout rakweloù prim eus un dave en ul lenn ur bajenn)"
+	"popups-prefs-conflicting-gadgets-info": "Gallout a rafe bitrakoù ha kemmoù d’an ardremmez mirout ar arc’hweladur-mañ da vont en-dro mat. M’ho peus kudennoù, kit da welout mar plij ho pitrakoù ha skriptoù implijer, ar re hollek en o zouesk."
 }

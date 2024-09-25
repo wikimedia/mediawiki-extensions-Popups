@@ -28,9 +28,5 @@
 	"prefs-reading": "Ezarpenak irakurtzen",
 	"popups-prefs-optin": "Gaitu orriko aurrebistak (ikus gai baten laster-aurrebistak orri bat irakurtzean)",
 	"popups-prefs-disable-nav-gadgets-info": "Zure gadget ezarpenetan [[$1|Nabigazioko laster-gadgetak desgaitu behar dituzu]] orri aurrebistak gaitzeko.",
-	"popups-prefs-conflicting-gadgets-info": "Zenbait gadgetek eta beste pertsonalizazio batzuek eginbide honen errendimendua trabatu dezakete. Arazoak badituzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere.",
-	"popups-prefs-navpopups-gadget-conflict-info": "[[$1|Laster-nabigazioa]] gadgeta gaitua duzu; ondorioz ez dituzu ikusiko eginbide honek eskaintzen dituen aurrebistak. Zure wikiaren arabera, gadgetak izen zertxobait desberdina izango du. Arazo horiek izaten jarraitzen baduzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "[[$1|Erreferentzien argibideak]] gadgeta gaitua duzu; ondorioz ez dituzu ikusiko erreferentzien aurrebistak, baina bai orriko aurrebistak. Zure wikiaren arabera, gadgetak izen zertxobait desberdina izango du. Arazo horiek izaten jarraitzen baduzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "[[$1|Laster-nabigazioa]] eta [[$1|Erreferentzien argibideak]] gadgetak gaituak dituzu; ondorioz ez dituzu ikusiko eginbide honek eskaintzen dituen aurrebistak. Zure wikiaren arabera, gadgetak izen zertxobait desberdina izango du. Arazo horiek izaten jarraitzen baduzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere.",
-	"popups-refpreview-user-preference-label": "Gaitu erreferentzien aurrebistak (aurrebistak berehala ikusiko dituzu orri bat irakurtzean)"
+	"popups-prefs-conflicting-gadgets-info": "Zenbait gadgetek eta beste pertsonalizazio batzuek eginbide honen errendimendua trabatu dezakete. Arazoak badituzu, mesedez berrikusi zure gadgetak eta erabiltzaile scriptak, baita orokorrak ere."
 }

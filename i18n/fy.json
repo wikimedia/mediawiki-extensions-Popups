@@ -26,9 +26,5 @@
 	"prefs-reading": "Lêsfoarkarren",
 	"popups-prefs-optin": "Proefbylden fan siden ynskeakelje (flugge foarfertoanings fan ûnderwerpen ûnder it lêzen)",
 	"popups-prefs-disable-nav-gadgets-info": "Jo moatte it [[$1|'lytsark' Navigation popups útskeakelje]] yn jo Lytsark-foarkarren, om sideproefbylden ynskeakelje te kinnen.",
-	"popups-prefs-conflicting-gadgets-info": "Beskaat 'lytsark' en oare oanpassings kinne de prestaasjes fan dizze funksje beynfloedzje. At jo problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne.",
-	"popups-prefs-navpopups-gadget-conflict-info": "Jo hawwe it 'lytsark' [[$1|Navigation popups]] ynskeakele, dat jo sille de proefbylden fan dizze funksje net sjen. Ofhinklik fan jo wiki, kin it lytsark in wat oare namme hawwe. At jo fierders noch problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Jo hawwe it 'lytsark' [[$1|Reference Tooltips]] ynskeakele, dat jo sille de referinsjeproefbylden net sjen mar de sideproefbylden al. Ofhinklik fan jo wiki, kin it lytsark in wat oare namme hawwe. At jo fierders noch problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Jo hawwe it 'lytsark' [[$1|Navigation popups]] en [[$1|Reference Tooltips]] ynskeakele, dat jo sille de proefbylden fan dizze funksje net sjen. Ofhinklik fan jo wiki, kin it lytsark wat oare nammen hawwe. At jo fierders noch problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne.",
-	"popups-refpreview-user-preference-label": "Proefbylden fan referinsjes ynskeakelje (jout flugge foarfertoanings fan referinsjes ûnder it lêzen)"
+	"popups-prefs-conflicting-gadgets-info": "Beskaat 'lytsark' en oare oanpassings kinne de prestaasjes fan dizze funksje beynfloedzje. At jo problemen ûnderfine, besjoch dan jo lytsark- en meidoggerskripts, ek dy't globaal binne."
 }

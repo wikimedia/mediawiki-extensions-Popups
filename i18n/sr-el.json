@@ -27,6 +27,5 @@
 	"prefs-reading": "Podešavanja čitanja",
 	"popups-prefs-optin": "Pregledi stranica (kratak pregled bilo koje teme dok čitate neku stranicu)",
 	"popups-prefs-disable-nav-gadgets-info": "Morate [[$1|isključiti Navigacijske iskačuće prozore]] iz kartice Spravice da biste uključili Preglede stranica",
-	"popups-prefs-conflicting-gadgets-info": "Određene spravice i druga prilagođavanja mogu da utiču na rad ove opcije. Ako naiđete na probleme, pregledajte spravice i korisničke skripte, uključujući globalne.",
-	"popups-refpreview-user-preference-label": "Pregledi referenci (brzi pregledi fusnota)"
+	"popups-prefs-conflicting-gadgets-info": "Određene spravice i druga prilagođavanja mogu da utiču na rad ove opcije. Ako naiđete na probleme, pregledajte spravice i korisničke skripte, uključujući globalne."
 }

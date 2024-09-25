@@ -40,9 +40,5 @@
 	"prefs-reading": "閱讀偏好設定",
 	"popups-prefs-optin": "啟用頁面預覽（在閱讀頁面時取得快速預覽主題）",
 	"popups-prefs-disable-nav-gadgets-info": "您需要在您的小工具偏好設定裡[[$1|停用導航彈跳小工具]]才能啟用頁面預覽。",
-	"popups-prefs-conflicting-gadgets-info": "個別小工具和其他自定義功能可能會影響該功能的性能。如果您遇到了問題，請檢查您的小工具和用戶腳本，包括全域的。",
-	"popups-prefs-navpopups-gadget-conflict-info": "您已啟用[[$1|導航Popup]]小工具，因此您將無法看到本功能顯示的預覽。在您的wiki上，該小工具可能具有些微不同的名稱。如果您繼續遇到問題，請檢查您的小工具和使用者指令碼（包括全域指令碼）。",
-	"popups-prefs-reftooltips-gadget-conflict-info": "您已啟用[[$1|參考文獻提示]]小工具，因此您將無法看到參考文獻預覽，但頁面預覽不受影響。在您的wiki上，該小工具可能具有些微不同的名稱。如果您繼續遇到問題，請檢查您的小工具和使用者指令碼（包括全域指令碼）。",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "您已啟用[[$1|導航Popup]]和[[$1|參考文獻提示]]小工具，因此您將無法看到本功能顯示的預覽。在您的wiki上，這兩個小工具可能具有些微不同的名稱。如果您繼續遇到問題，請檢查您的小工具和使用者指令碼（包括全域指令碼）。",
-	"popups-refpreview-user-preference-label": "啟用參考文獻預覽（在閱讀頁面時取得參考文獻的快速預覽）"
+	"popups-prefs-conflicting-gadgets-info": "個別小工具和其他自定義功能可能會影響該功能的性能。如果您遇到了問題，請檢查您的小工具和用戶腳本，包括全域的。"
 }

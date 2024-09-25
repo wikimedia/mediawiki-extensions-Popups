@@ -28,9 +28,5 @@
 	"prefs-reading": "Preferințe de lectură",
 	"popups-prefs-optin": "Activare previzualizări de pagini (primiți previzualizări rapide ale unui subiect în timp ce citiți o pagină)",
 	"popups-prefs-disable-nav-gadgets-info": "Trebuie să [[$1|dezactivați gadgetul Navigation Popups]] din preferințele dvs. pentru Gadgeturi pentru a activa Previzualizări de pagini",
-	"popups-prefs-conflicting-gadgets-info": "Anumite gadgeturi și alte personalizări pot afecta performanța acestei funcții. Dacă întâmpinați probleme vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, inclusiv cele globale.",
-	"popups-prefs-navpopups-gadget-conflict-info": "Aveți gadgetul [[$1|Navigation popups]] activat, așa că nu veți vedea previzualizările oferite de această funcție. Depinzând de wiki-ul dvs., gadgetul ar putea avea un nume ușor diferit. Dacă continuați să întâmpinați probleme, vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, incluzând cele globale.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Aveți gadgetul [[$1|Reference Tooltips]] activat, așa că nu veți vedea previzualizările oferite de această funcție. Depinzând de wiki-ul dvs., gadgetul ar putea avea un nume ușor diferit. Dacă continuați să întâmpinați probleme, vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, incluzând cele globale.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Aveți gadgeturile [[$1|Navigation popups]] și [[$1|Reference Tooltips]] activate, așa că nu veți vedea previzualizările oferite de această funcție. Depinzând de wiki-ul dvs., gadgeturile ar putea avea nume ușor diferite. Dacă continuați să întâmpinați probleme, vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, incluzând cele globale.",
-	"popups-refpreview-user-preference-label": "Activați previzualizări de referințe (primiți previzualizări rapide ale notelor de subsol)"
+	"popups-prefs-conflicting-gadgets-info": "Anumite gadgeturi și alte personalizări pot afecta performanța acestei funcții. Dacă întâmpinați probleme vă rugăm să vă revizuiți gadgeturile și scripturile de utilizator, inclusiv cele globale."
 }

@@ -40,9 +40,5 @@
 	"prefs-reading": "阅读设置",
 	"popups-prefs-optin": "启用页面预览（当阅读页面时，获取其中相关内容主题的快捷预览）",
 	"popups-prefs-disable-nav-gadgets-info": "您需要在您的小工具参数设置里[[$1|禁用导航Popups小工具]]以启用页面预览。",
-	"popups-prefs-conflicting-gadgets-info": "某些小工具和其他自定义选项可能会影响该功能的使用效果。如果遇到问题，请检查您的小工具和用户脚本（包括全域脚本）。",
-	"popups-prefs-navpopups-gadget-conflict-info": "您已启用[[$1|导航Popup]]小工具，因此您将无法看到本功能显示的预览。在您的wiki上，该小工具可能具有略微不同的名称。如果您继续遇到问题，请检查您的小工具和用户脚本（包括全域脚本）。",
-	"popups-prefs-reftooltips-gadget-conflict-info": "您已启用[[$1|参考文献提示]]小工具，因此您将无法看到参考文献预览，但页面预览不受影响。在您的wiki上，该小工具可能具有略微不同的名称。如果您继续遇到问题，请检查您的小工具和用户脚本（包括全域脚本）。",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "您已启用[[$1|导航Popup]]和[[$1|参考文献提示]]小工具，因此您将无法看到本功能显示的预览。在您的wiki上，这两个小工具可能具有略微不同的名称。如果您继续遇到问题，请检查您的小工具和用户脚本（包括全域脚本）。",
-	"popups-refpreview-user-preference-label": "启用参考文献预览（当阅读页面时，获取参考文献的快捷预览）"
+	"popups-prefs-conflicting-gadgets-info": "某些小工具和其他自定义选项可能会影响该功能的使用效果。如果遇到问题，请检查您的小工具和用户脚本（包括全域脚本）。"
 }

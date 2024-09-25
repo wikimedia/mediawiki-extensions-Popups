@@ -34,9 +34,5 @@
 	"prefs-reading": "Lukemisen asetukset",
 	"popups-prefs-optin": "Ota käyttöön sivun esikatselut (näe aiheen pikaesikatselut sivua lukiessasi)",
 	"popups-prefs-disable-nav-gadgets-info": "Sinun täytyy poistaa [[$1|Navigation popups -pienoisohjelma]] käytöstä omien asetustesi Pienoisohjelmat-välilehdeltä, jotta voit ottaa sivujen esikatselut käyttöön.",
-	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset.",
-	"popups-prefs-navpopups-gadget-conflict-info": "Sinulla on käytössä [[$1|Navigation popups]] -pienoisohjelma, joten et näe esikatseluja tämän toiminnon kautta. Wikistä riippuen pienoisohjelmalla voi olla erilainen nimi. Jos sinulla on edelleen ongelmia, tarkista käyttämäsi pienoisohjelmat ja käyttäjäskriptit, myös järjestelmänlaajuiset.",
-	"popups-prefs-reftooltips-gadget-conflict-info": "Sinulla on käytössä [[$1|Reference Tooltips]] -pienoisohjelma, joten et näe viitteiden esikatseluita mutta näet sivujen esikatselut. Wikistä riippuen pienoisohjelmalla voi olla erilainen nimi. Jos sinulla on edelleen ongelmia, tarkista käyttämäsi pienoisohjelmat ja käyttäjäskriptit, myös järjestelmänlaajuiset.",
-	"popups-prefs-reftooltips-and-navpopups-gadget-conflict-info": "Sinulla on käytössä pienoisohjelmat [[$1|Navigation popups]] ja [[$1|Reference Tooltips]], ja siksi et näe tämän toiminnon mahdollistamia esikatseluja. Wikistä riippuen pienoisohjelmilla voi olla erilaiset nimet. Jos sinulla on edelleen ongelmia, tarkista käyttämäsi pienoisohjelmat ja käyttäjäskriptit, myös järjestelmänlaajuiset.",
-	"popups-refpreview-user-preference-label": "Ota käyttöön viitteiden esikatselut (näe viitteen pikaesikatselu sivua lukiessasi)"
+	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset."
 }
