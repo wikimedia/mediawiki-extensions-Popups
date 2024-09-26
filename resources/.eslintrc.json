@@ -1,7 +1,4 @@
 {
 	"root": true,
-	"extends": "wikimedia/language/es6",
-	"rules": {
-		"no-var": "off"
-	}
+	"extends": "wikimedia/language/es6"
 }

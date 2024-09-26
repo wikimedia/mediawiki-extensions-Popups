@@ -1,7 +1,7 @@
-var types = require( './types.json' );
+const types = require( './types.json' );
 // Load Popups when touch events are not available in the browser (e.g. not a mobile device).
-var isTouchDevice = 'ontouchstart' in document.documentElement;
-var supportNotQueries;
+const isTouchDevice = 'ontouchstart' in document.documentElement;
+let supportNotQueries;
 try {
 	supportNotQueries = document.body.matches( 'div:not(.foo,.bar)' );
 	supportNotQueries = true;
