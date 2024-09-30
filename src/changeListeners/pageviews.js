@@ -26,7 +26,9 @@ export default function pageviews(
 				/* eslint-disable camelcase */
 				source_page_id: page.id,
 				source_namespace: page.namespaceId,
-				source_title: mw.Title.newFromText( page.title ).getPrefixedDb(),
+				source_title: page.namespaceId === -1 ?
+					mw.config.get( 'wgCanonicalSpecialPageName' ) :
+					mw.Title.newFromText( page.title ).getPrefixedDb(),
 				source_url: page.url,
 				page_id: pageview.page_id,
 				page_namespace: pageview.page_namespace,
