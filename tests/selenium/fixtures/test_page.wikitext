@@ -6,16 +6,8 @@
 ==Invalid links==
 # blah
 
-==Reference links==
-Lorem ipsum dolor.<ref>small reference</ref>
-Reference with lots of text.<ref>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</ref>
-Lorem ipsum dolor.<ref>reference inception<sup id="cite_ref-1" class="reference">[[#cite_note-1|[1]]]</sup></ref>
-
 ==Hash fragments==
 
 [[#section]]
-
-==References==
-<references />
 
 __NOTOC__

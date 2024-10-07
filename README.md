@@ -94,6 +94,3 @@ Execute `npm -s run doc`.
 	being hovered over by a cursor.
 * Page preview - A specific type of popup that shows a page summary.
 * Preview - A synonym for popup.
-* Reference - A specific type of popup that previews the Cite extension's
-  footnotes. Since footnotes are typically used for references, and the tag's
-  name is `<ref>`, the terms are used synonymously.

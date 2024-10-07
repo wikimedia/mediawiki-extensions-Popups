@@ -4,7 +4,6 @@ import { createPreviewWithType, layoutPreview, getClasses,
 	registerPreviewUI,
 	createPagePreview,
 	createDisambiguationPreview,
-	createReferencePreview,
 	pointerSize, landscapePopupWidth, portraitPopupWidth
 } from '../../src/ui/renderer.js';
 import { previewTypes } from '../../src/preview/model';
