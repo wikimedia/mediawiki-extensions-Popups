@@ -58,7 +58,6 @@ class PopupsGadgetsIntegrationTest extends MediaWikiIntegrationTestCase {
 	private function getConfig( string $name = self::NAV_POPUPS_GADGET_NAME ): Config {
 		return new HashConfig( [
 			PopupsGadgetsIntegration::CONFIG_NAVIGATION_POPUPS_NAME => $name,
-			PopupsGadgetsIntegration::CONFIG_REFERENCE_TOOLTIPS_NAME => $name,
 		] );
 	}
 

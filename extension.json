@@ -61,10 +61,6 @@
 			"description": "@var string: Navigation popups gadget name",
 			"value": "Navigation_popups"
 		},
-		"PopupsConflictingRefTooltipsGadgetName": {
-			"description": "@var string: Name of a gadget that would cause duplicate reference preview popups. Known conflicting gadgets include \"ReferenceTooltips\", \"CiteTooltip\" alias \"RefTooltip\", \"ReferencePopups\", and \"tooltipRef\" (see T274353).",
-			"value": "ReferenceTooltips"
-		},
 		"PopupsGateway": {
 			"description": "Which gateway to use for fetching Popups data. Available options: [mwApiPlain|restbasePlain|restbaseHTML]. Full and always up to date list is available in src/gateway/index.js",
 			"value": "mwApiPlain"

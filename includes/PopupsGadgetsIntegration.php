@@ -32,17 +32,10 @@ class PopupsGadgetsIntegration {
 
 	public const CONFIG_NAVIGATION_POPUPS_NAME = 'PopupsConflictingNavPopupsGadgetName';
 
-	public const CONFIG_REFERENCE_TOOLTIPS_NAME = 'PopupsConflictingRefTooltipsGadgetName';
-
 	/**
 	 * @var string
 	 */
 	private $navPopupsGadgetName;
-
-	/**
-	 * @var string
-	 */
-	private $refTooltipsGadgetName;
 
 	private ?GadgetRepo $gadgetRepo;
 
@@ -56,8 +49,6 @@ class PopupsGadgetsIntegration {
 	) {
 		$this->navPopupsGadgetName = $this->sanitizeGadgetName(
 			$config->get( self::CONFIG_NAVIGATION_POPUPS_NAME ) );
-		$this->refTooltipsGadgetName = $this->sanitizeGadgetName(
-			$config->get( self::CONFIG_REFERENCE_TOOLTIPS_NAME ) );
 		$this->gadgetRepo = $gadgetRepo;
 	}
 
@@ -90,27 +81,4 @@ class PopupsGadgetsIntegration {
 		}
 		return false;
 	}
-
-	/**
-	 * Check if Popups conflicts with Ref Tooltips Gadget
-	 * If user enabled Ref Tooltip, Popups is unavailable
-	 *
-	 * @param User $user User whose gadget settings are checked
-	 * @return bool
-	 */
-	public function conflictsWithRefTooltipsGadget( User $user ) {
-		if ( $this->gadgetRepo ) {
-			$match = array_search( $this->refTooltipsGadgetName, $this->gadgetRepo->getGadgetIds() );
-			if ( $match !== false ) {
-				try {
-					return $this->gadgetRepo->getGadget( $this->refTooltipsGadgetName )
-						->isEnabled( $user );
-				} catch ( \InvalidArgumentException $e ) {
-					return false;
-				}
-			}
-		}
-		return false;
-	}
-
 }
