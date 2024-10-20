@@ -20,8 +20,8 @@
  */
 namespace Popups;
 
-use ExtensionRegistry;
 use MediaWiki\Config\Config;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;

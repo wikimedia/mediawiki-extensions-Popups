@@ -21,6 +21,7 @@
 
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;

@@ -20,6 +20,7 @@
  */
 
 use MediaWiki\Config\Config;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\Options\UserOptionsLookup;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;

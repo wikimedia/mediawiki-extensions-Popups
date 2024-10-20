@@ -3,6 +3,7 @@
 use MediaWiki\Config\Config;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
 use Psr\Log\LoggerInterface;
