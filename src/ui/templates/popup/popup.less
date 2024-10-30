@@ -452,6 +452,14 @@
 			/* @noflip */
 			background-image: linear-gradient( to left, transparent, @background-color-base 50% );
 		}
+
+		@supports ( clip-path: polygon( 1px 1px ) ) {
+			.mwe-popups {
+				.mwe-popups-thumbnail {
+					background-color: #c8ccd1;
+				}
+			}
+		}
 	}
 }
 
@@ -469,6 +477,14 @@
 		.mwe-popups-extract[ dir='rtl' ]::after {
 			/* @noflip */
 			background-image: linear-gradient( to left, transparent, @background-color-base 50% );
+		}
+
+		@supports ( clip-path: polygon( 1px 1px ) ) {
+			.mwe-popups {
+				.mwe-popups-thumbnail {
+					background-color: #c8ccd1;
+				}
+			}
 		}
 	}
 }
