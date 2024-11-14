@@ -60,7 +60,13 @@ Popups works with a local copy of the [Mobile Content Service] too:
   without it popping in and out of the DOM. A useful workaround in
   DevTools is to context click a link, select inspect, move the cursor
   some place comfortable, and then from the console enter
-  `$($0).trigger('mouseenter')`.
+```
+$0.dispatchEvent(new MouseEvent("mouseover", {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  }));
+```
 * As described in [[#Development]], `npm start` enables Redux DevTools
   functionality. In production builds, this same functionality can be
   enabled by setting a `debug=true` query. E.g.,
