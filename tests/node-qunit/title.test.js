@@ -5,31 +5,24 @@ QUnit.module( 'title#getTitle', {
 		this.config = new Map();
 		this.config.set( 'wgArticlePath', '/wiki/$1' );
 
-		this.location = global.location = { hostname: 'en.wikipedia.org' };
-
+		this.location = global.location = {
+			origin: 'https://en.wikipedia.org',
+			hostname: 'en.wikipedia.org'
+		};
 		mw.util = {
 			escapeRegExp: this.sandbox.spy( ( str ) => {
 				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
 			} )
 		};
-
-		mw.Uri = this.sandbox.stub().throws( 'UNIMPLEMENTED' );
 	},
 	afterEach() {
 		global.location = null;
 		mw.util = null;
-		mw.Uri = null;
 	}
 } );
 
 QUnit.test( 'it should return the title of a url with a title query param', function ( assert ) {
 	const href = '/w/index.php?title=Foo';
-	mw.Uri.withArgs( href ).returns( {
-		host: this.location.hostname,
-		query: {
-			title: 'Foo'
-		}
-	} );
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
@@ -40,11 +33,6 @@ QUnit.test( 'it should return the title of a url with a title query param', func
 
 QUnit.test( 'it should return the title of a pretty url if it conforms wgArticlePath', function ( assert ) {
 	const href = '/wiki/Foo';
-	mw.Uri.withArgs( href ).returns( {
-		host: this.location.hostname,
-		path: href,
-		query: {}
-	} );
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
@@ -55,11 +43,6 @@ QUnit.test( 'it should return the title of a pretty url if it conforms wgArticle
 
 QUnit.test( 'it should return the title of a pretty url properly decoded', function ( assert ) {
 	const href = '/wiki/%E6%B8%AC%E8%A9%A6';
-	mw.Uri.withArgs( href ).returns( {
-		host: this.location.hostname,
-		path: href,
-		query: {}
-	} );
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
@@ -70,12 +53,6 @@ QUnit.test( 'it should return the title of a pretty url properly decoded', funct
 
 QUnit.test( 'it should accept urls with fragments', function ( assert ) {
 	let href = '/wiki/Example_1#footnote_1';
-	mw.Uri.withArgs( href ).returns( {
-		host: this.location.hostname,
-		path: href,
-		query: {},
-		fragment: 'footnote_1'
-	} );
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
@@ -84,11 +61,6 @@ QUnit.test( 'it should accept urls with fragments', function ( assert ) {
 	);
 
 	href = '/w/index.php?title=Example_2#footnote_2';
-	mw.Uri.withArgs( href ).returns( {
-		host: this.location.hostname,
-		query: { title: 'Example_2' },
-		fragment: 'footnote_2'
-	} );
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
@@ -99,20 +71,12 @@ QUnit.test( 'it should accept urls with fragments', function ( assert ) {
 
 QUnit.test( 'it should skip pretty urls with invalid % encoded characters', function ( assert ) {
 	const href = '/wiki/100%';
-	mw.Uri.withArgs( href ).returns( {
-		host: this.location.hostname,
-		path: href,
-		query: {}
-	} );
 
 	assert.strictEqual( getTitle( href, this.config ), undefined );
 } );
 
-QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) {
+QUnit.test( 'it should skip urls that URL cannot parse', function ( assert ) {
 	const href = 'javascript:void(0);'; // eslint-disable-line no-script-url
-	mw.Uri.withArgs( href ).throws(
-		new Error( 'Cannot parse' )
-	);
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
@@ -123,11 +87,6 @@ QUnit.test( 'it should skip urls that mw.Uri cannot parse', function ( assert ) 
 
 QUnit.test( 'it should skip urls that are external', function ( assert ) {
 	const href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-	mw.Uri.withArgs( href ).returns( {
-		host: 'www.youtube.com',
-		path: '/watch',
-		query: { v: 'dQw4w9WgXcQ' }
-	} );
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
@@ -139,11 +98,6 @@ QUnit.test( 'it should skip urls that are external', function ( assert ) {
 QUnit.test( 'it should skip urls not on article path without one title query param', function ( assert ) {
 	// No params
 	let href = '/Foo';
-	mw.Uri.withArgs( href ).returns( {
-		host: this.location.hostname,
-		path: '/Foo',
-		query: {}
-	} );
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
@@ -153,11 +107,6 @@ QUnit.test( 'it should skip urls not on article path without one title query par
 
 	// Multiple query params
 	href = '/Foo?a=1&title=Foo';
-	mw.Uri.withArgs( href ).returns( {
-		host: this.location.hostname,
-		path: '/Foo',
-		query: { a: 1, title: 'Foo' }
-	} );
 
 	assert.strictEqual(
 		getTitle( href, this.config ),
