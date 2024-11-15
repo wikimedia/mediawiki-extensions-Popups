@@ -26,27 +26,37 @@ function isOwnPageAnchorLink( el ) {
  * @return {string|undefined}
  */
 export function getTitle( href, config ) {
-	// Skip every URI that mw.Uri cannot parse
+	// Skip every URL that cannot be parsed
 	let linkHref;
 	try {
-		linkHref = new mw.Uri( href );
+		linkHref = new URL( href );
 	} catch ( e ) {
-		return undefined;
+		// treat as relative URI
+		try {
+			linkHref = new URL( href, location.origin );
+		} catch ( errRelative ) {
+			// could not be parsed.
+			return undefined;
+		}
 	}
 
 	// External links
-	if ( linkHref.host !== location.hostname ) {
+	if ( linkHref.hostname !== location.hostname ) {
 		return undefined;
 	}
 
-	const queryLength = Object.keys( linkHref.query ).length;
+	const searchParams = linkHref.searchParams;
+	// Note that we use Array.from and length rather than `size` as Selenium browser tests fail
+	// with `size` being undefined. `size` property is relatively new (April 2023)
+	// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/size
+	const queryLength = Array.from( searchParams ).length;
 	let title;
 
 	// No query params (pretty URL)
 	if ( !queryLength ) {
 		const pattern = mw.util.escapeRegExp( config.get( 'wgArticlePath' ) ).replace( '\\$1', '([^?#]+)' ),
 			// eslint-disable-next-line security/detect-non-literal-regexp
-			matches = new RegExp( pattern ).exec( linkHref.path );
+			matches = new RegExp( pattern ).exec( linkHref.pathname );
 
 		// We can't be sure decodeURIComponent() is able to parse every possible match
 		try {
@@ -54,12 +64,12 @@ export function getTitle( href, config ) {
 		} catch ( e ) {
 			// Will return undefined below
 		}
-	} else if ( queryLength === 1 && 'title' in linkHref.query ) {
+	} else if ( queryLength === 1 && searchParams.has( 'title' ) ) {
 		// URL is not pretty, but only has a `title` parameter
-		title = linkHref.query.title;
+		title = searchParams.get( 'title' );
 	}
 
-	return title ? `${ title }${ linkHref.fragment ? `#${ linkHref.fragment }` : '' }` : undefined;
+	return title ? `${ title }${ linkHref.hash ? linkHref.hash : '' }` : undefined;
 }
 
 /**
