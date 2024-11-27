@@ -7,7 +7,6 @@ const
 	Util = require( 'wdio-mediawiki/Util' ),
 	TEST_PAGE_POPUPS_TITLE = 'Page popups test page',
 	POPUPS_SELECTOR = '.mwe-popups',
-	PAGE_POPUPS_SELECTOR = '.mwe-popups-type-page',
 	PAGE_POPUPS_LINK_SELECTOR = '.mw-body-content ul a',
 	POPUPS_MODULE_NAME = 'ext.popups.main';
 
@@ -18,6 +17,10 @@ async function makePage( title, path ) {
 	await bot.edit( title, content );
 }
 class PopupsPage extends Page {
+	get pagePopupsSelector() {
+		return $( '.mwe-popups-type-page' );
+	}
+
 	async setupPagePreviews() {
 		return browser.call( async () => {
 			const path = `${ __dirname }/../fixtures/`;
@@ -53,22 +56,6 @@ class PopupsPage extends Page {
 
 	async hoverPageLink() {
 		await $( PAGE_POPUPS_LINK_SELECTOR ).moveTo();
-	}
-
-	async doNotSeePreview( selector ) {
-		return browser.waitUntil( async () => !( await $( selector ).isDisplayed() ) );
-	}
-
-	async doNotSeePagePreview() {
-		return this.doNotSeePreview( PAGE_POPUPS_SELECTOR );
-	}
-
-	async seePreview( selector ) {
-		return await $( selector ).isDisplayed();
-	}
-
-	async seePagePreview() {
-		return await this.seePreview( PAGE_POPUPS_SELECTOR );
 	}
 
 	async openPagePopupsTest() {
