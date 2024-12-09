@@ -42,6 +42,7 @@ class PopupsPage extends Page {
 		if ( !doesNotTriggerPreview ) {
 			await $( POPUPS_SELECTOR ).waitForExist();
 		} else {
+			// eslint-disable-next-line wdio/no-pause
 			await browser.pause( 1000 );
 		}
 	}

@@ -282,11 +282,9 @@ QUnit.module( 'ext.popups/actions#fetch', {
 
 		// Sugar.
 		setDwellTime( previewTypes.TYPE_PAGE, 350 );
-		this.fetch = () => {
-			return actions.fetch(
-				this.gateway, this.title, this.el, this.token, previewTypes.TYPE_PAGE
-			)( this.dispatch );
-		};
+		this.fetch = () => actions.fetch(
+			this.gateway, this.title, this.el, this.token, previewTypes.TYPE_PAGE
+		)( this.dispatch );
 	}
 } );
 
@@ -441,13 +439,12 @@ QUnit.module( 'ext.popups/actions#abandon', {
 QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 	const dispatch = this.sandbox.spy(),
 		token = '0123456789',
-		getState = () =>
-			( {
-				preview: {
-					activeToken: token,
-					promise: $.Deferred().promise( { abort() {} } )
-				}
-			} );
+		getState = () => ( {
+			preview: {
+				activeToken: token,
+				promise: $.Deferred().promise( { abort() {} } )
+			}
+		} );
 
 	this.sandbox.stub( mw, 'now' ).returns( new Date() );
 
@@ -482,12 +479,11 @@ QUnit.test( 'it should dispatch start and end actions', function ( assert ) {
 
 QUnit.test( 'it shouldn\'t dispatch under certain conditions', function ( assert ) {
 	const dispatch = this.sandbox.spy(),
-		getState = () =>
-			( {
-				preview: {
-					activeToken: undefined
-				}
-			} );
+		getState = () => ( {
+			preview: {
+				activeToken: undefined
+			}
+		} );
 
 	return actions.abandon()( dispatch, getState )
 		.then( () => {

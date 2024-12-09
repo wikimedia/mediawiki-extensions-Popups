@@ -107,9 +107,7 @@ export function createNullModel( title, url ) {
  * @param {string} selector
  * @return {boolean}
  */
-const elementMatchesSelector = ( element, selector ) => {
-	return element.matches( selector );
-};
+const elementMatchesSelector = ( element, selector ) => element.matches( selector );
 
 /**
  * Recursively checks the element and its parents.

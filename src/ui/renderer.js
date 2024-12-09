@@ -146,7 +146,6 @@ const renderersMeta = {};
  * @param {string} type
  * @param {function( ext.popups.PreviewModel ): ext.popups.Preview} [previewFn]
  * @param {boolean} [doNotRequireSummary] does this type require a summary to be renderable?
- *
  */
 export function registerPreviewUI( type, previewFn, doNotRequireSummary ) {
 	renderers[ type ] = previewFn || createPagePreview;
@@ -675,6 +674,7 @@ export function getClosestYPosition( y, rects, isTop ) {
 export const test = {
 	/**
 	 * For testing only
+	 *
 	 * @private
 	 */
 	reset: () => {

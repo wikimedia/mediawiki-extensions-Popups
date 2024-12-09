@@ -5,6 +5,7 @@ import { createNullModel, previewTypes } from '../../../src/preview/model';
 import { createThumbnail } from '../../../src/ui/thumbnail';
 
 const windowHeight = 400;
+/* eslint-disable jsdoc/no-undefined-types */
 /**
  * A utility function that creates a bare bones preview
  *
@@ -13,6 +14,7 @@ const windowHeight = 400;
  * @param {ext.popups.Thumbnail} [thumbnail]
  * @return {ext.popups.Preview}
  */
+/* eslint-enable jsdoc/no-undefined-types */
 function createPagePreview( isTall, hasThumbnail, thumbnail ) {
 	return {
 		el: $( '<div>' ).append(
@@ -42,9 +44,7 @@ QUnit.module( 'ext.popups#renderer', {
 		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 
 		mw.msg = ( key ) => `<${ key }>`;
-		mw.message = ( key ) => {
-			return { exists: () => !key.endsWith( 'generic' ), text: () => `<${ key }>` };
-		};
+		mw.message = ( key ) => ( { exists: () => !key.endsWith( 'generic' ), text: () => `<${ key }>` } );
 
 		mw.html = {
 			escape: ( str ) => str && str.replace( /'/g, '&apos;' ).replace( /</g, '&lt;' )

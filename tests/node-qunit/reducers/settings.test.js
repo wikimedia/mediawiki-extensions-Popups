@@ -124,13 +124,11 @@ QUnit.test( 'SETTINGS_HIDE', ( assert ) => {
 } );
 
 QUnit.test( 'SETTINGS_CHANGE with page previews only', ( assert ) => {
-	const action = ( oldValue, newValue ) => {
-		return {
-			type: actionTypes.SETTINGS_CHANGE,
-			oldValue: { page: oldValue },
-			newValue: { page: newValue }
-		};
-	};
+	const action = ( oldValue, newValue ) => ( {
+		type: actionTypes.SETTINGS_CHANGE,
+		oldValue: { page: oldValue },
+		newValue: { page: newValue }
+	} );
 
 	assert.deepEqual(
 		settings( {}, action( false, false ) ),

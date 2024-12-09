@@ -29,13 +29,12 @@ import { escapeHTML } from '../templateUtil';
  */
 function escapeChoices( choices = [] ) {
 	return choices.map(
-		( { id, name, description, isChecked } ) =>
-			( {
-				id: escapeHTML( id ),
-				name: escapeHTML( name ),
-				description: description ? escapeHTML( description ) : '',
-				isChecked
-			} )
+		( { id, name, description, isChecked } ) => ( {
+			id: escapeHTML( id ),
+			name: escapeHTML( name ),
+			description: description ? escapeHTML( description ) : '',
+			isChecked
+		} )
 	);
 }
 

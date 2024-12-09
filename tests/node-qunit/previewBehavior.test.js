@@ -18,7 +18,7 @@ QUnit.module( 'ext.popups.preview.settingsBehavior', {
 	}
 } );
 
-QUnit.test( 'it should set the settingsUrl', function ( assert ) {
+QUnit.test( 'it should set the settingsUrl', ( assert ) => {
 	const user = createStubUser( /* isAnon = */ false ),
 		actions = {};
 
@@ -30,7 +30,7 @@ QUnit.test( 'it should set the settingsUrl', function ( assert ) {
 	);
 } );
 
-QUnit.test( 'it shouldn\'t set the settingsUrl if the user is logged out', function ( assert ) {
+QUnit.test( 'it shouldn\'t set the settingsUrl if the user is logged out', ( assert ) => {
 	const user = createStubUser( /* isAnon = */ true ),
 		actions = {},
 		behavior = createPreviewBehavior( user, actions );
@@ -80,7 +80,7 @@ QUnit.test( 'it should set a showSettings handler if the user is logged out', fu
 	);
 } );
 
-QUnit.test( 'it should mix in default actions', function ( assert ) {
+QUnit.test( 'it should mix in default actions', ( assert ) => {
 	const user = createStubUser( /* isAnon = */ true ),
 		actions = {};
 

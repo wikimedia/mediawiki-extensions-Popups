@@ -256,7 +256,7 @@ function handleDOMEventIfEligible( handler ) {
 	 * Binding hover and click events to the eligible links to trigger actions
 	 */
 	function setupEventListeners() {
-		const onHover = handleDOMEventIfEligible( function ( target, mwTitle, event ) {
+		const onHover = handleDOMEventIfEligible( ( target, mwTitle, event ) => {
 			const type = getPreviewType( target );
 			const gateway = getGatewayForPreviewType( type );
 			if ( !gateway ) {
@@ -284,10 +284,10 @@ function handleDOMEventIfEligible( handler ) {
 
 			boundActions.linkDwell( mwTitle, target, measures, gateway, generateToken, type );
 		} );
-		const onHoverOut = handleDOMEventIfEligible( function () {
+		const onHoverOut = handleDOMEventIfEligible( () => {
 			boundActions.abandon();
 		} );
-		const onClick = handleDOMEventIfEligible( function ( target ) {
+		const onClick = handleDOMEventIfEligible( ( target ) => {
 			if ( previewTypes.TYPE_PAGE === getPreviewType( target ) ) {
 				boundActions.linkClick( target );
 			}

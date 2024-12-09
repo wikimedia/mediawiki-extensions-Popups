@@ -9,9 +9,9 @@ try {
 	supportNotQueries = false;
 }
 if ( !isTouchDevice && supportNotQueries ) {
-	mw.loader.using( types.concat( [ 'ext.popups.main' ] ) ).then( function () {
+	mw.loader.using( types.concat( [ 'ext.popups.main' ] ) ).then( () => {
 		// Load custom popup types
-		types.forEach( function ( moduleName ) {
+		types.forEach( ( moduleName ) => {
 			const module = require( moduleName );
 			// Check the module exists. A module can export undefined or null if
 			// it does not want to be registered (for example where registration may

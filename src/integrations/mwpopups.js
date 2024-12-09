@@ -102,7 +102,7 @@ Please create message with key "popups-settings-option-${ type }" if this is a m
 				);
 			}
 			if ( subTypes ) {
-				subTypes.forEach( function ( subTypePreview ) {
+				subTypes.forEach( ( subTypePreview ) => {
 					registerPreviewUI(
 						subTypePreview.type,
 						subTypePreview.renderFn,

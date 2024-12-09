@@ -10,9 +10,7 @@ QUnit.module( 'title#getTitle', {
 			hostname: 'en.wikipedia.org'
 		};
 		mw.util = {
-			escapeRegExp: this.sandbox.spy( ( str ) => {
-				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
-			} )
+			escapeRegExp: this.sandbox.spy( ( str ) => str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' ) )
 		};
 	},
 	afterEach() {
@@ -182,7 +180,7 @@ QUnit.module( 'title#fromElement', {
 	}
 } );
 
-QUnit.test( 'it should accept anchor links that point to the own page', function ( assert ) {
+QUnit.test( 'it should accept anchor links that point to the own page', ( assert ) => {
 	const el = document.createElement( 'a' );
 	el.href = 'http://own.host/w/index.php?oldid=1&extra=1#example';
 
@@ -199,7 +197,7 @@ QUnit.test( 'it should accept anchor links that point to the own page', function
 	assert.propEqual( fromElement( el, config ), mwTitle );
 } );
 
-QUnit.test( 'it should ignore anchor links that are not identical', function ( assert ) {
+QUnit.test( 'it should ignore anchor links that are not identical', ( assert ) => {
 	const el = document.createElement( 'a' );
 	el.href = 'http://own.host/w/index.php?oldid=1#example';
 
@@ -209,7 +207,7 @@ QUnit.test( 'it should ignore anchor links that are not identical', function ( a
 	assert.strictEqual( fromElement( el, config ), null );
 } );
 
-QUnit.test( 'it should pass through anchor links with non-ASCII characters', function ( assert ) {
+QUnit.test( 'it should pass through anchor links with non-ASCII characters', ( assert ) => {
 	const el = document.createElement( 'a' );
 	el.href = 'http://own.host/w/index.php?oldid=1&extra=1#Fläche';
 
@@ -226,7 +224,7 @@ QUnit.test( 'it should pass through anchor links with non-ASCII characters', fun
 	assert.propEqual( fromElement( el, config ), mwTitle );
 } );
 
-QUnit.test( 'it should decode anchor links with encoded characters', function ( assert ) {
+QUnit.test( 'it should decode anchor links with encoded characters', ( assert ) => {
 	const el = document.createElement( 'a' );
 	el.href = 'http://own.host/w/index.php?oldid=1&extra=1#Fl%C3%A4che';
 
@@ -243,7 +241,7 @@ QUnit.test( 'it should decode anchor links with encoded characters', function ( 
 	assert.propEqual( fromElement( el, config ), mwTitle );
 } );
 
-QUnit.test( 'it should fail gracefully on anchor links with broken encoding', function ( assert ) {
+QUnit.test( 'it should fail gracefully on anchor links with broken encoding', ( assert ) => {
 	const el = document.createElement( 'a' );
 	el.href = 'http://own.host/w/index.php?oldid=1&extra=1#malformed%A';
 

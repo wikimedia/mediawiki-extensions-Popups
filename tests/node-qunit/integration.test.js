@@ -79,9 +79,7 @@ QUnit.module( 'ext.popups preview @integration', {
 			this.store.dispatch
 		);
 
-		this.registerChangeListener = ( fn ) => {
-			return registerChangeListener( this.store, fn );
-		};
+		this.registerChangeListener = ( fn ) => registerChangeListener( this.store, fn );
 
 		this.title = stubs.createStubTitle( 1, 'Foo' );
 
@@ -134,8 +132,8 @@ QUnit.module( 'ext.popups preview @integration', {
 			return abandoned;
 		};
 
-		this.dwellAndPreviewDwell = ( title, el, ev, res ) => {
-			return this.dwellAndShowPreview( title, el, ev, res ).then( () => {
+		this.dwellAndPreviewDwell =
+			( title, el, ev, res ) => this.dwellAndShowPreview( title, el, ev, res ).then( () => {
 				// Get out of the link, and before the delay ends...
 				const abandonPromise = this.abandon(),
 					abandonWaitDeferred = this.waitDeferred;
@@ -148,7 +146,6 @@ QUnit.module( 'ext.popups preview @integration', {
 
 				return abandonPromise;
 			} );
-		};
 	}
 } );
 
@@ -220,9 +217,7 @@ QUnit.test( 'in ACTIVE state, abandon start, and then end, switch it to INACTIVE
 	const el = this.el;
 
 	return this.dwellAndShowPreview( this.title, el, 'event', 42 )
-		.then( () => {
-			return this.abandonAndWait( el );
-		} ).then( () => {
+		.then( () => this.abandonAndWait( el ) ).then( () => {
 			const state = this.store.getState();
 			assert.strictEqual( state.preview.activeLink, undefined,
 				'After abandoning, preview is back to INACTIVE' );

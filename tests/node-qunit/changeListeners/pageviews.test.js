@@ -32,13 +32,9 @@ QUnit.module( 'ext.popups/pageviews', {
 		);
 
 		// Stub internal usage of mw.Title.newFromText
-		mw.Title.newFromText = ( str ) => {
-			return {
-				getPrefixedDb: () => {
-					return str;
-				}
-			};
-		};
+		mw.Title.newFromText = ( str ) => ( {
+			getPrefixedDb: () => str
+		} );
 	}
 } );
 

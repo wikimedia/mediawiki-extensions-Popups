@@ -3,9 +3,7 @@ import * as formatter from '../../src/formatter';
 QUnit.module( 'ext.popups.formatter', {
 	beforeEach() {
 		mw.util = {
-			escapeRegExp: this.sandbox.spy( ( str ) => {
-				return str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' );
-			} )
+			escapeRegExp: this.sandbox.spy( ( str ) => str.replace( /([\\{}()|.?*+\-^$[\]])/g, '\\$1' ) )
 		};
 	},
 	afterEach() {

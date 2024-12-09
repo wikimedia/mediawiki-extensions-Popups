@@ -55,25 +55,29 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
 	function fetchPreviewForTitle( title ) {
 		const titleText = title.getPrefixedDb(),
 			xhr = fetch( titleText );
-		return abortablePromise( xhr.then( ( page ) => {
-			// Endpoint response may be empty or simply missing a title.
-			page = page || {};
-			page.title = page.title || titleText;
-			// And extract may be omitted if empty string
-			page.extract = page.extract || '';
-			return convertPageToModel(
-				page, config.THUMBNAIL_SIZE, extractParser
-			);
-		} ).catch( ( jqXHR, textStatus, errorThrown ) => {
-			// The client will choose how to handle these errors which may include
-			// those due to HTTP 4xx and 5xx status. The rejection typing matches
-			// fetch failures.
-			return Promise.reject( 'http', {
-				xhr: jqXHR,
-				textStatus,
-				exception: errorThrown
-			} );
-		} ), () => xhr.abort() );
+		return abortablePromise(
+			xhr.then( ( page ) => {
+				// Endpoint response may be empty or simply missing a title.
+				page = page || {};
+				page.title = page.title || titleText;
+				// And extract may be omitted if empty string
+				page.extract = page.extract || '';
+				return convertPageToModel(
+					page, config.THUMBNAIL_SIZE, extractParser
+				);
+			} )
+				// The client will choose how to handle these errors which may include
+				// those due to HTTP 4xx and 5xx status. The rejection typing matches
+				// fetch failures.
+				.catch(
+					( jqXHR, textStatus, errorThrown ) => Promise.reject( 'http', {
+						xhr: jqXHR,
+						textStatus,
+						exception: errorThrown
+					} )
+				),
+			() => xhr.abort()
+		);
 	}
 
 	return {

@@ -156,7 +156,7 @@ QUnit.test( 'it does not suggest page previews on reference links not having a p
 	);
 } );
 
-QUnit.test( 'findNearestEligibleTarget returns null by default', function ( assert ) {
+QUnit.test( 'findNearestEligibleTarget returns null by default', ( assert ) => {
 	test.reset();
 	assert.strictEqual(
 		findNearestEligibleTarget( document.createElement( 'div' ) ),
@@ -164,7 +164,7 @@ QUnit.test( 'findNearestEligibleTarget returns null by default', function ( asse
 	);
 } );
 
-QUnit.test( 'createNullModel returns an empty page preview model', function ( assert ) {
+QUnit.test( 'createNullModel returns an empty page preview model', ( assert ) => {
 	const testTitle = 'test title';
 	const testUrl = 'test://url.com';
 	const nullModel = createNullModel( testTitle, testUrl );

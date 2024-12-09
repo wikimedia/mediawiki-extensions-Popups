@@ -9,8 +9,6 @@
  * @param {User} user
  * @return {boolean}
  */
-const canSaveToUserPreferences = ( user ) => {
-	return !user.isAnon() && user.isNamed();
-};
+const canSaveToUserPreferences = ( user ) => !user.isAnon() && user.isNamed();
 
 module.exports = canSaveToUserPreferences;
