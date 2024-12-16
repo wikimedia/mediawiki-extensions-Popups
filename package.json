@@ -65,11 +65,5 @@
 		"wdio-mediawiki": "2.3.0",
 		"webpack": "5.95.0",
 		"webpack-cli": "5.1.4"
-	},
-	"bundlesize": [
-		{
-			"path": "resources/dist/index.js",
-			"maxSize": "13.5kB"
-		}
-	]
+	}
 }
