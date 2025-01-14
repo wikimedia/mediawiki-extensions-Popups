@@ -34,5 +34,5 @@
 	"prefs-reading": "Lukemisen asetukset",
 	"popups-prefs-optin": "Ota käyttöön sivun esikatselut (näe aiheen pikaesikatselut sivua lukiessasi)",
 	"popups-prefs-disable-nav-gadgets-info": "Sinun täytyy poistaa [[$1|Navigation popups -pienoisohjelma]] käytöstä omien asetustesi Pienoisohjelmat-välilehdeltä, jotta voit ottaa sivujen esikatselut käyttöön.",
-	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjemat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset."
+	"popups-prefs-conflicting-gadgets-info": "Jotkin pienoisohjelmat ja muut omien asetusten muutokset voivat vaikuttaa siihen, miten tämä ominaisuus toimii. Jos sinulla on ongelmia, käy läpi omat pienoisohjelmasi ja käyttäjäskriptisi, myös järjestelmänlaajuiset."
 }
