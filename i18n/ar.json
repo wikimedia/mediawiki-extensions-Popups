@@ -8,7 +8,8 @@
 			"زكريا",
 			"علاء",
 			"محمد أحمد عبد الفتاح",
-			"Hubaishan"
+			"Hubaishan",
+			"XIDME"
 		]
 	},
 	"popups-message": "المعاينات",
@@ -20,7 +21,7 @@
 	"popups-settings-option-reference-description": "عاين مرجعاً بسرعة في أثناء قراءة الصفحة",
 	"popups-settings-save": "حفظ",
 	"popups-settings-help-ok": "موافق",
-	"popups-settings-cancel": "ألغ",
+	"popups-settings-cancel": "إلغاء",
 	"popups-settings-help": "يمكنك تفعيل المعاينات مرة أُخرى من خلال استعمال رابط في تذييل الصفحة.",
 	"popups-settings-enable": "عدِّل إعدادت المعاينة",
 	"popups-settings-icon-gear-title": "غيِّر إعدادات معاينة الصفحة",
