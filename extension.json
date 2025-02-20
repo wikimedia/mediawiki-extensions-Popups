@@ -155,7 +155,6 @@
 				"mediawiki.jqueryMsg",
 				"mediawiki.storage",
 				"mediawiki.Title",
-				"mediawiki.Uri",
 				"mediawiki.user",
 				"mediawiki.util"
 			]
