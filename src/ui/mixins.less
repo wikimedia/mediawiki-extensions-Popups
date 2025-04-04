@@ -15,24 +15,24 @@
  *   Element with    Set content     Remove     Make left+right
  *     4 borders       to 0x0      top border    transparent
  */
-.mwe-popups-border-pointer-top( @size, @left, @color, @extra ) {
+.mwe-popups-border-pointer-top( @param-size, @param-left, @param-color, @param-extra ) {
 	content: '';
 	position: absolute;
-	border: ( @size + @extra ) @border-style-base @border-color-transparent;
+	border: ( @param-size + @param-extra ) @border-style-base @border-color-transparent;
 	border-top: 0;
-	border-bottom: ( @size + @extra ) @border-style-base @color;
-	top: -@size;
-	left: @left;
+	border-bottom: ( @param-size + @param-extra ) @border-style-base @param-color;
+	top: -@param-size;
+	left: @param-left;
 }
 
-.mwe-popups-border-pointer-bottom( @size, @left, @color, @extra ) {
+.mwe-popups-border-pointer-bottom( @param-size, @param-left, @param-color, @param-extra ) {
 	content: '';
 	position: absolute;
-	border: ( @size + @extra ) @border-style-base @border-color-transparent;
+	border: ( @param-size + @param-extra ) @border-style-base @border-color-transparent;
 	border-bottom: 0;
-	border-top: ( @size + @extra ) @border-style-base @color;
-	bottom: -@size;
-	left: @left;
+	border-top: ( @param-size + @param-extra ) @border-style-base @param-color;
+	bottom: -@param-size;
+	left: @param-left;
 }
 
 /* FIXME: Use Phuedx's approach to make this cleaner
