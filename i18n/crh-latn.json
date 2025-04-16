@@ -5,5 +5,6 @@
 		]
 	},
 	"prefs-reading": "Oquv sazlamaları",
-	"popups-prefs-optin": "Saifelerni ögünden baqıp çıquv faalleştirilsin (bir saifeni oquğanda bir mevzunı tez baqıp çıquv qullanılır)"
+	"popups-prefs-optin": "Saifelerni ögünden baqıp çıquv faalleştirilsin (bir saifeni oquğanda bir mevzunı tez baqıp çıquv qullanılır)",
+	"popups-prefs-conflicting-gadgets-info": "Bazı gacetler ve başqa hususiyleştirmeler bu funktsiyanıñ çalışmasına tesir ete bile. Bir mesele çıqsa, global olğanlarnı da esapqa alıp qullanıcı skriptleriñizni ve gacetleriñizni közden keçiriñiz."
 }
