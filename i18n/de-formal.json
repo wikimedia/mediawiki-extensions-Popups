@@ -6,7 +6,10 @@
 			"Tacsipacsi"
 		]
 	},
-	"popups-settings-option-page-description": "Erhalte eine schnelle Vorschau zu einem Thema, während Sie eine Seite lesen.",
-	"popups-prefs-optin": "Seitenvorschau aktivieren (schnelle Vorschau auf ein Thema beim Lesen einer Seite)",
-	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls Sie Probleme entdecken, überprüfen Sie bitte Ihre Helferlein und Benutzerskripte, inklusiver globaler."
+	"popups-settings-option-page-description": "Eine schnelle Vorschau zu einem Thema erhalten, während Sie eine Seite lesen.",
+	"popups-settings-option-reference-description": "Schnelle Vorschau zu Einzelnachweisen während Sie eine Seite lesen.",
+	"popups-settings-help": "Sie können das Anzeigen von Vorschaubildern durch das Nutzen eines Links im Fußbereich der Seite, erneut aktivieren.",
+	"popups-prefs-optin": "Seitenvorschau aktivieren (schnelle Vorschau zu einem Thema beim Lesen einer Seite)",
+	"popups-prefs-disable-nav-gadgets-info": "Sie müssen das Helferlein [[$1|Navigations-Popups]] in Ihren Einstellungen zu den Helferleins deaktivieren, um Seitenvorschaubilder aktivieren zu können.",
+	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls Sie Probleme entdecken, überprüfen Sie bitte Ihre Helferlein und Benutzerskripte, inklusive global genutzer."
 }
