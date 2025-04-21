@@ -28,10 +28,10 @@ use MediaWiki\Output\OutputPage;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\Skin\Skin;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use Psr\Log\LoggerInterface;
-use Skin;
 
 /**
  * Hooks definitions for Popups extension

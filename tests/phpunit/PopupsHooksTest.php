@@ -22,6 +22,7 @@
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\MultiConfig;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Skin\Skin;
 use MediaWiki\User\User;
 use Popups\PopupsContext;
 use Popups\PopupsHooks;
