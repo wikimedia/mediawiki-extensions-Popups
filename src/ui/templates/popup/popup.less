@@ -54,13 +54,15 @@
 		}
 	}
 
+	/* stylelint-disable declaration-no-important */
 	.mwe-popups-settings-button {
 		float: right; // positions icon near bottom right corner
 		pointer-events: auto; // Overrides pointer-events: none on footer to ensure the button is interactive
-		// !important needed to override 'responsive' button styles on smaller viewports defined in Vector's Button.less
-		min-width: 32px !important; /* stylelint-disable-line declaration-no-important */
-		min-height: 32px !important; /* stylelint-disable-line declaration-no-important */
+		/* The !importants are needed to override 'responsive' button styles on smaller viewports defined in Vector's Button.less */
+		min-width: 32px !important;
+		min-height: 32px !important;
 	}
+	/* stylelint-enable declaration-no-important */
 
 	.mwe-popups-extract {
 		// T156800, T139297: 'Pad' the extract horizontally using a margin so the

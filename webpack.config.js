@@ -121,8 +121,8 @@ module.exports = ( env, argv ) => ( {
 		// Minified uncompressed size limits for chunks / assets and entrypoints. Keep these numbers
 		// up-to-date and rounded to the nearest 10th of a kibibyte so that code sizing costs are
 		// well understood. Related to bundlesize minified, gzipped compressed file size tests.
-		maxAssetSize: 40.1 * 1024,
-		maxEntrypointSize: 40.1 * 1024,
+		maxAssetSize: 40.6 * 1024,
+		maxEntrypointSize: 40.6 * 1024,
 
 		// The default filter excludes map files but we rename ours.
 		assetFilter: ( filename ) => !filename.endsWith( srcMapExt )

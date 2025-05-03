@@ -57,7 +57,7 @@
 		"pre-commit": "1.2.2",
 		"redux": "4.0.1",
 		"redux-thunk": "2.3.0",
-		"stylelint-config-wikimedia": "0.17.2",
+		"stylelint-config-wikimedia": "0.18.0",
 		"svg-inline-loader": "0.8.2",
 		"svgo": "3.2.0",
 		"tap-mocha-reporter": "5.0.1",
