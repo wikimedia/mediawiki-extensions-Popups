@@ -11,3 +11,4 @@
 /.storybook/mocks/**/*.tmp
 /tests/selenium/log
 .DS_Store
+/.stylelintcache

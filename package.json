@@ -16,7 +16,7 @@
 		"coverage": "nyc --reporter=lcov npm -s run test:unit",
 		"doc": "jsdoc -c jsdoc.json && cp popups.svg docs/js # SKIPPED! && npm run build-storybook",
 		"linter:js": "eslint --cache .",
-		"linter:styles": "stylelint \"src/**/*.less\"",
+		"linter:styles": "stylelint --cache \"src/**/*.less\"",
 		"minify:svg": "svgo --config=.svgo.config.js --quiet --recursive --folder resources/ext.popups.images/",
 		"node-debug": "node -v && npm -v && echo 'Please ensure you are running the correct version of nvm before running this command.'",
 		"precommit": "npm -s t",
