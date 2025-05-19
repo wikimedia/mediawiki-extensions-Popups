@@ -2,7 +2,7 @@ import actionTypes from './../actionTypes';
 import nextState from './nextState';
 
 /**
- * Reducer for actions that may result in an event being logged via statsv.
+ * Reducer for actions that result in Prometheus-compatible metrics.
  *
  * @param {Object|undefined} state
  * @param {Object} action
@@ -19,13 +19,13 @@ export default function statsv( state, action ) {
 
 		case actionTypes.FETCH_END:
 			return nextState( state, {
-				action: 'timing.PagePreviewsApiResponse',
+				action: 'stats.mediawiki_Popups_api_response_seconds',
 				data: action.timestamp - state.fetchStartedAt
 			} );
 
 		case actionTypes.FETCH_FAILED:
 			return nextState( state, {
-				action: 'counter.PagePreviewsApiFailure',
+				action: 'stats.mediawiki_Popups_api_failure_total',
 				data: 1
 			} );
 
@@ -36,7 +36,7 @@ export default function statsv( state, action ) {
 
 		case actionTypes.PREVIEW_SHOW:
 			return nextState( state, {
-				action: 'timing.PagePreviewsPreviewShow',
+				action: 'stats.mediawiki_Popups_preview_render_seconds',
 				data: action.timestamp - state.linkDwellStartedAt
 			} );
 
