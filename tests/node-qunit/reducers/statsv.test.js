@@ -42,7 +42,7 @@ QUnit.test( 'FETCH_END', ( assert ) => {
 		state,
 		{
 			fetchStartedAt: startedAt,
-			action: 'timing.PagePreviewsApiResponse',
+			action: 'stats.mediawiki_Popups_api_response_seconds',
 			data: endedAt - startedAt
 		},
 		'The start, action, and data are preserved.'
@@ -58,7 +58,7 @@ QUnit.test( 'FETCH_FAILED', ( assert ) => {
 	assert.deepEqual(
 		state,
 		{
-			action: 'counter.PagePreviewsApiFailure',
+			action: 'stats.mediawiki_Popups_api_failure_total',
 			data: 1
 		},
 		'The action and data are preserved.'
@@ -95,7 +95,7 @@ QUnit.test( 'PREVIEW_SHOW', ( assert ) => {
 		state,
 		{
 			linkDwellStartedAt: startedAt,
-			action: 'timing.PagePreviewsPreviewShow',
+			action: 'stats.mediawiki_Popups_preview_render_seconds',
 			data: endedAt - startedAt
 		},
 		'The link dwell start time, action, and data are preserved.'
