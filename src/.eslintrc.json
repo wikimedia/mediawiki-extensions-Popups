@@ -18,6 +18,7 @@
 		"no-jquery/no-when": "error",
 		"no-jquery/no-extend": "error",
 		"compat/compat": "off",
-		"jsdoc/no-undefined-types": "off"
+		"jsdoc/no-undefined-types": "off",
+		"unicorn/no-useless-promise-resolve-reject": "warn"
 	}
 }
