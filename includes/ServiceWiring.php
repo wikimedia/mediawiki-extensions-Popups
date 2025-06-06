@@ -10,11 +10,21 @@ use Psr\Log\LoggerInterface;
 
 /**
  * @codeCoverageIgnore
+ * @phpcs-require-sorted-array
  */
 return [
 	'Popups.Config' => static function ( MediaWikiServices $services ): Config {
 		return $services->getService( 'ConfigFactory' )
 			->makeConfig( PopupsContext::EXTENSION_NAME );
+	},
+	'Popups.Context' => static function ( MediaWikiServices $services ): PopupsContext {
+		return new PopupsContext(
+			$services->getService( 'Popups.Config' ),
+			ExtensionRegistry::getInstance(),
+			$services->getService( 'Popups.GadgetsIntegration' ),
+			$services->getSpecialPageFactory(),
+			$services->getUserOptionsLookup()
+		);
 	},
 	'Popups.GadgetsIntegration' => static function ( MediaWikiServices $services ): PopupsGadgetsIntegration {
 		return new PopupsGadgetsIntegration(
@@ -27,13 +37,4 @@ return [
 	'Popups.Logger' => static function ( MediaWikiServices $services ): LoggerInterface {
 		return LoggerFactory::getInstance( PopupsContext::LOGGER_CHANNEL );
 	},
-	'Popups.Context' => static function ( MediaWikiServices $services ): PopupsContext {
-		return new PopupsContext(
-			$services->getService( 'Popups.Config' ),
-			ExtensionRegistry::getInstance(),
-			$services->getService( 'Popups.GadgetsIntegration' ),
-			$services->getSpecialPageFactory(),
-			$services->getUserOptionsLookup()
-		);
-	}
 ];
