@@ -5,13 +5,25 @@
 			"شاه زمان پټان"
 		]
 	},
-	"popups-message": "بربوکيزې",
+	"popups-message": "مخليدنې",
 	"popups-desc": "کله چې کارن په وېبتړ باندې گرځي د مخکتنې بربوکيزې ښکاره کوي",
 	"popups-settings-title": "مخليدنې",
-	"popups-settings-option-page": "چارنول",
-	"popups-settings-option-page-description": "د يو مخ مخکښه غونډله او ښکارېدونکی انځور. د لوستونکو لپاره د همدې سپارښتنه کېږي.",
+	"popups-settings-option-page": "مخليدنې چارنول",
+	"popups-settings-option-page-description": "د لوستلو پرمهال د يوې سکالو چټکه مخليدنه راخيستل.",
+	"popups-settings-option-reference": "سرچينې مخليدنې",
+	"popups-settings-option-reference-description": "د لوستلو پرمهال د يوې سرچينې چټکې مخليدنې راخيستل.",
+	"popups-settings-save": "خوندي کول",
 	"popups-settings-help-ok": "ترسره شو",
 	"popups-settings-cancel": "ناگارل",
 	"popups-settings-help": "تاسې د مخ په پايڅوړ کې د يوې تړنې په کارولو سره مخليدنه بېرته چارنولی شئ.",
-	"popups-settings-enable": "مخليدنې اوڼنې سمول"
+	"popups-settings-enable": "مخليدنې اوڼنې سمول",
+	"popups-settings-icon-gear-title": "د مخ مخليدنې اوڼنې بدلول",
+	"popups-preview-no-preview": "د دې مخليدنې د ښودلو پرمهال يوه ستونزه پېښه شوه",
+	"popups-preview-footer-read": "دې مخ ته ورشئ",
+	"popups-preview-disambiguation": "دا سرليک له يوه څخه ډېرو مخونو پورې اړه لري",
+	"popups-preview-disambiguation-link": "ورته مخونه کتل",
+	"prefs-reading": "د لوستلو غوره‌توبونه",
+	"popups-prefs-optin": "د مخ مخليدنې چارنول (د يو مخ د لوستلو پرمهال د هغې د سکالو گړندۍ مخليدنه راخيستل)",
+	"popups-prefs-disable-nav-gadgets-info": "د مخکتنې چارنولو لپاره تاسو بايد د خپل ويښيارتوکو غوره‌توبونو کې [$1|د چلند بړبوکيزه ويښيار توکی ناچاران کړئ].",
+	"popups-prefs-conflicting-gadgets-info": "ځينې ويښيارتوکي او نور دوديزول شايد د دې ځانگړنې چارې اغېزمنې کړي. که تاسو ستونزو سره مخ کېږئ؛ نو مهرباني وکړئ د خپلو ويښيارتوکو، کارن سکريپټونو، او ټوليزو هغو په شمول، د ټولو بياکتنه وکړئ."
 }
