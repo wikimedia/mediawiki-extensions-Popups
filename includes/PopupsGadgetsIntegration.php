@@ -74,7 +74,7 @@ class PopupsGadgetsIntegration {
 				try {
 					return $this->gadgetRepo->getGadget( $this->navPopupsGadgetName )
 						->isEnabled( $user );
-				} catch ( \InvalidArgumentException $e ) {
+				} catch ( \InvalidArgumentException ) {
 					return false;
 				}
 			}
