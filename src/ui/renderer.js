@@ -308,7 +308,7 @@ export function bindBehavior( preview, behavior ) {
 
 	const button = preview.el.querySelector( 'a.mwe-popups-settings-button' );
 	if ( button ) {
-		button.href = behavior.settingsUrl;
+		button.href = behavior.settingsUrl || '#'; // no settingsUrl for anons
 		button.addEventListener( 'click', ( event ) => {
 			event.stopPropagation();
 
