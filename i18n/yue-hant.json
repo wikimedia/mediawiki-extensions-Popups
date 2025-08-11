@@ -2,14 +2,29 @@
 	"@metadata": {
 		"authors": [
 			"Ktchankt",
-			"Winston Sung"
+			"Winston Sung",
+			"Yueman"
 		]
 	},
 	"popups-message": "預覽",
+	"popups-desc": "當用戶用滑鼠指去一條連結，顯示彈出嘅預覽",
 	"popups-settings-title": "預覽",
+	"popups-settings-option-page": "版面預覽",
+	"popups-settings-option-page-description": "當睇緊一版嗰陣，拎到對主題嘅快速預覽。",
+	"popups-settings-option-reference": "參考來源預覽",
+	"popups-settings-option-reference-description": "當睇緊一版嗰陣，拎到對參考來源嘅快速預覽。",
 	"popups-settings-save": "儲存",
 	"popups-settings-help-ok": "搞掂",
 	"popups-settings-cancel": "取消",
+	"popups-settings-help": "你可以去頁尾條連結開返預覽功能。",
+	"popups-settings-enable": "改預覽設定",
+	"popups-settings-icon-gear-title": "改版面預覽設定",
+	"popups-preview-no-preview": "顯示預覽嗰陣出咗問題",
+	"popups-preview-footer-read": "去呢版",
+	"popups-preview-disambiguation": "呢個標題相關多過一項",
+	"popups-preview-disambiguation-link": "睇近似各項",
+	"prefs-reading": "閱讀喜好",
 	"popups-prefs-optin": "開着版面預覽（睇緊版面嗰陣可以同時快速預覽主題）",
+	"popups-prefs-disable-nav-gadgets-info": "你要去你嘅架撐仔設定度[[$1|閂咗導航彈出架撐仔]]先至可以開返版面預覽。",
 	"popups-prefs-conflicting-gadgets-info": "個別架撐仔同其他自定義功能可能會影響呢個功能嘅表現效果。如果你發現出問題，請檢查下你嘅架撐仔同用戶碼，包括全域嗰啲。"
 }
