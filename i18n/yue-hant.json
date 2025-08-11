@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"Ktchankt"
 		]
 	},
-	"popups-settings-help-ok": "搞掂"
+	"popups-message": "預覽",
+	"popups-settings-title": "預覽",
+	"popups-settings-save": "儲存",
+	"popups-settings-help-ok": "搞掂",
+	"popups-settings-cancel": "取消",
+	"popups-prefs-optin": "開着版面預覽（睇緊版面嗰陣可以同時快速預覽主題）",
+	"popups-prefs-conflicting-gadgets-info": "個別架撐仔同其他自定義功能可能會影響呢個功能嘅表現效果。如果你發現出問題，請檢查下你嘅架撐仔同用戶碼，包括全域嗰啲。"
 }
