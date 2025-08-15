@@ -16,7 +16,7 @@
 		"Popups\\": "includes/"
 	},
 	"ConfigRegistry": {
-		"popups": "GlobalVarConfig::newInstance"
+		"popups": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"Hooks": {
 		"BeforePageDisplay": "PopupsHooks",
