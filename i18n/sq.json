@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xhulianoo"
+		]
+	},
+	"popups-message": "Parapamjet",
+	"popups-settings-title": "Parapamjet",
+	"popups-settings-option-page": "Parapamjet e faqeve",
+	"popups-settings-option-page-description": "Merr parapamje të shpejta të një teme ndërsa lexon një faqe.",
+	"popups-settings-option-reference": "Parapamjet e referimeve",
+	"popups-settings-option-reference-description": "Merr parapamje të shpejta të një referimi gjatë leximit të një faqeje.",
+	"popups-settings-save": "Ruaj",
+	"popups-settings-help-ok": "u bë",
+	"popups-settings-cancel": "Anulo",
+	"popups-settings-help": "Mund t'i aktivizosh përsëri parapamjet duke përdorur një lidhje në fund të faqes.",
+	"popups-settings-enable": "Modifiko cilësimet e parapamjeve",
+	"popups-settings-icon-gear-title": "Ndrysho cilësimet e parapamjeve së faqeve",
+	"popups-preview-no-preview": "Pati një problem me shfaqjen e kësaj parapamjeje",
+	"popups-preview-footer-read": "Shko te kjo faqe",
+	"popups-preview-disambiguation": "Ky titull lidhet me më shumë se një faqe",
+	"popups-preview-disambiguation-link": "Shih faqe të ngjashme",
+	"prefs-reading": "Parapëlqimet e leximit",
+	"popups-prefs-optin": "Aktivizo parapamjet e faqeve (merr parapamje të shpejta të një teme gjatë leximit të një faqeje)"
+}
