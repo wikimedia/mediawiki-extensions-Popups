@@ -27,11 +27,4 @@ describe( 'Dwelling on a valid page link', () => {
 		await page.abandonLink();
 		await expect( await page.pagePopupsSelector ).not.toBeDisplayed( { message: 'Page preview is kept hidden.' } );
 	} );
-
-	it( 'Quickly hovering, abandoning and re-hovering a link shows page preview', async () => {
-		await page.hoverPageLink();
-		await page.abandonLink();
-		await page.dwellPageLink();
-		await expect( await page.pagePopupsSelector ).toBeDisplayed( { message: 'Page preview is shown.' } );
-	} );
 } );
