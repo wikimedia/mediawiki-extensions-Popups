@@ -56,55 +56,13 @@ class PopupsContext {
 	 */
 	private const NAV_POPUPS_ENABLED = 1;
 
-	/**
-	 * @var Config
-	 */
-	private $config;
-
-	/**
-	 * @var PopupsContext
-	 */
-	protected static $instance;
-
-	/**
-	 * @var ExtensionRegistry
-	 */
-	private $extensionRegistry;
-
-	/**
-	 * @var PopupsGadgetsIntegration
-	 */
-	private $gadgetsIntegration;
-
-	/**
-	 * @var SpecialPageFactory
-	 */
-	private $specialPageFactory;
-
-	/**
-	 * @var UserOptionsLookup
-	 */
-	private $userOptionsLookup;
-
-	/**
-	 * @param Config $config Mediawiki configuration
-	 * @param ExtensionRegistry $extensionRegistry MediaWiki extension registry
-	 * @param PopupsGadgetsIntegration $gadgetsIntegration Gadgets integration helper
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param UserOptionsLookup $userOptionsLookup
-	 */
 	public function __construct(
-		Config $config,
-		ExtensionRegistry $extensionRegistry,
-		PopupsGadgetsIntegration $gadgetsIntegration,
-		SpecialPageFactory $specialPageFactory,
-		UserOptionsLookup $userOptionsLookup
+		private readonly Config $config,
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly PopupsGadgetsIntegration $gadgetsIntegration,
+		private readonly SpecialPageFactory $specialPageFactory,
+		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
-		$this->config = $config;
-		$this->extensionRegistry = $extensionRegistry;
-		$this->gadgetsIntegration = $gadgetsIntegration;
-		$this->specialPageFactory = $specialPageFactory;
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**

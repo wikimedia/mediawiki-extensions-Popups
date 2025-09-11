@@ -47,34 +47,12 @@ class PopupsHooks implements
 
 	private const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
-	/** @var Config */
-	private $config;
-
-	/** @var PopupsContext */
-	private $popupsContext;
-
-	/** @var LoggerInterface */
-	private $logger;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-
-	/**
-	 * @param Config $config
-	 * @param PopupsContext $popupsContext
-	 * @param LoggerInterface $logger
-	 * @param UserOptionsManager $userOptionsManager
-	 */
 	public function __construct(
-		Config $config,
-		PopupsContext $popupsContext,
-		LoggerInterface $logger,
-		UserOptionsManager $userOptionsManager
+		private readonly Config $config,
+		private readonly PopupsContext $popupsContext,
+		private readonly LoggerInterface $logger,
+		private readonly UserOptionsManager $userOptionsManager,
 	) {
-		$this->config = $config;
-		$this->popupsContext = $popupsContext;
-		$this->logger = $logger;
-		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/**

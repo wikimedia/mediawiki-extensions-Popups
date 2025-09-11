@@ -37,19 +37,12 @@ class PopupsGadgetsIntegration {
 	 */
 	private $navPopupsGadgetName;
 
-	private ?GadgetRepo $gadgetRepo;
-
-	/**
-	 * @param Config $config MediaWiki configuration
-	 * @param GadgetRepo|null $gadgetRepo
-	 */
 	public function __construct(
 		Config $config,
-		?GadgetRepo $gadgetRepo
+		private readonly ?GadgetRepo $gadgetRepo,
 	) {
 		$this->navPopupsGadgetName = $this->sanitizeGadgetName(
 			$config->get( self::CONFIG_NAVIGATION_POPUPS_NAME ) );
-		$this->gadgetRepo = $gadgetRepo;
 	}
 
 	/**
