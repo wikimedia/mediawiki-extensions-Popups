@@ -21,13 +21,13 @@
 	"popups-desc": "Zeigt eine Vorschau als Popup an, wenn der Benutzer die Maus über einen Link führt",
 	"popups-settings-title": "Vorschau",
 	"popups-settings-option-page": "Seitenvorschauen",
-	"popups-settings-option-page-description": "Schnelle Vorschau zu einem Thema, während du eine Seite liest.",
+	"popups-settings-option-page-description": "Schnelle Vorschau zu einem Thema, während {{#FORMAL:du|Sie}} eine Seite {{#FORMAL:liest|lesen}}.",
 	"popups-settings-option-reference": "Einzelnachweise-Vorschau",
-	"popups-settings-option-reference-description": "Schnelle Vorschau zu Einzelnachweisen, während du eine Seite liest.",
+	"popups-settings-option-reference-description": "Schnelle Vorschau zu Einzelnachweisen, während {{#FORMAL:du|Sie}} eine Seite {{#FORMAL:liest|lesen}}.",
 	"popups-settings-save": "Speichern",
 	"popups-settings-help-ok": "Fertig",
 	"popups-settings-cancel": "Abbrechen",
-	"popups-settings-help": "Du kannst das Anzeigen von Vorschaubildern durch das Nutzen eines Links im Fußbereich der Seite erneut aktivieren.",
+	"popups-settings-help": "{{#FORMAL:Du kannst|Sie können}} das Anzeigen von Vorschaubildern durch das Nutzen eines Links im Fußbereich der Seite erneut aktivieren.",
 	"popups-settings-enable": "Einstellungen für die Seitenvorschau bearbeiten",
 	"popups-settings-icon-gear-title": "Einstellungen für die Seitenvorschau ändern",
 	"popups-preview-no-preview": "Es gibt ein Problem beim Anzeigen der Vorschau",
@@ -36,6 +36,6 @@
 	"popups-preview-disambiguation-link": "Ähnliche Seiten ansehen",
 	"prefs-reading": "Leseeinstellungen",
 	"popups-prefs-optin": "Seitenvorschau aktivieren (schnelle Vorschau zu einem Thema beim Lesen einer Seite)",
-	"popups-prefs-disable-nav-gadgets-info": "Du musst das Helferlein [[$1|Navigations-Popups]] in deinen Einstellungen zu den Helferleins deaktivieren, um Seitenvorschaubilder aktivieren zu können.",
-	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls du Probleme entdeckst, überprüfe bitte deine Helferlein und Benutzerskripte, inklusive global genutzer."
+	"popups-prefs-disable-nav-gadgets-info": "{{#FORMAL:Du musst|Sie müssen}} das Helferlein [[$1|Navigations-Popups]] in {{#FORMAL:deinen|Ihren}} Einstellungen zu den Helferleins deaktivieren, um Seitenvorschaubilder aktivieren zu können.",
+	"popups-prefs-conflicting-gadgets-info": "Bestimmte Helferlein und andere Anpassungen könnten die Leistung dieser Funktion beeinflussen. Falls {{#FORMAL:du|Sie}} Probleme {{#FORMAL:entdeckst|entdecken}}, {{#FORMAL:überprüfe|überprüfen Sie}} bitte {{#FORMAL:deine|Ihre}} Helferlein und Benutzerskripte, inklusive global genutzer."
 }
