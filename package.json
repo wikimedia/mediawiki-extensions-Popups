@@ -24,7 +24,7 @@
 		"selenium-test": "wdio tests/selenium/wdio.conf.js"
 	},
 	"engines": {
-		"node": "18.20.2"
+		"node": ">=20.19.5"
 	},
 	"devDependencies": {
 		"@babel/core": "7.22.20",
