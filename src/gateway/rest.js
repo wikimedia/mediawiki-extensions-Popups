@@ -154,6 +154,9 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 		height = thumbSize;
 	}
 
+	// Fit to ThumbnailSteps config
+	width = mw.util.adjustThumbWidthForSteps( width, original.width );
+
 	// If the image isn't an SVG, then it shouldn't be scaled past its original
 	// dimensions.
 	if ( width >= original.width && filename.indexOf( '.svg' ) === -1 ) {
