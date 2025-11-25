@@ -178,9 +178,15 @@ QUnit.module( 'gateway/rest', {
 		mw.Title = function ( title ) {
 			this.getUrl = () => `url/${ title }`;
 		};
+		mw.util = {
+			adjustThumbWidthForSteps( thumbWidth ) {
+				return thumbWidth;
+			}
+		};
 	},
 	afterEach() {
 		mw.Title = null;
+		mw.util = null;
 	}
 } );
 
