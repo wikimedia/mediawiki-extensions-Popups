@@ -26,6 +26,7 @@
 	"prefs-reading": "Kjörstillingar við lestur",
 	"popups-prefs-optin": "Virkja forskoðun síðna (fá snögga forskoðun á efni á meðan þú lest síðu)",
 	"popups-prefs-disable-nav-gadgets-info": "Þú þarft að [[$1|afvirkja Navigation popups-græjuna]] í stillingunum þínum til að virkja forskoðun síðna.",
+	"popups-prefs-conflicting-gadgets-info": "Ákveðnar græjur og aðrar sérstillingar geta haft áhrif á afköst þessa eiginleika. Ef þú lendir í vandræðum skaltu skoða græjurnar þínar og notandaskriftur, þar á meðal þær altæku.",
 	"popups-prefs-reftooltips-gadget-conflict-info": "Þú ert með [[$1|Reference Tooltips]]-græjuna virkjaða svo þú munt ekki sjá tilvísunarforskoðun en þú munt sjá síðuforskoðun. Eftir því hvaða wiki þú hefur kann græjan að heita aðeins frábrugðu nafni. Ef þú heldur áfram að lenda í vandræðum skalt þú fara yfir græjurnar þínar og notendaskriftur, þar með talið altækar.",
 	"popups-refpreview-reference": "Tilvísun",
 	"popups-refpreview-book": "Tilvísun í bók",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"Aca"
 		]
 	},
 	"popups-message": "Pregledi stranica",
@@ -19,6 +20,8 @@
 	"popups-preview-disambiguation": "Naslov se odnosi na više stranica",
 	"popups-preview-disambiguation-link": "Pogl. slične stranice",
 	"prefs-reading": "Postavke čitanja",
+	"popups-prefs-optin": "Pregled stranica (brzi pregled bilo koje teme pri čitanju stranice)",
+	"popups-prefs-conflicting-gadgets-info": "Neke spravice i druga prilagođavanja mogu utjecati na rad ove funkcije. Ako naiđete na probleme, provjerite svoje spravice i korisničke skripte, među kojima i globalne.",
 	"popups-refpreview-reference": "Referenca",
 	"popups-refpreview-book": "Referenca ka knjizi",
 	"popups-refpreview-journal": "Referenca ka časopisu",
