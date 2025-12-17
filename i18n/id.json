@@ -9,7 +9,8 @@
 			"Iwan Novirion",
 			"Kenrick95",
 			"RXerself",
-			"Sumbukompor"
+			"Sumbukompor",
+			"Penyuwangi"
 		]
 	},
 	"popups-message": "Pratayang",
@@ -22,7 +23,7 @@
 	"popups-settings-save": "Simpan",
 	"popups-settings-help-ok": "Selesai",
 	"popups-settings-cancel": "Batalkan",
-	"popups-settings-help": "Anda dapat kembali mengaktifkan pratayang dengan menggunakan pranala pada bagian bawah dari halaman ini.",
+	"popups-settings-help": "Anda dapat kembali menyalakan pratayang dengan menggunakan pranala pada bagian bawah dari halaman ini.",
 	"popups-settings-enable": "Ubah setelan pratayang",
 	"popups-settings-icon-gear-title": "Ubah setelah pratayang halaman",
 	"popups-preview-no-preview": "Ada masalah ketika menampilkan pratayang ini",
@@ -30,7 +31,7 @@
 	"popups-preview-disambiguation": "Judul ini berkaitan dengan lebih dari satu halaman",
 	"popups-preview-disambiguation-link": "Lihat halaman-halaman yang serupa",
 	"prefs-reading": "Preferensi baca",
-	"popups-prefs-optin": "Aktifkan pratayang halaman (dapatkan pratayang cepat dari sebuah topik ketika sedang membaca suatu halaman)",
-	"popups-prefs-disable-nav-gadgets-info": "Anda harus [[$1|menonaktifkan perkakas Navigation Popups]] dari tab Perkakas untuk mengaktifkan pratayang halaman.",
+	"popups-prefs-optin": "Nyalakan pratayang halaman (dapatkan pratayang cepat dari sebuah topik ketika sedang membaca suatu halaman)",
+	"popups-prefs-disable-nav-gadgets-info": "Anda harus [[$1|mematikan perkakas Navigation Popups]] dari tab Perkakas untuk menyalakan pratayang halaman.",
 	"popups-prefs-conflicting-gadgets-info": "Gawai tertentu dan pengubahsuaian lainnya dapat memengaruhi performa fitur ini. Jika Anda mengalami masalah tolong tinjau gawai dan skrip pengguna Anda, termasuk yang bersifat global."
 }
