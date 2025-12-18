@@ -20,6 +20,6 @@
 	"popups-preview-disambiguation": "Naslov se odnosi na više stranica",
 	"popups-preview-disambiguation-link": "Pogl. slične stranice",
 	"prefs-reading": "Postavke čitanja",
-	"popups-prefs-optin": "Pregled stranica (kratak pregled bilo koje teme dok čitate neku stranicu)",
-	"popups-prefs-conflicting-gadgets-info": "Pojedine spravice i druga prilagođavanja mogu utjecati na rad ove funkcije. Ako naiđete na probleme, provjerite svoje spravice i korisničke skripte, među kojima i globalne."
+	"popups-prefs-optin": "Pregled stranica (brzi pregled bilo koje teme pri čitanju stranice)",
+	"popups-prefs-conflicting-gadgets-info": "Neke spravice i druga prilagođavanja mogu utjecati na rad ove funkcije. Ako naiđete na probleme, provjerite svoje spravice i korisničke skripte, među kojima i globalne."
 }
