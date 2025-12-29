@@ -8,7 +8,8 @@
 			"Macofe",
 			"Mguix",
 			"Pginer",
-			"Vriullop"
+			"Vriullop",
+			"Paucabot"
 		]
 	},
 	"popups-message": "Previsualització",
@@ -23,6 +24,7 @@
 	"popups-settings-enable": "Habilita la configuració de la previsualització",
 	"popups-preview-no-preview": "Hi ha hagut un problema en mostrar aquesta previsualització",
 	"popups-preview-footer-read": "Vés a aquesta pàgina",
+	"popups-preview-disambiguation": "Aquest títol fa referència a més d'una pàgina",
 	"popups-preview-disambiguation-link": "Mostra pàgines semblants",
 	"prefs-reading": "Preferències de lectura",
 	"popups-prefs-optin": "Habilita les previsualitzacions de pàgines (obté previsualitzacions ràpides d'un tema mentre es llegeix una pàgina)",
