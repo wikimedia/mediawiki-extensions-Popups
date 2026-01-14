@@ -1,5 +1,5 @@
 <?php
-namespace MediaWiki\Extensions\Popups\Tests\Structure;
+namespace MediaWiki\Extension\Popups\Tests\Structure;
 
 use MediaWiki\Tests\Structure\BundleSizeTestBase;
 
