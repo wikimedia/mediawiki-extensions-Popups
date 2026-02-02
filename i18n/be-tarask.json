@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Red Winged Duck",
-			"Renessaince"
+			"Renessaince",
+			"Ucukor"
 		]
 	},
 	"popups-message": "Папярэдні прагляд",
@@ -20,7 +21,7 @@
 	"popups-settings-icon-gear-title": "Зьмяніць налады папярэдняга прагляду",
 	"popups-preview-no-preview": "Паўстала праблема пры вывадзе гэтага папярэдняга прагляду",
 	"popups-preview-footer-read": "Перайсьці на гэтую старонку",
-	"popups-preview-disambiguation": "Гэтая назва датычыцца некалькіх старонак",
+	"popups-preview-disambiguation": "Гэтая назва датычна больш ніж адной старонцы",
 	"popups-preview-disambiguation-link": "Паглядзець падобныя старонкі",
 	"prefs-reading": "Налады чытаньня",
 	"popups-prefs-optin": "Уключыць папярэдні прагляд старонак (пры чытаньні старонак атрымаеце хуткі прагляд тэмы)",
