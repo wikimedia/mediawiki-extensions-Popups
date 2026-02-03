@@ -4,5 +4,14 @@
 			"Cabal"
 		]
 	},
-	"popups-settings-option-page": "ਵਰਕਾ ਝਾਤ"
+	"popups-settings-title": "ਝਾਤਾਂ",
+	"popups-settings-option-page": "ਵਰਕਾ ਝਾਤ",
+	"popups-settings-option-reference": "ਹਵਾਲੇ ਦੀ ਝਾਤਾਂ",
+	"popups-settings-save": "ਸਾਂਭੋ",
+	"popups-settings-help-ok": "ਪੂਰਾ ਹੋਇਆ",
+	"popups-settings-cancel": "ਰੱਦ ਕਰੋ",
+	"popups-preview-footer-read": "ਇਸ ਵਰਕੇ ਉੱਤੇ ਜਾਓ",
+	"popups-preview-disambiguation": "ਇਹ ਸਿਰਲੇਖ ਇੱਕ ਤੋਂ ਵੱਧ ਵਰਕਿਆਂ ਨਾਲ ਜੁੜਦਾ ਏ",
+	"popups-preview-disambiguation-link": "ਮਿਲਦੇ-ਜੁਲਦੇ ਵਰਕੇ ਵੇਖੋ",
+	"prefs-reading": "ਪੜ੍ਹਨ ਦੀਆਂ ਤਰਜੀਹਾਂ"
 }
