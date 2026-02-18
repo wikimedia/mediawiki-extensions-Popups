@@ -62,7 +62,7 @@ function makeTitleInExtractBold( extract, title ) {
 	extract = extract.split( snip );
 
 	extract.forEach( ( part ) => {
-		if ( part.indexOf( boldIdentifier ) === 0 ) {
+		if ( part.startsWith( boldIdentifier ) ) {
 			const highlightNode = document.createElement( 'b' );
 			highlightNode.textContent = part.slice( boldIdentifier.length );
 			elements.push( highlightNode );
