@@ -22,7 +22,7 @@
 		]
 	},
 	"popups-message": "預覽（Previews）",
-	"popups-desc": "在游標停駐於連結上方時顯示彈跳預覽畫面。",
+	"popups-desc": "當使用者將滑鼠游標懸停在連結上時顯示預覽彈出式視窗",
 	"popups-settings-title": "預覽",
 	"popups-settings-option-page": "頁面預覽",
 	"popups-settings-option-page-description": "取得頁面的的快速預覽",
