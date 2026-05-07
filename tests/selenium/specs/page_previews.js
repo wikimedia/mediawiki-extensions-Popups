@@ -1,6 +1,4 @@
-'use strict';
-
-const page = require( '../pageobjects/popups.page' );
+import page from '../pageobjects/popups.page.js';
 
 describe( 'Dwelling on a valid page link', () => {
 	before( async () => {
