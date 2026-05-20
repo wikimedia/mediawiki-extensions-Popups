@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tuwewanzi"
+		]
+	},
+	"popups-desc": "Tuwá uŋ kiŋ wóičhikȟoyake akáŋn uŋ kiŋháŋ, he wípȟopa uŋ owáŋyaŋke-íȟaŋhaŋ pazó",
+	"popups-settings-title": "Owáŋyaŋke-íȟaŋhaŋ",
+	"popups-settings-option-page": "Oyúblaye owáŋyaŋke-íȟaŋhaŋ kiŋ",
+	"popups-settings-option-page-description": "Oyúblaye blawá ičhúŋhaŋ wóiwoglake tȟaówaŋyaŋke-íȟaŋhaŋ iyáču kte.",
+	"popups-settings-option-reference": "Ohútkȟaŋ owáŋyaŋke-íȟaŋhaŋ kiŋ",
+	"popups-settings-option-reference-description": "Oyúblaye blawá ičhúŋhaŋ ohútkȟaŋ tȟaówaŋyaŋke-íȟaŋhaŋ iyáču kte.",
+	"popups-settings-save": "Égnaka {{GENDER:|yo|ye|yo/ye}}",
+	"popups-settings-help-ok": "Yuštáƞ",
+	"popups-settings-cancel": "Yužúžu {{GENDER:|wo|we|wo/we}}",
+	"popups-preview-footer-read": "Oyublaye kiŋ le ektá yá {{GENDER:|yo|ye|yo/ye}}",
+	"popups-preview-disambiguation-link": "Oyúblaye iyéčhel kiŋ waŋyáŋka {{GENDER:|yo|ye|yo/ye}}"
+}
