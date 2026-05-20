@@ -24,7 +24,6 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
 
@@ -110,7 +109,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 
 		$mock = $this->createMock( ExtensionRegistry::class );
 		$mock->method( 'isLoaded' )
-			->will( new ConsecutiveCalls( $returnValues ) );
+			->willReturnOnConsecutiveCalls( ...$returnValues );
 		$context = $this->getContext( $mock );
 		$this->assertSame( $expected,
 			$context->areDependenciesMet(),
