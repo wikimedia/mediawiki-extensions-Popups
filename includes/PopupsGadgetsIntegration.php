@@ -21,7 +21,7 @@ namespace Popups;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Gadgets integration
@@ -57,10 +57,10 @@ class PopupsGadgetsIntegration {
 	 * Check if Popups conflicts with Nav Popups Gadget
 	 * If user enabled Nav Popups, Popups is unavailable
 	 *
-	 * @param User $user User whose gadget settings are checked
+	 * @param UserIdentity $user User whose gadget settings are checked
 	 * @return bool
 	 */
-	public function conflictsWithNavPopupsGadget( User $user ) {
+	public function conflictsWithNavPopupsGadget( UserIdentity $user ) {
 		if ( $this->gadgetRepo ) {
 			$match = array_search( $this->navPopupsGadgetName, $this->gadgetRepo->getGadgetIds() );
 			if ( $match !== false ) {

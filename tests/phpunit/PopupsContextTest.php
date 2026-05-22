@@ -23,7 +23,7 @@ use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
 
@@ -203,7 +203,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	public function testConflictsWithNavPopupsGadget() {
 		$integrationMock = $this->createMock( PopupsGadgetsIntegration::class );
 
-		$user = $this->createMock( User::class );
+		$user = $this->createMock( UserIdentity::class );
 
 		$integrationMock->expects( $this->once() )
 			->method( 'conflictsWithNavPopupsGadget' )
@@ -237,7 +237,7 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertSame(
 			$expected,
-			$contextMock->getConfigBitmaskFromUser( $this->createMock( User::class ) )
+			$contextMock->getConfigBitmaskFromUser( $this->createMock( UserIdentity::class ) )
 		);
 	}
 

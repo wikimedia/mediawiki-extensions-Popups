@@ -24,7 +24,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Popups Module
@@ -54,10 +54,10 @@ class PopupsContext {
 	}
 
 	/**
-	 * @param User $user User whose gadgets settings are being checked
+	 * @param UserIdentity $user User whose gadgets settings are being checked
 	 * @return bool
 	 */
-	public function conflictsWithNavPopupsGadget( User $user ) {
+	public function conflictsWithNavPopupsGadget( UserIdentity $user ) {
 		return $this->gadgetsIntegration->conflictsWithNavPopupsGadget( $user );
 	}
 
@@ -71,10 +71,10 @@ class PopupsContext {
 	}
 
 	/**
-	 * @param User $user User whose preferences are checked
+	 * @param UserIdentity $user User whose preferences are checked
 	 * @return int
 	 */
-	public function getConfigBitmaskFromUser( User $user ) {
+	public function getConfigBitmaskFromUser( UserIdentity $user ) {
 		return ( $this->conflictsWithNavPopupsGadget( $user ) ? self::NAV_POPUPS_ENABLED : 0 );
 	}
 

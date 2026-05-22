@@ -31,6 +31,7 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\Skin\Skin;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -92,10 +93,10 @@ class PopupsHooks implements
 	/**
 	 * Get Page Preview option
 	 *
-	 * @param User $user User whose preferences are being modified
+	 * @param UserIdentity $user User whose preferences are being modified
 	 * @return array[]
 	 */
-	private function getPagePreviewPrefToggle( User $user ) {
+	private function getPagePreviewPrefToggle( UserIdentity $user ) {
 		$option = [
 			'type' => 'toggle',
 			'label-message' => 'popups-prefs-optin',
