@@ -24,7 +24,6 @@ use MediaWiki\Config\Config;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
-use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 
 /**
@@ -42,16 +41,6 @@ class PopupsContext {
 	public const LOGGER_CHANNEL = 'popups';
 
 	/**
-	 * User preference value for enabled Page Previews
-	 */
-	public const PREVIEWS_ENABLED = true;
-
-	/**
-	 * User preference value for disabled Page Previews
-	 */
-	public const PREVIEWS_DISABLED = false;
-
-	/**
 	 * Flags passed on to JS representing preferences
 	 */
 	private const NAV_POPUPS_ENABLED = 1;
@@ -61,7 +50,6 @@ class PopupsContext {
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly PopupsGadgetsIntegration $gadgetsIntegration,
 		private readonly SpecialPageFactory $specialPageFactory,
-		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 	}
 

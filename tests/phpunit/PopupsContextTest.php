@@ -60,7 +60,6 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 			$registry,
 			$integration,
 			$services->getSpecialPageFactory(),
-			$services->getUserOptionsLookup()
 		);
 	}
 

@@ -23,7 +23,6 @@ return [
 			ExtensionRegistry::getInstance(),
 			$services->getService( 'Popups.GadgetsIntegration' ),
 			$services->getSpecialPageFactory(),
-			$services->getUserOptionsLookup()
 		);
 	},
 	'Popups.GadgetsIntegration' => static function ( MediaWikiServices $services ): PopupsGadgetsIntegration {
