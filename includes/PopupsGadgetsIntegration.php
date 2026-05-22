@@ -30,12 +30,9 @@ use MediaWiki\User\UserIdentity;
  */
 class PopupsGadgetsIntegration {
 
-	public const CONFIG_NAVIGATION_POPUPS_NAME = 'PopupsConflictingNavPopupsGadgetName';
+	public const string CONFIG_NAVIGATION_POPUPS_NAME = 'PopupsConflictingNavPopupsGadgetName';
 
-	/**
-	 * @var string
-	 */
-	private $navPopupsGadgetName;
+	private string $navPopupsGadgetName;
 
 	public function __construct(
 		Config $config,
@@ -45,11 +42,7 @@ class PopupsGadgetsIntegration {
 			$config->get( self::CONFIG_NAVIGATION_POPUPS_NAME ) );
 	}
 
-	/**
-	 * @param string $gadgetName
-	 * @return string
-	 */
-	private function sanitizeGadgetName( $gadgetName ) {
+	private function sanitizeGadgetName( string $gadgetName ): string {
 		return str_replace( ' ', '_', trim( $gadgetName ) );
 	}
 
@@ -58,9 +51,8 @@ class PopupsGadgetsIntegration {
 	 * If user enabled Nav Popups, Popups is unavailable
 	 *
 	 * @param UserIdentity $user User whose gadget settings are checked
-	 * @return bool
 	 */
-	public function conflictsWithNavPopupsGadget( UserIdentity $user ) {
+	public function conflictsWithNavPopupsGadget( UserIdentity $user ): bool {
 		if ( $this->gadgetRepo ) {
 			$match = array_search( $this->navPopupsGadgetName, $this->gadgetRepo->getGadgetIds() );
 			if ( $match !== false ) {

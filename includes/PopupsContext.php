@@ -33,17 +33,17 @@ use MediaWiki\User\UserIdentity;
  */
 class PopupsContext {
 
-	public const EXTENSION_NAME = 'popups';
+	public const string EXTENSION_NAME = 'popups';
 
 	/**
 	 * Logger channel name
 	 */
-	public const LOGGER_CHANNEL = 'popups';
+	public const string LOGGER_CHANNEL = 'popups';
 
 	/**
 	 * Flags passed on to JS representing preferences
 	 */
-	private const NAV_POPUPS_ENABLED = 1;
+	private const int NAV_POPUPS_ENABLED = 1;
 
 	public function __construct(
 		private readonly Config $config,
@@ -55,33 +55,26 @@ class PopupsContext {
 
 	/**
 	 * @param UserIdentity $user User whose gadgets settings are being checked
-	 * @return bool
 	 */
-	public function conflictsWithNavPopupsGadget( UserIdentity $user ) {
+	public function conflictsWithNavPopupsGadget( UserIdentity $user ): bool {
 		return $this->gadgetsIntegration->conflictsWithNavPopupsGadget( $user );
 	}
 
 	/**
 	 * Are Page previews visible on User Preferences Page
-	 *
-	 * @return bool
 	 */
-	public function showPreviewsOptInOnPreferencesPage() {
+	public function showPreviewsOptInOnPreferencesPage(): bool {
 		return $this->config->get( 'PopupsHideOptInOnPreferencesPage' ) === false;
 	}
 
 	/**
 	 * @param UserIdentity $user User whose preferences are checked
-	 * @return int
 	 */
-	public function getConfigBitmaskFromUser( UserIdentity $user ) {
+	public function getConfigBitmaskFromUser( UserIdentity $user ): int {
 		return ( $this->conflictsWithNavPopupsGadget( $user ) ? self::NAV_POPUPS_ENABLED : 0 );
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function areDependenciesMet() {
+	public function areDependenciesMet(): bool {
 		if ( $this->config->get( 'PopupsGateway' ) === 'mwApiPlain' ) {
 			return $this->extensionRegistry->isLoaded( 'TextExtracts' )
 			&& $this->extensionRegistry->isLoaded( 'PageImages' );
@@ -104,9 +97,8 @@ class PopupsContext {
 	 * excluded, "Bosh_Sahifa" (which is "Main_Page" in Uzbek) is considered excluded too.
 	 *
 	 * @param Title $title title being tested
-	 * @return bool
 	 */
-	public function isTitleExcluded( $title ) {
+	public function isTitleExcluded( $title ): bool {
 		$excludedPages = $this->config->get( 'PopupsPageDisabled' );
 
 		$canonicalTitle = $title->getRootTitle();

@@ -45,7 +45,7 @@ class PopupsHooks implements
 	MakeGlobalVariablesScriptHook
 {
 
-	private const PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
+	private const string PREVIEWS_PREFERENCES_SECTION = 'rendering/reading';
 
 	public function __construct(
 		private readonly Config $config,
@@ -56,7 +56,6 @@ class PopupsHooks implements
 
 	/**
 	 * Get custom Popups types registered by extensions
-	 * @return array
 	 */
 	public static function getCustomPopupTypes(): array {
 		return ExtensionRegistry::getInstance()->getAttribute(
@@ -70,7 +69,7 @@ class PopupsHooks implements
 	 * @param User $user User whose preferences are being modified
 	 * @param array[] &$prefs Preferences description array, to be fed to a HTMLForm object
 	 */
-	public function onGetPreferences( $user, &$prefs ) {
+	public function onGetPreferences( $user, &$prefs ): void {
 		if ( !$this->popupsContext->showPreviewsOptInOnPreferencesPage() ) {
 			return;
 		}
@@ -94,7 +93,7 @@ class PopupsHooks implements
 	 * @param UserIdentity $user User whose preferences are being modified
 	 * @return array[]
 	 */
-	private function getPagePreviewPrefToggle( UserIdentity $user ) {
+	private function getPagePreviewPrefToggle( UserIdentity $user ): array {
 		$option = [
 			'type' => 'toggle',
 			'label-message' => 'popups-prefs-optin',
