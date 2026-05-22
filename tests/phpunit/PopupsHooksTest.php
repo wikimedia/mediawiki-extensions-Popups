@@ -51,7 +51,6 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
-			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onGetPreferences( $this->createMock( User::class ), $prefs );
 		$this->assertCount( 1, $prefs, 'No preferences are retrieved.' );
@@ -81,7 +80,6 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
-			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onGetPreferences( $userMock, $prefs );
 		$this->assertArrayHasKey( 'popups',
@@ -119,7 +117,6 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
-			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onGetPreferences( $this->createMock( User::class ), $prefs );
 		$this->assertGreaterThan( 3, count( $prefs ), 'A preference is retrieved.' );
@@ -156,7 +153,6 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
-			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onGetPreferences( $this->createMock( User::class ), $prefs );
 		$this->assertGreaterThan( 2, count( $prefs ), 'A preference is retrieved.' );
@@ -185,7 +181,6 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			new HashConfig( $config ),
 			$this->getServiceContainer()->getService( 'Popups.Context' ),
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
-			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onResourceLoaderGetConfigVars( $vars, '', new MultiConfig( $config ) );
 		$this->assertCount( 6, $vars, 'A configuration is retrieved.' );
@@ -223,7 +218,6 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			new HashConfig(),
 			$contextMock,
 			$loggerMock,
-			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onBeforePageDisplay( $outPageMock, $skinMock );
 	}
@@ -271,7 +265,6 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
-			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onBeforePageDisplay( $outPageMock, $skinMock );
 	}
@@ -296,7 +289,6 @@ class PopupsHooksTest extends MediaWikiIntegrationTestCase {
 			new HashConfig(),
 			$contextMock,
 			$this->getServiceContainer()->getService( 'Popups.Logger' ),
-			$this->getServiceContainer()->getUserOptionsManager()
 		) )
 			->onMakeGlobalVariablesScript( $vars, $outputPage );
 

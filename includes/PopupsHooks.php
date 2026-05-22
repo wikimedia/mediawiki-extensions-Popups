@@ -29,7 +29,6 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\Skin\Skin;
-use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
@@ -52,7 +51,6 @@ class PopupsHooks implements
 		private readonly Config $config,
 		private readonly PopupsContext $popupsContext,
 		private readonly LoggerInterface $logger,
-		private readonly UserOptionsManager $userOptionsManager,
 	) {
 	}
 

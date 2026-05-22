@@ -30,8 +30,7 @@
 			"services": [
 				"Popups.Config",
 				"Popups.Context",
-				"Popups.Logger",
-				"UserOptionsManager"
+				"Popups.Logger"
 			]
 		}
 	},
