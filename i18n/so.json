@@ -1,17 +1,29 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abshirdheere"
+			"Abshirdheere",
+			"AhmedG612"
 		]
 	},
 	"popups-message": "Popup",
-	"popups-desc": "Waxuu soo tuurayaa Popup dheqdheqaaqa ku jira bogga marka uu isticmaalaha sameeyo Popup ee ku xiran linkiga bogga",
-	"popups-settings-title": "Horfiirin",
+	"popups-desc": "Waxay soo bandhigtaa daaqado horudhac ah marka isticmaaluhu uu dul maro xiriiriye",
+	"popups-settings-title": "Hordhac",
 	"popups-settings-option-page": "Fudud",
 	"popups-settings-option-page-description": "Itus weeraha ugu horaysa ee bogga iyo muujin sawir. Tani waxaa lagula talinayaa aqristayaasha.",
+	"popups-settings-option-reference": "Horudhaca tixraacyada",
+	"popups-settings-option-reference-description": "Hel horudhac degdeg ah oo tixraac ah marka aad akhrinayso bog.",
 	"popups-settings-save": "Kaydi",
-	"popups-settings-help-ok": "OK",
+	"popups-settings-help-ok": "La dhammeeyay",
 	"popups-settings-cancel": "Ka noqo",
 	"popups-settings-help": "Dib waad u howl galin kartaa horfiirinta adigoo adeegsanaya linkiga hoose ee bogga.",
-	"popups-settings-enable": "Howlgali horfiirin"
+	"popups-settings-enable": "Wax ka beddel dejimaha horudhaca wax ka beddelka",
+	"popups-settings-icon-gear-title": "Beddel dejimaha horudhaca bogga",
+	"popups-preview-no-preview": "Dhibaato ayaa ka dhacday muujinta horudhacan",
+	"popups-preview-footer-read": "U gudub boggan",
+	"popups-preview-disambiguation": "Cinwaankan wuxuu la xiriiraa in ka badan hal bog",
+	"popups-preview-disambiguation-link": "Eeg bogag la mid ah",
+	"prefs-reading": "Xulashooyinka akhriska",
+	"popups-prefs-optin": "Daar horudhaca bogagga (hel horudhac degdeg ah oo mawduuc ah marka aad akhrinayso bog)",
+	"popups-prefs-disable-nav-gadgets-info": "Waa inaad [[$1|damiisaa aaladda Navigation popups]] ee ku jirta dejimaha Gadgets-ka si aad u awoodsiiso horudhaca bogagga.",
+	"popups-prefs-conflicting-gadgets-info": "Qaar ka mid ah aaladaha iyo habaynta kale ee gaarka ah waxay saameyn karaan shaqada sifadan. Haddii aad la kulanto dhibaatooyin, fadlan dib u eeg aaladahaaga iyo qoraallada isticmaalaha, oo ay ku jiraan kuwa caalamiga ah."
 }
