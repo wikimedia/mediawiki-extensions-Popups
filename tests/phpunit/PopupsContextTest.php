@@ -167,14 +167,14 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	public static function provideTestIsTitleExcluded() {
 		$excludedPages = [ 'Special:Userlogin', 'Special:CreateAccount', 'User:A' ];
 		return [
-			[ $excludedPages, Title::newFromText( 'Main_Page' ), false ],
-			[ $excludedPages, Title::newFromText( 'Special:CreateAccount' ), true ],
-			[ $excludedPages, Title::newFromText( 'User:A' ), true ],
-			[ $excludedPages, Title::newFromText( 'User:A/B' ), true ],
-			[ $excludedPages, Title::newFromText( 'User:B' ), false ],
-			[ $excludedPages, Title::newFromText( 'User:B/A' ), false ],
+			[ $excludedPages, Title::makeTitle( NS_MAIN, 'Main_Page' ), false ],
+			[ $excludedPages, Title::makeTitle( NS_SPECIAL, 'CreateAccount' ), true ],
+			[ $excludedPages, Title::makeTitle( NS_USER, 'A' ), true ],
+			[ $excludedPages, Title::makeTitle( NS_USER, 'A/B' ), true ],
+			[ $excludedPages, Title::makeTitle( NS_USER, 'B' ), false ],
+			[ $excludedPages, Title::makeTitle( NS_USER, 'B/A' ), false ],
 			// test canonical name handling
-			[ $excludedPages, Title::newFromText( 'Special:UserLogin' ), true ],
+			[ $excludedPages, Title::makeTitle( NS_SPECIAL, 'UserLogin' ), true ],
 		];
 	}
 
