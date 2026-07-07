@@ -8,14 +8,24 @@
 			"Steenth"
 		]
 	},
-	"popups-settings-option-page": "Aktiver",
+	"popups-desc": "Viser forhåndsvisning af popup-vinduer, når brugeren holder musen over et link",
+	"popups-settings-title": "Forhåndsvisninger",
+	"popups-settings-option-page": "Forhåndsvisninger af sider",
+	"popups-settings-option-page-description": "Få hurtige forhåndsvisninger af et emne, mens du læser en side.",
+	"popups-settings-option-reference": "Forhåndsvis referencer",
+	"popups-settings-option-reference-description": "Få hurtige forhåndsvisninger af en reference, mens du læser en side.",
 	"popups-settings-save": "Gem",
 	"popups-settings-help-ok": "Færdig",
 	"popups-settings-cancel": "Annullér",
+	"popups-settings-help": "Du kan aktivere forhåndsvisninger igen ved hjælp af et link i sidefoden på siden.",
+	"popups-settings-enable": "Rediger forhåndsvisningsindstillinger",
+	"popups-settings-icon-gear-title": "Skift indstillinger for forhåndsvisning af side",
+	"popups-preview-no-preview": "Der opstod et problem med at vise denne forhåndsvisning",
 	"popups-preview-footer-read": "Gå til denne side",
 	"popups-preview-disambiguation": "Denne titel relaterer til mere end en side",
 	"popups-preview-disambiguation-link": "Vis lignende sider",
 	"prefs-reading": "Læsepræferencer",
 	"popups-prefs-optin": "Aktivér forhåndsvisning (få hurtig forhåndsvisning af et emne mens du læser en side):",
+	"popups-prefs-disable-nav-gadgets-info": "Du skal [[$1|deaktivere gadget'en Navigationspopups]] i dine Gadgets-indstillinger for at aktivere forhåndsvisning af sider.",
 	"popups-prefs-conflicting-gadgets-info": "Visse gadgets og andre personlige indstillinger kan påvirke denne funktion negativt. Hvis du oplever problemer, så check dine gadgets og brugerscripts, inklusiv dine globale scripts."
 }
