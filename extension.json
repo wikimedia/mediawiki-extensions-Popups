@@ -100,14 +100,6 @@
 		}
 	},
 	"ResourceModules": {
-		"ext.popups.icons": {
-			"class": "MediaWiki\\ResourceLoader\\OOUIIconPackModule",
-			"selectorWithoutVariant": ".popups-icon--{name}",
-			"icons": [
-				"infoFilled",
-				"settings"
-			]
-		},
 		"ext.popups": {
 			"packageFiles": [
 				{
