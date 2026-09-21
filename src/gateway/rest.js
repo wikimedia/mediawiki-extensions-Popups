@@ -97,8 +97,13 @@ export default function createRESTBaseGateway( ajax, config, extractParser ) {
  * @return {boolean}
  */
 function isSafeImgFormat( filename ) {
-	const safeImage = new RegExp( /\.(jpg|jpeg|png|gif)$/i );
-	return safeImage.test( filename );
+	if ( typeof filename !== 'string' ) {
+		return false;
+	}
+
+	// T437938: Strip query parameters & fragments before check image extension.
+	const safeImage = /\.(jpg|jpeg|png|gif|webp)$/i;
+	return safeImage.test( filename.split( /[?#]/ )[ 0 ] );
 }
 
 /**
@@ -117,8 +122,9 @@ function isSafeImgFormat( filename ) {
  * @return {{source: string, width: number, height: number}|undefined}
  */
 function generateThumbnailData( thumbnail, original, thumbSize ) {
-	const parts = thumbnail.source.split( '/' ),
-		lastPart = parts[ parts.length - 1 ],
+	const url = new URL( thumbnail.source ),
+		pathnameParts = url.pathname.split( '/' ),
+		lastPathnamePart = pathnameParts[ pathnameParts.length - 1 ],
 		originalIsSafe = isSafeImgFormat( original.source ) || undefined;
 
 	// The last part, the thumbnail's full filename, is in the following form:
@@ -126,7 +132,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 	// makes this function resilient to the thumbnail not having the same
 	// extension as the original image, which is definitely the case for SVG's
 	// where the thumbnail's extension is .svg.png.
-	const filenamePxIndex = lastPart.indexOf( 'px-' );
+	const filenamePxIndex = lastPathnamePart.indexOf( 'px-' );
 	if ( filenamePxIndex === -1 ) {
 		// The thumbnail size is not customizable. Presumably, RESTBase requested a
 		// width greater than the original and so MediaWiki returned the original's
@@ -142,7 +148,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 		// Use the original if it's a supported image format.
 		return originalIsSafe && original;
 	}
-	const filename = lastPart.slice( filenamePxIndex + 3 );
+	const filename = lastPathnamePart.slice( filenamePxIndex + 3 );
 
 	// Scale the thumbnail's largest dimension.
 	let width, height;
@@ -164,10 +170,12 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
 		return originalIsSafe && original;
 	}
 
-	parts[ parts.length - 1 ] = `${ width }px-${ filename }`;
+	// Rewrite the thumbnail URL to a rescaled version.
+	pathnameParts.splice( -1, 1, `${ width }px-${ filename }` );
+	url.pathname = pathnameParts.join( '/' );
 
 	return {
-		source: parts.join( '/' ),
+		source: url.href,
 		width,
 		height
 	};
@@ -192,7 +200,7 @@ export function convertPageToModel( page, thumbSize, extractParser ) {
 		page.dir,
 		extractParser( page ),
 		page.type,
-		page.thumbnail ?
+		( page.thumbnail && page.originalimage ) ?
 			generateThumbnailData(
 				page.thumbnail, page.originalimage, thumbSize
 			) : undefined,

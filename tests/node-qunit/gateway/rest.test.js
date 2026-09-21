@@ -3,171 +3,181 @@ import { createModel } from '../../../src/preview/model';
 import createRESTBaseGateway from '../../../src/gateway/rest';
 
 const DEFAULT_CONSTANTS = {
-		THUMBNAIL_SIZE: 512,
-		endpoint: '/api/rest_v1/page/summary/'
+	THUMBNAIL_SIZE: 512,
+	endpoint: '/api/rest_v1/page/summary/'
+};
+const RESTBASE_RESPONSE = {
+	type: 'standard',
+	title: 'Barack Obama',
+	extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+	thumbnail: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/200px-President_Barack_Obama.jpg',
+		width: 200,
+		height: 250
 	},
-	RESTBASE_RESPONSE = {
-		type: 'standard',
-		title: 'Barack Obama',
-		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
-		thumbnail: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/200px-President_Barack_Obama.jpg',
-			width: 200,
-			height: 250
-		},
-		originalimage: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
-			width: 800,
-			height: 1000
-		},
-		lang: 'en',
-		dir: 'ltr',
-		timestamp: '2017-01-30T10:17:41Z',
-		description: '44th President of the United States of America'
+	originalimage: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
+		width: 800,
+		height: 1000
 	},
-	SVG_RESTBASE_RESPONSE = {
-		type: 'standard',
-		title: 'Barack Obama',
-		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
-		thumbnail: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/200px-President_Barack_Obama.svg.png',
-			width: 200,
-			height: 250
-		},
-		originalimage: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.svg',
-			width: 800,
-			height: 1000
-		},
-		lang: 'en',
-		dir: 'ltr',
-		timestamp: '2017-01-30T10:17:41Z',
-		description: '44th President of the United States of America'
+	lang: 'en',
+	dir: 'ltr',
+	timestamp: '2017-01-30T10:17:41Z',
+	description: '44th President of the United States of America'
+};
+const RESTBASE_RESPONSE_WITH_QUERY = JSON.parse( JSON.stringify( RESTBASE_RESPONSE ) );
+RESTBASE_RESPONSE_WITH_QUERY.thumbnail.source += '?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail';
+RESTBASE_RESPONSE_WITH_QUERY.originalimage.source += '?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original';
+const SVG_RESTBASE_RESPONSE = {
+	type: 'standard',
+	title: 'Barack Obama',
+	extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+	thumbnail: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/200px-President_Barack_Obama.svg.png',
+		width: 200,
+		height: 250
 	},
-	RESTBASE_RESPONSE_WITHOUT_IMAGE = {
-		type: 'standard',
-		title: 'Barack Obama',
-		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
-		lang: 'en',
-		dir: 'ltr',
-		timestamp: '2017-01-30T10:17:41Z',
-		description: '44th President of the United States of America'
+	originalimage: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.svg',
+		width: 800,
+		height: 1000
 	},
+	lang: 'en',
+	dir: 'ltr',
+	timestamp: '2017-01-30T10:17:41Z',
+	description: '44th President of the United States of America'
+};
+const SVG_RESTBASE_RESPONSE_WITH_QUERY = JSON.parse( JSON.stringify( SVG_RESTBASE_RESPONSE ) );
+SVG_RESTBASE_RESPONSE_WITH_QUERY.thumbnail.source += '?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail';
+SVG_RESTBASE_RESPONSE_WITH_QUERY.originalimage.source += '?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original';
+const RESTBASE_RESPONSE_WITHOUT_IMAGE = {
+	type: 'standard',
+	title: 'Barack Obama',
+	extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+	lang: 'en',
+	dir: 'ltr',
+	timestamp: '2017-01-30T10:17:41Z',
+	description: '44th President of the United States of America'
+};
 
-	// Note well that the thumbnail and originalimage properties are
-	// identical. This can be the case where RESTBase requests a thumbnail at
-	// 320px width but the original image isn't that wide, in which instance
-	// PageImages - and therefore RESTBase - return the original image as the
-	// thumbnail.
-	//
-	// See https://phabricator.wikimedia.org/T158632#3071104 onward for additional
-	// context.
-	RESTBASE_RESPONSE_WITH_SMALL_IMAGE = {
-		type: 'standard',
-		title: 'PreviewsNonFreeImage/sandbox',
-		extract: 'Hello, I am the non-free image and parenthetical page (YOU CAN\'T SEE THIS). My preview should contain an image that is not free. My preview should contain a parenthetical you cannot see..',
-		thumbnail: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png',
-			width: 300,
-			height: 126,
-			original: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png'
-		},
-		originalimage: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png',
-			width: 300,
-			height: 126
-		},
-		lang: 'en',
-		dir: 'ltr',
-		timestamp: '2017-02-17T22:29:56Z'
+// Note well that the thumbnail and originalimage properties are
+// identical. This can be the case where RESTBase requests a thumbnail at
+// 320px width but the original image isn't that wide, in which instance
+// PageImages - and therefore RESTBase - return the original image as the
+// thumbnail.
+//
+// See https://phabricator.wikimedia.org/T158632#3071104 onward for additional
+// context.
+const RESTBASE_RESPONSE_WITH_SMALL_IMAGE = {
+	type: 'standard',
+	title: 'PreviewsNonFreeImage/sandbox',
+	extract: 'Hello, I am the non-free image and parenthetical page (YOU CAN\'T SEE THIS). My preview should contain an image that is not free. My preview should contain a parenthetical you cannot see..',
+	thumbnail: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png',
+		width: 300,
+		height: 126,
+		original: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png'
 	},
-	// As above, a no "px-" thumbnail is provided which is not customizable.
-	RESTBASE_RESPONSE_WITH_NO_PX_IMAGE = {
-		type: 'standard',
-		title: 'Barack Obama',
-		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
-		thumbnail: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
-			width: 800,
-			height: 1000
-		},
-		originalimage: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
-			width: 800,
-			height: 1000
-		},
-		lang: 'en',
-		dir: 'ltr',
-		timestamp: '2017-01-30T10:17:41Z',
-		description: '44th President of the United States of America'
+	originalimage: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/RH-Fedora_logo-nonfree.png',
+		width: 300,
+		height: 126
 	},
-	RESTBASE_RESPONSE_NONIMAGE_ORIGINAL = {
-		type: 'standard',
-		title: 'Completing the square',
-		extract: 'Landscape',
-		thumbnail: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Completing_the_square.ogv/320px--Completing_the_square.ogv.jpg',
-			width: 320,
-			height: 240
-		},
-		originalimage: {
-			source: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/Completing_the_square.ogv',
-			width: 640,
-			height: 480
-		},
-		lang: 'en',
-		dir: 'ltr',
-		timestamp: '2018-04-14T05:31:14Z',
-		description: 'technique used to solve a quadratic equation.'
+	lang: 'en',
+	dir: 'ltr',
+	timestamp: '2017-02-17T22:29:56Z'
+};
+// As above, a no "px-" thumbnail is provided which is not customizable.
+const RESTBASE_RESPONSE_WITH_NO_PX_IMAGE = {
+	type: 'standard',
+	title: 'Barack Obama',
+	extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+	thumbnail: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
+		width: 800,
+		height: 1000
 	},
-	RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE = {
-		type: 'standard',
-		title: 'Landscape',
-		extract: 'Landscape',
-		thumbnail: {
-			source: 'http://foo/bar/baz.png/500px-baz.png',
-			width: 500,
-			height: 300,
-			original: 'http://foo/bar/baz.png'
-		},
-		originalimage: {
-			source: 'http://foo/bar/baz.png',
-			width: 1000,
-			height: 600
-		},
-		lang: 'en',
-		dir: 'ltr',
-		timestamp: '2017-02-17T22:29:56Z'
+	originalimage: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
+		width: 800,
+		height: 1000
 	},
-	RESTBASE_RESPONSE_DISAMBIGUATION = {
-		type: 'disambiguation',
-		title: 'Barack (disambiguation)',
-		extract: 'Barack Hussein Obama II born August 4, 1961) ...',
-		lang: 'en',
-		dir: 'ltr',
-		timestamp: '2017-02-17T22:29:56Z'
+	lang: 'en',
+	dir: 'ltr',
+	timestamp: '2017-01-30T10:17:41Z',
+	description: '44th President of the United States of America'
+};
+// eslint-disable-next-line max-len
+const RESTBASE_RESPONSE_WITH_NO_PX_IMAGE_WITH_QUERY = JSON.parse( JSON.stringify( RESTBASE_RESPONSE_WITH_NO_PX_IMAGE ) );
+RESTBASE_RESPONSE_WITH_NO_PX_IMAGE_WITH_QUERY.thumbnail.source += '?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail';
+RESTBASE_RESPONSE_WITH_NO_PX_IMAGE_WITH_QUERY.originalimage.source += '?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original';
+const RESTBASE_RESPONSE_NONIMAGE_ORIGINAL = {
+	type: 'standard',
+	title: 'Completing the square',
+	extract: 'Landscape',
+	thumbnail: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Completing_the_square.ogv/320px--Completing_the_square.ogv.jpg',
+		width: 320,
+		height: 240
 	},
-	RESTBASE_RESPONSE_PREVIEW_MODEL = createModel(
-		'Barack Obama',
-		'url/Barack Obama', // Generated in the stub below
-		'en',
-		'ltr',
-		'!Barack Hussein Obama II born August 4, 1961) ...!',
-		'standard',
-		{
-			source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
-			width: 409,
-			height: 512
-		}
-	),
-	RESTBASE_RESPONSE_DISAMBIGUATION_MODEL = createModel(
-		'Barack (disambiguation)',
-		'url/Barack (disambiguation)',
-		'en',
-		'ltr',
-		'!Barack Hussein Obama II born August 4, 1961) ...!',
-		'disambiguation'
-	);
+	originalimage: {
+		source: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/Completing_the_square.ogv',
+		width: 640,
+		height: 480
+	},
+	lang: 'en',
+	dir: 'ltr',
+	timestamp: '2018-04-14T05:31:14Z',
+	description: 'technique used to solve a quadratic equation.'
+};
+const RESTBASE_RESPONSE_WITH_LANDSCAPE_IMAGE = {
+	type: 'standard',
+	title: 'Landscape',
+	extract: 'Landscape',
+	thumbnail: {
+		source: 'http://foo/bar/baz.png/500px-baz.png',
+		width: 500,
+		height: 300,
+		original: 'http://foo/bar/baz.png'
+	},
+	originalimage: {
+		source: 'http://foo/bar/baz.png',
+		width: 1000,
+		height: 600
+	},
+	lang: 'en',
+	dir: 'ltr',
+	timestamp: '2017-02-17T22:29:56Z'
+};
+const RESTBASE_RESPONSE_DISAMBIGUATION = {
+	type: 'disambiguation',
+	title: 'Barack (disambiguation)',
+	extract: 'Barack Hussein Obama II born August 4, 1961) ...',
+	lang: 'en',
+	dir: 'ltr',
+	timestamp: '2017-02-17T22:29:56Z'
+};
+const RESTBASE_RESPONSE_PREVIEW_MODEL = createModel(
+	'Barack Obama',
+	'url/Barack Obama', // Generated in the stub below
+	'en',
+	'ltr',
+	'!Barack Hussein Obama II born August 4, 1961) ...!',
+	'standard',
+	{
+		source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
+		width: 409,
+		height: 512
+	}
+);
+const RESTBASE_RESPONSE_DISAMBIGUATION_MODEL = createModel(
+	'Barack (disambiguation)',
+	'url/Barack (disambiguation)',
+	'en',
+	'ltr',
+	'!Barack Hussein Obama II born August 4, 1961) ...!',
+	'disambiguation'
+);
 
 function provideParsedExtract( page ) {
 	return `!${ page.extract }!`;
@@ -293,6 +303,32 @@ QUnit.test( 'RESTBase gateway doesn\'t stretch thumbnails', ( assert ) => {
 	);
 } );
 
+QUnit.test( 'RESTBase gateway handles thumbnail URLs with query parameters', ( assert ) => {
+	const gateway = createRESTBaseGateway();
+	const model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE_WITH_QUERY, 2000, provideParsedExtract );
+
+	assert.deepEqual(
+		model.thumbnail,
+		RESTBASE_RESPONSE_WITH_QUERY.originalimage,
+		'If the requested thumbnail size is bigger than that of the original, then use the original.'
+	);
+} );
+
+QUnit.test( 'RESTBase gateway preserves query parameters on scaled thumbnail URLs', ( assert ) => {
+	const gateway = createRESTBaseGateway();
+	const model = gateway.convertPageToModel(
+		RESTBASE_RESPONSE_WITH_QUERY, 512, provideParsedExtract );
+
+	assert.strictEqual(
+		model.thumbnail.source,
+		// eslint-disable-next-line max-len
+		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail',
+		'A thumbSize that stays in the scaling branch (rather than falling back to the ' +
+		'original) must not drop the query parameters from the generated thumbnail URL.'
+	);
+} );
+
 QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', ( assert ) => {
 	const gateway = createRESTBaseGateway();
 	const model = gateway.convertPageToModel(
@@ -302,6 +338,20 @@ QUnit.test( 'RESTBase gateway handles thumbnail URLs with missing dimensions', (
 		model.thumbnail.source,
 		'https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg',
 		'If restbase handles missing image dimensions in thumbnail URLs'
+	);
+} );
+
+QUnit.test( 'RESTBase gateway handles original image URLs with query parameters', ( assert ) => {
+	const gateway = createRESTBaseGateway();
+	const response = RESTBASE_RESPONSE_WITH_NO_PX_IMAGE_WITH_QUERY;
+	const model = gateway.convertPageToModel(
+		response, 300, provideParsedExtract
+	);
+
+	assert.deepEqual(
+		model.thumbnail,
+		response.originalimage,
+		'If the original image URL has query parameters, then use the original.'
 	);
 } );
 
@@ -331,6 +381,19 @@ QUnit.test( 'RESTBase gateway always scales SVGs', ( assert ) => {
 	assert.strictEqual(
 		model.thumbnail.source,
 		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/1600px-President_Barack_Obama.svg.png',
+		'If the requested thumbnail is for an SVG, then it\'s always scaled.'
+	);
+} );
+
+QUnit.test( 'RESTBase gateway always scales SVGs with query parameters', ( assert ) => {
+	const gateway = createRESTBaseGateway();
+	const model = gateway.convertPageToModel(
+		SVG_RESTBASE_RESPONSE_WITH_QUERY, 2000, provideParsedExtract
+	);
+
+	assert.deepEqual(
+		model.thumbnail.source,
+		'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.svg/1600px-President_Barack_Obama.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail',
 		'If the requested thumbnail is for an SVG, then it\'s always scaled.'
 	);
 } );
