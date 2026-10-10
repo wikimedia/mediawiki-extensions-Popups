@@ -39,6 +39,7 @@ QUnit.test( '#toggleHelp', ( assert ) => {
 
 QUnit.test( '#render', ( assert ) => {
 	const main = document.createElement( 'main' );
+	document.body.appendChild( main );
 	const boundActions = {
 			saveSettings() {},
 			hideSettings() {}
