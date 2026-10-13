@@ -65,7 +65,7 @@ class PopupsPage extends Page {
 	}
 
 	async dwellPageFragment() {
-		await this.dwellLink( '[href="#section"]', true );
+		await this.dwellLink( '[href$="#section"]', true );
 	}
 
 	async hoverPageLink() {
