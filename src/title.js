@@ -40,8 +40,8 @@ export function getTitle( href, config ) {
 		}
 	}
 
-	// External links
-	if ( linkHref.hostname !== location.hostname ) {
+	// External links (allow localhost for local development)
+	if ( linkHref.hostname !== location.hostname && location.hostname !== 'localhost' ) {
 		return undefined;
 	}
 
