@@ -141,7 +141,6 @@
 				"popups-preview-disambiguation-link"
 			],
 			"dependencies": [
-				"web2017-polyfills",
 				"mediawiki.experiments",
 				"mediawiki.jqueryMsg",
 				"mediawiki.storage",
