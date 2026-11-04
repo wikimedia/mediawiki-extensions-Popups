@@ -1,5 +1,5 @@
 import wait from '../wait';
-import pointerMaskSVG from './pointer-mask.svg';
+import pointerMaskSVG from './pointerMask';
 import { SIZES, createThumbnail } from './thumbnail';
 import { renderPreview } from './templates/preview/preview';
 import { renderPagePreview } from './templates/pagePreview/pagePreview';

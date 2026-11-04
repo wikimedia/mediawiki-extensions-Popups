@@ -61,12 +61,6 @@ module.exports = ( env, argv ) => ( {
 				}
 			}
 		}, {
-			test: /\.svg$/,
-			loader: 'svg-inline-loader',
-			options: {
-				removeSVGTagAttrs: false // Keep width and height attributes.
-			}
-		}, {
 			test: /\.css$/,
 			use: [
 				'style-loader',

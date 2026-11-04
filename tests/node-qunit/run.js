@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-const fs = require( 'fs' ),
-	mwNodeQunit = require( '@wikimedia/mw-node-qunit' ),
+const mwNodeQunit = require( '@wikimedia/mw-node-qunit' ),
 	sinon = mwNodeQunit.sinon,
-	QUnitModule = QUnit.module,
-	svgInlineLoader = require( 'svg-inline-loader' );
+	QUnitModule = QUnit.module;
 
 require( '@babel/register' )( {
 	presets: [
@@ -14,13 +12,6 @@ require( '@babel/register' )( {
 		} ]
 	]
 } );
-
-require.extensions[ '.svg' ] = ( module, filename ) => {
-	// eslint-disable-next-line security/detect-non-literal-fs-filename
-	const svg = fs.readFileSync( filename, { encoding: 'utf8' } );
-	// eslint-disable-next-line no-underscore-dangle
-	module._compile( svgInlineLoader( svg ), filename );
-};
 
 sinon.config = {
 	injectIntoThis: true,

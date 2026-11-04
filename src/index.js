@@ -189,9 +189,7 @@ function handleDOMEventIfEligible( handler ) {
 		pagePreviewState = createIsPagePreviewsEnabled( mw.user, userSettings, mw.config );
 
 	// If debug mode is enabled, then enable Redux DevTools.
-	if ( mw.config.get( 'debug' ) ||
-		/* global process */
-		process.env.NODE_ENV !== 'production' ) {
+	if ( mw.config.get( 'debug' ) ) {
 		// eslint-disable-next-line no-underscore-dangle
 		compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 	}
