@@ -1,0 +1,28 @@
+# See https://www.mediawiki.org/wiki/Foreign_resources
+#
+# To update a library:
+#   php maintenance/run.php manageForeignResources update --extension Popups
+
+redux:
+  license: MIT
+  homepage: https://redux.js.org/
+  authors: Dan Abramov, Andrew Clark and other contributors
+  version: 4.0.1
+  type: tar
+  src: https://registry.npmjs.org/redux/-/redux-4.0.1.tgz
+  integrity: sha512-R7bAtSkk7nY6O/OYMVR9RiBI+XghjF9rlbl5806HJbQph0LJVHZrU5oaO4q70eUKiqMRqm4y07KLTlMZ2BlVmg==
+  dest:
+    package/dist/redux.min.js: .
+    package/LICENSE.md: .
+
+redux-thunk:
+  license: MIT
+  homepage: https://github.com/reduxjs/redux-thunk
+  authors: Dan Abramov and other contributors
+  version: 2.3.0
+  type: tar
+  src: https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.3.0.tgz
+  integrity: sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
+  dest:
+    package/dist/redux-thunk.min.js: .
+    package/LICENSE.md: .

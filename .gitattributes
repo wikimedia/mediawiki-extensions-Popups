@@ -1,2 +1,3 @@
+lib/**/*.min.js -diff -whitespace
 resources/dist/** -diff -whitespace
 resources/dist/.eslintrc.json diff whitespace

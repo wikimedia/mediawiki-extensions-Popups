@@ -1,5 +1,5 @@
-const Redux = require( 'redux' );
-const ReduxThunk = require( 'redux-thunk' );
+const Redux = require( '../lib/redux/redux.min.js' );
+const ReduxThunk = require( '../lib/redux-thunk/redux-thunk.min.js' );
 
 const createPagePreviewGateway = require( './gateway/page.js' );
 const createUserSettings = require( './userSettings.js' );

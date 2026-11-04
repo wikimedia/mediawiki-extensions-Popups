@@ -150,6 +150,7 @@
 			]
 		}
 	},
+	"ForeignResourcesDir": "lib",
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
 		"remoteExtPath": "Popups"

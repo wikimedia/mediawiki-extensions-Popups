@@ -32,26 +32,10 @@ module.exports = ( env, argv ) => ( {
 		index: './src'
 	},
 
-	resolve: {
-		alias: {
-			redux: path.resolve(
-				__dirname,
-				argv.mode === 'production' ?
-					'node_modules/redux/dist/redux.min.js' :
-					'node_modules/redux/dist/redux.js'
-			),
-			'redux-thunk': path.resolve(
-				__dirname,
-				argv.mode === 'production' ?
-					'node_modules/redux-thunk/dist/redux-thunk.min.js' :
-					'node_modules/redux-thunk/dist/redux-thunk.js'
-			)
-		}
-	},
 	module: {
 		rules: [ {
 			test: /\.js$/,
-			exclude: /node_modules/,
+			exclude: /[\\/](node_modules|lib)[\\/]/,
 			use: {
 				loader: 'babel-loader',
 				options: {

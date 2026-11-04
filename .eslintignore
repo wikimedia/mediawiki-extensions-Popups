@@ -3,5 +3,7 @@
 # docs and storybook
 /docs/
 /vendor/
+# Third-party libraries
+/lib/
 # Compiled content
 /resources/dist
