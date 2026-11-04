@@ -1,5 +1,10 @@
-import actionTypes from './../actionTypes';
-import nextState from './nextState';
+/**
+ * @module reducers/statsv
+ * @private
+ */
+
+const actionTypes = require( './../actionTypes.js' );
+const nextState = require( './nextState.js' );
 
 /**
  * Reducer for actions that result in Prometheus-compatible metrics.
@@ -8,7 +13,7 @@ import nextState from './nextState';
  * @param {Object} action
  * @return {Object} state after action
  */
-export default function statsv( state, action ) {
+function statsv( state, action ) {
 	state = state || {};
 
 	switch ( action.type ) {
@@ -50,3 +55,5 @@ export default function statsv( state, action ) {
 			return state;
 	}
 }
+
+module.exports = statsv;

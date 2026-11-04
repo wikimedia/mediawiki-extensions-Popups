@@ -3,7 +3,7 @@
  * @private
  */
 
-import * as formatter from '../formatter';
+const formatter = require( '../formatter.js' );
 
 /**
  * Prepare extract
@@ -11,7 +11,7 @@ import * as formatter from '../formatter';
  * @param {Object} page Rest response
  * @return {Array} An array of DOM Elements
  */
-export function parseHTMLResponse( page ) {
+function parseHTMLResponse( page ) {
 	const extract = page.extract_html;
 	const extractNode = document.createElement( 'div' );
 	extractNode.innerHTML = extract;
@@ -24,6 +24,11 @@ export function parseHTMLResponse( page ) {
  * @param {Object} page Rest response
  * @return {Array} An array of DOM Elements
  */
-export function parsePlainTextResponse( page ) {
+function parsePlainTextResponse( page ) {
 	return formatter.formatPlainTextExtract( page.extract, page.title );
 }
+
+module.exports = {
+	parseHTMLResponse,
+	parsePlainTextResponse
+};

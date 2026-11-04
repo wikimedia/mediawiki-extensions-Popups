@@ -32,7 +32,7 @@ const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
  * @param {Object} actions The action creators bound to the Redux store
  * @return {ext.popups.PreviewBehavior}
  */
-export default function createPreviewBehavior( user, actions ) {
+function createPreviewBehavior( user, actions ) {
 	let settingsUrl, showSettings = () => {};
 
 	if ( !canSaveToUserPreferences( user ) ) {
@@ -57,3 +57,5 @@ export default function createPreviewBehavior( user, actions ) {
 		click: actions.linkClick
 	};
 }
+
+module.exports = createPreviewBehavior;

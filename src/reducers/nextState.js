@@ -23,7 +23,7 @@
  * @param {Object} updates
  * @return {Object}
  */
-export default function nextState( state, updates ) {
+function nextState( state, updates ) {
 	const hasOwn = Object.prototype.hasOwnProperty,
 		result = {};
 
@@ -60,3 +60,5 @@ function isObject( obj ) {
 	// https://javascript.plainenglish.io/javascript-check-if-a-variable-is-an-object-and-nothing-else-not-an-array-a-set-etc-a3987ea08fd7
 	return obj && obj.constructor === Object;
 }
+
+module.exports = nextState;

@@ -14,7 +14,7 @@
  * @param {EventTracker} pageviewTracker
  * @return {ext.popups.ChangeListener}
  */
-export default function pageviews(
+function pageviews(
 	boundActions, pageviewTracker
 ) {
 	return ( oldState, newState ) => {
@@ -40,3 +40,5 @@ export default function pageviews(
 		}
 	};
 }
+
+module.exports = pageviews;

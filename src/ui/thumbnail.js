@@ -3,9 +3,9 @@
  * @private
  */
 
-import constants from '../constants';
+const constants = require( '../constants.js' );
 
-export const SIZES = {
+const SIZES = {
 	portraitImage: {
 		h: 250, // Exact height
 		w: 203 // Max width
@@ -44,7 +44,7 @@ export const SIZES = {
  * @param {boolean} useCSSClipPath
  * @return {ext.popups.Thumbnail|null}
  */
-export function createThumbnail( rawThumbnail, useCSSClipPath ) {
+function createThumbnail( rawThumbnail, useCSSClipPath ) {
 	const devicePixelRatio = constants.BRACKETED_DEVICE_PIXEL_RATIO;
 
 	if ( !rawThumbnail ) {
@@ -157,7 +157,7 @@ const addAttributes = ( node, attrs ) => {
  * @return {HTMLElement}
  */
 
-export function createThumbnailSVG(
+function createThumbnailSVG(
 	className, url, x, y, thumbnailWidth, thumbnailHeight, width, height
 ) {
 	const nsSvg = 'http://www.w3.org/2000/svg',
@@ -203,3 +203,9 @@ export function createThumbnailSVG(
 	thumbnail.appendChild( line );
 	return thumbnail;
 }
+
+module.exports = {
+	SIZES,
+	createThumbnail,
+	createThumbnailSVG
+};

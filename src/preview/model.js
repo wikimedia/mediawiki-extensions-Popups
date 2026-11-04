@@ -3,7 +3,7 @@
  * @private
  */
 
-import { requiresSummary } from '../ui/renderer';
+const { requiresSummary } = require( '../ui/renderer.js' );
 
 const selectors = [];
 
@@ -21,8 +21,6 @@ const previewTypes = {
 	/** Disambiguation page preview */
 	TYPE_DISAMBIGUATION: 'disambiguation'
 };
-
-export { previewTypes };
 
 /**
  * Preview Model
@@ -66,7 +64,7 @@ export { previewTypes };
  * @param {number} [pageId]
  * @return {PagePreviewModel}
  */
-export function createModel(
+function createModel(
 	title,
 	url,
 	languageCode,
@@ -98,7 +96,7 @@ export function createModel(
  * @param {string} url
  * @return {PagePreviewModel}
  */
-export function createNullModel( title, url ) {
+function createNullModel( title, url ) {
 	return createModel( title, url, '', '', [], '' );
 }
 
@@ -115,7 +113,7 @@ const elementMatchesSelector = ( element, selector ) => element.matches( selecto
  * @param {HTMLElement} element
  * @return {HTMLElement|null}
  */
-export function findNearestEligibleTarget( element ) {
+function findNearestEligibleTarget( element ) {
 	if ( selectors.length ) {
 		const selector = selectors.join( ', ' );
 		return element.closest( selector );
@@ -137,7 +135,7 @@ const registeredPreviewTypes = [];
  * @param {HTMLAnchorElement} el
  * @return {string|null} One of the previewTypes.TYPE_… constants
  */
-export function getPreviewType( el ) {
+function getPreviewType( el ) {
 	const candidates = registeredPreviewTypes.filter(
 		( type ) => elementMatchesSelector( el, type.selector )
 	);
@@ -211,7 +209,7 @@ const dwellDelay = {};
  * @param {string} type
  * @return {number}
  */
-export function getDwellDelay( type ) {
+function getDwellDelay( type ) {
 	return dwellDelay[ type ] || 0;
 }
 
@@ -221,7 +219,7 @@ export function getDwellDelay( type ) {
  * @param {string} type
  * @param {number} delay
  */
-export function setDwellTime( type, delay ) {
+function setDwellTime( type, delay ) {
 	dwellDelay[ type ] = delay;
 }
 
@@ -234,7 +232,7 @@ export function setDwellTime( type, delay ) {
  * @param {number} [delay] optional delay between hovering and displaying preview.
  *  If not defined, delay will be zero.
  */
-export function registerModel( type, selector, delay ) {
+function registerModel( type, selector, delay ) {
 	selectors.push( selector );
 	registeredPreviewTypes.push( {
 		name: type,
@@ -245,11 +243,23 @@ export function registerModel( type, selector, delay ) {
 	}
 }
 
-export const test = {
+const test = {
 	/** For testing only */
 	reset: () => {
 		while ( registeredPreviewTypes.length ) {
 			registeredPreviewTypes.pop();
 		}
 	}
+};
+
+module.exports = {
+	createModel,
+	createNullModel,
+	findNearestEligibleTarget,
+	getPreviewType,
+	getDwellDelay,
+	setDwellTime,
+	registerModel,
+	test,
+	previewTypes
 };

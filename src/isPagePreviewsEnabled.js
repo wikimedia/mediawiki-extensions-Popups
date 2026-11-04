@@ -2,7 +2,7 @@
  * @module isPagePreviewsEnabled
  * @private
  */
-import { previewTypes } from './preview/model';
+const { previewTypes } = require( './preview/model.js' );
 const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
 
 /**
@@ -21,7 +21,7 @@ const canSaveToUserPreferences = require( './canSaveToUserPreferences.js' );
  *
  * @return {boolean|null} Null when there is no way the popup type can be enabled at run-time.
  */
-export default function isPagePreviewsEnabled( user, userSettings, config ) {
+function isPagePreviewsEnabled( user, userSettings, config ) {
 	// T160081: Unavailable when in conflict with the Navigation Popups gadgets.
 	if ( config.get( 'wgPopupsConflictsWithNavPopupGadget' ) ) {
 		return null;
@@ -36,3 +36,5 @@ export default function isPagePreviewsEnabled( user, userSettings, config ) {
 	// Registered users never can enable popup types at run-time.
 	return mw.user.options.get( 'popups' ) === '1' ? true : null;
 }
+
+module.exports = isPagePreviewsEnabled;

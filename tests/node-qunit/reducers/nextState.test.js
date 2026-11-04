@@ -1,4 +1,4 @@
-import nextState from '../../../src/reducers/nextState';
+const nextState = require( '../../../src/reducers/nextState.js' );
 
 QUnit.module( 'reducers/nextState' );
 

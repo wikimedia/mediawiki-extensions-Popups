@@ -1,12 +1,17 @@
-import footerLink from './footerLink';
-import linkTitle from './linkTitle';
-import pageviews from './pageviews';
-import render from './render';
-import settings from './settings';
-import statsv from './statsv';
-import syncUserSettings from './syncUserSettings';
+/**
+ * @module changeListeners/index
+ * @private
+ */
 
-export default {
+const footerLink = require( './footerLink.js' );
+const linkTitle = require( './linkTitle.js' );
+const pageviews = require( './pageviews.js' );
+const render = require( './render.js' );
+const settings = require( './settings.js' );
+const statsv = require( './statsv.js' );
+const syncUserSettings = require( './syncUserSettings.js' );
+
+module.exports = {
 	footerLink,
 	linkTitle,
 	pageviews,

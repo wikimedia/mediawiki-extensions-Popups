@@ -1,27 +1,34 @@
-import * as Redux from 'redux';
-import * as ReduxThunk from 'redux-thunk';
+const Redux = require( 'redux' );
+const ReduxThunk = require( 'redux-thunk' );
 
-import createPagePreviewGateway from './gateway/page';
-import createUserSettings from './userSettings';
-import createPreviewBehavior from './previewBehavior';
-import createSettingsDialogRenderer from './ui/settingsDialogRenderer';
-import registerChangeListener from './changeListener';
-import createIsPagePreviewsEnabled from './isPagePreviewsEnabled';
-import { fromElement as titleFromElement } from './title';
-import { init as rendererInit, registerPreviewUI, createPagePreview,
+const createPagePreviewGateway = require( './gateway/page.js' );
+const createUserSettings = require( './userSettings.js' );
+const createPreviewBehavior = require( './previewBehavior.js' );
+const { createSettingsDialogRenderer } = require( './ui/settingsDialogRenderer.js' );
+const registerChangeListener = require( './changeListener.js' );
+const createIsPagePreviewsEnabled = require( './isPagePreviewsEnabled.js' );
+const { fromElement: titleFromElement } = require( './title.js' );
+const {
+	init: rendererInit,
+	registerPreviewUI,
+	createPagePreview,
 	createDisambiguationPreview
-} from './ui/renderer';
-import createExperiments from './experiments';
-import { isEnabled as isStatsvEnabled } from './instrumentation/statsv';
-import changeListeners from './changeListeners';
-import * as actions from './actions';
-import reducers from './reducers';
-import createMediaWikiPopupsObject from './integrations/mwpopups';
-import { previewTypes, getPreviewType,
-	registerModel, findNearestEligibleTarget } from './preview/model';
-import setUserConfigFlags from './setUserConfigFlags';
-import { registerGatewayForPreviewType, getGatewayForPreviewType } from './gateway';
-import { FETCH_START_DELAY, FETCH_COMPLETE_TARGET_DELAY } from './constants';
+} = require( './ui/renderer.js' );
+const createExperiments = require( './experiments.js' );
+const { isEnabled: isStatsvEnabled } = require( './instrumentation/statsv.js' );
+const changeListeners = require( './changeListeners/index.js' );
+const actions = require( './actions.js' );
+const reducers = require( './reducers/index.js' );
+const createMediaWikiPopupsObject = require( './integrations/mwpopups.js' );
+const {
+	previewTypes,
+	getPreviewType,
+	registerModel,
+	findNearestEligibleTarget
+} = require( './preview/model.js' );
+const setUserConfigFlags = require( './setUserConfigFlags.js' );
+const { registerGatewayForPreviewType, getGatewayForPreviewType } = require( './gateway/index.js' );
+const { FETCH_START_DELAY, FETCH_COMPLETE_TARGET_DELAY } = require( './constants.js' );
 /**
  * @module popups
  * @private

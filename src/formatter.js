@@ -10,7 +10,7 @@
  * @param {string} title
  * @return {Array}
  */
-export function formatPlainTextExtract( plainTextExtract, title ) {
+function formatPlainTextExtract( plainTextExtract, title ) {
 	let extract = plainTextExtract;
 	if ( plainTextExtract === undefined ) {
 		return [];
@@ -73,3 +73,7 @@ function makeTitleInExtractBold( extract, title ) {
 
 	return elements;
 }
+
+module.exports = {
+	formatPlainTextExtract
+};

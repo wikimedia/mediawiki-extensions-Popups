@@ -17,10 +17,14 @@
  * @param {number} delay The number of milliseconds to wait
  * @return {Promise}
  */
-export default function wait( delay ) {
+function wait( delay ) {
 	return new Promise( ( resolve ) => {
 		setTimeout( () => {
 			resolve();
 		}, delay );
 	} );
 }
+
+module.exports = {
+	wait
+};

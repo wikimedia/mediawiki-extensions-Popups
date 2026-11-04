@@ -1,4 +1,4 @@
-import * as formatter from '../../src/formatter';
+const formatter = require( '../../src/formatter.js' );
 
 QUnit.module( 'ext.popups.formatter', {
 	beforeEach() {

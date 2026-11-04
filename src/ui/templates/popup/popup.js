@@ -3,7 +3,7 @@
  * @private
  */
 
-import { createNodeFromTemplate } from '../templateUtil';
+const { createNodeFromTemplate } = require( '../templateUtil.js' );
 
 const templateHTML = `
 	<div class="mwe-popups" aria-hidden></div>
@@ -14,7 +14,7 @@ const templateHTML = `
  * @return {HTMLElement}
  */
 
-export function renderPopup( type, container ) {
+function renderPopup( type, container ) {
 	const element = createNodeFromTemplate( templateHTML );
 	// The following classes are used here:
 	// * mwe-popups-type-reference
@@ -26,3 +26,7 @@ export function renderPopup( type, container ) {
 	element.appendChild( container );
 	return element;
 }
+
+module.exports = {
+	renderPopup
+};

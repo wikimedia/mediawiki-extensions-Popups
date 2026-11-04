@@ -1,8 +1,8 @@
-import * as renderer from '../../../src/ui/renderer';
-import * as pagePreview from '../../../src/ui/templates/pagePreview/pagePreview';
-import * as constants from '../../../src/constants';
-import { createNullModel, previewTypes } from '../../../src/preview/model';
-import { createThumbnail } from '../../../src/ui/thumbnail';
+const renderer = require( '../../../src/ui/renderer.js' );
+const pagePreview = require( '../../../src/ui/templates/pagePreview/pagePreview.js' );
+const constants = require( '../../../src/constants.js' );
+const { createNullModel, previewTypes } = require( '../../../src/preview/model.js' );
+const { createThumbnail } = require( '../../../src/ui/thumbnail.js' );
 
 const windowHeight = 400;
 /* eslint-disable jsdoc/no-undefined-types */
@@ -41,7 +41,7 @@ function createBehavior( sandbox ) {
 
 QUnit.module( 'ext.popups#renderer', {
 	beforeEach() {
-		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
+		this.sandbox.stub( constants, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 
 		mw.msg = ( key ) => `<${ key }>`;
 		mw.message = ( key ) => ( { exists: () => !key.endsWith( 'generic' ), text: () => `<${ key }>` } );

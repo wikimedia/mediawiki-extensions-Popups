@@ -10,7 +10,7 @@
  * @param {mw.experiments} mwExperiments The `mw.experiments` singleton instance
  * @return {Experiments}
  */
-export default function createExperiments( mwExperiments ) {
+function createExperiments( mwExperiments ) {
 	return {
 		/**
 		 * Gets whether something is true given a name and a token.
@@ -48,3 +48,5 @@ export default function createExperiments( mwExperiments ) {
 		}
 	};
 }
+
+module.exports = createExperiments;

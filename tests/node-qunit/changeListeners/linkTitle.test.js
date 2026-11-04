@@ -1,4 +1,4 @@
-import linkTitle from '../../../src/changeListeners/linkTitle';
+const linkTitle = require( '../../../src/changeListeners/linkTitle.js' );
 
 QUnit.module( 'ext.popups/changeListeners/linkTitle', {
 	beforeEach() {

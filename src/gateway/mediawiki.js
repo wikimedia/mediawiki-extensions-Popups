@@ -1,6 +1,6 @@
-import { createModel } from '../preview/model';
-import * as formatter from '../formatter';
-import { abortablePromise } from './index.js';
+const { createModel } = require( '../preview/model.js' );
+const formatter = require( '../formatter.js' );
+const { abortablePromise } = require( './index.js' );
 
 /**
  * @module gateway/mediawiki
@@ -34,7 +34,7 @@ const CACHE_LIFETIME = 300;
  *  header
  * @return {MediaWikiGateway}
  */
-export default function createMediaWikiApiGateway( api, config ) {
+function createMediaWikiApiGateway( api, config ) {
 	function fetch( title ) {
 		return api.get( {
 			action: 'query',
@@ -144,3 +144,7 @@ function convertPageToModel( page ) {
 		page.pageid
 	);
 }
+
+module.exports = {
+	createMediaWikiApiGateway
+};

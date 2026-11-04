@@ -1,4 +1,9 @@
 /**
+ * @module changeListeners/statsv
+ * @private
+ */
+
+/**
  * Creates an instance of the statsv change listener.
  *
  * The listener will log events to StatsD via the [the "StatsD timers and
@@ -10,7 +15,7 @@
  * @param {EventTracker} track
  * @return {ext.popups.ChangeListener}
  */
-export default function statsv( boundActions, track ) {
+function statsv( boundActions, track ) {
 	return ( oldState, newState ) => {
 		const statsvObj = newState.statsv;
 
@@ -21,3 +26,5 @@ export default function statsv( boundActions, track ) {
 		}
 	};
 }
+
+module.exports = statsv;

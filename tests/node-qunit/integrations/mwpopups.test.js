@@ -1,4 +1,4 @@
-import createMwPopups from '../../../src/integrations/mwpopups';
+const createMwPopups = require( '../../../src/integrations/mwpopups.js' );
 
 /**
  * @private

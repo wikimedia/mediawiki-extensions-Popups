@@ -1,4 +1,4 @@
-import createExperiments from '../../src/experiments';
+const createExperiments = require( '../../src/experiments.js' );
 
 QUnit.module( 'ext.popups/experiments#weightedBoolean' );
 

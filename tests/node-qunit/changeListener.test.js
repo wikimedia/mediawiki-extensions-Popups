@@ -1,4 +1,4 @@
-import registerChangeListener from '../../src/changeListener';
+const registerChangeListener = require( '../../src/changeListener.js' );
 
 const stubStore = ( () => {
 	let state;

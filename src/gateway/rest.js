@@ -1,5 +1,5 @@
-import { createModel } from '../preview/model';
-import { abortablePromise } from './index.js';
+const { createModel } = require( '../preview/model.js' );
+const { abortablePromise } = require( './index.js' );
 /**
  * @module gateway/rest
  * @private
@@ -25,7 +25,7 @@ const RESTBASE_PROFILE = 'https://www.mediawiki.org/wiki/Specs/Summary/1.2.0';
  *  parsed extract
  * @return {Gateway}
  */
-export default function createRESTBaseGateway( ajax, config, extractParser ) {
+function createRESTBaseGateway( ajax, config, extractParser ) {
 	/**
 	 * Fetches page data from [the RESTBase page summary endpoint][0].
 	 *
@@ -192,7 +192,7 @@ function generateThumbnailData( thumbnail, original, thumbSize ) {
  * @param {Function} extractParser
  * @return {PagePreviewModel}
  */
-export function convertPageToModel( page, thumbSize, extractParser ) {
+function convertPageToModel( page, thumbSize, extractParser ) {
 	return createModel(
 		page.title,
 		new mw.Title( page.title ).getUrl(),
@@ -207,3 +207,8 @@ export function convertPageToModel( page, thumbSize, extractParser ) {
 		page.pageid
 	);
 }
+
+module.exports = {
+	createRESTBaseGateway,
+	convertPageToModel
+};

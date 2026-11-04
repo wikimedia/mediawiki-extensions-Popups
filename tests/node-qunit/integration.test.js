@@ -1,11 +1,11 @@
-import * as Redux from 'redux';
-import * as ReduxThunk from 'redux-thunk';
-import * as WaitModule from '../../src/wait';
-import * as stubs from './stubs';
-import * as actions from '../../src/actions';
-import reducers from '../../src/reducers';
-import registerChangeListener from '../../src/changeListener';
-import { previewTypes } from '../../src/preview/model';
+const Redux = require( 'redux' );
+const ReduxThunk = require( 'redux-thunk' );
+const WaitModule = require( '../../src/wait.js' );
+const stubs = require( './stubs.js' );
+const actions = require( '../../src/actions.js' );
+const reducers = require( '../../src/reducers/index.js' );
+const registerChangeListener = require( '../../src/changeListener.js' );
+const { previewTypes } = require( '../../src/preview/model.js' );
 
 /**
  * Whether Gateway#fetchPreviewForTitle is resolved or rejected.
@@ -66,7 +66,7 @@ QUnit.module( 'ext.popups preview @integration', {
 			this.wait.returns( this.waitPromise );
 		};
 
-		this.wait = this.sandbox.stub( WaitModule, 'default' );
+		this.wait = this.sandbox.stub( WaitModule, 'wait' );
 		this.resetWait();
 
 		this.store = Redux.createStore(

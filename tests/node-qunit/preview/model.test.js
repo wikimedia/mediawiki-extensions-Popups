@@ -1,7 +1,12 @@
-import {
-	createModel, getPreviewType, previewTypes, registerModel, test,
-	findNearestEligibleTarget, createNullModel
-} from '../../../src/preview/model';
+const {
+	createModel,
+	getPreviewType,
+	previewTypes,
+	registerModel,
+	test,
+	findNearestEligibleTarget,
+	createNullModel
+} = require( '../../../src/preview/model.js' );
 
 QUnit.module( 'ext.popups.preview#createModel' );
 

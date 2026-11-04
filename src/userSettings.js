@@ -1,4 +1,4 @@
-import { previewTypes } from './preview/model';
+const { previewTypes } = require( './preview/model.js' );
 
 /**
  * @module userSettings
@@ -17,7 +17,7 @@ const PAGE_PREVIEWS_ENABLED_KEY = 'mwe-popups-enabled',
  *
  * @return {UserSettings}
  */
-export default function createUserSettings( storage ) {
+function createUserSettings( storage ) {
 	return {
 		migrateOldPreferences() {
 			const isDisabled = !!storage.get( PAGE_PREVIEWS_ENABLED_KEY );
@@ -72,3 +72,5 @@ export default function createUserSettings( storage ) {
 		}
 	};
 }
+
+module.exports = createUserSettings;

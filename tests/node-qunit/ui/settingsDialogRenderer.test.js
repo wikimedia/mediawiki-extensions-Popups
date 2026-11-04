@@ -1,4 +1,4 @@
-import createSettingsDialogRenderer, { toggleHelp } from '../../../src/ui/settingsDialogRenderer';
+const { createSettingsDialogRenderer, toggleHelp } = require( '../../../src/ui/settingsDialogRenderer.js' );
 
 QUnit.module( 'ext.popups/settingsDialogRenderer', {
 	beforeEach() {

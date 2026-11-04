@@ -1,14 +1,14 @@
-import createPagePreviewGateway from '../../../src/gateway/page';
-import * as RestModule from '../../../src/gateway/rest';
-import * as MediawikiModule from '../../../src/gateway/mediawiki';
+const createPagePreviewGateway = require( '../../../src/gateway/page.js' );
+const RestModule = require( '../../../src/gateway/rest.js' );
+const MediawikiModule = require( '../../../src/gateway/mediawiki.js' );
 
 QUnit.module( 'gateway/page.js', {
 	beforeEach() {
 		mw.Api = function () {};
 
 		this.createMediaWikiApiGateway =
-			this.sandbox.stub( MediawikiModule, 'default' );
-		this.createRESTBaseGateway = this.sandbox.stub( RestModule, 'default' );
+			this.sandbox.stub( MediawikiModule, 'createMediaWikiApiGateway' );
+		this.createRESTBaseGateway = this.sandbox.stub( RestModule, 'createRESTBaseGateway' );
 
 		this.config = new Map();
 	}

@@ -1,4 +1,4 @@
-import pageviews from '../../../src/changeListeners/pageviews';
+const pageviews = require( '../../../src/changeListeners/pageviews.js' );
 
 const REFERRER = 'https://en.m.wikipedia.org/wiki/Kittens',
 	newState = {

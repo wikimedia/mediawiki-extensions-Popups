@@ -1,14 +1,14 @@
-import { createThumbnail, createThumbnailSVG } from '../../../src/ui/thumbnail';
-import * as constants from '../../../src/constants';
+const { createThumbnail, createThumbnailSVG } = require( '../../../src/ui/thumbnail.js' );
+const constants = require( '../../../src/constants.js' );
 
 QUnit.module( 'ext.popups#thumbnail', {
 	beforeEach() {
-		this.sandbox.stub( constants.default, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
+		this.sandbox.stub( constants, 'BRACKETED_DEVICE_PIXEL_RATIO' ).value( 1 );
 	}
 } );
 
 QUnit.test( 'createThumbnail - tall image', ( assert ) => {
-	const devicePixelRatio = constants.default.BRACKETED_DEVICE_PIXEL_RATIO,
+	const devicePixelRatio = constants.BRACKETED_DEVICE_PIXEL_RATIO,
 		cases = [
 			{
 				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/409px-President_Barack_Obama.jpg',
@@ -129,7 +129,7 @@ QUnit.test( 'createThumbnail - tall image element', ( assert ) => {
 } );
 
 QUnit.test( 'createThumbnail - square images', ( assert ) => {
-	const devicePixelRatio = constants.default.BRACKETED_DEVICE_PIXEL_RATIO,
+	const devicePixelRatio = constants.BRACKETED_DEVICE_PIXEL_RATIO,
 		cases = [
 			{
 				source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg',

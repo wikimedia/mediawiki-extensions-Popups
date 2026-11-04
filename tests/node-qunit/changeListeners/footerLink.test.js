@@ -1,4 +1,4 @@
-import footerLink from '../../../src/changeListeners/footerLink';
+const footerLink = require( '../../../src/changeListeners/footerLink.js' );
 
 // Since footerLink manipulates the DOM, this test is, by necessity, an
 // integration test.

@@ -1,5 +1,5 @@
-import * as stubs from './stubs';
-import isPagePreviewsEnabled from '../../src/isPagePreviewsEnabled';
+const stubs = require( './stubs.js' );
+const isPagePreviewsEnabled = require( '../../src/isPagePreviewsEnabled.js' );
 
 function createStubUserSettings( expectEnabled ) {
 	return {

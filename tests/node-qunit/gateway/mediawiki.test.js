@@ -1,6 +1,6 @@
-import { createStubTitle } from '../stubs';
-import { createModel } from '../../../src/preview/model';
-import createMediaWikiApiGateway from '../../../src/gateway/mediawiki';
+const { createStubTitle } = require( '../stubs.js' );
+const { createModel } = require( '../../../src/preview/model.js' );
+const { createMediaWikiApiGateway } = require( '../../../src/gateway/mediawiki.js' );
 
 const DEFAULT_CONSTANTS = {
 		THUMBNAIL_SIZE: 300,

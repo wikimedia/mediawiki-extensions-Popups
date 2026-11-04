@@ -1,5 +1,5 @@
-import render from '../../../src/changeListeners/render';
-import * as RendererModule from '../../../src/ui/renderer';
+const render = require( '../../../src/changeListeners/render.js' );
+const RendererModule = require( '../../../src/ui/renderer.js' );
 
 QUnit.module( 'ext.popups/changeListeners/render', {
 	beforeEach() {

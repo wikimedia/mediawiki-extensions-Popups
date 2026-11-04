@@ -1,5 +1,5 @@
-import { createStubMap } from './stubs';
-import createUserSettings from '../../src/userSettings';
+const { createStubMap } = require( './stubs.js' );
+const createUserSettings = require( '../../src/userSettings.js' );
 
 QUnit.module( 'ext.popups/userSettings', {
 	beforeEach() {

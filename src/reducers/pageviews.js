@@ -3,8 +3,8 @@
  * @private
  */
 
-import actionTypes from '../actionTypes';
-import nextState from './nextState';
+const actionTypes = require( '../actionTypes.js' );
+const nextState = require( './nextState.js' );
 
 /**
  * Reducer for actions that queues and clears events for
@@ -17,7 +17,7 @@ import nextState from './nextState';
  * @return {Object} The state resulting from reducing the action with the
  *  current state
  */
-export default function pageviews( state, action ) {
+function pageviews( state, action ) {
 	if ( state === undefined ) {
 		state = {
 			pageview: undefined
@@ -47,3 +47,5 @@ export default function pageviews( state, action ) {
 			return state;
 	}
 }
+
+module.exports = pageviews;

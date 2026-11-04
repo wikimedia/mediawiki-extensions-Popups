@@ -1,5 +1,5 @@
-import * as stubs from './../stubs';
-import { isEnabled } from '../../../src/instrumentation/statsv';
+const stubs = require( './../stubs.js' );
+const { isEnabled } = require( '../../../src/instrumentation/statsv.js' );
 
 QUnit.module( 'ext.popups/instrumentation/statsv' );
 

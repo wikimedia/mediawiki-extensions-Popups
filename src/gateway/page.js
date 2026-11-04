@@ -1,8 +1,8 @@
-import constants from '../constants';
-import createMediaWikiApiGateway from './mediawiki';
-import createRESTBaseGateway from './rest';
-import * as formatters from './restFormatters';
-import { abortablePromise } from './index.js';
+const constants = require( '../constants.js' );
+const mediawiki = require( './mediawiki.js' );
+const rest = require( './rest.js' );
+const formatters = require( './restFormatters.js' );
+const { abortablePromise } = require( './index.js' );
 
 /**
  * @module gateway/page
@@ -33,23 +33,27 @@ function ajax( options ) {
  * @param {mw.Map} config
  * @return {Gateway}
  */
-export default function createPagePreviewGateway( config ) {
-	const gatewayConfig = Object.assign( {}, constants, {
+function createPagePreviewGateway( config ) {
+	const gatewayConfig = {
+		THUMBNAIL_SIZE: constants.THUMBNAIL_SIZE,
+		EXTRACT_LENGTH: constants.EXTRACT_LENGTH,
 		acceptLanguage: config.get( 'wgPageContentLanguage' )
-	} );
+	};
 	const restConfig = Object.assign( {}, gatewayConfig, {
 		endpoint: config.get( 'wgPopupsRestGatewayEndpoint' )
 	} );
 	switch ( config.get( 'wgPopupsGateway' ) ) {
 		case 'mwApiPlain':
-			return createMediaWikiApiGateway( new mw.Api(), gatewayConfig );
+			return mediawiki.createMediaWikiApiGateway( new mw.Api(), gatewayConfig );
 		case 'restbasePlain':
-			return createRESTBaseGateway(
+			return rest.createRESTBaseGateway(
 				ajax, restConfig, formatters.parsePlainTextResponse );
 		case 'restbaseHTML':
-			return createRESTBaseGateway(
+			return rest.createRESTBaseGateway(
 				ajax, restConfig, formatters.parseHTMLResponse );
 		default:
 			throw new Error( 'Unknown gateway' );
 	}
 }
+
+module.exports = createPagePreviewGateway;

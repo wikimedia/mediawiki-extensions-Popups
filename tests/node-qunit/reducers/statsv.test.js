@@ -1,5 +1,5 @@
-import statsv from '../../../src/reducers/statsv';
-import actionTypes from '../../../src/actionTypes';
+const statsv = require( '../../../src/reducers/statsv.js' );
+const actionTypes = require( '../../../src/actionTypes.js' );
 
 QUnit.module( 'ext.popups/reducers#statsv', {
 	beforeEach() {

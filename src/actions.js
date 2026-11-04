@@ -1,7 +1,7 @@
-import types from './actionTypes';
-import wait from './wait';
-import { createNullModel, previewTypes, getDwellDelay } from './preview/model';
-import { FETCH_START_DELAY, PREVIEW_SEEN_DURATION, ABANDON_END_DELAY } from './constants';
+const types = require( './actionTypes.js' );
+const waitModule = require( './wait.js' );
+const { createNullModel, previewTypes, getDwellDelay } = require( './preview/model.js' );
+const { FETCH_START_DELAY, PREVIEW_SEEN_DURATION, ABANDON_END_DELAY } = require( './constants.js' );
 /**
  * @module actions
  * @private
@@ -42,7 +42,7 @@ function timedAction( baseAction ) {
  * @param {string} url
  * @return {Object}
  */
-export function boot(
+function boot(
 	initiallyEnabled,
 	user,
 	userSettings,
@@ -78,7 +78,7 @@ export function boot(
  * @param {boolean} enabled is the feature enabled by default?
  * @return {Object}
  */
-export function registerSetting( name, enabled ) {
+function registerSetting( name, enabled ) {
 	return {
 		type: types.REGISTER_SETTING,
 		name,
@@ -98,7 +98,7 @@ export function registerSetting( name, enabled ) {
  * @param {string} type One of the previewTypes.TYPE_… constants
  * @return {Redux.Thunk}
  */
-export function fetch( gateway, title, el, token, type ) {
+function fetch( gateway, title, el, token, type ) {
 	const titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
 
@@ -139,7 +139,7 @@ export function fetch( gateway, title, el, token, type ) {
 
 		return Promise.all( [
 			chain,
-			wait( getDwellDelay( type ) )
+			waitModule.wait( getDwellDelay( type ) )
 		] )
 			.then( ( [ result ] ) => {
 				dispatch( {
@@ -197,13 +197,13 @@ export function fetch( gateway, title, el, token, type ) {
  * @param {string} type One of the previewTypes.TYPE_… constants
  * @return {Redux.Thunk}
  */
-export function linkDwell( title, el, measures, gateway, generateToken, type ) {
+function linkDwell( title, el, measures, gateway, generateToken, type ) {
 	const token = generateToken(),
 		titleText = title.getPrefixedDb(),
 		namespaceId = title.namespace;
 
 	return ( dispatch, getState ) => {
-		const promise = wait( FETCH_START_DELAY );
+		const promise = waitModule.wait( FETCH_START_DELAY );
 		const action = timedAction( {
 			type: types.LINK_DWELL,
 			el,
@@ -253,7 +253,7 @@ export function linkDwell( title, el, measures, gateway, generateToken, type ) {
  * @private
  * @return {Redux.Thunk}
  */
-export function abandon() {
+function abandon() {
 	return ( dispatch, getState ) => {
 		const { activeToken: token, promise } = getState().preview;
 
@@ -271,7 +271,7 @@ export function abandon() {
 			promise.abort();
 		}
 
-		return wait( ABANDON_END_DELAY )
+		return waitModule.wait( ABANDON_END_DELAY )
 			.then( () => {
 				dispatch( {
 					type: types.ABANDON_END,
@@ -288,7 +288,7 @@ export function abandon() {
  * @param {HTMLAnchorElement} el
  * @return {Object}
  */
-export function linkClick( el ) {
+function linkClick( el ) {
 	return timedAction( {
 		type: types.LINK_CLICK,
 		el
@@ -300,7 +300,7 @@ export function linkClick( el ) {
  *
  * @return {Object}
  */
-export function previewDwell() {
+function previewDwell() {
 	return {
 		type: types.PREVIEW_DWELL
 	};
@@ -315,7 +315,7 @@ export function previewDwell() {
  * @param {string} token
  * @return {Object}
  */
-export function previewShow( token ) {
+function previewShow( token ) {
 	return ( dispatch, getState ) => {
 		dispatch(
 			timedAction( {
@@ -324,7 +324,7 @@ export function previewShow( token ) {
 			} )
 		);
 
-		return wait( PREVIEW_SEEN_DURATION )
+		return waitModule.wait( PREVIEW_SEEN_DURATION )
 			.then( () => {
 				const state = getState(),
 					preview = state.preview,
@@ -362,7 +362,7 @@ export function previewShow( token ) {
  *
  * @return {Object}
  */
-export function pageviewLogged() {
+function pageviewLogged() {
 	return {
 		type: types.PAGEVIEW_LOGGED
 	};
@@ -374,7 +374,7 @@ export function pageviewLogged() {
  *
  * @return {Object}
  */
-export function showSettings() {
+function showSettings() {
 	return {
 		type: types.SETTINGS_SHOW
 	};
@@ -385,7 +385,7 @@ export function showSettings() {
  *
  * @return {Object}
  */
-export function hideSettings() {
+function hideSettings() {
 	return {
 		type: types.SETTINGS_HIDE
 	};
@@ -407,7 +407,7 @@ export function hideSettings() {
  * @param {Object} enabled Mapping preview type identifiers to boolean flags
  * @return {Redux.Thunk}
  */
-export function saveSettings( enabled ) {
+function saveSettings( enabled ) {
 	return ( dispatch, getState ) => {
 		dispatch( {
 			type: types.SETTINGS_CHANGE,
@@ -423,8 +423,24 @@ export function saveSettings( enabled ) {
  *
  * @return {Object}
  */
-export function statsvLogged() {
+function statsvLogged() {
 	return {
 		type: types.STATSV_LOGGED
 	};
 }
+
+module.exports = {
+	boot,
+	registerSetting,
+	fetch,
+	linkDwell,
+	abandon,
+	linkClick,
+	previewDwell,
+	previewShow,
+	pageviewLogged,
+	showSettings,
+	hideSettings,
+	saveSettings,
+	statsvLogged
+};

@@ -3,7 +3,7 @@
  * @private
  */
 
-import { escapeHTML } from '../templateUtil';
+const { escapeHTML } = require( '../templateUtil.js' );
 
 /**
  * @typedef {Object} SettingsModel
@@ -42,7 +42,7 @@ function escapeChoices( choices = [] ) {
  * @param {SettingsModel} model
  * @return {HTMLElement}
  */
-export function renderSettingsDialog( model ) {
+function renderSettingsDialog( model ) {
 	const heading = escapeHTML( model.heading ),
 		saveLabel = escapeHTML( model.saveLabel ),
 		closeLabel = escapeHTML( model.closeLabel ),
@@ -91,3 +91,7 @@ export function renderSettingsDialog( model ) {
 	`.trim();
 	return node.querySelector( 'section' );
 }
+
+module.exports = {
+	renderSettingsDialog
+};

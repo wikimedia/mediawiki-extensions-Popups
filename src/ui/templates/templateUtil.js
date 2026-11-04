@@ -7,7 +7,7 @@
  * @param {string} str
  * @return {string} The string with any HTML entities escaped.
  */
-export function escapeHTML( str ) {
+function escapeHTML( str ) {
 	return mw.html.escape( str );
 }
 
@@ -16,7 +16,7 @@ const templates = {};
  * @param {string} html markup of the template
  * @return {HTMLElement} a cloned root element of the template
  */
-export function createNodeFromTemplate( html ) {
+function createNodeFromTemplate( html ) {
 	if ( !templates[ html ] ) {
 		// TODO: use <template> element when IE11 dies
 		const div = document.createElement( 'div' );
@@ -26,3 +26,8 @@ export function createNodeFromTemplate( html ) {
 
 	return templates[ html ].cloneNode( true );
 }
+
+module.exports = {
+	escapeHTML,
+	createNodeFromTemplate
+};

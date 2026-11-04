@@ -1,5 +1,10 @@
-import actionTypes from '../actionTypes';
-import nextState from './nextState';
+/**
+ * @module reducers/preview
+ * @private
+ */
+
+const actionTypes = require( '../actionTypes.js' );
+const nextState = require( './nextState.js' );
 
 /**
  * Reducer for actions that modify the state of the preview model
@@ -9,7 +14,7 @@ import nextState from './nextState';
  *  Must have `type` property.
  * @return {Object} state after action
  */
-export default function preview( state, action ) {
+function preview( state, action ) {
 	if ( state === undefined ) {
 		state = {
 			enabled: {},
@@ -107,3 +112,5 @@ export default function preview( state, action ) {
 			return state;
 	}
 }
+
+module.exports = preview;

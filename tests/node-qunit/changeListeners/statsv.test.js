@@ -1,4 +1,4 @@
-import statsv from '../../../src/changeListeners/statsv';
+const statsv = require( '../../../src/changeListeners/statsv.js' );
 
 QUnit.module( 'ext.popups/changeListeners/statsv', {
 	beforeEach() {

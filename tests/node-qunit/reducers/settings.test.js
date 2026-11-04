@@ -1,5 +1,5 @@
-import settings from '../../../src/reducers/settings';
-import actionTypes from '../../../src/actionTypes';
+const settings = require( '../../../src/reducers/settings.js' );
+const actionTypes = require( '../../../src/actionTypes.js' );
 
 QUnit.module( 'reducers/settings' );
 

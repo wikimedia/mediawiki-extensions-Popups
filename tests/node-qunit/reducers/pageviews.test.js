@@ -1,5 +1,5 @@
-import pageviews from '../../../src/reducers/pageviews';
-import actionTypes from '../../../src/actionTypes';
+const pageviews = require( '../../../src/reducers/pageviews.js' );
+const actionTypes = require( '../../../src/actionTypes.js' );
 
 /* eslint-disable camelcase */
 const PAGEVIEW = {

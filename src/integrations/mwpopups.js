@@ -4,7 +4,7 @@
  * @module mw.popups
  */
 
-import { previewTypes } from '../preview/model';
+const { previewTypes } = require( '../preview/model.js' );
 
 /**
  * @private
@@ -29,7 +29,7 @@ function canShowSettingForPreviewType( type ) {
  * @param {UserSettings} userSettings
  * @return {Object} external Popups interface
  */
-export default function createMwPopups( store, registerModel, registerPreviewUI,
+function createMwPopups( store, registerModel, registerPreviewUI,
 	registerGatewayForPreviewType, registerSetting, userSettings
 ) {
 	return {
@@ -117,3 +117,5 @@ Please create message with key "popups-settings-option-${ type }" if this is a m
 		}
 	};
 }
+
+module.exports = createMwPopups;

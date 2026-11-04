@@ -1,8 +1,8 @@
-import { createStubUser, createStubTitle } from './stubs';
-import * as actions from '../../src/actions';
-import * as WaitModule from '../../src/wait';
-import actionTypes from '../../src/actionTypes';
-import { setDwellTime, previewTypes } from '../../src/preview/model';
+const { createStubUser, createStubTitle } = require( './stubs.js' );
+const actions = require( '../../src/actions.js' );
+const WaitModule = require( '../../src/wait.js' );
+const actionTypes = require( '../../src/actionTypes.js' );
+const { setDwellTime, previewTypes } = require( '../../src/preview/model.js' );
 
 const REFERRER = 'https://en.wikipedia.org/wiki/Kitten',
 	TEST_TITLE = createStubTitle( 0, 'Foo' );
@@ -83,7 +83,7 @@ QUnit.test( '#registerSetting', ( assert ) => {
  */
 function setupWait( module ) {
 	module.waitPromise = $.Deferred().resolve().promise( { abort() {} } );
-	module.wait = module.sandbox.stub( WaitModule, 'default' ).callsFake(
+	module.wait = module.sandbox.stub( WaitModule, 'wait' ).callsFake(
 		() => module.waitPromise
 	);
 }

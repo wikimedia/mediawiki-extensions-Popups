@@ -1,4 +1,9 @@
 /**
+ * @module changeListeners/linkTitle
+ * @private
+ */
+
+/**
  * Creates an instance of the link title change listener.
  *
  * While the user dwells on a link, then it becomes the active link. The
@@ -7,7 +12,7 @@
  *
  * @return {ext.popups.ChangeListener}
  */
-export default function linkTitle() {
+function linkTitle() {
 	let savedTitle;
 
 	/**
@@ -57,3 +62,5 @@ export default function linkTitle() {
 		}
 	};
 }
+
+module.exports = linkTitle;

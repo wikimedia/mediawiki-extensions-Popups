@@ -1,9 +1,14 @@
-import pageviews from './pageviews';
-import preview from './preview';
-import settings from './settings';
-import statsv from './statsv';
+/**
+ * @module reducers/index
+ * @private
+ */
 
-export default {
+const pageviews = require( './pageviews.js' );
+const preview = require( './preview.js' );
+const settings = require( './settings.js' );
+const statsv = require( './statsv.js' );
+
+module.exports = {
 	pageviews,
 	preview,
 	settings,

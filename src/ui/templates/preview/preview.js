@@ -3,8 +3,8 @@
  * @private
  */
 
-import { renderPopup } from '../popup/popup';
-import { createNodeFromTemplate, escapeHTML } from '../templateUtil';
+const { renderPopup } = require( '../popup/popup.js' );
+const { createNodeFromTemplate, escapeHTML } = require( '../templateUtil.js' );
 
 const templateHTML = `
 	<div class="mwe-popups-container">
@@ -30,7 +30,7 @@ const templateHTML = `
  * @param {string} linkMsg
  * @return {jQuery}
  */
-export function renderPreview(
+function renderPreview(
 	model, message, linkMsg
 ) {
 	const popup = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
@@ -54,3 +54,7 @@ export function renderPreview(
 	title.innerHTML += escapeHTML( model.title );
 	return popup;
 }
+
+module.exports = {
+	renderPreview
+};

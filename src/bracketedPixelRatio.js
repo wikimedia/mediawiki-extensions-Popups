@@ -15,7 +15,7 @@
  * @param {number} [dpr=window.devicePixelRatio]
  * @return {number} The bracketed device pixel ratio
  */
-export default function ( dpr = window.devicePixelRatio ) {
+function bracketedPixelRatio( dpr = window.devicePixelRatio ) {
 	if ( !dpr ) {
 		// Probably legacy browser so assume 1
 		return 1;
@@ -31,3 +31,5 @@ export default function ( dpr = window.devicePixelRatio ) {
 
 	return 1;
 }
+
+module.exports = bracketedPixelRatio;

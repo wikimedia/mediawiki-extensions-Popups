@@ -1,5 +1,5 @@
-import createPreviewBehavior from '../../src/previewBehavior';
-import { createStubUser } from './stubs';
+const createPreviewBehavior = require( '../../src/previewBehavior.js' );
+const { createStubUser } = require( './stubs.js' );
 
 QUnit.module( 'ext.popups.preview.settingsBehavior', {
 	beforeEach() {

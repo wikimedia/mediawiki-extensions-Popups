@@ -8,7 +8,7 @@
  *
  * @return {Container}
  */
-export default function createContainer() {
+function createContainer() {
 	const factories = {},
 		cache = {};
 
@@ -87,3 +87,5 @@ export default function createContainer() {
 		}
 	};
 }
+
+module.exports = createContainer;

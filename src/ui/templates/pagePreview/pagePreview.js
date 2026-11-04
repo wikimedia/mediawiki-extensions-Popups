@@ -3,8 +3,8 @@
  * @private
  */
 
-import { renderPopup } from '../popup/popup';
-import { escapeHTML, createNodeFromTemplate } from '../templateUtil';
+const { renderPopup } = require( '../popup/popup.js' );
+const { escapeHTML, createNodeFromTemplate } = require( '../templateUtil.js' );
 
 const defaultExtractWidth = 215;
 const templateHTML = `
@@ -27,7 +27,7 @@ const templateHTML = `
  * @param {string} linkTitle
  * @return {HTMLElement}
  */
-export function renderPagePreview(
+function renderPagePreview(
 	model, thumbnail, withCSSClipPath, linkTitle
 ) {
 	const el = renderPopup( model.type, createNodeFromTemplate( templateHTML ) );
@@ -69,8 +69,6 @@ export function renderPagePreview(
 	return el;
 }
 
-export { defaultExtractWidth }; // for testing
-
 /**
  * Calculates width of extract based on the associated thumbnail
  *
@@ -78,6 +76,13 @@ export { defaultExtractWidth }; // for testing
  * @return {string} representing the css width attribute to be
  *   used for the extract
  */
-export function getExtractWidth( thumbnail ) {
+function getExtractWidth( thumbnail ) {
 	return thumbnail && thumbnail.isNarrow ? `${ defaultExtractWidth + thumbnail.offset }px` : '';
 }
+
+module.exports = {
+	renderPagePreview,
+	getExtractWidth,
+	// For testing
+	defaultExtractWidth
+};

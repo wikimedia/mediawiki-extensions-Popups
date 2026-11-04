@@ -1,4 +1,9 @@
-import * as renderer from '../ui/renderer';
+/**
+ * @module changeListeners/render
+ * @private
+ */
+
+const renderer = require( '../ui/renderer.js' );
 
 /**
  * Creates an instance of the render change listener.
@@ -10,7 +15,7 @@ import * as renderer from '../ui/renderer';
  * @param {ext.popups.PreviewBehavior} previewBehavior
  * @return {ext.popups.ChangeListener}
  */
-export default function render( previewBehavior ) {
+function render( previewBehavior ) {
 	let preview;
 
 	return ( oldState, newState ) => {
@@ -27,3 +32,5 @@ export default function render( previewBehavior ) {
 		}
 	};
 }
+
+module.exports = render;

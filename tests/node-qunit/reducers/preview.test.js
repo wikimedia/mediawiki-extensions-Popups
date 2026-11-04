@@ -1,6 +1,6 @@
-import preview from '../../../src/reducers/preview';
-import actionTypes from '../../../src/actionTypes';
-import { createNullModel } from '../../../src/preview/model';
+const preview = require( '../../../src/reducers/preview.js' );
+const actionTypes = require( '../../../src/actionTypes.js' );
+const { createNullModel } = require( '../../../src/preview/model.js' );
 
 QUnit.module( 'ext.popups/reducers#preview', {
 	beforeEach() {

@@ -1,6 +1,6 @@
-import { createStubTitle } from '../stubs';
-import { createModel } from '../../../src/preview/model';
-import createRESTBaseGateway from '../../../src/gateway/rest';
+const { createStubTitle } = require( '../stubs.js' );
+const { createModel } = require( '../../../src/preview/model.js' );
+const { createRESTBaseGateway } = require( '../../../src/gateway/rest.js' );
 
 const DEFAULT_CONSTANTS = {
 	THUMBNAIL_SIZE: 512,

@@ -1,11 +1,16 @@
 /**
+ * @module changeListeners/settings
+ * @private
+ */
+
+/**
  * Creates an instance of the settings change listener.
  *
  * @param {Object} boundActions
  * @param {Object} render function that renders a jQuery el with the settings
  * @return {ext.popups.ChangeListener}
  */
-export default function settings( boundActions, render ) {
+function settings( boundActions, render ) {
 	let settingsObj;
 
 	return ( oldState, newState ) => {
@@ -43,3 +48,5 @@ export default function settings( boundActions, render ) {
 		}
 	};
 }
+
+module.exports = settings;

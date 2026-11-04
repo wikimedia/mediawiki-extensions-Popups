@@ -1,4 +1,4 @@
-import setUserConfigFlags from '../../src/setUserConfigFlags';
+const setUserConfigFlags = require( '../../src/setUserConfigFlags.js' );
 
 QUnit.module( 'ext.popups#setUserConfigFlags' );
 

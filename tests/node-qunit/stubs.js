@@ -6,7 +6,7 @@
  * @param {Object|mw.Map} [options]
  * @return {Object}
  */
-export function createStubUser( isAnon, options ) {
+function createStubUser( isAnon, options ) {
 	return {
 		getPageviewToken() {
 			return '9876543210';
@@ -33,7 +33,7 @@ export function createStubUser( isAnon, options ) {
  *
  * @return {mw.Map}
  */
-export function createStubMap() {
+function createStubMap() {
 	const m = new Map();
 	m.get = function ( key, fallback ) {
 		fallback = arguments.length > 1 ? fallback : null;
@@ -53,7 +53,7 @@ export function createStubMap() {
  * @param {string} bucket getBucket will respond with this bucket.
  * @return {Object}
  */
-export function createStubExperiments( bucket ) {
+function createStubExperiments( bucket ) {
 	return {
 		getBucket() {
 			return bucket;
@@ -70,7 +70,7 @@ export function createStubExperiments( bucket ) {
  * @param {string|null} [fragment]
  * @return {Object}
  */
-export function createStubTitle( namespace, name, fragment = null ) {
+function createStubTitle( namespace, name, fragment = null ) {
 	return {
 		namespace,
 		getPrefixedDb() {
@@ -90,3 +90,10 @@ export function createStubTitle( namespace, name, fragment = null ) {
 		}
 	};
 }
+
+module.exports = {
+	createStubUser,
+	createStubMap,
+	createStubExperiments,
+	createStubTitle
+};

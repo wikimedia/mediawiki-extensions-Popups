@@ -1,4 +1,9 @@
 /**
+ * @module pointerMask
+ * @private
+ */
+
+/**
  * SVG clip paths, put into the document body via renderer.createPointerMasks().
  * The IDs are referenced from renderer.getThumbnailClipPathID().
  *
@@ -12,7 +17,7 @@
  *
  * @private
  */
-export default `<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+module.exports = `<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
 	<defs>
 		<clipPath id="mwe-popups-mask">
 			<path d="M0 8h10l8-8 8 8h974v992H0z"/>

@@ -13,7 +13,7 @@ const NAV_POPUPS_ENABLED = 1;
  *
  * @param {mw.Map} config
  */
-export default function setUserConfigFlags( config ) {
+function setUserConfigFlags( config ) {
 	const popupsFlags = parseInt( config.get( 'wgPopupsFlags' ), 10 );
 
 	/* eslint-disable no-bitwise */
@@ -23,3 +23,5 @@ export default function setUserConfigFlags( config ) {
 	);
 	/* eslint-enable no-bitwise */
 }
+
+module.exports = setUserConfigFlags;

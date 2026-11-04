@@ -1,4 +1,4 @@
-import wait from '../../src/wait';
+const { wait } = require( '../../src/wait.js' );
 
 QUnit.module( 'ext.popups/wait' );
 

@@ -1,8 +1,8 @@
-import wait from '../wait';
-import pointerMaskSVG from './pointerMask';
-import { SIZES, createThumbnail } from './thumbnail';
-import { renderPreview } from './templates/preview/preview';
-import { renderPagePreview } from './templates/pagePreview/pagePreview';
+const waitModule = require( '../wait.js' );
+const pointerMaskSVG = require( './pointerMask.js' );
+const { SIZES, createThumbnail } = require( './thumbnail.js' );
+const { renderPreview } = require( './templates/preview/preview.js' );
+const { renderPagePreview } = require( './templates/pagePreview/pagePreview.js' );
 /**
  * @module renderer
  * @private
@@ -11,8 +11,6 @@ const landscapePopupWidth = 450,
 	portraitPopupWidth = 320,
 	pointerSize = 8, // Height of the pointer.
 	maxLinkWidthForCenteredPointer = 28; // Link with roughly < 4 chars.
-
-export { pointerSize, landscapePopupWidth, portraitPopupWidth }; // for use in storybook
 
 /**
  * @typedef {Object} ext.popups.Measures
@@ -47,7 +45,7 @@ export { pointerSize, landscapePopupWidth, portraitPopupWidth }; // for use in s
  * @private
  * @param {Object} container DOM object to which pointer masks are appended
  */
-export function createPointerMasks( container ) {
+function createPointerMasks( container ) {
 	const node = document.createElement( 'div' );
 	node.setAttribute( 'id', 'mwe-popups-svg' );
 	node.innerHTML = pointerMaskSVG;
@@ -58,7 +56,7 @@ export function createPointerMasks( container ) {
  * Initializes the renderer.
  *
  */
-export function init() {
+function init() {
 	if ( !supportsCSSClipPath() ) {
 		createPointerMasks( document.body );
 	}
@@ -98,7 +96,7 @@ export function init() {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function render( model ) {
+function render( model ) {
 	const preview = createPreviewWithType( model );
 
 	return {
@@ -147,7 +145,7 @@ const renderersMeta = {};
  * @param {function( ext.popups.PreviewModel ): ext.popups.Preview} [previewFn]
  * @param {boolean} [doNotRequireSummary] does this type require a summary to be renderable?
  */
-export function registerPreviewUI( type, previewFn, doNotRequireSummary ) {
+function registerPreviewUI( type, previewFn, doNotRequireSummary ) {
 	renderers[ type ] = previewFn || createPagePreview;
 	renderersMeta[ type ] = {
 		requireSummary: !doNotRequireSummary
@@ -160,7 +158,7 @@ export function registerPreviewUI( type, previewFn, doNotRequireSummary ) {
  * @param {string} type of preview
  * @return {boolean}
  */
-export function requiresSummary( type ) {
+function requiresSummary( type ) {
 	const meta = renderersMeta[ type ] || { requireSummary: true };
 	return meta.requireSummary;
 }
@@ -172,7 +170,7 @@ export function requiresSummary( type ) {
  * @param {ext.popups.PreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function createPreviewWithType( model ) {
+function createPreviewWithType( model ) {
 	const fn = renderers[ model.type ] || createEmptyPreview;
 	return fn( model );
 }
@@ -190,7 +188,7 @@ function supportsCSSClipPath() {
  * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function createPagePreview( model ) {
+function createPagePreview( model ) {
 	const thumbnail = createThumbnail( model.thumbnail, supportsCSSClipPath() ),
 		hasThumbnail = thumbnail !== null,
 		withCSSClipPath = supportsCSSClipPath(),
@@ -215,7 +213,7 @@ export function createPagePreview( model ) {
  * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function createEmptyPreview( model ) {
+function createEmptyPreview( model ) {
 	model.title = mw.msg( 'popups-preview-no-preview' );
 	const linkMsg = mw.msg( 'popups-preview-footer-read' );
 
@@ -232,7 +230,7 @@ export function createEmptyPreview( model ) {
  * @param {ext.popups.PagePreviewModel} model
  * @return {ext.popups.Preview}
  */
-export function createDisambiguationPreview( model ) {
+function createDisambiguationPreview( model ) {
 	const extractMsg = mw.msg( 'popups-preview-disambiguation' );
 	const linkMsg = mw.msg( 'popups-preview-disambiguation-link' );
 
@@ -263,7 +261,7 @@ export function createDisambiguationPreview( model ) {
  * @return {jQuery.Promise<void>} A promise that resolves when the promise has
  *                                faded in.
  */
-export function show(
+function show(
 	preview, measures, _link, behavior, token, container, dir
 ) {
 	const layout = createLayout(
@@ -287,7 +285,7 @@ export function show(
 		preview.el.querySelector( '.mwe-popups-scroll' ).dispatchEvent( new Event( 'scroll' ) );
 	}
 
-	return wait( 200 )
+	return waitModule.wait( 200 )
 		.then( () => {
 			bindBehavior( preview, behavior );
 			behavior.previewShow( token );
@@ -300,7 +298,7 @@ export function show(
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewBehavior} behavior
  */
-export function bindBehavior( preview, behavior ) {
+function bindBehavior( preview, behavior ) {
 	preview.el.addEventListener( 'mouseenter', behavior.previewDwell );
 	preview.el.addEventListener( 'mouseleave', behavior.previewAbandon );
 
@@ -324,7 +322,7 @@ export function bindBehavior( preview, behavior ) {
  * @return {jQuery.Promise<void>} A promise that resolves when the preview has
  *                                faded out.
  */
-export function hide( preview ) {
+function hide( preview ) {
 	// FIXME: This method clearly needs access to the layout of the preview.
 	const fadeInClass = ( preview.el.classList.contains( 'mwe-popups-fade-in-up' ) ) ?
 		'mwe-popups-fade-in-up' :
@@ -340,7 +338,7 @@ export function hide( preview ) {
 	// eslint-disable-next-line mediawiki/class-doc
 	preview.el.classList.add( fadeOutClass );
 
-	return wait( 150 ).then( () => {
+	return waitModule.wait( 150 ).then( () => {
 		preview.el.remove();
 	} );
 }
@@ -366,7 +364,7 @@ export function hide( preview ) {
  * @param {string} dir 'ltr' if left-to-right, 'rtl' if right-to-left.
  * @return {ext.popups.PreviewLayout}
  */
-export function createLayout(
+function createLayout(
 	isPreviewTall, measures, pointerSpaceSize, dir
 ) {
 	let flippedX = false,
@@ -453,7 +451,7 @@ export function createLayout(
  * @param {ext.popups.PreviewLayout} layout
  * @return {boolean}
  */
-export function hasPointerOnImage( preview, layout ) {
+function hasPointerOnImage( preview, layout ) {
 	if ( ( !preview.hasThumbnail || preview.isTall && !layout.flippedX ) &&
 		!layout.flippedY ) {
 		return false;
@@ -477,7 +475,7 @@ export function hasPointerOnImage( preview, layout ) {
  * @param {ext.popups.PreviewLayout} layout
  * @return {string[]}
  */
-export function getClasses( preview, layout ) {
+function getClasses( preview, layout ) {
 	const classes = [];
 
 	if ( layout.flippedY ) {
@@ -522,7 +520,7 @@ export function getClasses( preview, layout ) {
  * @param {number} pointerSpaceSize
  * @param {number} windowHeight
  */
-export function layoutPreview(
+function layoutPreview(
 	preview, layout, classes, predefinedLandscapeImageHeight, pointerSpaceSize, windowHeight
 ) {
 	const popup = preview.el,
@@ -574,7 +572,7 @@ export function layoutPreview(
  * @param {ext.popups.Preview} preview
  * @param {ext.popups.PreviewLayout} layout
  */
-export function setThumbnailClipPath(
+function setThumbnailClipPath(
 	{ el, isTall, thumbnail }, { flippedY, flippedX, dir }
 ) {
 	const maskID = getThumbnailClipPathID( isTall, flippedY, flippedX );
@@ -616,7 +614,7 @@ export function setThumbnailClipPath(
  * @param {boolean} flippedX
  * @return {string|undefined}
  */
-export function getThumbnailClipPathID( isTall, flippedY, flippedX ) {
+function getThumbnailClipPathID( isTall, flippedY, flippedX ) {
 	// Clip-paths are only needed when the pointer is in a corner that is covered by the thumbnail.
 	// This is only the case in 4 of 8 situations:
 	if ( !isTall && !flippedY ) {
@@ -654,7 +652,7 @@ export function getThumbnailClipPathID( isTall, flippedY, flippedX ) {
  *  boundary be returned. By default the bottom 'y' value is returned.
  * @return {number}
  */
-export function getClosestYPosition( y, rects, isTop ) {
+function getClosestYPosition( y, rects, isTop ) {
 	let minY = null, result;
 
 	Array.prototype.slice.call( rects ).forEach( ( rect ) => {
@@ -671,7 +669,7 @@ export function getClosestYPosition( y, rects, isTop ) {
 	return result;
 }
 
-export const test = {
+const test = {
 	/**
 	 * For testing only
 	 *
@@ -680,4 +678,31 @@ export const test = {
 	reset: () => {
 		renderers = {};
 	}
+};
+
+module.exports = {
+	createPointerMasks,
+	init,
+	render,
+	registerPreviewUI,
+	requiresSummary,
+	createPreviewWithType,
+	createPagePreview,
+	createEmptyPreview,
+	createDisambiguationPreview,
+	show,
+	bindBehavior,
+	hide,
+	createLayout,
+	hasPointerOnImage,
+	getClasses,
+	layoutPreview,
+	setThumbnailClipPath,
+	getThumbnailClipPathID,
+	getClosestYPosition,
+	test,
+	// For use in storybook
+	pointerSize,
+	landscapePopupWidth,
+	portraitPopupWidth
 };

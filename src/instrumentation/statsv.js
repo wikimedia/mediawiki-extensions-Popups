@@ -15,7 +15,7 @@
  * @param {Experiments} experiments
  * @return {boolean}
  */
-export function isEnabled( user, config, experiments ) {
+function isEnabled( user, config, experiments ) {
 	const bucketingRate = config.get( 'wgPopupsStatsvSamplingRate', 0 );
 	if ( bucketingRate === 0 || bucketingRate === 1 ) {
 		// Avoid calling user.sessionId() if possible, since it sets a cookie
@@ -28,3 +28,7 @@ export function isEnabled( user, config, experiments ) {
 		user.sessionId()
 	);
 }
+
+module.exports = {
+	isEnabled
+};

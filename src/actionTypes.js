@@ -2,7 +2,7 @@
  * @module actionTypes
  * @private
  */
-export default {
+module.exports = {
 	BOOT: 'BOOT',
 	LINK_DWELL: 'LINK_DWELL',
 	REGISTER_SETTING: 'REGISTER_SETTING',

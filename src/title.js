@@ -25,7 +25,7 @@ function isOwnPageAnchorLink( el ) {
  * @param {mw.Map} config
  * @return {string|undefined}
  */
-export function getTitle( href, config ) {
+function getTitle( href, config ) {
 	// Skip every URL that cannot be parsed
 	let linkHref;
 	try {
@@ -81,7 +81,7 @@ export function getTitle( href, config ) {
  * wgContentNamespaces
  * @return {mw.Title|null}
  */
-export function isValid( title, contentNamespaces ) {
+function isValid( title, contentNamespaces ) {
 	if ( !title ) {
 		return null;
 	}
@@ -103,7 +103,7 @@ export function isValid( title, contentNamespaces ) {
  * @param {mw.Map} config
  * @return {mw.Title|null}
  */
-export function fromElement( el, config ) {
+function fromElement( el, config ) {
 	if ( el.dataset.title ) {
 		return mw.Title.newFromText( el.dataset.title );
 	}
@@ -121,3 +121,9 @@ export function fromElement( el, config ) {
 		config.get( 'wgContentNamespaces' )
 	);
 }
+
+module.exports = {
+	getTitle,
+	isValid,
+	fromElement
+};

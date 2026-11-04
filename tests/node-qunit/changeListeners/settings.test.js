@@ -1,4 +1,4 @@
-import settings from '../../../src/changeListeners/settings';
+const settings = require( '../../../src/changeListeners/settings.js' );
 
 QUnit.module( 'ext.popups/changeListeners/settings', {
 	beforeEach() {

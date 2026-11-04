@@ -57,7 +57,7 @@ function createFooterLink() {
  * @param {Object} boundActions
  * @return {ext.popups.ChangeListener}
  */
-export default function footerLink( boundActions ) {
+function footerLink( boundActions ) {
 	let footerLinkElement;
 
 	return ( oldState, newState ) => {
@@ -76,3 +76,5 @@ export default function footerLink( boundActions ) {
 		}
 	};
 }
+
+module.exports = footerLink;

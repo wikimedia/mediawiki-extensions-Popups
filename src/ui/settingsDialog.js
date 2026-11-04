@@ -3,7 +3,7 @@
  * @private
  */
 
-import { renderSettingsDialog } from './templates/settingsDialog/settingsDialog';
+const { renderSettingsDialog } = require( './templates/settingsDialog/settingsDialog.js' );
 
 /**
  * Create the settings dialog shown to anonymous users.
@@ -11,7 +11,7 @@ import { renderSettingsDialog } from './templates/settingsDialog/settingsDialog'
  * @param {Object} previewTypesEnabled
  * @return {HTMLElement} settings dialog
  */
-export function createSettingsDialog( previewTypesEnabled ) {
+function createSettingsDialog( previewTypesEnabled ) {
 	const choices = Object.keys( previewTypesEnabled ).map( ( id ) => (
 		{
 			id,
@@ -36,3 +36,7 @@ export function createSettingsDialog( previewTypesEnabled ) {
 		choices
 	} );
 }
+
+module.exports = {
+	createSettingsDialog
+};

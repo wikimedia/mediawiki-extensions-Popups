@@ -3,16 +3,6 @@ const mwNodeQunit = require( '@wikimedia/mw-node-qunit' ),
 	sinon = mwNodeQunit.sinon,
 	QUnitModule = QUnit.module;
 
-require( '@babel/register' )( {
-	presets: [
-		[ '@babel/preset-env', {
-			targets: {
-				node: 6
-			}
-		} ]
-	]
-} );
-
 sinon.config = {
 	injectIntoThis: true,
 	injectInto: null,

@@ -1,4 +1,4 @@
-import { fromElement, getTitle, isValid } from '../../src/title';
+const { fromElement, getTitle, isValid } = require( '../../src/title.js' );
 
 QUnit.module( 'title#getTitle', {
 	beforeEach() {

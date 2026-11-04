@@ -1,4 +1,4 @@
-import bracketedPixelRatio from '../../src/bracketedPixelRatio';
+const bracketedPixelRatio = require( '../../src/bracketedPixelRatio.js' );
 
 QUnit.module( 'ext.popups.bracketedPixelRatio' );
 

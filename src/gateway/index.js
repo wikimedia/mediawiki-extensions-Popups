@@ -28,7 +28,7 @@
  * @param {function(): void} [abort]
  * @return {AbortPromise}
  */
-export function abortablePromise( promise, abort = () => {} ) {
+function abortablePromise( promise, abort = () => {} ) {
 	// JQuery provided.
 	if ( promise.promise ) {
 		return promise.promise( {
@@ -60,7 +60,7 @@ const gatewayMap = {};
  * @param {string} type Type of preview we are handling
  * @return {Gateway|undefined}
  */
-export function getGatewayForPreviewType( type ) {
+function getGatewayForPreviewType( type ) {
 	return gatewayMap[ type ];
 }
 
@@ -70,6 +70,12 @@ export function getGatewayForPreviewType( type ) {
  * @param {string} type preview type
  * @param {Gateway} gateway
  */
-export function registerGatewayForPreviewType( type, gateway ) {
+function registerGatewayForPreviewType( type, gateway ) {
 	gatewayMap[ type ] = gateway;
 }
+
+module.exports = {
+	abortablePromise,
+	getGatewayForPreviewType,
+	registerGatewayForPreviewType
+};

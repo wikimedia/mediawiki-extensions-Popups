@@ -1,4 +1,4 @@
-import { createSettingsDialog } from './settingsDialog';
+const { createSettingsDialog } = require( './settingsDialog.js' );
 
 const initDialog = ( boundActions, previewTypesEnabled ) => {
 	const dialog = createSettingsDialog( previewTypesEnabled );
@@ -32,7 +32,7 @@ const initDialog = ( boundActions, previewTypesEnabled ) => {
  * @ignore
  * @return {Function} render function
  */
-export default function createSettingsDialogRenderer() {
+function createSettingsDialogRenderer() {
 	/**
 	 * Cached settings dialog
 	 *
@@ -155,7 +155,7 @@ function showAll( nodes ) {
  * @param {HTMLElement} dialog element that contains form and help
  * @param {boolean} visible if the help should be visible, or the form
  */
-export function toggleHelp( dialog, visible ) {
+function toggleHelp( dialog, visible ) {
 	const
 		formSelectors = 'main, .save, .close',
 		helpSelectors = '.mwe-popups-settings-help, .okay';
@@ -168,3 +168,8 @@ export function toggleHelp( dialog, visible ) {
 		hideAll( dialog.querySelectorAll( helpSelectors ) );
 	}
 }
+
+module.exports = {
+	createSettingsDialogRenderer,
+	toggleHelp
+};

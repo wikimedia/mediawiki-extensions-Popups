@@ -19,7 +19,7 @@
  * @param {ext.popups.UserSettings} userSettings
  * @return {ext.popups.ChangeListener}
  */
-export default function syncUserSettings( userSettings ) {
+function syncUserSettings( userSettings ) {
 	return ( oldState, newState ) => {
 		Object.keys( newState.preview.enabled ).forEach( ( key ) => {
 			syncIfChanged(
@@ -63,3 +63,5 @@ function syncIfChanged( oldState, newState, path, sync ) {
 		sync( current );
 	}
 }
+
+module.exports = syncUserSettings;
