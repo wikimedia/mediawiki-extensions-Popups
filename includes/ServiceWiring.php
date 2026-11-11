@@ -3,7 +3,6 @@
 use MediaWiki\Config\Config;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Registration\ExtensionRegistry;
 use Popups\PopupsContext;
 use Popups\PopupsGadgetsIntegration;
 use Psr\Log\LoggerInterface;
@@ -14,13 +13,13 @@ use Psr\Log\LoggerInterface;
  */
 return [
 	'Popups.Config' => static function ( MediaWikiServices $services ): Config {
-		return $services->getService( 'ConfigFactory' )
+		return $services->getConfigFactory()
 			->makeConfig( PopupsContext::EXTENSION_NAME );
 	},
 	'Popups.Context' => static function ( MediaWikiServices $services ): PopupsContext {
 		return new PopupsContext(
 			$services->getService( 'Popups.Config' ),
-			ExtensionRegistry::getInstance(),
+			$services->getExtensionRegistry(),
 			$services->getService( 'Popups.GadgetsIntegration' ),
 			$services->getSpecialPageFactory(),
 		);
@@ -28,7 +27,7 @@ return [
 	'Popups.GadgetsIntegration' => static function ( MediaWikiServices $services ): PopupsGadgetsIntegration {
 		return new PopupsGadgetsIntegration(
 			$services->getService( 'Popups.Config' ),
-			ExtensionRegistry::getInstance()->isLoaded( 'Gadgets' ) ?
+			$services->getExtensionRegistry()->isLoaded( 'Gadgets' ) ?
 				$services->getService( 'GadgetsRepo' ) :
 				null
 		);

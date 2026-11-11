@@ -22,7 +22,6 @@ use MediaWiki\Config\Config;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\Gadgets\Gadget;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\UserIdentity;
 use Popups\PopupsGadgetsIntegration;
 
@@ -51,9 +50,7 @@ class PopupsGadgetsIntegrationTest extends MediaWikiIntegrationTestCase {
 	 * Checks if Gadgets extension is available
 	 */
 	private function checkRequiredDependencies() {
-		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Gadgets' ) ) {
-			$this->markTestSkipped( 'Skipped as Gadgets extension is not available' );
-		}
+		$this->markTestSkippedIfExtensionNotLoaded( 'Gadgets' );
 	}
 
 	private function getConfig( string $name = self::NAV_POPUPS_GADGET_NAME ): Config {

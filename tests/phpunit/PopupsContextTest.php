@@ -46,14 +46,14 @@ class PopupsContextTest extends MediaWikiIntegrationTestCase {
 	 * @return PopupsContext
 	 */
 	protected function getContext( $registry = null, $integration = null ) {
+		$services = $this->getServiceContainer();
 		$config = new GlobalVarConfig();
-		$registry = $registry ?: ExtensionRegistry::getInstance();
+		$registry = $registry ?: $services->getExtensionRegistry();
 		if ( $integration === null ) {
 			$integration = $this->createMock( PopupsGadgetsIntegration::class );
 			$integration->method( 'conflictsWithNavPopupsGadget' )
 				->willReturn( false );
 		}
-		$services = $this->getServiceContainer();
 		return new PopupsContext(
 			$config,
 			$registry,
